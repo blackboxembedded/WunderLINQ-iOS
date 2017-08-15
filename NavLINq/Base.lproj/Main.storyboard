@@ -1,14 +1,20 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Fp2-Ey-Ypo">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--My Motorcycle-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="MyMotorcycleViewController" customModule="NavLINq" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -16,11 +22,113 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Iu-Xf-C8t">
+                                <rect key="frame" x="16" y="304" width="343" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
+                    <navigationItem key="navigationItem" title="My Motorcycle" id="eWq-dV-zOi">
+                        <barButtonItem key="leftBarButtonItem" systemItem="rewind" id="GBh-7x-ZEB"/>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="fastForward" id="CWp-yO-DrG">
+                                <connections>
+                                    <segue destination="Yme-GX-WRX" kind="show" id="WEr-mZ-lwp"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="BT" id="56m-rg-1kX"/>
+                        </rightBarButtonItems>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="disconnectButton" destination="56m-rg-1kX" id="QJP-Bc-efC"/>
+                        <outlet property="messageLabel" destination="4Iu-Xf-C8t" id="6Hy-JM-rA5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="4063.1999999999998" y="1.3493253373313345"/>
+        </scene>
+        <!--Compass-->
+        <scene sceneID="zpk-X9-Usv">
+            <objects>
+                <viewController id="Yme-GX-WRX" customClass="CompassViewController" customModule="NavLINq" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="RGK-QH-Cvh"/>
+                        <viewControllerLayoutGuide type="bottom" id="sga-OW-z2c"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="hbU-Y3-hBF">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="65j-wa-SIQ">
+                                <rect key="frame" x="16" y="64" width="343" height="603"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lsy-hM-ZFw">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="603"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="75"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="65j-wa-SIQ" firstAttribute="top" secondItem="RGK-QH-Cvh" secondAttribute="bottom" id="1Ba-s0-eRe"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="65j-wa-SIQ" secondAttribute="trailing" id="Los-6G-6Tv"/>
+                            <constraint firstItem="sga-OW-z2c" firstAttribute="top" secondItem="65j-wa-SIQ" secondAttribute="bottom" id="pSQ-jW-TK4"/>
+                            <constraint firstItem="65j-wa-SIQ" firstAttribute="leading" secondItem="hbU-Y3-hBF" secondAttribute="leadingMargin" id="uj6-SE-zCf"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Compass" id="Brd-Gc-vY2"/>
+                    <connections>
+                        <outlet property="compassLabel" destination="lsy-hM-ZFw" id="x9L-EO-H4Y"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oxj-9z-5k3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4884" y="0.44977511244377816"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="8D1-Ci-pio">
+            <objects>
+                <viewController id="p6n-wZ-mMa" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="2Dy-LV-mMl"/>
+                        <viewControllerLayoutGuide type="bottom" id="GgX-3v-o7S"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="cl2-HO-wNM">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pw8-37-q0l" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5700" y="0.0"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="m7N-1a-hHU">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Fp2-Ey-Ypo" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Hi4-tw-zgy">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="Qtw-28-k9d"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="c7m-Tx-Ka4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3124" y="1.3493253373313345"/>
         </scene>
     </scenes>
 </document>
