@@ -14,6 +14,10 @@ class MusicViewController: UIViewController {
     @IBOutlet weak var artistLabel: UILabel!
     @IBOutlet weak var songLabel: UILabel!
     @IBOutlet weak var albumLabel: UILabel!
+    @IBOutlet weak var lastButton: UIButton!
+    @IBOutlet weak var playButton: UIButton!
+    @IBOutlet weak var nextButton: UIButton!
+    
     
     let musicPlayer = MPMusicPlayerController.systemMusicPlayer
     var timer = Timer()
@@ -32,6 +36,13 @@ class MusicViewController: UIViewController {
         musicPlayer().beginGeneratingPlaybackNotifications()
         
         NotificationCenter.default.addObserver(self, selector:#selector(MusicViewController.updateNowPlayingInfo), name: NSNotification.Name.MPMusicPlayerControllerNowPlayingItemDidChange, object: nil)
+        
+        if (musicPlayer().playbackState == MPMusicPlaybackState.playing) {
+            playButton.setTitle("Pause",for: .normal)
+            
+        } else {
+            playButton.setTitle("Play",for: .normal)
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -46,7 +57,17 @@ class MusicViewController: UIViewController {
     }
     
     @IBAction func playButton(_ sender: UIButton) {
-        musicPlayer().play()
+        // MARK: - TODO Convert to play/pause button
+        
+        if (musicPlayer().playbackState == MPMusicPlaybackState.playing) {
+            musicPlayer().pause()
+            playButton.setTitle("Play",for: .normal)
+            
+        } else {
+            musicPlayer().play()
+            playButton.setTitle("Pause",for: .normal)
+        }
+        
     }
     
     @IBAction func lastButton(_ sender: UIButton) {

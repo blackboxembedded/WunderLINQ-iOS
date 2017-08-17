@@ -369,6 +369,9 @@
                         <outlet property="albumLabel" destination="ENe-lL-dLJ" id="XrR-XX-QD8"/>
                         <outlet property="artistLabel" destination="ojS-iD-NCF" id="p4h-c9-qTN"/>
                         <outlet property="imageAlbum" destination="9KV-8n-ffM" id="mS4-Lq-Lpg"/>
+                        <outlet property="lastButton" destination="vsu-t3-FAz" id="B0J-lk-5K7"/>
+                        <outlet property="nextButton" destination="kxB-1t-Lm7" id="ysa-Qv-XIY"/>
+                        <outlet property="playButton" destination="Pwh-25-TzL" id="GH4-Fn-mrI"/>
                         <outlet property="songLabel" destination="ojS-iD-NCF" id="Q05-G0-XS2"/>
                     </connections>
                 </viewController>
@@ -390,7 +393,7 @@
                                 <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="coZ-WY-sTz" id="lbH-ag-Azh">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
