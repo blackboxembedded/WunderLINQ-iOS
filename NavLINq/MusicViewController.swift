@@ -18,6 +18,9 @@ class MusicViewController: UIViewController {
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var nextButton: UIButton!
     
+    let playImage = UIImage(named: "play")
+    let pauseImage = UIImage(named: "pause")
+    
     
     let musicPlayer = MPMusicPlayerController.systemMusicPlayer
     var timer = Timer()
@@ -39,9 +42,11 @@ class MusicViewController: UIViewController {
         
         if (musicPlayer().playbackState == MPMusicPlaybackState.playing) {
             playButton.setTitle("Pause",for: .normal)
-            
+            playButton.setImage(pauseImage, for: .normal)
+
         } else {
             playButton.setTitle("Play",for: .normal)
+            playButton.setImage(playImage, for: .normal)
         }
     }
 
@@ -62,10 +67,12 @@ class MusicViewController: UIViewController {
         if (musicPlayer().playbackState == MPMusicPlaybackState.playing) {
             musicPlayer().pause()
             playButton.setTitle("Play",for: .normal)
+            playButton.setImage(playImage, for: .normal)
             
         } else {
             musicPlayer().play()
             playButton.setTitle("Pause",for: .normal)
+            playButton.setImage(pauseImage, for: .normal)
         }
         
     }
