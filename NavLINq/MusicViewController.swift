@@ -7,13 +7,31 @@
 //
 
 import UIKit
+import MediaPlayer
 
 class MusicViewController: UIViewController {
+    @IBOutlet weak var imageAlbum: UIImageView!
+    @IBOutlet weak var artistLabel: UILabel!
+    @IBOutlet weak var songLabel: UILabel!
+    @IBOutlet weak var albumLabel: UILabel!
+    
+    let musicPlayer = MPMusicPlayerController.systemMusicPlayer
+    var timer = Timer()
+    
+    var trackElapsed: TimeInterval!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        musicPlayer().prepareToPlay()
+        
+        self.timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(MusicViewController.timerFired(_:)), userInfo: nil, repeats: true)
+        self.timer.tolerance = 0.1
+        
+        musicPlayer().beginGeneratingPlaybackNotifications()
+        
+        NotificationCenter.default.addObserver(self, selector:#selector(MusicViewController.updateNowPlayingInfo), name: NSNotification.Name.MPMusicPlayerControllerNowPlayingItemDidChange, object: nil)
     }
 
     override func didReceiveMemoryWarning() {
@@ -27,6 +45,22 @@ class MusicViewController: UIViewController {
         
     }
     
+    @IBAction func playButton(_ sender: UIButton) {
+        musicPlayer().play()
+    }
+    
+    @IBAction func lastButton(_ sender: UIButton) {
+        if Int(trackElapsed) < 3 {
+            musicPlayer().skipToPreviousItem()
+        } else {
+            musicPlayer().skipToBeginning()
+        }
+    }
+    
+    @IBAction func nextButton(_ sender: UIButton) {
+        musicPlayer().skipToNextItem()
+    }
+    
     /*
     // MARK: - Navigation
 
@@ -36,5 +70,32 @@ class MusicViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    func timerFired(_:AnyObject) {
+        if let currentTrack = MPMusicPlayerController.systemMusicPlayer().nowPlayingItem {
+            // Get Current Track Info
+            let trackName = currentTrack.title!
+            let trackArtist = currentTrack.artist!
+            let trackAlbum = currentTrack.albumTitle!
+            let albumImage = currentTrack.artwork?.image(at: imageAlbum.bounds.size)
+            trackElapsed = musicPlayer().currentPlaybackTime
+            //let trackDuration = currentTrack.playbackDuration
+            
+            // Update UI
+            imageAlbum.image = albumImage
+            artistLabel.text = trackArtist
+            songLabel.text = trackName
+            albumLabel.text = trackAlbum
+            
+            
+        }
+    }
+    
+    func updateNowPlayingInfo(){
+        
+        self.timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(MusicViewController.timerFired(_:)), userInfo: nil, repeats: true)
+        self.timer.tolerance = 0.1
+        
+    }
 
 }
