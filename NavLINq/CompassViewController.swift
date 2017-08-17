@@ -11,6 +11,12 @@ import CoreLocation
 
 class CompassViewController: UIViewController {
     @IBOutlet weak var compassLabel: UILabel!
+
+    // MARK: - Handling User Interaction
+    
+    @IBAction func prepareForUnwind(segue: UIStoryboardSegue) {
+        
+    }
     
     let locationDelegate = LocationDelegate()
     var latestLocation: CLLocation? = nil

@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  MyMotorcycleViewController.swift
 //  NavLINq
 //
 //  Created by Keith Conger on 8/13/17.
@@ -10,8 +10,8 @@ import UIKit
 import CoreBluetooth
 
 class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDelegate {
-    @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var disconnectButton: UIBarButtonItem!
+    //@IBOutlet weak var messageLabel: UILabel!
     
     var centralManager:CBCentralManager!
     var navLINq:CBPeripheral?
@@ -33,7 +33,7 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
         centralManager = CBCentralManager(delegate: self,
                                           queue: nil)
         
-        messageLabel.text = "Searching"
+        print("Searching for NavLINq")
         
     }
     
@@ -42,10 +42,18 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func unwindToContainerVC(segue: UIStoryboardSegue) {
+        
+    }
+    
     // MARK: - Handling User Interaction
     
+    @IBAction func prepareForUnwind(segue: UIStoryboardSegue) {
+        
+    }
+    
     @IBAction func handleDisconnectButtonTapped(_ sender: AnyObject) {
-        // if we don't have a sensor tag, start scanning for one...
+        // if we don't have a NavLINq, start scanning for one...
         if navLINq == nil {
             keepScanning = true
             resumeScan()
@@ -92,7 +100,7 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
             // Start scanning again...
             print("*** RESUMING SCAN!")
             disconnectButton.isEnabled = false
-            messageLabel.text = "Searching"
+            //messageLabel.text = "Searching"
             _ = Timer(timeInterval: timerScanInterval, target: self, selector: #selector(pauseScan), userInfo: nil, repeats: false)
             centralManager.scanForPeripherals(withServices: nil, options: nil)
         } else {
@@ -104,7 +112,9 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
     
     func updateMessageDisplay() {
 
-        messageLabel.text = lastMessage
+        disconnectButton.tintColor = UIColor.blue
+        // MARK: - TODO: parse and display values
+        //print("Message Recieved: " + lastMessage)
     }
     
     func displayMessage(_ data:Data) {
@@ -116,12 +126,17 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
         
         // output values for debugging/diagnostic purposes
         var messageString = ""
+        var messageHexString = ""
+        
         for i in 0 ..< dataLength {
             let nextInt:UInt8 = dataArray[i]
             //print("next int: \(nextInt)")
             messageString += "\(nextInt),"
+            messageHexString += String(format: "%02X", nextInt)
         }
         print(messageString)
+        print(messageHexString)
+        
         lastMessage = messageString
         if UIApplication.shared.applicationState == .active {
             updateMessageDisplay()
@@ -198,7 +213,7 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
             print("NEXT PERIPHERAL UUID: \(peripheral.identifier.uuidString)")
             
             if peripheralName == deviceName {
-                print("SENSOR TAG FOUND! ADDING NOW!!!")
+                print("NavLINq FOUND! ADDING NOW!!!")
                 // to save power, stop scanning for other devices
                 keepScanning = false
                 disconnectButton.isEnabled = true
@@ -220,9 +235,10 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
      You typically implement this method to set the peripheral’s delegate and to discover its services.
      */
     func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
-        print("**** SUCCESSFULLY CONNECTED NavLINq!!!")
+        print("**** SUCCESSFULLY CONNECTED TO NavLINq!!!")
         
-        messageLabel.text = "Connected"
+        //messageLabel.text = "Connected"
+        disconnectButton.tintColor = UIColor.blue
         
         // Now that we've successfully connected to the SensorTag, let's discover the services.
         // - NOTE:  we pass nil here to request ALL services be discovered.
@@ -240,7 +256,8 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
      in which case you may attempt to connect to the peripheral again.
      */
     func centralManager(_ central: CBCentralManager, didFailToConnect peripheral: CBPeripheral, error: Error?) {
-        print("**** CONNECTION NavLINq FAILED!!!")
+        print("**** CONNECTION TO NavLINq FAILED!!!")
+        disconnectButton.tintColor = UIColor.red
     }
     
     
@@ -254,8 +271,9 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
      Note that when a peripheral is disconnected, all of its services, characteristics, and characteristic descriptors are invalidated.
      */
     func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
-        print("**** DISCONNECTED NavLINq!!!")
-        messageLabel.text = "Tap to search"
+        print("**** DISCONNECTED FROM NavLINq!!!")
+        //messageLabel.text = "Tap to search"
+        disconnectButton.tintColor = UIColor.red
         if error != nil {
             print("****** DISCONNECTION DETAILS: \(error!.localizedDescription)")
         }
@@ -285,7 +303,7 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
         // Core Bluetooth creates an array of CBService objects —- one for each service that is discovered on the peripheral.
         if let services = peripheral.services {
             for service in services {
-                print("Discovered service \(service)")
+                print("DISCOVERED SERVICE: \(service)")
                 // If we found either the temperature or the humidity service, discover the characteristics for those services.
                 if (service.uuid == CBUUID(string: Device.NavLINqServiceUUID)) {
                     peripheral.discoverCharacteristics(nil, for: service)

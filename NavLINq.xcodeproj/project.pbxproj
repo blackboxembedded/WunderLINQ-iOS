@@ -18,6 +18,8 @@
 		7EA478751F412B73000CEDDC /* LocationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA478741F412B73000CEDDC /* LocationDelegate.swift */; };
 		7EA478771F412BAC000CEDDC /* CLLocation+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA478761F412BAC000CEDDC /* CLLocation+Extension.swift */; };
 		7EA478791F412BE9000CEDDC /* UserDefauts+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA478781F412BE9000CEDDC /* UserDefauts+Extensions.swift */; };
+		7EA4787F1F44F54E000CEDDC /* TasksTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA4787E1F44F54E000CEDDC /* TasksTableViewController.swift */; };
+		7EA478811F44F57C000CEDDC /* MusicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA478801F44F57C000CEDDC /* MusicViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +48,8 @@
 		7EA478741F412B73000CEDDC /* LocationDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationDelegate.swift; sourceTree = "<group>"; };
 		7EA478761F412BAC000CEDDC /* CLLocation+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CLLocation+Extension.swift"; sourceTree = "<group>"; };
 		7EA478781F412BE9000CEDDC /* UserDefauts+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserDefauts+Extensions.swift"; sourceTree = "<group>"; };
+		7EA4787E1F44F54E000CEDDC /* TasksTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TasksTableViewController.swift; sourceTree = "<group>"; };
+		7EA478801F44F57C000CEDDC /* MusicViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +98,8 @@
 				7EA478781F412BE9000CEDDC /* UserDefauts+Extensions.swift */,
 				7EA4784F1F40B154000CEDDC /* MyMotorcycleViewController.swift */,
 				7EA478721F4115F6000CEDDC /* CompassViewController.swift */,
+				7EA478801F44F57C000CEDDC /* MusicViewController.swift */,
+				7EA4787E1F44F54E000CEDDC /* TasksTableViewController.swift */,
 				7EA478511F40B154000CEDDC /* Main.storyboard */,
 				7EA478541F40B154000CEDDC /* Assets.xcassets */,
 				7EA478561F40B154000CEDDC /* LaunchScreen.storyboard */,
@@ -222,6 +228,8 @@
 				7EA478791F412BE9000CEDDC /* UserDefauts+Extensions.swift in Sources */,
 				7EA4784E1F40B154000CEDDC /* AppDelegate.swift in Sources */,
 				7EA478731F4115F6000CEDDC /* CompassViewController.swift in Sources */,
+				7EA478811F44F57C000CEDDC /* MusicViewController.swift in Sources */,
+				7EA4787F1F44F54E000CEDDC /* TasksTableViewController.swift in Sources */,
 				7EA478751F412B73000CEDDC /* LocationDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
