@@ -211,7 +211,15 @@
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
+                        <outlet property="ambientTempLabel" destination="XQz-jX-igz" id="Fmu-pV-arb"/>
                         <outlet property="disconnectButton" destination="56m-rg-1kX" id="QJP-Bc-efC"/>
+                        <outlet property="engineTempLabel" destination="bRL-5h-sKB" id="Yfz-Cc-6n5"/>
+                        <outlet property="frontPressureLabel" destination="ZqM-BI-MSn" id="ban-Dc-mtN"/>
+                        <outlet property="gearLabel" destination="5Xp-ce-nzA" id="JZZ-QT-0k1"/>
+                        <outlet property="odometerLabel" destination="grv-Y4-dvO" id="UtE-hz-vu5"/>
+                        <outlet property="rearPressureLabel" destination="OaG-cS-fMY" id="gXy-U5-kzG"/>
+                        <outlet property="tripOneLabel" destination="60i-SA-nRN" id="GCA-Da-WjC"/>
+                        <outlet property="tripTwoLabel" destination="yQZ-bf-Jhe" id="mlK-oF-T4E"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -406,7 +414,7 @@
                     <navigationItem key="navigationItem" title="Quick Tasks" id="jyj-aK-lN7">
                         <barButtonItem key="leftBarButtonItem" systemItem="rewind" id="vdZ-Sx-gxP">
                             <connections>
-                                <segue destination="69C-pl-m3A" kind="unwind" unwindAction="prepareForUnwindWithSegue:" id="eXY-Qz-cF9"/>
+                                <segue destination="69C-pl-m3A" kind="unwind" identifier="backToMusic" unwindAction="unwindToContainerMusicVCWithSegue:" id="eXY-Qz-cF9"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="fastForward" id="UDf-mC-dtK">

@@ -20,6 +20,7 @@
 		7EA478791F412BE9000CEDDC /* UserDefauts+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA478781F412BE9000CEDDC /* UserDefauts+Extensions.swift */; };
 		7EA4787F1F44F54E000CEDDC /* TasksTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA4787E1F44F54E000CEDDC /* TasksTableViewController.swift */; };
 		7EA478811F44F57C000CEDDC /* MusicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA478801F44F57C000CEDDC /* MusicViewController.swift */; };
+		7EA478831F4A7260000CEDDC /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7EA478821F4A7260000CEDDC /* Settings.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +51,7 @@
 		7EA478781F412BE9000CEDDC /* UserDefauts+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserDefauts+Extensions.swift"; sourceTree = "<group>"; };
 		7EA4787E1F44F54E000CEDDC /* TasksTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TasksTableViewController.swift; sourceTree = "<group>"; };
 		7EA478801F44F57C000CEDDC /* MusicViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicViewController.swift; sourceTree = "<group>"; };
+		7EA478821F4A7260000CEDDC /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,7 @@
 				7EA478801F44F57C000CEDDC /* MusicViewController.swift */,
 				7EA4787E1F44F54E000CEDDC /* TasksTableViewController.swift */,
 				7EA478511F40B154000CEDDC /* Main.storyboard */,
+				7EA478821F4A7260000CEDDC /* Settings.bundle */,
 				7EA478541F40B154000CEDDC /* Assets.xcassets */,
 				7EA478561F40B154000CEDDC /* LaunchScreen.storyboard */,
 				7EA478591F40B154000CEDDC /* Info.plist */,
@@ -207,6 +210,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7EA478831F4A7260000CEDDC /* Settings.bundle in Resources */,
 				7EA478581F40B154000CEDDC /* LaunchScreen.storyboard in Resources */,
 				7EA478551F40B154000CEDDC /* Assets.xcassets in Resources */,
 				7EA478531F40B154000CEDDC /* Main.storyboard in Resources */,

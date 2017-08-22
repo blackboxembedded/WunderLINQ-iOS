@@ -11,7 +11,14 @@ import CoreBluetooth
 
 class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDelegate {
     @IBOutlet weak var disconnectButton: UIBarButtonItem!
-    //@IBOutlet weak var messageLabel: UILabel!
+    @IBOutlet weak var frontPressureLabel: UILabel!
+    @IBOutlet weak var rearPressureLabel: UILabel!
+    @IBOutlet weak var engineTempLabel: UILabel!
+    @IBOutlet weak var ambientTempLabel: UILabel!
+    @IBOutlet weak var gearLabel: UILabel!
+    @IBOutlet weak var odometerLabel: UILabel!
+    @IBOutlet weak var tripOneLabel: UILabel!
+    @IBOutlet weak var tripTwoLabel: UILabel!
     
     var centralManager:CBCentralManager!
     var navLINq:CBPeripheral?
@@ -25,14 +32,13 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
     
     var keepScanning = false
     
-    var lastMessage = ""
-
+    var lastMessage = [UInt8]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        registerSettingsBundle()
         centralManager = CBCentralManager(delegate: self,
                                           queue: nil)
-        
         print("Searching for NavLINq")
         
     }
@@ -44,6 +50,11 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
     
     @IBAction func unwindToContainerVC(segue: UIStoryboardSegue) {
         
+    }
+    
+    func registerSettingsBundle(){
+        let appDefaults = [String:AnyObject]()
+        UserDefaults.standard.register(defaults: appDefaults)
     }
     
     // MARK: - Handling User Interaction
@@ -68,7 +79,7 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
             if let mc = self.messageCharacteristic {
                 navLINq.setNotifyValue(false, for: mc)
             }
-
+            
             
             /*
              NOTE: The cancelPeripheralConnection: method is nonblocking, and any CBPeripheral class commands
@@ -83,7 +94,7 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
         }
         messageCharacteristic = nil
     }
-
+    
     
     // MARK: - Bluetooth scanning
     
@@ -111,15 +122,126 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
     // MARK: - Updating UI
     
     func updateMessageDisplay() {
-
+        
         disconnectButton.tintColor = UIColor.blue
         // MARK: - TODO: parse and display values
-        //print("Message Recieved: " + lastMessage)
+        var temperatureUnit = "C"
+        var distanceUnit = "km"
+        var pressureUnit = "psi"
+        
+        switch lastMessage[0] {
+        case 0x00:
+            print("Message ID: 0")
+        case 0x01:
+            print("Message ID: 1")
+        case 0x02:
+            print("Message ID: 2")
+        case 0x03:
+            print("Message ID: 3")
+        case 0x04:
+            print("Message ID: 4")
+        case 0x05:
+            print("Message ID: 5")
+            // Tire Pressure
+            var frontPressure:Double = Double(lastMessage[4]) / 50
+            var rearPressure:Double = Double(lastMessage[5]) / 50
+            switch UserDefaults.standard.integer(forKey: "pressure_unit_preference"){
+                case 0:
+                    pressureUnit = "bar"
+                case 1:
+                    pressureUnit = "kPa"
+                    frontPressure = barTokPa(frontPressure)
+                    rearPressure = barTokPa(rearPressure)
+                case 2:
+                    pressureUnit = "kg-f"
+                    frontPressure = barTokgf(frontPressure)
+                    rearPressure = barTokgf(rearPressure)
+                case 3:
+                    pressureUnit = "psi"
+                    frontPressure = barToPsi(frontPressure)
+                    rearPressure = barToPsi(rearPressure)
+                default:
+                    print("Unknown pressure unit setting")
+            }
+            frontPressureLabel.text = "\(frontPressure) \(pressureUnit)"
+            rearPressureLabel.text = "\(rearPressure) \(pressureUnit)"
+        case 0x06:
+            print("Message ID: 6")
+            // Gear
+            switch lastMessage[2] {
+            case 0x10:
+                gearLabel.text = "1"
+            case 0x20:
+                gearLabel.text = "N"
+            case 0x40:
+                gearLabel.text = "2"
+            case 0x70:
+                gearLabel.text = "3"
+            case 0x80:
+                gearLabel.text = "4"
+            case 0xB0:
+                gearLabel.text = "5"
+            case 0xD0:
+                gearLabel.text = "6"
+            case 0xF0:
+                gearLabel.text = "-"
+            default:
+                print("Unknown Gear Value")
+                gearLabel.text = "-"
+            }
+            // Engine Temperature
+            var engineTemp:Double = Double(lastMessage[4]) * 0.75 - 25
+
+            print("\(UserDefaults.standard.integer(forKey: "temperature_unit_preference"))")
+            if UserDefaults.standard.integer(forKey: "temperature_unit_preference") == 1 {
+                print("Fahrenheit selected")
+                engineTemp = celciusToFahrenheit(engineTemp)
+                temperatureUnit = "F"
+            }
+            engineTempLabel.text = "\(engineTemp) \(temperatureUnit)"
+        case 0x07:
+            print("Message ID: 7")
+        case 0x08:
+            print("Message ID: 8")
+            // Ambient Temperature
+            var ambientTemp:Double = Double(lastMessage[1]) * 0.50 - 40
+            if UserDefaults.standard.integer(forKey: "temperature_unit_preference") == 1 {
+                ambientTemp = celciusToFahrenheit(ambientTemp)
+                temperatureUnit = "F"
+            }
+            ambientTempLabel.text = "\(ambientTemp) \(temperatureUnit)"
+        case 0x09:
+            print("Message ID: 9")
+        case 0x0A:
+            print("Message ID: 10")
+            // Odometer
+            var odometer:Int = Int(lastMessage[3]) + Int(lastMessage[2]) + Int(lastMessage[1])
+            if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
+                odometer = Int(kmToMiles(Double(odometer)))
+                distanceUnit = "miles"
+            }
+            odometerLabel.text = "\(odometer) \(distanceUnit)"
+            
+        case 0x0B:
+            print("Message ID: 11")
+        case 0x0C:
+            print("Message ID: 12")
+            // Trip 1 & Trip 2
+            var tripOne:Int = Int(lastMessage[3]) + Int(lastMessage[2]) + Int(lastMessage[1])
+            var tripTwo:Int = Int(lastMessage[6]) + Int(lastMessage[5]) + Int(lastMessage[4])
+            if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
+                tripOne = Int(kmToMiles(Double(tripOne)))
+                tripTwo = Int(kmToMiles(Double(tripTwo)))
+                distanceUnit = "miles"
+            }
+            tripOneLabel.text = "\(tripOne) \(distanceUnit)"
+            tripTwoLabel.text = "\(tripTwo) \(distanceUnit)"
+        default:
+            print("Message ID: Unknown")
+        }
     }
     
     func displayMessage(_ data:Data) {
-        // We'll get four bytes of data back, so we divide the byte count by two
-        // because we're creating an array that holds two 16-bit (two-byte) values
         let dataLength = data.count / MemoryLayout<UInt8>.size
         var dataArray = [UInt8](repeating: 0, count: dataLength)
         (data as NSData).getBytes(&dataArray, length: dataLength * MemoryLayout<Int16>.size)
@@ -130,19 +252,18 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
         
         for i in 0 ..< dataLength {
             let nextInt:UInt8 = dataArray[i]
-            //print("next int: \(nextInt)")
             messageString += "\(nextInt),"
-            messageHexString += String(format: "%02X", nextInt)
+            messageHexString += String(format: "%02X", dataArray[i])
         }
         print(messageString)
         print(messageHexString)
         
-        lastMessage = messageString
+        lastMessage = dataArray
         if UIApplication.shared.applicationState == .active {
             updateMessageDisplay()
         }
     }
-
+    
     
     // MARK: - CBCentralManagerDelegate methods
     
@@ -188,7 +309,7 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
             self.show(alertController, sender: self)
         }
     }
-
+    
     /*
      Invoked when the central manager discovers a peripheral while scanning.
      
@@ -227,7 +348,7 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
             }
         }
     }
-
+    
     /*
      Invoked when a connection is successfully created with a peripheral.
      
@@ -364,18 +485,37 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
         if let dataBytes = characteristic.value {
             if characteristic.uuid == CBUUID(string: Device.MessageCharacteristicUUID) {
                 displayMessage(dataBytes)
+            }
         }
     }
     
-    
     // MARK: - Utility Methods
-    
-    func convertCelciusToFahrenheit(_ celcius:Double) -> Double {
+    // Unit Conversion Functions
+    // bar to psi
+    func barToPsi(_ bar:Double) -> Double {
+        let psi = bar * 14.5037738
+        return psi
+    }
+    // bar to kpa
+    func barTokPa(_ bar:Double) -> Double {
+        let kpa = bar * 100.0
+        return kpa
+    }
+    // bar to kg-f
+    func barTokgf(_ bar:Double) -> Double {
+        let kgf = bar * 1.0197162129779
+        return kgf
+    }
+    // kilometers to miles
+    func kmToMiles(_ kilometers:Double) -> Double {
+        let miles = kilometers * 0.6214
+        return miles
+    }
+    // Celsius to Fahrenheit
+    func celciusToFahrenheit(_ celcius:Double) -> Double {
         let fahrenheit = (celcius * 1.8) + Double(32)
         return fahrenheit
     }
 
-    }
 
 }
-
