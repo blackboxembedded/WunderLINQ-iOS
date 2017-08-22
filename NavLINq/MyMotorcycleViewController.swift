@@ -163,8 +163,8 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
                 default:
                     print("Unknown pressure unit setting")
             }
-            frontPressureLabel.text = "\(frontPressure) \(pressureUnit)"
-            rearPressureLabel.text = "\(rearPressure) \(pressureUnit)"
+            frontPressureLabel.text = "\(Int(frontPressure)) \(pressureUnit)"
+            rearPressureLabel.text = "\(Int(rearPressure)) \(pressureUnit)"
         case 0x06:
             print("Message ID: 6")
             // Gear
@@ -191,14 +191,12 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
             }
             // Engine Temperature
             var engineTemp:Double = Double(lastMessage[4]) * 0.75 - 25
-
-            print("\(UserDefaults.standard.integer(forKey: "temperature_unit_preference"))")
             if UserDefaults.standard.integer(forKey: "temperature_unit_preference") == 1 {
                 print("Fahrenheit selected")
                 engineTemp = celciusToFahrenheit(engineTemp)
                 temperatureUnit = "F"
             }
-            engineTempLabel.text = "\(engineTemp) \(temperatureUnit)"
+            engineTempLabel.text = "\(Int(engineTemp)) \(temperatureUnit)"
         case 0x07:
             print("Message ID: 7")
         case 0x08:
@@ -209,7 +207,7 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
                 ambientTemp = celciusToFahrenheit(ambientTemp)
                 temperatureUnit = "F"
             }
-            ambientTempLabel.text = "\(ambientTemp) \(temperatureUnit)"
+            ambientTempLabel.text = "\(Int(ambientTemp)) \(temperatureUnit)"
         case 0x09:
             print("Message ID: 9")
         case 0x0A:
@@ -246,17 +244,20 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
         var dataArray = [UInt8](repeating: 0, count: dataLength)
         (data as NSData).getBytes(&dataArray, length: dataLength * MemoryLayout<Int16>.size)
         
-        // output values for debugging/diagnostic purposes
-        var messageString = ""
         var messageHexString = ""
-        
         for i in 0 ..< dataLength {
-            let nextInt:UInt8 = dataArray[i]
-            messageString += "\(nextInt),"
             messageHexString += String(format: "%02X", dataArray[i])
+            if i < dataLength - 1 {
+                messageHexString += ","
+            }
         }
-        print(messageString)
         print(messageHexString)
+        
+        // Log raw messages
+        if UserDefaults.standard.bool(forKey: "raw_logging_preference") {
+            Logger.log(fileName: "NavLINq-raw.csv", entry: messageHexString)
+        }
+
         
         lastMessage = dataArray
         if UIApplication.shared.applicationState == .active {
@@ -330,9 +331,6 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
         
         // Retrieve the peripheral name from the advertisement data using the "kCBAdvDataLocalName" key
         if let peripheralName = advertisementData[CBAdvertisementDataLocalNameKey] as? String {
-            print("NEXT PERIPHERAL NAME: \(peripheralName)")
-            print("NEXT PERIPHERAL UUID: \(peripheral.identifier.uuidString)")
-            
             if peripheralName == deviceName {
                 print("NavLINq FOUND! ADDING NOW!!!")
                 // to save power, stop scanning for other devices

@@ -21,7 +21,7 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>$(PRODUCT_NAME) location use.</string>
+	<string>$(PRODUCT_NAME) ants to use your compass</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>audio</string>
@@ -50,6 +50,8 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>NSAppleMusicUsageDescription</key>
-	<string>$(PRODUCT_NAME) Music use.</string>
+	<string>$(PRODUCT_NAME) wants to control you music player.</string>
+	<key>UIFileSharingEnabled</key>
+	<true/>
 </dict>
 </plist>
