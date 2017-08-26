@@ -56,10 +56,16 @@ class MusicViewController: UIViewController {
     }
     
     // MARK: - Handling User Interaction
-    
+    /*
     @IBAction func prepareForUnwind(segue: UIStoryboardSegue) {
         
     }
+    */
+    
+    @IBAction func unwindToContainerMusicVC(segue: UIStoryboardSegue) {
+        
+    }
+
     
     @IBAction func playButton(_ sender: UIButton) {
         // MARK: - TODO Convert to play/pause button
@@ -114,7 +120,6 @@ class MusicViewController: UIViewController {
             artistLabel.text = trackArtist
             songLabel.text = trackName
             albumLabel.text = trackAlbum
-            
             
         }
     }

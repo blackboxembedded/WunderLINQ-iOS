@@ -20,17 +20,14 @@ class Logger {
     }
     
     class func log(fileName: String, entry: String) {
-
-        print("\(sourceFileName(filePath: fileName)),\(Date().toString()),\(entry)")
-        
-        // get the documents folder url
+        // Get the documents folder url
         let documentDirectory = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
-        // create the destination url for the text file to be saved
+        // Destination url for the log file to be saved
         let fileURL = documentDirectory.appendingPathComponent("\(fileName)")
         let formattedEntry = Date().toString() + "," + entry
         do {
-            // writing to disk
-            try formattedEntry.write(to: fileURL, atomically: false, encoding: .utf8)
+            // Write to log
+            try formattedEntry.appendLineToURL(fileURL: fileURL as URL)
             
         } catch {
             print("error writing to url:", fileURL, error)
@@ -46,5 +43,31 @@ class Logger {
 internal extension Date {
     func toString() -> String {
         return Logger.dateFormatter.string(from: self as Date)
+    }
+}
+
+extension String {
+    func appendLineToURL(fileURL: URL) throws {
+        try (self + "\n").appendToURL(fileURL: fileURL)
+    }
+    
+    func appendToURL(fileURL: URL) throws {
+        let data = self.data(using: String.Encoding.utf8)!
+        try data.append(fileURL: fileURL)
+    }
+}
+
+extension Data {
+    func append(fileURL: URL) throws {
+        if let fileHandle = FileHandle(forWritingAtPath: fileURL.path) {
+            defer {
+                fileHandle.closeFile()
+            }
+            fileHandle.seekToEndOfFile()
+            fileHandle.write(self)
+        }
+        else {
+            try write(to: fileURL, options: .atomic)
+        }
     }
 }

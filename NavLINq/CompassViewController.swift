@@ -76,27 +76,30 @@ class CompassViewController: UIViewController {
             }
             let angle = computeNewAngle(with: CGFloat(newHeading))
             let degrees = abs(Int(angle.radiansToDegrees))
-            var bearing = "-"
+            var bearing = "\(degrees)"
             
-            if degrees > 331 || degrees <= 28 {
-                bearing = "N"
-            } else if degrees > 28 && degrees <= 73 {
-                bearing = "NE"
-            } else if degrees > 73 && degrees <= 118 {
-                bearing = "E"
-            } else if degrees > 118 && degrees <= 163 {
-                bearing = "SE"
-            } else if degrees > 163 && degrees <= 208 {
-                bearing = "S"
-            } else if degrees > 208 && degrees <= 253 {
-                bearing = "SW"
-            } else if degrees > 253 && degrees <= 298 {
-                bearing = "W"
-            } else if degrees > 298 && degrees <= 331 {
-                bearing = "NW"
-            } else {
-                bearing = "-"
+            if UserDefaults.standard.integer(forKey: "bearing_unit_preference") == 1 {
+                if degrees > 331 || degrees <= 28 {
+                    bearing = "N"
+                } else if degrees > 28 && degrees <= 73 {
+                    bearing = "NE"
+                } else if degrees > 73 && degrees <= 118 {
+                    bearing = "E"
+                } else if degrees > 118 && degrees <= 163 {
+                    bearing = "SE"
+                } else if degrees > 163 && degrees <= 208 {
+                    bearing = "S"
+                } else if degrees > 208 && degrees <= 253 {
+                    bearing = "SW"
+                } else if degrees > 253 && degrees <= 298 {
+                    bearing = "W"
+                } else if degrees > 298 && degrees <= 331 {
+                    bearing = "NW"
+                } else {
+                    bearing = "-"
+                }
             }
+
             self.compassLabel.text = bearing
 
         }
