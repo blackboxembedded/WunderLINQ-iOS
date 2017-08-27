@@ -275,18 +275,18 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
         
         switch central.state {
         case .poweredOff:
-            message = "Bluetooth on this device is currently powered off."
+            message = NSLocalizedString("Bluetooth on this device is currently powered off.", comment: "")
         case .unsupported:
-            message = "This device does not support Bluetooth Low Energy."
+            message = NSLocalizedString("This device does not support Bluetooth Low Energy.", comment: "")
         case .unauthorized:
-            message = "This app is not authorized to use Bluetooth Low Energy."
+            message = NSLocalizedString("This app is not authorized to use Bluetooth Low Energy.", comment: "")
         case .resetting:
-            message = "The BLE Manager is resetting; a state update is pending."
+            message = NSLocalizedString("The BLE Manager is resetting; a state update is pending.", comment: "")
         case .unknown:
-            message = "The state of the BLE Manager is unknown."
+            message = NSLocalizedString("The state of the BLE Manager is unknown.", comment: "")
         case .poweredOn:
             showAlert = false
-            message = "Bluetooth LE is turned on and ready for communication."
+            message = NSLocalizedString("Bluetooth LE is turned on and ready for communication.", comment: "")
             
             print(message)
             keepScanning = true
@@ -304,8 +304,8 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
         }
         
         if showAlert {
-            let alertController = UIAlertController(title: "Central Manager State", message: message, preferredStyle: UIAlertControllerStyle.alert)
-            let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.cancel, handler: nil)
+            let alertController = UIAlertController(title: NSLocalizedString("Central Manager State", comment: ""), message: message, preferredStyle: UIAlertControllerStyle.alert)
+            let okAction = UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: UIAlertActionStyle.cancel, handler: nil)
             alertController.addAction(okAction)
             self.show(alertController, sender: self)
         }

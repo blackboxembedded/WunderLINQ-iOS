@@ -23,6 +23,7 @@
 		7EA478831F4A7260000CEDDC /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7EA478821F4A7260000CEDDC /* Settings.bundle */; };
 		7EA478851F4BBBB1000CEDDC /* TODO in Resources */ = {isa = PBXBuildFile; fileRef = 7EA478841F4BBBB1000CEDDC /* TODO */; };
 		7EA478871F4BC775000CEDDC /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA478861F4BC775000CEDDC /* Logger.swift */; };
+		7EA4788A1F537ED5000CEDDC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7EA478881F537ED5000CEDDC /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,7 @@
 		7EA478821F4A7260000CEDDC /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		7EA478841F4BBBB1000CEDDC /* TODO */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TODO; sourceTree = "<group>"; };
 		7EA478861F4BC775000CEDDC /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		7EA478891F537ED5000CEDDC /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = NavLINq/Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +81,7 @@
 		7EA478411F40B154000CEDDC = {
 			isa = PBXGroup;
 			children = (
+				7EA478881F537ED5000CEDDC /* Localizable.strings */,
 				7EA4784C1F40B154000CEDDC /* NavLINq */,
 				7EA478611F40B154000CEDDC /* NavLINqTests */,
 				7EA4784B1F40B154000CEDDC /* Products */,
@@ -217,6 +220,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7EA478831F4A7260000CEDDC /* Settings.bundle in Resources */,
+				7EA4788A1F537ED5000CEDDC /* Localizable.strings in Resources */,
 				7EA478851F4BBBB1000CEDDC /* TODO in Resources */,
 				7EA478581F40B154000CEDDC /* LaunchScreen.storyboard in Resources */,
 				7EA478551F40B154000CEDDC /* Assets.xcassets in Resources */,
@@ -284,6 +288,14 @@
 				7EA478571F40B154000CEDDC /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		7EA478881F537ED5000CEDDC /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7EA478891F537ED5000CEDDC /* Base */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -388,6 +400,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_LOCALIZABILITY_EMPTY_CONTEXT = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				DEVELOPMENT_TEAM = L5697YQ5RS;
 				INFOPLIST_FILE = NavLINq/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -401,6 +415,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_LOCALIZABILITY_EMPTY_CONTEXT = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				DEVELOPMENT_TEAM = L5697YQ5RS;
 				INFOPLIST_FILE = NavLINq/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
