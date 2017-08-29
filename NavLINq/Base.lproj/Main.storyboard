@@ -207,6 +207,9 @@
                             </barButtonItem>
                             <barButtonItem title="BT" id="56m-rg-1kX">
                                 <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="btButtonTapped:" destination="BYZ-38-t0r" id="Pqv-kY-0T6"/>
+                                </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
