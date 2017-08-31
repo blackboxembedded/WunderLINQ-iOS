@@ -23,13 +23,12 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
     var centralManager:CBCentralManager!
     var navLINq:CBPeripheral?
     var messageCharacteristic:CBCharacteristic?
-    var connectingPeripheral:CBPeripheral!
     
     let deviceName = "NavLINq"
     
     // define our scanning interval times
-    let timerPauseInterval:TimeInterval = 10.0
-    let timerScanInterval:TimeInterval = 2.0
+    let timerPauseInterval:TimeInterval = 5
+    let timerScanInterval:TimeInterval = 2
     
     var keepScanning = false
     
@@ -40,8 +39,6 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
         registerSettingsBundle()
         centralManager = CBCentralManager(delegate: self,
                                           queue: nil)
-        print("Searching for NavLINq")
-        
     }
     
     override func didReceiveMemoryWarning() {
@@ -63,6 +60,7 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
     @IBAction func prepareForUnwind(segue: UIStoryboardSegue) {
         
     }
+    
     @IBAction func btButtonTapped(_ sender: UIBarButtonItem) {
         // if we don't have a NavLINq, start scanning for one...
         if navLINq == nil {
@@ -79,7 +77,6 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
             if let mc = self.messageCharacteristic {
                 navLINq.setNotifyValue(false, for: mc)
             }
-            
             
             /*
              NOTE: The cancelPeripheralConnection: method is nonblocking, and any CBPeripheral class commands
@@ -101,21 +98,30 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
     func pauseScan() {
         // Scanning uses up battery on phone, so pause the scan process for the designated interval.
         print("*** PAUSING SCAN...")
-        _ = Timer(timeInterval: timerPauseInterval, target: self, selector: #selector(resumeScan), userInfo: nil, repeats: false)
-        centralManager.stopScan()
         disconnectButton.isEnabled = true
+        self.centralManager?.stopScan()
+        Timer.scheduledTimer(timeInterval: timerPauseInterval, target: self, selector: #selector(self.resumeScan), userInfo: nil, repeats: false)
+        
     }
     
     func resumeScan() {
-        if keepScanning {
-            // Start scanning again...
-            print("*** RESUMING SCAN!")
-            disconnectButton.isEnabled = false
-            //messageLabel.text = "Searching"
-            _ = Timer(timeInterval: timerScanInterval, target: self, selector: #selector(pauseScan), userInfo: nil, repeats: false)
-            centralManager.scanForPeripherals(withServices: nil, options: nil)
+        let lastPeripherals = centralManager.retrieveConnectedPeripherals(withServices: [CBUUID(string: Device.NavLINqServiceUUID)])
+        
+        if lastPeripherals.count > 0{
+            print("FOUND NavLINq")
+            let device = lastPeripherals.last!;
+            navLINq = device;
+            centralManager?.connect(navLINq!, options: nil)
         } else {
-            disconnectButton.isEnabled = true
+            if keepScanning {
+                // Start scanning again...
+                print("*** RESUMING SCAN!")
+                disconnectButton.isEnabled = false
+                centralManager.scanForPeripherals(withServices: [CBUUID(string: Device.NavLINqAdvertisingUUID)], options: nil)
+                Timer.scheduledTimer(timeInterval: timerScanInterval, target: self, selector: #selector(self.pauseScan), userInfo: nil, repeats: false)
+            } else {
+                disconnectButton.isEnabled = true
+            }
         }
     }
     
@@ -258,7 +264,6 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
             Logger.log(fileName: "NavLINq-raw.csv", entry: messageHexString)
         }
 
-        
         lastMessage = dataArray
         if UIApplication.shared.applicationState == .active {
             updateMessageDisplay()
@@ -287,38 +292,17 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
         case .poweredOn:
             showAlert = false
             message = NSLocalizedString("Bluetooth LE is turned on and ready for communication.", comment: "")
-            
             print(message)
-            keepScanning = true
-            _ = Timer(timeInterval: timerScanInterval, target: self, selector: #selector(pauseScan), userInfo: nil, repeats: false)
             
-            // Initiate Scan for Peripherals
-            //Option 1: Scan for all devices
-            //centralManager.scanForPeripherals(withServices: nil, options: nil)
-            
-            // Option 2: Scan for devices that have the service you're interested in...
-            //let sensorTagAdvertisingUUID = CBUUID(string: Device.SensorTagAdvertisingUUID)
-            //print("Scanning for SensorTag adverstising with UUID: \(sensorTagAdvertisingUUID)")
-            //centralManager.scanForPeripheralsWithServices([sensorTagAdvertisingUUID], options: nil)
-            
-            let lastPeripherals = centralManager.retrieveConnectedPeripherals(withServices: [CBUUID(string: Device.NavLINqServiceUUID)])
-            
-            print("count: \(lastPeripherals.count)")
-            if lastPeripherals.count > 0{
-                let device = lastPeripherals.last!;
-                connectingPeripheral = device;
-                centralManager.connect(connectingPeripheral, options: nil)
-            } else {
-                centralManager.scanForPeripherals(withServices: [CBUUID(string: Device.NavLINqAdvertisingUUID)], options: nil)
-            }
-            
+            resumeScan()
         }
         
         if showAlert {
-            let alertController = UIAlertController(title: NSLocalizedString("Central Manager State", comment: ""), message: message, preferredStyle: UIAlertControllerStyle.alert)
-            let okAction = UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: UIAlertActionStyle.cancel, handler: nil)
-            alertController.addAction(okAction)
-            self.show(alertController, sender: self)
+            // Display Alert
+            let alertController = UIAlertController(title: NSLocalizedString("Central Manager State", comment: ""), message: message, preferredStyle: .alert)
+            let defaultAction = UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default, handler: nil)
+            alertController.addAction(defaultAction)
+            present(alertController, animated: true, completion: nil)
         }
     }
     
@@ -338,8 +322,6 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
      
      */
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
-        //print("centralManager didDiscoverPeripheral - CBAdvertisementDataLocalNameKey is \"\(CBAdvertisementDataLocalNameKey)\"")
-        
         // Retrieve the peripheral name from the advertisement data using the "kCBAdvDataLocalName" key
         if let peripheralName = advertisementData[CBAdvertisementDataLocalNameKey] as? String {
             if peripheralName == deviceName {
@@ -353,7 +335,7 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
                 navLINq!.delegate = self
                 
                 // Request a connection to the peripheral
-                centralManager.connect(navLINq!, options: nil)
+                centralManager?.connect(navLINq!, options: nil)
             }
         }
     }
@@ -368,12 +350,13 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
         print("**** SUCCESSFULLY CONNECTED TO NavLINq!!!")
         disconnectButton.tintColor = UIColor.blue
         
+        print("Peripheral info: \(peripheral)")
+        peripheral.delegate = self
+        
         // Now that we've successfully connected to the NavLINq, let's discover the services.
         // - NOTE:  we pass nil here to request ALL services be discovered.
         //          If there was a subset of services we were interested in, we could pass the UUIDs here.
         //          Doing so saves battery life and saves time.
-        
-        //peripheral.discoverServices(nil)
         peripheral.discoverServices([CBUUID(string: Device.NavLINqServiceUUID)])
     }
     
@@ -470,6 +453,7 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
                     navLINq?.setNotifyValue(true, for: characteristic)
                 }
                 
+                peripheral.discoverDescriptors(for: characteristic)
                 
             }
         }
