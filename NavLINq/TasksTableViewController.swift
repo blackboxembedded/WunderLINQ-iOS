@@ -7,8 +7,29 @@
 //
 
 import UIKit
+import MapKit
+import CoreLocation
 
 class TasksTableViewController: UITableViewController {
+    //MARK: Properties
+    
+    var tasks = [Tasks]()
+    
+    //MARK: Private Methods
+    
+    private func loadTasks() {
+        // Go Home Task
+        guard let task1 = Tasks(label: NSLocalizedString("Go Home", comment: ""), icon: UIImage(named: "Home")) else {
+            fatalError("Unable to instantiate Go Home Task")
+        }
+        // Call Home Task
+        guard let task2 = Tasks(label: NSLocalizedString("Call Home", comment: ""), icon: UIImage(named: "Phone")) else {
+            fatalError("Unable to instantiate Call Home Task")
+        }
+        
+        tasks += [task1, task2]
+        
+    }
     
     // MARK: - Handling User Interaction
     
@@ -22,6 +43,8 @@ class TasksTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        loadTasks();
         
 
         // Uncomment the following line to preserve selection between presentations
@@ -39,24 +62,85 @@ class TasksTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return tasks.count
     }
 
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
         // Configure the cell...
+        // Table view cells are reused and should be dequeued using a cell identifier.
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TaskTableViewCell", for: indexPath)
 
+        
+        // Fetches the appropriate meal for the data source layout.
+        let tasks = self.tasks[indexPath.row]
+        
+        cell.textLabel?.text = tasks.label
+        cell.imageView?.image = tasks.icon
+        
         return cell
     }
-    */
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("row: \(indexPath.row)")
+        switch indexPath.row {
+        case 0:
+            print("Go Home")
+            if let homeAddress = UserDefaults.standard.string(forKey: "gohome_address_preference"){
+                let geocoder = CLGeocoder()
+                geocoder.geocodeAddressString(homeAddress) {
+                    placemarks, error in
+                    let placemark = placemarks?.first
+                    let lat = placemark?.location?.coordinate.latitude
+                    let lon = placemark?.location?.coordinate.longitude
+                    print("Lat: \(lat), Lon: \(lon)")
+                    
+                    let destLatitude: CLLocationDegrees = lat!
+                    let destLongitude: CLLocationDegrees = lon!
+                    let coordinates = CLLocationCoordinate2DMake(destLatitude, destLongitude)
+                    let navPlacemark = MKPlacemark(coordinate: coordinates, addressDictionary: nil)
+                    let mapitem = MKMapItem(placemark: navPlacemark)
+                    let options = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving]
+                    mapitem.openInMaps(launchOptions: options)
+                }
+            } else {
+                // TODO: Do something when no address is set
+            }
+        case 1:
+            print("Call Home")
+            // TODO: TEST THIS
+            if let phoneNumber = UserDefaults.standard.string(forKey: "callhome_number_preference"){
+                var validPhoneNumber = ""
+                phoneNumber.characters.forEach {(character) in
+                    switch character {
+                    case "0"..."9":
+                        validPhoneNumber.characters.append(character)
+                    default:
+                        break
+                    }
+                }
+                if let phoneCallURL = URL(string: "telprompt:\(validPhoneNumber)") {
+                    if (UIApplication.shared.canOpenURL(phoneCallURL)) {
+                        if #available(iOS 10, *) {
+                            UIApplication.shared.open(phoneCallURL, options: [:], completionHandler: nil)
+                        } else {
+                            UIApplication.shared.openURL(phoneCallURL as URL)
+                        }
+                    }
+                }
+            } else {
+                // TODO: Do something when no phone number is set
+            }
+            
+        default:
+            print("Unknown Task")
+        }
+    }
 
     /*
     // Override to support conditional editing of the table view.

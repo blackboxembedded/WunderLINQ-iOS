@@ -194,18 +194,20 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="My Motorcycle" id="eWq-dV-zOi">
-                        <barButtonItem key="leftBarButtonItem" systemItem="rewind" id="GBh-7x-ZEB">
+                        <barButtonItem key="leftBarButtonItem" image="Left" id="GBh-7x-ZEB">
+                            <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="UAo-uD-fGL" kind="show" id="beB-Q6-ZQg"/>
                             </connections>
                         </barButtonItem>
                         <rightBarButtonItems>
-                            <barButtonItem systemItem="fastForward" id="CWp-yO-DrG">
+                            <barButtonItem image="Right" id="CWp-yO-DrG">
+                                <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <segue destination="Yme-GX-WRX" kind="show" id="yHx-SX-1sT"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem title="BT" id="56m-rg-1kX">
+                            <barButtonItem image="Bluetooth" style="plain" id="56m-rg-1kX">
                                 <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <action selector="btButtonTapped:" destination="BYZ-38-t0r" id="Pqv-kY-0T6"/>
@@ -262,13 +264,15 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Compass" id="Brd-Gc-vY2">
-                        <barButtonItem key="leftBarButtonItem" systemItem="rewind" id="cX9-PZ-Xjw">
+                        <barButtonItem key="leftBarButtonItem" image="Left" id="cX9-PZ-Xjw">
+                            <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="backButton:" destination="Yme-GX-WRX" id="X52-3x-rdT"/>
                                 <segue destination="wUq-oT-yYJ" kind="unwind" unwindAction="prepareForUnwindWithSegue:" id="Xxq-JA-LNE"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="fastForward" id="C4x-xU-h8m">
+                        <barButtonItem key="rightBarButtonItem" image="Right" id="C4x-xU-h8m">
+                            <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="backButton:" destination="Yme-GX-WRX" id="QmX-z6-3r5"/>
                                 <segue destination="p6n-wZ-mMa" kind="show" id="cF1-aK-Tul"/>
@@ -364,12 +368,14 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Music" id="7Fx-C3-KuK">
-                        <barButtonItem key="leftBarButtonItem" systemItem="rewind" id="pSh-ez-Vrb">
+                        <barButtonItem key="leftBarButtonItem" image="Left" id="pSh-ez-Vrb">
+                            <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="5Y5-Mi-hQ5" kind="unwind" unwindAction="prepareForUnwindWithSegue:" id="Rgs-26-vsi"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="fastForward" id="XyW-nS-Da0">
+                        <barButtonItem key="rightBarButtonItem" image="Right" id="XyW-nS-Da0">
+                            <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="UAo-uD-fGL" kind="show" id="QF9-me-I6g"/>
                             </connections>
@@ -400,12 +406,21 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="coZ-WY-sTz">
-                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFit" selectionStyle="default" indentationWidth="10" reuseIdentifier="TaskTableViewCell" textLabel="X1g-hv-Z09" rowHeight="90" style="IBUITableViewCellStyleDefault" id="coZ-WY-sTz" customClass="TaskTableViewCell" customModule="NavLINq" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="coZ-WY-sTz" id="lbH-ag-Azh">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="89.666666666666671"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="X1g-hv-Z09">
+                                            <rect key="frame" x="15" y="0.0" width="384" height="89.666666666666671"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
@@ -415,12 +430,14 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Quick Tasks" id="jyj-aK-lN7">
-                        <barButtonItem key="leftBarButtonItem" systemItem="rewind" id="vdZ-Sx-gxP">
+                        <barButtonItem key="leftBarButtonItem" image="Left" id="vdZ-Sx-gxP">
+                            <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="69C-pl-m3A" kind="unwind" identifier="backToMusic" unwindAction="unwindToContainerMusicVCWithSegue:" id="eXY-Qz-cF9"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="fastForward" id="UDf-mC-dtK">
+                        <barButtonItem key="rightBarButtonItem" image="Right" id="UDf-mC-dtK">
+                            <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="forward:" destination="UAo-uD-fGL" id="Bq8-S3-zEo"/>
                                 <segue destination="69C-pl-m3A" kind="unwind" identifier="backToBegin" unwindAction="unwindToContainerVCWithSegue:" id="hxs-j6-4Rg"/>
@@ -431,7 +448,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HkE-mg-0AP" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="69C-pl-m3A" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="7975" y="806"/>
+            <point key="canvasLocation" x="7973.9130434782619" y="805.43478260869574"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="m7N-1a-hHU">
@@ -453,11 +470,14 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Bluetooth" width="44" height="44"/>
+        <image name="Left" width="29" height="29"/>
+        <image name="Right" width="44" height="44"/>
         <image name="back" width="50" height="50"/>
         <image name="forward" width="50" height="50"/>
         <image name="play" width="50" height="50"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="beB-Q6-ZQg"/>
+        <segue reference="QF9-me-I6g"/>
     </inferredMetricsTieBreakers>
 </document>

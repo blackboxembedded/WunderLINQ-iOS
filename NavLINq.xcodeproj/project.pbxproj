@@ -21,9 +21,9 @@
 		7EA4787F1F44F54E000CEDDC /* TasksTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA4787E1F44F54E000CEDDC /* TasksTableViewController.swift */; };
 		7EA478811F44F57C000CEDDC /* MusicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA478801F44F57C000CEDDC /* MusicViewController.swift */; };
 		7EA478831F4A7260000CEDDC /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7EA478821F4A7260000CEDDC /* Settings.bundle */; };
-		7EA478851F4BBBB1000CEDDC /* TODO in Resources */ = {isa = PBXBuildFile; fileRef = 7EA478841F4BBBB1000CEDDC /* TODO */; };
 		7EA478871F4BC775000CEDDC /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA478861F4BC775000CEDDC /* Logger.swift */; };
 		7EA4788A1F537ED5000CEDDC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7EA478881F537ED5000CEDDC /* Localizable.strings */; };
+		7EA4788E1F5BA136000CEDDC /* Tasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA4788D1F5BA136000CEDDC /* Tasks.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,9 +55,9 @@
 		7EA4787E1F44F54E000CEDDC /* TasksTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TasksTableViewController.swift; sourceTree = "<group>"; };
 		7EA478801F44F57C000CEDDC /* MusicViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicViewController.swift; sourceTree = "<group>"; };
 		7EA478821F4A7260000CEDDC /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
-		7EA478841F4BBBB1000CEDDC /* TODO */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TODO; sourceTree = "<group>"; };
 		7EA478861F4BC775000CEDDC /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		7EA478891F537ED5000CEDDC /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = NavLINq/Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		7EA4788D1F5BA136000CEDDC /* Tasks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tasks.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,12 +110,12 @@
 				7EA478721F4115F6000CEDDC /* CompassViewController.swift */,
 				7EA478801F44F57C000CEDDC /* MusicViewController.swift */,
 				7EA4787E1F44F54E000CEDDC /* TasksTableViewController.swift */,
+				7EA4788D1F5BA136000CEDDC /* Tasks.swift */,
 				7EA478511F40B154000CEDDC /* Main.storyboard */,
 				7EA478821F4A7260000CEDDC /* Settings.bundle */,
 				7EA478541F40B154000CEDDC /* Assets.xcassets */,
 				7EA478561F40B154000CEDDC /* LaunchScreen.storyboard */,
 				7EA478591F40B154000CEDDC /* Info.plist */,
-				7EA478841F4BBBB1000CEDDC /* TODO */,
 			);
 			path = NavLINq;
 			sourceTree = "<group>";
@@ -221,7 +221,6 @@
 			files = (
 				7EA478831F4A7260000CEDDC /* Settings.bundle in Resources */,
 				7EA4788A1F537ED5000CEDDC /* Localizable.strings in Resources */,
-				7EA478851F4BBBB1000CEDDC /* TODO in Resources */,
 				7EA478581F40B154000CEDDC /* LaunchScreen.storyboard in Resources */,
 				7EA478551F40B154000CEDDC /* Assets.xcassets in Resources */,
 				7EA478531F40B154000CEDDC /* Main.storyboard in Resources */,
@@ -245,6 +244,7 @@
 				7EA478711F40F273000CEDDC /* Device.swift in Sources */,
 				7EA478771F412BAC000CEDDC /* CLLocation+Extension.swift in Sources */,
 				7EA478501F40B154000CEDDC /* MyMotorcycleViewController.swift in Sources */,
+				7EA4788E1F5BA136000CEDDC /* Tasks.swift in Sources */,
 				7EA478791F412BE9000CEDDC /* UserDefauts+Extensions.swift in Sources */,
 				7EA4784E1F40B154000CEDDC /* AppDelegate.swift in Sources */,
 				7EA478871F4BC775000CEDDC /* Logger.swift in Sources */,
