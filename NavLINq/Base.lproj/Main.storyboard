@@ -213,6 +213,12 @@
                                     <action selector="btButtonTapped:" destination="BYZ-38-t0r" id="Pqv-kY-0T6"/>
                                 </connections>
                             </barButtonItem>
+                            <barButtonItem image="Cog" id="L9u-BK-ItD">
+                                <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="settingsButtonTapped:" destination="BYZ-38-t0r" id="6ot-x4-7Ht"/>
+                                </connections>
+                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
@@ -223,6 +229,7 @@
                         <outlet property="gearLabel" destination="5Xp-ce-nzA" id="JZZ-QT-0k1"/>
                         <outlet property="odometerLabel" destination="grv-Y4-dvO" id="UtE-hz-vu5"/>
                         <outlet property="rearPressureLabel" destination="OaG-cS-fMY" id="gXy-U5-kzG"/>
+                        <outlet property="settingsButton" destination="L9u-BK-ItD" id="Tae-lL-qra"/>
                         <outlet property="tripOneLabel" destination="60i-SA-nRN" id="GCA-Da-WjC"/>
                         <outlet property="tripTwoLabel" destination="yQZ-bf-Jhe" id="mlK-oF-T4E"/>
                     </connections>
@@ -471,13 +478,14 @@
     </scenes>
     <resources>
         <image name="Bluetooth" width="44" height="44"/>
+        <image name="Cog" width="44" height="44"/>
         <image name="Left" width="29" height="29"/>
         <image name="Right" width="44" height="44"/>
-        <image name="back" width="50" height="50"/>
-        <image name="forward" width="50" height="50"/>
-        <image name="play" width="50" height="50"/>
+        <image name="back" width="44" height="44"/>
+        <image name="forward" width="44" height="44"/>
+        <image name="play" width="44" height="44"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="QF9-me-I6g"/>
+        <segue reference="beB-Q6-ZQg"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -10,6 +10,7 @@ import UIKit
 import CoreBluetooth
 
 class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDelegate {
+    @IBOutlet weak var settingsButton: UIBarButtonItem!
     @IBOutlet weak var disconnectButton: UIBarButtonItem!
     @IBOutlet weak var frontPressureLabel: UILabel!
     @IBOutlet weak var rearPressureLabel: UILabel!
@@ -61,6 +62,13 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
         
     }
     
+    @IBAction func settingsButtonTapped(_ sender: UIBarButtonItem) {
+        if let appSettings = URL(string: UIApplicationOpenSettingsURLString + Bundle.main.bundleIdentifier!) {
+            if UIApplication.shared.canOpenURL(appSettings) {
+                UIApplication.shared.open(appSettings)
+            }
+        }
+    }
     @IBAction func btButtonTapped(_ sender: UIBarButtonItem) {
         // if we don't have a NavLINq, start scanning for one...
         if navLINq == nil {
