@@ -19,3 +19,6 @@
 // TasksTableViewController
 "Go Home" = "Go Home";
 "Call Home" = "Call Home";
+"No Go Home address set in Settings" = "No Go Home address set in Settings";
+"No Call Home phone number set in Settings" = "No Call Home phone number set in Settings";
+
