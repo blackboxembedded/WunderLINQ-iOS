@@ -201,7 +201,7 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
                 gearLabel.text = "-"
             default:
                 print("Unknown Gear Value")
-                gearLabel.text = "-"
+                gearLabel.text = "--"
             }
             // Engine Temperature
             var engineTemp:Double = Double(lastMessage[4]) * 0.75 - 25
@@ -230,7 +230,7 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
             var odometer:Int = Int(lastMessage[3]) + Int(lastMessage[2]) + Int(lastMessage[1])
             if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
                 odometer = Int(kmToMiles(Double(odometer)))
-                distanceUnit = "miles"
+                distanceUnit = "mi"
             }
             odometerLabel.text = "\(odometer) \(distanceUnit)"
             
@@ -244,7 +244,7 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
             if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
                 tripOne = Int(kmToMiles(Double(tripOne)))
                 tripTwo = Int(kmToMiles(Double(tripTwo)))
-                distanceUnit = "miles"
+                distanceUnit = "mi"
             }
             tripOneLabel.text = "\(tripOne) \(distanceUnit)"
             tripTwoLabel.text = "\(tripTwo) \(distanceUnit)"
