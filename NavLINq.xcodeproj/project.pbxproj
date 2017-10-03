@@ -24,6 +24,8 @@
 		7EA478871F4BC775000CEDDC /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA478861F4BC775000CEDDC /* Logger.swift */; };
 		7EA4788A1F537ED5000CEDDC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7EA478881F537ED5000CEDDC /* Localizable.strings */; };
 		7EA4788E1F5BA136000CEDDC /* Tasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA4788D1F5BA136000CEDDC /* Tasks.swift */; };
+		7EC8C9BD1F827977000CEDDC /* ContactsTableViewContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC8C9BC1F827977000CEDDC /* ContactsTableViewContoller.swift */; };
+		7EC8C9BF1F830C5B000CEDDC /* PhoneContacts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC8C9BE1F830C5B000CEDDC /* PhoneContacts.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +60,8 @@
 		7EA478861F4BC775000CEDDC /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		7EA478891F537ED5000CEDDC /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = NavLINq/Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7EA4788D1F5BA136000CEDDC /* Tasks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tasks.swift; sourceTree = "<group>"; };
+		7EC8C9BC1F827977000CEDDC /* ContactsTableViewContoller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsTableViewContoller.swift; sourceTree = "<group>"; };
+		7EC8C9BE1F830C5B000CEDDC /* PhoneContacts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneContacts.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +115,8 @@
 				7EA478801F44F57C000CEDDC /* MusicViewController.swift */,
 				7EA4787E1F44F54E000CEDDC /* TasksTableViewController.swift */,
 				7EA4788D1F5BA136000CEDDC /* Tasks.swift */,
+				7EC8C9BC1F827977000CEDDC /* ContactsTableViewContoller.swift */,
+				7EC8C9BE1F830C5B000CEDDC /* PhoneContacts.swift */,
 				7EA478511F40B154000CEDDC /* Main.storyboard */,
 				7EA478821F4A7260000CEDDC /* Settings.bundle */,
 				7EA478541F40B154000CEDDC /* Assets.xcassets */,
@@ -247,7 +253,9 @@
 				7EA4788E1F5BA136000CEDDC /* Tasks.swift in Sources */,
 				7EA478791F412BE9000CEDDC /* UserDefauts+Extensions.swift in Sources */,
 				7EA4784E1F40B154000CEDDC /* AppDelegate.swift in Sources */,
+				7EC8C9BD1F827977000CEDDC /* ContactsTableViewContoller.swift in Sources */,
 				7EA478871F4BC775000CEDDC /* Logger.swift in Sources */,
+				7EC8C9BF1F830C5B000CEDDC /* PhoneContacts.swift in Sources */,
 				7EA478731F4115F6000CEDDC /* CompassViewController.swift in Sources */,
 				7EA478811F44F57C000CEDDC /* MusicViewController.swift in Sources */,
 				7EA4787F1F44F54E000CEDDC /* TasksTableViewController.swift in Sources */,
@@ -475,6 +483,7 @@
 				7EA478691F40B154000CEDDC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7EA4786A1F40B154000CEDDC /* Build configuration list for PBXNativeTarget "NavLINqTests" */ = {
 			isa = XCConfigurationList;
@@ -483,6 +492,7 @@
 				7EA4786C1F40B154000CEDDC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

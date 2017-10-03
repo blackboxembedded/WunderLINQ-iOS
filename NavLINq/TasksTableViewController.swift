@@ -26,8 +26,12 @@ class TasksTableViewController: UITableViewController {
         guard let task2 = Tasks(label: NSLocalizedString("Call Home", comment: ""), icon: UIImage(named: "Phone")) else {
             fatalError("Unable to instantiate Call Home Task")
         }
+        // Call Contact Task
+        guard let task3 = Tasks(label: NSLocalizedString("Call Contact", comment: ""), icon: UIImage(named: "Contacts")) else {
+            fatalError("Unable to instantiate Call Contact Task")
+        }
         
-        tasks += [task1, task2]
+        tasks += [task1, task2, task3]
         
     }
     
@@ -46,7 +50,6 @@ class TasksTableViewController: UITableViewController {
         
         loadTasks();
         
-
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -76,8 +79,6 @@ class TasksTableViewController: UITableViewController {
         // Table view cells are reused and should be dequeued using a cell identifier.
         let cell = tableView.dequeueReusableCell(withIdentifier: "TaskTableViewCell", for: indexPath)
 
-        
-        // Fetches the appropriate meal for the data source layout.
         let tasks = self.tasks[indexPath.row]
         
         cell.textLabel?.text = tasks.label
@@ -159,6 +160,11 @@ class TasksTableViewController: UITableViewController {
                 }
                 
             }
+        case 2:
+            print("Call Contact")
+            let cell = tableView.cellForRow(at: indexPath)
+            performSegue(withIdentifier: "showContacts", sender: cell)
+            
         default:
             print("Unknown Task")
         }
