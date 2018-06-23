@@ -1,0 +1,31 @@
+/* 
+  Localizable.strings
+  WunderLINQ
+
+  Created by Keith Conger on 8/27/17.
+  Copyright © 2017 Black Box Embedded, LLC. All rights reserved.
+*/
+
+// MyMotorcycleViewController
+"Bluetooth on this device is currently powered off." = "Bluetooth on this device is currently powered off.";
+"This device does not support Bluetooth Low Energy." = "This device does not support Bluetooth Low Energy.";
+"This app is not authorized to use Bluetooth Low Energy." = "This app is not authorized to use Bluetooth Low Energy.";
+"The BLE Manager is resetting; a state update is pending." = "The BLE Manager is resetting; a state update is pending.";
+"The state of the BLE Manager is unknown." = "The state of the BLE Manager is unknown.";
+"Bluetooth LE is turned on and ready for communication." = "Bluetooth LE is turned on and ready for communication.";
+"Central Manager State" = "Central Manager State";
+"OK" = "OK";
+
+// TasksTableViewController
+"Navigation" = "Navigation";
+"Go Home" = "Go Home";
+"No Go Home address set in Settings" = "No Go Home address set in Settings";
+"Call Home" = "Call Home";
+"No Call Home phone number set in Settings" = "No Call Home phone number set in Settings";
+"Call Contact" = "Call Contact";
+"Take Photo" = "Take Photo";
+"Start Video Recording" = "Start Video Recording";
+"Stop Video Recording" = "Stop Video Recording";
+"Start Trip Log" = "Start Trip Log";
+"Stop Trip Log" = "Stop Trip Log";
+"Save Waypoint" = "Save Waypoint";
