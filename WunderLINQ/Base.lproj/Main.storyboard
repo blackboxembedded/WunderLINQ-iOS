@@ -11,7 +11,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--My Motorcycle-->
+        <!--Motorcycle-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController storyboardIdentifier="Main" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="MyMotorcycleViewController" customModule="WunderLINQ" customModuleProvider="target" sceneMemberID="viewController">
@@ -193,18 +193,12 @@
                             <constraint firstItem="7dk-mQ-A5X" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="sU3-oW-0BS"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="My Motorcycle" id="eWq-dV-zOi">
-                        <barButtonItem key="leftBarButtonItem" image="Left" id="GBh-7x-ZEB">
-                            <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                            <connections>
-                                <segue destination="UAo-uD-fGL" kind="show" identifier="mainToQuickTasks" id="beB-Q6-ZQg"/>
-                            </connections>
-                        </barButtonItem>
-                        <rightBarButtonItems>
-                            <barButtonItem image="Right" id="CWp-yO-DrG">
+                    <navigationItem key="navigationItem" title="Motorcycle" id="eWq-dV-zOi">
+                        <leftBarButtonItems>
+                            <barButtonItem image="Left" id="GBh-7x-ZEB">
                                 <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
-                                    <segue destination="Yme-GX-WRX" kind="show" identifier="mainToCompass" id="yHx-SX-1sT"/>
+                                    <segue destination="UAo-uD-fGL" kind="show" identifier="mainToQuickTasks" id="beB-Q6-ZQg"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem image="Bluetooth" style="plain" id="56m-rg-1kX">
@@ -212,6 +206,14 @@
                                 <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <action selector="btButtonTapped:" destination="BYZ-38-t0r" id="Pqv-kY-0T6"/>
+                                </connections>
+                            </barButtonItem>
+                        </leftBarButtonItems>
+                        <rightBarButtonItems>
+                            <barButtonItem image="Right" id="CWp-yO-DrG">
+                                <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <segue destination="Yme-GX-WRX" kind="show" identifier="mainToCompass" id="yHx-SX-1sT"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem image="Cog" id="L9u-BK-ItD">
@@ -553,7 +555,6 @@
         <image name="play" width="44" height="44"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="7A0-qQ-zYz"/>
-        <segue reference="VWX-pZ-cIi"/>
+        <segue reference="beB-Q6-ZQg"/>
     </inferredMetricsTieBreakers>
 </document>

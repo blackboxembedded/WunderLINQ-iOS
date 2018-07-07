@@ -158,24 +158,14 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
     func updateMessageDisplay() {
         
         disconnectButton.tintColor = UIColor.blue
-        // MARK: - TODO: parse and display values
+        // MARK: - TODO:
         var temperatureUnit = "C"
         var distanceUnit = "km"
         var pressureUnit = "psi"
         
         switch lastMessage[0] {
-        case 0x00:
-            print("Message ID: 0")
-        case 0x01:
-            print("Message ID: 1")
-        case 0x02:
-            print("Message ID: 2")
-        case 0x03:
-            print("Message ID: 3")
-        case 0x04:
-            print("Message ID: 4")
         case 0x05:
-            print("Message ID: 5")
+            //print("Message ID: 5")
             // Tire Pressure
             var frontPressure:Double = Double(lastMessage[4]) / 50
             var rearPressure:Double = Double(lastMessage[5]) / 50
@@ -200,7 +190,7 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
             frontPressureLabel.text = "\(Int(frontPressure)) \(pressureUnit)"
             rearPressureLabel.text = "\(Int(rearPressure)) \(pressureUnit)"
         case 0x06:
-            print("Message ID: 6")
+            //print("Message ID: 6")
             // Gear
             switch lastMessage[2] {
             case 0x10:
@@ -226,15 +216,13 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
             // Engine Temperature
             var engineTemp:Double = Double(lastMessage[4]) * 0.75 - 25
             if UserDefaults.standard.integer(forKey: "temperature_unit_preference") == 1 {
-                print("Fahrenheit selected")
                 engineTemp = celciusToFahrenheit(engineTemp)
                 temperatureUnit = "F"
             }
             engineTempLabel.text = "\(Int(engineTemp)) \(temperatureUnit)"
-        case 0x07:
-            print("Message ID: 7")
+
         case 0x08:
-            print("Message ID: 8")
+            //print("Message ID: 8")
             // Ambient Temperature
             var ambientTemp:Double = Double(lastMessage[1]) * 0.50 - 40
             if UserDefaults.standard.integer(forKey: "temperature_unit_preference") == 1 {
@@ -242,10 +230,8 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
                 temperatureUnit = "F"
             }
             ambientTempLabel.text = "\(Int(ambientTemp)) \(temperatureUnit)"
-        case 0x09:
-            print("Message ID: 9")
+
         case 0x0A:
-            print("Message ID: 10")
             // Odometer
             var odometer:Int = Int(lastMessage[3]) + Int(lastMessage[2]) + Int(lastMessage[1])
             if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
@@ -253,11 +239,7 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
                 distanceUnit = "mi"
             }
             odometerLabel.text = "\(odometer) \(distanceUnit)"
-            
-        case 0x0B:
-            print("Message ID: 11")
         case 0x0C:
-            print("Message ID: 12")
             // Trip 1 & Trip 2
             var tripOne:Int = Int(lastMessage[3]) + Int(lastMessage[2]) + Int(lastMessage[1])
             var tripTwo:Int = Int(lastMessage[6]) + Int(lastMessage[5]) + Int(lastMessage[4])
@@ -269,7 +251,7 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
             tripOneLabel.text = "\(tripOne) \(distanceUnit)"
             tripTwoLabel.text = "\(tripTwo) \(distanceUnit)"
         default:
-            print("Message ID: Unknown")
+            let defaultState = 0
         }
     }
     
@@ -285,7 +267,7 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
                 messageHexString += ","
             }
         }
-        print(messageHexString)
+        //print(messageHexString)
         
         // Log raw messages
         if UserDefaults.standard.bool(forKey: "raw_logging_preference") {
