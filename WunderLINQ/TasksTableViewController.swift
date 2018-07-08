@@ -12,8 +12,11 @@ import MapKit
 import CoreLocation
 import AVFoundation
 import SQLite3
+import Photos
 
-class TasksTableViewController: UITableViewController, AVCaptureVideoDataOutputSampleBufferDelegate, CLLocationManagerDelegate {
+class TasksTableViewController: UITableViewController, AVCaptureVideoDataOutputSampleBufferDelegate, AVCaptureFileOutputRecordingDelegate, CLLocationManagerDelegate {
+    
+    
     //MARK: Properties
     
     var tasks = [Tasks]()
@@ -22,15 +25,20 @@ class TasksTableViewController: UITableViewController, AVCaptureVideoDataOutputS
     
     var device: AVCaptureDevice?
     var captureSession: AVCaptureSession?
-    var previewLayer: AVCaptureVideoPreviewLayer?
     var cameraImage: UIImage?
+    
+    var videoCaptureSession: AVCaptureSession?
+    var movieOutput = AVCaptureMovieFileOutput()
+    var recording = false
     
     var locationManager: CLLocationManager!
     var db: OpaquePointer?
     var waypoints = [Waypoint]()
     
+    var itemRow = 0
+
     //MARK: Private Methods
-    
+
     private func loadTasks() {
         // Navigate Task
         guard let task0 = Tasks(label: NSLocalizedString("Navigation", comment: ""), icon: UIImage(named: "Map")) else {
@@ -41,7 +49,7 @@ class TasksTableViewController: UITableViewController, AVCaptureVideoDataOutputS
             fatalError("Unable to instantiate Go Home Task")
         }
         // Call Home Task
-        guard let task2 = Tasks(label: NSLocalizedString("Call Home", comment: ""), icon: UIImage(named: "Phone")) else {
+        guard let task2 = Tasks(label: NSLocalizedString("Call Favorite Number", comment: ""), icon: UIImage(named: "Phone")) else {
             fatalError("Unable to instantiate Call Home Task")
         }
         // Call Contact Task
@@ -67,10 +75,151 @@ class TasksTableViewController: UITableViewController, AVCaptureVideoDataOutputS
         tasks += [task0, task1, task2, task3, task4, task5, task6, task7]
     }
     
+    private func execute_task(taskID:Int) {
+        switch taskID {
+        case 0:
+            print("Navigation")
+            let map = MKMapItem()
+            map.openInMaps(launchOptions: nil)
+            break
+        case 1:
+            print("Go Home")
+            if let homeAddress = UserDefaults.standard.string(forKey: "gohome_address_preference"){
+                if homeAddress != "" {
+                    let geocoder = CLGeocoder()
+                    geocoder.geocodeAddressString(homeAddress) {
+                        placemarks, error in
+                        let placemark = placemarks?.first
+                        let lat = placemark?.location?.coordinate.latitude
+                        let lon = placemark?.location?.coordinate.longitude
+                        print("Lat: \(String(describing: lat)), Lon: \(String(describing: lon))")
+                        
+                        let destLatitude: CLLocationDegrees = lat!
+                        let destLongitude: CLLocationDegrees = lon!
+                        let coordinates = CLLocationCoordinate2DMake(destLatitude, destLongitude)
+                        let navPlacemark = MKPlacemark(coordinate: coordinates, addressDictionary: nil)
+                        let mapitem = MKMapItem(placemark: navPlacemark)
+                        let options = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving]
+                        mapitem.openInMaps(launchOptions: options)
+                    }
+                } else {
+                    // the alert view
+                    let alert = UIAlertController(title: "", message: "No Go Home address set in Settings", preferredStyle: .alert)
+                    self.present(alert, animated: true, completion: nil)
+                    
+                    // change to desired number of seconds (in this case 2 seconds)
+                    let when = DispatchTime.now() + 10
+                    DispatchQueue.main.asyncAfter(deadline: when){
+                        // your code with delay
+                        alert.dismiss(animated: true, completion: nil)
+                        
+                    }
+                }
+            } else {
+                let alert = UIAlertController(title: "", message: "No Go Home address set in Settings", preferredStyle: .alert)
+                self.present(alert, animated: true, completion: nil)
+                
+                // change to desired number of seconds (in this case 2 seconds)
+                let when = DispatchTime.now() + 2
+                DispatchQueue.main.asyncAfter(deadline: when){
+                    // your code with delay
+                    alert.dismiss(animated: true, completion: nil)
+                    
+                }
+            }
+            break
+        case 2:
+            print("Call Home")
+            if let phoneNumber = UserDefaults.standard.string(forKey: "callhome_number_preference"){
+                if phoneNumber != "" {
+                    var validPhoneNumber = ""
+                    phoneNumber.characters.forEach {(character) in
+                        switch character {
+                        case "0"..."9":
+                            validPhoneNumber.characters.append(character)
+                        default:
+                            break
+                        }
+                    }
+                    if let phoneCallURL = URL(string: "telprompt:\(validPhoneNumber)") {
+                        if (UIApplication.shared.canOpenURL(phoneCallURL)) {
+                            if #available(iOS 10, *) {
+                                UIApplication.shared.open(phoneCallURL, options: [:], completionHandler: nil)
+                            } else {
+                                UIApplication.shared.openURL(phoneCallURL as URL)
+                            }
+                        }
+                    }
+                } else {
+                    // the alert view
+                    let alert = UIAlertController(title: "", message: "No Call Home phone number set in Settings", preferredStyle: .alert)
+                    self.present(alert, animated: true, completion: nil)
+                    
+                    // change to desired number of seconds (in this case 2 seconds)
+                    let when = DispatchTime.now() + 2
+                    DispatchQueue.main.asyncAfter(deadline: when){
+                        // your code with delay
+                        alert.dismiss(animated: true, completion: nil)
+                    }
+                    
+                }
+            } else {
+                // the alert view
+                let alert = UIAlertController(title: "", message: "No Call Home phone number set in Settings", preferredStyle: .alert)
+                self.present(alert, animated: true, completion: nil)
+                
+                // change to desired number of seconds (in this case 2 seconds)
+                let when = DispatchTime.now() + 2
+                DispatchQueue.main.asyncAfter(deadline: when){
+                    // your code with delay
+                    alert.dismiss(animated: true, completion: nil)
+                }
+            }
+            break
+        case 3:
+            print("Call Contact")
+            performSegue(withIdentifier: "toContacts", sender: self)
+            break
+        case 4:
+            print("Take Photo")
+            setupCamera()
+            setupTimer()
+            break
+        case 5:
+            print("Video Recording")
+            if (recording)
+            {
+                print("Video: stopRecording")
+                movieOutput.stopRecording()
+            }else {
+                print("Video: starting")
+                setupVideoCamera()
+            }
+            break
+        case 6:
+            print("Trip Log")
+            break
+        case 7:
+            print("Save Waypoint")
+            if (CLLocationManager.locationServicesEnabled())
+            {
+                locationManager = CLLocationManager()
+                locationManager.delegate = self
+                locationManager.desiredAccuracy = kCLLocationAccuracyBest
+                locationManager.requestAlwaysAuthorization()
+                locationManager.startUpdatingLocation()
+            }
+            break
+        default:
+            print("Unknown Task")
+        }
+    }
+    
     // MARK: - Handling User Interaction
     
     override var keyCommands: [UIKeyCommand]? {
         let commands = [
+            UIKeyCommand(input: "\u{d}", modifierFlags:[], action: #selector(selectItem), discoverabilityTitle: "Select item"),
             UIKeyCommand(input: UIKeyInputUpArrow, modifierFlags:[], action: #selector(upRow), discoverabilityTitle: "Go up"),
             UIKeyCommand(input: UIKeyInputDownArrow, modifierFlags:[], action: #selector(downRow), discoverabilityTitle: "Go down"),
             UIKeyCommand(input: UIKeyInputLeftArrow, modifierFlags:[], action: #selector(leftScreen), discoverabilityTitle: "Go left"),
@@ -79,26 +228,46 @@ class TasksTableViewController: UITableViewController, AVCaptureVideoDataOutputS
         return commands
     }
     
-
+    @objc func selectItem() {
+        print("selectItem called")
+    }
     @objc func upRow() {
         print("upRow called")
-        // your code here
+        if (itemRow == 0){
+            let nextRow = tasks.count - 1
+            self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.contentView.backgroundColor = UIColor.white
+            self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.textLabel?.backgroundColor = UIColor.white
+            self.tableView.cellForRow(at: IndexPath(row: nextRow, section: 0) as IndexPath)?.contentView.backgroundColor = UIColor.blue
+            self.tableView.cellForRow(at: IndexPath(row: nextRow, section: 0) as IndexPath)?.textLabel?.backgroundColor = UIColor.blue
+            itemRow = nextRow
+        } else if (itemRow < tasks.count ){
+            let nextRow = itemRow - 1
+            self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.contentView.backgroundColor = UIColor.white
+            self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.textLabel?.backgroundColor = UIColor.white
+            self.tableView.cellForRow(at: IndexPath(row: nextRow, section: 0) as IndexPath)?.contentView.backgroundColor = UIColor.blue
+            self.tableView.cellForRow(at: IndexPath(row: nextRow, section: 0) as IndexPath)?.textLabel?.backgroundColor = UIColor.blue
+            itemRow = nextRow
+        }
+        self.tableView.reloadData()
     }
     @objc func downRow() {
         print("downRow called")
-
-        let index = NSIndexPath(row: 0, section: 0)// the desired index path
-        print("downRow row: ", index.row)
-            // For some reason, requesting the cell prior to
-            // scrolling was enough to workaround the issue.
-        self.tableView.cellForRow(at: index as IndexPath)
-        
-        self.tableView.scrollToRow(at: index as IndexPath, at: .top, animated: true)
-        let cell = self.tableView.dequeueReusableCell(withIdentifier: "TaskTableViewCell", for: index as IndexPath)
-        cell.contentView.backgroundColor = UIColor.blue
-        cell.textLabel?.backgroundColor = UIColor.blue
+        if (itemRow == (tasks.count - 1)){
+            let nextRow = 0
+            self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.contentView.backgroundColor = UIColor.white
+            self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.textLabel?.backgroundColor = UIColor.white
+            self.tableView.cellForRow(at: IndexPath(row: nextRow, section: 0) as IndexPath)?.contentView.backgroundColor = UIColor.blue
+            self.tableView.cellForRow(at: IndexPath(row: nextRow, section: 0) as IndexPath)?.textLabel?.backgroundColor = UIColor.blue
+            itemRow = nextRow
+        } else if (itemRow < tasks.count ){
+            let nextRow = itemRow + 1
+            self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.contentView.backgroundColor = UIColor.white
+            self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.textLabel?.backgroundColor = UIColor.white
+            self.tableView.cellForRow(at: IndexPath(row: nextRow, section: 0) as IndexPath)?.contentView.backgroundColor = UIColor.blue
+            self.tableView.cellForRow(at: IndexPath(row: nextRow, section: 0) as IndexPath)?.textLabel?.backgroundColor = UIColor.blue
+            itemRow = nextRow
+        }
         self.tableView.reloadData()
-
     }
     
     @objc func leftScreen() {
@@ -126,7 +295,7 @@ class TasksTableViewController: UITableViewController, AVCaptureVideoDataOutputS
         tableView.remembersLastFocusedIndexPath = true
         
         // Uncomment the following line to preserve selection between presentations
-        self.clearsSelectionOnViewWillAppear = false
+        //self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
@@ -178,136 +347,7 @@ class TasksTableViewController: UITableViewController, AVCaptureVideoDataOutputS
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("row: \(indexPath.row)")
-        switch indexPath.row {
-        case 0:
-            print("Navigation")
-            let map = MKMapItem()
-            map.openInMaps(launchOptions: nil)
-            break
-        case 1:
-            print("Go Home")
-            if let homeAddress = UserDefaults.standard.string(forKey: "gohome_address_preference"){
-                if homeAddress != "" {
-                    let geocoder = CLGeocoder()
-                    geocoder.geocodeAddressString(homeAddress) {
-                        placemarks, error in
-                        let placemark = placemarks?.first
-                        let lat = placemark?.location?.coordinate.latitude
-                        let lon = placemark?.location?.coordinate.longitude
-                        print("Lat: \(String(describing: lat)), Lon: \(String(describing: lon))")
-                        
-                        let destLatitude: CLLocationDegrees = lat!
-                        let destLongitude: CLLocationDegrees = lon!
-                        let coordinates = CLLocationCoordinate2DMake(destLatitude, destLongitude)
-                        let navPlacemark = MKPlacemark(coordinate: coordinates, addressDictionary: nil)
-                        let mapitem = MKMapItem(placemark: navPlacemark)
-                        let options = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving]
-                        mapitem.openInMaps(launchOptions: options)
-                    }
-                } else {
-                    // the alert view
-                    let alert = UIAlertController(title: "", message: "No Go Home address set in Settings", preferredStyle: .alert)
-                    self.present(alert, animated: true, completion: nil)
-                    
-                    // change to desired number of seconds (in this case 2 seconds)
-                    let when = DispatchTime.now() + 10
-                    DispatchQueue.main.asyncAfter(deadline: when){
-                        // your code with delay
-                        alert.dismiss(animated: true, completion: nil)
-                    
-                    }
-                }
-            } else {
-                let alert = UIAlertController(title: "", message: "No Go Home address set in Settings", preferredStyle: .alert)
-                self.present(alert, animated: true, completion: nil)
-                
-                // change to desired number of seconds (in this case 2 seconds)
-                let when = DispatchTime.now() + 2
-                DispatchQueue.main.asyncAfter(deadline: when){
-                    // your code with delay
-                    alert.dismiss(animated: true, completion: nil)
-                    
-                }
-            }
-            break
-        case 2:
-            print("Call Home")
-            if let phoneNumber = UserDefaults.standard.string(forKey: "callhome_number_preference"){
-                if phoneNumber != "" {
-                    var validPhoneNumber = ""
-                    phoneNumber.characters.forEach {(character) in
-                        switch character {
-                        case "0"..."9":
-                            validPhoneNumber.characters.append(character)
-                        default:
-                            break
-                        }
-                    }
-                    if let phoneCallURL = URL(string: "telprompt:\(validPhoneNumber)") {
-                        if (UIApplication.shared.canOpenURL(phoneCallURL)) {
-                            if #available(iOS 10, *) {
-                                UIApplication.shared.open(phoneCallURL, options: [:], completionHandler: nil)
-                            } else {
-                                UIApplication.shared.openURL(phoneCallURL as URL)
-                            }
-                        }
-                    }
-                } else {
-                    // the alert view
-                    let alert = UIAlertController(title: "", message: "No Call Home phone number set in Settings", preferredStyle: .alert)
-                    self.present(alert, animated: true, completion: nil)
-                    
-                    // change to desired number of seconds (in this case 2 seconds)
-                    let when = DispatchTime.now() + 2
-                    DispatchQueue.main.asyncAfter(deadline: when){
-                        // your code with delay
-                        alert.dismiss(animated: true, completion: nil)
-                    }
-
-                }
-            } else {
-                // the alert view
-                let alert = UIAlertController(title: "", message: "No Call Home phone number set in Settings", preferredStyle: .alert)
-                self.present(alert, animated: true, completion: nil)
-                
-                // change to desired number of seconds (in this case 2 seconds)
-                let when = DispatchTime.now() + 2
-                DispatchQueue.main.asyncAfter(deadline: when){
-                    // your code with delay
-                    alert.dismiss(animated: true, completion: nil)
-                }
-            }
-            break
-        case 3:
-            print("Call Contact")
-            performSegue(withIdentifier: "toContacts", sender: self)
-            break
-        case 4:
-            print("Take Photo")
-            setupCamera()
-            setupTimer()
-            break
-        case 5:
-            print("Video Recording")
-            setupVideoCamera()
-            break
-        case 6:
-            print("Trip Log")
-            break
-        case 7:
-            print("Save Waypoint")
-            if (CLLocationManager.locationServicesEnabled())
-            {
-                locationManager = CLLocationManager()
-                locationManager.delegate = self
-                locationManager.desiredAccuracy = kCLLocationAccuracyBest
-                locationManager.requestAlwaysAuthorization()
-                locationManager.startUpdatingLocation()
-            }
-            break
-        default:
-            print("Unknown Task")
-        }
+        execute_task(taskID: indexPath.row)
     }
     
     
@@ -405,9 +445,131 @@ class TasksTableViewController: UITableViewController, AVCaptureVideoDataOutputS
         }
     }
     
+    private var tempFilePath: NSURL = {
+        let tempPath = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("tempMovie")?.appendingPathExtension("mp4").absoluteString
+        if FileManager.default.fileExists(atPath: tempPath!) {
+            do {
+                try FileManager.default.removeItem(atPath: tempPath!)
+            } catch { }
+        }
+        return NSURL(string: tempPath!)!
+    }()
+    
     func setupVideoCamera() {
+        // tweak delay
+        let discoverySession = AVCaptureDeviceDiscoverySession(deviceTypes: [.builtInWideAngleCamera],
+                                                               mediaType: AVMediaTypeVideo,
+                                                               position: .back)
+        device = discoverySession?.devices[0]
+        
+        let input: AVCaptureDeviceInput
+        do {
+            input = try AVCaptureDeviceInput(device: device)
+        } catch {
+            return
+        }
+        
+        let audioDevice = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeAudio)
+        let audioInput: AVCaptureDeviceInput
+        do {
+            audioInput = try AVCaptureDeviceInput(device: audioDevice)
+        } catch {
+            return
+        }
+        
+        //start session configuration
+        let videoCaptureSession = AVCaptureSession()
+        videoCaptureSession.beginConfiguration()
+        videoCaptureSession.sessionPreset = AVCaptureSessionPresetHigh
+        
+        // add device inputs (front camera and mic)
+        videoCaptureSession.addInput(input)
+        videoCaptureSession.addInput(audioInput)
+        
+        // add output movieFileOutput
+        movieOutput.movieFragmentInterval = kCMTimeInvalid
+        videoCaptureSession.addOutput(movieOutput)
+        
+        // start session
+        videoCaptureSession.commitConfiguration()
+        videoCaptureSession.startRunning()
+        
+        // start capture
+        let dateFormat = "yyyy-MM-dd-hh:mm:ss"
+        var dateFormatter: DateFormatter {
+            let formatter = DateFormatter()
+            formatter.dateFormat = dateFormat
+            formatter.locale = Locale.current
+            formatter.timeZone = TimeZone.current
+            return formatter
+        }
+        let date = Date().toString() as NSString
+        let paths = NSSearchPathForDirectoriesInDomains(
+            .documentDirectory, .userDomainMask, true)
+        let documentsDirectory = paths[0] as String
+        //var filePath = "\(documentsDirectory)/WunderLINQ-\(date).mp4"
+
+        let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        let filePath = documentsURL.appendingPathComponent("WunderLINQ-\(date).mp4")
+        movieOutput.startRecording(toOutputFileURL: filePath, recordingDelegate: self)
+        
+        print("Video: setupVideoCamera()")
+        recording = true
+        if(videoCaptureSession.isRunning){
+            print("Video: setupVideoCamera() videoCaptureSession.isRunning")
+        }
+        if(movieOutput.isRecording){
+            print("Video: setupVideoCamera() movieOutput.isRecording")
+        }
+    }
+    
+    private func deviceInputFromDevice(device: AVCaptureDevice?) -> AVCaptureDeviceInput? {
+        print("Video: deviceInputFromDevice()")
+        guard let validDevice = device else { return nil }
+        do {
+            return try AVCaptureDeviceInput(device: validDevice)
+        } catch let outError {
+            print("Device setup error occured \(outError)")
+            return nil
+        }
+    }
+    
+    func capture(_ output: AVCaptureFileOutput!, didFinishRecordingToOutputFileAt outputFileURL: URL!, fromConnections connections: [Any]!, error: Error!) {
+        print("Video: capture()")
         
     }
+    
+    func captureOutput(captureOutput: AVCaptureFileOutput!, didStartRecordingToOutputFileAtURL fileURL: URL!, fromConnections connections: [AnyObject]!) {
+        print("Video: captureOutput()")
+    }
+    
+    func captureOutput(captureOutput: AVCaptureFileOutput!, didFinishRecordingToOutputFileAtURL outputFileURL: NSURL!, fromConnections connections: [AnyObject]!, error: NSError!) {
+        if (error != nil)
+        {
+            print("Unable to save video to the iPhone  \(error.localizedDescription)")
+        }
+        else
+        {
+            print("Video: Saving to library")
+            PHPhotoLibrary.shared().performChanges({
+                PHAssetChangeRequest.creationRequestForAssetFromVideo(atFileURL: outputFileURL! as URL)
+            }) { saved, error in
+                if saved {
+                    // the alert view
+                    let alert = UIAlertController(title: "", message: "Pictue Taken", preferredStyle: .alert)
+                    self.present(alert, animated: true, completion: nil)
+                    
+                    // change to desired number of seconds (in this case 2 seconds)
+                    let when = DispatchTime.now() + 2
+                    DispatchQueue.main.asyncAfter(deadline: when){
+                        // your code with delay
+                        alert.dismiss(animated: true, completion: nil)
+                    }
+                }
+            }
+        }
+    }
+
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let userLocation:CLLocation = locations[0] as CLLocation

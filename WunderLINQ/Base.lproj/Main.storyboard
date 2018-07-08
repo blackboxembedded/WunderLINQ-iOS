@@ -196,13 +196,14 @@
                     <navigationItem key="navigationItem" title="Motorcycle" id="eWq-dV-zOi">
                         <leftBarButtonItems>
                             <barButtonItem image="Left" id="GBh-7x-ZEB">
+                                <inset key="imageInsets" minX="-15" minY="0.0" maxX="5" maxY="0.0"/>
                                 <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <segue destination="UAo-uD-fGL" kind="show" identifier="mainToQuickTasks" id="beB-Q6-ZQg"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem image="Bluetooth" style="plain" id="56m-rg-1kX">
-                                <inset key="imageInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="-4"/>
+                                <inset key="imageInsets" minX="-15" minY="1" maxX="15" maxY="-1"/>
                                 <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <action selector="btButtonTapped:" destination="BYZ-38-t0r" id="Pqv-kY-0T6"/>
@@ -211,12 +212,14 @@
                         </leftBarButtonItems>
                         <rightBarButtonItems>
                             <barButtonItem image="Right" id="CWp-yO-DrG">
+                                <inset key="imageInsets" minX="5" minY="0.0" maxX="-15" maxY="0.0"/>
                                 <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <segue destination="Yme-GX-WRX" kind="show" identifier="mainToCompass" id="yHx-SX-1sT"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem image="Cog" id="L9u-BK-ItD">
+                                <inset key="imageInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <action selector="settingsButtonTapped:" destination="BYZ-38-t0r" id="6ot-x4-7Ht"/>
@@ -258,7 +261,7 @@
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lsy-hM-ZFw">
                                         <rect key="frame" x="0.0" y="0.0" width="288" height="504"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="75"/>
+                                        <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="100"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -274,7 +277,8 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Compass" id="Brd-Gc-vY2">
-                        <barButtonItem key="leftBarButtonItem" image="Left" id="cX9-PZ-Xjw">
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="Left" id="cX9-PZ-Xjw">
+                            <inset key="imageInsets" minX="-15" minY="0.0" maxX="5" maxY="0.0"/>
                             <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="backButton:" destination="Yme-GX-WRX" id="X52-3x-rdT"/>
@@ -282,6 +286,7 @@
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="Right" id="C4x-xU-h8m">
+                            <inset key="imageInsets" minX="5" minY="0.0" maxX="-15" maxY="0.0"/>
                             <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="backButton:" destination="Yme-GX-WRX" id="QmX-z6-3r5"/>
@@ -314,50 +319,50 @@
                                 <rect key="frame" x="16" y="64" width="288" height="460"/>
                                 <subviews>
                                     <stackView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="9kl-zc-Jc0">
-                                        <rect key="frame" x="0.0" y="0.0" width="288" height="381.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="288" height="392"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9KV-8n-ffM">
                                                 <rect key="frame" x="0.0" y="0.0" width="288" height="320"/>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MHP-fk-xUy">
-                                                <rect key="frame" x="0.0" y="320" width="288" height="20.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unknown" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MHP-fk-xUy">
+                                                <rect key="frame" x="0.0" y="320" width="288" height="24"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Song Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ojS-iD-NCF">
-                                                <rect key="frame" x="0.0" y="340.5" width="288" height="20.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unknown" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ojS-iD-NCF">
+                                                <rect key="frame" x="0.0" y="344" width="288" height="24"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Album" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ENe-lL-dLJ">
-                                                <rect key="frame" x="0.0" y="361" width="288" height="20.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unknown" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ENe-lL-dLJ">
+                                                <rect key="frame" x="0.0" y="368" width="288" height="24"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SPh-nY-LUF">
-                                        <rect key="frame" x="24.5" y="381.5" width="239" height="78.5"/>
+                                        <rect key="frame" x="24.5" y="392" width="239" height="68"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vsu-t3-FAz">
-                                                <rect key="frame" x="0.0" y="0.0" width="79" height="78.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="79" height="68"/>
                                                 <state key="normal" title="Last" image="back"/>
                                                 <connections>
                                                     <action selector="lastButton:" destination="p6n-wZ-mMa" eventType="touchUpInside" id="AHf-FW-rrk"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pwh-25-TzL">
-                                                <rect key="frame" x="79" y="0.0" width="78" height="78.5"/>
+                                                <rect key="frame" x="79" y="0.0" width="78" height="68"/>
                                                 <state key="normal" title="Play" image="play"/>
                                                 <connections>
                                                     <action selector="playButton:" destination="p6n-wZ-mMa" eventType="touchUpInside" id="zrO-H3-A4V"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kxB-1t-Lm7">
-                                                <rect key="frame" x="157" y="0.0" width="82" height="78.5"/>
+                                                <rect key="frame" x="157" y="0.0" width="82" height="68"/>
                                                 <state key="normal" title="Next" image="forward"/>
                                                 <connections>
                                                     <action selector="nextButton:" destination="p6n-wZ-mMa" eventType="touchUpInside" id="OHU-u9-qfP"/>
@@ -379,12 +384,14 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Music" id="7Fx-C3-KuK">
                         <barButtonItem key="leftBarButtonItem" image="Left" id="pSh-ez-Vrb">
+                            <inset key="imageInsets" minX="-15" minY="0.0" maxX="5" maxY="0.0"/>
                             <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="5Y5-Mi-hQ5" kind="unwind" identifier="unwindToCompass" unwindAction="prepareForUnwindWithSegue:" id="Rgs-26-vsi"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="Right" id="XyW-nS-Da0">
+                            <inset key="imageInsets" minX="5" minY="0.0" maxX="-15" maxY="0.0"/>
                             <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="UAo-uD-fGL" kind="show" identifier="musicToQuickTasks" id="QF9-me-I6g"/>
@@ -426,7 +433,7 @@
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="X1g-hv-Z09">
                                             <rect key="frame" x="16" y="0.0" width="288" height="89.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="25"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -441,12 +448,14 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Quick Tasks" id="jyj-aK-lN7">
                         <barButtonItem key="leftBarButtonItem" image="Left" id="vdZ-Sx-gxP">
+                            <inset key="imageInsets" minX="-15" minY="0.0" maxX="5" maxY="0.0"/>
                             <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="69C-pl-m3A" kind="unwind" identifier="backToMusic" unwindAction="unwindToContainerMusicVCWithSegue:" id="eXY-Qz-cF9"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="Right" id="UDf-mC-dtK">
+                            <inset key="imageInsets" minX="5" minY="0.0" maxX="-15" maxY="0.0"/>
                             <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="forward:" destination="UAo-uD-fGL" id="Bq8-S3-zEo"/>
@@ -482,7 +491,7 @@
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="gSL-t0-ikV">
                                             <rect key="frame" x="16" y="0.0" width="288" height="89.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <fontDescription key="fontDescription" type="system" weight="black" pointSize="20"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -497,6 +506,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Contacts" id="2cg-kd-QQh">
                         <barButtonItem key="leftBarButtonItem" image="Left" id="2Kl-Bk-eZF">
+                            <inset key="imageInsets" minX="-15" minY="0.0" maxX="5" maxY="0.0"/>
                             <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="UAo-uD-fGL" kind="show" identifier="backToTasks" id="VWX-pZ-cIi"/>
@@ -555,6 +565,6 @@
         <image name="play" width="44" height="44"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="beB-Q6-ZQg"/>
+        <segue reference="VWX-pZ-cIi"/>
     </inferredMetricsTieBreakers>
 </document>

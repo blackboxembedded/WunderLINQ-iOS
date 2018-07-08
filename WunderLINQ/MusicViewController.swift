@@ -63,34 +63,38 @@ class MusicViewController: UIViewController {
     */
     
     override var keyCommands: [UIKeyCommand]? {
-        
         let commands = [
+            UIKeyCommand(input: "\u{d}", modifierFlags:[], action: #selector(playPause), discoverabilityTitle: "Play/Pause"),
             UIKeyCommand(input: UIKeyInputLeftArrow, modifierFlags:[], action: #selector(leftScreen), discoverabilityTitle: "Go left"),
-            UIKeyCommand(input: UIKeyInputRightArrow, modifierFlags:[], action: #selector(rightScreen), discoverabilityTitle: "Go right")
+            UIKeyCommand(input: UIKeyInputRightArrow, modifierFlags:[], action: #selector(rightScreen), discoverabilityTitle: "Go right"),
+            UIKeyCommand(input: UIKeyInputUpArrow, modifierFlags:[], action: #selector(nextSong), discoverabilityTitle: "Next Song"),
+            UIKeyCommand(input: UIKeyInputDownArrow, modifierFlags:[], action: #selector(previousSong), discoverabilityTitle: "Previous Song")
         ]
         return commands
     }
     
     @objc func leftScreen() {
         print("leftScreen called")
-        // your code here
         performSegue(withIdentifier: "unwindToCompass", sender: [])
-        //prepareForUnwind(segue: unwindToMotorcycle)
     }
     @objc func rightScreen() {
         print("rightScreen called")
-        // your code here
         performSegue(withIdentifier: "musicToQuickTasks", sender: [])
     }
-    
-    @IBAction func unwindToContainerMusicVC(segue: UIStoryboardSegue) {
-        
+    @objc func nextSong() {
+        print("nextSong called")
+        musicPlayer().skipToNextItem()
     }
-
-    
-    @IBAction func playButton(_ sender: UIButton) {
-        // MARK: - TODO Convert to play/pause button
-        
+    @objc func previousSong() {
+        print("previousSong called")
+        if Int(trackElapsed) < 3 {
+            musicPlayer().skipToPreviousItem()
+        } else {
+            musicPlayer().skipToBeginning()
+        }
+    }
+    @objc func playPause() {
+        print("playPause called")
         if (musicPlayer().playbackState == MPMusicPlaybackState.playing) {
             musicPlayer().pause()
             playButton.setTitle("Play",for: .normal)
@@ -101,7 +105,24 @@ class MusicViewController: UIViewController {
             playButton.setTitle("Pause",for: .normal)
             playButton.setImage(pauseImage, for: .normal)
         }
+    }
+    
+    @IBAction func unwindToContainerMusicVC(segue: UIStoryboardSegue) {
         
+    }
+
+    
+    @IBAction func playButton(_ sender: UIButton) {
+        if (musicPlayer().playbackState == MPMusicPlaybackState.playing) {
+            musicPlayer().pause()
+            playButton.setTitle("Play",for: .normal)
+            playButton.setImage(playImage, for: .normal)
+            
+        } else {
+            musicPlayer().play()
+            playButton.setTitle("Pause",for: .normal)
+            playButton.setImage(pauseImage, for: .normal)
+        }
     }
     
     @IBAction func lastButton(_ sender: UIButton) {

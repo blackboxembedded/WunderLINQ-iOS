@@ -15,6 +15,8 @@ class ContactsTableViewController: UITableViewController {
     
     var phoneContacts = [PhoneContacts]()
     
+    var itemRow = 0
+    
     //MARK: Private Methods
     func getContacts() {
         let store = CNContactStore()
@@ -93,6 +95,7 @@ class ContactsTableViewController: UITableViewController {
     override var keyCommands: [UIKeyCommand]? {
         
         let commands = [
+            UIKeyCommand(input: "\u{d}", modifierFlags:[], action: #selector(selectItem), discoverabilityTitle: "Select item"),
             UIKeyCommand(input: UIKeyInputUpArrow, modifierFlags:[], action: #selector(upRow), discoverabilityTitle: "Go up"),
             UIKeyCommand(input: UIKeyInputDownArrow, modifierFlags:[], action: #selector(downRow), discoverabilityTitle: "Go down"),
             UIKeyCommand(input: UIKeyInputLeftArrow, modifierFlags:[], action: #selector(leftScreen), discoverabilityTitle: "Go left"),
@@ -101,23 +104,74 @@ class ContactsTableViewController: UITableViewController {
         return commands
     }
     
+    @objc func selectItem() {
+        print("selectItem called")
+        call_contact(contactID: itemRow)
+    }
     @objc func upRow() {
         print("upRow called")
-        // your code here
-        
+        if (itemRow == 0){
+            let nextRow = phoneContacts.count - 1
+            self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.contentView.backgroundColor = UIColor.white
+            self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.textLabel?.backgroundColor = UIColor.white
+            self.tableView.cellForRow(at: IndexPath(row: nextRow, section: 0) as IndexPath)?.contentView.backgroundColor = UIColor.blue
+            self.tableView.cellForRow(at: IndexPath(row: nextRow, section: 0) as IndexPath)?.textLabel?.backgroundColor = UIColor.blue
+            itemRow = nextRow
+        } else if (itemRow < phoneContacts.count ){
+            let nextRow = itemRow - 1
+            self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.contentView.backgroundColor = UIColor.white
+            self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.textLabel?.backgroundColor = UIColor.white
+            self.tableView.cellForRow(at: IndexPath(row: nextRow, section: 0) as IndexPath)?.contentView.backgroundColor = UIColor.blue
+            self.tableView.cellForRow(at: IndexPath(row: nextRow, section: 0) as IndexPath)?.textLabel?.backgroundColor = UIColor.blue
+            itemRow = nextRow
+        }
+        self.tableView.reloadData()
     }
     @objc func downRow() {
         print("downRow called")
-        // your code here
-        
+        if (itemRow == (phoneContacts.count - 1)){
+            let nextRow = 0
+            self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.contentView.backgroundColor = UIColor.white
+            self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.textLabel?.backgroundColor = UIColor.white
+            self.tableView.cellForRow(at: IndexPath(row: nextRow, section: 0) as IndexPath)?.contentView.backgroundColor = UIColor.blue
+            self.tableView.cellForRow(at: IndexPath(row: nextRow, section: 0) as IndexPath)?.textLabel?.backgroundColor = UIColor.blue
+            itemRow = nextRow
+        } else if (itemRow < phoneContacts.count ){
+            let nextRow = itemRow + 1
+            self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.contentView.backgroundColor = UIColor.white
+            self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.textLabel?.backgroundColor = UIColor.white
+            self.tableView.cellForRow(at: IndexPath(row: nextRow, section: 0) as IndexPath)?.contentView.backgroundColor = UIColor.blue
+            self.tableView.cellForRow(at: IndexPath(row: nextRow, section: 0) as IndexPath)?.textLabel?.backgroundColor = UIColor.blue
+            itemRow = nextRow
+        }
+        self.tableView.reloadData()
     }
-    
     @objc func leftScreen() {
+        performSegue(withIdentifier: "backToTasks", sender: [])
+    }    
+    @objc func rightScreen() {
         
     }
     
-    @objc func rightScreen() {
-        performSegue(withIdentifier: "backTasks", sender: [])
+    func call_contact(contactID:Int){
+        var validPhoneNumber = ""
+        phoneContacts[contactID].number.characters.forEach {(character) in
+            switch character {
+            case "0"..."9":
+                validPhoneNumber.characters.append(character)
+            default:
+                break
+            }
+        }
+        if let phoneCallURL = URL(string: "telprompt:\(validPhoneNumber)") {
+            if (UIApplication.shared.canOpenURL(phoneCallURL)) {
+                if #available(iOS 10, *) {
+                    UIApplication.shared.open(phoneCallURL, options: [:], completionHandler: nil)
+                } else {
+                    UIApplication.shared.openURL(phoneCallURL as URL)
+                }
+            }
+        }
     }
     
     override func viewDidLoad() {
@@ -163,24 +217,7 @@ class ContactsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        var validPhoneNumber = ""
-        phoneContacts[indexPath.row].number.characters.forEach {(character) in
-            switch character {
-            case "0"..."9":
-                validPhoneNumber.characters.append(character)
-            default:
-                break
-            }
-        }
-        if let phoneCallURL = URL(string: "telprompt:\(validPhoneNumber)") {
-            if (UIApplication.shared.canOpenURL(phoneCallURL)) {
-                if #available(iOS 10, *) {
-                    UIApplication.shared.open(phoneCallURL, options: [:], completionHandler: nil)
-                } else {
-                    UIApplication.shared.openURL(phoneCallURL as URL)
-                }
-            }
-        }
+        call_contact(contactID: indexPath.row)
     }
     
     /*
