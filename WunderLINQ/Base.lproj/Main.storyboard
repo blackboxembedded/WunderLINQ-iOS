@@ -401,7 +401,7 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="albumLabel" destination="ENe-lL-dLJ" id="XrR-XX-QD8"/>
-                        <outlet property="artistLabel" destination="ojS-iD-NCF" id="p4h-c9-qTN"/>
+                        <outlet property="artistLabel" destination="MHP-fk-xUy" id="2wc-q1-JWI"/>
                         <outlet property="imageAlbum" destination="9KV-8n-ffM" id="mS4-Lq-Lpg"/>
                         <outlet property="lastButton" destination="vsu-t3-FAz" id="B0J-lk-5K7"/>
                         <outlet property="nextButton" destination="kxB-1t-Lm7" id="ysa-Qv-XIY"/>
@@ -565,6 +565,6 @@
         <image name="play" width="44" height="44"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="VWX-pZ-cIi"/>
+        <segue reference="QF9-me-I6g"/>
     </inferredMetricsTieBreakers>
 </document>
