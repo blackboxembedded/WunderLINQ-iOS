@@ -167,9 +167,10 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
         case 0x05:
             //print("Message ID: 5")
             // Tire Pressure
-            var frontPressure:Double = Double(lastMessage[4]) / 50
-            var rearPressure:Double = Double(lastMessage[5]) / 50
-            switch UserDefaults.standard.integer(forKey: "pressure_unit_preference"){
+            if ((lastMessage[4] != 0xFF) && (lastMessage[5] != 0xFF)){
+                var frontPressure:Double = Double(lastMessage[4]) / 50
+                var rearPressure:Double = Double(lastMessage[5]) / 50
+                switch UserDefaults.standard.integer(forKey: "pressure_unit_preference"){
                 case 0:
                     pressureUnit = "bar"
                 case 1:
@@ -186,9 +187,11 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
                     rearPressure = barToPsi(rearPressure)
                 default:
                     print("Unknown pressure unit setting")
+                }
+                frontPressureLabel.text = "\(Int(frontPressure)) \(pressureUnit)"
+                rearPressureLabel.text = "\(Int(rearPressure)) \(pressureUnit)"
             }
-            frontPressureLabel.text = "\(Int(frontPressure)) \(pressureUnit)"
-            rearPressureLabel.text = "\(Int(rearPressure)) \(pressureUnit)"
+            
         case 0x06:
             //print("Message ID: 6")
             // Gear
@@ -233,25 +236,29 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
 
         case 0x0A:
             // Odometer
-            var odometer:Int = Int(lastMessage[3]) + Int(lastMessage[2]) + Int(lastMessage[1])
+            var odometer = Int16(lastMessage[1]) | Int16(lastMessage[2]) << 8 | Int16(lastMessage[3]) << 16
             if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
-                odometer = Int(kmToMiles(Double(odometer)))
+                odometer = Int16(kmToMiles(Double(odometer)))
                 distanceUnit = "mi"
             }
             odometerLabel.text = "\(odometer) \(distanceUnit)"
+            // Trip Auto
+            var tripAuto:Double = Double((Int16(lastMessage[4]) | Int16(lastMessage[5]) << 8 | Int16(lastMessage[6]) << 16) / 10)
         case 0x0C:
             // Trip 1 & Trip 2
-            var tripOne:Int = Int(lastMessage[3]) + Int(lastMessage[2]) + Int(lastMessage[1])
-            var tripTwo:Int = Int(lastMessage[6]) + Int(lastMessage[5]) + Int(lastMessage[4])
+            var tripOne:Double = Double((Int16(lastMessage[1]) | Int16(lastMessage[2]) << 8 | Int16(lastMessage[3]) << 16) / 10)
+            var tripTwo:Double = Double((Int16(lastMessage[4]) | Int16(lastMessage[5]) << 8 | Int16(lastMessage[6]) << 16) / 10)
+            
             if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
-                tripOne = Int(kmToMiles(Double(tripOne)))
-                tripTwo = Int(kmToMiles(Double(tripTwo)))
+                tripOne = Double(kmToMiles(Double(tripOne)))
+                tripTwo = Double(kmToMiles(Double(tripTwo)))
                 distanceUnit = "mi"
             }
             tripOneLabel.text = "\(tripOne) \(distanceUnit)"
             tripTwoLabel.text = "\(tripTwo) \(distanceUnit)"
         default:
-            let defaultState = 0
+            let defaultCase = 0
+            //print("Unknown Message ID")
         }
     }
     
@@ -522,6 +529,5 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
         let fahrenheit = (celcius * 1.8) + Double(32)
         return fahrenheit
     }
-
-
+    
 }
