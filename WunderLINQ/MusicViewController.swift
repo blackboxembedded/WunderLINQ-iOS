@@ -29,6 +29,14 @@ class MusicViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))
+        swipeLeft.direction = .left
+        self.view.addGestureRecognizer(swipeLeft)
+        
+        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))
+        swipeRight.direction = .right
+        self.view.addGestureRecognizer(swipeRight)
 
         // Do any additional setup after loading the view.
         musicPlayer().prepareToPlay()
@@ -61,6 +69,17 @@ class MusicViewController: UIViewController {
         
     }
     */
+    
+    func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
+        if gesture.direction == UISwipeGestureRecognizerDirection.right {
+            print("Swipe Right")
+            performSegue(withIdentifier: "unwindToCompass", sender: [])
+        }
+        else if gesture.direction == UISwipeGestureRecognizerDirection.left {
+            print("Swipe Left")
+            performSegue(withIdentifier: "musicToQuickTasks", sender: [])
+        }
+    }
     
     override var keyCommands: [UIKeyCommand]? {
         let commands = [

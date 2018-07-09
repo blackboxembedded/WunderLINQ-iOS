@@ -35,6 +35,17 @@ class CompassViewController: UIViewController {
         performSegue(withIdentifier: "compassToMusic", sender: [])
     }
     
+    func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
+        if gesture.direction == UISwipeGestureRecognizerDirection.right {
+            print("Swipe Right")
+            performSegue(withIdentifier: "unwindToMotorcycle", sender: [])
+        }
+        else if gesture.direction == UISwipeGestureRecognizerDirection.left {
+            print("Swipe Left")
+            performSegue(withIdentifier: "compassToMusic", sender: [])
+        }
+    }
+    
     @IBAction func prepareForUnwind(segue: UIStoryboardSegue) {
         
     }
@@ -76,6 +87,15 @@ class CompassViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))
+        swipeLeft.direction = .left
+        self.view.addGestureRecognizer(swipeLeft)
+        
+        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))
+        swipeRight.direction = .right
+        self.view.addGestureRecognizer(swipeRight)
+        
         locationManager.delegate = locationDelegate
         
         locationDelegate.locationCallback = { location in

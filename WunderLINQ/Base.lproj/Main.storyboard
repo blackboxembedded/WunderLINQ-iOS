@@ -187,10 +187,10 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="7dk-mQ-A5X" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="2xG-k8-KbT"/>
                             <constraint firstAttribute="trailing" secondItem="7dk-mQ-A5X" secondAttribute="trailing" id="FE1-BM-6XN"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="7dk-mQ-A5X" secondAttribute="bottom" id="H8a-NB-3S2"/>
                             <constraint firstItem="7dk-mQ-A5X" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="iJ2-P4-hcs"/>
-                            <constraint firstItem="7dk-mQ-A5X" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="sU3-oW-0BS"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="7dk-mQ-A5X" secondAttribute="bottom" id="yND-DX-7bu"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Motorcycle" id="eWq-dV-zOi">
@@ -233,6 +233,7 @@
                         <outlet property="engineTempLabel" destination="bRL-5h-sKB" id="Yfz-Cc-6n5"/>
                         <outlet property="frontPressureLabel" destination="ZqM-BI-MSn" id="ban-Dc-mtN"/>
                         <outlet property="gearLabel" destination="5Xp-ce-nzA" id="JZZ-QT-0k1"/>
+                        <outlet property="mainView" destination="8bC-Xf-vdC" id="gTC-7s-UkH"/>
                         <outlet property="odometerLabel" destination="grv-Y4-dvO" id="UtE-hz-vu5"/>
                         <outlet property="rearPressureLabel" destination="OaG-cS-fMY" id="gXy-U5-kzG"/>
                         <outlet property="settingsButton" destination="L9u-BK-ItD" id="Tae-lL-qra"/>

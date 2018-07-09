@@ -20,6 +20,7 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
     @IBOutlet weak var odometerLabel: UILabel!
     @IBOutlet weak var tripOneLabel: UILabel!
     @IBOutlet weak var tripTwoLabel: UILabel!
+    @IBOutlet weak var mainView: UIView!
     
     var centralManager:CBCentralManager!
     var wunderLINQ:CBPeripheral?
@@ -40,6 +41,24 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
         registerSettingsBundle()
         centralManager = CBCentralManager(delegate: self,
                                           queue: nil)
+        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))
+        swipeLeft.direction = .left
+        self.view.addGestureRecognizer(swipeLeft)
+        
+        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))
+        swipeRight.direction = .right
+        self.view.addGestureRecognizer(swipeRight)
+    }
+    
+    func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
+        if gesture.direction == UISwipeGestureRecognizerDirection.right {
+            print("Swipe Right")
+            performSegue(withIdentifier: "mainToQuickTasks", sender: [])
+        }
+        else if gesture.direction == UISwipeGestureRecognizerDirection.left {
+            print("Swipe Left")
+            performSegue(withIdentifier: "mainToCompass", sender: [])
+        }
     }
     
     override var keyCommands: [UIKeyCommand]? {

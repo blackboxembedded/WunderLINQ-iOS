@@ -286,9 +286,28 @@ class TasksTableViewController: UITableViewController, AVCaptureVideoDataOutputS
     @IBAction func forward(_ sender: UIBarButtonItem) {
         self.performSegue(withIdentifier: "unwindToContainerVC", sender: self)
     }
+    
+    func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
+        if gesture.direction == UISwipeGestureRecognizerDirection.right {
+            print("Swipe Right")
+            performSegue(withIdentifier: "backToMusic", sender: [])
+        }
+        else if gesture.direction == UISwipeGestureRecognizerDirection.left {
+            print("Swipe Left")
+            performSegue(withIdentifier: "backToBegin", sender: [])
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))
+        swipeLeft.direction = .left
+        self.view.addGestureRecognizer(swipeLeft)
+        
+        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))
+        swipeRight.direction = .right
+        self.view.addGestureRecognizer(swipeRight)
         
         loadTasks();
         

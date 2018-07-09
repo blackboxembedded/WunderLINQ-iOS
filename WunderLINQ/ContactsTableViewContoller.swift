@@ -151,6 +151,13 @@ class ContactsTableViewController: UITableViewController {
         
     }
     
+    func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
+        if gesture.direction == UISwipeGestureRecognizerDirection.right {
+            print("Swipe Right")
+            performSegue(withIdentifier: "backToTasks", sender: [])
+        }
+    }
+    
     func call_contact(contactID:Int){
         var validPhoneNumber = ""
         phoneContacts[contactID].number.characters.forEach {(character) in
@@ -174,6 +181,10 @@ class ContactsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))
+        swipeRight.direction = .right
+        self.view.addGestureRecognizer(swipeRight)
         
         self.getContacts()
 
