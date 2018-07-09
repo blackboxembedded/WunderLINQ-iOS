@@ -65,22 +65,20 @@ class ContactsTableViewController: UITableViewController {
                 contacts.append(contentsOf: containerResults)
                 for contact in contacts {
                     for phoneNumber in contact.phoneNumbers {
-                        if let number = phoneNumber.value as? CNPhoneNumber,
-                            // TODO: Filter out unneeded numbers like fax
-                            let label = phoneNumber.label {
-                            let localizedLabel = CNLabeledValue<CNPhoneNumber>.localizedString(forLabel: label)
-                            print("\(localizedLabel)  \(number.stringValue)")
-                            
-                            let formatter = CNContactFormatter()
-                            var photo = UIImage(named: "Contact")
-                            if contact.imageDataAvailable {
-                                // there is an image for this contact
-                                photo = UIImage(data: contact.imageData!)
+                        if let number = phoneNumber.value as? CNPhoneNumber, let label = phoneNumber.label {
+                            if (!label.contains("FAX") && (label.contains("iPhone") || label.contains("Home") || label.contains("Mobile") || label.contains("Work"))){
+                                let localizedLabel = CNLabeledValue<CNPhoneNumber>.localizedString(forLabel: label)
+                                let formatter = CNContactFormatter()
+                                var photo = UIImage(named: "Contact")
+                                if contact.imageDataAvailable {
+                                    // there is an image for this contact
+                                    photo = UIImage(data: contact.imageData!)
+                                }
+                                guard let phoneContact = PhoneContacts(name: formatter.string(from: contact)!, number: number.stringValue, numberDescription: localizedLabel, photo: photo) else {
+                                    fatalError("Unable to instantiate Call Contact Task")
+                                }
+                                self.phoneContacts += [phoneContact]
                             }
-                            guard let phoneContact = PhoneContacts(name: formatter.string(from: contact)!, number: number.stringValue, numberDescription: localizedLabel, photo: photo) else {
-                                fatalError("Unable to instantiate Call Contact Task")
-                            }
-                            self.phoneContacts += [phoneContact]
                         }
                     }
                 }
