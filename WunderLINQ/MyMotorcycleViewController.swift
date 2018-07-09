@@ -236,18 +236,18 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
 
         case 0x0A:
             // Odometer
-            var odometer = Int16(lastMessage[1]) | Int16(lastMessage[2]) << 8 | Int16(lastMessage[3]) << 16
+            var odometer:Double = Double(UInt16(lastMessage[1]) | UInt16(lastMessage[2]) << 8 | UInt16(lastMessage[3]) << 16)
             if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
-                odometer = Int16(kmToMiles(Double(odometer)))
+                odometer = Double(kmToMiles(Double(odometer)))
                 distanceUnit = "mi"
             }
             odometerLabel.text = "\(odometer) \(distanceUnit)"
             // Trip Auto
-            var tripAuto:Double = Double((Int16(lastMessage[4]) | Int16(lastMessage[5]) << 8 | Int16(lastMessage[6]) << 16) / 10)
+            var tripAuto:Double = Double((UInt32(lastMessage[4]) | UInt32(lastMessage[5]) << 8 | UInt32(lastMessage[6]) << 16) / 10)
         case 0x0C:
             // Trip 1 & Trip 2
-            var tripOne:Double = Double((Int16(lastMessage[1]) | Int16(lastMessage[2]) << 8 | Int16(lastMessage[3]) << 16) / 10)
-            var tripTwo:Double = Double((Int16(lastMessage[4]) | Int16(lastMessage[5]) << 8 | Int16(lastMessage[6]) << 16) / 10)
+            var tripOne:Double = Double((UInt32(lastMessage[1]) | UInt32(lastMessage[2]) << 8 | UInt32(lastMessage[3]) << 16) / 10)
+            var tripTwo:Double = Double((UInt32(lastMessage[4]) | UInt32(lastMessage[5]) << 8 | UInt32(lastMessage[6]) << 16) / 10)
             
             if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
                 tripOne = Double(kmToMiles(Double(tripOne)))
