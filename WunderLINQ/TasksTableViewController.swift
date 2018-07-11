@@ -26,10 +26,12 @@ class TasksTableViewController: UITableViewController, AVCaptureVideoDataOutputS
     var device: AVCaptureDevice?
     var captureSession: AVCaptureSession?
     var cameraImage: UIImage?
-    
-    var videoCaptureSession: AVCaptureSession?
-    var movieOutput = AVCaptureMovieFileOutput()
-    var recording = false
+
+    let videoCaptureSession = AVCaptureSession()
+    let movieOutput = AVCaptureMovieFileOutput()
+    var previewLayer: AVCaptureVideoPreviewLayer!
+    var activeInput: AVCaptureDeviceInput!
+    var outputURL: URL!
     
     var locationManager: CLLocationManager!
     var db: OpaquePointer?
@@ -187,13 +189,12 @@ class TasksTableViewController: UITableViewController, AVCaptureVideoDataOutputS
             break
         case 5:
             print("Video Recording")
-            if (recording)
-            {
-                print("Video: stopRecording")
+            if movieOutput.isRecording == true {
                 movieOutput.stopRecording()
-            }else {
-                print("Video: starting")
-                setupVideoCamera()
+                self.tableView.cellForRow(at: IndexPath(row: 5, section: 0) as IndexPath)?.textLabel?.text = "Start Recording"
+            } else {
+                startCapture()
+                self.tableView.cellForRow(at: IndexPath(row: 5, section: 0) as IndexPath)?.textLabel?.text = "Stop Recording"
             }
             break
         case 6:
@@ -300,6 +301,13 @@ class TasksTableViewController: UITableViewController, AVCaptureVideoDataOutputS
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        if (!videoCaptureSession.isRunning){
+            if setupSession() {
+                print("Session Setup")
+                startSession()
+            }
+        }
         
         let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))
         swipeLeft.direction = .left
@@ -328,9 +336,13 @@ class TasksTableViewController: UITableViewController, AVCaptureVideoDataOutputS
         }
         
         //creating table
-        if sqlite3_exec(db, "CREATE TABLE IF NOT EXISTS records (id INTEGER PRIMARY KEY AUTOINCREMENT, date TEXT, latitude TEXT, longitude TEXT)", nil, nil, nil) != SQLITE_OK {
+        if sqlite3_exec(db, "CREATE TABLE IF NOT EXISTS records (id INTEGER PRIMARY KEY AUTOINCREMENT, date TEXT, latitude TEXT, longitude TEXT, label TEXT)", nil, nil, nil) != SQLITE_OK {
             let errmsg = String(cString: sqlite3_errmsg(db)!)
             print("error creating table: \(errmsg)")
+        }
+        
+        if movieOutput.isRecording == true {
+            self.tableView.cellForRow(at: IndexPath(row: 5, section: 0) as IndexPath)?.textLabel?.text = "Stop Recording"
         }
     }
 
@@ -427,7 +439,6 @@ class TasksTableViewController: UITableViewController, AVCaptureVideoDataOutputS
     }
     
     func snapshot() {
-        print("SNAPSHOT")
         if ( cameraImage == nil ){
             print("No Image")
         } else {
@@ -445,14 +456,14 @@ class TasksTableViewController: UITableViewController, AVCaptureVideoDataOutputS
             self.present(alert, animated: true, completion: nil)
             
             // change to desired number of seconds (in this case 2 seconds)
-            let when = DispatchTime.now() + 2
+            let when = DispatchTime.now() + 3
             DispatchQueue.main.asyncAfter(deadline: when){
                 // your code with delay
                 alert.dismiss(animated: true, completion: nil)
             }
         } else {
             // the alert view
-            let alert = UIAlertController(title: "", message: "Pictue Taken", preferredStyle: .alert)
+            let alert = UIAlertController(title: "", message: "Pictue Saved", preferredStyle: .alert)
             self.present(alert, animated: true, completion: nil)
             
             // change to desired number of seconds (in this case 2 seconds)
@@ -464,131 +475,177 @@ class TasksTableViewController: UITableViewController, AVCaptureVideoDataOutputS
         }
     }
     
-    private var tempFilePath: NSURL = {
-        let tempPath = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("tempMovie")?.appendingPathExtension("mp4").absoluteString
-        if FileManager.default.fileExists(atPath: tempPath!) {
-            do {
-                try FileManager.default.removeItem(atPath: tempPath!)
-            } catch { }
-        }
-        return NSURL(string: tempPath!)!
-    }()
+    //MARK:- Setup Camera
     
-    func setupVideoCamera() {
-        // tweak delay
-        let discoverySession = AVCaptureDeviceDiscoverySession(deviceTypes: [.builtInWideAngleCamera],
-                                                               mediaType: AVMediaTypeVideo,
-                                                               position: .back)
-        device = discoverySession?.devices[0]
+    func setupSession() -> Bool {
         
-        let input: AVCaptureDeviceInput
-        do {
-            input = try AVCaptureDeviceInput(device: device)
-        } catch {
-            return
-        }
-        
-        let audioDevice = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeAudio)
-        let audioInput: AVCaptureDeviceInput
-        do {
-            audioInput = try AVCaptureDeviceInput(device: audioDevice)
-        } catch {
-            return
-        }
-        
-        //start session configuration
-        let videoCaptureSession = AVCaptureSession()
-        videoCaptureSession.beginConfiguration()
         videoCaptureSession.sessionPreset = AVCaptureSessionPresetHigh
         
-        // add device inputs (front camera and mic)
-        videoCaptureSession.addInput(input)
-        videoCaptureSession.addInput(audioInput)
+        // Setup Camera
+        let camera = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo)
         
-        // add output movieFileOutput
-        movieOutput.movieFragmentInterval = kCMTimeInvalid
-        videoCaptureSession.addOutput(movieOutput)
-        
-        // start session
-        videoCaptureSession.commitConfiguration()
-        videoCaptureSession.startRunning()
-        
-        // start capture
-        let dateFormat = "yyyy-MM-dd-hh:mm:ss"
-        var dateFormatter: DateFormatter {
-            let formatter = DateFormatter()
-            formatter.dateFormat = dateFormat
-            formatter.locale = Locale.current
-            formatter.timeZone = TimeZone.current
-            return formatter
-        }
-        let date = Date().toString() as NSString
-        let paths = NSSearchPathForDirectoriesInDomains(
-            .documentDirectory, .userDomainMask, true)
-        let documentsDirectory = paths[0] as String
-        //var filePath = "\(documentsDirectory)/WunderLINQ-\(date).mp4"
-
-        let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-        let filePath = documentsURL.appendingPathComponent("WunderLINQ-\(date).mp4")
-        movieOutput.startRecording(toOutputFileURL: filePath, recordingDelegate: self)
-        
-        print("Video: setupVideoCamera()")
-        recording = true
-        if(videoCaptureSession.isRunning){
-            print("Video: setupVideoCamera() videoCaptureSession.isRunning")
-        }
-        if(movieOutput.isRecording){
-            print("Video: setupVideoCamera() movieOutput.isRecording")
-        }
-    }
-    
-    private func deviceInputFromDevice(device: AVCaptureDevice?) -> AVCaptureDeviceInput? {
-        print("Video: deviceInputFromDevice()")
-        guard let validDevice = device else { return nil }
         do {
-            return try AVCaptureDeviceInput(device: validDevice)
-        } catch let outError {
-            print("Device setup error occured \(outError)")
-            return nil
+            let input = try AVCaptureDeviceInput(device: camera)
+            if videoCaptureSession.canAddInput(input) {
+                videoCaptureSession.addInput(input)
+                activeInput = input
+            }
+        } catch {
+            print("Error setting device video input: \(error)")
+            return false
         }
+        
+        // Setup Microphone
+        let microphone = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeAudio)
+        
+        do {
+            let micInput = try AVCaptureDeviceInput(device: microphone)
+            if videoCaptureSession.canAddInput(micInput) {
+                videoCaptureSession.addInput(micInput)
+            }
+        } catch {
+            print("Error setting device audio input: \(error)")
+            return false
+        }
+        
+        
+        // Movie output
+        if videoCaptureSession.canAddOutput(movieOutput) {
+            videoCaptureSession.addOutput(movieOutput)
+        }
+        
+        return true
     }
     
-    func capture(_ output: AVCaptureFileOutput!, didFinishRecordingToOutputFileAt outputFileURL: URL!, fromConnections connections: [Any]!, error: Error!) {
-        print("Video: capture()")
+    func setupCaptureMode(_ mode: Int) {
+        // Video Mode
         
     }
     
-    func captureOutput(captureOutput: AVCaptureFileOutput!, didStartRecordingToOutputFileAtURL fileURL: URL!, fromConnections connections: [AnyObject]!) {
-        print("Video: captureOutput()")
+    //MARK:- Camera Session
+    func startSession() {
+        if !videoCaptureSession.isRunning {
+            videoQueue().async {
+                self.videoCaptureSession.startRunning()
+            }
+        }
     }
     
-    func captureOutput(captureOutput: AVCaptureFileOutput!, didFinishRecordingToOutputFileAtURL outputFileURL: NSURL!, fromConnections connections: [AnyObject]!, error: NSError!) {
-        if (error != nil)
-        {
-            print("Unable to save video to the iPhone  \(error.localizedDescription)")
+    func stopSession() {
+        if videoCaptureSession.isRunning {
+            videoQueue().async {
+                self.videoCaptureSession.stopRunning()
+            }
         }
-        else
-        {
-            print("Video: Saving to library")
+    }
+    
+    func videoQueue() -> DispatchQueue {
+        return DispatchQueue.main
+    }
+    
+    func currentVideoOrientation() -> AVCaptureVideoOrientation {
+        var orientation: AVCaptureVideoOrientation
+        
+        switch UIDevice.current.orientation {
+        case .portrait:
+            orientation = AVCaptureVideoOrientation.portrait
+        case .landscapeRight:
+            orientation = AVCaptureVideoOrientation.landscapeLeft
+        case .portraitUpsideDown:
+            orientation = AVCaptureVideoOrientation.portraitUpsideDown
+        default:
+            orientation = AVCaptureVideoOrientation.landscapeRight
+        }
+        
+        return orientation
+    }
+    
+    func startCapture() {
+        startRecording()
+    }
+    
+    func tempURL() -> URL? {
+        let directory = NSTemporaryDirectory() as NSString
+        
+        if directory != "" {
+            let path = directory.appendingPathComponent(NSUUID().uuidString + ".mp4")
+            return URL(fileURLWithPath: path)
+        }
+        
+        return nil
+    }
+    
+    
+    func startRecording() {
+        if movieOutput.isRecording == false {
+            let connection = movieOutput.connection(withMediaType: AVMediaTypeVideo)
+            if (connection?.isVideoOrientationSupported)! {
+                connection?.videoOrientation = currentVideoOrientation()
+            }
+            
+            if (connection?.isVideoStabilizationSupported)! {
+                connection?.preferredVideoStabilizationMode = AVCaptureVideoStabilizationMode.auto
+            }
+            
+            let device = activeInput.device
+            if (device?.isSmoothAutoFocusSupported)! {
+                do {
+                    try device?.lockForConfiguration()
+                    device?.isSmoothAutoFocusEnabled = false
+                    device?.unlockForConfiguration()
+                } catch {
+                    print("Error setting configuration: \(error)")
+                }
+                
+            }
+            
+            outputURL = tempURL()
+            movieOutput.startRecording(toOutputFileURL: outputURL, recordingDelegate: self)
+            
+        }
+        else {
+            stopRecording()
+        }
+        
+    }
+    
+    func stopRecording() {
+        if movieOutput.isRecording == true {
+            movieOutput.stopRecording()
+        }
+    }
+    
+    func capture(_ captureOutput: AVCaptureFileOutput!, didStartRecordingToOutputFileAt fileURL: URL!, fromConnections connections: [Any]!) {
+
+    }
+    
+    func capture(_ captureOutput: AVCaptureFileOutput!, didFinishRecordingToOutputFileAt outputFileURL: URL!, fromConnections connections: [Any]!, error: Error!) {
+        if (error != nil) {
+            print("Error recording movie: \(error!.localizedDescription)")
+        } else {
+            let fileURL = outputURL as URL
             PHPhotoLibrary.shared().performChanges({
-                PHAssetChangeRequest.creationRequestForAssetFromVideo(atFileURL: outputFileURL! as URL)
+                PHAssetChangeRequest.creationRequestForAssetFromVideo(atFileURL: fileURL as URL)
             }) { saved, error in
                 if saved {
                     // the alert view
-                    let alert = UIAlertController(title: "", message: "Pictue Taken", preferredStyle: .alert)
+                    let alert = UIAlertController(title: "", message: "Video Saved", preferredStyle: .alert)
                     self.present(alert, animated: true, completion: nil)
                     
                     // change to desired number of seconds (in this case 2 seconds)
-                    let when = DispatchTime.now() + 2
+                    let when = DispatchTime.now() + 3
                     DispatchQueue.main.asyncAfter(deadline: when){
                         // your code with delay
                         alert.dismiss(animated: true, completion: nil)
                     }
+                } else {
+                    print("In capture didfinish, didn't save")
                 }
             }
+            
         }
+        outputURL = nil
     }
-
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let userLocation:CLLocation = locations[0] as CLLocation

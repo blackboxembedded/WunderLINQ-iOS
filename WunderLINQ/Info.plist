@@ -17,11 +17,13 @@
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>2</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppleMusicUsageDescription</key>
 	<string>$(PRODUCT_NAME) wants to control you music player.</string>
+	<key>NSBluetoothPeripheralUsageDescription</key>
+	<string>$(PRODUCT_NAME) wants to use the WunderLINQ Hardware.</string>
 	<key>NSCameraUsageDescription</key>
 	<string>$(PRODUCT_NAME) wants to use your camera.</string>
 	<key>NSContactsUsageDescription</key>
@@ -42,6 +44,7 @@
 	<array>
 		<string>audio</string>
 		<string>bluetooth-central</string>
+		<string>fetch</string>
 		<string>location</string>
 	</array>
 	<key>UIFileSharingEnabled</key>
