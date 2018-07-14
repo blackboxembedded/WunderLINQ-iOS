@@ -36,6 +36,8 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
     
     var lastMessage = [UInt8]()
     
+    let motorcycleData = MotorcycleData.shared
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         registerSettingsBundle()
@@ -183,12 +185,26 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
         var pressureUnit = "psi"
         
         switch lastMessage[0] {
+        case 0x00:
+            //print("Message ID: 0")
+            let bytes: [UInt8] = [lastMessage[1],lastMessage[2],lastMessage[3],lastMessage[4],lastMessage[5],lastMessage[6],lastMessage[7]]
+            let vin = String(bytes: bytes, encoding: .utf8)
+            motorcycleData.setVIN(vin: vin)
+        case 0x01:
+            //print("Message ID: 1")
+            // Ambient Light
+            //int ambientLightValue = (data[6] & 0xFF) & 0x0f; // the lowest 4 bits
+            let ambientLightValue = lastMessage[6] & 0x0F
+            motorcycleData.setambientLight(ambientLight: Double(ambientLightValue))
         case 0x05:
             //print("Message ID: 5")
             // Tire Pressure
             if ((lastMessage[4] != 0xFF) && (lastMessage[5] != 0xFF)){
                 var frontPressure:Double = Double(lastMessage[4]) / 50
                 var rearPressure:Double = Double(lastMessage[5]) / 50
+                motorcycleData.setfrontTirePressure(frontTirePressure: frontPressure)
+                motorcycleData.setrearTirePressure(rearTirePressure: rearPressure)
+                
                 switch UserDefaults.standard.integer(forKey: "pressure_unit_preference"){
                 case 0:
                     pressureUnit = "bar"
@@ -214,39 +230,54 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
         case 0x06:
             //print("Message ID: 6")
             // Gear
+            var gear = "--"
             switch lastMessage[2] {
             case 0x10:
-                gearLabel.text = "1"
+                gear = "1"
             case 0x20:
-                gearLabel.text = "N"
+                gear = "N"
             case 0x40:
-                gearLabel.text = "2"
+                gear = "2"
             case 0x70:
-                gearLabel.text = "3"
+                gear = "3"
             case 0x80:
-                gearLabel.text = "4"
+                gear = "4"
             case 0xB0:
-                gearLabel.text = "5"
+                gear = "5"
             case 0xD0:
-                gearLabel.text = "6"
+                gear = "6"
             case 0xF0:
-                gearLabel.text = "-"
+                gear = "-"
             default:
                 print("Unknown Gear Value")
-                gearLabel.text = "--"
+                gear = "--"
             }
+            motorcycleData.setgear(gear: gear)
+            gearLabel.text = gear
+            
+            // Throttle Position
+            let minPosition = 36;
+            let maxPosition = 236;
+            let throttlePosition = Double(((lastMessage[3] - minPosition) * 100)) / Double((maxPosition - minPosition))
+            motorcycleData.setthrottlePosition(throttlePosition: throttlePosition)
+            
             // Engine Temperature
             var engineTemp:Double = Double(lastMessage[4]) * 0.75 - 25
+            motorcycleData.setengineTemperature(engineTemperature: engineTemp)
             if UserDefaults.standard.integer(forKey: "temperature_unit_preference") == 1 {
                 engineTemp = celciusToFahrenheit(engineTemp)
                 temperatureUnit = "F"
             }
             engineTempLabel.text = "\(Int(engineTemp)) \(temperatureUnit)"
-
+        case 0x07:
+            //Voltage
+            let voltage = Double(lastMessage[4]) / 10
+            motorcycleData.setvoltage(voltage: voltage)
         case 0x08:
             //print("Message ID: 8")
             // Ambient Temperature
             var ambientTemp:Double = Double(lastMessage[1]) * 0.50 - 40
+            motorcycleData.setambientTemperature(ambientTemperature: ambientTemp)
             if UserDefaults.standard.integer(forKey: "temperature_unit_preference") == 1 {
                 ambientTemp = celciusToFahrenheit(ambientTemp)
                 temperatureUnit = "F"
@@ -256,18 +287,21 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
         case 0x0A:
             // Odometer
             var odometer:Double = Double(UInt16(lastMessage[1]) | UInt16(lastMessage[2]) << 8 | UInt16(lastMessage[3]) << 16)
+            motorcycleData.setodometer(odometer: odometer)
             if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
                 odometer = Double(kmToMiles(Double(odometer)))
                 distanceUnit = "mi"
             }
             odometerLabel.text = "\(odometer) \(distanceUnit)"
             // Trip Auto
-            var tripAuto:Double = Double((UInt32(lastMessage[4]) | UInt32(lastMessage[5]) << 8 | UInt32(lastMessage[6]) << 16) / 10)
+            let tripAuto:Double = Double((UInt32(lastMessage[4]) | UInt32(lastMessage[5]) << 8 | UInt32(lastMessage[6]) << 16) / 10)
+            motorcycleData.settripAuto(tripAuto: tripAuto)
         case 0x0C:
             // Trip 1 & Trip 2
             var tripOne:Double = Double((UInt32(lastMessage[1]) | UInt32(lastMessage[2]) << 8 | UInt32(lastMessage[3]) << 16) / 10)
             var tripTwo:Double = Double((UInt32(lastMessage[4]) | UInt32(lastMessage[5]) << 8 | UInt32(lastMessage[6]) << 16) / 10)
-            
+            motorcycleData.settripOne(tripOne: tripOne)
+            motorcycleData.settripTwo(tripTwo: tripTwo)
             if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
                 tripOne = Double(kmToMiles(Double(tripOne)))
                 tripTwo = Double(kmToMiles(Double(tripTwo)))
@@ -276,7 +310,7 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
             tripOneLabel.text = "\(tripOne) \(distanceUnit)"
             tripTwoLabel.text = "\(tripTwo) \(distanceUnit)"
         default:
-            let defaultCase = 0
+            _ = 0
             //print("Unknown Message ID")
         }
     }

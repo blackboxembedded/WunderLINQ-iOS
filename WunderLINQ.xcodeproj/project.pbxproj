@@ -7,8 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7E07AE4720F70FD8004F15B9 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E07AE4620F70FD8004F15B9 /* LocationService.swift */; };
 		7E5A767820DDEE7200B48CC6 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5A767720DDEE7200B48CC6 /* UIViewController+Extensions.swift */; };
 		7E5A767A20DDFEF700B48CC6 /* Waypoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5A767920DDFEF700B48CC6 /* Waypoint.swift */; };
+		7E6987DB20F82F1A00B4781D /* MotorcycleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6987DA20F82F1A00B4781D /* MotorcycleData.swift */; };
+		7E6987DD20F8F83500B4781D /* Faults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6987DC20F8F83500B4781D /* Faults.swift */; };
 		7EA4784E1F40B154000CEDDC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA4784D1F40B154000CEDDC /* AppDelegate.swift */; };
 		7EA478501F40B154000CEDDC /* MyMotorcycleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA4784F1F40B154000CEDDC /* MyMotorcycleViewController.swift */; };
 		7EA478531F40B154000CEDDC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7EA478511F40B154000CEDDC /* Main.storyboard */; };
@@ -42,8 +45,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7E07AE4620F70FD8004F15B9 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		7E5A767720DDEE7200B48CC6 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		7E5A767920DDFEF700B48CC6 /* Waypoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Waypoint.swift; sourceTree = "<group>"; };
+		7E6987DA20F82F1A00B4781D /* MotorcycleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotorcycleData.swift; sourceTree = "<group>"; };
+		7E6987DC20F8F83500B4781D /* Faults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Faults.swift; sourceTree = "<group>"; };
 		7EA4784A1F40B154000CEDDC /* WunderLINQ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WunderLINQ.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EA4784D1F40B154000CEDDC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7EA4784F1F40B154000CEDDC /* MyMotorcycleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMotorcycleViewController.swift; sourceTree = "<group>"; };
@@ -112,7 +118,10 @@
 			isa = PBXGroup;
 			children = (
 				7EA4784D1F40B154000CEDDC /* AppDelegate.swift */,
+				7E6987DA20F82F1A00B4781D /* MotorcycleData.swift */,
+				7E6987DC20F8F83500B4781D /* Faults.swift */,
 				7EA478701F40F273000CEDDC /* Device.swift */,
+				7E07AE4620F70FD8004F15B9 /* LocationService.swift */,
 				7EA478861F4BC775000CEDDC /* Logger.swift */,
 				7E5A767920DDFEF700B48CC6 /* Waypoint.swift */,
 				7EA478741F412B73000CEDDC /* LocationDelegate.swift */,
@@ -267,10 +276,13 @@
 				7EA478871F4BC775000CEDDC /* Logger.swift in Sources */,
 				7E5A767A20DDFEF700B48CC6 /* Waypoint.swift in Sources */,
 				7EC8C9BF1F830C5B000CEDDC /* PhoneContacts.swift in Sources */,
+				7E07AE4720F70FD8004F15B9 /* LocationService.swift in Sources */,
 				7EA478731F4115F6000CEDDC /* CompassViewController.swift in Sources */,
 				7E5A767820DDEE7200B48CC6 /* UIViewController+Extensions.swift in Sources */,
+				7E6987DB20F82F1A00B4781D /* MotorcycleData.swift in Sources */,
 				7EA478811F44F57C000CEDDC /* MusicViewController.swift in Sources */,
 				7EA4787F1F44F54E000CEDDC /* TasksTableViewController.swift in Sources */,
+				7E6987DD20F8F83500B4781D /* Faults.swift in Sources */,
 				7EA478751F412B73000CEDDC /* LocationDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

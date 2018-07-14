@@ -13,11 +13,13 @@ class Waypoint {
     var date: String?
     var longitude: String?
     var latitude: String?
+    var label: String?
     
-    init(id: Int, date: String?, latitude: String?, longitude: String?){
+    init(id: Int, date: String?, latitude: String?, longitude: String?, label: String?){
         self.id = id
         self.date = date
         self.longitude = longitude
         self.latitude = latitude
+        self.label = label
     }
 }

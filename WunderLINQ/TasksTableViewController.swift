@@ -14,9 +14,8 @@ import AVFoundation
 import SQLite3
 import Photos
 
-class TasksTableViewController: UITableViewController, AVCaptureVideoDataOutputSampleBufferDelegate, AVCaptureFileOutputRecordingDelegate, CLLocationManagerDelegate {
-    
-    
+class TasksTableViewController: UITableViewController, AVCaptureVideoDataOutputSampleBufferDelegate, AVCaptureFileOutputRecordingDelegate{
+
     //MARK: Properties
     
     var tasks = [Tasks]()
@@ -29,11 +28,9 @@ class TasksTableViewController: UITableViewController, AVCaptureVideoDataOutputS
 
     let videoCaptureSession = AVCaptureSession()
     let movieOutput = AVCaptureMovieFileOutput()
-    var previewLayer: AVCaptureVideoPreviewLayer!
     var activeInput: AVCaptureDeviceInput!
     var outputURL: URL!
     
-    var locationManager: CLLocationManager!
     var db: OpaquePointer?
     var waypoints = [Waypoint]()
     
@@ -67,7 +64,11 @@ class TasksTableViewController: UITableViewController, AVCaptureVideoDataOutputS
             fatalError("Unable to instantiate Video Recording Task")
         }
         // Trip Log Task
-        guard let task6 = Tasks(label: NSLocalizedString("Start Trip Log", comment: ""), icon: UIImage(named: "Road")) else {
+        var tripLogLabel = NSLocalizedString("Start Trip Log", comment: "")
+        if LocationService.sharedInstance.isRunning(){
+            tripLogLabel = NSLocalizedString("Stop Trip Log", comment: "")
+        }
+        guard let task6 = Tasks(label: tripLogLabel, icon: UIImage(named: "Road")) else {
             fatalError("Unable to instantiate Trip Log Task")
         }
         // Save Waypoint Task
@@ -199,16 +200,20 @@ class TasksTableViewController: UITableViewController, AVCaptureVideoDataOutputS
             break
         case 6:
             print("Trip Log")
+            if LocationService.sharedInstance.isRunning(){
+                LocationService.sharedInstance.stopUpdatingLocation()
+                self.tableView.cellForRow(at: IndexPath(row: 6, section: 0) as IndexPath)?.textLabel?.text = "Start Trip Log"
+            } else {
+                LocationService.sharedInstance.startUpdatingLocation(type: "triplog")
+                self.tableView.cellForRow(at: IndexPath(row: 6, section: 0) as IndexPath)?.textLabel?.text = "Stop Trip Log"
+            }
             break
         case 7:
             print("Save Waypoint")
-            if (CLLocationManager.locationServicesEnabled())
-            {
-                locationManager = CLLocationManager()
-                locationManager.delegate = self
-                locationManager.desiredAccuracy = kCLLocationAccuracyBest
-                locationManager.requestAlwaysAuthorization()
-                locationManager.startUpdatingLocation()
+            if LocationService.sharedInstance.isRunning(){
+                LocationService.sharedInstance.saveWaypoint()
+            } else {
+                LocationService.sharedInstance.startUpdatingLocation(type: "waypoint")
             }
             break
         default:
@@ -301,13 +306,6 @@ class TasksTableViewController: UITableViewController, AVCaptureVideoDataOutputS
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        if (!videoCaptureSession.isRunning){
-            if setupSession() {
-                print("Session Setup")
-                startSession()
-            }
-        }
         
         let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))
         swipeLeft.direction = .left
@@ -341,8 +339,9 @@ class TasksTableViewController: UITableViewController, AVCaptureVideoDataOutputS
             print("error creating table: \(errmsg)")
         }
         
-        if movieOutput.isRecording == true {
-            self.tableView.cellForRow(at: IndexPath(row: 5, section: 0) as IndexPath)?.textLabel?.text = "Stop Recording"
+        if setupSession() {
+            print("Session Setup")
+            startSession()
         }
     }
 
@@ -508,18 +507,15 @@ class TasksTableViewController: UITableViewController, AVCaptureVideoDataOutputS
             return false
         }
         
-        
         // Movie output
         if videoCaptureSession.canAddOutput(movieOutput) {
             videoCaptureSession.addOutput(movieOutput)
         }
-        
         return true
     }
     
     func setupCaptureMode(_ mode: Int) {
         // Video Mode
-        
     }
     
     //MARK:- Camera Session
@@ -571,10 +567,8 @@ class TasksTableViewController: UITableViewController, AVCaptureVideoDataOutputS
             let path = directory.appendingPathComponent(NSUUID().uuidString + ".mp4")
             return URL(fileURLWithPath: path)
         }
-        
         return nil
     }
-    
     
     func startRecording() {
         if movieOutput.isRecording == false {
@@ -646,66 +640,7 @@ class TasksTableViewController: UITableViewController, AVCaptureVideoDataOutputS
         }
         outputURL = nil
     }
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let userLocation:CLLocation = locations[0] as CLLocation
-        
-        manager.stopUpdatingLocation()
-        
-        let coordinations = CLLocationCoordinate2D(latitude: userLocation.coordinate.latitude,longitude: userLocation.coordinate.longitude)
-        
-        //creating a statement
-        var stmt: OpaquePointer?
-        
-        //the insert query
-        let queryString = "INSERT INTO records (date, latitude, longitude) VALUES (?,?,?)"
-        
-        //preparing the query
-        if sqlite3_prepare(db, queryString, -1, &stmt, nil) != SQLITE_OK{
-            let errmsg = String(cString: sqlite3_errmsg(db)!)
-            print("error preparing insert: \(errmsg)")
-            return
-        }
-        
-        //binding the parameters
-        let dateFormat = "yyyy-MM-dd hh:mm:ssSSS"
-        var dateFormatter: DateFormatter {
-            let formatter = DateFormatter()
-            formatter.dateFormat = dateFormat
-            formatter.locale = Locale.current
-            formatter.timeZone = TimeZone.current
-            return formatter
-        }
-        let date = Date().toString() as NSString
-        let latitude = "\(userLocation.coordinate.latitude)" as NSString
-        let longitude = "\(userLocation.coordinate.longitude)" as NSString
-        
-        if sqlite3_bind_text(stmt, 1, date.utf8String, -1, nil) != SQLITE_OK{
-            let errmsg = String(cString: sqlite3_errmsg(db)!)
-            print("failure binding name: \(errmsg)")
-            return
-        }
-        
-        if sqlite3_bind_text(stmt, 2, latitude.utf8String, -1, nil) != SQLITE_OK{
-            let errmsg = String(cString: sqlite3_errmsg(db)!)
-            print("failure binding name: \(errmsg)")
-            return
-        }
-        if sqlite3_bind_text(stmt, 3, longitude.utf8String, -1, nil) != SQLITE_OK{
-            let errmsg = String(cString: sqlite3_errmsg(db)!)
-            print("failure binding name: \(errmsg)")
-            return
-        }
-        
-        //executing the query to insert values
-        if sqlite3_step(stmt) != SQLITE_DONE {
-            let errmsg = String(cString: sqlite3_errmsg(db)!)
-            print("failure inserting hero: \(errmsg)")
-            return
-        }
-        readValues()
-    }
-    
+
     func readValues(){
         
         //first empty the list of watpoints
@@ -730,12 +665,14 @@ class TasksTableViewController: UITableViewController, AVCaptureVideoDataOutputS
             let date = String(cString: sqlite3_column_text(stmt, 1))
             let latitude = String(cString: sqlite3_column_text(stmt, 2))
             let longitude = String(cString: sqlite3_column_text(stmt, 3))
+            //let label = String(cString: sqlite3_column_text(stmt, 4))
             //adding values to list
-            waypoints.append(Waypoint(id: Int(id), date: String(describing: date), latitude: String(describing: latitude), longitude: String(describing: longitude)))
+            //waypoints.append(Waypoint(id: Int(id), date: String(describing: date), latitude: String(describing: latitude), longitude: String(describing: longitude), label: String(describing: label)))
             print("Database ID: \(id)")
             print("Database Date: \(date)")
             print("Database Lat: \(latitude)")
             print("Database Long: \(longitude)")
+            //print("Database Label: \(label)")
         }
     }
 
@@ -783,5 +720,4 @@ class TasksTableViewController: UITableViewController, AVCaptureVideoDataOutputS
         // Pass the selected object to the new view controller.
     }
     */
-
 }
