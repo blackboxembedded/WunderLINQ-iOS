@@ -10,7 +10,7 @@ import Foundation
 class MotorcycleData {
     static let shared = MotorcycleData()
     
-    var vin: String?
+    var vin: String? = ""
     var frontTirePressure: Double?
     var rearTirePressure: Double?
     var ambientTemperature: Double?
@@ -20,7 +20,7 @@ class MotorcycleData {
     var tripTwo: Double?
     var tripAuto: Double?
     var shifts: Int? = 0
-    var gear: String?
+    var gear: String? = ""
     var voltage: Double?
     var throttlePosition: Double?
     var frontBrake: Int? = 0

@@ -10,8 +10,6 @@ import UIKit
 import CoreBluetooth
 
 class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDelegate {
-    @IBOutlet weak var settingsButton: UIBarButtonItem!
-    @IBOutlet weak var disconnectButton: UIBarButtonItem!
     @IBOutlet weak var frontPressureLabel: UILabel!
     @IBOutlet weak var rearPressureLabel: UILabel!
     @IBOutlet weak var engineTempLabel: UILabel!
@@ -21,6 +19,8 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
     @IBOutlet weak var tripOneLabel: UILabel!
     @IBOutlet weak var tripTwoLabel: UILabel!
     @IBOutlet weak var mainView: UIView!
+    
+    var disconnectButton: UIBarButtonItem!
     
     var centralManager:CBCentralManager!
     var wunderLINQ:CBPeripheral?
@@ -50,16 +50,68 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))
         swipeRight.direction = .right
         self.view.addGestureRecognizer(swipeRight)
+
+        let backBtn = UIButton()
+        backBtn.setImage(UIImage(named: "Left"), for: .normal)
+        backBtn.addTarget(self, action: #selector(leftScreen), for: .touchUpInside)
+        let backButton = UIBarButtonItem(customView: backBtn)
+        let backButtonWidth = backButton.customView?.widthAnchor.constraint(equalToConstant: 30)
+        backButtonWidth?.isActive = true
+        let backButtonHeight = backButton.customView?.heightAnchor.constraint(equalToConstant: 30)
+        backButtonHeight?.isActive = true
+        
+        let disconnectBtn = UIButton(type: .custom)
+        let disconnectImage = UIImage(named: "Bluetooth")?.withRenderingMode(.alwaysTemplate)
+        disconnectBtn.setImage(disconnectImage, for: .normal)
+        disconnectBtn.tintColor = UIColor.red
+        disconnectBtn.addTarget(self, action: #selector(btButtonTapped), for: .touchUpInside)
+        disconnectButton = UIBarButtonItem(customView: disconnectBtn)
+        let disconnectButtonWidth = disconnectButton.customView?.widthAnchor.constraint(equalToConstant: 30)
+        disconnectButtonWidth?.isActive = true
+        let disconnectButtonHeight = disconnectButton.customView?.heightAnchor.constraint(equalToConstant: 30)
+        disconnectButtonHeight?.isActive = true
+
+        let dataBtn = UIButton()
+        dataBtn.setImage(UIImage(named: "Chart"), for: .normal)
+        dataBtn.addTarget(self, action: #selector(dataButtonTapped), for: .touchUpInside)
+        let dataButton = UIBarButtonItem(customView: dataBtn)
+        let dataButtonWidth = dataButton.customView?.widthAnchor.constraint(equalToConstant: 30)
+        dataButtonWidth?.isActive = true
+        let dataButtonHeight = dataButton.customView?.heightAnchor.constraint(equalToConstant: 30)
+        dataButtonHeight?.isActive = true
+
+        let settingsBtn = UIButton()
+        settingsBtn.setImage(UIImage(named: "Cog"), for: .normal)
+        settingsBtn.addTarget(self, action: #selector(settingsButtonTapped), for: .touchUpInside)
+        let settingsButton = UIBarButtonItem(customView: settingsBtn)
+        let settingsButtonWidth = settingsButton.customView?.widthAnchor.constraint(equalToConstant: 30)
+        settingsButtonWidth?.isActive = true
+        let settingsButtonHeight = settingsButton.customView?.heightAnchor.constraint(equalToConstant: 30)
+        settingsButtonHeight?.isActive = true
+
+        let forwardBtn = UIButton()
+        forwardBtn.setImage(UIImage(named: "Right"), for: .normal)
+        forwardBtn.addTarget(self, action: #selector(rightScreen), for: .touchUpInside)
+        let forwardButton = UIBarButtonItem(customView: forwardBtn)
+        let forwardButtonWidth = forwardButton.customView?.widthAnchor.constraint(equalToConstant: 30)
+        forwardButtonWidth?.isActive = true
+        let forwardButtonHeight = forwardButton.customView?.heightAnchor.constraint(equalToConstant: 30)
+        forwardButtonHeight?.isActive = true
+        
+        self.navigationItem.leftBarButtonItems = [backButton, disconnectButton]
+        self.navigationItem.rightBarButtonItems = [forwardButton, settingsButton, dataButton]
+
+
     }
     
     func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
         if gesture.direction == UISwipeGestureRecognizerDirection.right {
             print("Swipe Right")
-            performSegue(withIdentifier: "mainToQuickTasks", sender: [])
+            performSegue(withIdentifier: "motorcycleToTasks", sender: [])
         }
         else if gesture.direction == UISwipeGestureRecognizerDirection.left {
             print("Swipe Left")
-            performSegue(withIdentifier: "mainToCompass", sender: [])
+            performSegue(withIdentifier: "motorcycleToCompass", sender: [])
         }
     }
     
@@ -75,12 +127,13 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
     @objc func leftScreen() {
         print("leftScreen called")
         // your code here
-        performSegue(withIdentifier: "mainToQuickTasks", sender: [])
+        performSegue(withIdentifier: "motorcycleToTasks", sender: [])
     }
+    
     @objc func rightScreen() {
         print("rightScreen called")
         // your code here
-        performSegue(withIdentifier: "mainToCompass", sender: [])
+        performSegue(withIdentifier: "motorcycleToCompass", sender: [])
     }
     
     override func didReceiveMemoryWarning() {
@@ -101,6 +154,16 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
     
     @IBAction func prepareForUnwind(segue: UIStoryboardSegue) {
         
+    }
+    
+    func faultsButtonTapped() {
+        // your code here
+        print("faultsButtonTapped")
+    }
+    
+    func dataButtonTapped() {
+        // your code here
+        print("dataButtonTapped")
     }
     
     @IBAction func settingsButtonTapped(_ sender: UIBarButtonItem) {
@@ -177,8 +240,41 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
     // MARK: - Updating UI
     
     func updateMessageDisplay() {
+
+        let backBtn = UIButton()
+        backBtn.setImage(UIImage(named: "Left"), for: .normal)
+        backBtn.addTarget(self, action: #selector(leftScreen), for: .touchUpInside)
+        let backButton = UIBarButtonItem(customView: backBtn)
+        let backButtonWidth = backButton.customView?.widthAnchor.constraint(equalToConstant: 30)
+        backButtonWidth?.isActive = true
+        let backButtonHeight = backButton.customView?.heightAnchor.constraint(equalToConstant: 30)
+        backButtonHeight?.isActive = true
         
-        disconnectButton.tintColor = UIColor.blue
+        let disconnectBtn = UIButton(type: .custom)
+        let disconnectImage = UIImage(named: "Bluetooth")?.withRenderingMode(.alwaysTemplate)
+        disconnectBtn.setImage(disconnectImage, for: .normal)
+        disconnectBtn.tintColor = UIColor.blue
+        disconnectBtn.addTarget(self, action: #selector(btButtonTapped), for: .touchUpInside)
+        disconnectButton = UIBarButtonItem(customView: disconnectBtn)
+        let disconnectButtonWidth = disconnectButton.customView?.widthAnchor.constraint(equalToConstant: 30)
+        disconnectButtonWidth?.isActive = true
+        let disconnectButtonHeight = disconnectButton.customView?.heightAnchor.constraint(equalToConstant: 30)
+        disconnectButtonHeight?.isActive = true
+        
+        // TODO Only show when faults are active
+        let faultsBtn = UIButton(type: .custom)
+        let faultsImage = UIImage(named: "Alert")?.withRenderingMode(.alwaysTemplate)
+        faultsBtn.setImage(faultsImage, for: .normal)
+        faultsBtn.tintColor = UIColor.red
+        faultsBtn.addTarget(self, action: #selector(faultsButtonTapped), for: .touchUpInside)
+        let faultsButton = UIBarButtonItem(customView: faultsBtn)
+        let faultsButtonWidth = faultsButton.customView?.widthAnchor.constraint(equalToConstant: 30)
+        faultsButtonWidth?.isActive = true
+        let faultsButtonHeight = faultsButton.customView?.heightAnchor.constraint(equalToConstant: 30)
+        faultsButtonHeight?.isActive = true
+        
+        self.navigationItem.leftBarButtonItems = [backButton, disconnectButton, faultsButton]
+        
         // MARK: - TODO:
         var temperatureUnit = "C"
         var distanceUnit = "km"

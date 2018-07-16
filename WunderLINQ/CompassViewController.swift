@@ -26,7 +26,7 @@ class CompassViewController: UIViewController {
     @objc func leftScreen() {
         print("leftScreen called")
         // your code here
-        performSegue(withIdentifier: "unwindToMotorcycle", sender: [])
+        performSegue(withIdentifier: "backToMotorcycle", sender: [])
         //prepareForUnwind(segue: unwindToMotorcycle)
     }
     @objc func rightScreen() {
@@ -38,7 +38,7 @@ class CompassViewController: UIViewController {
     func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
         if gesture.direction == UISwipeGestureRecognizerDirection.right {
             print("Swipe Right")
-            performSegue(withIdentifier: "unwindToMotorcycle", sender: [])
+            performSegue(withIdentifier: "backToMotorcycle", sender: [])
         }
         else if gesture.direction == UISwipeGestureRecognizerDirection.left {
             print("Swipe Left")
@@ -95,6 +95,27 @@ class CompassViewController: UIViewController {
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))
         swipeRight.direction = .right
         self.view.addGestureRecognizer(swipeRight)
+        
+        let backBtn = UIButton()
+        backBtn.setImage(UIImage(named: "Left"), for: .normal)
+        backBtn.addTarget(self, action: #selector(leftScreen), for: .touchUpInside)
+        let backButton = UIBarButtonItem(customView: backBtn)
+        let backButtonWidth = backButton.customView?.widthAnchor.constraint(equalToConstant: 30)
+        backButtonWidth?.isActive = true
+        let backButtonHeight = backButton.customView?.heightAnchor.constraint(equalToConstant: 30)
+        backButtonHeight?.isActive = true
+        
+        let forwardBtn = UIButton()
+        forwardBtn.setImage(UIImage(named: "Right"), for: .normal)
+        forwardBtn.addTarget(self, action: #selector(rightScreen), for: .touchUpInside)
+        let forwardButton = UIBarButtonItem(customView: forwardBtn)
+        let forwardButtonWidth = forwardButton.customView?.widthAnchor.constraint(equalToConstant: 30)
+        forwardButtonWidth?.isActive = true
+        let forwardButtonHeight = forwardButton.customView?.heightAnchor.constraint(equalToConstant: 30)
+        forwardButtonHeight?.isActive = true
+        
+        self.navigationItem.leftBarButtonItems = [backButton]
+        self.navigationItem.rightBarButtonItems = [forwardButton]
         
         locationManager.delegate = locationDelegate
         

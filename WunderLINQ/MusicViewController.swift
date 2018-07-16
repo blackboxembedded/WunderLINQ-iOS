@@ -37,6 +37,27 @@ class MusicViewController: UIViewController {
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))
         swipeRight.direction = .right
         self.view.addGestureRecognizer(swipeRight)
+        
+        let backBtn = UIButton()
+        backBtn.setImage(UIImage(named: "Left"), for: .normal)
+        backBtn.addTarget(self, action: #selector(leftScreen), for: .touchUpInside)
+        let backButton = UIBarButtonItem(customView: backBtn)
+        let backButtonWidth = backButton.customView?.widthAnchor.constraint(equalToConstant: 30)
+        backButtonWidth?.isActive = true
+        let backButtonHeight = backButton.customView?.heightAnchor.constraint(equalToConstant: 30)
+        backButtonHeight?.isActive = true
+        
+        let forwardBtn = UIButton()
+        forwardBtn.setImage(UIImage(named: "Right"), for: .normal)
+        forwardBtn.addTarget(self, action: #selector(rightScreen), for: .touchUpInside)
+        let forwardButton = UIBarButtonItem(customView: forwardBtn)
+        let forwardButtonWidth = forwardButton.customView?.widthAnchor.constraint(equalToConstant: 30)
+        forwardButtonWidth?.isActive = true
+        let forwardButtonHeight = forwardButton.customView?.heightAnchor.constraint(equalToConstant: 30)
+        forwardButtonHeight?.isActive = true
+        
+        self.navigationItem.leftBarButtonItems = [backButton]
+        self.navigationItem.rightBarButtonItems = [forwardButton]
 
         // Do any additional setup after loading the view.
         musicPlayer().prepareToPlay()
@@ -73,7 +94,7 @@ class MusicViewController: UIViewController {
     func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
         if gesture.direction == UISwipeGestureRecognizerDirection.right {
             print("Swipe Right")
-            performSegue(withIdentifier: "unwindToCompass", sender: [])
+            performSegue(withIdentifier: "musicToCompass", sender: [])
         }
         else if gesture.direction == UISwipeGestureRecognizerDirection.left {
             print("Swipe Left")
@@ -94,7 +115,7 @@ class MusicViewController: UIViewController {
     
     @objc func leftScreen() {
         print("leftScreen called")
-        performSegue(withIdentifier: "unwindToCompass", sender: [])
+        performSegue(withIdentifier: "musicToCompass", sender: [])
     }
     @objc func rightScreen() {
         print("rightScreen called")

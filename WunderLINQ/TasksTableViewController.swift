@@ -282,7 +282,7 @@ class TasksTableViewController: UITableViewController, AVCaptureVideoDataOutputS
     }
     
     @objc func rightScreen() {
-        performSegue(withIdentifier: "backToBegin", sender: [])
+        performSegue(withIdentifier: "tasksTomotorcycle", sender: [])
     }
     
     @IBAction func prepareForUnwind(segue: UIStoryboardSegue) {
@@ -300,7 +300,7 @@ class TasksTableViewController: UITableViewController, AVCaptureVideoDataOutputS
         }
         else if gesture.direction == UISwipeGestureRecognizerDirection.left {
             print("Swipe Left")
-            performSegue(withIdentifier: "backToBegin", sender: [])
+            performSegue(withIdentifier: "tasksTomotorcycle", sender: [])
         }
     }
 
@@ -314,6 +314,27 @@ class TasksTableViewController: UITableViewController, AVCaptureVideoDataOutputS
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))
         swipeRight.direction = .right
         self.view.addGestureRecognizer(swipeRight)
+        
+        let backBtn = UIButton()
+        backBtn.setImage(UIImage(named: "Left"), for: .normal)
+        backBtn.addTarget(self, action: #selector(leftScreen), for: .touchUpInside)
+        let backButton = UIBarButtonItem(customView: backBtn)
+        let backButtonWidth = backButton.customView?.widthAnchor.constraint(equalToConstant: 30)
+        backButtonWidth?.isActive = true
+        let backButtonHeight = backButton.customView?.heightAnchor.constraint(equalToConstant: 30)
+        backButtonHeight?.isActive = true
+        
+        let forwardBtn = UIButton()
+        forwardBtn.setImage(UIImage(named: "Right"), for: .normal)
+        forwardBtn.addTarget(self, action: #selector(rightScreen), for: .touchUpInside)
+        let forwardButton = UIBarButtonItem(customView: forwardBtn)
+        let forwardButtonWidth = forwardButton.customView?.widthAnchor.constraint(equalToConstant: 30)
+        forwardButtonWidth?.isActive = true
+        let forwardButtonHeight = forwardButton.customView?.heightAnchor.constraint(equalToConstant: 30)
+        forwardButtonHeight?.isActive = true
+        
+        self.navigationItem.leftBarButtonItems = [backButton]
+        self.navigationItem.rightBarButtonItems = [forwardButton]
         
         loadTasks();
         
