@@ -186,6 +186,16 @@ class ContactsTableViewController: UITableViewController {
         swipeRight.direction = .right
         self.view.addGestureRecognizer(swipeRight)
         
+        let backBtn = UIButton()
+        backBtn.setImage(UIImage(named: "Left"), for: .normal)
+        backBtn.addTarget(self, action: #selector(leftScreen), for: .touchUpInside)
+        let backButton = UIBarButtonItem(customView: backBtn)
+        let backButtonWidth = backButton.customView?.widthAnchor.constraint(equalToConstant: 30)
+        backButtonWidth?.isActive = true
+        let backButtonHeight = backButton.customView?.heightAnchor.constraint(equalToConstant: 30)
+        backButtonHeight?.isActive = true
+        self.navigationItem.leftBarButtonItems = [backButton]
+        
         self.getContacts()
 
         // Uncomment the following line to preserve selection between presentations

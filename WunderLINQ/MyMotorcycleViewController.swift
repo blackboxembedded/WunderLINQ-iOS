@@ -20,7 +20,12 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
     @IBOutlet weak var tripTwoLabel: UILabel!
     @IBOutlet weak var mainView: UIView!
     
+    var backBtn: UIButton!
+    var backButton: UIBarButtonItem!
+    var disconnectBtn: UIButton!
     var disconnectButton: UIBarButtonItem!
+    var faultsBtn: UIButton!
+    var faultsButton: UIBarButtonItem!
     
     var centralManager:CBCentralManager!
     var wunderLINQ:CBPeripheral?
@@ -51,16 +56,17 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
         swipeRight.direction = .right
         self.view.addGestureRecognizer(swipeRight)
 
-        let backBtn = UIButton()
+        // Setup Buttons
+        backBtn = UIButton()
         backBtn.setImage(UIImage(named: "Left"), for: .normal)
         backBtn.addTarget(self, action: #selector(leftScreen), for: .touchUpInside)
-        let backButton = UIBarButtonItem(customView: backBtn)
+        backButton = UIBarButtonItem(customView: backBtn)
         let backButtonWidth = backButton.customView?.widthAnchor.constraint(equalToConstant: 30)
         backButtonWidth?.isActive = true
         let backButtonHeight = backButton.customView?.heightAnchor.constraint(equalToConstant: 30)
         backButtonHeight?.isActive = true
         
-        let disconnectBtn = UIButton(type: .custom)
+        disconnectBtn = UIButton(type: .custom)
         let disconnectImage = UIImage(named: "Bluetooth")?.withRenderingMode(.alwaysTemplate)
         disconnectBtn.setImage(disconnectImage, for: .normal)
         disconnectBtn.tintColor = UIColor.red
@@ -70,6 +76,18 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
         disconnectButtonWidth?.isActive = true
         let disconnectButtonHeight = disconnectButton.customView?.heightAnchor.constraint(equalToConstant: 30)
         disconnectButtonHeight?.isActive = true
+        
+        faultsBtn = UIButton(type: .custom)
+        let faultsImage = UIImage(named: "Alert")?.withRenderingMode(.alwaysTemplate)
+        faultsBtn.setImage(faultsImage, for: .normal)
+        faultsBtn.tintColor = UIColor.clear
+        faultsBtn.addTarget(self, action: #selector(self.faultsButtonTapped), for: .touchUpInside)
+        faultsButton = UIBarButtonItem(customView: faultsBtn)
+        let faultsButtonWidth = faultsButton.customView?.widthAnchor.constraint(equalToConstant: 30)
+        faultsButtonWidth?.isActive = true
+        let faultsButtonHeight = faultsButton.customView?.heightAnchor.constraint(equalToConstant: 30)
+        faultsButtonHeight?.isActive = true
+        faultsButton.isEnabled = false
 
         let dataBtn = UIButton()
         dataBtn.setImage(UIImage(named: "Chart"), for: .normal)
@@ -98,7 +116,7 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
         let forwardButtonHeight = forwardButton.customView?.heightAnchor.constraint(equalToConstant: 30)
         forwardButtonHeight?.isActive = true
         
-        self.navigationItem.leftBarButtonItems = [backButton, disconnectButton]
+        self.navigationItem.leftBarButtonItems = [backButton, disconnectButton, faultsButton]
         self.navigationItem.rightBarButtonItems = [forwardButton, settingsButton, dataButton]
 
 
@@ -159,6 +177,7 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
     func faultsButtonTapped() {
         // your code here
         print("faultsButtonTapped")
+        performSegue(withIdentifier: "motorcycleToFaults", sender: [])
     }
     
     func dataButtonTapped() {
@@ -238,40 +257,15 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
     }
     
     // MARK: - Updating UI
+
     
     func updateMessageDisplay() {
 
-        let backBtn = UIButton()
-        backBtn.setImage(UIImage(named: "Left"), for: .normal)
-        backBtn.addTarget(self, action: #selector(leftScreen), for: .touchUpInside)
-        let backButton = UIBarButtonItem(customView: backBtn)
-        let backButtonWidth = backButton.customView?.widthAnchor.constraint(equalToConstant: 30)
-        backButtonWidth?.isActive = true
-        let backButtonHeight = backButton.customView?.heightAnchor.constraint(equalToConstant: 30)
-        backButtonHeight?.isActive = true
-        
-        let disconnectBtn = UIButton(type: .custom)
-        let disconnectImage = UIImage(named: "Bluetooth")?.withRenderingMode(.alwaysTemplate)
-        disconnectBtn.setImage(disconnectImage, for: .normal)
         disconnectBtn.tintColor = UIColor.blue
-        disconnectBtn.addTarget(self, action: #selector(btButtonTapped), for: .touchUpInside)
-        disconnectButton = UIBarButtonItem(customView: disconnectBtn)
-        let disconnectButtonWidth = disconnectButton.customView?.widthAnchor.constraint(equalToConstant: 30)
-        disconnectButtonWidth?.isActive = true
-        let disconnectButtonHeight = disconnectButton.customView?.heightAnchor.constraint(equalToConstant: 30)
-        disconnectButtonHeight?.isActive = true
         
         // TODO Only show when faults are active
-        let faultsBtn = UIButton(type: .custom)
-        let faultsImage = UIImage(named: "Alert")?.withRenderingMode(.alwaysTemplate)
-        faultsBtn.setImage(faultsImage, for: .normal)
         faultsBtn.tintColor = UIColor.red
-        faultsBtn.addTarget(self, action: #selector(faultsButtonTapped), for: .touchUpInside)
-        let faultsButton = UIBarButtonItem(customView: faultsBtn)
-        let faultsButtonWidth = faultsButton.customView?.widthAnchor.constraint(equalToConstant: 30)
-        faultsButtonWidth?.isActive = true
-        let faultsButtonHeight = faultsButton.customView?.heightAnchor.constraint(equalToConstant: 30)
-        faultsButtonHeight?.isActive = true
+        faultsButton.isEnabled = true
         
         self.navigationItem.leftBarButtonItems = [backButton, disconnectButton, faultsButton]
         
@@ -289,7 +283,6 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
         case 0x01:
             //print("Message ID: 1")
             // Ambient Light
-            //int ambientLightValue = (data[6] & 0xFF) & 0x0f; // the lowest 4 bits
             let ambientLightValue = lastMessage[6] & 0x0F
             motorcycleData.setambientLight(ambientLight: Double(ambientLightValue))
         case 0x05:
@@ -405,6 +398,9 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
             }
             tripOneLabel.text = "\(tripOne) \(distanceUnit)"
             tripTwoLabel.text = "\(tripTwo) \(distanceUnit)"
+        case 0xFF:
+            // WunderLINQ errors
+            print("Error Recieved")
         default:
             _ = 0
             //print("Unknown Message ID")
