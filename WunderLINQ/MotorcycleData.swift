@@ -20,7 +20,7 @@ class MotorcycleData {
     var tripTwo: Double?
     var tripAuto: Double?
     var shifts: Int? = 0
-    var gear: String? = ""
+    var gear: String? = "-"
     var voltage: Double?
     var throttlePosition: Double?
     var frontBrake: Int? = 0

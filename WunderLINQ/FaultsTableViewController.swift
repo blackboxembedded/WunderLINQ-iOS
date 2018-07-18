@@ -9,6 +9,8 @@
 import UIKit
 
 class FaultsTableViewController: UITableViewController {
+    
+    let faults = Faults.shared
 
     @objc func leftScreen() {
         performSegue(withIdentifier: "faultsToMotorcycle", sender: [])
@@ -54,23 +56,28 @@ class FaultsTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return faults.getallActiveDesc().count
     }
 
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "FaultsTableViewCell", for: indexPath)
+        let fault = faults.getallActiveDesc()[indexPath.row]
+        
+        cell.textLabel?.text = fault
 
         // Configure the cell...
 
         return cell
     }
-    */
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("row: \(indexPath.row)")
+    }
 
     /*
     // Override to support conditional editing of the table view.

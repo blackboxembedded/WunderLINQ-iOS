@@ -42,6 +42,8 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
     var lastMessage = [UInt8]()
     
     let motorcycleData = MotorcycleData.shared
+    let faults = Faults.shared
+    var prevBrakeValue = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -258,22 +260,141 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
     
     // MARK: - Updating UI
 
-    
     func updateMessageDisplay() {
 
+        // Update Buttons
         disconnectBtn.tintColor = UIColor.blue
-        
-        // TODO Only show when faults are active
-        faultsBtn.tintColor = UIColor.red
-        faultsButton.isEnabled = true
-        
+        if (faults.getallActiveDesc().isEmpty){
+            faultsBtn.tintColor = UIColor.clear
+            faultsButton.isEnabled = false
+        } else {
+            faultsBtn.tintColor = UIColor.red
+            faultsButton.isEnabled = true
+        }
         self.navigationItem.leftBarButtonItems = [backButton, disconnectButton, faultsButton]
         
-        // MARK: - TODO:
+        // Update main display
         var temperatureUnit = "C"
         var distanceUnit = "km"
         var pressureUnit = "psi"
         
+        // Tire Pressure
+        if motorcycleData.frontTirePressure != nil {
+            var frontPressure:Double = motorcycleData.frontTirePressure!
+            switch UserDefaults.standard.integer(forKey: "pressure_unit_preference"){
+            case 0:
+                pressureUnit = "bar"
+            case 1:
+                pressureUnit = "kPa"
+                frontPressure = barTokPa(frontPressure)
+            case 2:
+                pressureUnit = "kg-f"
+                frontPressure = barTokgf(frontPressure)
+            case 3:
+                pressureUnit = "psi"
+                frontPressure = barToPsi(frontPressure)
+            default:
+                print("Unknown pressure unit setting")
+            }
+            frontPressureLabel.text = "\(Int(frontPressure)) \(pressureUnit)"
+        }
+
+        if motorcycleData.rearTirePressure != nil {
+            var rearPressure:Double = motorcycleData.rearTirePressure!
+            switch UserDefaults.standard.integer(forKey: "pressure_unit_preference"){
+            case 0:
+                pressureUnit = "bar"
+            case 1:
+                pressureUnit = "kPa"
+                rearPressure = barTokPa(rearPressure)
+            case 2:
+                pressureUnit = "kg-f"
+                rearPressure = barTokgf(rearPressure)
+            case 3:
+                pressureUnit = "psi"
+                rearPressure = barToPsi(rearPressure)
+            default:
+                print("Unknown pressure unit setting")
+            }
+            rearPressureLabel.text = "\(Int(rearPressure)) \(pressureUnit)"
+        }
+        
+        // Gear
+        if motorcycleData.gear != "" {
+            gearLabel.text = motorcycleData.getgear()
+        }
+        
+        // Engine Temperature
+        if motorcycleData.engineTemperature != nil {
+            var engineTemp:Double = motorcycleData.engineTemperature!
+            if UserDefaults.standard.integer(forKey: "temperature_unit_preference") == 1 {
+                engineTemp = celciusToFahrenheit(engineTemp)
+                temperatureUnit = "F"
+            }
+            engineTempLabel.text = "\(Int(engineTemp)) \(temperatureUnit)"
+        }
+        
+        // Ambient Temperature
+        if motorcycleData.ambientTemperature != nil {
+            var ambientTemp:Double = motorcycleData.ambientTemperature!
+            if UserDefaults.standard.integer(forKey: "temperature_unit_preference") == 1 {
+                ambientTemp = celciusToFahrenheit(ambientTemp)
+                temperatureUnit = "F"
+            }
+            ambientTempLabel.text = "\(Int(ambientTemp)) \(temperatureUnit)"
+        }
+        
+        // Odometer
+        if motorcycleData.odometer != nil {
+            var odometer:Double = motorcycleData.odometer!
+            if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
+                odometer = Double(kmToMiles(Double(odometer)))
+                distanceUnit = "mi"
+            }
+            odometerLabel.text = "\(odometer) \(distanceUnit)"
+        }
+        
+        // Trip 1
+        if motorcycleData.tripOne != nil {
+            var tripOne:Double = motorcycleData.tripOne!
+            if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
+                tripOne = Double(kmToMiles(Double(tripOne)))
+                distanceUnit = "mi"
+            }
+            tripOneLabel.text = "\(tripOne) \(distanceUnit)"
+        }
+        
+        // Trip 2
+        if motorcycleData.tripOne != nil {
+            var tripTwo:Double = motorcycleData.gettripTwo()
+            if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
+                tripTwo = Double(kmToMiles(Double(tripTwo)))
+                distanceUnit = "mi"
+            }
+            tripTwoLabel.text = "\(tripTwo) \(distanceUnit)"
+        }
+    }
+    
+    func parseMessage(_ data:Data) {
+        let dataLength = data.count / MemoryLayout<UInt8>.size
+        var dataArray = [UInt8](repeating: 0, count: dataLength)
+        (data as NSData).getBytes(&dataArray, length: dataLength * MemoryLayout<Int16>.size)
+        
+        var messageHexString = ""
+        for i in 0 ..< dataLength {
+            messageHexString += String(format: "%02X", dataArray[i])
+            if i < dataLength - 1 {
+                messageHexString += ","
+            }
+        }
+        //print(messageHexString)
+        
+        // Log raw messages
+        if UserDefaults.standard.bool(forKey: "raw_logging_preference") {
+            Logger.log(fileName: "WunderLINQ-raw.csv", entry: messageHexString)
+        }
+        
+        lastMessage = dataArray
         switch lastMessage[0] {
         case 0x00:
             //print("Message ID: 0")
@@ -287,39 +408,154 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
             motorcycleData.setambientLight(ambientLight: Double(ambientLightValue))
         case 0x05:
             //print("Message ID: 5")
+            let brakes = (lastMessage[2] >> 4) & 0x0F // the highest 4 bits.
+            if(prevBrakeValue == 0){
+                prevBrakeValue = Int(brakes)
+            }
+            if (prevBrakeValue != brakes) {
+                prevBrakeValue = Int(brakes);
+                switch (brakes) {
+                case 0x6:
+                    //Front
+                    motorcycleData.setfrontBrake(frontBrake: motorcycleData.frontBrake! + 1)
+
+                case 0x9:
+                    //Back
+                    motorcycleData.setrearBrake(rearBrake: motorcycleData.rearBrake! + 1)
+
+                case 0xA:
+                    //Both
+                    motorcycleData.setfrontBrake(frontBrake: motorcycleData.frontBrake! + 1)
+                    motorcycleData.setrearBrake(rearBrake: motorcycleData.rearBrake! + 1)
+                    
+                default:
+                    break
+                }
+            }
+            // ABS Fault
+            let absValue = lastMessage[3] & 0x0F // the lowest 4 bits
+            switch (absValue){
+            case 0x2:
+                faults.setAbsSelfDiagActive(active: false)
+                faults.setAbsSelfDiagActive(active: false)
+                faults.setAbsDeactivatedActive(active: false)
+                faults.setAbsErrorActive(active: true)
+
+            case 0x3:
+                faults.setAbsSelfDiagActive(active: true)
+                faults.setAbsDeactivatedActive(active: false)
+                faults.setAbsErrorActive(active: false)
+                break;
+            case 0x5:
+                faults.setAbsSelfDiagActive(active: false)
+                faults.setAbsDeactivatedActive(active: false)
+                faults.setAbsErrorActive(active: true)
+                
+            case 0x6:
+                faults.setAbsSelfDiagActive(active: false)
+                faults.setAbsDeactivatedActive(active: false)
+                faults.setAbsErrorActive(active: true)
+
+            case 0x7:
+                faults.setAbsSelfDiagActive(active: false)
+                faults.setAbsDeactivatedActive(active: false)
+                faults.setAbsErrorActive(active: true)
+
+            case 0x8:
+                faults.setAbsSelfDiagActive(active: false)
+                faults.setAbsDeactivatedActive(active: true)
+                faults.setAbsErrorActive(active: false)
+
+            case 0xA:
+                faults.setAbsSelfDiagActive(active: false)
+                faults.setAbsDeactivatedActive(active: false)
+                faults.setAbsErrorActive(active: true)
+
+            case 0xB:
+                faults.setAbsSelfDiagActive(active: true)
+                faults.setAbsDeactivatedActive(active: false)
+                faults.setAbsErrorActive(active: false)
+
+            case 0xD:
+                faults.setAbsSelfDiagActive(active: false)
+                faults.setAbsDeactivatedActive(active: false)
+                faults.setAbsErrorActive(active: true)
+
+            case 0xE:
+                faults.setAbsSelfDiagActive(active: false)
+                faults.setAbsDeactivatedActive(active: false)
+                faults.setAbsErrorActive(active: true)
+                
+            case 0xF:
+                faults.setAbsSelfDiagActive(active: false)
+                faults.setAbsDeactivatedActive(active: false)
+                faults.setAbsErrorActive(active: false)
+
+            default:
+                faults.setAbsSelfDiagActive(active: false)
+                faults.setAbsDeactivatedActive(active: false)
+                faults.setAbsErrorActive(active: false)
+                break;
+            }
+            
             // Tire Pressure
             if ((lastMessage[4] != 0xFF) && (lastMessage[5] != 0xFF)){
-                var frontPressure:Double = Double(lastMessage[4]) / 50
-                var rearPressure:Double = Double(lastMessage[5]) / 50
+                let frontPressure:Double = Double(lastMessage[4]) / 50
+                let rearPressure:Double = Double(lastMessage[5]) / 50
                 motorcycleData.setfrontTirePressure(frontTirePressure: frontPressure)
                 motorcycleData.setrearTirePressure(rearTirePressure: rearPressure)
-                
-                switch UserDefaults.standard.integer(forKey: "pressure_unit_preference"){
-                case 0:
-                    pressureUnit = "bar"
-                case 1:
-                    pressureUnit = "kPa"
-                    frontPressure = barTokPa(frontPressure)
-                    rearPressure = barTokPa(rearPressure)
-                case 2:
-                    pressureUnit = "kg-f"
-                    frontPressure = barTokgf(frontPressure)
-                    rearPressure = barTokgf(rearPressure)
-                case 3:
-                    pressureUnit = "psi"
-                    frontPressure = barToPsi(frontPressure)
-                    rearPressure = barToPsi(rearPressure)
-                default:
-                    print("Unknown pressure unit setting")
-                }
-                frontPressureLabel.text = "\(Int(frontPressure)) \(pressureUnit)"
-                rearPressureLabel.text = "\(Int(rearPressure)) \(pressureUnit)"
+            }
+            
+            // Tire Pressure Faults
+            switch (lastMessage[6]) {
+            case 0xC9:
+                faults.setFrontTirePressureWarningActive(active: true)
+                faults.setRearTirePressureWarningActive(active: false)
+                faults.setFrontTirePressureCriticalActive(active: false)
+                faults.setRearTirePressureCriticalActive(active: false)
+
+            case 0xCA:
+                faults.setFrontTirePressureWarningActive(active: false)
+                faults.setRearTirePressureWarningActive(active: true)
+                faults.setFrontTirePressureCriticalActive(active: false)
+                faults.setRearTirePressureCriticalActive(active: false)
+
+            case 0xCB:
+                faults.setFrontTirePressureWarningActive(active: true)
+                faults.setRearTirePressureWarningActive(active: true)
+                faults.setFrontTirePressureCriticalActive(active: false)
+                faults.setRearTirePressureCriticalActive(active: false)
+
+            case 0xD1:
+                faults.setFrontTirePressureWarningActive(active: false)
+                faults.setRearTirePressureWarningActive(active: false)
+                faults.setFrontTirePressureCriticalActive(active: true)
+                faults.setRearTirePressureCriticalActive(active: false)
+
+            case 0xD2:
+                faults.setFrontTirePressureWarningActive(active: false)
+                faults.setRearTirePressureWarningActive(active: false)
+                faults.setFrontTirePressureCriticalActive(active: false)
+                faults.setRearTirePressureCriticalActive(active: true)
+
+            case 0xD3:
+                faults.setFrontTirePressureWarningActive(active: false)
+                faults.setRearTirePressureWarningActive(active: false)
+                faults.setFrontTirePressureCriticalActive(active: true)
+                faults.setRearTirePressureCriticalActive(active: true)
+
+            default:
+                faults.setFrontTirePressureWarningActive(active: false)
+                faults.setRearTirePressureWarningActive(active: false)
+                faults.setFrontTirePressureCriticalActive(active: false)
+                faults.setRearTirePressureCriticalActive(active: false)
+
             }
             
         case 0x06:
             //print("Message ID: 6")
             // Gear
-            var gear = "--"
+            var gear = "-"
             switch lastMessage[2] {
             case 0x10:
                 gear = "1"
@@ -339,10 +575,12 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
                 gear = "-"
             default:
                 print("Unknown Gear Value")
-                gear = "--"
+                gear = "-"
+            }
+            if (motorcycleData.gear != gear && gear != "-") {
+                motorcycleData.setshifts(shifts: motorcycleData.shifts! + 1)
             }
             motorcycleData.setgear(gear: gear)
-            gearLabel.text = gear
             
             // Throttle Position
             let minPosition = 36;
@@ -351,82 +589,744 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
             motorcycleData.setthrottlePosition(throttlePosition: throttlePosition)
             
             // Engine Temperature
-            var engineTemp:Double = Double(lastMessage[4]) * 0.75 - 25
+            let engineTemp:Double = Double(lastMessage[4]) * 0.75 - 25
             motorcycleData.setengineTemperature(engineTemperature: engineTemp)
-            if UserDefaults.standard.integer(forKey: "temperature_unit_preference") == 1 {
-                engineTemp = celciusToFahrenheit(engineTemp)
-                temperatureUnit = "F"
+            
+            // ASC Fault
+            let ascValue = (lastMessage[5]  >> 4) & 0x0F // the highest 4 bits.
+            switch (ascValue){
+            case 0x1:
+                faults.setAscSelfDiagActive(active: false)
+                faults.setAscInterventionActive(active: true)
+                faults.setAscDeactivatedActive(active: false)
+                faults.setAscErrorActive(active: false)
+
+            case 0x2:
+                faults.setAscSelfDiagActive(active: false)
+                faults.setAscInterventionActive(active: false)
+                faults.setAscDeactivatedActive(active: false)
+                faults.setAscErrorActive(active: true)
+
+            case 0x3:
+                faults.setAscSelfDiagActive(active: true)
+                faults.setAscInterventionActive(active: false)
+                faults.setAscDeactivatedActive(active: false)
+                faults.setAscErrorActive(active: false)
+
+            case 0x5:
+                faults.setAscSelfDiagActive(active: false)
+                faults.setAscInterventionActive(active: false)
+                faults.setAscDeactivatedActive(active: false)
+                faults.setAscErrorActive(active: true)
+
+            case 0x6:
+                faults.setAscSelfDiagActive(active: false)
+                faults.setAscInterventionActive(active: false)
+                faults.setAscDeactivatedActive(active: false)
+                faults.setAscErrorActive(active: true)
+
+            case 0x7:
+                faults.setAscSelfDiagActive(active: false)
+                faults.setAscInterventionActive(active: false)
+                faults.setAscDeactivatedActive(active: false)
+                faults.setAscErrorActive(active: true)
+
+            case 0x8:
+                faults.setAscSelfDiagActive(active: false)
+                faults.setAscInterventionActive(active: false)
+                faults.setAscDeactivatedActive(active: true)
+                faults.setAscErrorActive(active: false)
+                break;
+            case 0x9:
+                faults.setAscSelfDiagActive(active: false)
+                faults.setAscInterventionActive(active: true)
+                faults.setAscDeactivatedActive(active: false)
+                faults.setAscErrorActive(active: false)
+
+            case 0xA:
+                faults.setAscSelfDiagActive(active: false)
+                faults.setAscInterventionActive(active: false)
+                faults.setAscDeactivatedActive(active: false)
+                faults.setAscErrorActive(active: true)
+
+            case 0xB:
+                faults.setAscSelfDiagActive(active: true)
+                faults.setAscInterventionActive(active: false)
+                faults.setAscDeactivatedActive(active: false)
+                faults.setAscErrorActive(active: false)
+
+            case 0xD:
+                faults.setAscSelfDiagActive(active: false)
+                faults.setAscInterventionActive(active: false)
+                faults.setAscDeactivatedActive(active: false)
+                faults.setAscErrorActive(active: true)
+                break;
+            case 0xE:
+                faults.setAscSelfDiagActive(active: false)
+                faults.setAscInterventionActive(active: false)
+                faults.setAscDeactivatedActive(active: false)
+                faults.setAscErrorActive(active: true)
+
+            default:
+                faults.setAscSelfDiagActive(active: false)
+                faults.setAscInterventionActive(active: false)
+                faults.setAscDeactivatedActive(active: false)
+                faults.setAscErrorActive(active: false)
+
             }
-            engineTempLabel.text = "\(Int(engineTemp)) \(temperatureUnit)"
+            
+            //Oil Fault
+            let oilValue = lastMessage[5] & 0x0F // the lowest 4 bits
+            switch (oilValue){
+            case 0x2:
+                faults.setOilLowActive(active: true)
+
+            case 0x6:
+                faults.setOilLowActive(active: true)
+
+            case 0xA:
+                faults.setOilLowActive(active: true)
+ 
+            case 0xE:
+                faults.setOilLowActive(active: true)
+
+            default:
+                faults.setOilLowActive(active: false)
+
+            }
+
         case 0x07:
             //Voltage
             let voltage = Double(lastMessage[4]) / 10
             motorcycleData.setvoltage(voltage: voltage)
+            
+            // Fuel Fault
+            let fuelValue = (lastMessage[5] >> 4) & 0x0F // the highest 4 bits.
+            switch (fuelValue){
+            case 0x2:
+                faults.setFuelFaultActive(active: true)
+                
+            case 0x6:
+                faults.setFuelFaultActive(active: true)
+
+            case 0xA:
+                faults.setFuelFaultActive(active: true)
+
+            case 0xE:
+                faults.setFuelFaultActive(active: true)
+
+            default:
+                faults.setFuelFaultActive(active: false)
+
+            }
+            // General Fault
+            let generalFault = lastMessage[5] & 0x0F // the lowest 4 bits
+            switch (generalFault){
+            case 0x1:
+                faults.setGeneralFlashingYellowActive(active: true)
+                faults.setGeneralShowsYellowActive(active: false)
+                faults.setGeneralFlashingRedActive(active: false)
+                faults.setGeneralShowsRedActive(active: false)
+
+            case 0x2:
+                faults.setGeneralFlashingYellowActive(active: false)
+                faults.setGeneralShowsYellowActive(active: true)
+                faults.setGeneralFlashingRedActive(active: false)
+                faults.setGeneralShowsRedActive(active: false)
+
+            case 0x4:
+                faults.setGeneralFlashingYellowActive(active: false)
+                faults.setGeneralShowsYellowActive(active: false)
+                faults.setGeneralFlashingRedActive(active: true)
+                faults.setGeneralShowsRedActive(active: false)
+
+            case 0x5:
+                faults.setGeneralFlashingYellowActive(active: true)
+                faults.setGeneralShowsYellowActive(active: false)
+                faults.setGeneralFlashingRedActive(active: true)
+                faults.setGeneralShowsRedActive(active: false)
+
+            case 0x6:
+                faults.setGeneralFlashingYellowActive(active: false)
+                faults.setGeneralShowsYellowActive(active: true)
+                faults.setGeneralFlashingRedActive(active: true)
+                faults.setGeneralShowsRedActive(active: false)
+
+            case 0x7:
+                faults.setGeneralFlashingYellowActive(active: false)
+                faults.setGeneralShowsYellowActive(active: false)
+                faults.setGeneralFlashingRedActive(active: true)
+                faults.setGeneralShowsRedActive(active: false)
+
+            case 0x8:
+                faults.setGeneralFlashingYellowActive(active: false)
+                faults.setGeneralShowsYellowActive(active: false)
+                faults.setGeneralFlashingRedActive(active: false)
+                faults.setGeneralShowsRedActive(active: true)
+
+            case 0x9:
+                faults.setGeneralFlashingYellowActive(active: false)
+                faults.setGeneralShowsYellowActive(active: false)
+                faults.setGeneralFlashingRedActive(active: true)
+                faults.setGeneralShowsRedActive(active: true)
+
+            case 0xA:
+                faults.setGeneralFlashingYellowActive(active: false)
+                faults.setGeneralShowsYellowActive(active: true)
+                faults.setGeneralFlashingRedActive(active: false)
+                faults.setGeneralShowsRedActive(active: true)
+
+            case 0xB:
+                faults.setGeneralFlashingYellowActive(active: false)
+                faults.setGeneralShowsYellowActive(active: false)
+                faults.setGeneralFlashingRedActive(active: false)
+                faults.setGeneralShowsRedActive(active: true)
+
+            case 0xD:
+                faults.setGeneralFlashingYellowActive(active: true)
+                faults.setGeneralShowsYellowActive(active: false)
+                faults.setGeneralFlashingRedActive(active: false)
+                faults.setGeneralShowsRedActive(active: false)
+
+            case 0xE:
+                faults.setGeneralFlashingYellowActive(active: false)
+                faults.setGeneralShowsYellowActive(active: true)
+                faults.setGeneralFlashingRedActive(active: false)
+                faults.setGeneralShowsRedActive(active: false)
+
+            default:
+                faults.setGeneralFlashingYellowActive(active: false)
+                faults.setGeneralShowsYellowActive(active: false)
+                faults.setGeneralFlashingRedActive(active: false)
+                faults.setGeneralShowsRedActive(active: false)
+
+            }
         case 0x08:
             //print("Message ID: 8")
             // Ambient Temperature
-            var ambientTemp:Double = Double(lastMessage[1]) * 0.50 - 40
+            let ambientTemp:Double = Double(lastMessage[1]) * 0.50 - 40
             motorcycleData.setambientTemperature(ambientTemperature: ambientTemp)
-            if UserDefaults.standard.integer(forKey: "temperature_unit_preference") == 1 {
-                ambientTemp = celciusToFahrenheit(ambientTemp)
-                temperatureUnit = "F"
-            }
-            ambientTempLabel.text = "\(Int(ambientTemp)) \(temperatureUnit)"
+            
+            // LAMP Faults
+            if (lastMessage[3] != 0xFF) {
+                // LAMPF 1
+                let lampfOneValue = (lastMessage[3]  >> 4) & 0x0F // the highest 4 bits.
+                switch (lampfOneValue) {
+                case 0x1:
+                    faults.setAddFrontLightOneActive(active: true)
+                    faults.setAddFrontLightTwoActive(active: false)
 
+                case 0x2:
+                    faults.setAddFrontLightOneActive(active: false)
+                    faults.setAddFrontLightTwoActive(active: true)
+
+                case 0x3:
+                    faults.setAddFrontLightOneActive(active: true)
+                    faults.setAddFrontLightTwoActive(active: true)
+
+                case 0x5:
+                    faults.setAddFrontLightOneActive(active: true)
+                    faults.setAddFrontLightTwoActive(active: false)
+
+                case 0x6:
+                    faults.setAddFrontLightOneActive(active: false)
+                    faults.setAddFrontLightTwoActive(active: true)
+
+                case 0x9:
+                    faults.setAddFrontLightOneActive(active: true)
+                    faults.setAddFrontLightTwoActive(active: false)
+
+                case 0xA:
+                    faults.setAddFrontLightOneActive(active: false)
+                    faults.setAddFrontLightTwoActive(active: true)
+
+                case 0xB:
+                    faults.setAddFrontLightOneActive(active: true)
+                    faults.setAddFrontLightTwoActive(active: true)
+
+                case 0xD:
+                    faults.setAddFrontLightOneActive(active: true)
+                    faults.setAddFrontLightTwoActive(active: false)
+
+                case 0xE:
+                    faults.setAddFrontLightOneActive(active: false)
+                    faults.setAddFrontLightTwoActive(active: true)
+
+                default:
+                    faults.setAddFrontLightOneActive(active: false)
+                    faults.setAddFrontLightTwoActive(active: false)
+
+                }
+            }
+            // LAMPF 2
+            if (lastMessage[4] != 0xFF) {
+                let lampfTwoHighValue = (lastMessage[4] >> 4) & 0x0F // the highest 4 bits.
+                switch (lampfTwoHighValue) {
+                case 0x1:
+                    faults.setDaytimeRunningActive(active: true)
+                    faults.setFrontLeftSignalActive(active: false)
+                    faults.setFrontRightSignalActive(active: false)
+
+                case 0x2:
+                    faults.setDaytimeRunningActive(active: false)
+                    faults.setFrontLeftSignalActive(active: true)
+                    faults.setFrontRightSignalActive(active: false)
+
+                case 0x3:
+                    faults.setDaytimeRunningActive(active: true)
+                    faults.setFrontLeftSignalActive(active: true)
+                    faults.setFrontRightSignalActive(active: false)
+
+                case 0x4:
+                    faults.setDaytimeRunningActive(active: false)
+                    faults.setFrontLeftSignalActive(active: false)
+                    faults.setFrontRightSignalActive(active: true)
+
+                case 0x5:
+                    faults.setDaytimeRunningActive(active: true)
+                    faults.setFrontLeftSignalActive(active: false)
+                    faults.setFrontRightSignalActive(active: true)
+
+                case 0x6:
+                    faults.setDaytimeRunningActive(active: false)
+                    faults.setFrontLeftSignalActive(active: true)
+                    faults.setFrontRightSignalActive(active: true)
+                    
+                case 0x7:
+                    faults.setDaytimeRunningActive(active: true)
+                    faults.setFrontLeftSignalActive(active: true)
+                    faults.setFrontRightSignalActive(active: true)
+                    
+                case 0x9:
+                    faults.setDaytimeRunningActive(active: true)
+                    faults.setFrontLeftSignalActive(active: false)
+                    faults.setFrontRightSignalActive(active: false)
+
+                case 0xA:
+                    faults.setDaytimeRunningActive(active: false)
+                    faults.setFrontLeftSignalActive(active: true)
+                    faults.setFrontRightSignalActive(active: false)
+
+                case 0xB:
+                    faults.setDaytimeRunningActive(active: true)
+                    faults.setFrontLeftSignalActive(active: true)
+                    faults.setFrontRightSignalActive(active: false)
+
+                case 0xC:
+                    faults.setDaytimeRunningActive(active: false)
+                    faults.setFrontLeftSignalActive(active: false)
+                    faults.setFrontRightSignalActive(active: true)
+
+                case 0xD:
+                    faults.setDaytimeRunningActive(active: true);
+                    faults.setFrontLeftSignalActive(active: false);
+                    faults.setFrontRightSignalActive(active: true);
+
+                case 0xE:
+                    faults.setDaytimeRunningActive(active: false)
+                    faults.setFrontLeftSignalActive(active: true)
+                    faults.setFrontRightSignalActive(active: true)
+                    
+                case 0xF:
+                    faults.setDaytimeRunningActive(active: true)
+                    faults.setFrontLeftSignalActive(active: true)
+                    faults.setFrontRightSignalActive(active: true)
+                    
+                default:
+                    faults.setDaytimeRunningActive(active: false)
+                    faults.setFrontLeftSignalActive(active: false)
+                    faults.setFrontRightSignalActive(active: false)
+
+                }
+                let lampfTwoLowValue = data[4] & 0x0F // the lowest 4 bits
+                switch (lampfTwoLowValue) {
+                case 0x1:
+                    faults.setFrontParkingLightOneActive(active: true)
+                    faults.setFrontParkingLightTwoActive(active: false)
+                    faults.setLowBeamActive(active: false)
+                    faults.setHighBeamActive(active: false)
+
+                case 0x2:
+                    faults.setFrontParkingLightOneActive(active: false)
+                    faults.setFrontParkingLightTwoActive(active: true)
+                    faults.setLowBeamActive(active: false)
+                    faults.setHighBeamActive(active: false)
+
+                case 0x3:
+                    faults.setFrontParkingLightOneActive(active: true)
+                    faults.setFrontParkingLightTwoActive(active: true)
+                    faults.setLowBeamActive(active: false)
+                    faults.setHighBeamActive(active: false)
+
+                case 0x4:
+                    faults.setFrontParkingLightOneActive(active: false)
+                    faults.setFrontParkingLightTwoActive(active: false)
+                    faults.setLowBeamActive(active: true)
+                    faults.setHighBeamActive(active: false)
+
+                case 0x5:
+                    faults.setFrontParkingLightOneActive(active: true);
+                    faults.setFrontParkingLightTwoActive(active: false)
+                    faults.setLowBeamActive(active: true)
+                    faults.setHighBeamActive(active: false)
+
+                case 0x6:
+                    faults.setFrontParkingLightOneActive(active: false)
+                    faults.setFrontParkingLightTwoActive(active: true)
+                    faults.setLowBeamActive(active: true)
+                    faults.setHighBeamActive(active: false)
+
+                case 0x7:
+                    faults.setFrontParkingLightOneActive(active: true)
+                    faults.setFrontParkingLightTwoActive(active: true)
+                    faults.setLowBeamActive(active: true)
+                    faults.setHighBeamActive(active: false)
+
+                case 0x8:
+                    faults.setFrontParkingLightOneActive(active: false)
+                    faults.setFrontParkingLightTwoActive(active: false)
+                    faults.setLowBeamActive(active: false)
+                    faults.setHighBeamActive(active: true)
+
+                case 0x9:
+                    faults.setFrontParkingLightOneActive(active: true)
+                    faults.setFrontParkingLightTwoActive(active: false)
+                    faults.setLowBeamActive(active: false)
+                    faults.setHighBeamActive(active: true)
+
+                case 0xA:
+                    faults.setFrontParkingLightOneActive(active: false)
+                    faults.setFrontParkingLightTwoActive(active: true)
+                    faults.setLowBeamActive(active: false)
+                    faults.setHighBeamActive(active: true)
+
+                case 0xB:
+                    faults.setFrontParkingLightOneActive(active: true)
+                    faults.setFrontParkingLightTwoActive(active: true)
+                    faults.setLowBeamActive(active: false)
+                    faults.setHighBeamActive(active: true)
+
+                case 0xC:
+                    faults.setFrontParkingLightOneActive(active: false)
+                    faults.setFrontParkingLightTwoActive(active: false)
+                    faults.setLowBeamActive(active: true)
+                    faults.setHighBeamActive(active: true)
+
+                case 0xD:
+                    faults.setFrontParkingLightOneActive(active: true)
+                    faults.setFrontParkingLightTwoActive(active: false)
+                    faults.setLowBeamActive(active: true)
+                    faults.setHighBeamActive(active: true)
+
+                case 0xE:
+                    faults.setFrontParkingLightOneActive(active: false)
+                    faults.setFrontParkingLightTwoActive(active: true)
+                    faults.setLowBeamActive(active: true)
+                    faults.setHighBeamActive(active: true)
+
+                case 0xF:
+                    faults.setFrontParkingLightOneActive(active: true)
+                    faults.setFrontParkingLightTwoActive(active: true)
+                    faults.setLowBeamActive(active: true)
+                    faults.setHighBeamActive(active: true)
+
+                default:
+                    faults.setFrontParkingLightOneActive(active: false)
+                    faults.setFrontParkingLightTwoActive(active: false)
+                    faults.setLowBeamActive(active: false)
+                    faults.setHighBeamActive(active: false)
+
+                }
+            }
+            
+            // LAMPF 3
+            if (lastMessage[5] != 0xFF) {
+                let lampfThreeHighValue = (lastMessage[5] >> 4) & 0x0F // the highest 4 bits.
+                switch (lampfThreeHighValue) {
+                case 0x1:
+                    faults.setRearRightSignalActive(active: true)
+
+                case 0x3:
+                    faults.setRearRightSignalActive(active: true)
+
+                case 0x5:
+                    faults.setRearRightSignalActive(active: true)
+
+                case 0x7:
+                    faults.setRearRightSignalActive(active: true)
+
+                case 0x9:
+                    faults.setRearRightSignalActive(active: true)
+
+                case 0xB:
+                    faults.setRearRightSignalActive(active: true)
+
+                case 0xD:
+                    faults.setRearRightSignalActive(active: true)
+
+                case 0xF:
+                    faults.setRearRightSignalActive(active: true)
+                    
+                default:
+                    faults.setRearRightSignalActive(active: false)
+
+                }
+                let lampfThreeLowValue = lastMessage[5] & 0x0F // the lowest 4 bits
+                switch (lampfThreeLowValue) {
+                case 0x1:
+                    faults.setRearLeftSignalActive(active: false)
+                    faults.setRearLightActive(active: true)
+                    faults.setBrakeLightActive(active: false)
+                    faults.setLicenseLightActive(active: false)
+
+                case 0x2:
+                    faults.setRearLeftSignalActive(active: false)
+                    faults.setRearLightActive(active: false)
+                    faults.setBrakeLightActive(active: true)
+                    faults.setLicenseLightActive(active: false)
+
+                case 0x3:
+                    faults.setRearLeftSignalActive(active: false)
+                    faults.setRearLightActive(active: true)
+                    faults.setBrakeLightActive(active: true)
+                    faults.setLicenseLightActive(active: false)
+
+                case 0x4:
+                    faults.setRearLeftSignalActive(active: false)
+                    faults.setRearLightActive(active: false)
+                    faults.setBrakeLightActive(active: false)
+                    faults.setLicenseLightActive(active: true)
+
+                case 0x5:
+                    faults.setRearLeftSignalActive(active: true)
+                    faults.setRearLightActive(active: false)
+                    faults.setBrakeLightActive(active: false)
+                    faults.setLicenseLightActive(active: true)
+
+                case 0x6:
+                    faults.setRearLeftSignalActive(active: false)
+                    faults.setRearLightActive(active: false)
+                    faults.setBrakeLightActive(active: true)
+                    faults.setLicenseLightActive(active: true)
+
+                case 0x7:
+                    faults.setRearLeftSignalActive(active: false)
+                    faults.setRearLightActive(active: true)
+                    faults.setBrakeLightActive(active: true)
+                    faults.setLicenseLightActive(active: true)
+
+                case 0x8:
+                    faults.setRearLeftSignalActive(active: true)
+                    faults.setRearLightActive(active: false)
+                    faults.setBrakeLightActive(active: false)
+                    faults.setLicenseLightActive(active: false)
+
+                case 0x9:
+                    faults.setRearLeftSignalActive(active: true)
+                    faults.setRearLightActive(active: true)
+                    faults.setBrakeLightActive(active: false)
+                    faults.setLicenseLightActive(active: false)
+
+                case 0xA:
+                    faults.setRearLeftSignalActive(active: true)
+                    faults.setRearLightActive(active: false)
+                    faults.setBrakeLightActive(active: true)
+                    faults.setLicenseLightActive(active: false)
+
+                case 0xC:
+                    faults.setRearLeftSignalActive(active: true)
+                    faults.setRearLightActive(active: false)
+                    faults.setBrakeLightActive(active: false)
+                    faults.setLicenseLightActive(active: true)
+
+                case 0xD:
+                    faults.setRearLeftSignalActive(active: true)
+                    faults.setRearLightActive(active: true)
+                    faults.setBrakeLightActive(active: true)
+                    faults.setLicenseLightActive(active: false)
+
+                case 0xE:
+                    faults.setRearLeftSignalActive(active: true)
+                    faults.setRearLightActive(active: false)
+                    faults.setBrakeLightActive(active: true)
+                    faults.setLicenseLightActive(active: true)
+
+                case 0xF:
+                    faults.setRearLeftSignalActive(active: true)
+                    faults.setRearLightActive(active: true)
+                    faults.setBrakeLightActive(active: true)
+                    faults.setLicenseLightActive(active: true)
+
+                default:
+                    faults.setRearLeftSignalActive(active: false)
+                    faults.setRearLightActive(active: false)
+                    faults.setBrakeLightActive(active: false)
+                    faults.setLicenseLightActive(active: false)
+
+                }
+            }
+            
+            // LAMPF 4
+            if (lastMessage[6] != 0xFF) {
+                let lampfFourHighValue = (lastMessage[6] >> 4) & 0x0F // the highest 4 bits.
+                switch (lampfFourHighValue) {
+                case 0x1:
+                    faults.setRearFogLightActive(active: true)
+
+                case 0x3:
+                    faults.setRearFogLightActive(active: true)
+
+                case 0x5:
+                    faults.setRearFogLightActive(active: true)
+
+                case 0x7:
+                    faults.setRearFogLightActive(active: true)
+
+                case 0x9:
+                    faults.setRearFogLightActive(active: true)
+
+                case 0xB:
+                    faults.setRearFogLightActive(active: true)
+
+                case 0xD:
+                    faults.setRearFogLightActive(active: true)
+
+                case 0xF:
+                    faults.setRearFogLightActive(active: true)
+                default:
+                    faults.setRearFogLightActive(active: false)
+
+                }
+                let lampfFourLowValue = lastMessage[6] & 0x0F // the lowest 4 bits
+                switch (lampfFourLowValue) {
+                case 0x1:
+                    faults.setAddDippedLightActive(active: true)
+                    faults.setAddBrakeLightActive(active: false)
+                    faults.setFrontLampOneLightActive(active: false)
+                    faults.setFrontLampTwoLightActive(active: false)
+
+                case 0x2:
+                    faults.setAddDippedLightActive(active: false)
+                    faults.setAddBrakeLightActive(active: true)
+                    faults.setFrontLampOneLightActive(active: false)
+                    faults.setFrontLampTwoLightActive(active: false)
+
+                case 0x3:
+                    faults.setAddDippedLightActive(active: true)
+                    faults.setAddBrakeLightActive(active: true)
+                    faults.setFrontLampOneLightActive(active: false)
+                    faults.setFrontLampTwoLightActive(active: false)
+
+                case 0x4:
+                    faults.setAddDippedLightActive(active: false)
+                    faults.setAddBrakeLightActive(active: false)
+                    faults.setFrontLampOneLightActive(active: true)
+                    faults.setFrontLampTwoLightActive(active: false)
+ 
+                case 0x5:
+                    faults.setAddDippedLightActive(active: true)
+                    faults.setAddBrakeLightActive(active: false)
+                    faults.setFrontLampOneLightActive(active: true)
+                    faults.setFrontLampTwoLightActive(active: false)
+
+                case 0x6:
+                    faults.setAddDippedLightActive(active: false)
+                    faults.setAddBrakeLightActive(active: true)
+                    faults.setFrontLampOneLightActive(active: true)
+                    faults.setFrontLampTwoLightActive(active: false)
+
+                case 0x7:
+                    faults.setAddDippedLightActive(active: true)
+                    faults.setAddBrakeLightActive(active: true)
+                    faults.setFrontLampOneLightActive(active: true)
+                    faults.setFrontLampTwoLightActive(active: false)
+
+                case 0x8:
+                    faults.setAddDippedLightActive(active: false)
+                    faults.setAddBrakeLightActive(active: false)
+                    faults.setFrontLampOneLightActive(active: false)
+                    faults.setFrontLampTwoLightActive(active: true)
+
+                case 0x9:
+                    faults.setAddDippedLightActive(active: true)
+                    faults.setAddBrakeLightActive(active: false)
+                    faults.setFrontLampOneLightActive(active: false)
+                    faults.setFrontLampTwoLightActive(active: true)
+
+                case 0xA:
+                    faults.setAddDippedLightActive(active: false)
+                    faults.setAddBrakeLightActive(active: true)
+                    faults.setFrontLampOneLightActive(active: false)
+                    faults.setFrontLampTwoLightActive(active: true)
+
+                case 0xB:
+                    faults.setAddDippedLightActive(active: true)
+                    faults.setAddBrakeLightActive(active: true)
+                    faults.setFrontLampOneLightActive(active: false)
+                    faults.setFrontLampTwoLightActive(active: true)
+
+                case 0xC:
+                    faults.setAddDippedLightActive(active: false)
+                    faults.setAddBrakeLightActive(active: false)
+                    faults.setFrontLampOneLightActive(active: true)
+                    faults.setFrontLampTwoLightActive(active: true)
+
+                case 0xD:
+                    faults.setAddDippedLightActive(active: true)
+                    faults.setAddBrakeLightActive(active: false)
+                    faults.setFrontLampOneLightActive(active: true)
+                    faults.setFrontLampTwoLightActive(active: true)
+
+                case 0xE:
+                    faults.setAddDippedLightActive(active: false)
+                    faults.setAddBrakeLightActive(active: true)
+                    faults.setFrontLampOneLightActive(active: true)
+                    faults.setFrontLampTwoLightActive(active: true)
+ 
+                case 0xF:
+                    faults.setAddDippedLightActive(active: true)
+                    faults.setAddBrakeLightActive(active: true)
+                    faults.setFrontLampOneLightActive(active: true)
+                    faults.setFrontLampTwoLightActive(active: true)
+
+                default:
+                    faults.setAddDippedLightActive(active: false)
+                    faults.setAddBrakeLightActive(active: false)
+                    faults.setFrontLampOneLightActive(active: false)
+                    faults.setFrontLampTwoLightActive(active: false)
+
+                }
+            }
+            
         case 0x0A:
             // Odometer
-            var odometer:Double = Double(UInt16(lastMessage[1]) | UInt16(lastMessage[2]) << 8 | UInt16(lastMessage[3]) << 16)
+            let odometer:Double = Double(UInt16(lastMessage[1]) | UInt16(lastMessage[2]) << 8 | UInt16(lastMessage[3]) << 16)
             motorcycleData.setodometer(odometer: odometer)
-            if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
-                odometer = Double(kmToMiles(Double(odometer)))
-                distanceUnit = "mi"
-            }
-            odometerLabel.text = "\(odometer) \(distanceUnit)"
+
             // Trip Auto
             let tripAuto:Double = Double((UInt32(lastMessage[4]) | UInt32(lastMessage[5]) << 8 | UInt32(lastMessage[6]) << 16) / 10)
             motorcycleData.settripAuto(tripAuto: tripAuto)
+            
         case 0x0C:
             // Trip 1 & Trip 2
-            var tripOne:Double = Double((UInt32(lastMessage[1]) | UInt32(lastMessage[2]) << 8 | UInt32(lastMessage[3]) << 16) / 10)
-            var tripTwo:Double = Double((UInt32(lastMessage[4]) | UInt32(lastMessage[5]) << 8 | UInt32(lastMessage[6]) << 16) / 10)
+            let tripOne:Double = Double((UInt32(lastMessage[1]) | UInt32(lastMessage[2]) << 8 | UInt32(lastMessage[3]) << 16) / 10)
+            let tripTwo:Double = Double((UInt32(lastMessage[4]) | UInt32(lastMessage[5]) << 8 | UInt32(lastMessage[6]) << 16) / 10)
             motorcycleData.settripOne(tripOne: tripOne)
             motorcycleData.settripTwo(tripTwo: tripTwo)
-            if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
-                tripOne = Double(kmToMiles(Double(tripOne)))
-                tripTwo = Double(kmToMiles(Double(tripTwo)))
-                distanceUnit = "mi"
-            }
-            tripOneLabel.text = "\(tripOne) \(distanceUnit)"
-            tripTwoLabel.text = "\(tripTwo) \(distanceUnit)"
+
         case 0xFF:
             // WunderLINQ errors
             print("Error Recieved")
+            faults.setUartErrorActive(active: true)
+            if (lastMessage[7] == 0xF0){
+                faults.setUartCommActive(active: true)
+            }
+            
         default:
             _ = 0
             //print("Unknown Message ID")
         }
-    }
-    
-    func displayMessage(_ data:Data) {
-        let dataLength = data.count / MemoryLayout<UInt8>.size
-        var dataArray = [UInt8](repeating: 0, count: dataLength)
-        (data as NSData).getBytes(&dataArray, length: dataLength * MemoryLayout<Int16>.size)
-        
-        var messageHexString = ""
-        for i in 0 ..< dataLength {
-            messageHexString += String(format: "%02X", dataArray[i])
-            if i < dataLength - 1 {
-                messageHexString += ","
-            }
-        }
-        //print(messageHexString)
-        
-        // Log raw messages
-        if UserDefaults.standard.bool(forKey: "raw_logging_preference") {
-            Logger.log(fileName: "WunderLINQ-raw.csv", entry: messageHexString)
-        }
 
-        lastMessage = dataArray
         if UIApplication.shared.applicationState == .active {
             updateMessageDisplay()
         }
@@ -642,7 +1542,7 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
         // extract the data from the characteristic's value property and display the value based on the characteristic type
         if let dataBytes = characteristic.value {
             if characteristic.uuid == CBUUID(string: Device.MessageCharacteristicUUID) {
-                displayMessage(dataBytes)
+                parseMessage(dataBytes)
             }
         }
     }

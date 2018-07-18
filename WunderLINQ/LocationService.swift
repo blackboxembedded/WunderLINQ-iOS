@@ -102,12 +102,13 @@ class LocationService: NSObject, CLLocationManagerDelegate {
         // use for real time update location
         updateLocation(location)
         
+        // TODO check for nil values like updateDisplay
         if type.contains("triplog"){
-            print("TripLOG entry saved")
             let latitude:String = "\(currentLocation!.coordinate.latitude)"
             let longitude:String = "\(currentLocation!.coordinate.longitude)"
             let altitude:String = "\(currentLocation!.altitude)"
             let speed:String = "\(currentLocation!.speed)"
+            
             let gear = motorcycleData.getgear()
             let engineTemp = motorcycleData.getengineTemperature()
             let ambientTemp = motorcycleData.getambientLight()
