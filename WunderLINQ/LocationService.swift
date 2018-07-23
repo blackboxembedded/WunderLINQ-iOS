@@ -175,7 +175,7 @@ class LocationService: NSObject, CLLocationManagerDelegate {
         var stmt: OpaquePointer?
         
         //the insert query
-        let queryString = "INSERT INTO records (date, latitude, longitude) VALUES (?,?,?)"
+        let queryString = "INSERT INTO records (date, latitude, longitude, label) VALUES (?,?,?,?)"
         
         //preparing the query
         if sqlite3_prepare(db, queryString, -1, &stmt, nil) != SQLITE_OK{
@@ -185,7 +185,7 @@ class LocationService: NSObject, CLLocationManagerDelegate {
         }
         
         //binding the parameters
-        let dateFormat = "yyyy-MM-dd hh:mm:ssSSS"
+        let dateFormat = "yyyy-MM-dd hh:mm"
         var dateFormatter: DateFormatter {
             let formatter = DateFormatter()
             formatter.dateFormat = dateFormat
@@ -194,21 +194,30 @@ class LocationService: NSObject, CLLocationManagerDelegate {
             return formatter
         }
         let date = Date().toString() as NSString
-        let latitude = "\(String(describing: currentLocation?.coordinate.latitude))" as NSString
-        let longitude = "\(String(describing: currentLocation?.coordinate.longitude))" as NSString
+        var latitude : String
+        latitude = "\(currentLocation?.coordinate.latitude ?? 0)"
+        var longitude : String
+        longitude = "\(currentLocation?.coordinate.longitude ?? 0)"
+        let label : String = ""
+        print("Before Database Lat: \(latitude)")
+        print("Before Database Long: \(longitude)")
         
         if sqlite3_bind_text(stmt, 1, date.utf8String, -1, nil) != SQLITE_OK{
             let errmsg = String(cString: sqlite3_errmsg(db)!)
             print("failure binding name: \(errmsg)")
             return
         }
-        
-        if sqlite3_bind_text(stmt, 2, latitude.utf8String, -1, nil) != SQLITE_OK{
+        if sqlite3_bind_double(stmt, 2, (currentLocation?.coordinate.latitude)!) != SQLITE_OK{
             let errmsg = String(cString: sqlite3_errmsg(db)!)
             print("failure binding name: \(errmsg)")
             return
         }
-        if sqlite3_bind_text(stmt, 3, longitude.utf8String, -1, nil) != SQLITE_OK{
+        if sqlite3_bind_double(stmt, 3, (currentLocation?.coordinate.longitude)!) != SQLITE_OK{
+            let errmsg = String(cString: sqlite3_errmsg(db)!)
+            print("failure binding name: \(errmsg)")
+            return
+        }
+        if sqlite3_bind_text(stmt, 4, label, -1, nil) != SQLITE_OK{
             let errmsg = String(cString: sqlite3_errmsg(db)!)
             print("failure binding name: \(errmsg)")
             return
@@ -217,7 +226,7 @@ class LocationService: NSObject, CLLocationManagerDelegate {
         //executing the query to insert values
         if sqlite3_step(stmt) != SQLITE_DONE {
             let errmsg = String(cString: sqlite3_errmsg(db)!)
-            print("failure inserting hero: \(errmsg)")
+            print("failure inserting wapoint: \(errmsg)")
             return
         }
         

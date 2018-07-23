@@ -26,6 +26,8 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
     var disconnectButton: UIBarButtonItem!
     var faultsBtn: UIButton!
     var faultsButton: UIBarButtonItem!
+    var dataBtn: UIButton!
+    var dataButton: UIBarButtonItem!
     
     var centralManager:CBCentralManager!
     var wunderLINQ:CBPeripheral?
@@ -44,6 +46,15 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
     let motorcycleData = MotorcycleData.shared
     let faults = Faults.shared
     var prevBrakeValue = 0
+    
+    fileprivate var popoverList = [NSLocalizedString("Trip Logs", comment: ""), NSLocalizedString("Waypoints", comment: "")]
+    
+    fileprivate var popover: Popover!
+    fileprivate var popoverOptions: [PopoverOption] = [
+        .type(.auto),
+        .blackOverlayColor(UIColor(white: 0.0, alpha: 0.6))
+    ]
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -91,10 +102,10 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
         faultsButtonHeight?.isActive = true
         faultsButton.isEnabled = false
 
-        let dataBtn = UIButton()
+        dataBtn = UIButton()
         dataBtn.setImage(UIImage(named: "Chart"), for: .normal)
         dataBtn.addTarget(self, action: #selector(dataButtonTapped), for: .touchUpInside)
-        let dataButton = UIBarButtonItem(customView: dataBtn)
+        dataButton = UIBarButtonItem(customView: dataBtn)
         let dataButtonWidth = dataButton.customView?.widthAnchor.constraint(equalToConstant: 30)
         dataButtonWidth?.isActive = true
         let dataButtonHeight = dataButton.customView?.heightAnchor.constraint(equalToConstant: 30)
@@ -185,6 +196,24 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
     func dataButtonTapped() {
         // your code here
         print("dataButtonTapped")
+        let tableView = UITableView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 90))
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.isScrollEnabled = false
+        self.popover = Popover(options: self.popoverOptions)
+        self.popover.willShowHandler = {
+            print("willShowHandler")
+        }
+        self.popover.didShowHandler = {
+            print("didDismissHandler")
+        }
+        self.popover.willDismissHandler = {
+            print("willDismissHandler")
+        }
+        self.popover.didDismissHandler = {
+            print("didDismissHandler")
+        }
+        self.popover.show(tableView, fromView: self.dataBtn)
     }
     
     @IBAction func settingsButtonTapped(_ sender: UIBarButtonItem) {
@@ -1575,4 +1604,35 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
         return fahrenheit
     }
     
+}
+
+extension MyMotorcycleViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("row: \(indexPath.row)")
+        switch(indexPath.row) {
+        case 0:
+            print("option 0")
+            performSegue(withIdentifier: "motorcycleToTrips", sender: self)
+        case 1:
+            print("option 1")
+            performSegue(withIdentifier: "motorcycleToWaypoints", sender: self)
+        default:
+            print("Unknown option")
+        }
+        self.popover.dismiss()
+    }
+}
+
+extension MyMotorcycleViewController: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
+        return popoverList.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
+        cell.textLabel?.text = self.popoverList[(indexPath as NSIndexPath).row]
+        return cell
+    }
 }

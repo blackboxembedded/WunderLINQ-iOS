@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import GoogleMaps
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,6 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         // Keep screen unlocked
         application.isIdleTimerDisabled = true
+        GMSServices.provideAPIKey("***REMOVED***")
         return true
     }
 

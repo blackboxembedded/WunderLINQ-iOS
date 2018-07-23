@@ -15,6 +15,8 @@
 "Bluetooth LE is turned on and ready for communication." = "Bluetooth LE is turned on and ready for communication.";
 "Central Manager State" = "Central Manager State";
 "OK" = "OK";
+"Trip Logs" = "Trip Logs";
+"Waypoints" = "Waypoints";
 
 // TasksTableViewController
 "Navigation" = "Navigation";
