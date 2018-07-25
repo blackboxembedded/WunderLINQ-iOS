@@ -10,6 +10,9 @@ import UIKit
 
 class TripsTableViewController: UITableViewController {
     
+    var fileName : String?
+    var csvFileNames : [String]?
+    
     @objc func leftScreen() {
         performSegue(withIdentifier: "tripsToMotorcycle", sender: [])
     }
@@ -37,6 +40,25 @@ class TripsTableViewController: UITableViewController {
         let backButtonHeight = backButton.customView?.heightAnchor.constraint(equalToConstant: 30)
         backButtonHeight?.isActive = true
         self.navigationItem.leftBarButtonItems = [backButton]
+        
+        // Get the document directory url
+        let documentsUrl =  FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        
+        do {
+            // Get the directory contents urls (including subfolders urls)
+            let directoryContents = try FileManager.default.contentsOfDirectory(at: documentsUrl, includingPropertiesForKeys: nil, options: [])
+            print(directoryContents)
+            
+            // if you want to filter the directory contents you can do like this:
+            let csvFiles = directoryContents.filter{ $0.pathExtension == "csv" }
+            print("csv urls:",csvFiles)
+            csvFileNames = csvFiles.map{ $0.deletingPathExtension().lastPathComponent }
+            print("csv list:", csvFileNames)
+            
+            
+        } catch {
+            print(error.localizedDescription)
+        }
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -54,23 +76,31 @@ class TripsTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return (csvFileNames?.count)!
     }
 
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TripsTableViewCell", for: indexPath)
 
+        let file = csvFileNames![indexPath.row]
+        cell.textLabel?.text = file
         // Configure the cell...
 
         return cell
     }
-    */
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        // Create a variable that you want to send based on the destination view controller
+        // You can get a reference to the data by using indexPath shown below
+        fileName = csvFileNames?[indexPath.row]
+        performSegue(withIdentifier: "tripsToTrip", sender: self)
+    }
 
     /*
     // Override to support conditional editing of the table view.
@@ -116,5 +146,11 @@ class TripsTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "tripsToTrip") {
+            let vc = segue.destination as! TripViewController
+            vc.fileName = fileName
+        }
+    }
 }

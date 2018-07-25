@@ -31,6 +31,7 @@
 		7E068BF42102C8820076EAAD /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E068BE62102C8820076EAAD /* CoreData.framework */; };
 		7E068BF52102C8820076EAAD /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E068BE72102C8820076EAAD /* QuartzCore.framework */; };
 		7E068BF62102D1A90076EAAD /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7E068BD62102C6DB0076EAAD /* GoogleMaps.bundle */; };
+		7E068BF8210645290076EAAD /* TripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E068BF7210645290076EAAD /* TripViewController.swift */; };
 		7E07AE4720F70FD8004F15B9 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E07AE4620F70FD8004F15B9 /* LocationService.swift */; };
 		7E5A767820DDEE7200B48CC6 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5A767720DDEE7200B48CC6 /* UIViewController+Extensions.swift */; };
 		7E5A767A20DDFEF700B48CC6 /* Waypoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5A767920DDFEF700B48CC6 /* Waypoint.swift */; };
@@ -93,6 +94,7 @@
 		7E068BE52102C8820076EAAD /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		7E068BE62102C8820076EAAD /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		7E068BE72102C8820076EAAD /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		7E068BF7210645290076EAAD /* TripViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripViewController.swift; sourceTree = "<group>"; };
 		7E07AE4620F70FD8004F15B9 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		7E5A767720DDEE7200B48CC6 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		7E5A767920DDFEF700B48CC6 /* Waypoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Waypoint.swift; sourceTree = "<group>"; };
@@ -222,6 +224,7 @@
 				7E6987DC20F8F83500B4781D /* Faults.swift */,
 				7E068BC220FD8A100076EAAD /* FaultsTableViewController.swift */,
 				7E068BC6210190CB0076EAAD /* TripsTableViewController.swift */,
+				7E068BF7210645290076EAAD /* TripViewController.swift */,
 				7E5A767920DDFEF700B48CC6 /* Waypoint.swift */,
 				7E068BC8210190F00076EAAD /* WaypointsTableViewController.swift */,
 				7E068BCC2102ADD20076EAAD /* WaypointViewController.swift */,
@@ -374,6 +377,7 @@
 				7E068BC7210190CB0076EAAD /* TripsTableViewController.swift in Sources */,
 				7EC8C9BD1F827977000CEDDC /* ContactsTableViewContoller.swift in Sources */,
 				7EA478871F4BC775000CEDDC /* Logger.swift in Sources */,
+				7E068BF8210645290076EAAD /* TripViewController.swift in Sources */,
 				7E5A767A20DDFEF700B48CC6 /* Waypoint.swift in Sources */,
 				7EC8C9BF1F830C5B000CEDDC /* PhoneContacts.swift in Sources */,
 				7E07AE4720F70FD8004F15B9 /* LocationService.swift in Sources */,
