@@ -54,6 +54,7 @@
 		7EA478871F4BC775000CEDDC /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA478861F4BC775000CEDDC /* Logger.swift */; };
 		7EA4788A1F537ED5000CEDDC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7EA478881F537ED5000CEDDC /* Localizable.strings */; };
 		7EA4788E1F5BA136000CEDDC /* Tasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA4788D1F5BA136000CEDDC /* Tasks.swift */; };
+		7EBFD48E210ADD0000FC9665 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBFD48D210ADD0000FC9665 /* String+Extensions.swift */; };
 		7EC8C9BD1F827977000CEDDC /* ContactsTableViewContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC8C9BC1F827977000CEDDC /* ContactsTableViewContoller.swift */; };
 		7EC8C9BF1F830C5B000CEDDC /* PhoneContacts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC8C9BE1F830C5B000CEDDC /* PhoneContacts.swift */; };
 		7ED2013620D0D0030066BCE6 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7ED2013520D0D0030066BCE6 /* Default-568h@2x.png */; };
@@ -121,6 +122,7 @@
 		7EA478861F4BC775000CEDDC /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		7EA478891F537ED5000CEDDC /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = WunderLINQ/Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7EA4788D1F5BA136000CEDDC /* Tasks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tasks.swift; sourceTree = "<group>"; };
+		7EBFD48D210ADD0000FC9665 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		7EC8C9BC1F827977000CEDDC /* ContactsTableViewContoller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsTableViewContoller.swift; sourceTree = "<group>"; };
 		7EC8C9BE1F830C5B000CEDDC /* PhoneContacts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneContacts.swift; sourceTree = "<group>"; };
 		7ED2013520D0D0030066BCE6 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
@@ -216,6 +218,7 @@
 				7E068BCA2102ACF30076EAAD /* Popover.swift */,
 				7EA478861F4BC775000CEDDC /* Logger.swift */,
 				7E07AE4620F70FD8004F15B9 /* LocationService.swift */,
+				7EBFD48D210ADD0000FC9665 /* String+Extensions.swift */,
 				7EA478761F412BAC000CEDDC /* CLLocation+Extension.swift */,
 				7E5A767720DDEE7200B48CC6 /* UIViewController+Extensions.swift */,
 				7EA478781F412BE9000CEDDC /* UserDefauts+Extensions.swift */,
@@ -383,6 +386,7 @@
 				7E07AE4720F70FD8004F15B9 /* LocationService.swift in Sources */,
 				7EA478731F4115F6000CEDDC /* CompassViewController.swift in Sources */,
 				7E5A767820DDEE7200B48CC6 /* UIViewController+Extensions.swift in Sources */,
+				7EBFD48E210ADD0000FC9665 /* String+Extensions.swift in Sources */,
 				7E6987DB20F82F1A00B4781D /* MotorcycleData.swift in Sources */,
 				7E068BCB2102ACF30076EAAD /* Popover.swift in Sources */,
 				7EA478811F44F57C000CEDDC /* MusicViewController.swift in Sources */,

@@ -987,6 +987,7 @@
                         <outlet property="durationLabel" destination="xwo-hG-jpT" id="9tJ-qA-bNv"/>
                         <outlet property="engineTempLabel" destination="S3O-0j-Cx7" id="2By-QS-jXa"/>
                         <outlet property="gearShiftsLabel" destination="4cL-38-zpa" id="TY1-GG-Ech"/>
+                        <outlet property="mapView" destination="eoN-Uk-I42" id="CUz-15-VHs"/>
                         <outlet property="speedLabel" destination="bLH-7y-ppF" id="7fa-O4-yIW"/>
                         <segue destination="1rx-Mx-oc0" kind="show" identifier="tripToTrips" id="qQx-7G-0NR"/>
                     </connections>

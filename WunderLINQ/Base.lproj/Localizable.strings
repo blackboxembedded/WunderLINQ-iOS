@@ -18,6 +18,10 @@
 "Trip Logs" = "Trip Logs";
 "Waypoints" = "Waypoints";
 
+// TripViewController
+"Start" = "Start";
+"End" = "End";
+
 // TasksTableViewController
 "Navigation" = "Navigation";
 "Go Home" = "Go Home";
