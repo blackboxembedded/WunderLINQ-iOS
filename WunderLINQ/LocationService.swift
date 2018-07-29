@@ -102,29 +102,78 @@ class LocationService: NSObject, CLLocationManagerDelegate {
         // use for real time update location
         updateLocation(location)
         
-        // TODO check for nil values like updateDisplay
         if type.contains("triplog"){
             let latitude:String = "\(currentLocation!.coordinate.latitude)"
             let longitude:String = "\(currentLocation!.coordinate.longitude)"
             let altitude:String = "\(currentLocation!.altitude)"
-            let speed:String = "\(currentLocation!.speed)"
-            
-            let gear = motorcycleData.getgear()
-            let engineTemp = motorcycleData.getengineTemperature()
-            let ambientTemp = motorcycleData.getambientLight()
-            let frontTirePressure = motorcycleData.getfrontTirePressure()
-            let rearTirePressure = motorcycleData.getrearTirePressure()
-            let odometer = motorcycleData.getodometer()
-            let voltage = motorcycleData.getvoltage()
-            let throttlePosition = motorcycleData.getthrottlePosition()
-            let frontBrakes = motorcycleData.getfrontBrake()
-            let rearBrakes = motorcycleData.getrearBrake()
-            let shifts = motorcycleData.getshifts()
-            let vin = motorcycleData.getVIN()
-            let tripOne = motorcycleData.gettripOne()
-            let tripTwo = motorcycleData.gettripTwo()
-            let tripAuto = motorcycleData.gettripAuto()
-            let ambientLight = motorcycleData.getambientLight()
+            var speed:String = "0"
+            if currentLocation!.speed >= 0{
+                speed = "\(currentLocation!.speed)"
+            }
+            var gear: String = "null"
+            if motorcycleData.gear != nil {
+                gear = motorcycleData.gear!
+            }
+            var engineTemp:String = "null"
+            if motorcycleData.engineTemperature != nil {
+                engineTemp = "\(motorcycleData.engineTemperature!)"
+            }
+            var ambientTemp:String = "null"
+            if motorcycleData.ambientTemperature != nil {
+                ambientTemp = "\(motorcycleData.ambientLight!)"
+            }
+            var frontTirePressure:String = "null"
+            if motorcycleData.frontTirePressure != nil {
+                frontTirePressure = "\(motorcycleData.frontTirePressure!)"
+            }
+            var rearTirePressure:String = "null"
+            if motorcycleData.rearTirePressure != nil {
+                rearTirePressure = "\(motorcycleData.rearTirePressure!)"
+            }
+            var odometer:String = "null"
+            if motorcycleData.odometer != nil {
+                odometer = "\(motorcycleData.odometer!)"
+            }
+            var voltage:String = "null"
+            if motorcycleData.voltage != nil {
+                voltage = "\(motorcycleData.voltage!)"
+            }
+            var throttlePosition:String = "null"
+            if motorcycleData.throttlePosition != nil {
+                throttlePosition = "\(motorcycleData.throttlePosition!)"
+            }
+            var frontBrakes:String = "null"
+            if motorcycleData.frontBrake != nil {
+                frontBrakes = "\(motorcycleData.frontBrake!)"
+            }
+            var rearBrakes:String = "null"
+            if motorcycleData.rearBrake != nil {
+                rearBrakes = "\(motorcycleData.rearBrake!)"
+            }
+            var shifts:String = "null"
+            if motorcycleData.shifts != nil {
+                shifts = "\(motorcycleData.shifts!)"
+            }
+            var vin:String = "null"
+            if motorcycleData.vin != nil {
+                vin = "\(motorcycleData.vin!)"
+            }
+            var tripOne:String = "null"
+            if motorcycleData.tripOne != nil {
+                tripOne = "\(motorcycleData.tripOne!)"
+            }
+            var tripTwo:String = "null"
+            if motorcycleData.tripTwo != nil {
+                tripTwo = "\(motorcycleData.tripTwo!)"
+            }
+            var tripAuto:String = "null"
+            if motorcycleData.tripAuto != nil {
+                tripAuto = "\(motorcycleData.tripAuto!)"
+            }
+            var ambientLight:String = "null"
+            if motorcycleData.ambientLight != nil {
+                ambientLight = "\(motorcycleData.ambientLight!)"
+            }
             
             let entry = "\(latitude),\(longitude),\(altitude),\(speed),\(gear),\(engineTemp),\(ambientTemp),\(frontTirePressure),\(rearTirePressure),\(odometer),\(voltage),\(throttlePosition),\(frontBrakes),\(rearBrakes),\(shifts),\(vin),\(tripOne),\(tripTwo),\(tripAuto),\(ambientLight)"
             print(entry)
