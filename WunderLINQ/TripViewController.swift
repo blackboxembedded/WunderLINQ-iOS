@@ -102,9 +102,11 @@ class TripViewController: UIViewController {
             if((lineNumber > 1) && (lineNumber < row.count)) {
                 path.add(CLLocationCoordinate2D(latitude: row[1].toDouble()!, longitude: row[2].toDouble()!))
                 
-                speeds.append(row[4].toDouble()!)
-                if (maxSpeed < row[4].toDouble()!){
-                    maxSpeed = row[4].toDouble()!
+                if row[4].toDouble()! > 0 {
+                    speeds.append(row[4].toDouble()!)
+                    if (maxSpeed < row[4].toDouble()!){
+                        maxSpeed = row[4].toDouble()!
+                    }
                 }
             }
             if ((lineNumber > 1) && (lineNumber < row.count)) {

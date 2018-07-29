@@ -186,25 +186,33 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="7dk-mQ-A5X" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="2xG-k8-KbT"/>
                             <constraint firstAttribute="trailing" secondItem="7dk-mQ-A5X" secondAttribute="trailing" id="FE1-BM-6XN"/>
+                            <constraint firstItem="7dk-mQ-A5X" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="J1g-wa-ifv"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="7dk-mQ-A5X" secondAttribute="bottom" id="NJr-NP-3yW"/>
                             <constraint firstItem="7dk-mQ-A5X" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="iJ2-P4-hcs"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="7dk-mQ-A5X" secondAttribute="bottom" id="yND-DX-7bu"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Motorcycle" id="eWq-dV-zOi"/>
                     <connections>
                         <outlet property="ambientTempLabel" destination="XQz-jX-igz" id="Fmu-pV-arb"/>
+                        <outlet property="ambientTempStackView" destination="A2A-tv-lv3" id="r7g-pD-R4V"/>
                         <outlet property="engineTempLabel" destination="bRL-5h-sKB" id="Yfz-Cc-6n5"/>
+                        <outlet property="engineTempStackView" destination="Fdf-qm-f9j" id="8tO-L8-TVY"/>
                         <outlet property="frontPressureLabel" destination="ZqM-BI-MSn" id="ban-Dc-mtN"/>
+                        <outlet property="frontTireStackView" destination="o5r-Oo-jeg" id="xZt-CS-Dmf"/>
                         <outlet property="gearLabel" destination="5Xp-ce-nzA" id="JZZ-QT-0k1"/>
-                        <outlet property="mainView" destination="8bC-Xf-vdC" id="gTC-7s-UkH"/>
+                        <outlet property="gearStackView" destination="ues-7G-mJT" id="8Xz-u1-Nqd"/>
+                        <outlet property="mainUIView" destination="8bC-Xf-vdC" id="718-bR-KTI"/>
                         <outlet property="odometerLabel" destination="grv-Y4-dvO" id="UtE-hz-vu5"/>
+                        <outlet property="odometerStackView" destination="bY3-ZI-MK8" id="d77-pW-EEP"/>
                         <outlet property="rearPressureLabel" destination="OaG-cS-fMY" id="gXy-U5-kzG"/>
+                        <outlet property="rearTireStackView" destination="qll-Lv-esh" id="NZm-Pv-v8f"/>
                         <outlet property="tripOneLabel" destination="60i-SA-nRN" id="GCA-Da-WjC"/>
+                        <outlet property="tripOneStackView" destination="f1l-wO-9ak" id="4bC-oI-oWW"/>
                         <outlet property="tripTwoLabel" destination="yQZ-bf-Jhe" id="mlK-oF-T4E"/>
+                        <outlet property="tripTwoStackView" destination="0ei-je-KbR" id="UrQ-8Y-Zde"/>
                         <segue destination="Yme-GX-WRX" kind="show" identifier="motorcycleToCompass" id="WGO-Nv-8Lh"/>
-                        <segue destination="UAo-uD-fGL" kind="show" identifier="motorcycleToTasks" id="nh5-ZE-vmI"/>
+                        <segue destination="UAo-uD-fGL" kind="custom" identifier="motorcycleToTasks" customClass="SegueFromLeft" customModule="WunderLINQ" customModuleProvider="target" id="nh5-ZE-vmI"/>
                         <segue destination="zX3-aP-C03" kind="show" identifier="motorcycleToFaults" id="WUr-eG-QLc"/>
                         <segue destination="DqH-mq-8qj" kind="show" identifier="motorcycleToWaypoints" id="hzw-Lu-fUo"/>
                         <segue destination="BwD-J2-898" kind="show" identifier="motorcycleToTrips" id="kxw-0M-ID5"/>
@@ -248,7 +256,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Faults" id="tZ7-2e-GZM"/>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="show" identifier="faultsToMotorcycle" id="L6G-Ek-OoN"/>
+                        <segue destination="BYZ-38-t0r" kind="custom" identifier="faultsToMotorcycle" customClass="SegueFromLeft" customModule="WunderLINQ" customModuleProvider="target" id="L6G-Ek-OoN"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i0g-hA-4nz" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -372,7 +380,7 @@
                         <outlet property="mapView" destination="AF1-SP-JZP" id="Gxh-QO-CQE"/>
                         <outlet property="openBtn" destination="zQg-ao-9yD" id="SXy-kz-Byw"/>
                         <outlet property="shareBtn" destination="eeF-zi-YJp" id="pdc-X2-wyV"/>
-                        <segue destination="zo6-HF-7UD" kind="show" identifier="waypointToWaypoints" id="gIM-fx-mWk"/>
+                        <segue destination="zo6-HF-7UD" kind="custom" identifier="waypointToWaypoints" customClass="SegueFromLeft" customModule="WunderLINQ" customModuleProvider="target" id="gIM-fx-mWk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SXT-T2-9wl" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -431,7 +439,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="compassLabel" destination="lsy-hM-ZFw" id="x9L-EO-H4Y"/>
-                        <segue destination="BYZ-38-t0r" kind="show" identifier="backToMotorcycle" id="rCa-tS-QTz"/>
+                        <segue destination="BYZ-38-t0r" kind="custom" identifier="backToMotorcycle" customClass="SegueFromLeft" customModule="WunderLINQ" customModuleProvider="target" id="rCa-tS-QTz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oxj-9z-5k3" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -543,7 +551,7 @@
                         <outlet property="nextButton" destination="kxB-1t-Lm7" id="ysa-Qv-XIY"/>
                         <outlet property="playButton" destination="Pwh-25-TzL" id="GH4-Fn-mrI"/>
                         <outlet property="songLabel" destination="ojS-iD-NCF" id="Q05-G0-XS2"/>
-                        <segue destination="Yme-GX-WRX" kind="show" identifier="musicToCompass" id="cxp-ge-K03"/>
+                        <segue destination="Yme-GX-WRX" kind="custom" identifier="musicToCompass" customClass="SegueFromLeft" customModule="WunderLINQ" customModuleProvider="target" id="cxp-ge-K03"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pw8-37-q0l" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -600,7 +608,7 @@
                     <connections>
                         <segue destination="RZv-Tv-KDt" kind="show" identifier="toContacts" id="7A0-qQ-zYz"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="tasksTomotorcycle" id="hHX-hV-yfD"/>
-                        <segue destination="p6n-wZ-mMa" kind="show" identifier="backToMusic" id="Dpe-gj-Wyf"/>
+                        <segue destination="p6n-wZ-mMa" kind="custom" identifier="backToMusic" customClass="SegueFromLeft" customModule="WunderLINQ" customModuleProvider="target" id="Dpe-gj-Wyf"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HkE-mg-0AP" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -642,7 +650,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Contacts" id="2cg-kd-QQh"/>
                     <connections>
-                        <segue destination="UAo-uD-fGL" kind="show" identifier="backToTasks" id="s2b-3y-Wyk"/>
+                        <segue destination="UAo-uD-fGL" kind="custom" identifier="backToTasks" customClass="SegueFromLeft" customModule="WunderLINQ" customModuleProvider="target" id="s2b-3y-Wyk"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6FV-uf-rsK" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -720,7 +728,7 @@
                     <navigationItem key="navigationItem" title="Recorded Trips" id="yFD-LA-Jp9"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="show" identifier="tripsToMotorcycle" id="ldV-Xu-q0h"/>
+                        <segue destination="BYZ-38-t0r" kind="custom" identifier="tripsToMotorcycle" customClass="SegueFromLeft" customModule="WunderLINQ" customModuleProvider="target" id="ldV-Xu-q0h"/>
                         <segue destination="mYA-Xe-W7Q" kind="show" identifier="tripsToTrip" id="aOH-3r-jow"/>
                     </connections>
                 </tableViewController>
@@ -763,7 +771,7 @@
                     <navigationItem key="navigationItem" title="Saved Waypoints" id="zPP-Eq-n0z"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="show" identifier="waypointsToMotorcycle" id="gyk-vV-qic"/>
+                        <segue destination="BYZ-38-t0r" kind="custom" identifier="waypointsToMotorcycle" customClass="SegueFromLeft" customModule="WunderLINQ" customModuleProvider="target" id="gyk-vV-qic"/>
                         <segue destination="Plb-k4-fYa" kind="show" identifier="waypointsToWaypoint" id="Dqr-lf-ahi"/>
                     </connections>
                 </tableViewController>
@@ -989,7 +997,7 @@
                         <outlet property="gearShiftsLabel" destination="4cL-38-zpa" id="TY1-GG-Ech"/>
                         <outlet property="mapView" destination="eoN-Uk-I42" id="CUz-15-VHs"/>
                         <outlet property="speedLabel" destination="bLH-7y-ppF" id="7fa-O4-yIW"/>
-                        <segue destination="1rx-Mx-oc0" kind="show" identifier="tripToTrips" id="qQx-7G-0NR"/>
+                        <segue destination="1rx-Mx-oc0" kind="custom" identifier="tripToTrips" customClass="SegueFromLeft" customModule="WunderLINQ" customModuleProvider="target" id="qQx-7G-0NR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ASv-QO-u7O" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1007,10 +1015,10 @@
     <inferredMetricsTieBreakers>
         <segue reference="gIM-fx-mWk"/>
         <segue reference="qQx-7G-0NR"/>
-        <segue reference="nh5-ZE-vmI"/>
+        <segue reference="QF9-me-I6g"/>
         <segue reference="cF1-aK-Tul"/>
-        <segue reference="WGO-Nv-8Lh"/>
-        <segue reference="0ub-DO-3Cd"/>
+        <segue reference="cxp-ge-K03"/>
+        <segue reference="rCa-tS-QTz"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
 </document>

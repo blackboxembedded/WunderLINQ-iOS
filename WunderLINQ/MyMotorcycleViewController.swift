@@ -18,7 +18,15 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
     @IBOutlet weak var odometerLabel: UILabel!
     @IBOutlet weak var tripOneLabel: UILabel!
     @IBOutlet weak var tripTwoLabel: UILabel!
-    @IBOutlet weak var mainView: UIView!
+    @IBOutlet weak var mainUIView: UIView!
+    @IBOutlet weak var frontTireStackView: UIStackView!
+    @IBOutlet weak var rearTireStackView: UIStackView!
+    @IBOutlet weak var engineTempStackView: UIStackView!
+    @IBOutlet weak var ambientTempStackView: UIStackView!
+    @IBOutlet weak var gearStackView: UIStackView!
+    @IBOutlet weak var odometerStackView: UIStackView!
+    @IBOutlet weak var tripOneStackView: UIStackView!
+    @IBOutlet weak var tripTwoStackView: UIStackView!
     
     var backBtn: UIButton!
     var backButton: UIBarButtonItem!
@@ -55,10 +63,42 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
         .blackOverlayColor(UIColor(white: 0.0, alpha: 0.6))
     ]
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print("viewWillAppear")
+        if UserDefaults.standard.integer(forKey: "motorcycle_type_preference") != 4 {
+            //self.view.setNeedsLayout()
+            /*
+            for mainUIView in self.mainUIView.subviews {
+                mainUIView.removeFromSuperview()
+            }
+            */
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         registerSettingsBundle()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.defaultsChanged), name: UserDefaults.didChangeNotification, object: nil)
+        /*
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(applicationDidBecomeActive(notification:)),
+            name: NSNotification.Name.UIApplicationDidBecomeActive,
+            object: nil)
+        */
+        
+        // Add Borders
+        pinBackground(createView(UIColor.black), to: frontTireStackView)
+        pinBackground(createView(UIColor.black), to: rearTireStackView)
+        pinBackground(createView(UIColor.black), to: engineTempStackView)
+        pinBackground(createView(UIColor.black), to: ambientTempStackView)
+        pinBackground(createView(UIColor.black), to: gearStackView)
+        pinBackground(createView(UIColor.black), to: odometerStackView)
+        pinBackground(createView(UIColor.black), to: tripOneStackView)
+        pinBackground(createView(UIColor.black), to: tripTwoStackView)
+        
         centralManager = CBCentralManager(delegate: self,
                                           queue: nil)
         let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))
@@ -131,9 +171,39 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
         
         self.navigationItem.leftBarButtonItems = [backButton, disconnectButton, faultsButton]
         self.navigationItem.rightBarButtonItems = [forwardButton, settingsButton, dataButton]
-
-
+        
+        /*
+        if UserDefaults.standard.integer(forKey: "motorcycle_type_preference") == 4 {
+            for mainUIView in self.mainUIView.subviews {
+                mainUIView.removeFromSuperview()
+            }
+        }
+        */
     }
+    
+    func defaultsChanged(notification:NSNotification){
+        if let defaults = notification.object as? UserDefaults {
+            //get the value for key here
+            print("Type: \(defaults.value(forKey: "motorcycle_type_preference"))")
+            if defaults.value(forKey: "motorcycle_type_preference") as! Int != 4 {
+                let secondViewController = self.storyboard!.instantiateViewController(withIdentifier: "Main")
+                self.present(secondViewController, animated: true, completion: nil)
+            } else {
+                for mainUIView in self.mainUIView.subviews {
+                    mainUIView.removeFromSuperview()
+                }
+            }
+        }
+    }
+    
+    /*
+    @objc func applicationDidBecomeActive(notification: NSNotification) {
+        // do something
+        print("mymotorcycle applicationDidBecomeActive")
+        let secondViewController = self.storyboard!.instantiateViewController(withIdentifier: "Main")
+        self.present(secondViewController, animated: true, completion: nil)
+    }
+    */
     
     func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
         if gesture.direction == UISwipeGestureRecognizerDirection.right {
@@ -196,7 +266,7 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
     func dataButtonTapped() {
         // your code here
         print("dataButtonTapped")
-        let tableView = UITableView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 90))
+        let tableView = UITableView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width / 2, height: 90))
         tableView.delegate = self
         tableView.dataSource = self
         tableView.isScrollEnabled = false
@@ -288,9 +358,7 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
     }
     
     // MARK: - Updating UI
-
     func updateMessageDisplay() {
-
         // Update Buttons
         disconnectBtn.tintColor = UIColor.blue
         if (faults.getallActiveDesc().isEmpty){
@@ -302,105 +370,107 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
         }
         self.navigationItem.leftBarButtonItems = [backButton, disconnectButton, faultsButton]
         
-        // Update main display
-        var temperatureUnit = "C"
-        var distanceUnit = "km"
-        var pressureUnit = "psi"
-        
-        // Tire Pressure
-        if motorcycleData.frontTirePressure != nil {
-            var frontPressure:Double = motorcycleData.frontTirePressure!
-            switch UserDefaults.standard.integer(forKey: "pressure_unit_preference"){
-            case 0:
-                pressureUnit = "bar"
-            case 1:
-                pressureUnit = "kPa"
-                frontPressure = barTokPa(frontPressure)
-            case 2:
-                pressureUnit = "kg-f"
-                frontPressure = barTokgf(frontPressure)
-            case 3:
-                pressureUnit = "psi"
-                frontPressure = barToPsi(frontPressure)
-            default:
-                print("Unknown pressure unit setting")
+        if UserDefaults.standard.integer(forKey: "motorcycle_type_preference") != 4 {
+            // Update main display
+            var temperatureUnit = "C"
+            var distanceUnit = "km"
+            var pressureUnit = "psi"
+            
+            // Tire Pressure
+            if motorcycleData.frontTirePressure != nil {
+                var frontPressure:Double = motorcycleData.frontTirePressure!
+                switch UserDefaults.standard.integer(forKey: "pressure_unit_preference"){
+                case 0:
+                    pressureUnit = "bar"
+                case 1:
+                    pressureUnit = "kPa"
+                    frontPressure = barTokPa(frontPressure)
+                case 2:
+                    pressureUnit = "kg-f"
+                    frontPressure = barTokgf(frontPressure)
+                case 3:
+                    pressureUnit = "psi"
+                    frontPressure = barToPsi(frontPressure)
+                default:
+                    print("Unknown pressure unit setting")
+                }
+                frontPressureLabel.text = "\(Int(frontPressure)) \(pressureUnit)"
             }
-            frontPressureLabel.text = "\(Int(frontPressure)) \(pressureUnit)"
-        }
-
-        if motorcycleData.rearTirePressure != nil {
-            var rearPressure:Double = motorcycleData.rearTirePressure!
-            switch UserDefaults.standard.integer(forKey: "pressure_unit_preference"){
-            case 0:
-                pressureUnit = "bar"
-            case 1:
-                pressureUnit = "kPa"
-                rearPressure = barTokPa(rearPressure)
-            case 2:
-                pressureUnit = "kg-f"
-                rearPressure = barTokgf(rearPressure)
-            case 3:
-                pressureUnit = "psi"
-                rearPressure = barToPsi(rearPressure)
-            default:
-                print("Unknown pressure unit setting")
+            
+            if motorcycleData.rearTirePressure != nil {
+                var rearPressure:Double = motorcycleData.rearTirePressure!
+                switch UserDefaults.standard.integer(forKey: "pressure_unit_preference"){
+                case 0:
+                    pressureUnit = "bar"
+                case 1:
+                    pressureUnit = "kPa"
+                    rearPressure = barTokPa(rearPressure)
+                case 2:
+                    pressureUnit = "kg-f"
+                    rearPressure = barTokgf(rearPressure)
+                case 3:
+                    pressureUnit = "psi"
+                    rearPressure = barToPsi(rearPressure)
+                default:
+                    print("Unknown pressure unit setting")
+                }
+                rearPressureLabel.text = "\(Int(rearPressure)) \(pressureUnit)"
             }
-            rearPressureLabel.text = "\(Int(rearPressure)) \(pressureUnit)"
-        }
-        
-        // Gear
-        if motorcycleData.gear != "" {
-            gearLabel.text = motorcycleData.getgear()
-        }
-        
-        // Engine Temperature
-        if motorcycleData.engineTemperature != nil {
-            var engineTemp:Double = motorcycleData.engineTemperature!
-            if UserDefaults.standard.integer(forKey: "temperature_unit_preference") == 1 {
-                engineTemp = celciusToFahrenheit(engineTemp)
-                temperatureUnit = "F"
+            
+            // Gear
+            if motorcycleData.gear != "" {
+                gearLabel.text = motorcycleData.getgear()
             }
-            engineTempLabel.text = "\(Int(engineTemp)) \(temperatureUnit)"
-        }
-        
-        // Ambient Temperature
-        if motorcycleData.ambientTemperature != nil {
-            var ambientTemp:Double = motorcycleData.ambientTemperature!
-            if UserDefaults.standard.integer(forKey: "temperature_unit_preference") == 1 {
-                ambientTemp = celciusToFahrenheit(ambientTemp)
-                temperatureUnit = "F"
+            
+            // Engine Temperature
+            if motorcycleData.engineTemperature != nil {
+                var engineTemp:Double = motorcycleData.engineTemperature!
+                if UserDefaults.standard.integer(forKey: "temperature_unit_preference") == 1 {
+                    engineTemp = celciusToFahrenheit(engineTemp)
+                    temperatureUnit = "F"
+                }
+                engineTempLabel.text = "\(Int(engineTemp)) \(temperatureUnit)"
             }
-            ambientTempLabel.text = "\(Int(ambientTemp)) \(temperatureUnit)"
-        }
-        
-        // Odometer
-        if motorcycleData.odometer != nil {
-            var odometer:Double = motorcycleData.odometer!
-            if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
-                odometer = Double(kmToMiles(Double(odometer)))
-                distanceUnit = "mi"
+            
+            // Ambient Temperature
+            if motorcycleData.ambientTemperature != nil {
+                var ambientTemp:Double = motorcycleData.ambientTemperature!
+                if UserDefaults.standard.integer(forKey: "temperature_unit_preference") == 1 {
+                    ambientTemp = celciusToFahrenheit(ambientTemp)
+                    temperatureUnit = "F"
+                }
+                ambientTempLabel.text = "\(Int(ambientTemp)) \(temperatureUnit)"
             }
-            odometerLabel.text = "\(odometer) \(distanceUnit)"
-        }
-        
-        // Trip 1
-        if motorcycleData.tripOne != nil {
-            var tripOne:Double = motorcycleData.tripOne!
-            if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
-                tripOne = Double(kmToMiles(Double(tripOne)))
-                distanceUnit = "mi"
+            
+            // Odometer
+            if motorcycleData.odometer != nil {
+                var odometer:Double = motorcycleData.odometer!
+                if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
+                    odometer = Double(kmToMiles(Double(odometer)))
+                    distanceUnit = "mi"
+                }
+                odometerLabel.text = "\(odometer) \(distanceUnit)"
             }
-            tripOneLabel.text = "\(tripOne) \(distanceUnit)"
-        }
-        
-        // Trip 2
-        if motorcycleData.tripOne != nil {
-            var tripTwo:Double = motorcycleData.gettripTwo()
-            if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
-                tripTwo = Double(kmToMiles(Double(tripTwo)))
-                distanceUnit = "mi"
+            
+            // Trip 1
+            if motorcycleData.tripOne != nil {
+                var tripOne:Double = motorcycleData.tripOne!
+                if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
+                    tripOne = Double(kmToMiles(Double(tripOne)))
+                    distanceUnit = "mi"
+                }
+                tripOneLabel.text = "\(tripOne) \(distanceUnit)"
             }
-            tripTwoLabel.text = "\(tripTwo) \(distanceUnit)"
+            
+            // Trip 2
+            if motorcycleData.tripOne != nil {
+                var tripTwo:Double = motorcycleData.gettripTwo()
+                if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
+                    tripTwo = Double(kmToMiles(Double(tripTwo)))
+                    distanceUnit = "mi"
+                }
+                tripTwoLabel.text = "\(tripTwo) \(distanceUnit)"
+            }
         }
     }
     
@@ -1356,7 +1426,7 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
             //print("Unknown Message ID")
         }
 
-        if UIApplication.shared.applicationState == .active {
+        if (UIApplication.shared.applicationState == .active) {
             updateMessageDisplay()
         }
     }
@@ -1576,6 +1646,24 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
         }
     }
     
+    // Add view for border
+    private func createView(_ bdrColor: UIColor) -> UIView {
+        let backgroundView: UIView = {
+            let view = UIView()
+            //view.backgroundColor = .purple
+            view.layer.cornerRadius = 5.0
+            view.layer.borderWidth = 3
+            view.layer.borderColor = bdrColor.cgColor
+            return view
+        }()
+        return backgroundView
+    }
+    private func pinBackground(_ view: UIView, to stackView: UIStackView) {
+        view.translatesAutoresizingMaskIntoConstraints = false
+        stackView.insertSubview(view, at: 0)
+        view.pin(to: stackView)
+    }
+    
     // MARK: - Utility Methods
     // Unit Conversion Functions
     // bar to psi
@@ -1634,5 +1722,16 @@ extension MyMotorcycleViewController: UITableViewDataSource {
         let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
         cell.textLabel?.text = self.popoverList[(indexPath as NSIndexPath).row]
         return cell
+    }
+}
+
+public extension UIView {
+    public func pin(to view: UIView) {
+        NSLayoutConstraint.activate([
+            leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            topAnchor.constraint(equalTo: view.topAnchor),
+            bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            ])
     }
 }

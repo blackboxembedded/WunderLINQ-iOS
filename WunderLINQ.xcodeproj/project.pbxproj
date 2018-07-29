@@ -55,6 +55,7 @@
 		7EA4788A1F537ED5000CEDDC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7EA478881F537ED5000CEDDC /* Localizable.strings */; };
 		7EA4788E1F5BA136000CEDDC /* Tasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA4788D1F5BA136000CEDDC /* Tasks.swift */; };
 		7EBFD48E210ADD0000FC9665 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBFD48D210ADD0000FC9665 /* String+Extensions.swift */; };
+		7EBFD490210E108100FC9665 /* segueFromLeft.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBFD48F210E108100FC9665 /* segueFromLeft.swift */; };
 		7EC8C9BD1F827977000CEDDC /* ContactsTableViewContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC8C9BC1F827977000CEDDC /* ContactsTableViewContoller.swift */; };
 		7EC8C9BF1F830C5B000CEDDC /* PhoneContacts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC8C9BE1F830C5B000CEDDC /* PhoneContacts.swift */; };
 		7ED2013620D0D0030066BCE6 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7ED2013520D0D0030066BCE6 /* Default-568h@2x.png */; };
@@ -123,6 +124,7 @@
 		7EA478891F537ED5000CEDDC /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = WunderLINQ/Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7EA4788D1F5BA136000CEDDC /* Tasks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tasks.swift; sourceTree = "<group>"; };
 		7EBFD48D210ADD0000FC9665 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		7EBFD48F210E108100FC9665 /* segueFromLeft.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = segueFromLeft.swift; sourceTree = "<group>"; };
 		7EC8C9BC1F827977000CEDDC /* ContactsTableViewContoller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsTableViewContoller.swift; sourceTree = "<group>"; };
 		7EC8C9BE1F830C5B000CEDDC /* PhoneContacts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneContacts.swift; sourceTree = "<group>"; };
 		7ED2013520D0D0030066BCE6 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
@@ -244,6 +246,7 @@
 				7EA478541F40B154000CEDDC /* Assets.xcassets */,
 				7EA478561F40B154000CEDDC /* LaunchScreen.storyboard */,
 				7EA478591F40B154000CEDDC /* Info.plist */,
+				7EBFD48F210E108100FC9665 /* segueFromLeft.swift */,
 			);
 			path = WunderLINQ;
 			sourceTree = "<group>";
@@ -373,6 +376,7 @@
 			files = (
 				7EA478711F40F273000CEDDC /* Device.swift in Sources */,
 				7EA478771F412BAC000CEDDC /* CLLocation+Extension.swift in Sources */,
+				7EBFD490210E108100FC9665 /* segueFromLeft.swift in Sources */,
 				7EA478501F40B154000CEDDC /* MyMotorcycleViewController.swift in Sources */,
 				7EA4788E1F5BA136000CEDDC /* Tasks.swift in Sources */,
 				7EA478791F412BE9000CEDDC /* UserDefauts+Extensions.swift in Sources */,
