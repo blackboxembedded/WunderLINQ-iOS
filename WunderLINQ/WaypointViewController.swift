@@ -11,7 +11,7 @@ import SQLite3
 import GoogleMaps
 import MapKit
 
-class WaypointViewController: UIViewController {
+class WaypointViewController: UIViewController, UITextFieldDelegate {
     
     var db: OpaquePointer?
     
@@ -24,7 +24,7 @@ class WaypointViewController: UIViewController {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var longLabel: UILabel!
     @IBOutlet weak var latLabel: UILabel!
-    @IBOutlet weak var labelLabel: UILabel!
+    @IBOutlet weak var labelLabel: UITextField!
     
     
     @IBOutlet weak var mapView: GMSMapView!
@@ -99,6 +99,43 @@ class WaypointViewController: UIViewController {
         
     }
     
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        //Update waypoint label in DB
+        print("Did end editing")
+        let databaseURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+            .appendingPathComponent("waypoints.sqlite")
+        //opening the database
+        if sqlite3_open(databaseURL.path, &db) != SQLITE_OK {
+            print("error opening database")
+        }
+        //creating a statement
+        var stmt: OpaquePointer?
+        
+        //the insert query
+        let queryString = "UPDATE records SET label='\(labelLabel.text!)' WHERE id = \(record!)"
+        
+        //preparing the query
+        if sqlite3_prepare(db, queryString, -1, &stmt, nil) != SQLITE_OK{
+            let errmsg = String(cString: sqlite3_errmsg(db)!)
+            print("error preparing insert: \(errmsg)")
+            return
+        }
+
+        //executing the query to insert values
+        if sqlite3_step(stmt) != SQLITE_DONE {
+            let errmsg = String(cString: sqlite3_errmsg(db)!)
+            print("failure inserting wapoint: \(errmsg)")
+            return
+        }
+        
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        print("Done editing")
+        self.view.endEditing(true)
+        return false
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -118,6 +155,8 @@ class WaypointViewController: UIViewController {
         let backButtonHeight = backButton.customView?.heightAnchor.constraint(equalToConstant: 30)
         backButtonHeight?.isActive = true
         self.navigationItem.leftBarButtonItems = [backButton]
+        
+        self.labelLabel.delegate = self
         
         let databaseURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
             .appendingPathComponent("waypoints.sqlite")

@@ -359,13 +359,13 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IQC-S4-md9">
-                                <rect key="frame" x="195" y="366" width="164" height="21"/>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UlC-Rp-2La">
+                                <rect key="frame" x="195" y="366" width="164" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="13"/>
                                 <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="13"/>
+                                <textInputTraits key="textInputTraits" spellCheckingType="yes" returnKeyType="done"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
@@ -374,7 +374,7 @@
                     <connections>
                         <outlet property="dateLabel" destination="tZd-Kw-xg4" id="vST-cy-pVl"/>
                         <outlet property="deleteBtn" destination="gA4-d0-iTO" id="OTR-Lc-CgE"/>
-                        <outlet property="labelLabel" destination="IQC-S4-md9" id="Psc-1R-8UU"/>
+                        <outlet property="labelLabel" destination="UlC-Rp-2La" id="Z00-jT-fBU"/>
                         <outlet property="latLabel" destination="Brq-vS-Qob" id="fZr-sU-cGH"/>
                         <outlet property="longLabel" destination="tEo-Bc-Q4M" id="bJS-jj-ASv"/>
                         <outlet property="mapView" destination="AF1-SP-JZP" id="Gxh-QO-CQE"/>
