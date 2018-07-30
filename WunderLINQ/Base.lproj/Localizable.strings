@@ -7,6 +7,10 @@
 */
 
 // MyMotorcycleViewController
+"disclaimer_alert_title" = "WARNING!";
+"disclaimer_alert_body" = "Do not attempt to enter route information or adjust the WunderLINQ while driving.\nFailure to pay full attention to the operation of your vehicle could result in death, serious injury, or property damage.\nYou assume total responsibility and risk for using this device.";
+"disclaimer_ok" = "I agree";
+"disclaimer_quit" = "Quit";
 "Bluetooth on this device is currently powered off." = "Bluetooth on this device is currently powered off.";
 "This device does not support Bluetooth Low Energy." = "This device does not support Bluetooth Low Energy.";
 "This app is not authorized to use Bluetooth Low Energy." = "This app is not authorized to use Bluetooth Low Energy.";

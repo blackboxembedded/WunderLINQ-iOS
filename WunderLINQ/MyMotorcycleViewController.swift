@@ -172,6 +172,31 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
         self.navigationItem.leftBarButtonItems = [backButton, disconnectButton, faultsButton]
         self.navigationItem.rightBarButtonItems = [forwardButton, settingsButton, dataButton]
         
+        var dateFormat = "yyyyMMdd"
+        var dateFormatter: DateFormatter {
+            let formatter = DateFormatter()
+            formatter.dateFormat = dateFormat
+            formatter.locale = Locale.current
+            formatter.timeZone = TimeZone.current
+            return formatter
+        }
+        let today = dateFormatter.string(from: Date())
+        let launchedLast = UserDefaults.standard.string(forKey: "launchedLast")!
+        if (launchedLast.contains(today)) {
+            print("Not first launch.")
+        } else {
+            print("First launch.")
+            let alert = UIAlertController(title: NSLocalizedString("disclaimer_alert_title", comment: ""), message: NSLocalizedString("disclaimer_alert_body", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: NSLocalizedString("disclaimer_ok", comment: ""), style: UIAlertActionStyle.default, handler: { action in
+                UserDefaults.standard.set(today, forKey: "launchedLast")
+            }))
+            alert.addAction(UIAlertAction(title: NSLocalizedString("disclaimer_quit", comment: ""), style: UIAlertActionStyle.cancel, handler: { action in
+                // quit app
+                exit(0)
+            }))
+            self.present(alert, animated: true, completion: nil)
+        }
+        
         /*
         if UserDefaults.standard.integer(forKey: "motorcycle_type_preference") == 4 {
             for mainUIView in self.mainUIView.subviews {
@@ -179,12 +204,14 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
             }
         }
         */
+        
     }
     
     func defaultsChanged(notification:NSNotification){
         if let defaults = notification.object as? UserDefaults {
             //get the value for key here
             print("Type: \(defaults.value(forKey: "motorcycle_type_preference"))")
+            /*
             if defaults.value(forKey: "motorcycle_type_preference") as! Int != 4 {
                 let secondViewController = self.storyboard!.instantiateViewController(withIdentifier: "Main")
                 self.present(secondViewController, animated: true, completion: nil)
@@ -193,6 +220,7 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
                     mainUIView.removeFromSuperview()
                 }
             }
+ */
         }
     }
     
