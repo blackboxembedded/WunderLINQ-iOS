@@ -166,10 +166,12 @@ class MusicViewController: UIViewController {
     }
     
     @IBAction func lastButton(_ sender: UIButton) {
-        if Int(trackElapsed) < 3 {
-            musicPlayer().skipToPreviousItem()
-        } else {
-            musicPlayer().skipToBeginning()
+        if trackElapsed != nil {
+            if Int(trackElapsed) < 3 {
+                musicPlayer().skipToPreviousItem()
+            } else {
+                musicPlayer().skipToBeginning()
+            }
         }
     }
     
@@ -190,9 +192,18 @@ class MusicViewController: UIViewController {
     func timerFired(_:AnyObject) {
         if let currentTrack = MPMusicPlayerController.systemMusicPlayer().nowPlayingItem {
             // Get Current Track Info
-            let trackName = currentTrack.title!
-            let trackArtist = currentTrack.artist!
-            let trackAlbum = currentTrack.albumTitle!
+            var trackName = ""
+            if currentTrack.title != nil {
+                trackName = currentTrack.title!
+            }
+            var trackArtist = ""
+            if currentTrack.artist != nil {
+                trackArtist = currentTrack.artist!
+            }
+            var trackAlbum = ""
+            if currentTrack.albumTitle != nil {
+                trackAlbum = currentTrack.albumTitle!
+            }
             let albumImage = currentTrack.artwork?.image(at: imageAlbum.bounds.size)
             trackElapsed = musicPlayer().currentPlaybackTime
             //let trackDuration = currentTrack.playbackDuration

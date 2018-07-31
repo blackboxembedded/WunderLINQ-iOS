@@ -59,7 +59,6 @@ class LocationService: NSObject, CLLocationManagerDelegate {
         locationManager.activityType = .automotiveNavigation
         locationManager.allowsBackgroundLocationUpdates = true
         locationManager.pausesLocationUpdatesAutomatically = false
-        //locationManager.distanceFilter = 200 // The minimum distance (measured in meters) a device must move horizontally before an update event is generated.
         locationManager.delegate = self
     }
     
@@ -70,7 +69,7 @@ class LocationService: NSObject, CLLocationManagerDelegate {
             fileName = "WunderLINQ-TripLog-" + Date().toString() + ".csv"
             let header = "Time,Latitude,Longitude,Altitude (m),Speed (kmh),Gear,Engine Temperature (C)," +
                 "Ambient Temperature (C),Front Tire Pressure (bar),Rear Tire Pressure (bar),Odometer (km),Voltage (V)," +
-            "Throttle Position (%),Front Brakes,Rear Brakes,Shifts,VIN,Ambient Light,Trip1 (km),Trip2 (km),Trip Auto (km)"
+            "Throttle Position (%),Front Brakes,Rear Brakes,Shifts,VIN,Ambient Light,Trip1 (km),Trip2 (km),Trip Auto (km)\n"
             Logger.log(fileName: fileName, entry: header)
         }
         
@@ -175,7 +174,7 @@ class LocationService: NSObject, CLLocationManagerDelegate {
                 ambientLight = "\(motorcycleData.ambientLight!)"
             }
             
-            let entry = "\(latitude),\(longitude),\(altitude),\(speed),\(gear),\(engineTemp),\(ambientTemp),\(frontTirePressure),\(rearTirePressure),\(odometer),\(voltage),\(throttlePosition),\(frontBrakes),\(rearBrakes),\(shifts),\(vin),\(tripOne),\(tripTwo),\(tripAuto),\(ambientLight)"
+            let entry = "\(latitude),\(longitude),\(altitude),\(speed),\(gear),\(engineTemp),\(ambientTemp),\(frontTirePressure),\(rearTirePressure),\(odometer),\(voltage),\(throttlePosition),\(frontBrakes),\(rearBrakes),\(shifts),\(vin),\(tripOne),\(tripTwo),\(tripAuto),\(ambientLight)\n"
             print(entry)
             Logger.log(fileName: fileName, entry: entry)
         } else {
@@ -243,13 +242,7 @@ class LocationService: NSObject, CLLocationManagerDelegate {
             return formatter
         }
         let date = Date().toString() as NSString
-        var latitude : String
-        latitude = "\(currentLocation?.coordinate.latitude ?? 0)"
-        var longitude : String
-        longitude = "\(currentLocation?.coordinate.longitude ?? 0)"
         let label : String = ""
-        print("Before Database Lat: \(latitude)")
-        print("Before Database Long: \(longitude)")
         
         if sqlite3_bind_text(stmt, 1, date.utf8String, -1, nil) != SQLITE_OK{
             let errmsg = String(cString: sqlite3_errmsg(db)!)
