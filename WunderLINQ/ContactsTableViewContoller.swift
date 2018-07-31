@@ -65,7 +65,9 @@ class ContactsTableViewController: UITableViewController {
                 contacts.append(contentsOf: containerResults)
                 for contact in contacts {
                     for phoneNumber in contact.phoneNumbers {
-                        if let number = phoneNumber.value as? CNPhoneNumber, let label = phoneNumber.label {
+                        if phoneNumber.value != nil && phoneNumber.label != nil {
+                            let number = phoneNumber.value
+                            let label = phoneNumber.label!
                             if (!label.contains("FAX") && (label.contains("iPhone") || label.contains("Home") || label.contains("Mobile") || label.contains("Work"))){
                                 let localizedLabel = CNLabeledValue<CNPhoneNumber>.localizedString(forLabel: label)
                                 let formatter = CNContactFormatter()

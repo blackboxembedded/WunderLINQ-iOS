@@ -223,7 +223,7 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
     func defaultsChanged(notification:NSNotification){
         if let defaults = notification.object as? UserDefaults {
             //get the value for key here
-            print("Type: \(defaults.value(forKey: "motorcycle_type_preference"))")
+            print("Type: \(defaults.value(forKey: "motorcycle_type_preference") ?? "Unknown")")
             /*
             if defaults.value(forKey: "motorcycle_type_preference") as! Int != 4 {
                 let secondViewController = self.storyboard!.instantiateViewController(withIdentifier: "Main")
@@ -1614,7 +1614,7 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
     // When the specified services are discovered, the peripheral calls the peripheral:didDiscoverServices: method of its delegate object.
     func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
         if error != nil {
-            print("ERROR DISCOVERING SERVICES: \(error?.localizedDescription)")
+            print("ERROR DISCOVERING SERVICES: \(error?.localizedDescription ?? "Unknown Error")")
             return
         }
         
@@ -1641,7 +1641,7 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
      */
     func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService, error: Error?) {
         if error != nil {
-            print("ERROR DISCOVERING CHARACTERISTICS: \(error?.localizedDescription)")
+            print("ERROR DISCOVERING CHARACTERISTICS: \(error?.localizedDescription ?? "Unknown Error")")
             return
         }
         
@@ -1675,7 +1675,7 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
      */
     func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?) {
         if error != nil {
-            print("ERROR ON UPDATING VALUE FOR CHARACTERISTIC: \(characteristic) - \(error?.localizedDescription)")
+            print("ERROR ON UPDATING VALUE FOR CHARACTERISTIC: \(characteristic) - \(error?.localizedDescription ?? "Unknown Error")")
             return
         }
         

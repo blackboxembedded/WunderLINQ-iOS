@@ -91,20 +91,26 @@ class TasksTableViewController: UITableViewController, AVCaptureVideoDataOutputS
             case 1:
                 print("Google Maps")
                 //googlemaps://
-                if (UIApplication.shared.canOpenURL(NSURL(string:"googlemaps://")! as URL)) {
-                    UIApplication.shared.openURL(NSURL(string:
-                        "googlemaps://")! as URL)
-                } else {
-                    print("Can't use googlemaps://");
+                if let googleMapsURL = URL(string: "googlemaps://") {
+                    if (UIApplication.shared.canOpenURL(googleMapsURL)) {
+                        if #available(iOS 10, *) {
+                            UIApplication.shared.open(googleMapsURL, options: [:], completionHandler: nil)
+                        } else {
+                            UIApplication.shared.openURL(googleMapsURL as URL)
+                        }
+                    }
                 }
             case 2:
                 print("Waze")
                 //waze://?ll=[lat],[lon]&z=10
-                if (UIApplication.shared.canOpenURL(NSURL(string:"waze://")! as URL)) {
-                    UIApplication.shared.openURL(NSURL(string:
-                        "waze://")! as URL)
-                } else {
-                    print("Can't use waze://");
+                if let wazeURL = URL(string: "waze://") {
+                    if (UIApplication.shared.canOpenURL(wazeURL)) {
+                        if #available(iOS 10, *) {
+                            UIApplication.shared.open(wazeURL, options: [:], completionHandler: nil)
+                        } else {
+                            UIApplication.shared.openURL(wazeURL as URL)
+                        }
+                    }
                 }
             default:
                 print("Apple Maps")
@@ -139,23 +145,27 @@ class TasksTableViewController: UITableViewController, AVCaptureVideoDataOutputS
                         case 1:
                             print("Google Maps")
                             //googlemaps://
-                            if (UIApplication.shared.canOpenURL(NSURL(string:"googlemaps://")! as URL)) {
-                                UIApplication.shared.openURL(NSURL(string:
-                                    "googlemaps://?saddr=&daddr=\(destLatitude),\(destLongitude)&directionsmode=driving")! as URL)
-                                
-                            } else {
-                                print("Can't use googlemaps://");
+                            if let googleMapsURL = URL(string: "googlemaps://?saddr=&daddr=\(destLatitude),\(destLongitude)&directionsmode=driving") {
+                                if (UIApplication.shared.canOpenURL(googleMapsURL)) {
+                                    if #available(iOS 10, *) {
+                                        UIApplication.shared.open(googleMapsURL, options: [:], completionHandler: nil)
+                                    } else {
+                                        UIApplication.shared.openURL(googleMapsURL as URL)
+                                    }
+                                }
                             }
                         case 2:
                             print("Waze")
                             //waze://?ll=[lat],[lon]&z=10
-                            if (UIApplication.shared.canOpenURL(NSURL(string:"waze://")! as URL)) {
-                                UIApplication.shared.openURL(NSURL(string:
-                                    "waze://?ll=\(destLatitude),\(destLongitude)&navigate=yes")! as URL)
-                            } else {
-                                print("Can't use waze://");
+                            if let wazeURL = URL(string: "waze://?ll=\(destLatitude),\(destLongitude)&navigate=yes") {
+                                if (UIApplication.shared.canOpenURL(wazeURL)) {
+                                    if #available(iOS 10, *) {
+                                        UIApplication.shared.open(wazeURL, options: [:], completionHandler: nil)
+                                    } else {
+                                        UIApplication.shared.openURL(wazeURL as URL)
+                                    }
+                                }
                             }
-                            print("waze://?ll=\(destLatitude),\(destLongitude)&navigate=yes")
                         default:
                             print("Apple Maps")
                             let options = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving]

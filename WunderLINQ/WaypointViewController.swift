@@ -221,7 +221,6 @@ class WaypointViewController: UIViewController, UITextFieldDelegate {
         
         //traversing through all the records
         while(sqlite3_step(stmt) == SQLITE_ROW){
-            let id = sqlite3_column_int(stmt, 0)
             date = String(cString: sqlite3_column_text(stmt, 1))
             latitude = String(cString: sqlite3_column_text(stmt, 2))
             longitude = String(cString: sqlite3_column_text(stmt, 3))
@@ -229,12 +228,6 @@ class WaypointViewController: UIViewController, UITextFieldDelegate {
             if ( sqlite3_column_text(stmt, 4) != nil ){
                 label = String(cString: sqlite3_column_text(stmt, 4))
             }
-
-            print("Database ID: \(id)")
-            print("Database Date: \(date)")
-            print("Database Lat: \(latitude)")
-            print("Database Long: \(longitude)")
-            print("Database Label: \(label)")
         }
     }
 }
