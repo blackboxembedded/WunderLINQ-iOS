@@ -181,9 +181,22 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
             return formatter
         }
         let today = dateFormatter.string(from: Date())
-        let launchedLast = UserDefaults.standard.string(forKey: "launchedLast")!
-        if (launchedLast.contains(today)) {
-            print("Not first launch.")
+        let launchedLast = UserDefaults.standard.string(forKey: "launchedLast")
+        if launchedLast != nil {
+            if (launchedLast!.contains(today)) {
+                print("Not first launch.")
+            } else {
+                print("First launch.")
+                let alert = UIAlertController(title: NSLocalizedString("disclaimer_alert_title", comment: ""), message: NSLocalizedString("disclaimer_alert_body", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: NSLocalizedString("disclaimer_ok", comment: ""), style: UIAlertActionStyle.default, handler: { action in
+                    UserDefaults.standard.set(today, forKey: "launchedLast")
+                }))
+                alert.addAction(UIAlertAction(title: NSLocalizedString("disclaimer_quit", comment: ""), style: UIAlertActionStyle.cancel, handler: { action in
+                    // quit app
+                    exit(0)
+                }))
+                self.present(alert, animated: true, completion: nil)
+            }
         } else {
             print("First launch.")
             let alert = UIAlertController(title: NSLocalizedString("disclaimer_alert_title", comment: ""), message: NSLocalizedString("disclaimer_alert_body", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
