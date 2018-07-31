@@ -82,8 +82,35 @@ class TasksTableViewController: UITableViewController, AVCaptureVideoDataOutputS
         switch taskID {
         case 0:
             print("Navigation")
-            let map = MKMapItem()
-            map.openInMaps(launchOptions: nil)
+            let navApp = UserDefaults.standard.integer(forKey: "nav_app_preference")
+            switch (navApp){
+            case 0:
+                print("Apple Maps")
+                let map = MKMapItem()
+                map.openInMaps(launchOptions: nil)
+            case 1:
+                print("Google Maps")
+                //googlemaps://
+                if (UIApplication.shared.canOpenURL(NSURL(string:"googlemaps://")! as URL)) {
+                    UIApplication.shared.openURL(NSURL(string:
+                        "googlemaps://")! as URL)
+                } else {
+                    print("Can't use googlemaps://");
+                }
+            case 2:
+                print("Waze")
+                //waze://?ll=[lat],[lon]&z=10
+                if (UIApplication.shared.canOpenURL(NSURL(string:"waze://")! as URL)) {
+                    UIApplication.shared.openURL(NSURL(string:
+                        "waze://")! as URL)
+                } else {
+                    print("Can't use waze://");
+                }
+            default:
+                print("Apple Maps")
+                let map = MKMapItem()
+                map.openInMaps(launchOptions: nil)
+            }
             break
         case 1:
             print("Go Home")
@@ -102,8 +129,38 @@ class TasksTableViewController: UITableViewController, AVCaptureVideoDataOutputS
                         let coordinates = CLLocationCoordinate2DMake(destLatitude, destLongitude)
                         let navPlacemark = MKPlacemark(coordinate: coordinates, addressDictionary: nil)
                         let mapitem = MKMapItem(placemark: navPlacemark)
-                        let options = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving]
-                        mapitem.openInMaps(launchOptions: options)
+                        
+                        let navApp = UserDefaults.standard.integer(forKey: "nav_app_preference")
+                        switch (navApp){
+                        case 0:
+                            print("Apple Maps")
+                            let options = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving]
+                            mapitem.openInMaps(launchOptions: options)
+                        case 1:
+                            print("Google Maps")
+                            //googlemaps://
+                            if (UIApplication.shared.canOpenURL(NSURL(string:"googlemaps://")! as URL)) {
+                                UIApplication.shared.openURL(NSURL(string:
+                                    "googlemaps://?saddr=&daddr=\(destLatitude),\(destLongitude)&directionsmode=driving")! as URL)
+                                
+                            } else {
+                                print("Can't use googlemaps://");
+                            }
+                        case 2:
+                            print("Waze")
+                            //waze://?ll=[lat],[lon]&z=10
+                            if (UIApplication.shared.canOpenURL(NSURL(string:"waze://")! as URL)) {
+                                UIApplication.shared.openURL(NSURL(string:
+                                    "waze://?ll=\(destLatitude),\(destLongitude)&navigate=yes")! as URL)
+                            } else {
+                                print("Can't use waze://");
+                            }
+                            print("waze://?ll=\(destLatitude),\(destLongitude)&navigate=yes")
+                        default:
+                            print("Apple Maps")
+                            let options = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving]
+                            mapitem.openInMaps(launchOptions: options)
+                        }
                     }
                 } else {
                     // the alert view
@@ -115,7 +172,6 @@ class TasksTableViewController: UITableViewController, AVCaptureVideoDataOutputS
                     DispatchQueue.main.asyncAfter(deadline: when){
                         // your code with delay
                         alert.dismiss(animated: true, completion: nil)
-                        
                     }
                 }
             } else {
