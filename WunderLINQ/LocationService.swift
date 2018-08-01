@@ -175,12 +175,10 @@ class LocationService: NSObject, CLLocationManagerDelegate {
             }
             
             let entry = "\(latitude),\(longitude),\(altitude),\(speed),\(gear),\(engineTemp),\(ambientTemp),\(frontTirePressure),\(rearTirePressure),\(odometer),\(voltage),\(throttlePosition),\(frontBrakes),\(rearBrakes),\(shifts),\(vin),\(tripOne),\(tripTwo),\(tripAuto),\(ambientLight)\n"
-            print(entry)
             Logger.log(fileName: fileName, entry: entry)
         } else {
             print("waypoint saved")
             saveWaypoint()
-            
         }
     }
     

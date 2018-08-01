@@ -127,10 +127,12 @@ class MusicViewController: UIViewController {
     }
     @objc func previousSong() {
         print("previousSong called")
-        if Int(trackElapsed) < 3 {
-            musicPlayer().skipToPreviousItem()
-        } else {
-            musicPlayer().skipToBeginning()
+        if trackElapsed != nil {
+            if Int(trackElapsed) < 3 {
+                musicPlayer().skipToPreviousItem()
+            } else {
+                musicPlayer().skipToBeginning()
+            }
         }
     }
     @objc func playPause() {
