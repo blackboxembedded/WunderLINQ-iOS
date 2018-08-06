@@ -21,6 +21,7 @@
 "OK" = "OK";
 "Trip Logs" = "Trip Logs";
 "Waypoints" = "Waypoints";
+"fault_title" = "Active Faults";
 
 // TripViewController
 "Start" = "Start";

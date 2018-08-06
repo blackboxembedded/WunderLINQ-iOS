@@ -8,8 +8,9 @@
 
 import UIKit
 import CoreBluetooth
+import UserNotifications
 
-class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDelegate {
+class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDelegate, UNUserNotificationCenterDelegate {
     @IBOutlet weak var frontPressureLabel: UILabel!
     @IBOutlet weak var rearPressureLabel: UILabel!
     @IBOutlet weak var engineTempLabel: UILabel!
@@ -67,29 +68,22 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
         super.viewWillAppear(animated)
         print("viewWillAppear")
         if UserDefaults.standard.integer(forKey: "motorcycle_type_preference") != 4 {
-            //self.view.setNeedsLayout()
-            /*
-            for mainUIView in self.mainUIView.subviews {
-                mainUIView.removeFromSuperview()
-            }
-            */
+            self.view.setNeedsLayout()
+            print("called setNeedsLayout")
+        } else {
+            self.viewDidLoad()
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("viewDidLoad")
         registerSettingsBundle()
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.defaultsChanged), name: UserDefaults.didChangeNotification, object: nil)
-        /*
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(applicationDidBecomeActive(notification:)),
-            name: NSNotification.Name.UIApplicationDidBecomeActive,
-            object: nil)
-        */
         
         // Add Borders
+        if frontTireStackView != nil {
         pinBackground(createView(UIColor.black), to: frontTireStackView)
         pinBackground(createView(UIColor.black), to: rearTireStackView)
         pinBackground(createView(UIColor.black), to: engineTempStackView)
@@ -98,6 +92,20 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
         pinBackground(createView(UIColor.black), to: odometerStackView)
         pinBackground(createView(UIColor.black), to: tripOneStackView)
         pinBackground(createView(UIColor.black), to: tripTwoStackView)
+        }
+
+        if UserDefaults.standard.integer(forKey: "motorcycle_type_preference") == 4 {
+            for mainUIView in self.mainUIView.subviews {
+                mainUIView.removeFromSuperview()
+            }
+            let label = UILabel(frame: CGRect(x: 0, y: 0, width: self.mainUIView.bounds.width, height: 75))
+            label.center = self.view.center
+            label.textAlignment = .center
+            label.textColor = .black
+            label.font = UIFont.boldSystemFont(ofSize: 40)
+            label.text = "WunderLINQ"
+            mainUIView.addSubview(label)
+        }
         
         centralManager = CBCentralManager(delegate: self,
                                           queue: nil)
@@ -184,9 +192,7 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
         let launchedLast = UserDefaults.standard.string(forKey: "launchedLast")
         if launchedLast != nil {
             if (launchedLast!.contains(today)) {
-                print("Not first launch.")
             } else {
-                print("First launch.")
                 let alert = UIAlertController(title: NSLocalizedString("disclaimer_alert_title", comment: ""), message: NSLocalizedString("disclaimer_alert_body", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
                 alert.addAction(UIAlertAction(title: NSLocalizedString("disclaimer_ok", comment: ""), style: UIAlertActionStyle.default, handler: { action in
                     UserDefaults.standard.set(today, forKey: "launchedLast")
@@ -198,7 +204,6 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
                 self.present(alert, animated: true, completion: nil)
             }
         } else {
-            print("First launch.")
             let alert = UIAlertController(title: NSLocalizedString("disclaimer_alert_title", comment: ""), message: NSLocalizedString("disclaimer_alert_body", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: NSLocalizedString("disclaimer_ok", comment: ""), style: UIAlertActionStyle.default, handler: { action in
                 UserDefaults.standard.set(today, forKey: "launchedLast")
@@ -209,43 +214,28 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
             }))
             self.present(alert, animated: true, completion: nil)
         }
-        
-        /*
-        if UserDefaults.standard.integer(forKey: "motorcycle_type_preference") == 4 {
-            for mainUIView in self.mainUIView.subviews {
-                mainUIView.removeFromSuperview()
-            }
-        }
-        */
-        
     }
     
     func defaultsChanged(notification:NSNotification){
+
         if let defaults = notification.object as? UserDefaults {
             //get the value for key here
             print("Type: \(defaults.value(forKey: "motorcycle_type_preference") ?? "Unknown")")
-            /*
-            if defaults.value(forKey: "motorcycle_type_preference") as! Int != 4 {
-                let secondViewController = self.storyboard!.instantiateViewController(withIdentifier: "Main")
-                self.present(secondViewController, animated: true, completion: nil)
+            if UserDefaults.standard.integer(forKey: "motorcycle_type_preference") != 4 {
+                self.view.setNeedsLayout()
+                print("called setNeedsLayout")
             } else {
-                for mainUIView in self.mainUIView.subviews {
-                    mainUIView.removeFromSuperview()
-                }
+                self.viewDidLoad()
             }
- */
         }
     }
     
-    /*
-    @objc func applicationDidBecomeActive(notification: NSNotification) {
-        // do something
-        print("mymotorcycle applicationDidBecomeActive")
-        let secondViewController = self.storyboard!.instantiateViewController(withIdentifier: "Main")
-        self.present(secondViewController, animated: true, completion: nil)
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        
+        //displaying the ios local notification when app is in foreground
+        completionHandler([.alert, .badge, .sound])
     }
-    */
-    
+
     func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
         if gesture.direction == UISwipeGestureRecognizerDirection.right {
             print("Swipe Right")
@@ -411,7 +401,7 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
         }
         self.navigationItem.leftBarButtonItems = [backButton, disconnectButton, faultsButton]
         
-        if UserDefaults.standard.integer(forKey: "motorcycle_type_preference") != 4 {
+        if UserDefaults.standard.integer(forKey: "motorcycle_type_preference") != 4 && frontPressureLabel != nil {
             // Update main display
             var temperatureUnit = "C"
             var distanceUnit = "km"
@@ -653,42 +643,98 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
                 faults.setRearTirePressureWarningActive(active: false)
                 faults.setFrontTirePressureCriticalActive(active: false)
                 faults.setRearTirePressureCriticalActive(active: false)
+                if(faults.frontTirePressureCriticalNotificationActive) {
+                    updateNotification()
+                    faults.frontTirePressureCriticalNotificationActive = false
+                }
+                if(faults.rearTirePressureCriticalNotificationActive) {
+                    updateNotification()
+                    faults.rearTirePressureCriticalNotificationActive = false
+                }
 
             case 0xCA:
                 faults.setFrontTirePressureWarningActive(active: false)
                 faults.setRearTirePressureWarningActive(active: true)
                 faults.setFrontTirePressureCriticalActive(active: false)
                 faults.setRearTirePressureCriticalActive(active: false)
+                if(faults.frontTirePressureCriticalNotificationActive) {
+                    updateNotification()
+                    faults.frontTirePressureCriticalNotificationActive = false
+                }
+                if(faults.rearTirePressureCriticalNotificationActive) {
+                    updateNotification()
+                    faults.rearTirePressureCriticalNotificationActive = false
+                }
 
             case 0xCB:
                 faults.setFrontTirePressureWarningActive(active: true)
                 faults.setRearTirePressureWarningActive(active: true)
                 faults.setFrontTirePressureCriticalActive(active: false)
                 faults.setRearTirePressureCriticalActive(active: false)
+                if(faults.frontTirePressureCriticalNotificationActive) {
+                    updateNotification()
+                    faults.frontTirePressureCriticalNotificationActive = false
+                }
+                if(faults.rearTirePressureCriticalNotificationActive) {
+                    updateNotification()
+                    faults.rearTirePressureCriticalNotificationActive = false
+                }
 
             case 0xD1:
                 faults.setFrontTirePressureWarningActive(active: false)
                 faults.setRearTirePressureWarningActive(active: false)
                 faults.setFrontTirePressureCriticalActive(active: true)
                 faults.setRearTirePressureCriticalActive(active: false)
+                if(!faults.frontTirePressureCriticalNotificationActive) {
+                    updateNotification()
+                    faults.frontTirePressureCriticalNotificationActive = true
+                }
+                if(faults.rearTirePressureCriticalNotificationActive) {
+                    updateNotification()
+                    faults.rearTirePressureCriticalNotificationActive = false
+                }
 
             case 0xD2:
                 faults.setFrontTirePressureWarningActive(active: false)
                 faults.setRearTirePressureWarningActive(active: false)
                 faults.setFrontTirePressureCriticalActive(active: false)
                 faults.setRearTirePressureCriticalActive(active: true)
+                if(faults.frontTirePressureCriticalNotificationActive) {
+                    updateNotification()
+                    faults.frontTirePressureCriticalNotificationActive = false
+                }
+                if(!faults.rearTirePressureCriticalNotificationActive) {
+                    updateNotification()
+                    faults.rearTirePressureCriticalNotificationActive = true
+                }
 
             case 0xD3:
                 faults.setFrontTirePressureWarningActive(active: false)
                 faults.setRearTirePressureWarningActive(active: false)
                 faults.setFrontTirePressureCriticalActive(active: true)
                 faults.setRearTirePressureCriticalActive(active: true)
+                if(!faults.frontTirePressureCriticalNotificationActive) {
+                    updateNotification()
+                    faults.frontTirePressureCriticalNotificationActive = true
+                }
+                if(!faults.rearTirePressureCriticalNotificationActive) {
+                    updateNotification()
+                    faults.rearTirePressureCriticalNotificationActive = true
+                }
 
             default:
                 faults.setFrontTirePressureWarningActive(active: false)
                 faults.setRearTirePressureWarningActive(active: false)
                 faults.setFrontTirePressureCriticalActive(active: false)
                 faults.setRearTirePressureCriticalActive(active: false)
+                if(faults.frontTirePressureCriticalNotificationActive) {
+                    updateNotification()
+                    faults.frontTirePressureCriticalNotificationActive = false
+                }
+                if(faults.rearTirePressureCriticalNotificationActive) {
+                    updateNotification()
+                    faults.rearTirePressureCriticalNotificationActive = false
+                }
 
             }
             
@@ -867,78 +913,183 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
                 faults.setGeneralShowsYellowActive(active: false)
                 faults.setGeneralFlashingRedActive(active: false)
                 faults.setGeneralShowsRedActive(active: false)
+                if(faults.generalFlashingRedNotificationActive) {
+                    updateNotification()
+                    faults.generalFlashingRedNotificationActive = false
+                }
+                if(faults.generalShowsRedNotificationActive) {
+                    updateNotification()
+                    faults.generalShowsRedNotificationActive = false
+                }
 
             case 0x2:
                 faults.setGeneralFlashingYellowActive(active: false)
                 faults.setGeneralShowsYellowActive(active: true)
                 faults.setGeneralFlashingRedActive(active: false)
                 faults.setGeneralShowsRedActive(active: false)
+                if(faults.generalFlashingRedNotificationActive) {
+                    updateNotification()
+                    faults.generalFlashingRedNotificationActive = false
+                }
+                if(faults.generalShowsRedNotificationActive) {
+                    updateNotification()
+                    faults.generalShowsRedNotificationActive = false
+                }
 
             case 0x4:
+                print("0x4")
                 faults.setGeneralFlashingYellowActive(active: false)
                 faults.setGeneralShowsYellowActive(active: false)
                 faults.setGeneralFlashingRedActive(active: true)
                 faults.setGeneralShowsRedActive(active: false)
-
+                if(!faults.generalFlashingRedNotificationActive) {
+                    updateNotification()
+                    faults.generalFlashingRedNotificationActive = true
+                }
+                if(faults.generalShowsRedNotificationActive) {
+                    updateNotification()
+                    faults.generalShowsRedNotificationActive = false
+                }
+                
             case 0x5:
+                print("0x5")
                 faults.setGeneralFlashingYellowActive(active: true)
                 faults.setGeneralShowsYellowActive(active: false)
                 faults.setGeneralFlashingRedActive(active: true)
                 faults.setGeneralShowsRedActive(active: false)
+                if(!faults.generalFlashingRedNotificationActive) {
+                    updateNotification()
+                    faults.generalFlashingRedNotificationActive = true
+                }
+                if(faults.generalShowsRedNotificationActive) {
+                    updateNotification()
+                    faults.generalShowsRedNotificationActive = false
+                }
 
             case 0x6:
+                print("0x6")
                 faults.setGeneralFlashingYellowActive(active: false)
                 faults.setGeneralShowsYellowActive(active: true)
                 faults.setGeneralFlashingRedActive(active: true)
                 faults.setGeneralShowsRedActive(active: false)
+                if(!faults.generalFlashingRedNotificationActive) {
+                    updateNotification()
+                    faults.generalFlashingRedNotificationActive = true
+                }
+                if(faults.generalShowsRedNotificationActive) {
+                    updateNotification()
+                    faults.generalShowsRedNotificationActive = false
+                }
 
             case 0x7:
+                print("0x7")
                 faults.setGeneralFlashingYellowActive(active: false)
                 faults.setGeneralShowsYellowActive(active: false)
                 faults.setGeneralFlashingRedActive(active: true)
                 faults.setGeneralShowsRedActive(active: false)
+                if(!faults.generalFlashingRedNotificationActive) {
+                    updateNotification()
+                    faults.generalFlashingRedNotificationActive = true
+                }
+                if(faults.generalShowsRedNotificationActive) {
+                    updateNotification()
+                    faults.generalShowsRedNotificationActive = false
+                }
 
             case 0x8:
                 faults.setGeneralFlashingYellowActive(active: false)
                 faults.setGeneralShowsYellowActive(active: false)
                 faults.setGeneralFlashingRedActive(active: false)
                 faults.setGeneralShowsRedActive(active: true)
+                if(faults.generalFlashingRedNotificationActive) {
+                    updateNotification()
+                    faults.generalFlashingRedNotificationActive = false
+                }
+                if(!faults.generalShowsRedNotificationActive) {
+                    updateNotification()
+                    faults.generalShowsRedNotificationActive = true
+                }
 
             case 0x9:
                 faults.setGeneralFlashingYellowActive(active: false)
                 faults.setGeneralShowsYellowActive(active: false)
                 faults.setGeneralFlashingRedActive(active: true)
                 faults.setGeneralShowsRedActive(active: true)
+                if(!faults.generalFlashingRedNotificationActive && !faults.generalShowsRedNotificationActive) {
+                    updateNotification()
+                    faults.generalFlashingRedNotificationActive = true
+                    faults.generalShowsRedNotificationActive = true
+                }
 
             case 0xA:
                 faults.setGeneralFlashingYellowActive(active: false)
                 faults.setGeneralShowsYellowActive(active: true)
                 faults.setGeneralFlashingRedActive(active: false)
                 faults.setGeneralShowsRedActive(active: true)
+                if(faults.generalFlashingRedNotificationActive) {
+                    updateNotification()
+                    faults.generalFlashingRedNotificationActive = false
+                }
+                if(!faults.generalShowsRedNotificationActive) {
+                    updateNotification()
+                    faults.generalShowsRedNotificationActive = true
+                }
 
             case 0xB:
                 faults.setGeneralFlashingYellowActive(active: false)
                 faults.setGeneralShowsYellowActive(active: false)
                 faults.setGeneralFlashingRedActive(active: false)
                 faults.setGeneralShowsRedActive(active: true)
+                if(faults.generalFlashingRedNotificationActive) {
+                    updateNotification()
+                    faults.generalFlashingRedNotificationActive = false
+                }
+                if(!faults.generalShowsRedNotificationActive) {
+                    updateNotification()
+                    faults.generalShowsRedNotificationActive = true
+                }
 
             case 0xD:
                 faults.setGeneralFlashingYellowActive(active: true)
                 faults.setGeneralShowsYellowActive(active: false)
                 faults.setGeneralFlashingRedActive(active: false)
                 faults.setGeneralShowsRedActive(active: false)
+                if(faults.generalFlashingRedNotificationActive) {
+                    updateNotification()
+                    faults.generalFlashingRedNotificationActive = false
+                }
+                if(faults.generalShowsRedNotificationActive) {
+                    updateNotification()
+                    faults.generalShowsRedNotificationActive = false
+                }
 
             case 0xE:
                 faults.setGeneralFlashingYellowActive(active: false)
                 faults.setGeneralShowsYellowActive(active: true)
                 faults.setGeneralFlashingRedActive(active: false)
                 faults.setGeneralShowsRedActive(active: false)
+                if(faults.generalFlashingRedNotificationActive) {
+                    updateNotification()
+                    faults.generalFlashingRedNotificationActive = false
+                }
+                if(faults.generalShowsRedNotificationActive) {
+                    updateNotification()
+                    faults.generalShowsRedNotificationActive = false
+                }
 
             default:
                 faults.setGeneralFlashingYellowActive(active: false)
                 faults.setGeneralShowsYellowActive(active: false)
                 faults.setGeneralFlashingRedActive(active: false)
                 faults.setGeneralShowsRedActive(active: false)
+                if(faults.generalFlashingRedNotificationActive) {
+                    updateNotification()
+                    faults.generalFlashingRedNotificationActive = false
+                }
+                if(faults.generalShowsRedNotificationActive) {
+                    updateNotification()
+                    faults.generalShowsRedNotificationActive = false
+                }
 
             }
         case 0x08:
@@ -1703,6 +1854,58 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
         view.translatesAutoresizingMaskIntoConstraints = false
         stackView.insertSubview(view, at: 0)
         view.pin(to: stackView)
+    }
+    
+    private func updateNotification(){
+        var alertBody: String = ""
+        if(faults.getFrontTirePressureCriticalActive()){
+            alertBody += NSLocalizedString("Front Tire Pressure Critical", comment: "") + "\n"
+        }
+        if(faults.getRearTirePressureCriticalActive()){
+            alertBody += NSLocalizedString("Rear Tire Pressure Critical", comment: "") + "\n"
+        }
+        if(faults.getGeneralFlashingRedActive()){
+            alertBody += NSLocalizedString("The general warning light flashes red", comment: "") + "\n"
+        }
+        if(faults.getGeneralShowsRedActive()){
+            alertBody += NSLocalizedString("The general warning light shows red", comment: "") + "\n"
+        }
+        if(alertBody != ""){
+            sendAlert(message: alertBody)
+        } else {
+            print("Clearing notification")
+            clearNotifications()
+        }
+    }
+    
+    private func clearNotifications(){
+        let center = UNUserNotificationCenter.current()
+        center.removeAllDeliveredNotifications() // To remove all delivered notifications
+        center.removeAllPendingNotificationRequests()
+    }
+    
+    private func sendAlert(message:String){
+        //creating the notification content
+        let content = UNMutableNotificationContent()
+        
+        //adding title, subtitle, body and badge
+        content.title = NSLocalizedString("fault_title", comment: "")
+        //content.subtitle = "iOS Development is fun"
+        content.body = message
+        //content.badge = 1
+        content.sound = UNNotificationSound.default()
+        
+        //getting the notification trigger
+        //it will be called after 1 second
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
+        
+        //getting the notification request
+        let request = UNNotificationRequest(identifier: "FaultNotification", content: content, trigger: trigger)
+        
+        UNUserNotificationCenter.current().delegate = self
+        
+        //adding the notification to notification center
+        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
     }
     
     // MARK: - Utility Methods

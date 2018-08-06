@@ -404,7 +404,7 @@ class TasksTableViewController: UITableViewController, AVCaptureVideoDataOutputS
         
         loadTasks();
         
-        tableView.remembersLastFocusedIndexPath = true
+        //tableView.remembersLastFocusedIndexPath = true
         
         // Uncomment the following line to preserve selection between presentations
         //self.clearsSelectionOnViewWillAppear = false
@@ -458,7 +458,6 @@ class TasksTableViewController: UITableViewController, AVCaptureVideoDataOutputS
         
         cell.textLabel?.text = tasks.label
         cell.imageView?.image = tasks.icon
-        
         return cell
     }
     
