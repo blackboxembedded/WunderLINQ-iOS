@@ -3,7 +3,7 @@
 //  WunderLINQ
 //
 //  Created by Keith Conger on 8/16/17.
-//  Copyright © 2017 Keith Conger. All rights reserved.
+//  Copyright © 2017 Black Box Embedded, LLC. All rights reserved.
 //
 
 import UIKit
@@ -70,11 +70,9 @@ class MusicViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector:#selector(MusicViewController.updateNowPlayingInfo), name: NSNotification.Name.MPMusicPlayerControllerNowPlayingItemDidChange, object: nil)
         
         if (musicPlayer().playbackState == MPMusicPlaybackState.playing) {
-            playButton.setTitle("Pause",for: .normal)
             playButton.setImage(pauseImage, for: .normal)
 
         } else {
-            playButton.setTitle("Play",for: .normal)
             playButton.setImage(playImage, for: .normal)
         }
     }
@@ -93,11 +91,9 @@ class MusicViewController: UIViewController {
     
     func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
         if gesture.direction == UISwipeGestureRecognizerDirection.right {
-            print("Swipe Right")
             performSegue(withIdentifier: "musicToCompass", sender: [])
         }
         else if gesture.direction == UISwipeGestureRecognizerDirection.left {
-            print("Swipe Left")
             performSegue(withIdentifier: "musicToQuickTasks", sender: [])
         }
     }
@@ -114,19 +110,15 @@ class MusicViewController: UIViewController {
     }
     
     @objc func leftScreen() {
-        print("leftScreen called")
         performSegue(withIdentifier: "musicToCompass", sender: [])
     }
     @objc func rightScreen() {
-        print("rightScreen called")
         performSegue(withIdentifier: "musicToQuickTasks", sender: [])
     }
     @objc func nextSong() {
-        print("nextSong called")
         musicPlayer().skipToNextItem()
     }
     @objc func previousSong() {
-        print("previousSong called")
         if trackElapsed != nil {
             if Int(trackElapsed) < 3 {
                 musicPlayer().skipToPreviousItem()
@@ -136,15 +128,12 @@ class MusicViewController: UIViewController {
         }
     }
     @objc func playPause() {
-        print("playPause called")
         if (musicPlayer().playbackState == MPMusicPlaybackState.playing) {
             musicPlayer().pause()
-            playButton.setTitle("Play",for: .normal)
             playButton.setImage(playImage, for: .normal)
             
         } else {
             musicPlayer().play()
-            playButton.setTitle("Pause",for: .normal)
             playButton.setImage(pauseImage, for: .normal)
         }
     }
@@ -157,12 +146,10 @@ class MusicViewController: UIViewController {
     @IBAction func playButton(_ sender: UIButton) {
         if (musicPlayer().playbackState == MPMusicPlaybackState.playing) {
             musicPlayer().pause()
-            playButton.setTitle("Play",for: .normal)
             playButton.setImage(playImage, for: .normal)
             
         } else {
             musicPlayer().play()
-            playButton.setTitle("Pause",for: .normal)
             playButton.setImage(pauseImage, for: .normal)
         }
     }
@@ -220,10 +207,8 @@ class MusicViewController: UIViewController {
     }
     
     func updateNowPlayingInfo(){
-        
         self.timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(MusicViewController.timerFired(_:)), userInfo: nil, repeats: true)
         self.timer.tolerance = 0.1
-        
     }
 
 }

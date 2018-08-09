@@ -3,7 +3,7 @@
 //  WunderLINQ
 //
 //  Created by Keith Conger on 8/13/17.
-//  Copyright © 2017 Keith Conger. All rights reserved.
+//  Copyright © 2017 Black Box Embedded, LLC. All rights reserved.
 //
 
 import UIKit

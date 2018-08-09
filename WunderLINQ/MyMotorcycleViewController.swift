@@ -3,7 +3,7 @@
 //  WunderLINQ
 //
 //  Created by Keith Conger on 8/13/17.
-//  Copyright © 2017 Keith Conger. All rights reserved.
+//  Copyright © 2017 Black Box Embedded, LLC. All rights reserved.
 //
 
 import UIKit
@@ -56,7 +56,7 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
     let faults = Faults.shared
     var prevBrakeValue = 0
     
-    fileprivate var popoverList = [NSLocalizedString("Trip Logs", comment: ""), NSLocalizedString("Waypoints", comment: "")]
+    fileprivate var popoverList = [NSLocalizedString("trip_logs_label", comment: ""), NSLocalizedString("waypoints_label", comment: "")]
     
     fileprivate var popover: Popover!
     fileprivate var popoverOptions: [PopoverOption] = [
@@ -66,10 +66,8 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print("viewWillAppear")
         if UserDefaults.standard.integer(forKey: "motorcycle_type_preference") != 4 {
             self.view.setNeedsLayout()
-            print("called setNeedsLayout")
         } else {
             self.viewDidLoad()
         }
@@ -77,9 +75,8 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("viewDidLoad")
-        registerSettingsBundle()
         
+        registerSettingsBundle()
         NotificationCenter.default.addObserver(self, selector: #selector(self.defaultsChanged), name: UserDefaults.didChangeNotification, object: nil)
         
         // Add Borders
@@ -103,7 +100,7 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
             label.textAlignment = .center
             label.textColor = .black
             label.font = UIFont.boldSystemFont(ofSize: 40)
-            label.text = "WunderLINQ"
+            label.text = NSLocalizedString("product", comment: "")
             mainUIView.addSubview(label)
         }
         
@@ -217,13 +214,11 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
     }
     
     func defaultsChanged(notification:NSNotification){
-
         if let defaults = notification.object as? UserDefaults {
             //get the value for key here
             print("Type: \(defaults.value(forKey: "motorcycle_type_preference") ?? "Unknown")")
             if UserDefaults.standard.integer(forKey: "motorcycle_type_preference") != 4 {
                 self.view.setNeedsLayout()
-                print("called setNeedsLayout")
             } else {
                 self.viewDidLoad()
             }
@@ -238,11 +233,9 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
 
     func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
         if gesture.direction == UISwipeGestureRecognizerDirection.right {
-            print("Swipe Right")
             performSegue(withIdentifier: "motorcycleToTasks", sender: [])
         }
         else if gesture.direction == UISwipeGestureRecognizerDirection.left {
-            print("Swipe Left")
             performSegue(withIdentifier: "motorcycleToCompass", sender: [])
         }
     }
@@ -257,13 +250,11 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
     }
     
     @objc func leftScreen() {
-        print("leftScreen called")
         // your code here
         performSegue(withIdentifier: "motorcycleToTasks", sender: [])
     }
     
     @objc func rightScreen() {
-        print("rightScreen called")
         // your code here
         performSegue(withIdentifier: "motorcycleToCompass", sender: [])
     }
@@ -290,13 +281,11 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
     
     func faultsButtonTapped() {
         // your code here
-        print("faultsButtonTapped")
         performSegue(withIdentifier: "motorcycleToFaults", sender: [])
     }
     
     func dataButtonTapped() {
         // your code here
-        print("dataButtonTapped")
         let tableView = UITableView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width / 2, height: 90))
         tableView.delegate = self
         tableView.dataSource = self
@@ -324,6 +313,7 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
             }
         }
     }
+    
     @IBAction func btButtonTapped(_ sender: UIBarButtonItem) {
         // if we don't have a WunderLINQ, start scanning for one...
         if wunderLINQ == nil {
@@ -378,7 +368,7 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
         } else {
             if keepScanning {
                 // Start scanning again...
-                print("*** RESUMING SCAN!")
+                print("RESUMING SCAN!")
                 disconnectButton.isEnabled = false
                 centralManager.scanForPeripherals(withServices: [CBUUID(string: Device.WunderLINQAdvertisingUUID)], options: nil)
                 Timer.scheduledTimer(timeInterval: timerScanInterval, target: self, selector: #selector(self.pauseScan), userInfo: nil, repeats: false)
@@ -517,6 +507,7 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
                 messageHexString += ","
             }
         }
+        
         //print(messageHexString)
         
         // Log raw messages
@@ -937,7 +928,6 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
                 }
 
             case 0x4:
-                print("0x4")
                 faults.setGeneralFlashingYellowActive(active: false)
                 faults.setGeneralShowsYellowActive(active: false)
                 faults.setGeneralFlashingRedActive(active: true)
@@ -952,7 +942,6 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
                 }
                 
             case 0x5:
-                print("0x5")
                 faults.setGeneralFlashingYellowActive(active: true)
                 faults.setGeneralShowsYellowActive(active: false)
                 faults.setGeneralFlashingRedActive(active: true)
@@ -967,7 +956,6 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
                 }
 
             case 0x6:
-                print("0x6")
                 faults.setGeneralFlashingYellowActive(active: false)
                 faults.setGeneralShowsYellowActive(active: true)
                 faults.setGeneralFlashingRedActive(active: true)
@@ -982,7 +970,6 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
                 }
 
             case 0x7:
-                print("0x7")
                 faults.setGeneralFlashingYellowActive(active: false)
                 faults.setGeneralShowsYellowActive(active: false)
                 faults.setGeneralFlashingRedActive(active: true)
@@ -1633,27 +1620,26 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
         
         switch central.state {
         case .poweredOff:
-            message = NSLocalizedString("Bluetooth on this device is currently powered off.", comment: "")
+            message = NSLocalizedString("bt_powered_off", comment: "")
         case .unsupported:
-            message = NSLocalizedString("This device does not support Bluetooth Low Energy.", comment: "")
+            message = NSLocalizedString("bt_not_supported", comment: "")
         case .unauthorized:
-            message = NSLocalizedString("This app is not authorized to use Bluetooth Low Energy.", comment: "")
+            message = NSLocalizedString("bt_not_authorized", comment: "")
         case .resetting:
-            message = NSLocalizedString("The BLE Manager is resetting; a state update is pending.", comment: "")
+            message = NSLocalizedString("bt_resetting", comment: "")
         case .unknown:
-            message = NSLocalizedString("The state of the BLE Manager is unknown.", comment: "")
+            message = NSLocalizedString("bt_unknown", comment: "")
         case .poweredOn:
             showAlert = false
-            message = NSLocalizedString("Bluetooth LE is turned on and ready for communication.", comment: "")
+            message = NSLocalizedString("bt_ready", comment: "")
             print(message)
-            
             resumeScan()
         }
         
         if showAlert {
             // Display Alert
-            let alertController = UIAlertController(title: NSLocalizedString("Central Manager State", comment: ""), message: message, preferredStyle: .alert)
-            let defaultAction = UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default, handler: nil)
+            let alertController = UIAlertController(title: NSLocalizedString("bt_alert_title", comment: ""), message: message, preferredStyle: .alert)
+            let defaultAction = UIAlertAction(title: NSLocalizedString("alert_message_exit_ok", comment: ""), style: .default, handler: nil)
             alertController.addAction(defaultAction)
             present(alertController, animated: true, completion: nil)
         }
@@ -1700,7 +1686,7 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
      You typically implement this method to set the peripheral’s delegate and to discover its services.
      */
     func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
-        print("**** SUCCESSFULLY CONNECTED TO WunderLINQ!!!")
+        print("SUCCESSFULLY CONNECTED TO WunderLINQ!")
         disconnectButton.tintColor = UIColor.blue
         
         print("Peripheral info: \(peripheral)")
@@ -1722,7 +1708,7 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
      in which case you may attempt to connect to the peripheral again.
      */
     func centralManager(_ central: CBCentralManager, didFailToConnect peripheral: CBPeripheral, error: Error?) {
-        print("**** CONNECTION TO WunderLINQ FAILED!!!")
+        print("CONNECTION TO WunderLINQ FAILED!")
         disconnectButton.tintColor = UIColor.red
     }
     
@@ -1737,10 +1723,10 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
      Note that when a peripheral is disconnected, all of its services, characteristics, and characteristic descriptors are invalidated.
      */
     func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
-        print("**** DISCONNECTED FROM WunderLINQ!!!")
+        print("DISCONNECTED FROM WunderLINQ!")
         disconnectButton.tintColor = UIColor.red
         if error != nil {
-            print("****** DISCONNECTION DETAILS: \(error!.localizedDescription)")
+            print("DISCONNECTION DETAILS: \(error!.localizedDescription)")
         }
         wunderLINQ = nil
         
@@ -1859,21 +1845,20 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
     private func updateNotification(){
         var alertBody: String = ""
         if(faults.getFrontTirePressureCriticalActive()){
-            alertBody += NSLocalizedString("Front Tire Pressure Critical", comment: "") + "\n"
+            alertBody += NSLocalizedString("fault_TIREFCF", comment: "") + "\n"
         }
         if(faults.getRearTirePressureCriticalActive()){
-            alertBody += NSLocalizedString("Rear Tire Pressure Critical", comment: "") + "\n"
+            alertBody += NSLocalizedString("fault_TIRERCF", comment: "") + "\n"
         }
         if(faults.getGeneralFlashingRedActive()){
-            alertBody += NSLocalizedString("The general warning light flashes red", comment: "") + "\n"
+            alertBody += NSLocalizedString("fault_GENWARNFSRED", comment: "") + "\n"
         }
         if(faults.getGeneralShowsRedActive()){
-            alertBody += NSLocalizedString("The general warning light shows red", comment: "") + "\n"
+            alertBody += NSLocalizedString("fault_GENWARNSHRED", comment: "") + "\n"
         }
         if(alertBody != ""){
             sendAlert(message: alertBody)
         } else {
-            print("Clearing notification")
             clearNotifications()
         }
     }
@@ -1941,13 +1926,10 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
 extension MyMotorcycleViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("row: \(indexPath.row)")
         switch(indexPath.row) {
         case 0:
-            print("option 0")
             performSegue(withIdentifier: "motorcycleToTrips", sender: self)
         case 1:
-            print("option 1")
             performSegue(withIdentifier: "motorcycleToWaypoints", sender: self)
         default:
             print("Unknown option")

@@ -18,7 +18,6 @@ class FaultsTableViewController: UITableViewController {
     
     func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
         if gesture.direction == UISwipeGestureRecognizerDirection.right {
-            print("Swipe Right")
             performSegue(withIdentifier: "faultsToMotorcycle", sender: [])
         }
     }
@@ -67,10 +66,7 @@ class FaultsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "FaultsTableViewCell", for: indexPath)
         let fault = faults.getallActiveDesc()[indexPath.row]
-        
         cell.textLabel?.text = fault
-
-        // Configure the cell...
 
         return cell
     }

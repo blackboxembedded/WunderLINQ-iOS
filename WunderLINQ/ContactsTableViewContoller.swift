@@ -3,7 +3,7 @@
 //  WunderLINQ
 //
 //  Created by Keith Conger on 10/2/17.
-//  Copyright © 2017 Keith Conger. All rights reserved.
+//  Copyright © 2017 Black Box Embedded, LLC. All rights reserved.
 //
 
 import Foundation
@@ -105,11 +105,9 @@ class ContactsTableViewController: UITableViewController {
     }
     
     @objc func selectItem() {
-        print("selectItem called")
         call_contact(contactID: itemRow)
     }
     @objc func upRow() {
-        print("upRow called")
         if (itemRow == 0){
             let nextRow = phoneContacts.count - 1
             self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.contentView.backgroundColor = UIColor.white
@@ -128,7 +126,6 @@ class ContactsTableViewController: UITableViewController {
         self.tableView.reloadData()
     }
     @objc func downRow() {
-        print("downRow called")
         if (itemRow == (phoneContacts.count - 1)){
             let nextRow = 0
             self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.contentView.backgroundColor = UIColor.white
@@ -155,7 +152,6 @@ class ContactsTableViewController: UITableViewController {
     
     func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
         if gesture.direction == UISwipeGestureRecognizerDirection.right {
-            print("Swipe Right")
             performSegue(withIdentifier: "backToTasks", sender: [])
         }
     }

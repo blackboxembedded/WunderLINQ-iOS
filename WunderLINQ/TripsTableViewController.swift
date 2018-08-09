@@ -19,7 +19,6 @@ class TripsTableViewController: UITableViewController {
     
     func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
         if gesture.direction == UISwipeGestureRecognizerDirection.right {
-            print("Swipe Right")
             performSegue(withIdentifier: "tripsToMotorcycle", sender: [])
         }
     }
@@ -87,7 +86,6 @@ class TripsTableViewController: UITableViewController {
 
         let file = csvFileNames![indexPath.row]
         cell.textLabel?.text = file
-        // Configure the cell...
 
         return cell
     }

@@ -3,7 +3,7 @@
 //  WunderLINQ
 //
 //  Created by Keith Conger on 8/13/17.
-//  Copyright © 2017 Keith Conger. All rights reserved.
+//  Copyright © 2017 Black Box Embedded, LLC. All rights reserved.
 //
 
 import UIKit
@@ -26,10 +26,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         center.requestAuthorization(options: [.alert, .sound]) { (granted, error) in
             // Enable or disable features based on authorization.
             if error != nil {
+                self.showAlert()
                 print("Request authorization failed!")
             } else {
-                //print("Request authorization succeeded!")
-                //self.showAlert()
+                print("Request authorization succeeded!")
             }
         }
         
@@ -48,12 +48,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
-        print("applicationWillEnterForeground")
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-        print("applicationDidBecomeActive")
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
@@ -61,9 +59,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     }
 
     func showAlert() {
-        let objAlert = UIAlertController(title: "Alert", message: "Request authorization succeeded", preferredStyle: UIAlertControllerStyle.alert)
+        let objAlert = UIAlertController(title: NSLocalizedString("negative_alert_title", comment: ""), message: NSLocalizedString("negative_notification_body", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
         
-        objAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+        objAlert.addAction(UIAlertAction(title: NSLocalizedString("alert_message_exit_ok", comment: ""), style: UIAlertActionStyle.default, handler: nil))
         //self.presentViewController(objAlert, animated: true, completion: nil)
         
         UIApplication.shared.keyWindow?.rootViewController?.present(objAlert, animated: true, completion: nil)

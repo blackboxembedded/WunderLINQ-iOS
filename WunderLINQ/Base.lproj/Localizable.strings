@@ -5,79 +5,86 @@
   Created by Keith Conger on 8/27/17.
   Copyright © 2017 Black Box Embedded, LLC. All rights reserved.
 */
+// Product
+"product" = "WunderLINQ";
+
+// AppDelegate
+"negative_alert_title" = "Functionality limited";
+"negative_notification_body" = "Since notifcations were not allowed, this app will not be able to send notifcations for faults";
+"alert_message_exit_ok" = "OK";
 
 // MyMotorcycleViewController
 "disclaimer_alert_title" = "WARNING!";
 "disclaimer_alert_body" = "Do not attempt to enter route information or adjust the WunderLINQ while driving.\nFailure to pay full attention to the operation of your vehicle could result in death, serious injury, or property damage.\nYou assume total responsibility and risk for using this device.";
 "disclaimer_ok" = "I agree";
 "disclaimer_quit" = "Quit";
-"Bluetooth on this device is currently powered off." = "Bluetooth on this device is currently powered off.";
-"This device does not support Bluetooth Low Energy." = "This device does not support Bluetooth Low Energy.";
-"This app is not authorized to use Bluetooth Low Energy." = "This app is not authorized to use Bluetooth Low Energy.";
-"The BLE Manager is resetting; a state update is pending." = "The BLE Manager is resetting; a state update is pending.";
-"The state of the BLE Manager is unknown." = "The state of the BLE Manager is unknown.";
-"Bluetooth LE is turned on and ready for communication." = "Bluetooth LE is turned on and ready for communication.";
-"Central Manager State" = "Central Manager State";
-"OK" = "OK";
-"Trip Logs" = "Trip Logs";
-"Waypoints" = "Waypoints";
+"bt_powered_off" = "Bluetooth on this device is currently powered off.";
+"bt_not_supported" = "This device does not support Bluetooth Low Energy.";
+"bt_not_authorized" = "This app is not authorized to use Bluetooth Low Energy.";
+"bt_resetting" = "The BLE Manager is resetting; a state update is pending.";
+"bt_unknown" = "The state of the BLE Manager is unknown.";
+"bt_ready" = "Bluetooth LE is turned on and ready for communication.";
+"bt_alert_title" = "Central Manager State";
+"trip_logs_label" = "Trip Logs";
+"waypoints_label" = "Waypoints";
 "fault_title" = "Active Faults";
 
 // TripViewController
-"Start" = "Start";
-"End" = "End";
+"trip_view_waypoint_start_label" = "Start";
+"trip_view_waypoint_end_label" = "End";
 
 // TasksTableViewController
-"Navigation" = "Navigation";
-"Go Home" = "Go Home";
-"No Go Home address set in Settings" = "No Go Home address set in Settings";
-"Call Favorite Number" = "Call Favorite Number";
-"No Call Home phone number set in Settings" = "No Call Home phone number set in Settings";
-"Call Contact" = "Call Contact";
-"Take Photo" = "Take Photo";
-"Start Video Recording" = "Start Video Recording";
-"Stop Video Recording" = "Stop Video Recording";
-"Start Trip Log" = "Start Trip Log";
-"Stop Trip Log" = "Stop Trip Log";
-"Save Waypoint" = "Save Waypoint";
+"task_title_navigation" = "Navigation";
+"task_title_gohome" = "Go Home";
+"toast_address_not_set" = "No Go Home address set in Settings";
+"task_title_favnumber" = "Call Favorite Number";
+"toast_phone_not_set" = "No Call Home phone number set in Settings";
+"task_title_callcontact" = "Call Contact";
+"task_title_photo" = "Take Photo";
+"task_title_start_record" = "Start Video Recording";
+"task_title_stop_record" = "Stop Video Recording";
+"task_title_start_trip" = "Start Trip Log";
+"task_title_stop_trip" = "Stop Trip Log";
+"task_title_waypoint" = "Save Waypoint";
+"toast_photo_taken" = "Photo Taken!";
 
 // Fault Description
-"UART Error" = "UART Error";
-"UART Comm Timeout" = "UART Comm Timeout";
-"ABS self-diagnosis not completed" = "ABS self-diagnosis not completed";
-"ABS error" = "ABS error";
-"ABS deactivated" = "ABS deactivated";
-"ASC self-diagnosis not completed" = "ASC self-diagnosis not completed";
-"ASC intervention" = "ASC intervention";
-"ASC error" = "ASC error";
-"ASC deactivated" = "ASC deactivated";
-"Low Fuel" = "Low Fuel";
-"Additional front light 1" = "Additional front light 1";
-"Additional front light 2" = "Additional front light 2";
-"Daytime running light" = "Daytime running light";
-"Front left indicator" = "Front left indicator";
-"Front right indicator" = "Front right indicator";
-"Rear left indicator" = "Rear left indicator";
-"Rear right indicator" = "Rear right indicator";
-"Front parking light 1" = "Front parking light 1";
-"Front parking light 2" = "Front parking light 2";
-"Low-beam" = "Low-beam";
-"High-beam" = "High-beam";
-"Rear Light" = "Rear Light";
-"Brake Light" = "Brake Light";
-"License plate Light" = "License plate Light";
-"Rear Fog Light" = "Rear Fog Light";
-"Additional dipped/high-beam" = "Additional dipped/high-beam";
-"Additional brake light" = "Additional brake light";
-"Front lamp 1" = "Front lamp 1";
-"Front lamp 2" = "Front lamp 2";
-"Ice Warning" = "Ice Warning";
-"The general warning light flashes yellow" = "The general warning light flashes yellow";
-"The general warning light shows yellow" = "The general warning light shows yellow";
-"The general warning light flashes red" = "The general warning light flashes red";
-"The general warning light shows red" = "The general warning light shows red";
-"Engine oil level too low" = "Engine oil level too low";
-"Front Tire Pressure Warning" = "Front Tire Pressure Warning";
-"Rear Tire Pressure Warning" = "Rear Tire Pressure Warning";
-"Front Tire Pressure Critical" = "Front Tire Pressure Critical";
-"Rear Tire Pressure Critical" = "Rear Tire Pressure Critical";
+"fault_UARTERR" = "UART Error";
+"fault_UARTCTF" = "UART Comm Timeout";
+"fault_ABSSLF" = "ABS self-diagnosis not completed";
+"fault_ABSERR" = "ABS error";
+"fault_ABSDAC" = "ABS deactivated";
+"fault_ASCSLF" = "ASC self-diagnosis not completed";
+"fault_ASCINT" = "ASC intervention";
+"fault_ASCERR" = "ASC error";
+"fault_ASCDAC" = "ASC deactivated";
+"fault_FUELF" = "Low Fuel";
+"fault_TIREFWF" = "Front Tire Pressure Warning";
+"fault_TIRERWF" = "Rear Tire Pressure Warning";
+"fault_TIREFCF" = "Front Tire Pressure Critical";
+"fault_TIRERCF" = "Rear Tire Pressure Critical";
+"fault_LAMPAFL1" = "Additional front light 1";
+"fault_LAMPAFL2" = "Additional front light 2";
+"fault_LAMPDAY" = "Daytime running light";
+"fault_LAMPFLI" = "Front left indicator";
+"fault_LAMPFRI" = "Front right indicator";
+"fault_LAMPRLI" = "Rear left indicator";
+"fault_LAMPRRI" = "Rear right indicator";
+"fault_LAMPFPK1" = "Front parking light 1";
+"fault_LAMPFPK2" = "Front parking light 2";
+"fault_LAMPLOW" = "Low-beam";
+"fault_LAMPHI" = "High-beam";
+"fault_LAMPREAR" = "Rear Light";
+"fault_LAMPBRK" = "Brake Light";
+"fault_LAMPLIC" = "License plate Light";
+"fault_LAMPRFOG" = "Rear Fog Light";
+"fault_LAMPADDD" = "Additional dipped/high-beam";
+"fault_LAMPADDB" = "Additional brake light";
+"fault_LAMPFL1" = "Front lamp 1";
+"fault_LAMPFL2" = "Front lamp 2";
+"fault_ICEWARN" = "Ice Warning";
+"fault_GENWARNFSYLW" = "The general warning light flashes yellow";
+"fault_GENWARNSHYLW" = "The general warning light shows yellow";
+"fault_GENWARNFSRED" = "The general warning light flashes red";
+"fault_GENWARNSHRED" = "The general warning light shows red";
+"fault_OILLOW" = "Engine oil level too low";

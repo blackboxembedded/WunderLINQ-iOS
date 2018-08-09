@@ -13,7 +13,7 @@ class Faults {
 
     // UART Faults
     var uartErrorActive: Bool = false
-    let uartErrorDesc: String = NSLocalizedString("UART Error", comment: "")
+    let uartErrorDesc: String = NSLocalizedString("fault_UARTERR", comment: "")
     func setUartErrorActive(active: Bool?){
         self.uartErrorActive = active!
     }
@@ -22,7 +22,7 @@ class Faults {
     }
     
     var uartCommActive: Bool = false
-    var uartCommDesc: String = NSLocalizedString("UART Comm Timeout", comment: "")
+    var uartCommDesc: String = NSLocalizedString("fault_UARTCTF", comment: "")
     func setUartCommActive(active: Bool?){
         self.uartCommActive = active!
     }
@@ -32,7 +32,7 @@ class Faults {
     
     // Motorcycle faults
     var absSelfDiagActive: Bool = false
-    var absSelfDiagDesc: String = NSLocalizedString("ABS self-diagnosis not completed", comment: "")
+    var absSelfDiagDesc: String = NSLocalizedString("fault_ABSSLF", comment: "")
     func setAbsSelfDiagActive(active: Bool?){
         self.absSelfDiagActive = active!
     }
@@ -41,7 +41,7 @@ class Faults {
     }
     
     var absDeactivatedActive: Bool = false
-    var absDeactivatedDesc: String = NSLocalizedString("ABS deactivated", comment: "")
+    var absDeactivatedDesc: String = NSLocalizedString("fault_ABSDAC", comment: "")
     func setAbsDeactivatedActive(active: Bool?){
         self.absDeactivatedActive = active!
     }
@@ -50,7 +50,7 @@ class Faults {
     }
     
     var absErrorActive: Bool = false
-    var absErrorDesc: String = NSLocalizedString("ABS error", comment: "")
+    var absErrorDesc: String = NSLocalizedString("fault_ABSERR", comment: "")
     func setAbsErrorActive(active: Bool?){
         self.absErrorActive = active!
     }
@@ -59,7 +59,7 @@ class Faults {
     }
     
     var ascSelfDiagActive: Bool = false
-    var ascSelfDiagDesc: String = NSLocalizedString("ASC self-diagnosis not completed", comment: "")
+    var ascSelfDiagDesc: String = NSLocalizedString("fault_ASCSLF", comment: "")
     func setAscSelfDiagActive(active: Bool?){
         self.ascSelfDiagActive = active!
     }
@@ -68,7 +68,7 @@ class Faults {
     }
     
     var ascInterventionActive: Bool = false
-    var ascInterventionDesc: String = NSLocalizedString("ASC intervention", comment: "")
+    var ascInterventionDesc: String = NSLocalizedString("fault_ASCINT", comment: "")
     func setAscInterventionActive(active: Bool?){
         self.ascInterventionActive = active!
     }
@@ -77,7 +77,7 @@ class Faults {
     }
     
     var ascDeactivatedActive: Bool = false
-    var ascDeactivatedDesc: String = NSLocalizedString("ASC deactivated", comment: "")
+    var ascDeactivatedDesc: String = NSLocalizedString("fault_ASCDAC", comment: "")
     func setAscDeactivatedActive(active: Bool?){
         self.ascDeactivatedActive = active!
     }
@@ -86,7 +86,7 @@ class Faults {
     }
     
     var ascErrorActive: Bool = false
-    var ascErrorDesc: String = NSLocalizedString("ASC error", comment: "")
+    var ascErrorDesc: String = NSLocalizedString("fault_ASCERR", comment: "")
     func setAscErrorActive(active: Bool?){
         self.ascErrorActive = active!
     }
@@ -95,7 +95,7 @@ class Faults {
     }
     
     var fuelFaultActive: Bool = false
-    var fuelFaultDesc: String = NSLocalizedString("Low Fuel", comment: "")
+    var fuelFaultDesc: String = NSLocalizedString("fault_FUELF", comment: "")
     func setFuelFaultActive(active: Bool?){
         self.fuelFaultActive = active!
     }
@@ -104,7 +104,7 @@ class Faults {
     }
     
     var frontTirePressureWarningActive: Bool = false
-    var frontTirePressureWarningDesc: String = NSLocalizedString("Front Tire Pressure Warning", comment: "")
+    var frontTirePressureWarningDesc: String = NSLocalizedString("fault_TIREFWF", comment: "")
     func setFrontTirePressureWarningActive(active: Bool?){
         self.frontTirePressureWarningActive = active!
     }
@@ -113,7 +113,7 @@ class Faults {
     }
     
     var rearTirePressureWarningActive: Bool = false
-    var rearTirePressureWarningDesc: String = NSLocalizedString("Rear Tire Pressure Warning", comment: "")
+    var rearTirePressureWarningDesc: String = NSLocalizedString("fault_TIRERWF", comment: "")
     func setRearTirePressureWarningActive(active: Bool?){
         self.rearTirePressureWarningActive = active!
     }
@@ -123,7 +123,7 @@ class Faults {
     
     var frontTirePressureCriticalNotificationActive: Bool = false
     var frontTirePressureCriticalActive: Bool = false
-    var frontTirePressureCriticalDesc: String = NSLocalizedString("Front Tire Pressure Critical", comment: "")
+    var frontTirePressureCriticalDesc: String = NSLocalizedString("fault_TIREFCF", comment: "")
     func setFrontTirePressureCriticalActive(active: Bool?){
         self.frontTirePressureCriticalActive = active!
     }
@@ -133,7 +133,7 @@ class Faults {
     
     var rearTirePressureCriticalNotificationActive: Bool = false
     var rearTirePressureCriticalActive: Bool = false
-    var rearTirePressureCriticalDesc: String = NSLocalizedString("Rear Tire Pressure Critical", comment: "")
+    var rearTirePressureCriticalDesc: String = NSLocalizedString("fault_TIRERCF", comment: "")
     func setRearTirePressureCriticalActive(active: Bool?){
         self.rearTirePressureCriticalActive = active!
     }
@@ -142,7 +142,7 @@ class Faults {
     }
     
     var addFrontLightOneActive: Bool = false
-    var addFrontLightOneDesc: String = NSLocalizedString("Additional front light 1", comment: "")
+    var addFrontLightOneDesc: String = NSLocalizedString("fault_LAMPAFL1", comment: "")
     func setAddFrontLightOneActive(active: Bool?){
         self.addFrontLightOneActive = active!
     }
@@ -151,7 +151,7 @@ class Faults {
     }
     
     var addFrontLightTwoActive: Bool = false
-    var addFrontLightTwoDesc: String = NSLocalizedString("Additional front light 2", comment: "")
+    var addFrontLightTwoDesc: String = NSLocalizedString("fault_LAMPAFL2", comment: "")
     func setAddFrontLightTwoActive(active: Bool?){
         self.addFrontLightTwoActive = active!
     }
@@ -160,7 +160,7 @@ class Faults {
     }
     
     var daytimeRunningActive: Bool = false
-    var daytimeRunningDesc: String = NSLocalizedString("Daytime running light", comment: "")
+    var daytimeRunningDesc: String = NSLocalizedString("fault_LAMPDAY", comment: "")
     func setDaytimeRunningActive(active: Bool?){
         self.daytimeRunningActive = active!
     }
@@ -169,7 +169,7 @@ class Faults {
     }
     
     var frontLeftSignalActive: Bool = false
-    var frontLeftSignalDesc: String = NSLocalizedString("Front left indicator", comment: "")
+    var frontLeftSignalDesc: String = NSLocalizedString("fault_LAMPFLI", comment: "")
     func setFrontLeftSignalActive(active: Bool?){
         self.frontLeftSignalActive = active!
     }
@@ -178,7 +178,7 @@ class Faults {
     }
     
     var frontRightSignalActive: Bool = false
-    var frontRightSignalDesc: String = NSLocalizedString("Front right indicator", comment: "")
+    var frontRightSignalDesc: String = NSLocalizedString("fault_LAMPFRI", comment: "")
     func setFrontRightSignalActive(active: Bool?){
         self.frontRightSignalActive = active!
     }
@@ -187,7 +187,7 @@ class Faults {
     }
     
     var rearLeftSignalActive: Bool = false
-    var rearLeftSignalDesc: String = NSLocalizedString("Rear left indicator", comment: "")
+    var rearLeftSignalDesc: String = NSLocalizedString("fault_LAMPRLI", comment: "")
     func setRearLeftSignalActive(active: Bool?){
         self.rearLeftSignalActive = active!
     }
@@ -196,7 +196,7 @@ class Faults {
     }
     
     var rearRightSignalActive: Bool = false
-    var rearRightSignalDesc: String = NSLocalizedString("Rear right indicator", comment: "")
+    var rearRightSignalDesc: String = NSLocalizedString("fault_LAMPRRI", comment: "")
     func setRearRightSignalActive(active: Bool?){
         self.rearRightSignalActive = active!
     }
@@ -205,7 +205,7 @@ class Faults {
     }
     
     var frontParkingLightOneActive: Bool = false
-    var frontParkingLightOneDesc: String = NSLocalizedString("Front parking light 1", comment: "")
+    var frontParkingLightOneDesc: String = NSLocalizedString("fault_LAMPFPK1", comment: "")
     func setFrontParkingLightOneActive(active: Bool?){
         self.frontParkingLightOneActive = active!
     }
@@ -214,7 +214,7 @@ class Faults {
     }
     
     var frontParkingLightTwoActive: Bool = false
-    var frontParkingLightTwoDesc: String = NSLocalizedString("Front parking light 2", comment: "")
+    var frontParkingLightTwoDesc: String = NSLocalizedString("fault_LAMPFPK2", comment: "")
     func setFrontParkingLightTwoActive(active: Bool?){
         self.frontParkingLightTwoActive = active!
     }
@@ -223,7 +223,7 @@ class Faults {
     }
     
     var lowBeamActive: Bool = false
-    var lowBeamDesc: String = NSLocalizedString("Low-beam", comment: "")
+    var lowBeamDesc: String = NSLocalizedString("fault_LAMPLOW", comment: "")
     func setLowBeamActive(active: Bool?){
         self.lowBeamActive = active!
     }
@@ -232,7 +232,7 @@ class Faults {
     }
     
     var highBeamActive: Bool = false
-    var highBeamDesc: String = NSLocalizedString("High-beam", comment: "")
+    var highBeamDesc: String = NSLocalizedString("fault_LAMPHI", comment: "")
     func setHighBeamActive(active: Bool?){
         self.highBeamActive = active!
     }
@@ -241,7 +241,7 @@ class Faults {
     }
     
     var rearLightActive: Bool = false
-    var rearLightDesc: String = NSLocalizedString("Rear Light", comment: "")
+    var rearLightDesc: String = NSLocalizedString("fault_LAMPREAR", comment: "")
     func setRearLightActive(active: Bool?){
         self.rearLightActive = active!
     }
@@ -250,7 +250,7 @@ class Faults {
     }
     
     var brakeLightActive: Bool = false
-    var brakeLightDesc: String = NSLocalizedString("Brake Light", comment: "")
+    var brakeLightDesc: String = NSLocalizedString("fault_LAMPBRK", comment: "")
     func setBrakeLightActive(active: Bool?){
         self.brakeLightActive = active!
     }
@@ -259,7 +259,7 @@ class Faults {
     }
     
     var licenseLightActive: Bool = false
-    var licenseLightDesc: String = NSLocalizedString("License plate Light", comment: "")
+    var licenseLightDesc: String = NSLocalizedString("fault_LAMPLIC", comment: "")
     func setLicenseLightActive(active: Bool?){
         self.licenseLightActive = active!
     }
@@ -268,7 +268,7 @@ class Faults {
     }
     
     var rearFogLightActive: Bool = false
-    var rearFogLightDesc: String = NSLocalizedString("Rear Fog Light", comment: "")
+    var rearFogLightDesc: String = NSLocalizedString("fault_LAMPRFOG", comment: "")
     func setRearFogLightActive(active: Bool?){
         self.rearFogLightActive = active!
     }
@@ -277,7 +277,7 @@ class Faults {
     }
     
     var addDippedLightActive: Bool = false
-    var addDippedLightDesc: String = NSLocalizedString("Additional dipped/high-beam", comment: "")
+    var addDippedLightDesc: String = NSLocalizedString("fault_LAMPADDD", comment: "")
     func setAddDippedLightActive(active: Bool?){
         self.addDippedLightActive = active!
     }
@@ -286,7 +286,7 @@ class Faults {
     }
     
     var addBrakeLightActive: Bool = false
-    var addBrakeLightDesc: String = NSLocalizedString("Additional brake light", comment: "")
+    var addBrakeLightDesc: String = NSLocalizedString("fault_LAMPADDB", comment: "")
     func setAddBrakeLightActive(active: Bool?){
         self.addBrakeLightActive = active!
     }
@@ -295,7 +295,7 @@ class Faults {
     }
     
     var frontLampOneLightActive: Bool = false
-    var frontLampOneLightDesc: String = NSLocalizedString("Front lamp 1", comment: "")
+    var frontLampOneLightDesc: String = NSLocalizedString("fault_LAMPFL1", comment: "")
     func setFrontLampOneLightActive(active: Bool?){
         self.frontLampOneLightActive = active!
     }
@@ -304,7 +304,7 @@ class Faults {
     }
     
     var frontLampTwoLightActive: Bool = false
-    var frontLampTwoLightDesc: String = NSLocalizedString("Front lamp 2", comment: "")
+    var frontLampTwoLightDesc: String = NSLocalizedString("fault_LAMPFL2", comment: "")
     func setFrontLampTwoLightActive(active: Bool?){
         self.frontLampTwoLightActive = active!
     }
@@ -313,7 +313,7 @@ class Faults {
     }
     
     var iceWarningActive: Bool = false
-    var iceWarningDesc: String = NSLocalizedString("Ice Warning", comment: "")
+    var iceWarningDesc: String = NSLocalizedString("fault_ICEWARN", comment: "")
     func setIceWarningActive(active: Bool?){
         self.iceWarningActive = active!
     }
@@ -322,7 +322,7 @@ class Faults {
     }
     
     var generalFlashingYellowActive: Bool = false
-    var generalFlashingYellowDesc: String = NSLocalizedString("The general warning light flashes yellow", comment: "")
+    var generalFlashingYellowDesc: String = NSLocalizedString("fault_GENWARNFSYLW", comment: "")
     func setGeneralFlashingYellowActive(active: Bool?){
         self.generalFlashingYellowActive = active!
     }
@@ -331,7 +331,7 @@ class Faults {
     }
     
     var generalShowsYellowActive: Bool = false
-    var generalShowsYellowDesc: String = NSLocalizedString("The general warning light shows yellow", comment: "")
+    var generalShowsYellowDesc: String = NSLocalizedString("fault_GENWARNSHYLW", comment: "")
     func setGeneralShowsYellowActive(active: Bool?){
         self.generalShowsYellowActive = active!
     }
@@ -341,7 +341,7 @@ class Faults {
     
     var generalFlashingRedNotificationActive: Bool = false
     var generalFlashingRedActive: Bool = false
-    var generalFlashingRedDesc: String = NSLocalizedString("The general warning light flashes red", comment: "")
+    var generalFlashingRedDesc: String = NSLocalizedString("fault_GENWARNFSRED", comment: "")
     func setGeneralFlashingRedActive(active: Bool?){
         self.generalFlashingRedActive = active!
     }
@@ -351,7 +351,7 @@ class Faults {
     
     var generalShowsRedNotificationActive: Bool = false
     var generalShowsRedActive: Bool = false
-    var generalShowsRedDesc: String = NSLocalizedString("The general warning light shows red", comment: "")
+    var generalShowsRedDesc: String = NSLocalizedString("fault_GENWARNSHRED", comment: "")
     func setGeneralShowsRedActive(active: Bool?){
         self.generalShowsRedActive = active!
     }
@@ -360,7 +360,7 @@ class Faults {
     }
     
     var oilLowActive: Bool = false
-    var oilLowDesc: String = NSLocalizedString("Engine oil level too low", comment: "")
+    var oilLowDesc: String = NSLocalizedString("fault_OILLOW", comment: "")
     func setOilLowActive(active: Bool?){
         self.oilLowActive = active!
     }

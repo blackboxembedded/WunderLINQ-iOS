@@ -38,13 +38,11 @@ class WaypointViewController: UIViewController, UITextFieldDelegate {
     
     func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
         if gesture.direction == UISwipeGestureRecognizerDirection.right {
-            print("Swipe Right")
             performSegue(withIdentifier: "waypointToWaypoints", sender: [])
         }
     }
 
     @IBAction func sharePressed(_ sender: Any) {
-        print("sharePressed")
         // text to share
         let text = "\(latitude!),\(longitude!)"
         
@@ -61,7 +59,6 @@ class WaypointViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func openPressed(_ sender: Any) {
-        print("openPressed")
         let regionDistance:CLLocationDistance = 10000
         let coordinates = CLLocationCoordinate2DMake(latitude!.toDouble()!, longitude!.toDouble()!)
         let regionSpan = MKCoordinateRegionMakeWithDistance(coordinates, regionDistance, regionDistance)
@@ -76,7 +73,6 @@ class WaypointViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func deletePressed(_ sender: Any) {
-        print("deletePressed")
         let queryString = "DELETE FROM records WHERE id = \(record ?? 0)"
         //statement pointer
         var stmt:OpaquePointer?
@@ -101,13 +97,14 @@ class WaypointViewController: UIViewController, UITextFieldDelegate {
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         //Update waypoint label in DB
-        print("Did end editing")
         let databaseURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
             .appendingPathComponent("waypoints.sqlite")
+        
         //opening the database
         if sqlite3_open(databaseURL.path, &db) != SQLITE_OK {
             print("error opening database")
         }
+        
         //creating a statement
         var stmt: OpaquePointer?
         
@@ -124,14 +121,13 @@ class WaypointViewController: UIViewController, UITextFieldDelegate {
         //executing the query to insert values
         if sqlite3_step(stmt) != SQLITE_DONE {
             let errmsg = String(cString: sqlite3_errmsg(db)!)
-            print("failure inserting wapoint: \(errmsg)")
+            print("failure inserting waypoint: \(errmsg)")
             return
         }
         
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        print("Done editing")
         self.view.endEditing(true)
         return false
     }

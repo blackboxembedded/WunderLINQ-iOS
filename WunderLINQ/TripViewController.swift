@@ -28,7 +28,6 @@ class TripViewController: UIViewController {
     
     func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
         if gesture.direction == UISwipeGestureRecognizerDirection.right {
-            print("Swipe Right")
             performSegue(withIdentifier: "tripToTrips", sender: [])
         }
     }
@@ -39,6 +38,7 @@ class TripViewController: UIViewController {
         let vc = UIActivityViewController(activityItems: [fileURL], applicationActivities: [])
         self.present(vc, animated: true)
     }
+    
     @IBAction func deleteBtn(_ sender: Any) {
         let fileManager = FileManager.default
         let filename = "\(self.getDocumentsDirectory())/\(fileName ?? "file").csv"
@@ -243,15 +243,15 @@ class TripViewController: UIViewController {
         // Creates a marker in the center of the map.
         let startMarker = GMSMarker()
         startMarker.position = path.coordinate(at: 0)
-        startMarker.title = NSLocalizedString("Start", comment: "")
-        startMarker.snippet = NSLocalizedString("Start", comment: "")
+        startMarker.title = NSLocalizedString("trip_view_waypoint_start_label", comment: "")
+        startMarker.snippet = NSLocalizedString("trip_view_waypoint_start_label", comment: "")
         startMarker.icon = GMSMarker.markerImage(with: .green)
         startMarker.map = mapView
         
         let endMarker = GMSMarker()
         endMarker.position = path.coordinate(at: path.count() - 1)
-        endMarker.title = NSLocalizedString("Start", comment: "")
-        endMarker.snippet = NSLocalizedString("Start", comment: "")
+        endMarker.title = NSLocalizedString("trip_view_waypoint_end_label", comment: "")
+        endMarker.snippet = NSLocalizedString("trip_view_waypoint_end_label", comment: "")
         endMarker.icon = GMSMarker.markerImage(with: .red)
         endMarker.map = mapView
         

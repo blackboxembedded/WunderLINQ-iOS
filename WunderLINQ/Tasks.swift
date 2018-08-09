@@ -25,7 +25,6 @@ class Tasks {
             return nil
         }
         
-        
         // Initialize stored properties.
         self.label = label
         self.icon = icon

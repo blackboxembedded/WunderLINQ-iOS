@@ -3,7 +3,7 @@
 //  WunderLINQ
 //
 //  Created by Keith Conger on 8/16/17.
-//  Copyright © 2017 Keith Conger. All rights reserved.
+//  Copyright © 2017 Black Box Embedded, LLC. All rights reserved.
 //
 
 import CoreLocation
@@ -40,39 +40,39 @@ class TasksTableViewController: UITableViewController, AVCaptureVideoDataOutputS
 
     private func loadTasks() {
         // Navigate Task
-        guard let task0 = Tasks(label: NSLocalizedString("Navigation", comment: ""), icon: UIImage(named: "Map")) else {
+        guard let task0 = Tasks(label: NSLocalizedString("task_title_navigation", comment: ""), icon: UIImage(named: "Map")) else {
             fatalError("Unable to instantiate Navigate Task")
         }
         // Go Home Task
-        guard let task1 = Tasks(label: NSLocalizedString("Go Home", comment: ""), icon: UIImage(named: "Home")) else {
+        guard let task1 = Tasks(label: NSLocalizedString("task_title_gohome", comment: ""), icon: UIImage(named: "Home")) else {
             fatalError("Unable to instantiate Go Home Task")
         }
         // Call Home Task
-        guard let task2 = Tasks(label: NSLocalizedString("Call Favorite Number", comment: ""), icon: UIImage(named: "Phone")) else {
+        guard let task2 = Tasks(label: NSLocalizedString("task_title_favnumber", comment: ""), icon: UIImage(named: "Phone")) else {
             fatalError("Unable to instantiate Call Home Task")
         }
         // Call Contact Task
-        guard let task3 = Tasks(label: NSLocalizedString("Call Contact", comment: ""), icon: UIImage(named: "Contacts")) else {
+        guard let task3 = Tasks(label: NSLocalizedString("task_title_callcontact", comment: ""), icon: UIImage(named: "Contacts")) else {
             fatalError("Unable to instantiate Call Contact Task")
         }
         // Take Photo Task
-        guard let task4 = Tasks(label: NSLocalizedString("Take Photo", comment: ""), icon: UIImage(named: "Camera")) else {
+        guard let task4 = Tasks(label: NSLocalizedString("task_title_photo", comment: ""), icon: UIImage(named: "Camera")) else {
             fatalError("Unable to instantiate Take Photo Task")
         }
         // Video Recording Task
-        guard let task5 = Tasks(label: NSLocalizedString("Start Recording", comment: ""), icon: UIImage(named: "VideoCamera")) else {
+        guard let task5 = Tasks(label: NSLocalizedString("task_title_start_record", comment: ""), icon: UIImage(named: "VideoCamera")) else {
             fatalError("Unable to instantiate Video Recording Task")
         }
         // Trip Log Task
-        var tripLogLabel = NSLocalizedString("Start Trip Log", comment: "")
+        var tripLogLabel = NSLocalizedString("task_title_start_trip", comment: "")
         if LocationService.sharedInstance.isRunning(){
-            tripLogLabel = NSLocalizedString("Stop Trip Log", comment: "")
+            tripLogLabel = NSLocalizedString("task_title_stop_trip", comment: "")
         }
         guard let task6 = Tasks(label: tripLogLabel, icon: UIImage(named: "Road")) else {
             fatalError("Unable to instantiate Trip Log Task")
         }
         // Save Waypoint Task
-        guard let task7 = Tasks(label: NSLocalizedString("Save Waypoint", comment: ""), icon: UIImage(named: "MapMarker")) else {
+        guard let task7 = Tasks(label: NSLocalizedString("task_title_waypoint", comment: ""), icon: UIImage(named: "MapMarker")) else {
             fatalError("Unable to instantiate Save Waypoint Task")
         }
         tasks += [task0, task1, task2, task3, task4, task5, task6, task7]
@@ -81,15 +81,15 @@ class TasksTableViewController: UITableViewController, AVCaptureVideoDataOutputS
     private func execute_task(taskID:Int) {
         switch taskID {
         case 0:
-            print("Navigation")
+            //Navigation
             let navApp = UserDefaults.standard.integer(forKey: "nav_app_preference")
             switch (navApp){
             case 0:
-                print("Apple Maps")
+                //Apple Maps
                 let map = MKMapItem()
                 map.openInMaps(launchOptions: nil)
             case 1:
-                print("Google Maps")
+                //Google Maps
                 //googlemaps://
                 if let googleMapsURL = URL(string: "googlemaps://") {
                     if (UIApplication.shared.canOpenURL(googleMapsURL)) {
@@ -101,7 +101,7 @@ class TasksTableViewController: UITableViewController, AVCaptureVideoDataOutputS
                     }
                 }
             case 2:
-                print("Waze")
+                //Waze
                 //waze://?ll=[lat],[lon]&z=10
                 if let wazeURL = URL(string: "waze://") {
                     if (UIApplication.shared.canOpenURL(wazeURL)) {
@@ -113,13 +113,13 @@ class TasksTableViewController: UITableViewController, AVCaptureVideoDataOutputS
                     }
                 }
             default:
-                print("Apple Maps")
+                //Apple Maps
                 let map = MKMapItem()
                 map.openInMaps(launchOptions: nil)
             }
             break
         case 1:
-            print("Go Home")
+            //Go Home
             if let homeAddress = UserDefaults.standard.string(forKey: "gohome_address_preference"){
                 if homeAddress != "" {
                     let geocoder = CLGeocoder()
@@ -139,11 +139,11 @@ class TasksTableViewController: UITableViewController, AVCaptureVideoDataOutputS
                         let navApp = UserDefaults.standard.integer(forKey: "nav_app_preference")
                         switch (navApp){
                         case 0:
-                            print("Apple Maps")
+                            //Apple Maps
                             let options = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving]
                             mapitem.openInMaps(launchOptions: options)
                         case 1:
-                            print("Google Maps")
+                            //Google Maps
                             //googlemaps://
                             if let googleMapsURL = URL(string: "googlemaps://?saddr=&daddr=\(destLatitude),\(destLongitude)&directionsmode=driving") {
                                 if (UIApplication.shared.canOpenURL(googleMapsURL)) {
@@ -155,7 +155,7 @@ class TasksTableViewController: UITableViewController, AVCaptureVideoDataOutputS
                                 }
                             }
                         case 2:
-                            print("Waze")
+                            //Waze
                             //waze://?ll=[lat],[lon]&z=10
                             if let wazeURL = URL(string: "waze://?ll=\(destLatitude),\(destLongitude)&navigate=yes") {
                                 if (UIApplication.shared.canOpenURL(wazeURL)) {
@@ -167,38 +167,20 @@ class TasksTableViewController: UITableViewController, AVCaptureVideoDataOutputS
                                 }
                             }
                         default:
-                            print("Apple Maps")
+                            //Apple Maps
                             let options = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving]
                             mapitem.openInMaps(launchOptions: options)
                         }
                     }
                 } else {
-                    // the alert view
-                    let alert = UIAlertController(title: "", message: "No Go Home address set in Settings", preferredStyle: .alert)
-                    self.present(alert, animated: true, completion: nil)
-                    
-                    // change to desired number of seconds (in this case 2 seconds)
-                    let when = DispatchTime.now() + 10
-                    DispatchQueue.main.asyncAfter(deadline: when){
-                        // your code with delay
-                        alert.dismiss(animated: true, completion: nil)
-                    }
+                    self.showToast(message: NSLocalizedString("toast_address_not_set", comment: ""))
                 }
             } else {
-                let alert = UIAlertController(title: "", message: "No Go Home address set in Settings", preferredStyle: .alert)
-                self.present(alert, animated: true, completion: nil)
-                
-                // change to desired number of seconds (in this case 2 seconds)
-                let when = DispatchTime.now() + 2
-                DispatchQueue.main.asyncAfter(deadline: when){
-                    // your code with delay
-                    alert.dismiss(animated: true, completion: nil)
-                    
-                }
+                self.showToast(message: NSLocalizedString("toast_address_not_set", comment: ""))
             }
             break
         case 2:
-            print("Call Home")
+            //Favorite Number
             if let phoneNumber = UserDefaults.standard.string(forKey: "callhome_number_preference"){
                 if phoneNumber != "" {
                     var validPhoneNumber = ""
@@ -220,62 +202,43 @@ class TasksTableViewController: UITableViewController, AVCaptureVideoDataOutputS
                         }
                     }
                 } else {
-                    // the alert view
-                    let alert = UIAlertController(title: "", message: "No Call Home phone number set in Settings", preferredStyle: .alert)
-                    self.present(alert, animated: true, completion: nil)
-                    
-                    // change to desired number of seconds (in this case 2 seconds)
-                    let when = DispatchTime.now() + 2
-                    DispatchQueue.main.asyncAfter(deadline: when){
-                        // your code with delay
-                        alert.dismiss(animated: true, completion: nil)
-                    }
-                    
+                    self.showToast(message: NSLocalizedString("toast_phone_not_set", comment: ""))
                 }
             } else {
-                // the alert view
-                let alert = UIAlertController(title: "", message: "No Call Home phone number set in Settings", preferredStyle: .alert)
-                self.present(alert, animated: true, completion: nil)
-                
-                // change to desired number of seconds (in this case 2 seconds)
-                let when = DispatchTime.now() + 2
-                DispatchQueue.main.asyncAfter(deadline: when){
-                    // your code with delay
-                    alert.dismiss(animated: true, completion: nil)
-                }
+                self.showToast(message: NSLocalizedString("toast_phone_not_set", comment: ""))
             }
             break
         case 3:
-            print("Call Contact")
+            //Call Contact
             performSegue(withIdentifier: "toContacts", sender: self)
             break
         case 4:
-            print("Take Photo")
+            //Take Photo
             setupCamera()
             setupTimer()
             break
         case 5:
-            print("Video Recording")
+            //Video Recording
             if movieOutput.isRecording == true {
                 movieOutput.stopRecording()
-                self.tableView.cellForRow(at: IndexPath(row: 5, section: 0) as IndexPath)?.textLabel?.text = "Start Recording"
+                self.tableView.cellForRow(at: IndexPath(row: 5, section: 0) as IndexPath)?.textLabel?.text = NSLocalizedString("task_title_start_record", comment: "")
             } else {
                 startCapture()
-                self.tableView.cellForRow(at: IndexPath(row: 5, section: 0) as IndexPath)?.textLabel?.text = "Stop Recording"
+                self.tableView.cellForRow(at: IndexPath(row: 5, section: 0) as IndexPath)?.textLabel?.text = NSLocalizedString("task_title_stop_record", comment: "")
             }
             break
         case 6:
-            print("Trip Log")
+            //Trip Log
             if LocationService.sharedInstance.isRunning(){
                 LocationService.sharedInstance.stopUpdatingLocation()
-                self.tableView.cellForRow(at: IndexPath(row: 6, section: 0) as IndexPath)?.textLabel?.text = "Start Trip Log"
+                self.tableView.cellForRow(at: IndexPath(row: 6, section: 0) as IndexPath)?.textLabel?.text = NSLocalizedString("task_title_start_trip", comment: "")
             } else {
                 LocationService.sharedInstance.startUpdatingLocation(type: "triplog")
-                self.tableView.cellForRow(at: IndexPath(row: 6, section: 0) as IndexPath)?.textLabel?.text = "Stop Trip Log"
+                self.tableView.cellForRow(at: IndexPath(row: 6, section: 0) as IndexPath)?.textLabel?.text = NSLocalizedString("task_title_stop_trip", comment: "")
             }
             break
         case 7:
-            print("Save Waypoint")
+            //Save Waypoint
             if LocationService.sharedInstance.isRunning(){
                 LocationService.sharedInstance.saveWaypoint()
             } else {
@@ -301,10 +264,9 @@ class TasksTableViewController: UITableViewController, AVCaptureVideoDataOutputS
     }
     
     @objc func selectItem() {
-        print("selectItem called")
+        execute_task(taskID: itemRow)
     }
     @objc func upRow() {
-        print("upRow called")
         if (itemRow == 0){
             let nextRow = tasks.count - 1
             self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.contentView.backgroundColor = UIColor.white
@@ -323,7 +285,6 @@ class TasksTableViewController: UITableViewController, AVCaptureVideoDataOutputS
         self.tableView.reloadData()
     }
     @objc func downRow() {
-        print("downRow called")
         if (itemRow == (tasks.count - 1)){
             let nextRow = 0
             self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.contentView.backgroundColor = UIColor.white
@@ -361,11 +322,9 @@ class TasksTableViewController: UITableViewController, AVCaptureVideoDataOutputS
     
     func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
         if gesture.direction == UISwipeGestureRecognizerDirection.right {
-            print("Swipe Right")
             performSegue(withIdentifier: "backToMusic", sender: [])
         }
         else if gesture.direction == UISwipeGestureRecognizerDirection.left {
-            print("Swipe Left")
             performSegue(withIdentifier: "tasksTomotorcycle", sender: [])
         }
     }
@@ -427,7 +386,6 @@ class TasksTableViewController: UITableViewController, AVCaptureVideoDataOutputS
         }
         
         if setupSession() {
-            print("Session Setup")
             startSession()
         }
     }
@@ -537,26 +495,9 @@ class TasksTableViewController: UITableViewController, AVCaptureVideoDataOutputS
         if error != nil {
             // we got back an error!
             // the alert view
-            let alert = UIAlertController(title: "", message: "Save Error", preferredStyle: .alert)
-            self.present(alert, animated: true, completion: nil)
-            
-            // change to desired number of seconds (in this case 2 seconds)
-            let when = DispatchTime.now() + 3
-            DispatchQueue.main.asyncAfter(deadline: when){
-                // your code with delay
-                alert.dismiss(animated: true, completion: nil)
-            }
+            print("Picture Save Error")
         } else {
-            // the alert view
-            let alert = UIAlertController(title: "", message: "Pictue Saved", preferredStyle: .alert)
-            self.present(alert, animated: true, completion: nil)
-            
-            // change to desired number of seconds (in this case 2 seconds)
-            let when = DispatchTime.now() + 2
-            DispatchQueue.main.asyncAfter(deadline: when){
-                // your code with delay
-                alert.dismiss(animated: true, completion: nil)
-            }
+            self.showToast(message: NSLocalizedString("toast_photo_taken", comment: ""))
         }
     }
     
