@@ -37,6 +37,8 @@
 		7E5A767A20DDFEF700B48CC6 /* Waypoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5A767920DDFEF700B48CC6 /* Waypoint.swift */; };
 		7E6987DB20F82F1A00B4781D /* MotorcycleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6987DA20F82F1A00B4781D /* MotorcycleData.swift */; };
 		7E6987DD20F8F83500B4781D /* Faults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6987DC20F8F83500B4781D /* Faults.swift */; };
+		7E80BD3B211CF80600B8CA0D /* LocalisableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E80BD3A211CF80600B8CA0D /* LocalisableLabel.swift */; };
+		7E80BD3D211CFF7300B8CA0D /* LocalisableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E80BD3C211CFF7300B8CA0D /* LocalisableButton.swift */; };
 		7EA4784E1F40B154000CEDDC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA4784D1F40B154000CEDDC /* AppDelegate.swift */; };
 		7EA478501F40B154000CEDDC /* MyMotorcycleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA4784F1F40B154000CEDDC /* MyMotorcycleViewController.swift */; };
 		7EA478531F40B154000CEDDC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7EA478511F40B154000CEDDC /* Main.storyboard */; };
@@ -102,6 +104,8 @@
 		7E5A767920DDFEF700B48CC6 /* Waypoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Waypoint.swift; sourceTree = "<group>"; };
 		7E6987DA20F82F1A00B4781D /* MotorcycleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotorcycleData.swift; sourceTree = "<group>"; };
 		7E6987DC20F8F83500B4781D /* Faults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Faults.swift; sourceTree = "<group>"; };
+		7E80BD3A211CF80600B8CA0D /* LocalisableLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalisableLabel.swift; sourceTree = "<group>"; };
+		7E80BD3C211CFF7300B8CA0D /* LocalisableButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalisableButton.swift; sourceTree = "<group>"; };
 		7EA4784A1F40B154000CEDDC /* WunderLINQ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WunderLINQ.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EA4784D1F40B154000CEDDC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7EA4784F1F40B154000CEDDC /* MyMotorcycleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMotorcycleViewController.swift; sourceTree = "<group>"; };
@@ -240,13 +244,15 @@
 				7EA4788D1F5BA136000CEDDC /* Tasks.swift */,
 				7EC8C9BC1F827977000CEDDC /* ContactsTableViewContoller.swift */,
 				7EC8C9BE1F830C5B000CEDDC /* PhoneContacts.swift */,
+				7EBFD48F210E108100FC9665 /* segueFromLeft.swift */,
+				7E80BD3A211CF80600B8CA0D /* LocalisableLabel.swift */,
 				7EA478511F40B154000CEDDC /* Main.storyboard */,
 				7E068BD62102C6DB0076EAAD /* GoogleMaps.bundle */,
 				7EA478821F4A7260000CEDDC /* Settings.bundle */,
 				7EA478541F40B154000CEDDC /* Assets.xcassets */,
 				7EA478561F40B154000CEDDC /* LaunchScreen.storyboard */,
 				7EA478591F40B154000CEDDC /* Info.plist */,
-				7EBFD48F210E108100FC9665 /* segueFromLeft.swift */,
+				7E80BD3C211CFF7300B8CA0D /* LocalisableButton.swift */,
 			);
 			path = WunderLINQ;
 			sourceTree = "<group>";
@@ -375,10 +381,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				7EA478711F40F273000CEDDC /* Device.swift in Sources */,
+				7E80BD3D211CFF7300B8CA0D /* LocalisableButton.swift in Sources */,
 				7EA478771F412BAC000CEDDC /* CLLocation+Extension.swift in Sources */,
 				7EBFD490210E108100FC9665 /* segueFromLeft.swift in Sources */,
 				7EA478501F40B154000CEDDC /* MyMotorcycleViewController.swift in Sources */,
 				7EA4788E1F5BA136000CEDDC /* Tasks.swift in Sources */,
+				7E80BD3B211CF80600B8CA0D /* LocalisableLabel.swift in Sources */,
 				7EA478791F412BE9000CEDDC /* UserDefauts+Extensions.swift in Sources */,
 				7EA4784E1F40B154000CEDDC /* AppDelegate.swift in Sources */,
 				7E068BC7210190CB0076EAAD /* TripsTableViewController.swift in Sources */,

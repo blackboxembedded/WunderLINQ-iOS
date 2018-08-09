@@ -27,11 +27,36 @@
 "bt_alert_title" = "Central Manager State";
 "trip_logs_label" = "Trip Logs";
 "waypoints_label" = "Waypoints";
+"rdc_front_label" = "Front Tire";
+"rdc_rear_label" = "Rear Tire";
+"engine_temp_label" = "Engine Temp";
+"ambient_temp_label" = "Ambient Temp";
+"odometer_label" = "Odometer";
+"trip1_label" = "Trip 1";
+"trip2_label" = "Trip 2";
+"gear_label" = "Gear";
+
 "fault_title" = "Active Faults";
 
 // TripViewController
 "trip_view_waypoint_start_label" = "Start";
 "trip_view_waypoint_end_label" = "End";
+"trip_view_tv_distance" = "Distance";
+"trip_view_tv_duration" = "Duration";
+"trip_view_tv_speed" = "Speed (Avg/Max)";
+"trip_view_tv_shifts" = "Gear Shifts";
+"trip_view_tv_brakes" = "Brakes (Front/Rear)";
+"trip_view_tv_ambient" = "Ambient Temp (Min/Avg/Max)";
+"trip_view_tv_engine" = "Engine Temp (Min/Avg/Max)";
+
+// WaypointViewController
+"waypoint_view_tv_date_label" = "Date Recorded";
+"waypoint_view_tv_lat_label" = "Latitude";
+"waypoint_view_tv_lon_label" = "Longitude";
+"waypoint_view_tv_label_label" = "Label";
+"waypoint_view_bt_open" = "Open in Map App";
+"waypoint_view_bt_share" = "Share";
+"waypoint_view_bt_delete" = "Delete";
 
 // TasksTableViewController
 "task_title_navigation" = "Navigation";
