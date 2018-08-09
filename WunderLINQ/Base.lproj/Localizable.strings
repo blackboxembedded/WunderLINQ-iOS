@@ -5,6 +5,7 @@
   Created by Keith Conger on 8/27/17.
   Copyright © 2017 Black Box Embedded, LLC. All rights reserved.
 */
+
 // Product
 "product" = "WunderLINQ";
 
@@ -14,6 +15,7 @@
 "alert_message_exit_ok" = "OK";
 
 // MyMotorcycleViewController
+"main_title" = "Motorcycle";
 "disclaimer_alert_title" = "WARNING!";
 "disclaimer_alert_body" = "Do not attempt to enter route information or adjust the WunderLINQ while driving.\nFailure to pay full attention to the operation of your vehicle could result in death, serious injury, or property damage.\nYou assume total responsibility and risk for using this device.";
 "disclaimer_ok" = "I agree";
@@ -36,9 +38,14 @@
 "trip2_label" = "Trip 2";
 "gear_label" = "Gear";
 
+// FaultsTableViewController
 "fault_title" = "Active Faults";
 
+// TripsTableViewController
+"trips_title" = "Recorded Trips";
+
 // TripViewController
+"trip_view_title" = "Trip";
 "trip_view_waypoint_start_label" = "Start";
 "trip_view_waypoint_end_label" = "End";
 "trip_view_tv_distance" = "Distance";
@@ -49,7 +56,11 @@
 "trip_view_tv_ambient" = "Ambient Temp (Min/Avg/Max)";
 "trip_view_tv_engine" = "Engine Temp (Min/Avg/Max)";
 
+// WaypointsTableViewController
+"waypoint_title" = "Saved Waypoints";
+
 // WaypointViewController
+"waypoint_view_title" = "Saved Waypoint";
 "waypoint_view_tv_date_label" = "Date Recorded";
 "waypoint_view_tv_lat_label" = "Latitude";
 "waypoint_view_tv_lon_label" = "Longitude";
@@ -58,7 +69,14 @@
 "waypoint_view_bt_share" = "Share";
 "waypoint_view_bt_delete" = "Delete";
 
+// CompassViewController
+"compass_title" = "Compass";
+
+// MusicViewController
+"music_title" = "Music";
+
 // TasksTableViewController
+"quicktask_title" = "Quick Tasks";
 "task_title_navigation" = "Navigation";
 "task_title_gohome" = "Go Home";
 "toast_address_not_set" = "No Go Home address set in Settings";
@@ -72,6 +90,9 @@
 "task_title_stop_trip" = "Stop Trip Log";
 "task_title_waypoint" = "Save Waypoint";
 "toast_photo_taken" = "Photo Taken!";
+
+// ContactsTableViewController
+"contactlist_title" = "Contacts";
 
 // Fault Description
 "fault_UARTERR" = "UART Error";

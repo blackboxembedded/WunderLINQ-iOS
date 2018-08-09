@@ -67,6 +67,7 @@ class TripViewController: UIViewController {
         backButtonWidth?.isActive = true
         let backButtonHeight = backButton.customView?.heightAnchor.constraint(equalToConstant: 30)
         backButtonHeight?.isActive = true
+        self.navigationItem.title = NSLocalizedString("trip_view_title", comment: "")
         self.navigationItem.leftBarButtonItems = [backButton]
 
         var data = readDataFromCSV(fileName: "\(fileName!)", fileType: "csv")

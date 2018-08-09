@@ -114,6 +114,7 @@ class CompassViewController: UIViewController {
         let forwardButtonHeight = forwardButton.customView?.heightAnchor.constraint(equalToConstant: 30)
         forwardButtonHeight?.isActive = true
         
+        self.navigationItem.title = NSLocalizedString("compass_title", comment: "")
         self.navigationItem.leftBarButtonItems = [backButton]
         self.navigationItem.rightBarButtonItems = [forwardButton]
         

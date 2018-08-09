@@ -357,7 +357,7 @@ class TasksTableViewController: UITableViewController, AVCaptureVideoDataOutputS
         forwardButtonWidth?.isActive = true
         let forwardButtonHeight = forwardButton.customView?.heightAnchor.constraint(equalToConstant: 30)
         forwardButtonHeight?.isActive = true
-        
+        self.navigationItem.title = NSLocalizedString("quicktask_title", comment: "")
         self.navigationItem.leftBarButtonItems = [backButton]
         self.navigationItem.rightBarButtonItems = [forwardButton]
         

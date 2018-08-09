@@ -174,6 +174,7 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
         let forwardButtonHeight = forwardButton.customView?.heightAnchor.constraint(equalToConstant: 30)
         forwardButtonHeight?.isActive = true
         
+        self.navigationItem.title = NSLocalizedString("main_title", comment: "")
         self.navigationItem.leftBarButtonItems = [backButton, disconnectButton, faultsButton]
         self.navigationItem.rightBarButtonItems = [forwardButton, settingsButton, dataButton]
         

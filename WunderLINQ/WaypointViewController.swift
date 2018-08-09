@@ -150,6 +150,7 @@ class WaypointViewController: UIViewController, UITextFieldDelegate {
         backButtonWidth?.isActive = true
         let backButtonHeight = backButton.customView?.heightAnchor.constraint(equalToConstant: 30)
         backButtonHeight?.isActive = true
+        self.navigationItem.title = NSLocalizedString("waypoint_view_title", comment: "")
         self.navigationItem.leftBarButtonItems = [backButton]
         
         self.labelLabel.delegate = self

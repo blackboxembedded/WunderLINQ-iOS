@@ -192,6 +192,7 @@ class ContactsTableViewController: UITableViewController {
         backButtonWidth?.isActive = true
         let backButtonHeight = backButton.customView?.heightAnchor.constraint(equalToConstant: 30)
         backButtonHeight?.isActive = true
+        self.navigationItem.title = NSLocalizedString("contactlist_title", comment: "")
         self.navigationItem.leftBarButtonItems = [backButton]
         
         self.getContacts()

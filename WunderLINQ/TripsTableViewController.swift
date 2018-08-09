@@ -38,6 +38,7 @@ class TripsTableViewController: UITableViewController {
         backButtonWidth?.isActive = true
         let backButtonHeight = backButton.customView?.heightAnchor.constraint(equalToConstant: 30)
         backButtonHeight?.isActive = true
+        self.navigationItem.title = NSLocalizedString("trips_title", comment: "")
         self.navigationItem.leftBarButtonItems = [backButton]
         
         // Get the document directory url
