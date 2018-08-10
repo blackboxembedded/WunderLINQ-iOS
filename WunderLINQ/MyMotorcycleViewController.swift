@@ -216,9 +216,7 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
     
     func defaultsChanged(notification:NSNotification){
         if let defaults = notification.object as? UserDefaults {
-            //get the value for key here
-            print("Type: \(defaults.value(forKey: "motorcycle_type_preference") ?? "Unknown")")
-            if UserDefaults.standard.integer(forKey: "motorcycle_type_preference") != 4 {
+            if defaults.integer(forKey: "motorcycle_type_preference") != 4 {
                 self.view.setNeedsLayout()
             } else {
                 self.viewDidLoad()
@@ -251,7 +249,6 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
     }
     
     @objc func leftScreen() {
-        print("leftScreen")
         // your code here
         performSegue(withIdentifier: "motorcycleToTasks", sender: [])
     }
@@ -352,7 +349,7 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
     
     func pauseScan() {
         // Scanning uses up battery on phone, so pause the scan process for the designated interval.
-        print("*** PAUSING SCAN...")
+        print("PAUSING SCAN...")
         disconnectButton.isEnabled = true
         self.centralManager?.stopScan()
         Timer.scheduledTimer(timeInterval: timerPauseInterval, target: self, selector: #selector(self.resumeScan), userInfo: nil, repeats: false)
@@ -511,7 +508,6 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
         }
         
         //print(messageHexString)
-        
         // Log raw messages
         /*
         if UserDefaults.standard.bool(forKey: "raw_logging_preference") {

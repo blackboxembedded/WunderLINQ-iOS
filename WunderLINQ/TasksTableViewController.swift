@@ -75,7 +75,11 @@ class TasksTableViewController: UITableViewController, AVCaptureVideoDataOutputS
         guard let task7 = Tasks(label: NSLocalizedString("task_title_waypoint", comment: ""), icon: UIImage(named: "MapMarker")) else {
             fatalError("Unable to instantiate Save Waypoint Task")
         }
-        tasks += [task0, task1, task2, task3, task4, task5, task6, task7]
+        // Navigate to Waypoint Task
+        guard let task8 = Tasks(label: NSLocalizedString("task_title_waypoint_nav", comment: ""), icon: UIImage(named: "Map")) else {
+            fatalError("Unable to instantiate Navigate to Waypoint Task")
+        }
+        tasks += [task0, task1, task2, task3, task4, task5, task6, task7, task8]
     }
     
     private func execute_task(taskID:Int) {
@@ -128,18 +132,16 @@ class TasksTableViewController: UITableViewController, AVCaptureVideoDataOutputS
                         let placemark = placemarks?.first
                         let lat = placemark?.location?.coordinate.latitude
                         let lon = placemark?.location?.coordinate.longitude
-                        print("Lat: \(String(describing: lat)), Lon: \(String(describing: lon))")
-                        
                         let destLatitude: CLLocationDegrees = lat!
                         let destLongitude: CLLocationDegrees = lon!
-                        let coordinates = CLLocationCoordinate2DMake(destLatitude, destLongitude)
-                        let navPlacemark = MKPlacemark(coordinate: coordinates, addressDictionary: nil)
-                        let mapitem = MKMapItem(placemark: navPlacemark)
                         
                         let navApp = UserDefaults.standard.integer(forKey: "nav_app_preference")
                         switch (navApp){
                         case 0:
                             //Apple Maps
+                            let coordinates = CLLocationCoordinate2DMake(destLatitude, destLongitude)
+                            let navPlacemark = MKPlacemark(coordinate: coordinates, addressDictionary: nil)
+                            let mapitem = MKMapItem(placemark: navPlacemark)
                             let options = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving]
                             mapitem.openInMaps(launchOptions: options)
                         case 1:
@@ -168,6 +170,9 @@ class TasksTableViewController: UITableViewController, AVCaptureVideoDataOutputS
                             }
                         default:
                             //Apple Maps
+                            let coordinates = CLLocationCoordinate2DMake(destLatitude, destLongitude)
+                            let navPlacemark = MKPlacemark(coordinate: coordinates, addressDictionary: nil)
+                            let mapitem = MKMapItem(placemark: navPlacemark)
                             let options = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving]
                             mapitem.openInMaps(launchOptions: options)
                         }
@@ -244,6 +249,11 @@ class TasksTableViewController: UITableViewController, AVCaptureVideoDataOutputS
             } else {
                 LocationService.sharedInstance.startUpdatingLocation(type: "waypoint")
             }
+            break
+        case 8:
+            //Navigate to Waypoint
+            //Call Contact
+            performSegue(withIdentifier: "toWaypoints", sender: self)
             break
         default:
             print("Unknown Task")
@@ -420,7 +430,6 @@ class TasksTableViewController: UITableViewController, AVCaptureVideoDataOutputS
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("row: \(indexPath.row)")
         execute_task(taskID: indexPath.row)
     }
     

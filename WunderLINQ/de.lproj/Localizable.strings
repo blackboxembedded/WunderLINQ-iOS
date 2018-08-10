@@ -89,14 +89,10 @@
 "task_title_start_trip" = "Start Trip Log";
 "task_title_stop_trip" = "Stop Trip Log";
 "task_title_waypoint" = "Save Waypoint";
-"task_title_waypoint_nav" = "Navigate to Waypoint";
 "toast_photo_taken" = "Photo Taken!";
 
 // ContactsTableViewController
 "contactlist_title" = "Contacts";
-
-// WaypointsNavTableViewController
-"waypoints_nav_title" = "Waypoints";
 
 // Fault Description
 "fault_UARTERR" = "UART Error";

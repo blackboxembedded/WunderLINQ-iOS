@@ -285,7 +285,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i0g-hA-4nz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="8956" y="-124"/>
+            <point key="canvasLocation" x="8956" y="-124.58770614692655"/>
         </scene>
         <!--Waypoint-->
         <scene sceneID="olz-rS-p04">
@@ -651,6 +651,7 @@
                         <segue destination="RZv-Tv-KDt" kind="show" identifier="toContacts" id="7A0-qQ-zYz"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="tasksTomotorcycle" id="hHX-hV-yfD"/>
                         <segue destination="p6n-wZ-mMa" kind="custom" identifier="backToMusic" customClass="SegueFromLeft" customModule="WunderLINQ" customModuleProvider="target" id="Dpe-gj-Wyf"/>
+                        <segue destination="Gkm-4f-7jg" kind="show" identifier="toWaypoints" id="P61-LW-igo"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HkE-mg-0AP" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -698,6 +699,63 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6FV-uf-rsK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="9417" y="805"/>
+        </scene>
+        <!--Waypoints-->
+        <scene sceneID="5Hw-nx-fMy">
+            <objects>
+                <tableViewController id="we8-3Z-s79" customClass="WaypointsNavTableViewController" customModule="WunderLINQ" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="8Yw-3z-6cz">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="WaypointsNavTableViewCell" id="6UQ-Ab-cVd">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6UQ-Ab-cVd" id="AFc-J5-2Sf">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c7h-Jr-Qam">
+                                            <rect key="frame" x="16" y="11" width="343" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" weight="black" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="we8-3Z-s79" id="dMn-r0-ZDi"/>
+                            <outlet property="delegate" destination="we8-3Z-s79" id="ppU-EK-UqH"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Waypoints" id="fFL-Ow-DpP"/>
+                    <connections>
+                        <segue destination="UAo-uD-fGL" kind="show" identifier="toTasks" id="zBp-8h-a39"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vYP-M3-Xw8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="9416.7999999999993" y="1563.8680659670167"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="yCn-wr-lQB">
+            <objects>
+                <navigationController id="Gkm-4f-7jg" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="bTw-wY-wfU">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="we8-3Z-s79" kind="relationship" relationship="rootViewController" id="yKJ-XQ-JKG"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QqB-g7-vYR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="8666" y="1564"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="m7N-1a-hHU">
@@ -1085,10 +1143,10 @@
     <inferredMetricsTieBreakers>
         <segue reference="gIM-fx-mWk"/>
         <segue reference="qQx-7G-0NR"/>
-        <segue reference="nh5-ZE-vmI"/>
-        <segue reference="cF1-aK-Tul"/>
+        <segue reference="zBp-8h-a39"/>
+        <segue reference="Dpe-gj-Wyf"/>
         <segue reference="WGO-Nv-8Lh"/>
-        <segue reference="rCa-tS-QTz"/>
+        <segue reference="gyk-vV-qic"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
 </document>

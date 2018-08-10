@@ -39,6 +39,7 @@
 		7E6987DD20F8F83500B4781D /* Faults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6987DC20F8F83500B4781D /* Faults.swift */; };
 		7E80BD3B211CF80600B8CA0D /* LocalisableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E80BD3A211CF80600B8CA0D /* LocalisableLabel.swift */; };
 		7E80BD3D211CFF7300B8CA0D /* LocalisableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E80BD3C211CFF7300B8CA0D /* LocalisableButton.swift */; };
+		7E80BD42211D419C00B8CA0D /* WaypointsNavTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E80BD41211D419C00B8CA0D /* WaypointsNavTableViewController.swift */; };
 		7EA4784E1F40B154000CEDDC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA4784D1F40B154000CEDDC /* AppDelegate.swift */; };
 		7EA478501F40B154000CEDDC /* MyMotorcycleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA4784F1F40B154000CEDDC /* MyMotorcycleViewController.swift */; };
 		7EA478531F40B154000CEDDC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7EA478511F40B154000CEDDC /* Main.storyboard */; };
@@ -106,6 +107,10 @@
 		7E6987DC20F8F83500B4781D /* Faults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Faults.swift; sourceTree = "<group>"; };
 		7E80BD3A211CF80600B8CA0D /* LocalisableLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalisableLabel.swift; sourceTree = "<group>"; };
 		7E80BD3C211CFF7300B8CA0D /* LocalisableButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalisableButton.swift; sourceTree = "<group>"; };
+		7E80BD3E211D2CB100B8CA0D /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
+		7E80BD3F211D2CB100B8CA0D /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		7E80BD40211D2CB100B8CA0D /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = WunderLINQ/de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		7E80BD41211D419C00B8CA0D /* WaypointsNavTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaypointsNavTableViewController.swift; sourceTree = "<group>"; };
 		7EA4784A1F40B154000CEDDC /* WunderLINQ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WunderLINQ.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EA4784D1F40B154000CEDDC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7EA4784F1F40B154000CEDDC /* MyMotorcycleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMotorcycleViewController.swift; sourceTree = "<group>"; };
@@ -222,7 +227,10 @@
 				7EA4784D1F40B154000CEDDC /* AppDelegate.swift */,
 				7EA478701F40F273000CEDDC /* Device.swift */,
 				7E068BCA2102ACF30076EAAD /* Popover.swift */,
+				7E80BD3C211CFF7300B8CA0D /* LocalisableButton.swift */,
+				7E80BD3A211CF80600B8CA0D /* LocalisableLabel.swift */,
 				7EA478861F4BC775000CEDDC /* Logger.swift */,
+				7EBFD48F210E108100FC9665 /* segueFromLeft.swift */,
 				7E07AE4620F70FD8004F15B9 /* LocationService.swift */,
 				7EBFD48D210ADD0000FC9665 /* String+Extensions.swift */,
 				7EA478761F412BAC000CEDDC /* CLLocation+Extension.swift */,
@@ -240,19 +248,17 @@
 				7EA478741F412B73000CEDDC /* LocationDelegate.swift */,
 				7EA478721F4115F6000CEDDC /* CompassViewController.swift */,
 				7EA478801F44F57C000CEDDC /* MusicViewController.swift */,
-				7EA4787E1F44F54E000CEDDC /* TasksTableViewController.swift */,
 				7EA4788D1F5BA136000CEDDC /* Tasks.swift */,
+				7EA4787E1F44F54E000CEDDC /* TasksTableViewController.swift */,
 				7EC8C9BC1F827977000CEDDC /* ContactsTableViewContoller.swift */,
 				7EC8C9BE1F830C5B000CEDDC /* PhoneContacts.swift */,
-				7EBFD48F210E108100FC9665 /* segueFromLeft.swift */,
-				7E80BD3A211CF80600B8CA0D /* LocalisableLabel.swift */,
+				7E80BD41211D419C00B8CA0D /* WaypointsNavTableViewController.swift */,
 				7EA478511F40B154000CEDDC /* Main.storyboard */,
 				7E068BD62102C6DB0076EAAD /* GoogleMaps.bundle */,
 				7EA478821F4A7260000CEDDC /* Settings.bundle */,
 				7EA478541F40B154000CEDDC /* Assets.xcassets */,
 				7EA478561F40B154000CEDDC /* LaunchScreen.storyboard */,
 				7EA478591F40B154000CEDDC /* Info.plist */,
-				7E80BD3C211CFF7300B8CA0D /* LocalisableButton.swift */,
 			);
 			path = WunderLINQ;
 			sourceTree = "<group>";
@@ -339,6 +345,7 @@
 			knownRegions = (
 				en,
 				Base,
+				de,
 			);
 			mainGroup = 7EA478411F40B154000CEDDC;
 			productRefGroup = 7EA4784B1F40B154000CEDDC /* Products */;
@@ -394,6 +401,7 @@
 				7EA478871F4BC775000CEDDC /* Logger.swift in Sources */,
 				7E068BF8210645290076EAAD /* TripViewController.swift in Sources */,
 				7E5A767A20DDFEF700B48CC6 /* Waypoint.swift in Sources */,
+				7E80BD42211D419C00B8CA0D /* WaypointsNavTableViewController.swift in Sources */,
 				7EC8C9BF1F830C5B000CEDDC /* PhoneContacts.swift in Sources */,
 				7E07AE4720F70FD8004F15B9 /* LocationService.swift in Sources */,
 				7EA478731F4115F6000CEDDC /* CompassViewController.swift in Sources */,
@@ -434,6 +442,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				7EA478521F40B154000CEDDC /* Base */,
+				7E80BD3E211D2CB100B8CA0D /* de */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -442,6 +451,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				7EA478571F40B154000CEDDC /* Base */,
+				7E80BD3F211D2CB100B8CA0D /* de */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -450,6 +460,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				7EA478891F537ED5000CEDDC /* Base */,
+				7E80BD40211D2CB100B8CA0D /* de */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -461,6 +472,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -521,6 +533,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
