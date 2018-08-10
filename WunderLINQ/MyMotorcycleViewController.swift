@@ -128,6 +128,9 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
         let disconnectImage = UIImage(named: "Bluetooth")?.withRenderingMode(.alwaysTemplate)
         disconnectBtn.setImage(disconnectImage, for: .normal)
         disconnectBtn.tintColor = UIColor.red
+        if #available(iOS 11.0, *) {
+            disconnectBtn.accessibilityIgnoresInvertColors = true
+        }
         disconnectBtn.addTarget(self, action: #selector(btButtonTapped), for: .touchUpInside)
         disconnectButton = UIBarButtonItem(customView: disconnectBtn)
         let disconnectButtonWidth = disconnectButton.customView?.widthAnchor.constraint(equalToConstant: 30)
@@ -139,6 +142,9 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
         let faultsImage = UIImage(named: "Alert")?.withRenderingMode(.alwaysTemplate)
         faultsBtn.setImage(faultsImage, for: .normal)
         faultsBtn.tintColor = UIColor.clear
+        if #available(iOS 11.0, *) {
+            faultsBtn.accessibilityIgnoresInvertColors = true
+        }
         faultsBtn.addTarget(self, action: #selector(self.faultsButtonTapped), for: .touchUpInside)
         faultsButton = UIBarButtonItem(customView: faultsBtn)
         let faultsButtonWidth = faultsButton.customView?.widthAnchor.constraint(equalToConstant: 30)

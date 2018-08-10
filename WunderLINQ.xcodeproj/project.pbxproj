@@ -40,6 +40,7 @@
 		7E80BD3B211CF80600B8CA0D /* LocalisableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E80BD3A211CF80600B8CA0D /* LocalisableLabel.swift */; };
 		7E80BD3D211CFF7300B8CA0D /* LocalisableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E80BD3C211CFF7300B8CA0D /* LocalisableButton.swift */; };
 		7E80BD42211D419C00B8CA0D /* WaypointsNavTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E80BD41211D419C00B8CA0D /* WaypointsNavTableViewController.swift */; };
+		7E80BD44211D5A0600B8CA0D /* UIView+ignoresInvertColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E80BD43211D5A0600B8CA0D /* UIView+ignoresInvertColors.swift */; };
 		7EA4784E1F40B154000CEDDC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA4784D1F40B154000CEDDC /* AppDelegate.swift */; };
 		7EA478501F40B154000CEDDC /* MyMotorcycleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA4784F1F40B154000CEDDC /* MyMotorcycleViewController.swift */; };
 		7EA478531F40B154000CEDDC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7EA478511F40B154000CEDDC /* Main.storyboard */; };
@@ -111,6 +112,7 @@
 		7E80BD3F211D2CB100B8CA0D /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		7E80BD40211D2CB100B8CA0D /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = WunderLINQ/de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7E80BD41211D419C00B8CA0D /* WaypointsNavTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaypointsNavTableViewController.swift; sourceTree = "<group>"; };
+		7E80BD43211D5A0600B8CA0D /* UIView+ignoresInvertColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+ignoresInvertColors.swift"; sourceTree = "<group>"; };
 		7EA4784A1F40B154000CEDDC /* WunderLINQ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WunderLINQ.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EA4784D1F40B154000CEDDC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7EA4784F1F40B154000CEDDC /* MyMotorcycleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMotorcycleViewController.swift; sourceTree = "<group>"; };
@@ -235,6 +237,7 @@
 				7EBFD48D210ADD0000FC9665 /* String+Extensions.swift */,
 				7EA478761F412BAC000CEDDC /* CLLocation+Extension.swift */,
 				7E5A767720DDEE7200B48CC6 /* UIViewController+Extensions.swift */,
+				7E80BD43211D5A0600B8CA0D /* UIView+ignoresInvertColors.swift */,
 				7EA478781F412BE9000CEDDC /* UserDefauts+Extensions.swift */,
 				7E6987DA20F82F1A00B4781D /* MotorcycleData.swift */,
 				7EA4784F1F40B154000CEDDC /* MyMotorcycleViewController.swift */,
@@ -403,6 +406,7 @@
 				7E5A767A20DDFEF700B48CC6 /* Waypoint.swift in Sources */,
 				7E80BD42211D419C00B8CA0D /* WaypointsNavTableViewController.swift in Sources */,
 				7EC8C9BF1F830C5B000CEDDC /* PhoneContacts.swift in Sources */,
+				7E80BD44211D5A0600B8CA0D /* UIView+ignoresInvertColors.swift in Sources */,
 				7E07AE4720F70FD8004F15B9 /* LocationService.swift in Sources */,
 				7EA478731F4115F6000CEDDC /* CompassViewController.swift in Sources */,
 				7E5A767820DDEE7200B48CC6 /* UIViewController+Extensions.swift in Sources */,
