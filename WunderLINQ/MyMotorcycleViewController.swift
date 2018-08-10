@@ -251,6 +251,7 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
     }
     
     @objc func leftScreen() {
+        print("leftScreen")
         // your code here
         performSegue(withIdentifier: "motorcycleToTasks", sender: [])
     }
@@ -512,9 +513,11 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
         //print(messageHexString)
         
         // Log raw messages
+        /*
         if UserDefaults.standard.bool(forKey: "raw_logging_preference") {
             Logger.log(fileName: "WunderLINQ-raw.csv", entry: messageHexString)
         }
+        */
         
         lastMessage = dataArray
         switch lastMessage[0] {

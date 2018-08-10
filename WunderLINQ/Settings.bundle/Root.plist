@@ -10,13 +10,13 @@
 			<key>Type</key>
 			<string>PSGroupSpecifier</string>
 			<key>Title</key>
-			<string>Personal Information</string>
+			<string>info_title</string>
 		</dict>
 		<dict>
 			<key>Type</key>
 			<string>PSTextFieldSpecifier</string>
 			<key>Title</key>
-			<string>Go Home Address</string>
+			<string>pref_homeAddress_name</string>
 			<key>Key</key>
 			<string>gohome_address_preference</string>
 			<key>DefaultValue</key>
@@ -34,7 +34,7 @@
 			<key>Type</key>
 			<string>PSTextFieldSpecifier</string>
 			<key>Title</key>
-			<string>Call Home Phone Number</string>
+			<string>pref_homePhone_name</string>
 			<key>Key</key>
 			<string>callhome_number_preference</string>
 			<key>KeyboardType</key>
@@ -44,13 +44,13 @@
 			<key>Type</key>
 			<string>PSGroupSpecifier</string>
 			<key>Title</key>
-			<string>User Interface</string>
+			<string>ui_title</string>
 		</dict>
 		<dict>
 			<key>Type</key>
 			<string>PSMultiValueSpecifier</string>
 			<key>Title</key>
-			<string>Motorcycle Type</string>
+			<string>pref_bike_type</string>
 			<key>Key</key>
 			<string>motorcycle_type_preference</string>
 			<key>DefaultValue</key>
@@ -76,7 +76,7 @@
 			<key>Type</key>
 			<string>PSMultiValueSpecifier</string>
 			<key>Title</key>
-			<string>Navigation App</string>
+			<string>pref_nav_app</string>
 			<key>Key</key>
 			<string>nav_app_preference</string>
 			<key>DefaultValue</key>
@@ -98,7 +98,7 @@
 			<key>Type</key>
 			<string>PSMultiValueSpecifier</string>
 			<key>Title</key>
-			<string>Pressure Unit</string>
+			<string>pref_pressuref_name</string>
 			<key>Key</key>
 			<string>pressure_unit_preference</string>
 			<key>DefaultValue</key>
@@ -122,15 +122,15 @@
 			<key>Type</key>
 			<string>PSMultiValueSpecifier</string>
 			<key>Title</key>
-			<string>Temperature Unit</string>
+			<string>pref_tempf_name</string>
 			<key>Key</key>
 			<string>temperature_unit_preference</string>
 			<key>DefaultValue</key>
 			<integer>0</integer>
 			<key>Titles</key>
 			<array>
-				<string>Celsius</string>
-				<string>Fahrenheit</string>
+				<string>tempf_c</string>
+				<string>tempf_f</string>
 			</array>
 			<key>Values</key>
 			<array>
@@ -142,15 +142,15 @@
 			<key>Type</key>
 			<string>PSMultiValueSpecifier</string>
 			<key>Title</key>
-			<string>Distance Unit</string>
+			<string>pref_distance_name</string>
 			<key>Key</key>
 			<string>distance_unit_preference</string>
 			<key>DefaultValue</key>
 			<integer>0</integer>
 			<key>Titles</key>
 			<array>
-				<string>Metric</string>
-				<string>Imperial</string>
+				<string>distance_m</string>
+				<string>distance_i</string>
 			</array>
 			<key>Values</key>
 			<array>
@@ -162,37 +162,21 @@
 			<key>Type</key>
 			<string>PSMultiValueSpecifier</string>
 			<key>Title</key>
-			<string>Bearing Unit</string>
+			<string>pref_bearing_name</string>
 			<key>Key</key>
 			<string>bearing_unit_preference</string>
 			<key>DefaultValue</key>
 			<integer>0</integer>
 			<key>Titles</key>
 			<array>
-				<string>Degrees</string>
-				<string>Cardinal</string>
+				<string>bearing_d</string>
+				<string>bearing_c</string>
 			</array>
 			<key>Values</key>
 			<array>
 				<integer>0</integer>
 				<integer>1</integer>
 			</array>
-		</dict>
-		<dict>
-			<key>Type</key>
-			<string>PSGroupSpecifier</string>
-			<key>Title</key>
-			<string>Advanced</string>
-		</dict>
-		<dict>
-			<key>Type</key>
-			<string>PSToggleSwitchSpecifier</string>
-			<key>Title</key>
-			<string>Raw Message Logging</string>
-			<key>Key</key>
-			<string>raw_logging_preference</string>
-			<key>DefaultValue</key>
-			<false/>
 		</dict>
 	</array>
 </dict>
