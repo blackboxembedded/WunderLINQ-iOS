@@ -764,22 +764,22 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
             //print("Message ID: 6")
             // Gear
             var gear = "-"
-            switch lastMessage[2] {
-            case 0x10:
+            switch (lastMessage[2] >> 4) & 0x0F {
+            case 0x1:
                 gear = "1"
-            case 0x20:
+            case 0x2:
                 gear = "N"
-            case 0x40:
+            case 0x4:
                 gear = "2"
-            case 0x70:
+            case 0x7:
                 gear = "3"
-            case 0x80:
+            case 0x8:
                 gear = "4"
-            case 0xB0:
+            case 0xB:
                 gear = "5"
-            case 0xD0:
+            case 0xD:
                 gear = "6"
-            case 0xF0:
+            case 0xF:
                 gear = "-"
             default:
                 print("Unknown Gear Value")
@@ -791,9 +791,9 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
             motorcycleData.setgear(gear: gear)
             
             // Throttle Position
-            let minPosition = 36;
-            let maxPosition = 236;
-            let throttlePosition = Double(((lastMessage[3] - minPosition) * 100)) / Double((maxPosition - minPosition))
+            let minPosition:Double = 36;
+            let maxPosition:Double = 236;
+            let throttlePosition = ((Double(lastMessage[3]) - minPosition) * 100) / (maxPosition - minPosition)
             motorcycleData.setthrottlePosition(throttlePosition: throttlePosition)
             
             // Engine Temperature

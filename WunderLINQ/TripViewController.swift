@@ -96,11 +96,11 @@ class TripViewController: UIViewController {
             lineNumber = lineNumber + 1
             if (lineNumber == 2) {
                 startTime = row[0]
-            } else if ((lineNumber > 2) && (lineNumber < row.count)){
+            } else if ((lineNumber > 2) && (lineNumber < csvRows.count)){
                 endTime = row[0]
             }
         
-            if((lineNumber > 1) && (lineNumber < row.count)) {
+            if((lineNumber > 1) && (lineNumber < csvRows.count)) {
                 path.add(CLLocationCoordinate2D(latitude: row[1].toDouble()!, longitude: row[2].toDouble()!))
                 
                 if row[4].toDouble()! > 0 {
@@ -110,7 +110,7 @@ class TripViewController: UIViewController {
                     }
                 }
             }
-            if ((lineNumber > 1) && (lineNumber < row.count)) {
+            if ((lineNumber > 1) && (lineNumber < csvRows.count)) {
                 if (!row[6].contains("null")){
                     engineTemps.append(row[6].toDouble()!)
                     if (maxEngineTemp == nil || maxEngineTemp! < row[6].toDouble()!){
@@ -179,7 +179,7 @@ class TripViewController: UIViewController {
                 avgSpeed = kmToMiles(avgSpeed)
                 maxSpeed = kmToMiles(maxSpeed)
             }
-            speedLabel.text = "(\(avgSpeed)/\(maxSpeed))\(speedUnit))"
+            speedLabel.text = "(\(avgSpeed.rounded(toPlaces: 1))/\(maxSpeed.rounded(toPlaces: 1)))\(speedUnit))"
         }
         
         gearShiftsLabel.text = "\(endShiftCnt)"
@@ -203,7 +203,7 @@ class TripViewController: UIViewController {
             minEngineTemp = 0.0
             maxEngineTemp = 0.0
         }
-        engineTempLabel.text = "(\(minEngineTemp!)/\(avgEngineTemp)/\(maxEngineTemp!))\(temperatureUnit)"
+        engineTempLabel.text = "(\(minEngineTemp!.rounded(toPlaces: 1))/\(avgEngineTemp.rounded(toPlaces: 1))/\(maxEngineTemp!.rounded(toPlaces: 1)))\(temperatureUnit)"
         
         var avgAmbientTemp: Double = 0
         if ((ambientTemps.count) > 0) {
@@ -222,17 +222,17 @@ class TripViewController: UIViewController {
             minAmbientTemp = 0.0
             maxAmbientTemp = 0.0
         }
-        ambientTempLabel.text = "(\(minAmbientTemp!)/\(avgAmbientTemp)/\(maxAmbientTemp!))\(temperatureUnit)"
+        ambientTempLabel.text = "(\(minAmbientTemp!.rounded(toPlaces: 1))/\(avgAmbientTemp.rounded(toPlaces: 1))/\(maxAmbientTemp!.rounded(toPlaces: 1)))\(temperatureUnit)"
         
         // Calculate Distance
         var distance: Double = 0
         if (endOdometer != nil && startOdometer != nil) {
             distance = endOdometer! - startOdometer!
             if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
-                distance = kmToMiles(distance)
+                distance = kmToMiles(distance.rounded(toPlaces: 1))
             }
         }
-        distanceLabel.text = "\(distance)\(distanceUnit)"
+        distanceLabel.text = "\(distance.rounded(toPlaces: 1))\(distanceUnit)"
         
         // Calculate Duration
         durationLabel.text = calculateDuration(start: startTime!,end: endTime!)
@@ -296,7 +296,7 @@ class TripViewController: UIViewController {
             do {
                 var contents = try String(contentsOf: fileURL, encoding: .utf8)
                 contents = cleanRows(file: contents)
-                print(contents)
+                //print(contents)
                 return contents
             }
             catch {

@@ -67,10 +67,10 @@ class LocationService: NSObject, CLLocationManagerDelegate {
         
         if type.contains("triplog"){
             fileName = "WunderLINQ-TripLog-" + Date().toString() + ".csv"
-            let header = "Time,Latitude,Longitude,Altitude (m),Speed (kmh),Gear,Engine Temperature (C)," +
+            let header = "Latitude,Longitude,Altitude (m),Speed (kmh),Gear,Engine Temperature (C)," +
                 "Ambient Temperature (C),Front Tire Pressure (bar),Rear Tire Pressure (bar),Odometer (km),Voltage (V)," +
-            "Throttle Position (%),Front Brakes,Rear Brakes,Shifts,VIN,Ambient Light,Trip1 (km),Trip2 (km),Trip Auto (km)\n"
-            Logger.log(fileName: fileName, entry: header)
+            "Throttle Position (%),Front Brakes,Rear Brakes,Shifts,VIN,Ambient Light,Trip1 (km),Trip2 (km),Trip Auto (km)"
+            Logger.log(fileName: fileName, entry: header, withDate: false)
         }
         
         print("Starting Location Updates")
@@ -119,7 +119,7 @@ class LocationService: NSObject, CLLocationManagerDelegate {
             }
             var ambientTemp:String = "null"
             if motorcycleData.ambientTemperature != nil {
-                ambientTemp = "\(motorcycleData.ambientLight!)"
+                ambientTemp = "\(motorcycleData.ambientTemperature!)"
             }
             var frontTirePressure:String = "null"
             if motorcycleData.frontTirePressure != nil {
@@ -173,9 +173,9 @@ class LocationService: NSObject, CLLocationManagerDelegate {
             if motorcycleData.ambientLight != nil {
                 ambientLight = "\(motorcycleData.ambientLight!)"
             }
-            
-            let entry = "\(latitude),\(longitude),\(altitude),\(speed),\(gear),\(engineTemp),\(ambientTemp),\(frontTirePressure),\(rearTirePressure),\(odometer),\(voltage),\(throttlePosition),\(frontBrakes),\(rearBrakes),\(shifts),\(vin),\(tripOne),\(tripTwo),\(tripAuto),\(ambientLight)\n"
-            Logger.log(fileName: fileName, entry: entry)
+
+            let entry = "\(latitude),\(longitude),\(altitude),\(speed),\(gear),\(engineTemp),\(ambientTemp),\(frontTirePressure),\(rearTirePressure),\(odometer),\(voltage),\(throttlePosition),\(frontBrakes),\(rearBrakes),\(shifts),\(vin),\(ambientLight),\(tripOne),\(tripTwo),\(tripAuto)"
+            Logger.log(fileName: fileName, entry: entry, withDate: true)
         } else {
             print("waypoint saved")
             saveWaypoint()

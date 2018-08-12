@@ -19,12 +19,18 @@ class Logger {
         return formatter
     }
     
-    class func log(fileName: String, entry: String) {
+    class func log(fileName: String, entry: String, withDate: Bool) {
         // Get the documents folder url
         let documentDirectory = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
         // Destination url for the log file to be saved
         let fileURL = documentDirectory.appendingPathComponent("\(fileName)")
-        let formattedEntry = Date().toString() + "," + entry
+        var formattedEntry = ""
+        if withDate {
+            formattedEntry = Date().toString() + "," + entry
+        } else {
+            formattedEntry = "Date/Time," + entry
+        }
+        
         do {
             // Write to log
             try formattedEntry.appendLineToURL(fileURL: fileURL as URL)
