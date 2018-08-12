@@ -33,6 +33,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             }
         }
         
+        Theme.current.apply()
+        
         return true
     }
 

@@ -66,11 +66,6 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if UserDefaults.standard.integer(forKey: "motorcycle_type_preference") != 4 {
-            self.view.setNeedsLayout()
-        } else {
-            self.viewDidLoad()
-        }
     }
     
     override func viewDidLoad() {
@@ -78,17 +73,36 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
         
         registerSettingsBundle()
         NotificationCenter.default.addObserver(self, selector: #selector(self.defaultsChanged), name: UserDefaults.didChangeNotification, object: nil)
-        
+        if UserDefaults.standard.bool(forKey: "nightmode_preference") {
+            Theme.dark.apply()
+            self.navigationController?.isNavigationBarHidden = true
+            self.navigationController?.isNavigationBarHidden = false
+        } else {
+            Theme.default.apply()
+            self.navigationController?.isNavigationBarHidden = true
+            self.navigationController?.isNavigationBarHidden = false
+        }
         // Add Borders
         if frontTireStackView != nil {
-        pinBackground(createView(UIColor.black), to: frontTireStackView)
-        pinBackground(createView(UIColor.black), to: rearTireStackView)
-        pinBackground(createView(UIColor.black), to: engineTempStackView)
-        pinBackground(createView(UIColor.black), to: ambientTempStackView)
-        pinBackground(createView(UIColor.black), to: gearStackView)
-        pinBackground(createView(UIColor.black), to: odometerStackView)
-        pinBackground(createView(UIColor.black), to: tripOneStackView)
-        pinBackground(createView(UIColor.black), to: tripTwoStackView)
+            if UserDefaults.standard.bool(forKey: "nightmode_preference") {
+                pinBackground(createView(UIColor.white,backGrndColor: UIColor.black), to: frontTireStackView)
+                pinBackground(createView(UIColor.white,backGrndColor: UIColor.black), to: rearTireStackView)
+                pinBackground(createView(UIColor.white,backGrndColor: UIColor.black), to: engineTempStackView)
+                pinBackground(createView(UIColor.white,backGrndColor: UIColor.black), to: ambientTempStackView)
+                pinBackground(createView(UIColor.white,backGrndColor: UIColor.black), to: gearStackView)
+                pinBackground(createView(UIColor.white,backGrndColor: UIColor.black), to: odometerStackView)
+                pinBackground(createView(UIColor.white,backGrndColor: UIColor.black), to: tripOneStackView)
+                pinBackground(createView(UIColor.white,backGrndColor: UIColor.black), to: tripTwoStackView)
+            } else {
+                pinBackground(createView(UIColor.black,backGrndColor: UIColor.white), to: frontTireStackView)
+                pinBackground(createView(UIColor.black,backGrndColor: UIColor.white), to: rearTireStackView)
+                pinBackground(createView(UIColor.black,backGrndColor: UIColor.white), to: engineTempStackView)
+                pinBackground(createView(UIColor.black,backGrndColor: UIColor.white), to: ambientTempStackView)
+                pinBackground(createView(UIColor.black,backGrndColor: UIColor.white), to: gearStackView)
+                pinBackground(createView(UIColor.black,backGrndColor: UIColor.white), to: odometerStackView)
+                pinBackground(createView(UIColor.black,backGrndColor: UIColor.white), to: tripOneStackView)
+                pinBackground(createView(UIColor.black,backGrndColor: UIColor.white), to: tripTwoStackView)
+            }
         }
 
         if UserDefaults.standard.integer(forKey: "motorcycle_type_preference") == 4 {
@@ -98,7 +112,13 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
             let label = UILabel(frame: CGRect(x: 0, y: 0, width: self.mainUIView.bounds.width, height: 75))
             label.center = self.view.center
             label.textAlignment = .center
-            label.textColor = .black
+            if UserDefaults.standard.bool(forKey: "nightmode_preference") {
+                label.textColor = .white
+                mainUIView.backgroundColor = .black
+            } else {
+                label.textColor = .black
+                mainUIView.backgroundColor = .white
+            }
             label.font = UIFont.boldSystemFont(ofSize: 40)
             label.text = NSLocalizedString("product", comment: "")
             mainUIView.addSubview(label)
@@ -116,7 +136,7 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
 
         // Setup Buttons
         backBtn = UIButton()
-        backBtn.setImage(UIImage(named: "Left"), for: .normal)
+        backBtn.setImage(UIImage(named: "Left")?.withRenderingMode(.alwaysTemplate), for: .normal)
         backBtn.addTarget(self, action: #selector(leftScreen), for: .touchUpInside)
         backButton = UIBarButtonItem(customView: backBtn)
         let backButtonWidth = backButton.customView?.widthAnchor.constraint(equalToConstant: 30)
@@ -154,7 +174,7 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
         faultsButton.isEnabled = false
 
         dataBtn = UIButton()
-        dataBtn.setImage(UIImage(named: "Chart"), for: .normal)
+        dataBtn.setImage(UIImage(named: "Chart")?.withRenderingMode(.alwaysTemplate), for: .normal)
         dataBtn.addTarget(self, action: #selector(dataButtonTapped), for: .touchUpInside)
         dataButton = UIBarButtonItem(customView: dataBtn)
         let dataButtonWidth = dataButton.customView?.widthAnchor.constraint(equalToConstant: 30)
@@ -163,7 +183,7 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
         dataButtonHeight?.isActive = true
 
         let settingsBtn = UIButton()
-        settingsBtn.setImage(UIImage(named: "Cog"), for: .normal)
+        settingsBtn.setImage(UIImage(named: "Cog")?.withRenderingMode(.alwaysTemplate), for: .normal)
         settingsBtn.addTarget(self, action: #selector(settingsButtonTapped), for: .touchUpInside)
         let settingsButton = UIBarButtonItem(customView: settingsBtn)
         let settingsButtonWidth = settingsButton.customView?.widthAnchor.constraint(equalToConstant: 30)
@@ -172,7 +192,7 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
         settingsButtonHeight?.isActive = true
 
         let forwardBtn = UIButton()
-        forwardBtn.setImage(UIImage(named: "Right"), for: .normal)
+        forwardBtn.setImage(UIImage(named: "Right")?.withRenderingMode(.alwaysTemplate), for: .normal)
         forwardBtn.addTarget(self, action: #selector(rightScreen), for: .touchUpInside)
         let forwardButton = UIBarButtonItem(customView: forwardBtn)
         let forwardButtonWidth = forwardButton.customView?.widthAnchor.constraint(equalToConstant: 30)
@@ -222,10 +242,15 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
     
     func defaultsChanged(notification:NSNotification){
         if let defaults = notification.object as? UserDefaults {
-            if defaults.integer(forKey: "motorcycle_type_preference") != 4 {
-                self.view.setNeedsLayout()
-            } else {
-                self.viewDidLoad()
+            if defaults.bool(forKey: "nightmode_lastSet") != defaults.bool(forKey: "nightmode_preference"){
+                UserDefaults.standard.set(defaults.bool(forKey: "nightmode_preference"), forKey: "nightmode_lastSet")
+                // quit app
+                exit(0)
+            }
+            if defaults.integer(forKey: "motorcycle_type_lastSet") != defaults.integer(forKey: "motorcycle_type_preference"){
+                UserDefaults.standard.set(defaults.integer(forKey: "motorcycle_type_preference"), forKey: "motorcycle_type_lastSet")
+                // quit app
+                exit(0)
             }
         }
     }
@@ -420,7 +445,7 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
                 default:
                     print("Unknown pressure unit setting")
                 }
-                frontPressureLabel.text = "\(Int(frontPressure)) \(pressureUnit)"
+                frontPressureLabel.text = "\(frontPressure.rounded(toPlaces: 1)) \(pressureUnit)"
             }
             
             if motorcycleData.rearTirePressure != nil {
@@ -440,7 +465,7 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
                 default:
                     print("Unknown pressure unit setting")
                 }
-                rearPressureLabel.text = "\(Int(rearPressure)) \(pressureUnit)"
+                rearPressureLabel.text = "\(rearPressure.rounded(toPlaces: 1)) \(pressureUnit)"
             }
             
             // Gear
@@ -475,7 +500,7 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
                     odometer = Double(kmToMiles(Double(odometer)))
                     distanceUnit = "mi"
                 }
-                odometerLabel.text = "\(odometer) \(distanceUnit)"
+                odometerLabel.text = "\(Int(odometer)) \(distanceUnit)"
             }
             
             // Trip 1
@@ -485,7 +510,7 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
                     tripOne = Double(kmToMiles(Double(tripOne)))
                     distanceUnit = "mi"
                 }
-                tripOneLabel.text = "\(tripOne) \(distanceUnit)"
+                tripOneLabel.text = "\(tripOne.rounded(toPlaces: 1)) \(distanceUnit)"
             }
             
             // Trip 2
@@ -495,7 +520,7 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
                     tripTwo = Double(kmToMiles(Double(tripTwo)))
                     distanceUnit = "mi"
                 }
-                tripTwoLabel.text = "\(tripTwo) \(distanceUnit)"
+                tripTwoLabel.text = "\(tripTwo.rounded(toPlaces: 1)) \(distanceUnit)"
             }
         }
     }
@@ -1831,10 +1856,10 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
     }
     
     // Add view for border
-    private func createView(_ bdrColor: UIColor) -> UIView {
+    private func createView(_ bdrColor: UIColor, backGrndColor: UIColor) -> UIView {
         let backgroundView: UIView = {
             let view = UIView()
-            //view.backgroundColor = .purple
+            view.backgroundColor = backGrndColor
             view.layer.cornerRadius = 5.0
             view.layer.borderWidth = 3
             view.layer.borderColor = bdrColor.cgColor

@@ -30,6 +30,16 @@ class MusicViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if UserDefaults.standard.bool(forKey: "nightmode_preference") {
+            Theme.dark.apply()
+            self.navigationController?.isNavigationBarHidden = true
+            self.navigationController?.isNavigationBarHidden = false
+        } else {
+            Theme.default.apply()
+            self.navigationController?.isNavigationBarHidden = true
+            self.navigationController?.isNavigationBarHidden = false
+        }
+        
         let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))
         swipeLeft.direction = .left
         self.view.addGestureRecognizer(swipeLeft)
@@ -39,7 +49,7 @@ class MusicViewController: UIViewController {
         self.view.addGestureRecognizer(swipeRight)
         
         let backBtn = UIButton()
-        backBtn.setImage(UIImage(named: "Left"), for: .normal)
+        backBtn.setImage(UIImage(named: "Left")?.withRenderingMode(.alwaysTemplate), for: .normal)
         backBtn.addTarget(self, action: #selector(leftScreen), for: .touchUpInside)
         let backButton = UIBarButtonItem(customView: backBtn)
         let backButtonWidth = backButton.customView?.widthAnchor.constraint(equalToConstant: 30)
@@ -48,7 +58,7 @@ class MusicViewController: UIViewController {
         backButtonHeight?.isActive = true
         
         let forwardBtn = UIButton()
-        forwardBtn.setImage(UIImage(named: "Right"), for: .normal)
+        forwardBtn.setImage(UIImage(named: "Right")?.withRenderingMode(.alwaysTemplate), for: .normal)
         forwardBtn.addTarget(self, action: #selector(rightScreen), for: .touchUpInside)
         let forwardButton = UIBarButtonItem(customView: forwardBtn)
         let forwardButtonWidth = forwardButton.customView?.widthAnchor.constraint(equalToConstant: 30)

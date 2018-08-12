@@ -24,24 +24,17 @@ class CompassViewController: UIViewController {
     }
     
     @objc func leftScreen() {
-        print("leftScreen called")
-        // your code here
         performSegue(withIdentifier: "backToMotorcycle", sender: [])
-        //prepareForUnwind(segue: unwindToMotorcycle)
     }
     @objc func rightScreen() {
-        print("rightScreen called")
-        // your code here
         performSegue(withIdentifier: "compassToMusic", sender: [])
     }
     
     func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
         if gesture.direction == UISwipeGestureRecognizerDirection.right {
-            print("Swipe Right")
             performSegue(withIdentifier: "backToMotorcycle", sender: [])
         }
         else if gesture.direction == UISwipeGestureRecognizerDirection.left {
-            print("Swipe Left")
             performSegue(withIdentifier: "compassToMusic", sender: [])
         }
     }
@@ -85,6 +78,11 @@ class CompassViewController: UIViewController {
         return adjAngle
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -97,7 +95,7 @@ class CompassViewController: UIViewController {
         self.view.addGestureRecognizer(swipeRight)
         
         let backBtn = UIButton()
-        backBtn.setImage(UIImage(named: "Left"), for: .normal)
+        backBtn.setImage(UIImage(named: "Left")?.withRenderingMode(.alwaysTemplate), for: .normal)
         backBtn.addTarget(self, action: #selector(leftScreen), for: .touchUpInside)
         let backButton = UIBarButtonItem(customView: backBtn)
         let backButtonWidth = backButton.customView?.widthAnchor.constraint(equalToConstant: 30)
@@ -106,7 +104,7 @@ class CompassViewController: UIViewController {
         backButtonHeight?.isActive = true
         
         let forwardBtn = UIButton()
-        forwardBtn.setImage(UIImage(named: "Right"), for: .normal)
+        forwardBtn.setImage(UIImage(named: "Right")?.withRenderingMode(.alwaysTemplate), for: .normal)
         forwardBtn.addTarget(self, action: #selector(rightScreen), for: .touchUpInside)
         let forwardButton = UIBarButtonItem(customView: forwardBtn)
         let forwardButtonWidth = forwardButton.customView?.widthAnchor.constraint(equalToConstant: 30)
@@ -162,10 +160,7 @@ class CompassViewController: UIViewController {
                     bearing = "-"
                 }
             }
-
             self.compassLabel.text = bearing
-
         }
-        
     }
 }

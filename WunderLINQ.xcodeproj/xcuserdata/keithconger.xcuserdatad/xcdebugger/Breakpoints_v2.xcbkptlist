@@ -40,11 +40,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WunderLINQ/MusicViewController.swift"
-            timestampString = "555569327.272881"
+            timestampString = "555798037.448701"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "71"
-            endingLineNumber = "71"
+            startingLineNumber = "81"
+            endingLineNumber = "81"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -56,11 +56,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WunderLINQ/ContactsTableViewContoller.swift"
-            timestampString = "555569327.2729321"
+            timestampString = "555798037.448789"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "229"
-            endingLineNumber = "229"
+            startingLineNumber = "260"
+            endingLineNumber = "260"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -86,7 +86,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WunderLINQ/TripsTableViewController.swift"
-            timestampString = "555569327.272992"
+            timestampString = "555724545.0372601"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "59"

@@ -40,27 +40,27 @@ class TasksTableViewController: UITableViewController, AVCaptureVideoDataOutputS
 
     private func loadTasks() {
         // Navigate Task
-        guard let task0 = Tasks(label: NSLocalizedString("task_title_navigation", comment: ""), icon: UIImage(named: "Map")) else {
+        guard let task0 = Tasks(label: NSLocalizedString("task_title_navigation", comment: ""), icon: UIImage(named: "Map")?.withRenderingMode(.alwaysTemplate)) else {
             fatalError("Unable to instantiate Navigate Task")
         }
         // Go Home Task
-        guard let task1 = Tasks(label: NSLocalizedString("task_title_gohome", comment: ""), icon: UIImage(named: "Home")) else {
+        guard let task1 = Tasks(label: NSLocalizedString("task_title_gohome", comment: ""), icon: UIImage(named: "Home")?.withRenderingMode(.alwaysTemplate)) else {
             fatalError("Unable to instantiate Go Home Task")
         }
         // Call Home Task
-        guard let task2 = Tasks(label: NSLocalizedString("task_title_favnumber", comment: ""), icon: UIImage(named: "Phone")) else {
+        guard let task2 = Tasks(label: NSLocalizedString("task_title_favnumber", comment: ""), icon: UIImage(named: "Phone")?.withRenderingMode(.alwaysTemplate)) else {
             fatalError("Unable to instantiate Call Home Task")
         }
         // Call Contact Task
-        guard let task3 = Tasks(label: NSLocalizedString("task_title_callcontact", comment: ""), icon: UIImage(named: "Contacts")) else {
+        guard let task3 = Tasks(label: NSLocalizedString("task_title_callcontact", comment: ""), icon: UIImage(named: "Contacts")?.withRenderingMode(.alwaysTemplate)) else {
             fatalError("Unable to instantiate Call Contact Task")
         }
         // Take Photo Task
-        guard let task4 = Tasks(label: NSLocalizedString("task_title_photo", comment: ""), icon: UIImage(named: "Camera")) else {
+        guard let task4 = Tasks(label: NSLocalizedString("task_title_photo", comment: ""), icon: UIImage(named: "Camera")?.withRenderingMode(.alwaysTemplate)) else {
             fatalError("Unable to instantiate Take Photo Task")
         }
         // Video Recording Task
-        guard let task5 = Tasks(label: NSLocalizedString("task_title_start_record", comment: ""), icon: UIImage(named: "VideoCamera")) else {
+        guard let task5 = Tasks(label: NSLocalizedString("task_title_start_record", comment: ""), icon: UIImage(named: "VideoCamera")?.withRenderingMode(.alwaysTemplate)) else {
             fatalError("Unable to instantiate Video Recording Task")
         }
         // Trip Log Task
@@ -68,15 +68,15 @@ class TasksTableViewController: UITableViewController, AVCaptureVideoDataOutputS
         if LocationService.sharedInstance.isRunning(){
             tripLogLabel = NSLocalizedString("task_title_stop_trip", comment: "")
         }
-        guard let task6 = Tasks(label: tripLogLabel, icon: UIImage(named: "Road")) else {
+        guard let task6 = Tasks(label: tripLogLabel, icon: UIImage(named: "Road")?.withRenderingMode(.alwaysTemplate)) else {
             fatalError("Unable to instantiate Trip Log Task")
         }
         // Save Waypoint Task
-        guard let task7 = Tasks(label: NSLocalizedString("task_title_waypoint", comment: ""), icon: UIImage(named: "MapMarker")) else {
+        guard let task7 = Tasks(label: NSLocalizedString("task_title_waypoint", comment: ""), icon: UIImage(named: "MapMarker")?.withRenderingMode(.alwaysTemplate)) else {
             fatalError("Unable to instantiate Save Waypoint Task")
         }
         // Navigate to Waypoint Task
-        guard let task8 = Tasks(label: NSLocalizedString("task_title_waypoint_nav", comment: ""), icon: UIImage(named: "Map")) else {
+        guard let task8 = Tasks(label: NSLocalizedString("task_title_waypoint_nav", comment: ""), icon: UIImage(named: "Map")?.withRenderingMode(.alwaysTemplate)) else {
             fatalError("Unable to instantiate Navigate to Waypoint Task")
         }
         tasks += [task0, task1, task2, task3, task4, task5, task6, task7, task8]
@@ -279,15 +279,25 @@ class TasksTableViewController: UITableViewController, AVCaptureVideoDataOutputS
     @objc func upRow() {
         if (itemRow == 0){
             let nextRow = tasks.count - 1
-            self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.contentView.backgroundColor = UIColor.white
-            self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.textLabel?.backgroundColor = UIColor.white
+            if UserDefaults.standard.bool(forKey: "nightmode_preference") {
+                self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.contentView.backgroundColor = UIColor.black
+                self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.textLabel?.backgroundColor = UIColor.black
+            } else {
+                self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.contentView.backgroundColor = UIColor.white
+                self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.textLabel?.backgroundColor = UIColor.white
+            }
             self.tableView.cellForRow(at: IndexPath(row: nextRow, section: 0) as IndexPath)?.contentView.backgroundColor = UIColor.blue
             self.tableView.cellForRow(at: IndexPath(row: nextRow, section: 0) as IndexPath)?.textLabel?.backgroundColor = UIColor.blue
             itemRow = nextRow
         } else if (itemRow < tasks.count ){
             let nextRow = itemRow - 1
-            self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.contentView.backgroundColor = UIColor.white
-            self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.textLabel?.backgroundColor = UIColor.white
+            if UserDefaults.standard.bool(forKey: "nightmode_preference") {
+                self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.contentView.backgroundColor = UIColor.black
+                self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.textLabel?.backgroundColor = UIColor.black
+            } else {
+                self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.contentView.backgroundColor = UIColor.white
+                self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.textLabel?.backgroundColor = UIColor.white
+            }
             self.tableView.cellForRow(at: IndexPath(row: nextRow, section: 0) as IndexPath)?.contentView.backgroundColor = UIColor.blue
             self.tableView.cellForRow(at: IndexPath(row: nextRow, section: 0) as IndexPath)?.textLabel?.backgroundColor = UIColor.blue
             itemRow = nextRow
@@ -297,15 +307,25 @@ class TasksTableViewController: UITableViewController, AVCaptureVideoDataOutputS
     @objc func downRow() {
         if (itemRow == (tasks.count - 1)){
             let nextRow = 0
-            self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.contentView.backgroundColor = UIColor.white
-            self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.textLabel?.backgroundColor = UIColor.white
+            if UserDefaults.standard.bool(forKey: "nightmode_preference") {
+                self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.contentView.backgroundColor = UIColor.black
+                self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.textLabel?.backgroundColor = UIColor.black
+            } else {
+                self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.contentView.backgroundColor = UIColor.white
+                self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.textLabel?.backgroundColor = UIColor.white
+            }
             self.tableView.cellForRow(at: IndexPath(row: nextRow, section: 0) as IndexPath)?.contentView.backgroundColor = UIColor.blue
             self.tableView.cellForRow(at: IndexPath(row: nextRow, section: 0) as IndexPath)?.textLabel?.backgroundColor = UIColor.blue
             itemRow = nextRow
         } else if (itemRow < tasks.count ){
             let nextRow = itemRow + 1
-            self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.contentView.backgroundColor = UIColor.white
-            self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.textLabel?.backgroundColor = UIColor.white
+            if UserDefaults.standard.bool(forKey: "nightmode_preference") {
+                self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.contentView.backgroundColor = UIColor.black
+                self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.textLabel?.backgroundColor = UIColor.black
+            } else {
+                self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.contentView.backgroundColor = UIColor.white
+                self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.textLabel?.backgroundColor = UIColor.white
+            }
             self.tableView.cellForRow(at: IndexPath(row: nextRow, section: 0) as IndexPath)?.contentView.backgroundColor = UIColor.blue
             self.tableView.cellForRow(at: IndexPath(row: nextRow, section: 0) as IndexPath)?.textLabel?.backgroundColor = UIColor.blue
             itemRow = nextRow
@@ -342,6 +362,16 @@ class TasksTableViewController: UITableViewController, AVCaptureVideoDataOutputS
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if UserDefaults.standard.bool(forKey: "nightmode_preference") {
+            Theme.dark.apply()
+            self.navigationController?.isNavigationBarHidden = true
+            self.navigationController?.isNavigationBarHidden = false
+        } else {
+            Theme.default.apply()
+            self.navigationController?.isNavigationBarHidden = true
+            self.navigationController?.isNavigationBarHidden = false
+        }
+        
         let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))
         swipeLeft.direction = .left
         self.view.addGestureRecognizer(swipeLeft)
@@ -351,7 +381,7 @@ class TasksTableViewController: UITableViewController, AVCaptureVideoDataOutputS
         self.view.addGestureRecognizer(swipeRight)
         
         let backBtn = UIButton()
-        backBtn.setImage(UIImage(named: "Left"), for: .normal)
+        backBtn.setImage(UIImage(named: "Left")?.withRenderingMode(.alwaysTemplate), for: .normal)
         backBtn.addTarget(self, action: #selector(leftScreen), for: .touchUpInside)
         let backButton = UIBarButtonItem(customView: backBtn)
         let backButtonWidth = backButton.customView?.widthAnchor.constraint(equalToConstant: 30)
@@ -360,7 +390,7 @@ class TasksTableViewController: UITableViewController, AVCaptureVideoDataOutputS
         backButtonHeight?.isActive = true
         
         let forwardBtn = UIButton()
-        forwardBtn.setImage(UIImage(named: "Right"), for: .normal)
+        forwardBtn.setImage(UIImage(named: "Right")?.withRenderingMode(.alwaysTemplate), for: .normal)
         forwardBtn.addTarget(self, action: #selector(rightScreen), for: .touchUpInside)
         let forwardButton = UIBarButtonItem(customView: forwardBtn)
         let forwardButtonWidth = forwardButton.customView?.widthAnchor.constraint(equalToConstant: 30)
@@ -426,6 +456,11 @@ class TasksTableViewController: UITableViewController, AVCaptureVideoDataOutputS
         
         cell.textLabel?.text = tasks.label
         cell.imageView?.image = tasks.icon
+        if UserDefaults.standard.bool(forKey: "nightmode_preference") {
+            cell.imageView?.tintColor = UIColor.white
+        } else {
+            cell.imageView?.tintColor = UIColor.black
+        }
         return cell
     }
     
