@@ -66,6 +66,11 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        if UserDefaults.standard.bool(forKey: "nightmode_preference") {
+            UIApplication.shared.statusBarStyle = .lightContent
+        } else {
+            UIApplication.shared.statusBarStyle = .default
+        }
     }
     
     override func viewDidLoad() {
