@@ -508,28 +508,28 @@
                                 <rect key="frame" x="16" y="20" width="343" height="647"/>
                                 <subviews>
                                     <stackView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="9kl-zc-Jc0">
-                                        <rect key="frame" x="16.5" y="0.0" width="310" height="392"/>
+                                        <rect key="frame" x="16.5" y="0.0" width="310" height="331"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9KV-8n-ffM">
-                                                <rect key="frame" x="0.0" y="0.0" width="310" height="320"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="310" height="259"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="ignoresInvertColors" value="YES"/>
                                                 </userDefinedRuntimeAttributes>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MHP-fk-xUy">
-                                                <rect key="frame" x="0.0" y="320" width="310" height="24"/>
+                                                <rect key="frame" x="0.0" y="259" width="310" height="24"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ojS-iD-NCF">
-                                                <rect key="frame" x="0.0" y="344" width="310" height="24"/>
+                                                <rect key="frame" x="0.0" y="283" width="310" height="24"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ENe-lL-dLJ">
-                                                <rect key="frame" x="0.0" y="368" width="310" height="24"/>
+                                                <rect key="frame" x="0.0" y="307" width="310" height="24"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -537,24 +537,24 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SPh-nY-LUF">
-                                        <rect key="frame" x="105.5" y="392" width="132" height="255"/>
+                                        <rect key="frame" x="105.5" y="331" width="132" height="316"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vsu-t3-FAz">
-                                                <rect key="frame" x="0.0" y="0.0" width="44" height="255"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="44" height="316"/>
                                                 <state key="normal" image="back"/>
                                                 <connections>
                                                     <action selector="lastButton:" destination="p6n-wZ-mMa" eventType="touchUpInside" id="AHf-FW-rrk"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pwh-25-TzL">
-                                                <rect key="frame" x="44" y="0.0" width="44" height="255"/>
+                                                <rect key="frame" x="44" y="0.0" width="44" height="316"/>
                                                 <state key="normal" image="play"/>
                                                 <connections>
                                                     <action selector="playButton:" destination="p6n-wZ-mMa" eventType="touchUpInside" id="zrO-H3-A4V"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kxB-1t-Lm7">
-                                                <rect key="frame" x="88" y="0.0" width="44" height="255"/>
+                                                <rect key="frame" x="88" y="0.0" width="44" height="316"/>
                                                 <state key="normal" image="forward"/>
                                                 <connections>
                                                     <action selector="nextButton:" destination="p6n-wZ-mMa" eventType="touchUpInside" id="OHU-u9-qfP"/>
@@ -1150,12 +1150,13 @@
         <image name="play" width="44" height="44"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="Dqr-lf-ahi"/>
         <segue reference="gIM-fx-mWk"/>
         <segue reference="kp1-Ur-tNW"/>
         <segue reference="zBp-8h-a39"/>
         <segue reference="Dpe-gj-Wyf"/>
         <segue reference="W8V-Rg-WFQ"/>
-        <segue reference="rCa-tS-QTz"/>
+        <segue reference="gyk-vV-qic"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
 </document>

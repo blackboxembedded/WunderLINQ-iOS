@@ -191,7 +191,6 @@ class WaypointViewController: UIViewController, UITextFieldDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-
     /*
     // MARK: - Navigation
 
@@ -228,5 +227,4 @@ class WaypointViewController: UIViewController, UITextFieldDelegate {
         }
     }
 }
-
 

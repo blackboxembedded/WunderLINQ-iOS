@@ -120,6 +120,7 @@ class ContactsTableViewController: UITableViewController {
             }
             self.tableView.cellForRow(at: IndexPath(row: nextRow, section: 0) as IndexPath)?.contentView.backgroundColor = UIColor.blue
             self.tableView.cellForRow(at: IndexPath(row: nextRow, section: 0) as IndexPath)?.textLabel?.backgroundColor = UIColor.blue
+            self.tableView.scrollToRow(at: IndexPath(row: nextRow, section: 0), at: .middle, animated: true)
             itemRow = nextRow
         } else if (itemRow < phoneContacts.count ){
             let nextRow = itemRow - 1
@@ -132,6 +133,7 @@ class ContactsTableViewController: UITableViewController {
             }
             self.tableView.cellForRow(at: IndexPath(row: nextRow, section: 0) as IndexPath)?.contentView.backgroundColor = UIColor.blue
             self.tableView.cellForRow(at: IndexPath(row: nextRow, section: 0) as IndexPath)?.textLabel?.backgroundColor = UIColor.blue
+            self.tableView.scrollToRow(at: IndexPath(row: nextRow, section: 0), at: .middle, animated: true)
             itemRow = nextRow
         }
         self.tableView.reloadData()
@@ -148,6 +150,7 @@ class ContactsTableViewController: UITableViewController {
             }
             self.tableView.cellForRow(at: IndexPath(row: nextRow, section: 0) as IndexPath)?.contentView.backgroundColor = UIColor.blue
             self.tableView.cellForRow(at: IndexPath(row: nextRow, section: 0) as IndexPath)?.textLabel?.backgroundColor = UIColor.blue
+            self.tableView.scrollToRow(at: IndexPath(row: nextRow, section: 0), at: .middle, animated: true)
             itemRow = nextRow
         } else if (itemRow < phoneContacts.count ){
             let nextRow = itemRow + 1
@@ -160,6 +163,7 @@ class ContactsTableViewController: UITableViewController {
             }
             self.tableView.cellForRow(at: IndexPath(row: nextRow, section: 0) as IndexPath)?.contentView.backgroundColor = UIColor.blue
             self.tableView.cellForRow(at: IndexPath(row: nextRow, section: 0) as IndexPath)?.textLabel?.backgroundColor = UIColor.blue
+            self.tableView.scrollToRow(at: IndexPath(row: nextRow, section: 0), at: .middle, animated: true)
             itemRow = nextRow
         }
         self.tableView.reloadData()

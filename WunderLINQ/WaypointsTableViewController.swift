@@ -178,7 +178,7 @@ class WaypointsTableViewController: UITableViewController {
             waypoints.append(Waypoint(id: Int(id), date: String(describing: date), latitude: String(describing: latitude), longitude: String(describing: longitude), label: String(describing: label)))
         }
     }
-
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "waypointsToWaypoint") {
             let vc = segue.destination as! WaypointViewController
