@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -35,6 +35,7 @@
 		7E07AE4720F70FD8004F15B9 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E07AE4620F70FD8004F15B9 /* LocationService.swift */; };
 		7E5A767820DDEE7200B48CC6 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5A767720DDEE7200B48CC6 /* UIViewController+Extensions.swift */; };
 		7E5A767A20DDFEF700B48CC6 /* Waypoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5A767920DDFEF700B48CC6 /* Waypoint.swift */; };
+		7E5E0F78212289140048B9A2 /* AppUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5E0F77212289140048B9A2 /* AppUtility.swift */; };
 		7E6987DB20F82F1A00B4781D /* MotorcycleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6987DA20F82F1A00B4781D /* MotorcycleData.swift */; };
 		7E6987DD20F8F83500B4781D /* Faults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6987DC20F8F83500B4781D /* Faults.swift */; };
 		7E80BD3B211CF80600B8CA0D /* LocalisableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E80BD3A211CF80600B8CA0D /* LocalisableLabel.swift */; };
@@ -107,6 +108,7 @@
 		7E07AE4620F70FD8004F15B9 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		7E5A767720DDEE7200B48CC6 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		7E5A767920DDFEF700B48CC6 /* Waypoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Waypoint.swift; sourceTree = "<group>"; };
+		7E5E0F77212289140048B9A2 /* AppUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUtility.swift; sourceTree = "<group>"; };
 		7E6987DA20F82F1A00B4781D /* MotorcycleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotorcycleData.swift; sourceTree = "<group>"; };
 		7E6987DC20F8F83500B4781D /* Faults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Faults.swift; sourceTree = "<group>"; };
 		7E80BD3A211CF80600B8CA0D /* LocalisableLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalisableLabel.swift; sourceTree = "<group>"; };
@@ -208,6 +210,7 @@
 		7EA478411F40B154000CEDDC = {
 			isa = PBXGroup;
 			children = (
+				7E5E0F77212289140048B9A2 /* AppUtility.swift */,
 				7ED2013520D0D0030066BCE6 /* Default-568h@2x.png */,
 				7EA478881F537ED5000CEDDC /* Localizable.strings */,
 				7EA4784C1F40B154000CEDDC /* WunderLINQ */,
@@ -351,7 +354,7 @@
 				};
 			};
 			buildConfigurationList = 7EA478451F40B154000CEDDC /* Build configuration list for PBXProject "WunderLINQ" */;
-			compatibilityVersion = "Xcode 3.2";
+			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -401,6 +404,7 @@
 			files = (
 				7EA478711F40F273000CEDDC /* Device.swift in Sources */,
 				7E80BD3D211CFF7300B8CA0D /* LocalisableButton.swift in Sources */,
+				7E5E0F78212289140048B9A2 /* AppUtility.swift in Sources */,
 				7EA478771F412BAC000CEDDC /* CLLocation+Extension.swift in Sources */,
 				7EBFD490210E108100FC9665 /* segueFromLeft.swift in Sources */,
 				7EA478501F40B154000CEDDC /* MyMotorcycleViewController.swift in Sources */,
@@ -593,7 +597,8 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -613,7 +618,10 @@
 					"$(PROJECT_DIR)/WunderLINQ",
 				);
 				INFOPLIST_FILE = WunderLINQ/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.blackboxembedded.wunderlinq;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -635,7 +643,10 @@
 					"$(PROJECT_DIR)/WunderLINQ",
 				);
 				INFOPLIST_FILE = WunderLINQ/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.blackboxembedded.wunderlinq;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -650,7 +661,11 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = L5697YQ5RS;
 				INFOPLIST_FILE = WunderLINQTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.blackboxembedded.WunderLINQTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
@@ -665,7 +680,11 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = L5697YQ5RS;
 				INFOPLIST_FILE = WunderLINQTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.blackboxembedded.WunderLINQTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;

@@ -745,7 +745,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vYP-M3-Xw8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="9416.7999999999993" y="1563.8680659670167"/>
+            <point key="canvasLocation" x="9367" y="1564"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="yCn-wr-lQB">
@@ -1150,13 +1150,12 @@
         <image name="play" width="44" height="44"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Dqr-lf-ahi"/>
         <segue reference="gIM-fx-mWk"/>
         <segue reference="kp1-Ur-tNW"/>
-        <segue reference="zBp-8h-a39"/>
-        <segue reference="Dpe-gj-Wyf"/>
+        <segue reference="s2b-3y-Wyk"/>
+        <segue reference="cF1-aK-Tul"/>
         <segue reference="W8V-Rg-WFQ"/>
-        <segue reference="gyk-vV-qic"/>
+        <segue reference="ldV-Xu-q0h"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
 </document>

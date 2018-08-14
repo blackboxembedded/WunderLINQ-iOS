@@ -135,6 +135,8 @@ class WaypointViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        AppUtility.lockOrientation(.portrait)
+        
         // Do any additional setup after loading the view.
 
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))
@@ -184,6 +186,13 @@ class WaypointViewController: UIViewController, UITextFieldDelegate {
         latLabel.text = latitude
         longLabel.text = longitude
         labelLabel.text = label
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        // Don't forget to reset when view is being removed
+        AppUtility.lockOrientation(.all)
     }
 
     override func didReceiveMemoryWarning() {
