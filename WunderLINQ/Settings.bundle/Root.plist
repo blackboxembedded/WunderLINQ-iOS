@@ -38,7 +38,7 @@
 			<key>Key</key>
 			<string>callhome_number_preference</string>
 			<key>KeyboardType</key>
-			<string>NumberPad</string>
+			<string>NumbersAndPunctuation</string>
 		</dict>
 		<dict>
 			<key>Type</key>
@@ -86,11 +86,13 @@
 				<integer>0</integer>
 				<integer>1</integer>
 				<integer>2</integer>
+				<integer>3</integer>
 			</array>
 			<key>Titles</key>
 			<array>
 				<string>Apple Maps</string>
 				<string>Google Maps</string>
+				<string>Scenic</string>
 				<string>Waze</string>
 			</array>
 		</dict>
@@ -103,6 +105,28 @@
 			<string>nightmode_preference</string>
 			<key>DefaultValue</key>
 			<false/>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSMultiValueSpecifier</string>
+			<key>Title</key>
+			<string>pref_orientation_name</string>
+			<key>Key</key>
+			<string>orientation_preference</string>
+			<key>DefaultValue</key>
+			<integer>0</integer>
+			<key>Titles</key>
+			<array>
+				<string>orientation_a</string>
+				<string>orientation_l</string>
+				<string>orientation_p</string>
+			</array>
+			<key>Values</key>
+			<array>
+				<integer>0</integer>
+				<integer>1</integer>
+				<integer>2</integer>
+			</array>
 		</dict>
 		<dict>
 			<key>Type</key>

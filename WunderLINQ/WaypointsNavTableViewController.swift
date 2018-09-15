@@ -17,6 +17,8 @@ class WaypointsNavTableViewController: UITableViewController {
     var waypoints = [Waypoint]()
     var itemRow = 0
     
+    let scenic = ScenicAPI()
+    
     override var keyCommands: [UIKeyCommand]? {
         
         let commands = [
@@ -298,6 +300,10 @@ class WaypointsNavTableViewController: UITableViewController {
                 }
             }
         case 2:
+            //Scenic
+            //https://github.com/guidove/Scenic-Integration/blob/master/README.md
+            self.scenic.sendToScenicForNavigation(coordinate: CLLocationCoordinate2D(latitude: destLatitude,longitude: destLongitude), name: "Location from other App")
+        case 3:
             //Waze
             //waze://?ll=[lat],[lon]&z=10
             if let wazeURL = URL(string: "waze://?ll=\(destLatitude),\(destLongitude)&navigate=yes") {

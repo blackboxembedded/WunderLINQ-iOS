@@ -89,6 +89,7 @@
 "task_title_start_trip" = "Start Trip Log";
 "task_title_stop_trip" = "Stop Trip Log";
 "task_title_waypoint" = "Save Waypoint";
+"toast_waypoint_saved" = "Waypoint Saved";
 "task_title_waypoint_nav" = "Navigate to Waypoint";
 "toast_photo_taken" = "Photo Taken!";
 

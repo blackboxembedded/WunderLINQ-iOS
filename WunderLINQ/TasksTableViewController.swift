@@ -35,6 +35,8 @@ class TasksTableViewController: UITableViewController, AVCaptureVideoDataOutputS
     var waypoints = [Waypoint]()
     
     var itemRow = 0
+    
+    let scenic = ScenicAPI()
 
     //MARK: Private Methods
 
@@ -105,6 +107,18 @@ class TasksTableViewController: UITableViewController, AVCaptureVideoDataOutputS
                     }
                 }
             case 2:
+                //Scenic
+                //https://github.com/guidove/Scenic-Integration/blob/master/README.md
+                if let scenicURL = URL(string: "https://scenicapp.space/Scenic/api/navigate/"){
+                    if (UIApplication.shared.canOpenURL(scenicURL)) {
+                        if #available(iOS 10, *) {
+                            UIApplication.shared.open(scenicURL, options: [:], completionHandler: nil)
+                        } else {
+                            UIApplication.shared.openURL(scenicURL as URL)
+                        }
+                    }
+                }
+            case 3:
                 //Waze
                 //waze://?ll=[lat],[lon]&z=10
                 if let wazeURL = URL(string: "waze://") {
@@ -157,6 +171,10 @@ class TasksTableViewController: UITableViewController, AVCaptureVideoDataOutputS
                                 }
                             }
                         case 2:
+                            //Scenic
+                            //https://github.com/guidove/Scenic-Integration/blob/master/README.md
+                            self.scenic.sendToScenicForNavigation(coordinate: CLLocationCoordinate2D(latitude: destLatitude,longitude: destLongitude), name: "Location from other App")
+                        case 3:
                             //Waze
                             //waze://?ll=[lat],[lon]&z=10
                             if let wazeURL = URL(string: "waze://?ll=\(destLatitude),\(destLongitude)&navigate=yes") {
@@ -228,9 +246,15 @@ class TasksTableViewController: UITableViewController, AVCaptureVideoDataOutputS
                 movieOutput.stopRecording()
                 self.tableView.cellForRow(at: IndexPath(row: 5, section: 0) as IndexPath)?.textLabel?.text = NSLocalizedString("task_title_start_record", comment: "")
             } else {
-                startCapture()
-                self.tableView.cellForRow(at: IndexPath(row: 5, section: 0) as IndexPath)?.textLabel?.text = NSLocalizedString("task_title_stop_record", comment: "")
+                if setupSession() {
+                    startSession()
+                }
+                if (self.videoCaptureSession.isRunning) {
+                    startCapture()
+                    self.tableView.cellForRow(at: IndexPath(row: 5, section: 0) as IndexPath)?.textLabel?.text = NSLocalizedString("task_title_stop_record", comment: "")
+                }
             }
+            
             break
         case 6:
             //Trip Log
@@ -249,6 +273,7 @@ class TasksTableViewController: UITableViewController, AVCaptureVideoDataOutputS
             } else {
                 LocationService.sharedInstance.startUpdatingLocation(type: "waypoint")
             }
+            self.showToast(message: NSLocalizedString("toast_waypoint_saved", comment: ""))
             break
         case 8:
             //Navigate to Waypoint
@@ -429,9 +454,11 @@ class TasksTableViewController: UITableViewController, AVCaptureVideoDataOutputS
             print("error creating table: \(errmsg)")
         }
         
+        /*
         if setupSession() {
             startSession()
         }
+        */
     }
 
     override func didReceiveMemoryWarning() {

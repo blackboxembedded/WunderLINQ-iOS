@@ -28,5 +28,6 @@ extension UIViewController {
         }, completion: {(isCompleted) in
             toastLabel.removeFromSuperview()
         })
-    } }
+    }
+}
 

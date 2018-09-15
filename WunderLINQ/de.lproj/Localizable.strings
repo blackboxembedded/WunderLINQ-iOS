@@ -1,136 +1,141 @@
-/* 
-  Localizable.strings
-  WunderLINQ
-
-  Created by Keith Conger on 8/27/17.
-  Copyright © 2017 Black Box Embedded, LLC. All rights reserved.
-*/
+/*
+ Localizable.strings
+ WunderLINQ
+ 
+ Created by Keith Conger on 8/27/17.
+ Copyright © 2017 Black Box Embedded, LLC. All rights reserved.
+ */
 
 // Product
 "product" = "WunderLINQ";
 
 // AppDelegate
-"negative_alert_title" = "Functionality limited";
-"negative_notification_body" = "Since notifcations were not allowed, this app will not be able to send notifcations for faults";
+"negative_alert_title" = "Funktionalität eingeschränkt";
+"negative_notification_body" = "Weil Benachrichtigungen nicht gewährt wurden, kann diese App im Fehlerfall keine Benachrichtigungen anzeigen.";
 "alert_message_exit_ok" = "OK";
 
 // MyMotorcycleViewController
-"main_title" = "Motorcycle";
-"disclaimer_alert_title" = "WARNING!";
-"disclaimer_alert_body" = "Do not attempt to enter route information or adjust the WunderLINQ while driving.\nFailure to pay full attention to the operation of your vehicle could result in death, serious injury, or property damage.\nYou assume total responsibility and risk for using this device.";
-"disclaimer_ok" = "I agree";
-"disclaimer_quit" = "Quit";
-"bt_powered_off" = "Bluetooth on this device is currently powered off.";
-"bt_not_supported" = "This device does not support Bluetooth Low Energy.";
-"bt_not_authorized" = "This app is not authorized to use Bluetooth Low Energy.";
-"bt_resetting" = "The BLE Manager is resetting; a state update is pending.";
-"bt_unknown" = "The state of the BLE Manager is unknown.";
-"bt_ready" = "Bluetooth LE is turned on and ready for communication.";
+"main_title" = "Motorrad";
+"disclaimer_alert_title" = "WARNUNG!";
+"disclaimer_alert_body" = "Bitte bedienen Sie das WunderLINQ Gerät nicht während der Fahrt.\nVerhindern Sie Unfälle und/oder Sachschäden indem Sie Ihre Aufmerksamkeit während der Fahrt auf die Bedienung Ihres Fahrzeuges richten.\nSie übernehmen das Risiko und die Verantwortung wenn Sie dieses Gerät benutzen.";
+"disclaimer_ok" = "Ich stimme zu";
+"disclaimer_quit" = "Beenden";
+"bt_powered_off" = "Auf diesem Gerät ist Bluetooth im Moment ausgeschaltet.";
+"bt_not_supported" = "Dieses Gerät unterstützt kein Bluetooth Low Energy.";
+"bt_not_authorized" = "Diese App ist nicht berechtigt, Bluetooth Low Energy zu benutzen.";
+"bt_resetting" = "Der BLE Manager wird zurückgesetzt; Ein Statusupdate ist ausstehend.";
+"bt_unknown" = "Der Status des BLE Managers ist unbekannt.";
+"bt_ready" = "Bluetooth LE ist eingeschaltet und bereit für Verbindungen.";
 "bt_alert_title" = "Central Manager State";
-"trip_logs_label" = "Trip Logs";
-"waypoints_label" = "Waypoints";
-"rdc_front_label" = "Front Tire";
-"rdc_rear_label" = "Rear Tire";
-"engine_temp_label" = "Engine Temp";
-"ambient_temp_label" = "Ambient Temp";
-"odometer_label" = "Odometer";
-"trip1_label" = "Trip 1";
-"trip2_label" = "Trip 2";
-"gear_label" = "Gear";
+"trip_logs_label" = "Fahrtaufzeichnungen";
+"waypoints_label" = "Wegpunkte";
+"rdc_front_label" = "Vorderreifen";
+"rdc_rear_label" = "Hinterreifen";
+"engine_temp_label" = "Motortemperatur";
+"ambient_temp_label" = "Aussentemperatur";
+"odometer_label" = "Kilometerzähler";
+"trip1_label" = "KM-Zähler 1";
+"trip2_label" = "KM-Zähler 2";
+"gear_label" = "Gang";
 
 // FaultsTableViewController
-"fault_title" = "Active Faults";
+"fault_title" = "Aktive Fehler";
 
 // TripsTableViewController
-"trips_title" = "Recorded Trips";
+"trips_title" = "Gespeicherte Fahrten";
 
 // TripViewController
-"trip_view_title" = "Trip";
+"trip_view_title" = "Fahrt";
 "trip_view_waypoint_start_label" = "Start";
-"trip_view_waypoint_end_label" = "End";
-"trip_view_tv_distance" = "Distance";
-"trip_view_tv_duration" = "Duration";
-"trip_view_tv_speed" = "Speed (Avg/Max)";
-"trip_view_tv_shifts" = "Gear Shifts";
-"trip_view_tv_brakes" = "Brakes (Front/Rear)";
-"trip_view_tv_ambient" = "Ambient Temp (Min/Avg/Max)";
-"trip_view_tv_engine" = "Engine Temp (Min/Avg/Max)";
+"trip_view_waypoint_end_label" = "Ende";
+"trip_view_tv_distance" = "Distanz";
+"trip_view_tv_duration" = "Dauer";
+"trip_view_tv_speed" = "Geschwindigkeit (Avg/Max)";
+"trip_view_tv_shifts" = "Gangwechsel";
+"trip_view_tv_brakes" = "Bremsen (Vorne/Hinten)";
+"trip_view_tv_ambient" = "Aussentemp. (Min/Avg/Max)";
+"trip_view_tv_engine" = "Motortemp. (Min/Avg/Max)";
 
 // WaypointsTableViewController
-"waypoint_title" = "Saved Waypoints";
+"waypoint_title" = "Gespeicherte Wegpunkte";
 
 // WaypointViewController
-"waypoint_view_title" = "Saved Waypoint";
-"waypoint_view_tv_date_label" = "Date Recorded";
-"waypoint_view_tv_lat_label" = "Latitude";
-"waypoint_view_tv_lon_label" = "Longitude";
+"waypoint_view_title" = "Gespeicherter Wegpunkt";
+"waypoint_view_tv_date_label" = "Aufzeichnungsdatum";
+"waypoint_view_tv_lat_label" = "Breitengrad";
+"waypoint_view_tv_lon_label" = "Längengrad";
 "waypoint_view_tv_label_label" = "Label";
-"waypoint_view_bt_open" = "Open in Map App";
-"waypoint_view_bt_share" = "Share";
-"waypoint_view_bt_delete" = "Delete";
+"waypoint_view_bt_open" = "In Karten-App öffnen";
+"waypoint_view_bt_share" = "Teilen";
+"waypoint_view_bt_delete" = "Löschen";
 
 // CompassViewController
-"compass_title" = "Compass";
+"compass_title" = "Kompass";
 
 // MusicViewController
-"music_title" = "Music";
+"music_title" = "Musik";
 
 // TasksTableViewController
-"quicktask_title" = "Quick Tasks";
+"quicktask_title" = "Schnellzugriff";
 "task_title_navigation" = "Navigation";
-"task_title_gohome" = "Go Home";
-"toast_address_not_set" = "No Go Home address set in Settings";
-"task_title_favnumber" = "Call Favorite Number";
-"toast_phone_not_set" = "No Call Home phone number set in Settings";
-"task_title_callcontact" = "Call Contact";
-"task_title_photo" = "Take Photo";
-"task_title_start_record" = "Start Video Recording";
-"task_title_stop_record" = "Stop Video Recording";
-"task_title_start_trip" = "Start Trip Log";
-"task_title_stop_trip" = "Stop Trip Log";
-"task_title_waypoint" = "Save Waypoint";
-"toast_photo_taken" = "Photo Taken!";
+"task_title_gohome" = "Nach Hause";
+"toast_address_not_set" = "Keine Nach Hause Adresse gesetzt in den Einstellungen";
+"task_title_favnumber" = "Bevorzugte Nummer anrufen";
+"toast_phone_not_set" = "Keine Bevorzugte Nummer gesetzt in den Einstellungen";
+"task_title_callcontact" = "Kontakt anrufen";
+"task_title_photo" = "Foto aufnehmen";
+"task_title_start_record" = "Video starten";
+"task_title_stop_record" = "Video beenden";
+"task_title_start_trip" = "Fahrtaufzeichnung starten";
+"task_title_stop_trip" = "Fahrtaufzeichnung beenden";
+"task_title_waypoint" = "Wegpunkt speichern";
+"toast_waypoint_saved" = "Waypoint Saved";
+"task_title_waypoint_nav" = "Navigate to Waypoint";
+"toast_photo_taken" = "Foto aufgenommen!";
 
 // ContactsTableViewController
-"contactlist_title" = "Contacts";
+"contactlist_title" = "Kontakte";
+
+// WaypointsNavTableViewController
+"waypoints_nav_title" = "Wegpunkte";
 
 // Fault Description
-"fault_UARTERR" = "UART Error";
-"fault_UARTCTF" = "UART Comm Timeout";
-"fault_ABSSLF" = "ABS self-diagnosis not completed";
-"fault_ABSERR" = "ABS error";
-"fault_ABSDAC" = "ABS deactivated";
-"fault_ASCSLF" = "ASC self-diagnosis not completed";
-"fault_ASCINT" = "ASC intervention";
-"fault_ASCERR" = "ASC error";
-"fault_ASCDAC" = "ASC deactivated";
-"fault_FUELF" = "Low Fuel";
-"fault_TIREFWF" = "Front Tire Pressure Warning";
-"fault_TIRERWF" = "Rear Tire Pressure Warning";
-"fault_TIREFCF" = "Front Tire Pressure Critical";
-"fault_TIRERCF" = "Rear Tire Pressure Critical";
-"fault_LAMPAFL1" = "Additional front light 1";
-"fault_LAMPAFL2" = "Additional front light 2";
-"fault_LAMPDAY" = "Daytime running light";
-"fault_LAMPFLI" = "Front left indicator";
-"fault_LAMPFRI" = "Front right indicator";
-"fault_LAMPRLI" = "Rear left indicator";
-"fault_LAMPRRI" = "Rear right indicator";
-"fault_LAMPFPK1" = "Front parking light 1";
-"fault_LAMPFPK2" = "Front parking light 2";
-"fault_LAMPLOW" = "Low-beam";
-"fault_LAMPHI" = "High-beam";
-"fault_LAMPREAR" = "Rear Light";
-"fault_LAMPBRK" = "Brake Light";
-"fault_LAMPLIC" = "License plate Light";
-"fault_LAMPRFOG" = "Rear Fog Light";
-"fault_LAMPADDD" = "Additional dipped/high-beam";
-"fault_LAMPADDB" = "Additional brake light";
-"fault_LAMPFL1" = "Front lamp 1";
-"fault_LAMPFL2" = "Front lamp 2";
-"fault_ICEWARN" = "Ice Warning";
-"fault_GENWARNFSYLW" = "The general warning light flashes yellow";
-"fault_GENWARNSHYLW" = "The general warning light shows yellow";
-"fault_GENWARNFSRED" = "The general warning light flashes red";
-"fault_GENWARNSHRED" = "The general warning light shows red";
-"fault_OILLOW" = "Engine oil level too low";
+"fault_UARTERR" = "UART Fehler";
+"fault_UARTCTF" = "UART Komm. Timeout";
+"fault_ABSSLF" = "ABS Eigendiagnose nicht beendet";
+"fault_ABSERR" = "ABS Fehler";
+"fault_ABSDAC" = "ABS deaktiviert";
+"fault_ASCSLF" = "ASC Eigendiagnose nicht beendet";
+"fault_ASCINT" = "ASC Eingriff";
+"fault_ASCERR" = "ASC Fehler";
+"fault_ASCDAC" = "ASC deaktiviert";
+"fault_FUELF" = "Benzinstand niedrig";
+"fault_TIREFWF" = "Vorderreifen-Druck Warnung";
+"fault_TIRERWF" = "Hinterreifen-Druck Warnung";
+"fault_TIREFCF" = "Vorderreifen-Druck Kritisch";
+"fault_TIRERCF" = "Hinterreifen-Druck Kritisch";
+"fault_LAMPAFL1" = "Zusatzscheinwerfer 1";
+"fault_LAMPAFL2" = "Zusatzscheinwerfer 2";
+"fault_LAMPDAY" = "Tagfahrlicht";
+"fault_LAMPFLI" = "Blinker Vorne Links";
+"fault_LAMPFRI" = "Blinker Vorne Rechts";
+"fault_LAMPRLI" = "Blinker Hinten Links";
+"fault_LAMPRRI" = "Blinker Hinten Rechts";
+"fault_LAMPFPK1" = "Parklicht 1";
+"fault_LAMPFPK2" = "Parklicht 2";
+"fault_LAMPLOW" = "Abblendlicht";
+"fault_LAMPHI" = "Fernlicht";
+"fault_LAMPREAR" = "Rücklicht";
+"fault_LAMPBRK" = "Bremslicht";
+"fault_LAMPLIC" = "Nummernschildbeleuchtung";
+"fault_LAMPRFOG" = "Nebellicht Hinten";
+"fault_LAMPADDD" = "Abblend-/Fernlicht Zusatz";
+"fault_LAMPADDB" = "Bremslicht Zusatz";
+"fault_LAMPFL1" = "Frontlicht 1";
+"fault_LAMPFL2" = "Frontlicht 2";
+"fault_ICEWARN" = "Frostwarnung";
+"fault_GENWARNFSYLW" = "Die allgemeine Warnleuchte blinkt Gelb";
+"fault_GENWARNSHYLW" = "Die allgemeine Warnleuchte leuchtet Gelb";
+"fault_GENWARNFSRED" = "Die allgemeine Warnleuchte blinkt Rot";
+"fault_GENWARNSHRED" = "Die allgemeine Warnleuchte leuchtet Rot";
+"fault_OILLOW" = "Ölstand Motor zu niedrig";

@@ -75,10 +75,10 @@ class ContactsTableViewController: UITableViewController {
                                 if contact.imageDataAvailable {
                                     // there is an image for this contact
                                     photo = UIImage(data: contact.imageData!)?.withRenderingMode(.alwaysTemplate)
-                                    
                                 }
                                 guard let phoneContact = PhoneContacts(name: formatter.string(from: contact)!, number: number.stringValue, numberDescription: localizedLabel, photo: photo) else {
-                                    fatalError("Unable to instantiate Call Contact Task")
+                                    return
+                                    //fatalError("Unable to instantiate Call Contact Task")
                                 }
                                 self.phoneContacts += [phoneContact]
                             }

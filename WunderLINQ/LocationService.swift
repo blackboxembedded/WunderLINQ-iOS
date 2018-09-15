@@ -269,7 +269,6 @@ class LocationService: NSObject, CLLocationManagerDelegate {
             print("failure inserting wapoint: \(errmsg)")
             return
         }
-        
         if self.type.contains("waypoint"){
             stopUpdatingLocation()
         }

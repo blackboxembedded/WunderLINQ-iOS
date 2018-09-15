@@ -34,6 +34,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         
         Theme.current.apply()
         
+        switch(UserDefaults.standard.integer(forKey: "orientation_preference")){
+        case 0:
+            AppUtility.lockOrientation(.all)
+        case 1:
+            AppUtility.lockOrientation(.landscape)
+        case 2:
+            AppUtility.lockOrientation(.portrait)
+        default:
+            AppUtility.lockOrientation(.all)
+        }
+        
         return true
     }
     
