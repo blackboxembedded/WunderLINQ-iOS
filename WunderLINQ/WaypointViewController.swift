@@ -172,15 +172,19 @@ class WaypointViewController: UIViewController, UITextFieldDelegate {
         
         readWaypoint()
         
-        let camera: GMSCameraPosition = GMSCameraPosition.camera(withLatitude: latitude!.toDouble()!, longitude: longitude!.toDouble()!, zoom: 15.0)
-        mapView.camera = camera
-        mapView.mapType = .hybrid
-        // Creates a marker in the center of the map.
-        let marker = GMSMarker()
-        marker.position = CLLocationCoordinate2D(latitude: latitude!.toDouble()!, longitude: longitude!.toDouble()!)
-        marker.title = label
-        marker.snippet = label
-        marker.map = mapView
+        if let lat = latitude?.toDouble(), let lon = longitude?.toDouble(){
+            let camera: GMSCameraPosition = GMSCameraPosition.camera(withLatitude: lat, longitude: lon, zoom: 15.0)
+            mapView.camera = camera
+            mapView.mapType = .hybrid
+            // Creates a marker in the center of the map.
+            let marker = GMSMarker()
+            marker.position = CLLocationCoordinate2D(latitude: lat, longitude: lon)
+            marker.title = label
+            marker.snippet = label
+            marker.map = mapView
+        } else {
+            print("Invalid Value")
+        }
         
         dateLabel.text = date
         latLabel.text = latitude

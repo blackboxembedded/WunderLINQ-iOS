@@ -109,15 +109,7 @@ class TasksTableViewController: UITableViewController, AVCaptureVideoDataOutputS
             case 2:
                 //Scenic
                 //https://github.com/guidove/Scenic-Integration/blob/master/README.md
-                if let scenicURL = URL(string: "https://scenicapp.space/Scenic/api/navigate/"){
-                    if (UIApplication.shared.canOpenURL(scenicURL)) {
-                        if #available(iOS 10, *) {
-                            UIApplication.shared.open(scenicURL, options: [:], completionHandler: nil)
-                        } else {
-                            UIApplication.shared.openURL(scenicURL as URL)
-                        }
-                    }
-                }
+                self.scenic.sendToScenicForNavigation(coordinate: CLLocationCoordinate2D(latitude: 0,longitude: 0), name: "WunderLINQ")
             case 3:
                 //Waze
                 //waze://?ll=[lat],[lon]&z=10
@@ -173,7 +165,7 @@ class TasksTableViewController: UITableViewController, AVCaptureVideoDataOutputS
                         case 2:
                             //Scenic
                             //https://github.com/guidove/Scenic-Integration/blob/master/README.md
-                            self.scenic.sendToScenicForNavigation(coordinate: CLLocationCoordinate2D(latitude: destLatitude,longitude: destLongitude), name: "Location from other App")
+                            self.scenic.sendToScenicForNavigation(coordinate: CLLocationCoordinate2D(latitude: destLatitude,longitude: destLongitude), name: "WunderLINQ")
                         case 3:
                             //Waze
                             //waze://?ll=[lat],[lon]&z=10

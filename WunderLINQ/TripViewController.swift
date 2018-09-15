@@ -103,14 +103,19 @@ class TripViewController: UIViewController {
             }
         
             if((lineNumber > 1) && (lineNumber < csvRows.count)) {
-                path.add(CLLocationCoordinate2D(latitude: row[1].toDouble()!, longitude: row[2].toDouble()!))
-                
-                if row[4].toDouble()! > 0 {
-                    speeds.append(row[4].toDouble()!)
-                    if (maxSpeed < row[4].toDouble()!){
-                        maxSpeed = row[4].toDouble()!
+                if !(row[0].contains("No Fix") || row[1].contains("No Fix") || row[4].contains("No Fix")){
+                    path.add(CLLocationCoordinate2D(latitude: row[1].toDouble()!, longitude: row[2].toDouble()!))
+                    
+                    if row[4].toDouble()! > 0 {
+                        speeds.append(row[4].toDouble()!)
+                        if (maxSpeed < row[4].toDouble()!){
+                            maxSpeed = row[4].toDouble()!
+                        }
                     }
+                } else {
+                    //no Fix
                 }
+                
             }
             if ((lineNumber > 1) && (lineNumber < csvRows.count)) {
                 if (!row[6].contains("null")){

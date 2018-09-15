@@ -273,55 +273,59 @@ class WaypointsNavTableViewController: UITableViewController {
     func navigateToWaypoint(id: Int){
         let lat = waypoints[id].latitude
         let lon = waypoints[id].longitude
-        print("Lat: \(String(describing: lat)), Lon: \(String(describing: lon))")
         
-        let destLatitude: CLLocationDegrees = lat!.toDouble()!
-        let destLongitude: CLLocationDegrees = lon!.toDouble()!
-        
-        let navApp = UserDefaults.standard.integer(forKey: "nav_app_preference")
-        switch (navApp){
-        case 0:
-            //Apple Maps
-            let coordinates = CLLocationCoordinate2DMake(destLatitude, destLongitude)
-            let navPlacemark = MKPlacemark(coordinate: coordinates, addressDictionary: nil)
-            let mapitem = MKMapItem(placemark: navPlacemark)
-            let options = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving]
-            mapitem.openInMaps(launchOptions: options)
-        case 1:
-            //Google Maps
-            //googlemaps://
-            if let googleMapsURL = URL(string: "googlemaps://?saddr=&daddr=\(destLatitude),\(destLongitude)&directionsmode=driving") {
-                if (UIApplication.shared.canOpenURL(googleMapsURL)) {
-                    if #available(iOS 10, *) {
-                        UIApplication.shared.open(googleMapsURL, options: [:], completionHandler: nil)
-                    } else {
-                        UIApplication.shared.openURL(googleMapsURL as URL)
+        if let latitude = lat?.toDouble(), let longitude = lon?.toDouble(){
+            
+            let destLatitude: CLLocationDegrees = latitude
+            let destLongitude: CLLocationDegrees = longitude
+            
+            let navApp = UserDefaults.standard.integer(forKey: "nav_app_preference")
+            switch (navApp){
+            case 0:
+                //Apple Maps
+                let coordinates = CLLocationCoordinate2DMake(destLatitude, destLongitude)
+                let navPlacemark = MKPlacemark(coordinate: coordinates, addressDictionary: nil)
+                let mapitem = MKMapItem(placemark: navPlacemark)
+                let options = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving]
+                mapitem.openInMaps(launchOptions: options)
+            case 1:
+                //Google Maps
+                //googlemaps://
+                if let googleMapsURL = URL(string: "googlemaps://?saddr=&daddr=\(destLatitude),\(destLongitude)&directionsmode=driving") {
+                    if (UIApplication.shared.canOpenURL(googleMapsURL)) {
+                        if #available(iOS 10, *) {
+                            UIApplication.shared.open(googleMapsURL, options: [:], completionHandler: nil)
+                        } else {
+                            UIApplication.shared.openURL(googleMapsURL as URL)
+                        }
                     }
                 }
-            }
-        case 2:
-            //Scenic
-            //https://github.com/guidove/Scenic-Integration/blob/master/README.md
-            self.scenic.sendToScenicForNavigation(coordinate: CLLocationCoordinate2D(latitude: destLatitude,longitude: destLongitude), name: "Location from other App")
-        case 3:
-            //Waze
-            //waze://?ll=[lat],[lon]&z=10
-            if let wazeURL = URL(string: "waze://?ll=\(destLatitude),\(destLongitude)&navigate=yes") {
-                if (UIApplication.shared.canOpenURL(wazeURL)) {
-                    if #available(iOS 10, *) {
-                        UIApplication.shared.open(wazeURL, options: [:], completionHandler: nil)
-                    } else {
-                        UIApplication.shared.openURL(wazeURL as URL)
+            case 2:
+                //Scenic
+                //https://github.com/guidove/Scenic-Integration/blob/master/README.md
+                self.scenic.sendToScenicForNavigation(coordinate: CLLocationCoordinate2D(latitude: destLatitude,longitude: destLongitude), name: "Location from other App")
+            case 3:
+                //Waze
+                //waze://?ll=[lat],[lon]&z=10
+                if let wazeURL = URL(string: "waze://?ll=\(destLatitude),\(destLongitude)&navigate=yes") {
+                    if (UIApplication.shared.canOpenURL(wazeURL)) {
+                        if #available(iOS 10, *) {
+                            UIApplication.shared.open(wazeURL, options: [:], completionHandler: nil)
+                        } else {
+                            UIApplication.shared.openURL(wazeURL as URL)
+                        }
                     }
                 }
+            default:
+                //Apple Maps
+                let coordinates = CLLocationCoordinate2DMake(destLatitude, destLongitude)
+                let navPlacemark = MKPlacemark(coordinate: coordinates, addressDictionary: nil)
+                let mapitem = MKMapItem(placemark: navPlacemark)
+                let options = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving]
+                mapitem.openInMaps(launchOptions: options)
             }
-        default:
-            //Apple Maps
-            let coordinates = CLLocationCoordinate2DMake(destLatitude, destLongitude)
-            let navPlacemark = MKPlacemark(coordinate: coordinates, addressDictionary: nil)
-            let mapitem = MKMapItem(placemark: navPlacemark)
-            let options = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving]
-            mapitem.openInMaps(launchOptions: options)
+        } else {
+            
         }
     }
 }
