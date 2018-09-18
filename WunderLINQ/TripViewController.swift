@@ -104,12 +104,16 @@ class TripViewController: UIViewController {
         
             if((lineNumber > 1) && (lineNumber < csvRows.count)) {
                 if !(row[0].contains("No Fix") || row[1].contains("No Fix") || row[4].contains("No Fix")){
-                    path.add(CLLocationCoordinate2D(latitude: row[1].toDouble()!, longitude: row[2].toDouble()!))
+                    if let lat = row[1].toDouble(),let lon = row[2].toDouble() {
+                        path.add(CLLocationCoordinate2D(latitude: lat, longitude: lon))
+                    }
                     
-                    if row[4].toDouble()! > 0 {
-                        speeds.append(row[4].toDouble()!)
-                        if (maxSpeed < row[4].toDouble()!){
-                            maxSpeed = row[4].toDouble()!
+                    if let speed = row[4].toDouble() {
+                        if speed > 0 {
+                            speeds.append(speed)
+                            if (maxSpeed < speed){
+                                maxSpeed = speed
+                            }
                         }
                     }
                 } else {
@@ -243,10 +247,11 @@ class TripViewController: UIViewController {
         
         // Calculate Duration
         durationLabel.text = calculateDuration(start: startTime!,end: endTime!)
-        
+        /*
         let bounds = GMSCoordinateBounds(path: path)
         let camera = mapView.camera(for: bounds, insets: UIEdgeInsets())!
         mapView.camera = camera
+        */
         mapView.mapType = .hybrid
         // Creates a marker in the center of the map.
         let startMarker = GMSMarker()
@@ -267,8 +272,11 @@ class TripViewController: UIViewController {
         polyline.strokeColor = .red
         polyline.strokeWidth = 5.0
         polyline.map = mapView
-        let cameraUpdate =  GMSCameraUpdate.fit(bounds, withPadding: 50.0)
-        mapView.animate(with: cameraUpdate)
+        if path.count() > 0 {
+            let bounds = GMSCoordinateBounds(path: path)
+            let cameraUpdate =  GMSCameraUpdate.fit(bounds, withPadding: 50.0)
+            mapView.animate(with: cameraUpdate)
+        }
         
     }
     

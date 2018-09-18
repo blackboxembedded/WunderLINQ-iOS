@@ -90,7 +90,7 @@
 "task_title_stop_trip" = "Fahrtaufzeichnung beenden";
 "task_title_waypoint" = "Wegpunkt speichern";
 "toast_waypoint_saved" = "Waypoint Saved";
-"task_title_waypoint_nav" = "Navigate to Waypoint";
+"task_title_waypoint_nav" = "Navigiere zu Wegpunkt";
 "toast_photo_taken" = "Foto aufgenommen!";
 
 // ContactsTableViewController

@@ -65,7 +65,7 @@ class ContactsTableViewController: UITableViewController {
                 contacts.append(contentsOf: containerResults)
                 for contact in contacts {
                     for phoneNumber in contact.phoneNumbers {
-                        if phoneNumber.value != nil && phoneNumber.label != nil {
+                        if phoneNumber.label != nil {
                             let number = phoneNumber.value
                             let label = phoneNumber.label!
                             if (!label.contains("FAX") && (label.contains("iPhone") || label.contains("Home") || label.contains("Mobile") || label.contains("Work"))){
@@ -73,16 +73,18 @@ class ContactsTableViewController: UITableViewController {
                                 let formatter = CNContactFormatter()
                                 var photo = UIImage(named: "Contact")?.withRenderingMode(.alwaysTemplate)
                                 if contact.imageDataAvailable {
-                                    // there is an image for this contact
-                                    photo = UIImage(data: contact.imageData!)
+                                    if contact.imageData != nil {
+                                        // there is an image for this contact
+                                        if let contactPhoto = UIImage(data: contact.imageData!){
+                                            photo = contactPhoto
+                                        }
+                                    }
                                 }
-                                
-                                guard let phoneContact = PhoneContacts(name: formatter.string(from: contact)!, number: number.stringValue, numberDescription: localizedLabel, photo: photo) else {
-                                    return
-                                    //fatalError("Unable to instantiate Call Contact Task")
+                                if formatter.string(from: contact) != nil && photo != nil {
+                                    if let phoneContact = PhoneContacts(name: formatter.string(from: contact)!, number: number.stringValue, numberDescription: localizedLabel, photo: photo){
+                                        self.phoneContacts += [phoneContact]
+                                    }
                                 }
-                                self.phoneContacts += [phoneContact]
-
                             }
                         }
                     }

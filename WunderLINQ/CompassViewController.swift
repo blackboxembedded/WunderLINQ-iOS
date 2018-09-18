@@ -159,6 +159,8 @@ class CompassViewController: UIViewController {
                 } else {
                     bearing = "-"
                 }
+                
+                
             }
             self.compassLabel.text = bearing
         }

@@ -129,8 +129,13 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
             mainUIView.addSubview(label)
         }
         
+        
         centralManager = CBCentralManager(delegate: self,
                                           queue: nil)
+        
+        /*
+        centralManager = CBCentralManager(delegate: self, queue: nil, options: [CBCentralManagerOptionRestoreIdentifierKey : Device.restoreIdentifier])
+        */
         let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))
         swipeLeft.direction = .left
         self.view.addGestureRecognizer(swipeLeft)
