@@ -253,26 +253,26 @@ class TripViewController: UIViewController {
         mapView.camera = camera
         */
         mapView.mapType = .hybrid
-        // Creates a marker in the center of the map.
-        let startMarker = GMSMarker()
-        startMarker.position = path.coordinate(at: 0)
-        startMarker.title = NSLocalizedString("trip_view_waypoint_start_label", comment: "")
-        startMarker.snippet = NSLocalizedString("trip_view_waypoint_start_label", comment: "")
-        startMarker.icon = GMSMarker.markerImage(with: .green)
-        startMarker.map = mapView
-        
-        let endMarker = GMSMarker()
-        endMarker.position = path.coordinate(at: path.count() - 1)
-        endMarker.title = NSLocalizedString("trip_view_waypoint_end_label", comment: "")
-        endMarker.snippet = NSLocalizedString("trip_view_waypoint_end_label", comment: "")
-        endMarker.icon = GMSMarker.markerImage(with: .red)
-        endMarker.map = mapView
-        
-        let polyline = GMSPolyline(path: path)
-        polyline.strokeColor = .red
-        polyline.strokeWidth = 5.0
-        polyline.map = mapView
         if path.count() > 0 {
+            // Creates a marker in the center of the map.
+            let startMarker = GMSMarker()
+            startMarker.position = path.coordinate(at: 0)
+            startMarker.title = NSLocalizedString("trip_view_waypoint_start_label", comment: "")
+            startMarker.snippet = NSLocalizedString("trip_view_waypoint_start_label", comment: "")
+            startMarker.icon = GMSMarker.markerImage(with: .green)
+            startMarker.map = mapView
+            
+            let endMarker = GMSMarker()
+            endMarker.position = path.coordinate(at: path.count() - 1)
+            endMarker.title = NSLocalizedString("trip_view_waypoint_end_label", comment: "")
+            endMarker.snippet = NSLocalizedString("trip_view_waypoint_end_label", comment: "")
+            endMarker.icon = GMSMarker.markerImage(with: .red)
+            endMarker.map = mapView
+            
+            let polyline = GMSPolyline(path: path)
+            polyline.strokeColor = .red
+            polyline.strokeWidth = 5.0
+            polyline.map = mapView
             let bounds = GMSCoordinateBounds(path: path)
             let cameraUpdate =  GMSCameraUpdate.fit(bounds, withPadding: 50.0)
             mapView.animate(with: cameraUpdate)
