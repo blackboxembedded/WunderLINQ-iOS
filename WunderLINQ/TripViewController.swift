@@ -251,9 +251,15 @@ class TripViewController: UIViewController {
         let bounds = GMSCoordinateBounds(path: path)
         let camera = mapView.camera(for: bounds, insets: UIEdgeInsets())!
         mapView.camera = camera
-        */
         mapView.mapType = .hybrid
+        */
+        
         if path.count() > 0 {
+            let bounds = GMSCoordinateBounds(path: path)
+            let camera = mapView.camera(for: bounds, insets: UIEdgeInsets())!
+            mapView.camera = camera
+            mapView.mapType = .hybrid
+            
             // Creates a marker in the center of the map.
             let startMarker = GMSMarker()
             startMarker.position = path.coordinate(at: 0)
@@ -273,8 +279,8 @@ class TripViewController: UIViewController {
             polyline.strokeColor = .red
             polyline.strokeWidth = 5.0
             polyline.map = mapView
-            let bounds = GMSCoordinateBounds(path: path)
-            let cameraUpdate =  GMSCameraUpdate.fit(bounds, withPadding: 50.0)
+            
+            let cameraUpdate =  GMSCameraUpdate.fit(bounds, withPadding: 10.0)
             mapView.animate(with: cameraUpdate)
         }
         
