@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -247,7 +246,7 @@
         <scene sceneID="Qzq-jP-Ecj">
             <objects>
                 <tableViewController title="Faults" id="KTW-aa-IYg" customClass="FaultsTableViewController" customModule="WunderLINQ" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="8d5-qJ-gEo">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="8d5-qJ-gEo">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -288,7 +287,7 @@
         <scene sceneID="olz-rS-p04">
             <objects>
                 <viewController title="Waypoint" id="Plb-k4-fYa" customClass="WaypointViewController" customModule="WunderLINQ" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="dZ9-R2-QyW">
+                    <view key="view" contentMode="scaleToFill" misplaced="YES" id="dZ9-R2-QyW">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -578,36 +577,46 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SPh-nY-LUF">
-                                        <rect key="frame" x="78" y="331" width="132" height="129"/>
+                                        <rect key="frame" x="0.0" y="331" width="288" height="129"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vsu-t3-FAz">
-                                                <rect key="frame" x="0.0" y="0.0" width="44" height="129"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="96" height="129"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="129" id="Ynq-ke-V2U"/>
+                                                </constraints>
                                                 <state key="normal" image="back"/>
                                                 <connections>
                                                     <action selector="lastButton:" destination="p6n-wZ-mMa" eventType="touchUpInside" id="AHf-FW-rrk"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pwh-25-TzL">
-                                                <rect key="frame" x="44" y="0.0" width="44" height="129"/>
+                                                <rect key="frame" x="96" y="0.0" width="96" height="129"/>
                                                 <state key="normal" image="play"/>
                                                 <connections>
                                                     <action selector="playButton:" destination="p6n-wZ-mMa" eventType="touchUpInside" id="zrO-H3-A4V"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kxB-1t-Lm7">
-                                                <rect key="frame" x="88" y="0.0" width="44" height="129"/>
+                                                <rect key="frame" x="192" y="0.0" width="96" height="129"/>
                                                 <state key="normal" image="forward"/>
                                                 <connections>
                                                     <action selector="nextButton:" destination="p6n-wZ-mMa" eventType="touchUpInside" id="OHU-u9-qfP"/>
                                                 </connections>
                                             </button>
                                         </subviews>
+                                        <constraints>
+                                            <constraint firstItem="kxB-1t-Lm7" firstAttribute="width" secondItem="vsu-t3-FAz" secondAttribute="width" id="2gL-yZ-hit"/>
+                                            <constraint firstItem="Pwh-25-TzL" firstAttribute="width" secondItem="vsu-t3-FAz" secondAttribute="width" id="Mzo-1f-vhz"/>
+                                            <constraint firstAttribute="bottom" secondItem="vsu-t3-FAz" secondAttribute="bottom" id="x5f-sN-uJd"/>
+                                        </constraints>
                                     </stackView>
                                 </subviews>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="7Zv-aa-Udi" firstAttribute="trailing" secondItem="kxB-1t-Lm7" secondAttribute="trailing" constant="16" id="2y7-lZ-zKv"/>
+                            <constraint firstItem="vsu-t3-FAz" firstAttribute="leading" secondItem="7Zv-aa-Udi" secondAttribute="leading" constant="16" id="AVU-J6-cC1"/>
                             <constraint firstItem="7Zv-aa-Udi" firstAttribute="bottom" secondItem="Xko-hn-zkI" secondAttribute="bottom" id="Bsr-AO-l6P"/>
                             <constraint firstItem="Xko-hn-zkI" firstAttribute="top" secondItem="7Zv-aa-Udi" secondAttribute="top" id="QtG-EZ-nmr"/>
                             <constraint firstItem="Xko-hn-zkI" firstAttribute="leading" secondItem="cl2-HO-wNM" secondAttribute="leadingMargin" id="Tfi-HA-hnD"/>
@@ -752,7 +761,7 @@
         <scene sceneID="5Hw-nx-fMy">
             <objects>
                 <tableViewController id="we8-3Z-s79" customClass="WaypointsNavTableViewController" customModule="WunderLINQ" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="8Yw-3z-6cz">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="8Yw-3z-6cz">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -829,7 +838,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="RZv-Tv-KDt" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="hbC-WJ-uXe">
-                        <rect key="frame" x="0.0" y="20" width="320" height="50"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -846,7 +855,7 @@
             <objects>
                 <tableViewController title="Recorded Trips" id="1rx-Mx-oc0" customClass="TripsTableViewController" customModule="WunderLINQ" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="FE6-cp-MLm">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="410"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
@@ -888,8 +897,8 @@
         <scene sceneID="2BC-9t-4hP">
             <objects>
                 <tableViewController title="Saved Waypoints" id="zo6-HF-7UD" customClass="WaypointsTableViewController" customModule="WunderLINQ" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="fdJ-UO-SgQ">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="410"/>
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="fdJ-UO-SgQ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
@@ -986,7 +995,7 @@
         <scene sceneID="Dq9-Ds-zIF">
             <objects>
                 <viewController title="Trip" id="mYA-Xe-W7Q" customClass="TripViewController" customModule="WunderLINQ" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="6Ds-aL-SNb">
+                    <view key="view" contentMode="scaleToFill" misplaced="YES" id="6Ds-aL-SNb">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
