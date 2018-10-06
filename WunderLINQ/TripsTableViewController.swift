@@ -52,6 +52,7 @@ class TripsTableViewController: UITableViewController {
             // if you want to filter the directory contents you can do like this:
             let csvFiles = directoryContents.filter{ $0.pathExtension == "csv" }
             csvFileNames = csvFiles.map{ $0.deletingPathExtension().lastPathComponent }
+            csvFileNames = csvFileNames?.sorted(by: {$0 > $1})
             
             
         } catch {

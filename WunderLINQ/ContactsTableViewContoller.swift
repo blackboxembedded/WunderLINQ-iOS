@@ -63,6 +63,7 @@ class ContactsTableViewController: UITableViewController {
             do {
                 let containerResults = try contactStore.unifiedContacts(matching: fetchPredicate, keysToFetch: keysToFetch as! [CNKeyDescriptor])
                 contacts.append(contentsOf: containerResults)
+                
                 // sort by name given
                 var result: [CNContact] = []
                 if UserDefaults.standard.integer(forKey: "contact_sort_preference") == 0 {
@@ -74,7 +75,7 @@ class ContactsTableViewController: UITableViewController {
                         (firt: CNContact, second: CNContact) -> Bool in firt.givenName < second.givenName
                         })
                 }
-
+                
                 for contact in result {
                     for phoneNumber in contact.phoneNumbers {
                         if phoneNumber.label != nil {

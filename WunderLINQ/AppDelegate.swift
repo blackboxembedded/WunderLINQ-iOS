@@ -76,6 +76,36 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
+    
+    func application(_ application: UIApplication,
+                     open url: URL,
+                     options: [UIApplicationOpenURLOptionsKey : Any] = [:] ) -> Bool {
+        
+        // Determine who sent the URL.
+        let sendingAppID = options[.sourceApplication]
+        print("source application = \(sendingAppID ?? "Unknown")")
+        
+        return true
+        // Process the URL.
+        /*
+         guard let components = NSURLComponents(url: url, resolvingAgainstBaseURL: true),
+         let albumPath = components.path,
+         let params = components.queryItems else {
+         print("Invalid URL or album path missing")
+         return false
+         }
+         
+         if let photoIndex = params.first(where: { $0.name == "index" })?.value {
+         print("albumPath = \(albumPath)")
+         print("photoIndex = \(photoIndex)")
+         return true
+         } else {
+         print("Photo index missing")
+         return false
+         }
+         }
+         */
+    }
 
     func showAlert() {
         let objAlert = UIAlertController(title: NSLocalizedString("negative_alert_title", comment: ""), message: NSLocalizedString("negative_notification_body", comment: ""), preferredStyle: UIAlertControllerStyle.alert)

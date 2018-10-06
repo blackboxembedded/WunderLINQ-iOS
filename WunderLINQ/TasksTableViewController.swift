@@ -97,7 +97,7 @@ class TasksTableViewController: UITableViewController, AVCaptureVideoDataOutputS
             case 1:
                 //Google Maps
                 //googlemaps://
-                if let googleMapsURL = URL(string: "googlemaps://") {
+                if let googleMapsURL = URL(string: "comgooglemaps-x-callback://?x-success=wunderlinq://&x-source=WunderLINQ") {
                     if (UIApplication.shared.canOpenURL(googleMapsURL)) {
                         if #available(iOS 10, *) {
                             UIApplication.shared.open(googleMapsURL, options: [:], completionHandler: nil)
@@ -153,7 +153,8 @@ class TasksTableViewController: UITableViewController, AVCaptureVideoDataOutputS
                         case 1:
                             //Google Maps
                             //googlemaps://
-                            if let googleMapsURL = URL(string: "googlemaps://?saddr=&daddr=\(destLatitude),\(destLongitude)&directionsmode=driving") {
+
+                            if let googleMapsURL = URL(string: "comgooglemaps-x-callback://?daddr=\(destLatitude),\(destLongitude)&directionsmode=driving&x-success=wunderlinq://?resume=true&x-source=WunderLINQ") {
                                 if (UIApplication.shared.canOpenURL(googleMapsURL)) {
                                     if #available(iOS 10, *) {
                                         UIApplication.shared.open(googleMapsURL, options: [:], completionHandler: nil)
