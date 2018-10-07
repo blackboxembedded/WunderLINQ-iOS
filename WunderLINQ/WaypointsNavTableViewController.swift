@@ -273,6 +273,7 @@ class WaypointsNavTableViewController: UITableViewController {
     func navigateToWaypoint(id: Int){
         let lat = waypoints[id].latitude
         let lon = waypoints[id].longitude
+        let label = waypoints[id].label
         
         if let latitude = lat?.toDouble(), let longitude = lon?.toDouble(){
             
@@ -303,7 +304,7 @@ class WaypointsNavTableViewController: UITableViewController {
             case 2:
                 //Scenic
                 //https://github.com/guidove/Scenic-Integration/blob/master/README.md
-                self.scenic.sendToScenicForNavigation(coordinate: CLLocationCoordinate2D(latitude: destLatitude,longitude: destLongitude), name: "Location from other App")
+                self.scenic.sendToScenicForNavigation(coordinate: CLLocationCoordinate2D(latitude: destLatitude,longitude: destLongitude), name: label ?? "WunderLINQ")
             case 3:
                 //Waze
                 //waze://?ll=[lat],[lon]&z=10

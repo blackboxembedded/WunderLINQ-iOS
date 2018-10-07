@@ -10,7 +10,7 @@ import Foundation
 class MotorcycleData {
     static let shared = MotorcycleData()
     
-    var vin: String? = "null"
+    var vin: String?
     var frontTirePressure: Double?
     var rearTirePressure: Double?
     var ambientTemperature: Double?
@@ -20,7 +20,7 @@ class MotorcycleData {
     var tripTwo: Double?
     var tripAuto: Double?
     var shifts: Int? = 0
-    var gear: String? = "null"
+    var gear: String?
     var voltage: Double?
     var throttlePosition: Double?
     var frontBrake: Int? = 0
@@ -137,5 +137,24 @@ class MotorcycleData {
     }
     func getambientLight() -> Double{
         return self.ambientLight!
+    }
+    
+    func clear(){
+        self.vin = nil
+        self.frontTirePressure = nil
+        self.rearTirePressure = nil
+        self.ambientTemperature = nil
+        self.engineTemperature = nil
+        self.odometer = nil
+        self.tripOne = nil
+        self.tripTwo = nil
+        self.tripAuto = nil
+        self.shifts = 0
+        self.gear = nil
+        self.voltage = nil
+        self.throttlePosition = nil
+        self.frontBrake = 0
+        self.rearBrake = 0
+        self.ambientLight = nil
     }
 }

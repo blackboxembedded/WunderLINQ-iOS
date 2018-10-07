@@ -421,7 +421,7 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
     // MARK: - Updating UI
     func updateMessageDisplay() {
         // Update Buttons
-        disconnectBtn.tintColor = UIColor.blue
+        //disconnectBtn.tintColor = UIColor.blue
         if (faults.getallActiveDesc().isEmpty){
             faultsBtn.tintColor = UIColor.clear
             faultsButton.isEnabled = false
@@ -456,6 +456,8 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
                     print("Unknown pressure unit setting")
                 }
                 frontPressureLabel.text = "\(frontPressure.rounded(toPlaces: 1)) \(pressureUnit)"
+            } else {
+                frontPressureLabel.text = "-"
             }
             
             if motorcycleData.rearTirePressure != nil {
@@ -476,11 +478,15 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
                     print("Unknown pressure unit setting")
                 }
                 rearPressureLabel.text = "\(rearPressure.rounded(toPlaces: 1)) \(pressureUnit)"
+            } else {
+                rearPressureLabel.text = "-"
             }
             
             // Gear
-            if motorcycleData.gear != "" {
+            if motorcycleData.gear != nil {
                 gearLabel.text = motorcycleData.getgear()
+            } else {
+                gearLabel.text = "-"
             }
             
             // Engine Temperature
@@ -491,6 +497,8 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
                     temperatureUnit = "F"
                 }
                 engineTempLabel.text = "\(Int(engineTemp)) \(temperatureUnit)"
+            } else {
+                engineTempLabel.text = "-"
             }
             
             // Ambient Temperature
@@ -501,6 +509,8 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
                     temperatureUnit = "F"
                 }
                 ambientTempLabel.text = "\(Int(ambientTemp)) \(temperatureUnit)"
+            } else {
+                ambientTempLabel.text = "-"
             }
             
             // Odometer
@@ -511,6 +521,8 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
                     distanceUnit = "mi"
                 }
                 odometerLabel.text = "\(Int(odometer)) \(distanceUnit)"
+            } else {
+                odometerLabel.text = "-"
             }
             
             // Trip 1
@@ -521,6 +533,8 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
                     distanceUnit = "mi"
                 }
                 tripOneLabel.text = "\(tripOne.rounded(toPlaces: 1)) \(distanceUnit)"
+            } else {
+                tripOneLabel.text = "-"
             }
             
             // Trip 2
@@ -531,6 +545,8 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
                     distanceUnit = "mi"
                 }
                 tripTwoLabel.text = "\(tripTwo.rounded(toPlaces: 1)) \(distanceUnit)"
+            } else {
+                tripTwoLabel.text = "-"
             }
         }
     }
@@ -1728,7 +1744,7 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
      */
     func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
         print("SUCCESSFULLY CONNECTED TO WunderLINQ!")
-        disconnectButton.tintColor = UIColor.blue
+        disconnectBtn.tintColor = UIColor.blue
         
         print("Peripheral info: \(peripheral)")
         peripheral.delegate = self
@@ -1750,7 +1766,7 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
      */
     func centralManager(_ central: CBCentralManager, didFailToConnect peripheral: CBPeripheral, error: Error?) {
         print("CONNECTION TO WunderLINQ FAILED!")
-        disconnectButton.tintColor = UIColor.red
+        disconnectBtn.tintColor = UIColor.red
     }
     
     
@@ -1765,7 +1781,9 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
      */
     func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
         print("DISCONNECTED FROM WunderLINQ!")
-        disconnectButton.tintColor = UIColor.red
+        disconnectBtn.tintColor = UIColor.red
+        motorcycleData.clear()
+        updateMessageDisplay()
         if error != nil {
             print("DISCONNECTION DETAILS: \(error!.localizedDescription)")
         }

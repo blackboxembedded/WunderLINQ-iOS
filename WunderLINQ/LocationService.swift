@@ -109,67 +109,67 @@ class LocationService: NSObject, CLLocationManagerDelegate {
             if currentLocation!.speed >= 0{
                 speed = "\(currentLocation!.speed)"
             }
-            var gear: String = "null"
+            var gear: String = ""
             if motorcycleData.gear != nil {
                 gear = motorcycleData.gear!
             }
-            var engineTemp:String = "null"
+            var engineTemp:String = ""
             if motorcycleData.engineTemperature != nil {
                 engineTemp = "\(motorcycleData.engineTemperature!)"
             }
-            var ambientTemp:String = "null"
+            var ambientTemp:String = ""
             if motorcycleData.ambientTemperature != nil {
                 ambientTemp = "\(motorcycleData.ambientTemperature!)"
             }
-            var frontTirePressure:String = "null"
+            var frontTirePressure:String = ""
             if motorcycleData.frontTirePressure != nil {
                 frontTirePressure = "\(motorcycleData.frontTirePressure!)"
             }
-            var rearTirePressure:String = "null"
+            var rearTirePressure:String = ""
             if motorcycleData.rearTirePressure != nil {
                 rearTirePressure = "\(motorcycleData.rearTirePressure!)"
             }
-            var odometer:String = "null"
+            var odometer:String = ""
             if motorcycleData.odometer != nil {
                 odometer = "\(motorcycleData.odometer!)"
             }
-            var voltage:String = "null"
+            var voltage:String = ""
             if motorcycleData.voltage != nil {
                 voltage = "\(motorcycleData.voltage!)"
             }
-            var throttlePosition:String = "null"
+            var throttlePosition:String = ""
             if motorcycleData.throttlePosition != nil {
                 throttlePosition = "\(motorcycleData.throttlePosition!)"
             }
-            var frontBrakes:String = "null"
+            var frontBrakes:String = ""
             if motorcycleData.frontBrake != nil {
                 frontBrakes = "\(motorcycleData.frontBrake!)"
             }
-            var rearBrakes:String = "null"
+            var rearBrakes:String = ""
             if motorcycleData.rearBrake != nil {
                 rearBrakes = "\(motorcycleData.rearBrake!)"
             }
-            var shifts:String = "null"
+            var shifts:String = ""
             if motorcycleData.shifts != nil {
                 shifts = "\(motorcycleData.shifts!)"
             }
-            var vin:String = "null"
+            var vin:String = ""
             if motorcycleData.vin != nil {
                 vin = "\(motorcycleData.vin!)"
             }
-            var tripOne:String = "null"
+            var tripOne:String = ""
             if motorcycleData.tripOne != nil {
                 tripOne = "\(motorcycleData.tripOne!)"
             }
-            var tripTwo:String = "null"
+            var tripTwo:String = ""
             if motorcycleData.tripTwo != nil {
                 tripTwo = "\(motorcycleData.tripTwo!)"
             }
-            var tripAuto:String = "null"
+            var tripAuto:String = ""
             if motorcycleData.tripAuto != nil {
                 tripAuto = "\(motorcycleData.tripAuto!)"
             }
-            var ambientLight:String = "null"
+            var ambientLight:String = ""
             if motorcycleData.ambientLight != nil {
                 ambientLight = "\(motorcycleData.ambientLight!)"
             }

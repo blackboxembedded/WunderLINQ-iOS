@@ -152,8 +152,7 @@ class TasksTableViewController: UITableViewController, AVCaptureVideoDataOutputS
                             mapitem.openInMaps(launchOptions: options)
                         case 1:
                             //Google Maps
-                            //googlemaps://
-
+                            //comgooglemaps-x-callback://
                             if let googleMapsURL = URL(string: "comgooglemaps-x-callback://?daddr=\(destLatitude),\(destLongitude)&directionsmode=driving&x-success=wunderlinq://?resume=true&x-source=WunderLINQ") {
                                 if (UIApplication.shared.canOpenURL(googleMapsURL)) {
                                     if #available(iOS 10, *) {
@@ -166,7 +165,7 @@ class TasksTableViewController: UITableViewController, AVCaptureVideoDataOutputS
                         case 2:
                             //Scenic
                             //https://github.com/guidove/Scenic-Integration/blob/master/README.md
-                            self.scenic.sendToScenicForNavigation(coordinate: CLLocationCoordinate2D(latitude: destLatitude,longitude: destLongitude), name: "WunderLINQ")
+                            self.scenic.sendToScenicForNavigation(coordinate: CLLocationCoordinate2D(latitude: destLatitude,longitude: destLongitude), name: "Home")
                         case 3:
                             //Waze
                             //waze://?ll=[lat],[lon]&z=10
@@ -734,41 +733,6 @@ class TasksTableViewController: UITableViewController, AVCaptureVideoDataOutputS
             
         }
         outputURL = nil
-    }
-
-    func readValues(){
-        
-        //first empty the list of watpoints
-        waypoints.removeAll()
-        
-        //this is our select query
-        let queryString = "SELECT * FROM records"
-        
-        //statement pointer
-        var stmt:OpaquePointer?
-        
-        //preparing the query
-        if sqlite3_prepare(db, queryString, -1, &stmt, nil) != SQLITE_OK{
-            let errmsg = String(cString: sqlite3_errmsg(db)!)
-            print("error preparing insert: \(errmsg)")
-            return
-        }
-        
-        //traversing through all the records
-        while(sqlite3_step(stmt) == SQLITE_ROW){
-            let id = sqlite3_column_int(stmt, 0)
-            let date = String(cString: sqlite3_column_text(stmt, 1))
-            let latitude = String(cString: sqlite3_column_text(stmt, 2))
-            let longitude = String(cString: sqlite3_column_text(stmt, 3))
-            //let label = String(cString: sqlite3_column_text(stmt, 4))
-            //adding values to list
-            //waypoints.append(Waypoint(id: Int(id), date: String(describing: date), latitude: String(describing: latitude), longitude: String(describing: longitude), label: String(describing: label)))
-            print("Database ID: \(id)")
-            print("Database Date: \(date)")
-            print("Database Lat: \(latitude)")
-            print("Database Long: \(longitude)")
-            //print("Database Label: \(label)")
-        }
     }
 
     /*
