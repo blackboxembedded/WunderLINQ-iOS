@@ -84,6 +84,7 @@
 "toast_phone_not_set" = "No Call Home phone number set in Settings";
 "task_title_callcontact" = "Call Contact";
 "task_title_photo" = "Take Photo";
+"task_title_selfie" = "Take Selfie";
 "task_title_start_record" = "Start Video Recording";
 "task_title_stop_record" = "Stop Video Recording";
 "task_title_start_trip" = "Start Trip Log";

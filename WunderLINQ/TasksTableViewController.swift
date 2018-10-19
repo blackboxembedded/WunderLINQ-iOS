@@ -61,8 +61,12 @@ class TasksTableViewController: UITableViewController, AVCaptureVideoDataOutputS
         guard let task4 = Tasks(label: NSLocalizedString("task_title_photo", comment: ""), icon: UIImage(named: "Camera")?.withRenderingMode(.alwaysTemplate)) else {
             fatalError("Unable to instantiate Take Photo Task")
         }
+        // Take Selfie Task
+        guard let task5 = Tasks(label: NSLocalizedString("task_title_selfie", comment: ""), icon: UIImage(named: "Camera")?.withRenderingMode(.alwaysTemplate)) else {
+            fatalError("Unable to instantiate Take Photo Task")
+        }
         // Video Recording Task
-        guard let task5 = Tasks(label: NSLocalizedString("task_title_start_record", comment: ""), icon: UIImage(named: "VideoCamera")?.withRenderingMode(.alwaysTemplate)) else {
+        guard let task6 = Tasks(label: NSLocalizedString("task_title_start_record", comment: ""), icon: UIImage(named: "VideoCamera")?.withRenderingMode(.alwaysTemplate)) else {
             fatalError("Unable to instantiate Video Recording Task")
         }
         // Trip Log Task
@@ -70,15 +74,15 @@ class TasksTableViewController: UITableViewController, AVCaptureVideoDataOutputS
         if LocationService.sharedInstance.isRunning(){
             tripLogLabel = NSLocalizedString("task_title_stop_trip", comment: "")
         }
-        guard let task6 = Tasks(label: tripLogLabel, icon: UIImage(named: "Road")?.withRenderingMode(.alwaysTemplate)) else {
+        guard let task7 = Tasks(label: tripLogLabel, icon: UIImage(named: "Road")?.withRenderingMode(.alwaysTemplate)) else {
             fatalError("Unable to instantiate Trip Log Task")
         }
         // Save Waypoint Task
-        guard let task7 = Tasks(label: NSLocalizedString("task_title_waypoint", comment: ""), icon: UIImage(named: "MapMarker")?.withRenderingMode(.alwaysTemplate)) else {
+        guard let task8 = Tasks(label: NSLocalizedString("task_title_waypoint", comment: ""), icon: UIImage(named: "MapMarker")?.withRenderingMode(.alwaysTemplate)) else {
             fatalError("Unable to instantiate Save Waypoint Task")
         }
         // Navigate to Waypoint Task
-        guard let task8 = Tasks(label: NSLocalizedString("task_title_waypoint_nav", comment: ""), icon: UIImage(named: "Map")?.withRenderingMode(.alwaysTemplate)) else {
+        guard let task9 = Tasks(label: NSLocalizedString("task_title_waypoint_nav", comment: ""), icon: UIImage(named: "Map")?.withRenderingMode(.alwaysTemplate)) else {
             fatalError("Unable to instantiate Navigate to Waypoint Task")
         }
         tasks += [task0, task1, task2, task3, task4, task5, task6, task7, task8]
@@ -229,10 +233,15 @@ class TasksTableViewController: UITableViewController, AVCaptureVideoDataOutputS
             break
         case 4:
             //Take Photo
-            setupCamera()
+            setupCamera(position: .back)
             setupTimer()
             break
         case 5:
+            //Take Photo
+            setupCamera(position: .front)
+            setupTimer()
+            break
+        case 6:
             //Video Recording
             if movieOutput.isRecording == true {
                 movieOutput.stopRecording()
@@ -248,7 +257,7 @@ class TasksTableViewController: UITableViewController, AVCaptureVideoDataOutputS
             }
             
             break
-        case 6:
+        case 7:
             //Trip Log
             if LocationService.sharedInstance.isRunning(){
                 LocationService.sharedInstance.stopUpdatingLocation()
@@ -258,7 +267,7 @@ class TasksTableViewController: UITableViewController, AVCaptureVideoDataOutputS
                 self.tableView.cellForRow(at: IndexPath(row: 6, section: 0) as IndexPath)?.textLabel?.text = NSLocalizedString("task_title_stop_trip", comment: "")
             }
             break
-        case 7:
+        case 8:
             //Save Waypoint
             if LocationService.sharedInstance.isRunning(){
                 LocationService.sharedInstance.saveWaypoint()
@@ -267,7 +276,7 @@ class TasksTableViewController: UITableViewController, AVCaptureVideoDataOutputS
             }
             self.showToast(message: NSLocalizedString("toast_waypoint_saved", comment: ""))
             break
-        case 8:
+        case 9:
             //Navigate to Waypoint
             //Call Contact
             performSegue(withIdentifier: "toWaypoints", sender: self)
@@ -492,11 +501,11 @@ class TasksTableViewController: UITableViewController, AVCaptureVideoDataOutputS
     }
     
     
-    func setupCamera() {
+    func setupCamera(position: AVCaptureDevicePosition) {
         // tweak delay
         let discoverySession = AVCaptureDeviceDiscoverySession(deviceTypes: [.builtInWideAngleCamera],
                                                                mediaType: AVMediaTypeVideo,
-                                                               position: .back)
+                                                               position: position)
         device = discoverySession?.devices[0]
         
         let input: AVCaptureDeviceInput
