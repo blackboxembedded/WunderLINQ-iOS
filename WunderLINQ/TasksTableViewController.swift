@@ -85,7 +85,7 @@ class TasksTableViewController: UITableViewController, AVCaptureVideoDataOutputS
         guard let task9 = Tasks(label: NSLocalizedString("task_title_waypoint_nav", comment: ""), icon: UIImage(named: "Map")?.withRenderingMode(.alwaysTemplate)) else {
             fatalError("Unable to instantiate Navigate to Waypoint Task")
         }
-        tasks += [task0, task1, task2, task3, task4, task5, task6, task7, task8]
+        tasks += [task0, task1, task2, task3, task4, task5, task6, task7, task8, task9]
     }
     
     private func execute_task(taskID:Int) {

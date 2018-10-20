@@ -367,6 +367,14 @@ class Faults {
     func getOilLowActive() -> Bool{
         return self.oilLowActive
     }
+    
+    var fuelStationAlertSent: Bool = false
+    func setFuelStationAlertSent(active: Bool?){
+        self.fuelStationAlertSent = active!
+    }
+    func getFuelStationAlertSent() -> Bool{
+        return self.fuelStationAlertSent
+    }
 
     func getallActiveDesc() ->[String]{
         var allActiveDesc = [String]()

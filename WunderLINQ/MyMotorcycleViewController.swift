@@ -678,112 +678,147 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
             
             // Tire Pressure
             if ((lastMessage[4] != 0xFF) && (lastMessage[5] != 0xFF)){
-                let frontPressure:Double = Double(lastMessage[4]) / 50
-                let rearPressure:Double = Double(lastMessage[5]) / 50
+                var frontPressure:Double = Double(lastMessage[4]) / 50
+                var rearPressure:Double = Double(lastMessage[5]) / 50
                 motorcycleData.setfrontTirePressure(frontTirePressure: frontPressure)
                 motorcycleData.setrearTirePressure(rearTirePressure: rearPressure)
+                if UserDefaults.standard.bool(forKey: "custom_tpm_preference"){
+                    print("Custom tpms threshold enabled")
+                    switch UserDefaults.standard.integer(forKey: "pressure_unit_preference"){
+                    case 1:
+                        frontPressure = barTokPa(frontPressure)
+                        rearPressure = barTokPa(rearPressure)
+                    case 2:
+                        frontPressure = barTokgf(frontPressure)
+                        rearPressure = barTokgf(rearPressure)
+                    case 3:
+                        frontPressure = barToPsi(frontPressure)
+                        rearPressure = barToPsi(rearPressure)
+                    default:
+                        print("Unknown pressure unit setting")
+                    }
+                    if frontPressure <= UserDefaults.standard.double(forKey: "tpm_threshold_preference"){
+                        faults.setFrontTirePressureCriticalActive(active: true)
+                        updateNotification()
+                        faults.frontTirePressureCriticalNotificationActive = true
+                    } else {
+                        faults.setFrontTirePressureCriticalActive(active: false)
+                        updateNotification()
+                        faults.frontTirePressureCriticalNotificationActive = false
+                    }
+                    if rearPressure <= UserDefaults.standard.double(forKey: "tpm_threshold_preference"){
+                        faults.setRearTirePressureCriticalActive(active: true)
+                        updateNotification()
+                        faults.rearTirePressureCriticalNotificationActive = true
+                    } else {
+                        faults.setRearTirePressureCriticalActive(active: false)
+                        updateNotification()
+                        faults.rearTirePressureCriticalNotificationActive = false
+                    }
+                }
             }
             
             // Tire Pressure Faults
-            switch (lastMessage[6]) {
-            case 0xC9:
-                faults.setFrontTirePressureWarningActive(active: true)
-                faults.setRearTirePressureWarningActive(active: false)
-                faults.setFrontTirePressureCriticalActive(active: false)
-                faults.setRearTirePressureCriticalActive(active: false)
-                if(faults.frontTirePressureCriticalNotificationActive) {
-                    updateNotification()
-                    faults.frontTirePressureCriticalNotificationActive = false
+            if !UserDefaults.standard.bool(forKey: "custom_tpm_preference"){
+                switch (lastMessage[6]) {
+                case 0xC9:
+                    faults.setFrontTirePressureWarningActive(active: true)
+                    faults.setRearTirePressureWarningActive(active: false)
+                    faults.setFrontTirePressureCriticalActive(active: false)
+                    faults.setRearTirePressureCriticalActive(active: false)
+                    if(faults.frontTirePressureCriticalNotificationActive) {
+                        updateNotification()
+                        faults.frontTirePressureCriticalNotificationActive = false
+                    }
+                    if(faults.rearTirePressureCriticalNotificationActive) {
+                        updateNotification()
+                        faults.rearTirePressureCriticalNotificationActive = false
+                    }
+                    
+                case 0xCA:
+                    faults.setFrontTirePressureWarningActive(active: false)
+                    faults.setRearTirePressureWarningActive(active: true)
+                    faults.setFrontTirePressureCriticalActive(active: false)
+                    faults.setRearTirePressureCriticalActive(active: false)
+                    if(faults.frontTirePressureCriticalNotificationActive) {
+                        updateNotification()
+                        faults.frontTirePressureCriticalNotificationActive = false
+                    }
+                    if(faults.rearTirePressureCriticalNotificationActive) {
+                        updateNotification()
+                        faults.rearTirePressureCriticalNotificationActive = false
+                    }
+                    
+                case 0xCB:
+                    faults.setFrontTirePressureWarningActive(active: true)
+                    faults.setRearTirePressureWarningActive(active: true)
+                    faults.setFrontTirePressureCriticalActive(active: false)
+                    faults.setRearTirePressureCriticalActive(active: false)
+                    if(faults.frontTirePressureCriticalNotificationActive) {
+                        updateNotification()
+                        faults.frontTirePressureCriticalNotificationActive = false
+                    }
+                    if(faults.rearTirePressureCriticalNotificationActive) {
+                        updateNotification()
+                        faults.rearTirePressureCriticalNotificationActive = false
+                    }
+                    
+                case 0xD1:
+                    faults.setFrontTirePressureWarningActive(active: false)
+                    faults.setRearTirePressureWarningActive(active: false)
+                    faults.setFrontTirePressureCriticalActive(active: true)
+                    faults.setRearTirePressureCriticalActive(active: false)
+                    if(!faults.frontTirePressureCriticalNotificationActive) {
+                        updateNotification()
+                        faults.frontTirePressureCriticalNotificationActive = true
+                    }
+                    if(faults.rearTirePressureCriticalNotificationActive) {
+                        updateNotification()
+                        faults.rearTirePressureCriticalNotificationActive = false
+                    }
+                    
+                case 0xD2:
+                    faults.setFrontTirePressureWarningActive(active: false)
+                    faults.setRearTirePressureWarningActive(active: false)
+                    faults.setFrontTirePressureCriticalActive(active: false)
+                    faults.setRearTirePressureCriticalActive(active: true)
+                    if(faults.frontTirePressureCriticalNotificationActive) {
+                        updateNotification()
+                        faults.frontTirePressureCriticalNotificationActive = false
+                    }
+                    if(!faults.rearTirePressureCriticalNotificationActive) {
+                        updateNotification()
+                        faults.rearTirePressureCriticalNotificationActive = true
+                    }
+                    
+                case 0xD3:
+                    faults.setFrontTirePressureWarningActive(active: false)
+                    faults.setRearTirePressureWarningActive(active: false)
+                    faults.setFrontTirePressureCriticalActive(active: true)
+                    faults.setRearTirePressureCriticalActive(active: true)
+                    if(!faults.frontTirePressureCriticalNotificationActive) {
+                        updateNotification()
+                        faults.frontTirePressureCriticalNotificationActive = true
+                    }
+                    if(!faults.rearTirePressureCriticalNotificationActive) {
+                        updateNotification()
+                        faults.rearTirePressureCriticalNotificationActive = true
+                    }
+                    
+                default:
+                    faults.setFrontTirePressureWarningActive(active: false)
+                    faults.setRearTirePressureWarningActive(active: false)
+                    faults.setFrontTirePressureCriticalActive(active: false)
+                    faults.setRearTirePressureCriticalActive(active: false)
+                    if(faults.frontTirePressureCriticalNotificationActive) {
+                        updateNotification()
+                        faults.frontTirePressureCriticalNotificationActive = false
+                    }
+                    if(faults.rearTirePressureCriticalNotificationActive) {
+                        updateNotification()
+                        faults.rearTirePressureCriticalNotificationActive = false
+                    }
                 }
-                if(faults.rearTirePressureCriticalNotificationActive) {
-                    updateNotification()
-                    faults.rearTirePressureCriticalNotificationActive = false
-                }
-
-            case 0xCA:
-                faults.setFrontTirePressureWarningActive(active: false)
-                faults.setRearTirePressureWarningActive(active: true)
-                faults.setFrontTirePressureCriticalActive(active: false)
-                faults.setRearTirePressureCriticalActive(active: false)
-                if(faults.frontTirePressureCriticalNotificationActive) {
-                    updateNotification()
-                    faults.frontTirePressureCriticalNotificationActive = false
-                }
-                if(faults.rearTirePressureCriticalNotificationActive) {
-                    updateNotification()
-                    faults.rearTirePressureCriticalNotificationActive = false
-                }
-
-            case 0xCB:
-                faults.setFrontTirePressureWarningActive(active: true)
-                faults.setRearTirePressureWarningActive(active: true)
-                faults.setFrontTirePressureCriticalActive(active: false)
-                faults.setRearTirePressureCriticalActive(active: false)
-                if(faults.frontTirePressureCriticalNotificationActive) {
-                    updateNotification()
-                    faults.frontTirePressureCriticalNotificationActive = false
-                }
-                if(faults.rearTirePressureCriticalNotificationActive) {
-                    updateNotification()
-                    faults.rearTirePressureCriticalNotificationActive = false
-                }
-
-            case 0xD1:
-                faults.setFrontTirePressureWarningActive(active: false)
-                faults.setRearTirePressureWarningActive(active: false)
-                faults.setFrontTirePressureCriticalActive(active: true)
-                faults.setRearTirePressureCriticalActive(active: false)
-                if(!faults.frontTirePressureCriticalNotificationActive) {
-                    updateNotification()
-                    faults.frontTirePressureCriticalNotificationActive = true
-                }
-                if(faults.rearTirePressureCriticalNotificationActive) {
-                    updateNotification()
-                    faults.rearTirePressureCriticalNotificationActive = false
-                }
-
-            case 0xD2:
-                faults.setFrontTirePressureWarningActive(active: false)
-                faults.setRearTirePressureWarningActive(active: false)
-                faults.setFrontTirePressureCriticalActive(active: false)
-                faults.setRearTirePressureCriticalActive(active: true)
-                if(faults.frontTirePressureCriticalNotificationActive) {
-                    updateNotification()
-                    faults.frontTirePressureCriticalNotificationActive = false
-                }
-                if(!faults.rearTirePressureCriticalNotificationActive) {
-                    updateNotification()
-                    faults.rearTirePressureCriticalNotificationActive = true
-                }
-
-            case 0xD3:
-                faults.setFrontTirePressureWarningActive(active: false)
-                faults.setRearTirePressureWarningActive(active: false)
-                faults.setFrontTirePressureCriticalActive(active: true)
-                faults.setRearTirePressureCriticalActive(active: true)
-                if(!faults.frontTirePressureCriticalNotificationActive) {
-                    updateNotification()
-                    faults.frontTirePressureCriticalNotificationActive = true
-                }
-                if(!faults.rearTirePressureCriticalNotificationActive) {
-                    updateNotification()
-                    faults.rearTirePressureCriticalNotificationActive = true
-                }
-
-            default:
-                faults.setFrontTirePressureWarningActive(active: false)
-                faults.setRearTirePressureWarningActive(active: false)
-                faults.setFrontTirePressureCriticalActive(active: false)
-                faults.setRearTirePressureCriticalActive(active: false)
-                if(faults.frontTirePressureCriticalNotificationActive) {
-                    updateNotification()
-                    faults.frontTirePressureCriticalNotificationActive = false
-                }
-                if(faults.rearTirePressureCriticalNotificationActive) {
-                    updateNotification()
-                    faults.rearTirePressureCriticalNotificationActive = false
-                }
-
             }
             
         case 0x06:

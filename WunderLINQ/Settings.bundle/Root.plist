@@ -232,6 +232,44 @@
 				<string>firstname</string>
 			</array>
 		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+			<key>Title</key>
+			<string>alerting_title</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+			<key>Title</key>
+			<string>pref_custom_tpm_threshold</string>
+			<key>FooterText</key>
+			<string>pref_tpm_threshold</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSToggleSwitchSpecifier</string>
+			<key>Title</key>
+			<string>pref_custom_tpm_threshold_title</string>
+			<key>Key</key>
+			<string>custom_tpm_preference</string>
+			<key>DefaultValue</key>
+			<false/>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSTextFieldSpecifier</string>
+			<key>IsSecure</key>
+			<false/>
+			<key>KeyboardType</key>
+			<string>NumbersAndPunctuation</string>
+			<key>Title</key>
+			<string>pref_tpm_threshold_title</string>
+			<key>Key</key>
+			<string>tpm_threshold_preference</string>
+			<key>DefaultValue</key>
+			<string>25</string>
+		</dict>
 	</array>
 </dict>
 </plist>
