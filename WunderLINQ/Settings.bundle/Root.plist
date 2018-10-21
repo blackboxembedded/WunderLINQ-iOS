@@ -98,38 +98,6 @@
 		</dict>
 		<dict>
 			<key>Type</key>
-			<string>PSToggleSwitchSpecifier</string>
-			<key>Title</key>
-			<string>pref_nightMode_name</string>
-			<key>Key</key>
-			<string>nightmode_preference</string>
-			<key>DefaultValue</key>
-			<false/>
-		</dict>
-		<dict>
-			<key>Type</key>
-			<string>PSMultiValueSpecifier</string>
-			<key>Title</key>
-			<string>pref_orientation_name</string>
-			<key>Key</key>
-			<string>orientation_preference</string>
-			<key>DefaultValue</key>
-			<integer>0</integer>
-			<key>Titles</key>
-			<array>
-				<string>orientation_a</string>
-				<string>orientation_l</string>
-				<string>orientation_p</string>
-			</array>
-			<key>Values</key>
-			<array>
-				<integer>0</integer>
-				<integer>1</integer>
-				<integer>2</integer>
-			</array>
-		</dict>
-		<dict>
-			<key>Type</key>
 			<string>PSMultiValueSpecifier</string>
 			<key>Title</key>
 			<string>pref_pressuref_name</string>
@@ -205,11 +173,13 @@
 			<array>
 				<string>bearing_d</string>
 				<string>bearing_c</string>
+				<string>bearing_both</string>
 			</array>
 			<key>Values</key>
 			<array>
 				<integer>0</integer>
 				<integer>1</integer>
+				<integer>2</integer>
 			</array>
 		</dict>
 		<dict>
@@ -230,6 +200,56 @@
 			<array>
 				<string>lastname</string>
 				<string>firstname</string>
+			</array>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSToggleSwitchSpecifier</string>
+			<key>Title</key>
+			<string>pref_displayBrightness_name</string>
+			<key>Key</key>
+			<string>display_brightness_preference</string>
+			<key>DefaultValue</key>
+			<false/>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSToggleSwitchSpecifier</string>
+			<key>Title</key>
+			<string>pref_nightMode_name</string>
+			<key>Key</key>
+			<string>nightmode_preference</string>
+			<key>DefaultValue</key>
+			<false/>
+		</dict>
+        <dict>
+            <key>Type</key>
+            <string>PSGroupSpecifier</string>
+            <key>Title</key>
+            <string>pref_orientation_title</string>
+            <key>FooterText</key>
+            <string>pref_orientation_footer</string>
+        </dict>
+		<dict>
+			<key>Type</key>
+			<string>PSMultiValueSpecifier</string>
+			<key>Title</key>
+			<string>pref_orientation_name</string>
+			<key>Key</key>
+			<string>orientation_preference</string>
+			<key>DefaultValue</key>
+			<integer>0</integer>
+			<key>Titles</key>
+			<array>
+				<string>orientation_a</string>
+				<string>orientation_l</string>
+				<string>orientation_p</string>
+			</array>
+			<key>Values</key>
+			<array>
+				<integer>0</integer>
+				<integer>1</integer>
+				<integer>2</integer>
 			</array>
 		</dict>
 		<dict>
@@ -269,6 +289,24 @@
 			<string>tpm_threshold_preference</string>
 			<key>DefaultValue</key>
 			<string>25</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+			<key>Title</key>
+			<string>pref_fuel_routing_title</string>
+			<key>FooterText</key>
+			<string>pref_fuel_routing_footer</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSToggleSwitchSpecifier</string>
+			<key>Title</key>
+			<string>pref_fuel_routing_enable_title</string>
+			<key>Key</key>
+			<string>fuel_routing_enable_preference</string>
+			<key>DefaultValue</key>
+			<false/>
 		</dict>
 	</array>
 </dict>

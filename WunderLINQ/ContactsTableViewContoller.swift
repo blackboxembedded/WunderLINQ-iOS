@@ -247,6 +247,15 @@ class ContactsTableViewController: UITableViewController {
         self.navigationItem.title = NSLocalizedString("contactlist_title", comment: "")
         self.navigationItem.leftBarButtonItems = [backButton]
         
+        if UserDefaults.standard.bool(forKey: "display_brightness_preference") {
+            UIScreen.main.brightness = CGFloat(1.0)
+        } else {
+            let systemBrightness = CGFloat(UserDefaults.standard.float(forKey: "systemBrightness"))
+            if systemBrightness != nil {
+                UIScreen.main.brightness = systemBrightness
+            }
+        }
+        
         self.getContacts()
 
         // Uncomment the following line to preserve selection between presentations

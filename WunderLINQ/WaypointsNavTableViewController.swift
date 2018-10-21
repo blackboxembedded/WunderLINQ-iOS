@@ -133,6 +133,15 @@ class WaypointsNavTableViewController: UITableViewController {
         self.navigationItem.title = NSLocalizedString("waypoints_nav_title", comment: "")
         self.navigationItem.leftBarButtonItems = [backButton]
         
+        if UserDefaults.standard.bool(forKey: "display_brightness_preference") {
+            UIScreen.main.brightness = CGFloat(1.0)
+        } else {
+            let systemBrightness = CGFloat(UserDefaults.standard.float(forKey: "systemBrightness"))
+            if systemBrightness != nil {
+                UIScreen.main.brightness = systemBrightness
+            }
+        }
+        
         let databaseURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
             .appendingPathComponent("waypoints.sqlite")
         //opening the database

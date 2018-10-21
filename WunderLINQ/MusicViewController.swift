@@ -68,6 +68,15 @@ class MusicViewController: UIViewController {
         self.navigationItem.title = NSLocalizedString("music_title", comment: "")
         self.navigationItem.leftBarButtonItems = [backButton]
         self.navigationItem.rightBarButtonItems = [forwardButton]
+        
+        if UserDefaults.standard.bool(forKey: "display_brightness_preference") {
+            UIScreen.main.brightness = CGFloat(1.0)
+        } else {
+            let systemBrightness = CGFloat(UserDefaults.standard.float(forKey: "systemBrightness"))
+            if systemBrightness != nil {
+                UIScreen.main.brightness = systemBrightness
+            }
+        }
 
         // Do any additional setup after loading the view.
         musicPlayer().prepareToPlay()

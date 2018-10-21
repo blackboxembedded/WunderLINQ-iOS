@@ -18,7 +18,9 @@ class CompassViewController: UIViewController {
         
         let commands = [
             UIKeyCommand(input: UIKeyInputLeftArrow, modifierFlags:[], action: #selector(leftScreen), discoverabilityTitle: "Go left"),
-            UIKeyCommand(input: UIKeyInputRightArrow, modifierFlags:[], action: #selector(rightScreen), discoverabilityTitle: "Go right")
+            UIKeyCommand(input: UIKeyInputRightArrow, modifierFlags:[], action: #selector(rightScreen), discoverabilityTitle: "Go right"),
+            UIKeyCommand(input: UIKeyInputUpArrow, modifierFlags:[], action: #selector(nextUnit), discoverabilityTitle: "Next Unit"),
+            UIKeyCommand(input: UIKeyInputDownArrow, modifierFlags:[], action: #selector(previousUnit), discoverabilityTitle: "Previous Unit")
         ]
         return commands
     }
@@ -28,6 +30,30 @@ class CompassViewController: UIViewController {
     }
     @objc func rightScreen() {
         performSegue(withIdentifier: "compassToMusic", sender: [])
+    }
+    @objc func nextUnit() {
+        switch (UserDefaults.standard.integer(forKey: "bearing_unit_preference")){
+        case 0:
+            UserDefaults.standard.set(1, forKey: "bearing_unit_preference")
+        case 1:
+            UserDefaults.standard.set(2, forKey: "bearing_unit_preference")
+        case 2:
+            UserDefaults.standard.set(0, forKey: "bearing_unit_preference")
+        default:
+            print("Invalid bearing unit")
+        }
+    }
+    @objc func previousUnit() {
+        switch (UserDefaults.standard.integer(forKey: "bearing_unit_preference")){
+        case 0:
+            UserDefaults.standard.set(2, forKey: "bearing_unit_preference")
+        case 1:
+            UserDefaults.standard.set(0, forKey: "bearing_unit_preference")
+        case 2:
+            UserDefaults.standard.set(1, forKey: "bearing_unit_preference")
+        default:
+            print("Invalid bearing unit")
+        }
     }
     
     func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
@@ -52,6 +78,7 @@ class CompassViewController: UIViewController {
     }
     
     let locationManager: CLLocationManager = {
+        $0.headingOrientation = CLDeviceOrientation.landscapeRight;
         $0.requestWhenInUseAuthorization()
         $0.desiredAccuracy = kCLLocationAccuracyBest
         $0.startUpdatingLocation()
@@ -69,8 +96,12 @@ class CompassViewController: UIViewController {
         
         let adjAngle: CGFloat = {
             switch UIApplication.shared.statusBarOrientation {
-            case .landscapeLeft:  return 90
-            case .landscapeRight: return -90
+            case .landscapeLeft:
+                print("landscapeLeft")
+                return 90
+            case .landscapeRight:
+                print("landscapeRight")
+                return -90
             case .portrait, .unknown: return 0
             case .portraitUpsideDown: return isFaceDown ? 180 : -180
             }
@@ -116,6 +147,15 @@ class CompassViewController: UIViewController {
         self.navigationItem.leftBarButtonItems = [backButton]
         self.navigationItem.rightBarButtonItems = [forwardButton]
         
+        if UserDefaults.standard.bool(forKey: "display_brightness_preference") {
+            UIScreen.main.brightness = CGFloat(1.0)
+        } else {
+            let systemBrightness = CGFloat(UserDefaults.standard.float(forKey: "systemBrightness"))
+            if systemBrightness != nil {
+                UIScreen.main.brightness = systemBrightness
+            }
+        }
+        
         locationManager.delegate = locationDelegate
         
         locationDelegate.locationCallback = { location in
@@ -137,30 +177,39 @@ class CompassViewController: UIViewController {
             }
             let angle = computeNewAngle(with: CGFloat(newHeading))
             let degrees = abs(Int(angle.radiansToDegrees))
-            var bearing = "\(degrees)"
+            
+            //print("degrees: \(degrees) heading: \(CGFloat(newHeading)) angle(degrees): \(angle.radiansToDegrees) angle(radians): \(angle) ")
+                        
+            var cardinal = "-";
+            var bearing = "-";
+            if UserDefaults.standard.integer(forKey: "bearing_unit_preference") != 0 {
+                if degrees > 331 || degrees <= 28 {
+                    cardinal = "N"
+                } else if degrees > 28 && degrees <= 73 {
+                    cardinal = "NE"
+                } else if degrees > 73 && degrees <= 118 {
+                    cardinal = "E"
+                } else if degrees > 118 && degrees <= 163 {
+                    cardinal = "SE"
+                } else if degrees > 163 && degrees <= 208 {
+                    cardinal = "S"
+                } else if degrees > 208 && degrees <= 253 {
+                    cardinal = "SW"
+                } else if degrees > 253 && degrees <= 298 {
+                    cardinal = "W"
+                } else if degrees > 298 && degrees <= 331 {
+                    cardinal = "NW"
+                } else {
+                    cardinal = "-"
+                }
+            }
             
             if UserDefaults.standard.integer(forKey: "bearing_unit_preference") == 1 {
-                if degrees > 331 || degrees <= 28 {
-                    bearing = "N"
-                } else if degrees > 28 && degrees <= 73 {
-                    bearing = "NE"
-                } else if degrees > 73 && degrees <= 118 {
-                    bearing = "E"
-                } else if degrees > 118 && degrees <= 163 {
-                    bearing = "SE"
-                } else if degrees > 163 && degrees <= 208 {
-                    bearing = "S"
-                } else if degrees > 208 && degrees <= 253 {
-                    bearing = "SW"
-                } else if degrees > 253 && degrees <= 298 {
-                    bearing = "W"
-                } else if degrees > 298 && degrees <= 331 {
-                    bearing = "NW"
-                } else {
-                    bearing = "-"
-                }
-                
-                
+                bearing = cardinal;
+            } else if UserDefaults.standard.integer(forKey: "bearing_unit_preference") == 2 {
+                bearing = "\(degrees)\n\(cardinal)";
+            } else {
+                bearing = "\(degrees)";
             }
             self.compassLabel.text = bearing
         }

@@ -122,7 +122,7 @@ class TripViewController: UIViewController {
                 
             }
             if ((lineNumber > 1) && (lineNumber < csvRows.count)) {
-                if (!row[6].contains("null")){
+                if !(row[6] == ""){
                     engineTemps.append(row[6].toDouble()!)
                     if (maxEngineTemp == nil || maxEngineTemp! < row[6].toDouble()!){
                         maxEngineTemp = row[6].toDouble()
@@ -131,7 +131,7 @@ class TripViewController: UIViewController {
                         minEngineTemp = row[6].toDouble()
                     }
                 }
-                if (!row[7].contains("null")){
+                if !(row[7] == ""){
                     ambientTemps.append(row[7].toDouble()!)
                     if (maxAmbientTemp == nil || maxAmbientTemp! < row[7].toDouble()!){
                         maxAmbientTemp = row[7].toDouble()
@@ -140,7 +140,7 @@ class TripViewController: UIViewController {
                         minAmbientTemp = row[7].toDouble()
                     }
                 }
-                if (!row[10].contains("null")){
+                if !(row[10] == ""){
                     if (endOdometer == nil || endOdometer! < row[10].toDouble()!){
                         endOdometer = row[10].toDouble()
                     }
@@ -148,17 +148,17 @@ class TripViewController: UIViewController {
                         startOdometer = row[10].toDouble()
                     }
                 }
-                if (!row[13].contains("null")){
+                if !(row[13] == ""){
                     if (endFrontBrakeCnt < row[13].toDouble()!){
                         endFrontBrakeCnt = row[13].toDouble()!
                     }
                 }
-                if (!row[14].contains("null")){
+                if !(row[14] == ""){
                     if (endRearBrakeCnt < row[14].toDouble()!){
                         endRearBrakeCnt = row[14].toDouble()!
                     }
                 }
-                if (!row[15].contains("null")){
+                if !(row[15] == ""){
                     if (endShiftCnt < row[15].toDouble()!){
                         endShiftCnt = row[15].toDouble()!
                     }

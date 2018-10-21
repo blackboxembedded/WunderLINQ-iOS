@@ -39,6 +39,15 @@ class FaultsTableViewController: UITableViewController {
         backButtonHeight?.isActive = true
         self.navigationItem.title = NSLocalizedString("fault_title", comment: "")
         self.navigationItem.leftBarButtonItems = [backButton]
+        
+        if UserDefaults.standard.bool(forKey: "display_brightness_preference") {
+            UIScreen.main.brightness = CGFloat(1.0)
+        } else {
+            let systemBrightness = CGFloat(UserDefaults.standard.float(forKey: "systemBrightness"))
+            if systemBrightness != nil {
+                UIScreen.main.brightness = systemBrightness
+            }
+        }
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false

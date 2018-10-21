@@ -75,7 +75,6 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         registerSettingsBundle()
         NotificationCenter.default.addObserver(self, selector: #selector(self.defaultsChanged), name: UserDefaults.didChangeNotification, object: nil)
         if UserDefaults.standard.bool(forKey: "nightmode_preference") {
@@ -127,6 +126,15 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
             label.font = UIFont.boldSystemFont(ofSize: 40)
             label.text = NSLocalizedString("product", comment: "")
             mainUIView.addSubview(label)
+        }
+        
+        if UserDefaults.standard.bool(forKey: "display_brightness_preference") {
+            UIScreen.main.brightness = CGFloat(1.0)
+        } else {
+            let systemBrightness = CGFloat(UserDefaults.standard.float(forKey: "systemBrightness"))
+            if systemBrightness != nil {
+                UIScreen.main.brightness = systemBrightness
+            }
         }
         
         
@@ -261,6 +269,14 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
                 UserDefaults.standard.set(defaults.integer(forKey: "motorcycle_type_preference"), forKey: "motorcycle_type_lastSet")
                 // quit app
                 exit(0)
+            }
+            if UserDefaults.standard.bool(forKey: "display_brightness_preference") {
+                UIScreen.main.brightness = CGFloat(1.0)
+            } else {
+                let systemBrightness = CGFloat(UserDefaults.standard.float(forKey: "systemBrightness"))
+                if systemBrightness != nil {
+                    UIScreen.main.brightness = systemBrightness
+                }
             }
         }
     }
@@ -683,7 +699,6 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
                 motorcycleData.setfrontTirePressure(frontTirePressure: frontPressure)
                 motorcycleData.setrearTirePressure(rearTirePressure: rearPressure)
                 if UserDefaults.standard.bool(forKey: "custom_tpm_preference"){
-                    print("Custom tpms threshold enabled")
                     switch UserDefaults.standard.integer(forKey: "pressure_unit_preference"){
                     case 1:
                         frontPressure = barTokPa(frontPressure)
@@ -987,6 +1002,14 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
             default:
                 faults.setFuelFaultActive(active: false)
 
+            }
+            if UserDefaults.standard.bool(forKey: "fuel_routing_enable_preference") && faults.getFuelFaultActive(){
+                if !faults.getFuelStationAlertSent(){
+                    //Do something
+                    
+                    faults.setFuelStationAlertSent(active:true)
+                }
+                
             }
             // General Fault
             let generalFault = lastMessage[5] & 0x0F // the lowest 4 bits

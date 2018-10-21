@@ -248,7 +248,7 @@
             <objects>
                 <tableViewController title="Faults" id="KTW-aa-IYg" customClass="FaultsTableViewController" customModule="WunderLINQ" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="8d5-qJ-gEo">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="410"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
@@ -288,8 +288,8 @@
         <scene sceneID="olz-rS-p04">
             <objects>
                 <viewController title="Waypoint" id="Plb-k4-fYa" customClass="WaypointViewController" customModule="WunderLINQ" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" misplaced="YES" id="dZ9-R2-QyW">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="410"/>
+                    <view key="view" contentMode="scaleToFill" id="dZ9-R2-QyW">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AF1-SP-JZP" customClass="GMSMapView">
@@ -491,7 +491,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="65j-wa-SIQ">
                                 <rect key="frame" x="16" y="20" width="288" height="460"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lsy-hM-ZFw">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lsy-hM-ZFw">
                                         <rect key="frame" x="0.0" y="0.0" width="288" height="460"/>
                                         <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="100"/>
                                         <nil key="textColor"/>
@@ -722,7 +722,7 @@
             <objects>
                 <tableViewController id="TPs-yr-NM2" customClass="ContactsTableViewController" customModule="WunderLINQ" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Y20-CM-oly">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="410"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -763,7 +763,7 @@
             <objects>
                 <tableViewController id="we8-3Z-s79" customClass="WaypointsNavTableViewController" customModule="WunderLINQ" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="8Yw-3z-6cz">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="410"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
@@ -855,7 +855,7 @@
         <scene sceneID="yhW-ot-4Cd">
             <objects>
                 <tableViewController title="Recorded Trips" id="1rx-Mx-oc0" customClass="TripsTableViewController" customModule="WunderLINQ" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="FE6-cp-MLm">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="FE6-cp-MLm">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -899,7 +899,7 @@
             <objects>
                 <tableViewController title="Saved Waypoints" id="zo6-HF-7UD" customClass="WaypointsTableViewController" customModule="WunderLINQ" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="fdJ-UO-SgQ">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="410"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
@@ -996,8 +996,8 @@
         <scene sceneID="Dq9-Ds-zIF">
             <objects>
                 <viewController title="Trip" id="mYA-Xe-W7Q" customClass="TripViewController" customModule="WunderLINQ" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" misplaced="YES" id="6Ds-aL-SNb">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="410"/>
+                    <view key="view" contentMode="scaleToFill" id="6Ds-aL-SNb">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eoN-Uk-I42" customClass="GMSMapView">
@@ -1292,9 +1292,9 @@
         <segue reference="gIM-fx-mWk"/>
         <segue reference="qQx-7G-0NR"/>
         <segue reference="QF9-me-I6g"/>
-        <segue reference="Dpe-gj-Wyf"/>
+        <segue reference="cF1-aK-Tul"/>
         <segue reference="W8V-Rg-WFQ"/>
-        <segue reference="hHX-hV-yfD"/>
+        <segue reference="rCa-tS-QTz"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
 </document>

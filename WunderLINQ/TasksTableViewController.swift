@@ -245,14 +245,14 @@ class TasksTableViewController: UITableViewController, AVCaptureVideoDataOutputS
             //Video Recording
             if movieOutput.isRecording == true {
                 movieOutput.stopRecording()
-                self.tableView.cellForRow(at: IndexPath(row: 5, section: 0) as IndexPath)?.textLabel?.text = NSLocalizedString("task_title_start_record", comment: "")
+                self.tableView.cellForRow(at: IndexPath(row: taskID, section: 0) as IndexPath)?.textLabel?.text = NSLocalizedString("task_title_start_record", comment: "")
             } else {
                 if setupSession() {
                     startSession()
                 }
                 if (self.videoCaptureSession.isRunning) {
                     startCapture()
-                    self.tableView.cellForRow(at: IndexPath(row: 5, section: 0) as IndexPath)?.textLabel?.text = NSLocalizedString("task_title_stop_record", comment: "")
+                    self.tableView.cellForRow(at: IndexPath(row: taskID, section: 0) as IndexPath)?.textLabel?.text = NSLocalizedString("task_title_stop_record", comment: "")
                 }
             }
             
@@ -261,10 +261,10 @@ class TasksTableViewController: UITableViewController, AVCaptureVideoDataOutputS
             //Trip Log
             if LocationService.sharedInstance.isRunning(){
                 LocationService.sharedInstance.stopUpdatingLocation()
-                self.tableView.cellForRow(at: IndexPath(row: 6, section: 0) as IndexPath)?.textLabel?.text = NSLocalizedString("task_title_start_trip", comment: "")
+                self.tableView.cellForRow(at: IndexPath(row: taskID, section: 0) as IndexPath)?.textLabel?.text = NSLocalizedString("task_title_start_trip", comment: "")
             } else {
                 LocationService.sharedInstance.startUpdatingLocation(type: "triplog")
-                self.tableView.cellForRow(at: IndexPath(row: 6, section: 0) as IndexPath)?.textLabel?.text = NSLocalizedString("task_title_stop_trip", comment: "")
+                self.tableView.cellForRow(at: IndexPath(row: taskID, section: 0) as IndexPath)?.textLabel?.text = NSLocalizedString("task_title_stop_trip", comment: "")
             }
             break
         case 8:
@@ -430,6 +430,15 @@ class TasksTableViewController: UITableViewController, AVCaptureVideoDataOutputS
         self.navigationItem.title = NSLocalizedString("quicktask_title", comment: "")
         self.navigationItem.leftBarButtonItems = [backButton]
         self.navigationItem.rightBarButtonItems = [forwardButton]
+        
+        if UserDefaults.standard.bool(forKey: "display_brightness_preference") {
+            UIScreen.main.brightness = CGFloat(1.0)
+        } else {
+            let systemBrightness = CGFloat(UserDefaults.standard.float(forKey: "systemBrightness"))
+            if systemBrightness != nil {
+                UIScreen.main.brightness = systemBrightness
+            }
+        }
         
         loadTasks();
         
