@@ -252,7 +252,7 @@ class WaypointsNavTableViewController: UITableViewController {
         waypoints.removeAll()
         
         //this is our select query
-        let queryString = "SELECT id,date,latitude,longitude,label FROM records"
+        let queryString = "SELECT id,date,latitude,longitude,label FROM records ORDER BY id DESC"
         
         //statement pointer
         var stmt:OpaquePointer?

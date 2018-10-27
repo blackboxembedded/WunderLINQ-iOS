@@ -10,7 +10,7 @@ import Foundation
 
 class Logger {
     
-    static var dateFormat = "yyyyMMdd-hh:mm:ss"
+    static var dateFormat = "yyyyMMdd-HH:mm:ss"
     static var dateFormatter: DateFormatter {
         let formatter = DateFormatter()
         formatter.dateFormat = dateFormat

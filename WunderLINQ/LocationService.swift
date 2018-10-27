@@ -34,15 +34,6 @@ class LocationService: NSObject, CLLocationManagerDelegate {
     
     let motorcycleData = MotorcycleData.shared
     
-    static var dateFormat = "yyyyMMdd-HH-mm-ss"
-    static var dateFormatter: DateFormatter {
-        let formatter = DateFormatter()
-        formatter.dateFormat = dateFormat
-        formatter.locale = Locale.current
-        formatter.timeZone = TimeZone.current
-        return formatter
-    }
-    
     override init() {
         super.init()
         
@@ -230,15 +221,6 @@ class LocationService: NSObject, CLLocationManagerDelegate {
             return
         }
         
-        //binding the parameters
-        let dateFormat = "yyyy-MM-dd hh:mm"
-        var dateFormatter: DateFormatter {
-            let formatter = DateFormatter()
-            formatter.dateFormat = dateFormat
-            formatter.locale = Locale.current
-            formatter.timeZone = TimeZone.current
-            return formatter
-        }
         let date = Date().toString() as NSString
         let label : String = ""
         
