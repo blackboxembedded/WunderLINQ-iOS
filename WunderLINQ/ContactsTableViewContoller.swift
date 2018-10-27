@@ -41,6 +41,7 @@ class ContactsTableViewController: UITableViewController {
     
     func retrieveContactsWithStore(store: CNContactStore) {
         
+        
         let contactStore = CNContactStore()
         let keysToFetch = [
             CNContactFormatter.descriptorForRequiredKeys(for: .fullName),
@@ -48,35 +49,19 @@ class ContactsTableViewController: UITableViewController {
             CNContactImageDataAvailableKey,
             CNContactImageDataKey] as [Any]
         
-        // Get all the containers
-        var allContainers: [CNContainer] = []
-        do {
-            allContainers = try contactStore.containers(matching: nil)
-        } catch {
-            print("Error fetching containers")
+        let fetchRequest = CNContactFetchRequest(keysToFetch: keysToFetch as! [CNKeyDescriptor])
+
+        // sort by name given
+        if UserDefaults.standard.integer(forKey: "contact_sort_preference") == 0 {
+            fetchRequest.sortOrder = CNContactSortOrder.familyName
+        } else {
+            fetchRequest.sortOrder = CNContactSortOrder.givenName
         }
         
-        var contacts: [CNContact] = []
-        // Iterate all containers and append their contacts to our results array
-        for container in allContainers {
-            let fetchPredicate = CNContact.predicateForContactsInContainer(withIdentifier: container.identifier)
-            do {
-                let containerResults = try contactStore.unifiedContacts(matching: fetchPredicate, keysToFetch: keysToFetch as! [CNKeyDescriptor])
-                contacts.append(contentsOf: containerResults)
-                
-                // sort by name given
-                var result: [CNContact] = []
-                if UserDefaults.standard.integer(forKey: "contact_sort_preference") == 0 {
-                    result = contacts.sorted(by: {
-                        (firt: CNContact, second: CNContact) -> Bool in firt.familyName < second.familyName
-                        })
-                } else {
-                        result = contacts.sorted(by: {
-                        (firt: CNContact, second: CNContact) -> Bool in firt.givenName < second.givenName
-                        })
-                }
-                
-                for contact in result {
+        do {
+            try contactStore.enumerateContacts(with: fetchRequest) {
+                (contact, cursor) -> Void in
+                if (!contact.phoneNumbers.isEmpty){
                     for phoneNumber in contact.phoneNumbers {
                         if phoneNumber.label != nil {
                             let number = phoneNumber.value
@@ -102,9 +87,10 @@ class ContactsTableViewController: UITableViewController {
                         }
                     }
                 }
-            } catch {
-                print("Error fetching results for container")
             }
+        }
+        catch{
+            print("Handle the error please")
         }
         self.tableView.reloadData()
     }

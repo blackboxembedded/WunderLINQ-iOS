@@ -173,7 +173,7 @@ class WaypointViewController: UIViewController, UITextFieldDelegate {
         }
         
         readWaypoint()
-        
+
         if let lat = latitude?.toDouble(), let lon = longitude?.toDouble(){
             let camera: GMSCameraPosition = GMSCameraPosition.camera(withLatitude: lat, longitude: lon, zoom: 15.0)
             mapView.camera = camera

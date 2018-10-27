@@ -9,6 +9,8 @@
 import Foundation
 extension String {
     func toDouble() -> Double? {
-        return NumberFormatter().number(from: self)?.doubleValue
+        let formatter = NumberFormatter()
+        formatter.locale = Locale(identifier: "en_US")
+        return formatter.number(from: self)?.doubleValue
     }
 }
