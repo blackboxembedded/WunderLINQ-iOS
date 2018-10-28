@@ -87,12 +87,14 @@
 				<integer>1</integer>
 				<integer>2</integer>
 				<integer>3</integer>
+				<integer>4</integer>
 			</array>
 			<key>Titles</key>
 			<array>
 				<string>Apple Maps</string>
 				<string>Google Maps</string>
 				<string>Scenic</string>
+				<string>Sygic</string>
 				<string>Waze</string>
 			</array>
 		</dict>
@@ -222,14 +224,14 @@
 			<key>DefaultValue</key>
 			<false/>
 		</dict>
-        <dict>
-            <key>Type</key>
-            <string>PSGroupSpecifier</string>
-            <key>Title</key>
-            <string>pref_orientation_title</string>
-            <key>FooterText</key>
-            <string>pref_orientation_footer</string>
-        </dict>
+		<dict>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+			<key>Title</key>
+			<string>pref_orientation_title</string>
+			<key>FooterText</key>
+			<string>pref_orientation_footer</string>
+		</dict>
 		<dict>
 			<key>Type</key>
 			<string>PSMultiValueSpecifier</string>

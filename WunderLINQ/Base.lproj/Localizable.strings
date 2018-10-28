@@ -79,6 +79,8 @@
 "quicktask_title" = "Quick Tasks";
 "task_title_navigation" = "Navigation";
 "task_title_gohome" = "Go Home";
+"home" = "Home";
+"geocode_error" = "Problem looking up geocode";
 "toast_address_not_set" = "No Go Home address set in Settings";
 "task_title_favnumber" = "Call Favorite Number";
 "toast_phone_not_set" = "No Call Home phone number set in Settings";

@@ -136,60 +136,132 @@ class TasksTableViewController: UITableViewController, AVCaptureVideoDataOutputS
             //Go Home
             if let homeAddress = UserDefaults.standard.string(forKey: "gohome_address_preference"){
                 if homeAddress != "" {
-                    let geocoder = CLGeocoder()
-                    geocoder.geocodeAddressString(homeAddress) {
-                        placemarks, error in
-                        let placemark = placemarks?.first
-                        let lat = placemark?.location?.coordinate.latitude
-                        let lon = placemark?.location?.coordinate.longitude
-                        let destLatitude: CLLocationDegrees = lat!
-                        let destLongitude: CLLocationDegrees = lon!
-                        
-                        let navApp = UserDefaults.standard.integer(forKey: "nav_app_preference")
-                        switch (navApp){
-                        case 0:
-                            //Apple Maps
-                            let coordinates = CLLocationCoordinate2DMake(destLatitude, destLongitude)
-                            let navPlacemark = MKPlacemark(coordinate: coordinates, addressDictionary: nil)
-                            let mapitem = MKMapItem(placemark: navPlacemark)
-                            let options = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving]
-                            mapitem.openInMaps(launchOptions: options)
-                        case 1:
-                            //Google Maps
-                            //comgooglemaps-x-callback://
-                            if let googleMapsURL = URL(string: "comgooglemaps-x-callback://?daddr=\(destLatitude),\(destLongitude)&directionsmode=driving&x-success=wunderlinq://?resume=true&x-source=WunderLINQ") {
-                                if (UIApplication.shared.canOpenURL(googleMapsURL)) {
-                                    if #available(iOS 10, *) {
-                                        UIApplication.shared.open(googleMapsURL, options: [:], completionHandler: nil)
-                                    } else {
-                                        UIApplication.shared.openURL(googleMapsURL as URL)
-                                    }
+                    let navApp = UserDefaults.standard.integer(forKey: "nav_app_preference")
+                    switch (navApp){
+                    case 0:
+                        //Apple Maps
+                        let geocoder = CLGeocoder()
+                        geocoder.geocodeAddressString(homeAddress,
+                                                      completionHandler: { (placemarks, error) in
+                                                        if error == nil {
+                                                            let placemark = placemarks?.first
+                                                            let lat = placemark?.location?.coordinate.latitude
+                                                            let lon = placemark?.location?.coordinate.longitude
+                                                            let destLatitude: CLLocationDegrees = lat!
+                                                            let destLongitude: CLLocationDegrees = lon!
+                                                            
+                                                            let coordinates = CLLocationCoordinate2DMake(destLatitude, destLongitude)
+                                                            let navPlacemark = MKPlacemark(coordinate: coordinates, addressDictionary: nil)
+                                                            let mapitem = MKMapItem(placemark: navPlacemark)
+                                                            let options = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving]
+                                                            mapitem.openInMaps(launchOptions: options)
+                                                        }
+                                                        else {
+                                                            // An error occurred during geocoding.
+                                                            self.showToast(message: NSLocalizedString("geocode_error", comment: ""))
+                                                        }
+                        })
+                    case 1:
+                        //Google Maps
+                        //comgooglemaps-x-callback://
+                        print("google map selected")
+                        let homeAddressFixed = homeAddress.replacingOccurrences(of: " ", with: "+")
+                        if let googleMapsURL = URL(string: "comgooglemaps-x-callback://?daddr=\(homeAddressFixed)&directionsmode=driving&x-success=wunderlinq://?resume=true&x-source=WunderLINQ") {
+                            print("google map selected url")
+                            if (UIApplication.shared.canOpenURL(googleMapsURL)) {
+                                if #available(iOS 10, *) {
+                                    UIApplication.shared.open(googleMapsURL, options: [:], completionHandler: nil)
+                                } else {
+                                    UIApplication.shared.openURL(googleMapsURL as URL)
                                 }
                             }
-                        case 2:
-                            //Scenic
-                            //https://github.com/guidove/Scenic-Integration/blob/master/README.md
-                            self.scenic.sendToScenicForNavigation(coordinate: CLLocationCoordinate2D(latitude: destLatitude,longitude: destLongitude), name: "Home")
-                        case 3:
-                            //Waze
-                            //waze://?ll=[lat],[lon]&z=10
-                            if let wazeURL = URL(string: "waze://?ll=\(destLatitude),\(destLongitude)&navigate=yes") {
-                                if (UIApplication.shared.canOpenURL(wazeURL)) {
-                                    if #available(iOS 10, *) {
-                                        UIApplication.shared.open(wazeURL, options: [:], completionHandler: nil)
-                                    } else {
-                                        UIApplication.shared.openURL(wazeURL as URL)
-                                    }
-                                }
-                            }
-                        default:
-                            //Apple Maps
-                            let coordinates = CLLocationCoordinate2DMake(destLatitude, destLongitude)
-                            let navPlacemark = MKPlacemark(coordinate: coordinates, addressDictionary: nil)
-                            let mapitem = MKMapItem(placemark: navPlacemark)
-                            let options = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving]
-                            mapitem.openInMaps(launchOptions: options)
                         }
+                    case 2:
+                        //Scenic
+                        //https://github.com/guidove/Scenic-Integration/blob/master/README.md
+                        let geocoder = CLGeocoder()
+                        geocoder.geocodeAddressString(homeAddress,
+                                                      completionHandler: { (placemarks, error) in
+                                                        if error == nil {
+                                                            let placemark = placemarks?.first
+                                                            let lat = placemark?.location?.coordinate.latitude
+                                                            let lon = placemark?.location?.coordinate.longitude
+                                                            let destLatitude: CLLocationDegrees = lat!
+                                                            let destLongitude: CLLocationDegrees = lon!
+                                                            
+                                                            self.scenic.sendToScenicForNavigation(coordinate: CLLocationCoordinate2D(latitude: destLatitude,longitude: destLongitude), name: NSLocalizedString("home", comment: ""))
+                                                        }
+                                                        else {
+                                                            // An error occurred during geocoding.
+                                                            self.showToast(message: NSLocalizedString("geocode_error", comment: ""))
+                                                        }
+                        })
+                    case 3:
+                        //Sygic
+                        //https://www.sygic.com/developers/professional-navigation-sdk/ios/custom-url
+                        let geocoder = CLGeocoder()
+                        geocoder.geocodeAddressString(homeAddress,
+                                                      completionHandler: { (placemarks, error) in
+                                                        if error == nil {
+                                                            let placemark = placemarks?.first
+                                                            let lat = placemark?.location?.coordinate.latitude
+                                                            let lon = placemark?.location?.coordinate.longitude
+                                                            let destLatitude: CLLocationDegrees = lat!
+                                                            let destLongitude: CLLocationDegrees = lon!
+                                                            
+                                                            let urlString = "com.sygic.aura://coordinate|\(destLongitude)|\(destLatitude)|drive"
+
+                                                            if let sygicURL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
+                                                                if (UIApplication.shared.canOpenURL(sygicURL)) {
+                                                                    if #available(iOS 10, *) {
+                                                                        UIApplication.shared.open(sygicURL, options: [:], completionHandler: nil)
+                                                                    } else {
+                                                                        UIApplication.shared.openURL(sygicURL as URL)
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                        else {
+                                                            // An error occurred during geocoding.
+                                                            self.showToast(message: NSLocalizedString("geocode_error", comment: ""))
+                                                        }
+                        })
+                    case 4:
+                        //Waze
+                        // https://developers.google.com/waze/deeplinks/
+                        let homeAddressFixed = homeAddress.replacingOccurrences(of: " ", with: "+")
+                        if let wazeURL = URL(string: "https://waze.com/ul?q=\(homeAddressFixed)&navigate=yes") {
+                            if (UIApplication.shared.canOpenURL(wazeURL)) {
+                                if #available(iOS 10, *) {
+                                    UIApplication.shared.open(wazeURL, options: [:], completionHandler: nil)
+                                } else {
+                                    UIApplication.shared.openURL(wazeURL as URL)
+                                }
+                            }
+                        }
+                    default:
+                        //Apple Maps
+                        let geocoder = CLGeocoder()
+                        geocoder.geocodeAddressString(homeAddress,
+                                                      completionHandler: { (placemarks, error) in
+                                                        if error == nil {
+                                                            let placemark = placemarks?.first
+                                                            let lat = placemark?.location?.coordinate.latitude
+                                                            let lon = placemark?.location?.coordinate.longitude
+                                                            let destLatitude: CLLocationDegrees = lat!
+                                                            let destLongitude: CLLocationDegrees = lon!
+                                                            
+                                                            let coordinates = CLLocationCoordinate2DMake(destLatitude, destLongitude)
+                                                            let navPlacemark = MKPlacemark(coordinate: coordinates, addressDictionary: nil)
+                                                            let mapitem = MKMapItem(placemark: navPlacemark)
+                                                            let options = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving]
+                                                            mapitem.openInMaps(launchOptions: options)
+                                                        }
+                                                        else {
+                                                            // An error occurred during geocoding.
+                                                            self.showToast(message: NSLocalizedString("geocode_error", comment: ""))
+                                                        }
+                        })
                     }
                 } else {
                     self.showToast(message: NSLocalizedString("toast_address_not_set", comment: ""))

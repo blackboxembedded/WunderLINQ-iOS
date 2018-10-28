@@ -315,6 +315,20 @@ class WaypointsNavTableViewController: UITableViewController {
                 //https://github.com/guidove/Scenic-Integration/blob/master/README.md
                 self.scenic.sendToScenicForNavigation(coordinate: CLLocationCoordinate2D(latitude: destLatitude,longitude: destLongitude), name: label ?? "WunderLINQ")
             case 3:
+                //Sygic
+                //https://www.sygic.com/developers/professional-navigation-sdk/ios/custom-url
+                let urlString = "com.sygic.aura://coordinate|\(destLongitude)|\(destLatitude)|drive"
+                
+                if let sygicURL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
+                    if (UIApplication.shared.canOpenURL(sygicURL)) {
+                        if #available(iOS 10, *) {
+                            UIApplication.shared.open(sygicURL, options: [:], completionHandler: nil)
+                        } else {
+                            UIApplication.shared.openURL(sygicURL as URL)
+                        }
+                    }
+                }
+            case 4:
                 //Waze
                 //waze://?ll=[lat],[lon]&z=10
                 if let wazeURL = URL(string: "waze://?ll=\(destLatitude),\(destLongitude)&navigate=yes") {
