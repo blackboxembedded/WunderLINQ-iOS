@@ -78,7 +78,6 @@ class CompassViewController: UIViewController {
     }
     
     let locationManager: CLLocationManager = {
-        $0.headingOrientation = CLDeviceOrientation.landscapeRight;
         $0.requestWhenInUseAuthorization()
         $0.desiredAccuracy = kCLLocationAccuracyBest
         $0.startUpdatingLocation()
