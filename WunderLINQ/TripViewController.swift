@@ -381,7 +381,7 @@ class TripViewController: UIViewController {
     }
     // Calculate time duration
     func calculateDuration(start:String, end:String) -> String{
-        var dateFormat = "yyyyMMdd-hh:mm:ss"
+        var dateFormat = "yyyyMMdd-HH:mm:ss"
         var dateFormatter: DateFormatter {
             let formatter = DateFormatter()
             formatter.dateFormat = dateFormat

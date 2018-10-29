@@ -1000,14 +1000,31 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
                 faults.setFuelFaultActive(active: true)
 
             default:
-                faults.setFuelFaultActive(active: false)
+                //faults.setFuelFaultActive(active: false)
+                faults.setFuelFaultActive(active: true)
 
             }
             if UserDefaults.standard.bool(forKey: "fuel_routing_enable_preference") && faults.getFuelFaultActive(){
                 if !faults.getFuelStationAlertSent(){
-                    //Do something
-                    
                     faults.setFuelStationAlertSent(active:true)
+                    
+                    if let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AlertViewControllerID") as? AlertViewController {
+                        viewController.ID = 1
+                        if let navigator = navigationController {
+                            navigator.pushViewController(viewController, animated: true)
+                        }
+                    }
+                    /*
+                    if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AlertViewControllerID") as? AlertViewController
+                    {
+                        vc.ID = 1
+                        present(vc, animated: true, completion: nil)
+                    }
+                    */
+                    
+                    //let alert = AlertViewController()
+                    //present(alert, animated: true, completion: nil)
+
                 }
                 
             }

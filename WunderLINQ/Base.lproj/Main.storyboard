@@ -247,8 +247,8 @@
         <scene sceneID="Qzq-jP-Ecj">
             <objects>
                 <tableViewController title="Faults" id="KTW-aa-IYg" customClass="FaultsTableViewController" customModule="WunderLINQ" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="8d5-qJ-gEo">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="8d5-qJ-gEo">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="410"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
@@ -288,8 +288,8 @@
         <scene sceneID="olz-rS-p04">
             <objects>
                 <viewController title="Waypoint" id="Plb-k4-fYa" customClass="WaypointViewController" customModule="WunderLINQ" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="dZ9-R2-QyW">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
+                    <view key="view" contentMode="scaleToFill" misplaced="YES" id="dZ9-R2-QyW">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="410"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AF1-SP-JZP" customClass="GMSMapView">
@@ -797,7 +797,69 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vYP-M3-Xw8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="9367" y="1564"/>
+            <point key="canvasLocation" x="10363.125" y="1563.75"/>
+        </scene>
+        <!--Alert-->
+        <scene sceneID="2jd-t5-irf">
+            <objects>
+                <viewController storyboardIdentifier="AlertViewControllerID" title="Alert" id="gJo-MW-rva" customClass="AlertViewController" customModule="WunderLINQ" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="GAg-mc-EeP">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ch1-dL-bp2" customClass="LocalisableButton" customModule="WunderLINQ" customModuleProvider="target">
+                                <rect key="frame" x="16" y="424" width="140" height="36"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                                <state key="normal" title="CLOSE"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="localisedKey" value="alert_btn_close"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="closeBtn:" destination="gJo-MW-rva" eventType="touchUpInside" id="NE6-Dx-IZW"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o4A-v0-HaT" customClass="LocalisableButton" customModule="WunderLINQ" customModuleProvider="target">
+                                <rect key="frame" x="164" y="424" width="140" height="36"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                                <state key="normal" title="OK"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="localisedKey" value="alert_btn_ok"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="okBtn:" destination="gJo-MW-rva" eventType="touchUpInside" id="sod-iA-Vn4"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pNL-mh-mKe">
+                                <rect key="frame" x="16" y="228" width="288" height="24"/>
+                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Ch1-dL-bp2" firstAttribute="leading" secondItem="Msr-4U-mAY" secondAttribute="leading" constant="16" id="102-fv-MoI"/>
+                            <constraint firstItem="Msr-4U-mAY" firstAttribute="trailing" secondItem="o4A-v0-HaT" secondAttribute="trailing" constant="16" id="9Ic-5V-L5m"/>
+                            <constraint firstItem="Msr-4U-mAY" firstAttribute="bottom" secondItem="o4A-v0-HaT" secondAttribute="bottom" constant="20" id="J1e-mM-uw9"/>
+                            <constraint firstItem="pNL-mh-mKe" firstAttribute="centerY" secondItem="GAg-mc-EeP" secondAttribute="centerY" id="fLR-s4-PaJ"/>
+                            <constraint firstItem="Msr-4U-mAY" firstAttribute="bottom" secondItem="Ch1-dL-bp2" secondAttribute="bottom" constant="20" id="q0M-gt-tOf"/>
+                            <constraint firstItem="Msr-4U-mAY" firstAttribute="trailing" secondItem="pNL-mh-mKe" secondAttribute="trailing" constant="16" id="rUE-VK-8u1"/>
+                            <constraint firstItem="o4A-v0-HaT" firstAttribute="leading" secondItem="Ch1-dL-bp2" secondAttribute="trailing" constant="8" id="u1z-SA-gPG"/>
+                            <constraint firstItem="pNL-mh-mKe" firstAttribute="leading" secondItem="Msr-4U-mAY" secondAttribute="leading" constant="16" id="y0Z-wK-wma"/>
+                            <constraint firstItem="o4A-v0-HaT" firstAttribute="width" secondItem="Ch1-dL-bp2" secondAttribute="width" id="zhx-Cx-OKh"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Msr-4U-mAY"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="h9t-JR-1oL"/>
+                    <connections>
+                        <outlet property="alertLabel" destination="pNL-mh-mKe" id="YQb-0u-fo1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="h2u-JD-HJV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7260" y="1564"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="yCn-wr-lQB">
@@ -813,7 +875,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QqB-g7-vYR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="8666" y="1564"/>
+            <point key="canvasLocation" x="9661.875" y="1563.75"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="m7N-1a-hHU">
@@ -856,7 +918,7 @@
             <objects>
                 <tableViewController title="Recorded Trips" id="1rx-Mx-oc0" customClass="TripsTableViewController" customModule="WunderLINQ" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="FE6-cp-MLm">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="410"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
@@ -898,7 +960,7 @@
         <scene sceneID="2BC-9t-4hP">
             <objects>
                 <tableViewController title="Saved Waypoints" id="zo6-HF-7UD" customClass="WaypointsTableViewController" customModule="WunderLINQ" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="fdJ-UO-SgQ">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="fdJ-UO-SgQ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -943,7 +1005,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="zX3-aP-C03" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="mTc-Re-whl">
-                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="50"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -980,7 +1042,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="BwD-J2-898" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="nYE-BW-rp8">
-                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="50"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -996,7 +1058,7 @@
         <scene sceneID="Dq9-Ds-zIF">
             <objects>
                 <viewController title="Trip" id="mYA-Xe-W7Q" customClass="TripViewController" customModule="WunderLINQ" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="6Ds-aL-SNb">
+                    <view key="view" contentMode="scaleToFill" misplaced="YES" id="6Ds-aL-SNb">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -1280,6 +1342,24 @@
             </objects>
             <point key="canvasLocation" x="9949.6000000000004" y="-1863.4182908545729"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Bxm-Wy-9iw">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="pQN-Ec-y8Z" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="9y1-G8-yRS">
+                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="gJo-MW-rva" kind="relationship" relationship="rootViewController" id="e0E-I5-mPM"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KD9-of-bK7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6334" y="1564"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Left" width="44" height="44"/>
@@ -1291,7 +1371,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="gIM-fx-mWk"/>
         <segue reference="qQx-7G-0NR"/>
-        <segue reference="QF9-me-I6g"/>
+        <segue reference="zBp-8h-a39"/>
         <segue reference="cF1-aK-Tul"/>
         <segue reference="W8V-Rg-WFQ"/>
         <segue reference="rCa-tS-QTz"/>

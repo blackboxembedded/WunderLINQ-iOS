@@ -66,6 +66,7 @@
 		7EBFE1F3214C7D6500F2185A /* ScenicAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBFE1F2214C7D6500F2185A /* ScenicAPI.swift */; };
 		7EC8C9BD1F827977000CEDDC /* ContactsTableViewContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC8C9BC1F827977000CEDDC /* ContactsTableViewContoller.swift */; };
 		7EC8C9BF1F830C5B000CEDDC /* PhoneContacts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC8C9BE1F830C5B000CEDDC /* PhoneContacts.swift */; };
+		7EC934F22186208A00FD4806 /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC934F12186208A00FD4806 /* AlertViewController.swift */; };
 		7ED2013620D0D0030066BCE6 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7ED2013520D0D0030066BCE6 /* Default-568h@2x.png */; };
 /* End PBXBuildFile section */
 
@@ -146,6 +147,7 @@
 		7EBFE1F2214C7D6500F2185A /* ScenicAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScenicAPI.swift; sourceTree = "<group>"; };
 		7EC8C9BC1F827977000CEDDC /* ContactsTableViewContoller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsTableViewContoller.swift; sourceTree = "<group>"; };
 		7EC8C9BE1F830C5B000CEDDC /* PhoneContacts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneContacts.swift; sourceTree = "<group>"; };
+		7EC934F12186208A00FD4806 /* AlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
 		7ED2013520D0D0030066BCE6 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -210,7 +212,6 @@
 		7EA478411F40B154000CEDDC = {
 			isa = PBXGroup;
 			children = (
-				7E5E0F77212289140048B9A2 /* AppUtility.swift */,
 				7ED2013520D0D0030066BCE6 /* Default-568h@2x.png */,
 				7EA478881F537ED5000CEDDC /* Localizable.strings */,
 				7EA4784C1F40B154000CEDDC /* WunderLINQ */,
@@ -236,6 +237,7 @@
 				7E068BD02102C6290076EAAD /* GoogleMapsBase.framework */,
 				7E068BCE2102C6270076EAAD /* GoogleMapsCore.framework */,
 				7EBFE1F2214C7D6500F2185A /* ScenicAPI.swift */,
+				7E5E0F77212289140048B9A2 /* AppUtility.swift */,
 				7EA4784D1F40B154000CEDDC /* AppDelegate.swift */,
 				7EA478701F40F273000CEDDC /* Device.swift */,
 				7E068BCA2102ACF30076EAAD /* Popover.swift */,
@@ -267,6 +269,7 @@
 				7EC8C9BC1F827977000CEDDC /* ContactsTableViewContoller.swift */,
 				7EC8C9BE1F830C5B000CEDDC /* PhoneContacts.swift */,
 				7E80BD41211D419C00B8CA0D /* WaypointsNavTableViewController.swift */,
+				7EC934F12186208A00FD4806 /* AlertViewController.swift */,
 				7EAE9416211EA30900E24CE9 /* Theme.swift */,
 				7EA478511F40B154000CEDDC /* Main.storyboard */,
 				7E068BD62102C6DB0076EAAD /* GoogleMaps.bundle */,
@@ -410,6 +413,7 @@
 				7EA478501F40B154000CEDDC /* MyMotorcycleViewController.swift in Sources */,
 				7EA4788E1F5BA136000CEDDC /* Tasks.swift in Sources */,
 				7E80BD3B211CF80600B8CA0D /* LocalisableLabel.swift in Sources */,
+				7EC934F22186208A00FD4806 /* AlertViewController.swift in Sources */,
 				7EAE9415211E9B3200E24CE9 /* Double+Extensions.swift in Sources */,
 				7EA478791F412BE9000CEDDC /* UserDefauts+Extensions.swift in Sources */,
 				7EA4784E1F40B154000CEDDC /* AppDelegate.swift in Sources */,

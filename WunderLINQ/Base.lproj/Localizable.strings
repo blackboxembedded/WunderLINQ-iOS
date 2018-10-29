@@ -38,6 +38,12 @@
 "trip2_label" = "Trip 2";
 "gear_label" = "Gear";
 
+// AlertViewController
+"alert_label_fuel" = "Route to the nearest fuel station?";
+"alert_title_fuel" = "Low Fuel";
+"alert_btn_close" = "Close";
+"alert_btn_ok" = "OK";
+
 // FaultsTableViewController
 "fault_title" = "Active Faults";
 

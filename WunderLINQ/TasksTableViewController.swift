@@ -115,8 +115,21 @@ class TasksTableViewController: UITableViewController, AVCaptureVideoDataOutputS
                 //https://github.com/guidove/Scenic-Integration/blob/master/README.md
                 self.scenic.sendToScenicForNavigation(coordinate: CLLocationCoordinate2D(latitude: 0,longitude: 0), name: "WunderLINQ")
             case 3:
+                //Sygic
+                //https://www.sygic.com/developers/professional-navigation-sdk/ios/custom-url
+                let urlString = "com.sygic.aura://"
+                
+                if let sygicURL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
+                    if (UIApplication.shared.canOpenURL(sygicURL)) {
+                        if #available(iOS 10, *) {
+                            UIApplication.shared.open(sygicURL, options: [:], completionHandler: nil)
+                        } else {
+                            UIApplication.shared.openURL(sygicURL as URL)
+                        }
+                    }
+                }
+            case 4:
                 //Waze
-                //waze://?ll=[lat],[lon]&z=10
                 if let wazeURL = URL(string: "waze://") {
                     if (UIApplication.shared.canOpenURL(wazeURL)) {
                         if #available(iOS 10, *) {
@@ -164,7 +177,6 @@ class TasksTableViewController: UITableViewController, AVCaptureVideoDataOutputS
                     case 1:
                         //Google Maps
                         //comgooglemaps-x-callback://
-                        print("google map selected")
                         let homeAddressFixed = homeAddress.replacingOccurrences(of: " ", with: "+")
                         if let googleMapsURL = URL(string: "comgooglemaps-x-callback://?daddr=\(homeAddressFixed)&directionsmode=driving&x-success=wunderlinq://?resume=true&x-source=WunderLINQ") {
                             print("google map selected url")
