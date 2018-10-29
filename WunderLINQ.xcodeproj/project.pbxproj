@@ -148,6 +148,9 @@
 		7EC8C9BC1F827977000CEDDC /* ContactsTableViewContoller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsTableViewContoller.swift; sourceTree = "<group>"; };
 		7EC8C9BE1F830C5B000CEDDC /* PhoneContacts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneContacts.swift; sourceTree = "<group>"; };
 		7EC934F12186208A00FD4806 /* AlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
+		7EC934F32187BE5100FD4806 /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/Main.strings"; sourceTree = "<group>"; };
+		7EC934F42187BE5100FD4806 /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		7EC934F52187BE5100FD4806 /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "WunderLINQ/es-419.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		7ED2013520D0D0030066BCE6 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -364,6 +367,7 @@
 				en,
 				Base,
 				de,
+				"es-419",
 			);
 			mainGroup = 7EA478411F40B154000CEDDC;
 			productRefGroup = 7EA4784B1F40B154000CEDDC /* Products */;
@@ -467,6 +471,7 @@
 			children = (
 				7EA478521F40B154000CEDDC /* Base */,
 				7E80BD3E211D2CB100B8CA0D /* de */,
+				7EC934F32187BE5100FD4806 /* es-419 */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -476,6 +481,7 @@
 			children = (
 				7EA478571F40B154000CEDDC /* Base */,
 				7E80BD3F211D2CB100B8CA0D /* de */,
+				7EC934F42187BE5100FD4806 /* es-419 */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -485,6 +491,7 @@
 			children = (
 				7EA478891F537ED5000CEDDC /* Base */,
 				7E80BD40211D2CB100B8CA0D /* de */,
+				7EC934F52187BE5100FD4806 /* es-419 */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";

@@ -1,0 +1,142 @@
+/* 
+  Localizable.strings
+  WunderLINQ
+
+  Created by Keith Conger on 8/27/17.
+  Copyright © 2017 Black Box Embedded, LLC. All rights reserved.
+*/
+
+// Product
+"product" = "WunderLINQ";
+
+// AppDelegate
+"negative_alert_title" = "Funcionalidad limitada";
+"negative_notification_body" = "Debido a que las notificaciones no fueron habilitadas, esta app no podrá enviar notificaciones de fallas.";
+"alert_message_exit_ok" = "OK";
+
+// MyMotorcycleViewController
+"main_title" = "Motocicleta";
+"disclaimer_alert_title" = "ADVERTENCIA!";
+"disclaimer_alert_body" = "No intente ingresar informacion de rutas o efectuar ajustes a WunderLINQ mientras conduce.\nNo prestar total atencion a la operación de su vehículo podría producir la muerte, heridas graves o daños a propiedad.\nUsted asume la total responsabilidad y/o riesgo por la operación de este dispositivo.";
+"disclaimer_ok" = "De Acuerdo";
+"disclaimer_quit" = "Salir";
+"bt_powered_off" = "Bluetooth de este dispositivo se encuentra apagado.";
+"bt_not_supported" = "Este dispositivo no soporta Bluetooth Baja Energía.";
+"bt_not_authorized" = "Esta app no está autorizada a utilizar Bluetooth Baja Energía.";
+"bt_resetting" = "Bluetooth Baja Energía esta reiniciando; actualización de estado pendiente.";
+"bt_unknown" = "Bluetooth Baja Energía en estado desconocido.";
+"bt_ready" = "Bluetooth Baja Energía encendido y listo para comunicación.";
+"bt_alert_title" = "Estado del Bluetooth";
+"trip_logs_label" = "Registro de Viajes";
+"waypoints_label" = "Waypoints";
+"rdc_front_label" = "Neumático Del.";
+"rdc_rear_label" = "Neumático Tras.";
+"engine_temp_label" = "Temp. Motor";
+"ambient_temp_label" = "Temp. Ambiental";
+"odometer_label" = "Odómetro";
+"trip1_label" = "Parcial 1";
+"trip2_label" = "Parcial 2";
+"gear_label" = "Marcha";
+
+// FaultsTableViewController
+"fault_title" = "Fallas activas";
+
+// TripsTableViewController
+"trips_title" = "Viajes registrados";
+
+// TripViewController
+"trip_view_title" = "Viaje";
+"trip_view_waypoint_start_label" = "Inicio";
+"trip_view_waypoint_end_label" = "Fin";
+"trip_view_tv_distance" = "Distancia";
+"trip_view_tv_duration" = "Duración";
+"trip_view_tv_speed" = "Veloc (Prom/Máx)";
+"trip_view_tv_shifts" = "Cambios de Marcha";
+"trip_view_tv_brakes" = "Frenos (Del/Tras)";
+"trip_view_tv_ambient" = "Temp ambiente(Min/Prom/Máx)";
+"trip_view_tv_engine" = "Temp Motor(Min/Prom/Máx)";
+
+// WaypointsTableViewController
+"waypoint_title" = "Waypoints guardados";
+
+// WaypointViewController
+"waypoint_view_title" = "Waypoint guardado";
+"waypoint_view_tv_date_label" = "Fecha Grabación";
+"waypoint_view_tv_lat_label" = "Latitud";
+"waypoint_view_tv_lon_label" = "Longitud";
+"waypoint_view_tv_label_label" = "Etiqueta";
+"waypoint_view_bt_open" = "Abrir en app Mapas";
+"waypoint_view_bt_share" = "Compartir";
+"waypoint_view_bt_delete" = "Eliminar";
+
+// CompassViewController
+"compass_title" = "Compás";
+
+// MusicViewController
+"music_title" = "Música";
+
+// TasksTableViewController
+"quicktask_title" = "Tareas Rápidas";
+"task_title_navigation" = "Navigación;
+"task_title_gohome" = "Ir a Casa";
+"toast_address_not_set" = "Domicilio de 'Ir a Casa' no informada en Configuración";
+"task_title_favnumber" = "Núm. Teléfono favorito";
+"toast_phone_not_set" = "Núm. de Teléfono favorito no informado en Configuración";
+"task_title_callcontact" = "Llamar a Contactos";
+"task_title_photo" = "Tomar fotografías";
+"task_title_selfie" = "Tomar Selfies";
+"task_title_start_record" = "Iniciar grabación de video";
+"task_title_stop_record" = "Detener grabación de video";
+"task_title_start_trip" = "Iniciar registro de bitácora";
+"task_title_stop_trip" = "Detener registro de bitácora";
+"task_title_waypoint" = "Guardar Waypoint";
+"toast_waypoint_saved" = "Waypoint guardado";
+"task_title_waypoint_nav" = "Navigar hacia Waypoint";
+"toast_photo_taken" = "Fotografía tomada!";
+
+// ContactsTableViewController
+"contactlist_title" = "Contactos";
+
+// WaypointsNavTableViewController
+"waypoints_nav_title" = "Waypoints";
+
+// Fault Description
+"fault_UARTERR" = "Error UART";
+"fault_UARTCTF" = "UART Comm Timeout";
+"fault_ABSSLF" = "Auto diagnóstico del ABS incompleto";
+"fault_ABSERR" = "Error del ABS";
+"fault_ABSDAC" = "ABS deactivated";
+"fault_ASCSLF" = "Auto diagnóstico del ABS incompleto";
+"fault_ASCINT" = "Intervención de ASC";
+"fault_ASCERR" = "Error del ASC";
+"fault_ASCDAC" = "ASC desactivado";
+"fault_FUELF" = "Bajo nivel de combustible";
+"fault_TIREFWF" = "Advertencia de Presión de neumático delantero";
+"fault_TIRERWF" = "Advertencia de Presión de neumático trasero";
+"fault_TIREFCF" = "Presión crítica en neumático delantero";
+"fault_TIRERCF" = "Presión crítica en neumático trasero";
+"fault_LAMPAFL1" = "Faro auxiliar frontal 1";
+"fault_LAMPAFL2" = "Faro auxiliar frontal 2";
+"fault_LAMPDAY" = "Luz de circulación diurna";
+"fault_LAMPFLI" = "Indicador delantero izq.";
+"fault_LAMPFRI" = "Indicador delantero der.";
+"fault_LAMPRLI" = "Indicador trasero izq.";
+"fault_LAMPRRI" = "Indicador trasero der.";
+"fault_LAMPFPK1" = "Luz de estac. del. 1";
+"fault_LAMPFPK2" = "Luz de estac. del. 2";
+"fault_LAMPLOW" = "Luz baja";
+"fault_LAMPHI" = "Luz alta";
+"fault_LAMPREAR" = "Luz trasera";
+"fault_LAMPBRK" = "Luz de freno";
+"fault_LAMPLIC" = "Luz de Placa";
+"fault_LAMPRFOG" = "Antiniebla Tras.";
+"fault_LAMPADDD" = "Luz alta adicional";
+"fault_LAMPADDB" = "Luz de freno adicional";
+"fault_LAMPFL1" = "Lámpara del. 1";
+"fault_LAMPFL2" = "Lámpara del. 2";
+"fault_ICEWARN" = "Advertencia de hielo";
+"fault_GENWARNFSYLW" = "Luz de avertencia general destella en amarillo";
+"fault_GENWARNSHYLW" = "Luz de avertencia general encendida en amarillo";
+"fault_GENWARNFSRED" = "Luz de avertencia general destella en rojo";
+"fault_GENWARNSHRED" = "Luz de avertencia general encendida en rojo";
+"fault_OILLOW" = "Nivel de aceite muy bajo";
