@@ -78,6 +78,7 @@ class CompassViewController: UIViewController {
     }
     
     let locationManager: CLLocationManager = {
+        //$0.headingOrientation = CLDeviceOrientation.landscapeRight;
         $0.requestWhenInUseAuthorization()
         $0.desiredAccuracy = kCLLocationAccuracyBest
         $0.startUpdatingLocation()
@@ -174,10 +175,17 @@ class CompassViewController: UIViewController {
                 
                 return CGFloat(self.orientationAdjustment().degreesToRadians + heading)
             }
-            let angle = computeNewAngle(with: CGFloat(newHeading))
-            let degrees = abs(Int(angle.radiansToDegrees))
+            let angle = computeNewAngle(with: CGFloat(newHeading.trueHeading))
             
-            //print("degrees: \(degrees) heading: \(CGFloat(newHeading)) angle(degrees): \(angle.radiansToDegrees) angle(radians): \(angle) ")
+            var fixedHeading = abs(angle.radiansToDegrees)
+            if fixedHeading > 360 {
+                fixedHeading = fixedHeading - 360
+            } else if fixedHeading < 0 {
+                fixedHeading = fixedHeading + 360
+            }
+            
+            let degrees = abs(Int(fixedHeading))
+            print("degrees: \(degrees) fixedHeading: \(fixedHeading)) newHeading: \(newHeading) angle(degrees): \(angle.radiansToDegrees) ")
                         
             var cardinal = "-";
             var bearing = "-";

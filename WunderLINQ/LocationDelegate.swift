@@ -11,7 +11,7 @@ import CoreLocation
 
 class LocationDelegate: NSObject, CLLocationManagerDelegate {
     var locationCallback: ((CLLocation) -> ())? = nil
-    var headingCallback: ((CLLocationDirection) -> ())? = nil
+    var headingCallback: ((CLHeading) -> ())? = nil
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let currentLocation = locations.last else { return }
@@ -19,7 +19,7 @@ class LocationDelegate: NSObject, CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
-        headingCallback?(newHeading.trueHeading)
+        headingCallback?(newHeading)
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {

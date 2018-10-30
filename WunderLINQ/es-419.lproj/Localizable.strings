@@ -1,11 +1,3 @@
-/* 
-  Localizable.strings
-  WunderLINQ
-
-  Created by Keith Conger on 8/27/17.
-  Copyright © 2017 Black Box Embedded, LLC. All rights reserved.
-*/
-
 // Product
 "product" = "WunderLINQ";
 
@@ -77,7 +69,7 @@
 
 // TasksTableViewController
 "quicktask_title" = "Tareas Rápidas";
-"task_title_navigation" = "Navigación;
+"task_title_navigation" = "Navigación";
 "task_title_gohome" = "Ir a Casa";
 "toast_address_not_set" = "Domicilio de 'Ir a Casa' no informada en Configuración";
 "task_title_favnumber" = "Núm. Teléfono favorito";
