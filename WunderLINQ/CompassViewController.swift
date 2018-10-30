@@ -185,7 +185,7 @@ class CompassViewController: UIViewController {
             }
             
             let degrees = abs(Int(fixedHeading))
-            print("degrees: \(degrees) fixedHeading: \(fixedHeading)) newHeading: \(newHeading) angle(degrees): \(angle.radiansToDegrees) ")
+            //print("degrees: \(degrees) fixedHeading: \(fixedHeading)) newHeading: \(newHeading) angle(degrees): \(angle.radiansToDegrees) ")
                         
             var cardinal = "-";
             var bearing = "-";

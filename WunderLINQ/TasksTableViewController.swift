@@ -526,15 +526,6 @@ class TasksTableViewController: UITableViewController, AVCaptureVideoDataOutputS
         
         loadTasks();
         
-        //tableView.remembersLastFocusedIndexPath = true
-        
-        // Uncomment the following line to preserve selection between presentations
-        //self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        
-        
         let databaseURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
             .appendingPathComponent("waypoints.sqlite")
         //opening the database
@@ -548,11 +539,10 @@ class TasksTableViewController: UITableViewController, AVCaptureVideoDataOutputS
             print("error creating table: \(errmsg)")
         }
         
-        /*
-        if setupSession() {
-            startSession()
-        }
-        */
+        //tableView.remembersLastFocusedIndexPath = true
+        
+        // Uncomment the following line to preserve selection between presentations
+        //self.clearsSelectionOnViewWillAppear = false
     }
 
     override func didReceiveMemoryWarning() {
@@ -586,6 +576,7 @@ class TasksTableViewController: UITableViewController, AVCaptureVideoDataOutputS
         } else {
             cell.imageView?.tintColor = UIColor.black
         }
+        
         return cell
     }
     
