@@ -19,7 +19,7 @@
 "bearing_c" = "Cardinal";
 "bearing_both" = "Ambos";
 "pref_orientation_title" = "Fijar Orientación";
-"pref_orientation_footer" = "Requiere reiniciar la app para surtir efecto";
+"pref_orientation_footer" = "Requiere reiniciar la app para surtir efecto"
 "pref_orientation_name" = "Orientación";
 "orientation_a" = "Auto";
 "orientation_l" = "Horizontal";

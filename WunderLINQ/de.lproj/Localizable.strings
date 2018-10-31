@@ -38,6 +38,12 @@
 "trip2_label" = "KM-Zähler 2";
 "gear_label" = "Gang";
 
+// AlertViewController
+"alert_label_fuel" = "Route to the nearest fuel station?"; //Needs translation
+"alert_title_fuel" = "Low Fuel"; //Needs translation
+"alert_btn_close" = "Close"; //Needs translation
+"alert_btn_ok" = "OK"; //Needs translation
+
 // FaultsTableViewController
 "fault_title" = "Aktive Fehler";
 
@@ -79,11 +85,14 @@
 "quicktask_title" = "Schnellzugriff";
 "task_title_navigation" = "Navigation";
 "task_title_gohome" = "Nach Hause";
+"home" = "Home"; //Needs translation
+"geocode_error" = "Problem looking up geocode"; //Needs translation
 "toast_address_not_set" = "Keine Nach Hause Adresse gesetzt in den Einstellungen";
 "task_title_favnumber" = "Bevorzugte Nummer anrufen";
 "toast_phone_not_set" = "Keine Bevorzugte Nummer gesetzt in den Einstellungen";
 "task_title_callcontact" = "Kontakt anrufen";
 "task_title_photo" = "Foto aufnehmen";
+"task_title_selfie" = "Take Selfie"; //Needs translation
 "task_title_start_record" = "Video starten";
 "task_title_stop_record" = "Video beenden";
 "task_title_start_trip" = "Fahrtaufzeichnung starten";
