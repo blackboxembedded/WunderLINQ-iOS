@@ -100,7 +100,7 @@ class TasksTableViewController: UITableViewController, AVCaptureVideoDataOutputS
                 map.openInMaps(launchOptions: nil)
             case 1:
                 //Google Maps
-                //googlemaps://
+                //https://developers.google.com/maps/documentation/urls/ios-urlscheme
                 if let googleMapsURL = URL(string: "comgooglemaps-x-callback://?x-success=wunderlinq://&x-source=WunderLINQ") {
                     if (UIApplication.shared.canOpenURL(googleMapsURL)) {
                         if #available(iOS 10, *) {
@@ -176,7 +176,7 @@ class TasksTableViewController: UITableViewController, AVCaptureVideoDataOutputS
                         })
                     case 1:
                         //Google Maps
-                        //comgooglemaps-x-callback://
+                        //https://developers.google.com/maps/documentation/urls/ios-urlscheme
                         let homeAddressFixed = homeAddress.replacingOccurrences(of: " ", with: "+")
                         if let googleMapsURL = URL(string: "comgooglemaps-x-callback://?daddr=\(homeAddressFixed)&directionsmode=driving&x-success=wunderlinq://?resume=true&x-source=WunderLINQ") {
                             print("google map selected url")

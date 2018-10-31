@@ -21,6 +21,8 @@ class WaypointViewController: UIViewController, UITextFieldDelegate {
     var longitude: String? = ""
     var label: String?
     
+    let scenic = ScenicAPI()
+    
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var longLabel: UILabel!
     @IBOutlet weak var latLabel: UILabel!
@@ -60,17 +62,86 @@ class WaypointViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func openPressed(_ sender: Any) {
         if let lat = latitude?.toDouble(), let lon = longitude?.toDouble(){
-            let regionDistance:CLLocationDistance = 10000
-            let coordinates = CLLocationCoordinate2DMake(lat, lon)
-            let regionSpan = MKCoordinateRegionMakeWithDistance(coordinates, regionDistance, regionDistance)
-            let options = [
-                MKLaunchOptionsMapCenterKey: NSValue(mkCoordinate: regionSpan.center),
-                MKLaunchOptionsMapSpanKey: NSValue(mkCoordinateSpan: regionSpan.span)
-            ]
-            let placemark = MKPlacemark(coordinate: coordinates, addressDictionary: nil)
-            let mapItem = MKMapItem(placemark: placemark)
-            mapItem.name = label
-            mapItem.openInMaps(launchOptions: options)
+            let navApp = UserDefaults.standard.integer(forKey: "nav_app_preference")
+            print("NavApp: \(navApp)")
+            switch (navApp){
+            case 0:
+                //Apple Maps
+                let regionDistance:CLLocationDistance = 10000
+                let coordinates = CLLocationCoordinate2DMake(lat, lon)
+                let regionSpan = MKCoordinateRegionMakeWithDistance(coordinates, regionDistance, regionDistance)
+                let options = [
+                    MKLaunchOptionsMapCenterKey: NSValue(mkCoordinate: regionSpan.center),
+                    MKLaunchOptionsMapSpanKey: NSValue(mkCoordinateSpan: regionSpan.span)
+                ]
+                let placemark = MKPlacemark(coordinate: coordinates, addressDictionary: nil)
+                let mapItem = MKMapItem(placemark: placemark)
+                mapItem.name = label
+                mapItem.openInMaps(launchOptions: options)
+            case 1:
+                //Google Maps
+                //https://developers.google.com/maps/documentation/urls/ios-urlscheme
+                let urlString = "comgooglemaps-x-callback://?q=\(lat),\(lon)&x-success=wunderlinq://?resume=true&x-source=WunderLINQ"
+                if let googleMapsURL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
+                    print("google map selected url")
+                    if (UIApplication.shared.canOpenURL(googleMapsURL)) {
+                        if #available(iOS 10, *) {
+                            UIApplication.shared.open(googleMapsURL, options: [:], completionHandler: nil)
+                        } else {
+                            UIApplication.shared.openURL(googleMapsURL as URL)
+                        }
+                    }
+                }
+            case 2:
+                //Scenic
+                //https://github.com/guidove/Scenic-Integration/blob/master/README.md
+                let destLatitude: CLLocationDegrees = lat
+                let destLongitude: CLLocationDegrees = lon
+                
+                self.scenic.sendToScenicForNavigation(coordinate: CLLocationCoordinate2D(latitude: destLatitude,longitude: destLongitude), name: label ?? "")
+            case 3:
+                //Sygic
+                //https://www.sygic.com/developers/professional-navigation-sdk/ios/custom-url
+                let destLatitude: CLLocationDegrees = lat
+                let destLongitude: CLLocationDegrees = lon
+                
+                let urlString = "com.sygic.aura://coordinate|\(destLongitude)|\(destLatitude)|show"
+                
+                if let sygicURL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
+                    if (UIApplication.shared.canOpenURL(sygicURL)) {
+                        if #available(iOS 10, *) {
+                            UIApplication.shared.open(sygicURL, options: [:], completionHandler: nil)
+                        } else {
+                            UIApplication.shared.openURL(sygicURL as URL)
+                        }
+                    }
+                }
+            case 4:
+                //Waze
+                // https://developers.google.com/waze/deeplinks/
+                if let wazeURL = URL(string: "https://waze.com/ul?ll=\(lat),\(lon)&z=10") {
+                    if (UIApplication.shared.canOpenURL(wazeURL)) {
+                        if #available(iOS 10, *) {
+                            UIApplication.shared.open(wazeURL, options: [:], completionHandler: nil)
+                        } else {
+                            UIApplication.shared.openURL(wazeURL as URL)
+                        }
+                    }
+                }
+            default:
+                //Apple Maps
+                let regionDistance:CLLocationDistance = 10000
+                let coordinates = CLLocationCoordinate2DMake(lat, lon)
+                let regionSpan = MKCoordinateRegionMakeWithDistance(coordinates, regionDistance, regionDistance)
+                let options = [
+                    MKLaunchOptionsMapCenterKey: NSValue(mkCoordinate: regionSpan.center),
+                    MKLaunchOptionsMapSpanKey: NSValue(mkCoordinateSpan: regionSpan.span)
+                ]
+                let placemark = MKPlacemark(coordinate: coordinates, addressDictionary: nil)
+                let mapItem = MKMapItem(placemark: placemark)
+                mapItem.name = label
+                mapItem.openInMaps(launchOptions: options)
+            }
         }
     }
     
