@@ -185,7 +185,10 @@ class WaypointsNavTableViewController: UITableViewController {
      
         let cell = tableView.dequeueReusableCell(withIdentifier: "WaypointsNavTableViewCell", for: indexPath)
         
-        let wpt = waypoints[indexPath.row].date
+        var wpt = waypoints[indexPath.row].date
+        if !(waypoints[indexPath.row].label! == ""){
+            wpt = waypoints[indexPath.row].label
+        }
         
         cell.textLabel?.text = wpt
         // Configure the cell...

@@ -85,7 +85,10 @@ class WaypointsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "WaypointsTableViewCell", for: indexPath)
 
-        let wpt = waypoints[indexPath.row].date
+        var wpt = waypoints[indexPath.row].date
+        if !(waypoints[indexPath.row].label! == ""){
+            wpt = waypoints[indexPath.row].label
+        }
         
         cell.textLabel?.text = wpt
         // Configure the cell...

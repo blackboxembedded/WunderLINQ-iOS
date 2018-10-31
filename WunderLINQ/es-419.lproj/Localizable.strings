@@ -17,7 +17,7 @@
 // MyMotorcycleViewController
 "main_title" = "Motocicleta";
 "disclaimer_alert_title" = "ADVERTENCIA!";
-"disclaimer_alert_body" = "No intente ingresar informacion de rutas o efectuar ajustes a WunderLINQ mientras conduce.\nNo prestar total atencion a la operación de su vehículo podría producir la muerte, heridas graves o daños a propiedad.\nUsted asume la total responsabilidad y/o riesgo por la operación de este dispositivo.";
+"disclaimer_alert_body" = "No intente ingresar información de ruta ni ajustar el WunderLINQ mientras conduce.\nSi no presta toda su atención a la operación de su vehículo, podría provocar la muerte, lesiones graves o daños materiales.\nUsted asume la total responsabilidad y/o riesgo por la operación de este dispositivo.";
 "disclaimer_ok" = "De Acuerdo";
 "disclaimer_quit" = "Salir";
 "bt_powered_off" = "Bluetooth de este dispositivo se encuentra apagado.";
@@ -37,6 +37,12 @@
 "trip1_label" = "Parcial 1";
 "trip2_label" = "Parcial 2";
 "gear_label" = "Marcha";
+
+// AlertViewController
+"alert_label_fuel" = "¿Desea la ruta a la gasolinera más cercana?";
+"alert_title_fuel" = "Poco combustible";
+"alert_btn_close" = "Cerrar";
+"alert_btn_ok" = "OK";
 
 // FaultsTableViewController
 "fault_title" = "Fallas activas";
@@ -65,7 +71,7 @@
 "waypoint_view_tv_lat_label" = "Latitud";
 "waypoint_view_tv_lon_label" = "Longitud";
 "waypoint_view_tv_label_label" = "Etiqueta";
-"waypoint_view_bt_open" = "Abrir en app Mapas";
+"waypoint_view_bt_open" = "Abrir en App de mapas";
 "waypoint_view_bt_share" = "Compartir";
 "waypoint_view_bt_delete" = "Eliminar";
 
@@ -77,18 +83,20 @@
 
 // TasksTableViewController
 "quicktask_title" = "Tareas Rápidas";
-"task_title_navigation" = "Navigación";
+"task_title_navigation" = "Navegación";
 "task_title_gohome" = "Ir a Casa";
-"toast_address_not_set" = "Domicilio de 'Ir a Casa' no informada en Configuración";
-"task_title_favnumber" = "Núm. Teléfono favorito";
+"home" = "Casa";
+"geocode_error" = "Problema al buscar geocodificación";
+"toast_address_not_set" = "Domicilio de 'Ir a Casa' no informado en Configuración";
+"task_title_favnumber" = "Llamar núm. favorito";
 "toast_phone_not_set" = "Núm. de Teléfono favorito no informado en Configuración";
-"task_title_callcontact" = "Llamar a Contactos";
-"task_title_photo" = "Tomar fotografías";
-"task_title_selfie" = "Tomar Selfies";
-"task_title_start_record" = "Iniciar grabación de video";
-"task_title_stop_record" = "Detener grabación de video";
-"task_title_start_trip" = "Iniciar registro de bitácora";
-"task_title_stop_trip" = "Detener registro de bitácora";
+"task_title_callcontact" = "Llamar a Contacto";
+"task_title_photo" = "Tomar fotografía";
+"task_title_selfie" = "Tomar selfie";
+"task_title_start_record" = "Iniciar grabación";
+"task_title_stop_record" = "Detener grabación";
+"task_title_start_trip" = "Iniciar bitácora";
+"task_title_stop_trip" = "Detener bitácora";
 "task_title_waypoint" = "Guardar Waypoint";
 "toast_waypoint_saved" = "Waypoint guardado";
 "task_title_waypoint_nav" = "Navigar hacia Waypoint";
@@ -103,14 +111,14 @@
 // Fault Description
 "fault_UARTERR" = "Error UART";
 "fault_UARTCTF" = "UART Comm Timeout";
-"fault_ABSSLF" = "Auto diagnóstico del ABS incompleto";
+"fault_ABSSLF" = "Autodiagnóstico del ABS no completado";
 "fault_ABSERR" = "Error del ABS";
-"fault_ABSDAC" = "ABS deactivated";
-"fault_ASCSLF" = "Auto diagnóstico del ABS incompleto";
+"fault_ABSDAC" = "ABS desactivado";
+"fault_ASCSLF" = "Auto diagnóstico del ASC incompleto";
 "fault_ASCINT" = "Intervención de ASC";
 "fault_ASCERR" = "Error del ASC";
 "fault_ASCDAC" = "ASC desactivado";
-"fault_FUELF" = "Bajo nivel de combustible";
+"fault_FUELF" = "Poco combustible";
 "fault_TIREFWF" = "Advertencia de Presión de neumático delantero";
 "fault_TIRERWF" = "Advertencia de Presión de neumático trasero";
 "fault_TIREFCF" = "Presión crítica en neumático delantero";
@@ -130,13 +138,13 @@
 "fault_LAMPBRK" = "Luz de freno";
 "fault_LAMPLIC" = "Luz de Placa";
 "fault_LAMPRFOG" = "Antiniebla Tras.";
-"fault_LAMPADDD" = "Luz alta adicional";
+"fault_LAMPADDD" = "Luz alta sumergida adicional";
 "fault_LAMPADDB" = "Luz de freno adicional";
 "fault_LAMPFL1" = "Lámpara del. 1";
 "fault_LAMPFL2" = "Lámpara del. 2";
 "fault_ICEWARN" = "Advertencia de hielo";
-"fault_GENWARNFSYLW" = "Luz de avertencia general destella en amarillo";
-"fault_GENWARNSHYLW" = "Luz de avertencia general encendida en amarillo";
-"fault_GENWARNFSRED" = "Luz de avertencia general destella en rojo";
-"fault_GENWARNSHRED" = "Luz de avertencia general encendida en rojo";
+"fault_GENWARNFSYLW" = "Luz de advertencia general destella en amarillo";
+"fault_GENWARNSHYLW" = "Luz de advertencia general encendida en amarillo";
+"fault_GENWARNFSRED" = "Luz de advertencia general destella en rojo";
+"fault_GENWARNSHRED" = "Luz de advertencia general encendida en rojo";
 "fault_OILLOW" = "Nivel de aceite muy bajo";
