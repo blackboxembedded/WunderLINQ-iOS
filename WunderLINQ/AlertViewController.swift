@@ -122,10 +122,7 @@ class AlertViewController: UIViewController {
         if UserDefaults.standard.bool(forKey: "display_brightness_preference") {
             UIScreen.main.brightness = CGFloat(1.0)
         } else {
-            let systemBrightness = CGFloat(UserDefaults.standard.float(forKey: "systemBrightness"))
-            if systemBrightness != nil {
-                UIScreen.main.brightness = systemBrightness
-            }
+            UIScreen.main.brightness = CGFloat(UserDefaults.standard.float(forKey: "systemBrightness"))
         }
         
         switch (ID){

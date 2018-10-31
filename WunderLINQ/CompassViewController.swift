@@ -78,7 +78,6 @@ class CompassViewController: UIViewController {
     }
     
     let locationManager: CLLocationManager = {
-        //$0.headingOrientation = CLDeviceOrientation.landscapeRight;
         $0.requestWhenInUseAuthorization()
         $0.desiredAccuracy = kCLLocationAccuracyBest
         $0.startUpdatingLocation()
@@ -97,10 +96,8 @@ class CompassViewController: UIViewController {
         let adjAngle: CGFloat = {
             switch UIApplication.shared.statusBarOrientation {
             case .landscapeLeft:
-                print("landscapeLeft")
                 return 90
             case .landscapeRight:
-                print("landscapeRight")
                 return -90
             case .portrait, .unknown: return 0
             case .portraitUpsideDown: return isFaceDown ? 180 : -180
@@ -150,10 +147,7 @@ class CompassViewController: UIViewController {
         if UserDefaults.standard.bool(forKey: "display_brightness_preference") {
             UIScreen.main.brightness = CGFloat(1.0)
         } else {
-            let systemBrightness = CGFloat(UserDefaults.standard.float(forKey: "systemBrightness"))
-            if systemBrightness != nil {
-                UIScreen.main.brightness = systemBrightness
-            }
+            UIScreen.main.brightness = CGFloat(UserDefaults.standard.float(forKey: "systemBrightness"))
         }
         
         locationManager.delegate = locationDelegate

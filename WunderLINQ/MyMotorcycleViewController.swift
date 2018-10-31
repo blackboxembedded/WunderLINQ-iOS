@@ -63,14 +63,17 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
         .type(.auto),
         .blackOverlayColor(UIColor(white: 0.0, alpha: 0.6))
     ]
+    
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        if UserDefaults.standard.bool(forKey: "nightmode_preference") {
+            return .lightContent
+        } else {
+            return .default
+        }
+    }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if UserDefaults.standard.bool(forKey: "nightmode_preference") {
-            UIApplication.shared.statusBarStyle = .lightContent
-        } else {
-            UIApplication.shared.statusBarStyle = .default
-        }
     }
     
     override func viewDidLoad() {
@@ -131,10 +134,7 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
         if UserDefaults.standard.bool(forKey: "display_brightness_preference") {
             UIScreen.main.brightness = CGFloat(1.0)
         } else {
-            let systemBrightness = CGFloat(UserDefaults.standard.float(forKey: "systemBrightness"))
-            if systemBrightness != nil {
-                UIScreen.main.brightness = systemBrightness
-            }
+            UIScreen.main.brightness = CGFloat(UserDefaults.standard.float(forKey: "systemBrightness"))
         }
         
         
@@ -273,10 +273,7 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
             if UserDefaults.standard.bool(forKey: "display_brightness_preference") {
                 UIScreen.main.brightness = CGFloat(1.0)
             } else {
-                let systemBrightness = CGFloat(UserDefaults.standard.float(forKey: "systemBrightness"))
-                if systemBrightness != nil {
-                    UIScreen.main.brightness = systemBrightness
-                }
+                UIScreen.main.brightness = CGFloat(UserDefaults.standard.float(forKey: "systemBrightness"))
             }
         }
     }

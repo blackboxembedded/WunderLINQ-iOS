@@ -200,16 +200,7 @@ class ContactsTableViewController: UITableViewController {
     }
     
     func call_contact(contactID:Int){
-        var validPhoneNumber = ""
-        phoneContacts[contactID].number.characters.forEach {(character) in
-            switch character {
-            case "0"..."9":
-                validPhoneNumber.characters.append(character)
-            default:
-                break
-            }
-        }
-        if let phoneCallURL = URL(string: "telprompt:\(validPhoneNumber)") {
+        if let phoneCallURL = URL(string: "telprompt:\(phoneContacts[contactID].number)") {
             if (UIApplication.shared.canOpenURL(phoneCallURL)) {
                 if #available(iOS 10, *) {
                     UIApplication.shared.open(phoneCallURL, options: [:], completionHandler: nil)
@@ -251,10 +242,7 @@ class ContactsTableViewController: UITableViewController {
         if UserDefaults.standard.bool(forKey: "display_brightness_preference") {
             UIScreen.main.brightness = CGFloat(1.0)
         } else {
-            let systemBrightness = CGFloat(UserDefaults.standard.float(forKey: "systemBrightness"))
-            if systemBrightness != nil {
-                UIScreen.main.brightness = systemBrightness
-            }
+            UIScreen.main.brightness = CGFloat(UserDefaults.standard.float(forKey: "systemBrightness"))
         }
         
         self.getContacts()

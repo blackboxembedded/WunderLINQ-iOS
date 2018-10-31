@@ -288,16 +288,7 @@ class TasksTableViewController: UITableViewController, AVCaptureVideoDataOutputS
             //Favorite Number
             if let phoneNumber = UserDefaults.standard.string(forKey: "callhome_number_preference"){
                 if phoneNumber != "" {
-                    var validPhoneNumber = ""
-                    phoneNumber.characters.forEach {(character) in
-                        switch character {
-                        case "0"..."9":
-                            validPhoneNumber.characters.append(character)
-                        default:
-                            break
-                        }
-                    }
-                    if let phoneCallURL = URL(string: "telprompt:\(validPhoneNumber)") {
+                    if let phoneCallURL = URL(string: "telprompt:\(phoneNumber)") {
                         if (UIApplication.shared.canOpenURL(phoneCallURL)) {
                             if #available(iOS 10, *) {
                                 UIApplication.shared.open(phoneCallURL, options: [:], completionHandler: nil)
@@ -535,10 +526,7 @@ class TasksTableViewController: UITableViewController, AVCaptureVideoDataOutputS
         if UserDefaults.standard.bool(forKey: "display_brightness_preference") {
             UIScreen.main.brightness = CGFloat(1.0)
         } else {
-            let systemBrightness = CGFloat(UserDefaults.standard.float(forKey: "systemBrightness"))
-            if systemBrightness != nil {
-                UIScreen.main.brightness = systemBrightness
-            }
+            UIScreen.main.brightness = CGFloat(UserDefaults.standard.float(forKey: "systemBrightness"))
         }
         
         loadTasks();
