@@ -14,7 +14,7 @@ class ContactsTableViewController: UITableViewController {
     //MARK: Properties
     
     var phoneContacts = [PhoneContacts]()
-    
+    var firstRun = true
     var itemRow = 0
     
     //MARK: Private Methods
@@ -112,6 +112,7 @@ class ContactsTableViewController: UITableViewController {
         call_contact(contactID: itemRow)
     }
     @objc func upRow() {
+        firstRun = false
         if (itemRow == 0){
             let nextRow = phoneContacts.count - 1
             if UserDefaults.standard.bool(forKey: "nightmode_preference") {
@@ -142,8 +143,8 @@ class ContactsTableViewController: UITableViewController {
         self.tableView.reloadData()
     }
     @objc func downRow() {
-        if (itemRow == (phoneContacts.count - 1)){
-            let nextRow = 0
+        if firstRun{
+            firstRun = false
             if UserDefaults.standard.bool(forKey: "nightmode_preference") {
                 self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.contentView.backgroundColor = UIColor.black
                 self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.textLabel?.backgroundColor = UIColor.black
@@ -151,23 +152,37 @@ class ContactsTableViewController: UITableViewController {
                 self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.contentView.backgroundColor = UIColor.white
                 self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.textLabel?.backgroundColor = UIColor.white
             }
-            self.tableView.cellForRow(at: IndexPath(row: nextRow, section: 0) as IndexPath)?.contentView.backgroundColor = UIColor.blue
-            self.tableView.cellForRow(at: IndexPath(row: nextRow, section: 0) as IndexPath)?.textLabel?.backgroundColor = UIColor.blue
-            self.tableView.scrollToRow(at: IndexPath(row: nextRow, section: 0), at: .middle, animated: true)
-            itemRow = nextRow
-        } else if (itemRow < phoneContacts.count ){
-            let nextRow = itemRow + 1
-            if UserDefaults.standard.bool(forKey: "nightmode_preference") {
-                self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.contentView.backgroundColor = UIColor.black
-                self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.textLabel?.backgroundColor = UIColor.black
-            } else {
-                self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.contentView.backgroundColor = UIColor.white
-                self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.textLabel?.backgroundColor = UIColor.white
+            self.tableView.cellForRow(at: IndexPath(row: 0, section: 0) as IndexPath)?.contentView.backgroundColor = UIColor.blue
+            self.tableView.cellForRow(at: IndexPath(row: 0, section: 0) as IndexPath)?.textLabel?.backgroundColor = UIColor.blue
+            self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .middle, animated: true)
+        } else {
+            if (itemRow == (phoneContacts.count - 1)){
+                let nextRow = 0
+                if UserDefaults.standard.bool(forKey: "nightmode_preference") {
+                    self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.contentView.backgroundColor = UIColor.black
+                    self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.textLabel?.backgroundColor = UIColor.black
+                } else {
+                    self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.contentView.backgroundColor = UIColor.white
+                    self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.textLabel?.backgroundColor = UIColor.white
+                }
+                self.tableView.cellForRow(at: IndexPath(row: nextRow, section: 0) as IndexPath)?.contentView.backgroundColor = UIColor.blue
+                self.tableView.cellForRow(at: IndexPath(row: nextRow, section: 0) as IndexPath)?.textLabel?.backgroundColor = UIColor.blue
+                self.tableView.scrollToRow(at: IndexPath(row: nextRow, section: 0), at: .middle, animated: true)
+                itemRow = nextRow
+            } else if (itemRow < phoneContacts.count ){
+                let nextRow = itemRow + 1
+                if UserDefaults.standard.bool(forKey: "nightmode_preference") {
+                    self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.contentView.backgroundColor = UIColor.black
+                    self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.textLabel?.backgroundColor = UIColor.black
+                } else {
+                    self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.contentView.backgroundColor = UIColor.white
+                    self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.textLabel?.backgroundColor = UIColor.white
+                }
+                self.tableView.cellForRow(at: IndexPath(row: nextRow, section: 0) as IndexPath)?.contentView.backgroundColor = UIColor.blue
+                self.tableView.cellForRow(at: IndexPath(row: nextRow, section: 0) as IndexPath)?.textLabel?.backgroundColor = UIColor.blue
+                self.tableView.scrollToRow(at: IndexPath(row: nextRow, section: 0), at: .middle, animated: true)
+                itemRow = nextRow
             }
-            self.tableView.cellForRow(at: IndexPath(row: nextRow, section: 0) as IndexPath)?.contentView.backgroundColor = UIColor.blue
-            self.tableView.cellForRow(at: IndexPath(row: nextRow, section: 0) as IndexPath)?.textLabel?.backgroundColor = UIColor.blue
-            self.tableView.scrollToRow(at: IndexPath(row: nextRow, section: 0), at: .middle, animated: true)
-            itemRow = nextRow
         }
         self.tableView.reloadData()
     }

@@ -17,6 +17,8 @@ class WaypointsNavTableViewController: UITableViewController {
     var waypoints = [Waypoint]()
     var itemRow = 0
     
+    var firstRun = true;
+    
     let scenic = ScenicAPI()
     
     override var keyCommands: [UIKeyCommand]? {
@@ -35,6 +37,7 @@ class WaypointsNavTableViewController: UITableViewController {
     }
     
     @objc func upRow() {
+        firstRun = false
         if (itemRow == 0){
             let nextRow = waypoints.count - 1
             if UserDefaults.standard.bool(forKey: "nightmode_preference") {
@@ -65,8 +68,8 @@ class WaypointsNavTableViewController: UITableViewController {
         self.tableView.reloadData()
     }
     @objc func downRow() {
-        if (itemRow == (waypoints.count - 1)){
-            let nextRow = 0
+        if firstRun{
+            firstRun = false
             if UserDefaults.standard.bool(forKey: "nightmode_preference") {
                 self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.contentView.backgroundColor = UIColor.black
                 self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.textLabel?.backgroundColor = UIColor.black
@@ -74,23 +77,37 @@ class WaypointsNavTableViewController: UITableViewController {
                 self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.contentView.backgroundColor = UIColor.white
                 self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.textLabel?.backgroundColor = UIColor.white
             }
-            self.tableView.cellForRow(at: IndexPath(row: nextRow, section: 0) as IndexPath)?.contentView.backgroundColor = UIColor.blue
-            self.tableView.cellForRow(at: IndexPath(row: nextRow, section: 0) as IndexPath)?.textLabel?.backgroundColor = UIColor.blue
-            self.tableView.scrollToRow(at: IndexPath(row: nextRow, section: 0), at: .middle, animated: true)
-            itemRow = nextRow
-        } else if (itemRow < waypoints.count ){
-            let nextRow = itemRow + 1
-            if UserDefaults.standard.bool(forKey: "nightmode_preference") {
-                self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.contentView.backgroundColor = UIColor.black
-                self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.textLabel?.backgroundColor = UIColor.black
-            } else {
-                self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.contentView.backgroundColor = UIColor.white
-                self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.textLabel?.backgroundColor = UIColor.white
+            self.tableView.cellForRow(at: IndexPath(row: 0, section: 0) as IndexPath)?.contentView.backgroundColor = UIColor.blue
+            self.tableView.cellForRow(at: IndexPath(row: 0, section: 0) as IndexPath)?.textLabel?.backgroundColor = UIColor.blue
+            self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .middle, animated: true)
+        } else {
+            if (itemRow == (waypoints.count - 1)){
+                let nextRow = 0
+                if UserDefaults.standard.bool(forKey: "nightmode_preference") {
+                    self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.contentView.backgroundColor = UIColor.black
+                    self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.textLabel?.backgroundColor = UIColor.black
+                } else {
+                    self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.contentView.backgroundColor = UIColor.white
+                    self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.textLabel?.backgroundColor = UIColor.white
+                }
+                self.tableView.cellForRow(at: IndexPath(row: nextRow, section: 0) as IndexPath)?.contentView.backgroundColor = UIColor.blue
+                self.tableView.cellForRow(at: IndexPath(row: nextRow, section: 0) as IndexPath)?.textLabel?.backgroundColor = UIColor.blue
+                self.tableView.scrollToRow(at: IndexPath(row: nextRow, section: 0), at: .middle, animated: true)
+                itemRow = nextRow
+            } else if (itemRow < waypoints.count ){
+                let nextRow = itemRow + 1
+                if UserDefaults.standard.bool(forKey: "nightmode_preference") {
+                    self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.contentView.backgroundColor = UIColor.black
+                    self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.textLabel?.backgroundColor = UIColor.black
+                } else {
+                    self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.contentView.backgroundColor = UIColor.white
+                    self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.textLabel?.backgroundColor = UIColor.white
+                }
+                self.tableView.cellForRow(at: IndexPath(row: nextRow, section: 0) as IndexPath)?.contentView.backgroundColor = UIColor.blue
+                self.tableView.cellForRow(at: IndexPath(row: nextRow, section: 0) as IndexPath)?.textLabel?.backgroundColor = UIColor.blue
+                self.tableView.scrollToRow(at: IndexPath(row: nextRow, section: 0), at: .middle, animated: true)
+                itemRow = nextRow
             }
-            self.tableView.cellForRow(at: IndexPath(row: nextRow, section: 0) as IndexPath)?.contentView.backgroundColor = UIColor.blue
-            self.tableView.cellForRow(at: IndexPath(row: nextRow, section: 0) as IndexPath)?.textLabel?.backgroundColor = UIColor.blue
-            self.tableView.scrollToRow(at: IndexPath(row: nextRow, section: 0), at: .middle, animated: true)
-            itemRow = nextRow
         }
         self.tableView.reloadData()
     }
