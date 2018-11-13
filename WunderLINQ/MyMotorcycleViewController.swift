@@ -594,6 +594,14 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
             motorcycleData.setVIN(vin: vin)
         case 0x01:
             //print("Message ID: 1")
+            // Fuel Range
+            if ((lastMessage[4] != 0xFF) && (lastMessage[5] != 0xFF)){
+                let firstNibble = Double((lastMessage[4] >> 4) & 0x0F)
+                let secondNibble = Double((lastMessage[5] & 0x0F)) * 16
+                let thirdNibble = Double(((lastMessage[5] >> 4) & 0x0F)) * 256
+                let fuelRange = firstNibble + secondNibble + thirdNibble
+                motorcycleData.setfuelRange(fuelRange: fuelRange)
+            }
             // Ambient Light
             let ambientLightValue = lastMessage[6] & 0x0F
             motorcycleData.setambientLight(ambientLight: Double(ambientLightValue))
@@ -977,7 +985,22 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
             }
 
         case 0x07:
-            //Voltage
+            // Average Speed
+            if ((lastMessage[1] != 0xFF) && (lastMessage[2] != 0xFF)){
+                let firstNibble = Double((lastMessage[1] >> 4) & 0x0F) * 2
+                let secondNibble = Double((lastMessage[1] & 0x0F)) * 0.125
+                let thirdNibble = Double((lastMessage[2] & 0x0F)) * 32
+                let avgSpeed = firstNibble + secondNibble + thirdNibble
+                motorcycleData.setaverageSpeed(averageSpeed: avgSpeed)
+            }
+            
+            // Speed
+            if (lastMessage[3] != 0xFF){
+                let speed = Double(lastMessage[3]) * 2
+                motorcycleData.setspeed(speed: speed)
+            }
+            
+            // Voltage
             let voltage = Double(lastMessage[4]) / 10
             motorcycleData.setvoltage(voltage: voltage)
             
@@ -1703,6 +1726,30 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
                     faults.setFrontLampTwoLightActive(active: false)
 
                 }
+            }
+        case 0x09:
+            // Fuel Economy 1
+            if (lastMessage[2] != 0xFF){
+                let firstNibble = Double((lastMessage[2] >> 4) & 0x0F) * 1.6
+                let secondNibble = Double((lastMessage[2] & 0x0F)) * 0.1
+                let fuelEconomyOne = firstNibble + secondNibble
+                motorcycleData.setfuelEconomyOne(fuelEconomyOne: fuelEconomyOne)
+            }
+            
+            // Fuel Economy 2
+            if (lastMessage[3] != 0xFF){
+                let firstNibble = Double((lastMessage[3] >> 4) & 0x0F) * 1.6
+                let secondNibble = Double((lastMessage[3] & 0x0F)) * 0.1
+                let fuelEconomyTwo = firstNibble + secondNibble
+                motorcycleData.setfuelEconomyTwo(fuelEconomyTwo: fuelEconomyTwo)
+            }
+            
+            // Current Consumption
+            if (lastMessage[4] != 0xFF){
+                let firstNibble = Double((lastMessage[4] >> 4) & 0x0F) * 1.6
+                let secondNibble = Double((lastMessage[4] & 0x0F)) * 0.1
+                let currentConsumption = firstNibble + secondNibble
+                motorcycleData.setcurrentConsumption(currentConsumption: currentConsumption)
             }
             
         case 0x0A:

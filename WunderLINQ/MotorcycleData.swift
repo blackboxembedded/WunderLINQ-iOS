@@ -26,6 +26,12 @@ class MotorcycleData {
     var frontBrake: Int? = 0
     var rearBrake: Int? = 0
     var ambientLight: Double?
+    var speed: Double?
+    var averageSpeed: Double?
+    var fuelRange: Double?
+    var fuelEconomyOne: Double?
+    var fuelEconomyTwo: Double?
+    var currentConsumption: Double?
     
     func setVIN(vin: String?){
         self.vin = vin
@@ -139,6 +145,48 @@ class MotorcycleData {
         return self.ambientLight!
     }
     
+    func setspeed(speed: Double?){
+        self.speed = speed
+    }
+    func getspeed() -> Double{
+        return self.speed!
+    }
+    
+    func setaverageSpeed(averageSpeed: Double?){
+        self.averageSpeed = averageSpeed
+    }
+    func getaverageSpeed() -> Double{
+        return self.averageSpeed!
+    }
+    
+    func setfuelRange(fuelRange: Double?){
+        self.fuelRange = fuelRange
+    }
+    func getfuelRange() -> Double{
+        return self.fuelRange!
+    }
+    
+    func setfuelEconomyOne(fuelEconomyOne: Double?){
+        self.fuelEconomyOne = fuelEconomyOne
+    }
+    func getfuelEconomyOne() -> Double{
+        return self.fuelEconomyOne!
+    }
+    
+    func setfuelEconomyTwo(fuelEconomyTwo: Double?){
+        self.fuelEconomyTwo = fuelEconomyTwo
+    }
+    func getfuelEconomyTwo() -> Double{
+        return self.fuelEconomyTwo!
+    }
+    
+    func setcurrentConsumption(currentConsumption: Double?){
+        self.currentConsumption = currentConsumption
+    }
+    func getcurrentConsumption() -> Double{
+        return self.currentConsumption!
+    }
+    
     func clear(){
         self.vin = nil
         self.frontTirePressure = nil
@@ -156,5 +204,11 @@ class MotorcycleData {
         self.frontBrake = 0
         self.rearBrake = 0
         self.ambientLight = nil
+        self.speed = nil
+        self.averageSpeed = nil
+        self.fuelRange = nil
+        self.fuelEconomyOne = nil
+        self.fuelEconomyTwo = nil
+        self.currentConsumption = nil
     }
 }

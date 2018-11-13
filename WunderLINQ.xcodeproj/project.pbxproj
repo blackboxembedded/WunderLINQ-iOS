@@ -107,6 +107,9 @@
 		7E068BE72102C8820076EAAD /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		7E068BF7210645290076EAAD /* TripViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripViewController.swift; sourceTree = "<group>"; };
 		7E07AE4620F70FD8004F15B9 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
+		7E31915C219A1BB40031A2E3 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Main.strings; sourceTree = "<group>"; };
+		7E31915D219A1BB40031A2E3 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		7E31915E219A1BB40031A2E3 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = WunderLINQ/es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7E5A767720DDEE7200B48CC6 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		7E5A767920DDFEF700B48CC6 /* Waypoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Waypoint.swift; sourceTree = "<group>"; };
 		7E5E0F77212289140048B9A2 /* AppUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUtility.swift; sourceTree = "<group>"; };
@@ -368,6 +371,7 @@
 				Base,
 				de,
 				"es-419",
+				es,
 			);
 			mainGroup = 7EA478411F40B154000CEDDC;
 			productRefGroup = 7EA4784B1F40B154000CEDDC /* Products */;
@@ -472,6 +476,7 @@
 				7EA478521F40B154000CEDDC /* Base */,
 				7E80BD3E211D2CB100B8CA0D /* de */,
 				7EC934F32187BE5100FD4806 /* es-419 */,
+				7E31915C219A1BB40031A2E3 /* es */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -482,6 +487,7 @@
 				7EA478571F40B154000CEDDC /* Base */,
 				7E80BD3F211D2CB100B8CA0D /* de */,
 				7EC934F42187BE5100FD4806 /* es-419 */,
+				7E31915D219A1BB40031A2E3 /* es */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -492,6 +498,7 @@
 				7EA478891F537ED5000CEDDC /* Base */,
 				7E80BD40211D2CB100B8CA0D /* de */,
 				7EC934F52187BE5100FD4806 /* es-419 */,
+				7E31915E219A1BB40031A2E3 /* es */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";

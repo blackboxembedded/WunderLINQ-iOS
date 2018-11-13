@@ -58,9 +58,35 @@ class LocationService: NSObject, CLLocationManagerDelegate {
         
         if type.contains("triplog"){
             fileName = "WunderLINQ-TripLog-" + Date().toString() + ".csv"
-            let header = "Latitude,Longitude,Altitude (m),Speed (kmh),Gear,Engine Temperature (C)," +
-                "Ambient Temperature (C),Front Tire Pressure (bar),Rear Tire Pressure (bar),Odometer (km),Voltage (V)," +
-            "Throttle Position (%),Front Brakes,Rear Brakes,Shifts,VIN,Ambient Light,Trip1 (km),Trip2 (km),Trip Auto (km)"
+            let latitudeHeader = NSLocalizedString("latitude_header", comment: "")
+            let longitudeHeader = NSLocalizedString("longitude_header", comment: "")
+            let altitudeHeader = NSLocalizedString("altitude_header", comment: "")
+            let gpsSpeedHeader = NSLocalizedString("gpsspeed_header", comment: "")
+            let gearHeader = NSLocalizedString("gear_header", comment: "")
+            let engineTemperatureHeader = NSLocalizedString("enginetemp_header", comment: "")
+            let ambientTemperatureHeader = NSLocalizedString("ambienttemp_header", comment: "")
+            let frontPressureHeader = NSLocalizedString("frontpressure_header", comment: "")
+            let rearPressureHeader = NSLocalizedString("rearpressure_header", comment: "")
+            let odometerHeader = NSLocalizedString("odometer_header", comment: "")
+            let voltageHeader = NSLocalizedString("voltage_header", comment: "")
+            let throttlePositionHeader = NSLocalizedString("throttle_header", comment: "")
+            let frontBrakesHeader = NSLocalizedString("frontbrakes_header", comment: "")
+            let rearBrakesHeader = NSLocalizedString("rearbrakes_header", comment: "")
+            let shiftsHeader = NSLocalizedString("shifts_header", comment: "")
+            let vinHeader = NSLocalizedString("vin_header", comment: "")
+            let ambientLightHeader = NSLocalizedString("ambientlight_header", comment: "")
+            let tripOneHeader = NSLocalizedString("tripone_header", comment: "")
+            let tripTwoHeader = NSLocalizedString("triptwo_header", comment: "")
+            let tripAutoHeader = NSLocalizedString("tripauto_header", comment: "")
+            let speedHeader = NSLocalizedString("speed_header", comment: "")
+            let averageSpeedHeader = NSLocalizedString("avgspeed_header", comment: "")
+            let currentConsumptionHeader = NSLocalizedString("cconsumption_header", comment: "")
+            let fuelEconomyOneHeader = NSLocalizedString("fueleconomyone_header", comment: "")
+            let fuelEconomyTwoHeader = NSLocalizedString("fueleconomytwo_header", comment: "")
+            let fuelRangeHeader = NSLocalizedString("fuelrange_header", comment: "")
+            
+            let header = "\(latitudeHeader),\(longitudeHeader),\(altitudeHeader),\(gpsSpeedHeader),\(gearHeader),\(engineTemperatureHeader),\(ambientTemperatureHeader),\(frontPressureHeader),\(rearPressureHeader),\(odometerHeader),\(voltageHeader),\(throttlePositionHeader),\(frontBrakesHeader),\(rearBrakesHeader),\(shiftsHeader),\(vinHeader),\(ambientLightHeader),\(tripOneHeader),\(tripTwoHeader),\(tripAutoHeader),\(speedHeader),\(averageSpeedHeader),\(currentConsumptionHeader),\(fuelEconomyOneHeader),\(fuelEconomyTwoHeader),\(fuelRangeHeader)"
+            
             Logger.log(fileName: fileName, entry: header, withDate: false)
         }
         
@@ -96,9 +122,9 @@ class LocationService: NSObject, CLLocationManagerDelegate {
             let latitude:String = "\(currentLocation!.coordinate.latitude)"
             let longitude:String = "\(currentLocation!.coordinate.longitude)"
             let altitude:String = "\(currentLocation!.altitude)"
-            var speed:String = "0"
+            var gpsSpeed:String = "0"
             if currentLocation!.speed >= 0{
-                speed = "\(currentLocation!.speed)"
+                gpsSpeed = "\(currentLocation!.speed)"
             }
             var gear: String = ""
             if motorcycleData.gear != nil {
@@ -164,8 +190,32 @@ class LocationService: NSObject, CLLocationManagerDelegate {
             if motorcycleData.ambientLight != nil {
                 ambientLight = "\(motorcycleData.ambientLight!)"
             }
+            var speed:String = ""
+            if motorcycleData.speed != nil {
+                speed = "\(motorcycleData.speed!)"
+            }
+            var avgSpeed:String = ""
+            if motorcycleData.averageSpeed != nil {
+                avgSpeed = "\(motorcycleData.averageSpeed!)"
+            }
+            var currentConsumption:String = ""
+            if motorcycleData.currentConsumption != nil {
+                currentConsumption = "\(motorcycleData.currentConsumption!)"
+            }
+            var fuelEconomyOne:String = ""
+            if motorcycleData.fuelEconomyOne != nil {
+                fuelEconomyOne = "\(motorcycleData.fuelEconomyOne!)"
+            }
+            var fuelEconomyTwo:String = ""
+            if motorcycleData.fuelEconomyTwo != nil {
+                fuelEconomyTwo = "\(motorcycleData.fuelEconomyTwo!)"
+            }
+            var fuelRange:String = ""
+            if motorcycleData.fuelRange != nil {
+                fuelRange = "\(motorcycleData.fuelRange!)"
+            }
 
-            let entry = "\(latitude),\(longitude),\(altitude),\(speed),\(gear),\(engineTemp),\(ambientTemp),\(frontTirePressure),\(rearTirePressure),\(odometer),\(voltage),\(throttlePosition),\(frontBrakes),\(rearBrakes),\(shifts),\(vin),\(ambientLight),\(tripOne),\(tripTwo),\(tripAuto)"
+            let entry = "\(latitude),\(longitude),\(altitude),\(gpsSpeed),\(gear),\(engineTemp),\(ambientTemp),\(frontTirePressure),\(rearTirePressure),\(odometer),\(voltage),\(throttlePosition),\(frontBrakes),\(rearBrakes),\(shifts),\(vin),\(ambientLight),\(tripOne),\(tripTwo),\(tripAuto),\(speed),\(avgSpeed),\(currentConsumption),\(fuelEconomyOne),\(fuelEconomyTwo),\(fuelRange)"
             Logger.log(fileName: fileName, entry: entry, withDate: true)
         } else {
             print("waypoint saved")

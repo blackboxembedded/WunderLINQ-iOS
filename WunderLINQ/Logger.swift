@@ -28,7 +28,8 @@ class Logger {
         if withDate {
             formattedEntry = Date().toString() + "," + entry
         } else {
-            formattedEntry = "Date/Time," + entry
+            let dateHeader = NSLocalizedString("time_header", comment: "")
+            formattedEntry = "\(dateHeader),\(entry)"
         }
         
         do {

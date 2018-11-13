@@ -102,6 +102,35 @@
 "task_title_waypoint_nav" = "Navigate to Waypoint";
 "toast_photo_taken" = "Photo Taken!";
 
+// LocationService
+"time_header" = "Time";
+"latitude_header" = "Latitude";
+"longitude_header" = "Longitude";
+"altitude_header" = "Altitude (m)";
+"gpsspeed_header" = "GPS Speed (kmh)";
+"gear_header" = "Gear";
+"enginetemp_header" = "Engine Temperature (C)";
+"ambienttemp_header" = "Ambient Temperature (C)";
+"frontpressure_header" = "Front Tire Pressure (bar)";
+"rearpressure_header" = "Rear Tire Pressure (bar)";
+"odometer_header" = "Odometer (km)";
+"voltage_header" = "Voltage (V)";
+"throttle_header" = "Throttle Position (%)";
+"frontbrakes_header" = "Front Brakes";
+"rearbrakes_header" = "Rear Brakes";
+"shifts_header" = "Shifts";
+"vin_header" = "VIN";
+"ambientlight_header" = "Ambient Light";
+"tripone_header" = "Trip1 (km)";
+"triptwo_header" = "Trip2 (km)";
+"tripauto_header" = "Trip Auto (km)";
+"speed_header" = "Speed (kmh)";
+"avgspeed_header" = "Average Speed (kmh)";
+"cconsumption_header" = "Current Consumption (L/100)";
+"fueleconomyone_header" = "Fuel Economy 1 (L/100)";
+"fueleconomytwo_header" = "Fuel Economy 2 (L/100)";
+"fuelrange_header" = "Fuel Range (km)";
+
 // ContactsTableViewController
 "contactlist_title" = "Contacts";
 

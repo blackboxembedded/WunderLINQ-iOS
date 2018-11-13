@@ -1,0 +1,150 @@
+/* 
+  Localizable.strings
+  WunderLINQ
+
+  Created by Keith Conger on 8/27/17.
+  Copyright © 2017 Black Box Embedded, LLC. All rights reserved.
+*/
+
+// Product
+"product"="WunderLINQ";
+
+// AppDelegate
+"negative_alert_title"="Funcionalidad limitada";
+"negative_notification_body"="Como las notificaciones no están permitidas, esta aplicación no podrá notificar fallos";
+"alert_message_exit_ok"="OK";
+
+// MyMotorcycleViewController
+"main_title"="Moto";
+"disclaimer_alert_title"="¡AVISO!";
+"disclaimer_alert_body"="No intente introducir información de rutas ni ajuste el WunderLINQ mientras conduce.\nSi no presta toda su atención al manejo de su vehículo, podría provocar la muerte, lesiones graves o daños materiales.\nUsted asume toda la responsabilidad y el riesgo por el uso de este dispositivo.";
+"disclaimer_ok"="Aceptar";
+"disclaimer_quit"="Salir";
+"bt_powered_off"="El Bluetooth en este dispositivo está actualmente apagado.";
+"bt_not_supported"="Este dispositivo no soporte Bluetooth Low Energy (BTE).";
+"bt_not_authorized"="Esta aplicación no está autorizada para usar Bluetooth Low Energy (BTE).";
+"bt_resetting"="El gestor de Bluetooth (BLE) se está reseteando; una actualización está pendiente.";
+"bt_unknown"="El estado de gestor de Bluetooth (BLE) es desconocido.";
+"bt_ready"="El Bluetooth (BLE) está activo y preparado para la comunicación.";
+"bt_alert_title"="Estado del Gestor Central";
+"trip_logs_label"="Trip Logs";
+"waypoints_label"="Puntos de paso";
+"rdc_front_label"="Neumático Delantero";
+"rdc_rear_label"="Neumático Trasero";
+"engine_temp_label"="Temp. Motor";
+"ambient_temp_label"="Temp. Ambiente";
+"odometer_label"="Odómetro";
+"trip1_label"="Trip 1";
+"trip2_label"="Trip 2";
+"gear_label"="Marcha";
+
+// AlertViewController
+"alert_label_fuel"="¿Ruta a la gasolinera más cercana?";
+"alert_title_fuel"="Combustible bajo";
+"alert_btn_close"="Cerrado";
+"alert_btn_ok"="OK";
+
+// FaultsTableViewController
+"fault_title"="Fallos Activos";
+
+// TripsTableViewController
+"trips_title"="Rutas guardadas";
+
+// TripViewController
+"trip_view_title"="Ruta";
+"trip_view_waypoint_start_label"="Comenzar";
+"trip_view_waypoint_end_label"="Terminar";
+"trip_view_tv_distance"="Distancia";
+"trip_view_tv_duration"="Duración";
+"trip_view_tv_speed"="Velocidad (Med/Máx)";
+"trip_view_tv_shifts"="Cambios de Marcha";
+"trip_view_tv_brakes"="Frenos (Delantero/Trasero)";
+"trip_view_tv_ambient"="Temp. Ambiente (Mín/Med/Máx)";
+"trip_view_tv_engine"="Temp. Motor (Mín/Med/Máx)";
+
+// WaypointsTableViewController
+"waypoint_title"="Puntos de Ruta (Waypoints) guardados";
+
+// WaypointViewController
+"waypoint_view_title"="Waypoints guardados";
+"waypoint_view_tv_date_label"="Fecha registrada";
+"waypoint_view_tv_lat_label"="Latitud";
+"waypoint_view_tv_lon_label"="Longitud";
+"waypoint_view_tv_label_label"="Etiqueta";
+"waypoint_view_bt_open"="Abrir en App de Mapas";
+"waypoint_view_bt_share"="Compartir";
+"waypoint_view_bt_delete"="Borrar";
+
+// CompassViewController
+"compass_title"="Brújula";
+
+// MusicViewController
+"music_title"="Música";
+
+// TasksTableViewController
+"quicktask_title"="Tareas frecuentes";
+"task_title_navigation"="Navegación";
+"task_title_gohome"="Ir a casa";
+"home"="Casa (Home)";
+"geocode_error"="Hay un problema buscando un geocode";
+"toast_address_not_set"="No está disponible la dirección \"Ir a casa\" en los Ajustes";
+"task_title_favnumber"="Llamar a número favorito";
+"toast_phone_not_set"="No está disponible el número favorito en los Ajustes";
+"task_title_callcontact"="Llamar a contacto";
+"task_title_photo"="Tomar foto";
+"task_title_selfie"="Tomar Selfie";
+"task_title_start_record"="Comenzar grabación";
+"task_title_stop_record"="Terminar grabación";
+"task_title_start_trip"="Comenzar Log de Ruta";
+"task_title_stop_trip"="Terminar Log de Ruta";
+"task_title_waypoint"="Guardar Waypoint";
+"toast_waypoint_saved"="Punto de ruta guardado";
+"task_title_waypoint_nav"="NAvegar a Waypoint";
+"toast_photo_taken"="¡Foto guardada!";
+
+// ContactsTableViewController
+"contactlist_title"="Contactos";
+
+// WaypointsNavTableViewController
+"waypoints_nav_title"="Puntos de ruta";
+
+// Fault Description
+"fault_UARTERR"="Error de UART";
+"fault_UARTCTF"="Tiempo de espera agotado de la comunicación con la UART";
+"fault_ABSSLF"="El auto-diagnóstico del ABS no se ha completado";
+"fault_ABSERR"="Error del ABS";
+"fault_ABSDAC"="ABS desactivado";
+"fault_ASCSLF"="El auto-diagnóstico del ASC no se ha completado";
+"fault_ASCINT"="Intervención del ASC";
+"fault_ASCERR"="Error del ASC";
+"fault_ASCDAC"="ASC desactivado";
+"fault_FUELF"="Combustible Bajo";
+"fault_TIREFWF"="Aviso de presión del Neumático Delantero";
+"fault_TIRERWF"="AViso de presión del Neumático Trasero";
+"fault_TIREFCF"="Presión crítica del Neumático Delantero";
+"fault_TIRERCF"="Presión crítica del Neumático Trasero";
+"fault_LAMPAFL1"="Luz frontal adicional 1";
+"fault_LAMPAFL2"="Luz frontal adicional 2";
+"fault_LAMPDAY"="Luz de Marcha Diurna";
+"fault_LAMPFLI"="Indicador Delantero Izquierdo";
+"fault_LAMPFRI"="Indicador Delantero Derecho";
+"fault_LAMPRLI"="Indicador Trasero Izquierdo";
+"fault_LAMPRRI"="Indicador Trasero Derecho";
+"fault_LAMPFPK1"="Luz de Aparcamiento Delantera 1";
+"fault_LAMPFPK2"="Luz de Aparcamiento Delantera 2";
+"fault_LAMPLOW"="Luz de cruce";
+"fault_LAMPHI"="Luz de carretera (largas)";
+"fault_LAMPREAR"="Luz Trasera";
+"fault_LAMPBRK"="Luz de Freno";
+"fault_LAMPLIC"=">Luz de la Matrícula";
+"fault_LAMPRFOG"="Luz Trasera Antiniebla";
+"fault_LAMPADDD"="Luz adicional de cruce/carretera";
+"fault_LAMPADDB"="Luz adicional de freno";
+"fault_LAMPFL1"="Lámpara Delantera 1";
+"fault_LAMPFL2"="Lámpara Delantera 2";
+"fault_ICEWARN"="Aviso por Hielo";
+"fault_GENWARNFSYLW"="La luz general de avisos parpadea en amarillo";
+"fault_GENWARNSHYLW"="La luz general de avisos está fija en amarillo";
+"fault_GENWARNFSRED"="La luz general de avisos parpadea en rojo";
+"fault_GENWARNSHRED"="La luz general de avisos está fija en rojo";
+"fault_OILLOW"="Nivel de aceite del motor bajo";
