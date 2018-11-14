@@ -37,6 +37,12 @@
 "trip1_label" = "Trip 1";
 "trip2_label" = "Trip 2";
 "gear_label" = "Gear";
+"settings_label" = "Settings";
+"about_label" = "About";
+"close_label" = "Close";
+
+//AboutViewController
+"about_title" = "About";
 
 // AlertViewController
 "alert_label_fuel" = "Route to the nearest fuel station?";

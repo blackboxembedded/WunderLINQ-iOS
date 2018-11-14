@@ -37,6 +37,8 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
     var faultsButton: UIBarButtonItem!
     var dataBtn: UIButton!
     var dataButton: UIBarButtonItem!
+    var menuBtn: UIButton!
+    var menuButton: UIBarButtonItem!
     
     var centralManager:CBCentralManager!
     var wunderLINQ:CBPeripheral?
@@ -56,8 +58,9 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
     let faults = Faults.shared
     var prevBrakeValue = 0
     
+    var menuSelected = 0
     fileprivate var popoverList = [NSLocalizedString("trip_logs_label", comment: ""), NSLocalizedString("waypoints_label", comment: "")]
-    
+    fileprivate var popoverMenuList = [NSLocalizedString("settings_label", comment: ""), NSLocalizedString("about_label", comment: ""), NSLocalizedString("close_label", comment: "")]
     fileprivate var popover: Popover!
     fileprivate var popoverOptions: [PopoverOption] = [
         .type(.auto),
@@ -200,14 +203,14 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
         let dataButtonHeight = dataButton.customView?.heightAnchor.constraint(equalToConstant: 30)
         dataButtonHeight?.isActive = true
 
-        let settingsBtn = UIButton()
-        settingsBtn.setImage(UIImage(named: "Cog")?.withRenderingMode(.alwaysTemplate), for: .normal)
-        settingsBtn.addTarget(self, action: #selector(settingsButtonTapped), for: .touchUpInside)
-        let settingsButton = UIBarButtonItem(customView: settingsBtn)
-        let settingsButtonWidth = settingsButton.customView?.widthAnchor.constraint(equalToConstant: 30)
-        settingsButtonWidth?.isActive = true
-        let settingsButtonHeight = settingsButton.customView?.heightAnchor.constraint(equalToConstant: 30)
-        settingsButtonHeight?.isActive = true
+        menuBtn = UIButton()
+        menuBtn.setImage(UIImage(named: "Menu")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        menuBtn.addTarget(self, action: #selector(menuButtonTapped), for: .touchUpInside)
+        let menuButton = UIBarButtonItem(customView: menuBtn)
+        let menuButtonWidth = menuButton.customView?.widthAnchor.constraint(equalToConstant: 30)
+        menuButtonWidth?.isActive = true
+        let menuButtonHeight = menuButton.customView?.heightAnchor.constraint(equalToConstant: 30)
+        menuButtonHeight?.isActive = true
 
         let forwardBtn = UIButton()
         forwardBtn.setImage(UIImage(named: "Right")?.withRenderingMode(.alwaysTemplate), for: .normal)
@@ -220,7 +223,7 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
         
         self.navigationItem.title = NSLocalizedString("main_title", comment: "")
         self.navigationItem.leftBarButtonItems = [backButton, disconnectButton, faultsButton]
-        self.navigationItem.rightBarButtonItems = [forwardButton, settingsButton, dataButton]
+        self.navigationItem.rightBarButtonItems = [forwardButton, menuButton, dataButton]
         
         var dateFormat = "yyyyMMdd"
         var dateFormatter: DateFormatter {
@@ -333,13 +336,20 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
     }
     
     func faultsButtonTapped() {
-        // your code here
         performSegue(withIdentifier: "motorcycleToFaults", sender: [])
     }
     
-    func dataButtonTapped() {
-        // your code here
-        let tableView = UITableView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width / 2, height: 90))
+    func popUpMenu() {
+        var menuHeight:CGFloat = 45
+        switch (menuSelected) {
+        case 1:
+            menuHeight = CGFloat(45 * popoverList.count)
+        case 2:
+            menuHeight = CGFloat(45 * popoverMenuList.count)
+        default:
+            print("Invalid Menu ID")
+        }
+        let tableView = UITableView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width / 2, height: menuHeight))
         tableView.delegate = self
         tableView.dataSource = self
         tableView.isScrollEnabled = false
@@ -356,15 +366,25 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
         self.popover.didDismissHandler = {
             print("didDismissHandler")
         }
-        self.popover.show(tableView, fromView: self.dataBtn)
+        switch (menuSelected) {
+            case 1:
+                self.popover.show(tableView, fromView: self.dataBtn)
+            case 2:
+                self.popover.show(tableView, fromView: self.menuBtn)
+            default:
+                print("Invalid Menu ID")
+        }
+        
     }
     
-    @IBAction func settingsButtonTapped(_ sender: UIBarButtonItem) {
-        if let appSettings = URL(string: UIApplicationOpenSettingsURLString + Bundle.main.bundleIdentifier!) {
-            if UIApplication.shared.canOpenURL(appSettings) {
-                UIApplication.shared.open(appSettings)
-            }
-        }
+    func dataButtonTapped() {
+        menuSelected = 1
+        popUpMenu()
+    }
+    
+    func menuButtonTapped() {
+        menuSelected = 2
+        popUpMenu()
     }
     
     @IBAction func btButtonTapped(_ sender: UIBarButtonItem) {
@@ -2104,27 +2124,66 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
 extension MyMotorcycleViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        switch(indexPath.row) {
-        case 0:
-            performSegue(withIdentifier: "motorcycleToTrips", sender: self)
+        switch (menuSelected) {
         case 1:
-            performSegue(withIdentifier: "motorcycleToWaypoints", sender: self)
+            switch(indexPath.row) {
+            case 0:
+                performSegue(withIdentifier: "motorcycleToTrips", sender: self)
+            case 1:
+                performSegue(withIdentifier: "motorcycleToWaypoints", sender: self)
+            default:
+                print("Unknown option")
+            }
+        case 2:
+            switch(indexPath.row) {
+            case 0:
+                //Settings
+                if let appSettings = URL(string: UIApplicationOpenSettingsURLString + Bundle.main.bundleIdentifier!) {
+                    if UIApplication.shared.canOpenURL(appSettings) {
+                        UIApplication.shared.open(appSettings)
+                    }
+                }
+            case 1:
+                //About
+                performSegue(withIdentifier: "motorcycleToAbout", sender: self)
+            case 2:
+                exit(0)
+            default:
+                print("Unknown option")
+            }
         default:
-            print("Unknown option")
+            print("Invalid Menu ID")
         }
         self.popover.dismiss()
     }
+
 }
 
 extension MyMotorcycleViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        return popoverList.count
+        var count = 0
+        switch (menuSelected) {
+        case 1:
+            count = popoverList.count
+        case 2:
+            count = popoverMenuList.count
+        default:
+            print("Invalid Menu ID")
+        }
+        return count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
-        cell.textLabel?.text = self.popoverList[(indexPath as NSIndexPath).row]
+        switch (menuSelected) {
+        case 1:
+            cell.textLabel?.text = self.popoverList[(indexPath as NSIndexPath).row]
+        case 2:
+            cell.textLabel?.text = self.popoverMenuList[(indexPath as NSIndexPath).row]
+        default:
+            print("Invalid Menu ID")
+        }
         return cell
     }
 }

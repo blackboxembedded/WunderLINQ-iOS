@@ -64,6 +64,7 @@
 		7EBFD48E210ADD0000FC9665 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBFD48D210ADD0000FC9665 /* String+Extensions.swift */; };
 		7EBFD490210E108100FC9665 /* segueFromLeft.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBFD48F210E108100FC9665 /* segueFromLeft.swift */; };
 		7EBFE1F3214C7D6500F2185A /* ScenicAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBFE1F2214C7D6500F2185A /* ScenicAPI.swift */; };
+		7EC63202219BCE05002E68FF /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC63201219BCE05002E68FF /* AboutViewController.swift */; };
 		7EC8C9BD1F827977000CEDDC /* ContactsTableViewContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC8C9BC1F827977000CEDDC /* ContactsTableViewContoller.swift */; };
 		7EC8C9BF1F830C5B000CEDDC /* PhoneContacts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC8C9BE1F830C5B000CEDDC /* PhoneContacts.swift */; };
 		7EC934F22186208A00FD4806 /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC934F12186208A00FD4806 /* AlertViewController.swift */; };
@@ -148,6 +149,7 @@
 		7EBFD48D210ADD0000FC9665 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		7EBFD48F210E108100FC9665 /* segueFromLeft.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = segueFromLeft.swift; sourceTree = "<group>"; };
 		7EBFE1F2214C7D6500F2185A /* ScenicAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScenicAPI.swift; sourceTree = "<group>"; };
+		7EC63201219BCE05002E68FF /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		7EC8C9BC1F827977000CEDDC /* ContactsTableViewContoller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsTableViewContoller.swift; sourceTree = "<group>"; };
 		7EC8C9BE1F830C5B000CEDDC /* PhoneContacts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneContacts.swift; sourceTree = "<group>"; };
 		7EC934F12186208A00FD4806 /* AlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
@@ -260,6 +262,7 @@
 				7EA478781F412BE9000CEDDC /* UserDefauts+Extensions.swift */,
 				7E6987DA20F82F1A00B4781D /* MotorcycleData.swift */,
 				7EA4784F1F40B154000CEDDC /* MyMotorcycleViewController.swift */,
+				7EC63201219BCE05002E68FF /* AboutViewController.swift */,
 				7E6987DC20F8F83500B4781D /* Faults.swift */,
 				7E068BC220FD8A100076EAAD /* FaultsTableViewController.swift */,
 				7E068BC6210190CB0076EAAD /* TripsTableViewController.swift */,
@@ -443,6 +446,7 @@
 				7EA478811F44F57C000CEDDC /* MusicViewController.swift in Sources */,
 				7EAE9417211EA30900E24CE9 /* Theme.swift in Sources */,
 				7EA4787F1F44F54E000CEDDC /* TasksTableViewController.swift in Sources */,
+				7EC63202219BCE05002E68FF /* AboutViewController.swift in Sources */,
 				7E068BC320FD8A100076EAAD /* FaultsTableViewController.swift in Sources */,
 				7E6987DD20F8F83500B4781D /* Faults.swift in Sources */,
 				7E068BC9210190F00076EAAD /* WaypointsTableViewController.swift in Sources */,

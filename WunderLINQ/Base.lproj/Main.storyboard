@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Fp2-Ey-Ypo">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Fp2-Ey-Ypo">
     <device id="retina3_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -237,11 +237,12 @@
                         <segue destination="DqH-mq-8qj" kind="show" identifier="motorcycleToWaypoints" id="hzw-Lu-fUo"/>
                         <segue destination="BwD-J2-898" kind="show" identifier="motorcycleToTrips" id="kxw-0M-ID5"/>
                         <segue destination="Yme-GX-WRX" kind="show" identifier="motorcycleToCompass" id="E59-Gq-FAl"/>
+                        <segue destination="gOc-zh-IDi" kind="show" identifier="motorcycleToAbout" id="fVo-eH-Rks"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7142" y="-124"/>
+            <point key="canvasLocation" x="7142" y="-125"/>
         </scene>
         <!--Faults-->
         <scene sceneID="Qzq-jP-Ecj">
@@ -478,7 +479,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SXT-T2-9wl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="9948.75" y="-1031.25"/>
+            <point key="canvasLocation" x="9949" y="-1030"/>
         </scene>
         <!--Compass-->
         <scene sceneID="zpk-X9-Usv">
@@ -722,7 +723,7 @@
             <objects>
                 <tableViewController id="TPs-yr-NM2" customClass="ContactsTableViewController" customModule="WunderLINQ" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Y20-CM-oly">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="410"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -762,8 +763,8 @@
         <scene sceneID="5Hw-nx-fMy">
             <objects>
                 <tableViewController id="we8-3Z-s79" customClass="WaypointsNavTableViewController" customModule="WunderLINQ" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="8Yw-3z-6cz">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="8Yw-3z-6cz">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="410"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
@@ -866,7 +867,7 @@
             <objects>
                 <navigationController id="Gkm-4f-7jg" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="bTw-wY-wfU">
-                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="50"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -917,8 +918,8 @@
         <scene sceneID="yhW-ot-4Cd">
             <objects>
                 <tableViewController title="Recorded Trips" id="1rx-Mx-oc0" customClass="TripsTableViewController" customModule="WunderLINQ" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="FE6-cp-MLm">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="FE6-cp-MLm">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="410"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
@@ -997,7 +998,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="seQ-uU-Npa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="8956" y="-1029"/>
+            <point key="canvasLocation" x="8955" y="-1030"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="t4M-Cl-KN0">
@@ -1017,6 +1018,22 @@
             </objects>
             <point key="canvasLocation" x="8038" y="-123"/>
         </scene>
+        <!--About-->
+        <scene sceneID="H6u-dO-Xgf">
+            <objects>
+                <viewController title="About" id="BZZ-xV-I8u" customClass="AboutViewController" customModule="WunderLINQ" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ISD-Sy-aSf">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="XEV-0z-jeW"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="About" id="Ld0-5t-QtT"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="L6N-M1-qfe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7142" y="-1029"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="HRv-0V-lik">
             <objects>
@@ -1034,7 +1051,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IIt-g4-oo5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="8038" y="-1028"/>
+            <point key="canvasLocation" x="8036" y="-1030"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="lcq-QB-EGP">
@@ -1342,22 +1359,40 @@
             </objects>
             <point key="canvasLocation" x="9949.6000000000004" y="-1863.4182908545729"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="1Iq-J6-BhT">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="gOc-zh-IDi" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="zfA-hg-dle">
+                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BZZ-xV-I8u" kind="relationship" relationship="rootViewController" id="LbJ-Ba-bVO"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="aboutToMotorcycle" id="tg6-wP-njU"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Q3J-yV-X1a" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6334" y="-1029"/>
+        </scene>
     </scenes>
     <resources>
-        <image name="Left" width="44" height="44"/>
-        <image name="Right" width="44" height="44"/>
-        <image name="back" width="44" height="44"/>
-        <image name="forward" width="44" height="44"/>
-        <image name="play" width="44" height="44"/>
+        <image name="Left" width="88" height="88"/>
+        <image name="Right" width="88" height="88"/>
+        <image name="back" width="88" height="88"/>
+        <image name="forward" width="88" height="88"/>
+        <image name="play" width="88" height="88"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Dqr-lf-ahi"/>
         <segue reference="gIM-fx-mWk"/>
         <segue reference="qQx-7G-0NR"/>
-        <segue reference="s2b-3y-Wyk"/>
+        <segue reference="nh5-ZE-vmI"/>
         <segue reference="Dpe-gj-Wyf"/>
         <segue reference="E59-Gq-FAl"/>
-        <segue reference="gyk-vV-qic"/>
+        <segue reference="tg6-wP-njU"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
 </document>
