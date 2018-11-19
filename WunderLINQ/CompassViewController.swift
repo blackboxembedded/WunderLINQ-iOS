@@ -185,21 +185,21 @@ class CompassViewController: UIViewController {
             var bearing = "-";
             if UserDefaults.standard.integer(forKey: "bearing_unit_preference") != 0 {
                 if degrees > 331 || degrees <= 28 {
-                    cardinal = "N"
+                    cardinal = NSLocalizedString("north", comment: "")
                 } else if degrees > 28 && degrees <= 73 {
-                    cardinal = "NE"
+                    cardinal = NSLocalizedString("north_east", comment: "")
                 } else if degrees > 73 && degrees <= 118 {
-                    cardinal = "E"
+                    cardinal = NSLocalizedString("east", comment: "")
                 } else if degrees > 118 && degrees <= 163 {
-                    cardinal = "SE"
+                    cardinal = NSLocalizedString("south_east", comment: "")
                 } else if degrees > 163 && degrees <= 208 {
-                    cardinal = "S"
+                    cardinal = NSLocalizedString("south", comment: "")
                 } else if degrees > 208 && degrees <= 253 {
-                    cardinal = "SW"
+                    cardinal = NSLocalizedString("south_west", comment: "")
                 } else if degrees > 253 && degrees <= 298 {
-                    cardinal = "W"
+                    cardinal = NSLocalizedString("west", comment: "")
                 } else if degrees > 298 && degrees <= 331 {
-                    cardinal = "NW"
+                    cardinal = NSLocalizedString("north_west", comment: "")
                 } else {
                     cardinal = "-"
                 }

@@ -13,4 +13,10 @@ extension String {
         formatter.locale = Locale(identifier: "en_US")
         return formatter.number(from: self)?.doubleValue
     }
+    
+    func toInt() -> Int? {
+        let formatter = NumberFormatter()
+        formatter.locale = Locale(identifier: "en_US")
+        return formatter.number(from: self)?.intValue
+    }
 }

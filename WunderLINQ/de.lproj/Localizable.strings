@@ -61,6 +61,9 @@
 "trip_view_tv_brakes" = "Bremsen (Vorne/Hinten)";
 "trip_view_tv_ambient" = "Aussentemp. (Min/Avg/Max)";
 "trip_view_tv_engine" = "Motortemp. (Min/Avg/Max)";
+"hours" = "hours"; //Needs translation
+"minutes" = "minutes"; //Needs translation
+"seconds" = "seconds"; //Needs translation
 
 // WaypointsTableViewController
 "waypoint_title" = "Gespeicherte Wegpunkte";
@@ -77,6 +80,14 @@
 
 // CompassViewController
 "compass_title" = "Kompass";
+"north" = "N"; //Needs translation
+"north_west" = "NW"; //Needs translation
+"north_east" = "NE"; //Needs translation
+"south" = "S"; //Needs translation
+"south_west" = "SW"; //Needs translation
+"south_east" = "SE"; //Needs translation
+"west" = "W"; //Needs translation
+"east" = "E"; //Needs translation
 
 // MusicViewController
 "music_title" = "Musik";

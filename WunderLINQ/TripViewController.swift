@@ -89,9 +89,9 @@ class TripViewController: UIViewController {
         var endTime : String?
         var startOdometer : Double?
         var endOdometer : Double?
-        var endShiftCnt : Double = 0
-        var endFrontBrakeCnt : Double = 0
-        var endRearBrakeCnt : Double = 0
+        var endShiftCnt : Int = 0
+        var endFrontBrakeCnt : Int = 0
+        var endRearBrakeCnt : Int = 0
         
         var lineNumber = 0
         for row in csvRows{
@@ -149,18 +149,18 @@ class TripViewController: UIViewController {
                     }
                 }
                 if !(row[13] == ""){
-                    if (endFrontBrakeCnt < row[13].toDouble()!){
-                        endFrontBrakeCnt = row[13].toDouble()!
+                    if (endFrontBrakeCnt < row[13].toInt()!){
+                        endFrontBrakeCnt = row[13].toInt()!
                     }
                 }
                 if !(row[14] == ""){
-                    if (endRearBrakeCnt < row[14].toDouble()!){
-                        endRearBrakeCnt = row[14].toDouble()!
+                    if (endRearBrakeCnt < row[14].toInt()!){
+                        endRearBrakeCnt = row[14].toInt()!
                     }
                 }
                 if !(row[15] == ""){
-                    if (endShiftCnt < row[15].toDouble()!){
-                        endShiftCnt = row[15].toDouble()!
+                    if (endShiftCnt < row[15].toInt()!){
+                        endShiftCnt = row[15].toInt()!
                     }
                 }
             }
@@ -338,8 +338,6 @@ class TripViewController: UIViewController {
         var cleanFile = file
         cleanFile = cleanFile.replacingOccurrences(of: "\r", with: "\n")
         cleanFile = cleanFile.replacingOccurrences(of: "\n\n", with: "\n")
-        //        cleanFile = cleanFile.replacingOccurrences(of: ";;", with: "")
-        //        cleanFile = cleanFile.replacingOccurrences(of: ";\n", with: "")
         return cleanFile
     }
     
@@ -393,6 +391,6 @@ class TripViewController: UIViewController {
         let endDate = dateFormatter.date(from:end)!
         let difference = Calendar.current.dateComponents([.hour, .minute, .second], from: startDate, to: endDate)
 
-        return "\(difference.hour!)hours, \(difference.minute!)minutes, \(difference.second!)seconds"
+        return "\(difference.hour!)\(NSLocalizedString("hours", comment: "")), \(difference.minute!)\(NSLocalizedString("minutes", comment: "")), \(difference.second!)\(NSLocalizedString("seconds", comment: ""))"
     }
 }
