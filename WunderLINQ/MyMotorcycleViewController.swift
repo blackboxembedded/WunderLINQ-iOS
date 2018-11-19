@@ -1040,8 +1040,7 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
                 faults.setFuelFaultActive(active: true)
 
             default:
-                //faults.setFuelFaultActive(active: false)
-                faults.setFuelFaultActive(active: true)
+                faults.setFuelFaultActive(active: false)
 
             }
             if UserDefaults.standard.bool(forKey: "fuel_routing_enable_preference") && faults.getFuelFaultActive(){
