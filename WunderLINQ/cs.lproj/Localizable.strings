@@ -1,0 +1,197 @@
+/*
+ Localizable.strings
+ WunderLINQ
+ 
+ Created by Keith Conger on 8/27/17.
+ Copyright © 2017 Black Box Embedded, LLC. All rights reserved.
+ */
+
+// Product
+"product" = "WunderLINQ";
+
+// AppDelegate
+"negative_alert_title" = "Funkcionalita omezena";
+"negative_notification_body" = "Chybí povoleni k zaílání upozornění, aplikace nebude moci hlásit chybové kódy";
+"alert_message_exit_ok" = "OK";
+
+// MyMotorcycleViewController
+"main_title" = "Motocykl";
+"disclaimer_alert_title" = "VAROVÁNÍ!";
+"disclaimer_alert_body" = "Nepokoušejte se zadat cílové misto nebo měnit nastavení aplikace za jízdy.\nNevěnování plné pozornosti řízení vozidla může mít za následek škodu na majetku, zranění nebo smrt.\nUživatel této aplikace/zařízení přebírá plnou zodpovědnost za následky.";
+"disclaimer_ok" = "Souhlasím";
+"disclaimer_quit" = "Ukončit";
+"bt_powered_off" = "Bluetooth je vypnut";
+"bt_not_supported" = "Toto zařízení nepodporuje Bluetooth Low Energy.";
+"bt_not_authorized" = "Aplikace nemá oprávnění k použití Bluetooth Low Energy.";
+"bt_resetting" = "Správce BLE restartuje; čekám na informaci o stavu";
+"bt_unknown" = "Neznámý stav správce BLE";
+"bt_ready" = "Bluetooth LE je zapnut a připraven komunikovat";
+"bt_alert_title" = "Central Manager State";
+"trip_logs_label" = "Záznamy jízd";
+"waypoints_label" = "Uložená místa";
+"rdc_front_label" = "Přední pneu";
+"rdc_rear_label" = "Zadní pneu";
+"engine_temp_label" = "Teplota motoru";
+"ambient_temp_label" = "Venkovní teplota";
+"odometer_label" = "Ujetá vzdálenost";
+"trip1_label" = "Trip 1";
+"trip2_label" = "Trip 2";
+"gear_label" = "Stupeň";
+"settings_label" = "Nastavení";
+"about_label" = "O aplikaci";
+"close_label" = "Zavřít";
+
+//AboutViewController
+"about_title" = "About";
+
+// AlertViewController
+"alert_label_fuel" = "Navigovat k nejbližší čerpací stanici?";
+"alert_title_fuel" = "Nízký stav paliva";
+"alert_btn_close" = "Zavřít";
+"alert_btn_ok" = "OK";
+
+// FaultsTableViewController
+"fault_title" = "Aktivní chyby";
+
+// TripsTableViewController
+"trips_title" = "Záznamy jízd";
+
+// TripViewController
+"trip_view_title" = "Záznam jízdy";
+"trip_view_waypoint_start_label" = "Začátek";
+"trip_view_waypoint_end_label" = "Konec";
+"trip_view_tv_distance" = "Vzdálenost";
+"trip_view_tv_duration" = "Doba";
+"trip_view_tv_speed" = "Rychlost (Průměr/Max)";
+"trip_view_tv_shifts" = "Počet řazení rychlosti";
+"trip_view_tv_brakes" = "Brždění (Přední/Zadní)";
+"trip_view_tv_ambient" = "Venkovní teplota (Min/Prům/Max)";
+"trip_view_tv_engine" = "Teplota motoru (Min/Prům/Max)";
+"hours" = "hod";
+"minutes" = "min";
+"seconds" = "sek";
+
+// WaypointsTableViewController
+"waypoint_title" = "Saved Waypoints";
+
+// WaypointViewController
+"waypoint_view_title" = "Uložená místa";
+"waypoint_view_tv_date_label" = "Datum záznamu";
+"waypoint_view_tv_lat_label" = "Šířka";
+"waypoint_view_tv_lon_label" = "Délka";
+"waypoint_view_tv_label_label" = "Popis";
+"waypoint_view_bt_open" = "Otevřít na mapě";
+"waypoint_view_bt_share" = "Sdílet";
+"waypoint_view_bt_delete" = "Smazat";
+
+// CompassViewController
+"compass_title" = "Kompas";
+"north" = "S";
+"north_west" = "SZ";
+"north_east" = "SV";
+"south" = "J";
+"south_west" = "JZ";
+"south_east" = "JV";
+"west" = "Z";
+"east" = "V";
+
+// MusicViewController
+"music_title" = "Music";
+
+// TasksTableViewController
+"quicktask_title" = "Rychlé Akce";
+"task_title_navigation" = "Navigace";
+"task_title_gohome" = "Naviguj domů";
+"home" = "Domů";
+"geocode_error" = "Geocode nebyl nalezen";
+"toast_address_not_set" = "V nastavení chybí adresa domů";
+"task_title_favnumber" = "Volej oblíbené číslo";
+"toast_phone_not_set" = "V nastavení chybí oblíbené číslo";
+"task_title_callcontact" = "Volej kontakt";
+"task_title_photo" = "Pořiď fotku";
+"task_title_selfie" = "Pořiď selfie";
+"task_title_start_record" = "Nahrávej video";
+"task_title_stop_record" = "Ukonči nahrávání videa";
+"task_title_start_trip" = "Nahraj záznam jízdy";
+"task_title_stop_trip" = "Ukonči záznam jízdy";
+"task_title_waypoint" = "Ulož místo";
+"toast_waypoint_saved" = "Místo uloženo";
+"task_title_waypoint_nav" = "Naviguj na uložené místo";
+"toast_photo_taken" = "Fotka pořízena!";
+
+// LocationService
+"time_header" = "Čas";
+"latitude_header" = "Šířka";
+"longitude_header" = "Délka";
+"altitude_header" = "Nadm. výška (m)";
+"gpsspeed_header" = "GPS Rychlost (km/h)";
+"gear_header" = "Převodový stupeň";
+"enginetemp_header" = "Teplota motoru (C)";
+"ambienttemp_header" = "Venkovní teplota (C)";
+"frontpressure_header" = "Tlak v přední pneu (bar)";
+"rearpressure_header" = "Tlak v zadní pneu (bar)";
+"odometer_header" = "Celkem najeto (km)";
+"voltage_header" = "Napětí (V)";
+"throttle_header" = "Poloha plynu (%)";
+"frontbrakes_header" = "Přední brzda";
+"rearbrakes_header" = "Zadní brzda";
+"shifts_header" = "Změny rychlosti";
+"vin_header" = "VIN";
+"ambientlight_header" = "Venkovní světlo";
+"tripone_header" = "Trip1 (km)";
+"triptwo_header" = "Trip2 (km)";
+"tripauto_header" = "Trip Auto (km)";
+"speed_header" = "Rychlost (km/h)";
+"avgspeed_header" = "Průměrná rychlost (km/h)";
+"cconsumption_header" = "Okamžitá spotřeba (l/100km)";
+"fueleconomyone_header" = "Spotřeba 1 (l/100km)";
+"fueleconomytwo_header" = "Spotřeba 2 (l/100km)";
+"fuelrange_header" = "Dojezd (km)";
+
+// ContactsTableViewController
+"contactlist_title" = "Kontakty";
+
+// WaypointsNavTableViewController
+"waypoints_nav_title" = "Uložená místa";
+
+// Fault Description
+"fault_UARTERR" = "Chyba UART";
+"fault_UARTCTF" = "UART Comm Timeout";
+"fault_UARTLF" = "UART Logic";
+"fault_ABSSLF" = "Diagnotiska ABS nebyla dokončena";
+"fault_ABSERR" = "Chyba ABS";
+"fault_ABSDAC" = "ABS vypnuto";
+"fault_ASCSLF" = "Diagnotiska ASC nebyla dokončena";
+"fault_ASCINT" = "Zásah ASC";
+"fault_ASCERR" = "Chyba ASC";
+"fault_ASCDAC" = "ASC vypnuto";
+"fault_FUELF" = "Nízký stav paliva";
+"fault_LAMPAFL1" = "Přídavné přední světlo 1";
+"fault_LAMPAFL2" = "Přídavné přední světlo 2";
+"fault_LAMPDAY" = "Světlo pro denní svícení";
+"fault_LAMPFLI" = "Levý přední blinkr";
+"fault_LAMPFRI" = "Pravý přední blinkr";
+"fault_LAMPRLI" = "Levý zadní blinkr";
+"fault_LAMPRRI" = "Pravý zadní blinkr";
+"fault_LAMPFPK1" = "Přední parkovací světlo 1";
+"fault_LAMPFPK2" = "Přední parkovací světlo 2";
+"fault_LAMPLOW" = "Potkávací světlo";
+"fault_LAMPHI" = "Dálkové světlo";
+"fault_LAMPREAR" = "Koncové světlo";
+"fault_LAMPBRK" = "Brzdové světlo";
+"fault_LAMPLIC" = "Osvětlení značky";
+"fault_LAMPRFOG" = "Zadní mlhové světlo";
+"fault_LAMPADDD" = "Přídavné potkávací/dálkové světlo";
+"fault_LAMPADDB" = "Přídavné brzdové světlo";
+"fault_LAMPFL1" = "Přední světlo 1";
+"fault_LAMPFL2" = "Zadní světlo 2";
+"fault_ICEWARN" = "Pozor, náledi";
+"fault_GENWARNFSYLW" = "Kontrolka bliká žlutě";
+"fault_GENWARNSHYLW" = "Kontrolka svítí žlutě";
+"fault_GENWARNFSRED" = "Kontrolka bliká červeně";
+"fault_GENWARNSHRED" = "Kontrolka svítí červeně";
+"fault_OILLOW" = "Nízký stav motorového oleje";
+"fault_TIREFWF" = "Nízký tlak v přední pneu";
+"fault_TIRERWF" = "Nízký tlak v zadní pneu";
+"fault_TIREFCF" = "Velmi nízký tlak v přední pneu";
+"fault_TIRERCF" = "Nízký nízký tlak v zadní pneu";
