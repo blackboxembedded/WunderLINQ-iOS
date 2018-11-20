@@ -69,7 +69,7 @@
 				<string>BMW R1200R</string>
 				<string>BMW R1200RS</string>
 				<string>BMW S1000XR</string>
-				<string>Other</string>
+				<string>bike_type_other</string>
 			</array>
 		</dict>
 		<dict>

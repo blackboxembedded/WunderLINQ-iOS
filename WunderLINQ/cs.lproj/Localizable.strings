@@ -42,7 +42,7 @@
 "close_label" = "Zavřít";
 
 //AboutViewController
-"about_title" = "About";
+"about_title" = "O Aplikaci";
 
 // AlertViewController
 "alert_label_fuel" = "Navigovat k nejbližší čerpací stanici?";
@@ -72,7 +72,7 @@
 "seconds" = "sek";
 
 // WaypointsTableViewController
-"waypoint_title" = "Saved Waypoints";
+"waypoint_title" = "Uložená místa";
 
 // WaypointViewController
 "waypoint_view_title" = "Uložená místa";
