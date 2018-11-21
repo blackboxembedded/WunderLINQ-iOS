@@ -37,6 +37,9 @@
 "trip1_label" = "Parcial 1";
 "trip2_label" = "Parcial 2";
 "gear_label" = "Marcha";
+"settings_label" = "Settings"; //Needs translation
+"about_label" = "About"; //Needs translation
+"close_label" = "Close"; //Needs translation
 
 // AlertViewController
 "alert_label_fuel" = "¿Desea la ruta a la gasolinera más cercana?";
@@ -112,6 +115,35 @@
 "toast_waypoint_saved" = "Waypoint guardado";
 "task_title_waypoint_nav" = "Navigar hacia Waypoint";
 "toast_photo_taken" = "Fotografía tomada!";
+
+// LocationService
+"time_header" = "Time"; //Needs translation
+"latitude_header" = "Latitude"; //Needs translation
+"longitude_header" = "Longitude"; //Needs translation
+"altitude_header" = "Altitude (m)"; //Needs translation
+"gpsspeed_header" = "GPS Speed (kmh)"; //Needs translation
+"gear_header" = "Gear"; //Needs translation
+"enginetemp_header" = "Engine Temperature (C)"; //Needs translation
+"ambienttemp_header" = "Ambient Temperature (C)"; //Needs translation
+"frontpressure_header" = "Front Tire Pressure (bar)"; //Needs translation
+"rearpressure_header" = "Rear Tire Pressure (bar)"; //Needs translation
+"odometer_header" = "Odometer (km)"; //Needs translation
+"voltage_header" = "Voltage (V)"; //Needs translation
+"throttle_header" = "Throttle Position (%)"; //Needs translation
+"frontbrakes_header" = "Front Brakes"; //Needs translation
+"rearbrakes_header" = "Rear Brakes"; //Needs translation
+"shifts_header" = "Shifts"; //Needs translation
+"vin_header" = "VIN"; //Needs translation
+"ambientlight_header" = "Ambient Light"; //Needs translation
+"tripone_header" = "Trip1 (km)"; //Needs translation
+"triptwo_header" = "Trip2 (km)"; //Needs translation
+"tripauto_header" = "Trip Auto (km)"; //Needs translation
+"speed_header" = "Speed (kmh)"; //Needs translation
+"avgspeed_header" = "Average Speed (kmh)"; //Needs translation
+"cconsumption_header" = "Current Consumption (L/100)"; //Needs translation
+"fueleconomyone_header" = "Fuel Economy 1 (L/100)"; //Needs translation
+"fueleconomytwo_header" = "Fuel Economy 2 (L/100)"; //Needs translation
+"fuelrange_header" = "Fuel Range (km)"; //Needs translation
 
 // ContactsTableViewController
 "contactlist_title" = "Contactos";

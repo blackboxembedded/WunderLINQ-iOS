@@ -119,6 +119,9 @@
 		7E5E0F77212289140048B9A2 /* AppUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUtility.swift; sourceTree = "<group>"; };
 		7E6987DA20F82F1A00B4781D /* MotorcycleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotorcycleData.swift; sourceTree = "<group>"; };
 		7E6987DC20F8F83500B4781D /* Faults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Faults.swift; sourceTree = "<group>"; };
+		7E70D8F621A5FD2B0016CD74 /* el */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = el; path = el.lproj/Main.strings; sourceTree = "<group>"; };
+		7E70D8F721A5FD2B0016CD74 /* el */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = el; path = el.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		7E70D8F821A5FD2B0016CD74 /* el */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = el; path = WunderLINQ/el.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7E80BD3A211CF80600B8CA0D /* LocalisableLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalisableLabel.swift; sourceTree = "<group>"; };
 		7E80BD3C211CFF7300B8CA0D /* LocalisableButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalisableButton.swift; sourceTree = "<group>"; };
 		7E80BD3E211D2CB100B8CA0D /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
@@ -379,6 +382,7 @@
 				"es-419",
 				es,
 				cs,
+				el,
 			);
 			mainGroup = 7EA478411F40B154000CEDDC;
 			productRefGroup = 7EA4784B1F40B154000CEDDC /* Products */;
@@ -486,6 +490,7 @@
 				7EC934F32187BE5100FD4806 /* es-419 */,
 				7E31915C219A1BB40031A2E3 /* es */,
 				7E52E9AF21A38D89008082FE /* cs */,
+				7E70D8F621A5FD2B0016CD74 /* el */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -498,6 +503,7 @@
 				7EC934F42187BE5100FD4806 /* es-419 */,
 				7E31915D219A1BB40031A2E3 /* es */,
 				7E52E9B021A38D89008082FE /* cs */,
+				7E70D8F721A5FD2B0016CD74 /* el */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -510,6 +516,7 @@
 				7EC934F52187BE5100FD4806 /* es-419 */,
 				7E31915E219A1BB40031A2E3 /* es */,
 				7E52E9B121A38D89008082FE /* cs */,
+				7E70D8F821A5FD2B0016CD74 /* el */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
