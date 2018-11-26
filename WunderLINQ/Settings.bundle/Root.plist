@@ -74,6 +74,14 @@
 		</dict>
 		<dict>
 			<key>Type</key>
+			<string>PSChildPaneSpecifier</string>
+			<key>Title</key>
+			<string>pref_tasks_settings_title</string>
+			<key>File</key>
+			<string>Tasks</string>
+		</dict>
+		<dict>
+			<key>Type</key>
 			<string>PSMultiValueSpecifier</string>
 			<key>Title</key>
 			<string>pref_nav_app</string>

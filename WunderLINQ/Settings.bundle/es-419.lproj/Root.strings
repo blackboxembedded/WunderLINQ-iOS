@@ -36,3 +36,4 @@
 "pref_fuel_routing_title" = "Indicaciones hacia Gasolinera";
 "pref_fuel_routing_footer" = "Preguntar si desea 'Indicaciones hacia Gasolinera' mas cercana cuando encienda la advertencia de nivel de combustible bajo";
 "pref_fuel_routing_enable_title" = "Habilitar 'Indicaciones hacia Gasolinera'";
+"pref_tasks_settings_title" = "Quick Task Customization"; //Needs Translation

@@ -20,6 +20,8 @@ class TasksTableViewController: UITableViewController, AVCaptureVideoDataOutputS
     
     var tasks = [Tasks]()
     
+    var mapping = [Int]()
+    
     @IBOutlet weak var cameraImageView: UIImageView!
     
     var device: AVCaptureDevice?
@@ -41,7 +43,48 @@ class TasksTableViewController: UITableViewController, AVCaptureVideoDataOutputS
     let scenic = ScenicAPI()
 
     //MARK: Private Methods
-
+    private func loadRows() {
+        let taskRow1 = UserDefaults.standard.integer(forKey: "task_one_preference")
+        if (taskRow1 < 10){
+            mapping.append(taskRow1)
+        }
+        let taskRow2 = UserDefaults.standard.integer(forKey: "task_two_preference")
+        if (taskRow2 < 10){
+            mapping.append(taskRow2)
+        }
+        let taskRow3 = UserDefaults.standard.integer(forKey: "task_three_preference")
+        if (taskRow3 < 10){
+            mapping.append(taskRow3)
+        }
+        let taskRow4 = UserDefaults.standard.integer(forKey: "task_four_preference")
+        if (taskRow4 < 10){
+            mapping.append(taskRow4)
+        }
+        let taskRow5 = UserDefaults.standard.integer(forKey: "task_five_preference")
+        if (taskRow5 < 10){
+            mapping.append(taskRow5)
+        }
+        let taskRow6 = UserDefaults.standard.integer(forKey: "task_six_preference")
+        if (taskRow6 < 10){
+            mapping.append(taskRow6)
+        }
+        let taskRow7 = UserDefaults.standard.integer(forKey: "task_seven_preference")
+        if (taskRow7 < 10){
+            mapping.append(taskRow7)
+        }
+        let taskRow8 = UserDefaults.standard.integer(forKey: "task_eight_preference")
+        if (taskRow8 < 10){
+            mapping.append(taskRow8)
+        }
+        let taskRow9 = UserDefaults.standard.integer(forKey: "task_nine_preference")
+        if (taskRow9 < 10){
+            mapping.append(taskRow9)
+        }
+        let taskRow10 = UserDefaults.standard.integer(forKey: "task_ten_preference")
+        if (taskRow10 < 10){
+            mapping.append(taskRow10)
+        }
+    }
     private func loadTasks() {
         // Navigate Task
         guard let task0 = Tasks(label: NSLocalizedString("task_title_navigation", comment: ""), icon: UIImage(named: "Map")?.withRenderingMode(.alwaysTemplate)) else {
@@ -322,14 +365,26 @@ class TasksTableViewController: UITableViewController, AVCaptureVideoDataOutputS
             //Video Recording
             if movieOutput.isRecording == true {
                 movieOutput.stopRecording()
-                self.tableView.cellForRow(at: IndexPath(row: taskID, section: 0) as IndexPath)?.textLabel?.text = NSLocalizedString("task_title_start_record", comment: "")
+                var currentMapping = 0
+                for task in mapping {
+                    if task == 6{
+                        self.tableView.cellForRow(at: IndexPath(row: currentMapping, section: 0) as IndexPath)?.textLabel?.text = NSLocalizedString("task_title_start_record", comment: "")
+                    }
+                    currentMapping = currentMapping + 1
+                }
             } else {
                 if setupSession() {
                     startSession()
                 }
                 if (self.videoCaptureSession.isRunning) {
                     startCapture()
-                    self.tableView.cellForRow(at: IndexPath(row: taskID, section: 0) as IndexPath)?.textLabel?.text = NSLocalizedString("task_title_stop_record", comment: "")
+                    var currentMapping = 0
+                    for task in mapping {
+                        if task == 6{
+                            self.tableView.cellForRow(at: IndexPath(row: currentMapping, section: 0) as IndexPath)?.textLabel?.text = NSLocalizedString("task_title_stop_record", comment: "")
+                        }
+                        currentMapping = currentMapping + 1
+                    }
                 }
             }
             
@@ -338,10 +393,22 @@ class TasksTableViewController: UITableViewController, AVCaptureVideoDataOutputS
             //Trip Log
             if LocationService.sharedInstance.isRunning(){
                 LocationService.sharedInstance.stopUpdatingLocation()
-                self.tableView.cellForRow(at: IndexPath(row: taskID, section: 0) as IndexPath)?.textLabel?.text = NSLocalizedString("task_title_start_trip", comment: "")
+                var currentMapping = 0
+                for task in mapping {
+                    if task == 7{
+                        self.tableView.cellForRow(at: IndexPath(row: currentMapping, section: 0) as IndexPath)?.textLabel?.text = NSLocalizedString("task_title_start_trip", comment: "")
+                    }
+                    currentMapping = currentMapping + 1
+                }
             } else {
                 LocationService.sharedInstance.startUpdatingLocation(type: "triplog")
-                self.tableView.cellForRow(at: IndexPath(row: taskID, section: 0) as IndexPath)?.textLabel?.text = NSLocalizedString("task_title_stop_trip", comment: "")
+                var currentMapping = 0
+                for task in mapping {
+                    if task == 7{
+                        self.tableView.cellForRow(at: IndexPath(row: currentMapping, section: 0) as IndexPath)?.textLabel?.text = NSLocalizedString("task_title_stop_trip", comment: "")
+                    }
+                    currentMapping = currentMapping + 1
+                }
             }
             break
         case 8:
@@ -382,7 +449,7 @@ class TasksTableViewController: UITableViewController, AVCaptureVideoDataOutputS
     @objc func upRow() {
         firstRun = false
         if (itemRow == 0){
-            let nextRow = tasks.count - 1
+            let nextRow = mapping.count - 1
             if UserDefaults.standard.bool(forKey: "nightmode_preference") {
                 self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.contentView.backgroundColor = UIColor.black
                 self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.textLabel?.backgroundColor = UIColor.black
@@ -394,7 +461,7 @@ class TasksTableViewController: UITableViewController, AVCaptureVideoDataOutputS
             self.tableView.cellForRow(at: IndexPath(row: nextRow, section: 0) as IndexPath)?.textLabel?.backgroundColor = UIColor.blue
             self.tableView.scrollToRow(at: IndexPath(row: nextRow, section: 0), at: .middle, animated: true)
             itemRow = nextRow
-        } else if (itemRow < tasks.count ){
+        } else if (itemRow < mapping.count ){
             let nextRow = itemRow - 1
             if UserDefaults.standard.bool(forKey: "nightmode_preference") {
                 self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.contentView.backgroundColor = UIColor.black
@@ -424,7 +491,7 @@ class TasksTableViewController: UITableViewController, AVCaptureVideoDataOutputS
             self.tableView.cellForRow(at: IndexPath(row: 0, section: 0) as IndexPath)?.textLabel?.backgroundColor = UIColor.blue
             self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .middle, animated: true)
         } else {
-            if (itemRow == (tasks.count - 1)){
+            if (itemRow == (mapping.count - 1)){
                 let nextRow = 0
                 if UserDefaults.standard.bool(forKey: "nightmode_preference") {
                     self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.contentView.backgroundColor = UIColor.black
@@ -437,7 +504,7 @@ class TasksTableViewController: UITableViewController, AVCaptureVideoDataOutputS
                 self.tableView.cellForRow(at: IndexPath(row: nextRow, section: 0) as IndexPath)?.textLabel?.backgroundColor = UIColor.blue
                 self.tableView.scrollToRow(at: IndexPath(row: nextRow, section: 0), at: .middle, animated: true)
                 itemRow = nextRow
-            } else if (itemRow < tasks.count ){
+            } else if (itemRow < mapping.count ){
                 let nextRow = itemRow + 1
                 if UserDefaults.standard.bool(forKey: "nightmode_preference") {
                     self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.contentView.backgroundColor = UIColor.black
@@ -530,6 +597,7 @@ class TasksTableViewController: UITableViewController, AVCaptureVideoDataOutputS
         }
         
         loadTasks();
+        loadRows();
         
         let databaseURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
             .appendingPathComponent("waypoints.sqlite")
@@ -564,7 +632,7 @@ class TasksTableViewController: UITableViewController, AVCaptureVideoDataOutputS
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return tasks.count
+        return mapping.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -572,7 +640,7 @@ class TasksTableViewController: UITableViewController, AVCaptureVideoDataOutputS
         // Table view cells are reused and should be dequeued using a cell identifier.
         let cell = tableView.dequeueReusableCell(withIdentifier: "TaskTableViewCell", for: indexPath)
 
-        let tasks = self.tasks[indexPath.row]
+        let tasks = self.tasks[mapping[indexPath.row]]
         
         cell.textLabel?.text = tasks.label
         cell.imageView?.image = tasks.icon
@@ -586,7 +654,7 @@ class TasksTableViewController: UITableViewController, AVCaptureVideoDataOutputS
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        execute_task(taskID: indexPath.row)
+        execute_task(taskID: mapping[indexPath.row])
     }
     
     

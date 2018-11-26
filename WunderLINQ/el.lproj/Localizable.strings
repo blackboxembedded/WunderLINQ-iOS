@@ -1,10 +1,10 @@
-/* 
-  Localizable.strings
-  WunderLINQ
-
-  Created by Keith Conger on 8/27/17.
-  Copyright © 2017 Black Box Embedded, LLC. All rights reserved.
-*/
+/*
+ Localizable.strings
+ WunderLINQ
+ 
+ Created by Keith Conger on 8/27/17.
+ Copyright © 2017 Black Box Embedded, LLC. All rights reserved.
+ */
 
 // Product
 "product" = "WunderLINQ";
@@ -17,32 +17,26 @@
 // MyMotorcycleViewController
 "main_title" = "Μοτοσυκλέτα";
 "disclaimer_alert_title" = "ΠΡΟΣΟΧΗ!";
-"disclaimer_alert_body" = "Μην επιχειρήτε να εισάγετε πληροφορίες διαδρομής ή να ρυθμίσετε το WunderLINQ ενώ οδειγείτε.\nΗ έλλειψη πλήρους προσοχής στο χειρισμό του οχήματός σας, μπορεί να έχει ως αποτέλεσμα το θάνατο, σοβαρό τραυματισμό, ή φθορά της περιοσίας σας.\nΧρησιμοποιώντας αυτή τη συσκευή αναλαμβάνετε την πλήρη ευθύνη και κίνδυνο.";
+"disclaimer_alert_body" = "Μην επιχειρήτε να εισάγετε πληροφορίες διαδρομής ή να ρυθμίσετε το WunderLINQ ενώ οδειγείτε.\nΗ έλλειψη πλήρους προσοχής στο χειρισμό του οχήματός σας, μπορεί να έχει ως αποτέλεσμα το θάνατο, σοβαρό τραυματισμό, ή φθορά της περιουσίας σας.\nΧρησιμοποιώντας αυτή τη συσκευή αναλαμβάνετε την πλήρη ευθύνη και κίνδυνο.";
 "disclaimer_ok" = "Συμφωνώ";
 "disclaimer_quit" = "Κλείσιμο";
 "bt_powered_off" = "Το Bluetooth σε αυτή τη συσκευή είναι απενεργοποιημένο.";
 "bt_not_supported" = "Αυτή η συσκευή δεν υποστηρίζει Bluetooth χαμηλής κατανάλωσης.";
 "bt_not_authorized" = "Αυτή η εφαρμογή δεν έχει το δικαίωμα να χρησιμοποιήσει Bluetooth χαμηλής κατανάλωσης.";
 "bt_resetting" = "Γίνεται επαναφορά του Bluetooth χαμηλής κατανάλωσης, εκκρεμεί ενημέρωση κατάστασης.";
-"bt_unknown" = "Η κατάσταση της διαχείρισης Bluetooth χαμηλής ενέργειας, δεν είναι γνωστή.";
+"bt_unknown" = "Η κατάσταση της διαχείρισης Bluetooth χαμηλής κατανάλωσης, δεν είναι γνωστή.";
 "bt_ready" = "Το Bluetooth χαμηλής κατανάλωσης είναι ενεργοποιημένο και έτοιμο για επικοινωνία.";
 "bt_alert_title" = "Κατάσταση κεντρικής διαχειρισης";
 "trip_logs_label" = "Αποθηκευμένες διαδρομές";
 "waypoints_label" = "Προορισμοί";
 "rdc_front_label" = "Εμπρός ελαστικό";
 "rdc_rear_label" = "Πίσω ελαστικό";
-"engine_temp_label" = "Θερμοκρασία κινητήρα";
-"ambient_temp_label" = "Θερμοκρασία περιβάλλοντος";
+"engine_temp_label" = "Θερμ. κινητήρα";
+"ambient_temp_label" = "Θερμ. περιβάλλοντος";
 "odometer_label" = "Χιλιομετρητής";
 "trip1_label" = "Διαδρομή 1";
 "trip2_label" = "Διαδρομή 2";
 "gear_label" = "Ταχύτητα";
-"settings_label" = "Settings";
-"about_label" = "About";
-"close_label" = "Close";
-
-//AboutViewController
-"about_title" = "About"; //Needs translation
 
 // AlertViewController
 "alert_label_fuel" = "Μετάβαση στο πλησιέστερο πρατήριο υγρών καυσίμων;";
@@ -67,9 +61,6 @@
 "trip_view_tv_brakes" = "Φρένα (Εμπρός/Πίσω)";
 "trip_view_tv_ambient" = "Θερμοκρασία περιβάλλοντος (Ελάχ/Μέση/Μέγ)";
 "trip_view_tv_engine" = "Θερμοκρασία κινητήρα (Ελάχ/Μέση/Μέγ)";
-"hours" = "hours";
-"minutes" = "minutes";
-"seconds" = "seconds";
 
 // WaypointsTableViewController
 "waypoint_title" = "Αποθηκευμένοι προορισμοί";
@@ -86,14 +77,6 @@
 
 // CompassViewController
 "compass_title" = "Πυξίδα";
-"north" = "N"; //Needs translation
-"north_west" = "NW"; //Needs translation
-"north_east" = "NE"; //Needs translation
-"south" = "S"; //Needs translation
-"south_west" = "SW"; //Needs translation
-"south_east" = "SE"; //Needs translation
-"west" = "W"; //Needs translation
-"east" = "E"; //Needs translation
 
 // MusicViewController
 "music_title" = "Μουσική";
@@ -101,52 +84,23 @@
 // TasksTableViewController
 "quicktask_title" = "Γρήγορα εργαλεία";
 "task_title_navigation" = "Πλοήγηση";
-"task_title_gohome" = "Μετάβαση στην αρχική";
+"task_title_gohome" = "Πλοήγηση σε προτιμ. διεύθυνση";
 "home" = "Αρχική";
 "geocode_error" = "Πρόβλημα προσδιορισμού γεωγραφικού στίγματος";
-"toast_address_not_set" = "Δεν βρέθηκε αποθηκευμένη διεύθυνση οικίας στις ρυθμίσεις";
-"task_title_favnumber" = "Κλήση προτιμώμενου αριθμού";
+"toast_address_not_set" = "Δεν βρέθηκε αποθηκευμένη προτιμώμενη διεύθυνση στις ρυθμίσεις";
+"task_title_favnumber" = "Κλήση προτιμ. αριθμού";
 "toast_phone_not_set" = "Δεν βρέθηκε αποθηκευμένος προτιμώμενος αριθμός στις ρυθμίσεις";
 "task_title_callcontact" = "Κλήση επαφής";
 "task_title_photo" = "Λήψη φωτογραφίας";
 "task_title_selfie" = "Λήψη Selfie";
-"task_title_start_record" = "Έναρξη καταγραφής βίντεο";
-"task_title_stop_record" = "Παύση καταγραφής βίντεο";
-"task_title_start_trip" = "Εναρξη καταγραφής διαδρομής";
-"task_title_stop_trip" = "Παύση καταγραφής διαδρομής";
-"task_title_waypoint" = "Αποθήκευση προορισμού";
+"task_title_start_record" = "Έναρξη καταγρ. βίντεο";
+"task_title_stop_record" = "Παύση καταγρ. βίντεο";
+"task_title_start_trip" = "Εναρξη καταγρ. διαδρομής";
+"task_title_stop_trip" = "Παύση καταγρ. διαδρομής";
+"task_title_waypoint" = "Αποθήκ. προορισμού";
 "toast_waypoint_saved" = "Ο προορισμός αποθηκεύτηκε";
-"task_title_waypoint_nav" = "Πλοήγηση στον προορισμό";
+"task_title_waypoint_nav" = "Πλοήγ. στον προορισμό";
 "toast_photo_taken" = "Επιτυχής λήψη φωτογραφίας";
-
-// LocationService
-"time_header" = "Time"; //Needs translation
-"latitude_header" = "Latitude"; //Needs translation
-"longitude_header" = "Longitude"; //Needs translation
-"altitude_header" = "Altitude (m)"; //Needs translation
-"gpsspeed_header" = "GPS Speed (kmh)"; //Needs translation
-"gear_header" = "Gear"; //Needs translation
-"enginetemp_header" = "Engine Temperature (C)"; //Needs translation
-"ambienttemp_header" = "Ambient Temperature (C)"; //Needs translation
-"frontpressure_header" = "Front Tire Pressure (bar)"; //Needs translation
-"rearpressure_header" = "Rear Tire Pressure (bar)"; //Needs translation
-"odometer_header" = "Odometer (km)"; //Needs translation
-"voltage_header" = "Voltage (V)"; //Needs translation
-"throttle_header" = "Throttle Position (%)"; //Needs translation
-"frontbrakes_header" = "Front Brakes"; //Needs translation
-"rearbrakes_header" = "Rear Brakes"; //Needs translation
-"shifts_header" = "Shifts"; //Needs translation
-"vin_header" = "VIN"; //Needs translation
-"ambientlight_header" = "Ambient Light"; //Needs translation
-"tripone_header" = "Trip1 (km)"; //Needs translation
-"triptwo_header" = "Trip2 (km)"; //Needs translation
-"tripauto_header" = "Trip Auto (km)"; //Needs translation
-"speed_header" = "Speed (kmh)"; //Needs translation
-"avgspeed_header" = "Average Speed (kmh)"; //Needs translation
-"cconsumption_header" = "Current Consumption (L/100)"; //Needs translation
-"fueleconomyone_header" = "Fuel Economy 1 (L/100)"; //Needs translation
-"fueleconomytwo_header" = "Fuel Economy 2 (L/100)"; //Needs translation
-"fuelrange_header" = "Fuel Range (km)"; //Needs translation
 
 // ContactsTableViewController
 "contactlist_title" = "Επαφές";
