@@ -15,7 +15,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
     var window: UIWindow?
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) ->
+        Bool {
+            
+            //Read and populate defaults
+            registerDefaultsFromSettingsBundle();
         // Override point for customization after application launch.
         // Keep screen unlocked
         application.isIdleTimerDisabled = true
@@ -117,6 +121,41 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         //self.presentViewController(objAlert, animated: true, completion: nil)
         
         UIApplication.shared.keyWindow?.rootViewController?.present(objAlert, animated: true, completion: nil)
+    }
+    
+    func registerDefaultsFromSettingsBundle()
+    {
+        // Main Settings
+        let rootSettingsUrl = Bundle.main.url(forResource: "Settings", withExtension: "bundle")!.appendingPathComponent("Root.plist")
+        let settingsPlist = NSDictionary(contentsOf:rootSettingsUrl)!
+        let preferences = settingsPlist["PreferenceSpecifiers"] as! [NSDictionary]
+        
+        var defaultsToRegister = Dictionary<String, Any>()
+        
+        for preference in preferences {
+            guard let key = preference["Key"] as? String else {
+                NSLog("Root Settings Key not fount")
+                continue
+            }
+            defaultsToRegister[key] = preference["DefaultValue"]
+        }
+        UserDefaults.standard.register(defaults: defaultsToRegister)
+        
+        //Quick Task Settings
+        let taskSettingsUrl = Bundle.main.url(forResource: "Settings", withExtension: "bundle")!.appendingPathComponent("Tasks.plist")
+        let taskSettingsPlist = NSDictionary(contentsOf:taskSettingsUrl)!
+        let taskPreferences = taskSettingsPlist["PreferenceSpecifiers"] as! [NSDictionary]
+        
+        var settingsDefaultsToRegister = Dictionary<String, Any>()
+        
+        for preference in taskPreferences {
+            guard let key = preference["Key"] as? String else {
+                NSLog("Quick Task Settings Key not fount")
+                continue
+            }
+            settingsDefaultsToRegister[key] = preference["DefaultValue"]
+        }
+        UserDefaults.standard.register(defaults: settingsDefaultsToRegister)
     }
 }
 

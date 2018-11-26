@@ -39,7 +39,7 @@
 "gear_label" = "Ταχύτητα";
 
 // AlertViewController
-"alert_label_fuel" = "Μετάβαση στο πλησιέστερο πρατήριο υγρών καυσίμων;";
+"alert_label_fuel" = "Μετάβαση στο πλησιέστερο πρατήριο υγρών καυσίμων";
 "alert_title_fuel" = "Χαμηλή στάθμη καυσίμου";
 "alert_btn_close" = "Κλείσιμο";
 "alert_btn_ok" = "Εντάξει";

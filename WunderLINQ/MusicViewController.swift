@@ -22,6 +22,22 @@ class MusicViewController: UIViewController {
     let pauseImage = UIImage(named: "pause")
     
     
+    @IBAction func previousBtnPress(_ sender: Any) {
+    }
+    @IBAction func playPauseBtnPress(_ sender: Any) {
+        print("play/pause touched")
+        if (musicPlayer().playbackState == MPMusicPlaybackState.playing) {
+            musicPlayer().pause()
+            playButton.setImage(playImage, for: .normal)
+            
+        } else {
+            musicPlayer().play()
+            playButton.setImage(pauseImage, for: .normal)
+        }
+    }
+    @IBAction func nextBtnPress(_ sender: Any) {
+    }
+    
     let musicPlayer = MPMusicPlayerController.systemMusicPlayer
     var timer = Timer()
     
