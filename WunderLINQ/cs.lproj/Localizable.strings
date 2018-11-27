@@ -96,7 +96,7 @@
 "east" = "V";
 
 // MusicViewController
-"music_title" = "Music";
+"music_title" = "Hudba";
 
 // TasksTableViewController
 "quicktask_title" = "Rychlé Akce";
