@@ -26,26 +26,26 @@
 "bt_resetting" = "Der BLE Manager wird zurückgesetzt; Ein Statusupdate ist ausstehend.";
 "bt_unknown" = "Der Status des BLE Managers ist unbekannt.";
 "bt_ready" = "Bluetooth LE ist eingeschaltet und bereit für Verbindungen.";
-"bt_alert_title" = "Central Manager State";
+"bt_alert_title" = "Central Manager Status";
 "trip_logs_label" = "Fahrtaufzeichnungen";
 "waypoints_label" = "Wegpunkte";
 "rdc_front_label" = "Vorderreifen";
 "rdc_rear_label" = "Hinterreifen";
 "engine_temp_label" = "Motortemperatur";
 "ambient_temp_label" = "Aussentemperatur";
-"odometer_label" = "Kilometerzähler";
+"odometer_label" = "KM-Zähler Total";
 "trip1_label" = "KM-Zähler 1";
 "trip2_label" = "KM-Zähler 2";
 "gear_label" = "Gang";
-"settings_label" = "Settings"; //Needs translation
-"about_label" = "About"; //Needs translation
-"close_label" = "Close"; //Needs translation
+"settings_label" = "Einstellungen";
+"about_label" = "Über";
+"close_label" = "Schliessen";
 
 // AlertViewController
-"alert_label_fuel" = "Route to the nearest fuel station?"; //Needs translation
-"alert_title_fuel" = "Low Fuel"; //Needs translation
-"alert_btn_close" = "Close"; //Needs translation
-"alert_btn_ok" = "OK"; //Needs translation
+"alert_label_fuel" = "Zur nächsten Tankstelle navigieren?";
+"alert_title_fuel" = "Benzinstand niedrig";
+"alert_btn_close" = "Schliessen";
+"alert_btn_ok" = "OK";
 
 // FaultsTableViewController
 "fault_title" = "Aktive Fehler";
@@ -59,14 +59,14 @@
 "trip_view_waypoint_end_label" = "Ende";
 "trip_view_tv_distance" = "Distanz";
 "trip_view_tv_duration" = "Dauer";
-"trip_view_tv_speed" = "Geschwindigkeit (Avg/Max)";
+"trip_view_tv_speed" = "Geschwindigkeit (Ø/Max)";
 "trip_view_tv_shifts" = "Gangwechsel";
 "trip_view_tv_brakes" = "Bremsen (Vorne/Hinten)";
-"trip_view_tv_ambient" = "Aussentemp. (Min/Avg/Max)";
-"trip_view_tv_engine" = "Motortemp. (Min/Avg/Max)";
-"hours" = "hours"; //Needs translation
-"minutes" = "minutes"; //Needs translation
-"seconds" = "seconds"; //Needs translation
+"trip_view_tv_ambient" = "Aussentemp. (Min/Ø/Max)";
+"trip_view_tv_engine" = "Motortemp. (Min/Ø/Max)";
+"hours" = "h";
+"minutes" = "m";
+"seconds" = "s";
 
 // WaypointsTableViewController
 "waypoint_title" = "Gespeicherte Wegpunkte";
@@ -76,21 +76,21 @@
 "waypoint_view_tv_date_label" = "Aufzeichnungsdatum";
 "waypoint_view_tv_lat_label" = "Breitengrad";
 "waypoint_view_tv_lon_label" = "Längengrad";
-"waypoint_view_tv_label_label" = "Label";
+"waypoint_view_tv_label_label" = "Beschreibung";
 "waypoint_view_bt_open" = "In Karten-App öffnen";
 "waypoint_view_bt_share" = "Teilen";
 "waypoint_view_bt_delete" = "Löschen";
 
 // CompassViewController
 "compass_title" = "Kompass";
-"north" = "N"; //Needs translation
-"north_west" = "NW"; //Needs translation
-"north_east" = "NE"; //Needs translation
-"south" = "S"; //Needs translation
-"south_west" = "SW"; //Needs translation
-"south_east" = "SE"; //Needs translation
-"west" = "W"; //Needs translation
-"east" = "E"; //Needs translation
+"north" = "N";
+"north_west" = "NW";
+"north_east" = "NO";
+"south" = "S";
+"south_west" = "SW";
+"south_east" = "SO";
+"west" = "W";
+"east" = "O";
 
 // MusicViewController
 "music_title" = "Musik";
@@ -99,14 +99,14 @@
 "quicktask_title" = "Schnellzugriff";
 "task_title_navigation" = "Navigation";
 "task_title_gohome" = "Nach Hause";
-"home" = "Home"; //Needs translation
-"geocode_error" = "Problem looking up geocode"; //Needs translation
+"home" = "Zuhause";
+"geocode_error" = "Kann Koordinaten nicht abfragen";
 "toast_address_not_set" = "Keine Nach Hause Adresse gesetzt in den Einstellungen";
 "task_title_favnumber" = "Bevorzugte Nummer anrufen";
 "toast_phone_not_set" = "Keine Bevorzugte Nummer gesetzt in den Einstellungen";
 "task_title_callcontact" = "Kontakt anrufen";
 "task_title_photo" = "Foto aufnehmen";
-"task_title_selfie" = "Take Selfie"; //Needs translation
+"task_title_selfie" = "Selfie aufnehmen";
 "task_title_start_record" = "Video starten";
 "task_title_stop_record" = "Video beenden";
 "task_title_start_trip" = "Fahrtaufzeichnung starten";
@@ -117,33 +117,33 @@
 "toast_photo_taken" = "Foto aufgenommen!";
 
 // LocationService
-"time_header" = "Time"; //Needs translation
-"latitude_header" = "Latitude"; //Needs translation
-"longitude_header" = "Longitude"; //Needs translation
-"altitude_header" = "Altitude (m)"; //Needs translation
-"gpsspeed_header" = "GPS Speed (kmh)"; //Needs translation
-"gear_header" = "Gear"; //Needs translation
-"enginetemp_header" = "Engine Temperature (C)"; //Needs translation
-"ambienttemp_header" = "Ambient Temperature (C)"; //Needs translation
-"frontpressure_header" = "Front Tire Pressure (bar)"; //Needs translation
-"rearpressure_header" = "Rear Tire Pressure (bar)"; //Needs translation
-"odometer_header" = "Odometer (km)"; //Needs translation
-"voltage_header" = "Voltage (V)"; //Needs translation
-"throttle_header" = "Throttle Position (%)"; //Needs translation
-"frontbrakes_header" = "Front Brakes"; //Needs translation
-"rearbrakes_header" = "Rear Brakes"; //Needs translation
-"shifts_header" = "Shifts"; //Needs translation
-"vin_header" = "VIN"; //Needs translation
+"time_header" = "Zeit";
+"latitude_header" = "Breitengrad";
+"longitude_header" = "Längengrad";
+"altitude_header" = "Höhe (m)";
+"gpsspeed_header" = "GPS Geschwindigkeit (kmh)";
+"gear_header" = "Gang";
+"enginetemp_header" = "Motortemperatur (C)";
+"ambienttemp_header" = "Aussentemperatur (C)";
+"frontpressure_header" = "Vorderreifen-Druck (bar)";
+"rearpressure_header" = "Hinterreifen-Druck (bar)";
+"odometer_header" = "KM-Zähler Total (km)";
+"voltage_header" = "Spannung (V)";
+"throttle_header" = "Gasgriffposition (%)";
+"frontbrakes_header" = "Vorderbremse";
+"rearbrakes_header" = "Hinterbremse";
+"shifts_header" = "Gangwechsel";
+"vin_header" = "Fahrgestellnnummer (VIN)";
 "ambientlight_header" = "Ambient Light"; //Needs translation
-"tripone_header" = "Trip1 (km)"; //Needs translation
-"triptwo_header" = "Trip2 (km)"; //Needs translation
-"tripauto_header" = "Trip Auto (km)"; //Needs translation
-"speed_header" = "Speed (kmh)"; //Needs translation
-"avgspeed_header" = "Average Speed (kmh)"; //Needs translation
-"cconsumption_header" = "Current Consumption (L/100)"; //Needs translation
-"fueleconomyone_header" = "Fuel Economy 1 (L/100)"; //Needs translation
-"fueleconomytwo_header" = "Fuel Economy 2 (L/100)"; //Needs translation
-"fuelrange_header" = "Fuel Range (km)"; //Needs translation
+"tripone_header" = "KM-Zähler 1 (km)";
+"triptwo_header" = "KM-Zähler 2 (km)";
+"tripauto_header" = "KM-Zähler Auto (km)";
+"speed_header" = "Geschwindigkeit (kmh)";
+"avgspeed_header" = "Ø Geschwindigkeit (kmh)";
+"cconsumption_header" = "Aktueller Verbrauch (L/100)";
+"fueleconomyone_header" = "Verbrauch 1 (L/100)";
+"fueleconomytwo_header" = "Verbrauch 2 (L/100)";
+"fuelrange_header" = "Reichweite (km)";
 
 // ContactsTableViewController
 "contactlist_title" = "Kontakte";
