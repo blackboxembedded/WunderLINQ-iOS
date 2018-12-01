@@ -190,12 +190,12 @@ class TripViewController: UIViewController {
                 avgSpeed = kmToMiles(avgSpeed)
                 maxSpeed = kmToMiles(maxSpeed)
             }
-            speedLabel.text = "(\(avgSpeed.rounded(toPlaces: 1))/\(maxSpeed.rounded(toPlaces: 1)))\(speedUnit))"
+            speedLabel.text = "\(avgSpeed.rounded(toPlaces: 1))/\(maxSpeed.rounded(toPlaces: 1))(\(speedUnit))"
         }
         
         gearShiftsLabel.text = "\(endShiftCnt)"
         
-        brakesLabel.text = "(\(endFrontBrakeCnt)/\(endRearBrakeCnt))"
+        brakesLabel.text = "\(endFrontBrakeCnt)/\(endRearBrakeCnt)"
         
         var avgEngineTemp: Double = 0
         if ((engineTemps.count) > 0) {
@@ -214,7 +214,7 @@ class TripViewController: UIViewController {
             minEngineTemp = 0.0
             maxEngineTemp = 0.0
         }
-        engineTempLabel.text = "(\(minEngineTemp!.rounded(toPlaces: 1))/\(avgEngineTemp.rounded(toPlaces: 1))/\(maxEngineTemp!.rounded(toPlaces: 1)))\(temperatureUnit)"
+        engineTempLabel.text = "\(minEngineTemp!.rounded(toPlaces: 1))/\(avgEngineTemp.rounded(toPlaces: 1))/\(maxEngineTemp!.rounded(toPlaces: 1))(\(temperatureUnit))"
         
         var avgAmbientTemp: Double = 0
         if ((ambientTemps.count) > 0) {
@@ -233,7 +233,7 @@ class TripViewController: UIViewController {
             minAmbientTemp = 0.0
             maxAmbientTemp = 0.0
         }
-        ambientTempLabel.text = "(\(minAmbientTemp!.rounded(toPlaces: 1))/\(avgAmbientTemp.rounded(toPlaces: 1))/\(maxAmbientTemp!.rounded(toPlaces: 1)))\(temperatureUnit)"
+        ambientTempLabel.text = "\(minAmbientTemp!.rounded(toPlaces: 1))/\(avgAmbientTemp.rounded(toPlaces: 1))/\(maxAmbientTemp!.rounded(toPlaces: 1))(\(temperatureUnit))"
         
         // Calculate Distance
         var distance: Double = 0

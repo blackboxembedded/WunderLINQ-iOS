@@ -81,6 +81,7 @@
 "waypoint_view_tv_lon_label" = "Longitude";
 "waypoint_view_tv_label_label" = "Label";
 "waypoint_view_bt_open" = "Open in Map App";
+"waypoint_view_bt_nav" = "Navigate";
 "waypoint_view_bt_share" = "Share";
 "waypoint_view_bt_delete" = "Delete";
 

@@ -78,6 +78,7 @@
 "waypoint_view_tv_lon_label" = "Längengrad";
 "waypoint_view_tv_label_label" = "Beschreibung";
 "waypoint_view_bt_open" = "In Karten-App öffnen";
+"waypoint_view_bt_nav" = "Navigate"; //Needs translation
 "waypoint_view_bt_share" = "Teilen";
 "waypoint_view_bt_delete" = "Löschen";
 

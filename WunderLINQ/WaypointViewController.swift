@@ -31,6 +31,7 @@ class WaypointViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var mapView: GMSMapView!
     @IBOutlet weak var openBtn: UIButton!
+    @IBOutlet weak var navBtn: UIButton!
     @IBOutlet weak var shareBtn: UIButton!
     @IBOutlet weak var deleteBtn: UIButton!
     
@@ -60,6 +61,75 @@ class WaypointViewController: UIViewController, UITextFieldDelegate {
         self.present(activityViewController, animated: true, completion: nil)
     }
     
+    @IBAction func navPressed(_ sender: Any) {
+        if let lat = latitude?.toDouble(), let lon = longitude?.toDouble(){
+            
+            let destLatitude: CLLocationDegrees = lat
+            let destLongitude: CLLocationDegrees = lon
+            
+            let navApp = UserDefaults.standard.integer(forKey: "nav_app_preference")
+            switch (navApp){
+            case 0:
+                //Apple Maps
+                let coordinates = CLLocationCoordinate2DMake(destLatitude, destLongitude)
+                let navPlacemark = MKPlacemark(coordinate: coordinates, addressDictionary: nil)
+                let mapitem = MKMapItem(placemark: navPlacemark)
+                let options = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving]
+                mapitem.openInMaps(launchOptions: options)
+            case 1:
+                //Google Maps
+                //googlemaps://
+                if let googleMapsURL = URL(string: "comgooglemaps-x-callback://?daddr=\(destLatitude),\(destLongitude)&directionsmode=driving&x-success=wunderlinq://?resume=true&x-source=WunderLINQ") {
+                    if (UIApplication.shared.canOpenURL(googleMapsURL)) {
+                        if #available(iOS 10, *) {
+                            UIApplication.shared.open(googleMapsURL, options: [:], completionHandler: nil)
+                        } else {
+                            UIApplication.shared.openURL(googleMapsURL as URL)
+                        }
+                    }
+                }
+            case 2:
+                //Scenic
+                //https://github.com/guidove/Scenic-Integration/blob/master/README.md
+                self.scenic.sendToScenicForNavigation(coordinate: CLLocationCoordinate2D(latitude: destLatitude,longitude: destLongitude), name: label ?? "WunderLINQ")
+            case 3:
+                //Sygic
+                //https://www.sygic.com/developers/professional-navigation-sdk/ios/custom-url
+                let urlString = "com.sygic.aura://coordinate|\(destLongitude)|\(destLatitude)|drive"
+                
+                if let sygicURL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
+                    if (UIApplication.shared.canOpenURL(sygicURL)) {
+                        if #available(iOS 10, *) {
+                            UIApplication.shared.open(sygicURL, options: [:], completionHandler: nil)
+                        } else {
+                            UIApplication.shared.openURL(sygicURL as URL)
+                        }
+                    }
+                }
+            case 4:
+                //Waze
+                //waze://?ll=[lat],[lon]&z=10
+                if let wazeURL = URL(string: "waze://?ll=\(destLatitude),\(destLongitude)&navigate=yes") {
+                    if (UIApplication.shared.canOpenURL(wazeURL)) {
+                        if #available(iOS 10, *) {
+                            UIApplication.shared.open(wazeURL, options: [:], completionHandler: nil)
+                        } else {
+                            UIApplication.shared.openURL(wazeURL as URL)
+                        }
+                    }
+                }
+            default:
+                //Apple Maps
+                let coordinates = CLLocationCoordinate2DMake(destLatitude, destLongitude)
+                let navPlacemark = MKPlacemark(coordinate: coordinates, addressDictionary: nil)
+                let mapitem = MKMapItem(placemark: navPlacemark)
+                let options = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving]
+                mapitem.openInMaps(launchOptions: options)
+            }
+        } else {
+            
+        }
+    }
     @IBAction func openPressed(_ sender: Any) {
         if let lat = latitude?.toDouble(), let lon = longitude?.toDouble(){
             let navApp = UserDefaults.standard.integer(forKey: "nav_app_preference")

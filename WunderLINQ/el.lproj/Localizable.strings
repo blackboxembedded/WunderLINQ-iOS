@@ -37,6 +37,12 @@
 "trip1_label" = "Διαδρομή 1";
 "trip2_label" = "Διαδρομή 2";
 "gear_label" = "Ταχύτητα";
+"settings_label" = "Settings"; //Needs translation
+"about_label" = "About"; //Needs translation
+"close_label" = "Close"; //Needs translation
+
+//AboutViewController
+"about_title" = "About"; //Needs translation
 
 // AlertViewController
 "alert_label_fuel" = "Μετάβαση στο πλησιέστερο πρατήριο υγρών καυσίμων";
@@ -61,6 +67,9 @@
 "trip_view_tv_brakes" = "Φρένα (Εμπρός/Πίσω)";
 "trip_view_tv_ambient" = "Θερμοκρασία περιβάλλοντος (Ελάχ/Μέση/Μέγ)";
 "trip_view_tv_engine" = "Θερμοκρασία κινητήρα (Ελάχ/Μέση/Μέγ)";
+"hours" = "hours"; //Needs translation
+"minutes" = "minutes"; //Needs translation
+"seconds" = "seconds"; //Needs translation
 
 // WaypointsTableViewController
 "waypoint_title" = "Αποθηκευμένοι προορισμοί";
@@ -72,11 +81,20 @@
 "waypoint_view_tv_lon_label" = "Γεωγραφικός μήκος";
 "waypoint_view_tv_label_label" = "Τίτλος";
 "waypoint_view_bt_open" = "Άνοιγμα στην εφαρμογή χάρτη";
+"waypoint_view_bt_nav" = "Navigate"; //Needs translation
 "waypoint_view_bt_share" = "Κοινή χρήση";
 "waypoint_view_bt_delete" = "Διαγραφή";
 
 // CompassViewController
 "compass_title" = "Πυξίδα";
+"north" = "N"; //Needs translation
+"north_west" = "NW"; //Needs translation
+"north_east" = "NE"; //Needs translation
+"south" = "S"; //Needs translation
+"south_west" = "SW"; //Needs translation
+"south_east" = "SE"; //Needs translation
+"west" = "W"; //Needs translation
+"east" = "E"; //Needs translation
 
 // MusicViewController
 "music_title" = "Μουσική";
@@ -101,6 +119,35 @@
 "toast_waypoint_saved" = "Ο προορισμός αποθηκεύτηκε";
 "task_title_waypoint_nav" = "Πλοήγ. στον προορισμό";
 "toast_photo_taken" = "Επιτυχής λήψη φωτογραφίας";
+
+// LocationService
+"time_header" = "Time"; //Needs translation
+"latitude_header" = "Latitude"; //Needs translation
+"longitude_header" = "Longitude"; //Needs translation
+"altitude_header" = "Altitude (m)"; //Needs translation
+"gpsspeed_header" = "GPS Speed (kmh)"; //Needs translation
+"gear_header" = "Gear"; //Needs translation
+"enginetemp_header" = "Engine Temperature (C)"; //Needs translation
+"ambienttemp_header" = "Ambient Temperature (C)"; //Needs translation
+"frontpressure_header" = "Front Tire Pressure (bar)"; //Needs translation
+"rearpressure_header" = "Rear Tire Pressure (bar)"; //Needs translation
+"odometer_header" = "Odometer (km)"; //Needs translation
+"voltage_header" = "Voltage (V)"; //Needs translation
+"throttle_header" = "Throttle Position (%)"; //Needs translation
+"frontbrakes_header" = "Front Brakes"; //Needs translation
+"rearbrakes_header" = "Rear Brakes"; //Needs translation
+"shifts_header" = "Shifts"; //Needs translation
+"vin_header" = "VIN"; //Needs translation
+"ambientlight_header" = "Ambient Light"; //Needs translation
+"tripone_header" = "Trip1 (km)"; //Needs translation
+"triptwo_header" = "Trip2 (km)"; //Needs translation
+"tripauto_header" = "Trip Auto (km)"; //Needs translation
+"speed_header" = "Speed (kmh)"; //Needs translation
+"avgspeed_header" = "Average Speed (kmh)"; //Needs translation
+"cconsumption_header" = "Current Consumption (L/100)"; //Needs translation
+"fueleconomyone_header" = "Fuel Economy 1 (L/100)"; //Needs translation
+"fueleconomytwo_header" = "Fuel Economy 2 (L/100)"; //Needs translation
+"fuelrange_header" = "Fuel Range (km)"; //Needs translation
 
 // ContactsTableViewController
 "contactlist_title" = "Επαφές";

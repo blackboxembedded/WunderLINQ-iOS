@@ -81,6 +81,7 @@
 "waypoint_view_tv_lon_label" = "Délka";
 "waypoint_view_tv_label_label" = "Popis";
 "waypoint_view_bt_open" = "Otevřít na mapě";
+"waypoint_view_bt_nav" = "Navigate"; //Needs translation
 "waypoint_view_bt_share" = "Sdílet";
 "waypoint_view_bt_delete" = "Smazat";
 
