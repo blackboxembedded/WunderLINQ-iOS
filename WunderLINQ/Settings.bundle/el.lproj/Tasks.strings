@@ -8,9 +8,9 @@
 "task_title_start_trip" = "Εναρξη καταγρ. διαδρομής";
 "task_title_waypoint" = "Αποθήκ. προορισμού";
 "task_title_waypoint_nav" = "Πλοήγ. στον προορισμό";
-"task_title_empty" = "Άδεια λίστα";
+"task_title_empty" = "Άδεια";
 "pref_task_one" = "Πρώτη";
-"pref_task_two" = "Δεύτερη"; 
+"pref_task_two" = "Δεύτερη";
 "pref_task_three" = "Τρίτη";
 "pref_task_four" = "Τέταρτη";
 "pref_task_five" = "Πέμπτη";

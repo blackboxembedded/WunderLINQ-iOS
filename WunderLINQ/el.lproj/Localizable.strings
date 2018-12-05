@@ -37,12 +37,12 @@
 "trip1_label" = "Διαδρομή 1";
 "trip2_label" = "Διαδρομή 2";
 "gear_label" = "Ταχύτητα";
-"settings_label" = "Settings"; //Needs translation
-"about_label" = "About"; //Needs translation
-"close_label" = "Close"; //Needs translation
+"settings_label" = "Ρυθμίσεις";
+"about_label" = "Περί...";
+"close_label" = "Κλείσιμο";
 
 //AboutViewController
-"about_title" = "About"; //Needs translation
+"about_title" = "Περί...";
 
 // AlertViewController
 "alert_label_fuel" = "Μετάβαση στο πλησιέστερο πρατήριο υγρών καυσίμων";
@@ -87,14 +87,14 @@
 
 // CompassViewController
 "compass_title" = "Πυξίδα";
-"north" = "N"; //Needs translation
-"north_west" = "NW"; //Needs translation
-"north_east" = "NE"; //Needs translation
-"south" = "S"; //Needs translation
-"south_west" = "SW"; //Needs translation
-"south_east" = "SE"; //Needs translation
-"west" = "W"; //Needs translation
-"east" = "E"; //Needs translation
+"north" = "Β";
+"north_west" = "ΒΔ";
+"north_east" = "ΒΑ";
+"south" = "Ν";
+"south_west" = "ΝΔ";
+"south_east" = "ΝΑ";
+"west" = "Δ";
+"east" = "Α";
 
 // MusicViewController
 "music_title" = "Μουσική";
@@ -121,33 +121,33 @@
 "toast_photo_taken" = "Επιτυχής λήψη φωτογραφίας";
 
 // LocationService
-"time_header" = "Time"; //Needs translation
-"latitude_header" = "Latitude"; //Needs translation
-"longitude_header" = "Longitude"; //Needs translation
-"altitude_header" = "Altitude (m)"; //Needs translation
-"gpsspeed_header" = "GPS Speed (kmh)"; //Needs translation
-"gear_header" = "Gear"; //Needs translation
-"enginetemp_header" = "Engine Temperature (C)"; //Needs translation
-"ambienttemp_header" = "Ambient Temperature (C)"; //Needs translation
-"frontpressure_header" = "Front Tire Pressure (bar)"; //Needs translation
-"rearpressure_header" = "Rear Tire Pressure (bar)"; //Needs translation
-"odometer_header" = "Odometer (km)"; //Needs translation
-"voltage_header" = "Voltage (V)"; //Needs translation
-"throttle_header" = "Throttle Position (%)"; //Needs translation
-"frontbrakes_header" = "Front Brakes"; //Needs translation
-"rearbrakes_header" = "Rear Brakes"; //Needs translation
-"shifts_header" = "Shifts"; //Needs translation
-"vin_header" = "VIN"; //Needs translation
-"ambientlight_header" = "Ambient Light"; //Needs translation
-"tripone_header" = "Trip1 (km)"; //Needs translation
-"triptwo_header" = "Trip2 (km)"; //Needs translation
-"tripauto_header" = "Trip Auto (km)"; //Needs translation
-"speed_header" = "Speed (kmh)"; //Needs translation
-"avgspeed_header" = "Average Speed (kmh)"; //Needs translation
-"cconsumption_header" = "Current Consumption (L/100)"; //Needs translation
-"fueleconomyone_header" = "Fuel Economy 1 (L/100)"; //Needs translation
-"fueleconomytwo_header" = "Fuel Economy 2 (L/100)"; //Needs translation
-"fuelrange_header" = "Fuel Range (km)"; //Needs translation
+"time_header" = "Ώρα";
+"latitude_header" = "Γεωγραφικό πλάτος";
+"longitude_header" = "Γεωγραφικό μήκος";
+"altitude_header" = "Υψόμετρο (μ)";
+"gpsspeed_header" = "Ταχύτητα βάση GPS (χαω)";
+"gear_header" = "Ταχύτητα";
+"enginetemp_header" = "Θερμοκρασία κινητήρα (C)";
+"ambienttemp_header" = "Θερμοκρασία περιβάλλοντος (C)";
+"frontpressure_header" = "Πίεση εμπρός ελαστικού (bar)";
+"rearpressure_header" = "Πίεση πίσω ελαστικού (bar)";
+"odometer_header" = "Χιλιομετρητής (χλμ)";
+"voltage_header" = "Τάση (V)";
+"throttle_header" = "Άνοιγμα πεταλούδας (%)";
+"frontbrakes_header" = "Εμπρός φρένα";
+"rearbrakes_header" = "Πίσω φρένα";
+"shifts_header" = "Εναλλαγές ταχυτήτων";
+"vin_header" = "Αριθμός πλαισίου";
+"ambientlight_header" = "Φως περιβάλλοντος";
+"tripone_header" = "Διαδρομή1 (χλμ)";
+"triptwo_header" = "Διαδρομή2 (χλμ)";
+"tripauto_header" = "Διαδρομή (αυτόματη) (χλμ)";
+"speed_header" = "Ταχύτητα (χαω)";
+"avgspeed_header" = "Μέση ταχύτητα (χαω)";
+"cconsumption_header" = "Τρέχουσα κατανάλωση (L/100)";
+"fueleconomyone_header" = "Κατανάλωση καυσίμου 1 (L/100)";
+"fueleconomytwo_header" = "Κατανάλωση καυσίμου 2 (L/100)";
+"fuelrange_header" = "Αυτονομία καυσίμου (χλμ)";
 
 // ContactsTableViewController
 "contactlist_title" = "Επαφές";
