@@ -21,6 +21,8 @@ class TripViewController: UIViewController {
     @IBOutlet weak var engineTempLabel: UILabel!
     
     var fileName: String?
+    var csvFileNames : [String]?
+    var indexOfFileName: Int?
     
     @objc func leftScreen() {
         performSegue(withIdentifier: "tripToTrips", sender: [])
@@ -28,7 +30,16 @@ class TripViewController: UIViewController {
     
     func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
         if gesture.direction == UISwipeGestureRecognizerDirection.right {
-            performSegue(withIdentifier: "tripToTrips", sender: [])
+            if (indexOfFileName != 0){
+                fileName = csvFileNames![indexOfFileName! - 1]
+                self.viewDidLoad()
+            }
+        }
+        else if gesture.direction == UISwipeGestureRecognizerDirection.left {
+            if (indexOfFileName != (csvFileNames!.count - 1)){
+                fileName = csvFileNames![indexOfFileName! + 1]
+                self.viewDidLoad()
+            }
         }
     }
     
@@ -60,6 +71,9 @@ class TripViewController: UIViewController {
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))
         swipeRight.direction = .right
         self.view.addGestureRecognizer(swipeRight)
+        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))
+        swipeLeft.direction = .left
+        self.view.addGestureRecognizer(swipeLeft)
         
         let backBtn = UIButton()
         backBtn.setImage(UIImage(named: "Left")?.withRenderingMode(.alwaysTemplate), for: .normal)
@@ -71,6 +85,9 @@ class TripViewController: UIViewController {
         backButtonHeight?.isActive = true
         self.navigationItem.title = NSLocalizedString("trip_view_title", comment: "")
         self.navigationItem.leftBarButtonItems = [backButton]
+        
+        updateFileList()
+        indexOfFileName = csvFileNames!.index(of: fileName!)
 
         var data = readDataFromCSV(fileName: "\(fileName!)", fileType: "csv")
         data = cleanRows(file: data!)
@@ -253,7 +270,7 @@ class TripViewController: UIViewController {
         mapView.camera = camera
         mapView.mapType = .hybrid
         */
-        
+        mapView.clear()
         if path.count() > 0 {
             let bounds = GMSCoordinateBounds(path: path)
             let camera = mapView.camera(for: bounds, insets: UIEdgeInsets())!
@@ -392,5 +409,24 @@ class TripViewController: UIViewController {
         let difference = Calendar.current.dateComponents([.hour, .minute, .second], from: startDate, to: endDate)
 
         return "\(difference.hour!)\(NSLocalizedString("hours", comment: "")), \(difference.minute!)\(NSLocalizedString("minutes", comment: "")), \(difference.second!)\(NSLocalizedString("seconds", comment: ""))"
+    }
+    func updateFileList(){
+        // Get the document directory url
+        let documentsUrl =  FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        
+        do {
+            // Get the directory contents urls (including subfolders urls)
+            let directoryContents = try FileManager.default.contentsOfDirectory(at: documentsUrl, includingPropertiesForKeys: nil, options: [])
+            print(directoryContents)
+            
+            // if you want to filter the directory contents you can do like this:
+            let csvFiles = directoryContents.filter{ $0.pathExtension == "csv" }
+            csvFileNames = csvFiles.map{ $0.deletingPathExtension().lastPathComponent }
+            csvFileNames = csvFileNames?.sorted(by: {$0 > $1})
+            
+            
+        } catch {
+            print(error.localizedDescription)
+        }
     }
 }

@@ -7,7 +7,7 @@
 //
 
 import Foundation
-class Waypoint {
+class Waypoint : Equatable {
     
     var id: Int
     var date: String?
@@ -22,4 +22,9 @@ class Waypoint {
         self.latitude = latitude
         self.label = label
     }
+    
+    static func == (lhs: Waypoint, rhs: Waypoint) -> Bool {
+        return lhs.id == rhs.id
+    }
+    
 }

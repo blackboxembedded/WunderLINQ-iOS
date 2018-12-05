@@ -20,6 +20,9 @@ class WaypointViewController: UIViewController, UITextFieldDelegate {
     var latitude: String? = ""
     var longitude: String? = ""
     var label: String?
+    var waypoints = [Waypoint]()
+    var waypoint: Waypoint?
+    var indexOfWaypoint: Int?
     
     let scenic = ScenicAPI()
     
@@ -41,7 +44,16 @@ class WaypointViewController: UIViewController, UITextFieldDelegate {
     
     func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
         if gesture.direction == UISwipeGestureRecognizerDirection.right {
-            performSegue(withIdentifier: "waypointToWaypoints", sender: [])
+            if (indexOfWaypoint != 0){
+                record = waypoints[indexOfWaypoint! - 1].id
+                self.viewDidLoad()
+            }
+        }
+        else if gesture.direction == UISwipeGestureRecognizerDirection.left {
+            if (indexOfWaypoint != (waypoints.count - 1)){
+                record = waypoints[indexOfWaypoint! + 1].id
+                self.viewDidLoad()
+            }
         }
     }
 
@@ -277,7 +289,6 @@ class WaypointViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         AppUtility.lockOrientation(.portrait)
         
         // Do any additional setup after loading the view.
@@ -285,7 +296,9 @@ class WaypointViewController: UIViewController, UITextFieldDelegate {
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))
         swipeRight.direction = .right
         self.view.addGestureRecognizer(swipeRight)
-
+        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))
+        swipeLeft.direction = .left
+        self.view.addGestureRecognizer(swipeLeft)
         
         let backBtn = UIButton()
         backBtn.setImage(UIImage(named: "Left")?.withRenderingMode(.alwaysTemplate), for: .normal)
@@ -312,9 +325,12 @@ class WaypointViewController: UIViewController, UITextFieldDelegate {
             let errmsg = String(cString: sqlite3_errmsg(db)!)
             print("error creating table: \(errmsg)")
         }
-        
+        readWaypoints()
         readWaypoint()
+        
+        indexOfWaypoint = waypoints.index(of: waypoint!)
 
+        mapView.clear()
         if let lat = latitude?.toDouble(), let lon = longitude?.toDouble(){
             let camera: GMSCameraPosition = GMSCameraPosition.camera(withLatitude: lat, longitude: lon, zoom: 15.0)
             mapView.camera = camera
@@ -373,6 +389,7 @@ class WaypointViewController: UIViewController, UITextFieldDelegate {
         
         //traversing through all the records
         while(sqlite3_step(stmt) == SQLITE_ROW){
+            let id = Int(sqlite3_column_int(stmt, 0))
             date = String(cString: sqlite3_column_text(stmt, 1))
             latitude = String(cString: sqlite3_column_text(stmt, 2))
             longitude = String(cString: sqlite3_column_text(stmt, 3))
@@ -380,6 +397,40 @@ class WaypointViewController: UIViewController, UITextFieldDelegate {
             if ( sqlite3_column_text(stmt, 4) != nil ){
                 label = String(cString: sqlite3_column_text(stmt, 4))
             }
+            waypoint = Waypoint(id: Int(id), date: String(describing: date), latitude: String(describing: latitude), longitude: String(describing: longitude), label: String(describing: label))
+        }
+    }
+    
+    func readWaypoints(){
+        
+        //first empty the list of watpoints
+        waypoints.removeAll()
+        
+        //this is our select query
+        let queryString = "SELECT id,date,latitude,longitude,label FROM records ORDER BY id DESC"
+        
+        //statement pointer
+        var stmt:OpaquePointer?
+        
+        //preparing the query
+        if sqlite3_prepare(db, queryString, -1, &stmt, nil) != SQLITE_OK{
+            let errmsg = String(cString: sqlite3_errmsg(db)!)
+            print("error preparing insert: \(errmsg)")
+            return
+        }
+        
+        //traversing through all the records
+        while(sqlite3_step(stmt) == SQLITE_ROW){
+            let id = sqlite3_column_int(stmt, 0)
+            let date = String(cString: sqlite3_column_text(stmt, 1))
+            let latitude = String(cString: sqlite3_column_text(stmt, 2))
+            let longitude = String(cString: sqlite3_column_text(stmt, 3))
+            var label = ""
+            if ( sqlite3_column_text(stmt, 4) != nil ){
+                label = String(cString: sqlite3_column_text(stmt, 4))
+            }
+            //adding values to list
+            waypoints.append(Waypoint(id: Int(id), date: String(describing: date), latitude: String(describing: latitude), longitude: String(describing: longitude), label: String(describing: label)))
         }
     }
 }
