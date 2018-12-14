@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>CFBundleAllowMixedLocalizations</key>
+	<true/>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>
@@ -28,7 +30,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>35</string>
+	<string>37</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>googlemaps</string>
@@ -39,25 +41,25 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppleMusicUsageDescription</key>
-	<string>$(PRODUCT_NAME) wants to control you music player.</string>
+	<string>$(PRODUCT_NAME) needs access to your media library for music playback.</string>
 	<key>NSBluetoothPeripheralUsageDescription</key>
-	<string>$(PRODUCT_NAME) wants to use the WunderLINQ Hardware.</string>
+	<string>$(PRODUCT_NAME) needs access to Bluetooth to communicate with the WunderLINQ hardware.</string>
 	<key>NSCameraUsageDescription</key>
-	<string>$(PRODUCT_NAME) wants to use your camera.</string>
+	<string>$(PRODUCT_NAME) needs access to your camera to take pictures and record videos.</string>
 	<key>NSContactsUsageDescription</key>
-	<string>$(PRODUCT_NAME) wants to access your contacts.</string>
+	<string>$(PRODUCT_NAME) needs access to your address book to display your contacts phone numbers.</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>$(PRODUCT_NAME) wants to use your location</string>
+	<string>$(PRODUCT_NAME) needs access to your location to record your location in the trip log and save waypoints.</string>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>$(PRODUCT_NAME) wants to use your location</string>
+	<string>$(PRODUCT_NAME) needs access to your location to record your location in the trip log and save waypoints.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>$(PRODUCT_NAME) wants to use your compass.</string>
+	<string>$(PRODUCT_NAME) needs access to your location to record your location in the trip log and save waypoints.</string>
 	<key>NSMicrophoneUsageDescription</key>
-	<string>$(PRODUCT_NAME) wants to use your microphone.</string>
+	<string>$(PRODUCT_NAME) needs access to your microphone to record audio during video recording.</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>$(PRODUCT_NAME) wants to save photos to your photo library.</string>
+	<string>$(PRODUCT_NAME) needs access to save photos taken to your photo library.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>$(PRODUCT_NAME) wants to use your photo library.</string>
+	<string>$(PRODUCT_NAME) needs access to save photos taken to your photo library.</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>audio</string>
