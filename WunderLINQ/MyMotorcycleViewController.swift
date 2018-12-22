@@ -43,6 +43,7 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
     var centralManager:CBCentralManager!
     var wunderLINQ:CBPeripheral?
     var messageCharacteristic:CBCharacteristic?
+    var commandCharacteristic:CBCharacteristic?
     
     let deviceName = "WunderLINQ"
     
@@ -54,13 +55,15 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
     
     var lastMessage = [UInt8]()
     
+    let wlqData = WLQ.shared
+    let bleData = BLE.shared
     let motorcycleData = MotorcycleData.shared
     let faults = Faults.shared
     var prevBrakeValue = 0
     
     var menuSelected = 0
     fileprivate var popoverList = [NSLocalizedString("trip_logs_label", comment: ""), NSLocalizedString("waypoints_label", comment: "")]
-    fileprivate var popoverMenuList = [NSLocalizedString("settings_label", comment: ""), NSLocalizedString("about_label", comment: ""), NSLocalizedString("close_label", comment: "")]
+    fileprivate var popoverMenuList = [NSLocalizedString("settings_label", comment: ""), NSLocalizedString("hwsettings_label", comment: ""), NSLocalizedString("about_label", comment: ""), NSLocalizedString("close_label", comment: "")]
     fileprivate var popover: Popover!
     fileprivate var popoverOptions: [PopoverOption] = [
         .type(.auto),
@@ -416,6 +419,7 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
             centralManager.cancelPeripheralConnection(wunderLINQ)
         }
         messageCharacteristic = nil
+        bleData.setcmdCharacteristic(cmdCharacteristic: nil)
     }
     
     
@@ -437,6 +441,7 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
             print("FOUND WunderLINQ")
             let device = lastPeripherals.last!;
             wunderLINQ = device;
+            bleData.setPeripheral(peripheral: device)
             centralManager?.connect(wunderLINQ!, options: nil)
         } else {
             if keepScanning {
@@ -582,6 +587,43 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
                 tripTwoLabel.text = "-"
             }
         }
+    }
+    
+    func parseCommandResponse(_ data:Data) {
+        let dataLength = data.count / MemoryLayout<UInt8>.size
+        var dataArray = [UInt8](repeating: 0, count: dataLength)
+        (data as NSData).getBytes(&dataArray, length: dataLength * MemoryLayout<Int16>.size)
+        
+        var messageHexString = ""
+        for i in 0 ..< dataLength {
+            messageHexString += String(format: "%02X", dataArray[i])
+            if i < dataLength - 1 {
+                messageHexString += ","
+            }
+        }
+        //print("Command Response Received: \(messageHexString)")
+        
+        switch (dataArray[0]){
+        case 0x57:
+            switch (dataArray[1]){
+            case 0x52:
+                switch (dataArray[2]){
+                case 0x53:
+                    print("Received WRS command response")
+                    wlqData.setwwMode(wwMode: dataArray[24])
+                    break
+                default:
+                    break;
+                }
+                break
+            default:
+                break;
+            }
+            break
+        default:
+            break;
+        }
+        
     }
     
     func parseMessage(_ data:Data) {
@@ -1987,6 +2029,14 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
                     // Enable the message notifications
                     messageCharacteristic = characteristic
                     wunderLINQ?.setNotifyValue(true, for: characteristic)
+                } else if characteristic.uuid == CBUUID(string: Device.CommandCharacteristicUUID) {
+                    commandCharacteristic = characteristic
+                    bleData.setcmdCharacteristic(cmdCharacteristic: characteristic)
+                    
+                    let getConfigCommand:[UInt8] = [0x57,0x52,0x53]
+                    let writeData =  Data(bytes: getConfigCommand)
+                    peripheral.writeValue(writeData, for: characteristic, type: CBCharacteristicWriteType.withResponse)
+                    peripheral.readValue(for: characteristic)
                 }
                 
                 peripheral.discoverDescriptors(for: characteristic)
@@ -2017,6 +2067,8 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
         if let dataBytes = characteristic.value {
             if characteristic.uuid == CBUUID(string: Device.MessageCharacteristicUUID) {
                 parseMessage(dataBytes)
+            } else if characteristic.uuid == CBUUID(string: Device.CommandCharacteristicUUID) {
+                parseCommandResponse(dataBytes)
             }
         }
     }
@@ -2143,9 +2195,12 @@ extension MyMotorcycleViewController: UITableViewDelegate {
                     }
                 }
             case 1:
+                //HW Settings
+                performSegue(withIdentifier: "motorcycleToHWSettings", sender: self)
+            case 2:
                 //About
                 performSegue(withIdentifier: "motorcycleToAbout", sender: self)
-            case 2:
+            case 3:
                 exit(0)
             default:
                 print("Unknown option")

@@ -30,7 +30,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>37</string>
+	<string>38</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>googlemaps</string>
@@ -62,7 +62,6 @@
 	<string>$(PRODUCT_NAME) needs access to save photos taken to your photo library.</string>
 	<key>UIBackgroundModes</key>
 	<array>
-		<string>audio</string>
 		<string>bluetooth-central</string>
 		<string>fetch</string>
 		<string>location</string>

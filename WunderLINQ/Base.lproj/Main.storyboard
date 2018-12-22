@@ -238,11 +238,12 @@
                         <segue destination="BwD-J2-898" kind="show" identifier="motorcycleToTrips" id="kxw-0M-ID5"/>
                         <segue destination="Yme-GX-WRX" kind="show" identifier="motorcycleToCompass" id="E59-Gq-FAl"/>
                         <segue destination="gOc-zh-IDi" kind="show" identifier="motorcycleToAbout" id="fVo-eH-Rks"/>
+                        <segue destination="IU4-xr-4Bd" kind="show" identifier="motorcycleToHWSettings" id="U7e-Tj-3zM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7142" y="-125"/>
+            <point key="canvasLocation" x="7141" y="-126"/>
         </scene>
         <!--Faults-->
         <scene sceneID="Qzq-jP-Ecj">
@@ -869,7 +870,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vYP-M3-Xw8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="10363.125" y="1563.75"/>
+            <point key="canvasLocation" x="11269.565217391306" y="1563.5869565217392"/>
         </scene>
         <!--Alert-->
         <scene sceneID="2jd-t5-irf">
@@ -933,6 +934,66 @@
             </objects>
             <point key="canvasLocation" x="6334" y="1564"/>
         </scene>
+        <!--Quick Tasks-->
+        <scene sceneID="HhK-nD-oFa">
+            <objects>
+                <collectionViewController title="Quick Tasks" id="OIf-TM-fnx" customClass="TasksCollectionViewController" customModule="WunderLINQ" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="02I-YM-N5d">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="de0-qU-uAt">
+                            <size key="itemSize" width="203" height="87"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="wbi-oL-Eyc" customClass="TaskCollectionViewCell" customModule="WunderLINQ" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="200" height="90"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                    <rect key="frame" x="0.0" y="0.0" width="200" height="90"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IBf-iy-RMd">
+                                            <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="IBf-iy-RMd" secondAttribute="height" multiplier="1:1" id="31g-oe-chD"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nMA-fJ-rlm">
+                                            <rect key="frame" x="90" y="0.0" width="110" height="90"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </view>
+                                <constraints>
+                                    <constraint firstItem="IBf-iy-RMd" firstAttribute="top" secondItem="wbi-oL-Eyc" secondAttribute="top" id="4X9-PE-QkN"/>
+                                    <constraint firstItem="nMA-fJ-rlm" firstAttribute="leading" secondItem="IBf-iy-RMd" secondAttribute="trailing" id="AUI-KF-ZEE"/>
+                                    <constraint firstAttribute="trailing" secondItem="nMA-fJ-rlm" secondAttribute="trailing" id="E1K-z9-Mt8"/>
+                                    <constraint firstItem="nMA-fJ-rlm" firstAttribute="top" secondItem="wbi-oL-Eyc" secondAttribute="top" id="KRJ-Nw-kAa"/>
+                                    <constraint firstAttribute="bottom" secondItem="nMA-fJ-rlm" secondAttribute="bottom" id="ST9-RI-YmH"/>
+                                    <constraint firstAttribute="bottom" secondItem="IBf-iy-RMd" secondAttribute="bottom" id="e5I-FK-XrS"/>
+                                    <constraint firstItem="nMA-fJ-rlm" firstAttribute="leading" secondItem="IBf-iy-RMd" secondAttribute="trailing" id="gfd-VM-MC2"/>
+                                    <constraint firstItem="IBf-iy-RMd" firstAttribute="leading" secondItem="wbi-oL-Eyc" secondAttribute="leading" id="wdC-s6-nMq"/>
+                                </constraints>
+                                <size key="customSize" width="200" height="90"/>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="OIf-TM-fnx" id="79k-rB-3tN"/>
+                            <outlet property="delegate" destination="OIf-TM-fnx" id="CVN-zn-z9p"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" id="2eE-Xw-GNI"/>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Y78-9d-MHp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="9092.753623188406" y="2062.5"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="yCn-wr-lQB">
             <objects>
@@ -947,7 +1008,64 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QqB-g7-vYR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="9661.875" y="1563.75"/>
+            <point key="canvasLocation" x="10568.115942028986" y="1563.5869565217392"/>
+        </scene>
+        <!--HW Settings-->
+        <scene sceneID="gKl-xS-Cwg">
+            <objects>
+                <viewController id="IU4-xr-4Bd" customClass="HWSettingsViewController" customModule="WunderLINQ" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="JIN-NT-UZ4">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fZ3-Aw-NNr" customClass="LocalisableButton" customModule="WunderLINQ" customModuleProvider="target">
+                                <rect key="frame" x="16" y="678" width="382" height="42"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="25"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="localisedKey" value="config_write_label"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="savePressed:" destination="IU4-xr-4Bd" eventType="touchUpInside" id="xrE-vH-dSq"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Wheel Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kdd-7b-Hvf" customClass="LocalisableLabel" customModule="WunderLINQ" customModuleProvider="target">
+                                <rect key="frame" x="20" y="64" width="165" height="44"/>
+                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="localisedKey" value="wwtype_label"/>
+                                </userDefinedRuntimeAttributes>
+                            </label>
+                            <pickerView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tOE-xh-XqU">
+                                <rect key="frame" x="193" y="64" width="205" height="44"/>
+                            </pickerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="swJ-Ex-qo7" firstAttribute="bottom" secondItem="fZ3-Aw-NNr" secondAttribute="bottom" constant="16" id="1bL-Dn-TkO"/>
+                            <constraint firstItem="swJ-Ex-qo7" firstAttribute="trailing" secondItem="tOE-xh-XqU" secondAttribute="trailing" constant="16" id="38S-Gv-1od"/>
+                            <constraint firstItem="kdd-7b-Hvf" firstAttribute="width" secondItem="tOE-xh-XqU" secondAttribute="width" id="Qqh-jJ-cDD"/>
+                            <constraint firstItem="tOE-xh-XqU" firstAttribute="top" secondItem="swJ-Ex-qo7" secondAttribute="top" constant="25" id="Rsu-6W-RlF"/>
+                            <constraint firstItem="fZ3-Aw-NNr" firstAttribute="leading" secondItem="swJ-Ex-qo7" secondAttribute="leading" constant="16" id="SCQ-fX-M5S"/>
+                            <constraint firstItem="kdd-7b-Hvf" firstAttribute="leading" secondItem="swJ-Ex-qo7" secondAttribute="leading" constant="16" id="cL7-ll-Iqa"/>
+                            <constraint firstItem="swJ-Ex-qo7" firstAttribute="trailing" secondItem="fZ3-Aw-NNr" secondAttribute="trailing" constant="16" id="gZc-K3-6j4"/>
+                            <constraint firstItem="kdd-7b-Hvf" firstAttribute="top" secondItem="swJ-Ex-qo7" secondAttribute="top" constant="25" id="tas-t5-wqm"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="swJ-Ex-qo7"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="HW Settings" id="7LV-34-HmO"/>
+                    <connections>
+                        <outlet property="modeLabel" destination="kdd-7b-Hvf" id="t6u-5l-Oxw"/>
+                        <outlet property="modePicker" destination="tOE-xh-XqU" id="5fE-sK-SQg"/>
+                        <outlet property="saveButton" destination="fZ3-Aw-NNr" id="P8n-hF-bE9"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="hwSettingsToMotorcycle" id="BFW-qY-dw2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Pij-nb-6dj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5258" y="-126"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="m7N-1a-hHU">
@@ -1449,6 +1567,24 @@
             </objects>
             <point key="canvasLocation" x="6334" y="-1029"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="jLy-vL-Krq">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="amw-nz-neD" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="hEX-ob-HTN">
+                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="OIf-TM-fnx" kind="relationship" relationship="rootViewController" id="EhV-cT-Pj6"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Nm9-1A-VuL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="8185.507246376812" y="2062.5"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Left" width="88" height="88"/>
@@ -1460,10 +1596,10 @@
     <inferredMetricsTieBreakers>
         <segue reference="gIM-fx-mWk"/>
         <segue reference="qQx-7G-0NR"/>
-        <segue reference="QF9-me-I6g"/>
+        <segue reference="nh5-ZE-vmI"/>
         <segue reference="cF1-aK-Tul"/>
-        <segue reference="W8V-Rg-WFQ"/>
-        <segue reference="rCa-tS-QTz"/>
+        <segue reference="E59-Gq-FAl"/>
+        <segue reference="BFW-qY-dw2"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
 </document>

@@ -37,9 +37,18 @@
 "trip1_label" = "Trip 1";
 "trip2_label" = "Trip 2";
 "gear_label" = "Gear";
-"settings_label" = "Settings";
+"settings_label" = "App Settings";
 "about_label" = "About";
 "close_label" = "Close";
+"hwsettings_label" = "HW Settings"; //New
+
+//HWSettingsViewController
+"fw_config_title" = "WunderLINQ Settings"; //New
+"wwtype_label" = "Wheel Type"; //New
+"wwMode1" = "Full"; //New
+"wwMode2" = "Partial"; //New
+"wwMode3" = "Custom"; //New
+"config_write_label" = "Save Settings"; //New
 
 //AboutViewController
 "about_title" = "About";
