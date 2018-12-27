@@ -46,8 +46,9 @@
 "fw_config_title" = "WunderLINQ Settings"; //New
 "wwtype_label" = "Wheel Type"; //New
 "wwMode1" = "Full"; //New
-"wwMode2" = "Partial"; //New
+"wwMode2" = "RT"; //New
 "wwMode3" = "Custom"; //New
+"sensitivity_label" = "Hold Sensitivity"; //New
 "config_write_label" = "Save Settings"; //New
 
 //AboutViewController

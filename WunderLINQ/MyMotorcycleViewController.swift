@@ -608,9 +608,10 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
             switch (dataArray[1]){
             case 0x52:
                 switch (dataArray[2]){
-                case 0x53:
-                    print("Received WRS command response")
-                    wlqData.setwwMode(wwMode: dataArray[24])
+                case 0x57:
+                    print("Received WRW command response")
+                    wlqData.setwwMode(wwMode: dataArray[26])
+                    wlqData.setwwHoldSensitivity(wwHoldSensitivity: dataArray[34])
                     break
                 default:
                     break;
@@ -2033,7 +2034,7 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
                     commandCharacteristic = characteristic
                     bleData.setcmdCharacteristic(cmdCharacteristic: characteristic)
                     
-                    let getConfigCommand:[UInt8] = [0x57,0x52,0x53]
+                    let getConfigCommand:[UInt8] = [0x57,0x52,0x57]
                     let writeData =  Data(bytes: getConfigCommand)
                     peripheral.writeValue(writeData, for: characteristic, type: CBCharacteristicWriteType.withResponse)
                     peripheral.readValue(for: characteristic)

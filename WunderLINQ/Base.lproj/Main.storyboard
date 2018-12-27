@@ -1029,8 +1029,8 @@
                                     <action selector="savePressed:" destination="IU4-xr-4Bd" eventType="touchUpInside" id="xrE-vH-dSq"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Wheel Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kdd-7b-Hvf" customClass="LocalisableLabel" customModule="WunderLINQ" customModuleProvider="target">
-                                <rect key="frame" x="20" y="64" width="165" height="44"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wheel Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kdd-7b-Hvf" customClass="LocalisableLabel" customModule="WunderLINQ" customModuleProvider="target">
+                                <rect key="frame" x="16" y="45" width="382" height="24"/>
                                 <fontDescription key="fontDescription" type="system" weight="black" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -1038,20 +1038,54 @@
                                     <userDefinedRuntimeAttribute type="string" keyPath="localisedKey" value="wwtype_label"/>
                                 </userDefinedRuntimeAttributes>
                             </label>
-                            <pickerView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tOE-xh-XqU">
-                                <rect key="frame" x="193" y="64" width="205" height="44"/>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tOE-xh-XqU">
+                                <rect key="frame" x="16" y="85" width="382" height="75"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="75" id="WRD-oa-ixa"/>
+                                </constraints>
                             </pickerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hold Sensitivity" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mPy-4d-rgO" customClass="LocalisableLabel" customModule="WunderLINQ" customModuleProvider="target">
+                                <rect key="frame" x="16" y="176" width="183" height="24"/>
+                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="localisedKey" value="sensitivity_label"/>
+                                </userDefinedRuntimeAttributes>
+                            </label>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="8kR-jJ-u6c">
+                                <rect key="frame" x="14" y="216" width="386" height="31"/>
+                                <connections>
+                                    <action selector="sensitivitySliderChanged:" destination="IU4-xr-4Bd" eventType="valueChanged" id="Dyn-7n-ZVA"/>
+                                </connections>
+                            </slider>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aFc-Cs-nd4">
+                                <rect key="frame" x="215" y="176" width="183" height="24"/>
+                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="swJ-Ex-qo7" firstAttribute="bottom" secondItem="fZ3-Aw-NNr" secondAttribute="bottom" constant="16" id="1bL-Dn-TkO"/>
-                            <constraint firstItem="swJ-Ex-qo7" firstAttribute="trailing" secondItem="tOE-xh-XqU" secondAttribute="trailing" constant="16" id="38S-Gv-1od"/>
-                            <constraint firstItem="kdd-7b-Hvf" firstAttribute="width" secondItem="tOE-xh-XqU" secondAttribute="width" id="Qqh-jJ-cDD"/>
-                            <constraint firstItem="tOE-xh-XqU" firstAttribute="top" secondItem="swJ-Ex-qo7" secondAttribute="top" constant="25" id="Rsu-6W-RlF"/>
+                            <constraint firstItem="8kR-jJ-u6c" firstAttribute="top" secondItem="mPy-4d-rgO" secondAttribute="bottom" constant="16" id="3RE-Le-DLg"/>
+                            <constraint firstItem="kdd-7b-Hvf" firstAttribute="leading" secondItem="swJ-Ex-qo7" secondAttribute="leading" constant="16" id="DXO-a6-lF2"/>
+                            <constraint firstItem="aFc-Cs-nd4" firstAttribute="leading" secondItem="mPy-4d-rgO" secondAttribute="trailing" constant="16" id="Ios-FX-pPl"/>
+                            <constraint firstItem="swJ-Ex-qo7" firstAttribute="trailing" secondItem="kdd-7b-Hvf" secondAttribute="trailing" constant="16" id="J3T-8W-ZFu"/>
+                            <constraint firstItem="8kR-jJ-u6c" firstAttribute="leading" secondItem="swJ-Ex-qo7" secondAttribute="leading" constant="16" id="Msd-sG-Jlg"/>
+                            <constraint firstItem="aFc-Cs-nd4" firstAttribute="top" secondItem="tOE-xh-XqU" secondAttribute="bottom" constant="16" id="P9X-pI-MVv"/>
+                            <constraint firstItem="aFc-Cs-nd4" firstAttribute="width" secondItem="mPy-4d-rgO" secondAttribute="width" id="S9Z-53-Zho"/>
                             <constraint firstItem="fZ3-Aw-NNr" firstAttribute="leading" secondItem="swJ-Ex-qo7" secondAttribute="leading" constant="16" id="SCQ-fX-M5S"/>
-                            <constraint firstItem="kdd-7b-Hvf" firstAttribute="leading" secondItem="swJ-Ex-qo7" secondAttribute="leading" constant="16" id="cL7-ll-Iqa"/>
+                            <constraint firstItem="kdd-7b-Hvf" firstAttribute="top" secondItem="swJ-Ex-qo7" secondAttribute="top" constant="25" id="SdG-sa-LVx"/>
+                            <constraint firstItem="tOE-xh-XqU" firstAttribute="top" secondItem="kdd-7b-Hvf" secondAttribute="bottom" constant="16" id="Wgk-RN-BAN"/>
+                            <constraint firstItem="swJ-Ex-qo7" firstAttribute="trailing" secondItem="aFc-Cs-nd4" secondAttribute="trailing" constant="16" id="Xoe-zc-eEM"/>
+                            <constraint firstItem="mPy-4d-rgO" firstAttribute="top" secondItem="tOE-xh-XqU" secondAttribute="bottom" constant="16" id="aas-Bx-Bha"/>
+                            <constraint firstItem="tOE-xh-XqU" firstAttribute="leading" secondItem="swJ-Ex-qo7" secondAttribute="leading" constant="16" id="fCw-eB-ke9"/>
                             <constraint firstItem="swJ-Ex-qo7" firstAttribute="trailing" secondItem="fZ3-Aw-NNr" secondAttribute="trailing" constant="16" id="gZc-K3-6j4"/>
-                            <constraint firstItem="kdd-7b-Hvf" firstAttribute="top" secondItem="swJ-Ex-qo7" secondAttribute="top" constant="25" id="tas-t5-wqm"/>
+                            <constraint firstItem="swJ-Ex-qo7" firstAttribute="trailing" secondItem="8kR-jJ-u6c" secondAttribute="trailing" constant="16" id="jD6-C7-6YO"/>
+                            <constraint firstItem="swJ-Ex-qo7" firstAttribute="trailing" secondItem="tOE-xh-XqU" secondAttribute="trailing" constant="16" id="nEw-z8-089"/>
+                            <constraint firstItem="mPy-4d-rgO" firstAttribute="leading" secondItem="swJ-Ex-qo7" secondAttribute="leading" constant="16" id="xah-OH-rSD"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="swJ-Ex-qo7"/>
                     </view>
@@ -1060,6 +1094,9 @@
                         <outlet property="modeLabel" destination="kdd-7b-Hvf" id="t6u-5l-Oxw"/>
                         <outlet property="modePicker" destination="tOE-xh-XqU" id="5fE-sK-SQg"/>
                         <outlet property="saveButton" destination="fZ3-Aw-NNr" id="P8n-hF-bE9"/>
+                        <outlet property="sensitivityLabel" destination="mPy-4d-rgO" id="gHf-pM-eus"/>
+                        <outlet property="sensitivitySlider" destination="8kR-jJ-u6c" id="bEX-Uw-Q4h"/>
+                        <outlet property="sensitivityValueLabel" destination="aFc-Cs-nd4" id="jqy-1E-Lz2"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="hwSettingsToMotorcycle" id="BFW-qY-dw2"/>
                     </connections>
                 </viewController>

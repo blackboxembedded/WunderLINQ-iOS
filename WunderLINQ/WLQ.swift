@@ -12,11 +12,19 @@ class WLQ {
     static let shared = WLQ()
     
     var wwMode: UInt8?
+    var wwHoldSensitivity: UInt8?
     
     func setwwMode(wwMode: UInt8?){
         self.wwMode = wwMode
     }
     func getwwMode() -> UInt8{
         return self.wwMode!
+    }
+    
+    func setwwHoldSensitivity(wwHoldSensitivity: UInt8?){
+        self.wwHoldSensitivity = wwHoldSensitivity
+    }
+    func getwwHoldSensitivity() -> UInt8{
+        return self.wwHoldSensitivity!
     }
 }
