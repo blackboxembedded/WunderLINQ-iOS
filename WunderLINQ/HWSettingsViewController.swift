@@ -120,7 +120,6 @@ class HWSettingsViewController: UIViewController, CBPeripheralDelegate, UIPicker
         sensitivitySlider.isContinuous = true
         let sens = (Float) (wlqData.getwwHoldSensitivity())
         sensitivitySlider.value = sens
-        //sensitivitySlider.setValue(sens, animated: false)
         sensitivityValueLabel.text = "\((Int)(sensitivitySlider.value))"
     }
     
