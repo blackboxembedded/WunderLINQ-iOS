@@ -118,13 +118,19 @@ class HWSettingsViewController: UIViewController, CBPeripheralDelegate, UIPicker
         
         sensitivitySlider.minimumValue = 0
         sensitivitySlider.isContinuous = true
-        let sens = (Float) (wlqData.getwwHoldSensitivity())
-        sensitivitySlider.value = sens
+        sensitivitySlider.value = (Float) (wlqData.getwwHoldSensitivity())
         sensitivityValueLabel.text = "\((Int)(sensitivitySlider.value))"
+        
+        saveButton.isEnabled = false
     }
     
     @IBAction func sensitivitySliderChanged(_ sender: Any) {
         sensitivityValueLabel.text = "\((Int)(sensitivitySlider.value))"
+        if ((UInt8)(sensitivitySlider.value) == wlqData.getwwHoldSensitivity()){
+            saveButton.isEnabled = false
+        } else {
+            saveButton.isEnabled = true
+        }
     }
     
     /*
@@ -161,15 +167,20 @@ class HWSettingsViewController: UIViewController, CBPeripheralDelegate, UIPicker
             sensitivitySlider.isHidden = false
             sensitivityLabel.isHidden = false
             sensitivityValueLabel.isHidden = false
+            sensitivitySlider.value = (Float) (wlqData.getwwHoldSensitivity())
+            saveButton.isEnabled = false
         } else if ((row == 1) && (wlqData.getwwMode() == 0x34)){
             sensitivitySlider.maximumValue = 20
             sensitivitySlider.isHidden = false
             sensitivityLabel.isHidden = false
             sensitivityValueLabel.isHidden = false
+            sensitivitySlider.value = (Float) (wlqData.getwwHoldSensitivity())
+            saveButton.isEnabled = false
         } else {
             sensitivitySlider.isHidden = true
             sensitivityLabel.isHidden = true
             sensitivityValueLabel.isHidden = true
+            saveButton.isEnabled = true
         }
     }
 }
