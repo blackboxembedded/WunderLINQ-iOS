@@ -16,7 +16,7 @@ import Photos
 
 private let reuseIdentifier = "Cell"
 
-class TasksCollectionViewController: UICollectionViewController, AVCaptureVideoDataOutputSampleBufferDelegate, AVCaptureFileOutputRecordingDelegate {
+class TasksCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, AVCaptureVideoDataOutputSampleBufferDelegate, AVCaptureFileOutputRecordingDelegate {
     
     @IBOutlet weak var taskImage: UIImageView!
     @IBOutlet weak var taskLabel: UILabel!
@@ -45,43 +45,43 @@ class TasksCollectionViewController: UICollectionViewController, AVCaptureVideoD
     
     private func loadRows() {
         let taskRow1 = UserDefaults.standard.integer(forKey: "task_one_preference")
-        if (taskRow1 < 10){
+        if (taskRow1 < 11){
             mapping.append(taskRow1)
         }
         let taskRow2 = UserDefaults.standard.integer(forKey: "task_two_preference")
-        if (taskRow2 < 10){
+        if (taskRow2 < 11){
             mapping.append(taskRow2)
         }
         let taskRow3 = UserDefaults.standard.integer(forKey: "task_three_preference")
-        if (taskRow3 < 10){
+        if (taskRow3 < 11){
             mapping.append(taskRow3)
         }
         let taskRow4 = UserDefaults.standard.integer(forKey: "task_four_preference")
-        if (taskRow4 < 10){
+        if (taskRow4 < 11){
             mapping.append(taskRow4)
         }
         let taskRow5 = UserDefaults.standard.integer(forKey: "task_five_preference")
-        if (taskRow5 < 10){
+        if (taskRow5 < 11){
             mapping.append(taskRow5)
         }
         let taskRow6 = UserDefaults.standard.integer(forKey: "task_six_preference")
-        if (taskRow6 < 10){
+        if (taskRow6 < 11){
             mapping.append(taskRow6)
         }
         let taskRow7 = UserDefaults.standard.integer(forKey: "task_seven_preference")
-        if (taskRow7 < 10){
+        if (taskRow7 < 11){
             mapping.append(taskRow7)
         }
         let taskRow8 = UserDefaults.standard.integer(forKey: "task_eight_preference")
-        if (taskRow8 < 10){
+        if (taskRow8 < 11){
             mapping.append(taskRow8)
         }
         let taskRow9 = UserDefaults.standard.integer(forKey: "task_nine_preference")
-        if (taskRow9 < 10){
+        if (taskRow9 < 11){
             mapping.append(taskRow9)
         }
         let taskRow10 = UserDefaults.standard.integer(forKey: "task_ten_preference")
-        if (taskRow10 < 10){
+        if (taskRow10 < 11){
             mapping.append(taskRow10)
         }
     }
@@ -130,11 +130,14 @@ class TasksCollectionViewController: UICollectionViewController, AVCaptureVideoD
         guard let task9 = Tasks(label: NSLocalizedString("task_title_waypoint_nav", comment: ""), icon: UIImage(named: "Route")?.withRenderingMode(.alwaysTemplate)) else {
             fatalError("Unable to instantiate Navigate to Waypoint Task")
         }
-        tasks += [task0, task1, task2, task3, task4, task5, task6, task7, task8, task9]
+        // Settings Task
+        guard let task10 = Tasks(label: NSLocalizedString("task_title_settings", comment: ""), icon: UIImage(named: "Cog")?.withRenderingMode(.alwaysTemplate)) else {
+            fatalError("Unable to instantiate Settings Task")
+        }
+        tasks += [task0, task1, task2, task3, task4, task5, task6, task7, task8, task9, task10]
     }
     
     private func execute_task(taskID:Int) {
-        print("Execute Task ID: \(taskID)")
         switch taskID {
         case 0:
             //Navigation
@@ -423,8 +426,15 @@ class TasksCollectionViewController: UICollectionViewController, AVCaptureVideoD
             break
         case 9:
             //Navigate to Waypoint
-            //Call Contact
             performSegue(withIdentifier: "taskGridToWaypoints", sender: self)
+            break
+        case 10:
+            //Settings
+            if let appSettings = URL(string: UIApplicationOpenSettingsURLString + Bundle.main.bundleIdentifier!) {
+                if UIApplication.shared.canOpenURL(appSettings) {
+                    UIApplication.shared.open(appSettings)
+                }
+            }
             break
         default:
             print("Unknown Task")
@@ -571,6 +581,13 @@ class TasksCollectionViewController: UICollectionViewController, AVCaptureVideoD
             print("error creating table: \(errmsg)")
         }
     }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        coordinator.animate(alongsideTransition: nil) { _ in
+            self.collectionView!.reloadData()
+        }
+    }
 
     /*
     // MARK: - Navigation
@@ -624,6 +641,29 @@ class TasksCollectionViewController: UICollectionViewController, AVCaptureVideoD
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("Row Selected: \(indexPath.row)")
         execute_task(taskID: mapping[indexPath.row])
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize
+    {
+        if ( collectionView.bounds.width > collectionView.bounds.height){
+            let cellSize = CGSize(width: (collectionView.bounds.width - (3 * 10))/3, height: 80)
+            return cellSize
+        } else {
+            let cellSize = CGSize(width: (collectionView.bounds.width - (3 * 10))/2, height: 80)
+            return cellSize
+        }
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat
+    {
+        return 10
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets
+    {
+        let sectionInset = UIEdgeInsetsMake(0, 0, 0, 0)
+        return sectionInset
     }
 
     // MARK: UICollectionViewDelegate

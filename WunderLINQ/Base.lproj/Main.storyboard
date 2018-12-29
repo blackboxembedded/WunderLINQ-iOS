@@ -798,7 +798,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="gSL-t0-ikV">
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="gSL-t0-ikV">
                                             <rect key="frame" x="20" y="0.0" width="374" height="43.666666666666664"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" weight="black" pointSize="20"/>
@@ -839,7 +839,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="lKv-aX-sxq">
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="lKv-aX-sxq">
                                             <rect key="frame" x="20" y="0.0" width="374" height="43.666666666666664"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" weight="black" pointSize="17"/>
@@ -942,20 +942,20 @@
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TaskCollectionViewCell" id="wbi-oL-Eyc" customClass="TaskCollectionViewCell" customModule="WunderLINQ" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="200" height="75"/>
+                                <rect key="frame" x="0.0" y="0.0" width="200" height="70"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                    <rect key="frame" x="0.0" y="0.0" width="200" height="75"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="200" height="70"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IBf-iy-RMd">
-                                            <rect key="frame" x="0.0" y="0.0" width="75" height="75"/>
+                                            <rect key="frame" x="5" y="5" width="60" height="60"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="IBf-iy-RMd" secondAttribute="height" multiplier="1:1" id="31g-oe-chD"/>
                                             </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nMA-fJ-rlm">
-                                            <rect key="frame" x="75" y="0.0" width="125" height="75"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nMA-fJ-rlm">
+                                            <rect key="frame" x="65" y="0.0" width="135" height="70"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -963,16 +963,16 @@
                                     </subviews>
                                 </view>
                                 <constraints>
-                                    <constraint firstItem="IBf-iy-RMd" firstAttribute="top" secondItem="wbi-oL-Eyc" secondAttribute="top" id="4X9-PE-QkN"/>
+                                    <constraint firstItem="IBf-iy-RMd" firstAttribute="top" secondItem="wbi-oL-Eyc" secondAttribute="top" constant="5" id="4X9-PE-QkN"/>
                                     <constraint firstItem="nMA-fJ-rlm" firstAttribute="leading" secondItem="IBf-iy-RMd" secondAttribute="trailing" id="AUI-KF-ZEE"/>
                                     <constraint firstAttribute="trailing" secondItem="nMA-fJ-rlm" secondAttribute="trailing" id="E1K-z9-Mt8"/>
                                     <constraint firstItem="nMA-fJ-rlm" firstAttribute="top" secondItem="wbi-oL-Eyc" secondAttribute="top" id="KRJ-Nw-kAa"/>
                                     <constraint firstAttribute="bottom" secondItem="nMA-fJ-rlm" secondAttribute="bottom" id="ST9-RI-YmH"/>
-                                    <constraint firstAttribute="bottom" secondItem="IBf-iy-RMd" secondAttribute="bottom" id="e5I-FK-XrS"/>
+                                    <constraint firstAttribute="bottom" secondItem="IBf-iy-RMd" secondAttribute="bottom" constant="5" id="e5I-FK-XrS"/>
                                     <constraint firstItem="nMA-fJ-rlm" firstAttribute="leading" secondItem="IBf-iy-RMd" secondAttribute="trailing" id="gfd-VM-MC2"/>
-                                    <constraint firstItem="IBf-iy-RMd" firstAttribute="leading" secondItem="wbi-oL-Eyc" secondAttribute="leading" id="wdC-s6-nMq"/>
+                                    <constraint firstItem="IBf-iy-RMd" firstAttribute="leading" secondItem="wbi-oL-Eyc" secondAttribute="leading" constant="5" id="wdC-s6-nMq"/>
                                 </constraints>
-                                <size key="customSize" width="200" height="75"/>
+                                <size key="customSize" width="200" height="70"/>
                                 <connections>
                                     <outlet property="taskImage" destination="IBf-iy-RMd" id="Ldy-Td-HOU"/>
                                     <outlet property="taskLabel" destination="nMA-fJ-rlm" id="lud-As-CSB"/>
@@ -1507,12 +1507,10 @@
         <image name="play" width="132" height="132"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="aOH-3r-jow"/>
-        <segue reference="Dqr-lf-ahi"/>
-        <segue reference="VKq-wx-i3D"/>
+        <segue reference="RMB-mt-FYE"/>
         <segue reference="gIM-fx-mWk"/>
         <segue reference="qQx-7G-0NR"/>
-        <segue reference="bDf-3P-icu"/>
+        <segue reference="PPQ-oT-Jxj"/>
         <segue reference="cF1-aK-Tul"/>
         <segue reference="veu-Ll-J9g"/>
         <segue reference="P25-cb-auh"/>

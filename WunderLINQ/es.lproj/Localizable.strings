@@ -40,6 +40,16 @@
 "settings_label" = "Ajustes"; //Translated into SP_ES 20181127
 "about_label" = "Acerca de"; //Translated into SP_ES 20181127
 "close_label" = "Cerrar"; //Translated into SP_ES 20181127
+"hwsettings_label" = "HW Settings"; //Needs Translation
+
+//HWSettingsViewController
+"fw_config_title" = "WunderLINQ Settings"; //Needs Translation
+"wwtype_label" = "Wheel Type"; //Needs Translation
+"wwMode1" = "Full"; //Needs Translation
+"wwMode2" = "RT"; //Needs Translation
+"wwMode3" = "Custom"; //Needs Translation
+"sensitivity_label" = "Hold Sensitivity"; //Needs Translation
+"config_write_label" = "Save Settings"; //Needs Translation
 
 // AlertViewController
 "alert_label_fuel"="¿Ruta a la gasolinera más cercana?";
@@ -113,6 +123,7 @@
 "task_title_start_trip"="Comenzar Log de Ruta";
 "task_title_stop_trip"="Terminar Log de Ruta";
 "task_title_waypoint"="Guardar Waypoint";
+"task_title_settings" = "Ajustes";
 "toast_waypoint_saved"="Punto de ruta guardado";
 "task_title_waypoint_nav"="NAvegar a Waypoint";
 "toast_photo_taken"="¡Foto guardada!";

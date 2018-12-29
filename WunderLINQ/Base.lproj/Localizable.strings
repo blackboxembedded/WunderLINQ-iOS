@@ -37,19 +37,20 @@
 "trip1_label" = "Trip 1";
 "trip2_label" = "Trip 2";
 "gear_label" = "Gear";
-"settings_label" = "App Settings";
+"settings_label" = "Settings";
+"appsettings_label" = "App Settings"; //Needs Translation
 "about_label" = "About";
 "close_label" = "Close";
-"hwsettings_label" = "HW Settings"; //New
+"hwsettings_label" = "HW Settings"; //Needs Translation
 
 //HWSettingsViewController
-"fw_config_title" = "WunderLINQ Settings"; //New
-"wwtype_label" = "Wheel Type"; //New
-"wwMode1" = "Full"; //New
-"wwMode2" = "RT"; //New
-"wwMode3" = "Custom"; //New
-"sensitivity_label" = "Hold Sensitivity"; //New
-"config_write_label" = "Save Settings"; //New
+"fw_config_title" = "WunderLINQ Settings"; //Needs Translation
+"wwtype_label" = "Wheel Type"; //Needs Translation
+"wwMode1" = "Full"; //Needs Translation
+"wwMode2" = "RT"; //Needs Translation
+"wwMode3" = "Custom"; //Needs Translation
+"sensitivity_label" = "Hold Sensitivity"; //Needs Translation
+"config_write_label" = "Save Settings"; //Needs Translation
 
 //AboutViewController
 "about_title" = "About";
@@ -126,6 +127,7 @@
 "task_title_start_trip" = "Start Trip Log";
 "task_title_stop_trip" = "Stop Trip Log";
 "task_title_waypoint" = "Save Waypoint";
+"task_title_settings" = "Settings";
 "toast_waypoint_saved" = "Waypoint Saved";
 "task_title_waypoint_nav" = "Navigate to Waypoint";
 "toast_photo_taken" = "Photo Taken!";

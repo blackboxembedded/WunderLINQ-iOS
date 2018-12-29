@@ -38,8 +38,19 @@
 "trip2_label" = "KM-Zähler 2";
 "gear_label" = "Gang";
 "settings_label" = "Einstellungen";
+"appsettings_label" = "App Settings"; //Needs Translation
 "about_label" = "Über";
 "close_label" = "Schliessen";
+"hwsettings_label" = "HW Settings"; //Needs Translation
+
+//HWSettingsViewController
+"fw_config_title" = "WunderLINQ Settings"; //Needs Translation
+"wwtype_label" = "Wheel Type"; //Needs Translation
+"wwMode1" = "Full"; //Needs Translation
+"wwMode2" = "RT"; //Needs Translation
+"wwMode3" = "Custom"; //Needs Translation
+"sensitivity_label" = "Hold Sensitivity"; //Needs Translation
+"config_write_label" = "Save Settings"; //Needs Translation
 
 // AlertViewController
 "alert_label_fuel" = "Zur nächsten Tankstelle navigieren?";
@@ -113,6 +124,7 @@
 "task_title_start_trip" = "Fahrtaufzeichnung starten";
 "task_title_stop_trip" = "Fahrtaufzeichnung beenden";
 "task_title_waypoint" = "Wegpunkt speichern";
+"task_title_settings" = "Einstellungen";
 "toast_waypoint_saved" = "Gespeicherter Wegpunkt";
 "task_title_waypoint_nav" = "Zu Wegpunkt navigieren";
 "toast_photo_taken" = "Foto aufgenommen!";

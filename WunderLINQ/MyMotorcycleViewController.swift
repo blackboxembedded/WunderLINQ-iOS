@@ -63,7 +63,7 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
     
     var menuSelected = 0
     fileprivate var popoverList = [NSLocalizedString("trip_logs_label", comment: ""), NSLocalizedString("waypoints_label", comment: "")]
-    fileprivate var popoverMenuList = [NSLocalizedString("settings_label", comment: ""), NSLocalizedString("about_label", comment: ""), NSLocalizedString("close_label", comment: "")]
+    fileprivate var popoverMenuList = [NSLocalizedString("appsettings_label", comment: ""), NSLocalizedString("about_label", comment: ""), NSLocalizedString("close_label", comment: "")]
     fileprivate var popover: Popover!
     fileprivate var popoverOptions: [PopoverOption] = [
         .type(.auto),
@@ -612,7 +612,7 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
                     print("Received WRW command response")
                     wlqData.setwwMode(wwMode: dataArray[26])
                     wlqData.setwwHoldSensitivity(wwHoldSensitivity: dataArray[34])
-                    popoverMenuList = [NSLocalizedString("settings_label", comment: ""), NSLocalizedString("hwsettings_label", comment: ""), NSLocalizedString("about_label", comment: ""), NSLocalizedString("close_label", comment: "")]
+                    popoverMenuList = [NSLocalizedString("appsettings_label", comment: ""), NSLocalizedString("hwsettings_label", comment: ""), NSLocalizedString("about_label", comment: ""), NSLocalizedString("close_label", comment: "")]
                     break
                 default:
                     break;
@@ -1970,7 +1970,7 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
             print("DISCONNECTION DETAILS: \(error!.localizedDescription)")
         }
         wunderLINQ = nil
-        popoverMenuList = [NSLocalizedString("settings_label", comment: ""), NSLocalizedString("about_label", comment: ""), NSLocalizedString("close_label", comment: "")]
+        popoverMenuList = [NSLocalizedString("appsettings_label", comment: ""), NSLocalizedString("about_label", comment: ""), NSLocalizedString("close_label", comment: "")]
         
         // Start trying to reconnect
         keepScanning = true

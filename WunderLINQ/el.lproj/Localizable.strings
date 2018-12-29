@@ -38,8 +38,19 @@
 "trip2_label" = "Διαδρομή 2";
 "gear_label" = "Ταχύτητα";
 "settings_label" = "Ρυθμίσεις";
+"appsettings_label" = "App Settings"; //Needs Translation
 "about_label" = "Περί...";
 "close_label" = "Κλείσιμο";
+"hwsettings_label" = "HW Settings"; //Needs Translation
+
+//HWSettingsViewController
+"fw_config_title" = "WunderLINQ Settings"; //Needs Translation
+"wwtype_label" = "Wheel Type"; //Needs Translation
+"wwMode1" = "Full"; //Needs Translation
+"wwMode2" = "RT"; //Needs Translation
+"wwMode3" = "Custom"; //Needs Translation
+"sensitivity_label" = "Hold Sensitivity"; //Needs Translation
+"config_write_label" = "Save Settings"; //Needs Translation
 
 //AboutViewController
 "about_title" = "Περί...";
@@ -116,6 +127,7 @@
 "task_title_start_trip" = "Εναρξη καταγρ. διαδρομής";
 "task_title_stop_trip" = "Παύση καταγρ. διαδρομής";
 "task_title_waypoint" = "Αποθήκ. προορισμού";
+"task_title_settings" = "Ρυθμίσεις";
 "toast_waypoint_saved" = "Ο προορισμός αποθηκεύτηκε";
 "task_title_waypoint_nav" = "Πλοήγ. στον προορισμό";
 "toast_photo_taken" = "Επιτυχής λήψη φωτογραφίας";

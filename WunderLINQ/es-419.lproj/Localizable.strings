@@ -38,8 +38,19 @@
 "trip2_label" = "Parcial 2";
 "gear_label" = "Marcha";
 "settings_label" = "Settings"; //Needs translation
+"appsettings_label" = "App Settings"; //Needs translation
 "about_label" = "About"; //Needs translation
 "close_label" = "Close"; //Needs translation
+"hwsettings_label" = "HW Settings"; //Needs Translation
+
+//HWSettingsViewController
+"fw_config_title" = "WunderLINQ Settings"; //Needs Translation
+"wwtype_label" = "Wheel Type"; //Needs Translation
+"wwMode1" = "Full"; //Needs Translation
+"wwMode2" = "RT"; //Needs Translation
+"wwMode3" = "Custom"; //Needs Translation
+"sensitivity_label" = "Hold Sensitivity"; //Needs Translation
+"config_write_label" = "Save Settings"; //Needs Translation
 
 // AlertViewController
 "alert_label_fuel" = "¿Desea la ruta a la gasolinera más cercana?";
@@ -113,6 +124,7 @@
 "task_title_start_trip" = "Iniciar bitácora";
 "task_title_stop_trip" = "Detener bitácora";
 "task_title_waypoint" = "Guardar Waypoint";
+"task_title_settings" = "Settings"; //Needs Translation
 "toast_waypoint_saved" = "Waypoint guardado";
 "task_title_waypoint_nav" = "Navigar hacia Waypoint";
 "toast_photo_taken" = "Fotografía tomada!";

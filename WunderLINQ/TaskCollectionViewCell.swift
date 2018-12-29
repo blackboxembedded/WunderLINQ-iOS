@@ -23,11 +23,13 @@ class TaskCollectionViewCell: UICollectionViewCell {
     func highlightEffect(){
         taskImage.backgroundColor = UIColor.blue
         taskLabel.backgroundColor = UIColor.blue
+        contentView.backgroundColor = UIColor.blue
     }
     
     func removeHighlight(color: UIColor){
         taskImage.backgroundColor = color
         taskLabel.backgroundColor = color
+        contentView.backgroundColor = color
     }
     
 }

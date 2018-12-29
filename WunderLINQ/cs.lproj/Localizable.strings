@@ -38,8 +38,19 @@
 "trip2_label" = "Trip 2";
 "gear_label" = "Stupeň";
 "settings_label" = "Nastavení";
+"appsettings_label" = "App Settings"; // Needs Translation
 "about_label" = "O aplikaci";
 "close_label" = "Zavřít";
+"hwsettings_label" = "HW Settings"; //Needs Translation
+
+//HWSettingsViewController
+"fw_config_title" = "WunderLINQ Settings"; //Needs Translation
+"wwtype_label" = "Wheel Type"; //Needs Translation
+"wwMode1" = "Full"; //Needs Translation
+"wwMode2" = "RT"; //Needs Translation
+"wwMode3" = "Custom"; //Needs Translation
+"sensitivity_label" = "Hold Sensitivity"; //Needs Translation
+"config_write_label" = "Save Settings"; //Needs Translation
 
 //AboutViewController
 "about_title" = "O Aplikaci";
@@ -116,6 +127,7 @@
 "task_title_start_trip" = "Nahraj záznam jízdy";
 "task_title_stop_trip" = "Ukonči záznam jízdy";
 "task_title_waypoint" = "Ulož místo";
+"task_title_settings" = "Nastavení";
 "toast_waypoint_saved" = "Místo uloženo";
 "task_title_waypoint_nav" = "Naviguj na uložené místo";
 "toast_photo_taken" = "Fotka pořízena!";

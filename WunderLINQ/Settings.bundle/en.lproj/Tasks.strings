@@ -8,6 +8,7 @@
 "task_title_start_trip" = "Start Trip Log";
 "task_title_waypoint" = "Save Waypoint";
 "task_title_waypoint_nav" = "Navigate to Waypoint";
+"task_title_settings" = "Settings";
 "task_title_empty" = "Empty";
 "pref_task_one" = "First";
 "pref_task_two" = "Second";

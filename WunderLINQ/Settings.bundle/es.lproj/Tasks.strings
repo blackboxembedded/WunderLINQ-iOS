@@ -8,6 +8,7 @@
 "task_title_start_trip"="Comenzar Log de Ruta";
 "task_title_waypoint"="Guardar Waypoint";
 "task_title_waypoint_nav"="Navegar a Waypoint";
+"task_title_settings" = "Ajustes";
 "task_title_empty" = "Vacía"; ////Translated into SP_ES 20181127
 "pref_task_one" = "Primera"; ////Translated into SP_ES 20181127
 "pref_task_two" = "Segunda"; ////Translated into SP_ES 20181127
