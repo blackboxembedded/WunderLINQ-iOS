@@ -292,10 +292,10 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
 
     func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
         if gesture.direction == UISwipeGestureRecognizerDirection.right {
-            performSegue(withIdentifier: "motorcycleToTasks", sender: [])
+            performSegue(withIdentifier: "motorcycleToTaskGrid", sender: [])
         }
         else if gesture.direction == UISwipeGestureRecognizerDirection.left {
-            performSegue(withIdentifier: "motorcycleToCompass", sender: [])
+            performSegue(withIdentifier: "motorcycleToMusic", sender: [])
         }
     }
     
@@ -310,12 +310,12 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
     
     @objc func leftScreen() {
         // your code here
-        performSegue(withIdentifier: "motorcycleToTasks", sender: [])
+        performSegue(withIdentifier: "motorcycleToTaskGrid", sender: [])
     }
     
     @objc func rightScreen() {
         // your code here
-        performSegue(withIdentifier: "motorcycleToCompass", sender: [])
+        performSegue(withIdentifier: "motorcycleToMusic", sender: [])
     }
     
     override func didReceiveMemoryWarning() {

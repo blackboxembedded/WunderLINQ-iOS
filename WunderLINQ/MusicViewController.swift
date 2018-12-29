@@ -123,10 +123,10 @@ class MusicViewController: UIViewController {
     
     func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
         if gesture.direction == UISwipeGestureRecognizerDirection.right {
-            performSegue(withIdentifier: "musicToCompass", sender: [])
+            performSegue(withIdentifier: "musicToMotorcycle", sender: [])
         }
         else if gesture.direction == UISwipeGestureRecognizerDirection.left {
-            performSegue(withIdentifier: "musicToQuickTasks", sender: [])
+            performSegue(withIdentifier: "musicToCompass", sender: [])
         }
     }
     
@@ -142,10 +142,10 @@ class MusicViewController: UIViewController {
     }
     
     @objc func leftScreen() {
-        performSegue(withIdentifier: "musicToCompass", sender: [])
+        performSegue(withIdentifier: "musicToMotorcycle", sender: [])
     }
     @objc func rightScreen() {
-        performSegue(withIdentifier: "musicToQuickTasks", sender: [])
+        performSegue(withIdentifier: "musicToCompass", sender: [])
     }
     @objc func nextSong() {
         musicPlayer().skipToNextItem()

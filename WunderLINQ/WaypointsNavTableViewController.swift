@@ -113,12 +113,12 @@ class WaypointsNavTableViewController: UITableViewController {
     }
     
     @objc func leftScreen() {
-        performSegue(withIdentifier: "toTasks", sender: [])
+        performSegue(withIdentifier: "waypointsToTaskGrid", sender: [])
     }
     
     func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
         if gesture.direction == UISwipeGestureRecognizerDirection.right {
-            performSegue(withIdentifier: "toTasks", sender: [])
+            performSegue(withIdentifier: "waypointsToTaskGrid", sender: [])
         }
     }
 

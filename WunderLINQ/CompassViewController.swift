@@ -26,10 +26,10 @@ class CompassViewController: UIViewController {
     }
     
     @objc func leftScreen() {
-        performSegue(withIdentifier: "backToMotorcycle", sender: [])
+        performSegue(withIdentifier: "compassToMusic", sender: [])
     }
     @objc func rightScreen() {
-        performSegue(withIdentifier: "compassToMusic", sender: [])
+        performSegue(withIdentifier: "compassToTaskGrid", sender: [])
     }
     @objc func nextUnit() {
         switch (UserDefaults.standard.integer(forKey: "bearing_unit_preference")){
@@ -58,10 +58,10 @@ class CompassViewController: UIViewController {
     
     func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
         if gesture.direction == UISwipeGestureRecognizerDirection.right {
-            performSegue(withIdentifier: "backToMotorcycle", sender: [])
+            performSegue(withIdentifier: "compassToMusic", sender: [])
         }
         else if gesture.direction == UISwipeGestureRecognizerDirection.left {
-            performSegue(withIdentifier: "compassToMusic", sender: [])
+            performSegue(withIdentifier: "compassToTaskGrid", sender: [])
         }
     }
     

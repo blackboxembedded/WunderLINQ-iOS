@@ -187,7 +187,7 @@ class ContactsTableViewController: UITableViewController {
         self.tableView.reloadData()
     }
     @objc func leftScreen() {
-        performSegue(withIdentifier: "backToTasks", sender: [])
+        performSegue(withIdentifier: "contactsToTaskGrid", sender: [])
     }    
     @objc func rightScreen() {
         
@@ -195,7 +195,7 @@ class ContactsTableViewController: UITableViewController {
     
     func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
         if gesture.direction == UISwipeGestureRecognizerDirection.right {
-            performSegue(withIdentifier: "backToTasks", sender: [])
+            performSegue(withIdentifier: "contactsToTaskGrid", sender: [])
         }
     }
     

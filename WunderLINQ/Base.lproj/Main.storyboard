@@ -232,13 +232,13 @@
                         <outlet property="tripOneStackView" destination="f1l-wO-9ak" id="4bC-oI-oWW"/>
                         <outlet property="tripTwoLabel" destination="yQZ-bf-Jhe" id="mlK-oF-T4E"/>
                         <outlet property="tripTwoStackView" destination="0ei-je-KbR" id="UrQ-8Y-Zde"/>
-                        <segue destination="UAo-uD-fGL" kind="custom" identifier="motorcycleToTasks" customClass="SegueFromLeft" customModule="WunderLINQ" customModuleProvider="target" id="nh5-ZE-vmI"/>
-                        <segue destination="zX3-aP-C03" kind="show" identifier="motorcycleToFaults" id="WUr-eG-QLc"/>
-                        <segue destination="DqH-mq-8qj" kind="show" identifier="motorcycleToWaypoints" id="hzw-Lu-fUo"/>
-                        <segue destination="BwD-J2-898" kind="show" identifier="motorcycleToTrips" id="kxw-0M-ID5"/>
-                        <segue destination="Yme-GX-WRX" kind="show" identifier="motorcycleToCompass" id="E59-Gq-FAl"/>
-                        <segue destination="gOc-zh-IDi" kind="show" identifier="motorcycleToAbout" id="fVo-eH-Rks"/>
                         <segue destination="IU4-xr-4Bd" kind="show" identifier="motorcycleToHWSettings" id="U7e-Tj-3zM"/>
+                        <segue destination="OIf-TM-fnx" kind="show" identifier="motorcycleToTaskGrid" customClass="SegueFromLeft" customModule="WunderLINQ" customModuleProvider="target" id="Mvj-Z7-A9C"/>
+                        <segue destination="p6n-wZ-mMa" kind="show" identifier="motorcycleToMusic" id="kry-jp-5q5"/>
+                        <segue destination="KTW-aa-IYg" kind="show" identifier="motorcycleToFaults" id="b1A-JR-H5R"/>
+                        <segue destination="BZZ-xV-I8u" kind="show" identifier="motorcycleToAbout" id="wFc-ro-LF5"/>
+                        <segue destination="zo6-HF-7UD" kind="show" identifier="motorcycleToWaypoints" id="KXb-aY-1Ca"/>
+                        <segue destination="1rx-Mx-oc0" kind="show" identifier="motorcycleToTrips" id="MzX-q0-6NM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -250,7 +250,7 @@
             <objects>
                 <tableViewController title="Faults" id="KTW-aa-IYg" customClass="FaultsTableViewController" customModule="WunderLINQ" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="8d5-qJ-gEo">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
@@ -284,7 +284,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i0g-hA-4nz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="8956" y="-124.58770614692655"/>
+            <point key="canvasLocation" x="7141" y="677"/>
         </scene>
         <!--Waypoint-->
         <scene sceneID="olz-rS-p04">
@@ -496,7 +496,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SXT-T2-9wl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="9947.826086956522" y="-1030.4347826086957"/>
+            <point key="canvasLocation" x="8035" y="-911"/>
         </scene>
         <!--Compass-->
         <scene sceneID="zpk-X9-Usv">
@@ -541,19 +541,19 @@
                             <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="backButton:" destination="Yme-GX-WRX" id="QmX-z6-3r5"/>
-                                <segue destination="p6n-wZ-mMa" kind="show" identifier="compassToMusic" id="cF1-aK-Tul"/>
+                                <segue destination="p6n-wZ-mMa" kind="show" identifier="compassToMusic" customClass="SegueFromLeft" customModule="WunderLINQ" customModuleProvider="target" id="cF1-aK-Tul"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="compassLabel" destination="lsy-hM-ZFw" id="x9L-EO-H4Y"/>
-                        <segue destination="BYZ-38-t0r" kind="custom" identifier="backToMotorcycle" customClass="SegueFromLeft" customModule="WunderLINQ" customModuleProvider="target" id="rCa-tS-QTz"/>
+                        <segue destination="OIf-TM-fnx" kind="show" identifier="compassToTaskGrid" id="uX9-9I-oIg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oxj-9z-5k3" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="wUq-oT-yYJ" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="6334" y="805"/>
+            <point key="canvasLocation" x="8909" y="-126"/>
         </scene>
         <!--Music-->
         <scene sceneID="8D1-Ci-pio">
@@ -576,48 +576,48 @@
                                 <rect key="frame" x="0.0" y="434" width="414" height="302"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7h2-4R-M5d">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="98"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="54"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MHP-fk-xUy">
-                                        <rect key="frame" x="0.0" y="98" width="414" height="24"/>
+                                        <rect key="frame" x="0.0" y="54" width="414" height="24"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ojS-iD-NCF">
-                                        <rect key="frame" x="0.0" y="122" width="414" height="24"/>
+                                        <rect key="frame" x="0.0" y="78" width="414" height="24"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ENe-lL-dLJ">
-                                        <rect key="frame" x="0.0" y="146" width="414" height="24"/>
+                                        <rect key="frame" x="0.0" y="102" width="414" height="24"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SPh-nY-LUF">
-                                        <rect key="frame" x="0.0" y="170" width="414" height="132"/>
+                                        <rect key="frame" x="0.0" y="126" width="414" height="176"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vsu-t3-FAz">
-                                                <rect key="frame" x="0.0" y="0.0" width="138" height="132"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="138" height="176"/>
                                                 <state key="normal" image="back"/>
                                                 <connections>
                                                     <action selector="lastButton:" destination="p6n-wZ-mMa" eventType="touchUpInside" id="AHf-FW-rrk"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pwh-25-TzL">
-                                                <rect key="frame" x="138" y="0.0" width="138" height="132"/>
+                                                <rect key="frame" x="138" y="0.0" width="138" height="176"/>
                                                 <state key="normal" image="play"/>
                                                 <connections>
                                                     <action selector="playButton:" destination="p6n-wZ-mMa" eventType="touchUpInside" id="zrO-H3-A4V"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kxB-1t-Lm7">
-                                                <rect key="frame" x="276" y="0.0" width="138" height="132"/>
+                                                <rect key="frame" x="276" y="0.0" width="138" height="176"/>
                                                 <state key="normal" image="forward"/>
                                                 <connections>
                                                     <action selector="nextButton:" destination="p6n-wZ-mMa" eventType="touchUpInside" id="OHU-u9-qfP"/>
@@ -710,9 +710,6 @@
                         <barButtonItem key="rightBarButtonItem" image="Right" id="XyW-nS-Da0">
                             <inset key="imageInsets" minX="5" minY="0.0" maxX="-15" maxY="0.0"/>
                             <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                            <connections>
-                                <segue destination="UAo-uD-fGL" kind="show" identifier="musicToQuickTasks" id="QF9-me-I6g"/>
-                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <nil key="simulatedBottomBarMetrics"/>
@@ -724,13 +721,14 @@
                         <outlet property="nextButton" destination="kxB-1t-Lm7" id="ysa-Qv-XIY"/>
                         <outlet property="playButton" destination="Pwh-25-TzL" id="GH4-Fn-mrI"/>
                         <outlet property="songLabel" destination="ojS-iD-NCF" id="Q05-G0-XS2"/>
-                        <segue destination="Yme-GX-WRX" kind="show" identifier="musicToCompass" customClass="SegueFromLeft" customModule="WunderLINQ" customModuleProvider="target" id="W8V-Rg-WFQ"/>
+                        <segue destination="Yme-GX-WRX" kind="show" identifier="musicToCompass" id="W8V-Rg-WFQ"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="musicToMotorcycle" customClass="SegueFromLeft" customModule="WunderLINQ" customModuleProvider="target" id="gfr-gj-BUz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pw8-37-q0l" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="5Y5-Mi-hQ5" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="8079.1999999999998" y="803.74812593703155"/>
+            <point key="canvasLocation" x="8035" y="-126"/>
         </scene>
         <!--Quick Tasks-->
         <scene sceneID="KDP-oU-T0n">
@@ -778,24 +776,18 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <connections>
-                        <segue destination="RZv-Tv-KDt" kind="show" identifier="toContacts" id="7A0-qQ-zYz"/>
-                        <segue destination="BYZ-38-t0r" kind="show" identifier="tasksTomotorcycle" id="hHX-hV-yfD"/>
-                        <segue destination="p6n-wZ-mMa" kind="custom" identifier="backToMusic" customClass="SegueFromLeft" customModule="WunderLINQ" customModuleProvider="target" id="Dpe-gj-Wyf"/>
-                        <segue destination="Gkm-4f-7jg" kind="show" identifier="toWaypoints" id="P61-LW-igo"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HkE-mg-0AP" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="69C-pl-m3A" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="8826.3999999999996" y="804.64767616191909"/>
+            <point key="canvasLocation" x="9786" y="1159"/>
         </scene>
         <!--Contacts-->
         <scene sceneID="jph-Lh-OMA">
             <objects>
                 <tableViewController id="TPs-yr-NM2" customClass="ContactsTableViewController" customModule="WunderLINQ" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Y20-CM-oly">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -824,19 +816,19 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Contacts" id="2cg-kd-QQh"/>
                     <connections>
-                        <segue destination="UAo-uD-fGL" kind="custom" identifier="backToTasks" customClass="SegueFromLeft" customModule="WunderLINQ" customModuleProvider="target" id="s2b-3y-Wyk"/>
+                        <segue destination="OIf-TM-fnx" kind="show" identifier="contactsToTaskGrid" customClass="SegueFromLeft" customModule="WunderLINQ" customModuleProvider="target" id="PPQ-oT-Jxj"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6FV-uf-rsK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="10356" y="804.64767616191909"/>
+            <point key="canvasLocation" x="10671" y="-492"/>
         </scene>
         <!--Waypoints-->
         <scene sceneID="5Hw-nx-fMy">
             <objects>
                 <tableViewController id="we8-3Z-s79" customClass="WaypointsNavTableViewController" customModule="WunderLINQ" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="8Yw-3z-6cz">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
@@ -865,12 +857,12 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Waypoints" id="fFL-Ow-DpP"/>
                     <connections>
-                        <segue destination="UAo-uD-fGL" kind="show" identifier="toTasks" id="zBp-8h-a39"/>
+                        <segue destination="OIf-TM-fnx" kind="show" identifier="waypointsToTaskGrid" customClass="SegueFromLeft" customModule="WunderLINQ" customModuleProvider="target" id="bDf-3P-icu"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vYP-M3-Xw8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="11269.565217391306" y="1563.5869565217392"/>
+            <point key="canvasLocation" x="10670" y="266"/>
         </scene>
         <!--Alert-->
         <scene sceneID="2jd-t5-irf">
@@ -932,7 +924,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h2u-JD-HJV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6334" y="1564"/>
+            <point key="canvasLocation" x="7141" y="2989"/>
         </scene>
         <!--Quick Tasks-->
         <scene sceneID="HhK-nD-oFa">
@@ -949,22 +941,22 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="wbi-oL-Eyc" customClass="TaskCollectionViewCell" customModule="WunderLINQ" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="200" height="90"/>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TaskCollectionViewCell" id="wbi-oL-Eyc" customClass="TaskCollectionViewCell" customModule="WunderLINQ" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="200" height="75"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                    <rect key="frame" x="0.0" y="0.0" width="200" height="90"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="200" height="75"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IBf-iy-RMd">
-                                            <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="75" height="75"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="IBf-iy-RMd" secondAttribute="height" multiplier="1:1" id="31g-oe-chD"/>
                                             </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nMA-fJ-rlm">
-                                            <rect key="frame" x="90" y="0.0" width="110" height="90"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nMA-fJ-rlm">
+                                            <rect key="frame" x="75" y="0.0" width="125" height="75"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -980,7 +972,11 @@
                                     <constraint firstItem="nMA-fJ-rlm" firstAttribute="leading" secondItem="IBf-iy-RMd" secondAttribute="trailing" id="gfd-VM-MC2"/>
                                     <constraint firstItem="IBf-iy-RMd" firstAttribute="leading" secondItem="wbi-oL-Eyc" secondAttribute="leading" id="wdC-s6-nMq"/>
                                 </constraints>
-                                <size key="customSize" width="200" height="90"/>
+                                <size key="customSize" width="200" height="75"/>
+                                <connections>
+                                    <outlet property="taskImage" destination="IBf-iy-RMd" id="Ldy-Td-HOU"/>
+                                    <outlet property="taskLabel" destination="nMA-fJ-rlm" id="lud-As-CSB"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
@@ -989,26 +985,16 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" id="2eE-Xw-GNI"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="taskGridTomotorcycle" id="P25-cb-auh"/>
+                        <segue destination="Yme-GX-WRX" kind="show" identifier="taskGridToCompass" customClass="SegueFromLeft" customModule="WunderLINQ" customModuleProvider="target" id="veu-Ll-J9g"/>
+                        <segue destination="TPs-yr-NM2" kind="show" identifier="taskGridToContacts" id="RMB-mt-FYE"/>
+                        <segue destination="we8-3Z-s79" kind="show" identifier="taskGridToWaypoints" id="VKq-wx-i3D"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y78-9d-MHp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="9092.753623188406" y="2062.5"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="yCn-wr-lQB">
-            <objects>
-                <navigationController id="Gkm-4f-7jg" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="bTw-wY-wfU">
-                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="we8-3Z-s79" kind="relationship" relationship="rootViewController" id="yKJ-XQ-JKG"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="QqB-g7-vYR" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="10568.115942028986" y="1563.5869565217392"/>
+            <point key="canvasLocation" x="9786" y="-126"/>
         </scene>
         <!--HW Settings-->
         <scene sceneID="gKl-xS-Cwg">
@@ -1102,7 +1088,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pij-nb-6dj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5258" y="-126"/>
+            <point key="canvasLocation" x="7141" y="1423"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="m7N-1a-hHU">
@@ -1120,25 +1106,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c7m-Tx-Ka4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6334" y="-125"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="4ha-s1-FB5">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="RZv-Tv-KDt" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="hbC-WJ-uXe">
-                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="TPs-yr-NM2" kind="relationship" relationship="rootViewController" id="FkF-Eb-FjU"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Vrg-2W-rv4" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="9605.6000000000004" y="805.54722638680664"/>
+            <point key="canvasLocation" x="6314" y="-126"/>
         </scene>
         <!--Recorded Trips-->
         <scene sceneID="yhW-ot-4Cd">
@@ -1181,7 +1149,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r8T-Ax-ZwX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="8956" y="-1863"/>
+            <point key="canvasLocation" x="7141" y="-1713"/>
         </scene>
         <!--Saved Waypoints-->
         <scene sceneID="2BC-9t-4hP">
@@ -1224,25 +1192,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="seQ-uU-Npa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="8955" y="-1030"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="t4M-Cl-KN0">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="zX3-aP-C03" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="mTc-Re-whl">
-                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="KTW-aa-IYg" kind="relationship" relationship="rootViewController" id="8dt-F3-fBM"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="co1-TX-Av8" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="8038" y="-123"/>
+            <point key="canvasLocation" x="7141" y="-911"/>
         </scene>
         <!--About-->
         <scene sceneID="H6u-dO-Xgf">
@@ -1258,44 +1208,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L6N-M1-qfe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7142" y="-1029"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="HRv-0V-lik">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="DqH-mq-8qj" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="7dF-N8-kg8">
-                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="zo6-HF-7UD" kind="relationship" relationship="rootViewController" id="kRU-i0-cDf"/>
-                        <segue destination="BYZ-38-t0r" kind="show" identifier="waypointToMotorcycle" id="0ub-DO-3Cd"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="IIt-g4-oo5" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="8036" y="-1030"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="lcq-QB-EGP">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="BwD-J2-898" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="nYE-BW-rp8">
-                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="1rx-Mx-oc0" kind="relationship" relationship="rootViewController" id="kp1-Ur-tNW"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="KiA-fg-28C" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="8038" y="-1863"/>
+            <point key="canvasLocation" x="7141" y="2204"/>
         </scene>
         <!--Trip-->
         <scene sceneID="Dq9-Ds-zIF">
@@ -1583,44 +1496,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ASv-QO-u7O" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="9949.6000000000004" y="-1863.4182908545729"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="1Iq-J6-BhT">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="gOc-zh-IDi" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="zfA-hg-dle">
-                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="BZZ-xV-I8u" kind="relationship" relationship="rootViewController" id="LbJ-Ba-bVO"/>
-                        <segue destination="BYZ-38-t0r" kind="show" identifier="aboutToMotorcycle" id="tg6-wP-njU"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Q3J-yV-X1a" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="6334" y="-1029"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="jLy-vL-Krq">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="amw-nz-neD" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="hEX-ob-HTN">
-                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="OIf-TM-fnx" kind="relationship" relationship="rootViewController" id="EhV-cT-Pj6"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Nm9-1A-VuL" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="8185.507246376812" y="2062.5"/>
+            <point key="canvasLocation" x="8035" y="-1713"/>
         </scene>
     </scenes>
     <resources>
@@ -1631,12 +1507,15 @@
         <image name="play" width="132" height="132"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="aOH-3r-jow"/>
+        <segue reference="Dqr-lf-ahi"/>
+        <segue reference="VKq-wx-i3D"/>
         <segue reference="gIM-fx-mWk"/>
         <segue reference="qQx-7G-0NR"/>
-        <segue reference="nh5-ZE-vmI"/>
+        <segue reference="bDf-3P-icu"/>
         <segue reference="cF1-aK-Tul"/>
-        <segue reference="E59-Gq-FAl"/>
-        <segue reference="BFW-qY-dw2"/>
+        <segue reference="veu-Ll-J9g"/>
+        <segue reference="P25-cb-auh"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
 </document>

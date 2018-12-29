@@ -70,9 +70,9 @@ class HWSettingsViewController: UIViewController, CBPeripheralDelegate, UIPicker
                 }
             }
         } else {
-            var wwModeCommand:[UInt8] = [0x57,0x57,0x53,0x53,0x32]
+            var wwModeCommand:[UInt8] = [0x57,0x57,0x53,0x53,0x32,0x0D,0x0A]
             if (self.modePicker.selectedRow(inComponent: 0) != 0){
-                wwModeCommand = [0x57,0x57,0x53,0x53,0x34]
+                wwModeCommand = [0x57,0x57,0x53,0x53,0x34,0x0D,0x0A]
             }
             if (peripheral != nil && characteristic != nil){
                 print("Setting WW mode")

@@ -10,12 +10,24 @@ import UIKit
 
 class TaskCollectionViewCell: UICollectionViewCell {
     
-    @IBOutlet var taskImage: UIImageView!
-    @IBOutlet var taskLabel: UILabel!
+    @IBOutlet weak var taskImage: UIImageView!
+    @IBOutlet weak var taskLabel: UILabel!
+    public var icon: UIImageView!
+    public var label: UILabel!
     
-    func displayContent(image: UIImage, title: String) {
-        taskImage.image = image
-        taskLabel.text = title
+    func displayContent(icon: UIImage, label: String) {
+        taskImage.image = icon
+        taskLabel.text = label
+    }
+    
+    func highlightEffect(){
+        taskImage.backgroundColor = UIColor.blue
+        taskLabel.backgroundColor = UIColor.blue
+    }
+    
+    func removeHighlight(color: UIColor){
+        taskImage.backgroundColor = color
+        taskLabel.backgroundColor = color
     }
     
 }
