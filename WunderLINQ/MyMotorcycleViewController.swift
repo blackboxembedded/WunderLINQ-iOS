@@ -6,8 +6,13 @@
 //  Copyright © 2017 Black Box Embedded, LLC. All rights reserved.
 //
 
-import UIKit
+import AVFoundation
+import Contacts
 import CoreBluetooth
+import CoreLocation
+import MediaPlayer
+import Photos
+import UIKit
 import UserNotifications
 
 class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDelegate, UNUserNotificationCenterDelegate {
@@ -80,10 +85,13 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        print("viewWillAppear")
+        checkPermissions()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("viewDidLoad")
         registerSettingsBundle()
         NotificationCenter.default.addObserver(self, selector: #selector(self.defaultsChanged), name: UserDefaults.didChangeNotification, object: nil)
         if UserDefaults.standard.bool(forKey: "nightmode_preference") {
@@ -265,6 +273,7 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
     }
     
     func defaultsChanged(notification:NSNotification){
+        print("defaultsChanged")
         if let defaults = notification.object as? UserDefaults {
             if defaults.bool(forKey: "nightmode_lastSet") != defaults.bool(forKey: "nightmode_preference"){
                 UserDefaults.standard.set(defaults.bool(forKey: "nightmode_preference"), forKey: "nightmode_lastSet")
@@ -358,16 +367,16 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
         tableView.isScrollEnabled = false
         self.popover = Popover(options: self.popoverOptions)
         self.popover.willShowHandler = {
-            print("willShowHandler")
+            //print("willShowHandler")
         }
         self.popover.didShowHandler = {
-            print("didDismissHandler")
+            //print("didDismissHandler")
         }
         self.popover.willDismissHandler = {
-            print("willDismissHandler")
+            //print("willDismissHandler")
         }
         self.popover.didDismissHandler = {
-            print("didDismissHandler")
+            //print("didDismissHandler")
         }
         switch (menuSelected) {
             case 1:
@@ -2143,6 +2152,345 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
         
         //adding the notification to notification center
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+    }
+    
+    private func checkPermissions(){
+        // Camera
+        switch AVCaptureDevice.authorizationStatus(forMediaType: AVMediaTypeVideo){
+        case .notDetermined:
+            AVCaptureDevice.requestAccess(forMediaType: AVMediaTypeVideo, completionHandler: { (granted: Bool) -> Void in
+                if granted == true {
+                    // Authorized
+                    //Nothing to do
+                    print("Allowed to access to Camera")
+                } else {
+                    // Not allowed
+                    // Prompt with warning and button to settings
+                    let alertController = UIAlertController(
+                        title: NSLocalizedString("negative_alert_title", comment: ""),
+                        message: NSLocalizedString("negative_camera_alert_body", comment: ""),
+                        preferredStyle: .alert)
+                    let cancelAction = UIAlertAction(title: NSLocalizedString("negative_alert_btn_cancel", comment: ""), style: .cancel, handler: nil)
+                    alertController.addAction(cancelAction)
+                    let openAction = UIAlertAction(title: NSLocalizedString("negative_alert_btn_ok", comment: ""), style: .default) { (action) in
+                        if let appSettings = URL(string: UIApplicationOpenSettingsURLString + Bundle.main.bundleIdentifier!) {
+                            if UIApplication.shared.canOpenURL(appSettings) {
+                                UIApplication.shared.open(appSettings)
+                            }
+                        }
+                    }
+                    alertController.addAction(openAction)
+                    self.present(alertController, animated: true, completion: nil)
+                }
+            })
+        case .restricted, .denied:
+            // Not allowed
+            // Prompt with warning and button to settings
+            let alertController = UIAlertController(
+                title: NSLocalizedString("negative_alert_title", comment: ""),
+                message: NSLocalizedString("negative_camera_alert_body", comment: ""),
+                preferredStyle: .alert)
+            let cancelAction = UIAlertAction(title: NSLocalizedString("negative_alert_btn_cancel", comment: ""), style: .cancel, handler: nil)
+            alertController.addAction(cancelAction)
+            let openAction = UIAlertAction(title: NSLocalizedString("negative_alert_btn_ok", comment: ""), style: .default) { (action) in
+                if let appSettings = URL(string: UIApplicationOpenSettingsURLString + Bundle.main.bundleIdentifier!) {
+                    if UIApplication.shared.canOpenURL(appSettings) {
+                        UIApplication.shared.open(appSettings)
+                    }
+                }
+            }
+            alertController.addAction(openAction)
+            self.present(alertController, animated: true, completion: nil)
+        case .authorized:
+            // Authorized
+            //Nothing to do
+            print("Allowed to access to Camera")
+        }
+        
+        //Microphone
+        switch AVCaptureDevice.authorizationStatus(forMediaType: AVMediaTypeAudio){
+        case .notDetermined:
+            AVCaptureDevice.requestAccess(forMediaType: AVMediaTypeVideo, completionHandler: { (granted: Bool) -> Void in
+                if granted == true {
+                    // Authorized
+                    //Nothing to do
+                    print("Allowed to access to Microphone")
+                } else {
+                    // Not allowed
+                    // Prompt with warning and button to settings
+                    let alertController = UIAlertController(
+                        title: NSLocalizedString("negative_alert_title", comment: ""),
+                        message: NSLocalizedString("negative_microphone_alert_body", comment: ""),
+                        preferredStyle: .alert)
+                    let cancelAction = UIAlertAction(title: NSLocalizedString("negative_alert_btn_cancel", comment: ""), style: .cancel, handler: nil)
+                    alertController.addAction(cancelAction)
+                    let openAction = UIAlertAction(title: NSLocalizedString("negative_alert_btn_ok", comment: ""), style: .default) { (action) in
+                        if let appSettings = URL(string: UIApplicationOpenSettingsURLString + Bundle.main.bundleIdentifier!) {
+                            if UIApplication.shared.canOpenURL(appSettings) {
+                                UIApplication.shared.open(appSettings)
+                            }
+                        }
+                    }
+                    alertController.addAction(openAction)
+                    self.present(alertController, animated: true, completion: nil)
+                }
+            })
+        case .restricted, .denied:
+            // Not allowed
+            // Prompt with warning and button to settings
+            let alertController = UIAlertController(
+                title: NSLocalizedString("negative_alert_title", comment: ""),
+                message: NSLocalizedString("negative_microphone_alert_body", comment: ""),
+                preferredStyle: .alert)
+            let cancelAction = UIAlertAction(title: NSLocalizedString("negative_alert_btn_cancel", comment: ""), style: .cancel, handler: nil)
+            alertController.addAction(cancelAction)
+            let openAction = UIAlertAction(title: NSLocalizedString("negative_alert_btn_ok", comment: ""), style: .default) { (action) in
+                if let appSettings = URL(string: UIApplicationOpenSettingsURLString + Bundle.main.bundleIdentifier!) {
+                    if UIApplication.shared.canOpenURL(appSettings) {
+                        UIApplication.shared.open(appSettings)
+                    }
+                }
+            }
+            alertController.addAction(openAction)
+            self.present(alertController, animated: true, completion: nil)
+        case .authorized:
+            // Authorized
+            //Nothing to do
+            print("Allowed to access to Microphone")
+        }
+        
+        //Save to Photo Library
+        switch PHPhotoLibrary.authorizationStatus() {
+        case .notDetermined:
+            PHPhotoLibrary.requestAuthorization({status in
+                if status == .authorized{
+                    // Authorized
+                    //Nothing to do
+                    print("Allowed to access the Photo Library")
+                } else {
+                    let alertController = UIAlertController(
+                        title: NSLocalizedString("negative_alert_title", comment: ""),
+                        message: NSLocalizedString("negative_write_alert_body", comment: ""),
+                        preferredStyle: .alert)
+                    let cancelAction = UIAlertAction(title: NSLocalizedString("negative_alert_btn_cancel", comment: ""), style: .cancel, handler: nil)
+                    alertController.addAction(cancelAction)
+                    let openAction = UIAlertAction(title: NSLocalizedString("negative_alert_btn_ok", comment: ""), style: .default) { (action) in
+                        if let appSettings = URL(string: UIApplicationOpenSettingsURLString + Bundle.main.bundleIdentifier!) {
+                            if UIApplication.shared.canOpenURL(appSettings) {
+                                UIApplication.shared.open(appSettings)
+                            }
+                        }
+                    }
+                    alertController.addAction(openAction)
+                    self.present(alertController, animated: true, completion: nil)
+                }
+            })
+        case .restricted, .denied:
+            let alertController = UIAlertController(
+                title: NSLocalizedString("negative_alert_title", comment: ""),
+                message: NSLocalizedString("negative_write_alert_body", comment: ""),
+                preferredStyle: .alert)
+            let cancelAction = UIAlertAction(title: NSLocalizedString("negative_alert_btn_cancel", comment: ""), style: .cancel, handler: nil)
+            alertController.addAction(cancelAction)
+            let openAction = UIAlertAction(title: NSLocalizedString("negative_alert_btn_ok", comment: ""), style: .default) { (action) in
+                if let appSettings = URL(string: UIApplicationOpenSettingsURLString + Bundle.main.bundleIdentifier!) {
+                    if UIApplication.shared.canOpenURL(appSettings) {
+                        UIApplication.shared.open(appSettings)
+                    }
+                }
+            }
+            alertController.addAction(openAction)
+            self.present(alertController, animated: true, completion: nil)
+        case .authorized:
+            // Authorized
+            //Nothing to do
+            print("Allowed to access the Photo Library")
+        }
+        
+        //Play from Media Library
+        switch MPMediaLibrary.authorizationStatus() {
+        case .authorized:
+            // Authorized
+            //Nothing to do
+            print("Allowed to access to Music Library")
+        case .notDetermined:
+            MPMediaLibrary.requestAuthorization() { status in
+                switch status {
+                case .notDetermined, .denied, .restricted:
+                    let alertController = UIAlertController(
+                        title: NSLocalizedString("negative_alert_title", comment: ""),
+                        message: NSLocalizedString("negative_media_alert_body", comment: ""),
+                        preferredStyle: .alert)
+                    let cancelAction = UIAlertAction(title: NSLocalizedString("negative_alert_btn_cancel", comment: ""), style: .cancel, handler: nil)
+                    alertController.addAction(cancelAction)
+                    let openAction = UIAlertAction(title: NSLocalizedString("negative_alert_btn_ok", comment: ""), style: .default) { (action) in
+                        if let appSettings = URL(string: UIApplicationOpenSettingsURLString + Bundle.main.bundleIdentifier!) {
+                            if UIApplication.shared.canOpenURL(appSettings) {
+                                UIApplication.shared.open(appSettings)
+                            }
+                        }
+                    }
+                    alertController.addAction(openAction)
+                    self.present(alertController, animated: true, completion: nil)
+                case .authorized:
+                    // Authorized
+                    //Nothing to do
+                    print("Allowed to access to Music Library")
+                }
+            }
+        case .denied, .restricted:
+            let alertController = UIAlertController(
+                title: NSLocalizedString("negative_alert_title", comment: ""),
+                message: NSLocalizedString("negative_media_alert_body", comment: ""),
+                preferredStyle: .alert)
+            let cancelAction = UIAlertAction(title: NSLocalizedString("negative_alert_btn_cancel", comment: ""), style: .cancel, handler: nil)
+            alertController.addAction(cancelAction)
+            let openAction = UIAlertAction(title: NSLocalizedString("negative_alert_btn_ok", comment: ""), style: .default) { (action) in
+                if let appSettings = URL(string: UIApplicationOpenSettingsURLString + Bundle.main.bundleIdentifier!) {
+                    if UIApplication.shared.canOpenURL(appSettings) {
+                        UIApplication.shared.open(appSettings)
+                    }
+                }
+            }
+            alertController.addAction(openAction)
+            self.present(alertController, animated: true, completion: nil)
+        }
+        
+        //Contacts
+        let store = CNContactStore()
+        switch CNContactStore.authorizationStatus(for: .contacts) {
+        case .authorized:
+            // Authorized
+            //Nothing to do
+            print("Allowed to access contacts")
+        case .restricted, .denied:
+            // Not allowed
+            // Prompt with warning and button to settings
+            let alertController = UIAlertController(
+                title: NSLocalizedString("negative_alert_title", comment: ""),
+                message: NSLocalizedString("negative_contacts_alert_body", comment: ""),
+                preferredStyle: .alert)
+            let cancelAction = UIAlertAction(title: NSLocalizedString("negative_alert_btn_cancel", comment: ""), style: .cancel, handler: nil)
+            alertController.addAction(cancelAction)
+            let openAction = UIAlertAction(title: NSLocalizedString("negative_alert_btn_ok", comment: ""), style: .default) { (action) in
+                if let appSettings = URL(string: UIApplicationOpenSettingsURLString + Bundle.main.bundleIdentifier!) {
+                    if UIApplication.shared.canOpenURL(appSettings) {
+                        UIApplication.shared.open(appSettings)
+                    }
+                }
+            }
+            alertController.addAction(openAction)
+            self.present(alertController, animated: true, completion: nil)
+        case .notDetermined:
+            store.requestAccess(for: .contacts) { granted, error in
+                if granted {
+                    // Authorized
+                    //Nothing to do
+                    print("Allowed to access contacts")
+                } else {
+                    // Not allowed
+                    // Prompt with warning and button to settings
+                    let alertController = UIAlertController(
+                        title: NSLocalizedString("negative_alert_title", comment: ""),
+                        message: NSLocalizedString("negative_contacts_alert_body", comment: ""),
+                        preferredStyle: .alert)
+                    let cancelAction = UIAlertAction(title: NSLocalizedString("negative_alert_btn_cancel", comment: ""), style: .cancel, handler: nil)
+                    alertController.addAction(cancelAction)
+                    let openAction = UIAlertAction(title: NSLocalizedString("negative_alert_btn_ok", comment: ""), style: .default) { (action) in
+                        if let appSettings = URL(string: UIApplicationOpenSettingsURLString + Bundle.main.bundleIdentifier!) {
+                            if UIApplication.shared.canOpenURL(appSettings) {
+                                UIApplication.shared.open(appSettings)
+                            }
+                        }
+                    }
+                    alertController.addAction(openAction)
+                    self.present(alertController, animated: true, completion: nil)
+                }
+            }
+        }
+        
+        // Notifications
+        UNUserNotificationCenter.current().getNotificationSettings { (settings) in
+            switch settings.authorizationStatus {
+            case .authorized:
+                // Authorized
+                //Nothing to do
+                print("Allowed to use Notifications")
+            case .provisional, .denied:
+                // Not allowed
+                // Prompt with warning and button to settings
+                let alertController = UIAlertController(
+                    title: NSLocalizedString("negative_alert_title", comment: ""),
+                    message: NSLocalizedString("negative_notification_alert_body", comment: ""),
+                    preferredStyle: .alert)
+                let cancelAction = UIAlertAction(title: NSLocalizedString("negative_alert_btn_cancel", comment: ""), style: .cancel, handler: nil)
+                alertController.addAction(cancelAction)
+                let openAction = UIAlertAction(title: NSLocalizedString("negative_alert_btn_ok", comment: ""), style: .default) { (action) in
+                    if let appSettings = URL(string: UIApplicationOpenSettingsURLString + Bundle.main.bundleIdentifier!) {
+                        if UIApplication.shared.canOpenURL(appSettings) {
+                            UIApplication.shared.open(appSettings)
+                        }
+                    }
+                }
+                alertController.addAction(openAction)
+                self.present(alertController, animated: true, completion: nil)
+            case .notDetermined:
+                // Not allowed
+                // Prompt with warning and button to settings
+                let center = UNUserNotificationCenter.current()
+                center.requestAuthorization(options: [.alert, .sound]) { (granted, error) in
+                    // Enable or disable features based on authorization.
+                    if error != nil {
+                        let alertController = UIAlertController(
+                            title: NSLocalizedString("negative_alert_title", comment: ""),
+                            message: NSLocalizedString("negative_notification_alert_body", comment: ""),
+                            preferredStyle: .alert)
+                        let cancelAction = UIAlertAction(title: NSLocalizedString("negative_alert_btn_cancel", comment: ""), style: .cancel, handler: nil)
+                        alertController.addAction(cancelAction)
+                        let openAction = UIAlertAction(title: NSLocalizedString("negative_alert_btn_ok", comment: ""), style: .default) { (action) in
+                            if let appSettings = URL(string: UIApplicationOpenSettingsURLString + Bundle.main.bundleIdentifier!) {
+                                if UIApplication.shared.canOpenURL(appSettings) {
+                                    UIApplication.shared.open(appSettings)
+                                }
+                            }
+                        }
+                        alertController.addAction(openAction)
+                        self.present(alertController, animated: true, completion: nil)
+                    } else {
+                        // Authorized
+                        //Nothing to do
+                        print("Allowed to use Notifications")
+                    }
+                }
+            }
+        }
+        
+        //Location
+        let locationManager = CLLocationManager()
+        switch CLLocationManager.authorizationStatus() {
+        case .authorizedAlways:
+            // Authorized
+            //Nothing to do
+            print("Allowed Location Access")
+        case .notDetermined:
+            locationManager.requestAlwaysAuthorization()
+        case .authorizedWhenInUse, .restricted, .denied:
+            let alertController = UIAlertController(
+                title: NSLocalizedString("negative_alert_title", comment: ""),
+                message: NSLocalizedString("negative_location_alert_body", comment: ""),
+                preferredStyle: .alert)
+            let cancelAction = UIAlertAction(title: NSLocalizedString("negative_alert_btn_cancel", comment: ""), style: .cancel, handler: nil)
+            alertController.addAction(cancelAction)
+            let openAction = UIAlertAction(title: NSLocalizedString("negative_alert_btn_ok", comment: ""), style: .default) { (action) in
+                if let appSettings = URL(string: UIApplicationOpenSettingsURLString + Bundle.main.bundleIdentifier!) {
+                    if UIApplication.shared.canOpenURL(appSettings) {
+                        UIApplication.shared.open(appSettings)
+                    }
+                }
+            }
+            alertController.addAction(openAction)
+            self.present(alertController, animated: true, completion: nil)
+        }
     }
     
     // MARK: - Utility Methods

@@ -29,59 +29,69 @@ class HWSettingsViewController: UIViewController, CBPeripheralDelegate, UIPicker
     }
     
     @IBAction func savePressed(_ sender: Any) {
-        if (wlqData.getwwMode() == 0x32 && self.modePicker.selectedRow(inComponent: 0) == 0){
-            let sensInt:Int = (Int)(sensitivitySlider.value)
-            let sensString:String = (String)(sensInt)
-            let sensCharacters = Array(sensString)
-            let sensUInt8Array = String(sensCharacters).utf8.map{ UInt8($0) }
-            if sensUInt8Array.count == 1 {
-                let wwSensCommand:[UInt8] = [0x57,0x57,0x43,0x53,0x32,0x45,sensUInt8Array[0],0x0D,0x0A]
-                if (peripheral != nil && characteristic != nil){
-                    print("Setting WW Sensitivity")
-                    let writeData =  Data(bytes: wwSensCommand)
-                    peripheral?.writeValue(writeData, for: characteristic!, type: CBCharacteristicWriteType.withResponse)
+        let alertController = UIAlertController(
+            title: NSLocalizedString("hwsave_alert_title", comment: ""),
+            message: NSLocalizedString("hwsave_alert_body", comment: ""),
+            preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: NSLocalizedString("hwsave_alert_btn_cancel", comment: ""), style: .cancel, handler: nil)
+        alertController.addAction(cancelAction)
+        let openAction = UIAlertAction(title: NSLocalizedString("hwsave_alert_btn_ok", comment: ""), style: .default) { (action) in
+            if (self.wlqData.getwwMode() == 0x32 && self.modePicker.selectedRow(inComponent: 0) == 0){
+                let sensInt:Int = (Int)(self.sensitivitySlider.value)
+                let sensString:String = (String)(sensInt)
+                let sensCharacters = Array(sensString)
+                let sensUInt8Array = String(sensCharacters).utf8.map{ UInt8($0) }
+                if sensUInt8Array.count == 1 {
+                    let wwSensCommand:[UInt8] = [0x57,0x57,0x43,0x53,0x32,0x45,sensUInt8Array[0],0x0D,0x0A]
+                    if (self.peripheral != nil && self.characteristic != nil){
+                        print("Setting WW Sensitivity")
+                        let writeData =  Data(bytes: wwSensCommand)
+                        self.peripheral?.writeValue(writeData, for: self.characteristic!, type: CBCharacteristicWriteType.withResponse)
+                    }
+                } else {
+                    let wwSensCommand:[UInt8] = [0x57,0x57,0x43,0x53,0x32,0x45,sensUInt8Array[0],sensUInt8Array[1],0x0D,0x0A]
+                    if (self.peripheral != nil && self.characteristic != nil){
+                        print("Setting WW Sensitivity")
+                        let writeData =  Data(bytes: wwSensCommand)
+                        self.peripheral?.writeValue(writeData, for: self.characteristic!, type: CBCharacteristicWriteType.withResponse)
+                    }
+                }
+            } else if (self.wlqData.getwwMode() == 0x34 && self.modePicker.selectedRow(inComponent: 0) == 1){
+                let sensInt:Int = (Int)(self.sensitivitySlider.value)
+                let sensString:String = (String)(sensInt)
+                let sensCharacters = Array(sensString)
+                let sensUInt8Array = String(sensCharacters).utf8.map{ UInt8($0) }
+                if sensUInt8Array.count == 1 {
+                    let wwSensCommand:[UInt8] = [0x57,0x57,0x43,0x53,0x34,0x45,sensUInt8Array[0],0x0D,0x0A]
+                    if (self.peripheral != nil && self.characteristic != nil){
+                        print("Setting WW Sensitivity")
+                        let writeData =  Data(bytes: wwSensCommand)
+                        self.peripheral?.writeValue(writeData, for: self.characteristic!, type: CBCharacteristicWriteType.withResponse)
+                    }
+                } else {
+                    let wwSensCommand:[UInt8] = [0x57,0x57,0x43,0x53,0x34,0x45,sensUInt8Array[0],sensUInt8Array[1],0x0D,0x0A]
+                    if (self.peripheral != nil && self.characteristic != nil){
+                        print("Setting WW Sensitivity")
+                        let writeData =  Data(bytes: wwSensCommand)
+                        self.peripheral?.writeValue(writeData, for: self.characteristic!, type: CBCharacteristicWriteType.withResponse)
+                    }
                 }
             } else {
-                let wwSensCommand:[UInt8] = [0x57,0x57,0x43,0x53,0x32,0x45,sensUInt8Array[0],sensUInt8Array[1],0x0D,0x0A]
-                if (peripheral != nil && characteristic != nil){
-                    print("Setting WW Sensitivity")
-                    let writeData =  Data(bytes: wwSensCommand)
-                    peripheral?.writeValue(writeData, for: characteristic!, type: CBCharacteristicWriteType.withResponse)
+                var wwModeCommand:[UInt8] = [0x57,0x57,0x53,0x53,0x32,0x0D,0x0A]
+                if (self.modePicker.selectedRow(inComponent: 0) != 0){
+                    wwModeCommand = [0x57,0x57,0x53,0x53,0x34,0x0D,0x0A]
+                }
+                if (self.peripheral != nil && self.characteristic != nil){
+                    print("Setting WW mode")
+                    let writeData =  Data(bytes: wwModeCommand)
+                    self.peripheral?.writeValue(writeData, for: self.characteristic!, type: CBCharacteristicWriteType.withResponse)
                 }
             }
-        } else if (wlqData.getwwMode() == 0x34 && self.modePicker.selectedRow(inComponent: 0) == 1){
-            let sensInt:Int = (Int)(sensitivitySlider.value)
-            let sensString:String = (String)(sensInt)
-            let sensCharacters = Array(sensString)
-            let sensUInt8Array = String(sensCharacters).utf8.map{ UInt8($0) }
-            if sensUInt8Array.count == 1 {
-                let wwSensCommand:[UInt8] = [0x57,0x57,0x43,0x53,0x34,0x45,sensUInt8Array[0],0x0D,0x0A]
-                if (peripheral != nil && characteristic != nil){
-                    print("Setting WW Sensitivity")
-                    let writeData =  Data(bytes: wwSensCommand)
-                    peripheral?.writeValue(writeData, for: characteristic!, type: CBCharacteristicWriteType.withResponse)
-                }
-            } else {
-                let wwSensCommand:[UInt8] = [0x57,0x57,0x43,0x53,0x34,0x45,sensUInt8Array[0],sensUInt8Array[1],0x0D,0x0A]
-                if (peripheral != nil && characteristic != nil){
-                    print("Setting WW Sensitivity")
-                    let writeData =  Data(bytes: wwSensCommand)
-                    peripheral?.writeValue(writeData, for: characteristic!, type: CBCharacteristicWriteType.withResponse)
-                }
-            }
-        } else {
-            var wwModeCommand:[UInt8] = [0x57,0x57,0x53,0x53,0x32,0x0D,0x0A]
-            if (self.modePicker.selectedRow(inComponent: 0) != 0){
-                wwModeCommand = [0x57,0x57,0x53,0x53,0x34,0x0D,0x0A]
-            }
-            if (peripheral != nil && characteristic != nil){
-                print("Setting WW mode")
-                let writeData =  Data(bytes: wwModeCommand)
-                peripheral?.writeValue(writeData, for: characteristic!, type: CBCharacteristicWriteType.withResponse)
-            }
+            self.navigationController?.popViewController(animated: true)
+            self.dismiss(animated: true, completion: nil)
         }
-        navigationController?.popViewController(animated: true)
-        dismiss(animated: true, completion: nil)
+        alertController.addAction(openAction)
+        self.present(alertController, animated: true, completion: nil)
     }
     
     var modePickerData: [String] = [String]()

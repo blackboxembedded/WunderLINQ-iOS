@@ -6,6 +6,11 @@
 //  Copyright © 2017 Black Box Embedded, LLC. All rights reserved.
 //
 
+import AVFoundation
+import Contacts
+import CoreLocation
+import MediaPlayer
+import Photos
 import UIKit
 import GoogleMaps
 import UserNotifications
@@ -17,41 +22,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) ->
         Bool {
-            
             //Read and populate defaults
             registerDefaultsFromSettingsBundle();
-        // Override point for customization after application launch.
-        // Keep screen unlocked
-        application.isIdleTimerDisabled = true
-        GMSServices.provideAPIKey("***REMOVED***")
-        // Override point for customization after application launch.
-        let center = UNUserNotificationCenter.current()
-        center.requestAuthorization(options: [.alert, .sound]) { (granted, error) in
-            // Enable or disable features based on authorization.
-            if error != nil {
-                self.showAlert()
-                print("Request authorization failed!")
-            } else {
-                print("Request authorization succeeded!")
+            // Override point for customization after application launch.
+            // Keep screen unlocked
+            application.isIdleTimerDisabled = true
+            GMSServices.provideAPIKey("***REMOVED***")
+            // Override point for customization after application launch.
+            
+            Theme.current.apply()
+            
+            switch(UserDefaults.standard.integer(forKey: "orientation_preference")){
+            case 0:
+                AppUtility.lockOrientation(.all)
+            case 1:
+                AppUtility.lockOrientation(.landscape)
+            case 2:
+                AppUtility.lockOrientation(.portrait)
+            default:
+                AppUtility.lockOrientation(.all)
             }
-        }
-        
-        Theme.current.apply()
-        
-        switch(UserDefaults.standard.integer(forKey: "orientation_preference")){
-        case 0:
-            AppUtility.lockOrientation(.all)
-        case 1:
-            AppUtility.lockOrientation(.landscape)
-        case 2:
-            AppUtility.lockOrientation(.portrait)
-        default:
-            AppUtility.lockOrientation(.all)
-        }
-        
-        UserDefaults.standard.set(UIScreen.main.brightness, forKey: "systemBrightness")
-        
-        return true
+            
+            UserDefaults.standard.set(UIScreen.main.brightness, forKey: "systemBrightness")
+
+            return true
     }
     
     /// set orientations you want to be allowed in this property by default
@@ -112,15 +106,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
          }
          }
          */
-    }
-
-    func showAlert() {
-        let objAlert = UIAlertController(title: NSLocalizedString("negative_alert_title", comment: ""), message: NSLocalizedString("negative_notification_body", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
-        
-        objAlert.addAction(UIAlertAction(title: NSLocalizedString("alert_message_exit_ok", comment: ""), style: UIAlertActionStyle.default, handler: nil))
-        //self.presentViewController(objAlert, animated: true, completion: nil)
-        
-        UIApplication.shared.keyWindow?.rootViewController?.present(objAlert, animated: true, completion: nil)
     }
     
     func registerDefaultsFromSettingsBundle()

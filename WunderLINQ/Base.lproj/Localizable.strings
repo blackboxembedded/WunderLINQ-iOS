@@ -9,17 +9,22 @@
 // Product
 "product" = "WunderLINQ";
 
-// AppDelegate
-"negative_alert_title" = "Functionality limited";
-"negative_notification_body" = "Since notifcations were not allowed, this app will not be able to send notifcations for faults";
-"alert_message_exit_ok" = "OK";
-
 // MyMotorcycleViewController
 "main_title" = "Motorcycle";
 "disclaimer_alert_title" = "WARNING!";
 "disclaimer_alert_body" = "Do not attempt to enter route information or adjust the WunderLINQ while driving.\nFailure to pay full attention to the operation of your vehicle could result in death, serious injury, or property damage.\nYou assume total responsibility and risk for using this device.";
 "disclaimer_ok" = "I agree";
 "disclaimer_quit" = "Quit";
+"negative_alert_title" = "Functionality limited"; // Needs Translation
+"negative_location_alert_body" = "Since location access has not been granted, this app will not be able to save waypoints or log your location."; // Needs Translation
+"negative_write_alert_body" = "Since Photo Library access has not been granted, this app will not be able to save photos."; // Needs Translation
+"negative_media_alert_body" = "Since Media Library access has not been granted, this app will not be able to play music."; // Needs Translation
+"negative_contacts_alert_body" = "Since contact access has not been granted, this app will not be able to display contacts to call."; // Needs Translation
+"negative_camera_alert_body" = "Since camera access has not been granted, this app will not be able to take photos or videos."; // Needs Translation
+"negative_microphone_alert_body" = "Since microphone access has not been granted, this app will not be able to record videos."; // Needs Translation
+"negative_notification_body" = "Since notifcations were not allowed, this app will not be able to send notifcations for faults"; // Needs Translation
+"negative_alert_btn_ok" = "Open Settings"; // Needs Translation
+"negative_alert_btn_cancel" = "Cancel"; // Needs Translation
 "bt_powered_off" = "Bluetooth on this device is currently powered off.";
 "bt_not_supported" = "This device does not support Bluetooth Low Energy.";
 "bt_not_authorized" = "This app is not authorized to use Bluetooth Low Energy.";
@@ -38,19 +43,23 @@
 "trip2_label" = "Trip 2";
 "gear_label" = "Gear";
 "settings_label" = "Settings";
-"appsettings_label" = "App Settings"; //Needs Translation
+"appsettings_label" = "App Settings";
 "about_label" = "About";
 "close_label" = "Close";
-"hwsettings_label" = "HW Settings"; //Needs Translation
+"hwsettings_label" = "HW Settings";
 
 //HWSettingsViewController
-"fw_config_title" = "WunderLINQ Settings"; //Needs Translation
-"wwtype_label" = "Wheel Type"; //Needs Translation
-"wwMode1" = "Full"; //Needs Translation
-"wwMode2" = "RT"; //Needs Translation
-"wwMode3" = "Custom"; //Needs Translation
-"sensitivity_label" = "Hold Sensitivity"; //Needs Translation
-"config_write_label" = "Save Settings"; //Needs Translation
+"fw_config_title" = "WunderLINQ Settings";
+"wwtype_label" = "Wheel Type";
+"wwMode1" = "Full";
+"wwMode2" = "RT";
+"wwMode3" = "Custom";
+"sensitivity_label" = "Hold Sensitivity";
+"config_write_label" = "Save Settings";
+"hwsave_alert_title" = "Warning!"; // Needs Translation
+"hwsave_alert_body" = "After saving new hardware settings, the WunderLINQ hardware will become unstable and will need to be removed and reinstalled into the cradle."; // Needs Translation
+"hwsave_alert_btn_ok" = "Continue"; // Needs Translation
+"hwsave_alert_btn_cancel" = "Cancel"; // Needs Translation
 
 //AboutViewController
 "about_title" = "About";
