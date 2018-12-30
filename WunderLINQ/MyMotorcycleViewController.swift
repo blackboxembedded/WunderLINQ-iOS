@@ -2045,7 +2045,7 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
                     commandCharacteristic = characteristic
                     bleData.setcmdCharacteristic(cmdCharacteristic: characteristic)
                     
-                    let getConfigCommand:[UInt8] = [0x57,0x52,0x57]
+                    let getConfigCommand:[UInt8] = [0x57,0x52,0x57,0x0D,0x0A]
                     let writeData =  Data(bytes: getConfigCommand)
                     peripheral.writeValue(writeData, for: characteristic, type: CBCharacteristicWriteType.withResponse)
                     peripheral.readValue(for: characteristic)
