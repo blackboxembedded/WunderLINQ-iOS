@@ -639,7 +639,6 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("Row Selected: \(indexPath.row)")
         execute_task(taskID: mapping[indexPath.row])
     }
     

@@ -66,6 +66,11 @@ enum Theme: Int {
         UITableViewCell.appearance(whenContainedInInstancesOf: [TasksTableViewController.self]).backgroundColor = backgroundColor
         UITableViewCell.appearance(whenContainedInInstancesOf: [TasksTableViewController.self]).tintColor = mainColor
         
+        UIView.appearance(whenContainedInInstancesOf: [TasksCollectionViewController.self]).backgroundColor = backgroundColor
+        UILabel.appearance(whenContainedInInstancesOf: [TasksCollectionViewController.self]).textColor = textColor
+        UICollectionViewCell.appearance(whenContainedInInstancesOf: [TasksCollectionViewController.self]).backgroundColor = backgroundColor
+        UICollectionViewCell.appearance(whenContainedInInstancesOf: [TasksCollectionViewController.self]).tintColor = mainColor
+        
         UIView.appearance(whenContainedInInstancesOf: [MusicViewController.self]).backgroundColor = backgroundColor
         UILabel.appearance(whenContainedInInstancesOf: [MusicViewController.self]).textColor = textColor
         UIButton.appearance(whenContainedInInstancesOf: [MusicViewController.self]).tintColor = mainColor
