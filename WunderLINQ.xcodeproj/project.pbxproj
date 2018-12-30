@@ -56,7 +56,6 @@
 		7EA478751F412B73000CEDDC /* LocationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA478741F412B73000CEDDC /* LocationDelegate.swift */; };
 		7EA478771F412BAC000CEDDC /* CLLocation+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA478761F412BAC000CEDDC /* CLLocation+Extension.swift */; };
 		7EA478791F412BE9000CEDDC /* UserDefauts+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA478781F412BE9000CEDDC /* UserDefauts+Extensions.swift */; };
-		7EA4787F1F44F54E000CEDDC /* TasksTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA4787E1F44F54E000CEDDC /* TasksTableViewController.swift */; };
 		7EA478811F44F57C000CEDDC /* MusicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA478801F44F57C000CEDDC /* MusicViewController.swift */; };
 		7EA478831F4A7260000CEDDC /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7EA478821F4A7260000CEDDC /* Settings.bundle */; };
 		7EA478871F4BC775000CEDDC /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA478861F4BC775000CEDDC /* Logger.swift */; };
@@ -153,7 +152,6 @@
 		7EA478741F412B73000CEDDC /* LocationDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationDelegate.swift; sourceTree = "<group>"; };
 		7EA478761F412BAC000CEDDC /* CLLocation+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CLLocation+Extension.swift"; sourceTree = "<group>"; };
 		7EA478781F412BE9000CEDDC /* UserDefauts+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserDefauts+Extensions.swift"; sourceTree = "<group>"; };
-		7EA4787E1F44F54E000CEDDC /* TasksTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TasksTableViewController.swift; sourceTree = "<group>"; };
 		7EA478801F44F57C000CEDDC /* MusicViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicViewController.swift; sourceTree = "<group>"; };
 		7EA478821F4A7260000CEDDC /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		7EA478861F4BC775000CEDDC /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
@@ -294,7 +292,6 @@
 				7EA478721F4115F6000CEDDC /* CompassViewController.swift */,
 				7EA478801F44F57C000CEDDC /* MusicViewController.swift */,
 				7EA4788D1F5BA136000CEDDC /* Tasks.swift */,
-				7EA4787E1F44F54E000CEDDC /* TasksTableViewController.swift */,
 				7EA4BCC621B8C9150084F6EA /* TasksCollectionViewController.swift */,
 				7EA4BCC821B8CB270084F6EA /* TaskCollectionViewCell.swift */,
 				7EC8C9BC1F827977000CEDDC /* ContactsTableViewContoller.swift */,
@@ -477,7 +474,6 @@
 				7E068BCB2102ACF30076EAAD /* Popover.swift in Sources */,
 				7EA478811F44F57C000CEDDC /* MusicViewController.swift in Sources */,
 				7EAE9417211EA30900E24CE9 /* Theme.swift in Sources */,
-				7EA4787F1F44F54E000CEDDC /* TasksTableViewController.swift in Sources */,
 				7EC63202219BCE05002E68FF /* AboutViewController.swift in Sources */,
 				7E068BC320FD8A100076EAAD /* FaultsTableViewController.swift in Sources */,
 				7E6987DD20F8F83500B4781D /* Faults.swift in Sources */,
