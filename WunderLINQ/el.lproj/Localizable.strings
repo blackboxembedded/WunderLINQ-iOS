@@ -20,6 +20,16 @@
 "disclaimer_alert_body" = "Μην επιχειρήτε να εισάγετε πληροφορίες διαδρομής ή να ρυθμίσετε το WunderLINQ ενώ οδειγείτε.\nΗ έλλειψη πλήρους προσοχής στο χειρισμό του οχήματός σας, μπορεί να έχει ως αποτέλεσμα το θάνατο, σοβαρό τραυματισμό, ή φθορά της περιουσίας σας.\nΧρησιμοποιώντας αυτή τη συσκευή αναλαμβάνετε την πλήρη ευθύνη και κίνδυνο.";
 "disclaimer_ok" = "Συμφωνώ";
 "disclaimer_quit" = "Κλείσιμο";
+"negative_alert_title" = "Functionality limited"; // Needs Translation
+"negative_location_alert_body" = "Since location access has not been granted, this app will not be able to save waypoints or log your location."; // Needs Translation
+"negative_write_alert_body" = "Since Photo Library access has not been granted, this app will not be able to save photos."; // Needs Translation
+"negative_media_alert_body" = "Since Media Library access has not been granted, this app will not be able to play music."; // Needs Translation
+"negative_contacts_alert_body" = "Since contact access has not been granted, this app will not be able to display contacts to call."; // Needs Translation
+"negative_camera_alert_body" = "Since camera access has not been granted, this app will not be able to take photos or videos."; // Needs Translation
+"negative_microphone_alert_body" = "Since microphone access has not been granted, this app will not be able to record videos."; // Needs Translation
+"negative_notification_body" = "Since notifcations were not allowed, this app will not be able to send notifcations for faults"; // Needs Translation
+"negative_alert_btn_ok" = "Open Settings"; // Needs Translation
+"negative_alert_btn_cancel" = "Cancel"; // Needs Translation
 "bt_powered_off" = "Το Bluetooth σε αυτή τη συσκευή είναι απενεργοποιημένο.";
 "bt_not_supported" = "Αυτή η συσκευή δεν υποστηρίζει Bluetooth χαμηλής κατανάλωσης.";
 "bt_not_authorized" = "Αυτή η εφαρμογή δεν έχει το δικαίωμα να χρησιμοποιήσει Bluetooth χαμηλής κατανάλωσης.";
@@ -51,6 +61,10 @@
 "wwMode3" = "Custom"; //Needs Translation
 "sensitivity_label" = "Hold Sensitivity"; //Needs Translation
 "config_write_label" = "Save Settings"; //Needs Translation
+"hwsave_alert_title" = "Warning!"; // Needs Translation
+"hwsave_alert_body" = "After saving new hardware settings, the WunderLINQ hardware will become unstable and will need to be removed and reinstalled into the cradle."; // Needs Translation
+"hwsave_alert_btn_ok" = "Continue"; // Needs Translation
+"hwsave_alert_btn_cancel" = "Cancel"; // Needs Translation
 
 //AboutViewController
 "about_title" = "Περί...";
