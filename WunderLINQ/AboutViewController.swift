@@ -10,6 +10,33 @@ import UIKit
 
 class AboutViewController: UIViewController {
     
+    @IBOutlet weak var versionLabel: UILabel!
+    @IBOutlet weak var creditsTextView: UITextView!
+    
+    @IBAction func appNameBtnPressed(_ sender: Any) {
+        guard let url = URL(string: "http://www.wunderlinq.com") else {
+            return //be safe
+        }
+        
+        if #available(iOS 10.0, *) {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        } else {
+            UIApplication.shared.openURL(url)
+        }
+    }
+    
+    @IBAction func corpNameBtnPressed(_ sender: Any) {
+        guard let url = URL(string: "https://www.blackboxembedded.com") else {
+            return //be safe
+        }
+        
+        if #available(iOS 10.0, *) {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        } else {
+            UIApplication.shared.openURL(url)
+        }
+    }
+    
     @objc func leftScreen() {
         navigationController?.popViewController(animated: true)
         dismiss(animated: true, completion: nil)
@@ -45,6 +72,18 @@ class AboutViewController: UIViewController {
         } else {
             UIScreen.main.brightness = CGFloat(UserDefaults.standard.float(forKey: "systemBrightness"))
         }
+        
+        if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
+            let versionLabelString = NSLocalizedString("version_label", comment: "")
+            self.versionLabel.text = "\(versionLabelString) \(version)"
+        }
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        DispatchQueue.main.async(execute: { () -> Void in
+             self.creditsTextView.scrollRangeToVisible(NSMakeRange(0, 0))
+        })
     }
 
     /*

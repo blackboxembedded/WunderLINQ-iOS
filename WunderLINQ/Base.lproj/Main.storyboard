@@ -1149,14 +1149,256 @@
                     <view key="view" contentMode="scaleToFill" id="ISD-Sy-aSf">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Icon" translatesAutoresizingMaskIntoConstraints="NO" id="iK0-Eq-bFT">
+                                <rect key="frame" x="132" y="36" width="150" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="8mr-cD-4Sh"/>
+                                    <constraint firstAttribute="width" constant="150" id="IaI-Mv-VCt"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Version: x.x.x" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fPj-pQ-RK7">
+                                <rect key="frame" x="0.0" y="253" width="414" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Credits" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bpB-n7-PMj" customClass="LocalisableLabel" customModule="WunderLINQ" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="324" width="414" height="24"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="localisedKey" value="credits_label"/>
+                                </userDefinedRuntimeAttributes>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" usesAttributedText="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jAM-2k-3CY">
+                                <rect key="frame" x="0.0" y="353" width="414" height="383"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="All Star Beta Tester">
+                                        <attributes>
+                                            <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                            <font key="NSFont" size="14" name="Arial-BoldMT"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">
+
+Martin Dohnal
+
+</string>
+                                        <attributes>
+                                            <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                            <font key="NSFont" size="14" name="ArialMT"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="Translators">
+                                        <attributes>
+                                            <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                            <font key="NSFont" size="14" name="Arial-BoldMT"/>
+                                            <font key="NSOriginalFont" size="14" name="Arial-BoldMT"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">
+
+Tüscher Martin
+Efren Martin
+Juan Carlos Alonso Lafuente
+Martin Dohnal
+Nikos Papanikolaou
+Frederic Boucher
+
+</string>
+                                        <attributes>
+                                            <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                            <font key="NSFont" size="14" name="ArialMT"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="Kickstarter Backers">
+                                        <attributes>
+                                            <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                            <font key="NSFont" size="14" name="Arial-BoldMT"/>
+                                            <font key="NSOriginalFont" size="14" name="Arial-BoldMT"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <mutableString key="content">
+
+Gareth Hadden
+Dennis Beilby
+André
+Guest 1027536916
+Guest 1868214759
+Guest 1239069827
+Guest 237538773
+Sandra H. Minner
+The Creative Fund
+Guest 1333815029
+Anthony Law
+Sarah Berg
+Pam Fisher
+Martin Tuescher
+Guest 680374823
+Guest 695474876
+Guest 1405252041
+Guest 1792224733
+ARND
+Tobias Frank
+Efren
+Sean Peter
+Ulf Behrens
+ue hiro
+Christian Haller
+Werner Ensink
+Holger
+Jeff Alfeld
+Thorsten Meier
+Hairul Effendy
+Patrick W. OBrien
+Dieter Tetzner
+Marc Rajewski
+Kutschmann
+Guest 726087000
+Guest 1955680076
+David J Wade
+Scott Graham
+Sameer Gaffar
+Kevin Dawson
+Jonathan Kubiak
+Alexander
+Guest 1292675875
+Andy Murden
+Chuck Hickey
+Charles Fisher
+Sergio
+Timothy Ide
+chiang jui sheng
+Christopher Beneke
+Christophe
+Ben
+Nikos Papanikolaou
+Cabo
+René Touw
+Benat
+Kaz
+Elvin Chew Km
+Sammy Groover
+Kenneth Tan
+Fynn van Gou
+Jude Tok
+Julian Bale
+Fred
+Gerd
+stevemc52
+Daniel Wratschko
+Craig Kehrer
+Guest 1308539216
+Chew Kee Meng Elvin
+Mark Sweeney
+Taro Mizutani
+Ben
+Mike Civil
+Tina
+Liu Han Sheng David
+Ad Bakker
+Alexander Kienle
+pekabo
+Eric
+Morwinsky
+Scott Kennedy
+Greg Kingston
+Guest 413601162
+Kőhalmi Zoltán
+Eddy Concar
+
+</mutableString>
+                                        <attributes>
+                                            <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                            <font key="NSFont" size="14" name="ArialMT"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="Icons from fontawesome.com">
+                                        <attributes>
+                                            <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                            <font key="NSFont" size="14" name="Arial-BoldMT"/>
+                                            <font key="NSOriginalFont" size="14" name="Arial-BoldMT"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content" base64-UTF8="YES">
+Cgo
+</string>
+                                        <attributes>
+                                            <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                            <font key="NSFont" size="14" name="ArialMT"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y9o-7f-NQI">
+                                <rect key="frame" x="0.0" y="275" width="414" height="33"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Black Box Embedded, LLC">
+                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="corpNameBtnPressed:" destination="BZZ-xV-I8u" eventType="touchUpInside" id="yxM-Oa-kmV"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eo5-JH-b6f">
+                                <rect key="frame" x="0.0" y="202" width="414" height="46"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
+                                <state key="normal" title="WunderLINQ™">
+                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="appNameBtnPressed:" destination="BZZ-xV-I8u" eventType="touchUpInside" id="Cql-ko-Sob"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Y9o-7f-NQI" firstAttribute="leading" secondItem="XEV-0z-jeW" secondAttribute="leading" id="3Bj-5r-VTi"/>
+                            <constraint firstItem="XEV-0z-jeW" firstAttribute="trailing" secondItem="bpB-n7-PMj" secondAttribute="trailing" id="3Fz-qN-Dof"/>
+                            <constraint firstItem="XEV-0z-jeW" firstAttribute="trailing" secondItem="fPj-pQ-RK7" secondAttribute="trailing" id="5FX-v2-KJD"/>
+                            <constraint firstItem="Eo5-JH-b6f" firstAttribute="leading" secondItem="XEV-0z-jeW" secondAttribute="leading" id="9F2-tJ-qVI"/>
+                            <constraint firstItem="jAM-2k-3CY" firstAttribute="top" secondItem="bpB-n7-PMj" secondAttribute="bottom" constant="5" id="9is-Uu-Agl"/>
+                            <constraint firstItem="Y9o-7f-NQI" firstAttribute="top" secondItem="fPj-pQ-RK7" secondAttribute="bottom" constant="5" id="Bpz-qc-VSH"/>
+                            <constraint firstItem="XEV-0z-jeW" firstAttribute="bottom" secondItem="jAM-2k-3CY" secondAttribute="bottom" id="D7q-o3-RGY"/>
+                            <constraint firstItem="iK0-Eq-bFT" firstAttribute="top" secondItem="XEV-0z-jeW" secondAttribute="top" constant="16" id="Exo-Vz-yZX"/>
+                            <constraint firstItem="XEV-0z-jeW" firstAttribute="trailing" secondItem="Eo5-JH-b6f" secondAttribute="trailing" id="PfQ-Wf-uF4"/>
+                            <constraint firstItem="jAM-2k-3CY" firstAttribute="leading" secondItem="XEV-0z-jeW" secondAttribute="leading" id="QDl-f0-S36"/>
+                            <constraint firstItem="bpB-n7-PMj" firstAttribute="top" secondItem="Y9o-7f-NQI" secondAttribute="bottom" constant="16" id="YRE-BH-emJ"/>
+                            <constraint firstItem="fPj-pQ-RK7" firstAttribute="leading" secondItem="XEV-0z-jeW" secondAttribute="leading" id="kd6-t9-voY"/>
+                            <constraint firstItem="XEV-0z-jeW" firstAttribute="trailing" secondItem="Y9o-7f-NQI" secondAttribute="trailing" id="o6N-Mo-8io"/>
+                            <constraint firstItem="Eo5-JH-b6f" firstAttribute="top" secondItem="iK0-Eq-bFT" secondAttribute="bottom" constant="16" id="pDU-6a-iUd"/>
+                            <constraint firstItem="XEV-0z-jeW" firstAttribute="trailing" secondItem="jAM-2k-3CY" secondAttribute="trailing" id="pVf-uj-0rN"/>
+                            <constraint firstItem="fPj-pQ-RK7" firstAttribute="top" secondItem="Eo5-JH-b6f" secondAttribute="bottom" constant="5" id="rEh-Se-ZE1"/>
+                            <constraint firstItem="bpB-n7-PMj" firstAttribute="leading" secondItem="XEV-0z-jeW" secondAttribute="leading" id="sOd-2i-1vG"/>
+                            <constraint firstItem="iK0-Eq-bFT" firstAttribute="centerX" secondItem="ISD-Sy-aSf" secondAttribute="centerX" id="wep-wK-X6a"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="XEV-0z-jeW"/>
                     </view>
                     <navigationItem key="navigationItem" title="About" id="Ld0-5t-QtT"/>
+                    <connections>
+                        <outlet property="creditsTextView" destination="jAM-2k-3CY" id="3NS-oi-LSb"/>
+                        <outlet property="versionLabel" destination="fPj-pQ-RK7" id="Wgg-IR-LFl"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L6N-M1-qfe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7141" y="2204"/>
+            <point key="canvasLocation" x="7140.579710144928" y="2203.5326086956525"/>
         </scene>
         <!--Trip-->
         <scene sceneID="Dq9-Ds-zIF">
@@ -1448,6 +1690,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Icon" width="144" height="144"/>
         <image name="Left" width="88" height="88"/>
         <image name="Right" width="132" height="132"/>
         <image name="back" width="132" height="132"/>
