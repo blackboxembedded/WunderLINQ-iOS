@@ -66,6 +66,11 @@
 "hwsave_alert_btn_ok" = "Continue"; // Needs Translation
 "hwsave_alert_btn_cancel" = "Cancel"; // Needs Translation
 
+//AboutViewController
+"about_title" = "About"; // Needs Translation
+"version_label" = "Version:"; // Needs Translation
+"credits_label" = "Credits"; // Needs Translation
+
 // AlertViewController
 "alert_label_fuel" = "Zur nächsten Tankstelle navigieren?";
 "alert_title_fuel" = "Benzinstand niedrig";

@@ -68,6 +68,8 @@
 
 //AboutViewController
 "about_title" = "Περί...";
+"version_label" = "Version:"; // Needs Translation
+"credits_label" = "Credits"; // Needs Translation
 
 // AlertViewController
 "alert_label_fuel" = "Μετάβαση στο πλησιέστερο πρατήριο υγρών καυσίμων";

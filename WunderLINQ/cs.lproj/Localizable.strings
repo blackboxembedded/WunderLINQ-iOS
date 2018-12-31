@@ -68,6 +68,8 @@
 
 //AboutViewController
 "about_title" = "O Aplikaci";
+"version_label" = "Version:"; // Needs Translation
+"credits_label" = "Credits"; // Needs Translation
 
 // AlertViewController
 "alert_label_fuel" = "Navigovat k nejbližší čerpací stanici?";
