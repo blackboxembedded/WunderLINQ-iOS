@@ -2136,9 +2136,9 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
         
         //adding title, subtitle, body and badge
         content.title = NSLocalizedString("fault_title", comment: "")
-        //content.subtitle = "iOS Development is fun"
+        //content.subtitle = "Sub Title"
         content.body = message
-        //content.badge = 1
+        //content.badge = 1 
         content.sound = UNNotificationSound.default()
         
         //getting the notification trigger
