@@ -1,0 +1,225 @@
+/* 
+  Localizable.strings
+  WunderLINQ
+
+  Created by Keith Conger on 8/27/17.
+  Copyright © 2017 Black Box Embedded, LLC. All rights reserved.
+*/
+
+// Product
+"product" = "WunderLINQ";
+
+// AppDelegate
+"negative_alert_title" = "Zmožnosti omejene";
+"negative_notification_body" = "Ker obvestila niso omogočena, aplikacija ne bo prikazovala obvestil o napakah";
+"alert_message_exit_ok" = "V redu";
+
+// MyMotorcycleViewController
+"main_title" = "Motor";
+"disclaimer_alert_title" = "POZOR!";
+"disclaimer_alert_body" = "Ne vnašajte poti ali nastavljajte WunderLINQ med vožnjo.\nOdvračanje pozornosti od nadzora vozila lahko privede do smrti, resnih poškodb ali poškodovanja lastnine.\nPrevzemate vso odgovornost in tveganje za uporabo te naprave.";
+"disclaimer_ok" = "Se strinjam";
+"disclaimer_quit" = "Izhod";
+"negative_alert_title" = "Functionality limited"; // Needs Translation
+"negative_location_alert_body" = "Since location access has not been granted, this app will not be able to save waypoints or log your location."; // Needs Translation
+"negative_write_alert_body" = "Since Photo Library access has not been granted, this app will not be able to save photos."; // Needs Translation
+"negative_media_alert_body" = "Since Media Library access has not been granted, this app will not be able to play music."; // Needs Translation
+"negative_contacts_alert_body" = "Since contact access has not been granted, this app will not be able to display contacts to call."; // Needs Translation
+"negative_camera_alert_body" = "Since camera access has not been granted, this app will not be able to take photos or videos."; // Needs Translation
+"negative_microphone_alert_body" = "Since microphone access has not been granted, this app will not be able to record videos."; // Needs Translation
+"negative_notification_body" = "Since notifcations were not allowed, this app will not be able to send notifcations for faults"; // Needs Translation
+"negative_alert_btn_ok" = "Open Settings"; // Needs Translation
+"negative_alert_btn_cancel" = "Cancel"; // Needs Translation
+"bt_powered_off" = "Bluetooth na napravi je trenutno izključen.";
+"bt_not_supported" = "Naprava ne podpira Bluetooth z nizko porabo energije - BLE.";
+"bt_not_authorized" = "Aplikacija nima dovoljenja za uporabo Bluetooth z nizko porabo energije - BLE.";
+"bt_resetting" = "Upravitelj BLE se ponovno zaganja; posodobitev stanja v teku.";
+"bt_unknown" = "Stanje upravitelja BLE neznano.";
+"bt_ready" = "Bluetooth LE je vklopljen in pripravljen za komunikacijo.";
+"bt_alert_title" = "Stanje glavnega upravitelja";
+"trip_logs_label" = "Dnevnik potovanj";
+"waypoints_label" = "Kažipoti";
+"rdc_front_label" = "Prednja pnevmatika";
+"rdc_rear_label" = "Zadnja pnevmatika";
+"engine_temp_label" = "Temperatura motorja";
+"ambient_temp_label" = "Temperatura okolice";
+"odometer_label" = "Merilec razdalje";
+"trip1_label" = "Potovanje 1";
+"trip2_label" = "Potovanje 2";
+"gear_label" = "Prestava";
+"settings_label" = "Nastavitve";
+"appsettings_label" = "App Settings"; // Needs Translation
+"about_label" = "O aplikaciji";
+"close_label" = "Zapri";
+"hwsettings_label" = "HW Settings"; // Needs Translation
+
+//HWSettingsViewController
+"fw_config_title" = "WunderLINQ Settings"; // Needs Translation
+"wwtype_label" = "Wheel Type"; // Needs Translation
+"wwMode1" = "Full"; // Needs Translation
+"wwMode2" = "RT"; // Needs Translation
+"wwMode3" = "Custom"; // Needs Translation
+"sensitivity_label" = "Hold Sensitivity"; // Needs Translation
+"config_write_label" = "Save Settings"; // Needs Translation
+"hwsave_alert_title" = "Warning!"; // Needs Translation
+"hwsave_alert_body" = "After saving new hardware settings, the WunderLINQ hardware will become unstable and will need to be removed and reinstalled into the cradle."; // Needs Translation
+"hwsave_alert_btn_ok" = "Continue"; // Needs Translation
+"hwsave_alert_btn_cancel" = "Cancel"; // Needs Translation
+
+//AboutViewController
+"about_title" = "O aplikaciji";
+"version_label" = "Version:"; // Needs Translation
+"credits_label" = "Credits"; // Needs Translation
+
+// AlertViewController
+"alert_label_fuel" = "Prikažem pot do najbližje bencinske črpalke?";
+"alert_title_fuel" = "Nizek nivo goriva";
+"alert_btn_close" = "Zapri";
+"alert_btn_ok" = "V redu";
+
+// FaultsTableViewController
+"fault_title" = "Aktivne napake";
+
+// TripsTableViewController
+"trips_title" = "Shranjena potovanja";
+
+// TripViewController
+"trip_view_title" = "Potovanje";
+"trip_view_waypoint_start_label" = "Začetek";
+"trip_view_waypoint_end_label" = "Konec";
+"trip_view_tv_distance" = "Razdalja";
+"trip_view_tv_duration" = "Trajanje";
+"trip_view_tv_speed" = "Hitrost (Povp/Max)";
+"trip_view_tv_shifts" = "Prestavljanj";
+"trip_view_tv_brakes" = "Zaviranje (Spredaj/Zadaj)";
+"trip_view_tv_ambient" = "Temperatura okolice (Min/Povp/Max)";
+"trip_view_tv_engine" = "Temperatura motorja (Min/Povp/Max)";
+"hours" = "ur";
+"minutes" = "minut";
+"seconds" = "sekund";
+
+// WaypointsTableViewController
+"waypoint_title" = "Shranjeni kažipoti";
+
+// WaypointViewController
+"waypoint_view_title" = "Shranjen kažipot";
+"waypoint_view_tv_date_label" = "Datum shranjevanja";
+"waypoint_view_tv_lat_label" = "Zemljepisna širina";
+"waypoint_view_tv_lon_label" = "Zemljepisna dolžina";
+"waypoint_view_tv_label_label" = "Oznaka";
+"waypoint_view_bt_open" = "Odpri v Zemljevidih";
+"waypoint_view_bt_nav" = "Vodi";
+"waypoint_view_bt_share" = "Deli";
+"waypoint_view_bt_delete" = "Izbriši";
+
+// CompassViewController
+"compass_title" = "Kompas";
+"north" = "S";
+"north_west" = "SZ";
+"north_east" = "SV";
+"south" = "J";
+"south_west" = "JZ";
+"south_east" = "JV";
+"west" = "Z";
+"east" = "V";
+
+// MusicViewController
+"music_title" = "Glasba";
+
+// TasksTableViewController
+"quicktask_title" = "Hitra opravila";
+"task_title_navigation" = "Navigacija";
+"task_title_gohome" = "Vodi domov";
+"home" = "Doma";
+"geocode_error" = "Napaka pri iskanju geokode";
+"toast_address_not_set" = "Ni domačega naslova v nastavitvah";
+"task_title_favnumber" = "Hitri klic";
+"toast_phone_not_set" = "Ni nastavljene številke za hitri klic";
+"task_title_callcontact" = "Imenik stikov";
+"task_title_photo" = "Posnemi fotografijo";
+"task_title_selfie" = "Posnemi selfie";
+"task_title_start_record" = "Začni snemanje";
+"task_title_stop_record" = "Prekini snemanje";
+"task_title_start_trip" = "Začni dnevnik potovanja";
+"task_title_stop_trip" = "Zaključi dnevnik potovanja";
+"task_title_waypoint" = "Shrani kažipot";
+"task_title_settings" = "Settings"; //Needs Translation
+"toast_waypoint_saved" = "Kažipot shranjen";
+"task_title_waypoint_nav" = "Vodi do kažipota";
+"toast_photo_taken" = "Posnetek zajet!";
+
+// LocationService
+"time_header" = "Čas";
+"latitude_header" = "Širina";
+"longitude_header" = "Dolžina";
+"altitude_header" = "Višina (m)";
+"gpsspeed_header" = "GPS hitrost (kmh)";
+"gear_header" = "Prestava";
+"enginetemp_header" = "Temperatura motorja (C)";
+"ambienttemp_header" = "Temperatura okolice (C)";
+"frontpressure_header" = "Tlak prednje pnevmatike (bar)";
+"rearpressure_header" = "Tlak zadnje pnevmatike (bar)";
+"odometer_header" = "Merilec razdalje (km)";
+"voltage_header" = "Napetost (V)";
+"throttle_header" = "Pozicija ročice plina (%)";
+"frontbrakes_header" = "Prednje zavore";
+"rearbrakes_header" = "Zadnje zavore";
+"shifts_header" = "Prestavljanj";
+"vin_header" = "VIN";
+"ambientlight_header" = "Svetloba okolice";
+"tripone_header" = "Trip1 (km)";
+"triptwo_header" = "Trip2 (km)";
+"tripauto_header" = "Trip Auto (km)";
+"speed_header" = "Hitrost (kmh)";
+"avgspeed_header" = "Povprečna hitrost (kmh)";
+"cconsumption_header" = "Trenutna poraba (L/100)";
+"fueleconomyone_header" = "Poraba goriva 1 (L/100)";
+"fueleconomytwo_header" = "Poraba goriva 2 (L/100)";
+"fuelrange_header" = "Doseg (km)";
+
+// ContactsTableViewController
+"contactlist_title" = "Stiki";
+
+// WaypointsNavTableViewController
+"waypoints_nav_title" = "Kažipoti";
+
+// Fault Description
+"fault_UARTERR" = "UART napaka";
+"fault_UARTCTF" = "UART izpad komunikacije";
+"fault_ABSSLF" = "ABS samodiagnoza ni zaključena";
+"fault_ABSERR" = "ABS napaka";
+"fault_ABSDAC" = "ABS izklopljen";
+"fault_ASCSLF" = "ASC samodiagnoza ni zaključena";
+"fault_ASCINT" = "ASC intervencija";
+"fault_ASCERR" = "ASC napaka";
+"fault_ASCDAC" = "ASC izklopljen";
+"fault_FUELF" = "Nizek nivo goriva";
+"fault_TIREFWF" = "Tlak v prednji pnevmatiki nizek";
+"fault_TIRERWF" = "Tlak v zadnji pnevmatiki nizek";
+"fault_TIREFCF" = "Tlak v prednji pnevmatiki prenizek";
+"fault_TIRERCF" = "Tlak v zadnji pnevmatiki prenizek";
+"fault_LAMPAFL1" = "Dodatna prednja luč 1";
+"fault_LAMPAFL2" = "Dodatna prednja luč 2";
+"fault_LAMPDAY" = "Dnevna luč";
+"fault_LAMPFLI" = "Prednji levi smerokaz";
+"fault_LAMPFRI" = "Prednji desni smerokaz";
+"fault_LAMPRLI" = "Zadnji levi smerokaz";
+"fault_LAMPRRI" = "Zadnji desni smerokaz";
+"fault_LAMPFPK1" = "Prednja pozicijska luč 1";
+"fault_LAMPFPK2" = "Prednja pozicijska luč 2";
+"fault_LAMPLOW" = "Zasenčen žaromet";
+"fault_LAMPHI" = "Nezasenčen žaromet";
+"fault_LAMPREAR" = "Zadnja luč";
+"fault_LAMPBRK" = "Zavorna luč";
+"fault_LAMPLIC" = "Osvetlitev registrske tablice";
+"fault_LAMPRFOG" = "Luč za meglo zadaj";
+"fault_LAMPADDD" = "Dodatna (ne)zasenčena luč";
+"fault_LAMPADDB" = "Dodatna zavorna luč";
+"fault_LAMPFL1" = "Prednja luč 1";
+"fault_LAMPFL2" = "Prednja luč 2";
+"fault_ICEWARN" = "Poledica";
+"fault_GENWARNFSYLW" = "Opozorilna lučka utripa rumeno";
+"fault_GENWARNSHYLW" = "Opozorilna lučka sveti rumeno";
+"fault_GENWARNFSRED" = "Opozorilna lučka utripa rdeče";
+"fault_GENWARNSHRED" = "Opozorilna lučka sveti rdeče";
+"fault_OILLOW" = "Nivo olja prenizek";

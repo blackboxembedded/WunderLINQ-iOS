@@ -63,8 +63,8 @@
 
 //AboutViewController
 "about_title" = "About";
-"version_label" = "Version:"; // Needs Translation
-"credits_label" = "Credits"; // Needs Translation
+"version_label" = "Version:";
+"credits_label" = "Credits";
 
 // AlertViewController
 "alert_label_fuel" = "Route to the nearest fuel station?";
