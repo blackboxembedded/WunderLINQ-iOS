@@ -1,0 +1,17 @@
+/* 
+  InfoPlist.strings
+  WunderLINQ
+
+  Created by Keith Conger on 12/13/18.
+  Copyright © 2018 Black Box Embedded, LLC. All rights reserved.
+*/
+"NSContactsUsageDescription" = "Η εφαρμογή WunderLINQ χρειάζεται πρόσβαση στο κατάλογο επαφών προκειμένου να εμφανίζει τους αριθμούς των επαφών σας.";
+"NSCameraUsageDescription" = "Η εφαρμογή WunderLINQ χρειάζεται πρόσβαση στη κάμερα προκειμένου να κάνει λήψη φωτογραφιών και εγγραφή βίντεο.";
+"NSLocationAlwaysAndWhenInUseUsageDescription" = "Η εφαρμογή WunderLINQ χρειάζεται πρόσβαση στη τοποθεσίας σας προκειμένου να καταγράφει την τοποθεσίας σας στην καταγραφή διαδρομών και να αποθηκεύει προορισμούς.";
+"NSLocationAlwaysUsageDescription" = "Η εφαρμογή WunderLINQ χρειάζεται πρόσβαση στη τοποθεσίας σας προκειμένου να  καταγράφει την τοποθεσίας σας στην καταγραφή διαδρομών και να αποθηκεύει προορισμούς.";
+"NSLocationWhenInUseUsageDescription" = "Η εφαρμογή WunderLINQ χρειάζεται πρόσβαση στη τοποθεσία σας προκειμένου να καταγράφει την τοποθεσίας σας στην καταγραφή διαδρομών και να αποθηκεύει προορισμούς.";
+"NSAppleMusicUsageDescription" = "Η εφαρμογή WunderLINQ χρειάζεται πρόσβαση στη βιβλιοθήκη πολυμέσων προκειμένου να κάνει αναπαραγωγή μουσικής.";
+"NSBluetoothPeripheralUsageDescription" = "Η εφαρμογή WunderLINQ χρειάζεται πρόσβαση στο Bluetooth προκειμένου να επικοινωνήσει με τη συσκευή WunderLINQ.";
+"NSMicrophoneUsageDescription" = "Η εφαρμογή WunderLINQ χρειάζεται πρόσβαση στο μικρόφωνο προκειμένου να κάνει εγγραφή ήχου κατά την εγγραφή βίντεο.";
+"NSPhotoLibraryAddUsageDescription" = "Η εφαρμογή WunderLINQ χρειάζεται πρόσβαση προκειμένου να αποθηκεύσει τις ληφθείσες φωτογραφίες στην βιβλιοθήκη φωτογραφιών.";
+"NSPhotoLibraryUsageDescription" = "Η εφαρμογή WunderLINQ χρειάζεται πρόσβαση προκειμένου να αποθηκεύσει τις ληφθείσες φωτογραφίες στην βιβλιοθήκη φωτογραφιών.";
