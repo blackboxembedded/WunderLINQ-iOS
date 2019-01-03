@@ -1,0 +1,17 @@
+/*
+ InfoPlist.strings
+ WunderLINQ
+ 
+ Created by Keith Conger on 12/13/18.
+ Copyright © 2018 Black Box Embedded, LLC. All rights reserved.
+ */
+"NSContactsUsageDescription" = "WunderLINQ potrebuje dostop do imenika, da lahko prikaže tel. številke vaših stikov.";
+"NSCameraUsageDescription" = "WunderLINQ potrebuje dostop do kamere za zajem fotografij in posnetkov.";
+"NSLocationAlwaysAndWhenInUseUsageDescription" = "WunderLINQ potrebuje dostop do lokacije, da zabeleži vašo lokacijo v dnevnik potovanj in shranjuje kažipote.";
+"NSLocationAlwaysUsageDescription" = "WunderLINQ potrebuje dostop do lokacije, da zabeleži vašo lokacijo v dnevnik potovanj in shranjuje kažipote.";
+"NSLocationWhenInUseUsageDescription" = "WunderLINQ potrebuje dostop do lokacije, da zabeleži vašo lokacijo v dnevnik potovanj in shranjuje kažipote.";
+"NSAppleMusicUsageDescription" = "WunderLINQ potrebuje dostop do glasbene knjižnice za predvajanje glasbe.";
+"NSBluetoothPeripheralUsageDescription" = "WunderLINQ potrebuje dostop do Bluetootha za komunikacijo z WunderLINQ napravo.";
+"NSMicrophoneUsageDescription" = "WunderLINQ potrebuje dostop do mikrofona za snemanje zvoka v video posnetkih.";
+"NSPhotoLibraryAddUsageDescription" = "WunderLINQ potrebuje dovoljenje posnetih fotografij v galerijo.";
+"NSPhotoLibraryUsageDescription" = "WunderLINQ potrebuje dovoljenje posnetih fotografij v galerijo.";

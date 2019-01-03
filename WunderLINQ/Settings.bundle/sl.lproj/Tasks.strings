@@ -8,7 +8,7 @@
 "task_title_start_trip" = "Začni dnevnik potovanja";
 "task_title_waypoint" = "Shrani kažipot";
 "task_title_waypoint_nav" = "Vodi do kažipota";
-"task_title_settings" = "Settings"; // Needs Translation
+"task_title_settings" = "Nastavitve";
 "task_title_empty" = "Prazno";
 "pref_task_one" = "Prvi";
 "pref_task_two" = "Drugi";

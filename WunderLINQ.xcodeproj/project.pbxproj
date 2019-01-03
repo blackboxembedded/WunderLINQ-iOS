@@ -36,6 +36,7 @@
 		7E25396121CD65C60008D34E /* HWSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E25396021CD65C60008D34E /* HWSettingsViewController.swift */; };
 		7E25396321CD94A30008D34E /* BLE.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E25396221CD94A30008D34E /* BLE.swift */; };
 		7E25396521CDB1740008D34E /* WLQ.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E25396421CDB1740008D34E /* WLQ.swift */; };
+		7E4D76E321DDAEC100825175 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7E4D76E521DDAEC100825175 /* InfoPlist.strings */; };
 		7E5A767820DDEE7200B48CC6 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5A767720DDEE7200B48CC6 /* UIViewController+Extensions.swift */; };
 		7E5A767A20DDFEF700B48CC6 /* Waypoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5A767920DDFEF700B48CC6 /* Waypoint.swift */; };
 		7E5E0F78212289140048B9A2 /* AppUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5E0F77212289140048B9A2 /* AppUtility.swift */; };
@@ -63,7 +64,6 @@
 		7EA4788E1F5BA136000CEDDC /* Tasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA4788D1F5BA136000CEDDC /* Tasks.swift */; };
 		7EA4BCC721B8C9150084F6EA /* TasksCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA4BCC621B8C9150084F6EA /* TasksCollectionViewController.swift */; };
 		7EA4BCC921B8CB270084F6EA /* TaskCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA4BCC821B8CB270084F6EA /* TaskCollectionViewCell.swift */; };
-		7EAE8DA321C335EB006365ED /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7EAE8DA221C335EB006365ED /* InfoPlist.strings */; };
 		7EAE9415211E9B3200E24CE9 /* Double+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EAE9414211E9B3200E24CE9 /* Double+Extensions.swift */; };
 		7EAE9417211EA30900E24CE9 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EAE9416211EA30900E24CE9 /* Theme.swift */; };
 		7EBFD48E210ADD0000FC9665 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBFD48D210ADD0000FC9665 /* String+Extensions.swift */; };
@@ -119,6 +119,7 @@
 		7E31915C219A1BB40031A2E3 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Main.strings; sourceTree = "<group>"; };
 		7E31915D219A1BB40031A2E3 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		7E31915E219A1BB40031A2E3 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = WunderLINQ/es.lproj/Localizable.strings; sourceTree = "<group>"; };
+		7E4D76E421DDAEC100825175 /* sl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sl; path = sl.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		7E52E9AF21A38D89008082FE /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/Main.strings; sourceTree = "<group>"; };
 		7E52E9B021A38D89008082FE /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		7E52E9B121A38D89008082FE /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = WunderLINQ/cs.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -162,7 +163,6 @@
 		7EA4788D1F5BA136000CEDDC /* Tasks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tasks.swift; sourceTree = "<group>"; };
 		7EA4BCC621B8C9150084F6EA /* TasksCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksCollectionViewController.swift; sourceTree = "<group>"; };
 		7EA4BCC821B8CB270084F6EA /* TaskCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCollectionViewCell.swift; sourceTree = "<group>"; };
-		7EAE8DA221C335EB006365ED /* InfoPlist.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = InfoPlist.strings; sourceTree = "<group>"; };
 		7EAE9414211E9B3200E24CE9 /* Double+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extensions.swift"; sourceTree = "<group>"; };
 		7EAE9416211EA30900E24CE9 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		7EBFD48D210ADD0000FC9665 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
@@ -308,7 +308,7 @@
 				7EA478821F4A7260000CEDDC /* Settings.bundle */,
 				7EA478541F40B154000CEDDC /* Assets.xcassets */,
 				7EA478561F40B154000CEDDC /* LaunchScreen.storyboard */,
-				7EAE8DA221C335EB006365ED /* InfoPlist.strings */,
+				7E4D76E521DDAEC100825175 /* InfoPlist.strings */,
 				7EA478591F40B154000CEDDC /* Info.plist */,
 			);
 			path = WunderLINQ;
@@ -420,7 +420,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7E068BF62102D1A90076EAAD /* GoogleMaps.bundle in Resources */,
-				7EAE8DA321C335EB006365ED /* InfoPlist.strings in Resources */,
+				7E4D76E321DDAEC100825175 /* InfoPlist.strings in Resources */,
 				7EA478831F4A7260000CEDDC /* Settings.bundle in Resources */,
 				7EA4788A1F537ED5000CEDDC /* Localizable.strings in Resources */,
 				7EA478581F40B154000CEDDC /* LaunchScreen.storyboard in Resources */,
@@ -506,6 +506,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		7E4D76E521DDAEC100825175 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7E4D76E421DDAEC100825175 /* sl */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
 		7EA478511F40B154000CEDDC /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
