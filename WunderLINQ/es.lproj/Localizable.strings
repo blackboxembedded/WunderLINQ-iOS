@@ -50,25 +50,25 @@
 "settings_label" = "Ajustes"; //Translated into SP_ES 20181127
 "about_label" = "Acerca de"; //Translated into SP_ES 20181127
 "close_label" = "Cerrar"; //Translated into SP_ES 20181127
-"hwsettings_label" = "HW Settings"; //Needs Translation
+"hwsettings_label" = "Ajustes del Hardware"; //Translated into SP_ES 20190103
 
 //HWSettingsViewController
-"fw_config_title" = "WunderLINQ Settings"; //Needs Translation
-"wwtype_label" = "Wheel Type"; //Needs Translation
-"wwMode1" = "Full"; //Needs Translation
-"wwMode2" = "RT"; //Needs Translation
-"wwMode3" = "Custom"; //Needs Translation
-"sensitivity_label" = "Hold Sensitivity"; //Needs Translation
-"config_write_label" = "Save Settings"; //Needs Translation
-"hwsave_alert_title" = "Warning!"; // Needs Translation
-"hwsave_alert_body" = "After saving new hardware settings, the WunderLINQ hardware will become unstable and will need to be removed and reinstalled into the cradle."; // Needs Translation
-"hwsave_alert_btn_ok" = "Continue"; // Needs Translation
-"hwsave_alert_btn_cancel" = "Cancel"; // Needs Translation
+"fw_config_title" = "Ajustes del WunderLINQ"; //Translated into SP_ES 20190103
+"wwtype_label" = "Tipo de Rueda"; //Translated into SP_ES 20190103
+"wwMode1" = "Completa (Full)"; //Translated into SP_ES 20190103
+"wwMode2" = "RT"; //Translated into SP_ES 20190103
+"wwMode3" = "Custom"; //Translated into SP_ES 20190103
+"sensitivity_label" = "Sensitividad de Mantener (Hold)"; //Translated into SP_ES 20190103
+"config_write_label" = "Ajustes de Guardar (Save)"; //Translated into SP_ES 20190103
+"hwsave_alert_title" = "¡Aviso!"; //Translated into SP_ES 20190103
+"hwsave_alert_body" = "Después de almacenar nuevos ajustes del hardware, el hardware WunderLINQ será inestable y necesitará ser sacado y, a continuación, repuesto de nuevo en su ubicación (cuna predisposición del GPS)"; // Needs Translation
+"hwsave_alert_btn_ok" = "Continuar"; //Translated into SP_ES 20190103
+"hwsave_alert_btn_cancel" = "Cancelar"; //Translated into SP_ES 20190103
 
 //AboutViewController
-"about_title" = "About"; // Needs Translation
-"version_label" = "Version:"; // Needs Translation
-"credits_label" = "Credits"; // Needs Translation
+"about_title" = "Acerca de"; //Translated into SP_ES 20190103
+"version_label" = "Versión:"; //Translated into SP_ES 20190103
+"credits_label" = "Créditos"; //Translated into SP_ES 20190103
 
 // AlertViewController
 "alert_label_fuel"="¿Ruta a la gasolinera más cercana?";
@@ -107,7 +107,7 @@
 "waypoint_view_tv_lon_label"="Longitud";
 "waypoint_view_tv_label_label"="Etiqueta";
 "waypoint_view_bt_open"="Abrir en App de Mapas";
-"waypoint_view_bt_nav" = "Navigate"; //Needs translation
+"waypoint_view_bt_nav" = "Navegar"; //Translated into SP_ES 20190103
 "waypoint_view_bt_share"="Compartir";
 "waypoint_view_bt_delete"="Borrar";
 
