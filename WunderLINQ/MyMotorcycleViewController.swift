@@ -14,6 +14,7 @@ import MediaPlayer
 import Photos
 import UIKit
 import UserNotifications
+import CommonCrypto
 
 class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDelegate, UNUserNotificationCenterDelegate {
     @IBOutlet weak var frontPressureLabel: UILabel!
@@ -585,7 +586,7 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
             }
             
             // Trip 2
-            if motorcycleData.tripOne != nil {
+            if motorcycleData.tripTwo != nil {
                 var tripTwo:Double = motorcycleData.gettripTwo()
                 if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
                     tripTwo = Double(kmToMiles(Double(tripTwo)))
@@ -641,22 +642,25 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
         let dataLength = data.count / MemoryLayout<UInt8>.size
         var dataArray = [UInt8](repeating: 0, count: dataLength)
         (data as NSData).getBytes(&dataArray, length: dataLength * MemoryLayout<Int16>.size)
-        
-        var messageHexString = ""
-        for i in 0 ..< dataLength {
-            messageHexString += String(format: "%02X", dataArray[i])
-            if i < dataLength - 1 {
-                messageHexString += ","
-            }
-        }
-        
+
         //print(messageHexString)
         // Log raw messages
-        /*
-        if UserDefaults.standard.bool(forKey: "raw_logging_preference") {
-            Logger.log(fileName: "WunderLINQ-raw.csv", entry: messageHexString)
+        if UserDefaults.standard.bool(forKey: "debug_logging_preference") {
+            /*
+            let message       = "Don´t try to read this text. Top Secret Stuff"
+            let messageData   = Array(message.utf8)
+            */
+            let keyData       = Array("wTKkVwtrBbrZKmYj".utf8)
+            let ivData        = Array("abcdefghijklmnop".utf8)
+            let encryptedData = testCrypt(data:dataArray,   keyData:keyData, ivData:ivData, operation:kCCEncrypt)!
+            //let decryptedData = testCrypt(data:encryptedData, keyData:keyData, ivData:ivData, operation:kCCDecrypt)!
+            //var decrypted     = String(bytes:decryptedData, encoding:String.Encoding.utf8)!
+            var messageHexString = ""
+            for i in 0 ..< encryptedData.count {
+                messageHexString += String(format: "%02X", encryptedData[i])
+            }
+            Logger.log(fileName: "dbg", entry: messageHexString, withDate: true)
         }
-        */
         
         lastMessage = dataArray
         switch lastMessage[0] {
@@ -951,8 +955,10 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
             motorcycleData.setthrottlePosition(throttlePosition: throttlePosition)
             
             // Engine Temperature
-            let engineTemp:Double = Double(lastMessage[4]) * 0.75 - 25
-            motorcycleData.setengineTemperature(engineTemperature: engineTemp)
+            if (lastMessage[4] != 0xFF){
+                let engineTemp:Double = Double(lastMessage[4]) * 0.75 - 25
+                motorcycleData.setengineTemperature(engineTemperature: engineTemp)
+            }
             
             // ASC Fault
             let ascValue = (lastMessage[5]  >> 4) & 0x0F // the highest 4 bits.
@@ -1074,8 +1080,10 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
             }
             
             // Voltage
-            let voltage = Double(lastMessage[4]) / 10
-            motorcycleData.setvoltage(voltage: voltage)
+            if (lastMessage[4] != 0xFF){
+                let voltage = Double(lastMessage[4]) / 10
+                motorcycleData.setvoltage(voltage: voltage)
+            }
             
             // Fuel Fault
             let fuelValue = (lastMessage[5] >> 4) & 0x0F // the highest 4 bits.
@@ -1306,8 +1314,10 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
         case 0x08:
             //print("Message ID: 8")
             // Ambient Temperature
-            let ambientTemp:Double = Double(lastMessage[1]) * 0.50 - 40
-            motorcycleData.setambientTemperature(ambientTemperature: ambientTemp)
+            if (lastMessage[1] != 0xFF){
+                let ambientTemp:Double = Double(lastMessage[1]) * 0.50 - 40
+                motorcycleData.setambientTemperature(ambientTemperature: ambientTemp)
+            }
             
             // LAMP Faults
             if (lastMessage[3] != 0xFF) {
@@ -1796,7 +1806,6 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
                     faults.setAddBrakeLightActive(active: false)
                     faults.setFrontLampOneLightActive(active: false)
                     faults.setFrontLampTwoLightActive(active: false)
-
                 }
             }
         case 0x09:
@@ -1830,16 +1839,21 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
             motorcycleData.setodometer(odometer: odometer)
 
             // Trip Auto
-            let tripAuto:Double = Double((UInt32(lastMessage[4]) | UInt32(lastMessage[5]) << 8 | UInt32(lastMessage[6]) << 16) / 10)
-            motorcycleData.settripAuto(tripAuto: tripAuto)
+            if ((lastMessage[4] != 0xFF) && (lastMessage[5] != 0xFF) && (lastMessage[6] != 0xFF)){
+                let tripAuto:Double = Double((UInt32(lastMessage[4]) | UInt32(lastMessage[5]) << 8 | UInt32(lastMessage[6]) << 16) / 10)
+                motorcycleData.settripAuto(tripAuto: tripAuto)
+            }
             
         case 0x0C:
             // Trip 1 & Trip 2
-            let tripOne:Double = Double((UInt32(lastMessage[1]) | UInt32(lastMessage[2]) << 8 | UInt32(lastMessage[3]) << 16) / 10)
-            let tripTwo:Double = Double((UInt32(lastMessage[4]) | UInt32(lastMessage[5]) << 8 | UInt32(lastMessage[6]) << 16) / 10)
-            motorcycleData.settripOne(tripOne: tripOne)
-            motorcycleData.settripTwo(tripTwo: tripTwo)
-
+            if ((lastMessage[1] != 0xFF) && (lastMessage[2] != 0xFF) && (lastMessage[3] != 0xFF)){
+                let tripOne:Double = Double((UInt32(lastMessage[1]) | UInt32(lastMessage[2]) << 8 | UInt32(lastMessage[3]) << 16) / 10)
+                motorcycleData.settripOne(tripOne: tripOne)
+            }
+            if ((lastMessage[4] != 0xFF) && (lastMessage[5] != 0xFF) && (lastMessage[6] != 0xFF)){
+                let tripTwo:Double = Double((UInt32(lastMessage[4]) | UInt32(lastMessage[5]) << 8 | UInt32(lastMessage[6]) << 16) / 10)
+                motorcycleData.settripTwo(tripTwo: tripTwo)
+            }
         case 0xFF:
             // WunderLINQ errors
             print("Error Recieved")
@@ -2491,6 +2505,36 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
             alertController.addAction(openAction)
             self.present(alertController, animated: true, completion: nil)
         }
+    }
+    
+    // operation: kCCEncrypt or kCCDecrypt
+    func testCrypt(data:[UInt8], keyData:[UInt8], ivData:[UInt8], operation:Int) -> [UInt8]? {
+        let cryptLength  = size_t(data.count+kCCBlockSizeAES128)
+        var cryptData    = [UInt8](repeating:0, count:cryptLength)
+        
+        let keyLength             = size_t(kCCKeySizeAES128)
+        let algoritm: CCAlgorithm = UInt32(kCCAlgorithmAES128)
+        let options:  CCOptions   = UInt32(kCCOptionPKCS7Padding)
+        
+        var numBytesEncrypted :size_t = 0
+        
+        let cryptStatus = CCCrypt(CCOperation(operation),
+                                  algoritm,
+                                  options,
+                                  keyData, keyLength,
+                                  ivData,
+                                  data, data.count,
+                                  &cryptData, cryptLength,
+                                  &numBytesEncrypted)
+        
+        if UInt32(cryptStatus) == UInt32(kCCSuccess) {
+            cryptData.removeSubrange(numBytesEncrypted..<cryptData.count)
+            
+        } else {
+            print("Error: \(cryptStatus)")
+        }
+        
+        return cryptData;
     }
     
     // MARK: - Utility Methods

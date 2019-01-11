@@ -20,16 +20,16 @@
 "disclaimer_alert_body"="No intente introducir información de rutas ni ajuste el WunderLINQ mientras conduce.\nSi no presta toda su atención al manejo de su vehículo, podría provocar la muerte, lesiones graves o daños materiales.\nUsted asume toda la responsabilidad y el riesgo por el uso de este dispositivo.";
 "disclaimer_ok"="Aceptar";
 "disclaimer_quit"="Salir";
-"negative_alert_title" = "Functionality limited"; // Needs Translation
-"negative_location_alert_body" = "Since location access has not been granted, this app will not be able to save waypoints or log your location."; // Needs Translation
+"negative_alert_title" = "Functionality limited"; // Needs translation
+"negative_location_alert_body" = "Since location access has not been granted, this app will not be able to save waypoints or log your location."; // Needs translation
 "negative_write_alert_body" = "Since Photo Library access has not been granted, this app will not be able to save photos."; // Needs Translation
-"negative_media_alert_body" = "Since Media Library access has not been granted, this app will not be able to play music."; // Needs Translation
-"negative_contacts_alert_body" = "Since contact access has not been granted, this app will not be able to display contacts to call."; // Needs Translation
-"negative_camera_alert_body" = "Since camera access has not been granted, this app will not be able to take photos or videos."; // Needs Translation
-"negative_microphone_alert_body" = "Since microphone access has not been granted, this app will not be able to record videos."; // Needs Translation
-"negative_notification_body" = "Since notifcations were not allowed, this app will not be able to send notifcations for faults"; // Needs Translation
-"negative_alert_btn_ok" = "Open Settings"; // Needs Translation
-"negative_alert_btn_cancel" = "Cancel"; // Needs Translation
+"negative_media_alert_body" = "Since Media Library access has not been granted, this app will not be able to play music."; // Needs translation
+"negative_contacts_alert_body" = "Since contact access has not been granted, this app will not be able to display contacts to call."; // Needs translation
+"negative_camera_alert_body" = "Since camera access has not been granted, this app will not be able to take photos or videos."; // Needs translation
+"negative_microphone_alert_body" = "Since microphone access has not been granted, this app will not be able to record videos."; // Needs translation
+"negative_notification_body" = "Since notifcations were not allowed, this app will not be able to send notifcations for faults"; // Needs translation
+"negative_alert_btn_ok" = "Open Settings"; // Needs translation
+"negative_alert_btn_cancel" = "Cancel"; // Needs translation
 "bt_powered_off"="El Bluetooth en este dispositivo está actualmente apagado.";
 "bt_not_supported"="Este dispositivo no soporte Bluetooth Low Energy (BTE).";
 "bt_not_authorized"="Esta aplicación no está autorizada para usar Bluetooth Low Energy (BTE).";
@@ -47,28 +47,28 @@
 "trip1_label"="Trip 1";
 "trip2_label"="Trip 2";
 "gear_label"="Marcha";
-"settings_label" = "Ajustes"; //Translated into SP_ES 20181127
-"about_label" = "Acerca de"; //Translated into SP_ES 20181127
-"close_label" = "Cerrar"; //Translated into SP_ES 20181127
-"hwsettings_label" = "Ajustes del Hardware"; //Translated into SP_ES 20190103
+"settings_label" = "Ajustes";
+"about_label" = "Acerca de";
+"close_label" = "Cerrar";
+"hwsettings_label" = "Ajustes del Hardware";
 
 //HWSettingsViewController
-"fw_config_title" = "Ajustes del WunderLINQ"; //Translated into SP_ES 20190103
-"wwtype_label" = "Tipo de Rueda"; //Translated into SP_ES 20190103
-"wwMode1" = "Completa (Full)"; //Translated into SP_ES 20190103
-"wwMode2" = "RT"; //Translated into SP_ES 20190103
+"fw_config_title" = "Ajustes del WunderLINQ";
+"wwtype_label" = "Tipo de Rueda";
+"wwMode1" = "Completa (Full)";
+"wwMode2" = "RT"; 
 "wwMode3" = "Custom"; //Translated into SP_ES 20190103
-"sensitivity_label" = "Sensitividad de Mantener (Hold)"; //Translated into SP_ES 20190103
-"config_write_label" = "Ajustes de Guardar (Save)"; //Translated into SP_ES 20190103
-"hwsave_alert_title" = "¡Aviso!"; //Translated into SP_ES 20190103
-"hwsave_alert_body" = "Después de almacenar nuevos ajustes del hardware, el hardware WunderLINQ será inestable y necesitará ser sacado y, a continuación, repuesto de nuevo en su ubicación (cuna predisposición del GPS)"; // Needs Translation
-"hwsave_alert_btn_ok" = "Continuar"; //Translated into SP_ES 20190103
-"hwsave_alert_btn_cancel" = "Cancelar"; //Translated into SP_ES 20190103
+"sensitivity_label" = "Sensitividad de Mantener (Hold)"; 
+"config_write_label" = "Ajustes de Guardar (Save)";
+"hwsave_alert_title" = "¡Aviso!";
+"hwsave_alert_body" = "Después de almacenar nuevos ajustes del hardware, el hardware WunderLINQ será inestable y necesitará ser sacado y, a continuación, repuesto de nuevo en su ubicación (cuna predisposición del GPS)";
+"hwsave_alert_btn_ok" = "Continuar"; 
+"hwsave_alert_btn_cancel" = "Cancelar";
 
 //AboutViewController
-"about_title" = "Acerca de"; //Translated into SP_ES 20190103
-"version_label" = "Versión:"; //Translated into SP_ES 20190103
-"credits_label" = "Créditos"; //Translated into SP_ES 20190103
+"about_title" = "Acerca de";
+"version_label" = "Versión:";
+"credits_label" = "Créditos";
 
 // AlertViewController
 "alert_label_fuel"="¿Ruta a la gasolinera más cercana?";
@@ -93,9 +93,9 @@
 "trip_view_tv_brakes"="Frenos (Delantero/Trasero)";
 "trip_view_tv_ambient"="Temp. Ambiente (Mín/Med/Máx)";
 "trip_view_tv_engine"="Temp. Motor (Mín/Med/Máx)";
-"hours" = "horas"; //Translated into SP_ES 20181127
-"minutes" = "minutos"; //Translated into SP_ES 20181127
-"seconds" = "segundos"; //Translated into SP_ES 20181127
+"hours" = "horas";
+"minutes" = "minutos";
+"seconds" = "segundos";
 
 // WaypointsTableViewController
 "waypoint_title"="Puntos de Ruta (Waypoints) guardados";
@@ -107,20 +107,20 @@
 "waypoint_view_tv_lon_label"="Longitud";
 "waypoint_view_tv_label_label"="Etiqueta";
 "waypoint_view_bt_open"="Abrir en App de Mapas";
-"waypoint_view_bt_nav" = "Navegar"; //Translated into SP_ES 20190103
+"waypoint_view_bt_nav" = "Navegar";
 "waypoint_view_bt_share"="Compartir";
 "waypoint_view_bt_delete"="Borrar";
 
 // CompassViewController
 "compass_title"="Brújula";
-"north" = "N"; //Translated into SP_ES 20181127
-"north_west" = "NO"; //Translated into SP_ES 20181127
-"north_east" = "NE"; //Translated into SP_ES 20181127
-"south" = "S"; //Translated into SP_ES 20181127
-"south_west" = "SO"; //Translated into SP_ES 20181127
-"south_east" = "SE"; //Translated into SP_ES 20181127
-"west" = "O"; //Translated into SP_ES 20181127
-"east" = "E"; //Translated into SP_ES 20181127
+"north" = "N";
+"north_west" = "NO";
+"north_east" = "NE";
+"south" = "S"; 
+"south_west" = "SO";
+"south_east" = "SE";
+"west" = "O";
+"east" = "E";
 
 // MusicViewController
 "music_title"="Música";
@@ -148,33 +148,33 @@
 "toast_photo_taken"="¡Foto guardada!";
 
 // LocationService
-"time_header" = "Tiempo"; //Translated into SP_ES 20181127
-"latitude_header" = "Latitud"; //Translated into SP_ES 20181127
-"longitude_header" = "Longitud"; //Translated into SP_ES 20181127
-"altitude_header" = "Altitud (m)"; //Translated into SP_ES 20181127
-"gpsspeed_header" = "Velocidad GPS (kmh)"; //Translated into SP_ES 20181127
-"gear_header" = "Marcha"; //Translated into SP_ES 20181127
-"enginetemp_header" = "Temperatura del Motor (C)"; //Translated into SP_ES 20181127
-"ambienttemp_header" = "Temperatura Ambiente (C)"; //Translated into SP_ES 20181127
-"frontpressure_header" = "Presión Neumático Delantero (bar)"; //Translated into SP_ES 20181127
-"rearpressure_header" = "Presión Neumático Trasero (bar)"; //Translated into SP_ES 20181127
-"odometer_header" = "Odómetro (km)"; //Translated into SP_ES 20181127
-"voltage_header" = "Voltaje (V)"; //Translated into SP_ES 20181127
-"throttle_header" = "Posición del acelerador (%)"; //Translated into SP_ES 20181127
-"frontbrakes_header" = "Frenos Delanteros"; //Translated into SP_ES 20181127
-"rearbrakes_header" = "Frenos Traseros"; //Translated into SP_ES 20181127
-"shifts_header" = "Cambios"; //Translated into SP_ES 20181127
-"vin_header" = "VIN"; //Translated into SP_ES 20181127
-"ambientlight_header" = "Luz ambiental"; //Translated into SP_ES 20181127
-"tripone_header" = "Trip1 (km)"; //Translated into SP_ES 20181127
-"triptwo_header" = "Trip2 (km)"; //Translated into SP_ES 20181127
-"tripauto_header" = "Trip Auto (km)"; //Translated into SP_ES 20181127
-"speed_header" = "Velocidad (kmh)"; //Translated into SP_ES 20181127
-"avgspeed_header" = "Velocidad Media (kmh)"; //Translated into SP_ES 20181127
-"cconsumption_header" = "Consumo Actual (L/100)"; //Translated into SP_ES 20181127
-"fueleconomyone_header" = "Combustible 1 (L/100)"; //Translated into SP_ES 20181127
-"fueleconomytwo_header" = "Combustible 2 (L/100)"; //Translated into SP_ES 20181127
-"fuelrange_header" = "Rango/Alcance (km)"; //Translated into SP_ES 20181127
+"time_header" = "Tiempo";
+"latitude_header" = "Latitud"; 
+"longitude_header" = "Longitud";
+"altitude_header" = "Altitud (m)";
+"gpsspeed_header" = "Velocidad GPS (kmh)";
+"gear_header" = "Marcha";
+"enginetemp_header" = "Temperatura del Motor (C)";
+"ambienttemp_header" = "Temperatura Ambiente (C)";
+"frontpressure_header" = "Presión Neumático Delantero (bar)";
+"rearpressure_header" = "Presión Neumático Trasero (bar)";
+"odometer_header" = "Odómetro (km)";
+"voltage_header" = "Voltaje (V)";
+"throttle_header" = "Posición del acelerador (%)";
+"frontbrakes_header" = "Frenos Delanteros";
+"rearbrakes_header" = "Frenos Traseros";
+"shifts_header" = "Cambios";
+"vin_header" = "VIN";
+"ambientlight_header" = "Luz ambiental";
+"tripone_header" = "Trip1 (km)";
+"triptwo_header" = "Trip2 (km)";
+"tripauto_header" = "Trip Auto (km)";
+"speed_header" = "Velocidad (kmh)";
+"avgspeed_header" = "Velocidad Media (kmh)";
+"cconsumption_header" = "Consumo Actual (L/100)";
+"fueleconomyone_header" = "Combustible 1 (L/100)";
+"fueleconomytwo_header" = "Combustible 2 (L/100)";
+"fuelrange_header" = "Rango/Alcance (km)";
 
 // ContactsTableViewController
 "contactlist_title"="Contactos";

@@ -1,0 +1,17 @@
+/* 
+  InfoPlist.strings
+  WunderLINQ
+
+  Created by Keith Conger on 12/13/18.
+  Copyright © 2018 Black Box Embedded, LLC. All rights reserved.
+*/
+"NSContactsUsageDescription" = "WunderLINQ vyžaduje oprávnění pro přístup ke kontaktům.";
+"NSCameraUsageDescription" = "WunderLINQ vyžaduje oprávnění k pořizování fotografií a nahrávání videa.";
+"NSLocationAlwaysAndWhenInUseUsageDescription" = "WunderLINQ vyžaduje oprávnění pro přístup k poloze tohoto zařízení.";
+"NSLocationAlwaysUsageDescription" = "WunderLINQ vyžaduje oprávnění pro přístup k poloze tohoto zařízení.";
+"NSLocationWhenInUseUsageDescription" = "WunderLINQ vyžaduje oprávnění pro přístup k poloze tohoto zařízení.";
+"NSAppleMusicUsageDescription" = "WunderLINQ vyžaduje oprávnění pro přístup ke knihovně hudby.";
+"NSBluetoothPeripheralUsageDescription" = "WunderLINQ vyžaduje oprávnění k použití Bluetooth ke komunikaci se zařízením.";
+"NSMicrophoneUsageDescription" = "WunderLINQ vyžaduje oprávnění pro nahrávání zvuku.";
+"NSPhotoLibraryAddUsageDescription" = "WunderLINQ vyžaduje oprávnění k ukládání fotografií.";
+"NSPhotoLibraryUsageDescription" = "WunderLINQ vyžaduje oprávnění k ukládání fotografií.";

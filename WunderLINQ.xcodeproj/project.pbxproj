@@ -46,6 +46,7 @@
 		7E80BD3D211CFF7300B8CA0D /* LocalisableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E80BD3C211CFF7300B8CA0D /* LocalisableButton.swift */; };
 		7E80BD42211D419C00B8CA0D /* WaypointsNavTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E80BD41211D419C00B8CA0D /* WaypointsNavTableViewController.swift */; };
 		7E80BD44211D5A0600B8CA0D /* UIView+ignoresInvertColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E80BD43211D5A0600B8CA0D /* UIView+ignoresInvertColors.swift */; };
+		7E96D79221E78B7B00C6AB5F /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E96D79121E78B7B00C6AB5F /* Security.framework */; };
 		7EA4784E1F40B154000CEDDC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA4784D1F40B154000CEDDC /* AppDelegate.swift */; };
 		7EA478501F40B154000CEDDC /* MyMotorcycleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA4784F1F40B154000CEDDC /* MyMotorcycleViewController.swift */; };
 		7EA478531F40B154000CEDDC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7EA478511F40B154000CEDDC /* Main.storyboard */; };
@@ -141,6 +142,7 @@
 		7E8A1E5621DC326600207464 /* sl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sl; path = sl.lproj/Main.strings; sourceTree = "<group>"; };
 		7E8A1E5721DC326600207464 /* sl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sl; path = sl.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		7E8A1E5821DC326600207464 /* sl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sl; path = WunderLINQ/sl.lproj/Localizable.strings; sourceTree = "<group>"; };
+		7E96D79121E78B7B00C6AB5F /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		7EA4784A1F40B154000CEDDC /* WunderLINQ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WunderLINQ.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EA4784D1F40B154000CEDDC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7EA4784F1F40B154000CEDDC /* MyMotorcycleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMotorcycleViewController.swift; sourceTree = "<group>"; };
@@ -183,6 +185,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7E96D79221E78B7B00C6AB5F /* Security.framework in Frameworks */,
 				7E068BE82102C8820076EAAD /* CoreGraphics.framework in Frameworks */,
 				7E068BE92102C8820076EAAD /* libz.tbd in Frameworks */,
 				7E068BEA2102C8820076EAAD /* OpenGLES.framework in Frameworks */,
@@ -217,6 +220,7 @@
 		7E068BD72102C7DE0076EAAD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7E96D79121E78B7B00C6AB5F /* Security.framework */,
 				7E068BE62102C8820076EAAD /* CoreData.framework */,
 				7E068BDA2102C8810076EAAD /* CoreGraphics.framework */,
 				7E068BE02102C8810076EAAD /* CoreImage.framework */,

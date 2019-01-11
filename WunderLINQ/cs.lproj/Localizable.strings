@@ -20,16 +20,16 @@
 "disclaimer_alert_body" = "Nepokoušejte se zadat cílové misto nebo měnit nastavení aplikace za jízdy.\nNevěnování plné pozornosti řízení vozidla může mít za následek škodu na majetku, zranění nebo smrt.\nUživatel této aplikace/zařízení přebírá plnou zodpovědnost za následky.";
 "disclaimer_ok" = "Souhlasím";
 "disclaimer_quit" = "Ukončit";
-"negative_alert_title" = "Functionality limited"; // Needs Translation
-"negative_location_alert_body" = "Since location access has not been granted, this app will not be able to save waypoints or log your location."; // Needs Translation
-"negative_write_alert_body" = "Since Photo Library access has not been granted, this app will not be able to save photos."; // Needs Translation
-"negative_media_alert_body" = "Since Media Library access has not been granted, this app will not be able to play music."; // Needs Translation
-"negative_contacts_alert_body" = "Since contact access has not been granted, this app will not be able to display contacts to call."; // Needs Translation
-"negative_camera_alert_body" = "Since camera access has not been granted, this app will not be able to take photos or videos."; // Needs Translation
-"negative_microphone_alert_body" = "Since microphone access has not been granted, this app will not be able to record videos."; // Needs Translation
-"negative_notification_body" = "Since notifcations were not allowed, this app will not be able to send notifcations for faults"; // Needs Translation
-"negative_alert_btn_ok" = "Open Settings"; // Needs Translation
-"negative_alert_btn_cancel" = "Cancel"; // Needs Translation
+"negative_alert_title" = "Funkcionalita omezena";
+"negative_location_alert_body" = "Chybí oprávnění pro přístup k vaší poloze - nebude možné použít nekteré funkce.";
+"negative_write_alert_body" = "Chybí oprávnění k přístupu k fotkám - nebude možné pořizovat fotky nebo nahrávat video.";
+"negative_media_alert_body" = "Chybí oprávnění k přístupu k hudbě - nebude možné přehrávat hudbu.";
+"negative_contacts_alert_body" = "Chybí oprávnění k přístupu ke kontaktům - nebude možné iniciovat hovor z aplikace.";
+"negative_camera_alert_body" = "Chybí oprávnění k použití kamery - nebude možné pořizovat fotky nebo nahrávat video.";
+"negative_microphone_alert_body" = "Chybí oprávnění k použití mikrofonu - nebude možné nahrávat video.";
+"negative_notification_body" = "Chybí oprávnění k zasílání upozornění - aplikace nebude upozorňovat na chyby.";
+"negative_alert_btn_ok" = "Nastavení";
+"negative_alert_btn_cancel" = "Zrušit";
 "bt_powered_off" = "Bluetooth je vypnut";
 "bt_not_supported" = "Toto zařízení nepodporuje Bluetooth Low Energy.";
 "bt_not_authorized" = "Aplikace nemá oprávnění k použití Bluetooth Low Energy.";
@@ -48,28 +48,26 @@
 "trip2_label" = "Trip 2";
 "gear_label" = "Stupeň";
 "settings_label" = "Nastavení";
-"appsettings_label" = "App Settings"; // Needs Translation
+"appsettings_label" = "Nastavení aplikace";
 "about_label" = "O aplikaci";
 "close_label" = "Zavřít";
-"hwsettings_label" = "HW Settings"; //Needs Translation
+"hwsettings_label" = "Nastaveni zařízení";
 
 //HWSettingsViewController
-"fw_config_title" = "WunderLINQ Settings"; //Needs Translation
-"wwtype_label" = "Wheel Type"; //Needs Translation
-"wwMode1" = "Full"; //Needs Translation
-"wwMode2" = "RT"; //Needs Translation
-"wwMode3" = "Custom"; //Needs Translation
-"sensitivity_label" = "Hold Sensitivity"; //Needs Translation
-"config_write_label" = "Save Settings"; //Needs Translation
-"hwsave_alert_title" = "Warning!"; // Needs Translation
-"hwsave_alert_body" = "After saving new hardware settings, the WunderLINQ hardware will become unstable and will need to be removed and reinstalled into the cradle."; // Needs Translation
-"hwsave_alert_btn_ok" = "Continue"; // Needs Translation
-"hwsave_alert_btn_cancel" = "Cancel"; // Needs Translation
+"fw_config_title" = "Nastavení WunderLINQ";
+"wwtype_label" = "Typ otočného ovladače";
+"wwMode1" = "Standardní (GS)";
+"wwMode2" = "RT";
+"wwMode3" = "Vlastní";
+"sensitivity_label" = "Prodleva pro dlouhý stisk";
+"config_write_label" = "Uložit nastavení";
+"hwsave_alert_title" = "Pozor!"; 
+"hwsave_alert_body" = "Po uložení nové konfigurace restartuje zařízení vyjmutím z držáku navigace."; 
+"hwsave_alert_btn_ok" = "Pokračovat";
+"hwsave_alert_btn_cancel" = "Zrušit";
 
 //AboutViewController
 "about_title" = "O Aplikaci";
-"version_label" = "Version:"; // Needs Translation
-"credits_label" = "Credits"; // Needs Translation
 
 // AlertViewController
 "alert_label_fuel" = "Navigovat k nejbližší čerpací stanici?";
@@ -108,7 +106,7 @@
 "waypoint_view_tv_lon_label" = "Délka";
 "waypoint_view_tv_label_label" = "Popis";
 "waypoint_view_bt_open" = "Otevřít na mapě";
-"waypoint_view_bt_nav" = "Navigate"; //Needs translation
+"waypoint_view_bt_nav" = "Navigate";
 "waypoint_view_bt_share" = "Sdílet";
 "waypoint_view_bt_delete" = "Smazat";
 
