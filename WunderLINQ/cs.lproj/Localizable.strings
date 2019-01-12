@@ -39,6 +39,7 @@
 "bt_alert_title" = "Central Manager State";
 "trip_logs_label" = "Záznamy jízd";
 "waypoints_label" = "Uložená místa";
+"blank_field" = "∞";
 "rdc_front_label" = "Přední pneu";
 "rdc_rear_label" = "Zadní pneu";
 "engine_temp_label" = "Teplota motoru";

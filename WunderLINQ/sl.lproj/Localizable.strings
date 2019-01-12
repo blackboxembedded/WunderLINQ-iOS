@@ -39,6 +39,7 @@
 "bt_alert_title" = "Stanje glavnega upravitelja";
 "trip_logs_label" = "Dnevnik potovanj";
 "waypoints_label" = "Kažipoti";
+"blank_field" = "∞";
 "rdc_front_label" = "Prednja pnevmatika";
 "rdc_rear_label" = "Zadnja pnevmatika";
 "engine_temp_label" = "Temperatura motorja";

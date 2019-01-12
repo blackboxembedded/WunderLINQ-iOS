@@ -39,6 +39,7 @@
 "bt_alert_title" = "Κατάσταση κεντρικής διαχειρισης";
 "trip_logs_label" = "Αποθηκευμένες διαδρομές";
 "waypoints_label" = "Προορισμοί";
+"blank_field" = "∞";
 "rdc_front_label" = "Εμπρός ελαστικό";
 "rdc_rear_label" = "Πίσω ελαστικό";
 "engine_temp_label" = "Θερμ. κινητήρα";

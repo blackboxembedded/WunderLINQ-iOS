@@ -39,6 +39,7 @@
 "bt_alert_title" = "Estado del Bluetooth";
 "trip_logs_label" = "Registro de Viajes";
 "waypoints_label" = "Waypoints";
+"blank_field" = "∞";
 "rdc_front_label" = "Neumático Del.";
 "rdc_rear_label" = "Neumático Tras.";
 "engine_temp_label" = "Temp. Motor";

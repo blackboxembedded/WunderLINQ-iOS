@@ -291,6 +291,19 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
             } else {
                 UIScreen.main.brightness = CGFloat(UserDefaults.standard.float(forKey: "systemBrightness"))
             }
+            
+            if !UserDefaults.standard.bool(forKey: "debug_logging_preference") {
+                print("Delete dbg file")
+                // Get the documents folder url
+                let documentDirectory = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+                // Destination url for the log file to be saved
+                let fileURL = documentDirectory.appendingPathComponent("dbg")
+                do {
+                    try FileManager.default.removeItem(at: fileURL)
+                } catch let error as NSError {
+                    print("Error: \(error.domain)")
+                }
+            }
         }
     }
     
@@ -505,7 +518,7 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
                 }
                 frontPressureLabel.text = "\(frontPressure.rounded(toPlaces: 1)) \(pressureUnit)"
             } else {
-                frontPressureLabel.text = "-"
+                frontPressureLabel.text = NSLocalizedString("blank_field", comment: "")
             }
             
             if motorcycleData.rearTirePressure != nil {
@@ -527,14 +540,14 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
                 }
                 rearPressureLabel.text = "\(rearPressure.rounded(toPlaces: 1)) \(pressureUnit)"
             } else {
-                rearPressureLabel.text = "-"
+                rearPressureLabel.text = NSLocalizedString("blank_field", comment: "")
             }
             
             // Gear
             if motorcycleData.gear != nil {
                 gearLabel.text = motorcycleData.getgear()
             } else {
-                gearLabel.text = "-"
+                gearLabel.text = NSLocalizedString("blank_field", comment: "")
             }
             
             // Engine Temperature
@@ -546,7 +559,7 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
                 }
                 engineTempLabel.text = "\(Int(engineTemp)) \(temperatureUnit)"
             } else {
-                engineTempLabel.text = "-"
+                engineTempLabel.text = NSLocalizedString("blank_field", comment: "")
             }
             
             // Ambient Temperature
@@ -558,7 +571,7 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
                 }
                 ambientTempLabel.text = "\(Int(ambientTemp)) \(temperatureUnit)"
             } else {
-                ambientTempLabel.text = "-"
+                ambientTempLabel.text = NSLocalizedString("blank_field", comment: "")
             }
             
             // Odometer
@@ -570,7 +583,7 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
                 }
                 odometerLabel.text = "\(Int(odometer)) \(distanceUnit)"
             } else {
-                odometerLabel.text = "-"
+                odometerLabel.text = NSLocalizedString("blank_field", comment: "")
             }
             
             // Trip 1
@@ -582,7 +595,7 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
                 }
                 tripOneLabel.text = "\(tripOne.rounded(toPlaces: 1)) \(distanceUnit)"
             } else {
-                tripOneLabel.text = "-"
+                tripOneLabel.text = NSLocalizedString("blank_field", comment: "")
             }
             
             // Trip 2
@@ -594,7 +607,7 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
                 }
                 tripTwoLabel.text = "\(tripTwo.rounded(toPlaces: 1)) \(distanceUnit)"
             } else {
-                tripTwoLabel.text = "-"
+                tripTwoLabel.text = NSLocalizedString("blank_field", comment: "")
             }
         }
     }
@@ -1314,10 +1327,16 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
         case 0x08:
             //print("Message ID: 8")
             // Ambient Temperature
+            if (lastMessage[2] != 0xFF){
+                let ambientTemp:Double = Double(lastMessage[2]) / 10
+                motorcycleData.setambientTemperature(ambientTemperature: ambientTemp)
+            }
+            /*
             if (lastMessage[1] != 0xFF){
                 let ambientTemp:Double = Double(lastMessage[1]) * 0.50 - 40
                 motorcycleData.setambientTemperature(ambientTemperature: ambientTemp)
             }
+             */
             
             // LAMP Faults
             if (lastMessage[3] != 0xFF) {
@@ -2556,7 +2575,7 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
     }
     // kilometers to miles
     func kmToMiles(_ kilometers:Double) -> Double {
-        let miles = kilometers * 0.6214
+        let miles = kilometers * 0.62137
         return miles
     }
     // Celsius to Fahrenheit

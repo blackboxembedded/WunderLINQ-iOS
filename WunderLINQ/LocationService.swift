@@ -85,7 +85,37 @@ class LocationService: NSObject, CLLocationManagerDelegate {
             let fuelEconomyTwoHeader = NSLocalizedString("fueleconomytwo_header", comment: "")
             let fuelRangeHeader = NSLocalizedString("fuelrange_header", comment: "")
             
-            let header = "\(latitudeHeader),\(longitudeHeader),\(altitudeHeader),\(gpsSpeedHeader),\(gearHeader),\(engineTemperatureHeader),\(ambientTemperatureHeader),\(frontPressureHeader),\(rearPressureHeader),\(odometerHeader),\(voltageHeader),\(throttlePositionHeader),\(frontBrakesHeader),\(rearBrakesHeader),\(shiftsHeader),\(vinHeader),\(ambientLightHeader),\(tripOneHeader),\(tripTwoHeader),\(tripAutoHeader),\(speedHeader),\(averageSpeedHeader),\(currentConsumptionHeader),\(fuelEconomyOneHeader),\(fuelEconomyTwoHeader),\(fuelRangeHeader)"
+            // Update main display
+            var temperatureUnit = "C"
+            var distanceUnit = "km"
+            var altitudeUnit = "m"
+            var pressureUnit = "bar"
+            var speedUnit = "kmh"
+            var consumptionUnit = "L/100"
+            
+            switch UserDefaults.standard.integer(forKey: "pressure_unit_preference"){
+            case 0:
+                pressureUnit = "bar"
+            case 1:
+                pressureUnit = "kPa"
+            case 2:
+                pressureUnit = "kg-f"
+            case 3:
+                pressureUnit = "psi"
+            default:
+                print("Unknown pressure unit setting")
+            }
+            if UserDefaults.standard.integer(forKey: "temperature_unit_preference") == 1 {
+                temperatureUnit = "F"
+            }
+            if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
+                distanceUnit = "mi"
+                altitudeUnit = "ft"
+                speedUnit = "mph"
+                consumptionUnit = "mpg"
+            }
+            
+            let header = "\(latitudeHeader),\(longitudeHeader),\(altitudeHeader) (\(altitudeUnit)),\(gpsSpeedHeader) (\(speedUnit)),\(gearHeader),\(engineTemperatureHeader) (\(temperatureUnit)),\(ambientTemperatureHeader) (\(temperatureUnit)),\(frontPressureHeader) (\(pressureUnit)),\(rearPressureHeader) (\(pressureUnit)),\(odometerHeader) (\(distanceUnit)),\(voltageHeader) (V),\(throttlePositionHeader) (%),\(frontBrakesHeader),\(rearBrakesHeader),\(shiftsHeader),\(vinHeader),\(ambientLightHeader),\(tripOneHeader) (\(distanceUnit)),\(tripTwoHeader) (\(distanceUnit)),\(tripAutoHeader) (\(distanceUnit)),\(speedHeader) (\(speedUnit)),\(averageSpeedHeader) (\(speedUnit)),\(currentConsumptionHeader) (\(consumptionUnit)),\(fuelEconomyOneHeader) (\(consumptionUnit)),\(fuelEconomyTwoHeader) (\(consumptionUnit)),\(fuelRangeHeader) (\(distanceUnit))"
             
             Logger.log(fileName: fileName, entry: header, withDate: false)
         }
@@ -121,10 +151,19 @@ class LocationService: NSObject, CLLocationManagerDelegate {
         if type.contains("triplog"){
             let latitude:String = "\(currentLocation!.coordinate.latitude)"
             let longitude:String = "\(currentLocation!.coordinate.longitude)"
-            let altitude:String = "\(currentLocation!.altitude)"
+            
+            var altitude:String = "\(currentLocation!.altitude)"
+            if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
+                altitude = "\(mtoFeet(currentLocation!.altitude))"
+            }
             var gpsSpeed:String = "0"
             if currentLocation!.speed >= 0{
                 gpsSpeed = "\(currentLocation!.speed)"
+                let gpsSpeedValue:Double = currentLocation!.speed
+                gpsSpeed = "\(gpsSpeedValue)"
+                if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
+                    gpsSpeed = "\(kmToMiles(gpsSpeedValue))"
+                }
             }
             var gear: String = ""
             if motorcycleData.gear != nil {
@@ -132,23 +171,56 @@ class LocationService: NSObject, CLLocationManagerDelegate {
             }
             var engineTemp:String = ""
             if motorcycleData.engineTemperature != nil {
+                let engineTempValue:Double = motorcycleData.engineTemperature!
                 engineTemp = "\(motorcycleData.engineTemperature!)"
+                if UserDefaults.standard.integer(forKey: "temperature_unit_preference") == 1 {
+                    engineTemp = "\(celciusToFahrenheit(engineTempValue))"
+                }
             }
             var ambientTemp:String = ""
             if motorcycleData.ambientTemperature != nil {
+                let ambientTempValue:Double = motorcycleData.ambientTemperature!
                 ambientTemp = "\(motorcycleData.ambientTemperature!)"
+                if UserDefaults.standard.integer(forKey: "temperature_unit_preference") == 1 {
+                    ambientTemp = "\(celciusToFahrenheit(ambientTempValue))"
+                }
             }
             var frontTirePressure:String = ""
             if motorcycleData.frontTirePressure != nil {
-                frontTirePressure = "\(motorcycleData.frontTirePressure!)"
+                let frontPressureValue:Double = motorcycleData.frontTirePressure!
+                switch UserDefaults.standard.integer(forKey: "pressure_unit_preference"){
+                case 1:
+                    frontTirePressure = "\(barTokPa(frontPressureValue))"
+                case 2:
+                    frontTirePressure = "\(barTokgf(frontPressureValue))"
+                case 3:
+                    frontTirePressure = "\(barToPsi(frontPressureValue))"
+                default:
+                    frontTirePressure = "\(frontPressureValue)"
+                }
             }
             var rearTirePressure:String = ""
             if motorcycleData.rearTirePressure != nil {
-                rearTirePressure = "\(motorcycleData.rearTirePressure!)"
+                let rearPressureValue:Double = motorcycleData.rearTirePressure!
+                switch UserDefaults.standard.integer(forKey: "pressure_unit_preference"){
+                case 1:
+                    rearTirePressure = "\(barTokPa(rearPressureValue))"
+                case 2:
+                    rearTirePressure = "\(barTokgf(rearPressureValue))"
+                case 3:
+                    rearTirePressure = "\(barToPsi(rearPressureValue))"
+                default:
+                    rearTirePressure = "\(rearPressureValue)"
+                }
             }
             var odometer:String = ""
             if motorcycleData.odometer != nil {
-                odometer = "\(motorcycleData.odometer!)"
+                let odometerValue:Double = motorcycleData.odometer!
+                odometer = "\(odometerValue)"
+                if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
+                    odometer = "\(kmToMiles(odometerValue))"
+                }
+                
             }
             var voltage:String = ""
             if motorcycleData.voltage != nil {
@@ -176,15 +248,27 @@ class LocationService: NSObject, CLLocationManagerDelegate {
             }
             var tripOne:String = ""
             if motorcycleData.tripOne != nil {
-                tripOne = "\(motorcycleData.tripOne!)"
+                let tripOneValue:Double = motorcycleData.tripOne!
+                tripOne = "\(tripOneValue)"
+                if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
+                    tripOne = "\(kmToMiles(tripOneValue))"
+                }
             }
             var tripTwo:String = ""
             if motorcycleData.tripTwo != nil {
-                tripTwo = "\(motorcycleData.tripTwo!)"
+                let tripTwoValue:Double = motorcycleData.tripTwo!
+                tripTwo = "\(tripTwoValue)"
+                if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
+                    tripTwo = "\(kmToMiles(tripTwoValue))"
+                }
             }
             var tripAuto:String = ""
             if motorcycleData.tripAuto != nil {
-                tripAuto = "\(motorcycleData.tripAuto!)"
+                let tripAutoValue:Double = motorcycleData.tripAuto!
+                tripAuto = "\(tripAutoValue)"
+                if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
+                    tripAuto = "\(kmToMiles(tripAutoValue))"
+                }
             }
             var ambientLight:String = ""
             if motorcycleData.ambientLight != nil {
@@ -192,27 +276,52 @@ class LocationService: NSObject, CLLocationManagerDelegate {
             }
             var speed:String = ""
             if motorcycleData.speed != nil {
-                speed = "\(motorcycleData.speed!)"
+                let speedValue:Double = motorcycleData.speed!
+                speed = "\(speedValue)"
+                if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
+                    speed = "\(kmToMiles(speedValue))"
+                }
             }
             var avgSpeed:String = ""
             if motorcycleData.averageSpeed != nil {
-                avgSpeed = "\(motorcycleData.averageSpeed!)"
+                let avgSpeedValue:Double = motorcycleData.averageSpeed!
+                avgSpeed = "\(avgSpeedValue)"
+                if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
+                    avgSpeed = "\(kmToMiles(avgSpeedValue))"
+                }
             }
             var currentConsumption:String = ""
             if motorcycleData.currentConsumption != nil {
-                currentConsumption = "\(motorcycleData.currentConsumption!)"
+                let currentConsumptionValue:Double = motorcycleData.currentConsumption!
+                currentConsumption = "\(currentConsumptionValue)"
+                if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
+                    currentConsumption = "\(l100ToMpg(currentConsumptionValue))"
+                }
             }
             var fuelEconomyOne:String = ""
             if motorcycleData.fuelEconomyOne != nil {
-                fuelEconomyOne = "\(motorcycleData.fuelEconomyOne!)"
+                let fuelEconomyOneValue:Double = motorcycleData.fuelEconomyOne!
+                fuelEconomyOne = "\(fuelEconomyOneValue)"
+                if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
+                    fuelEconomyOne = "\(l100ToMpg(fuelEconomyOneValue))"
+                }
             }
             var fuelEconomyTwo:String = ""
             if motorcycleData.fuelEconomyTwo != nil {
                 fuelEconomyTwo = "\(motorcycleData.fuelEconomyTwo!)"
+                let fuelEconomyTwoValue:Double = motorcycleData.fuelEconomyTwo!
+                fuelEconomyTwo = "\(fuelEconomyTwoValue)"
+                if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
+                    fuelEconomyTwo = "\(l100ToMpg(fuelEconomyTwoValue))"
+                }
             }
             var fuelRange:String = ""
             if motorcycleData.fuelRange != nil {
-                fuelRange = "\(motorcycleData.fuelRange!)"
+                let fuelRangeValue:Double = motorcycleData.fuelRange!
+                fuelRange = "\(fuelRangeValue)"
+                if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
+                    fuelRange = "\(kmToMiles(fuelRangeValue))"
+                }
             }
 
             let entry = "\(latitude),\(longitude),\(altitude),\(gpsSpeed),\(gear),\(engineTemp),\(ambientTemp),\(frontTirePressure),\(rearTirePressure),\(odometer),\(voltage),\(throttlePosition),\(frontBrakes),\(rearBrakes),\(shifts),\(vin),\(ambientLight),\(tripOne),\(tripTwo),\(tripAuto),\(speed),\(avgSpeed),\(currentConsumption),\(fuelEconomyOne),\(fuelEconomyTwo),\(fuelRange)"
@@ -304,5 +413,43 @@ class LocationService: NSObject, CLLocationManagerDelegate {
         if self.type.contains("waypoint"){
             stopUpdatingLocation()
         }
+    }
+    
+    // MARK: - Utility Methods
+    // Unit Conversion Functions
+    // bar to psi
+    func barToPsi(_ bar:Double) -> Double {
+        let psi = bar * 14.5037738
+        return psi
+    }
+    // bar to kpa
+    func barTokPa(_ bar:Double) -> Double {
+        let kpa = bar * 100.0
+        return kpa
+    }
+    // bar to kg-f
+    func barTokgf(_ bar:Double) -> Double {
+        let kgf = bar * 1.0197162129779
+        return kgf
+    }
+    // kilometers to miles
+    func kmToMiles(_ kilometers:Double) -> Double {
+        let miles = kilometers * 0.62137
+        return miles
+    }
+    // Celsius to Fahrenheit
+    func celciusToFahrenheit(_ celcius:Double) -> Double {
+        let fahrenheit = (celcius * 1.8) + Double(32)
+        return fahrenheit
+    }
+    // L/100 to mpg
+    func l100ToMpg(_ l100:Double) -> Double {
+        let mpg = 282.5 / l100
+        return mpg
+    }
+    //meters / 0.3048
+    func mtoFeet(_ meters:Double) -> Double {
+        let meters = meters / 0.3048
+        return meters
     }
 }

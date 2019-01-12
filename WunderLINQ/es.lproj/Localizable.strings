@@ -39,6 +39,7 @@
 "bt_alert_title"="Estado del Gestor Central";
 "trip_logs_label"="Trip Logs";
 "waypoints_label"="Puntos de paso";
+"blank_field" = "∞";
 "rdc_front_label"="Neumático Delantero";
 "rdc_rear_label"="Neumático Trasero";
 "engine_temp_label"="Temp. Motor";

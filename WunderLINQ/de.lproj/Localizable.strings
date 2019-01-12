@@ -39,6 +39,7 @@
 "bt_alert_title" = "Central Manager Status";
 "trip_logs_label" = "Fahrtaufzeichnungen";
 "waypoints_label" = "Wegpunkte";
+"blank_field" = "∞";
 "rdc_front_label" = "Vorderreifen";
 "rdc_rear_label" = "Hinterreifen";
 "engine_temp_label" = "Motortemperatur";
