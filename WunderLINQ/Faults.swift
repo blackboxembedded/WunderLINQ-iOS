@@ -11,25 +11,6 @@ import Foundation
 class Faults {
     static let shared = Faults()
 
-    // UART Faults
-    var uartErrorActive: Bool = false
-    let uartErrorDesc: String = NSLocalizedString("fault_UARTERR", comment: "")
-    func setUartErrorActive(active: Bool?){
-        self.uartErrorActive = active!
-    }
-    func getUartErrorActive() -> Bool{
-        return self.uartErrorActive
-    }
-    
-    var uartCommActive: Bool = false
-    var uartCommDesc: String = NSLocalizedString("fault_UARTCTF", comment: "")
-    func setUartCommActive(active: Bool?){
-        self.uartCommActive = active!
-    }
-    func getUartCommActive() -> Bool{
-        return self.uartCommActive
-    }
-    
     // Motorcycle faults
     var absSelfDiagActive: Bool = false
     var absSelfDiagDesc: String = NSLocalizedString("fault_ABSSLF", comment: "")
@@ -378,14 +359,6 @@ class Faults {
 
     func getallActiveDesc() ->[String]{
         var allActiveDesc = [String]()
-        // Debug faults
-        if(uartErrorActive){
-            allActiveDesc.append(uartErrorDesc)
-        }
-        if(uartCommActive){
-            allActiveDesc.append(uartCommDesc)
-        }
-        
         // Motorcycle faults
         if(absSelfDiagActive){
             allActiveDesc.append(absSelfDiagDesc);

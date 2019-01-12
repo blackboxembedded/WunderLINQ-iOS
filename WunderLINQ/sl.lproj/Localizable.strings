@@ -153,30 +153,30 @@
 "time_header" = "Čas";
 "latitude_header" = "Širina";
 "longitude_header" = "Dolžina";
-"altitude_header" = "Višina (m)";
-"gpsspeed_header" = "GPS hitrost (kmh)";
+"altitude_header" = "Višina";
+"gpsspeed_header" = "GPS hitrost";
 "gear_header" = "Prestava";
-"enginetemp_header" = "Temperatura motorja (C)";
-"ambienttemp_header" = "Temperatura okolice (C)";
-"frontpressure_header" = "Tlak prednje pnevmatike (bar)";
-"rearpressure_header" = "Tlak zadnje pnevmatike (bar)";
-"odometer_header" = "Merilec razdalje (km)";
-"voltage_header" = "Napetost (V)";
-"throttle_header" = "Pozicija ročice plina (%)";
+"enginetemp_header" = "Temperatura motorja";
+"ambienttemp_header" = "Temperatura okolice";
+"frontpressure_header" = "Tlak prednje pnevmatike";
+"rearpressure_header" = "Tlak zadnje pnevmatike";
+"odometer_header" = "Merilec razdalje";
+"voltage_header" = "Napetost";
+"throttle_header" = "Pozicija ročice plina";
 "frontbrakes_header" = "Prednje zavore";
 "rearbrakes_header" = "Zadnje zavore";
 "shifts_header" = "Prestavljanj";
 "vin_header" = "VIN";
 "ambientlight_header" = "Svetloba okolice";
-"tripone_header" = "Trip1 (km)";
-"triptwo_header" = "Trip2 (km)";
-"tripauto_header" = "Trip Auto (km)";
-"speed_header" = "Hitrost (kmh)";
-"avgspeed_header" = "Povprečna hitrost (kmh)";
-"cconsumption_header" = "Trenutna poraba (L/100)";
-"fueleconomyone_header" = "Poraba goriva 1 (L/100)";
-"fueleconomytwo_header" = "Poraba goriva 2 (L/100)";
-"fuelrange_header" = "Doseg (km)";
+"tripone_header" = "Trip1";
+"triptwo_header" = "Trip2";
+"tripauto_header" = "Trip Auto";
+"speed_header" = "Hitrost";
+"avgspeed_header" = "Povprečna hitrost";
+"cconsumption_header" = "Trenutna poraba";
+"fueleconomyone_header" = "Poraba goriva 1";
+"fueleconomytwo_header" = "Poraba goriva 2";
+"fuelrange_header" = "Doseg";
 
 // ContactsTableViewController
 "contactlist_title" = "Stiki";
@@ -185,8 +185,6 @@
 "waypoints_nav_title" = "Kažipoti";
 
 // Fault Description
-"fault_UARTERR" = "UART napaka";
-"fault_UARTCTF" = "UART izpad komunikacije";
 "fault_ABSSLF" = "ABS samodiagnoza ni zaključena";
 "fault_ABSERR" = "ABS napaka";
 "fault_ABSDAC" = "ABS izklopljen";

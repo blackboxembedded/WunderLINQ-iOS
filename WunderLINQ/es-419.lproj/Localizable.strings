@@ -153,30 +153,30 @@
 "time_header" = "Time"; //Needs translation
 "latitude_header" = "Latitude"; //Needs translation
 "longitude_header" = "Longitude"; //Needs translation
-"altitude_header" = "Altitude (m)"; //Needs translation
-"gpsspeed_header" = "GPS Speed (kmh)"; //Needs translation
+"altitude_header" = "Altitude"; //Needs translation
+"gpsspeed_header" = "GPS Speed"; //Needs translation
 "gear_header" = "Gear"; //Needs translation
-"enginetemp_header" = "Engine Temperature (C)"; //Needs translation
-"ambienttemp_header" = "Ambient Temperature (C)"; //Needs translation
-"frontpressure_header" = "Front Tire Pressure (bar)"; //Needs translation
-"rearpressure_header" = "Rear Tire Pressure (bar)"; //Needs translation
-"odometer_header" = "Odometer (km)"; //Needs translation
-"voltage_header" = "Voltage (V)"; //Needs translation
-"throttle_header" = "Throttle Position (%)"; //Needs translation
+"enginetemp_header" = "Engine Temperature"; //Needs translation
+"ambienttemp_header" = "Ambient Temperature"; //Needs translation
+"frontpressure_header" = "Front Tire Pressure"; //Needs translation
+"rearpressure_header" = "Rear Tire Pressure"; //Needs translation
+"odometer_header" = "Odometer"; //Needs translation
+"voltage_header" = "Voltage"; //Needs translation
+"throttle_header" = "Throttle Position"; //Needs translation
 "frontbrakes_header" = "Front Brakes"; //Needs translation
 "rearbrakes_header" = "Rear Brakes"; //Needs translation
 "shifts_header" = "Shifts"; //Needs translation
 "vin_header" = "VIN"; //Needs translation
 "ambientlight_header" = "Ambient Light"; //Needs translation
-"tripone_header" = "Trip1 (km)"; //Needs translation
-"triptwo_header" = "Trip2 (km)"; //Needs translation
-"tripauto_header" = "Trip Auto (km)"; //Needs translation
-"speed_header" = "Speed (kmh)"; //Needs translation
-"avgspeed_header" = "Average Speed (kmh)"; //Needs translation
-"cconsumption_header" = "Current Consumption (L/100)"; //Needs translation
-"fueleconomyone_header" = "Fuel Economy 1 (L/100)"; //Needs translation
-"fueleconomytwo_header" = "Fuel Economy 2 (L/100)"; //Needs translation
-"fuelrange_header" = "Fuel Range (km)"; //Needs translation
+"tripone_header" = "Trip1"; //Needs translation
+"triptwo_header" = "Trip2"; //Needs translation
+"tripauto_header" = "Trip Auto"; //Needs translation
+"speed_header" = "Speed"; //Needs translation
+"avgspeed_header" = "Average Speed"; //Needs translation
+"cconsumption_header" = "Current Consumption"; //Needs translation
+"fueleconomyone_header" = "Fuel Economy 1"; //Needs translation
+"fueleconomytwo_header" = "Fuel Economy 2"; //Needs translation
+"fuelrange_header" = "Fuel Range"; //Needs translation
 
 // ContactsTableViewController
 "contactlist_title" = "Contactos";
@@ -185,8 +185,6 @@
 "waypoints_nav_title" = "Waypoints";
 
 // Fault Description
-"fault_UARTERR" = "Error UART";
-"fault_UARTCTF" = "UART Comm Timeout";
 "fault_ABSSLF" = "Autodiagnóstico del ABS no completado";
 "fault_ABSERR" = "Error del ABS";
 "fault_ABSDAC" = "ABS desactivado";

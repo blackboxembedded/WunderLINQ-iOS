@@ -153,30 +153,30 @@
 "time_header" = "Zeit";
 "latitude_header" = "Breitengrad";
 "longitude_header" = "Längengrad";
-"altitude_header" = "Höhe (m)";
-"gpsspeed_header" = "GPS Geschwindigkeit (kmh)";
+"altitude_header" = "Höhe";
+"gpsspeed_header" = "GPS Geschwindigkeit";
 "gear_header" = "Gang";
-"enginetemp_header" = "Motortemperatur (C)";
-"ambienttemp_header" = "Aussentemperatur (C)";
-"frontpressure_header" = "Vorderreifen-Druck (bar)";
-"rearpressure_header" = "Hinterreifen-Druck (bar)";
-"odometer_header" = "KM-Zähler Total (km)";
-"voltage_header" = "Spannung (V)";
-"throttle_header" = "Gasgriffposition (%)";
+"enginetemp_header" = "Motortemperatur";
+"ambienttemp_header" = "Aussentemperatur";
+"frontpressure_header" = "Vorderreifen-Druck";
+"rearpressure_header" = "Hinterreifen-Druck";
+"odometer_header" = "KM-Zähler Total";
+"voltage_header" = "Spannung";
+"throttle_header" = "Gasgriffposition";
 "frontbrakes_header" = "Vorderbremse";
 "rearbrakes_header" = "Hinterbremse";
 "shifts_header" = "Gangwechsel";
 "vin_header" = "Fahrgestellnnummer (VIN)";
 "ambientlight_header" = "Ambient Light"; //Needs translation
-"tripone_header" = "KM-Zähler 1 (km)";
-"triptwo_header" = "KM-Zähler 2 (km)";
-"tripauto_header" = "KM-Zähler Auto (km)";
-"speed_header" = "Geschwindigkeit (kmh)";
-"avgspeed_header" = "Ø Geschwindigkeit (kmh)";
-"cconsumption_header" = "Aktueller Verbrauch (L/100)";
-"fueleconomyone_header" = "Verbrauch 1 (L/100)";
-"fueleconomytwo_header" = "Verbrauch 2 (L/100)";
-"fuelrange_header" = "Reichweite (km)";
+"tripone_header" = "KM-Zähler 1";
+"triptwo_header" = "KM-Zähler 2";
+"tripauto_header" = "KM-Zähler Auto";
+"speed_header" = "Geschwindigkeit";
+"avgspeed_header" = "Ø Geschwindigkeit";
+"cconsumption_header" = "Aktueller Verbrauch";
+"fueleconomyone_header" = "Verbrauch 1";
+"fueleconomytwo_header" = "Verbrauch 2";
+"fuelrange_header" = "Reichweite";
 
 // ContactsTableViewController
 "contactlist_title" = "Kontakte";
@@ -185,8 +185,6 @@
 "waypoints_nav_title" = "Wegpunkte";
 
 // Fault Description
-"fault_UARTERR" = "UART Fehler";
-"fault_UARTCTF" = "UART Komm. Timeout";
 "fault_ABSSLF" = "ABS Eigendiagnose nicht beendet";
 "fault_ABSERR" = "ABS Fehler";
 "fault_ABSDAC" = "ABS deaktiviert";

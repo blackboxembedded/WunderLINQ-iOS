@@ -180,8 +180,6 @@
 "waypoints_nav_title" = "Waypoints";
 
 // Fault Description
-"fault_UARTERR" = "UART Error";
-"fault_UARTCTF" = "UART Comm Timeout";
 "fault_ABSSLF" = "ABS self-diagnosis not completed";
 "fault_ABSERR" = "ABS error";
 "fault_ABSDAC" = "ABS deactivated";

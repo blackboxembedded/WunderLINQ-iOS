@@ -151,30 +151,30 @@
 "time_header" = "Čas";
 "latitude_header" = "Šířka";
 "longitude_header" = "Délka";
-"altitude_header" = "Nadm. výška (m)";
-"gpsspeed_header" = "GPS Rychlost (km/h)";
+"altitude_header" = "Nadm. výška";
+"gpsspeed_header" = "GPS Rychlos";
 "gear_header" = "Převodový stupeň";
-"enginetemp_header" = "Teplota motoru (C)";
-"ambienttemp_header" = "Venkovní teplota (C)";
-"frontpressure_header" = "Tlak v přední pneu (bar)";
-"rearpressure_header" = "Tlak v zadní pneu (bar)";
-"odometer_header" = "Celkem najeto (km)";
-"voltage_header" = "Napětí (V)";
-"throttle_header" = "Poloha plynu (%)";
+"enginetemp_header" = "Teplota motoru";
+"ambienttemp_header" = "Venkovní teplota";
+"frontpressure_header" = "Tlak v přední pneu";
+"rearpressure_header" = "Tlak v zadní pneu";
+"odometer_header" = "Celkem najeto";
+"voltage_header" = "Napětí";
+"throttle_header" = "Poloha plynu";
 "frontbrakes_header" = "Přední brzda";
 "rearbrakes_header" = "Zadní brzda";
 "shifts_header" = "Změny rychlosti";
 "vin_header" = "VIN";
 "ambientlight_header" = "Venkovní světlo";
-"tripone_header" = "Trip1 (km)";
-"triptwo_header" = "Trip2 (km)";
-"tripauto_header" = "Trip Auto (km)";
-"speed_header" = "Rychlost (km/h)";
-"avgspeed_header" = "Průměrná rychlost (km/h)";
-"cconsumption_header" = "Okamžitá spotřeba (l/100km)";
-"fueleconomyone_header" = "Spotřeba 1 (l/100km)";
-"fueleconomytwo_header" = "Spotřeba 2 (l/100km)";
-"fuelrange_header" = "Dojezd (km)";
+"tripone_header" = "Trip1";
+"triptwo_header" = "Trip2";
+"tripauto_header" = "Trip Auto";
+"speed_header" = "Rychlost";
+"avgspeed_header" = "Průměrná rychlost";
+"cconsumption_header" = "Okamžitá spotřeba";
+"fueleconomyone_header" = "Spotřeba 1";
+"fueleconomytwo_header" = "Spotřeba 2";
+"fuelrange_header" = "Dojezd";
 
 // ContactsTableViewController
 "contactlist_title" = "Kontakty";
@@ -183,8 +183,6 @@
 "waypoints_nav_title" = "Uložená místa";
 
 // Fault Description
-"fault_UARTERR" = "Chyba UART";
-"fault_UARTCTF" = "UART Comm Timeout";
 "fault_UARTLF" = "UART Logic";
 "fault_ABSSLF" = "Diagnotiska ABS nebyla dokončena";
 "fault_ABSERR" = "Chyba ABS";

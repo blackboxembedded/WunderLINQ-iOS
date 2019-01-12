@@ -1873,13 +1873,6 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
                 let tripTwo:Double = Double((UInt32(lastMessage[4]) | UInt32(lastMessage[5]) << 8 | UInt32(lastMessage[6]) << 16) / 10)
                 motorcycleData.settripTwo(tripTwo: tripTwo)
             }
-        case 0xFF:
-            // WunderLINQ errors
-            print("Error Recieved")
-            faults.setUartErrorActive(active: true)
-            if (lastMessage[7] == 0xF0){
-                faults.setUartCommActive(active: true)
-            }
             
         default:
             _ = 0

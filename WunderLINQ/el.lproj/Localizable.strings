@@ -153,30 +153,30 @@
 "time_header" = "Ώρα";
 "latitude_header" = "Γεωγραφικό πλάτος";
 "longitude_header" = "Γεωγραφικό μήκος";
-"altitude_header" = "Υψόμετρο (μ)";
-"gpsspeed_header" = "Ταχύτητα βάση GPS (χαω)";
+"altitude_header" = "Υψόμετρο";
+"gpsspeed_header" = "Ταχύτητα βάση GPS";
 "gear_header" = "Ταχύτητα";
-"enginetemp_header" = "Θερμοκρασία κινητήρα (C)";
-"ambienttemp_header" = "Θερμοκρασία περιβάλλοντος (C)";
-"frontpressure_header" = "Πίεση εμπρός ελαστικού (bar)";
-"rearpressure_header" = "Πίεση πίσω ελαστικού (bar)";
-"odometer_header" = "Χιλιομετρητής (χλμ)";
-"voltage_header" = "Τάση (V)";
-"throttle_header" = "Άνοιγμα πεταλούδας (%)";
+"enginetemp_header" = "Θερμοκρασία κινητήρα";
+"ambienttemp_header" = "Θερμοκρασία περιβάλλοντος";
+"frontpressure_header" = "Πίεση εμπρός ελαστικού";
+"rearpressure_header" = "Πίεση πίσω ελαστικού";
+"odometer_header" = "Χιλιομετρητής";
+"voltage_header" = "Τάση";
+"throttle_header" = "Άνοιγμα πεταλούδας";
 "frontbrakes_header" = "Εμπρός φρένα";
 "rearbrakes_header" = "Πίσω φρένα";
 "shifts_header" = "Εναλλαγές ταχυτήτων";
 "vin_header" = "Αριθμός πλαισίου";
 "ambientlight_header" = "Φως περιβάλλοντος";
-"tripone_header" = "Διαδρομή1 (χλμ)";
-"triptwo_header" = "Διαδρομή2 (χλμ)";
-"tripauto_header" = "Διαδρομή (αυτόματη) (χλμ)";
-"speed_header" = "Ταχύτητα (χαω)";
-"avgspeed_header" = "Μέση ταχύτητα (χαω)";
-"cconsumption_header" = "Τρέχουσα κατανάλωση (L/100)";
-"fueleconomyone_header" = "Κατανάλωση καυσίμου 1 (L/100)";
-"fueleconomytwo_header" = "Κατανάλωση καυσίμου 2 (L/100)";
-"fuelrange_header" = "Αυτονομία καυσίμου (χλμ)";
+"tripone_header" = "Διαδρομή1";
+"triptwo_header" = "Διαδρομή2";
+"tripauto_header" = "Διαδρομή (αυτόματη)";
+"speed_header" = "Ταχύτητα";
+"avgspeed_header" = "Μέση ταχύτητα";
+"cconsumption_header" = "Τρέχουσα κατανάλωση";
+"fueleconomyone_header" = "Κατανάλωση καυσίμου 1";
+"fueleconomytwo_header" = "Κατανάλωση καυσίμου 2";
+"fuelrange_header" = "Αυτονομία καυσίμου";
 
 // ContactsTableViewController
 "contactlist_title" = "Επαφές";
@@ -185,8 +185,6 @@
 "waypoints_nav_title" = "Προορισμοί";
 
 // Fault Description
-"fault_UARTERR" = "Σφάλμα στο UART";
-"fault_UARTCTF" = "Λήξη χρόνου επικοινωνίας με το UART Comm";
 "fault_ABSSLF" = "Η αυτοδιάγνωση του ABS δεν ολοκληρώθηκε";
 "fault_ABSERR" = "Σφάλμα στο ABS";
 "fault_ABSDAC" = "Το ABS είναι απενεργοποιημένο";
