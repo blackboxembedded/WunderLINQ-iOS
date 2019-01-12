@@ -447,7 +447,7 @@ class LocationService: NSObject, CLLocationManagerDelegate {
         let mpg = 282.5 / l100
         return mpg
     }
-    //meters / 0.3048
+    // meters to feet
     func mtoFeet(_ meters:Double) -> Double {
         let meters = meters / 0.3048
         return meters
