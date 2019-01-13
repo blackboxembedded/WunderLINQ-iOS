@@ -1327,16 +1327,10 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
         case 0x08:
             //print("Message ID: 8")
             // Ambient Temperature
-            if (lastMessage[2] != 0xFF){
-                let ambientTemp:Double = Double(lastMessage[2]) / 10
-                motorcycleData.setambientTemperature(ambientTemperature: ambientTemp)
-            }
-            /*
             if (lastMessage[1] != 0xFF){
                 let ambientTemp:Double = Double(lastMessage[1]) * 0.50 - 40
                 motorcycleData.setambientTemperature(ambientTemperature: ambientTemp)
             }
-             */
             
             // LAMP Faults
             if (lastMessage[3] != 0xFF) {
