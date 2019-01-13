@@ -185,6 +185,7 @@ class TripViewController: UIViewController {
                 dateLabel.text = row[0]
             }
         }
+        // TODO: read from CSV header
         var distanceUnit : String = "km"
         var speedUnit : String = "km/h"
         if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {

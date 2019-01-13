@@ -46,32 +46,16 @@
 			<key>Title</key>
 			<string>ui_title</string>
 		</dict>
-		<dict>
-			<key>Type</key>
-			<string>PSMultiValueSpecifier</string>
-			<key>Title</key>
-			<string>pref_bike_type</string>
-			<key>Key</key>
-			<string>motorcycle_type_preference</string>
-			<key>DefaultValue</key>
-			<integer>4</integer>
-			<key>Values</key>
-			<array>
-				<integer>0</integer>
-				<integer>1</integer>
-				<integer>2</integer>
-				<integer>3</integer>
-				<string>4</string>
-			</array>
-			<key>Titles</key>
-			<array>
-				<string>BMW R1200GS/A</string>
-				<string>BMW R1200R</string>
-				<string>BMW R1200RS</string>
-				<string>BMW S1000XR</string>
-				<string>bike_type_other</string>
-			</array>
-		</dict>
+        <dict>
+            <key>Type</key>
+            <string>PSToggleSwitchSpecifier</string>
+            <key>Title</key>
+            <string>pref_motorcycledata_name</string>
+            <key>Key</key>
+            <string>motorcycle_data_preference</string>
+            <key>DefaultValue</key>
+            <false/>
+        </dict>
 		<dict>
 			<key>Type</key>
 			<string>PSChildPaneSpecifier</string>

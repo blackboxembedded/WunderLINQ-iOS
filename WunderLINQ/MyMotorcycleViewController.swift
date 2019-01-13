@@ -127,7 +127,7 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
             }
         }
 
-        if UserDefaults.standard.integer(forKey: "motorcycle_type_preference") == 4 {
+        if UserDefaults.standard.bool(forKey: "motorcycle_data_preference") {
             for mainUIView in self.mainUIView.subviews {
                 mainUIView.removeFromSuperview()
             }
@@ -281,8 +281,8 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
                 // quit app
                 exit(0)
             }
-            if defaults.integer(forKey: "motorcycle_type_lastSet") != defaults.integer(forKey: "motorcycle_type_preference"){
-                UserDefaults.standard.set(defaults.integer(forKey: "motorcycle_type_preference"), forKey: "motorcycle_type_lastSet")
+            if defaults.bool(forKey: "motorcycle_data_lastSet") != defaults.bool(forKey: "motorcycle_data_preference"){
+                UserDefaults.standard.set(defaults.bool(forKey: "motorcycle_data_preference"), forKey: "motorcycle_data_lastSet")
                 // quit app
                 exit(0)
             }
@@ -492,7 +492,7 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
         }
         self.navigationItem.leftBarButtonItems = [backButton, disconnectButton, faultsButton]
         
-        if UserDefaults.standard.integer(forKey: "motorcycle_type_preference") != 4 && frontPressureLabel != nil {
+        if !UserDefaults.standard.bool(forKey: "motorcycle_data_preference") && frontPressureLabel != nil {
             // Update main display
             var temperatureUnit = "C"
             var distanceUnit = "km"

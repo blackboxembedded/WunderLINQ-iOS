@@ -3,8 +3,7 @@
 "pref_homeAddress_name" = "Dirección de Casa";
 "pref_homePhone_name" = "Número de teléfono favorito";
 "ui_title" = "Interfaz de usuario";
-"pref_bike_type" = "Tipo de moto";
-"bike_type_other" = "Otra";
+"pref_motorcycledata_name" = "Disable performance data display"; // Needs translation
 "pref_nav_app" = "App de navegación";
 "pref_nightMode_name" = "Modo noche";
 "pref_pressuref_name" = "Unidad de presión";
