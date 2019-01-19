@@ -42,6 +42,7 @@
 		7E5E0F78212289140048B9A2 /* AppUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5E0F77212289140048B9A2 /* AppUtility.swift */; };
 		7E6987DB20F82F1A00B4781D /* MotorcycleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6987DA20F82F1A00B4781D /* MotorcycleData.swift */; };
 		7E6987DD20F8F83500B4781D /* Faults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6987DC20F8F83500B4781D /* Faults.swift */; };
+		7E7C53CD21F3BA9200C98010 /* ContactsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7C53CC21F3BA9200C98010 /* ContactsTableViewCell.swift */; };
 		7E80BD3B211CF80600B8CA0D /* LocalisableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E80BD3A211CF80600B8CA0D /* LocalisableLabel.swift */; };
 		7E80BD3D211CFF7300B8CA0D /* LocalisableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E80BD3C211CFF7300B8CA0D /* LocalisableButton.swift */; };
 		7E80BD42211D419C00B8CA0D /* WaypointsNavTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E80BD41211D419C00B8CA0D /* WaypointsNavTableViewController.swift */; };
@@ -132,6 +133,7 @@
 		7E70D8F621A5FD2B0016CD74 /* el */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = el; path = el.lproj/Main.strings; sourceTree = "<group>"; };
 		7E70D8F721A5FD2B0016CD74 /* el */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = el; path = el.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		7E70D8F821A5FD2B0016CD74 /* el */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = el; path = WunderLINQ/el.lproj/Localizable.strings; sourceTree = "<group>"; };
+		7E7C53CC21F3BA9200C98010 /* ContactsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsTableViewCell.swift; sourceTree = "<group>"; };
 		7E80BD3A211CF80600B8CA0D /* LocalisableLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalisableLabel.swift; sourceTree = "<group>"; };
 		7E80BD3C211CFF7300B8CA0D /* LocalisableButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalisableButton.swift; sourceTree = "<group>"; };
 		7E80BD3E211D2CB100B8CA0D /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
@@ -302,6 +304,7 @@
 				7EA4BCC621B8C9150084F6EA /* TasksCollectionViewController.swift */,
 				7EA4BCC821B8CB270084F6EA /* TaskCollectionViewCell.swift */,
 				7EC8C9BC1F827977000CEDDC /* ContactsTableViewContoller.swift */,
+				7E7C53CC21F3BA9200C98010 /* ContactsTableViewCell.swift */,
 				7EC8C9BE1F830C5B000CEDDC /* PhoneContacts.swift */,
 				7E80BD41211D419C00B8CA0D /* WaypointsNavTableViewController.swift */,
 				7EC934F12186208A00FD4806 /* AlertViewController.swift */,
@@ -461,6 +464,7 @@
 				7EAE9415211E9B3200E24CE9 /* Double+Extensions.swift in Sources */,
 				7EA478791F412BE9000CEDDC /* UserDefauts+Extensions.swift in Sources */,
 				7EA4784E1F40B154000CEDDC /* AppDelegate.swift in Sources */,
+				7E7C53CD21F3BA9200C98010 /* ContactsTableViewCell.swift in Sources */,
 				7E068BC7210190CB0076EAAD /* TripsTableViewController.swift in Sources */,
 				7EA4BCC721B8C9150084F6EA /* TasksCollectionViewController.swift in Sources */,
 				7E25396321CD94A30008D34E /* BLE.swift in Sources */,

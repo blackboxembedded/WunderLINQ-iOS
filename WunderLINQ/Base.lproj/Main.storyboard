@@ -739,22 +739,44 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFit" selectionStyle="default" indentationWidth="10" reuseIdentifier="ContactsTableViewCell" textLabel="gSL-t0-ikV" style="IBUITableViewCellStyleDefault" id="91W-wB-7yc">
-                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFit" selectionStyle="default" indentationWidth="10" reuseIdentifier="ContactsTableViewCell" rowHeight="60" id="91W-wB-7yc" customClass="ContactsTableViewCell" customModule="WunderLINQ" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="91W-wB-7yc" id="UcH-Kx-tlt">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="59.666666666666664"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="gSL-t0-ikV">
-                                            <rect key="frame" x="20" y="0.0" width="374" height="43.666666666666664"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" weight="black" pointSize="20"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IUU-pb-d73">
+                                            <rect key="frame" x="0.0" y="0.0" width="60" height="60.333333333333336"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="IUU-pb-d73" secondAttribute="height" multiplier="1:1" id="1FP-ZT-gHE"/>
+                                                <constraint firstAttribute="width" secondItem="IUU-pb-d73" secondAttribute="height" multiplier="1:1" id="9WJ-vp-ICx"/>
+                                                <constraint firstAttribute="height" constant="60" id="Iy2-bR-Phe"/>
+                                                <constraint firstAttribute="width" constant="60" id="oRF-QI-8FZ"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LK8-Wv-Jeq">
+                                            <rect key="frame" x="68" y="11.333333333333332" width="326" height="38.333333333333343"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailingMargin" secondItem="LK8-Wv-Jeq" secondAttribute="trailing" id="7jP-Mu-u8G"/>
+                                        <constraint firstItem="IUU-pb-d73" firstAttribute="leading" secondItem="UcH-Kx-tlt" secondAttribute="leading" id="BtY-Je-JPt"/>
+                                        <constraint firstAttribute="bottom" secondItem="IUU-pb-d73" secondAttribute="bottom" id="IcA-m3-os7"/>
+                                        <constraint firstItem="LK8-Wv-Jeq" firstAttribute="leading" secondItem="IUU-pb-d73" secondAttribute="trailing" constant="8" id="Im6-ey-ffT"/>
+                                        <constraint firstAttribute="bottom" secondItem="IUU-pb-d73" secondAttribute="bottom" id="NWQ-h2-mi3"/>
+                                        <constraint firstItem="IUU-pb-d73" firstAttribute="top" secondItem="UcH-Kx-tlt" secondAttribute="top" id="NZF-5Y-8Pi"/>
+                                        <constraint firstItem="LK8-Wv-Jeq" firstAttribute="top" secondItem="UcH-Kx-tlt" secondAttribute="topMargin" id="TAU-8c-M4W"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="LK8-Wv-Jeq" secondAttribute="bottom" id="tFg-Zj-gPS"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="contactImage" destination="IUU-pb-d73" id="1nJ-Um-9eu"/>
+                                    <outlet property="contactLabel" destination="LK8-Wv-Jeq" id="8R4-n9-lvC"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -769,7 +791,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6FV-uf-rsK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="10671" y="-492"/>
+            <point key="canvasLocation" x="10669.565217391306" y="-492.39130434782612"/>
         </scene>
         <!--Waypoints-->
         <scene sceneID="5Hw-nx-fMy">
@@ -1753,9 +1775,10 @@ Cgo
         <image name="play" width="132" height="132"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="RMB-mt-FYE"/>
         <segue reference="KXb-aY-1Ca"/>
         <segue reference="MzX-q0-6NM"/>
-        <segue reference="Mvj-Z7-A9C"/>
+        <segue reference="PPQ-oT-Jxj"/>
         <segue reference="kry-jp-5q5"/>
         <segue reference="veu-Ll-J9g"/>
         <segue reference="P25-cb-auh"/>
