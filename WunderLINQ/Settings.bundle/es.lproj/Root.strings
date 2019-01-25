@@ -36,3 +36,6 @@
 "pref_fuel_routing_footer" = "Avisar para preparar ruta a la estación de servicio más cercana cuando se detecta bajo nivel de combustible";
 "pref_fuel_routing_enable_title" = "Activar ruta a la estación de servicio";
 "pref_tasks_settings_title" = "Configuración rápida de tareas";
+"debug_settings_title" = "Debug Settings"; // Needs translation
+"pref_debuglogging_name" = "Enable Debug Logging"; // Needs translation
+"pref_debuglogging_summary" = "Only enable if needed by Support, may impact performance if left running.  Please disable when finished."; // Needs translation

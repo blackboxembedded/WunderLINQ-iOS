@@ -36,3 +36,6 @@
 "pref_fuel_routing_footer" = "Preguntar si desea 'Indicaciones hacia Gasolinera' mas cercana cuando encienda la advertencia de nivel de combustible bajo";
 "pref_fuel_routing_enable_title" = "Habilitar 'Indicaciones hacia Gasolinera'";
 "pref_tasks_settings_title" = "Quick Task Customization"; //Needs Translation
+"debug_settings_title" = "Debug Settings"; // Needs translation
+"pref_debuglogging_name" = "Enable Debug Logging"; // Needs translation
+"pref_debuglogging_summary" = "Only enable if needed by Support, may impact performance if left running.  Please disable when finished."; // Needs translation

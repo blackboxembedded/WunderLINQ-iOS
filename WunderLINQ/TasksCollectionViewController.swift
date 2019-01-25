@@ -455,7 +455,7 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
     }
     
     @objc func selectItem() {
-        execute_task(taskID: itemRow)
+        execute_task(taskID: mapping[itemRow])
     }
     
     @objc func upRow() {
