@@ -117,19 +117,33 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             for mainUIView in self.mainUIView.subviews {
                 mainUIView.removeFromSuperview()
             }
+            
             let label = UILabel(frame: CGRect(x: 0, y: 0, width: self.mainUIView.bounds.width, height: 75))
             label.center = self.view.center
             label.textAlignment = .center
+            var imageName = "wunderlinq_logo-black"
             if UserDefaults.standard.bool(forKey: "nightmode_preference") {
                 label.textColor = .white
                 mainUIView.backgroundColor = .black
+                imageName = "wunderlinq_logo-white"
+                
             } else {
                 label.textColor = .black
                 mainUIView.backgroundColor = .white
+                imageName = "wunderlinq_logo-black"
             }
             label.font = UIFont.boldSystemFont(ofSize: 40)
             label.text = NSLocalizedString("product", comment: "")
-            mainUIView.addSubview(label)
+            //mainUIView.addSubview(label)
+            let image = UIImage(named: imageName)
+            let imageView = UIImageView(image: image!)
+            imageView.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: 200)
+            //imageView.widthAnchor.constraint(equalToConstant: view.bounds.width).isActive = true
+            //imageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+            //imageView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 28).isActive = true
+            imageView.center = self.view.center
+            imageView.contentMode = .scaleAspectFit
+            mainUIView.addSubview(imageView)
         } else {
             if UserDefaults.standard.bool(forKey: "nightmode_preference") {
                 collectionView.backgroundColor = .white

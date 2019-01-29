@@ -10,20 +10,9 @@ import UIKit
 
 class AboutViewController: UIViewController {
     
+    @IBOutlet weak var logoImageView: UIImageView!
     @IBOutlet weak var versionLabel: UILabel!
     @IBOutlet weak var creditsTextView: UITextView!
-    
-    @IBAction func appNameBtnPressed(_ sender: Any) {
-        guard let url = URL(string: "http://www.wunderlinq.com") else {
-            return //be safe
-        }
-        
-        if #available(iOS 10.0, *) {
-            UIApplication.shared.open(url, options: [:], completionHandler: nil)
-        } else {
-            UIApplication.shared.openURL(url)
-        }
-    }
     
     @IBAction func corpNameBtnPressed(_ sender: Any) {
         guard let url = URL(string: "https://www.blackboxembedded.com") else {
@@ -40,6 +29,18 @@ class AboutViewController: UIViewController {
     @objc func leftScreen() {
         navigationController?.popViewController(animated: true)
         dismiss(animated: true, completion: nil)
+    }
+    
+    @objc func logoTap() {
+        guard let url = URL(string: "http://www.wunderlinq.com") else {
+            return //be safe
+        }
+        
+        if #available(iOS 10.0, *) {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        } else {
+            UIApplication.shared.openURL(url)
+        }
     }
     
     func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
@@ -77,6 +78,14 @@ class AboutViewController: UIViewController {
             let versionLabelString = NSLocalizedString("version_label", comment: "")
             self.versionLabel.text = "\(versionLabelString) \(version)"
         }
+        
+        logoImageView.isUserInteractionEnabled = true
+        let singleTap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(logoTap))
+        singleTap.numberOfTapsRequired = 1;
+        logoImageView.addGestureRecognizer(singleTap)
+        
+        self.view.addSubview(logoImageView)
+        
     }
     
     override func viewDidLayoutSubviews() {

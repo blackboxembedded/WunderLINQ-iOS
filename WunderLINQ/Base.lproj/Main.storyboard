@@ -1019,21 +1019,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Icon" translatesAutoresizingMaskIntoConstraints="NO" id="iK0-Eq-bFT">
-                                <rect key="frame" x="132" y="36" width="150" height="150"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="150" id="8mr-cD-4Sh"/>
-                                    <constraint firstAttribute="width" constant="150" id="IaI-Mv-VCt"/>
-                                </constraints>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wunderlinq_logo-black" translatesAutoresizingMaskIntoConstraints="NO" id="iK0-Eq-bFT">
+                                <rect key="frame" x="16" y="45" width="382" height="53"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Version: x.x.x" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fPj-pQ-RK7">
-                                <rect key="frame" x="0.0" y="253" width="414" height="17"/>
+                                <rect key="frame" x="0.0" y="123" width="414" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Credits" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bpB-n7-PMj" customClass="LocalisableLabel" customModule="WunderLINQ" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="324" width="414" height="24"/>
+                                <rect key="frame" x="0.0" y="194" width="414" height="24"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -1042,7 +1038,7 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" usesAttributedText="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jAM-2k-3CY">
-                                <rect key="frame" x="0.0" y="353" width="414" height="383"/>
+                                <rect key="frame" x="0.0" y="223" width="414" height="513"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <attributedString key="attributedText">
                                     <fragment content="Support and Patience">
@@ -1271,7 +1267,7 @@ Cgo
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y9o-7f-NQI">
-                                <rect key="frame" x="0.0" y="275" width="414" height="33"/>
+                                <rect key="frame" x="0.0" y="145" width="414" height="33"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="Black Box Embedded, LLC">
                                     <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1280,43 +1276,32 @@ Cgo
                                     <action selector="corpNameBtnPressed:" destination="BZZ-xV-I8u" eventType="touchUpInside" id="yxM-Oa-kmV"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eo5-JH-b6f">
-                                <rect key="frame" x="0.0" y="202" width="414" height="46"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
-                                <state key="normal" title="WunderLINQ™">
-                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="appNameBtnPressed:" destination="BZZ-xV-I8u" eventType="touchUpInside" id="Cql-ko-Sob"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Y9o-7f-NQI" firstAttribute="leading" secondItem="XEV-0z-jeW" secondAttribute="leading" id="3Bj-5r-VTi"/>
                             <constraint firstItem="XEV-0z-jeW" firstAttribute="trailing" secondItem="bpB-n7-PMj" secondAttribute="trailing" id="3Fz-qN-Dof"/>
                             <constraint firstItem="XEV-0z-jeW" firstAttribute="trailing" secondItem="fPj-pQ-RK7" secondAttribute="trailing" id="5FX-v2-KJD"/>
-                            <constraint firstItem="Eo5-JH-b6f" firstAttribute="leading" secondItem="XEV-0z-jeW" secondAttribute="leading" id="9F2-tJ-qVI"/>
                             <constraint firstItem="jAM-2k-3CY" firstAttribute="top" secondItem="bpB-n7-PMj" secondAttribute="bottom" constant="5" id="9is-Uu-Agl"/>
                             <constraint firstItem="Y9o-7f-NQI" firstAttribute="top" secondItem="fPj-pQ-RK7" secondAttribute="bottom" constant="5" id="Bpz-qc-VSH"/>
+                            <constraint firstItem="XEV-0z-jeW" firstAttribute="trailing" secondItem="iK0-Eq-bFT" secondAttribute="trailing" constant="16" id="CPR-v8-Smk"/>
                             <constraint firstItem="XEV-0z-jeW" firstAttribute="bottom" secondItem="jAM-2k-3CY" secondAttribute="bottom" id="D7q-o3-RGY"/>
-                            <constraint firstItem="iK0-Eq-bFT" firstAttribute="top" secondItem="XEV-0z-jeW" secondAttribute="top" constant="16" id="Exo-Vz-yZX"/>
-                            <constraint firstItem="XEV-0z-jeW" firstAttribute="trailing" secondItem="Eo5-JH-b6f" secondAttribute="trailing" id="PfQ-Wf-uF4"/>
+                            <constraint firstItem="iK0-Eq-bFT" firstAttribute="top" secondItem="XEV-0z-jeW" secondAttribute="top" constant="25" id="Exo-Vz-yZX"/>
+                            <constraint firstItem="iK0-Eq-bFT" firstAttribute="leading" secondItem="XEV-0z-jeW" secondAttribute="leading" constant="16" id="LsA-BS-QqZ"/>
+                            <constraint firstItem="fPj-pQ-RK7" firstAttribute="top" secondItem="iK0-Eq-bFT" secondAttribute="bottom" constant="25" id="Nsl-Ge-18B"/>
                             <constraint firstItem="jAM-2k-3CY" firstAttribute="leading" secondItem="XEV-0z-jeW" secondAttribute="leading" id="QDl-f0-S36"/>
                             <constraint firstItem="bpB-n7-PMj" firstAttribute="top" secondItem="Y9o-7f-NQI" secondAttribute="bottom" constant="16" id="YRE-BH-emJ"/>
                             <constraint firstItem="fPj-pQ-RK7" firstAttribute="leading" secondItem="XEV-0z-jeW" secondAttribute="leading" id="kd6-t9-voY"/>
                             <constraint firstItem="XEV-0z-jeW" firstAttribute="trailing" secondItem="Y9o-7f-NQI" secondAttribute="trailing" id="o6N-Mo-8io"/>
-                            <constraint firstItem="Eo5-JH-b6f" firstAttribute="top" secondItem="iK0-Eq-bFT" secondAttribute="bottom" constant="16" id="pDU-6a-iUd"/>
                             <constraint firstItem="XEV-0z-jeW" firstAttribute="trailing" secondItem="jAM-2k-3CY" secondAttribute="trailing" id="pVf-uj-0rN"/>
-                            <constraint firstItem="fPj-pQ-RK7" firstAttribute="top" secondItem="Eo5-JH-b6f" secondAttribute="bottom" constant="5" id="rEh-Se-ZE1"/>
                             <constraint firstItem="bpB-n7-PMj" firstAttribute="leading" secondItem="XEV-0z-jeW" secondAttribute="leading" id="sOd-2i-1vG"/>
-                            <constraint firstItem="iK0-Eq-bFT" firstAttribute="centerX" secondItem="ISD-Sy-aSf" secondAttribute="centerX" id="wep-wK-X6a"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="XEV-0z-jeW"/>
                     </view>
                     <navigationItem key="navigationItem" title="About" id="Ld0-5t-QtT"/>
                     <connections>
                         <outlet property="creditsTextView" destination="jAM-2k-3CY" id="3NS-oi-LSb"/>
+                        <outlet property="logoImageView" destination="iK0-Eq-bFT" id="b44-tq-d0y"/>
                         <outlet property="versionLabel" destination="fPj-pQ-RK7" id="Wgg-IR-LFl"/>
                     </connections>
                 </viewController>
@@ -1614,15 +1599,14 @@ Cgo
         </scene>
     </scenes>
     <resources>
-        <image name="Icon" width="144" height="144"/>
         <image name="Left" width="88" height="88"/>
         <image name="Right" width="132" height="132"/>
         <image name="back" width="132" height="132"/>
         <image name="forward" width="132" height="132"/>
         <image name="play" width="132" height="132"/>
+        <image name="wunderlinq_logo-black" width="247" height="53"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="b1A-JR-H5R"/>
         <segue reference="KXb-aY-1Ca"/>
         <segue reference="MzX-q0-6NM"/>
         <segue reference="Mvj-Z7-A9C"/>
