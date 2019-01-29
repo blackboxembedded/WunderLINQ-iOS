@@ -40,6 +40,9 @@
 		7E5A767820DDEE7200B48CC6 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5A767720DDEE7200B48CC6 /* UIViewController+Extensions.swift */; };
 		7E5A767A20DDFEF700B48CC6 /* Waypoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5A767920DDFEF700B48CC6 /* Waypoint.swift */; };
 		7E5E0F78212289140048B9A2 /* AppUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5E0F77212289140048B9A2 /* AppUtility.swift */; };
+		7E62BB6D21FE3DBF00FDB10E /* MainCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E62BB6C21FE3DBF00FDB10E /* MainCollectionViewController.swift */; };
+		7E62BB6F21FE3DEB00FDB10E /* MainCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E62BB6E21FE3DEB00FDB10E /* MainCollectionViewCell.swift */; };
+		7E62BB7121FE443200FDB10E /* ColumnFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E62BB7021FE443200FDB10E /* ColumnFlowLayout.swift */; };
 		7E6987DB20F82F1A00B4781D /* MotorcycleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6987DA20F82F1A00B4781D /* MotorcycleData.swift */; };
 		7E6987DD20F8F83500B4781D /* Faults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6987DC20F8F83500B4781D /* Faults.swift */; };
 		7E7C53CD21F3BA9200C98010 /* ContactsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7C53CC21F3BA9200C98010 /* ContactsTableViewCell.swift */; };
@@ -49,7 +52,6 @@
 		7E80BD44211D5A0600B8CA0D /* UIView+ignoresInvertColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E80BD43211D5A0600B8CA0D /* UIView+ignoresInvertColors.swift */; };
 		7E96D79221E78B7B00C6AB5F /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E96D79121E78B7B00C6AB5F /* Security.framework */; };
 		7EA4784E1F40B154000CEDDC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA4784D1F40B154000CEDDC /* AppDelegate.swift */; };
-		7EA478501F40B154000CEDDC /* MyMotorcycleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA4784F1F40B154000CEDDC /* MyMotorcycleViewController.swift */; };
 		7EA478531F40B154000CEDDC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7EA478511F40B154000CEDDC /* Main.storyboard */; };
 		7EA478551F40B154000CEDDC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7EA478541F40B154000CEDDC /* Assets.xcassets */; };
 		7EA478581F40B154000CEDDC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7EA478561F40B154000CEDDC /* LaunchScreen.storyboard */; };
@@ -128,6 +130,9 @@
 		7E5A767720DDEE7200B48CC6 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		7E5A767920DDFEF700B48CC6 /* Waypoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Waypoint.swift; sourceTree = "<group>"; };
 		7E5E0F77212289140048B9A2 /* AppUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUtility.swift; sourceTree = "<group>"; };
+		7E62BB6C21FE3DBF00FDB10E /* MainCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCollectionViewController.swift; sourceTree = "<group>"; };
+		7E62BB6E21FE3DEB00FDB10E /* MainCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCollectionViewCell.swift; sourceTree = "<group>"; };
+		7E62BB7021FE443200FDB10E /* ColumnFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColumnFlowLayout.swift; sourceTree = "<group>"; };
 		7E6987DA20F82F1A00B4781D /* MotorcycleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotorcycleData.swift; sourceTree = "<group>"; };
 		7E6987DC20F8F83500B4781D /* Faults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Faults.swift; sourceTree = "<group>"; };
 		7E70D8F621A5FD2B0016CD74 /* el */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = el; path = el.lproj/Main.strings; sourceTree = "<group>"; };
@@ -147,7 +152,6 @@
 		7E96D79121E78B7B00C6AB5F /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		7EA4784A1F40B154000CEDDC /* WunderLINQ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WunderLINQ.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EA4784D1F40B154000CEDDC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		7EA4784F1F40B154000CEDDC /* MyMotorcycleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMotorcycleViewController.swift; sourceTree = "<group>"; };
 		7EA478521F40B154000CEDDC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7EA478541F40B154000CEDDC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7EA478571F40B154000CEDDC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -286,7 +290,9 @@
 				7E80BD43211D5A0600B8CA0D /* UIView+ignoresInvertColors.swift */,
 				7EA478781F412BE9000CEDDC /* UserDefauts+Extensions.swift */,
 				7E6987DA20F82F1A00B4781D /* MotorcycleData.swift */,
-				7EA4784F1F40B154000CEDDC /* MyMotorcycleViewController.swift */,
+				7E62BB6C21FE3DBF00FDB10E /* MainCollectionViewController.swift */,
+				7E62BB6E21FE3DEB00FDB10E /* MainCollectionViewCell.swift */,
+				7E62BB7021FE443200FDB10E /* ColumnFlowLayout.swift */,
 				7E25396221CD94A30008D34E /* BLE.swift */,
 				7E25396421CDB1740008D34E /* WLQ.swift */,
 				7EC63201219BCE05002E68FF /* AboutViewController.swift */,
@@ -456,7 +462,6 @@
 				7E5E0F78212289140048B9A2 /* AppUtility.swift in Sources */,
 				7EA478771F412BAC000CEDDC /* CLLocation+Extension.swift in Sources */,
 				7EBFD490210E108100FC9665 /* segueFromLeft.swift in Sources */,
-				7EA478501F40B154000CEDDC /* MyMotorcycleViewController.swift in Sources */,
 				7EA4788E1F5BA136000CEDDC /* Tasks.swift in Sources */,
 				7E80BD3B211CF80600B8CA0D /* LocalisableLabel.swift in Sources */,
 				7EC934F22186208A00FD4806 /* AlertViewController.swift in Sources */,
@@ -464,9 +469,11 @@
 				7EAE9415211E9B3200E24CE9 /* Double+Extensions.swift in Sources */,
 				7EA478791F412BE9000CEDDC /* UserDefauts+Extensions.swift in Sources */,
 				7EA4784E1F40B154000CEDDC /* AppDelegate.swift in Sources */,
+				7E62BB6D21FE3DBF00FDB10E /* MainCollectionViewController.swift in Sources */,
 				7E7C53CD21F3BA9200C98010 /* ContactsTableViewCell.swift in Sources */,
 				7E068BC7210190CB0076EAAD /* TripsTableViewController.swift in Sources */,
 				7EA4BCC721B8C9150084F6EA /* TasksCollectionViewController.swift in Sources */,
+				7E62BB6F21FE3DEB00FDB10E /* MainCollectionViewCell.swift in Sources */,
 				7E25396321CD94A30008D34E /* BLE.swift in Sources */,
 				7EC8C9BD1F827977000CEDDC /* ContactsTableViewContoller.swift in Sources */,
 				7EA478871F4BC775000CEDDC /* Logger.swift in Sources */,
@@ -478,6 +485,7 @@
 				7E80BD44211D5A0600B8CA0D /* UIView+ignoresInvertColors.swift in Sources */,
 				7EA4BCC921B8CB270084F6EA /* TaskCollectionViewCell.swift in Sources */,
 				7E07AE4720F70FD8004F15B9 /* LocationService.swift in Sources */,
+				7E62BB7121FE443200FDB10E /* ColumnFlowLayout.swift in Sources */,
 				7EA478731F4115F6000CEDDC /* CompassViewController.swift in Sources */,
 				7EBFE1F3214C7D6500F2185A /* ScenicAPI.swift in Sources */,
 				7E5A767820DDEE7200B48CC6 /* UIViewController+Extensions.swift in Sources */,

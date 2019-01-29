@@ -52,7 +52,7 @@ enum Theme: Int {
         UserDefaults.standard.set(rawValue, forKey: Keys.selectedTheme)
         UserDefaults.standard.synchronize()
         
-        UILabel.appearance(whenContainedInInstancesOf: [MyMotorcycleViewController.self]).textColor = textColor
+        UILabel.appearance(whenContainedInInstancesOf: [MainCollectionViewController.self]).textColor = textColor
         
         UIView.appearance(whenContainedInInstancesOf: [CompassViewController.self]).backgroundColor = backgroundColor
         UILabel.appearance(whenContainedInInstancesOf: [CompassViewController.self]).textColor = textColor

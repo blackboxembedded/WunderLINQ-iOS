@@ -13,225 +13,72 @@
         <!--Motorcycle-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="Main" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="MyMotorcycleViewController" customModule="WunderLINQ" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                <viewController storyboardIdentifier="Main" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="MainCollectionViewController" customModule="WunderLINQ" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="LeD-DA-8o8">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="7dk-mQ-A5X">
-                                <rect key="frame" x="0.0" y="20" width="414" height="716"/>
-                                <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="67o-bU-a39">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="179"/>
-                                        <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="o5r-Oo-jeg">
-                                                <rect key="frame" x="0.0" y="0.0" width="207" height="179"/>
-                                                <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A6N-Wg-sJo" customClass="LocalisableLabel" customModule="WunderLINQ" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="207" height="89.666666666666671"/>
-                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="localisedKey" value="rdc_front_label"/>
-                                                        </userDefinedRuntimeAttributes>
-                                                    </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="∞" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZqM-BI-MSn">
-                                                        <rect key="frame" x="0.0" y="89.666666666666686" width="207" height="89.333333333333314"/>
-                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                </subviews>
-                                            </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="qll-Lv-esh">
-                                                <rect key="frame" x="207" y="0.0" width="207" height="179"/>
-                                                <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="32w-65-K53" customClass="LocalisableLabel" customModule="WunderLINQ" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="207" height="89.666666666666671"/>
-                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="localisedKey" value="rdc_rear_label"/>
-                                                        </userDefinedRuntimeAttributes>
-                                                    </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="∞" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OaG-cS-fMY">
-                                                        <rect key="frame" x="0.0" y="89.666666666666686" width="207" height="89.333333333333314"/>
-                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                </subviews>
-                                            </stackView>
-                                        </subviews>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="rg2-2T-Pir">
-                                        <rect key="frame" x="0.0" y="179" width="414" height="179"/>
-                                        <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Fdf-qm-f9j">
-                                                <rect key="frame" x="0.0" y="0.0" width="207" height="179"/>
-                                                <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I5b-l9-8oQ" customClass="LocalisableLabel" customModule="WunderLINQ" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="207" height="89.666666666666671"/>
-                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="localisedKey" value="engine_temp_label"/>
-                                                        </userDefinedRuntimeAttributes>
-                                                    </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="∞" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bRL-5h-sKB">
-                                                        <rect key="frame" x="0.0" y="89.666666666666686" width="207" height="89.333333333333314"/>
-                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                </subviews>
-                                            </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="A2A-tv-lv3">
-                                                <rect key="frame" x="207" y="0.0" width="207" height="179"/>
-                                                <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6n8-X7-yAo" customClass="LocalisableLabel" customModule="WunderLINQ" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="207" height="89.666666666666671"/>
-                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="localisedKey" value="ambient_temp_label"/>
-                                                        </userDefinedRuntimeAttributes>
-                                                    </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="∞" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XQz-jX-igz">
-                                                        <rect key="frame" x="0.0" y="89.666666666666686" width="207" height="89.333333333333314"/>
-                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                </subviews>
-                                            </stackView>
-                                        </subviews>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="FJk-zS-fdn">
-                                        <rect key="frame" x="0.0" y="358" width="414" height="179"/>
-                                        <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="ues-7G-mJT">
-                                                <rect key="frame" x="0.0" y="0.0" width="207" height="179"/>
-                                                <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vke-iv-ZA5" customClass="LocalisableLabel" customModule="WunderLINQ" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="207" height="89.666666666666671"/>
-                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="localisedKey" value="gear_label"/>
-                                                        </userDefinedRuntimeAttributes>
-                                                    </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="∞" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Xp-ce-nzA">
-                                                        <rect key="frame" x="0.0" y="89.666666666666686" width="207" height="89.333333333333314"/>
-                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                </subviews>
-                                            </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="bY3-ZI-MK8">
-                                                <rect key="frame" x="207" y="0.0" width="207" height="179"/>
-                                                <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qcm-JP-6Kk" customClass="LocalisableLabel" customModule="WunderLINQ" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="207" height="89.666666666666671"/>
-                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="localisedKey" value="odometer_label"/>
-                                                        </userDefinedRuntimeAttributes>
-                                                    </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="∞" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="grv-Y4-dvO">
-                                                        <rect key="frame" x="0.0" y="89.666666666666686" width="207" height="89.333333333333314"/>
-                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                </subviews>
-                                            </stackView>
-                                        </subviews>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="y9X-MX-Ets">
-                                        <rect key="frame" x="0.0" y="537" width="414" height="179"/>
-                                        <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="f1l-wO-9ak">
-                                                <rect key="frame" x="0.0" y="0.0" width="207" height="179"/>
-                                                <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3hj-DM-7EX" customClass="LocalisableLabel" customModule="WunderLINQ" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="207" height="89.666666666666671"/>
-                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="localisedKey" value="trip1_label"/>
-                                                        </userDefinedRuntimeAttributes>
-                                                    </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="∞" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="60i-SA-nRN">
-                                                        <rect key="frame" x="0.0" y="89.666666666666629" width="207" height="89.333333333333314"/>
-                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                </subviews>
-                                            </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="0ei-je-KbR">
-                                                <rect key="frame" x="207" y="0.0" width="207" height="179"/>
-                                                <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mrR-rt-w27" customClass="LocalisableLabel" customModule="WunderLINQ" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="207" height="89.666666666666671"/>
-                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="localisedKey" value="trip2_label"/>
-                                                        </userDefinedRuntimeAttributes>
-                                                    </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="∞" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yQZ-bf-Jhe">
-                                                        <rect key="frame" x="0.0" y="89.666666666666629" width="207" height="89.333333333333314"/>
-                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                </subviews>
-                                            </stackView>
-                                        </subviews>
-                                    </stackView>
-                                </subviews>
-                            </stackView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="DFb-XX-n1q">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="iyU-Dx-uZ6">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MainCollectionViewCell" id="amu-te-ZZs" customClass="MainCollectionViewCell" customModule="WunderLINQ" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Header" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="st8-4c-dmF">
+                                                    <rect key="frame" x="4" y="4" width="42" height="7.6666666666666679"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Value" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4ot-xt-lZn">
+                                                    <rect key="frame" x="0.0" y="11.666666666666668" width="50" height="38.333333333333329"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="4ot-xt-lZn" secondAttribute="trailing" id="2N9-3H-eyi"/>
+                                            <constraint firstItem="st8-4c-dmF" firstAttribute="top" secondItem="amu-te-ZZs" secondAttribute="top" constant="4" id="4Ll-7D-ZEx"/>
+                                            <constraint firstItem="st8-4c-dmF" firstAttribute="leading" secondItem="amu-te-ZZs" secondAttribute="leading" constant="4" id="AV5-Xk-O4a"/>
+                                            <constraint firstItem="4ot-xt-lZn" firstAttribute="leading" secondItem="amu-te-ZZs" secondAttribute="leading" id="L5O-M5-QTT"/>
+                                            <constraint firstAttribute="trailing" secondItem="st8-4c-dmF" secondAttribute="trailing" constant="4" id="OA0-2Y-d10"/>
+                                            <constraint firstAttribute="bottom" secondItem="4ot-xt-lZn" secondAttribute="bottom" id="UZ4-NX-gSZ"/>
+                                            <constraint firstItem="4ot-xt-lZn" firstAttribute="top" secondItem="st8-4c-dmF" secondAttribute="bottom" id="zak-Kf-514"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="headerLabel" destination="st8-4c-dmF" id="GNz-QH-fdV"/>
+                                            <outlet property="valueLabel" destination="4ot-xt-lZn" id="8Xq-fd-L4C"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="NuR-mw-W5n" firstAttribute="trailing" secondItem="7dk-mQ-A5X" secondAttribute="trailing" id="FE1-BM-6XN"/>
-                            <constraint firstItem="7dk-mQ-A5X" firstAttribute="top" secondItem="NuR-mw-W5n" secondAttribute="top" id="J1g-wa-ifv"/>
-                            <constraint firstItem="NuR-mw-W5n" firstAttribute="bottom" secondItem="7dk-mQ-A5X" secondAttribute="bottom" id="NJr-NP-3yW"/>
-                            <constraint firstItem="7dk-mQ-A5X" firstAttribute="leading" secondItem="NuR-mw-W5n" secondAttribute="leading" id="iJ2-P4-hcs"/>
+                            <constraint firstItem="DFb-XX-n1q" firstAttribute="leading" secondItem="cbE-Dn-tYJ" secondAttribute="leading" id="Cl2-Wc-0iE"/>
+                            <constraint firstItem="DFb-XX-n1q" firstAttribute="trailing" secondItem="cbE-Dn-tYJ" secondAttribute="trailing" id="jAF-uA-0yM"/>
+                            <constraint firstItem="DFb-XX-n1q" firstAttribute="bottom" secondItem="cbE-Dn-tYJ" secondAttribute="bottom" id="vFZ-VQ-tEj"/>
+                            <constraint firstItem="DFb-XX-n1q" firstAttribute="top" secondItem="LeD-DA-8o8" secondAttribute="top" id="xcy-6N-95x"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="NuR-mw-W5n"/>
+                        <viewLayoutGuide key="safeArea" id="cbE-Dn-tYJ"/>
                     </view>
                     <navigationItem key="navigationItem" title="Motorcycle" id="eWq-dV-zOi"/>
                     <connections>
-                        <outlet property="ambientTempLabel" destination="XQz-jX-igz" id="Fmu-pV-arb"/>
-                        <outlet property="ambientTempStackView" destination="A2A-tv-lv3" id="r7g-pD-R4V"/>
-                        <outlet property="engineTempLabel" destination="bRL-5h-sKB" id="Yfz-Cc-6n5"/>
-                        <outlet property="engineTempStackView" destination="Fdf-qm-f9j" id="8tO-L8-TVY"/>
-                        <outlet property="frontPressureLabel" destination="ZqM-BI-MSn" id="ban-Dc-mtN"/>
-                        <outlet property="frontTireStackView" destination="o5r-Oo-jeg" id="xZt-CS-Dmf"/>
-                        <outlet property="gearLabel" destination="5Xp-ce-nzA" id="JZZ-QT-0k1"/>
-                        <outlet property="gearStackView" destination="ues-7G-mJT" id="8Xz-u1-Nqd"/>
-                        <outlet property="mainUIView" destination="8bC-Xf-vdC" id="718-bR-KTI"/>
-                        <outlet property="odometerLabel" destination="grv-Y4-dvO" id="UtE-hz-vu5"/>
-                        <outlet property="odometerStackView" destination="bY3-ZI-MK8" id="d77-pW-EEP"/>
-                        <outlet property="rearPressureLabel" destination="OaG-cS-fMY" id="gXy-U5-kzG"/>
-                        <outlet property="rearTireStackView" destination="qll-Lv-esh" id="NZm-Pv-v8f"/>
-                        <outlet property="tripOneLabel" destination="60i-SA-nRN" id="GCA-Da-WjC"/>
-                        <outlet property="tripOneStackView" destination="f1l-wO-9ak" id="4bC-oI-oWW"/>
-                        <outlet property="tripTwoLabel" destination="yQZ-bf-Jhe" id="mlK-oF-T4E"/>
-                        <outlet property="tripTwoStackView" destination="0ei-je-KbR" id="UrQ-8Y-Zde"/>
+                        <outlet property="collectionView" destination="DFb-XX-n1q" id="uDa-vr-x3S"/>
+                        <outlet property="mainUIView" destination="LeD-DA-8o8" id="BgD-k4-2xL"/>
                         <segue destination="IU4-xr-4Bd" kind="show" identifier="motorcycleToHWSettings" id="U7e-Tj-3zM"/>
                         <segue destination="OIf-TM-fnx" kind="show" identifier="motorcycleToTaskGrid" customClass="SegueFromLeft" customModule="WunderLINQ" customModuleProvider="target" id="Mvj-Z7-A9C"/>
                         <segue destination="p6n-wZ-mMa" kind="show" identifier="motorcycleToMusic" id="kry-jp-5q5"/>
@@ -243,7 +90,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7141" y="-126"/>
+            <point key="canvasLocation" x="7140.579710144928" y="-126.35869565217392"/>
         </scene>
         <!--Faults-->
         <scene sceneID="Qzq-jP-Ecj">
@@ -1775,12 +1622,13 @@ Cgo
         <image name="play" width="132" height="132"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="b1A-JR-H5R"/>
         <segue reference="KXb-aY-1Ca"/>
         <segue reference="MzX-q0-6NM"/>
         <segue reference="Mvj-Z7-A9C"/>
         <segue reference="kry-jp-5q5"/>
         <segue reference="veu-Ll-J9g"/>
-        <segue reference="P25-cb-auh"/>
+        <segue reference="L6G-Ek-OoN"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
 </document>

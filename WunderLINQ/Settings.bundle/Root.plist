@@ -56,6 +56,14 @@
             <key>DefaultValue</key>
             <false/>
         </dict>
+        <dict>
+            <key>Type</key>
+            <string>PSChildPaneSpecifier</string>
+            <key>Title</key>
+            <string>pref_grid_settings_title</string>
+            <key>File</key>
+            <string>Grid</string>
+        </dict>
 		<dict>
 			<key>Type</key>
 			<string>PSChildPaneSpecifier</string>

@@ -1,9 +1,9 @@
 //
-//  MyMotorcycleViewController.swift
+//  MainCollectionViewController.swift
 //  WunderLINQ
 //
-//  Created by Keith Conger on 8/13/17.
-//  Copyright © 2017 Black Box Embedded, LLC. All rights reserved.
+//  Created by Keith Conger on 1/27/19.
+//  Copyright © 2019 Black Box Embedded, LLC. All rights reserved.
 //
 
 import AVFoundation
@@ -16,24 +16,12 @@ import UIKit
 import UserNotifications
 import CommonCrypto
 
-class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDelegate, UNUserNotificationCenterDelegate {
-    @IBOutlet weak var frontPressureLabel: UILabel!
-    @IBOutlet weak var rearPressureLabel: UILabel!
-    @IBOutlet weak var engineTempLabel: UILabel!
-    @IBOutlet weak var ambientTempLabel: UILabel!
-    @IBOutlet weak var gearLabel: UILabel!
-    @IBOutlet weak var odometerLabel: UILabel!
-    @IBOutlet weak var tripOneLabel: UILabel!
-    @IBOutlet weak var tripTwoLabel: UILabel!
+private let reuseIdentifier = "MainCollectionViewCell"
+
+class MainCollectionViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, CBCentralManagerDelegate, CBPeripheralDelegate, UNUserNotificationCenterDelegate  {
+
     @IBOutlet weak var mainUIView: UIView!
-    @IBOutlet weak var frontTireStackView: UIStackView!
-    @IBOutlet weak var rearTireStackView: UIStackView!
-    @IBOutlet weak var engineTempStackView: UIStackView!
-    @IBOutlet weak var ambientTempStackView: UIStackView!
-    @IBOutlet weak var gearStackView: UIStackView!
-    @IBOutlet weak var odometerStackView: UIStackView!
-    @IBOutlet weak var tripOneStackView: UIStackView!
-    @IBOutlet weak var tripTwoStackView: UIStackView!
+    @IBOutlet weak var collectionView: UICollectionView!
     
     var backBtn: UIButton!
     var backButton: UIBarButtonItem!
@@ -76,6 +64,13 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
         .blackOverlayColor(UIColor(white: 0.0, alpha: 0.6))
     ]
     
+    let inset: CGFloat = 5
+    let minimumLineSpacing: CGFloat = 5
+    let minimumInteritemSpacing: CGFloat = 5
+    var cellsPerRow = 5
+    var rowCount = 3
+    var busy: Bool = false
+    
     override var preferredStatusBarStyle : UIStatusBarStyle {
         if UserDefaults.standard.bool(forKey: "nightmode_preference") {
             return .lightContent
@@ -83,16 +78,27 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
             return .default
         }
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         print("viewWillAppear")
         checkPermissions()
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("viewDidLoad")
+
+        // Uncomment the following line to preserve selection between presentations
+        // self.clearsSelectionOnViewWillAppear = false
+
+        // Register cell classes
+        //self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+
+        // Do any additional setup after loading the view.
+        
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        
         registerSettingsBundle()
         NotificationCenter.default.addObserver(self, selector: #selector(self.defaultsChanged), name: UserDefaults.didChangeNotification, object: nil)
         if UserDefaults.standard.bool(forKey: "nightmode_preference") {
@@ -104,30 +110,10 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
             self.navigationController?.isNavigationBarHidden = true
             self.navigationController?.isNavigationBarHidden = false
         }
-        // Add Borders
-        if frontTireStackView != nil {
-            if UserDefaults.standard.bool(forKey: "nightmode_preference") {
-                pinBackground(createView(UIColor.white,backGrndColor: UIColor.black), to: frontTireStackView)
-                pinBackground(createView(UIColor.white,backGrndColor: UIColor.black), to: rearTireStackView)
-                pinBackground(createView(UIColor.white,backGrndColor: UIColor.black), to: engineTempStackView)
-                pinBackground(createView(UIColor.white,backGrndColor: UIColor.black), to: ambientTempStackView)
-                pinBackground(createView(UIColor.white,backGrndColor: UIColor.black), to: gearStackView)
-                pinBackground(createView(UIColor.white,backGrndColor: UIColor.black), to: odometerStackView)
-                pinBackground(createView(UIColor.white,backGrndColor: UIColor.black), to: tripOneStackView)
-                pinBackground(createView(UIColor.white,backGrndColor: UIColor.black), to: tripTwoStackView)
-            } else {
-                pinBackground(createView(UIColor.black,backGrndColor: UIColor.white), to: frontTireStackView)
-                pinBackground(createView(UIColor.black,backGrndColor: UIColor.white), to: rearTireStackView)
-                pinBackground(createView(UIColor.black,backGrndColor: UIColor.white), to: engineTempStackView)
-                pinBackground(createView(UIColor.black,backGrndColor: UIColor.white), to: ambientTempStackView)
-                pinBackground(createView(UIColor.black,backGrndColor: UIColor.white), to: gearStackView)
-                pinBackground(createView(UIColor.black,backGrndColor: UIColor.white), to: odometerStackView)
-                pinBackground(createView(UIColor.black,backGrndColor: UIColor.white), to: tripOneStackView)
-                pinBackground(createView(UIColor.black,backGrndColor: UIColor.white), to: tripTwoStackView)
-            }
-        }
-
+        
         if UserDefaults.standard.bool(forKey: "motorcycle_data_preference") {
+            for mainUIView in self.mainUIView.subviews {
+            }
             for mainUIView in self.mainUIView.subviews {
                 mainUIView.removeFromSuperview()
             }
@@ -144,6 +130,12 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
             label.font = UIFont.boldSystemFont(ofSize: 40)
             label.text = NSLocalizedString("product", comment: "")
             mainUIView.addSubview(label)
+        } else {
+            if UserDefaults.standard.bool(forKey: "nightmode_preference") {
+                collectionView.backgroundColor = .white
+            } else {
+                collectionView.backgroundColor = .black
+            }
         }
         
         if UserDefaults.standard.bool(forKey: "display_brightness_preference") {
@@ -157,8 +149,8 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
                                           queue: nil)
         
         /*
-        centralManager = CBCentralManager(delegate: self, queue: nil, options: [CBCentralManagerOptionRestoreIdentifierKey : Device.restoreIdentifier])
-        */
+         centralManager = CBCentralManager(delegate: self, queue: nil, options: [CBCentralManagerOptionRestoreIdentifierKey : Device.restoreIdentifier])
+         */
         let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))
         swipeLeft.direction = .left
         self.view.addGestureRecognizer(swipeLeft)
@@ -166,7 +158,15 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))
         swipeRight.direction = .right
         self.view.addGestureRecognizer(swipeRight)
-
+        
+        let swipeUp = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))
+        swipeUp.direction = .up
+        self.view.addGestureRecognizer(swipeUp)
+        
+        let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))
+        swipeDown.direction = .down
+        self.view.addGestureRecognizer(swipeDown)
+        
         // Setup Buttons
         backBtn = UIButton()
         backBtn.setImage(UIImage(named: "Left")?.withRenderingMode(.alwaysTemplate), for: .normal)
@@ -205,7 +205,7 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
         let faultsButtonHeight = faultsButton.customView?.heightAnchor.constraint(equalToConstant: 30)
         faultsButtonHeight?.isActive = true
         faultsButton.isEnabled = false
-
+        
         dataBtn = UIButton()
         dataBtn.setImage(UIImage(named: "Chart")?.withRenderingMode(.alwaysTemplate), for: .normal)
         dataBtn.addTarget(self, action: #selector(dataButtonTapped), for: .touchUpInside)
@@ -214,7 +214,7 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
         dataButtonWidth?.isActive = true
         let dataButtonHeight = dataButton.customView?.heightAnchor.constraint(equalToConstant: 30)
         dataButtonHeight?.isActive = true
-
+        
         menuBtn = UIButton()
         menuBtn.setImage(UIImage(named: "Menu")?.withRenderingMode(.alwaysTemplate), for: .normal)
         menuBtn.addTarget(self, action: #selector(menuButtonTapped), for: .touchUpInside)
@@ -223,7 +223,7 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
         menuButtonWidth?.isActive = true
         let menuButtonHeight = menuButton.customView?.heightAnchor.constraint(equalToConstant: 30)
         menuButtonHeight?.isActive = true
-
+        
         let forwardBtn = UIButton()
         forwardBtn.setImage(UIImage(named: "Right")?.withRenderingMode(.alwaysTemplate), for: .normal)
         forwardBtn.addTarget(self, action: #selector(rightScreen), for: .touchUpInside)
@@ -271,95 +271,395 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
             }))
             self.present(alert, animated: true, completion: nil)
         }
+        let cellCount = UserDefaults.standard.integer(forKey: "GRIDCOUNT")
+        if ( collectionView!.bounds.width > collectionView!.bounds.height){
+            switch (cellCount){
+            case 1:
+                cellsPerRow = 1
+                rowCount = 1
+            case 2:
+                cellsPerRow = 2
+                rowCount = 1
+            case 4:
+                cellsPerRow = 2
+                rowCount = 2
+            case 8:
+                cellsPerRow = 4
+                rowCount = 2
+            case 12:
+                cellsPerRow = 4
+                rowCount = 3
+            case 15:
+                cellsPerRow = 5
+                rowCount = 3
+            default:
+                cellsPerRow = 5
+                rowCount = 3
+                UserDefaults.standard.set(15, forKey: "GRIDCOUNT")
+            }
+        } else {
+            switch (cellCount){
+            case 1:
+                cellsPerRow = 1
+                rowCount = 1
+            case 2:
+                cellsPerRow = 1
+                rowCount = 2
+            case 4:
+                cellsPerRow = 1
+                rowCount = 4
+            case 8:
+                cellsPerRow = 2
+                rowCount = 4
+            case 12:
+                cellsPerRow = 3
+                rowCount = 4
+            case 15:
+                cellsPerRow = 3
+                rowCount = 5
+            default:
+                cellsPerRow = 3
+                rowCount = 5
+                UserDefaults.standard.set(15, forKey: "GRIDCOUNT")
+            }
+        }
+        if #available(iOS 11.0, *) {
+            collectionView?.contentInsetAdjustmentBehavior = .always
+        } else {
+            // Fallback on earlier versions
+        }
+        //self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
     }
     
-    func defaultsChanged(notification:NSNotification){
-        print("defaultsChanged")
-        if let defaults = notification.object as? UserDefaults {
-            if defaults.bool(forKey: "nightmode_lastSet") != defaults.bool(forKey: "nightmode_preference"){
-                UserDefaults.standard.set(defaults.bool(forKey: "nightmode_preference"), forKey: "nightmode_lastSet")
-                // quit app
-                exit(0)
-            }
-            if defaults.bool(forKey: "motorcycle_data_lastSet") != defaults.bool(forKey: "motorcycle_data_preference"){
-                UserDefaults.standard.set(defaults.bool(forKey: "motorcycle_data_preference"), forKey: "motorcycle_data_lastSet")
-                // quit app
-                exit(0)
-            }
-            if UserDefaults.standard.bool(forKey: "display_brightness_preference") {
-                UIScreen.main.brightness = CGFloat(1.0)
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        updateCollectionViewLayout(with: size)
+        super.viewWillTransition(to: size, with: coordinator)
+    }
+    
+    private func updateCollectionViewLayoutWOSize() {
+        if let layout = collectionView!.collectionViewLayout as? UICollectionViewFlowLayout {
+            var cellCount = UserDefaults.standard.integer(forKey: "GRIDCOUNT");
+            var height:CGFloat
+            var width:CGFloat
+            var widthMarginsAndInsets:CGFloat
+            var heightMarginsAndInsets:CGFloat
+            if #available(iOS 11.0, *) {
+                widthMarginsAndInsets = inset * 2 + collectionView!.safeAreaInsets.left + collectionView!.safeAreaInsets.right + minimumInteritemSpacing * CGFloat(cellsPerRow - 1)
+                heightMarginsAndInsets = inset * 2 + collectionView!.safeAreaInsets.top + collectionView!.safeAreaInsets.bottom + minimumInteritemSpacing * CGFloat(rowCount - 1)
             } else {
-                UIScreen.main.brightness = CGFloat(UserDefaults.standard.float(forKey: "systemBrightness"))
+                // Fallback on earlier versions
+                widthMarginsAndInsets = inset * 2 + collectionView!.layoutMargins.left + collectionView!.layoutMargins.right + minimumInteritemSpacing * CGFloat(cellsPerRow - 1)
+                heightMarginsAndInsets = inset * 2 + (collectionView?.layoutMargins.top)! + collectionView!.layoutMargins.bottom + minimumInteritemSpacing * CGFloat(rowCount - 1)
             }
             
-            if !UserDefaults.standard.bool(forKey: "debug_logging_preference") {
-                print("Delete dbg file")
-                // Get the documents folder url
-                let documentDirectory = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
-                // Destination url for the log file to be saved
-                let fileURL = documentDirectory.appendingPathComponent("dbg")
-                do {
-                    try FileManager.default.removeItem(at: fileURL)
-                } catch let error as NSError {
-                    print("Error: \(error.domain)")
+            if ( self.view.bounds.width > self.view.bounds.height){
+                switch (cellCount){
+                case 1:
+                    height = (self.view.bounds.size.height - (heightMarginsAndInsets))
+                    width = (self.view.bounds.width - widthMarginsAndInsets)
+                case 2:
+                    height = (self.view.bounds.height - (heightMarginsAndInsets))
+                    width = ((self.view.bounds.width - widthMarginsAndInsets) / CGFloat(2)).rounded(.down)
+                case 4:
+                    height = ((self.view.bounds.height - (heightMarginsAndInsets)) / CGFloat(2)).rounded(.down)
+                    width = ((self.view.bounds.width - widthMarginsAndInsets) / CGFloat(2)).rounded(.down)
+                    
+                case 8:
+                    height = ((self.view.bounds.height - (heightMarginsAndInsets)) / CGFloat(2)).rounded(.down)
+                    width = ((self.view.bounds.width - (widthMarginsAndInsets * 2)) / CGFloat(4)).rounded(.down)
+                case 12:
+                    height = ((self.view.bounds.height - (heightMarginsAndInsets)) / CGFloat(3)).rounded(.down)
+                    width = ((self.view.bounds.width - (widthMarginsAndInsets * 2)) / CGFloat(4)).rounded(.down)
+                case 15:
+                    height = ((self.view.bounds.height - (heightMarginsAndInsets)) / CGFloat(3)).rounded(.down)
+                    width = ((self.view.bounds.width - (widthMarginsAndInsets * 2)) / CGFloat(5)).rounded(.down)
+                default:
+                    cellCount = 15
+                    UserDefaults.standard.set(15, forKey: "GRIDCOUNT")
+                    height = ((self.view.bounds.height - (heightMarginsAndInsets)) / CGFloat(3)).rounded(.down)
+                    width = ((self.view.bounds.width - (widthMarginsAndInsets * 2)) / CGFloat(5)).rounded(.down)
+                }
+            } else {
+                switch (cellCount){
+                case 1:
+                    height = (self.view.bounds.height - (heightMarginsAndInsets))
+                    width = (self.view.bounds.width - widthMarginsAndInsets)
+                case 2:
+                    height = ((self.view.bounds.height - (heightMarginsAndInsets)) / CGFloat(2)).rounded(.down)
+                    width = (self.view.bounds.width - widthMarginsAndInsets)
+                case 4:
+                    height = ((self.view.bounds.height - (heightMarginsAndInsets)) / CGFloat(4)).rounded(.down)
+                    width = (self.view.bounds.width - widthMarginsAndInsets)
+                case 8:
+                    height = ((self.view.bounds.height - (heightMarginsAndInsets)) / CGFloat(4)).rounded(.down)
+                    width = ((self.view.bounds.width - widthMarginsAndInsets) / CGFloat(2)).rounded(.down)
+                case 12:
+                    height = ((self.view.bounds.height - (heightMarginsAndInsets)) / CGFloat(4)).rounded(.down)
+                    width = ((self.view.bounds.width - widthMarginsAndInsets) / CGFloat(3)).rounded(.down)
+                case 15:
+                    height = ((self.view.bounds.height - (heightMarginsAndInsets)) / CGFloat(5)).rounded(.down)
+                    width = ((self.view.bounds.width - widthMarginsAndInsets) / CGFloat(3)).rounded(.down)
+                default:
+                    cellCount = 15
+                    UserDefaults.standard.set(15, forKey: "GRIDCOUNT")
+                    height = ((self.view.bounds.height - (heightMarginsAndInsets)) / CGFloat(5)).rounded(.down)
+                    width = ((self.view.bounds.width - widthMarginsAndInsets) / CGFloat(3)).rounded(.down)
                 }
             }
+            let cellSize = CGSize(width: width, height: height)
+            layout.itemSize = cellSize
+            layout.invalidateLayout()
         }
     }
     
-    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        
-        //displaying the ios local notification when app is in foreground
-        completionHandler([.alert, .badge, .sound])
+    private func updateCollectionViewLayout(with size: CGSize) {
+        if let layout = collectionView!.collectionViewLayout as? UICollectionViewFlowLayout {
+            var cellCount = UserDefaults.standard.integer(forKey: "GRIDCOUNT");
+            var height:CGFloat
+            var width:CGFloat
+            var widthMarginsAndInsets:CGFloat
+            var heightMarginsAndInsets:CGFloat
+            if #available(iOS 11.0, *) {
+                widthMarginsAndInsets = inset * 2 + collectionView!.safeAreaInsets.left + collectionView!.safeAreaInsets.right + minimumInteritemSpacing * CGFloat(cellsPerRow - 1)
+                heightMarginsAndInsets = inset * 2 + collectionView!.safeAreaInsets.top + collectionView!.safeAreaInsets.bottom + minimumInteritemSpacing * CGFloat(rowCount - 1)
+            } else {
+                // Fallback on earlier versions
+                widthMarginsAndInsets = inset * 2 + collectionView!.layoutMargins.left + collectionView!.layoutMargins.right + minimumInteritemSpacing * CGFloat(cellsPerRow - 1)
+                heightMarginsAndInsets = inset * 2 + (collectionView?.layoutMargins.top)! + collectionView!.layoutMargins.bottom + minimumInteritemSpacing * CGFloat(rowCount - 1)
+            }
+            if ( size.width > size.height){
+                switch (cellCount){
+                case 1:
+                    height = (size.height - (heightMarginsAndInsets))
+                    width = (size.width - widthMarginsAndInsets)
+                case 2:
+                    height = (size.height - (heightMarginsAndInsets))
+                    width = ((size.width - widthMarginsAndInsets) / CGFloat(2)).rounded(.down)
+                case 4:
+                    height = ((size.height - (heightMarginsAndInsets)) / CGFloat(2)).rounded(.down)
+                    width = ((size.width - widthMarginsAndInsets) / CGFloat(2)).rounded(.down)
+                    
+                case 8:
+                    height = ((size.height - (heightMarginsAndInsets)) / CGFloat(2)).rounded(.down)
+                    width = ((size.width - (widthMarginsAndInsets * 2)) / CGFloat(4)).rounded(.down)
+                case 12:
+                    height = ((size.height - (heightMarginsAndInsets)) / CGFloat(3)).rounded(.down)
+                    width = ((size.width - (widthMarginsAndInsets * 2)) / CGFloat(4)).rounded(.down)
+                case 15:
+                    height = ((size.height - (heightMarginsAndInsets)) / CGFloat(3)).rounded(.down)
+                    width = ((size.width - (widthMarginsAndInsets * 2)) / CGFloat(5)).rounded(.down)
+                default:
+                    cellCount = 15
+                    UserDefaults.standard.set(15, forKey: "GRIDCOUNT")
+                    height = ((size.height - (heightMarginsAndInsets)) / CGFloat(3)).rounded(.down)
+                    width = ((size.width - (widthMarginsAndInsets * 2)) / CGFloat(5)).rounded(.down)
+                }
+            } else {
+                switch (cellCount){
+                case 1:
+                    height = (size.height - (heightMarginsAndInsets))
+                    width = (size.width - widthMarginsAndInsets)
+                case 2:
+                    height = ((size.height - (heightMarginsAndInsets)) / CGFloat(2)).rounded(.down)
+                    width = (size.width - widthMarginsAndInsets)
+                case 4:
+                    height = ((size.height - (heightMarginsAndInsets)) / CGFloat(4)).rounded(.down)
+                    width = (size.width - widthMarginsAndInsets)
+                case 8:
+                    height = ((size.height - (heightMarginsAndInsets)) / CGFloat(4)).rounded(.down)
+                    width = ((size.width - widthMarginsAndInsets) / CGFloat(2)).rounded(.down)
+                case 12:
+                    height = ((size.height - (heightMarginsAndInsets)) / CGFloat(4)).rounded(.down)
+                    width = ((size.width - widthMarginsAndInsets) / CGFloat(3)).rounded(.down)
+                case 15:
+                    height = ((size.height - (heightMarginsAndInsets)) / CGFloat(5)).rounded(.down)
+                    width = ((size.width - widthMarginsAndInsets) / CGFloat(3)).rounded(.down)
+                default:
+                    cellCount = 15
+                    UserDefaults.standard.set(15, forKey: "GRIDCOUNT")
+                    height = ((size.height - (heightMarginsAndInsets)) / CGFloat(5)).rounded(.down)
+                    width = ((size.width - widthMarginsAndInsets) / CGFloat(3)).rounded(.down)
+                }
+            }
+            let cellSize = CGSize(width: width, height: height)
+            layout.itemSize = cellSize
+            layout.invalidateLayout()
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: inset, left: inset, bottom: inset, right: inset)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return minimumLineSpacing
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return minimumInteritemSpacing
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize
+    {
+        var height:CGFloat
+        var width:CGFloat
+        var widthMarginsAndInsets:CGFloat
+        var heightMarginsAndInsets:CGFloat
+        if #available(iOS 11.0, *) {
+            widthMarginsAndInsets = inset * 2 + collectionView.safeAreaInsets.left + collectionView.safeAreaInsets.right + minimumInteritemSpacing * CGFloat(cellsPerRow - 1)
+            heightMarginsAndInsets = inset * 2 + collectionView.safeAreaInsets.top + collectionView.safeAreaInsets.bottom + minimumInteritemSpacing * CGFloat(rowCount - 1)
+        } else {
+            // Fallback on earlier versions
+            widthMarginsAndInsets = inset * 2 + collectionView.layoutMargins.left + collectionView.layoutMargins.right + minimumInteritemSpacing * CGFloat(cellsPerRow - 1)
+            heightMarginsAndInsets = inset * 2 + collectionView.layoutMargins.top + collectionView.layoutMargins.bottom + minimumInteritemSpacing * CGFloat(rowCount - 1)
+        }
+        var cellCount = UserDefaults.standard.integer(forKey: "GRIDCOUNT");
+        if ( mainUIView.bounds.width > mainUIView.bounds.height){
+            switch (cellCount){
+            case 1:
+                height = (self.view.bounds.size.height - (heightMarginsAndInsets))
+                width = (self.view.bounds.size.width - widthMarginsAndInsets)
+            case 2:
+                height = (self.view.bounds.size.height - (heightMarginsAndInsets))
+                width = ((self.view.bounds.size.width - widthMarginsAndInsets) / CGFloat(2)).rounded(.down)
+            case 4:
+                height = ((self.view.bounds.size.height - (heightMarginsAndInsets)) / CGFloat(2)).rounded(.down)
+                width = ((self.view.bounds.size.width - widthMarginsAndInsets) / CGFloat(2)).rounded(.down)
+                
+            case 8:
+                height = ((self.view.bounds.size.height - (heightMarginsAndInsets)) / CGFloat(2)).rounded(.down)
+                width = ((self.view.bounds.size.width - (widthMarginsAndInsets * 2)) / CGFloat(4)).rounded(.down)
+            case 12:
+                height = ((self.view.bounds.size.height - (heightMarginsAndInsets)) / CGFloat(3)).rounded(.down)
+                width = ((self.view.bounds.size.width - (widthMarginsAndInsets * 2)) / CGFloat(4)).rounded(.down)
+            case 15:
+                height = ((self.view.bounds.size.height - (heightMarginsAndInsets)) / CGFloat(3)).rounded(.down)
+                width = ((self.view.bounds.size.width - (widthMarginsAndInsets * 2)) / CGFloat(5)).rounded(.down)
+            default:
+                cellCount = 15
+                UserDefaults.standard.set(15, forKey: "GRIDCOUNT")
+                height = ((self.view.bounds.size.height - (heightMarginsAndInsets)) / CGFloat(3)).rounded(.down)
+                width = ((self.view.bounds.size.width - (widthMarginsAndInsets * 2)) / CGFloat(5)).rounded(.down)
+            }
+        } else {
+            switch (cellCount){
+            case 1:
+                height = (self.view.bounds.size.height - (heightMarginsAndInsets))
+                width = (self.view.bounds.size.width - widthMarginsAndInsets)
+            case 2:
+                height = ((self.view.bounds.size.height - (heightMarginsAndInsets)) / CGFloat(2)).rounded(.down)
+                width = (self.view.bounds.size.width - widthMarginsAndInsets)
+            case 4:
+                height = ((self.view.bounds.size.height - (heightMarginsAndInsets)) / CGFloat(4)).rounded(.down)
+                width = (self.view.bounds.size.width - widthMarginsAndInsets)
+            case 8:
+                height = ((self.view.bounds.size.height - (heightMarginsAndInsets)) / CGFloat(4)).rounded(.down)
+                width = ((self.view.bounds.size.width - widthMarginsAndInsets) / CGFloat(2)).rounded(.down)
+            case 12:
+                height = ((self.view.bounds.size.height - (heightMarginsAndInsets)) / CGFloat(4)).rounded(.down)
+                width = ((self.view.bounds.size.width - widthMarginsAndInsets) / CGFloat(3)).rounded(.down)
+            case 15:
+                height = ((self.view.bounds.size.height - (heightMarginsAndInsets)) / CGFloat(5)).rounded(.down)
+                width = ((self.view.bounds.size.width - widthMarginsAndInsets) / CGFloat(3)).rounded(.down)
+            default:
+                cellCount = 15
+                UserDefaults.standard.set(15, forKey: "GRIDCOUNT")
+                height = ((self.view.bounds.size.height - (heightMarginsAndInsets)) / CGFloat(5)).rounded(.down)
+                width = ((self.view.bounds.size.width - widthMarginsAndInsets) / CGFloat(3)).rounded(.down)
+            }
+        }
+        let cellSize = CGSize(width: width, height: height)
+        return cellSize
     }
 
-    func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
-        if gesture.direction == UISwipeGestureRecognizerDirection.right {
-            performSegue(withIdentifier: "motorcycleToTaskGrid", sender: [])
+    /*
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using [segue destinationViewController].
+        // Pass the selected object to the new view controller.
+    }
+    */
+
+    // MARK: UICollectionViewDataSource
+/*
+    override func numberOfSections(in collectionView: UICollectionView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
+        
+        return 1
+    }
+ */
+
+
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        // #warning Incomplete implementation, return the number of items
+        var cellCount = UserDefaults.standard.integer(forKey: "GRIDCOUNT")
+        switch (cellCount){
+        case 1:
+            print("cellCount:1")
+        case 2:
+            print("cellCount:2")
+        case 4:
+            print("cellCount:4")
+        case 8:
+            print("cellCount:8")
+        case 12:
+            print("cellCount:12")
+        case 15:
+            print("cellCount:15")
+        default:
+            print("cellCount:default(15)")
+            cellCount = 15
+            UserDefaults.standard.set(15, forKey: "GRIDCOUNT")
         }
-        else if gesture.direction == UISwipeGestureRecognizerDirection.left {
-            performSegue(withIdentifier: "motorcycleToMusic", sender: [])
+        return cellCount
+    }
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! MainCollectionViewCell
+        
+        cell.displayContent(header: "header", value: "value")
+        if UserDefaults.standard.bool(forKey: "nightmode_preference") {
+            cell.setColors(backgroundColor: .black, textColor: .white)
+        } else {
+            cell.setColors(backgroundColor: .white, textColor: .black)
         }
-    }
+        // Configure the cell
     
-    override var keyCommands: [UIKeyCommand]? {
-        
-        let commands = [
-            UIKeyCommand(input: UIKeyInputLeftArrow, modifierFlags:[], action: #selector(leftScreen), discoverabilityTitle: "Go left"),
-            UIKeyCommand(input: UIKeyInputRightArrow, modifierFlags:[], action: #selector(rightScreen), discoverabilityTitle: "Go right")
-        ]
-        return commands
+        return cell
     }
-    
-    @objc func leftScreen() {
-        // your code here
-        performSegue(withIdentifier: "motorcycleToTaskGrid", sender: [])
+
+    // MARK: UICollectionViewDelegate
+
+    /*
+    // Uncomment this method to specify if the specified item should be highlighted during tracking
+    override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
+        return true
     }
-    
-    @objc func rightScreen() {
-        // your code here
-        performSegue(withIdentifier: "motorcycleToMusic", sender: [])
+    */
+
+    /*
+    // Uncomment this method to specify if the specified item should be selected
+    override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
+        return true
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    */
+
+    /*
+    // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
+    override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
+        return false
     }
-    
-    @IBAction func unwindToContainerVC(segue: UIStoryboardSegue) {
-        
+
+    override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
+        return false
     }
+
+    override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
     
-    func registerSettingsBundle(){
-        let appDefaults = [String:AnyObject]()
-        UserDefaults.standard.register(defaults: appDefaults)
     }
-    
-    // MARK: - Handling User Interaction
-    
-    @IBAction func prepareForUnwind(segue: UIStoryboardSegue) {
-        
-    }
+    */
     
     func faultsButtonTapped() {
         performSegue(withIdentifier: "motorcycleToFaults", sender: [])
@@ -393,12 +693,12 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
             //print("didDismissHandler")
         }
         switch (menuSelected) {
-            case 1:
-                self.popover.show(tableView, fromView: self.dataBtn)
-            case 2:
-                self.popover.show(tableView, fromView: self.menuBtn)
-            default:
-                print("Invalid Menu ID")
+        case 1:
+            self.popover.show(tableView, fromView: self.dataBtn)
+        case 2:
+            self.popover.show(tableView, fromView: self.menuBtn)
+        default:
+            print("Invalid Menu ID")
         }
         
     }
@@ -492,122 +792,413 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
         }
         self.navigationItem.leftBarButtonItems = [backButton, disconnectButton, faultsButton]
         
-        if !UserDefaults.standard.bool(forKey: "motorcycle_data_preference") && frontPressureLabel != nil {
+        if !UserDefaults.standard.bool(forKey: "motorcycle_data_preference"){
             // Update main display
-            var temperatureUnit = "C"
-            var distanceUnit = "km"
-            var pressureUnit = "psi"
-            
-            // Tire Pressure
-            if motorcycleData.frontTirePressure != nil {
-                var frontPressure:Double = motorcycleData.frontTirePressure!
-                switch UserDefaults.standard.integer(forKey: "pressure_unit_preference"){
-                case 0:
-                    pressureUnit = "bar"
-                case 1:
-                    pressureUnit = "kPa"
-                    frontPressure = barTokPa(frontPressure)
-                case 2:
-                    pressureUnit = "kg-f"
-                    frontPressure = barTokgf(frontPressure)
-                case 3:
-                    pressureUnit = "psi"
-                    frontPressure = barToPsi(frontPressure)
-                default:
-                    print("Unknown pressure unit setting")
-                }
-                frontPressureLabel.text = "\(frontPressure.rounded(toPlaces: 1)) \(pressureUnit)"
-            } else {
-                frontPressureLabel.text = NSLocalizedString("blank_field", comment: "")
+            let cellCount = UserDefaults.standard.integer(forKey: "GRIDCOUNT")
+            switch (cellCount){
+            case 15:
+                let cell1 = UserDefaults.standard.integer(forKey: "grid_one_preference")
+                let cell2 = UserDefaults.standard.integer(forKey: "grid_two_preference")
+                let cell3 = UserDefaults.standard.integer(forKey: "grid_three_preference")
+                let cell4 = UserDefaults.standard.integer(forKey: "grid_four_preference")
+                let cell5 = UserDefaults.standard.integer(forKey: "grid_five_preference")
+                let cell6 = UserDefaults.standard.integer(forKey: "grid_six_preference")
+                let cell7 = UserDefaults.standard.integer(forKey: "grid_seven_preference")
+                let cell8 = UserDefaults.standard.integer(forKey: "grid_eight_preference")
+                let cell9 = UserDefaults.standard.integer(forKey: "grid_nine_preference")
+                let cell10 = UserDefaults.standard.integer(forKey: "grid_ten_preference")
+                let cell11 = UserDefaults.standard.integer(forKey: "grid_eleven_preference")
+                let cell12 = UserDefaults.standard.integer(forKey: "grid_twelve_preference")
+                let cell13 = UserDefaults.standard.integer(forKey: "grid_thirteen_preference")
+                let cell14 = UserDefaults.standard.integer(forKey: "grid_fourteen_preference")
+                let cell15 = UserDefaults.standard.integer(forKey: "grid_fifteen_preference")
+                setCellText(1, dataPoint: cell1)
+                setCellText(2, dataPoint: cell2)
+                setCellText(3, dataPoint: cell3)
+                setCellText(4, dataPoint: cell4)
+                setCellText(5, dataPoint: cell5)
+                setCellText(6, dataPoint: cell6)
+                setCellText(7, dataPoint: cell7)
+                setCellText(8, dataPoint: cell8)
+                setCellText(9, dataPoint: cell9)
+                setCellText(10, dataPoint: cell10)
+                setCellText(11, dataPoint: cell11)
+                setCellText(12, dataPoint: cell12)
+                setCellText(13, dataPoint: cell13)
+                setCellText(14, dataPoint: cell14)
+                setCellText(15, dataPoint: cell15)
+            case 12:
+                let cell1 = UserDefaults.standard.integer(forKey: "grid_one_preference")
+                let cell2 = UserDefaults.standard.integer(forKey: "grid_two_preference")
+                let cell3 = UserDefaults.standard.integer(forKey: "grid_three_preference")
+                let cell4 = UserDefaults.standard.integer(forKey: "grid_four_preference")
+                let cell5 = UserDefaults.standard.integer(forKey: "grid_five_preference")
+                let cell6 = UserDefaults.standard.integer(forKey: "grid_six_preference")
+                let cell7 = UserDefaults.standard.integer(forKey: "grid_seven_preference")
+                let cell8 = UserDefaults.standard.integer(forKey: "grid_eight_preference")
+                let cell9 = UserDefaults.standard.integer(forKey: "grid_nine_preference")
+                let cell10 = UserDefaults.standard.integer(forKey: "grid_ten_preference")
+                let cell11 = UserDefaults.standard.integer(forKey: "grid_eleven_preference")
+                let cell12 = UserDefaults.standard.integer(forKey: "grid_twelve_preference")
+                setCellText(1, dataPoint: cell1)
+                setCellText(2, dataPoint: cell2)
+                setCellText(3, dataPoint: cell3)
+                setCellText(4, dataPoint: cell4)
+                setCellText(5, dataPoint: cell5)
+                setCellText(6, dataPoint: cell6)
+                setCellText(7, dataPoint: cell7)
+                setCellText(8, dataPoint: cell8)
+                setCellText(9, dataPoint: cell9)
+                setCellText(10, dataPoint: cell10)
+                setCellText(11, dataPoint: cell11)
+                setCellText(12, dataPoint: cell12)
+            case 8:
+                let cell1 = UserDefaults.standard.integer(forKey: "grid_one_preference")
+                let cell2 = UserDefaults.standard.integer(forKey: "grid_two_preference")
+                let cell3 = UserDefaults.standard.integer(forKey: "grid_three_preference")
+                let cell4 = UserDefaults.standard.integer(forKey: "grid_four_preference")
+                let cell5 = UserDefaults.standard.integer(forKey: "grid_five_preference")
+                let cell6 = UserDefaults.standard.integer(forKey: "grid_six_preference")
+                let cell7 = UserDefaults.standard.integer(forKey: "grid_seven_preference")
+                let cell8 = UserDefaults.standard.integer(forKey: "grid_eight_preference")
+                setCellText(1, dataPoint: cell1)
+                setCellText(2, dataPoint: cell2)
+                setCellText(3, dataPoint: cell3)
+                setCellText(4, dataPoint: cell4)
+                setCellText(5, dataPoint: cell5)
+                setCellText(6, dataPoint: cell6)
+                setCellText(7, dataPoint: cell7)
+                setCellText(8, dataPoint: cell8)
+            case 4:
+                let cell1 = UserDefaults.standard.integer(forKey: "grid_one_preference")
+                let cell2 = UserDefaults.standard.integer(forKey: "grid_two_preference")
+                let cell3 = UserDefaults.standard.integer(forKey: "grid_three_preference")
+                let cell4 = UserDefaults.standard.integer(forKey: "grid_four_preference")
+                setCellText(1, dataPoint: cell1)
+                setCellText(2, dataPoint: cell2)
+                setCellText(3, dataPoint: cell3)
+                setCellText(4, dataPoint: cell4)
+            case 2:
+                let cell1 = UserDefaults.standard.integer(forKey: "grid_one_preference")
+                let cell2 = UserDefaults.standard.integer(forKey: "grid_two_preference")
+                setCellText(1, dataPoint: cell1)
+                setCellText(2, dataPoint: cell2)
+            case 1:
+                let cell1 = UserDefaults.standard.integer(forKey: "grid_one_preference")
+                setCellText(1, dataPoint: cell1)
+            default:
+                let cell1 = UserDefaults.standard.integer(forKey: "grid_one_preference")
+                let cell2 = UserDefaults.standard.integer(forKey: "grid_two_preference")
+                let cell3 = UserDefaults.standard.integer(forKey: "grid_three_preference")
+                let cell4 = UserDefaults.standard.integer(forKey: "grid_four_preference")
+                let cell5 = UserDefaults.standard.integer(forKey: "grid_five_preference")
+                let cell6 = UserDefaults.standard.integer(forKey: "grid_six_preference")
+                let cell7 = UserDefaults.standard.integer(forKey: "grid_seven_preference")
+                let cell8 = UserDefaults.standard.integer(forKey: "grid_eight_preference")
+                let cell9 = UserDefaults.standard.integer(forKey: "grid_nine_preference")
+                let cell10 = UserDefaults.standard.integer(forKey: "grid_ten_preference")
+                let cell11 = UserDefaults.standard.integer(forKey: "grid_eleven_preference")
+                let cell12 = UserDefaults.standard.integer(forKey: "grid_twelve_preference")
+                let cell13 = UserDefaults.standard.integer(forKey: "grid_thirteen_preference")
+                let cell14 = UserDefaults.standard.integer(forKey: "grid_fourteen_preference")
+                let cell15 = UserDefaults.standard.integer(forKey: "grid_fifteen_preference")
+                setCellText(1, dataPoint: cell1)
+                setCellText(2, dataPoint: cell2)
+                setCellText(3, dataPoint: cell3)
+                setCellText(4, dataPoint: cell4)
+                setCellText(5, dataPoint: cell5)
+                setCellText(6, dataPoint: cell6)
+                setCellText(7, dataPoint: cell7)
+                setCellText(8, dataPoint: cell8)
+                setCellText(9, dataPoint: cell9)
+                setCellText(10, dataPoint: cell10)
+                setCellText(11, dataPoint: cell11)
+                setCellText(12, dataPoint: cell12)
+                setCellText(13, dataPoint: cell13)
+                setCellText(14, dataPoint: cell14)
+                setCellText(15, dataPoint: cell15)
             }
             
-            if motorcycleData.rearTirePressure != nil {
-                var rearPressure:Double = motorcycleData.rearTirePressure!
-                switch UserDefaults.standard.integer(forKey: "pressure_unit_preference"){
-                case 0:
-                    pressureUnit = "bar"
-                case 1:
-                    pressureUnit = "kPa"
-                    rearPressure = barTokPa(rearPressure)
-                case 2:
-                    pressureUnit = "kg-f"
-                    rearPressure = barTokgf(rearPressure)
-                case 3:
-                    pressureUnit = "psi"
-                    rearPressure = barToPsi(rearPressure)
-                default:
-                    print("Unknown pressure unit setting")
-                }
-                rearPressureLabel.text = "\(rearPressure.rounded(toPlaces: 1)) \(pressureUnit)"
-            } else {
-                rearPressureLabel.text = NSLocalizedString("blank_field", comment: "")
-            }
             
+        }
+    }
+    
+    func setCellText(_ cellNumber: Int, dataPoint: Int){
+        var temperatureUnit = "C"
+        var distanceUnit = "km"
+        var distanceTimeUnit = "kmh"
+        var consumptionUnit = "L/100"
+        var pressureUnit = "psi"
+        // Pressure Unit
+        switch UserDefaults.standard.integer(forKey: "pressure_unit_preference"){
+        case 0:
+            pressureUnit = "bar"
+        case 1:
+            pressureUnit = "kPa"
+        case 2:
+            pressureUnit = "kg-f"
+        case 3:
+            pressureUnit = "psi"
+        default:
+            print("Unknown pressure unit setting")
+        }
+        if UserDefaults.standard.integer(forKey: "temperature_unit_preference") == 1 {
+            temperatureUnit = "F"
+        }
+        if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
+            distanceUnit = "mi"
+            distanceTimeUnit = "mph"
+            consumptionUnit = "mpg"
+        }
+        
+        var label:String = ""
+        var value:String = NSLocalizedString("blank_field", comment: "")
+        
+        switch (dataPoint){
+        case 0:
             // Gear
+            label = NSLocalizedString("gear_header", comment: "")
             if motorcycleData.gear != nil {
-                gearLabel.text = motorcycleData.getgear()
+                value = motorcycleData.getgear()
             } else {
-                gearLabel.text = NSLocalizedString("blank_field", comment: "")
+                value = NSLocalizedString("blank_field", comment: "")
             }
-            
+        case 1:
             // Engine Temperature
+            label = NSLocalizedString("enginetemp_header", comment: "") + " (" + temperatureUnit + ")"
             if motorcycleData.engineTemperature != nil {
                 var engineTemp:Double = motorcycleData.engineTemperature!
                 if UserDefaults.standard.integer(forKey: "temperature_unit_preference") == 1 {
                     engineTemp = celciusToFahrenheit(engineTemp)
-                    temperatureUnit = "F"
                 }
-                engineTempLabel.text = "\(Int(engineTemp)) \(temperatureUnit)"
+                value = "\(Int(engineTemp))"
             } else {
-                engineTempLabel.text = NSLocalizedString("blank_field", comment: "")
+                value = NSLocalizedString("blank_field", comment: "")
             }
-            
+        case 2:
             // Ambient Temperature
+            label = NSLocalizedString("ambienttemp_header", comment: "") + " (" + temperatureUnit + ")"
             if motorcycleData.ambientTemperature != nil {
                 var ambientTemp:Double = motorcycleData.ambientTemperature!
                 if UserDefaults.standard.integer(forKey: "temperature_unit_preference") == 1 {
                     ambientTemp = celciusToFahrenheit(ambientTemp)
-                    temperatureUnit = "F"
                 }
-                ambientTempLabel.text = "\(Int(ambientTemp)) \(temperatureUnit)"
+                value = "\(Int(ambientTemp))"
             } else {
-                ambientTempLabel.text = NSLocalizedString("blank_field", comment: "")
+                value = NSLocalizedString("blank_field", comment: "")
             }
-            
+        case 3:
+            // Front Tire Pressure
+            label = NSLocalizedString("frontpressure_header", comment: "") + " (" + pressureUnit + ")"
+            if motorcycleData.frontTirePressure != nil {
+                var frontPressure:Double = motorcycleData.frontTirePressure!
+                switch UserDefaults.standard.integer(forKey: "pressure_unit_preference"){
+                case 1:
+                    frontPressure = barTokPa(frontPressure)
+                case 2:
+                    frontPressure = barTokgf(frontPressure)
+                case 3:
+                    frontPressure = barToPsi(frontPressure)
+                default:
+                    print("Unknown pressure unit setting")
+                }
+                value = "\(frontPressure.rounded(toPlaces: 1))"
+            } else {
+                value = NSLocalizedString("blank_field", comment: "")
+            }
+        case 4:
+            // Rear Tire Pressure
+            label = NSLocalizedString("rearpressure_header", comment: "") + " (" + pressureUnit + ")"
+            if motorcycleData.rearTirePressure != nil {
+                var rearPressure:Double = motorcycleData.rearTirePressure!
+                switch UserDefaults.standard.integer(forKey: "pressure_unit_preference"){
+                case 1:
+                    rearPressure = barTokPa(rearPressure)
+                case 2:
+                    rearPressure = barTokgf(rearPressure)
+                case 3:
+                    rearPressure = barToPsi(rearPressure)
+                default:
+                    print("Unknown pressure unit setting")
+                }
+                value = "\(rearPressure.rounded(toPlaces: 1))"
+            } else {
+                value = NSLocalizedString("blank_field", comment: "")
+            }
+        case 5:
             // Odometer
+            label = NSLocalizedString("odometer_header", comment: "") + " (" + distanceUnit + ")"
             if motorcycleData.odometer != nil {
                 var odometer:Double = motorcycleData.odometer!
                 if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
                     odometer = Double(kmToMiles(Double(odometer)))
-                    distanceUnit = "mi"
                 }
-                odometerLabel.text = "\(Int(odometer)) \(distanceUnit)"
+                value = "\(Int(odometer))"
             } else {
-                odometerLabel.text = NSLocalizedString("blank_field", comment: "")
+                value = NSLocalizedString("blank_field", comment: "")
             }
-            
+        case 6:
+            // Voltage
+            label = NSLocalizedString("voltage_header", comment: "") + " (V)"
+            if motorcycleData.voltage != nil {
+                value = "\(motorcycleData.voltage!)"
+            } else {
+                value = NSLocalizedString("blank_field", comment: "")
+            }
+        case 7:
+            // Trottle
+            label = NSLocalizedString("throttle_header", comment: "") + " (%)"
+            if motorcycleData.throttlePosition != nil {
+                value = "\(motorcycleData.throttlePosition!)"
+            } else {
+                value = NSLocalizedString("blank_field", comment: "")
+            }
+        case 8:
+            // Front Brakes
+            label = NSLocalizedString("frontbrakes_header", comment: "")
+            if motorcycleData.frontBrake != nil {
+                value = "\(motorcycleData.frontBrake!)"
+            } else {
+                value = NSLocalizedString("blank_field", comment: "")
+            }
+        case 9:
+            // Rear Brakes
+            label = NSLocalizedString("rearbrakes_header", comment: "")
+            if motorcycleData.rearBrake != nil {
+                value = "\(motorcycleData.rearBrake!)"
+            } else {
+                value = NSLocalizedString("blank_field", comment: "")
+            }
+        case 10:
+            // Ambient Light
+            label = NSLocalizedString("ambientlight_header", comment: "")
+            if motorcycleData.ambientLight != nil {
+                value = "\(motorcycleData.ambientLight!)"
+            } else {
+                value = NSLocalizedString("blank_field", comment: "")
+            }
+        case 11:
             // Trip 1
+            label = NSLocalizedString("tripone_header", comment: "") + " (" + distanceUnit + ")"
             if motorcycleData.tripOne != nil {
                 var tripOne:Double = motorcycleData.tripOne!
                 if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
                     tripOne = Double(kmToMiles(Double(tripOne)))
-                    distanceUnit = "mi"
                 }
-                tripOneLabel.text = "\(tripOne.rounded(toPlaces: 1)) \(distanceUnit)"
+                value = "\(tripOne.rounded(toPlaces: 1))"
             } else {
-                tripOneLabel.text = NSLocalizedString("blank_field", comment: "")
+                value = NSLocalizedString("blank_field", comment: "")
             }
-            
+        case 12:
             // Trip 2
+            label = NSLocalizedString("triptwo_header", comment: "") + " (" + distanceUnit + ")"
             if motorcycleData.tripTwo != nil {
                 var tripTwo:Double = motorcycleData.gettripTwo()
                 if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
                     tripTwo = Double(kmToMiles(Double(tripTwo)))
-                    distanceUnit = "mi"
                 }
-                tripTwoLabel.text = "\(tripTwo.rounded(toPlaces: 1)) \(distanceUnit)"
+                value = "\(tripTwo.rounded(toPlaces: 1))"
             } else {
-                tripTwoLabel.text = NSLocalizedString("blank_field", comment: "")
+                value = NSLocalizedString("blank_field", comment: "")
+            }
+        case 13:
+            // Trip Auto
+            label = NSLocalizedString("tripauto_header", comment: "") + " (" + distanceUnit + ")"
+            if motorcycleData.tripAuto != nil {
+                var tripAuto:Double = motorcycleData.gettripAuto()
+                if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
+                    tripAuto = Double(kmToMiles(Double(tripAuto)))
+                }
+                value = "\(tripAuto.rounded(toPlaces: 1))"
+            } else {
+                value = NSLocalizedString("blank_field", comment: "")
+            }
+        case 14:
+            // Speed
+            label = NSLocalizedString("speed_header", comment: "") + " (" + distanceTimeUnit + ")"
+            if motorcycleData.speed != nil {
+                let speedValue:Double = motorcycleData.speed!
+                value = "\(speedValue)"
+                if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
+                    value = "\(kmToMiles(speedValue))"
+                }
+            } else {
+                value = NSLocalizedString("blank_field", comment: "")
+            }
+        case 15:
+            //Average Speed
+            label = NSLocalizedString("avgspeed_header", comment: "") + " (" + distanceTimeUnit + ")"
+            if motorcycleData.averageSpeed != nil {
+                let avgSpeedValue:Double = motorcycleData.averageSpeed!
+                value = "\(avgSpeedValue)"
+                if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
+                    value = "\(kmToMiles(avgSpeedValue))"
+                }
+            } else {
+                value = NSLocalizedString("blank_field", comment: "")
+            }
+        case 16:
+            //Current Consumption
+            label = NSLocalizedString("cconsumption_header", comment: "") + " (" + consumptionUnit + ")"
+            if motorcycleData.currentConsumption != nil {
+                let currentConsumptionValue:Double = motorcycleData.currentConsumption!
+                value = "\(currentConsumptionValue)"
+                if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
+                    value = "\(l100ToMpg(currentConsumptionValue).rounded(toPlaces: 1))"
+                }
+            } else {
+                value = NSLocalizedString("blank_field", comment: "")
+            }
+        case 17:
+            //Fuel Economy One
+            label = NSLocalizedString("fueleconomyone_header", comment: "") + " (" + consumptionUnit + ")"
+            if motorcycleData.fuelEconomyOne != nil {
+                let fuelEconomyOneValue:Double = motorcycleData.fuelEconomyOne!
+                value = "\(fuelEconomyOneValue)"
+                if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
+                    value = "\(l100ToMpg(fuelEconomyOneValue).rounded(toPlaces: 1))"
+                }
+            } else {
+                value = NSLocalizedString("blank_field", comment: "")
+            }
+        case 18:
+            //Fuel Economy Two
+            label = NSLocalizedString("fueleconomytwo_header", comment: "") + " (" + consumptionUnit + ")"
+            if motorcycleData.fuelEconomyTwo != nil {
+                let fuelEconomyTwoValue:Double = motorcycleData.fuelEconomyTwo!
+                value = "\(fuelEconomyTwoValue)"
+                if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
+                    value = "\(l100ToMpg(fuelEconomyTwoValue).rounded(toPlaces: 1))"
+                }
+            } else {
+                value = NSLocalizedString("blank_field", comment: "")
+            }
+        case 19:
+            //Fuel Range
+            label = NSLocalizedString("fuelrange_header", comment: "") + " (" + distanceUnit + ")"
+            if motorcycleData.fuelRange != nil {
+                let fuelRangeValue:Double = motorcycleData.fuelRange!
+                value = "\(fuelRangeValue)"
+                if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
+                    value = "\(kmToMiles(fuelRangeValue))"
+                }
+            } else {
+                value = NSLocalizedString("blank_field", comment: "")
+            }
+        case 20:
+            //Shifts
+            label = NSLocalizedString("shifts_header", comment: "")
+            if motorcycleData.shifts != nil {
+                value = "\(motorcycleData.shifts!)"
+            } else {
+                value = NSLocalizedString("blank_field", comment: "")
+            }
+        default:
+            print("Unknown : \(dataPoint)")
+        }
+        if (!busy){
+            if let cell = self.collectionView.cellForItem(at: IndexPath(row: cellNumber - 1, section: 0) as IndexPath) as? MainCollectionViewCell{
+            cell.displayContent(header: label, value: value)
             }
         }
     }
@@ -655,14 +1246,14 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
         let dataLength = data.count / MemoryLayout<UInt8>.size
         var dataArray = [UInt8](repeating: 0, count: dataLength)
         (data as NSData).getBytes(&dataArray, length: dataLength * MemoryLayout<Int16>.size)
-
+        
         //print(messageHexString)
         // Log raw messages
         if UserDefaults.standard.bool(forKey: "debug_logging_preference") {
             /*
-            let message       = "Don´t try to read this text. Top Secret Stuff"
-            let messageData   = Array(message.utf8)
-            */
+             let message       = "Don´t try to read this text. Top Secret Stuff"
+             let messageData   = Array(message.utf8)
+             */
             let keyData       = Array("wTKkVwtrBbrZKmYj".utf8)
             let ivData        = Array("abcdefghijklmnop".utf8)
             let encryptedData = testCrypt(data:dataArray,   keyData:keyData, ivData:ivData, operation:kCCEncrypt)!
@@ -707,11 +1298,11 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
                 case 0x6:
                     //Front
                     motorcycleData.setfrontBrake(frontBrake: motorcycleData.frontBrake! + 1)
-
+                    
                 case 0x9:
                     //Back
                     motorcycleData.setrearBrake(rearBrake: motorcycleData.rearBrake! + 1)
-
+                    
                 case 0xA:
                     //Both
                     motorcycleData.setfrontBrake(frontBrake: motorcycleData.frontBrake! + 1)
@@ -729,7 +1320,7 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
                 faults.setAbsSelfDiagActive(active: false)
                 faults.setAbsDeactivatedActive(active: false)
                 faults.setAbsErrorActive(active: true)
-
+                
             case 0x3:
                 faults.setAbsSelfDiagActive(active: true)
                 faults.setAbsDeactivatedActive(active: false)
@@ -744,32 +1335,32 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
                 faults.setAbsSelfDiagActive(active: false)
                 faults.setAbsDeactivatedActive(active: false)
                 faults.setAbsErrorActive(active: true)
-
+                
             case 0x7:
                 faults.setAbsSelfDiagActive(active: false)
                 faults.setAbsDeactivatedActive(active: false)
                 faults.setAbsErrorActive(active: true)
-
+                
             case 0x8:
                 faults.setAbsSelfDiagActive(active: false)
                 faults.setAbsDeactivatedActive(active: true)
                 faults.setAbsErrorActive(active: false)
-
+                
             case 0xA:
                 faults.setAbsSelfDiagActive(active: false)
                 faults.setAbsDeactivatedActive(active: false)
                 faults.setAbsErrorActive(active: true)
-
+                
             case 0xB:
                 faults.setAbsSelfDiagActive(active: true)
                 faults.setAbsDeactivatedActive(active: false)
                 faults.setAbsErrorActive(active: false)
-
+                
             case 0xD:
                 faults.setAbsSelfDiagActive(active: false)
                 faults.setAbsDeactivatedActive(active: false)
                 faults.setAbsErrorActive(active: true)
-
+                
             case 0xE:
                 faults.setAbsSelfDiagActive(active: false)
                 faults.setAbsDeactivatedActive(active: false)
@@ -779,7 +1370,7 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
                 faults.setAbsSelfDiagActive(active: false)
                 faults.setAbsDeactivatedActive(active: false)
                 faults.setAbsErrorActive(active: false)
-
+                
             default:
                 faults.setAbsSelfDiagActive(active: false)
                 faults.setAbsDeactivatedActive(active: false)
@@ -981,37 +1572,37 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
                 faults.setAscInterventionActive(active: true)
                 faults.setAscDeactivatedActive(active: false)
                 faults.setAscErrorActive(active: false)
-
+                
             case 0x2:
                 faults.setAscSelfDiagActive(active: false)
                 faults.setAscInterventionActive(active: false)
                 faults.setAscDeactivatedActive(active: false)
                 faults.setAscErrorActive(active: true)
-
+                
             case 0x3:
                 faults.setAscSelfDiagActive(active: true)
                 faults.setAscInterventionActive(active: false)
                 faults.setAscDeactivatedActive(active: false)
                 faults.setAscErrorActive(active: false)
-
+                
             case 0x5:
                 faults.setAscSelfDiagActive(active: false)
                 faults.setAscInterventionActive(active: false)
                 faults.setAscDeactivatedActive(active: false)
                 faults.setAscErrorActive(active: true)
-
+                
             case 0x6:
                 faults.setAscSelfDiagActive(active: false)
                 faults.setAscInterventionActive(active: false)
                 faults.setAscDeactivatedActive(active: false)
                 faults.setAscErrorActive(active: true)
-
+                
             case 0x7:
                 faults.setAscSelfDiagActive(active: false)
                 faults.setAscInterventionActive(active: false)
                 faults.setAscDeactivatedActive(active: false)
                 faults.setAscErrorActive(active: true)
-
+                
             case 0x8:
                 faults.setAscSelfDiagActive(active: false)
                 faults.setAscInterventionActive(active: false)
@@ -1023,19 +1614,19 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
                 faults.setAscInterventionActive(active: true)
                 faults.setAscDeactivatedActive(active: false)
                 faults.setAscErrorActive(active: false)
-
+                
             case 0xA:
                 faults.setAscSelfDiagActive(active: false)
                 faults.setAscInterventionActive(active: false)
                 faults.setAscDeactivatedActive(active: false)
                 faults.setAscErrorActive(active: true)
-
+                
             case 0xB:
                 faults.setAscSelfDiagActive(active: true)
                 faults.setAscInterventionActive(active: false)
                 faults.setAscDeactivatedActive(active: false)
                 faults.setAscErrorActive(active: false)
-
+                
             case 0xD:
                 faults.setAscSelfDiagActive(active: false)
                 faults.setAscInterventionActive(active: false)
@@ -1047,13 +1638,13 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
                 faults.setAscInterventionActive(active: false)
                 faults.setAscDeactivatedActive(active: false)
                 faults.setAscErrorActive(active: true)
-
+                
             default:
                 faults.setAscSelfDiagActive(active: false)
                 faults.setAscInterventionActive(active: false)
                 faults.setAscDeactivatedActive(active: false)
                 faults.setAscErrorActive(active: false)
-
+                
             }
             
             //Oil Fault
@@ -1061,21 +1652,21 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
             switch (oilValue){
             case 0x2:
                 faults.setOilLowActive(active: true)
-
+                
             case 0x6:
                 faults.setOilLowActive(active: true)
-
+                
             case 0xA:
                 faults.setOilLowActive(active: true)
- 
+                
             case 0xE:
                 faults.setOilLowActive(active: true)
-
+                
             default:
                 faults.setOilLowActive(active: false)
-
+                
             }
-
+            
         case 0x07:
             // Average Speed
             if ((lastMessage[1] != 0xFF) && (lastMessage[2] != 0xFF)){
@@ -1106,16 +1697,16 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
                 
             case 0x6:
                 faults.setFuelFaultActive(active: true)
-
+                
             case 0xA:
                 faults.setFuelFaultActive(active: true)
-
+                
             case 0xE:
                 faults.setFuelFaultActive(active: true)
-
+                
             default:
                 faults.setFuelFaultActive(active: false)
-
+                
             }
             if UserDefaults.standard.bool(forKey: "fuel_routing_enable_preference") && faults.getFuelFaultActive(){
                 if !faults.getFuelStationAlertSent(){
@@ -1128,16 +1719,16 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
                         }
                     }
                     /*
-                    if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AlertViewControllerID") as? AlertViewController
-                    {
-                        vc.ID = 1
-                        present(vc, animated: true, completion: nil)
-                    }
-                    */
+                     if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AlertViewControllerID") as? AlertViewController
+                     {
+                     vc.ID = 1
+                     present(vc, animated: true, completion: nil)
+                     }
+                     */
                     
                     //let alert = AlertViewController()
                     //present(alert, animated: true, completion: nil)
-
+                    
                 }
                 
             }
@@ -1157,7 +1748,7 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
                     updateNotification()
                     faults.generalShowsRedNotificationActive = false
                 }
-
+                
             case 0x2:
                 faults.setGeneralFlashingYellowActive(active: false)
                 faults.setGeneralShowsYellowActive(active: true)
@@ -1171,7 +1762,7 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
                     updateNotification()
                     faults.generalShowsRedNotificationActive = false
                 }
-
+                
             case 0x4:
                 faults.setGeneralFlashingYellowActive(active: false)
                 faults.setGeneralShowsYellowActive(active: false)
@@ -1199,7 +1790,7 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
                     updateNotification()
                     faults.generalShowsRedNotificationActive = false
                 }
-
+                
             case 0x6:
                 faults.setGeneralFlashingYellowActive(active: false)
                 faults.setGeneralShowsYellowActive(active: true)
@@ -1213,7 +1804,7 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
                     updateNotification()
                     faults.generalShowsRedNotificationActive = false
                 }
-
+                
             case 0x7:
                 faults.setGeneralFlashingYellowActive(active: false)
                 faults.setGeneralShowsYellowActive(active: false)
@@ -1227,7 +1818,7 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
                     updateNotification()
                     faults.generalShowsRedNotificationActive = false
                 }
-
+                
             case 0x8:
                 faults.setGeneralFlashingYellowActive(active: false)
                 faults.setGeneralShowsYellowActive(active: false)
@@ -1241,7 +1832,7 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
                     updateNotification()
                     faults.generalShowsRedNotificationActive = true
                 }
-
+                
             case 0x9:
                 faults.setGeneralFlashingYellowActive(active: false)
                 faults.setGeneralShowsYellowActive(active: false)
@@ -1252,7 +1843,7 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
                     faults.generalFlashingRedNotificationActive = true
                     faults.generalShowsRedNotificationActive = true
                 }
-
+                
             case 0xA:
                 faults.setGeneralFlashingYellowActive(active: false)
                 faults.setGeneralShowsYellowActive(active: true)
@@ -1266,7 +1857,7 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
                     updateNotification()
                     faults.generalShowsRedNotificationActive = true
                 }
-
+                
             case 0xB:
                 faults.setGeneralFlashingYellowActive(active: false)
                 faults.setGeneralShowsYellowActive(active: false)
@@ -1280,7 +1871,7 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
                     updateNotification()
                     faults.generalShowsRedNotificationActive = true
                 }
-
+                
             case 0xD:
                 faults.setGeneralFlashingYellowActive(active: true)
                 faults.setGeneralShowsYellowActive(active: false)
@@ -1294,7 +1885,7 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
                     updateNotification()
                     faults.generalShowsRedNotificationActive = false
                 }
-
+                
             case 0xE:
                 faults.setGeneralFlashingYellowActive(active: false)
                 faults.setGeneralShowsYellowActive(active: true)
@@ -1308,7 +1899,7 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
                     updateNotification()
                     faults.generalShowsRedNotificationActive = false
                 }
-
+                
             default:
                 faults.setGeneralFlashingYellowActive(active: false)
                 faults.setGeneralShowsYellowActive(active: false)
@@ -1322,7 +1913,7 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
                     updateNotification()
                     faults.generalShowsRedNotificationActive = false
                 }
-
+                
             }
         case 0x08:
             //print("Message ID: 8")
@@ -1340,47 +1931,47 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
                 case 0x1:
                     faults.setAddFrontLightOneActive(active: true)
                     faults.setAddFrontLightTwoActive(active: false)
-
+                    
                 case 0x2:
                     faults.setAddFrontLightOneActive(active: false)
                     faults.setAddFrontLightTwoActive(active: true)
-
+                    
                 case 0x3:
                     faults.setAddFrontLightOneActive(active: true)
                     faults.setAddFrontLightTwoActive(active: true)
-
+                    
                 case 0x5:
                     faults.setAddFrontLightOneActive(active: true)
                     faults.setAddFrontLightTwoActive(active: false)
-
+                    
                 case 0x6:
                     faults.setAddFrontLightOneActive(active: false)
                     faults.setAddFrontLightTwoActive(active: true)
-
+                    
                 case 0x9:
                     faults.setAddFrontLightOneActive(active: true)
                     faults.setAddFrontLightTwoActive(active: false)
-
+                    
                 case 0xA:
                     faults.setAddFrontLightOneActive(active: false)
                     faults.setAddFrontLightTwoActive(active: true)
-
+                    
                 case 0xB:
                     faults.setAddFrontLightOneActive(active: true)
                     faults.setAddFrontLightTwoActive(active: true)
-
+                    
                 case 0xD:
                     faults.setAddFrontLightOneActive(active: true)
                     faults.setAddFrontLightTwoActive(active: false)
-
+                    
                 case 0xE:
                     faults.setAddFrontLightOneActive(active: false)
                     faults.setAddFrontLightTwoActive(active: true)
-
+                    
                 default:
                     faults.setAddFrontLightOneActive(active: false)
                     faults.setAddFrontLightTwoActive(active: false)
-
+                    
                 }
             }
             // LAMPF 2
@@ -1391,27 +1982,27 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
                     faults.setDaytimeRunningActive(active: true)
                     faults.setFrontLeftSignalActive(active: false)
                     faults.setFrontRightSignalActive(active: false)
-
+                    
                 case 0x2:
                     faults.setDaytimeRunningActive(active: false)
                     faults.setFrontLeftSignalActive(active: true)
                     faults.setFrontRightSignalActive(active: false)
-
+                    
                 case 0x3:
                     faults.setDaytimeRunningActive(active: true)
                     faults.setFrontLeftSignalActive(active: true)
                     faults.setFrontRightSignalActive(active: false)
-
+                    
                 case 0x4:
                     faults.setDaytimeRunningActive(active: false)
                     faults.setFrontLeftSignalActive(active: false)
                     faults.setFrontRightSignalActive(active: true)
-
+                    
                 case 0x5:
                     faults.setDaytimeRunningActive(active: true)
                     faults.setFrontLeftSignalActive(active: false)
                     faults.setFrontRightSignalActive(active: true)
-
+                    
                 case 0x6:
                     faults.setDaytimeRunningActive(active: false)
                     faults.setFrontLeftSignalActive(active: true)
@@ -1426,27 +2017,27 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
                     faults.setDaytimeRunningActive(active: true)
                     faults.setFrontLeftSignalActive(active: false)
                     faults.setFrontRightSignalActive(active: false)
-
+                    
                 case 0xA:
                     faults.setDaytimeRunningActive(active: false)
                     faults.setFrontLeftSignalActive(active: true)
                     faults.setFrontRightSignalActive(active: false)
-
+                    
                 case 0xB:
                     faults.setDaytimeRunningActive(active: true)
                     faults.setFrontLeftSignalActive(active: true)
                     faults.setFrontRightSignalActive(active: false)
-
+                    
                 case 0xC:
                     faults.setDaytimeRunningActive(active: false)
                     faults.setFrontLeftSignalActive(active: false)
                     faults.setFrontRightSignalActive(active: true)
-
+                    
                 case 0xD:
                     faults.setDaytimeRunningActive(active: true);
                     faults.setFrontLeftSignalActive(active: false);
                     faults.setFrontRightSignalActive(active: true);
-
+                    
                 case 0xE:
                     faults.setDaytimeRunningActive(active: false)
                     faults.setFrontLeftSignalActive(active: true)
@@ -1461,7 +2052,7 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
                     faults.setDaytimeRunningActive(active: false)
                     faults.setFrontLeftSignalActive(active: false)
                     faults.setFrontRightSignalActive(active: false)
-
+                    
                 }
                 let lampfTwoLowValue = data[4] & 0x0F // the lowest 4 bits
                 switch (lampfTwoLowValue) {
@@ -1470,97 +2061,97 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
                     faults.setFrontParkingLightTwoActive(active: false)
                     faults.setLowBeamActive(active: false)
                     faults.setHighBeamActive(active: false)
-
+                    
                 case 0x2:
                     faults.setFrontParkingLightOneActive(active: false)
                     faults.setFrontParkingLightTwoActive(active: true)
                     faults.setLowBeamActive(active: false)
                     faults.setHighBeamActive(active: false)
-
+                    
                 case 0x3:
                     faults.setFrontParkingLightOneActive(active: true)
                     faults.setFrontParkingLightTwoActive(active: true)
                     faults.setLowBeamActive(active: false)
                     faults.setHighBeamActive(active: false)
-
+                    
                 case 0x4:
                     faults.setFrontParkingLightOneActive(active: false)
                     faults.setFrontParkingLightTwoActive(active: false)
                     faults.setLowBeamActive(active: true)
                     faults.setHighBeamActive(active: false)
-
+                    
                 case 0x5:
                     faults.setFrontParkingLightOneActive(active: true);
                     faults.setFrontParkingLightTwoActive(active: false)
                     faults.setLowBeamActive(active: true)
                     faults.setHighBeamActive(active: false)
-
+                    
                 case 0x6:
                     faults.setFrontParkingLightOneActive(active: false)
                     faults.setFrontParkingLightTwoActive(active: true)
                     faults.setLowBeamActive(active: true)
                     faults.setHighBeamActive(active: false)
-
+                    
                 case 0x7:
                     faults.setFrontParkingLightOneActive(active: true)
                     faults.setFrontParkingLightTwoActive(active: true)
                     faults.setLowBeamActive(active: true)
                     faults.setHighBeamActive(active: false)
-
+                    
                 case 0x8:
                     faults.setFrontParkingLightOneActive(active: false)
                     faults.setFrontParkingLightTwoActive(active: false)
                     faults.setLowBeamActive(active: false)
                     faults.setHighBeamActive(active: true)
-
+                    
                 case 0x9:
                     faults.setFrontParkingLightOneActive(active: true)
                     faults.setFrontParkingLightTwoActive(active: false)
                     faults.setLowBeamActive(active: false)
                     faults.setHighBeamActive(active: true)
-
+                    
                 case 0xA:
                     faults.setFrontParkingLightOneActive(active: false)
                     faults.setFrontParkingLightTwoActive(active: true)
                     faults.setLowBeamActive(active: false)
                     faults.setHighBeamActive(active: true)
-
+                    
                 case 0xB:
                     faults.setFrontParkingLightOneActive(active: true)
                     faults.setFrontParkingLightTwoActive(active: true)
                     faults.setLowBeamActive(active: false)
                     faults.setHighBeamActive(active: true)
-
+                    
                 case 0xC:
                     faults.setFrontParkingLightOneActive(active: false)
                     faults.setFrontParkingLightTwoActive(active: false)
                     faults.setLowBeamActive(active: true)
                     faults.setHighBeamActive(active: true)
-
+                    
                 case 0xD:
                     faults.setFrontParkingLightOneActive(active: true)
                     faults.setFrontParkingLightTwoActive(active: false)
                     faults.setLowBeamActive(active: true)
                     faults.setHighBeamActive(active: true)
-
+                    
                 case 0xE:
                     faults.setFrontParkingLightOneActive(active: false)
                     faults.setFrontParkingLightTwoActive(active: true)
                     faults.setLowBeamActive(active: true)
                     faults.setHighBeamActive(active: true)
-
+                    
                 case 0xF:
                     faults.setFrontParkingLightOneActive(active: true)
                     faults.setFrontParkingLightTwoActive(active: true)
                     faults.setLowBeamActive(active: true)
                     faults.setHighBeamActive(active: true)
-
+                    
                 default:
                     faults.setFrontParkingLightOneActive(active: false)
                     faults.setFrontParkingLightTwoActive(active: false)
                     faults.setLowBeamActive(active: false)
                     faults.setHighBeamActive(active: false)
-
+                    
                 }
             }
             
@@ -1570,31 +2161,31 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
                 switch (lampfThreeHighValue) {
                 case 0x1:
                     faults.setRearRightSignalActive(active: true)
-
+                    
                 case 0x3:
                     faults.setRearRightSignalActive(active: true)
-
+                    
                 case 0x5:
                     faults.setRearRightSignalActive(active: true)
-
+                    
                 case 0x7:
                     faults.setRearRightSignalActive(active: true)
-
+                    
                 case 0x9:
                     faults.setRearRightSignalActive(active: true)
-
+                    
                 case 0xB:
                     faults.setRearRightSignalActive(active: true)
-
+                    
                 case 0xD:
                     faults.setRearRightSignalActive(active: true)
-
+                    
                 case 0xF:
                     faults.setRearRightSignalActive(active: true)
                     
                 default:
                     faults.setRearRightSignalActive(active: false)
-
+                    
                 }
                 let lampfThreeLowValue = lastMessage[5] & 0x0F // the lowest 4 bits
                 switch (lampfThreeLowValue) {
@@ -1603,91 +2194,91 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
                     faults.setRearLightActive(active: true)
                     faults.setBrakeLightActive(active: false)
                     faults.setLicenseLightActive(active: false)
-
+                    
                 case 0x2:
                     faults.setRearLeftSignalActive(active: false)
                     faults.setRearLightActive(active: false)
                     faults.setBrakeLightActive(active: true)
                     faults.setLicenseLightActive(active: false)
-
+                    
                 case 0x3:
                     faults.setRearLeftSignalActive(active: false)
                     faults.setRearLightActive(active: true)
                     faults.setBrakeLightActive(active: true)
                     faults.setLicenseLightActive(active: false)
-
+                    
                 case 0x4:
                     faults.setRearLeftSignalActive(active: false)
                     faults.setRearLightActive(active: false)
                     faults.setBrakeLightActive(active: false)
                     faults.setLicenseLightActive(active: true)
-
+                    
                 case 0x5:
                     faults.setRearLeftSignalActive(active: true)
                     faults.setRearLightActive(active: false)
                     faults.setBrakeLightActive(active: false)
                     faults.setLicenseLightActive(active: true)
-
+                    
                 case 0x6:
                     faults.setRearLeftSignalActive(active: false)
                     faults.setRearLightActive(active: false)
                     faults.setBrakeLightActive(active: true)
                     faults.setLicenseLightActive(active: true)
-
+                    
                 case 0x7:
                     faults.setRearLeftSignalActive(active: false)
                     faults.setRearLightActive(active: true)
                     faults.setBrakeLightActive(active: true)
                     faults.setLicenseLightActive(active: true)
-
+                    
                 case 0x8:
                     faults.setRearLeftSignalActive(active: true)
                     faults.setRearLightActive(active: false)
                     faults.setBrakeLightActive(active: false)
                     faults.setLicenseLightActive(active: false)
-
+                    
                 case 0x9:
                     faults.setRearLeftSignalActive(active: true)
                     faults.setRearLightActive(active: true)
                     faults.setBrakeLightActive(active: false)
                     faults.setLicenseLightActive(active: false)
-
+                    
                 case 0xA:
                     faults.setRearLeftSignalActive(active: true)
                     faults.setRearLightActive(active: false)
                     faults.setBrakeLightActive(active: true)
                     faults.setLicenseLightActive(active: false)
-
+                    
                 case 0xC:
                     faults.setRearLeftSignalActive(active: true)
                     faults.setRearLightActive(active: false)
                     faults.setBrakeLightActive(active: false)
                     faults.setLicenseLightActive(active: true)
-
+                    
                 case 0xD:
                     faults.setRearLeftSignalActive(active: true)
                     faults.setRearLightActive(active: true)
                     faults.setBrakeLightActive(active: true)
                     faults.setLicenseLightActive(active: false)
-
+                    
                 case 0xE:
                     faults.setRearLeftSignalActive(active: true)
                     faults.setRearLightActive(active: false)
                     faults.setBrakeLightActive(active: true)
                     faults.setLicenseLightActive(active: true)
-
+                    
                 case 0xF:
                     faults.setRearLeftSignalActive(active: true)
                     faults.setRearLightActive(active: true)
                     faults.setBrakeLightActive(active: true)
                     faults.setLicenseLightActive(active: true)
-
+                    
                 default:
                     faults.setRearLeftSignalActive(active: false)
                     faults.setRearLightActive(active: false)
                     faults.setBrakeLightActive(active: false)
                     faults.setLicenseLightActive(active: false)
-
+                    
                 }
             }
             
@@ -1697,30 +2288,30 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
                 switch (lampfFourHighValue) {
                 case 0x1:
                     faults.setRearFogLightActive(active: true)
-
+                    
                 case 0x3:
                     faults.setRearFogLightActive(active: true)
-
+                    
                 case 0x5:
                     faults.setRearFogLightActive(active: true)
-
+                    
                 case 0x7:
                     faults.setRearFogLightActive(active: true)
-
+                    
                 case 0x9:
                     faults.setRearFogLightActive(active: true)
-
+                    
                 case 0xB:
                     faults.setRearFogLightActive(active: true)
-
+                    
                 case 0xD:
                     faults.setRearFogLightActive(active: true)
-
+                    
                 case 0xF:
                     faults.setRearFogLightActive(active: true)
                 default:
                     faults.setRearFogLightActive(active: false)
-
+                    
                 }
                 let lampfFourLowValue = lastMessage[6] & 0x0F // the lowest 4 bits
                 switch (lampfFourLowValue) {
@@ -1729,91 +2320,91 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
                     faults.setAddBrakeLightActive(active: false)
                     faults.setFrontLampOneLightActive(active: false)
                     faults.setFrontLampTwoLightActive(active: false)
-
+                    
                 case 0x2:
                     faults.setAddDippedLightActive(active: false)
                     faults.setAddBrakeLightActive(active: true)
                     faults.setFrontLampOneLightActive(active: false)
                     faults.setFrontLampTwoLightActive(active: false)
-
+                    
                 case 0x3:
                     faults.setAddDippedLightActive(active: true)
                     faults.setAddBrakeLightActive(active: true)
                     faults.setFrontLampOneLightActive(active: false)
                     faults.setFrontLampTwoLightActive(active: false)
-
+                    
                 case 0x4:
                     faults.setAddDippedLightActive(active: false)
                     faults.setAddBrakeLightActive(active: false)
                     faults.setFrontLampOneLightActive(active: true)
                     faults.setFrontLampTwoLightActive(active: false)
- 
+                    
                 case 0x5:
                     faults.setAddDippedLightActive(active: true)
                     faults.setAddBrakeLightActive(active: false)
                     faults.setFrontLampOneLightActive(active: true)
                     faults.setFrontLampTwoLightActive(active: false)
-
+                    
                 case 0x6:
                     faults.setAddDippedLightActive(active: false)
                     faults.setAddBrakeLightActive(active: true)
                     faults.setFrontLampOneLightActive(active: true)
                     faults.setFrontLampTwoLightActive(active: false)
-
+                    
                 case 0x7:
                     faults.setAddDippedLightActive(active: true)
                     faults.setAddBrakeLightActive(active: true)
                     faults.setFrontLampOneLightActive(active: true)
                     faults.setFrontLampTwoLightActive(active: false)
-
+                    
                 case 0x8:
                     faults.setAddDippedLightActive(active: false)
                     faults.setAddBrakeLightActive(active: false)
                     faults.setFrontLampOneLightActive(active: false)
                     faults.setFrontLampTwoLightActive(active: true)
-
+                    
                 case 0x9:
                     faults.setAddDippedLightActive(active: true)
                     faults.setAddBrakeLightActive(active: false)
                     faults.setFrontLampOneLightActive(active: false)
                     faults.setFrontLampTwoLightActive(active: true)
-
+                    
                 case 0xA:
                     faults.setAddDippedLightActive(active: false)
                     faults.setAddBrakeLightActive(active: true)
                     faults.setFrontLampOneLightActive(active: false)
                     faults.setFrontLampTwoLightActive(active: true)
-
+                    
                 case 0xB:
                     faults.setAddDippedLightActive(active: true)
                     faults.setAddBrakeLightActive(active: true)
                     faults.setFrontLampOneLightActive(active: false)
                     faults.setFrontLampTwoLightActive(active: true)
-
+                    
                 case 0xC:
                     faults.setAddDippedLightActive(active: false)
                     faults.setAddBrakeLightActive(active: false)
                     faults.setFrontLampOneLightActive(active: true)
                     faults.setFrontLampTwoLightActive(active: true)
-
+                    
                 case 0xD:
                     faults.setAddDippedLightActive(active: true)
                     faults.setAddBrakeLightActive(active: false)
                     faults.setFrontLampOneLightActive(active: true)
                     faults.setFrontLampTwoLightActive(active: true)
-
+                    
                 case 0xE:
                     faults.setAddDippedLightActive(active: false)
                     faults.setAddBrakeLightActive(active: true)
                     faults.setFrontLampOneLightActive(active: true)
                     faults.setFrontLampTwoLightActive(active: true)
- 
+                    
                 case 0xF:
                     faults.setAddDippedLightActive(active: true)
                     faults.setAddBrakeLightActive(active: true)
                     faults.setFrontLampOneLightActive(active: true)
                     faults.setFrontLampTwoLightActive(active: true)
-
+                    
                 default:
                     faults.setAddDippedLightActive(active: false)
                     faults.setAddBrakeLightActive(active: false)
@@ -1850,7 +2441,7 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
             // Odometer
             let odometer:Double = Double(UInt16(lastMessage[1]) | UInt16(lastMessage[2]) << 8 | UInt16(lastMessage[3]) << 16)
             motorcycleData.setodometer(odometer: odometer)
-
+            
             // Trip Auto
             if ((lastMessage[4] != 0xFF) && (lastMessage[5] != 0xFF) && (lastMessage[6] != 0xFF)){
                 let tripAuto:Double = Double((UInt32(lastMessage[4]) | UInt32(lastMessage[5]) << 8 | UInt32(lastMessage[6]) << 16)) / 10.0
@@ -1872,7 +2463,7 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
             _ = 0
             //print("Unknown Message ID")
         }
-
+        
         if (UIApplication.shared.applicationState == .active) {
             updateMessageDisplay()
         }
@@ -2105,22 +2696,49 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
         }
     }
     
-    // Add view for border
-    private func createView(_ bdrColor: UIColor, backGrndColor: UIColor) -> UIView {
-        let backgroundView: UIView = {
-            let view = UIView()
-            view.backgroundColor = backGrndColor
-            view.layer.cornerRadius = 5.0
-            view.layer.borderWidth = 3
-            view.layer.borderColor = bdrColor.cgColor
-            return view
-        }()
-        return backgroundView
+    func defaultsChanged(notification:NSNotification){
+        print("defaultsChanged")
+        if let defaults = notification.object as? UserDefaults {
+            if defaults.bool(forKey: "nightmode_lastSet") != defaults.bool(forKey: "nightmode_preference"){
+                UserDefaults.standard.set(defaults.bool(forKey: "nightmode_preference"), forKey: "nightmode_lastSet")
+                // quit app
+                exit(0)
+            }
+            if defaults.bool(forKey: "motorcycle_data_lastSet") != defaults.bool(forKey: "motorcycle_data_preference"){
+                UserDefaults.standard.set(defaults.bool(forKey: "motorcycle_data_preference"), forKey: "motorcycle_data_lastSet")
+                // quit app
+                exit(0)
+            }
+            if UserDefaults.standard.bool(forKey: "display_brightness_preference") {
+                UIScreen.main.brightness = CGFloat(1.0)
+            } else {
+                UIScreen.main.brightness = CGFloat(UserDefaults.standard.float(forKey: "systemBrightness"))
+            }
+            
+            if !UserDefaults.standard.bool(forKey: "debug_logging_preference") {
+                print("Delete dbg file")
+                // Get the documents folder url
+                let documentDirectory = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+                // Destination url for the log file to be saved
+                let fileURL = documentDirectory.appendingPathComponent("dbg")
+                do {
+                    try FileManager.default.removeItem(at: fileURL)
+                } catch let error as NSError {
+                    print("Error: \(error.domain)")
+                }
+            }
+        }
     }
-    private func pinBackground(_ view: UIView, to stackView: UIStackView) {
-        view.translatesAutoresizingMaskIntoConstraints = false
-        stackView.insertSubview(view, at: 0)
-        view.pin(to: stackView)
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        
+        //displaying the ios local notification when app is in foreground
+        completionHandler([.alert, .badge, .sound])
+    }
+    
+    func registerSettingsBundle(){
+        let appDefaults = [String:AnyObject]()
+        UserDefaults.standard.register(defaults: appDefaults)
     }
     
     private func updateNotification(){
@@ -2158,7 +2776,7 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
         content.title = NSLocalizedString("fault_title", comment: "")
         //content.subtitle = "Sub Title"
         content.body = message
-        //content.badge = 1 
+        //content.badge = 1
         content.sound = UNNotificationSound.default()
         
         //getting the notification trigger
@@ -2570,10 +3188,202 @@ class MyMotorcycleViewController: UIViewController, CBCentralManagerDelegate, CB
         let fahrenheit = (celcius * 1.8) + Double(32)
         return fahrenheit
     }
+    // L/100 to mpg
+    func l100ToMpg(_ l100:Double) -> Double {
+        let mpg = 235.215 / l100
+        return mpg
+    }
     
+    func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
+        if gesture.direction == UISwipeGestureRecognizerDirection.right {
+            performSegue(withIdentifier: "motorcycleToTaskGrid", sender: [])
+        }
+        else if gesture.direction == UISwipeGestureRecognizerDirection.left {
+            performSegue(withIdentifier: "motorcycleToMusic", sender: [])
+        }
+        else if gesture.direction == UISwipeGestureRecognizerDirection.up {
+            //UP
+            if !UserDefaults.standard.bool(forKey: "motorcycle_data_preference") {
+                upScreen()
+            }
+        }
+        else if gesture.direction == UISwipeGestureRecognizerDirection.down {
+            //DOWN
+            if !UserDefaults.standard.bool(forKey: "motorcycle_data_preference") {
+                downScreen()
+            }
+        }
+    }
+    
+    override var keyCommands: [UIKeyCommand]? {
+        
+        let commands = [
+            UIKeyCommand(input: UIKeyInputLeftArrow, modifierFlags:[], action: #selector(leftScreen), discoverabilityTitle: "Go left"),
+            UIKeyCommand(input: UIKeyInputRightArrow, modifierFlags:[], action: #selector(rightScreen), discoverabilityTitle: "Go right"),
+            UIKeyCommand(input: UIKeyInputUpArrow, modifierFlags:[], action: #selector(upScreen), discoverabilityTitle: "Increase Cell Count"),
+            UIKeyCommand(input: UIKeyInputDownArrow, modifierFlags:[], action: #selector(downScreen), discoverabilityTitle: "Decrease Cell Count")
+        ]
+        return commands
+    }
+    
+    @objc func leftScreen() {
+        // your code here
+        performSegue(withIdentifier: "motorcycleToTaskGrid", sender: [])
+    }
+    
+    @objc func rightScreen() {
+        // your code here
+        performSegue(withIdentifier: "motorcycleToMusic", sender: [])
+    }
+    
+    @objc func upScreen() {
+        busy = true
+        let cellCount = UserDefaults.standard.integer(forKey: "GRIDCOUNT")
+        var nextCellCount = 1
+        if ( collectionView!.bounds.width > collectionView!.bounds.height){
+            switch (cellCount){
+            case 1:
+                cellsPerRow = 2
+                rowCount = 1
+                nextCellCount = 2
+            case 2:
+                cellsPerRow = 2
+                rowCount = 2
+                nextCellCount = 4
+            case 4:
+                cellsPerRow = 4
+                rowCount = 2
+                nextCellCount = 8
+            case 8:
+                cellsPerRow = 4
+                rowCount = 3
+                nextCellCount = 12
+            case 12:
+                cellsPerRow = 5
+                rowCount = 3
+                nextCellCount = 15
+            case 15:
+                cellsPerRow = 1
+                rowCount = 1
+                nextCellCount = 1
+            default:
+                print("Unknown Cell Count")
+            }
+        } else {
+            switch (cellCount){
+            case 1:
+                cellsPerRow = 1
+                rowCount = 2
+                nextCellCount = 2
+            case 2:
+                cellsPerRow = 1
+                rowCount = 4
+                nextCellCount = 4
+            case 4:
+                cellsPerRow = 2
+                rowCount = 4
+                nextCellCount = 8
+            case 8:
+                cellsPerRow = 3
+                rowCount = 4
+                nextCellCount = 12
+            case 12:
+                cellsPerRow = 3
+                rowCount = 5
+                nextCellCount = 15
+            case 15:
+                cellsPerRow = 1
+                rowCount = 1
+                nextCellCount = 1
+            default:
+                print("Unknown Cell Count")
+            }
+        }
+        UserDefaults.standard.set(nextCellCount, forKey: "GRIDCOUNT")
+        
+        self.collectionView!.collectionViewLayout.invalidateLayout()
+        self.collectionView!.reloadData()
+        
+        DispatchQueue.main.async {
+            self.busy = false
+        }
+    }
+    
+    @objc func downScreen() {
+        busy = true
+        let cellCount = UserDefaults.standard.integer(forKey: "GRIDCOUNT")
+        var nextCellCount = 1
+        if ( collectionView!.bounds.width > collectionView!.bounds.height){
+            switch (cellCount){
+            case 1:
+                cellsPerRow = 5
+                rowCount = 3
+                nextCellCount = 15
+            case 2:
+                cellsPerRow = 1
+                rowCount = 1
+                nextCellCount = 1
+            case 4:
+                cellsPerRow = 2
+                rowCount = 1
+                nextCellCount = 2
+            case 8:
+                cellsPerRow = 2
+                rowCount = 2
+                nextCellCount = 4
+            case 12:
+                cellsPerRow = 4
+                rowCount = 2
+                nextCellCount = 8
+            case 15:
+                cellsPerRow = 4
+                rowCount = 3
+                nextCellCount = 12
+            default:
+                print("Unknown Cell Count")
+            }
+        } else {
+            switch (cellCount){
+            case 1:
+                cellsPerRow = 3
+                rowCount = 5
+                nextCellCount = 15
+            case 2:
+                cellsPerRow = 1
+                rowCount = 1
+                nextCellCount = 1
+            case 4:
+                cellsPerRow = 1
+                rowCount = 2
+                nextCellCount = 2
+            case 8:
+                cellsPerRow = 1
+                rowCount = 4
+                nextCellCount = 4
+            case 12:
+                cellsPerRow = 2
+                rowCount = 4
+                nextCellCount = 8
+            case 15:
+                cellsPerRow = 3
+                rowCount = 4
+                nextCellCount = 12
+            default:
+                print("Unknown Cell Count")
+            }
+        }
+        UserDefaults.standard.set(nextCellCount, forKey: "GRIDCOUNT")
+        self.collectionView!.collectionViewLayout.invalidateLayout()
+        self.collectionView!.reloadData()
+        
+        DispatchQueue.main.async {
+            self.busy = false
+        }
+    }
+
 }
 
-extension MyMotorcycleViewController: UITableViewDelegate {
+extension MainCollectionViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch (menuSelected) {
@@ -2620,10 +3430,10 @@ extension MyMotorcycleViewController: UITableViewDelegate {
         }
         self.popover.dismiss()
     }
-
+    
 }
 
-extension MyMotorcycleViewController: UITableViewDataSource {
+extension MainCollectionViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         var count = 0
@@ -2649,16 +3459,5 @@ extension MyMotorcycleViewController: UITableViewDataSource {
             print("Invalid Menu ID")
         }
         return cell
-    }
-}
-
-public extension UIView {
-    public func pin(to view: UIView) {
-        NSLayoutConstraint.activate([
-            leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            topAnchor.constraint(equalTo: view.topAnchor),
-            bottomAnchor.constraint(equalTo: view.bottomAnchor)
-            ])
     }
 }

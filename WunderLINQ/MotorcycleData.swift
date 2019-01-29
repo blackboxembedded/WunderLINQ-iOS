@@ -9,7 +9,6 @@
 import Foundation
 class MotorcycleData {
     static let shared = MotorcycleData()
-    
     var vin: String?
     var frontTirePressure: Double?
     var rearTirePressure: Double?

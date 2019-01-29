@@ -163,8 +163,8 @@
 "shifts_header" = "Shifts";
 "vin_header" = "VIN";
 "ambientlight_header" = "Ambient Light";
-"tripone_header" = "Trip1";
-"triptwo_header" = "Trip2";
+"tripone_header" = "Trip 1";
+"triptwo_header" = "Trip 2";
 "tripauto_header" = "Trip Auto";
 "speed_header" = "Speed";
 "avgspeed_header" = "Average Speed";

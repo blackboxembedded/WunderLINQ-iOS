@@ -1,0 +1,22 @@
+"gear_header" = "Gear"; //Needs translation
+"enginetemp_header" = "Engine Temperature"; //Needs translation
+"ambienttemp_header" = "Ambient Temperature"; //Needs translation
+"frontpressure_header" = "Front Tire Pressure"; //Needs translation
+"rearpressure_header" = "Rear Tire Pressure"; //Needs translation
+"odometer_header" = "Odometer"; //Needs translation
+"voltage_header" = "Voltage"; //Needs translation
+"throttle_header" = "Throttle Position"; //Needs translation
+"frontbrakes_header" = "Front Brakes"; //Needs translation
+"rearbrakes_header" = "Rear Brakes"; //Needs translation
+"shifts_header" = "Shifts"; //Needs translation
+"ambientlight_header" = "Ambient Light"; //Needs translation
+"tripone_header" = "Trip 1"; //Needs translation
+"triptwo_header" = "Trip 2"; //Needs translation
+"tripauto_header" = "Trip Auto"; //Needs translation
+"speed_header" = "Speed"; //Needs translation
+"avgspeed_header" = "Average Speed"; //Needs translation
+"cconsumption_header" = "Current Consumption"; //Needs translation
+"fueleconomyone_header" = "Fuel Economy 1"; //Needs translation
+"fueleconomytwo_header" = "Fuel Economy 2"; //Needs translation
+"fuelrange_header" = "Fuel Range"; //Needs translation
+

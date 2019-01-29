@@ -126,6 +126,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         }
         UserDefaults.standard.register(defaults: defaultsToRegister)
         
+        //Grid Settings
+        let gridSettingsUrl = Bundle.main.url(forResource: "Settings", withExtension: "bundle")!.appendingPathComponent("Grid.plist")
+        let gridSettingsPlist = NSDictionary(contentsOf:gridSettingsUrl)!
+        let gridPreferences = gridSettingsPlist["PreferenceSpecifiers"] as! [NSDictionary]
+        
+        var gridDefaultsToRegister = Dictionary<String, Any>()
+        
+        for preference in gridPreferences {
+            guard let key = preference["Key"] as? String else {
+                NSLog("Grid Settings Key not fount")
+                continue
+            }
+            gridDefaultsToRegister[key] = preference["DefaultValue"]
+        }
+        UserDefaults.standard.register(defaults: gridDefaultsToRegister)
+        
         //Quick Task Settings
         let taskSettingsUrl = Bundle.main.url(forResource: "Settings", withExtension: "bundle")!.appendingPathComponent("Tasks.plist")
         let taskSettingsPlist = NSDictionary(contentsOf:taskSettingsUrl)!
