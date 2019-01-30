@@ -1,0 +1,17 @@
+/* 
+  InfoPlist.strings
+  WunderLINQ
+
+  Created by Keith Conger on 12/13/18.
+  Copyright © 2018 Black Box Embedded, LLC. All rights reserved.
+*/
+"NSContactsUsageDescription" = "WunderLINQ needs access to your address book to display your contacts phone numbers.";
+"NSCameraUsageDescription" = "WunderLINQ needs access to your camera to take pictures and record videos.";
+"NSLocationAlwaysAndWhenInUseUsageDescription" = "WunderLINQ needs access to your location to record your location in the trip log and save waypoints.";
+"NSLocationAlwaysUsageDescription" = "WunderLINQ needs access to your location to record your location in the trip log and save waypoints.";
+"NSLocationWhenInUseUsageDescription" = "WunderLINQ needs access to your location to record your location in the trip log and save waypoints.";
+"NSAppleMusicUsageDescription" = "WunderLINQ needs access to your media library for music playback.";
+"NSBluetoothPeripheralUsageDescription" = "WunderLINQ needs access to Bluetooth to communicate with the WunderLINQ hardware.";
+"NSMicrophoneUsageDescription" = "WunderLINQ needs access to your microphone to record audio during video recording.";
+"NSPhotoLibraryAddUsageDescription" = "WunderLINQ needs access to save photos taken to your photo library.";
+"NSPhotoLibraryUsageDescription" = "WunderLINQ needs access to save photos taken to your photo library.";
