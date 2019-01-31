@@ -14,8 +14,10 @@ class MainCollectionViewCell: UICollectionViewCell {
     public var header: UILabel!
     public var value: UILabel!
     
-    func displayContent(header: String, value: String) {
-        headerLabel.text = header
+    func setLabel(label: String) {
+        headerLabel.text = label
+    }
+    func setValue(value: String) {
         valueLabel.text = value
     }
     

@@ -69,7 +69,6 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     let minimumInteritemSpacing: CGFloat = 5
     var cellsPerRow = 5
     var rowCount = 3
-    var busy: Bool = false
     
     override var preferredStatusBarStyle : UIStatusBarStyle {
         if UserDefaults.standard.bool(forKey: "nightmode_preference") {
@@ -81,7 +80,6 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print("viewWillAppear")
         checkPermissions()
     }
 
@@ -138,9 +136,6 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             let image = UIImage(named: imageName)
             let imageView = UIImageView(image: image!)
             imageView.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: 200)
-            //imageView.widthAnchor.constraint(equalToConstant: view.bounds.width).isActive = true
-            //imageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-            //imageView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 28).isActive = true
             imageView.center = self.view.center
             imageView.contentMode = .scaleAspectFit
             mainUIView.addSubview(imageView)
@@ -343,87 +338,12 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             // Fallback on earlier versions
         }
         //self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        updateMessageDisplay()
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         updateCollectionViewLayout(with: size)
         super.viewWillTransition(to: size, with: coordinator)
-    }
-    
-    private func updateCollectionViewLayoutWOSize() {
-        if let layout = collectionView!.collectionViewLayout as? UICollectionViewFlowLayout {
-            var cellCount = UserDefaults.standard.integer(forKey: "GRIDCOUNT");
-            var height:CGFloat
-            var width:CGFloat
-            var widthMarginsAndInsets:CGFloat
-            var heightMarginsAndInsets:CGFloat
-            if #available(iOS 11.0, *) {
-                widthMarginsAndInsets = inset * 2 + collectionView!.safeAreaInsets.left + collectionView!.safeAreaInsets.right + minimumInteritemSpacing * CGFloat(cellsPerRow - 1)
-                heightMarginsAndInsets = inset * 2 + collectionView!.safeAreaInsets.top + collectionView!.safeAreaInsets.bottom + minimumInteritemSpacing * CGFloat(rowCount - 1)
-            } else {
-                // Fallback on earlier versions
-                widthMarginsAndInsets = inset * 2 + collectionView!.layoutMargins.left + collectionView!.layoutMargins.right + minimumInteritemSpacing * CGFloat(cellsPerRow - 1)
-                heightMarginsAndInsets = inset * 2 + (collectionView?.layoutMargins.top)! + collectionView!.layoutMargins.bottom + minimumInteritemSpacing * CGFloat(rowCount - 1)
-            }
-            
-            if ( self.view.bounds.width > self.view.bounds.height){
-                switch (cellCount){
-                case 1:
-                    height = (self.view.bounds.size.height - (heightMarginsAndInsets))
-                    width = (self.view.bounds.width - widthMarginsAndInsets)
-                case 2:
-                    height = (self.view.bounds.height - (heightMarginsAndInsets))
-                    width = ((self.view.bounds.width - widthMarginsAndInsets) / CGFloat(2)).rounded(.down)
-                case 4:
-                    height = ((self.view.bounds.height - (heightMarginsAndInsets)) / CGFloat(2)).rounded(.down)
-                    width = ((self.view.bounds.width - widthMarginsAndInsets) / CGFloat(2)).rounded(.down)
-                    
-                case 8:
-                    height = ((self.view.bounds.height - (heightMarginsAndInsets)) / CGFloat(2)).rounded(.down)
-                    width = ((self.view.bounds.width - (widthMarginsAndInsets * 2)) / CGFloat(4)).rounded(.down)
-                case 12:
-                    height = ((self.view.bounds.height - (heightMarginsAndInsets)) / CGFloat(3)).rounded(.down)
-                    width = ((self.view.bounds.width - (widthMarginsAndInsets * 2)) / CGFloat(4)).rounded(.down)
-                case 15:
-                    height = ((self.view.bounds.height - (heightMarginsAndInsets)) / CGFloat(3)).rounded(.down)
-                    width = ((self.view.bounds.width - (widthMarginsAndInsets * 2)) / CGFloat(5)).rounded(.down)
-                default:
-                    cellCount = 15
-                    UserDefaults.standard.set(15, forKey: "GRIDCOUNT")
-                    height = ((self.view.bounds.height - (heightMarginsAndInsets)) / CGFloat(3)).rounded(.down)
-                    width = ((self.view.bounds.width - (widthMarginsAndInsets * 2)) / CGFloat(5)).rounded(.down)
-                }
-            } else {
-                switch (cellCount){
-                case 1:
-                    height = (self.view.bounds.height - (heightMarginsAndInsets))
-                    width = (self.view.bounds.width - widthMarginsAndInsets)
-                case 2:
-                    height = ((self.view.bounds.height - (heightMarginsAndInsets)) / CGFloat(2)).rounded(.down)
-                    width = (self.view.bounds.width - widthMarginsAndInsets)
-                case 4:
-                    height = ((self.view.bounds.height - (heightMarginsAndInsets)) / CGFloat(4)).rounded(.down)
-                    width = (self.view.bounds.width - widthMarginsAndInsets)
-                case 8:
-                    height = ((self.view.bounds.height - (heightMarginsAndInsets)) / CGFloat(4)).rounded(.down)
-                    width = ((self.view.bounds.width - widthMarginsAndInsets) / CGFloat(2)).rounded(.down)
-                case 12:
-                    height = ((self.view.bounds.height - (heightMarginsAndInsets)) / CGFloat(4)).rounded(.down)
-                    width = ((self.view.bounds.width - widthMarginsAndInsets) / CGFloat(3)).rounded(.down)
-                case 15:
-                    height = ((self.view.bounds.height - (heightMarginsAndInsets)) / CGFloat(5)).rounded(.down)
-                    width = ((self.view.bounds.width - widthMarginsAndInsets) / CGFloat(3)).rounded(.down)
-                default:
-                    cellCount = 15
-                    UserDefaults.standard.set(15, forKey: "GRIDCOUNT")
-                    height = ((self.view.bounds.height - (heightMarginsAndInsets)) / CGFloat(5)).rounded(.down)
-                    width = ((self.view.bounds.width - widthMarginsAndInsets) / CGFloat(3)).rounded(.down)
-                }
-            }
-            let cellSize = CGSize(width: width, height: height)
-            layout.itemSize = cellSize
-            layout.invalidateLayout()
-        }
     }
     
     private func updateCollectionViewLayout(with size: CGSize) {
@@ -632,14 +552,13 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! MainCollectionViewCell
-        
-        cell.displayContent(header: "header", value: "value")
         if UserDefaults.standard.bool(forKey: "nightmode_preference") {
             cell.setColors(backgroundColor: .black, textColor: .white)
         } else {
             cell.setColors(backgroundColor: .white, textColor: .black)
         }
-        // Configure the cell
+        let label = getLabel(cell: indexPath.row + 1)
+        cell.setLabel(label: label)
     
         return cell
     }
@@ -793,6 +712,142 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         }
     }
     
+    func getLabel(cell: Int) -> String {
+        var label:String = ""
+        var cellDataPoint:Int = 0
+        
+        switch (cell) {
+        case 1:
+            cellDataPoint = UserDefaults.standard.integer(forKey: "grid_one_preference")
+        case 2:
+            cellDataPoint = UserDefaults.standard.integer(forKey: "grid_two_preference")
+        case 3:
+            cellDataPoint = UserDefaults.standard.integer(forKey: "grid_three_preference")
+        case 4:
+            cellDataPoint = UserDefaults.standard.integer(forKey: "grid_four_preference")
+        case 5:
+            cellDataPoint = UserDefaults.standard.integer(forKey: "grid_five_preference")
+        case 6:
+            cellDataPoint = UserDefaults.standard.integer(forKey: "grid_six_preference")
+        case 7:
+            cellDataPoint = UserDefaults.standard.integer(forKey: "grid_seven_preference")
+        case 8:
+            cellDataPoint = UserDefaults.standard.integer(forKey: "grid_eight_preference")
+        case 9:
+            cellDataPoint = UserDefaults.standard.integer(forKey: "grid_nine_preference")
+        case 10:
+            cellDataPoint = UserDefaults.standard.integer(forKey: "grid_ten_preference")
+        case 11:
+            cellDataPoint = UserDefaults.standard.integer(forKey: "grid_eleven_preference")
+        case 12:
+            cellDataPoint = UserDefaults.standard.integer(forKey: "grid_twelve_preference")
+        case 13:
+            cellDataPoint = UserDefaults.standard.integer(forKey: "grid_thirteen_preference")
+        case 14:
+            cellDataPoint = UserDefaults.standard.integer(forKey: "grid_fourteen_preference")
+        case 15:
+            cellDataPoint = UserDefaults.standard.integer(forKey: "grid_fifteen_preference")
+        default:
+            print("Unknown cell")
+        }
+        var temperatureUnit = "C"
+        var distanceUnit = "km"
+        var distanceTimeUnit = "kmh"
+        var consumptionUnit = "L/100"
+        var pressureUnit = "psi"
+        // Pressure Unit
+        switch UserDefaults.standard.integer(forKey: "pressure_unit_preference"){
+        case 0:
+            pressureUnit = "bar"
+        case 1:
+            pressureUnit = "kPa"
+        case 2:
+            pressureUnit = "kg-f"
+        case 3:
+            pressureUnit = "psi"
+        default:
+            print("Unknown pressure unit setting")
+        }
+        if UserDefaults.standard.integer(forKey: "temperature_unit_preference") == 1 {
+            temperatureUnit = "F"
+        }
+        if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
+            distanceUnit = "mi"
+            distanceTimeUnit = "mph"
+            consumptionUnit = "mpg"
+        }
+        
+        switch (cellDataPoint){
+        case 0:
+            // Gear
+            label = NSLocalizedString("gear_header", comment: "")
+        case 1:
+            // Engine Temperature
+            label = NSLocalizedString("enginetemp_header", comment: "") + " (" + temperatureUnit + ")"
+        case 2:
+            // Ambient Temperature
+            label = NSLocalizedString("ambienttemp_header", comment: "") + " (" + temperatureUnit + ")"
+        case 3:
+            // Front Tire Pressure
+            label = NSLocalizedString("frontpressure_header", comment: "") + " (" + pressureUnit + ")"
+        case 4:
+            // Rear Tire Pressure
+            label = NSLocalizedString("rearpressure_header", comment: "") + " (" + pressureUnit + ")"
+        case 5:
+            // Odometer
+            label = NSLocalizedString("odometer_header", comment: "") + " (" + distanceUnit + ")"
+        case 6:
+            // Voltage
+            label = NSLocalizedString("voltage_header", comment: "") + " (V)"
+        case 7:
+            // Trottle
+            label = NSLocalizedString("throttle_header", comment: "") + " (%)"
+        case 8:
+            // Front Brakes
+            label = NSLocalizedString("frontbrakes_header", comment: "")
+        case 9:
+            // Rear Brakes
+            label = NSLocalizedString("rearbrakes_header", comment: "")
+        case 10:
+            // Ambient Light
+            label = NSLocalizedString("ambientlight_header", comment: "")
+        case 11:
+            // Trip 1
+            label = NSLocalizedString("tripone_header", comment: "") + " (" + distanceUnit + ")"
+        case 12:
+            // Trip 2
+            label = NSLocalizedString("triptwo_header", comment: "") + " (" + distanceUnit + ")"
+        case 13:
+            // Trip Auto
+            label = NSLocalizedString("tripauto_header", comment: "") + " (" + distanceUnit + ")"
+        case 14:
+            // Speed
+            label = NSLocalizedString("speed_header", comment: "") + " (" + distanceTimeUnit + ")"
+        case 15:
+            //Average Speed
+            label = NSLocalizedString("avgspeed_header", comment: "") + " (" + distanceTimeUnit + ")"
+        case 16:
+            //Current Consumption
+            label = NSLocalizedString("cconsumption_header", comment: "") + " (" + consumptionUnit + ")"
+        case 17:
+            //Fuel Economy One
+            label = NSLocalizedString("fueleconomyone_header", comment: "") + " (" + consumptionUnit + ")"
+        case 18:
+            //Fuel Economy Two
+            label = NSLocalizedString("fueleconomytwo_header", comment: "") + " (" + consumptionUnit + ")"
+        case 19:
+            //Fuel Range
+            label = NSLocalizedString("fuelrange_header", comment: "") + " (" + distanceUnit + ")"
+        case 20:
+            //Shifts
+            label = NSLocalizedString("shifts_header", comment: "")
+        default:
+            print("Unknown : \(cellDataPoint)")
+        }
+        
+        return label
+    }
+    
     // MARK: - Updating UI
     func updateMessageDisplay() {
         // Update Buttons
@@ -938,40 +993,13 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     }
     
     func setCellText(_ cellNumber: Int, dataPoint: Int){
-        var temperatureUnit = "C"
-        var distanceUnit = "km"
-        var distanceTimeUnit = "kmh"
-        var consumptionUnit = "L/100"
-        var pressureUnit = "psi"
-        // Pressure Unit
-        switch UserDefaults.standard.integer(forKey: "pressure_unit_preference"){
-        case 0:
-            pressureUnit = "bar"
-        case 1:
-            pressureUnit = "kPa"
-        case 2:
-            pressureUnit = "kg-f"
-        case 3:
-            pressureUnit = "psi"
-        default:
-            print("Unknown pressure unit setting")
-        }
-        if UserDefaults.standard.integer(forKey: "temperature_unit_preference") == 1 {
-            temperatureUnit = "F"
-        }
-        if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
-            distanceUnit = "mi"
-            distanceTimeUnit = "mph"
-            consumptionUnit = "mpg"
-        }
         
-        var label:String = ""
+        let label = getLabel(cell: cellNumber)
         var value:String = NSLocalizedString("blank_field", comment: "")
         
         switch (dataPoint){
         case 0:
             // Gear
-            label = NSLocalizedString("gear_header", comment: "")
             if motorcycleData.gear != nil {
                 value = motorcycleData.getgear()
             } else {
@@ -979,7 +1007,6 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             }
         case 1:
             // Engine Temperature
-            label = NSLocalizedString("enginetemp_header", comment: "") + " (" + temperatureUnit + ")"
             if motorcycleData.engineTemperature != nil {
                 var engineTemp:Double = motorcycleData.engineTemperature!
                 if UserDefaults.standard.integer(forKey: "temperature_unit_preference") == 1 {
@@ -991,7 +1018,6 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             }
         case 2:
             // Ambient Temperature
-            label = NSLocalizedString("ambienttemp_header", comment: "") + " (" + temperatureUnit + ")"
             if motorcycleData.ambientTemperature != nil {
                 var ambientTemp:Double = motorcycleData.ambientTemperature!
                 if UserDefaults.standard.integer(forKey: "temperature_unit_preference") == 1 {
@@ -1003,7 +1029,6 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             }
         case 3:
             // Front Tire Pressure
-            label = NSLocalizedString("frontpressure_header", comment: "") + " (" + pressureUnit + ")"
             if motorcycleData.frontTirePressure != nil {
                 var frontPressure:Double = motorcycleData.frontTirePressure!
                 switch UserDefaults.standard.integer(forKey: "pressure_unit_preference"){
@@ -1014,7 +1039,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                 case 3:
                     frontPressure = barToPsi(frontPressure)
                 default:
-                    print("Unknown pressure unit setting")
+                    break
                 }
                 value = "\(frontPressure.rounded(toPlaces: 1))"
             } else {
@@ -1022,7 +1047,6 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             }
         case 4:
             // Rear Tire Pressure
-            label = NSLocalizedString("rearpressure_header", comment: "") + " (" + pressureUnit + ")"
             if motorcycleData.rearTirePressure != nil {
                 var rearPressure:Double = motorcycleData.rearTirePressure!
                 switch UserDefaults.standard.integer(forKey: "pressure_unit_preference"){
@@ -1033,7 +1057,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                 case 3:
                     rearPressure = barToPsi(rearPressure)
                 default:
-                    print("Unknown pressure unit setting")
+                    break
                 }
                 value = "\(rearPressure.rounded(toPlaces: 1))"
             } else {
@@ -1041,7 +1065,6 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             }
         case 5:
             // Odometer
-            label = NSLocalizedString("odometer_header", comment: "") + " (" + distanceUnit + ")"
             if motorcycleData.odometer != nil {
                 var odometer:Double = motorcycleData.odometer!
                 if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
@@ -1053,7 +1076,6 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             }
         case 6:
             // Voltage
-            label = NSLocalizedString("voltage_header", comment: "") + " (V)"
             if motorcycleData.voltage != nil {
                 value = "\(motorcycleData.voltage!)"
             } else {
@@ -1061,7 +1083,6 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             }
         case 7:
             // Trottle
-            label = NSLocalizedString("throttle_header", comment: "") + " (%)"
             if motorcycleData.throttlePosition != nil {
                 value = "\(motorcycleData.throttlePosition!)"
             } else {
@@ -1069,7 +1090,6 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             }
         case 8:
             // Front Brakes
-            label = NSLocalizedString("frontbrakes_header", comment: "")
             if motorcycleData.frontBrake != nil {
                 value = "\(motorcycleData.frontBrake!)"
             } else {
@@ -1077,7 +1097,6 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             }
         case 9:
             // Rear Brakes
-            label = NSLocalizedString("rearbrakes_header", comment: "")
             if motorcycleData.rearBrake != nil {
                 value = "\(motorcycleData.rearBrake!)"
             } else {
@@ -1085,7 +1104,6 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             }
         case 10:
             // Ambient Light
-            label = NSLocalizedString("ambientlight_header", comment: "")
             if motorcycleData.ambientLight != nil {
                 value = "\(motorcycleData.ambientLight!)"
             } else {
@@ -1093,7 +1111,6 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             }
         case 11:
             // Trip 1
-            label = NSLocalizedString("tripone_header", comment: "") + " (" + distanceUnit + ")"
             if motorcycleData.tripOne != nil {
                 var tripOne:Double = motorcycleData.tripOne!
                 if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
@@ -1105,7 +1122,6 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             }
         case 12:
             // Trip 2
-            label = NSLocalizedString("triptwo_header", comment: "") + " (" + distanceUnit + ")"
             if motorcycleData.tripTwo != nil {
                 var tripTwo:Double = motorcycleData.gettripTwo()
                 if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
@@ -1117,7 +1133,6 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             }
         case 13:
             // Trip Auto
-            label = NSLocalizedString("tripauto_header", comment: "") + " (" + distanceUnit + ")"
             if motorcycleData.tripAuto != nil {
                 var tripAuto:Double = motorcycleData.gettripAuto()
                 if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
@@ -1129,7 +1144,6 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             }
         case 14:
             // Speed
-            label = NSLocalizedString("speed_header", comment: "") + " (" + distanceTimeUnit + ")"
             if motorcycleData.speed != nil {
                 let speedValue:Double = motorcycleData.speed!
                 value = "\(speedValue)"
@@ -1141,7 +1155,6 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             }
         case 15:
             //Average Speed
-            label = NSLocalizedString("avgspeed_header", comment: "") + " (" + distanceTimeUnit + ")"
             if motorcycleData.averageSpeed != nil {
                 let avgSpeedValue:Double = motorcycleData.averageSpeed!
                 value = "\(avgSpeedValue)"
@@ -1153,7 +1166,6 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             }
         case 16:
             //Current Consumption
-            label = NSLocalizedString("cconsumption_header", comment: "") + " (" + consumptionUnit + ")"
             if motorcycleData.currentConsumption != nil {
                 let currentConsumptionValue:Double = motorcycleData.currentConsumption!
                 value = "\(currentConsumptionValue)"
@@ -1165,7 +1177,6 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             }
         case 17:
             //Fuel Economy One
-            label = NSLocalizedString("fueleconomyone_header", comment: "") + " (" + consumptionUnit + ")"
             if motorcycleData.fuelEconomyOne != nil {
                 let fuelEconomyOneValue:Double = motorcycleData.fuelEconomyOne!
                 value = "\(fuelEconomyOneValue)"
@@ -1177,7 +1188,6 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             }
         case 18:
             //Fuel Economy Two
-            label = NSLocalizedString("fueleconomytwo_header", comment: "") + " (" + consumptionUnit + ")"
             if motorcycleData.fuelEconomyTwo != nil {
                 let fuelEconomyTwoValue:Double = motorcycleData.fuelEconomyTwo!
                 value = "\(fuelEconomyTwoValue)"
@@ -1189,7 +1199,6 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             }
         case 19:
             //Fuel Range
-            label = NSLocalizedString("fuelrange_header", comment: "") + " (" + distanceUnit + ")"
             if motorcycleData.fuelRange != nil {
                 let fuelRangeValue:Double = motorcycleData.fuelRange!
                 value = "\(fuelRangeValue)"
@@ -1201,7 +1210,6 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             }
         case 20:
             //Shifts
-            label = NSLocalizedString("shifts_header", comment: "")
             if motorcycleData.shifts != nil {
                 value = "\(motorcycleData.shifts!)"
             } else {
@@ -1210,10 +1218,9 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         default:
             print("Unknown : \(dataPoint)")
         }
-        if (!busy){
-            if let cell = self.collectionView.cellForItem(at: IndexPath(row: cellNumber - 1, section: 0) as IndexPath) as? MainCollectionViewCell{
-            cell.displayContent(header: label, value: value)
-            }
+        if let cell = self.collectionView.cellForItem(at: IndexPath(row: cellNumber - 1, section: 0) as IndexPath) as? MainCollectionViewCell{
+            cell.setLabel(label: label)
+            cell.setValue(value: value)
         }
     }
     
@@ -2711,7 +2718,6 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     }
     
     func defaultsChanged(notification:NSNotification){
-        print("defaultsChanged")
         if let defaults = notification.object as? UserDefaults {
             if defaults.bool(forKey: "nightmode_lastSet") != defaults.bool(forKey: "nightmode_preference"){
                 UserDefaults.standard.set(defaults.bool(forKey: "nightmode_preference"), forKey: "nightmode_lastSet")
@@ -2730,15 +2736,14 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             }
             
             if !UserDefaults.standard.bool(forKey: "debug_logging_preference") {
-                print("Delete dbg file")
                 // Get the documents folder url
                 let documentDirectory = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
                 // Destination url for the log file to be saved
                 let fileURL = documentDirectory.appendingPathComponent("dbg")
                 do {
                     try FileManager.default.removeItem(at: fileURL)
-                } catch let error as NSError {
-                    print("Error: \(error.domain)")
+                } catch _ as NSError {
+                    //print("Error: \(error.domain)")
                 }
             }
         }
@@ -3251,7 +3256,6 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     }
     
     @objc func upScreen() {
-        busy = true
         let cellCount = UserDefaults.standard.integer(forKey: "GRIDCOUNT")
         var nextCellCount = 1
         if ( collectionView!.bounds.width > collectionView!.bounds.height){
@@ -3317,14 +3321,9 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         
         self.collectionView!.collectionViewLayout.invalidateLayout()
         self.collectionView!.reloadData()
-        
-        DispatchQueue.main.async {
-            self.busy = false
-        }
     }
     
     @objc func downScreen() {
-        busy = true
         let cellCount = UserDefaults.standard.integer(forKey: "GRIDCOUNT")
         var nextCellCount = 1
         if ( collectionView!.bounds.width > collectionView!.bounds.height){
@@ -3389,10 +3388,6 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         UserDefaults.standard.set(nextCellCount, forKey: "GRIDCOUNT")
         self.collectionView!.collectionViewLayout.invalidateLayout()
         self.collectionView!.reloadData()
-        
-        DispatchQueue.main.async {
-            self.busy = false
-        }
     }
 
 }

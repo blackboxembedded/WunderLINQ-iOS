@@ -119,7 +119,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         
         for preference in preferences {
             guard let key = preference["Key"] as? String else {
-                NSLog("Root Settings Key not fount")
                 continue
             }
             defaultsToRegister[key] = preference["DefaultValue"]
@@ -135,7 +134,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         
         for preference in gridPreferences {
             guard let key = preference["Key"] as? String else {
-                NSLog("Grid Settings Key not fount")
                 continue
             }
             gridDefaultsToRegister[key] = preference["DefaultValue"]
@@ -151,7 +149,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         
         for preference in taskPreferences {
             guard let key = preference["Key"] as? String else {
-                NSLog("Quick Task Settings Key not fount")
                 continue
             }
             settingsDefaultsToRegister[key] = preference["DefaultValue"]
