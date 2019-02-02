@@ -2746,6 +2746,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                     //print("Error: \(error.domain)")
                 }
             }
+            self.collectionView!.reloadData()
         }
     }
     
