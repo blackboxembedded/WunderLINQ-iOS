@@ -9,11 +9,6 @@
 // Product
 "product" = "WunderLINQ";
 
-// AppDelegate
-"negative_alert_title" = "Περιορισμένη λειτουργικότητα";
-"negative_notification_body" = "Η εφαρμογή δεν θα είναι σε θέση να στέλνει ειδοποιήσεις για σφάλματα, όσο οι ειδοποιήσεις είναι απενεργοποιημένες";
-"alert_message_exit_ok" = "Εντάξει";
-
 // MyMotorcycleViewController
 "main_title" = "Μοτοσυκλέτα";
 "disclaimer_alert_title" = "ΠΡΟΣΟΧΗ!";
@@ -28,6 +23,7 @@
 "negative_camera_alert_body" = "Εφόσον δεν έχει εκχωρηθεί δικαίωμα πρόσβασης στην κάμερα, η εφαρμογή δεν θα μπορεί να κάνει λήψη φωτογραφιών ή εγγραφή βίντεο.";
 "negative_microphone_alert_body" = "Εφόσον δεν έχει εκχωρηθεί δικαίωμα πρόσβασης στο μικρόφωνο, η εφαρμογή δεν θα μπορεί να κάνει εγγραφή βίντεο.";
 "negative_notification_body" = "Εφόσον δεν έχει εκχωρηθεί δικαίωμα πρόσβασης στις ειδοποιήσεις, η εφαρμογή δεν θα μπορεί να αποστέλει ειδοποιήσεις για σφάλματα.";
+"alert_message_exit_ok" = "Εντάξει";
 "negative_alert_btn_ok" = "Άνοιγμα ρυθμίσεων";
 "negative_alert_btn_cancel" = "Ακύρωση";
 "bt_powered_off" = "Το Bluetooth σε αυτή τη συσκευή είναι απενεργοποιημένο.";

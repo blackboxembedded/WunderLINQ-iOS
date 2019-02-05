@@ -9,11 +9,6 @@
 // Product
 "product" = "WunderLINQ";
 
-// AppDelegate
-"negative_alert_title" = "Zmožnosti omejene";
-"negative_notification_body" = "Ker obvestila niso omogočena, aplikacija ne bo prikazovala obvestil o napakah";
-"alert_message_exit_ok" = "V redu";
-
 // MyMotorcycleViewController
 "main_title" = "Motor";
 "disclaimer_alert_title" = "POZOR!";
@@ -28,6 +23,7 @@
 "negative_camera_alert_body" = "Since camera access has not been granted, this app will not be able to take photos or videos."; // Needs Translation
 "negative_microphone_alert_body" = "Since microphone access has not been granted, this app will not be able to record videos."; // Needs Translation
 "negative_notification_body" = "Since notifcations were not allowed, this app will not be able to send notifcations for faults"; // Needs Translation
+"alert_message_exit_ok" = "V redu";
 "negative_alert_btn_ok" = "Open Settings"; // Needs Translation
 "negative_alert_btn_cancel" = "Cancel"; // Needs Translation
 "bt_powered_off" = "Bluetooth na napravi je trenutno izključen.";

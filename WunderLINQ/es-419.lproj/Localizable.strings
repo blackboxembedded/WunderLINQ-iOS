@@ -9,11 +9,6 @@
 // Product
 "product" = "WunderLINQ";
 
-// AppDelegate
-"negative_alert_title" = "Funcionalidad limitada";
-"negative_notification_body" = "Debido a que las notificaciones no fueron habilitadas, esta app no podrá enviar notificaciones de fallas.";
-"alert_message_exit_ok" = "OK";
-
 // MyMotorcycleViewController
 "main_title" = "Motocicleta";
 "disclaimer_alert_title" = "ADVERTENCIA!";
@@ -28,6 +23,7 @@
 "negative_camera_alert_body" = "Since camera access has not been granted, this app will not be able to take photos or videos."; // Needs Translation
 "negative_microphone_alert_body" = "Since microphone access has not been granted, this app will not be able to record videos."; // Needs Translation
 "negative_notification_body" = "Since notifcations were not allowed, this app will not be able to send notifcations for faults"; // Needs Translation
+"alert_message_exit_ok" = "OK";
 "negative_alert_btn_ok" = "Open Settings"; // Needs Translation
 "negative_alert_btn_cancel" = "Cancel"; // Needs Translation
 "bt_powered_off" = "Bluetooth de este dispositivo se encuentra apagado.";

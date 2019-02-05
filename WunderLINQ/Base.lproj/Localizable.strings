@@ -23,6 +23,7 @@
 "negative_camera_alert_body" = "Since camera access has not been granted, this app will not be able to take photos or videos.";
 "negative_microphone_alert_body" = "Since microphone access has not been granted, this app will not be able to record videos.";
 "negative_notification_body" = "Since notifcations were not allowed, this app will not be able to send notifcations for faults";
+"alert_message_exit_ok" = "OK";
 "negative_alert_btn_ok" = "Open Settings";
 "negative_alert_btn_cancel" = "Cancel";
 "bt_powered_off" = "Bluetooth on this device is currently powered off.";

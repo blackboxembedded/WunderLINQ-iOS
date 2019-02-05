@@ -18,7 +18,7 @@ import CommonCrypto
 
 private let reuseIdentifier = "MainCollectionViewCell"
 
-class MainCollectionViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, CBCentralManagerDelegate, CBPeripheralDelegate, UNUserNotificationCenterDelegate  {
+class MainCollectionViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, CBCentralManagerDelegate, CBPeripheralDelegate, UNUserNotificationCenterDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
 
     @IBOutlet weak var mainUIView: UIView!
     @IBOutlet weak var collectionView: UICollectionView!
@@ -69,7 +69,31 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     let minimumInteritemSpacing: CGFloat = 5
     var cellsPerRow = 5
     var rowCount = 3
-    
+    var selectedCell = 0
+    var selectedDataPoint = 0
+    var dataPointList:[String] = [NSLocalizedString("gear_header", comment: ""),
+                         NSLocalizedString("enginetemp_header", comment: ""),
+                         NSLocalizedString("ambienttemp_header", comment: ""),
+                         NSLocalizedString("frontpressure_header", comment: ""),
+                         NSLocalizedString("rearpressure_header", comment: ""),
+                         NSLocalizedString("odometer_header", comment: ""),
+                         NSLocalizedString("voltage_header", comment: ""),
+                         NSLocalizedString("throttle_header", comment: ""),
+                         NSLocalizedString("frontbrakes_header", comment: ""),
+                         NSLocalizedString("rearbrakes_header", comment: ""),
+                         NSLocalizedString("ambientlight_header", comment: ""),
+                         NSLocalizedString("tripone_header", comment: ""),
+                         NSLocalizedString("triptwo_header", comment: ""),
+                         NSLocalizedString("tripauto_header", comment: ""),
+                         NSLocalizedString("speed_header", comment: ""),
+                         NSLocalizedString("avgspeed_header", comment: ""),
+                         NSLocalizedString("cconsumption_header", comment: ""),
+                         NSLocalizedString("fueleconomyone_header", comment: ""),
+                         NSLocalizedString("fueleconomytwo_header", comment: ""),
+                         NSLocalizedString("fuelrange_header", comment: ""),
+                         NSLocalizedString("shifts_header", comment: "")
+    ]
+
     override var preferredStatusBarStyle : UIStatusBarStyle {
         if UserDefaults.standard.bool(forKey: "nightmode_preference") {
             return .lightContent
@@ -176,6 +200,9 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         swipeDown.direction = .down
         self.view.addGestureRecognizer(swipeDown)
         
+        let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(MainCollectionViewController.longPress(longPressGestureRecognizer:)))
+        self.view.addGestureRecognizer(longPressRecognizer)
+        
         // Setup Buttons
         backBtn = UIButton()
         backBtn.setImage(UIImage(named: "Left")?.withRenderingMode(.alwaysTemplate), for: .normal)
@@ -281,7 +308,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             self.present(alert, animated: true, completion: nil)
         }
         let cellCount = UserDefaults.standard.integer(forKey: "GRIDCOUNT")
-        if ( collectionView!.bounds.width > collectionView!.bounds.height){
+        if ( self.view.bounds.width > self.view.bounds.height){
             switch (cellCount){
             case 1:
                 cellsPerRow = 1
@@ -1148,7 +1175,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                 let speedValue:Double = motorcycleData.speed!
                 value = "\(speedValue)"
                 if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
-                    value = "\(kmToMiles(speedValue))"
+                    value = "\(kmToMiles(speedValue).rounded(toPlaces: 1))"
                 }
             } else {
                 value = NSLocalizedString("blank_field", comment: "")
@@ -1159,7 +1186,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                 let avgSpeedValue:Double = motorcycleData.averageSpeed!
                 value = "\(avgSpeedValue)"
                 if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
-                    value = "\(kmToMiles(avgSpeedValue))"
+                    value = "\(kmToMiles(avgSpeedValue).rounded(toPlaces: 1))"
                 }
             } else {
                 value = NSLocalizedString("blank_field", comment: "")
@@ -1203,7 +1230,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                 let fuelRangeValue:Double = motorcycleData.fuelRange!
                 value = "\(fuelRangeValue)"
                 if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
-                    value = "\(kmToMiles(fuelRangeValue))"
+                    value = "\(kmToMiles(fuelRangeValue).rounded(toPlaces: 1))"
                 }
             } else {
                 value = NSLocalizedString("blank_field", comment: "")
@@ -3235,6 +3262,19 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         }
     }
     
+    @objc func longPress(longPressGestureRecognizer: UILongPressGestureRecognizer) {
+        
+        if longPressGestureRecognizer.state == UIGestureRecognizerState.began {
+            let touchPoint = longPressGestureRecognizer.location(in: self.view)
+            if let indexPath = collectionView.indexPathForItem(at: touchPoint) {
+                // add your code here
+                // you can use 'indexPath' to find out which row is selected
+                print("long press: \(indexPath.row)")
+                showPickerInActionSheet(cell: indexPath.row)
+            }
+        }
+    }
+    
     override var keyCommands: [UIKeyCommand]? {
         
         let commands = [
@@ -3389,6 +3429,168 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         UserDefaults.standard.set(nextCellCount, forKey: "GRIDCOUNT")
         self.collectionView!.collectionViewLayout.invalidateLayout()
         self.collectionView!.reloadData()
+    }
+    
+    func showPickerInActionSheet(cell: Int) {
+        let title = ""
+        let message = "\n\n\n\n\n\n\n\n\n\n";
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.actionSheet);
+        alert.isModalInPopover = true;
+        
+        
+        //Create a frame (placeholder/wrapper) for the picker and then create the picker
+        let pickerFrame = CGRect(x: 0, y: 52, width: self.view.bounds.width, height: 100)
+        let picker: UIPickerView = UIPickerView(frame: pickerFrame)
+        
+        
+        //set the pickers datasource and delegate
+        picker.delegate   = self
+        picker.dataSource = self
+        picker.tag = cell
+        
+        var currentDataPoint = 0
+        switch (cell){
+        case 0:
+            currentDataPoint = UserDefaults.standard.integer(forKey: "grid_one_preference")
+        case 1:
+            currentDataPoint = UserDefaults.standard.integer(forKey: "grid_two_preference")
+        case 2:
+            currentDataPoint = UserDefaults.standard.integer(forKey: "grid_three_preference")
+        case 3:
+            currentDataPoint = UserDefaults.standard.integer(forKey: "grid_four_preference")
+        case 4:
+            currentDataPoint = UserDefaults.standard.integer(forKey: "grid_five_preference")
+        case 5:
+            currentDataPoint = UserDefaults.standard.integer(forKey: "grid_six_preference")
+        case 6:
+            currentDataPoint = UserDefaults.standard.integer(forKey: "grid_seven_preference")
+        case 7:
+            currentDataPoint = UserDefaults.standard.integer(forKey: "grid_eight_preference")
+        case 8:
+            currentDataPoint = UserDefaults.standard.integer(forKey: "grid_nine_preference")
+        case 9:
+            currentDataPoint = UserDefaults.standard.integer(forKey: "grid_ten_preference")
+        case 10:
+            currentDataPoint = UserDefaults.standard.integer(forKey: "grid_eleven_preference")
+        case 11:
+            currentDataPoint = UserDefaults.standard.integer(forKey: "grid_twelve_preference")
+        case 12:
+            currentDataPoint = UserDefaults.standard.integer(forKey: "grid_thirteen_preference")
+        case 13:
+            currentDataPoint = UserDefaults.standard.integer(forKey: "grid_fourteen_preference")
+        case 14:
+            currentDataPoint = UserDefaults.standard.integer(forKey: "grid_fifteen_preference")
+        default:
+            currentDataPoint = 0
+        }
+        
+        picker.selectRow(currentDataPoint, inComponent: 0, animated: true)
+        selectedCell = cell
+        
+        //Add the picker to the alert controller
+        alert.view.addSubview(picker)
+        
+        //Create the toolbar view - the view witch will hold our 2 buttons
+        let toolFrame = CGRect(x: 0, y: 5, width: self.view.bounds.width, height: 45)
+        let toolView: UIView = UIView(frame: toolFrame)
+        
+        
+        //add buttons to the view
+        let buttonCancelFrame = CGRect(x: 0, y: 7, width: (self.view.bounds.width / 2), height: 30) //size & position of the button as placed on the toolView
+        
+        //Create the cancel button & set its title
+        let buttonCancel: UIButton = UIButton(frame: buttonCancelFrame);
+        buttonCancel.setTitle("Cancel", for: .normal)
+        buttonCancel.setTitleColor(UIColor.blue, for: .normal)
+        toolView.addSubview(buttonCancel); //add it to the toolView
+        
+        //Add the target - target, function to call, the event witch will trigger the function call
+        buttonCancel.addTarget(self, action: #selector(MainCollectionViewController.cancelSelection(sender:)), for: UIControlEvents.touchDown);
+        
+        
+        //add buttons to the view
+        
+        let buttonOkFrame = CGRect(x: (self.view.bounds.width / 2), y: 7, width: (self.view.bounds.width / 2), height: 30)//size & position of the button as placed on the toolView
+        
+        //Create the Select button & set the title
+        let buttonOk: UIButton = UIButton(frame: buttonOkFrame);
+        buttonOk.setTitle("Select", for: UIControlState.normal);
+        buttonOk.setTitleColor(UIColor.blue, for: UIControlState.normal);
+        toolView.addSubview(buttonOk); //add to the subview
+        
+        buttonOk.addTarget(self, action: #selector(MainCollectionViewController.saveCellPref), for: UIControlEvents.touchDown);
+        
+        //add the toolbar to the alert controller
+        alert.view.addSubview(toolView);
+        
+        self.present(alert, animated: true, completion: nil);
+    }
+    
+    func cancelSelection(sender: UIButton){
+        self.dismiss(animated: true, completion: nil)
+        
+        // We dismiss the alert. Here you can add your additional code to execute when cancel is pressed
+    }
+    
+    // returns number of rows in each component..
+    func numberOfComponents(in pickerView: UIPickerView) -> Int{
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return self.dataPointList.count
+    }
+    
+    // Return the title of each row in your picker ... In my case that will be the profile name or the username string
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return self.dataPointList[row]
+        
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        print("Selected row: \(row)")
+        selectedDataPoint = row
+    }
+    
+    func saveCellPref() {
+        self.dismiss(animated: true, completion: nil)
+        //UserDefaults.standard.set(selectedTime, forKey: "DelayTimeKey")
+        print("saveCellPref: Cell:\(selectedCell), DataPoint:\(selectedDataPoint) ")
+        switch (selectedCell){
+        case 0:
+            UserDefaults.standard.set(selectedDataPoint, forKey: "grid_one_preference")
+        case 1:
+            UserDefaults.standard.set(selectedDataPoint, forKey: "grid_two_preference")
+        case 2:
+            UserDefaults.standard.set(selectedDataPoint, forKey: "grid_three_preference")
+        case 3:
+            UserDefaults.standard.set(selectedDataPoint, forKey: "grid_four_preference")
+        case 4:
+            UserDefaults.standard.set(selectedDataPoint, forKey: "grid_five_preference")
+        case 5:
+            UserDefaults.standard.set(selectedDataPoint, forKey: "grid_six_preference")
+        case 6:
+            UserDefaults.standard.set(selectedDataPoint, forKey: "grid_seven_preference")
+        case 7:
+            UserDefaults.standard.set(selectedDataPoint, forKey: "grid_eight_preference")
+        case 8:
+            UserDefaults.standard.set(selectedDataPoint, forKey: "grid_nine_preference")
+        case 9:
+            UserDefaults.standard.set(selectedDataPoint, forKey: "grid_ten_preference")
+        case 10:
+            UserDefaults.standard.set(selectedDataPoint, forKey: "grid_eleven_preference")
+        case 11:
+            UserDefaults.standard.set(selectedDataPoint, forKey: "grid_twelve_preference")
+        case 12:
+            UserDefaults.standard.set(selectedDataPoint, forKey: "grid_thirteen_preference")
+        case 13:
+            UserDefaults.standard.set(selectedDataPoint, forKey: "grid_fourteen_preference")
+        case 14:
+            UserDefaults.standard.set(selectedDataPoint, forKey: "grid_fifteen_preference")
+        default:
+            print("Unknown Cell")
+        }
+        let _ = UserDefaults.standard.synchronize()
     }
 
 }

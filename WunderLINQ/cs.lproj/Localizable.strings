@@ -9,11 +9,6 @@
 // Product
 "product" = "WunderLINQ";
 
-// AppDelegate
-"negative_alert_title" = "Funkcionalita omezena";
-"negative_notification_body" = "Chybí povoleni k zaílání upozornění, aplikace nebude moci hlásit chybové kódy";
-"alert_message_exit_ok" = "OK";
-
 // MyMotorcycleViewController
 "main_title" = "Motocykl";
 "disclaimer_alert_title" = "VAROVÁNÍ!";
@@ -28,6 +23,7 @@
 "negative_camera_alert_body" = "Chybí oprávnění k použití kamery - nebude možné pořizovat fotky nebo nahrávat video.";
 "negative_microphone_alert_body" = "Chybí oprávnění k použití mikrofonu - nebude možné nahrávat video.";
 "negative_notification_body" = "Chybí oprávnění k zasílání upozornění - aplikace nebude upozorňovat na chyby.";
+"alert_message_exit_ok" = "OK";
 "negative_alert_btn_ok" = "Nastavení";
 "negative_alert_btn_cancel" = "Zrušit";
 "bt_powered_off" = "Bluetooth je vypnut";
