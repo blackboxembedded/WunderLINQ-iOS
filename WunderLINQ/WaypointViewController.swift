@@ -228,25 +228,34 @@ class WaypointViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func deletePressed(_ sender: Any) {
-        let queryString = "DELETE FROM records WHERE id = \(record ?? 0)"
-        //statement pointer
-        var stmt:OpaquePointer?
         
-        //preparing the query
-        if sqlite3_prepare(db, queryString, -1, &stmt, nil) != SQLITE_OK{
-            let errmsg = String(cString: sqlite3_errmsg(db)!)
-            print("error preparing insert: \(errmsg)")
-            return
-        }
-        
-        //executing the query to delete row
-        if sqlite3_step(stmt) != SQLITE_DONE {
-            let errmsg = String(cString: sqlite3_errmsg(db)!)
-            print("failure inserting wapoint: \(errmsg)")
-            return
-        }
-        
-        performSegue(withIdentifier: "waypointToWaypoints", sender: [])
+        let alert = UIAlertController(title: NSLocalizedString("delete_waypoint_alert_title", comment: ""), message: NSLocalizedString("delete_waypoint_alert_body", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("delete_bt", comment: ""), style: UIAlertActionStyle.default, handler: { action in
+            let queryString = "DELETE FROM records WHERE id = \(self.record ?? 0)"
+            //statement pointer
+            var stmt:OpaquePointer?
+            
+            //preparing the query
+            if sqlite3_prepare(self.db, queryString, -1, &stmt, nil) != SQLITE_OK{
+                let errmsg = String(cString: sqlite3_errmsg(self.db)!)
+                print("error preparing insert: \(errmsg)")
+                return
+            }
+            
+            //executing the query to delete row
+            if sqlite3_step(stmt) != SQLITE_DONE {
+                let errmsg = String(cString: sqlite3_errmsg(self.db)!)
+                print("failure inserting wapoint: \(errmsg)")
+                return
+            }
+            
+            self.performSegue(withIdentifier: "waypointToWaypoints", sender: [])
+        }))
+        alert.addAction(UIAlertAction(title: NSLocalizedString("cancel_bt", comment: ""), style: UIAlertActionStyle.cancel, handler: { action in
+            // quit app
+            //exit(0)
+        }))
+        self.present(alert, animated: true, completion: nil)
         
     }
     

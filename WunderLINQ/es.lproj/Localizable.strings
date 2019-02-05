@@ -93,6 +93,10 @@
 "hours" = "horas";
 "minutes" = "minutos";
 "seconds" = "segundos";
+"delete_trip_alert_title" = "Warning!"; // Needs translation
+"delete_trip_alert_body" = "Delete Trip Log?"; // Needs translation
+"delete_bt" = "Delete"; // Needs translation
+"cancel_bt" = "Cancel"; // Needs translation
 
 // WaypointsTableViewController
 "waypoint_title"="Puntos de Ruta (Waypoints) guardados";
@@ -107,6 +111,8 @@
 "waypoint_view_bt_nav" = "Navegar";
 "waypoint_view_bt_share"="Compartir";
 "waypoint_view_bt_delete"="Borrar";
+"delete_waypoint_alert_title" = "Warning!"; // Needs translation
+"delete_waypoint_alert_body" = "Delete Waypoint?"; // Needs translation
 
 // CompassViewController
 "compass_title"="Brújula";

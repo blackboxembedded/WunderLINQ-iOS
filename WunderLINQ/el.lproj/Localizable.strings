@@ -94,6 +94,10 @@
 "hours" = "ώρες";
 "minutes" = "λεπτά";
 "seconds" = "δευτερόλεπτα";
+"delete_trip_alert_title" = "Warning!"; // Needs translation
+"delete_trip_alert_body" = "Delete Trip Log?"; // Needs translation
+"delete_bt" = "Delete"; // Needs translation
+"cancel_bt" = "Cancel"; // Needs translation
 
 // WaypointsTableViewController
 "waypoint_title" = "Αποθηκευμένοι προορισμοί";
@@ -108,6 +112,8 @@
 "waypoint_view_bt_nav" = "Πλοήγηση";
 "waypoint_view_bt_share" = "Κοινή χρήση";
 "waypoint_view_bt_delete" = "Διαγραφή";
+"delete_waypoint_alert_title" = "Warning!"; // Needs translation
+"delete_waypoint_alert_body" = "Delete Waypoint?"; // Needs translation
 
 // CompassViewController
 "compass_title" = "Πυξίδα";

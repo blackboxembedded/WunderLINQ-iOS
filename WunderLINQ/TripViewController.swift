@@ -51,15 +51,22 @@ class TripViewController: UIViewController {
     }
     
     @IBAction func deleteBtn(_ sender: Any) {
-        let fileManager = FileManager.default
-        let filename = "\(self.getDocumentsDirectory())/\(fileName ?? "file").csv"
-        
-        do {
-            try fileManager.removeItem(atPath: filename)
-        } catch {
-            print("Could not delete file: \(error)")
-        }
-        performSegue(withIdentifier: "tripToTrips", sender: [])
+        let alert = UIAlertController(title: NSLocalizedString("delete_trip_alert_title", comment: ""), message: NSLocalizedString("delete_trip_alert_body", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("delete_bt", comment: ""), style: UIAlertActionStyle.default, handler: { action in
+            let fileManager = FileManager.default
+            let filename = "\(self.getDocumentsDirectory())/\(self.fileName ?? "file").csv"
+            
+            do {
+                try fileManager.removeItem(atPath: filename)
+            } catch {
+                print("Could not delete file: \(error)")
+            }
+            self.performSegue(withIdentifier: "tripToTrips", sender: [])
+        }))
+        alert.addAction(UIAlertAction(title: NSLocalizedString("cancel_bt", comment: ""), style: UIAlertActionStyle.cancel, handler: { action in
+            // close
+        }))
+        self.present(alert, animated: true, completion: nil)
     }
     
     override func viewDidLoad() {

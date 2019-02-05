@@ -3267,9 +3267,6 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         if longPressGestureRecognizer.state == UIGestureRecognizerState.began {
             let touchPoint = longPressGestureRecognizer.location(in: self.view)
             if let indexPath = collectionView.indexPathForItem(at: touchPoint) {
-                // add your code here
-                // you can use 'indexPath' to find out which row is selected
-                print("long press: \(indexPath.row)")
                 showPickerInActionSheet(cell: indexPath.row)
             }
         }
@@ -3500,7 +3497,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         
         //Create the cancel button & set its title
         let buttonCancel: UIButton = UIButton(frame: buttonCancelFrame);
-        buttonCancel.setTitle("Cancel", for: .normal)
+        buttonCancel.setTitle(NSLocalizedString("cancel_bt", comment: ""), for: .normal)
         buttonCancel.setTitleColor(UIColor.blue, for: .normal)
         toolView.addSubview(buttonCancel); //add it to the toolView
         
@@ -3514,7 +3511,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         
         //Create the Select button & set the title
         let buttonOk: UIButton = UIButton(frame: buttonOkFrame);
-        buttonOk.setTitle("Select", for: UIControlState.normal);
+        buttonOk.setTitle(NSLocalizedString("select_bt", comment: ""), for: UIControlState.normal);
         buttonOk.setTitleColor(UIColor.blue, for: UIControlState.normal);
         toolView.addSubview(buttonOk); //add to the subview
         
@@ -3548,14 +3545,11 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        print("Selected row: \(row)")
         selectedDataPoint = row
     }
     
     func saveCellPref() {
         self.dismiss(animated: true, completion: nil)
-        //UserDefaults.standard.set(selectedTime, forKey: "DelayTimeKey")
-        print("saveCellPref: Cell:\(selectedCell), DataPoint:\(selectedDataPoint) ")
         switch (selectedCell){
         case 0:
             UserDefaults.standard.set(selectedDataPoint, forKey: "grid_one_preference")
