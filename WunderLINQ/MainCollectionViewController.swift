@@ -1039,7 +1039,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                 if UserDefaults.standard.integer(forKey: "temperature_unit_preference") == 1 {
                     engineTemp = celciusToFahrenheit(engineTemp)
                 }
-                value = "\(Int(engineTemp))"
+                value = "\(engineTemp.rounded(toPlaces: 1))"
             } else {
                 value = NSLocalizedString("blank_field", comment: "")
             }
@@ -1050,7 +1050,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                 if UserDefaults.standard.integer(forKey: "temperature_unit_preference") == 1 {
                     ambientTemp = celciusToFahrenheit(ambientTemp)
                 }
-                value = "\(Int(ambientTemp))"
+                value = "\(ambientTemp.rounded(toPlaces: 1))"
             } else {
                 value = NSLocalizedString("blank_field", comment: "")
             }
@@ -1172,10 +1172,10 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         case 14:
             // Speed
             if motorcycleData.speed != nil {
-                let speedValue:Double = motorcycleData.speed!
-                value = "\(speedValue)"
+                let speedValue = motorcycleData.speed!
+                value = "\(Int(speedValue))"
                 if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
-                    value = "\(kmToMiles(speedValue).rounded(toPlaces: 1))"
+                    value = "\(Int(round(kmToMiles(speedValue))))"
                 }
             } else {
                 value = NSLocalizedString("blank_field", comment: "")
@@ -1184,9 +1184,9 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             //Average Speed
             if motorcycleData.averageSpeed != nil {
                 let avgSpeedValue:Double = motorcycleData.averageSpeed!
-                value = "\(avgSpeedValue)"
+                value = "\(Int(avgSpeedValue))"
                 if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
-                    value = "\(kmToMiles(avgSpeedValue).rounded(toPlaces: 1))"
+                    value = "\(Int(round(kmToMiles(avgSpeedValue))))"
                 }
             } else {
                 value = NSLocalizedString("blank_field", comment: "")
@@ -1206,7 +1206,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             //Fuel Economy One
             if motorcycleData.fuelEconomyOne != nil {
                 let fuelEconomyOneValue:Double = motorcycleData.fuelEconomyOne!
-                value = "\(fuelEconomyOneValue)"
+                value = "\(fuelEconomyOneValue.rounded(toPlaces: 1))"
                 if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
                     value = "\(l100ToMpg(fuelEconomyOneValue).rounded(toPlaces: 1))"
                 }
@@ -1217,7 +1217,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             //Fuel Economy Two
             if motorcycleData.fuelEconomyTwo != nil {
                 let fuelEconomyTwoValue:Double = motorcycleData.fuelEconomyTwo!
-                value = "\(fuelEconomyTwoValue)"
+                value = "\(fuelEconomyTwoValue.rounded(toPlaces: 1))"
                 if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
                     value = "\(l100ToMpg(fuelEconomyTwoValue).rounded(toPlaces: 1))"
                 }
@@ -1228,9 +1228,9 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             //Fuel Range
             if motorcycleData.fuelRange != nil {
                 let fuelRangeValue:Double = motorcycleData.fuelRange!
-                value = "\(fuelRangeValue)"
+                value = "\(Int(fuelRangeValue))"
                 if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
-                    value = "\(kmToMiles(fuelRangeValue).rounded(toPlaces: 1))"
+                    value = "\(Int(round(kmToMiles(fuelRangeValue))))"
                 }
             } else {
                 value = NSLocalizedString("blank_field", comment: "")
