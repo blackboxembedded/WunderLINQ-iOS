@@ -3434,9 +3434,13 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.actionSheet);
         alert.isModalInPopover = true;
         
+        var width = self.view.bounds.width
+        if (self.view.bounds.width > self.view.bounds.height){
+            width = self.view.bounds.height
+        }
         
         //Create a frame (placeholder/wrapper) for the picker and then create the picker
-        let pickerFrame = CGRect(x: 0, y: 52, width: self.view.bounds.width, height: 100)
+        let pickerFrame = CGRect(x: 0, y: 52, width: width, height: 100)
         let picker: UIPickerView = UIPickerView(frame: pickerFrame)
         
         
@@ -3488,12 +3492,12 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         alert.view.addSubview(picker)
         
         //Create the toolbar view - the view witch will hold our 2 buttons
-        let toolFrame = CGRect(x: 0, y: 5, width: self.view.bounds.width, height: 45)
+        let toolFrame = CGRect(x: 0, y: 5, width: width, height: 45)
         let toolView: UIView = UIView(frame: toolFrame)
         
         
         //add buttons to the view
-        let buttonCancelFrame = CGRect(x: 0, y: 7, width: (self.view.bounds.width / 2), height: 30) //size & position of the button as placed on the toolView
+        let buttonCancelFrame = CGRect(x: 0, y: 7, width: (width / 2), height: 30) //size & position of the button as placed on the toolView
         
         //Create the cancel button & set its title
         let buttonCancel: UIButton = UIButton(frame: buttonCancelFrame);
@@ -3507,7 +3511,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         
         //add buttons to the view
         
-        let buttonOkFrame = CGRect(x: (self.view.bounds.width / 2), y: 7, width: (self.view.bounds.width / 2), height: 30)//size & position of the button as placed on the toolView
+        let buttonOkFrame = CGRect(x: (width / 2), y: 7, width: (width / 2), height: 30)//size & position of the button as placed on the toolView
         
         //Create the Select button & set the title
         let buttonOk: UIButton = UIButton(frame: buttonOkFrame);

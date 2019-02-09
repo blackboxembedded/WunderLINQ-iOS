@@ -49,6 +49,7 @@
 "about_label" = "O aplikaciji";
 "close_label" = "Zapri";
 "hwsettings_label" = "HW Settings"; // Needs Translation
+"select_bt" = "Select"; // Needs translation
 
 //HWSettingsViewController
 "fw_config_title" = "WunderLINQ Settings"; // Needs Translation

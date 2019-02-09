@@ -49,6 +49,7 @@
 "about_label" = "Über";
 "close_label" = "Schliessen";
 "hwsettings_label" = "HW Settings"; //Needs Translation
+"select_bt" = "Select"; // Needs translation
 
 //HWSettingsViewController
 "fw_config_title" = "WunderLINQ Settings"; //Needs Translation

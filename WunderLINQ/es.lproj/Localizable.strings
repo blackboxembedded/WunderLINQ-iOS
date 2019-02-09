@@ -48,6 +48,7 @@
 "about_label" = "Acerca de";
 "close_label" = "Cerrar";
 "hwsettings_label" = "Ajustes del Hardware";
+"select_bt" = "Select"; // Needs translation
 
 //HWSettingsViewController
 "fw_config_title" = "Ajustes del WunderLINQ";

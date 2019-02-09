@@ -49,6 +49,7 @@
 "about_label" = "O aplikaci";
 "close_label" = "Zavřít";
 "hwsettings_label" = "Nastaveni zařízení";
+"select_bt" = "Select"; // Needs translation
 
 //HWSettingsViewController
 "fw_config_title" = "Nastavení WunderLINQ";

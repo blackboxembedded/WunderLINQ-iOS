@@ -49,6 +49,7 @@
 "about_label" = "Περί...";
 "close_label" = "Κλείσιμο";
 "hwsettings_label" = "Ρυθμίσεις συσκευής";
+"select_bt" = "Select"; // Needs translation
 
 //HWSettingsViewController
 "fw_config_title" = "Ρυθμίσεις συσκευής WunderLINQ";
