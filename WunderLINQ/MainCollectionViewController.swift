@@ -1195,7 +1195,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             //Current Consumption
             if motorcycleData.currentConsumption != nil {
                 let currentConsumptionValue:Double = motorcycleData.currentConsumption!
-                value = "\(currentConsumptionValue)"
+                value = "\(currentConsumptionValue.rounded(toPlaces: 1))"
                 if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
                     value = "\(l100ToMpg(currentConsumptionValue).rounded(toPlaces: 1))"
                 }
