@@ -486,7 +486,6 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             case 4:
                 height = ((self.view.bounds.size.height - (heightMarginsAndInsets)) / CGFloat(2)).rounded(.down)
                 width = ((self.view.bounds.size.width - widthMarginsAndInsets) / CGFloat(2)).rounded(.down)
-                
             case 8:
                 height = ((self.view.bounds.size.height - (heightMarginsAndInsets)) / CGFloat(2)).rounded(.down)
                 width = ((self.view.bounds.size.width - (widthMarginsAndInsets * 2)) / CGFloat(4)).rounded(.down)
