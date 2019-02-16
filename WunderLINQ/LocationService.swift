@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreLocation
+import CoreMotion
 import SQLite3
 
 protocol LocationServiceDelegate {
@@ -33,6 +34,9 @@ class LocationService: NSObject, CLLocationManagerDelegate {
     var waypoints = [Waypoint]()
     
     let motorcycleData = MotorcycleData.shared
+    
+    let motionManager = CMMotionManager()
+    var referenceAttitude: CMAttitude?
     
     override init() {
         super.init()
@@ -84,6 +88,7 @@ class LocationService: NSObject, CLLocationManagerDelegate {
             let fuelEconomyOneHeader = NSLocalizedString("fueleconomyone_header", comment: "")
             let fuelEconomyTwoHeader = NSLocalizedString("fueleconomytwo_header", comment: "")
             let fuelRangeHeader = NSLocalizedString("fuelrange_header", comment: "")
+            let leanAngleHeader = NSLocalizedString("leanangle_header", comment: "")
             
             // Update main display
             var temperatureUnit = "C"
@@ -115,19 +120,26 @@ class LocationService: NSObject, CLLocationManagerDelegate {
                 consumptionUnit = "mpg"
             }
             
-            let header = "\(latitudeHeader),\(longitudeHeader),\(altitudeHeader) (\(altitudeUnit)),\(gpsSpeedHeader) (\(speedUnit)),\(gearHeader),\(engineTemperatureHeader) (\(temperatureUnit)),\(ambientTemperatureHeader) (\(temperatureUnit)),\(frontPressureHeader) (\(pressureUnit)),\(rearPressureHeader) (\(pressureUnit)),\(odometerHeader) (\(distanceUnit)),\(voltageHeader) (V),\(throttlePositionHeader) (%),\(frontBrakesHeader),\(rearBrakesHeader),\(shiftsHeader),\(vinHeader),\(ambientLightHeader),\(tripOneHeader) (\(distanceUnit)),\(tripTwoHeader) (\(distanceUnit)),\(tripAutoHeader) (\(distanceUnit)),\(speedHeader) (\(speedUnit)),\(averageSpeedHeader) (\(speedUnit)),\(currentConsumptionHeader) (\(consumptionUnit)),\(fuelEconomyOneHeader) (\(consumptionUnit)),\(fuelEconomyTwoHeader) (\(consumptionUnit)),\(fuelRangeHeader) (\(distanceUnit))"
+            let header = "\(latitudeHeader),\(longitudeHeader),\(altitudeHeader) (\(altitudeUnit)),\(gpsSpeedHeader) (\(speedUnit)),\(gearHeader),\(engineTemperatureHeader) (\(temperatureUnit)),\(ambientTemperatureHeader) (\(temperatureUnit)),\(frontPressureHeader) (\(pressureUnit)),\(rearPressureHeader) (\(pressureUnit)),\(odometerHeader) (\(distanceUnit)),\(voltageHeader) (V),\(throttlePositionHeader) (%),\(frontBrakesHeader),\(rearBrakesHeader),\(shiftsHeader),\(vinHeader),\(ambientLightHeader),\(tripOneHeader) (\(distanceUnit)),\(tripTwoHeader) (\(distanceUnit)),\(tripAutoHeader) (\(distanceUnit)),\(speedHeader) (\(speedUnit)),\(averageSpeedHeader) (\(speedUnit)),\(currentConsumptionHeader) (\(consumptionUnit)),\(fuelEconomyOneHeader) (\(consumptionUnit)),\(fuelEconomyTwoHeader) (\(consumptionUnit)),\(fuelRangeHeader) (\(distanceUnit)),\(leanAngleHeader)"
             
             Logger.log(fileName: fileName, entry: header, withDate: false)
         }
         
         print("Starting Location Updates")
         running = true
+        if motionManager.isDeviceMotionAvailable {
+            //do something interesting
+            print("Motion Device Available")
+        }
+        motionManager.startDeviceMotionUpdates()
+        referenceAttitude = nil
         self.locationManager?.startUpdatingLocation()
     }
     
     func stopUpdatingLocation() {
         print("Stop Location Updates")
         running = false
+        motionManager.stopDeviceMotionUpdates()
         self.locationManager?.stopUpdatingLocation()
     }
     
@@ -323,8 +335,19 @@ class LocationService: NSObject, CLLocationManagerDelegate {
                     fuelRange = "\(kmToMiles(fuelRangeValue))"
                 }
             }
+            let data = motionManager.deviceMotion
+            var leanAngle:String = ""
+            if (data != nil){
+                let attitude = data!.attitude
+                if (referenceAttitude != nil){
+                    attitude.multiply(byInverseOf: referenceAttitude!)
+                } else {
+                    referenceAttitude = attitude
+                }
+                leanAngle = "\(degrees(radians: attitude.pitch).rounded(toPlaces: 1))"
+            }
 
-            let entry = "\(latitude),\(longitude),\(altitude),\(gpsSpeed),\(gear),\(engineTemp),\(ambientTemp),\(frontTirePressure),\(rearTirePressure),\(odometer),\(voltage),\(throttlePosition),\(frontBrakes),\(rearBrakes),\(shifts),\(vin),\(ambientLight),\(tripOne),\(tripTwo),\(tripAuto),\(speed),\(avgSpeed),\(currentConsumption),\(fuelEconomyOne),\(fuelEconomyTwo),\(fuelRange)"
+            let entry = "\(latitude),\(longitude),\(altitude),\(gpsSpeed),\(gear),\(engineTemp),\(ambientTemp),\(frontTirePressure),\(rearTirePressure),\(odometer),\(voltage),\(throttlePosition),\(frontBrakes),\(rearBrakes),\(shifts),\(vin),\(ambientLight),\(tripOne),\(tripTwo),\(tripAuto),\(speed),\(avgSpeed),\(currentConsumption),\(fuelEconomyOne),\(fuelEconomyTwo),\(fuelRange),\(leanAngle)"
             Logger.log(fileName: fileName, entry: entry, withDate: true)
         } else {
             print("waypoint saved")
@@ -451,5 +474,9 @@ class LocationService: NSObject, CLLocationManagerDelegate {
     func mtoFeet(_ meters:Double) -> Double {
         let meters = meters / 0.3048
         return meters
+    }
+    //radians to degrees
+    func degrees(radians:Double) -> Double {
+        return 180 / Double.pi * radians
     }
 }
