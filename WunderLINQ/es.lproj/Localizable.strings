@@ -179,6 +179,7 @@
 "fueleconomyone_header" = "Combustible 1";
 "fueleconomytwo_header" = "Combustible 2";
 "fuelrange_header" = "Rango/Alcance";
+"leanangle_header" = "Lean Angle"; // Needs translation
 
 // ContactsTableViewController
 "contactlist_title"="Contactos";

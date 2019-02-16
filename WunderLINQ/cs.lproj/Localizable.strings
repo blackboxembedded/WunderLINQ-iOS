@@ -178,6 +178,7 @@
 "fueleconomyone_header" = "Spotřeba 1";
 "fueleconomytwo_header" = "Spotřeba 2";
 "fuelrange_header" = "Dojezd";
+"leanangle_header" = "Lean Angle"; // Needs translation
 
 // ContactsTableViewController
 "contactlist_title" = "Kontakty";
