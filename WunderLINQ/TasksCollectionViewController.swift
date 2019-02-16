@@ -134,7 +134,7 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
         guard let task10 = Tasks(label: NSLocalizedString("task_title_settings", comment: ""), icon: UIImage(named: "Cog")?.withRenderingMode(.alwaysTemplate)) else {
             fatalError("Unable to instantiate Settings Task")
         }
-        tasks += [task0, task1, task2, task3, task4, task5, task6, task7, task8, task9, task10]
+        self.tasks = [task0, task1, task2, task3, task4, task5, task6, task7, task8, task9, task10]
     }
     
     private func execute_task(taskID:Int) {
@@ -584,7 +584,9 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
+        self.loadTasks()
         coordinator.animate(alongsideTransition: nil) { _ in
+            
             self.collectionView!.reloadData()
         }
     }
@@ -617,7 +619,6 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
     
         // Configure the cell
         let tasks = self.tasks[mapping[indexPath.row]]
-        
         cell.displayContent(icon: tasks.icon!, label: tasks.label)
         
         if (itemRow == indexPath.row){
