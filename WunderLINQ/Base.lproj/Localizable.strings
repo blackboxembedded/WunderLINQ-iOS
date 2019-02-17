@@ -67,7 +67,7 @@
 //AboutViewController
 "about_title" = "About";
 "version_label" = "Version:";
-"btn_sendlogs_title" = "Send Logs"; // Needs translation
+"btn_sendlogs_title" = "Send Logs";
 "credits_label" = "Credits";
 
 // AlertViewController
@@ -182,6 +182,7 @@
 "fueleconomytwo_header" = "Fuel Economy 2";
 "fuelrange_header" = "Fuel Range";
 "leanangle_header" = "Lean Angle";
+"gforce_header" = "g-force"; // Needs translation
 
 // ContactsTableViewController
 "contactlist_title" = "Contacts";

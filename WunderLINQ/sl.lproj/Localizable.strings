@@ -182,6 +182,7 @@
 "fueleconomytwo_header" = "Poraba goriva 2";
 "fuelrange_header" = "Doseg";
 "leanangle_header" = "Lean Angle"; // Needs translation
+"gforce_header" = "g-force"; // Needs translation
 
 // ContactsTableViewController
 "contactlist_title" = "Stiki";

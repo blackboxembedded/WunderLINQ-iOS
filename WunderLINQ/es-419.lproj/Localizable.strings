@@ -182,6 +182,7 @@
 "fueleconomytwo_header" = "Fuel Economy 2"; //Needs translation
 "fuelrange_header" = "Fuel Range"; //Needs translation
 "leanangle_header" = "Lean Angle"; // Needs translation
+"gforce_header" = "g-force"; // Needs translation
 
 // ContactsTableViewController
 "contactlist_title" = "Contactos";

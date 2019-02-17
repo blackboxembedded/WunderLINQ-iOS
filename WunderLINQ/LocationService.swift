@@ -89,6 +89,7 @@ class LocationService: NSObject, CLLocationManagerDelegate {
             let fuelEconomyTwoHeader = NSLocalizedString("fueleconomytwo_header", comment: "")
             let fuelRangeHeader = NSLocalizedString("fuelrange_header", comment: "")
             let leanAngleHeader = NSLocalizedString("leanangle_header", comment: "")
+            let gForceHeader = NSLocalizedString("gforce_header", comment: "")
             
             // Update main display
             var temperatureUnit = "C"
@@ -120,7 +121,7 @@ class LocationService: NSObject, CLLocationManagerDelegate {
                 consumptionUnit = "mpg"
             }
             
-            let header = "\(latitudeHeader),\(longitudeHeader),\(altitudeHeader) (\(altitudeUnit)),\(gpsSpeedHeader) (\(speedUnit)),\(gearHeader),\(engineTemperatureHeader) (\(temperatureUnit)),\(ambientTemperatureHeader) (\(temperatureUnit)),\(frontPressureHeader) (\(pressureUnit)),\(rearPressureHeader) (\(pressureUnit)),\(odometerHeader) (\(distanceUnit)),\(voltageHeader) (V),\(throttlePositionHeader) (%),\(frontBrakesHeader),\(rearBrakesHeader),\(shiftsHeader),\(vinHeader),\(ambientLightHeader),\(tripOneHeader) (\(distanceUnit)),\(tripTwoHeader) (\(distanceUnit)),\(tripAutoHeader) (\(distanceUnit)),\(speedHeader) (\(speedUnit)),\(averageSpeedHeader) (\(speedUnit)),\(currentConsumptionHeader) (\(consumptionUnit)),\(fuelEconomyOneHeader) (\(consumptionUnit)),\(fuelEconomyTwoHeader) (\(consumptionUnit)),\(fuelRangeHeader) (\(distanceUnit)),\(leanAngleHeader)"
+            let header = "\(latitudeHeader),\(longitudeHeader),\(altitudeHeader) (\(altitudeUnit)),\(gpsSpeedHeader) (\(speedUnit)),\(gearHeader),\(engineTemperatureHeader) (\(temperatureUnit)),\(ambientTemperatureHeader) (\(temperatureUnit)),\(frontPressureHeader) (\(pressureUnit)),\(rearPressureHeader) (\(pressureUnit)),\(odometerHeader) (\(distanceUnit)),\(voltageHeader) (V),\(throttlePositionHeader) (%),\(frontBrakesHeader),\(rearBrakesHeader),\(shiftsHeader),\(vinHeader),\(ambientLightHeader),\(tripOneHeader) (\(distanceUnit)),\(tripTwoHeader) (\(distanceUnit)),\(tripAutoHeader) (\(distanceUnit)),\(speedHeader) (\(speedUnit)),\(averageSpeedHeader) (\(speedUnit)),\(currentConsumptionHeader) (\(consumptionUnit)),\(fuelEconomyOneHeader) (\(consumptionUnit)),\(fuelEconomyTwoHeader) (\(consumptionUnit)),\(fuelRangeHeader) (\(distanceUnit)),\(leanAngleHeader),\(gForceHeader)"
             
             Logger.log(fileName: fileName, entry: header, withDate: false)
         }
@@ -337,6 +338,7 @@ class LocationService: NSObject, CLLocationManagerDelegate {
             }
             let data = motionManager.deviceMotion
             var leanAngle:String = ""
+            var gForce:String = ""
             if (data != nil){
                 let attitude = data!.attitude
                 if (referenceAttitude != nil){
@@ -345,9 +347,10 @@ class LocationService: NSObject, CLLocationManagerDelegate {
                     referenceAttitude = attitude
                 }
                 leanAngle = "\(degrees(radians: attitude.pitch).rounded(toPlaces: 1))"
+                gForce = "\(data!.gravity.x + data!.gravity.y + data!.gravity.z)"
             }
 
-            let entry = "\(latitude),\(longitude),\(altitude),\(gpsSpeed),\(gear),\(engineTemp),\(ambientTemp),\(frontTirePressure),\(rearTirePressure),\(odometer),\(voltage),\(throttlePosition),\(frontBrakes),\(rearBrakes),\(shifts),\(vin),\(ambientLight),\(tripOne),\(tripTwo),\(tripAuto),\(speed),\(avgSpeed),\(currentConsumption),\(fuelEconomyOne),\(fuelEconomyTwo),\(fuelRange),\(leanAngle)"
+            let entry = "\(latitude),\(longitude),\(altitude),\(gpsSpeed),\(gear),\(engineTemp),\(ambientTemp),\(frontTirePressure),\(rearTirePressure),\(odometer),\(voltage),\(throttlePosition),\(frontBrakes),\(rearBrakes),\(shifts),\(vin),\(ambientLight),\(tripOne),\(tripTwo),\(tripAuto),\(speed),\(avgSpeed),\(currentConsumption),\(fuelEconomyOne),\(fuelEconomyTwo),\(fuelRange),\(leanAngle),\(gForce)"
             Logger.log(fileName: fileName, entry: entry, withDate: true)
         } else {
             print("waypoint saved")
