@@ -12,12 +12,18 @@ import UIKit
 extension UIViewController {
     
     func showToast(message : String) {
-        let toastLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width - 20, height: 35))
+        let toastLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width - 20, height: 70))
         toastLabel.center = self.view.center
-        toastLabel.backgroundColor = UIColor.white
-        toastLabel.textColor = UIColor.black
+        toastLabel.numberOfLines = 0
+        if(view.backgroundColor!.isEqual(UIColor.white)){
+            toastLabel.backgroundColor = UIColor.black
+            toastLabel.textColor = UIColor.white
+        } else {
+            toastLabel.backgroundColor = UIColor.white
+            toastLabel.textColor = UIColor.black
+        }
         toastLabel.textAlignment = .center;
-        toastLabel.font = UIFont.boldSystemFont(ofSize: 14)
+        toastLabel.font = UIFont.boldSystemFont(ofSize: 20)
         toastLabel.text = message
         toastLabel.alpha = 1.0
         toastLabel.layer.cornerRadius = 10;

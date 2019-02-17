@@ -362,12 +362,14 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
             performSegue(withIdentifier: "taskGridToContacts", sender: self)
             break
         case 4:
-            //Take Photo
+            //Take Rear Photo
+            self.showToast(message: NSLocalizedString("toast_photo_taken", comment: ""))
             setupCamera(position: .back)
             setupTimer()
             break
         case 5:
-            //Take Photo
+            //Take Front Photo (Selfie)
+            self.showToast(message: NSLocalizedString("toast_photo_taken", comment: ""))
             setupCamera(position: .front)
             setupTimer()
             break
@@ -376,16 +378,6 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
             if movieOutput.isRecording {
                 movieOutput.stopRecording()
                 isRecording = false
-                /*
-                var currentMapping = 0
-                for task in mapping {
-                    if task == taskID{
-                        print("Setting videolabel to start, currentmapping:\(currentMapping)")
-                        (self.collectionView?.cellForItem(at: IndexPath(row: currentMapping, section: 0) as IndexPath) as! TaskCollectionViewCell).taskLabel.text = NSLocalizedString("task_title_start_record", comment: "")
-                    }
-                    currentMapping = currentMapping + 1
-                }
-                */
             } else {
                 if setupSession() {
                     startSession()
@@ -393,16 +385,6 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
                 if (self.videoCaptureSession.isRunning) {
                     startCapture()
                     isRecording = true
-                    /*
-                    var currentMapping = 0
-                    for task in mapping {
-                        if task == taskID{
-                            print("Setting videolabel to stop, currentmapping:\(currentMapping)")
-                            (self.collectionView?.cellForItem(at: IndexPath(row: currentMapping, section: 0) as IndexPath) as! TaskCollectionViewCell).taskLabel.text = NSLocalizedString("task_title_stop_record", comment: "")
-                        }
-                        currentMapping = currentMapping + 1
-                    }
-                    */
                 }
             }
             loadTasks()
@@ -411,26 +393,8 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
             //Trip Log
             if LocationService.sharedInstance.isRunning(){
                 LocationService.sharedInstance.stopUpdatingLocation()
-                /*
-                var currentMapping = 0
-                for task in mapping {
-                    if task == taskID{
-                        (self.collectionView?.cellForItem(at: IndexPath(row: currentMapping, section: 0) as IndexPath) as! TaskCollectionViewCell).taskLabel.text = NSLocalizedString("task_title_start_trip", comment: "")
-                    }
-                    currentMapping = currentMapping + 1
-                }
-                */
             } else {
                 LocationService.sharedInstance.startUpdatingLocation(type: "triplog")
-                /*
-                var currentMapping = 0
-                for task in mapping {
-                    if task == taskID{
-                        (self.collectionView?.cellForItem(at: IndexPath(row: currentMapping, section: 0) as IndexPath) as! TaskCollectionViewCell).taskLabel.text = NSLocalizedString("task_title_stop_trip", comment: "")
-                    }
-                    currentMapping = currentMapping + 1
-                }
-                */
             }
             loadTasks()
             break
@@ -793,7 +757,7 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
             // the alert view
             print("Picture Save Error")
         } else {
-            self.showToast(message: NSLocalizedString("toast_photo_taken", comment: ""))
+            print("Picture Saved")
         }
     }
     
