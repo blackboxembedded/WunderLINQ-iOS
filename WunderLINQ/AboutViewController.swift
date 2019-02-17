@@ -32,7 +32,7 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
         if MFMailComposeViewController.canSendMail() {
             let mailComposer = MFMailComposeViewController()
             mailComposer.setSubject("WunderLINQ Debug Logs")
-            mailComposer.setMessageBody("Please describe your problem below:\n", isHTML: false)
+            mailComposer.setMessageBody("App Version: \(getAppInfo())\niOS Version: \(getOSInfo())\nDevice: \(UIDevice.current.modelName)\nPlease describe your problem below:\n", isHTML: false)
             mailComposer.setToRecipients(["support@blackboxembedded.com"])
             // Get the documents folder url
             let documentDirectory = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
@@ -144,7 +144,7 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
             break
         default:
             break
-        }        
+        }
         if (shouldDelete){
             // Get the documents folder url
             let documentDirectory = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
@@ -157,6 +157,30 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
             }
         }
         controller.dismiss(animated: true)
-        
+    }
+    
+    func getOSInfo()->String {
+        let os = ProcessInfo().operatingSystemVersion
+        return String(os.majorVersion) + "." + String(os.minorVersion) + "." + String(os.patchVersion)
+    }
+    
+    func getAppInfo()->String {
+        let dictionary = Bundle.main.infoDictionary!
+        let version = dictionary["CFBundleShortVersionString"] as! String
+        let build = dictionary["CFBundleVersion"] as! String
+        return version + "(" + build + ")"
+    }
+}
+
+extension UIDevice {
+    var modelName: String {
+        var systemInfo = utsname()
+        uname(&systemInfo)
+        let machineMirror = Mirror(reflecting: systemInfo.machine)
+        let identifier = machineMirror.children.reduce("") { identifier, element in
+            guard let value = element.value as? Int8, value != 0 else { return identifier }
+            return identifier + String(UnicodeScalar(UInt8(value)))
+        }
+        return identifier
     }
 }
