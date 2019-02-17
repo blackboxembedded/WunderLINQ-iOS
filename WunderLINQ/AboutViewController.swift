@@ -7,8 +7,10 @@
 //
 
 import UIKit
+import MessageUI
+import MobileCoreServices
 
-class AboutViewController: UIViewController {
+class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate {
     
     @IBOutlet weak var logoImageView: UIImageView!
     @IBOutlet weak var versionLabel: UILabel!
@@ -23,6 +25,31 @@ class AboutViewController: UIViewController {
             UIApplication.shared.open(url, options: [:], completionHandler: nil)
         } else {
             UIApplication.shared.openURL(url)
+        }
+    }
+    
+    @IBAction func sendLogsBtnPressed(_ sender: Any) {
+        if MFMailComposeViewController.canSendMail() {
+            let mailComposer = MFMailComposeViewController()
+            mailComposer.setSubject("WunderLINQ Debug Logs")
+            mailComposer.setMessageBody("Please describe your problem below:\n", isHTML: false)
+            mailComposer.setToRecipients(["support@blackboxembedded.com"])
+            // Get the documents folder url
+            let documentDirectory = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+            // Destination url for the log file to be saved
+            let fileURL = documentDirectory.appendingPathComponent("dbg")
+            do {
+                let attachmentData = try Data(contentsOf: fileURL)
+                mailComposer.addAttachmentData(attachmentData, mimeType: "text/csv", fileName: "dbg")
+                mailComposer.mailComposeDelegate = self
+                self.present(mailComposer, animated: true
+                    , completion: nil)
+            } catch let error {
+                print("We have encountered error \(error.localizedDescription)")
+            }
+            
+        } else {
+            print("Email is not configured in settings app or we are not able to send an email")
         }
     }
     
@@ -94,15 +121,42 @@ class AboutViewController: UIViewController {
              self.creditsTextView.scrollRangeToVisible(NSMakeRange(0, 0))
         })
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        UserDefaults.standard.set(false, forKey: "debug_logging_preference")
+        var shouldDelete = true
+        switch result {
+        case .cancelled:
+            print("User cancelled")
+            shouldDelete = false
+            break
+        case .saved:
+            print("Mail is saved by user")
+            shouldDelete = true
+            break
+        case .sent:
+            print("Mail is sent successfully")
+            shouldDelete = true
+            break
+        case .failed:
+            print("Sending mail is failed")
+            shouldDelete = false
+            break
+        default:
+            break
+        }        
+        if (shouldDelete){
+            // Get the documents folder url
+            let documentDirectory = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+            // Destination url for the log file to be saved
+            let fileURL = documentDirectory.appendingPathComponent("dbg")
+            do {
+                try FileManager.default.removeItem(at: fileURL)
+            } catch _ as NSError {
+                //print("Error: \(error.domain)")
+            }
+        }
+        controller.dismiss(animated: true)
+        
     }
-    */
-
 }

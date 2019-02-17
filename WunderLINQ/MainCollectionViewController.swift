@@ -2760,18 +2760,6 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             } else {
                 UIScreen.main.brightness = CGFloat(UserDefaults.standard.float(forKey: "systemBrightness"))
             }
-            
-            if !UserDefaults.standard.bool(forKey: "debug_logging_preference") {
-                // Get the documents folder url
-                let documentDirectory = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
-                // Destination url for the log file to be saved
-                let fileURL = documentDirectory.appendingPathComponent("dbg")
-                do {
-                    try FileManager.default.removeItem(at: fileURL)
-                } catch _ as NSError {
-                    //print("Error: \(error.domain)")
-                }
-            }
             self.collectionView!.reloadData()
         }
     }

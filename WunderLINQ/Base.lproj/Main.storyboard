@@ -195,8 +195,11 @@
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eeF-zi-YJp" customClass="LocalisableButton" customModule="WunderLINQ" customModuleProvider="target">
                                 <rect key="frame" x="16" y="508" width="382" height="30"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" weight="black" pointSize="15"/>
+                                <state key="normal">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="localisedKey" value="waypoint_view_bt_share"/>
                                 </userDefinedRuntimeAttributes>
@@ -206,8 +209,11 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zQg-ao-9yD" customClass="LocalisableButton" customModule="WunderLINQ" customModuleProvider="target">
                                 <rect key="frame" x="16" y="584" width="382" height="30"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" weight="black" pointSize="15"/>
+                                <state key="normal">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="localisedKey" value="waypoint_view_bt_open"/>
                                 </userDefinedRuntimeAttributes>
@@ -217,8 +223,11 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gA4-d0-iTO" customClass="LocalisableButton" customModule="WunderLINQ" customModuleProvider="target">
                                 <rect key="frame" x="16" y="622" width="382" height="30"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" weight="black" pointSize="15"/>
+                                <state key="normal">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="localisedKey" value="waypoint_view_bt_delete"/>
                                 </userDefinedRuntimeAttributes>
@@ -270,8 +279,11 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Dn-dF-E3o" customClass="LocalisableButton" customModule="WunderLINQ" customModuleProvider="target">
                                 <rect key="frame" x="16" y="546" width="382" height="30"/>
-                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" weight="black" pointSize="15"/>
+                                <state key="normal">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="localisedKey" value="waypoint_view_bt_nav"/>
                                 </userDefinedRuntimeAttributes>
@@ -694,9 +706,11 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ch1-dL-bp2" customClass="LocalisableButton" customModule="WunderLINQ" customModuleProvider="target">
                                 <rect key="frame" x="16" y="680" width="187" height="36"/>
-                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
-                                <state key="normal" title="CLOSE"/>
+                                <state key="normal" title="CLOSE">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="localisedKey" value="alert_btn_close"/>
                                 </userDefinedRuntimeAttributes>
@@ -706,9 +720,11 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o4A-v0-HaT" customClass="LocalisableButton" customModule="WunderLINQ" customModuleProvider="target">
                                 <rect key="frame" x="211" y="680" width="187" height="36"/>
-                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
-                                <state key="normal" title="OK"/>
+                                <state key="normal" title="OK">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="localisedKey" value="alert_btn_ok"/>
                                 </userDefinedRuntimeAttributes>
@@ -826,8 +842,11 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fZ3-Aw-NNr" customClass="LocalisableButton" customModule="WunderLINQ" customModuleProvider="target">
                                 <rect key="frame" x="16" y="678" width="382" height="42"/>
-                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" weight="black" pointSize="25"/>
+                                <state key="normal">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="localisedKey" value="config_write_label"/>
                                 </userDefinedRuntimeAttributes>
@@ -1032,7 +1051,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Credits" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bpB-n7-PMj" customClass="LocalisableLabel" customModule="WunderLINQ" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="194" width="414" height="24"/>
+                                <rect key="frame" x="0.0" y="240" width="414" height="24"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -1041,7 +1060,7 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" usesAttributedText="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jAM-2k-3CY">
-                                <rect key="frame" x="0.0" y="223" width="414" height="513"/>
+                                <rect key="frame" x="0.0" y="269" width="414" height="467"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <attributedString key="attributedText">
                                     <fragment>
@@ -1337,6 +1356,19 @@ Cgo
                                     <action selector="corpNameBtnPressed:" destination="BZZ-xV-I8u" eventType="touchUpInside" id="yxM-Oa-kmV"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mYb-5h-qZC" customClass="LocalisableButton" customModule="WunderLINQ" customModuleProvider="target">
+                                <rect key="frame" x="16" y="194" width="382" height="30"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Send Logs">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="localisedKey" value="btn_sendlogs_title"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="sendLogsBtnPressed:" destination="BZZ-xV-I8u" eventType="touchUpInside" id="c4Q-7M-0R5"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -1351,11 +1383,14 @@ Cgo
                             <constraint firstItem="iK0-Eq-bFT" firstAttribute="leading" secondItem="XEV-0z-jeW" secondAttribute="leading" constant="16" id="LsA-BS-QqZ"/>
                             <constraint firstItem="fPj-pQ-RK7" firstAttribute="top" secondItem="iK0-Eq-bFT" secondAttribute="bottom" constant="25" id="Nsl-Ge-18B"/>
                             <constraint firstItem="jAM-2k-3CY" firstAttribute="leading" secondItem="XEV-0z-jeW" secondAttribute="leading" id="QDl-f0-S36"/>
-                            <constraint firstItem="bpB-n7-PMj" firstAttribute="top" secondItem="Y9o-7f-NQI" secondAttribute="bottom" constant="16" id="YRE-BH-emJ"/>
+                            <constraint firstItem="mYb-5h-qZC" firstAttribute="leading" secondItem="XEV-0z-jeW" secondAttribute="leading" constant="16" id="c57-Rw-9Le"/>
+                            <constraint firstItem="mYb-5h-qZC" firstAttribute="top" secondItem="Y9o-7f-NQI" secondAttribute="bottom" constant="16" id="kJh-Xs-g9T"/>
                             <constraint firstItem="fPj-pQ-RK7" firstAttribute="leading" secondItem="XEV-0z-jeW" secondAttribute="leading" id="kd6-t9-voY"/>
                             <constraint firstItem="XEV-0z-jeW" firstAttribute="trailing" secondItem="Y9o-7f-NQI" secondAttribute="trailing" id="o6N-Mo-8io"/>
                             <constraint firstItem="XEV-0z-jeW" firstAttribute="trailing" secondItem="jAM-2k-3CY" secondAttribute="trailing" id="pVf-uj-0rN"/>
                             <constraint firstItem="bpB-n7-PMj" firstAttribute="leading" secondItem="XEV-0z-jeW" secondAttribute="leading" id="sOd-2i-1vG"/>
+                            <constraint firstItem="bpB-n7-PMj" firstAttribute="top" secondItem="mYb-5h-qZC" secondAttribute="bottom" constant="16" id="soM-7a-YFa"/>
+                            <constraint firstItem="XEV-0z-jeW" firstAttribute="trailing" secondItem="mYb-5h-qZC" secondAttribute="trailing" constant="16" id="tAc-nY-XKH"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="XEV-0z-jeW"/>
                     </view>
@@ -1387,8 +1422,11 @@ Cgo
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="18p-lr-k8r" customClass="LocalisableButton" customModule="WunderLINQ" customModuleProvider="target">
                                 <rect key="frame" x="16" y="622" width="382" height="30"/>
-                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" weight="black" pointSize="15"/>
+                                <state key="normal">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="localisedKey" value="waypoint_view_bt_delete"/>
                                 </userDefinedRuntimeAttributes>
@@ -1398,8 +1436,11 @@ Cgo
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hKk-Ix-tzj" customClass="LocalisableButton" customModule="WunderLINQ" customModuleProvider="target">
                                 <rect key="frame" x="16" y="584" width="382" height="30"/>
-                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" weight="black" pointSize="15"/>
+                                <state key="normal">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="localisedKey" value="waypoint_view_bt_share"/>
                                 </userDefinedRuntimeAttributes>
@@ -1668,12 +1709,12 @@ Cgo
         <image name="wunderlinq_logo-black" width="247" height="53"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="KXb-aY-1Ca"/>
-        <segue reference="MzX-q0-6NM"/>
+        <segue reference="gIM-fx-mWk"/>
+        <segue reference="qQx-7G-0NR"/>
         <segue reference="Mvj-Z7-A9C"/>
         <segue reference="kry-jp-5q5"/>
-        <segue reference="veu-Ll-J9g"/>
-        <segue reference="L6G-Ek-OoN"/>
+        <segue reference="W8V-Rg-WFQ"/>
+        <segue reference="gfr-gj-BUz"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
 </document>

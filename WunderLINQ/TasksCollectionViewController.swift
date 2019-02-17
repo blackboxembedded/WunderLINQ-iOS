@@ -35,6 +35,7 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
     let movieOutput = AVCaptureMovieFileOutput()
     var activeInput: AVCaptureDeviceInput!
     var outputURL: URL!
+    var isRecording = false
     
     var db: OpaquePointer?
     var waypoints = [Waypoint]()
@@ -111,7 +112,12 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
             fatalError("Unable to instantiate Take Photo Task")
         }
         // Video Recording Task
-        guard let task6 = Tasks(label: NSLocalizedString("task_title_start_record", comment: ""), icon: UIImage(named: "VideoCamera")?.withRenderingMode(.alwaysTemplate)) else {
+        var vidRecLabel = NSLocalizedString("task_title_start_record", comment: "")
+        if isRecording{
+            print("loadtasks: isRecording")
+            vidRecLabel = NSLocalizedString("task_title_stop_record", comment: "")
+        }
+        guard let task6 = Tasks(label: vidRecLabel, icon: UIImage(named: "VideoCamera")?.withRenderingMode(.alwaysTemplate)) else {
             fatalError("Unable to instantiate Video Recording Task")
         }
         // Trip Log Task
@@ -367,53 +373,66 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
             break
         case 6:
             //Video Recording
-            if movieOutput.isRecording == true {
+            if movieOutput.isRecording {
                 movieOutput.stopRecording()
+                isRecording = false
+                /*
                 var currentMapping = 0
                 for task in mapping {
-                    if task == 6{
+                    if task == taskID{
+                        print("Setting videolabel to start, currentmapping:\(currentMapping)")
                         (self.collectionView?.cellForItem(at: IndexPath(row: currentMapping, section: 0) as IndexPath) as! TaskCollectionViewCell).taskLabel.text = NSLocalizedString("task_title_start_record", comment: "")
                     }
                     currentMapping = currentMapping + 1
                 }
+                */
             } else {
                 if setupSession() {
                     startSession()
                 }
                 if (self.videoCaptureSession.isRunning) {
                     startCapture()
+                    isRecording = true
+                    /*
                     var currentMapping = 0
                     for task in mapping {
-                        if task == 6{
+                        if task == taskID{
+                            print("Setting videolabel to stop, currentmapping:\(currentMapping)")
                             (self.collectionView?.cellForItem(at: IndexPath(row: currentMapping, section: 0) as IndexPath) as! TaskCollectionViewCell).taskLabel.text = NSLocalizedString("task_title_stop_record", comment: "")
                         }
                         currentMapping = currentMapping + 1
                     }
+                    */
                 }
             }
-            
+            loadTasks()
             break
         case 7:
             //Trip Log
             if LocationService.sharedInstance.isRunning(){
                 LocationService.sharedInstance.stopUpdatingLocation()
+                /*
                 var currentMapping = 0
                 for task in mapping {
-                    if task == 7{
+                    if task == taskID{
                         (self.collectionView?.cellForItem(at: IndexPath(row: currentMapping, section: 0) as IndexPath) as! TaskCollectionViewCell).taskLabel.text = NSLocalizedString("task_title_start_trip", comment: "")
                     }
                     currentMapping = currentMapping + 1
                 }
+                */
             } else {
                 LocationService.sharedInstance.startUpdatingLocation(type: "triplog")
+                /*
                 var currentMapping = 0
                 for task in mapping {
-                    if task == 7{
+                    if task == taskID{
                         (self.collectionView?.cellForItem(at: IndexPath(row: currentMapping, section: 0) as IndexPath) as! TaskCollectionViewCell).taskLabel.text = NSLocalizedString("task_title_stop_trip", comment: "")
                     }
                     currentMapping = currentMapping + 1
                 }
+                */
             }
+            loadTasks()
             break
         case 8:
             //Save Waypoint
@@ -439,6 +458,8 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
         default:
             print("Unknown Task")
         }
+        //loadTasks()
+        self.collectionView!.reloadData()
     }
     
     // MARK: - Handling User Interaction
@@ -640,6 +661,9 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        itemRow = indexPath.row
+        //self.collectionView!.scrollToItem(at: IndexPath(row: itemRow, section: 0), at: .centeredVertically, animated: true)
+        //self.collectionView!.reloadData()
         execute_task(taskID: mapping[indexPath.row])
     }
     
@@ -923,13 +947,13 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
                 if saved {
                     // the alert view
                     let alert = UIAlertController(title: "", message: "Video Saved", preferredStyle: .alert)
-                    self.present(alert, animated: true, completion: nil)
+                    self.present(alert, animated: false, completion: nil)
                     
                     // change to desired number of seconds (in this case 2 seconds)
                     let when = DispatchTime.now() + 3
                     DispatchQueue.main.asyncAfter(deadline: when){
                         // your code with delay
-                        alert.dismiss(animated: true, completion: nil)
+                        alert.dismiss(animated: false, completion: nil)
                     }
                 } else {
                     print("In capture didfinish, didn't save")

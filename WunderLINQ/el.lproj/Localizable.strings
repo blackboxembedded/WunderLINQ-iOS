@@ -67,6 +67,7 @@
 //AboutViewController
 "about_title" = "Περί...";
 "version_label" = "Έκδοση:";
+"btn_sendlogs_title" = "Send Logs"; // Needs translation
 "credits_label" = "Συντελεστές";
 
 // AlertViewController

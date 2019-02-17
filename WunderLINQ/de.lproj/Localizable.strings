@@ -67,6 +67,7 @@
 //AboutViewController
 "about_title" = "About"; // Needs Translation
 "version_label" = "Version:"; // Needs Translation
+"btn_sendlogs_title" = "Send Logs"; // Needs translation
 "credits_label" = "Credits"; // Needs Translation
 
 // AlertViewController

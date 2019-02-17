@@ -65,7 +65,10 @@
 "hwsave_alert_btn_cancel" = "Zrušit";
 
 //AboutViewController
-"about_title" = "O Aplikaci";
+"about_title" = "O Aplikaci"; // Needs translation
+"version_label" = "Version:"; // Needs translation
+"btn_sendlogs_title" = "Send Logs"; // Needs translation
+"credits_label" = "Credits"; // Needs translation
 
 // AlertViewController
 "alert_label_fuel" = "Navigovat k nejbližší čerpací stanici?";
