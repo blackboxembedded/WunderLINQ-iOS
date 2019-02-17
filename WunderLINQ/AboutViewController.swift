@@ -32,7 +32,7 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
         if MFMailComposeViewController.canSendMail() {
             let mailComposer = MFMailComposeViewController()
             mailComposer.setSubject("WunderLINQ Debug Logs")
-            mailComposer.setMessageBody("App Version: \(getAppInfo())\niOS Version: \(getOSInfo())\nDevice: \(UIDevice.current.modelName)\nPlease describe your problem below:\n", isHTML: false)
+            mailComposer.setMessageBody("App Version: \(getAppInfo())\niOS Version: \(getOSInfo())\nDevice: \(UIDevice.current.modelName)\n\(NSLocalizedString("sendlogs_body", comment: ""))", isHTML: false)
             mailComposer.setToRecipients(["support@blackboxembedded.com"])
             // Get the documents folder url
             let documentDirectory = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)

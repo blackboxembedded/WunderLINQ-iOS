@@ -67,6 +67,7 @@
 "about_title" = "Acerca de";
 "version_label" = "Versión:";
 "btn_sendlogs_title" = "Send Logs"; // Needs translation
+"sendlogs_body" = "Please describe your problem below:\n"; // Needs translation
 "credits_label" = "Créditos";
 
 // AlertViewController
