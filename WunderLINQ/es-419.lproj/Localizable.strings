@@ -45,6 +45,7 @@
 "trip2_label" = "Parcial 2";
 "gear_label" = "Marcha";
 "settings_label" = "Settings"; //Needs translation
+"geodata_label" = "Trips & Waypoints"; // Needs translation
 "appsettings_label" = "App Settings"; //Needs translation
 "about_label" = "About"; //Needs translation
 "close_label" = "Close"; //Needs translation

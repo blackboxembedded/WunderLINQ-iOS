@@ -14,12 +14,12 @@ class TripsTableViewController: UITableViewController {
     var csvFileNames : [String]?
     
     @objc func leftScreen() {
-        performSegue(withIdentifier: "tripsToMotorcycle", sender: [])
+        performSegue(withIdentifier: "tripsToGeoData", sender: [])
     }
     
     func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
         if gesture.direction == UISwipeGestureRecognizerDirection.right {
-            performSegue(withIdentifier: "tripsToMotorcycle", sender: [])
+            performSegue(withIdentifier: "tripsToGeoData", sender: [])
         }
     }
 

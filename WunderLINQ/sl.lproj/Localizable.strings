@@ -45,6 +45,7 @@
 "trip2_label" = "Potovanje 2";
 "gear_label" = "Prestava";
 "settings_label" = "Nastavitve";
+"geodata_label" = "Trips & Waypoints"; // Needs translation
 "appsettings_label" = "App Settings"; // Needs Translation
 "about_label" = "O aplikaciji";
 "close_label" = "Zapri";

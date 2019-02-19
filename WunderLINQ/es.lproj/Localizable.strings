@@ -45,6 +45,8 @@
 "trip2_label"="Trip 2";
 "gear_label"="Marcha";
 "settings_label" = "Ajustes";
+"geodata_label" = "Trips & Waypoints"; // Needs translation
+"appsettings_label" = "App Settings"; //Needs translation
 "about_label" = "Acerca de";
 "close_label" = "Cerrar";
 "hwsettings_label" = "Ajustes del Hardware";

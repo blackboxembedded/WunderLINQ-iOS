@@ -33,6 +33,7 @@
 		7E068BF62102D1A90076EAAD /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7E068BD62102C6DB0076EAAD /* GoogleMaps.bundle */; };
 		7E068BF8210645290076EAAD /* TripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E068BF7210645290076EAAD /* TripViewController.swift */; };
 		7E07AE4720F70FD8004F15B9 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E07AE4620F70FD8004F15B9 /* LocationService.swift */; };
+		7E14EFBD221B5FB7009F37A3 /* GeoDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E14EFBC221B5FB7009F37A3 /* GeoDataViewController.swift */; };
 		7E25396121CD65C60008D34E /* HWSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E25396021CD65C60008D34E /* HWSettingsViewController.swift */; };
 		7E25396321CD94A30008D34E /* BLE.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E25396221CD94A30008D34E /* BLE.swift */; };
 		7E25396521CDB1740008D34E /* WLQ.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E25396421CDB1740008D34E /* WLQ.swift */; };
@@ -117,6 +118,7 @@
 		7E068BE72102C8820076EAAD /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		7E068BF7210645290076EAAD /* TripViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripViewController.swift; sourceTree = "<group>"; };
 		7E07AE4620F70FD8004F15B9 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
+		7E14EFBC221B5FB7009F37A3 /* GeoDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoDataViewController.swift; sourceTree = "<group>"; };
 		7E25396021CD65C60008D34E /* HWSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HWSettingsViewController.swift; sourceTree = "<group>"; };
 		7E25396221CD94A30008D34E /* BLE.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLE.swift; sourceTree = "<group>"; };
 		7E25396421CDB1740008D34E /* WLQ.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WLQ.swift; sourceTree = "<group>"; };
@@ -298,6 +300,7 @@
 				7E25396421CDB1740008D34E /* WLQ.swift */,
 				7EC63201219BCE05002E68FF /* AboutViewController.swift */,
 				7E6987DC20F8F83500B4781D /* Faults.swift */,
+				7E14EFBC221B5FB7009F37A3 /* GeoDataViewController.swift */,
 				7E068BC6210190CB0076EAAD /* TripsTableViewController.swift */,
 				7E068BF7210645290076EAAD /* TripViewController.swift */,
 				7E5A767920DDFEF700B48CC6 /* Waypoint.swift */,
@@ -475,6 +478,7 @@
 				7EA4BCC721B8C9150084F6EA /* TasksCollectionViewController.swift in Sources */,
 				7E62BB6F21FE3DEB00FDB10E /* MainCollectionViewCell.swift in Sources */,
 				7E25396321CD94A30008D34E /* BLE.swift in Sources */,
+				7E14EFBD221B5FB7009F37A3 /* GeoDataViewController.swift in Sources */,
 				7EC8C9BD1F827977000CEDDC /* ContactsTableViewContoller.swift in Sources */,
 				7EA478871F4BC775000CEDDC /* Logger.swift in Sources */,
 				7E068BF8210645290076EAAD /* TripViewController.swift in Sources */,

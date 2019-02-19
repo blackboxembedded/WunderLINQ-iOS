@@ -98,6 +98,7 @@ class HWSettingsViewController: UIViewController, CBPeripheralDelegate, UIPicker
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        AppUtility.lockOrientation(.portrait)
         
         let backBtn = UIButton()
         backBtn.setImage(UIImage(named: "Left")?.withRenderingMode(.alwaysTemplate), for: .normal)

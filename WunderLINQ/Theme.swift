@@ -83,6 +83,8 @@ enum Theme: Int {
         UIButton.appearance(whenContainedInInstancesOf: [WaypointViewController.self]).tintColor = UIColor.black
         UIButton.appearance(whenContainedInInstancesOf: [TripViewController.self]).tintColor = UIColor.black
         
+        UIImageView.appearance(whenContainedInInstancesOf: [GeoDataViewController.self]).tintColor = UIColor.white
+        
         UINavigationBar.appearance().barStyle = .black
         UINavigationBar.appearance().barTintColor = backgroundColor
         UINavigationBar.appearance().backgroundColor = backgroundColor

@@ -45,6 +45,7 @@
 "trip2_label" = "Διαδρομή 2";
 "gear_label" = "Ταχύτητα";
 "settings_label" = "Ρυθμίσεις";
+"geodata_label" = "Trips & Waypoints"; // Needs translation
 "appsettings_label" = "Ρυθμίσεις εφαρμογής";
 "about_label" = "Περί...";
 "close_label" = "Κλείσιμο";

@@ -45,6 +45,7 @@
 "trip2_label" = "Trip 2";
 "gear_label" = "Stupeň";
 "settings_label" = "Nastavení";
+"geodata_label" = "Trips & Waypoints"; // Needs translation
 "appsettings_label" = "Nastavení aplikace";
 "about_label" = "O aplikaci";
 "close_label" = "Zavřít";

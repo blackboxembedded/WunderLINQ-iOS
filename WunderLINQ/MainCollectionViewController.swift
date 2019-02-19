@@ -29,8 +29,6 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     var disconnectButton: UIBarButtonItem!
     var faultsBtn: UIButton!
     var faultsButton: UIBarButtonItem!
-    var dataBtn: UIButton!
-    var dataButton: UIBarButtonItem!
     var menuBtn: UIButton!
     var menuButton: UIBarButtonItem!
     
@@ -56,8 +54,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     var prevBrakeValue = 0
     
     var menuSelected = 0
-    fileprivate var popoverList = [NSLocalizedString("trip_logs_label", comment: ""), NSLocalizedString("waypoints_label", comment: "")]
-    fileprivate var popoverMenuList = [NSLocalizedString("appsettings_label", comment: ""), NSLocalizedString("about_label", comment: ""), NSLocalizedString("close_label", comment: "")]
+    fileprivate var popoverMenuList = [NSLocalizedString("geodata_label", comment: ""),NSLocalizedString("appsettings_label", comment: ""), NSLocalizedString("about_label", comment: ""), NSLocalizedString("close_label", comment: "")]
     fileprivate var popover: Popover!
     fileprivate var popoverOptions: [PopoverOption] = [
         .type(.auto),
@@ -242,15 +239,6 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         faultsButtonHeight?.isActive = true
         faultsButton.isEnabled = false
         
-        dataBtn = UIButton()
-        dataBtn.setImage(UIImage(named: "Chart")?.withRenderingMode(.alwaysTemplate), for: .normal)
-        dataBtn.addTarget(self, action: #selector(dataButtonTapped), for: .touchUpInside)
-        dataButton = UIBarButtonItem(customView: dataBtn)
-        let dataButtonWidth = dataButton.customView?.widthAnchor.constraint(equalToConstant: 30)
-        dataButtonWidth?.isActive = true
-        let dataButtonHeight = dataButton.customView?.heightAnchor.constraint(equalToConstant: 30)
-        dataButtonHeight?.isActive = true
-        
         menuBtn = UIButton()
         menuBtn.setImage(UIImage(named: "Menu")?.withRenderingMode(.alwaysTemplate), for: .normal)
         menuBtn.addTarget(self, action: #selector(menuButtonTapped), for: .touchUpInside)
@@ -271,7 +259,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         
         self.navigationItem.title = NSLocalizedString("main_title", comment: "")
         self.navigationItem.leftBarButtonItems = [backButton, disconnectButton, faultsButton]
-        self.navigationItem.rightBarButtonItems = [forwardButton, menuButton, dataButton]
+        self.navigationItem.rightBarButtonItems = [forwardButton, menuButton]
         
         var dateFormat = "yyyyMMdd"
         var dateFormatter: DateFormatter {
@@ -625,15 +613,8 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     }
     
     func popUpMenu() {
-        var menuHeight:CGFloat = 45
-        switch (menuSelected) {
-        case 1:
-            menuHeight = CGFloat(45 * popoverList.count)
-        case 2:
-            menuHeight = CGFloat(45 * popoverMenuList.count)
-        default:
-            print("Invalid Menu ID")
-        }
+        var menuHeight:CGFloat = 46
+        menuHeight = CGFloat(46 * popoverMenuList.count)
         let tableView = UITableView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width / 2, height: menuHeight))
         tableView.delegate = self
         tableView.dataSource = self
@@ -651,24 +632,10 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         self.popover.didDismissHandler = {
             //print("didDismissHandler")
         }
-        switch (menuSelected) {
-        case 1:
-            self.popover.show(tableView, fromView: self.dataBtn)
-        case 2:
-            self.popover.show(tableView, fromView: self.menuBtn)
-        default:
-            print("Invalid Menu ID")
-        }
-        
-    }
-    
-    func dataButtonTapped() {
-        menuSelected = 1
-        popUpMenu()
+        self.popover.show(tableView, fromView: self.menuBtn)
     }
     
     func menuButtonTapped() {
-        menuSelected = 2
         popUpMenu()
     }
     
@@ -1273,7 +1240,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                     print("Received WRW command response")
                     wlqData.setwwMode(wwMode: dataArray[26])
                     wlqData.setwwHoldSensitivity(wwHoldSensitivity: dataArray[34])
-                    popoverMenuList = [NSLocalizedString("appsettings_label", comment: ""), NSLocalizedString("hwsettings_label", comment: ""), NSLocalizedString("about_label", comment: ""), NSLocalizedString("close_label", comment: "")]
+                    popoverMenuList = [NSLocalizedString("geodata_label", comment: ""),NSLocalizedString("appsettings_label", comment: ""), NSLocalizedString("hwsettings_label", comment: ""), NSLocalizedString("about_label", comment: ""), NSLocalizedString("close_label", comment: "")]
                     break
                 default:
                     break;
@@ -2637,7 +2604,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             print("DISCONNECTION DETAILS: \(error!.localizedDescription)")
         }
         wunderLINQ = nil
-        popoverMenuList = [NSLocalizedString("appsettings_label", comment: ""), NSLocalizedString("about_label", comment: ""), NSLocalizedString("close_label", comment: "")]
+        popoverMenuList = [NSLocalizedString("geodata_label", comment: ""),NSLocalizedString("appsettings_label", comment: ""), NSLocalizedString("about_label", comment: ""), NSLocalizedString("close_label", comment: "")]
         
         // Start trying to reconnect
         keepScanning = true
@@ -3583,47 +3550,36 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
 extension MainCollectionViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        switch (menuSelected) {
+        switch(indexPath.row) {
+        case 0:
+            //Geo Data
+            performSegue(withIdentifier: "motorcycleToGeoData", sender: self)
         case 1:
-            switch(indexPath.row) {
-            case 0:
-                performSegue(withIdentifier: "motorcycleToTrips", sender: self)
-            case 1:
-                performSegue(withIdentifier: "motorcycleToWaypoints", sender: self)
-            default:
-                print("Unknown option")
+            //App Settings
+            if let appSettings = URL(string: UIApplicationOpenSettingsURLString + Bundle.main.bundleIdentifier!) {
+                if UIApplication.shared.canOpenURL(appSettings) {
+                    UIApplication.shared.open(appSettings)
+                }
             }
         case 2:
-            switch(indexPath.row) {
-            case 0:
-                //Settings
-                if let appSettings = URL(string: UIApplicationOpenSettingsURLString + Bundle.main.bundleIdentifier!) {
-                    if UIApplication.shared.canOpenURL(appSettings) {
-                        UIApplication.shared.open(appSettings)
-                    }
-                }
-            case 1:
-                if (popoverMenuList.count == 4){
-                    //HW Settings
-                    performSegue(withIdentifier: "motorcycleToHWSettings", sender: self)
-                } else {
-                    //About
-                    performSegue(withIdentifier: "motorcycleToAbout", sender: self)
-                }
-            case 2:
-                if (popoverMenuList.count == 4){
-                    //About
-                    performSegue(withIdentifier: "motorcycleToAbout", sender: self)
-                } else {
-                    exit(0)
-                }
-            case 3:
-                exit(0)
-            default:
-                print("Unknown option")
+            if (popoverMenuList.count == 5){
+                //HW Settings
+                performSegue(withIdentifier: "motorcycleToHWSettings", sender: self)
+            } else {
+                //About
+                performSegue(withIdentifier: "motorcycleToAbout", sender: self)
             }
+        case 3:
+            if (popoverMenuList.count == 5){
+                //About
+                performSegue(withIdentifier: "motorcycleToAbout", sender: self)
+            } else {
+                exit(0)
+            }
+        case 4:
+            exit(0)
         default:
-            print("Invalid Menu ID")
+            print("Unknown option")
         }
         self.popover.dismiss()
     }
@@ -3633,28 +3589,12 @@ extension MainCollectionViewController: UITableViewDelegate {
 extension MainCollectionViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        var count = 0
-        switch (menuSelected) {
-        case 1:
-            count = popoverList.count
-        case 2:
-            count = popoverMenuList.count
-        default:
-            print("Invalid Menu ID")
-        }
-        return count
+        return popoverMenuList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
-        switch (menuSelected) {
-        case 1:
-            cell.textLabel?.text = self.popoverList[(indexPath as NSIndexPath).row]
-        case 2:
-            cell.textLabel?.text = self.popoverMenuList[(indexPath as NSIndexPath).row]
-        default:
-            print("Invalid Menu ID")
-        }
+        cell.textLabel?.text = self.popoverMenuList[(indexPath as NSIndexPath).row]
         return cell
     }
 }

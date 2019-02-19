@@ -45,6 +45,7 @@
 "trip2_label" = "KM-Zähler 2";
 "gear_label" = "Gang";
 "settings_label" = "Einstellungen";
+"geodata_label" = "Trips & Waypoints"; // Needs translation
 "appsettings_label" = "App Settings"; //Needs Translation
 "about_label" = "Über";
 "close_label" = "Schliessen";
