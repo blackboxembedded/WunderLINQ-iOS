@@ -58,7 +58,6 @@
 		7EA478581F40B154000CEDDC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7EA478561F40B154000CEDDC /* LaunchScreen.storyboard */; };
 		7EA478631F40B154000CEDDC /* WunderLINQTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA478621F40B154000CEDDC /* WunderLINQTests.swift */; };
 		7EA478711F40F273000CEDDC /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA478701F40F273000CEDDC /* Device.swift */; };
-		7EA478731F4115F6000CEDDC /* CompassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA478721F4115F6000CEDDC /* CompassViewController.swift */; };
 		7EA478751F412B73000CEDDC /* LocationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA478741F412B73000CEDDC /* LocationDelegate.swift */; };
 		7EA478771F412BAC000CEDDC /* CLLocation+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA478761F412BAC000CEDDC /* CLLocation+Extension.swift */; };
 		7EA478791F412BE9000CEDDC /* UserDefauts+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA478781F412BE9000CEDDC /* UserDefauts+Extensions.swift */; };
@@ -162,7 +161,6 @@
 		7EA478621F40B154000CEDDC /* WunderLINQTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WunderLINQTests.swift; sourceTree = "<group>"; };
 		7EA478641F40B154000CEDDC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7EA478701F40F273000CEDDC /* Device.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
-		7EA478721F4115F6000CEDDC /* CompassViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompassViewController.swift; sourceTree = "<group>"; };
 		7EA478741F412B73000CEDDC /* LocationDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationDelegate.swift; sourceTree = "<group>"; };
 		7EA478761F412BAC000CEDDC /* CLLocation+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CLLocation+Extension.swift"; sourceTree = "<group>"; };
 		7EA478781F412BE9000CEDDC /* UserDefauts+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserDefauts+Extensions.swift"; sourceTree = "<group>"; };
@@ -307,7 +305,6 @@
 				7E068BC8210190F00076EAAD /* WaypointsTableViewController.swift */,
 				7E068BCC2102ADD20076EAAD /* WaypointViewController.swift */,
 				7EA478741F412B73000CEDDC /* LocationDelegate.swift */,
-				7EA478721F4115F6000CEDDC /* CompassViewController.swift */,
 				7EA478801F44F57C000CEDDC /* MusicViewController.swift */,
 				7EA4788D1F5BA136000CEDDC /* Tasks.swift */,
 				7EA4BCC621B8C9150084F6EA /* TasksCollectionViewController.swift */,
@@ -490,7 +487,6 @@
 				7EA4BCC921B8CB270084F6EA /* TaskCollectionViewCell.swift in Sources */,
 				7E07AE4720F70FD8004F15B9 /* LocationService.swift in Sources */,
 				7E62BB7121FE443200FDB10E /* ColumnFlowLayout.swift in Sources */,
-				7EA478731F4115F6000CEDDC /* CompassViewController.swift in Sources */,
 				7EBFE1F3214C7D6500F2185A /* ScenicAPI.swift in Sources */,
 				7E5A767820DDEE7200B48CC6 /* UIViewController+Extensions.swift in Sources */,
 				7EBFD48E210ADD0000FC9665 /* String+Extensions.swift in Sources */,

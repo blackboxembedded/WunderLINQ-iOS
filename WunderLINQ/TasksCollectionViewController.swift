@@ -470,7 +470,7 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
     }
     
     @objc func leftScreen() {
-        performSegue(withIdentifier: "taskGridToCompass", sender: [])
+        performSegue(withIdentifier: "tasksToMusic", sender: [])
         
     }
     
@@ -488,7 +488,7 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
     
     func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
         if gesture.direction == UISwipeGestureRecognizerDirection.right {
-            performSegue(withIdentifier: "taskGridToCompass", sender: [])
+            performSegue(withIdentifier: "tasksToMusic", sender: [])
         }
         else if gesture.direction == UISwipeGestureRecognizerDirection.left {
             performSegue(withIdentifier: "taskGridTomotorcycle", sender: [])

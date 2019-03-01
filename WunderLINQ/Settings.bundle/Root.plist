@@ -46,24 +46,24 @@
 			<key>Title</key>
 			<string>ui_title</string>
 		</dict>
-        <dict>
-            <key>Type</key>
-            <string>PSToggleSwitchSpecifier</string>
-            <key>Title</key>
-            <string>pref_motorcycledata_name</string>
-            <key>Key</key>
-            <string>motorcycle_data_preference</string>
-            <key>DefaultValue</key>
-            <false/>
-        </dict>
-        <dict>
-            <key>Type</key>
-            <string>PSChildPaneSpecifier</string>
-            <key>Title</key>
-            <string>pref_grid_settings_title</string>
-            <key>File</key>
-            <string>Grid</string>
-        </dict>
+		<dict>
+			<key>Type</key>
+			<string>PSToggleSwitchSpecifier</string>
+			<key>Title</key>
+			<string>pref_motorcycledata_name</string>
+			<key>Key</key>
+			<string>motorcycle_data_preference</string>
+			<key>DefaultValue</key>
+			<false/>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSChildPaneSpecifier</string>
+			<key>Title</key>
+			<string>pref_grid_settings_title</string>
+			<key>File</key>
+			<string>Grid</string>
+		</dict>
 		<dict>
 			<key>Type</key>
 			<string>PSChildPaneSpecifier</string>
@@ -91,11 +91,11 @@
 			</array>
 			<key>Titles</key>
 			<array>
-				<string>Apple Maps</string>
-				<string>Google Maps</string>
-				<string>Scenic</string>
-				<string>Sygic</string>
-				<string>Waze</string>
+				<string>nav_app_apple</string>
+				<string>nav_app_google</string>
+				<string>nav_app_scenic</string>
+				<string>nav_app_sygic</string>
+				<string>nav_app_waze</string>
 			</array>
 		</dict>
 		<dict>
@@ -109,10 +109,10 @@
 			<integer>0</integer>
 			<key>Titles</key>
 			<array>
-				<string>bar</string>
-				<string>kPa</string>
-				<string>kg-f</string>
-				<string>psi</string>
+				<string>pressuref_bar</string>
+				<string>pressuref_kpa</string>
+				<string>pressuref_kgf</string>
+				<string>pressuref_psi</string>
 			</array>
 			<key>Values</key>
 			<array>
@@ -175,13 +175,11 @@
 			<array>
 				<string>bearing_d</string>
 				<string>bearing_c</string>
-				<string>bearing_both</string>
 			</array>
 			<key>Values</key>
 			<array>
 				<integer>0</integer>
 				<integer>1</integer>
-				<integer>2</integer>
 			</array>
 		</dict>
 		<dict>
@@ -315,19 +313,19 @@
 			<string>PSGroupSpecifier</string>
 			<key>Title</key>
 			<string>debug_settings_title</string>
-            <key>FooterText</key>
-            <string>pref_debuglogging_summary</string>
+			<key>FooterText</key>
+			<string>pref_debuglogging_summary</string>
 		</dict>
-        <dict>
-            <key>Type</key>
-            <string>PSToggleSwitchSpecifier</string>
-            <key>Title</key>
-            <string>pref_debuglogging_name</string>
-            <key>Key</key>
-            <string>debug_logging_preference</string>
-            <key>DefaultValue</key>
-            <false/>
-        </dict>
+		<dict>
+			<key>Type</key>
+			<string>PSToggleSwitchSpecifier</string>
+			<key>Title</key>
+			<string>pref_debuglogging_name</string>
+			<key>Key</key>
+			<string>debug_logging_preference</string>
+			<key>DefaultValue</key>
+			<false/>
+		</dict>
 	</array>
 </dict>
 </plist>

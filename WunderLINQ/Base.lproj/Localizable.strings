@@ -45,7 +45,7 @@
 "trip2_label" = "Trip 2";
 "gear_label" = "Gear";
 "settings_label" = "Settings";
-"geodata_label" = "Trips & Waypoints"; // Needs translation
+"geodata_label" = "Trips & Waypoints";
 "appsettings_label" = "App Settings";
 "about_label" = "About";
 "close_label" = "Close";
@@ -69,7 +69,7 @@
 "about_title" = "About";
 "version_label" = "Version:";
 "btn_sendlogs_title" = "Send Logs";
-"sendlogs_body" = "Please describe your problem below:\n"; // Needs translation
+"sendlogs_body" = "Please describe your problem below:\n";
 "credits_label" = "Credits";
 
 // AlertViewController
@@ -184,7 +184,8 @@
 "fueleconomytwo_header" = "Fuel Economy 2";
 "fuelrange_header" = "Fuel Range";
 "leanangle_header" = "Lean Angle";
-"gforce_header" = "g-force"; // Needs translation
+"gforce_header" = "g-force";
+"bearing_header" = "Bearing";
 
 // ContactsTableViewController
 "contactlist_title" = "Contacts";

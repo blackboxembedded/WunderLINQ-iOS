@@ -31,6 +31,9 @@ class MotorcycleData {
     var fuelEconomyOne: Double?
     var fuelEconomyTwo: Double?
     var currentConsumption: Double?
+    var leanAngle: Double?
+    var gForce: Double?
+    var bearing: Int?
     
     func setVIN(vin: String?){
         self.vin = vin
@@ -186,6 +189,27 @@ class MotorcycleData {
         return self.currentConsumption!
     }
     
+    func setleanAngle(leanAngle: Double?){
+        self.leanAngle = leanAngle
+    }
+    func getleanAngle() -> Double{
+        return self.leanAngle!
+    }
+    
+    func setgForce(gForce: Double?){
+        self.gForce = gForce
+    }
+    func getgForce() -> Double{
+        return self.gForce!
+    }
+    
+    func setbearing(bearing: Int?){
+        self.bearing = bearing
+    }
+    func getbearing() -> Int{
+        return self.bearing!
+    }
+    
     func clear(){
         self.vin = nil
         self.frontTirePressure = nil
@@ -209,5 +233,8 @@ class MotorcycleData {
         self.fuelEconomyOne = nil
         self.fuelEconomyTwo = nil
         self.currentConsumption = nil
+        self.leanAngle = nil
+        self.gForce = nil
+        self.bearing = nil
     }
 }

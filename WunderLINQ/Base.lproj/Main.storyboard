@@ -359,63 +359,6 @@
             </objects>
             <point key="canvasLocation" x="8909" y="-911"/>
         </scene>
-        <!--Compass-->
-        <scene sceneID="zpk-X9-Usv">
-            <objects>
-                <viewController id="Yme-GX-WRX" customClass="CompassViewController" customModule="WunderLINQ" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="hbU-Y3-hBF">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="65j-wa-SIQ">
-                                <rect key="frame" x="16" y="20" width="343" height="647"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="center" lineBreakMode="clip" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.25" translatesAutoresizingMaskIntoConstraints="NO" id="lsy-hM-ZFw">
-                                        <rect key="frame" x="0.0" y="0.0" width="343" height="647"/>
-                                        <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="150"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                            </stackView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="65j-wa-SIQ" firstAttribute="top" secondItem="s7Z-zK-mPC" secondAttribute="top" id="1Ba-s0-eRe"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="65j-wa-SIQ" secondAttribute="trailing" id="Los-6G-6Tv"/>
-                            <constraint firstItem="s7Z-zK-mPC" firstAttribute="bottom" secondItem="65j-wa-SIQ" secondAttribute="bottom" id="pSQ-jW-TK4"/>
-                            <constraint firstItem="65j-wa-SIQ" firstAttribute="leading" secondItem="hbU-Y3-hBF" secondAttribute="leadingMargin" id="uj6-SE-zCf"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="s7Z-zK-mPC"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Compass" id="Brd-Gc-vY2">
-                        <barButtonItem key="leftBarButtonItem" title="Item" image="Left" id="cX9-PZ-Xjw">
-                            <inset key="imageInsets" minX="-15" minY="0.0" maxX="5" maxY="0.0"/>
-                            <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                            <connections>
-                                <action selector="backButton:" destination="Yme-GX-WRX" id="X52-3x-rdT"/>
-                                <segue destination="wUq-oT-yYJ" kind="unwind" identifier="unwindToMotorcycle" unwindAction="prepareForUnwindWithSegue:" id="Xxq-JA-LNE"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="Right" id="C4x-xU-h8m">
-                            <inset key="imageInsets" minX="5" minY="0.0" maxX="-15" maxY="0.0"/>
-                            <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                            <connections>
-                                <action selector="backButton:" destination="Yme-GX-WRX" id="QmX-z6-3r5"/>
-                                <segue destination="p6n-wZ-mMa" kind="show" identifier="compassToMusic" customClass="SegueFromLeft" customModule="WunderLINQ" customModuleProvider="target" id="cF1-aK-Tul"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="compassLabel" destination="lsy-hM-ZFw" id="x9L-EO-H4Y"/>
-                        <segue destination="OIf-TM-fnx" kind="show" identifier="compassToTaskGrid" id="uX9-9I-oIg"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="oxj-9z-5k3" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="wUq-oT-yYJ" userLabel="Exit" sceneMemberID="exit"/>
-            </objects>
-            <point key="canvasLocation" x="8909" y="-126"/>
-        </scene>
         <!--Music-->
         <scene sceneID="8D1-Ci-pio">
             <objects>
@@ -582,8 +525,8 @@
                         <outlet property="nextButton" destination="kxB-1t-Lm7" id="ysa-Qv-XIY"/>
                         <outlet property="playButton" destination="Pwh-25-TzL" id="GH4-Fn-mrI"/>
                         <outlet property="songLabel" destination="ojS-iD-NCF" id="Q05-G0-XS2"/>
-                        <segue destination="Yme-GX-WRX" kind="show" identifier="musicToCompass" id="W8V-Rg-WFQ"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="musicToMotorcycle" customClass="SegueFromLeft" customModule="WunderLINQ" customModuleProvider="target" id="gfr-gj-BUz"/>
+                        <segue destination="OIf-TM-fnx" kind="show" identifier="musicToTasks" id="1ij-RL-89b"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pw8-37-q0l" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -652,7 +595,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6FV-uf-rsK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="10669.565217391306" y="-492.39130434782612"/>
+            <point key="canvasLocation" x="9806" y="-515"/>
         </scene>
         <!--Waypoints-->
         <scene sceneID="5Hw-nx-fMy">
@@ -693,7 +636,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vYP-M3-Xw8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="10670" y="266"/>
+            <point key="canvasLocation" x="9807" y="261"/>
         </scene>
         <!--Alert-->
         <scene sceneID="2jd-t5-irf">
@@ -822,14 +765,14 @@
                     <navigationItem key="navigationItem" id="2eE-Xw-GNI"/>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="taskGridTomotorcycle" id="P25-cb-auh"/>
-                        <segue destination="Yme-GX-WRX" kind="show" identifier="taskGridToCompass" customClass="SegueFromLeft" customModule="WunderLINQ" customModuleProvider="target" id="veu-Ll-J9g"/>
                         <segue destination="TPs-yr-NM2" kind="show" identifier="taskGridToContacts" id="RMB-mt-FYE"/>
                         <segue destination="we8-3Z-s79" kind="show" identifier="taskGridToWaypoints" id="VKq-wx-i3D"/>
+                        <segue destination="p6n-wZ-mMa" kind="show" identifier="tasksToMusic" customClass="SegueFromLeft" customModule="WunderLINQ" customModuleProvider="target" id="EVI-4B-2VB"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y78-9d-MHp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="9786" y="-126"/>
+            <point key="canvasLocation" x="8908" y="-126"/>
         </scene>
         <!--HW Settings-->
         <scene sceneID="gKl-xS-Cwg">
@@ -1813,10 +1756,9 @@ Cgo
         <segue reference="NWY-sO-7oz"/>
         <segue reference="csM-WT-uqP"/>
         <segue reference="5cX-Ys-4mF"/>
-        <segue reference="Mvj-Z7-A9C"/>
-        <segue reference="cF1-aK-Tul"/>
-        <segue reference="veu-Ll-J9g"/>
-        <segue reference="nxI-Kn-oh9"/>
+        <segue reference="PPQ-oT-Jxj"/>
+        <segue reference="EVI-4B-2VB"/>
+        <segue reference="P25-cb-auh"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
 </document>

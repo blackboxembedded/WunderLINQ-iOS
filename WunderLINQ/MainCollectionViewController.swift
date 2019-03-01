@@ -10,6 +10,7 @@ import AVFoundation
 import Contacts
 import CoreBluetooth
 import CoreLocation
+import CoreMotion
 import MediaPlayer
 import Photos
 import UIKit
@@ -53,6 +54,9 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     let faults = Faults.shared
     var prevBrakeValue = 0
     
+    let motionManager = CMMotionManager()
+    var referenceAttitude: CMAttitude?
+    
     var menuSelected = 0
     fileprivate var popoverMenuList = [NSLocalizedString("geodata_label", comment: ""),NSLocalizedString("appsettings_label", comment: ""), NSLocalizedString("about_label", comment: ""), NSLocalizedString("close_label", comment: "")]
     fileprivate var popover: Popover!
@@ -88,8 +92,48 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                          NSLocalizedString("fueleconomyone_header", comment: ""),
                          NSLocalizedString("fueleconomytwo_header", comment: ""),
                          NSLocalizedString("fuelrange_header", comment: ""),
-                         NSLocalizedString("shifts_header", comment: "")
+                         NSLocalizedString("shifts_header", comment: ""),
+                         NSLocalizedString("leanangle_header", comment: ""),
+                         NSLocalizedString("gforce_header", comment: ""),
+                         NSLocalizedString("bearing_header", comment: "")
     ]
+    
+    let locationDelegate = LocationDelegate()
+    var latestLocation: CLLocation? = nil
+    var yourLocationBearing: CGFloat { return latestLocation?.bearingToLocationRadian(self.yourLocation) ?? 0 }
+    var yourLocation: CLLocation {
+        get { return UserDefaults.standard.currentLocation }
+        set { UserDefaults.standard.currentLocation = newValue }
+    }
+    
+    let locationManager: CLLocationManager = {
+        $0.requestWhenInUseAuthorization()
+        $0.desiredAccuracy = kCLLocationAccuracyBest
+        $0.startUpdatingLocation()
+        $0.startUpdatingHeading()
+        return $0
+    }(CLLocationManager())
+    
+    private func orientationAdjustment() -> CGFloat {
+        let isFaceDown: Bool = {
+            switch UIDevice.current.orientation {
+            case .faceDown: return true
+            default: return false
+            }
+        }()
+        
+        let adjAngle: CGFloat = {
+            switch UIApplication.shared.statusBarOrientation {
+            case .landscapeLeft:
+                return 90
+            case .landscapeRight:
+                return -90
+            case .portrait, .unknown: return 0
+            case .portraitUpsideDown: return isFaceDown ? 180 : -180
+            }
+        }()
+        return adjAngle
+    }
 
     override var preferredStatusBarStyle : UIStatusBarStyle {
         if UserDefaults.standard.bool(forKey: "nightmode_preference") {
@@ -352,7 +396,48 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         } else {
             // Fallback on earlier versions
         }
-        //self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        
+        if motionManager.isDeviceMotionAvailable {
+            //do something interesting
+            print("Motion Device Available")
+        }
+        motionManager.startDeviceMotionUpdates()
+        referenceAttitude = nil
+        
+        locationManager.delegate = locationDelegate
+        
+        locationDelegate.locationCallback = { location in
+            self.latestLocation = location
+        }
+        
+        locationDelegate.headingCallback = { newHeading in
+            
+            func computeNewAngle(with newAngle: CGFloat) -> CGFloat {
+                let heading: CGFloat = {
+                    let originalHeading = self.yourLocationBearing - newAngle.degreesToRadians
+                    switch UIDevice.current.orientation {
+                    case .faceDown: return -originalHeading
+                    default: return originalHeading
+                    }
+                }()
+                
+                return CGFloat(self.orientationAdjustment().degreesToRadians + heading)
+            }
+            let angle = computeNewAngle(with: CGFloat(newHeading.trueHeading))
+            
+            var fixedHeading = abs(angle.radiansToDegrees)
+            if fixedHeading > 360 {
+                fixedHeading = fixedHeading - 360
+            } else if fixedHeading < 0 {
+                fixedHeading = fixedHeading + 360
+            }
+            
+            let degrees = abs(Int(fixedHeading))
+            //print("degrees: \(degrees) fixedHeading: \(fixedHeading)) newHeading: \(newHeading) angle(degrees): \(angle.radiansToDegrees) ")
+            
+            self.motorcycleData.setbearing(bearing: degrees)
+        }
+        
         updateMessageDisplay()
     }
     
@@ -834,6 +919,15 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         case 20:
             //Shifts
             label = NSLocalizedString("shifts_header", comment: "")
+        case 21:
+            //Lean Angle
+            label = NSLocalizedString("leanangle_header", comment: "")
+        case 22:
+            //g-force
+            label = NSLocalizedString("gforce_header", comment: "")
+        case 23:
+            //bearing
+            label = NSLocalizedString("bearing_header", comment: "")
         default:
             print("Unknown : \(cellDataPoint)")
         }
@@ -1207,6 +1301,45 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                 value = "\(motorcycleData.shifts!)"
             } else {
                 value = NSLocalizedString("blank_field", comment: "")
+            }
+        case 21:
+            //Lean Angle
+            if motorcycleData.leanAngle != nil {
+                value = "\(motorcycleData.leanAngle!.rounded(toPlaces: 1))"
+            }
+        case 22:
+            //g-force
+            if motorcycleData.gForce != nil {
+                value = "\(motorcycleData.gForce!.rounded(toPlaces: 1))"
+            }
+        case 23:
+            //Bearing
+            if motorcycleData.bearing != nil {
+                value = "\(motorcycleData.bearing!)"
+                if UserDefaults.standard.integer(forKey: "bearing_unit_preference") != 0 {
+                    let bearing = motorcycleData.bearing!
+                    var cardinal = "-";
+                    if bearing > 331 || bearing <= 28 {
+                        cardinal = NSLocalizedString("north", comment: "")
+                    } else if bearing > 28 && bearing <= 73 {
+                        cardinal = NSLocalizedString("north_east", comment: "")
+                    } else if bearing > 73 && bearing <= 118 {
+                        cardinal = NSLocalizedString("east", comment: "")
+                    } else if bearing > 118 && bearing <= 163 {
+                        cardinal = NSLocalizedString("south_east", comment: "")
+                    } else if bearing > 163 && bearing <= 208 {
+                        cardinal = NSLocalizedString("south", comment: "")
+                    } else if bearing > 208 && bearing <= 253 {
+                        cardinal = NSLocalizedString("south_west", comment: "")
+                    } else if bearing > 253 && bearing <= 298 {
+                        cardinal = NSLocalizedString("west", comment: "")
+                    } else if bearing > 298 && bearing <= 331 {
+                        cardinal = NSLocalizedString("north_west", comment: "")
+                    } else {
+                        cardinal = "-"
+                    }
+                    value = cardinal
+                }
             }
         default:
             print("Unknown : \(dataPoint)")
@@ -2478,6 +2611,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             //print("Unknown Message ID")
         }
         
+        updatePhoneSensorData()
         if (UIApplication.shared.applicationState == .active) {
             updateMessageDisplay()
         }
@@ -3194,6 +3328,10 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         let mpg = 235.215 / l100
         return mpg
     }
+    //radians to degrees
+    func degrees(radians:Double) -> Double {
+        return 180 / Double.pi * radians
+    }
     
     func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
         if gesture.direction == UISwipeGestureRecognizerDirection.right {
@@ -3543,6 +3681,20 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             print("Unknown Cell")
         }
         let _ = UserDefaults.standard.synchronize()
+    }
+    
+    func updatePhoneSensorData() {
+        let data = motionManager.deviceMotion
+        if (data != nil){
+            let attitude = data!.attitude
+            if (referenceAttitude != nil){
+                attitude.multiply(byInverseOf: referenceAttitude!)
+            } else {
+                referenceAttitude = attitude
+            }
+            motorcycleData.setleanAngle(leanAngle: degrees(radians: attitude.pitch))
+            motorcycleData.setgForce(gForce: data!.gravity.x + data!.gravity.y + data!.gravity.z)
+        }
     }
 
 }

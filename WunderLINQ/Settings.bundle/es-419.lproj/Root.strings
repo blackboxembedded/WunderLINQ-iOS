@@ -1,12 +1,20 @@
-/* A single strings file, whose title is specified in your preferences schema. The strings files provide the localized content to display to the user for each of your preferences. */
 "info_title" = "Información Personal";
 "pref_homeAddress_name" = "Domicilio de Casa";
 "pref_homePhone_name" = "Número de teléfono favorito";
 "ui_title" = "Interfaz de Usuario";
 "pref_motorcycledata_name" = "Disable performance data display"; // Needs translation
 "pref_nav_app" = "App de Navegación";
+"nav_app_apple" = "Apple Maps"; // Needs Translation
+"nav_app_google" = "Google Maps"; // Needs Translation
+"nav_app_scenic" = "Scenic"; // Needs Translation
+"nav_app_sygic" = "Sygic"; // Needs Translation
+"nav_app_waze" = "Waze"; // Needs Translation
 "pref_nightMode_name" = "Modo nocturno";
 "pref_pressuref_name" = "Unidad de Presión";
+"pressuref_bar" = "Bar"; // Needs Translation
+"pressuref_kpa" = "kPa"; // Needs Translation
+"pressuref_kgf" = "Kg-f"; // Needs Translation
+"pressuref_psi" = "psi"; // Needs Translation
 "pref_tempf_name" = "Unidad de Temperatura";
 "tempf_c" = "Celsius";
 "tempf_f" = "Fahrenheit";
@@ -16,7 +24,6 @@
 "pref_bearing_name" = "Unidad de Rumbo";
 "bearing_d" = "Grados";
 "bearing_c" = "Cardinal";
-"bearing_both" = "Ambos";
 "pref_orientation_title" = "Fijar Orientación";
 "pref_orientation_footer" = "Requiere reiniciar la app para surtir efecto";
 "pref_orientation_name" = "Orientación";

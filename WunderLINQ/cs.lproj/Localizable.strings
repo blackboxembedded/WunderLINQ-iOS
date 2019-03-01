@@ -185,6 +185,7 @@
 "fuelrange_header" = "Dojezd";
 "leanangle_header" = "Lean Angle"; // Needs translation
 "gforce_header" = "g-force"; // Needs translation
+"bearing_header" = "Bearing"; // Needs translation
 
 // ContactsTableViewController
 "contactlist_title" = "Kontakty";

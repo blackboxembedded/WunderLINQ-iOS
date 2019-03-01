@@ -126,7 +126,7 @@ class MusicViewController: UIViewController {
             performSegue(withIdentifier: "musicToMotorcycle", sender: [])
         }
         else if gesture.direction == UISwipeGestureRecognizerDirection.left {
-            performSegue(withIdentifier: "musicToCompass", sender: [])
+            performSegue(withIdentifier: "musicToTasks", sender: [])
         }
     }
     
@@ -145,7 +145,7 @@ class MusicViewController: UIViewController {
         performSegue(withIdentifier: "musicToMotorcycle", sender: [])
     }
     @objc func rightScreen() {
-        performSegue(withIdentifier: "musicToCompass", sender: [])
+        performSegue(withIdentifier: "musicToTasks", sender: [])
     }
     @objc func nextSong() {
         musicPlayer().skipToNextItem()

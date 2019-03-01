@@ -53,10 +53,7 @@ enum Theme: Int {
         UserDefaults.standard.synchronize()
         
         UILabel.appearance(whenContainedInInstancesOf: [MainCollectionViewController.self]).textColor = textColor
-        
-        UIView.appearance(whenContainedInInstancesOf: [CompassViewController.self]).backgroundColor = backgroundColor
-        UILabel.appearance(whenContainedInInstancesOf: [CompassViewController.self]).textColor = textColor
-        
+
         UIView.appearance(whenContainedInInstancesOf: [MusicViewController.self]).backgroundColor = backgroundColor
         UILabel.appearance(whenContainedInInstancesOf: [MusicViewController.self]).textColor = textColor
         UIButton.appearance(whenContainedInInstancesOf: [MusicViewController.self]).tintColor = mainColor
