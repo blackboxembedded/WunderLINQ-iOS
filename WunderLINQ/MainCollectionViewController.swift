@@ -145,6 +145,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        referenceAttitude = nil
         checkPermissions()
     }
 
@@ -443,6 +444,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         updateCollectionViewLayout(with: size)
+        referenceAttitude = nil
         super.viewWillTransition(to: size, with: coordinator)
     }
     
