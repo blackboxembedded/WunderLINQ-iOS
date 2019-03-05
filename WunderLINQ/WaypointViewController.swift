@@ -136,7 +136,6 @@ class WaypointViewController: UIViewController, UITextFieldDelegate, CLLocationM
             case 5:
                 //Maps.me
                 //https://github.com/mapsme/api-ios
-                //mapswithme://map?v=1&ll=54.32123,12.34562&n=Point%20Name&id=AnyStringOrEncodedUrl&backurl=UrlToCallOnBackButton&appname=TitleToDisplayInNavBar
                 //https://dlink.maps.me/route?sll=55.800800,37.532754&saddr=PointA&dll=55.760158,37.618756&daddr=PointB&type=vehicle
                 if currentLocation != nil {
                     let startLatitude: CLLocationDegrees = (self.currentLocation?.coordinate.latitude)!
@@ -232,7 +231,7 @@ class WaypointViewController: UIViewController, UITextFieldDelegate, CLLocationM
                 //Maps.me
                 //https://github.com/mapsme/api-ios
                 //mapswithme://map?v=1&ll=54.32123,12.34562&n=Point%20Name&id=AnyStringOrEncodedUrl&backurl=UrlToCallOnBackButton&appname=TitleToDisplayInNavBar
-                let urlString = "mapsme://map?ll=\(destLatitude),\(destLongitude)&n=\(NSLocalizedString("home", comment: ""))&type=vehicle&id=\(NSLocalizedString("product", comment: ""))&backurl=wunderlinq://&appname=\(NSLocalizedString("product", comment: ""))"
+                let urlString = "mapsme://map?ll=\(destLatitude),\(destLongitude)&n=\(label ?? "")&type=vehicle&id=\(NSLocalizedString("product", comment: ""))&backurl=wunderlinq://&appname=\(NSLocalizedString("product", comment: ""))"
                 
                 if let mapsMeURL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
                     if (UIApplication.shared.canOpenURL(mapsMeURL)) {

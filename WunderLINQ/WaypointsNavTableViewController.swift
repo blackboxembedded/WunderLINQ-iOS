@@ -378,7 +378,6 @@ class WaypointsNavTableViewController: UITableViewController, CLLocationManagerD
             case 5:
                 //Maps.me
                 //https://github.com/mapsme/api-ios
-                //mapswithme://map?v=1&ll=54.32123,12.34562&n=Point%20Name&id=AnyStringOrEncodedUrl&backurl=UrlToCallOnBackButton&appname=TitleToDisplayInNavBar
                 //https://dlink.maps.me/route?sll=55.800800,37.532754&saddr=PointA&dll=55.760158,37.618756&daddr=PointB&type=vehicle
                 if currentLocation != nil {
                     let startLatitude: CLLocationDegrees = (self.currentLocation?.coordinate.latitude)!

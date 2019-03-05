@@ -15,17 +15,17 @@
 "disclaimer_alert_body" = "Ne vnašajte poti ali nastavljajte WunderLINQ med vožnjo.\nOdvračanje pozornosti od nadzora vozila lahko privede do smrti, resnih poškodb ali poškodovanja lastnine.\nPrevzemate vso odgovornost in tveganje za uporabo te naprave.";
 "disclaimer_ok" = "Se strinjam";
 "disclaimer_quit" = "Izhod";
-"negative_alert_title" = "Functionality limited"; // Needs Translation
-"negative_location_alert_body" = "Since location access has not been granted, this app will not be able to save waypoints or log your location."; // Needs Translation
-"negative_write_alert_body" = "Since Photo Library access has not been granted, this app will not be able to save photos."; // Needs Translation
-"negative_media_alert_body" = "Since Media Library access has not been granted, this app will not be able to play music."; // Needs Translation
-"negative_contacts_alert_body" = "Since contact access has not been granted, this app will not be able to display contacts to call."; // Needs Translation
-"negative_camera_alert_body" = "Since camera access has not been granted, this app will not be able to take photos or videos."; // Needs Translation
-"negative_microphone_alert_body" = "Since microphone access has not been granted, this app will not be able to record videos."; // Needs Translation
-"negative_notification_body" = "Since notifcations were not allowed, this app will not be able to send notifcations for faults"; // Needs Translation
+"negative_alert_title" = "Omejena zmogljivost";
+"negative_location_alert_body" = "Ker dostop do lokacije ni dovoljen, aplikacija ne bo shranjevala kažipotov in beležila vaše lokacije.";
+"negative_write_alert_body" = "Ker dostop do galerije slik ni dovoljen, aplikacija ne bo shranjevala slik.";
+"negative_media_alert_body" = "Ker dostop do glasbene knjižnice ni dovoljen, aplikacija ne bo predvajala glasbe.";
+"negative_contacts_alert_body" = "Ker dostop do stikov ni dovoljen, aplikacija ne bo prikazovala stikov za klic.";
+"negative_camera_alert_body" = "Ker dostop do kamere ni dovoljen, aplikacija ne bo zajemala slik in posnetkov.";
+"negative_microphone_alert_body" = "Ker dostop do mikrofona ni dovoljen, aplikacija ne bo snemala videa.";
+"negative_notification_body" = "Ker obvestila niso dovoljena, aplikacija ne bo prikazovala obvestil o napakah";
 "alert_message_exit_ok" = "V redu";
-"negative_alert_btn_ok" = "Open Settings"; // Needs Translation
-"negative_alert_btn_cancel" = "Cancel"; // Needs Translation
+"negative_alert_btn_ok" = "Odpri nastavitve";
+"negative_alert_btn_cancel" = "Prekliči";
 "bt_powered_off" = "Bluetooth na napravi je trenutno izključen.";
 "bt_not_supported" = "Naprava ne podpira Bluetooth z nizko porabo energije - BLE.";
 "bt_not_authorized" = "Aplikacija nima dovoljenja za uporabo Bluetooth z nizko porabo energije - BLE.";
@@ -41,36 +41,36 @@
 "engine_temp_label" = "Temperatura motorja";
 "ambient_temp_label" = "Temperatura okolice";
 "odometer_label" = "Merilec razdalje";
-"trip1_label" = "Potovanje 1";
-"trip2_label" = "Potovanje 2";
+"trip1_label" = "Trip 1";
+"trip2_label" = "Trip 2";
 "gear_label" = "Prestava";
 "settings_label" = "Nastavitve";
-"geodata_label" = "Trips & Waypoints"; // Needs translation
-"appsettings_label" = "App Settings"; // Needs Translation
+"geodata_label" = "Potovanja in kažipoti";
+"appsettings_label" = "Nastavitve aplikacije";
 "about_label" = "O aplikaciji";
 "close_label" = "Zapri";
-"hwsettings_label" = "HW Settings"; // Needs Translation
-"select_bt" = "Select"; // Needs translation
+"hwsettings_label" = "Nastavitve strojne opreme";
+"select_bt" = "Izberi";
 
 //HWSettingsViewController
-"fw_config_title" = "WunderLINQ Settings"; // Needs Translation
-"wwtype_label" = "Wheel Type"; // Needs Translation
-"wwMode1" = "Full"; // Needs Translation
-"wwMode2" = "RT"; // Needs Translation
-"wwMode3" = "Custom"; // Needs Translation
-"sensitivity_label" = "Hold Sensitivity"; // Needs Translation
-"config_write_label" = "Save Settings"; // Needs Translation
-"hwsave_alert_title" = "Warning!"; // Needs Translation
-"hwsave_alert_body" = "After saving new hardware settings, the WunderLINQ hardware will become unstable and will need to be removed and reinstalled into the cradle."; // Needs Translation
-"hwsave_alert_btn_ok" = "Continue"; // Needs Translation
-"hwsave_alert_btn_cancel" = "Cancel"; // Needs Translation
+"fw_config_title" = "WunderLINQ nastavitve";
+"wwtype_label" = "Vrsta kolesa";
+"wwMode1" = "Polbo";
+"wwMode2" = "RT";
+"wwMode3" = "Po meri";
+"sensitivity_label" = "Občutljivost pritiska";
+"config_write_label" = "Shrani nastavitve";
+"hwsave_alert_title" = "Pozor!";
+"hwsave_alert_body" = "Po novih nastavitvah postane naprava WunderLINQ nestabilna. Napravo je potrebno odstraniti z nosilca in jo ponovno namestiti.";
+"hwsave_alert_btn_ok" = "Nadaljuj";
+"hwsave_alert_btn_cancel" = "Prekliči";
 
 //AboutViewController
 "about_title" = "O aplikaciji";
-"version_label" = "Version:"; // Needs Translation
-"btn_sendlogs_title" = "Send Logs"; // Needs translation
-"sendlogs_body" = "Please describe your problem below:\n"; // Needs translation
-"credits_label" = "Credits"; // Needs Translation
+"version_label" = "Verzija:";
+"btn_sendlogs_title" = "Pošlji dnevnik";
+"sendlogs_body" = "Prosim, spodaj opišite problem:\n";
+"credits_label" = "Sodelujoči";
 
 // AlertViewController
 "alert_label_fuel" = "Prikažem pot do najbližje bencinske črpalke?";
@@ -98,10 +98,10 @@
 "hours" = "ur";
 "minutes" = "minut";
 "seconds" = "sekund";
-"delete_trip_alert_title" = "Warning!"; // Needs translation
-"delete_trip_alert_body" = "Delete Trip Log?"; // Needs translation
-"delete_bt" = "Delete"; // Needs translation
-"cancel_bt" = "Cancel"; // Needs translation
+"delete_trip_alert_title" = "Pozor!";
+"delete_trip_alert_body" = "Izbrišem dnevnik potovanja?";
+"delete_bt" = "Izbriši";
+"cancel_bt" = "Prekliči";
 
 // WaypointsTableViewController
 "waypoint_title" = "Shranjeni kažipoti";
@@ -116,8 +116,8 @@
 "waypoint_view_bt_nav" = "Vodi";
 "waypoint_view_bt_share" = "Deli";
 "waypoint_view_bt_delete" = "Izbriši";
-"delete_waypoint_alert_title" = "Warning!"; // Needs translation
-"delete_waypoint_alert_body" = "Delete Waypoint?"; // Needs translation
+"delete_waypoint_alert_title" = "Pozor!";
+"delete_waypoint_alert_body" = "Izbrišem kažipot?";
 
 // CompassViewController
 "compass_title" = "Kompas";
@@ -150,7 +150,7 @@
 "task_title_start_trip" = "Začni dnevnik potovanja";
 "task_title_stop_trip" = "Zaključi dnevnik potovanja";
 "task_title_waypoint" = "Shrani kažipot";
-"task_title_settings" = "Settings"; //Needs Translation
+"task_title_settings" = "Nastavitve";
 "toast_waypoint_saved" = "Kažipot shranjen";
 "task_title_waypoint_nav" = "Vodi do kažipota";
 "toast_photo_taken" = "Posnetek zajet!";
@@ -183,9 +183,9 @@
 "fueleconomyone_header" = "Poraba goriva 1";
 "fueleconomytwo_header" = "Poraba goriva 2";
 "fuelrange_header" = "Doseg";
-"leanangle_header" = "Lean Angle"; // Needs translation
-"gforce_header" = "g-force"; // Needs translation
-"bearing_header" = "Bearing"; // Needs translation
+"leanangle_header" = "Kot nagiba";
+"gforce_header" = "g sila";
+"bearing_header" = "Smer";
 
 // ContactsTableViewController
 "contactlist_title" = "Stiki";
