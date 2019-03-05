@@ -44,6 +44,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             }
             
             UserDefaults.standard.set(UIScreen.main.brightness, forKey: "systemBrightness")
+            
+            var paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
+            let documentsDirectory = paths[0]
+            let fileName = "wunderlinq.log"
+            let logFilePath = (documentsDirectory as NSString).appendingPathComponent(fileName)
+            freopen(logFilePath.cString(using: String.Encoding.ascii)!, "a+", stderr)
 
             return true
     }

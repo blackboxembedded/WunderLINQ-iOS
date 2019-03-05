@@ -38,18 +38,25 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
             let documentDirectory = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
             // Destination url for the log file to be saved
             let fileURL = documentDirectory.appendingPathComponent("dbg")
+            let logURL = documentDirectory.appendingPathComponent("wunderlinq.log")
             do {
                 let attachmentData = try Data(contentsOf: fileURL)
                 mailComposer.addAttachmentData(attachmentData, mimeType: "text/csv", fileName: "dbg")
-                mailComposer.mailComposeDelegate = self
-                self.present(mailComposer, animated: true
-                    , completion: nil)
             } catch let error {
-                print("We have encountered error \(error.localizedDescription)")
+                NSLog("We have encountered error \(error.localizedDescription)")
             }
+            do {
+                let logAttachmentData = try Data(contentsOf: logURL)
+                mailComposer.addAttachmentData(logAttachmentData, mimeType: "text/log", fileName: "wunderlinq.log")
+            } catch let error {
+                NSLog("We have encountered error \(error.localizedDescription)")
+            }
+            mailComposer.mailComposeDelegate = self
+            self.present(mailComposer, animated: true
+                , completion: nil)
             
         } else {
-            print("Email is not configured in settings app or we are not able to send an email")
+            NSLog("Email is not configured in settings app or we are not able to send an email")
         }
     }
     
@@ -128,19 +135,19 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
         var shouldDelete = true
         switch result {
         case .cancelled:
-            print("User cancelled")
+            NSLog("User cancelled")
             shouldDelete = false
             break
         case .saved:
-            print("Mail is saved by user")
+            NSLog("Mail is saved by user")
             shouldDelete = true
             break
         case .sent:
-            print("Mail is sent successfully")
+            NSLog("Mail is sent successfully")
             shouldDelete = true
             break
         case .failed:
-            print("Sending mail is failed")
+            NSLog("Sending mail is failed")
             shouldDelete = false
             break
         default:
@@ -154,7 +161,7 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
             do {
                 try FileManager.default.removeItem(at: fileURL)
             } catch _ as NSError {
-                //print("Error: \(error.domain)")
+                //NSLog("Error: \(error.domain)")
             }
         }
         controller.dismiss(animated: true)

@@ -832,7 +832,6 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
             }
         })
     }
-
     
     //MARK:- Setup Camera
     
