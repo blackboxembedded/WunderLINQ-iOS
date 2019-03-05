@@ -11,7 +11,7 @@ import SQLite3
 import GoogleMaps
 import MapKit
 
-class WaypointViewController: UIViewController, UITextFieldDelegate {
+class WaypointViewController: UIViewController, UITextFieldDelegate, CLLocationManagerDelegate {
     
     var db: OpaquePointer?
     
@@ -23,6 +23,9 @@ class WaypointViewController: UIViewController, UITextFieldDelegate {
     var waypoints = [Waypoint]()
     var waypoint: Waypoint?
     var indexOfWaypoint: Int?
+    
+    private var locationManager: CLLocationManager!
+    private var currentLocation: CLLocation?
     
     let scenic = ScenicAPI()
     
@@ -130,6 +133,25 @@ class WaypointViewController: UIViewController, UITextFieldDelegate {
                         }
                     }
                 }
+            case 5:
+                //Maps.me
+                //https://github.com/mapsme/api-ios
+                //mapswithme://map?v=1&ll=54.32123,12.34562&n=Point%20Name&id=AnyStringOrEncodedUrl&backurl=UrlToCallOnBackButton&appname=TitleToDisplayInNavBar
+                //https://dlink.maps.me/route?sll=55.800800,37.532754&saddr=PointA&dll=55.760158,37.618756&daddr=PointB&type=vehicle
+                if currentLocation != nil {
+                    let startLatitude: CLLocationDegrees = (self.currentLocation?.coordinate.latitude)!
+                    let startLongitude: CLLocationDegrees = (self.currentLocation?.coordinate.longitude)!
+                    let urlString = "mapsme://route?sll=\(startLatitude),\(startLongitude)&saddr=\(NSLocalizedString("trip_view_waypoint_start_label", comment: ""))&dll=\(destLatitude),\(destLongitude)&daddr=\(label ?? ""))&type=vehicle"
+                    if let mapsMeURL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
+                        if (UIApplication.shared.canOpenURL(mapsMeURL)) {
+                            if #available(iOS 10, *) {
+                                UIApplication.shared.open(mapsMeURL, options: [:], completionHandler: nil)
+                            } else {
+                                UIApplication.shared.openURL(mapsMeURL as URL)
+                            }
+                        }
+                    }
+                }
             default:
                 //Apple Maps
                 let coordinates = CLLocationCoordinate2DMake(destLatitude, destLongitude)
@@ -144,6 +166,8 @@ class WaypointViewController: UIViewController, UITextFieldDelegate {
     }
     @IBAction func openPressed(_ sender: Any) {
         if let lat = latitude?.toDouble(), let lon = longitude?.toDouble(){
+            let destLatitude: CLLocationDegrees = lat
+            let destLongitude: CLLocationDegrees = lon
             let navApp = UserDefaults.standard.integer(forKey: "nav_app_preference")
             print("NavApp: \(navApp)")
             switch (navApp){
@@ -177,16 +201,10 @@ class WaypointViewController: UIViewController, UITextFieldDelegate {
             case 2:
                 //Scenic
                 //https://github.com/guidove/Scenic-Integration/blob/master/README.md
-                let destLatitude: CLLocationDegrees = lat
-                let destLongitude: CLLocationDegrees = lon
-                
                 self.scenic.sendToScenicForNavigation(coordinate: CLLocationCoordinate2D(latitude: destLatitude,longitude: destLongitude), name: label ?? "")
             case 3:
                 //Sygic
                 //https://www.sygic.com/developers/professional-navigation-sdk/ios/custom-url
-                let destLatitude: CLLocationDegrees = lat
-                let destLongitude: CLLocationDegrees = lon
-                
                 let urlString = "com.sygic.aura://coordinate|\(destLongitude)|\(destLatitude)|show"
                 
                 if let sygicURL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
@@ -207,6 +225,21 @@ class WaypointViewController: UIViewController, UITextFieldDelegate {
                             UIApplication.shared.open(wazeURL, options: [:], completionHandler: nil)
                         } else {
                             UIApplication.shared.openURL(wazeURL as URL)
+                        }
+                    }
+                }
+            case 5:
+                //Maps.me
+                //https://github.com/mapsme/api-ios
+                //mapswithme://map?v=1&ll=54.32123,12.34562&n=Point%20Name&id=AnyStringOrEncodedUrl&backurl=UrlToCallOnBackButton&appname=TitleToDisplayInNavBar
+                let urlString = "mapsme://map?ll=\(destLatitude),\(destLongitude)&n=\(NSLocalizedString("home", comment: ""))&type=vehicle&id=\(NSLocalizedString("product", comment: ""))&backurl=wunderlinq://&appname=\(NSLocalizedString("product", comment: ""))"
+                
+                if let mapsMeURL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
+                    if (UIApplication.shared.canOpenURL(mapsMeURL)) {
+                        if #available(iOS 10, *) {
+                            UIApplication.shared.open(mapsMeURL, options: [:], completionHandler: nil)
+                        } else {
+                            UIApplication.shared.openURL(mapsMeURL as URL)
                         }
                     }
                 }
@@ -358,6 +391,22 @@ class WaypointViewController: UIViewController, UITextFieldDelegate {
         latLabel.text = latitude
         longLabel.text = longitude
         labelLabel.text = label
+        
+        locationManager = CLLocationManager()
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        
+        // Check for Location Services
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.requestWhenInUseAuthorization()
+            locationManager.startUpdatingLocation()
+        }
+    }
+    
+    // MARK - CLLocationManagerDelegate
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        defer { currentLocation = locations.last }
     }
     
     override func viewWillDisappear(_ animated: Bool) {

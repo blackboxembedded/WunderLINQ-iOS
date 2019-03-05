@@ -35,6 +35,9 @@
 	<string></string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
+		<string>mapsme</string>
+		<string>mapswithme</string>
+		<string>mapswithmepro</string>
 		<string>googlemaps</string>
 		<string>waze</string>
 		<string>comgooglemaps-x-callback</string>

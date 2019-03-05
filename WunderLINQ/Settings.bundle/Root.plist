@@ -88,6 +88,7 @@
 				<integer>2</integer>
 				<integer>3</integer>
 				<integer>4</integer>
+				<integer>5</integer>
 			</array>
 			<key>Titles</key>
 			<array>
@@ -96,6 +97,7 @@
 				<string>nav_app_scenic</string>
 				<string>nav_app_sygic</string>
 				<string>nav_app_waze</string>
+				<string>nav_app_mapsme</string>
 			</array>
 		</dict>
 		<dict>

@@ -16,7 +16,7 @@ import Photos
 
 private let reuseIdentifier = "Cell"
 
-class TasksCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, AVCaptureVideoDataOutputSampleBufferDelegate, AVCaptureFileOutputRecordingDelegate {
+class TasksCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, AVCaptureVideoDataOutputSampleBufferDelegate, AVCaptureFileOutputRecordingDelegate, CLLocationManagerDelegate {
     
     @IBOutlet weak var taskImage: UIImageView!
     @IBOutlet weak var taskLabel: UILabel!
@@ -26,6 +26,9 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
     var mapping = [Int]()
     
     @IBOutlet weak var cameraImageView: UIImageView!
+    
+    private var locationManager: CLLocationManager!
+    private var currentLocation: CLLocation?
     
     var device: AVCaptureDevice?
     var captureSession: AVCaptureSession?
@@ -194,6 +197,19 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
                         }
                     }
                 }
+            case 5:
+                //Maps.me
+                //https://github.com/mapsme/api-ios
+                //mapswithme://map?v=1&ll=54.32123,12.34562&n=Point%20Name&id=AnyStringOrEncodedUrl&backurl=UrlToCallOnBackButton&appname=TitleToDisplayInNavBar
+                if let mapsMeURL = URL(string: "mapsme://&id=wunderlinq://&backurl=wunderlinq://&appname=\(NSLocalizedString("product", comment: ""))") {
+                    if (UIApplication.shared.canOpenURL(mapsMeURL)) {
+                        if #available(iOS 10, *) {
+                            UIApplication.shared.open(mapsMeURL, options: [:], completionHandler: nil)
+                        } else {
+                            UIApplication.shared.openURL(mapsMeURL as URL)
+                        }
+                    }
+                }
             default:
                 //Apple Maps
                 let map = MKMapItem()
@@ -305,6 +321,41 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
                                     UIApplication.shared.openURL(wazeURL as URL)
                                 }
                             }
+                        }
+                    case 5:
+                        //Maps.me
+                        //https://github.com/mapsme/api-ios
+                        //mapswithme://map?v=1&ll=54.32123,12.34562&n=Point%20Name&id=AnyStringOrEncodedUrl&backurl=UrlToCallOnBackButton&appname=TitleToDisplayInNavBar
+                        //https://dlink.maps.me/route?sll=55.800800,37.532754&saddr=PointA&dll=55.760158,37.618756&daddr=PointB&type=vehicle
+                        if currentLocation != nil {
+                            let geocoder = CLGeocoder()
+                            geocoder.geocodeAddressString(homeAddress,
+                                                          completionHandler: { (placemarks, error) in
+                                                            if error == nil {
+                                                                let startLatitude: CLLocationDegrees = (self.currentLocation?.coordinate.latitude)!
+                                                                let startLongitude: CLLocationDegrees = (self.currentLocation?.coordinate.longitude)!
+                                                                let placemark = placemarks?.first
+                                                                let lat = placemark?.location?.coordinate.latitude
+                                                                let lon = placemark?.location?.coordinate.longitude
+                                                                let destLatitude: CLLocationDegrees = lat!
+                                                                let destLongitude: CLLocationDegrees = lon!
+                                                                let urlString = "mapsme://route?sll=\(startLatitude),\(startLongitude)&saddr=Start&dll=\(destLatitude),\(destLongitude)&daddr=\(NSLocalizedString("home", comment: ""))&type=vehicle"
+                                                                
+                                                                if let mapsMeURL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
+                                                                    if (UIApplication.shared.canOpenURL(mapsMeURL)) {
+                                                                        if #available(iOS 10, *) {
+                                                                            UIApplication.shared.open(mapsMeURL, options: [:], completionHandler: nil)
+                                                                        } else {
+                                                                            UIApplication.shared.openURL(mapsMeURL as URL)
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                            else {
+                                                                // An error occurred during geocoding.
+                                                                self.showToast(message: NSLocalizedString("geocode_error", comment: ""))
+                                                            }
+                            })
                         }
                     default:
                         //Apple Maps
@@ -565,6 +616,22 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
             let errmsg = String(cString: sqlite3_errmsg(db)!)
             print("error creating table: \(errmsg)")
         }
+        
+        locationManager = CLLocationManager()
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        
+        // Check for Location Services
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.requestWhenInUseAuthorization()
+            locationManager.startUpdatingLocation()
+        }
+    }
+    
+    // MARK - CLLocationManagerDelegate
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        defer { currentLocation = locations.last }
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {

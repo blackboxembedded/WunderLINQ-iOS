@@ -11,11 +11,14 @@ import MapKit
 import UIKit
 import SQLite3
 
-class WaypointsNavTableViewController: UITableViewController {
+class WaypointsNavTableViewController: UITableViewController, CLLocationManagerDelegate {
     
     var db: OpaquePointer?
     var waypoints = [Waypoint]()
     var itemRow = 0
+    
+    private var locationManager: CLLocationManager!
+    private var currentLocation: CLLocation?
     
     var firstRun = true;
     
@@ -176,6 +179,21 @@ class WaypointsNavTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        locationManager = CLLocationManager()
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        
+        // Check for Location Services
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.requestWhenInUseAuthorization()
+            locationManager.startUpdatingLocation()
+        }
+    }
+    
+    // MARK - CLLocationManagerDelegate
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        defer { currentLocation = locations.last }
     }
 
     override func didReceiveMemoryWarning() {
@@ -354,6 +372,25 @@ class WaypointsNavTableViewController: UITableViewController {
                             UIApplication.shared.open(wazeURL, options: [:], completionHandler: nil)
                         } else {
                             UIApplication.shared.openURL(wazeURL as URL)
+                        }
+                    }
+                }
+            case 5:
+                //Maps.me
+                //https://github.com/mapsme/api-ios
+                //mapswithme://map?v=1&ll=54.32123,12.34562&n=Point%20Name&id=AnyStringOrEncodedUrl&backurl=UrlToCallOnBackButton&appname=TitleToDisplayInNavBar
+                //https://dlink.maps.me/route?sll=55.800800,37.532754&saddr=PointA&dll=55.760158,37.618756&daddr=PointB&type=vehicle
+                if currentLocation != nil {
+                    let startLatitude: CLLocationDegrees = (self.currentLocation?.coordinate.latitude)!
+                    let startLongitude: CLLocationDegrees = (self.currentLocation?.coordinate.longitude)!
+                    let urlString = "mapsme://route?sll=\(startLatitude),\(startLongitude)&saddr=\(NSLocalizedString("trip_view_waypoint_start_label", comment: ""))&dll=\(destLatitude),\(destLongitude)&daddr=\(label ?? ""))&type=vehicle"
+                    if let mapsMeURL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
+                        if (UIApplication.shared.canOpenURL(mapsMeURL)) {
+                            if #available(iOS 10, *) {
+                                UIApplication.shared.open(mapsMeURL, options: [:], completionHandler: nil)
+                            } else {
+                                UIApplication.shared.openURL(mapsMeURL as URL)
+                            }
                         }
                     }
                 }
