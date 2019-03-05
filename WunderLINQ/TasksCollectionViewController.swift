@@ -810,21 +810,29 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
         if ( cameraImage == nil ){
             print("No Image")
         } else {
-            UIImageWriteToSavedPhotosAlbum(cameraImage!, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
+            addAsset(image: cameraImage!, location: currentLocation)
         }
         captureSession?.stopRunning()
     }
     
     //MARK: - Add image to Library
-    func image(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
-        if error != nil {
-            // we got back an error!
-            // the alert view
-            print("Picture Save Error")
-        } else {
-            print("Picture Saved")
-        }
+    func addAsset(image: UIImage, location: CLLocation? = nil) {
+        PHPhotoLibrary.shared().performChanges({
+            // Request creating an asset from the image.
+            let creationRequest = PHAssetChangeRequest.creationRequestForAsset(from: image)
+            // Set metadata location
+            if let location = location {
+                creationRequest.location = location
+            }
+        }, completionHandler: { success, error in
+            if !success {
+                print("Picture not Saved, error")
+            } else {
+                print("Picture Saved")
+            }
+        })
     }
+
     
     //MARK:- Setup Camera
     
