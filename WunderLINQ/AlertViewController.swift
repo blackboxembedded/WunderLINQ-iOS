@@ -95,7 +95,8 @@ class AlertViewController: UIViewController {
     func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
         if gesture.direction == UISwipeGestureRecognizerDirection.right {
             //Close
-            
+            self.navigationController?.popViewController(animated: true)
+            self.dismiss(animated: true, completion: nil)
         }
     }
     
@@ -157,7 +158,6 @@ class AlertViewController: UIViewController {
     }
     
     @IBAction func closeBtn(_ sender: Any) {
-        print("Close button")
         navigationController?.popViewController(animated: true)
         dismiss(animated: true, completion: nil)
     }
@@ -189,7 +189,6 @@ class AlertViewController: UIViewController {
             self.navigationItem.title = NSLocalizedString("alert_title_fuel", comment: "")
             alertLabel.text = NSLocalizedString("alert_label_fuel", comment: "")
         case 2:
-            print("Photo Alert")
             self.navigationItem.title = NSLocalizedString("alert_title_photopreview", comment: "")
             alertLabel.text = ""
             okButton.isHidden = true;
