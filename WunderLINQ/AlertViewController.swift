@@ -12,7 +12,11 @@ import UIKit
 class AlertViewController: UIViewController {
     
     var ID: Int?
+    var PHOTO: UIImage?
     
+    @IBOutlet var alertUIView: UIView!
+    @IBOutlet weak var okButton: LocalisableButton!
+    @IBOutlet weak var closeButton: LocalisableButton!
     @IBOutlet weak var alertLabel: UILabel!
 
     override var keyCommands: [UIKeyCommand]? {
@@ -153,6 +157,7 @@ class AlertViewController: UIViewController {
     }
     
     @IBAction func closeBtn(_ sender: Any) {
+        print("Close button")
         navigationController?.popViewController(animated: true)
         dismiss(animated: true, completion: nil)
     }
@@ -173,8 +178,6 @@ class AlertViewController: UIViewController {
         swipeRight.direction = .right
         self.view.addGestureRecognizer(swipeRight)
         
-        self.navigationItem.title = NSLocalizedString("alert_title_fuel", comment: "")
-        
         if UserDefaults.standard.bool(forKey: "display_brightness_preference") {
             UIScreen.main.brightness = CGFloat(1.0)
         } else {
@@ -183,9 +186,26 @@ class AlertViewController: UIViewController {
         
         switch (ID){
         case 1:
+            self.navigationItem.title = NSLocalizedString("alert_title_fuel", comment: "")
             alertLabel.text = NSLocalizedString("alert_label_fuel", comment: "")
+        case 2:
+            print("Photo Alert")
+            self.navigationItem.title = NSLocalizedString("alert_title_photopreview", comment: "")
+            alertLabel.text = ""
+            okButton.isHidden = true;
+            let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
+            backgroundImage.image = PHOTO
+            backgroundImage.contentMode =  UIViewContentMode.scaleAspectFill
+            self.view.insertSubview(backgroundImage, at: 0)
         default:
             print("Unknown Alert ID")
+        }
+        
+        //Dismiss ViewController after 10secs
+        DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
+            //Close
+            self.navigationController?.popViewController(animated: true)
+            self.dismiss(animated: true, completion: nil)
         }
     }
     

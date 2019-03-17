@@ -807,12 +807,13 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
     }
     
     func snapshot() {
+        captureSession?.stopRunning()
         if ( cameraImage == nil ){
             print("No Image")
         } else {
             addAsset(image: cameraImage!, location: currentLocation)
         }
-        captureSession?.stopRunning()
+        //captureSession?.stopRunning()
     }
     
     //MARK: - Add image to Library
@@ -829,6 +830,9 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
                 print("Picture not Saved, error")
             } else {
                 print("Picture Saved")
+                if (UserDefaults.standard.bool(forKey: "photo_preview_enable_preference")){
+                    self.performSegue(withIdentifier: "tasksToAlert", sender: [])
+                }
             }
         })
     }
@@ -998,6 +1002,14 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
             
         }
         outputURL = nil
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let navigationController = segue.destination as? UINavigationController,
+            let alertViewController = navigationController.viewControllers.first as? AlertViewController {
+            alertViewController.ID = 2
+            alertViewController.PHOTO = cameraImage
+        }
     }
 
 }

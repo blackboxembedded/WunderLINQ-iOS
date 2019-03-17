@@ -75,6 +75,7 @@
 // AlertViewController
 "alert_label_fuel" = "¿Desea la ruta a la gasolinera más cercana?";
 "alert_title_fuel" = "Poco combustible";
+"alert_title_photopreview" = "Photo Preview"; // Needs translation
 "alert_btn_close" = "Cerrar";
 "alert_btn_ok" = "OK";
 

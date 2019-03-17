@@ -314,6 +314,22 @@
 			<key>Type</key>
 			<string>PSGroupSpecifier</string>
 			<key>Title</key>
+			<string>advanced_settings_title</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSToggleSwitchSpecifier</string>
+			<key>Title</key>
+			<string>pref_photopreview_name</string>
+			<key>Key</key>
+			<string>photo_preview_enable_preference</string>
+			<key>DefaultValue</key>
+			<false/>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+			<key>Title</key>
 			<string>debug_settings_title</string>
 			<key>FooterText</key>
 			<string>pref_debuglogging_summary</string>

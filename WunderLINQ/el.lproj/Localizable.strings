@@ -45,7 +45,7 @@
 "trip2_label" = "Διαδρομή 2";
 "gear_label" = "Ταχύτητα";
 "settings_label" = "Ρυθμίσεις";
-"geodata_label" = "Trips & Waypoints"; // Needs translation
+"geodata_label" = "Διαδρομές & Προορισμοί";
 "appsettings_label" = "Ρυθμίσεις εφαρμογής";
 "about_label" = "Περί...";
 "close_label" = "Κλείσιμο";
@@ -68,13 +68,14 @@
 //AboutViewController
 "about_title" = "Περί...";
 "version_label" = "Έκδοση:";
-"btn_sendlogs_title" = "Send Logs"; // Needs translation
-"sendlogs_body" = "Please describe your problem below:\n"; // Needs translation
+"btn_sendlogs_title" = "Αποστολή αρχείων καταγραφής";
+"sendlogs_body" = "Παρακαλώ περιγράψτε το πρόβλημα στο πεδίο:\n";
 "credits_label" = "Συντελεστές";
 
 // AlertViewController
 "alert_label_fuel" = "Μετάβαση στο πλησιέστερο πρατήριο υγρών καυσίμων";
 "alert_title_fuel" = "Χαμηλή στάθμη καυσίμου";
+"alert_title_photopreview" = "Photo Preview"; // Needs translation
 "alert_btn_close" = "Κλείσιμο";
 "alert_btn_ok" = "Εντάξει";
 
@@ -183,9 +184,9 @@
 "fueleconomyone_header" = "Κατανάλωση καυσίμου 1";
 "fueleconomytwo_header" = "Κατανάλωση καυσίμου 2";
 "fuelrange_header" = "Αυτονομία καυσίμου";
-"leanangle_header" = "Lean Angle"; // Needs translation
-"gforce_header" = "g-force"; // Needs translation
-"bearing_header" = "Bearing"; // Needs translation
+"leanangle_header" = "Γωνία κλίσης";
+"gforce_header" = "Επιτάχυνση G";
+"bearing_header" = "Κύλιση";
 
 // ContactsTableViewController
 "contactlist_title" = "Επαφές";

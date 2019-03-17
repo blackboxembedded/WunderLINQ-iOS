@@ -15,17 +15,17 @@
 "disclaimer_alert_body" = "Bitte bedienen Sie das WunderLINQ Gerät nicht während der Fahrt.\nVerhindern Sie Unfälle und/oder Sachschäden indem Sie Ihre Aufmerksamkeit während der Fahrt auf die Bedienung Ihres Fahrzeuges richten.\nSie übernehmen das Risiko und die Verantwortung wenn Sie dieses Gerät benutzen.";
 "disclaimer_ok" = "Ich stimme zu";
 "disclaimer_quit" = "Beenden";
-"negative_alert_title" = "Functionality limited"; // Needs Translation
-"negative_location_alert_body" = "Since location access has not been granted, this app will not be able to save waypoints or log your location."; // Needs Translation
-"negative_write_alert_body" = "Since Photo Library access has not been granted, this app will not be able to save photos."; // Needs Translation
-"negative_media_alert_body" = "Since Media Library access has not been granted, this app will not be able to play music."; // Needs Translation
-"negative_contacts_alert_body" = "Since contact access has not been granted, this app will not be able to display contacts to call."; // Needs Translation
-"negative_camera_alert_body" = "Since camera access has not been granted, this app will not be able to take photos or videos."; // Needs Translation
-"negative_microphone_alert_body" = "Since microphone access has not been granted, this app will not be able to record videos."; // Needs Translation
-"negative_notification_body" = "Since notifcations were not allowed, this app will not be able to send notifcations for faults"; // Needs Translation
+"negative_alert_title" = "Funktionalität eingeschränkt";
+"negative_location_alert_body" = "Weil Zugriff auf Positionsdaten nicht erlaubt wurde, kann diese App keine Wegpunkte oder Positionsdaten speichern.";
+"negative_write_alert_body" = "Weil Zugriff auf die Foto-Bibliothek nicht erlaubt wurde, kann diese App keine Fotos speichern.";
+"negative_media_alert_body" = "Weil Zugriff auf die Median-Bibliothek nicht erlaubt wurde, kann diese App keine Musik abspielen.";
+"negative_contacts_alert_body" = "Weil Zugriff auf das Adressbuch nicht erlaubt wurde, kann diese App bei Anrufen keine Kontaktdaten anzeigen.";
+"negative_camera_alert_body" = "Weil Zugriff auf die Kamera nicht erlaubt wurde, kann diese App keine Fotos oder Videos aufnehmen.";
+"negative_microphone_alert_body" = "Weil Zugriff auf das Mikrofon nicht erlaubt wurde, kann diese App keine Videos aufnehmen.";
+"negative_notification_body" = "Weil Benachrichtigungen nicht erlaubt wurden, kann diese App keine Fehler-Benachrichtigungen anzeigen.";
 "alert_message_exit_ok" = "OK";
-"negative_alert_btn_ok" = "Open Settings"; // Needs Translation
-"negative_alert_btn_cancel" = "Cancel"; // Needs Translation
+"negative_alert_btn_ok" = "Einstellungen öffnen";
+"negative_alert_btn_cancel" = "Abbruch";
 "bt_powered_off" = "Auf diesem Gerät ist Bluetooth im Moment ausgeschaltet.";
 "bt_not_supported" = "Dieses Gerät unterstützt kein Bluetooth Low Energy.";
 "bt_not_authorized" = "Diese App ist nicht berechtigt, Bluetooth Low Energy zu benutzen.";
@@ -45,36 +45,37 @@
 "trip2_label" = "KM-Zähler 2";
 "gear_label" = "Gang";
 "settings_label" = "Einstellungen";
-"geodata_label" = "Trips & Waypoints"; // Needs translation
-"appsettings_label" = "App Settings"; //Needs Translation
+"geodata_label" = "Aufzeichnungen & Wegpunkte";
+"appsettings_label" = "App-Einstellungen";
 "about_label" = "Über";
 "close_label" = "Schliessen";
-"hwsettings_label" = "HW Settings"; //Needs Translation
-"select_bt" = "Select"; // Needs translation
+"hwsettings_label" = "Hardware-Einstellungen";
+"select_bt" = "Auswählen";
 
 //HWSettingsViewController
-"fw_config_title" = "WunderLINQ Settings"; //Needs Translation
-"wwtype_label" = "Wheel Type"; //Needs Translation
-"wwMode1" = "Full"; //Needs Translation
-"wwMode2" = "RT"; //Needs Translation
-"wwMode3" = "Custom"; //Needs Translation
-"sensitivity_label" = "Hold Sensitivity"; //Needs Translation
-"config_write_label" = "Save Settings"; //Needs Translation
-"hwsave_alert_title" = "Warning!"; // Needs Translation
-"hwsave_alert_body" = "After saving new hardware settings, the WunderLINQ hardware will become unstable and will need to be removed and reinstalled into the cradle."; // Needs Translation
-"hwsave_alert_btn_ok" = "Continue"; // Needs Translation
-"hwsave_alert_btn_cancel" = "Cancel"; // Needs Translation
+"fw_config_title" = "WunderLINQ Einstellungen";
+"wwtype_label" = "Drehrad Typ";
+"wwMode1" = "Normal";
+"wwMode2" = "RT";
+"wwMode3" = "Custom";
+"sensitivity_label" = "Druck-Empfindlichkeit";
+"config_write_label" = "Einstellungen speichern";
+"hwsave_alert_title" = "Warnung!";
+"hwsave_alert_body" = "Nach dem Speichern von Einstellungen kann das WunderLINQ Gerät u.U. unstabil laufen, bitte entfernen Sie es aus der Halterung und setzen Sie es neu ein.";
+"hwsave_alert_btn_ok" = "Fortfahren";
+"hwsave_alert_btn_cancel" = "Abbruch";
 
 //AboutViewController
-"about_title" = "About"; // Needs Translation
-"version_label" = "Version:"; // Needs Translation
-"btn_sendlogs_title" = "Send Logs"; // Needs translation
-"sendlogs_body" = "Please describe your problem below:\n"; // Needs translation
-"credits_label" = "Credits"; // Needs Translation
+"about_title" = "Über";
+"version_label" = "Version:";
+"btn_sendlogs_title" = "Logs schicken";
+"sendlogs_body" = "Bitte beschreibung Sie nachfolgend Ihr Problem:\n";
+"credits_label" = "Credits";
 
 // AlertViewController
 "alert_label_fuel" = "Zur nächsten Tankstelle navigieren?";
 "alert_title_fuel" = "Benzinstand niedrig";
+"alert_title_photopreview" = "Photo Preview"; // Needs translation
 "alert_btn_close" = "Schliessen";
 "alert_btn_ok" = "OK";
 
@@ -98,10 +99,10 @@
 "hours" = "h";
 "minutes" = "m";
 "seconds" = "s";
-"delete_trip_alert_title" = "Warning!"; // Needs translation
-"delete_trip_alert_body" = "Delete Trip Log?"; // Needs translation
-"delete_bt" = "Delete"; // Needs translation
-"cancel_bt" = "Cancel"; // Needs translation
+"delete_trip_alert_title" = "Warnung!";
+"delete_trip_alert_body" = "Fahrtaufzeichnung löschen?";
+"delete_bt" = "Löschen";
+"cancel_bt" = "Abbruch";
 
 // WaypointsTableViewController
 "waypoint_title" = "Gespeicherte Wegpunkte";
@@ -113,11 +114,11 @@
 "waypoint_view_tv_lon_label" = "Längengrad";
 "waypoint_view_tv_label_label" = "Beschreibung";
 "waypoint_view_bt_open" = "In Karten-App öffnen";
-"waypoint_view_bt_nav" = "Navigate"; //Needs translation
+"waypoint_view_bt_nav" = "Navigieren";
 "waypoint_view_bt_share" = "Teilen";
 "waypoint_view_bt_delete" = "Löschen";
-"delete_waypoint_alert_title" = "Warning!"; // Needs translation
-"delete_waypoint_alert_body" = "Delete Waypoint?"; // Needs translation
+"delete_waypoint_alert_title" = "Warnung!";
+"delete_waypoint_alert_body" = "Wegpunkt löschen?";
 
 // CompassViewController
 "compass_title" = "Kompass";
@@ -173,7 +174,7 @@
 "rearbrakes_header" = "Hinterbremse";
 "shifts_header" = "Gangwechsel";
 "vin_header" = "Fahrgestellnnummer (VIN)";
-"ambientlight_header" = "Ambient Light"; //Needs translation
+"ambientlight_header" = "Umgebungslicht";
 "tripone_header" = "KM-Zähler 1";
 "triptwo_header" = "KM-Zähler 2";
 "tripauto_header" = "KM-Zähler Auto";
@@ -183,9 +184,9 @@
 "fueleconomyone_header" = "Verbrauch 1";
 "fueleconomytwo_header" = "Verbrauch 2";
 "fuelrange_header" = "Reichweite";
-"leanangle_header" = "Lean Angle"; // Needs translation
-"gforce_header" = "g-force"; // Needs translation
-"bearing_header" = "Bearing"; // Needs translation
+"leanangle_header" = "Neigungswinkel";
+"gforce_header" = "Beschleunigungskraft";
+"bearing_header" = "Peilung";
 
 // ContactsTableViewController
 "contactlist_title" = "Kontakte";

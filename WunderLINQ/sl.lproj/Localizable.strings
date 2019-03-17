@@ -75,6 +75,7 @@
 // AlertViewController
 "alert_label_fuel" = "Prikažem pot do najbližje bencinske črpalke?";
 "alert_title_fuel" = "Nizek nivo goriva";
+"alert_title_photopreview" = "Photo Preview"; // Needs translation
 "alert_btn_close" = "Zapri";
 "alert_btn_ok" = "V redu";
 

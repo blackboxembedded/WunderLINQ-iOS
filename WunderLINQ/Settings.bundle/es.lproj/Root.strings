@@ -48,3 +48,5 @@
 "debug_settings_title" = "Ajustes de depuración"; // JCAL 20190303
 "pref_debuglogging_name" = "Habilitar el registro de depuración (Debug Log)"; // JCAL 20190303
 "pref_debuglogging_summary" = "Sólo habilitar en caso de necesidad de soporte, podría impactar al rendimiento del dispositivo si siempre está activo. Por favor, deshabilitar cuando se termine."; // JCAL 20190303
+"advanced_settings_title" = "Ajustes Avanzados";
+"pref_photopreview_name" = "Photo Preview"; // Needs Translation

@@ -48,3 +48,5 @@
 "debug_settings_title" = "Debug Settings"; // Needs translation
 "pref_debuglogging_name" = "Enable Debug Logging"; // Needs translation
 "pref_debuglogging_summary" = "Only enable if needed by Support, may impact performance if left running.  Please disable when finished."; // Needs translation
+"advanced_settings_title" = "Ajustes avanzados";
+"pref_photopreview_name" = "Photo Preview"; // Needs Translation
