@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
     var window: UIWindow?
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) ->
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) ->
         Bool {
             //Read and populate defaults
             registerDefaultsFromSettingsBundle();
@@ -86,7 +86,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     
     func application(_ application: UIApplication,
                      open url: URL,
-                     options: [UIApplicationOpenURLOptionsKey : Any] = [:] ) -> Bool {
+                     options: [UIApplication.OpenURLOptionsKey : Any] = [:] ) -> Bool {
         
         // Determine who sent the URL.
         let sendingAppID = options[.sourceApplication]

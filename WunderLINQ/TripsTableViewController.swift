@@ -17,8 +17,8 @@ class TripsTableViewController: UITableViewController {
         performSegue(withIdentifier: "tripsToGeoData", sender: [])
     }
     
-    func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
-        if gesture.direction == UISwipeGestureRecognizerDirection.right {
+    @objc func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
+        if gesture.direction == UISwipeGestureRecognizer.Direction.right {
             performSegue(withIdentifier: "tripsToGeoData", sender: [])
         }
     }

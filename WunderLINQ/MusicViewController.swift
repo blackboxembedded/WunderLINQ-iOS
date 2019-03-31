@@ -26,12 +26,12 @@ class MusicViewController: UIViewController {
     }
     @IBAction func playPauseBtnPress(_ sender: Any) {
         print("play/pause touched")
-        if (musicPlayer().playbackState == MPMusicPlaybackState.playing) {
-            musicPlayer().pause()
+        if (musicPlayer.playbackState == MPMusicPlaybackState.playing) {
+            musicPlayer.pause()
             playButton.setImage(playImage, for: .normal)
             
         } else {
-            musicPlayer().play()
+            musicPlayer.play()
             playButton.setImage(pauseImage, for: .normal)
         }
     }
@@ -92,16 +92,16 @@ class MusicViewController: UIViewController {
         }
 
         // Do any additional setup after loading the view.
-        musicPlayer().prepareToPlay()
+        musicPlayer.prepareToPlay()
         
         self.timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(MusicViewController.timerFired(_:)), userInfo: nil, repeats: true)
         self.timer.tolerance = 0.1
         
-        musicPlayer().beginGeneratingPlaybackNotifications()
+        musicPlayer.beginGeneratingPlaybackNotifications()
         
         NotificationCenter.default.addObserver(self, selector:#selector(MusicViewController.updateNowPlayingInfo), name: NSNotification.Name.MPMusicPlayerControllerNowPlayingItemDidChange, object: nil)
         
-        if (musicPlayer().playbackState == MPMusicPlaybackState.playing) {
+        if (musicPlayer.playbackState == MPMusicPlaybackState.playing) {
             playButton.setImage(pauseImage, for: .normal)
 
         } else {
@@ -121,11 +121,11 @@ class MusicViewController: UIViewController {
     }
     */
     
-    func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
-        if gesture.direction == UISwipeGestureRecognizerDirection.right {
+    @objc func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
+        if gesture.direction == UISwipeGestureRecognizer.Direction.right {
             performSegue(withIdentifier: "musicToMotorcycle", sender: [])
         }
-        else if gesture.direction == UISwipeGestureRecognizerDirection.left {
+        else if gesture.direction == UISwipeGestureRecognizer.Direction.left {
             performSegue(withIdentifier: "musicToTasks", sender: [])
         }
     }
@@ -133,10 +133,10 @@ class MusicViewController: UIViewController {
     override var keyCommands: [UIKeyCommand]? {
         let commands = [
             UIKeyCommand(input: "\u{d}", modifierFlags:[], action: #selector(playPause), discoverabilityTitle: "Play/Pause"),
-            UIKeyCommand(input: UIKeyInputLeftArrow, modifierFlags:[], action: #selector(leftScreen), discoverabilityTitle: "Go left"),
-            UIKeyCommand(input: UIKeyInputRightArrow, modifierFlags:[], action: #selector(rightScreen), discoverabilityTitle: "Go right"),
-            UIKeyCommand(input: UIKeyInputUpArrow, modifierFlags:[], action: #selector(nextSong), discoverabilityTitle: "Next Song"),
-            UIKeyCommand(input: UIKeyInputDownArrow, modifierFlags:[], action: #selector(previousSong), discoverabilityTitle: "Previous Song")
+            UIKeyCommand(input: UIKeyCommand.inputLeftArrow, modifierFlags:[], action: #selector(leftScreen), discoverabilityTitle: "Go left"),
+            UIKeyCommand(input: UIKeyCommand.inputRightArrow, modifierFlags:[], action: #selector(rightScreen), discoverabilityTitle: "Go right"),
+            UIKeyCommand(input: UIKeyCommand.inputUpArrow, modifierFlags:[], action: #selector(nextSong), discoverabilityTitle: "Next Song"),
+            UIKeyCommand(input: UIKeyCommand.inputDownArrow, modifierFlags:[], action: #selector(previousSong), discoverabilityTitle: "Previous Song")
         ]
         return commands
     }
@@ -148,24 +148,24 @@ class MusicViewController: UIViewController {
         performSegue(withIdentifier: "musicToTasks", sender: [])
     }
     @objc func nextSong() {
-        musicPlayer().skipToNextItem()
+        musicPlayer.skipToNextItem()
     }
     @objc func previousSong() {
         if trackElapsed != nil {
             if Int(trackElapsed) < 3 {
-                musicPlayer().skipToPreviousItem()
+                musicPlayer.skipToPreviousItem()
             } else {
-                musicPlayer().skipToBeginning()
+                musicPlayer.skipToBeginning()
             }
         }
     }
     @objc func playPause() {
-        if (musicPlayer().playbackState == MPMusicPlaybackState.playing) {
-            musicPlayer().pause()
+        if (musicPlayer.playbackState == MPMusicPlaybackState.playing) {
+            musicPlayer.pause()
             playButton.setImage(playImage, for: .normal)
             
         } else {
-            musicPlayer().play()
+            musicPlayer.play()
             playButton.setImage(pauseImage, for: .normal)
         }
     }
@@ -176,12 +176,12 @@ class MusicViewController: UIViewController {
 
     
     @IBAction func playButton(_ sender: UIButton) {
-        if (musicPlayer().playbackState == MPMusicPlaybackState.playing) {
-            musicPlayer().pause()
+        if (musicPlayer.playbackState == MPMusicPlaybackState.playing) {
+            musicPlayer.pause()
             playButton.setImage(playImage, for: .normal)
             
         } else {
-            musicPlayer().play()
+            musicPlayer.play()
             playButton.setImage(pauseImage, for: .normal)
         }
     }
@@ -189,15 +189,15 @@ class MusicViewController: UIViewController {
     @IBAction func lastButton(_ sender: UIButton) {
         if trackElapsed != nil {
             if Int(trackElapsed) < 3 {
-                musicPlayer().skipToPreviousItem()
+                musicPlayer.skipToPreviousItem()
             } else {
-                musicPlayer().skipToBeginning()
+                musicPlayer.skipToBeginning()
             }
         }
     }
     
     @IBAction func nextButton(_ sender: UIButton) {
-        musicPlayer().skipToNextItem()
+        musicPlayer.skipToNextItem()
     }
     
     /*
@@ -210,8 +210,8 @@ class MusicViewController: UIViewController {
     }
     */
     
-    func timerFired(_:AnyObject) {
-        if let currentTrack = MPMusicPlayerController.systemMusicPlayer().nowPlayingItem {
+    @objc func timerFired(_:AnyObject) {
+        if let currentTrack = MPMusicPlayerController.systemMusicPlayer.nowPlayingItem {
             // Get Current Track Info
             var trackName = ""
             if currentTrack.title != nil {
@@ -226,7 +226,7 @@ class MusicViewController: UIViewController {
                 trackAlbum = currentTrack.albumTitle!
             }
             let albumImage = currentTrack.artwork?.image(at: imageAlbum.bounds.size)
-            trackElapsed = musicPlayer().currentPlaybackTime
+            trackElapsed = musicPlayer.currentPlaybackTime
             //let trackDuration = currentTrack.playbackDuration
             
             // Update UI
@@ -238,7 +238,7 @@ class MusicViewController: UIViewController {
         }
     }
     
-    func updateNowPlayingInfo(){
+    @objc func updateNowPlayingInfo(){
         self.timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(MusicViewController.timerFired(_:)), userInfo: nil, repeats: true)
         self.timer.tolerance = 0.1
     }

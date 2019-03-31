@@ -17,8 +17,8 @@ class GeoDataViewController: UIViewController {
         performSegue(withIdentifier: "GeoDataToMotorcycle", sender: [])
     }
     
-    func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
-        if gesture.direction == UISwipeGestureRecognizerDirection.right {
+    @objc func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
+        if gesture.direction == UISwipeGestureRecognizer.Direction.right {
             performSegue(withIdentifier: "GeoDataToMotorcycle", sender: [])
         }
     }
@@ -49,11 +49,11 @@ class GeoDataViewController: UIViewController {
 
     }
 
-    func tripsBtnAction(sender : UITapGestureRecognizer) {
+    @objc func tripsBtnAction(sender : UITapGestureRecognizer) {
         performSegue(withIdentifier: "GeoDataToTrips", sender: [])
     }
     
-    func waypointsBtnAction(sender : UITapGestureRecognizer) {
+    @objc func waypointsBtnAction(sender : UITapGestureRecognizer) {
         performSegue(withIdentifier: "GeoDataToWaypoints", sender: [])
     }
     

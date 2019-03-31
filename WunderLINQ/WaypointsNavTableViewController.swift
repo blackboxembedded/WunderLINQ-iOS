@@ -28,9 +28,9 @@ class WaypointsNavTableViewController: UITableViewController, CLLocationManagerD
         
         let commands = [
             UIKeyCommand(input: "\u{d}", modifierFlags:[], action: #selector(selectItem), discoverabilityTitle: "Select item"),
-            UIKeyCommand(input: UIKeyInputUpArrow, modifierFlags:[], action: #selector(upRow), discoverabilityTitle: "Go up"),
-            UIKeyCommand(input: UIKeyInputDownArrow, modifierFlags:[], action: #selector(downRow), discoverabilityTitle: "Go down"),
-            UIKeyCommand(input: UIKeyInputLeftArrow, modifierFlags:[], action: #selector(leftScreen), discoverabilityTitle: "Go left")
+            UIKeyCommand(input: UIKeyCommand.inputUpArrow, modifierFlags:[], action: #selector(upRow), discoverabilityTitle: "Go up"),
+            UIKeyCommand(input: UIKeyCommand.inputDownArrow, modifierFlags:[], action: #selector(downRow), discoverabilityTitle: "Go down"),
+            UIKeyCommand(input: UIKeyCommand.inputLeftArrow, modifierFlags:[], action: #selector(leftScreen), discoverabilityTitle: "Go left")
         ]
         return commands
     }
@@ -119,8 +119,8 @@ class WaypointsNavTableViewController: UITableViewController, CLLocationManagerD
         performSegue(withIdentifier: "waypointsToTaskGrid", sender: [])
     }
     
-    func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
-        if gesture.direction == UISwipeGestureRecognizerDirection.right {
+    @objc func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
+        if gesture.direction == UISwipeGestureRecognizer.Direction.right {
             performSegue(withIdentifier: "waypointsToTaskGrid", sender: [])
         }
     }
@@ -193,7 +193,7 @@ class WaypointsNavTableViewController: UITableViewController, CLLocationManagerD
     // MARK - CLLocationManagerDelegate
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        defer { currentLocation = locations.last }
+        do { currentLocation = locations.last }
     }
 
     override func didReceiveMemoryWarning() {
@@ -339,7 +339,7 @@ class WaypointsNavTableViewController: UITableViewController, CLLocationManagerD
                 if let googleMapsURL = URL(string: "comgooglemaps-x-callback://?daddr=\(destLatitude),\(destLongitude)&directionsmode=driving&x-success=wunderlinq://?resume=true&x-source=WunderLINQ") {
                     if (UIApplication.shared.canOpenURL(googleMapsURL)) {
                         if #available(iOS 10, *) {
-                            UIApplication.shared.open(googleMapsURL, options: [:], completionHandler: nil)
+                            UIApplication.shared.open(googleMapsURL, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
                         } else {
                             UIApplication.shared.openURL(googleMapsURL as URL)
                         }
@@ -357,7 +357,7 @@ class WaypointsNavTableViewController: UITableViewController, CLLocationManagerD
                 if let sygicURL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
                     if (UIApplication.shared.canOpenURL(sygicURL)) {
                         if #available(iOS 10, *) {
-                            UIApplication.shared.open(sygicURL, options: [:], completionHandler: nil)
+                            UIApplication.shared.open(sygicURL, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
                         } else {
                             UIApplication.shared.openURL(sygicURL as URL)
                         }
@@ -369,7 +369,7 @@ class WaypointsNavTableViewController: UITableViewController, CLLocationManagerD
                 if let wazeURL = URL(string: "waze://?ll=\(destLatitude),\(destLongitude)&navigate=yes") {
                     if (UIApplication.shared.canOpenURL(wazeURL)) {
                         if #available(iOS 10, *) {
-                            UIApplication.shared.open(wazeURL, options: [:], completionHandler: nil)
+                            UIApplication.shared.open(wazeURL, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
                         } else {
                             UIApplication.shared.openURL(wazeURL as URL)
                         }
@@ -386,7 +386,7 @@ class WaypointsNavTableViewController: UITableViewController, CLLocationManagerD
                     if let mapsMeURL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
                         if (UIApplication.shared.canOpenURL(mapsMeURL)) {
                             if #available(iOS 10, *) {
-                                UIApplication.shared.open(mapsMeURL, options: [:], completionHandler: nil)
+                                UIApplication.shared.open(mapsMeURL, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
                             } else {
                                 UIApplication.shared.openURL(mapsMeURL as URL)
                             }
@@ -405,4 +405,9 @@ class WaypointsNavTableViewController: UITableViewController, CLLocationManagerD
             
         }
     }
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToUIApplicationOpenExternalURLOptionsKeyDictionary(_ input: [String: Any]) -> [UIApplication.OpenExternalURLOptionsKey: Any] {
+	return Dictionary(uniqueKeysWithValues: input.map { key, value in (UIApplication.OpenExternalURLOptionsKey(rawValue: key), value)})
 }

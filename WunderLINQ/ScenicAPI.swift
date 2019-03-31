@@ -174,7 +174,7 @@ class ScenicAPI {
         urlComponents.queryItems = [
             URLQueryItem(name: "gpxurl", value: encodedgpxurl)
         ]
-        UIApplication.shared.open(urlComponents.url!, options: [:], completionHandler: nil)
+        UIApplication.shared.open(urlComponents.url!, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
     }
     
     fileprivate func sendPolyline(_ polyline: String, name: String, routeMode: RouteMode, vehicleType: VehicleType) {
@@ -186,7 +186,7 @@ class ScenicAPI {
             URLQueryItem(name: "vehicleType", value: vehicleType.rawValue)
             
         ]
-        UIApplication.shared.open(urlComponents.url!, options: [:], completionHandler: nil)
+        UIApplication.shared.open(urlComponents.url!, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
     }
     
     fileprivate func sendCoordinate(_ coordinate: String, name: String) {
@@ -196,7 +196,7 @@ class ScenicAPI {
             URLQueryItem(name: "name", value: name)
             
         ]
-        UIApplication.shared.open(urlComponents.url!, options: [:], completionHandler: nil)
+        UIApplication.shared.open(urlComponents.url!, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
     }
     
     
@@ -268,8 +268,8 @@ class ScenicAPI {
                 }
             }
         }
-        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
         if let rootVC = UIApplication.shared.keyWindow?.rootViewController {
             if let presentingVC = rootVC.presentingViewController {
                 presentFromController(presentingVC, animated: true, completion: nil)
@@ -571,7 +571,7 @@ private func extractNextChunk(_ encodedString: inout String.UnicodeScalarView) t
         let currentCharacterValue = Int32(encodedString[currentIndex].value)
         if isSeparator(currentCharacterValue) {
             let extractedScalars = encodedString[encodedString.startIndex...currentIndex]
-            encodedString = encodedString[encodedString.index(after: currentIndex)..<encodedString.endIndex]
+            //encodedString = encodedString[encodedString.index(after: currentIndex)..<encodedString.endIndex]
             
             return String(extractedScalars)
         }
@@ -636,4 +636,9 @@ public enum VehicleType: String {
     case carMotorcycle = "C"
     case bicycle = "B"
     case pedestrian = "P"
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToUIApplicationOpenExternalURLOptionsKeyDictionary(_ input: [String: Any]) -> [UIApplication.OpenExternalURLOptionsKey: Any] {
+	return Dictionary(uniqueKeysWithValues: input.map { key, value in (UIApplication.OpenExternalURLOptionsKey(rawValue: key), value)})
 }

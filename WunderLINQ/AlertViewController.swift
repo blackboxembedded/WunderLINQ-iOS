@@ -22,8 +22,8 @@ class AlertViewController: UIViewController {
     override var keyCommands: [UIKeyCommand]? {
         
         let commands = [
-            UIKeyCommand(input: UIKeyInputLeftArrow, modifierFlags:[], action: #selector(left), discoverabilityTitle: "Close"),
-            UIKeyCommand(input: UIKeyInputLeftArrow, modifierFlags:[], action: #selector(right), discoverabilityTitle: "Ok")
+            UIKeyCommand(input: UIKeyCommand.inputLeftArrow, modifierFlags:[], action: #selector(left), discoverabilityTitle: "Close"),
+            UIKeyCommand(input: UIKeyCommand.inputLeftArrow, modifierFlags:[], action: #selector(right), discoverabilityTitle: "Ok")
         ]
         return commands
     }
@@ -46,7 +46,7 @@ class AlertViewController: UIViewController {
                 if let googleMapsURL = URL(string: "http://maps.apple.com/?q=fuel+station") {
                     if (UIApplication.shared.canOpenURL(googleMapsURL)) {
                         if #available(iOS 10, *) {
-                            UIApplication.shared.open(googleMapsURL, options: [:], completionHandler: nil)
+                            UIApplication.shared.open(googleMapsURL, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
                         } else {
                             UIApplication.shared.openURL(googleMapsURL as URL)
                         }
@@ -58,7 +58,7 @@ class AlertViewController: UIViewController {
                 if let googleMapsURL = URL(string: "comgooglemaps-x-callback://?q=fuel+station&directionsmode=driving&x-success=wunderlinq://?resume=true&x-source=WunderLINQ") {
                     if (UIApplication.shared.canOpenURL(googleMapsURL)) {
                         if #available(iOS 10, *) {
-                            UIApplication.shared.open(googleMapsURL, options: [:], completionHandler: nil)
+                            UIApplication.shared.open(googleMapsURL, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
                         } else {
                             UIApplication.shared.openURL(googleMapsURL as URL)
                         }
@@ -69,7 +69,7 @@ class AlertViewController: UIViewController {
                 if let wazeURL = URL(string: "https://waze.com/ul?q=fuel+station&navigate=yes") {
                     if (UIApplication.shared.canOpenURL(wazeURL)) {
                         if #available(iOS 10, *) {
-                            UIApplication.shared.open(wazeURL, options: [:], completionHandler: nil)
+                            UIApplication.shared.open(wazeURL, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
                         } else {
                             UIApplication.shared.openURL(wazeURL as URL)
                         }
@@ -80,7 +80,7 @@ class AlertViewController: UIViewController {
                 if let googleMapsURL = URL(string: "http://maps.apple.com/?q=fuel+station") {
                     if (UIApplication.shared.canOpenURL(googleMapsURL)) {
                         if #available(iOS 10, *) {
-                            UIApplication.shared.open(googleMapsURL, options: [:], completionHandler: nil)
+                            UIApplication.shared.open(googleMapsURL, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
                         } else {
                             UIApplication.shared.openURL(googleMapsURL as URL)
                         }
@@ -92,8 +92,8 @@ class AlertViewController: UIViewController {
         }
     }
     
-    func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
-        if gesture.direction == UISwipeGestureRecognizerDirection.right {
+    @objc func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
+        if gesture.direction == UISwipeGestureRecognizer.Direction.right {
             //Close
             self.navigationController?.popViewController(animated: true)
             self.dismiss(animated: true, completion: nil)
@@ -111,7 +111,7 @@ class AlertViewController: UIViewController {
                 if let googleMapsURL = URL(string: "http://maps.apple.com/?q=fuel+station") {
                     if (UIApplication.shared.canOpenURL(googleMapsURL)) {
                         if #available(iOS 10, *) {
-                            UIApplication.shared.open(googleMapsURL, options: [:], completionHandler: nil)
+                            UIApplication.shared.open(googleMapsURL, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
                         } else {
                             UIApplication.shared.openURL(googleMapsURL as URL)
                         }
@@ -123,7 +123,7 @@ class AlertViewController: UIViewController {
                 if let googleMapsURL = URL(string: "comgooglemaps-x-callback://?q=fuel+station&directionsmode=driving&x-success=wunderlinq://?resume=true&x-source=WunderLINQ") {
                     if (UIApplication.shared.canOpenURL(googleMapsURL)) {
                         if #available(iOS 10, *) {
-                            UIApplication.shared.open(googleMapsURL, options: [:], completionHandler: nil)
+                            UIApplication.shared.open(googleMapsURL, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
                         } else {
                             UIApplication.shared.openURL(googleMapsURL as URL)
                         }
@@ -134,7 +134,7 @@ class AlertViewController: UIViewController {
                 if let wazeURL = URL(string: "https://waze.com/ul?q=fuel+station&navigate=yes") {
                     if (UIApplication.shared.canOpenURL(wazeURL)) {
                         if #available(iOS 10, *) {
-                            UIApplication.shared.open(wazeURL, options: [:], completionHandler: nil)
+                            UIApplication.shared.open(wazeURL, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
                         } else {
                             UIApplication.shared.openURL(wazeURL as URL)
                         }
@@ -145,7 +145,7 @@ class AlertViewController: UIViewController {
                 if let googleMapsURL = URL(string: "http://maps.apple.com/?q=fuel+station") {
                     if (UIApplication.shared.canOpenURL(googleMapsURL)) {
                         if #available(iOS 10, *) {
-                            UIApplication.shared.open(googleMapsURL, options: [:], completionHandler: nil)
+                            UIApplication.shared.open(googleMapsURL, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
                         } else {
                             UIApplication.shared.openURL(googleMapsURL as URL)
                         }
@@ -194,7 +194,7 @@ class AlertViewController: UIViewController {
             okButton.isHidden = true;
             let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
             backgroundImage.image = PHOTO
-            backgroundImage.contentMode =  UIViewContentMode.scaleAspectFill
+            backgroundImage.contentMode =  UIView.ContentMode.scaleAspectFill
             self.view.insertSubview(backgroundImage, at: 0)
         default:
             print("Unknown Alert ID")
@@ -224,4 +224,9 @@ class AlertViewController: UIViewController {
     }
     */
 
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToUIApplicationOpenExternalURLOptionsKeyDictionary(_ input: [String: Any]) -> [UIApplication.OpenExternalURLOptionsKey: Any] {
+	return Dictionary(uniqueKeysWithValues: input.map { key, value in (UIApplication.OpenExternalURLOptionsKey(rawValue: key), value)})
 }

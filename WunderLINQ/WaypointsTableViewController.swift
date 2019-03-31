@@ -19,8 +19,8 @@ class WaypointsTableViewController: UITableViewController {
         performSegue(withIdentifier: "waypointsToGeoData", sender: [])
     }
     
-    func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
-        if gesture.direction == UISwipeGestureRecognizerDirection.right {
+    @objc func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
+        if gesture.direction == UISwipeGestureRecognizer.Direction.right {
             performSegue(withIdentifier: "waypointsToGeoData", sender: [])
         }
     }

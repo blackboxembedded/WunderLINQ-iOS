@@ -162,7 +162,7 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
                 if let googleMapsURL = URL(string: "comgooglemaps-x-callback://?x-success=wunderlinq://&x-source=WunderLINQ") {
                     if (UIApplication.shared.canOpenURL(googleMapsURL)) {
                         if #available(iOS 10, *) {
-                            UIApplication.shared.open(googleMapsURL, options: [:], completionHandler: nil)
+                            UIApplication.shared.open(googleMapsURL, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
                         } else {
                             UIApplication.shared.openURL(googleMapsURL as URL)
                         }
@@ -180,7 +180,7 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
                 if let sygicURL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
                     if (UIApplication.shared.canOpenURL(sygicURL)) {
                         if #available(iOS 10, *) {
-                            UIApplication.shared.open(sygicURL, options: [:], completionHandler: nil)
+                            UIApplication.shared.open(sygicURL, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
                         } else {
                             UIApplication.shared.openURL(sygicURL as URL)
                         }
@@ -191,7 +191,7 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
                 if let wazeURL = URL(string: "waze://") {
                     if (UIApplication.shared.canOpenURL(wazeURL)) {
                         if #available(iOS 10, *) {
-                            UIApplication.shared.open(wazeURL, options: [:], completionHandler: nil)
+                            UIApplication.shared.open(wazeURL, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
                         } else {
                             UIApplication.shared.openURL(wazeURL as URL)
                         }
@@ -203,7 +203,7 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
                 if let mapsMeURL = URL(string: "mapsme://&id=wunderlinq://&backurl=wunderlinq://&appname=\(NSLocalizedString("product", comment: ""))") {
                     if (UIApplication.shared.canOpenURL(mapsMeURL)) {
                         if #available(iOS 10, *) {
-                            UIApplication.shared.open(mapsMeURL, options: [:], completionHandler: nil)
+                            UIApplication.shared.open(mapsMeURL, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
                         } else {
                             UIApplication.shared.openURL(mapsMeURL as URL)
                         }
@@ -252,7 +252,7 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
                             print("google map selected url")
                             if (UIApplication.shared.canOpenURL(googleMapsURL)) {
                                 if #available(iOS 10, *) {
-                                    UIApplication.shared.open(googleMapsURL, options: [:], completionHandler: nil)
+                                    UIApplication.shared.open(googleMapsURL, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
                                 } else {
                                     UIApplication.shared.openURL(googleMapsURL as URL)
                                 }
@@ -296,7 +296,7 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
                                                             if let sygicURL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
                                                                 if (UIApplication.shared.canOpenURL(sygicURL)) {
                                                                     if #available(iOS 10, *) {
-                                                                        UIApplication.shared.open(sygicURL, options: [:], completionHandler: nil)
+                                                                        UIApplication.shared.open(sygicURL, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
                                                                     } else {
                                                                         UIApplication.shared.openURL(sygicURL as URL)
                                                                     }
@@ -315,7 +315,7 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
                         if let wazeURL = URL(string: "https://waze.com/ul?q=\(homeAddressFixed)&navigate=yes") {
                             if (UIApplication.shared.canOpenURL(wazeURL)) {
                                 if #available(iOS 10, *) {
-                                    UIApplication.shared.open(wazeURL, options: [:], completionHandler: nil)
+                                    UIApplication.shared.open(wazeURL, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
                                 } else {
                                     UIApplication.shared.openURL(wazeURL as URL)
                                 }
@@ -342,7 +342,7 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
                                                                 if let mapsMeURL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
                                                                     if (UIApplication.shared.canOpenURL(mapsMeURL)) {
                                                                         if #available(iOS 10, *) {
-                                                                            UIApplication.shared.open(mapsMeURL, options: [:], completionHandler: nil)
+                                                                            UIApplication.shared.open(mapsMeURL, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
                                                                         } else {
                                                                             UIApplication.shared.openURL(mapsMeURL as URL)
                                                                         }
@@ -393,7 +393,7 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
                     if let phoneCallURL = URL(string: "telprompt:\(phoneNumber)") {
                         if (UIApplication.shared.canOpenURL(phoneCallURL)) {
                             if #available(iOS 10, *) {
-                                UIApplication.shared.open(phoneCallURL, options: [:], completionHandler: nil)
+                                UIApplication.shared.open(phoneCallURL, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
                             } else {
                                 UIApplication.shared.openURL(phoneCallURL as URL)
                             }
@@ -462,7 +462,7 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
             break
         case 10:
             //Settings
-            if let appSettings = URL(string: UIApplicationOpenSettingsURLString + Bundle.main.bundleIdentifier!) {
+            if let appSettings = URL(string: UIApplication.openSettingsURLString + Bundle.main.bundleIdentifier!) {
                 if UIApplication.shared.canOpenURL(appSettings) {
                     UIApplication.shared.open(appSettings)
                 }
@@ -480,10 +480,10 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
     override var keyCommands: [UIKeyCommand]? {
         let commands = [
             UIKeyCommand(input: "\u{d}", modifierFlags:[], action: #selector(selectItem), discoverabilityTitle: "Select item"),
-            UIKeyCommand(input: UIKeyInputUpArrow, modifierFlags:[], action: #selector(upRow), discoverabilityTitle: "Go up"),
-            UIKeyCommand(input: UIKeyInputDownArrow, modifierFlags:[], action: #selector(downRow), discoverabilityTitle: "Go down"),
-            UIKeyCommand(input: UIKeyInputLeftArrow, modifierFlags:[], action: #selector(leftScreen), discoverabilityTitle: "Go left"),
-            UIKeyCommand(input: UIKeyInputRightArrow, modifierFlags:[], action: #selector(rightScreen), discoverabilityTitle: "Go right")
+            UIKeyCommand(input: UIKeyCommand.inputUpArrow, modifierFlags:[], action: #selector(upRow), discoverabilityTitle: "Go up"),
+            UIKeyCommand(input: UIKeyCommand.inputDownArrow, modifierFlags:[], action: #selector(downRow), discoverabilityTitle: "Go down"),
+            UIKeyCommand(input: UIKeyCommand.inputLeftArrow, modifierFlags:[], action: #selector(leftScreen), discoverabilityTitle: "Go left"),
+            UIKeyCommand(input: UIKeyCommand.inputRightArrow, modifierFlags:[], action: #selector(rightScreen), discoverabilityTitle: "Go right")
         ]
         return commands
     }
@@ -535,11 +535,11 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
         self.performSegue(withIdentifier: "unwindToContainerVC", sender: self)
     }
     
-    func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
-        if gesture.direction == UISwipeGestureRecognizerDirection.right {
+    @objc func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
+        if gesture.direction == UISwipeGestureRecognizer.Direction.right {
             performSegue(withIdentifier: "tasksToMusic", sender: [])
         }
-        else if gesture.direction == UISwipeGestureRecognizerDirection.left {
+        else if gesture.direction == UISwipeGestureRecognizer.Direction.left {
             performSegue(withIdentifier: "taskGridTomotorcycle", sender: [])
         }
     }
@@ -629,7 +629,7 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
     // MARK - CLLocationManagerDelegate
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        defer { currentLocation = locations.last }
+        do { currentLocation = locations.last }
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -715,7 +715,7 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets
     {
-        let sectionInset = UIEdgeInsetsMake(0, 0, 0, 0)
+        let sectionInset = UIEdgeInsets.init(top: 0, left: 0, bottom: 0, right: 0)
         return sectionInset
     }
 
@@ -750,16 +750,16 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
     }
     */
     
-    func setupCamera(position: AVCaptureDevicePosition) {
+    func setupCamera(position: AVCaptureDevice.Position) {
         // tweak delay
-        let discoverySession = AVCaptureDeviceDiscoverySession(deviceTypes: [.builtInWideAngleCamera],
-                                                               mediaType: AVMediaTypeVideo,
+        let discoverySession = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInWideAngleCamera],
+                                                               mediaType: AVMediaType(rawValue: convertFromAVMediaType(AVMediaType.video)),
                                                                position: position)
-        device = discoverySession?.devices[0]
+        device = discoverySession.devices[0]
         
         let input: AVCaptureDeviceInput
         do {
-            input = try AVCaptureDeviceInput(device: device)
+            input = try AVCaptureDeviceInput(device: device!)
         } catch {
             return
         }
@@ -769,20 +769,20 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
         
         let queue = DispatchQueue(label: "cameraQueue")
         output.setSampleBufferDelegate(self, queue: queue)
-        output.videoSettings = [kCVPixelBufferPixelFormatTypeKey as AnyHashable: kCVPixelFormatType_32BGRA]
+        output.videoSettings = [kCVPixelBufferPixelFormatTypeKey as AnyHashable: kCVPixelFormatType_32BGRA] as? [String : Any]
         
         captureSession = AVCaptureSession()
         captureSession?.addInput(input)
         captureSession?.addOutput(output)
-        captureSession?.sessionPreset = AVCaptureSessionPresetPhoto
-        
-        let connection = output.connection(withMediaType: AVFoundation.AVMediaTypeVideo)
+        captureSession?.sessionPreset = AVCaptureSession.Preset(rawValue: convertFromAVCaptureSessionPreset(AVCaptureSession.Preset.photo))
+        //Testing line below
+        let connection = output.connection(with: AVMediaType.video)
         connection?.videoOrientation = AVCaptureVideoOrientation(rawValue: UIDevice.current.orientation.rawValue)!
         
         captureSession?.startRunning()
     }
     
-    func captureOutput(_ captureOutput: AVCaptureOutput!, didOutputSampleBuffer sampleBuffer: CMSampleBuffer!, from connection: AVCaptureConnection!) {
+    func captureOutput(_ captureOutput: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
         let imageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer)
         CVPixelBufferLockBaseAddress(imageBuffer!, CVPixelBufferLockFlags(rawValue: 0))
         let baseAddress = UnsafeMutableRawPointer(CVPixelBufferGetBaseAddress(imageBuffer!))
@@ -806,7 +806,7 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
         _ = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(snapshot), userInfo: nil, repeats: false)
     }
     
-    func snapshot() {
+    @objc func snapshot() {
         captureSession?.stopRunning()
         if ( cameraImage == nil ){
             print("No Image")
@@ -841,13 +841,13 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
     
     func setupSession() -> Bool {
         
-        videoCaptureSession.sessionPreset = AVCaptureSessionPresetHigh
+        videoCaptureSession.sessionPreset = AVCaptureSession.Preset(rawValue: convertFromAVCaptureSessionPreset(AVCaptureSession.Preset.high))
         
         // Setup Camera
-        let camera = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo)
+        let camera = AVCaptureDevice.default(for: AVMediaType(rawValue: convertFromAVMediaType(AVMediaType.video)))
         
         do {
-            let input = try AVCaptureDeviceInput(device: camera)
+            let input = try AVCaptureDeviceInput(device: camera!)
             if videoCaptureSession.canAddInput(input) {
                 videoCaptureSession.addInput(input)
                 activeInput = input
@@ -858,10 +858,10 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
         }
         
         // Setup Microphone
-        let microphone = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeAudio)
+        let microphone = AVCaptureDevice.default(for: AVMediaType(rawValue: convertFromAVMediaType(AVMediaType.audio)))
         
         do {
-            let micInput = try AVCaptureDeviceInput(device: microphone)
+            let micInput = try AVCaptureDeviceInput(device: microphone!)
             if videoCaptureSession.canAddInput(micInput) {
                 videoCaptureSession.addInput(micInput)
             }
@@ -935,7 +935,7 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
     
     func startRecording() {
         if movieOutput.isRecording == false {
-            let connection = movieOutput.connection(withMediaType: AVMediaTypeVideo)
+            let connection = movieOutput.connection(with: AVMediaType(rawValue: convertFromAVMediaType(AVMediaType.video)))
             if (connection?.isVideoOrientationSupported)! {
                 connection?.videoOrientation = currentVideoOrientation()
             }
@@ -945,11 +945,11 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
             }
             
             let device = activeInput.device
-            if (device?.isSmoothAutoFocusSupported)! {
+            if (device.isSmoothAutoFocusSupported) {
                 do {
-                    try device?.lockForConfiguration()
-                    device?.isSmoothAutoFocusEnabled = false
-                    device?.unlockForConfiguration()
+                    try device.lockForConfiguration()
+                    device.isSmoothAutoFocusEnabled = false
+                    device.unlockForConfiguration()
                 } catch {
                     print("Error setting configuration: \(error)")
                 }
@@ -957,7 +957,7 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
             }
             
             outputURL = tempURL()
-            movieOutput.startRecording(toOutputFileURL: outputURL, recordingDelegate: self)
+            movieOutput.startRecording(to: outputURL, recordingDelegate: self)
             
         }
         else {
@@ -972,11 +972,11 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
         }
     }
     
-    func capture(_ captureOutput: AVCaptureFileOutput!, didStartRecordingToOutputFileAt fileURL: URL!, fromConnections connections: [Any]!) {
+    func fileOutput(_ captureOutput: AVCaptureFileOutput, didStartRecordingTo fileURL: URL, from connections: [AVCaptureConnection]) {
         
     }
     
-    func capture(_ captureOutput: AVCaptureFileOutput!, didFinishRecordingToOutputFileAt outputFileURL: URL!, fromConnections connections: [Any]!, error: Error!) {
+    func fileOutput(_ captureOutput: AVCaptureFileOutput, didFinishRecordingTo outputFileURL: URL, from connections: [AVCaptureConnection], error: Error?) {
         if (error != nil) {
             print("Error recording movie: \(error!.localizedDescription)")
         } else {
@@ -1012,4 +1012,19 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
         }
     }
 
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToUIApplicationOpenExternalURLOptionsKeyDictionary(_ input: [String: Any]) -> [UIApplication.OpenExternalURLOptionsKey: Any] {
+	return Dictionary(uniqueKeysWithValues: input.map { key, value in (UIApplication.OpenExternalURLOptionsKey(rawValue: key), value)})
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromAVMediaType(_ input: AVMediaType) -> String {
+	return input.rawValue
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromAVCaptureSessionPreset(_ input: AVCaptureSession.Preset) -> String {
+	return input.rawValue
 }

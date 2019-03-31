@@ -45,14 +45,14 @@ class WaypointViewController: UIViewController, UITextFieldDelegate, CLLocationM
         performSegue(withIdentifier: "waypointToWaypoints", sender: [])
     }
     
-    func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
-        if gesture.direction == UISwipeGestureRecognizerDirection.right {
+    @objc func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
+        if gesture.direction == UISwipeGestureRecognizer.Direction.right {
             if (indexOfWaypoint != 0){
                 record = waypoints[indexOfWaypoint! - 1].id
                 self.viewDidLoad()
             }
         }
-        else if gesture.direction == UISwipeGestureRecognizerDirection.left {
+        else if gesture.direction == UISwipeGestureRecognizer.Direction.left {
             if (indexOfWaypoint != (waypoints.count - 1)){
                 record = waypoints[indexOfWaypoint! + 1].id
                 self.viewDidLoad()
@@ -70,7 +70,7 @@ class WaypointViewController: UIViewController, UITextFieldDelegate, CLLocationM
         activityViewController.popoverPresentationController?.sourceView = self.view // so that iPads won't crash
         
         // exclude some activity types from the list (optional)
-        activityViewController.excludedActivityTypes = [ UIActivityType.airDrop, UIActivityType.postToFacebook ]
+        activityViewController.excludedActivityTypes = [ UIActivity.ActivityType.airDrop, UIActivity.ActivityType.postToFacebook ]
         
         // present the view controller
         self.present(activityViewController, animated: true, completion: nil)
@@ -97,7 +97,7 @@ class WaypointViewController: UIViewController, UITextFieldDelegate, CLLocationM
                 if let googleMapsURL = URL(string: "comgooglemaps-x-callback://?daddr=\(destLatitude),\(destLongitude)&directionsmode=driving&x-success=wunderlinq://?resume=true&x-source=WunderLINQ") {
                     if (UIApplication.shared.canOpenURL(googleMapsURL)) {
                         if #available(iOS 10, *) {
-                            UIApplication.shared.open(googleMapsURL, options: [:], completionHandler: nil)
+                            UIApplication.shared.open(googleMapsURL, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
                         } else {
                             UIApplication.shared.openURL(googleMapsURL as URL)
                         }
@@ -115,7 +115,7 @@ class WaypointViewController: UIViewController, UITextFieldDelegate, CLLocationM
                 if let sygicURL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
                     if (UIApplication.shared.canOpenURL(sygicURL)) {
                         if #available(iOS 10, *) {
-                            UIApplication.shared.open(sygicURL, options: [:], completionHandler: nil)
+                            UIApplication.shared.open(sygicURL, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
                         } else {
                             UIApplication.shared.openURL(sygicURL as URL)
                         }
@@ -127,7 +127,7 @@ class WaypointViewController: UIViewController, UITextFieldDelegate, CLLocationM
                 if let wazeURL = URL(string: "waze://?ll=\(destLatitude),\(destLongitude)&navigate=yes") {
                     if (UIApplication.shared.canOpenURL(wazeURL)) {
                         if #available(iOS 10, *) {
-                            UIApplication.shared.open(wazeURL, options: [:], completionHandler: nil)
+                            UIApplication.shared.open(wazeURL, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
                         } else {
                             UIApplication.shared.openURL(wazeURL as URL)
                         }
@@ -144,7 +144,7 @@ class WaypointViewController: UIViewController, UITextFieldDelegate, CLLocationM
                     if let mapsMeURL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
                         if (UIApplication.shared.canOpenURL(mapsMeURL)) {
                             if #available(iOS 10, *) {
-                                UIApplication.shared.open(mapsMeURL, options: [:], completionHandler: nil)
+                                UIApplication.shared.open(mapsMeURL, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
                             } else {
                                 UIApplication.shared.openURL(mapsMeURL as URL)
                             }
@@ -174,7 +174,7 @@ class WaypointViewController: UIViewController, UITextFieldDelegate, CLLocationM
                 //Apple Maps
                 let regionDistance:CLLocationDistance = 10000
                 let coordinates = CLLocationCoordinate2DMake(lat, lon)
-                let regionSpan = MKCoordinateRegionMakeWithDistance(coordinates, regionDistance, regionDistance)
+                let regionSpan = MKCoordinateRegion.init(center: coordinates, latitudinalMeters: regionDistance, longitudinalMeters: regionDistance)
                 let options = [
                     MKLaunchOptionsMapCenterKey: NSValue(mkCoordinate: regionSpan.center),
                     MKLaunchOptionsMapSpanKey: NSValue(mkCoordinateSpan: regionSpan.span)
@@ -191,7 +191,7 @@ class WaypointViewController: UIViewController, UITextFieldDelegate, CLLocationM
                     print("google map selected url")
                     if (UIApplication.shared.canOpenURL(googleMapsURL)) {
                         if #available(iOS 10, *) {
-                            UIApplication.shared.open(googleMapsURL, options: [:], completionHandler: nil)
+                            UIApplication.shared.open(googleMapsURL, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
                         } else {
                             UIApplication.shared.openURL(googleMapsURL as URL)
                         }
@@ -209,7 +209,7 @@ class WaypointViewController: UIViewController, UITextFieldDelegate, CLLocationM
                 if let sygicURL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
                     if (UIApplication.shared.canOpenURL(sygicURL)) {
                         if #available(iOS 10, *) {
-                            UIApplication.shared.open(sygicURL, options: [:], completionHandler: nil)
+                            UIApplication.shared.open(sygicURL, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
                         } else {
                             UIApplication.shared.openURL(sygicURL as URL)
                         }
@@ -221,7 +221,7 @@ class WaypointViewController: UIViewController, UITextFieldDelegate, CLLocationM
                 if let wazeURL = URL(string: "https://waze.com/ul?ll=\(lat),\(lon)&z=10") {
                     if (UIApplication.shared.canOpenURL(wazeURL)) {
                         if #available(iOS 10, *) {
-                            UIApplication.shared.open(wazeURL, options: [:], completionHandler: nil)
+                            UIApplication.shared.open(wazeURL, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
                         } else {
                             UIApplication.shared.openURL(wazeURL as URL)
                         }
@@ -236,7 +236,7 @@ class WaypointViewController: UIViewController, UITextFieldDelegate, CLLocationM
                 if let mapsMeURL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
                     if (UIApplication.shared.canOpenURL(mapsMeURL)) {
                         if #available(iOS 10, *) {
-                            UIApplication.shared.open(mapsMeURL, options: [:], completionHandler: nil)
+                            UIApplication.shared.open(mapsMeURL, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
                         } else {
                             UIApplication.shared.openURL(mapsMeURL as URL)
                         }
@@ -246,7 +246,7 @@ class WaypointViewController: UIViewController, UITextFieldDelegate, CLLocationM
                 //Apple Maps
                 let regionDistance:CLLocationDistance = 10000
                 let coordinates = CLLocationCoordinate2DMake(lat, lon)
-                let regionSpan = MKCoordinateRegionMakeWithDistance(coordinates, regionDistance, regionDistance)
+                let regionSpan = MKCoordinateRegion.init(center: coordinates, latitudinalMeters: regionDistance, longitudinalMeters: regionDistance)
                 let options = [
                     MKLaunchOptionsMapCenterKey: NSValue(mkCoordinate: regionSpan.center),
                     MKLaunchOptionsMapSpanKey: NSValue(mkCoordinateSpan: regionSpan.span)
@@ -261,8 +261,8 @@ class WaypointViewController: UIViewController, UITextFieldDelegate, CLLocationM
     
     @IBAction func deletePressed(_ sender: Any) {
         
-        let alert = UIAlertController(title: NSLocalizedString("delete_waypoint_alert_title", comment: ""), message: NSLocalizedString("delete_waypoint_alert_body", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: NSLocalizedString("delete_bt", comment: ""), style: UIAlertActionStyle.default, handler: { action in
+        let alert = UIAlertController(title: NSLocalizedString("delete_waypoint_alert_title", comment: ""), message: NSLocalizedString("delete_waypoint_alert_body", comment: ""), preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("delete_bt", comment: ""), style: UIAlertAction.Style.default, handler: { action in
             let queryString = "DELETE FROM records WHERE id = \(self.record ?? 0)"
             //statement pointer
             var stmt:OpaquePointer?
@@ -283,7 +283,7 @@ class WaypointViewController: UIViewController, UITextFieldDelegate, CLLocationM
             
             self.performSegue(withIdentifier: "waypointToWaypoints", sender: [])
         }))
-        alert.addAction(UIAlertAction(title: NSLocalizedString("cancel_bt", comment: ""), style: UIAlertActionStyle.cancel, handler: { action in
+        alert.addAction(UIAlertAction(title: NSLocalizedString("cancel_bt", comment: ""), style: UIAlertAction.Style.cancel, handler: { action in
             // quit app
             //exit(0)
         }))
@@ -405,7 +405,7 @@ class WaypointViewController: UIViewController, UITextFieldDelegate, CLLocationM
     // MARK - CLLocationManagerDelegate
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        defer { currentLocation = locations.last }
+        do { currentLocation = locations.last }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -492,3 +492,8 @@ class WaypointViewController: UIViewController, UITextFieldDelegate, CLLocationM
     }
 }
 
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToUIApplicationOpenExternalURLOptionsKeyDictionary(_ input: [String: Any]) -> [UIApplication.OpenExternalURLOptionsKey: Any] {
+	return Dictionary(uniqueKeysWithValues: input.map { key, value in (UIApplication.OpenExternalURLOptionsKey(rawValue: key), value)})
+}

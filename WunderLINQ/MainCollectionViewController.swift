@@ -319,22 +319,22 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         if launchedLast != nil {
             if (launchedLast!.contains(today)) {
             } else {
-                let alert = UIAlertController(title: NSLocalizedString("disclaimer_alert_title", comment: ""), message: NSLocalizedString("disclaimer_alert_body", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
-                alert.addAction(UIAlertAction(title: NSLocalizedString("disclaimer_ok", comment: ""), style: UIAlertActionStyle.default, handler: { action in
+                let alert = UIAlertController(title: NSLocalizedString("disclaimer_alert_title", comment: ""), message: NSLocalizedString("disclaimer_alert_body", comment: ""), preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: NSLocalizedString("disclaimer_ok", comment: ""), style: UIAlertAction.Style.default, handler: { action in
                     UserDefaults.standard.set(today, forKey: "launchedLast")
                 }))
-                alert.addAction(UIAlertAction(title: NSLocalizedString("disclaimer_quit", comment: ""), style: UIAlertActionStyle.cancel, handler: { action in
+                alert.addAction(UIAlertAction(title: NSLocalizedString("disclaimer_quit", comment: ""), style: UIAlertAction.Style.cancel, handler: { action in
                     // quit app
                     exit(0)
                 }))
                 self.present(alert, animated: true, completion: nil)
             }
         } else {
-            let alert = UIAlertController(title: NSLocalizedString("disclaimer_alert_title", comment: ""), message: NSLocalizedString("disclaimer_alert_body", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: NSLocalizedString("disclaimer_ok", comment: ""), style: UIAlertActionStyle.default, handler: { action in
+            let alert = UIAlertController(title: NSLocalizedString("disclaimer_alert_title", comment: ""), message: NSLocalizedString("disclaimer_alert_body", comment: ""), preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: NSLocalizedString("disclaimer_ok", comment: ""), style: UIAlertAction.Style.default, handler: { action in
                 UserDefaults.standard.set(today, forKey: "launchedLast")
             }))
-            alert.addAction(UIAlertAction(title: NSLocalizedString("disclaimer_quit", comment: ""), style: UIAlertActionStyle.cancel, handler: { action in
+            alert.addAction(UIAlertAction(title: NSLocalizedString("disclaimer_quit", comment: ""), style: UIAlertAction.Style.cancel, handler: { action in
                 // quit app
                 exit(0)
             }))
@@ -695,7 +695,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     }
     */
     
-    func faultsButtonTapped() {
+    @objc func faultsButtonTapped() {
         performSegue(withIdentifier: "motorcycleToFaults", sender: [])
     }
     
@@ -722,7 +722,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         self.popover.show(tableView, fromView: self.menuBtn)
     }
     
-    func menuButtonTapped() {
+    @objc func menuButtonTapped() {
         popUpMenu()
     }
     
@@ -761,7 +761,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     
     // MARK: - Bluetooth scanning
     
-    func pauseScan() {
+    @objc func pauseScan() {
         // Scanning uses up battery on phone, so pause the scan process for the designated interval.
         NSLog("PAUSING SCAN...")
         disconnectButton.isEnabled = true
@@ -770,7 +770,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         
     }
     
-    func resumeScan() {
+    @objc func resumeScan() {
         let lastPeripherals = centralManager.retrieveConnectedPeripherals(withServices: [CBUUID(string: Device.WunderLINQServiceUUID)])
         
         if lastPeripherals.count > 0{
@@ -2846,7 +2846,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         }
     }
     
-    func defaultsChanged(notification:NSNotification){
+    @objc func defaultsChanged(notification:NSNotification){
         if let defaults = notification.object as? UserDefaults {
             if defaults.bool(forKey: "nightmode_lastSet") != defaults.bool(forKey: "nightmode_preference"){
                 UserDefaults.standard.set(defaults.bool(forKey: "nightmode_preference"), forKey: "nightmode_lastSet")
@@ -2914,7 +2914,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         //content.subtitle = "Sub Title"
         content.body = message
         //content.badge = 1
-        content.sound = UNNotificationSound.default()
+        content.sound = UNNotificationSound.default
         
         //getting the notification trigger
         //it will be called after 1 second
@@ -2931,9 +2931,9 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     
     private func checkPermissions(){
         // Camera
-        switch AVCaptureDevice.authorizationStatus(forMediaType: AVMediaTypeVideo){
+        switch AVCaptureDevice.authorizationStatus(for: AVMediaType(rawValue: convertFromAVMediaType(AVMediaType.video))){
         case .notDetermined:
-            AVCaptureDevice.requestAccess(forMediaType: AVMediaTypeVideo, completionHandler: { (granted: Bool) -> Void in
+            AVCaptureDevice.requestAccess(for: AVMediaType(rawValue: convertFromAVMediaType(AVMediaType.video)), completionHandler: { (granted: Bool) -> Void in
                 if granted == true {
                     // Authorized
                     //Nothing to do
@@ -2948,7 +2948,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                     let cancelAction = UIAlertAction(title: NSLocalizedString("negative_alert_btn_cancel", comment: ""), style: .cancel, handler: nil)
                     alertController.addAction(cancelAction)
                     let openAction = UIAlertAction(title: NSLocalizedString("negative_alert_btn_ok", comment: ""), style: .default) { (action) in
-                        if let appSettings = URL(string: UIApplicationOpenSettingsURLString + Bundle.main.bundleIdentifier!) {
+                        if let appSettings = URL(string: UIApplication.openSettingsURLString + Bundle.main.bundleIdentifier!) {
                             if UIApplication.shared.canOpenURL(appSettings) {
                                 UIApplication.shared.open(appSettings)
                             }
@@ -2968,7 +2968,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             let cancelAction = UIAlertAction(title: NSLocalizedString("negative_alert_btn_cancel", comment: ""), style: .cancel, handler: nil)
             alertController.addAction(cancelAction)
             let openAction = UIAlertAction(title: NSLocalizedString("negative_alert_btn_ok", comment: ""), style: .default) { (action) in
-                if let appSettings = URL(string: UIApplicationOpenSettingsURLString + Bundle.main.bundleIdentifier!) {
+                if let appSettings = URL(string: UIApplication.openSettingsURLString + Bundle.main.bundleIdentifier!) {
                     if UIApplication.shared.canOpenURL(appSettings) {
                         UIApplication.shared.open(appSettings)
                     }
@@ -2983,9 +2983,9 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         }
         
         //Microphone
-        switch AVCaptureDevice.authorizationStatus(forMediaType: AVMediaTypeAudio){
+        switch AVCaptureDevice.authorizationStatus(for: AVMediaType(rawValue: convertFromAVMediaType(AVMediaType.audio))){
         case .notDetermined:
-            AVCaptureDevice.requestAccess(forMediaType: AVMediaTypeVideo, completionHandler: { (granted: Bool) -> Void in
+            AVCaptureDevice.requestAccess(for: AVMediaType(rawValue: convertFromAVMediaType(AVMediaType.video)), completionHandler: { (granted: Bool) -> Void in
                 if granted == true {
                     // Authorized
                     //Nothing to do
@@ -3000,7 +3000,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                     let cancelAction = UIAlertAction(title: NSLocalizedString("negative_alert_btn_cancel", comment: ""), style: .cancel, handler: nil)
                     alertController.addAction(cancelAction)
                     let openAction = UIAlertAction(title: NSLocalizedString("negative_alert_btn_ok", comment: ""), style: .default) { (action) in
-                        if let appSettings = URL(string: UIApplicationOpenSettingsURLString + Bundle.main.bundleIdentifier!) {
+                        if let appSettings = URL(string: UIApplication.openSettingsURLString + Bundle.main.bundleIdentifier!) {
                             if UIApplication.shared.canOpenURL(appSettings) {
                                 UIApplication.shared.open(appSettings)
                             }
@@ -3020,7 +3020,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             let cancelAction = UIAlertAction(title: NSLocalizedString("negative_alert_btn_cancel", comment: ""), style: .cancel, handler: nil)
             alertController.addAction(cancelAction)
             let openAction = UIAlertAction(title: NSLocalizedString("negative_alert_btn_ok", comment: ""), style: .default) { (action) in
-                if let appSettings = URL(string: UIApplicationOpenSettingsURLString + Bundle.main.bundleIdentifier!) {
+                if let appSettings = URL(string: UIApplication.openSettingsURLString + Bundle.main.bundleIdentifier!) {
                     if UIApplication.shared.canOpenURL(appSettings) {
                         UIApplication.shared.open(appSettings)
                     }
@@ -3050,7 +3050,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                     let cancelAction = UIAlertAction(title: NSLocalizedString("negative_alert_btn_cancel", comment: ""), style: .cancel, handler: nil)
                     alertController.addAction(cancelAction)
                     let openAction = UIAlertAction(title: NSLocalizedString("negative_alert_btn_ok", comment: ""), style: .default) { (action) in
-                        if let appSettings = URL(string: UIApplicationOpenSettingsURLString + Bundle.main.bundleIdentifier!) {
+                        if let appSettings = URL(string: UIApplication.openSettingsURLString + Bundle.main.bundleIdentifier!) {
                             if UIApplication.shared.canOpenURL(appSettings) {
                                 UIApplication.shared.open(appSettings)
                             }
@@ -3068,7 +3068,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             let cancelAction = UIAlertAction(title: NSLocalizedString("negative_alert_btn_cancel", comment: ""), style: .cancel, handler: nil)
             alertController.addAction(cancelAction)
             let openAction = UIAlertAction(title: NSLocalizedString("negative_alert_btn_ok", comment: ""), style: .default) { (action) in
-                if let appSettings = URL(string: UIApplicationOpenSettingsURLString + Bundle.main.bundleIdentifier!) {
+                if let appSettings = URL(string: UIApplication.openSettingsURLString + Bundle.main.bundleIdentifier!) {
                     if UIApplication.shared.canOpenURL(appSettings) {
                         UIApplication.shared.open(appSettings)
                     }
@@ -3099,7 +3099,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                     let cancelAction = UIAlertAction(title: NSLocalizedString("negative_alert_btn_cancel", comment: ""), style: .cancel, handler: nil)
                     alertController.addAction(cancelAction)
                     let openAction = UIAlertAction(title: NSLocalizedString("negative_alert_btn_ok", comment: ""), style: .default) { (action) in
-                        if let appSettings = URL(string: UIApplicationOpenSettingsURLString + Bundle.main.bundleIdentifier!) {
+                        if let appSettings = URL(string: UIApplication.openSettingsURLString + Bundle.main.bundleIdentifier!) {
                             if UIApplication.shared.canOpenURL(appSettings) {
                                 UIApplication.shared.open(appSettings)
                             }
@@ -3121,7 +3121,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             let cancelAction = UIAlertAction(title: NSLocalizedString("negative_alert_btn_cancel", comment: ""), style: .cancel, handler: nil)
             alertController.addAction(cancelAction)
             let openAction = UIAlertAction(title: NSLocalizedString("negative_alert_btn_ok", comment: ""), style: .default) { (action) in
-                if let appSettings = URL(string: UIApplicationOpenSettingsURLString + Bundle.main.bundleIdentifier!) {
+                if let appSettings = URL(string: UIApplication.openSettingsURLString + Bundle.main.bundleIdentifier!) {
                     if UIApplication.shared.canOpenURL(appSettings) {
                         UIApplication.shared.open(appSettings)
                     }
@@ -3148,7 +3148,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             let cancelAction = UIAlertAction(title: NSLocalizedString("negative_alert_btn_cancel", comment: ""), style: .cancel, handler: nil)
             alertController.addAction(cancelAction)
             let openAction = UIAlertAction(title: NSLocalizedString("negative_alert_btn_ok", comment: ""), style: .default) { (action) in
-                if let appSettings = URL(string: UIApplicationOpenSettingsURLString + Bundle.main.bundleIdentifier!) {
+                if let appSettings = URL(string: UIApplication.openSettingsURLString + Bundle.main.bundleIdentifier!) {
                     if UIApplication.shared.canOpenURL(appSettings) {
                         UIApplication.shared.open(appSettings)
                     }
@@ -3172,7 +3172,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                     let cancelAction = UIAlertAction(title: NSLocalizedString("negative_alert_btn_cancel", comment: ""), style: .cancel, handler: nil)
                     alertController.addAction(cancelAction)
                     let openAction = UIAlertAction(title: NSLocalizedString("negative_alert_btn_ok", comment: ""), style: .default) { (action) in
-                        if let appSettings = URL(string: UIApplicationOpenSettingsURLString + Bundle.main.bundleIdentifier!) {
+                        if let appSettings = URL(string: UIApplication.openSettingsURLString + Bundle.main.bundleIdentifier!) {
                             if UIApplication.shared.canOpenURL(appSettings) {
                                 UIApplication.shared.open(appSettings)
                             }
@@ -3201,7 +3201,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                 let cancelAction = UIAlertAction(title: NSLocalizedString("negative_alert_btn_cancel", comment: ""), style: .cancel, handler: nil)
                 alertController.addAction(cancelAction)
                 let openAction = UIAlertAction(title: NSLocalizedString("negative_alert_btn_ok", comment: ""), style: .default) { (action) in
-                    if let appSettings = URL(string: UIApplicationOpenSettingsURLString + Bundle.main.bundleIdentifier!) {
+                    if let appSettings = URL(string: UIApplication.openSettingsURLString + Bundle.main.bundleIdentifier!) {
                         if UIApplication.shared.canOpenURL(appSettings) {
                             UIApplication.shared.open(appSettings)
                         }
@@ -3223,7 +3223,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                         let cancelAction = UIAlertAction(title: NSLocalizedString("negative_alert_btn_cancel", comment: ""), style: .cancel, handler: nil)
                         alertController.addAction(cancelAction)
                         let openAction = UIAlertAction(title: NSLocalizedString("negative_alert_btn_ok", comment: ""), style: .default) { (action) in
-                            if let appSettings = URL(string: UIApplicationOpenSettingsURLString + Bundle.main.bundleIdentifier!) {
+                            if let appSettings = URL(string: UIApplication.openSettingsURLString + Bundle.main.bundleIdentifier!) {
                                 if UIApplication.shared.canOpenURL(appSettings) {
                                     UIApplication.shared.open(appSettings)
                                 }
@@ -3257,7 +3257,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             let cancelAction = UIAlertAction(title: NSLocalizedString("negative_alert_btn_cancel", comment: ""), style: .cancel, handler: nil)
             alertController.addAction(cancelAction)
             let openAction = UIAlertAction(title: NSLocalizedString("negative_alert_btn_ok", comment: ""), style: .default) { (action) in
-                if let appSettings = URL(string: UIApplicationOpenSettingsURLString + Bundle.main.bundleIdentifier!) {
+                if let appSettings = URL(string: UIApplication.openSettingsURLString + Bundle.main.bundleIdentifier!) {
                     if UIApplication.shared.canOpenURL(appSettings) {
                         UIApplication.shared.open(appSettings)
                     }
@@ -3335,20 +3335,20 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         return 180 / Double.pi * radians
     }
     
-    func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
-        if gesture.direction == UISwipeGestureRecognizerDirection.right {
+    @objc func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
+        if gesture.direction == UISwipeGestureRecognizer.Direction.right {
             performSegue(withIdentifier: "motorcycleToTaskGrid", sender: [])
         }
-        else if gesture.direction == UISwipeGestureRecognizerDirection.left {
+        else if gesture.direction == UISwipeGestureRecognizer.Direction.left {
             performSegue(withIdentifier: "motorcycleToMusic", sender: [])
         }
-        else if gesture.direction == UISwipeGestureRecognizerDirection.up {
+        else if gesture.direction == UISwipeGestureRecognizer.Direction.up {
             //UP
             if !UserDefaults.standard.bool(forKey: "motorcycle_data_preference") {
                 upScreen()
             }
         }
-        else if gesture.direction == UISwipeGestureRecognizerDirection.down {
+        else if gesture.direction == UISwipeGestureRecognizer.Direction.down {
             //DOWN
             if !UserDefaults.standard.bool(forKey: "motorcycle_data_preference") {
                 downScreen()
@@ -3358,7 +3358,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     
     @objc func longPress(longPressGestureRecognizer: UILongPressGestureRecognizer) {
         
-        if longPressGestureRecognizer.state == UIGestureRecognizerState.began {
+        if longPressGestureRecognizer.state == UIGestureRecognizer.State.began {
             let touchPoint = longPressGestureRecognizer.location(in: self.view)
             if let indexPath = collectionView.indexPathForItem(at: touchPoint) {
                 showPickerInActionSheet(cell: indexPath.row)
@@ -3369,10 +3369,10 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     override var keyCommands: [UIKeyCommand]? {
         
         let commands = [
-            UIKeyCommand(input: UIKeyInputLeftArrow, modifierFlags:[], action: #selector(leftScreen), discoverabilityTitle: "Go left"),
-            UIKeyCommand(input: UIKeyInputRightArrow, modifierFlags:[], action: #selector(rightScreen), discoverabilityTitle: "Go right"),
-            UIKeyCommand(input: UIKeyInputUpArrow, modifierFlags:[], action: #selector(upScreen), discoverabilityTitle: "Increase Cell Count"),
-            UIKeyCommand(input: UIKeyInputDownArrow, modifierFlags:[], action: #selector(downScreen), discoverabilityTitle: "Decrease Cell Count")
+            UIKeyCommand(input: UIKeyCommand.inputLeftArrow, modifierFlags:[], action: #selector(leftScreen), discoverabilityTitle: "Go left"),
+            UIKeyCommand(input: UIKeyCommand.inputRightArrow, modifierFlags:[], action: #selector(rightScreen), discoverabilityTitle: "Go right"),
+            UIKeyCommand(input: UIKeyCommand.inputUpArrow, modifierFlags:[], action: #selector(upScreen), discoverabilityTitle: "Increase Cell Count"),
+            UIKeyCommand(input: UIKeyCommand.inputDownArrow, modifierFlags:[], action: #selector(downScreen), discoverabilityTitle: "Decrease Cell Count")
         ]
         return commands
     }
@@ -3525,7 +3525,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     func showPickerInActionSheet(cell: Int) {
         let title = ""
         let message = "\n\n\n\n\n\n\n\n\n\n";
-        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.actionSheet);
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.actionSheet);
         alert.isModalInPopover = true;
         
         var width = self.view.bounds.width
@@ -3600,7 +3600,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         toolView.addSubview(buttonCancel); //add it to the toolView
         
         //Add the target - target, function to call, the event witch will trigger the function call
-        buttonCancel.addTarget(self, action: #selector(MainCollectionViewController.cancelSelection(sender:)), for: UIControlEvents.touchDown);
+        buttonCancel.addTarget(self, action: #selector(MainCollectionViewController.cancelSelection(sender:)), for: UIControl.Event.touchDown);
         
         
         //add buttons to the view
@@ -3609,11 +3609,11 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         
         //Create the Select button & set the title
         let buttonOk: UIButton = UIButton(frame: buttonOkFrame);
-        buttonOk.setTitle(NSLocalizedString("select_bt", comment: ""), for: UIControlState.normal);
-        buttonOk.setTitleColor(UIColor.blue, for: UIControlState.normal);
+        buttonOk.setTitle(NSLocalizedString("select_bt", comment: ""), for: UIControl.State.normal);
+        buttonOk.setTitleColor(UIColor.blue, for: UIControl.State.normal);
         toolView.addSubview(buttonOk); //add to the subview
         
-        buttonOk.addTarget(self, action: #selector(MainCollectionViewController.saveCellPref), for: UIControlEvents.touchDown);
+        buttonOk.addTarget(self, action: #selector(MainCollectionViewController.saveCellPref), for: UIControl.Event.touchDown);
         
         //add the toolbar to the alert controller
         alert.view.addSubview(toolView);
@@ -3621,7 +3621,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         self.present(alert, animated: true, completion: nil);
     }
     
-    func cancelSelection(sender: UIButton){
+    @objc func cancelSelection(sender: UIButton){
         self.dismiss(animated: true, completion: nil)
         
         // We dismiss the alert. Here you can add your additional code to execute when cancel is pressed
@@ -3646,7 +3646,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         selectedDataPoint = row
     }
     
-    func saveCellPref() {
+    @objc func saveCellPref() {
         self.dismiss(animated: true, completion: nil)
         switch (selectedCell){
         case 0:
@@ -3710,7 +3710,7 @@ extension MainCollectionViewController: UITableViewDelegate {
             performSegue(withIdentifier: "motorcycleToGeoData", sender: self)
         case 1:
             //App Settings
-            if let appSettings = URL(string: UIApplicationOpenSettingsURLString + Bundle.main.bundleIdentifier!) {
+            if let appSettings = URL(string: UIApplication.openSettingsURLString + Bundle.main.bundleIdentifier!) {
                 if UIApplication.shared.canOpenURL(appSettings) {
                     UIApplication.shared.open(appSettings)
                 }
@@ -3751,4 +3751,9 @@ extension MainCollectionViewController: UITableViewDataSource {
         cell.textLabel?.text = self.popoverMenuList[(indexPath as NSIndexPath).row]
         return cell
     }
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromAVMediaType(_ input: AVMediaType) -> String {
+	return input.rawValue
 }

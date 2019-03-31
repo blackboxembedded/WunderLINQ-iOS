@@ -28,14 +28,14 @@ class TripViewController: UIViewController {
         performSegue(withIdentifier: "tripToTrips", sender: [])
     }
     
-    func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
-        if gesture.direction == UISwipeGestureRecognizerDirection.right {
+    @objc func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
+        if gesture.direction == UISwipeGestureRecognizer.Direction.right {
             if (indexOfFileName != 0){
                 fileName = csvFileNames![indexOfFileName! - 1]
                 self.viewDidLoad()
             }
         }
-        else if gesture.direction == UISwipeGestureRecognizerDirection.left {
+        else if gesture.direction == UISwipeGestureRecognizer.Direction.left {
             if (indexOfFileName != (csvFileNames!.count - 1)){
                 fileName = csvFileNames![indexOfFileName! + 1]
                 self.viewDidLoad()
@@ -51,8 +51,8 @@ class TripViewController: UIViewController {
     }
     
     @IBAction func deleteBtn(_ sender: Any) {
-        let alert = UIAlertController(title: NSLocalizedString("delete_trip_alert_title", comment: ""), message: NSLocalizedString("delete_trip_alert_body", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: NSLocalizedString("delete_bt", comment: ""), style: UIAlertActionStyle.default, handler: { action in
+        let alert = UIAlertController(title: NSLocalizedString("delete_trip_alert_title", comment: ""), message: NSLocalizedString("delete_trip_alert_body", comment: ""), preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("delete_bt", comment: ""), style: UIAlertAction.Style.default, handler: { action in
             let fileManager = FileManager.default
             let filename = "\(self.getDocumentsDirectory())/\(self.fileName ?? "file").csv"
             
@@ -63,7 +63,7 @@ class TripViewController: UIViewController {
             }
             self.performSegue(withIdentifier: "tripToTrips", sender: [])
         }))
-        alert.addAction(UIAlertAction(title: NSLocalizedString("cancel_bt", comment: ""), style: UIAlertActionStyle.cancel, handler: { action in
+        alert.addAction(UIAlertAction(title: NSLocalizedString("cancel_bt", comment: ""), style: UIAlertAction.Style.cancel, handler: { action in
             // close
         }))
         self.present(alert, animated: true, completion: nil)
