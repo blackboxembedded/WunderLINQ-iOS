@@ -94,7 +94,7 @@ class TripViewController: UIViewController {
         self.navigationItem.leftBarButtonItems = [backButton]
         
         updateFileList()
-        indexOfFileName = csvFileNames!.index(of: fileName!)
+        indexOfFileName = csvFileNames!.firstIndex(of: fileName!)
 
         var data = readDataFromCSV(fileName: "\(fileName!)", fileType: "csv")
         data = cleanRows(file: data!)

@@ -369,7 +369,7 @@ class WaypointViewController: UIViewController, UITextFieldDelegate, CLLocationM
         readWaypoints()
         readWaypoint()
         
-        indexOfWaypoint = waypoints.index(of: waypoint!)
+        indexOfWaypoint = waypoints.firstIndex(of: waypoint!)
 
         mapView.clear()
         if let lat = latitude?.toDouble(), let lon = longitude?.toDouble(){

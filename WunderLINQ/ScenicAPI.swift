@@ -113,8 +113,6 @@ class ScenicAPI {
     }
     
     
-    
-    
     /**************************************************************
      ************       Send Coordinates for Navigation      ******
      **************************************************************
@@ -146,17 +144,6 @@ class ScenicAPI {
     }
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     /**************************************************************
      ***********************    Helper Functions     **************
      *************************************************************/
@@ -165,7 +152,7 @@ class ScenicAPI {
         for location in cllArray {
             str += "\(location.latitude.toNonScientificString()),\(location.longitude.toNonScientificString())|"
         }
-        return String(str.characters.dropLast())
+        return String(str.dropLast())
     }
     
     fileprivate func sendGPXURL(_ gpxurl: String) {
@@ -408,7 +395,8 @@ public func decodePolyline(_ encodedPolyline: String, precision: Double = 1e5) -
     
     let data = encodedPolyline.data(using: String.Encoding.utf8)!
     
-    let byteArray = unsafeBitCast((data as NSData).bytes, to: UnsafePointer<Int8>.self)
+    let byteArray = (data as NSData).bytes.assumingMemoryBound(to: Int8.self)
+    
     let length = Int(data.count)
     var position = Int(0)
     

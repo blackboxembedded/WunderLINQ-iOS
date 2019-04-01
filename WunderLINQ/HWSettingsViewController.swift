@@ -45,14 +45,14 @@ class HWSettingsViewController: UIViewController, CBPeripheralDelegate, UIPicker
                     let wwSensCommand:[UInt8] = [0x57,0x57,0x43,0x53,0x32,0x45,sensUInt8Array[0],0x0D,0x0A]
                     if (self.peripheral != nil && self.characteristic != nil){
                         print("Setting WW Sensitivity")
-                        let writeData =  Data(bytes: wwSensCommand)
+                        let writeData =  Data(_: wwSensCommand)
                         self.peripheral?.writeValue(writeData, for: self.characteristic!, type: CBCharacteristicWriteType.withResponse)
                     }
                 } else {
                     let wwSensCommand:[UInt8] = [0x57,0x57,0x43,0x53,0x32,0x45,sensUInt8Array[0],sensUInt8Array[1],0x0D,0x0A]
                     if (self.peripheral != nil && self.characteristic != nil){
                         print("Setting WW Sensitivity")
-                        let writeData =  Data(bytes: wwSensCommand)
+                        let writeData =  Data(_: wwSensCommand)
                         self.peripheral?.writeValue(writeData, for: self.characteristic!, type: CBCharacteristicWriteType.withResponse)
                     }
                 }
@@ -65,14 +65,14 @@ class HWSettingsViewController: UIViewController, CBPeripheralDelegate, UIPicker
                     let wwSensCommand:[UInt8] = [0x57,0x57,0x43,0x53,0x34,0x45,sensUInt8Array[0],0x0D,0x0A]
                     if (self.peripheral != nil && self.characteristic != nil){
                         print("Setting WW Sensitivity")
-                        let writeData =  Data(bytes: wwSensCommand)
+                        let writeData =  Data(_: wwSensCommand)
                         self.peripheral?.writeValue(writeData, for: self.characteristic!, type: CBCharacteristicWriteType.withResponse)
                     }
                 } else {
                     let wwSensCommand:[UInt8] = [0x57,0x57,0x43,0x53,0x34,0x45,sensUInt8Array[0],sensUInt8Array[1],0x0D,0x0A]
                     if (self.peripheral != nil && self.characteristic != nil){
                         print("Setting WW Sensitivity")
-                        let writeData =  Data(bytes: wwSensCommand)
+                        let writeData =  Data(_: wwSensCommand)
                         self.peripheral?.writeValue(writeData, for: self.characteristic!, type: CBCharacteristicWriteType.withResponse)
                     }
                 }
@@ -83,7 +83,7 @@ class HWSettingsViewController: UIViewController, CBPeripheralDelegate, UIPicker
                 }
                 if (self.peripheral != nil && self.characteristic != nil){
                     print("Setting WW mode")
-                    let writeData =  Data(bytes: wwModeCommand)
+                    let writeData =  Data(_: wwModeCommand)
                     self.peripheral?.writeValue(writeData, for: self.characteristic!, type: CBCharacteristicWriteType.withResponse)
                 }
             }

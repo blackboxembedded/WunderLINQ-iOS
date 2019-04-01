@@ -36,6 +36,8 @@ class ContactsTableViewController: UITableViewController {
                     print("Not Allowed to access contacts")
                 }
             }
+        default:
+            print("Unknown status to access contacts")
         }
     }
     

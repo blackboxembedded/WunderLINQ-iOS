@@ -130,6 +130,8 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                 return -90
             case .portrait, .unknown: return 0
             case .portraitUpsideDown: return isFaceDown ? 180 : -180
+            default:
+                return 0
             }
         }()
         return adjAngle
@@ -2643,6 +2645,8 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             message = NSLocalizedString("bt_ready", comment: "")
             NSLog(message)
             resumeScan()
+        default:
+            message = NSLocalizedString("bt_unknown", comment: "")
         }
         
         if showAlert {
@@ -2807,7 +2811,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                     bleData.setcmdCharacteristic(cmdCharacteristic: characteristic)
                     
                     let getConfigCommand:[UInt8] = [0x57,0x52,0x57,0x0D,0x0A]
-                    let writeData =  Data(bytes: getConfigCommand)
+                    let writeData =  Data(_: getConfigCommand)
                     peripheral.writeValue(writeData, for: characteristic, type: CBCharacteristicWriteType.withResponse)
                     peripheral.readValue(for: characteristic)
                 }
@@ -2980,6 +2984,8 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             // Authorized
             //Nothing to do
             print("Allowed to access to Camera")
+        @unknown default:
+            print("Unknown to access to Camera")
         }
         
         //Microphone
@@ -3032,6 +3038,8 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             // Authorized
             //Nothing to do
             print("Allowed to access to Microphone")
+        @unknown default:
+            print("Unknown to access to Microphone")
         }
         
         //Save to Photo Library
@@ -3080,6 +3088,8 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             // Authorized
             //Nothing to do
             print("Allowed to access the Photo Library")
+        @unknown default:
+            print("Unknown to access to Photo Library")
         }
         
         //Play from Media Library
@@ -3111,6 +3121,8 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                     // Authorized
                     //Nothing to do
                     print("Allowed to access to Music Library")
+                @unknown default:
+                    print("Unknown to access to Music Library")
                 }
             }
         case .denied, .restricted:
@@ -3129,6 +3141,8 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             }
             alertController.addAction(openAction)
             self.present(alertController, animated: true, completion: nil)
+        @unknown default:
+            print("Unknown to access to Music Library")
         }
         
         //Contacts
@@ -3182,6 +3196,8 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                     self.present(alertController, animated: true, completion: nil)
                 }
             }
+        @unknown default:
+            print("Unknown to access to Contacts")
         }
         
         // Notifications
@@ -3237,6 +3253,8 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                         print("Allowed to use Notifications")
                     }
                 }
+            @unknown default:
+                print("Unknown to access to Camera")
             }
         }
         
@@ -3265,6 +3283,8 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             }
             alertController.addAction(openAction)
             self.present(alertController, animated: true, completion: nil)
+        @unknown default:
+            print("Unknown to access to Location")
         }
     }
     

@@ -387,7 +387,7 @@
 					7EA478491F40B154000CEDDC = {
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = 3J48UMN5W2;
-						LastSwiftMigration = 1010;
+						LastSwiftMigration = 1020;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
@@ -398,7 +398,7 @@
 					7EA4785D1F40B154000CEDDC = {
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = L5697YQ5RS;
-						LastSwiftMigration = 1010;
+						LastSwiftMigration = 1020;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 7EA478491F40B154000CEDDC;
 					};
@@ -715,7 +715,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.blackboxembedded.wunderlinq;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -741,7 +741,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.blackboxembedded.wunderlinq;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -759,7 +759,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.blackboxembedded.WunderLINQTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WunderLINQ.app/WunderLINQ";
 			};
 			name = Debug;
@@ -778,7 +778,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.blackboxembedded.WunderLINQTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WunderLINQ.app/WunderLINQ";
 			};
 			name = Release;
