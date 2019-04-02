@@ -451,77 +451,79 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     }
     
     private func updateCollectionViewLayout(with size: CGSize) {
-        if let layout = collectionView!.collectionViewLayout as? UICollectionViewFlowLayout {
-            var cellCount = UserDefaults.standard.integer(forKey: "GRIDCOUNT");
-            var height:CGFloat
-            var width:CGFloat
-            var widthMarginsAndInsets:CGFloat
-            var heightMarginsAndInsets:CGFloat
-            if #available(iOS 11.0, *) {
-                widthMarginsAndInsets = inset * 2 + collectionView!.safeAreaInsets.left + collectionView!.safeAreaInsets.right + minimumInteritemSpacing * CGFloat(cellsPerRow - 1)
-                heightMarginsAndInsets = inset * 2 + collectionView!.safeAreaInsets.top + collectionView!.safeAreaInsets.bottom + minimumInteritemSpacing * CGFloat(rowCount - 1)
-            } else {
-                // Fallback on earlier versions
-                widthMarginsAndInsets = inset * 2 + collectionView!.layoutMargins.left + collectionView!.layoutMargins.right + minimumInteritemSpacing * CGFloat(cellsPerRow - 1)
-                heightMarginsAndInsets = inset * 2 + (collectionView?.layoutMargins.top)! + collectionView!.layoutMargins.bottom + minimumInteritemSpacing * CGFloat(rowCount - 1)
-            }
-            if ( size.width > size.height){
-                switch (cellCount){
-                case 1:
-                    height = (size.height - (heightMarginsAndInsets))
-                    width = (size.width - widthMarginsAndInsets)
-                case 2:
-                    height = (size.height - (heightMarginsAndInsets))
-                    width = ((size.width - widthMarginsAndInsets) / CGFloat(2)).rounded(.down)
-                case 4:
-                    height = ((size.height - (heightMarginsAndInsets)) / CGFloat(2)).rounded(.down)
-                    width = ((size.width - widthMarginsAndInsets) / CGFloat(2)).rounded(.down)
-                    
-                case 8:
-                    height = ((size.height - (heightMarginsAndInsets)) / CGFloat(2)).rounded(.down)
-                    width = ((size.width - (widthMarginsAndInsets * 2)) / CGFloat(4)).rounded(.down)
-                case 12:
-                    height = ((size.height - (heightMarginsAndInsets)) / CGFloat(3)).rounded(.down)
-                    width = ((size.width - (widthMarginsAndInsets * 2)) / CGFloat(4)).rounded(.down)
-                case 15:
-                    height = ((size.height - (heightMarginsAndInsets)) / CGFloat(3)).rounded(.down)
-                    width = ((size.width - (widthMarginsAndInsets * 2)) / CGFloat(5)).rounded(.down)
-                default:
-                    cellCount = 15
-                    UserDefaults.standard.set(15, forKey: "GRIDCOUNT")
-                    height = ((size.height - (heightMarginsAndInsets)) / CGFloat(3)).rounded(.down)
-                    width = ((size.width - (widthMarginsAndInsets * 2)) / CGFloat(5)).rounded(.down)
+        if (collectionView != nil){
+            if let layout = collectionView!.collectionViewLayout as? UICollectionViewFlowLayout {
+                var cellCount = UserDefaults.standard.integer(forKey: "GRIDCOUNT");
+                var height:CGFloat
+                var width:CGFloat
+                var widthMarginsAndInsets:CGFloat
+                var heightMarginsAndInsets:CGFloat
+                if #available(iOS 11.0, *) {
+                    widthMarginsAndInsets = inset * 2 + collectionView!.safeAreaInsets.left + collectionView!.safeAreaInsets.right + minimumInteritemSpacing * CGFloat(cellsPerRow - 1)
+                    heightMarginsAndInsets = inset * 2 + collectionView!.safeAreaInsets.top + collectionView!.safeAreaInsets.bottom + minimumInteritemSpacing * CGFloat(rowCount - 1)
+                } else {
+                    // Fallback on earlier versions
+                    widthMarginsAndInsets = inset * 2 + collectionView!.layoutMargins.left + collectionView!.layoutMargins.right + minimumInteritemSpacing * CGFloat(cellsPerRow - 1)
+                    heightMarginsAndInsets = inset * 2 + (collectionView?.layoutMargins.top)! + collectionView!.layoutMargins.bottom + minimumInteritemSpacing * CGFloat(rowCount - 1)
                 }
-            } else {
-                switch (cellCount){
-                case 1:
-                    height = (size.height - (heightMarginsAndInsets))
-                    width = (size.width - widthMarginsAndInsets)
-                case 2:
-                    height = ((size.height - (heightMarginsAndInsets)) / CGFloat(2)).rounded(.down)
-                    width = (size.width - widthMarginsAndInsets)
-                case 4:
-                    height = ((size.height - (heightMarginsAndInsets)) / CGFloat(4)).rounded(.down)
-                    width = (size.width - widthMarginsAndInsets)
-                case 8:
-                    height = ((size.height - (heightMarginsAndInsets)) / CGFloat(4)).rounded(.down)
-                    width = ((size.width - widthMarginsAndInsets) / CGFloat(2)).rounded(.down)
-                case 12:
-                    height = ((size.height - (heightMarginsAndInsets)) / CGFloat(4)).rounded(.down)
-                    width = ((size.width - widthMarginsAndInsets) / CGFloat(3)).rounded(.down)
-                case 15:
-                    height = ((size.height - (heightMarginsAndInsets)) / CGFloat(5)).rounded(.down)
-                    width = ((size.width - widthMarginsAndInsets) / CGFloat(3)).rounded(.down)
-                default:
-                    cellCount = 15
-                    UserDefaults.standard.set(15, forKey: "GRIDCOUNT")
-                    height = ((size.height - (heightMarginsAndInsets)) / CGFloat(5)).rounded(.down)
-                    width = ((size.width - widthMarginsAndInsets) / CGFloat(3)).rounded(.down)
+                if ( size.width > size.height){
+                    switch (cellCount){
+                    case 1:
+                        height = (size.height - (heightMarginsAndInsets))
+                        width = (size.width - widthMarginsAndInsets)
+                    case 2:
+                        height = (size.height - (heightMarginsAndInsets))
+                        width = ((size.width - widthMarginsAndInsets) / CGFloat(2)).rounded(.down)
+                    case 4:
+                        height = ((size.height - (heightMarginsAndInsets)) / CGFloat(2)).rounded(.down)
+                        width = ((size.width - widthMarginsAndInsets) / CGFloat(2)).rounded(.down)
+                        
+                    case 8:
+                        height = ((size.height - (heightMarginsAndInsets)) / CGFloat(2)).rounded(.down)
+                        width = ((size.width - (widthMarginsAndInsets * 2)) / CGFloat(4)).rounded(.down)
+                    case 12:
+                        height = ((size.height - (heightMarginsAndInsets)) / CGFloat(3)).rounded(.down)
+                        width = ((size.width - (widthMarginsAndInsets * 2)) / CGFloat(4)).rounded(.down)
+                    case 15:
+                        height = ((size.height - (heightMarginsAndInsets)) / CGFloat(3)).rounded(.down)
+                        width = ((size.width - (widthMarginsAndInsets * 2)) / CGFloat(5)).rounded(.down)
+                    default:
+                        cellCount = 15
+                        UserDefaults.standard.set(15, forKey: "GRIDCOUNT")
+                        height = ((size.height - (heightMarginsAndInsets)) / CGFloat(3)).rounded(.down)
+                        width = ((size.width - (widthMarginsAndInsets * 2)) / CGFloat(5)).rounded(.down)
+                    }
+                } else {
+                    switch (cellCount){
+                    case 1:
+                        height = (size.height - (heightMarginsAndInsets))
+                        width = (size.width - widthMarginsAndInsets)
+                    case 2:
+                        height = ((size.height - (heightMarginsAndInsets)) / CGFloat(2)).rounded(.down)
+                        width = (size.width - widthMarginsAndInsets)
+                    case 4:
+                        height = ((size.height - (heightMarginsAndInsets)) / CGFloat(4)).rounded(.down)
+                        width = (size.width - widthMarginsAndInsets)
+                    case 8:
+                        height = ((size.height - (heightMarginsAndInsets)) / CGFloat(4)).rounded(.down)
+                        width = ((size.width - widthMarginsAndInsets) / CGFloat(2)).rounded(.down)
+                    case 12:
+                        height = ((size.height - (heightMarginsAndInsets)) / CGFloat(4)).rounded(.down)
+                        width = ((size.width - widthMarginsAndInsets) / CGFloat(3)).rounded(.down)
+                    case 15:
+                        height = ((size.height - (heightMarginsAndInsets)) / CGFloat(5)).rounded(.down)
+                        width = ((size.width - widthMarginsAndInsets) / CGFloat(3)).rounded(.down)
+                    default:
+                        cellCount = 15
+                        UserDefaults.standard.set(15, forKey: "GRIDCOUNT")
+                        height = ((size.height - (heightMarginsAndInsets)) / CGFloat(5)).rounded(.down)
+                        width = ((size.width - widthMarginsAndInsets) / CGFloat(3)).rounded(.down)
+                    }
                 }
+                let cellSize = CGSize(width: width, height: height)
+                layout.itemSize = cellSize
+                layout.invalidateLayout()
             }
-            let cellSize = CGSize(width: width, height: height)
-            layout.itemSize = cellSize
-            layout.invalidateLayout()
         }
     }
     
@@ -2867,7 +2869,9 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             } else {
                 UIScreen.main.brightness = CGFloat(UserDefaults.standard.float(forKey: "systemBrightness"))
             }
-            self.collectionView!.reloadData()
+            if (self.collectionView != nil){
+                self.collectionView!.reloadData()
+            }
         }
     }
     
