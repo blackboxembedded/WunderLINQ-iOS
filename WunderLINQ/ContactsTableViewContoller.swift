@@ -68,7 +68,7 @@ class ContactsTableViewController: UITableViewController {
                         if phoneNumber.label != nil {
                             let number = phoneNumber.value
                             let label = phoneNumber.label!
-                            if (!label.contains("FAX") && (label.contains("iPhone") || label.contains("Home") || label.contains("Mobile") || label.contains("Work"))){
+                            if (label.contains("phone") && (label.contains("iPhone") || label.contains("Home") || label.contains("Mobile") || label.contains("Work"))){
                                 let localizedLabel = CNLabeledValue<CNPhoneNumber>.localizedString(forLabel: label)
                                 let formatter = CNContactFormatter()
                                 var photo = UIImage(named: "Contact")?.withRenderingMode(.alwaysTemplate)
