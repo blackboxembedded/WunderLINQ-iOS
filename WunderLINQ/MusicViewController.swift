@@ -21,6 +21,9 @@ class MusicViewController: UIViewController {
     let playImage = UIImage(named: "play")
     let pauseImage = UIImage(named: "pause")
     
+    var seconds = 10
+    var timer = Timer()
+    var isTimerRunning = false
     
     @IBAction func previousBtnPress(_ sender: Any) {
     }
@@ -39,7 +42,7 @@ class MusicViewController: UIViewController {
     }
     
     let musicPlayer = MPMusicPlayerController.systemMusicPlayer
-    var timer = Timer()
+    var musicTimer = Timer()
     
     var trackElapsed: TimeInterval!
 
@@ -63,6 +66,9 @@ class MusicViewController: UIViewController {
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))
         swipeRight.direction = .right
         self.view.addGestureRecognizer(swipeRight)
+        
+        let touchRecognizer = UITapGestureRecognizer(target: self, action:  #selector(onTouch))
+        self.view.addGestureRecognizer(touchRecognizer)
         
         let backBtn = UIButton()
         backBtn.setImage(UIImage(named: "Left")?.withRenderingMode(.alwaysTemplate), for: .normal)
@@ -94,8 +100,8 @@ class MusicViewController: UIViewController {
         // Do any additional setup after loading the view.
         musicPlayer.prepareToPlay()
         
-        self.timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(MusicViewController.timerFired(_:)), userInfo: nil, repeats: true)
-        self.timer.tolerance = 0.1
+        self.musicTimer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(MusicViewController.timerFired(_:)), userInfo: nil, repeats: true)
+        self.musicTimer.tolerance = 0.1
         
         musicPlayer.beginGeneratingPlaybackNotifications()
         
@@ -107,6 +113,22 @@ class MusicViewController: UIViewController {
         } else {
             playButton.setImage(playImage, for: .normal)
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if isTimerRunning == false {
+            runTimer()
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        timer.invalidate()
+        seconds = 0
+        // Show the navigation bar on other view controllers
+        self.navigationController?.setNavigationBarHidden(false, animated: animated)
     }
 
     override func didReceiveMemoryWarning() {
@@ -242,5 +264,28 @@ class MusicViewController: UIViewController {
         self.timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(MusicViewController.timerFired(_:)), userInfo: nil, repeats: true)
         self.timer.tolerance = 0.1
     }
-
+    
+    @objc func onTouch() {
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+        if isTimerRunning == false {
+            runTimer()
+        }
+    }
+    func runTimer() {
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self,   selector: (#selector(updateTimer)), userInfo: nil, repeats: true)
+        isTimerRunning = true
+    }
+    
+    @objc func updateTimer() {
+        if seconds < 1 {
+            timer.invalidate()
+            //Send alert to indicate "time's up!"
+            isTimerRunning = false
+            seconds = 10
+            // Hide the navigation bar on the this view controller
+            self.navigationController?.setNavigationBarHidden(true, animated: true)
+        } else {
+            seconds -= 1
+        }
+    }
 }

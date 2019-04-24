@@ -45,6 +45,10 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
     
     var itemRow = 0
     
+    var seconds = 10
+    var timer = Timer()
+    var isTimerRunning = false
+    
     let scenic = ScenicAPI()
     
     private func loadRows() {
@@ -640,6 +644,22 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
             self.collectionView!.reloadData()
         }
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if isTimerRunning == false {
+            runTimer()
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        timer.invalidate()
+        seconds = 0
+        // Show the navigation bar on other view controllers
+        self.navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
 
     /*
     // MARK: - Navigation
@@ -693,6 +713,10 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
         itemRow = indexPath.row
         //self.collectionView!.scrollToItem(at: IndexPath(row: itemRow, section: 0), at: .centeredVertically, animated: true)
         //self.collectionView!.reloadData()
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+        if isTimerRunning == false {
+            runTimer()
+        }
         execute_task(taskID: mapping[indexPath.row])
     }
     
@@ -1011,7 +1035,30 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
             alertViewController.PHOTO = cameraImage
         }
     }
-
+    
+    @objc func onTouch() {
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+        if isTimerRunning == false {
+            runTimer()
+        }
+    }
+    func runTimer() {
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self,   selector: (#selector(updateTimer)), userInfo: nil, repeats: true)
+        isTimerRunning = true
+    }
+    
+    @objc func updateTimer() {
+        if seconds < 1 {
+            timer.invalidate()
+            //Send alert to indicate "time's up!"
+            isTimerRunning = false
+            seconds = 10
+            // Hide the navigation bar on the this view controller
+            self.navigationController?.setNavigationBarHidden(true, animated: true)
+        } else {
+            seconds -= 1
+        }
+    }
 }
 
 // Helper function inserted by Swift 4.2 migrator.

@@ -65,6 +65,10 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         .blackOverlayColor(UIColor(white: 0.0, alpha: 0.6))
     ]
     
+    var seconds = 10
+    var timer = Timer()
+    var isTimerRunning = false
+    
     let inset: CGFloat = 5
     let minimumLineSpacing: CGFloat = 5
     let minimumInteritemSpacing: CGFloat = 5
@@ -149,6 +153,9 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         super.viewWillAppear(animated)
         referenceAttitude = nil
         checkPermissions()
+        if isTimerRunning == false {
+            runTimer()
+        }
     }
 
     override func viewDidLoad() {
@@ -246,6 +253,9 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         
         let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(MainCollectionViewController.longPress(longPressGestureRecognizer:)))
         self.view.addGestureRecognizer(longPressRecognizer)
+        
+        let touchRecognizer = UITapGestureRecognizer(target: self, action:  #selector(MainCollectionViewController.onTouch))
+        self.view.addGestureRecognizer(touchRecognizer)
         
         // Setup Buttons
         backBtn = UIButton()
@@ -448,6 +458,15 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         updateCollectionViewLayout(with: size)
         referenceAttitude = nil
         super.viewWillTransition(to: size, with: coordinator)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        timer.invalidate()
+        seconds = 0
+        // Show the navigation bar on other view controllers
+        self.navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
     private func updateCollectionViewLayout(with size: CGSize) {
@@ -3723,6 +3742,29 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         }
     }
 
+    @objc func onTouch() {
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+        if isTimerRunning == false {
+            runTimer()
+        }
+    }
+    func runTimer() {
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self,   selector: (#selector(updateTimer)), userInfo: nil, repeats: true)
+        isTimerRunning = true
+    }
+    
+    @objc func updateTimer() {
+        if seconds < 1 {
+            timer.invalidate()
+            //Send alert to indicate "time's up!"
+            isTimerRunning = false
+            seconds = 10
+            // Hide the navigation bar on the this view controller
+            self.navigationController?.setNavigationBarHidden(true, animated: true)
+        } else {
+            seconds -= 1
+        }
+    }
 }
 
 extension MainCollectionViewController: UITableViewDelegate {
