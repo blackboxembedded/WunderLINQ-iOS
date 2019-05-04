@@ -271,7 +271,9 @@ class TripViewController: UIViewController {
         distanceLabel.text = "\(distance.rounded(toPlaces: 1)) \(distanceUnit)"
         
         // Calculate Duration
-        durationLabel.text = calculateDuration(start: startTime!,end: endTime!)
+        if ((startTime != nil) && (endTime != nil)){
+            durationLabel.text = calculateDuration(start: startTime!,end: endTime!)
+        }
         /*
         let bounds = GMSCoordinateBounds(path: path)
         let camera = mapView.camera(for: bounds, insets: UIEdgeInsets())!
