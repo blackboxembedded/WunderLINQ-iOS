@@ -184,6 +184,10 @@
 		7EC934F42187BE5100FD4806 /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		7EC934F52187BE5100FD4806 /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "WunderLINQ/es-419.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		7ED2013520D0D0030066BCE6 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		7EE02FE322A6BCCA0061330B /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Main.strings; sourceTree = "<group>"; };
+		7EE02FE422A6BCCA0061330B /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		7EE02FE522A6BCCA0061330B /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = WunderLINQ/ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		7EE02FE622A6BCCA0061330B /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -417,6 +421,7 @@
 				cs,
 				el,
 				sl,
+				ja,
 			);
 			mainGroup = 7EA478411F40B154000CEDDC;
 			productRefGroup = 7EA4784B1F40B154000CEDDC /* Products */;
@@ -528,6 +533,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				7E4D76E421DDAEC100825175 /* sl */,
+				7EE02FE622A6BCCA0061330B /* ja */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -542,6 +548,7 @@
 				7E52E9AF21A38D89008082FE /* cs */,
 				7E70D8F621A5FD2B0016CD74 /* el */,
 				7E8A1E5621DC326600207464 /* sl */,
+				7EE02FE322A6BCCA0061330B /* ja */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -556,6 +563,7 @@
 				7E52E9B021A38D89008082FE /* cs */,
 				7E70D8F721A5FD2B0016CD74 /* el */,
 				7E8A1E5721DC326600207464 /* sl */,
+				7EE02FE422A6BCCA0061330B /* ja */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -570,6 +578,7 @@
 				7E52E9B121A38D89008082FE /* cs */,
 				7E70D8F821A5FD2B0016CD74 /* el */,
 				7E8A1E5821DC326600207464 /* sl */,
+				7EE02FE522A6BCCA0061330B /* ja */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
