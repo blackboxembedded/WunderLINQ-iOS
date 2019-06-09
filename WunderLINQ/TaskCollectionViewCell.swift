@@ -21,14 +21,20 @@ class TaskCollectionViewCell: UICollectionViewCell {
     }
     
     func highlightEffect(){
-        taskImage.backgroundColor = UIColor.blue
-        taskLabel.backgroundColor = UIColor.blue
-        contentView.backgroundColor = UIColor.blue
+        taskImage.backgroundColor = UIColor(red:0.00, green:0.35, blue:1.00, alpha:1.0)
+        taskLabel.backgroundColor = UIColor(red:0.00, green:0.35, blue:1.00, alpha:1.0)
+        taskLabel.textColor = UIColor.white
+        contentView.backgroundColor = UIColor(red:0.00, green:0.35, blue:1.00, alpha:1.0)
     }
     
     func removeHighlight(color: UIColor){
         taskImage.backgroundColor = color
         taskLabel.backgroundColor = color
+        if (color == UIColor.white){
+            taskLabel.textColor = UIColor.black
+        } else {
+            taskLabel.textColor = UIColor.white
+        }
         contentView.backgroundColor = color
     }
     
