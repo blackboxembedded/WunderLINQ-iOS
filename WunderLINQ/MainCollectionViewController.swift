@@ -143,9 +143,17 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
 
     override var preferredStatusBarStyle : UIStatusBarStyle {
         if UserDefaults.standard.bool(forKey: "nightmode_preference") {
-            return .lightContent
+            if(self.navigationController?.isToolbarHidden ?? false){
+                return .default
+            } else {
+                return .lightContent
+            }
         } else {
-            return .default
+            if(self.navigationController?.isToolbarHidden ?? false){
+                return .lightContent
+            } else {
+                return .default
+            }
         }
     }
     
@@ -3816,6 +3824,19 @@ extension MainCollectionViewController: UITableViewDataSource {
         let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
         cell.textLabel?.text = self.popoverMenuList[(indexPath as NSIndexPath).row]
         return cell
+    }
+}
+
+extension UINavigationController {
+    
+    open override var preferredStatusBarStyle: UIStatusBarStyle {
+        print("UINavigationController: preferredStatusBarStyle")
+        if UserDefaults.standard.bool(forKey: "nightmode_preference") {
+            return .lightContent
+        } else {
+            print("UINavigationController: preferredStatusBarStyle - light")
+            return .default
+        }
     }
 }
 

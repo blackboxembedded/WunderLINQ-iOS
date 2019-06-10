@@ -636,6 +636,14 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
         do { currentLocation = locations.last }
     }
     
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        if UserDefaults.standard.bool(forKey: "nightmode_preference") {
+            return .lightContent
+        } else {
+            return .default
+        }
+    }
+    
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         self.loadTasks()

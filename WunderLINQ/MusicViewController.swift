@@ -45,6 +45,16 @@ class MusicViewController: UIViewController {
     var musicTimer = Timer()
     
     var trackElapsed: TimeInterval!
+    
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        if UserDefaults.standard.bool(forKey: "nightmode_preference") {
+            print("StausBarStyle: Setting lightContent")
+            return .lightContent
+        } else {
+            print("StausBarStyle: Setting default")
+            return .default
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
