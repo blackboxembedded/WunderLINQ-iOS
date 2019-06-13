@@ -89,6 +89,7 @@
 				<integer>3</integer>
 				<integer>4</integer>
 				<integer>5</integer>
+                <integer>6</integer>
 			</array>
 			<key>Titles</key>
 			<array>
@@ -98,6 +99,7 @@
 				<string>nav_app_sygic</string>
 				<string>nav_app_waze</string>
 				<string>nav_app_mapsme</string>
+                <string>nav_app_osmand</string>
 			</array>
 		</dict>
 		<dict>

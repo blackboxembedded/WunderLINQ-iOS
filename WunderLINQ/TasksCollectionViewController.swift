@@ -359,6 +359,39 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
                                                             }
                             })
                         }
+                    case 6:
+                        //OsmAnd
+                        // osmandmaps://?lat=45.6313&lon=34.9955&z=8&title=New+York
+                        if currentLocation != nil {
+                            let geocoder = CLGeocoder()
+                            geocoder.geocodeAddressString(homeAddress,
+                                                          completionHandler: { (placemarks, error) in
+                                                            if error == nil {
+                                                                let startLatitude: CLLocationDegrees = (self.currentLocation?.coordinate.latitude)!
+                                                                let startLongitude: CLLocationDegrees = (self.currentLocation?.coordinate.longitude)!
+                                                                let placemark = placemarks?.first
+                                                                let lat = placemark?.location?.coordinate.latitude
+                                                                let lon = placemark?.location?.coordinate.longitude
+                                                                let destLatitude: CLLocationDegrees = lat!
+                                                                let destLongitude: CLLocationDegrees = lon!
+                                                                let urlString = "osmandmaps://?lat=\(destLatitude)&lon=\(destLongitude)&z=8&title=\(NSLocalizedString("home", comment: ""))"
+                                                                
+                                                                if let osmAndURL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
+                                                                    if (UIApplication.shared.canOpenURL(osmAndURL)) {
+                                                                        if #available(iOS 10, *) {
+                                                                            UIApplication.shared.open(osmAndURL, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
+                                                                        } else {
+                                                                            UIApplication.shared.openURL(osmAndURL as URL)
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                            else {
+                                                                // An error occurred during geocoding.
+                                                                self.showToast(message: NSLocalizedString("geocode_error", comment: ""))
+                                                            }
+                            })
+                        }
                     default:
                         //Apple Maps
                         let geocoder = CLGeocoder()

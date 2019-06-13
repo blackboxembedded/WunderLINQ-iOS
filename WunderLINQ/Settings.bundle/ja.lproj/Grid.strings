@@ -34,4 +34,6 @@
 "fueleconomyone_header" = "燃費１";
 "fueleconomytwo_header" = "燃費２";
 "fuelrange_header" = "走行可能距離";
-
+"leanangle_header" = "バンク角";
+"gforce_header" = "加速度";
+"bearing_header" = "進行方向";

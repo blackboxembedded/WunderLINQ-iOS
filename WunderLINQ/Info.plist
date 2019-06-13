@@ -36,6 +36,7 @@
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>mapsme</string>
+		<string>osmandmaps</string>
 		<string>mapswithme</string>
 		<string>mapswithmepro</string>
 		<string>googlemaps</string>

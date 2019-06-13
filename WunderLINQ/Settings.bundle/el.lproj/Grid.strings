@@ -34,3 +34,6 @@
 "fueleconomyone_header" = "Κατανάλωση καυσίμου 1";
 "fueleconomytwo_header" = "Κατανάλωση καυσίμου 2";
 "fuelrange_header" = "Αυτονομία καυσίμου";
+"leanangle_header" = "Γωνία κλίσης";
+"gforce_header" = "Επιτάχυνση G";
+"bearing_header" = "Κύλιση";

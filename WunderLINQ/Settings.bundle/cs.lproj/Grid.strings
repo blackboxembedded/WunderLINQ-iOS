@@ -34,3 +34,6 @@
 "fueleconomyone_header" = "Spotřeba 1";
 "fueleconomytwo_header" = "Spotřeba 2";
 "fuelrange_header" = "Dojezd";
+"leanangle_header" = "Úhel náklonu";
+"gforce_header" = "G";
+"bearing_header" = "Směr";

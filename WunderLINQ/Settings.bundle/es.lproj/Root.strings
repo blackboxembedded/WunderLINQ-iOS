@@ -10,6 +10,7 @@
 "nav_app_sygic" = "Sygic"; // JCAL 20190303
 "nav_app_waze" = "Waze"; // JCAL 20190303
 "nav_app_mapsme" = "Maps.me"; // Needs translation
+"nav_app_osmand" = "OsmAnd";
 "pref_nightMode_name" = "Modo noche";
 "pref_pressuref_name" = "Unidad de presión";
 "pressuref_bar" = "Bar"; // JCAL 20190303

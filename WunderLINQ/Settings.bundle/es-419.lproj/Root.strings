@@ -10,6 +10,7 @@
 "nav_app_sygic" = "Sygic"; // Needs Translation
 "nav_app_waze" = "Waze"; // Needs Translation
 "nav_app_mapsme" = "Maps.me"; // Needs translation
+"nav_app_osmand" = "OsmAnd";
 "pref_nightMode_name" = "Modo nocturno";
 "pref_pressuref_name" = "Unidad de Presión";
 "pressuref_bar" = "Bar"; // Needs Translation

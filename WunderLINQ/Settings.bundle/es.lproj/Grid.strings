@@ -34,3 +34,6 @@
 "fueleconomyone_header" = "Combustible 1";
 "fueleconomytwo_header" = "Combustible 2";
 "fuelrange_header" = "Rango/Alcance";
+"leanangle_header" = "Ángulo de inclinación"; // JCAL 20190303
+"gforce_header" = "Fuerza-G"; // JCAL 20190303
+"bearing_header" = "Orientación"; // JCAL 20190303

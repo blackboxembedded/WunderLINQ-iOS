@@ -34,3 +34,6 @@
 "fueleconomyone_header" = "Verbrauch 1";
 "fueleconomytwo_header" = "Verbrauch 2";
 "fuelrange_header" = "Reichweite";
+"leanangle_header" = "Neigungswinkel";
+"gforce_header" = "Beschleunigungskraft";
+"bearing_header" = "Peilung";

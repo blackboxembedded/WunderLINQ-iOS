@@ -28,6 +28,9 @@
 				<integer>18</integer>
 				<integer>19</integer>
 				<integer>20</integer>
+                <integer>21</integer>
+                <integer>22</integer>
+                <integer>23</integer>
 			</array>
 			<key>DefaultValue</key>
 			<integer>0</integer>
@@ -54,6 +57,9 @@
 				<string>fueleconomytwo_header</string>
 				<string>fuelrange_header</string>
 				<string>shifts_header</string>
+                <string>leanangle_header</string>
+                <string>gforce_header</string>
+                <string>bearing_header</string>
 			</array>
 			<key>Key</key>
 			<string>grid_one_preference</string>
@@ -86,6 +92,9 @@
 				<integer>18</integer>
 				<integer>19</integer>
 				<integer>20</integer>
+                <integer>21</integer>
+                <integer>22</integer>
+                <integer>23</integer>
 			</array>
 			<key>DefaultValue</key>
 			<integer>1</integer>
@@ -112,6 +121,9 @@
 				<string>fueleconomytwo_header</string>
 				<string>fuelrange_header</string>
 				<string>shifts_header</string>
+                <string>leanangle_header</string>
+                <string>gforce_header</string>
+                <string>bearing_header</string>
 			</array>
 			<key>Key</key>
 			<string>grid_two_preference</string>
@@ -144,6 +156,9 @@
 				<integer>18</integer>
 				<integer>19</integer>
 				<integer>20</integer>
+                <integer>21</integer>
+                <integer>22</integer>
+                <integer>23</integer>
 			</array>
 			<key>DefaultValue</key>
 			<integer>2</integer>
@@ -170,6 +185,9 @@
 				<string>fueleconomytwo_header</string>
 				<string>fuelrange_header</string>
 				<string>shifts_header</string>
+                <string>leanangle_header</string>
+                <string>gforce_header</string>
+                <string>bearing_header</string>
 			</array>
 			<key>Key</key>
 			<string>grid_three_preference</string>
@@ -202,6 +220,9 @@
 				<integer>18</integer>
 				<integer>19</integer>
 				<integer>20</integer>
+                <integer>21</integer>
+                <integer>22</integer>
+                <integer>23</integer>
 			</array>
 			<key>DefaultValue</key>
 			<integer>3</integer>
@@ -228,6 +249,9 @@
 				<string>fueleconomytwo_header</string>
 				<string>fuelrange_header</string>
 				<string>shifts_header</string>
+                <string>leanangle_header</string>
+                <string>gforce_header</string>
+                <string>bearing_header</string>
 			</array>
 			<key>Key</key>
 			<string>grid_four_preference</string>
@@ -260,6 +284,9 @@
 				<integer>18</integer>
 				<integer>19</integer>
 				<integer>20</integer>
+                <integer>21</integer>
+                <integer>22</integer>
+                <integer>23</integer>
 			</array>
 			<key>DefaultValue</key>
 			<integer>4</integer>
@@ -286,6 +313,9 @@
 				<string>fueleconomytwo_header</string>
 				<string>fuelrange_header</string>
 				<string>shifts_header</string>
+                <string>leanangle_header</string>
+                <string>gforce_header</string>
+                <string>bearing_header</string>
 			</array>
 			<key>Key</key>
 			<string>grid_five_preference</string>
@@ -318,6 +348,9 @@
 				<integer>18</integer>
 				<integer>19</integer>
 				<integer>20</integer>
+                <integer>21</integer>
+                <integer>22</integer>
+                <integer>23</integer>
 			</array>
 			<key>DefaultValue</key>
 			<integer>5</integer>
@@ -344,6 +377,9 @@
 				<string>fueleconomytwo_header</string>
 				<string>fuelrange_header</string>
 				<string>shifts_header</string>
+                <string>leanangle_header</string>
+                <string>gforce_header</string>
+                <string>bearing_header</string>
 			</array>
 			<key>Key</key>
 			<string>grid_six_preference</string>
@@ -376,6 +412,9 @@
 				<integer>18</integer>
 				<integer>19</integer>
 				<integer>20</integer>
+                <integer>21</integer>
+                <integer>22</integer>
+                <integer>23</integer>
 			</array>
 			<key>DefaultValue</key>
 			<integer>6</integer>
@@ -402,6 +441,9 @@
 				<string>fueleconomytwo_header</string>
 				<string>fuelrange_header</string>
 				<string>shifts_header</string>
+                <string>leanangle_header</string>
+                <string>gforce_header</string>
+                <string>bearing_header</string>
 			</array>
 			<key>Key</key>
 			<string>grid_seven_preference</string>
@@ -434,6 +476,9 @@
 				<integer>18</integer>
 				<integer>19</integer>
 				<integer>20</integer>
+                <integer>21</integer>
+                <integer>22</integer>
+                <integer>23</integer>
 			</array>
 			<key>DefaultValue</key>
 			<integer>7</integer>
@@ -460,6 +505,9 @@
 				<string>fueleconomytwo_header</string>
 				<string>fuelrange_header</string>
 				<string>shifts_header</string>
+                <string>leanangle_header</string>
+                <string>gforce_header</string>
+                <string>bearing_header</string>
 			</array>
 			<key>Key</key>
 			<string>grid_eight_preference</string>
@@ -492,6 +540,9 @@
 				<integer>18</integer>
 				<integer>19</integer>
 				<integer>20</integer>
+                <integer>21</integer>
+                <integer>22</integer>
+                <integer>23</integer>
 			</array>
 			<key>DefaultValue</key>
 			<integer>8</integer>
@@ -518,6 +569,9 @@
 				<string>fueleconomytwo_header</string>
 				<string>fuelrange_header</string>
 				<string>shifts_header</string>
+                <string>leanangle_header</string>
+                <string>gforce_header</string>
+                <string>bearing_header</string>
 			</array>
 			<key>Key</key>
 			<string>grid_nine_preference</string>
@@ -550,6 +604,9 @@
 				<integer>18</integer>
 				<integer>19</integer>
 				<integer>20</integer>
+                <integer>21</integer>
+                <integer>22</integer>
+                <integer>23</integer>
 			</array>
 			<key>DefaultValue</key>
 			<integer>9</integer>
@@ -576,6 +633,9 @@
 				<string>fueleconomytwo_header</string>
 				<string>fuelrange_header</string>
 				<string>shifts_header</string>
+                <string>leanangle_header</string>
+                <string>gforce_header</string>
+                <string>bearing_header</string>
 			</array>
 			<key>Key</key>
 			<string>grid_ten_preference</string>
@@ -608,6 +668,9 @@
 				<integer>18</integer>
 				<integer>19</integer>
 				<integer>20</integer>
+                <integer>21</integer>
+                <integer>22</integer>
+                <integer>23</integer>
 			</array>
 			<key>DefaultValue</key>
 			<integer>10</integer>
@@ -634,6 +697,9 @@
 				<string>fueleconomytwo_header</string>
 				<string>fuelrange_header</string>
 				<string>shifts_header</string>
+                <string>leanangle_header</string>
+                <string>gforce_header</string>
+                <string>bearing_header</string>
 			</array>
 			<key>Key</key>
 			<string>grid_eleven_preference</string>
@@ -666,6 +732,9 @@
 				<integer>18</integer>
 				<integer>19</integer>
 				<integer>20</integer>
+                <integer>21</integer>
+                <integer>22</integer>
+                <integer>23</integer>
 			</array>
 			<key>DefaultValue</key>
 			<integer>11</integer>
@@ -692,6 +761,9 @@
 				<string>fueleconomytwo_header</string>
 				<string>fuelrange_header</string>
 				<string>shifts_header</string>
+                <string>leanangle_header</string>
+                <string>gforce_header</string>
+                <string>bearing_header</string>
 			</array>
 			<key>Key</key>
 			<string>grid_twelve_preference</string>
@@ -724,6 +796,9 @@
 				<integer>18</integer>
 				<integer>19</integer>
 				<integer>20</integer>
+                <integer>21</integer>
+                <integer>22</integer>
+                <integer>23</integer>
 			</array>
 			<key>DefaultValue</key>
 			<integer>12</integer>
@@ -750,6 +825,9 @@
 				<string>fueleconomytwo_header</string>
 				<string>fuelrange_header</string>
 				<string>shifts_header</string>
+                <string>leanangle_header</string>
+                <string>gforce_header</string>
+                <string>bearing_header</string>
 			</array>
 			<key>Key</key>
 			<string>grid_thirteen_preference</string>
@@ -782,6 +860,9 @@
 				<integer>18</integer>
 				<integer>19</integer>
 				<integer>20</integer>
+                <integer>21</integer>
+                <integer>22</integer>
+                <integer>23</integer>
 			</array>
 			<key>DefaultValue</key>
 			<integer>13</integer>
@@ -808,6 +889,9 @@
 				<string>fueleconomytwo_header</string>
 				<string>fuelrange_header</string>
 				<string>shifts_header</string>
+                <string>leanangle_header</string>
+                <string>gforce_header</string>
+                <string>bearing_header</string>
 			</array>
 			<key>Key</key>
 			<string>grid_fourteen_preference</string>
@@ -840,6 +924,9 @@
 				<integer>18</integer>
 				<integer>19</integer>
 				<integer>20</integer>
+                <integer>21</integer>
+                <integer>22</integer>
+                <integer>23</integer>
 			</array>
 			<key>DefaultValue</key>
 			<integer>14</integer>
@@ -866,6 +953,9 @@
 				<string>fueleconomytwo_header</string>
 				<string>fuelrange_header</string>
 				<string>shifts_header</string>
+                <string>leanangle_header</string>
+                <string>gforce_header</string>
+                <string>bearing_header</string>
 			</array>
 			<key>Key</key>
 			<string>grid_fifteen_preference</string>

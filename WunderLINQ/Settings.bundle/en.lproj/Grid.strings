@@ -34,3 +34,6 @@
 "fueleconomyone_header" = "Fuel Economy 1";
 "fueleconomytwo_header" = "Fuel Economy 2";
 "fuelrange_header" = "Fuel Range";
+"leanangle_header" = "Lean Angle";
+"gforce_header" = "g-force";
+"bearing_header" = "Bearing";
