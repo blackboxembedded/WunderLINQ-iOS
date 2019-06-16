@@ -1,0 +1,234 @@
+/*
+ Localizable.strings
+ WunderLINQ
+ 
+ Created by Keith Conger on 8/27/17.
+ Copyright © 2017 Black Box Embedded, LLC. All rights reserved.
+ */
+
+// Product
+"product" = "WunderLINQ";
+
+// MyMotorcycleViewController
+"main_title" = "Motorkerékpár";
+"disclaimer_alert_title" = "FIGYELEM!";
+"disclaimer_alert_body" = "Vezetés közben ne adj meg útvonal információkat és változtass beállításokat a WunderLINQ-ben.\nHa nem használod a járműved teljes odafigyeléssel, az halált, komoly sérülést vagy károkozást ereményezhet.\nAz eszköz használatáért teljes felelősséggel és kockázatátvállalással tartozol.";
+"disclaimer_ok" = "Egyetértek";
+"disclaimer_quit" = "Kilépés";
+"negative_alert_title" = "Korlátozott funkcionalitás";
+"negative_location_alert_body" = "Mivel nem járultál hozzá az aktuális helyzethez való hozzáféréshez, az applikáció nem lesz képes útipontokat vagy az útvonalat rögzíteni.";
+"negative_write_alert_body" = "Mivel nem járultál hozzá a fotókönyvtárhoz való hozzáféréshez, az applikáció nem tud fényképeket elmenteni.";
+"negative_media_alert_body" = "Mivel nem járultál hozzá a a médiakönyvtárhoz való hozzáféréshez, az applikáció nem tud eltárólt zenét lejátszani.";
+"negative_contacts_alert_body" = "Mivel nem járultál hozzá a telefonkönyvhez való hozzáféréshez, az applikáció nem tud hivható kpcsolatokat kijelezni.";
+"negative_camera_alert_body" = "Mivel nem járultál hozzá a kamerához való hozzáféréshez, az applikáció nem tud fényképeket vagy videókat rögzíteni.";
+"negative_microphone_alert_body" = "Mivel nem járultál hozzá a mikrofonhoz való hozzáféréshez, az applikáció nem tud videókat rögzíteni.";
+"negative_notification_body" = "Mivel nem járultál hozzá az értesítések megjelenítéséhez, az applikáció nem lesz képes a hibákról értesítést küldeni.";
+"alert_message_exit_ok" = "OK";
+"negative_alert_btn_ok" = "Beállítások";
+"negative_alert_btn_cancel" = "Megszakítás";
+"bt_powered_off" = "Ezen az eszközön a Bluetooth jelenleg ki van kapcsolva.";
+"bt_not_supported" = "Ez az eszköz nem támogatja az alacsony energiafelhasználású Bluetooth üzemmódot.";
+"bt_not_authorized" = "Az applikációnak nincs jogosultsága az az alacsony energiafelhasználású Bluetooth üzemmód használatához.";
+"bt_resetting" = "A BLE Manager újraindul, várakozás az állapotfrissítésre.";
+"bt_unknown" = "A BLE Manager állapota ismeretlen.";
+"bt_ready" = "A Bluetooth LE be van kapcsolva és kommunikácóra kész.";
+"bt_alert_title" = "Központi Manager Állapot";
+"trip_logs_label" = "Útvonalak";
+"waypoints_label" = "Útipontok";
+"blank_field" = "∞";
+"rdc_front_label" = "Első kerék";
+"rdc_rear_label" = "Hátsó kerék";
+"engine_temp_label" = "Motor hőmérséklet";
+"ambient_temp_label" = "Környező hőmérséklet";
+"odometer_label" = "Kilométeróra";
+"trip1_label" = "Napi számláló 1";
+"trip2_label" = "Napi számláló 2";
+"gear_label" = "Fokozat";
+"settings_label" = "Beállítások";
+"geodata_label" = "Útvonalak és útipontok";
+"appsettings_label" = "Applikáció beállítások";
+"about_label" = "Információk";
+"close_label" = "Bezárás";
+"hwsettings_label" = "Eszközbeállítások";
+"select_bt" = "Kiválasztás";
+
+//HWSettingsViewController
+"fw_config_title" = "WunderLINQ beállítások";
+"wwtype_label" = "Keréktípus";
+"wwMode1" = "Teljes";
+"wwMode2" = "RT";
+"wwMode3" = "Egyedi";
+"sensitivity_label" = "Érzékenység";
+"config_write_label" = "Beállítások mentése";
+"hwsave_alert_title" = "Figyelem!";
+"hwsave_alert_body" = "Az új eszközbeállítások mentése után a WunderLINQ eszköz instabillá válhat ezért el kell távolítani és újta behelyezni a tartóba.";
+"hwsave_alert_btn_ok" = "Folytatás";
+"hwsave_alert_btn_cancel" = "Elvetés";
+
+//AboutViewController
+"about_title" = "Információk";
+"version_label" = "Verzió:";
+"btn_sendlogs_title" = "Elküldöttek";
+"sendlogs_body" = "Kérlek írd le a problémát:\n";
+"credits_label" = "Együttműködők";
+
+// AlertViewController
+"alert_label_fuel" = "Útvonal a legközelebbi töltőállomáshoz?";
+"alert_title_fuel" = "Alacsony üzemanyagszint";
+"alert_title_photopreview" = "Fénykép előnézet"; // Needs translation
+"alert_btn_close" = "Bezár";
+"alert_btn_ok" = "OK";
+
+// FaultsTableViewController
+"fault_title" = "Aktív hibák";
+
+// TripsTableViewController
+"trips_title" = "Rögzített útvonalak";
+
+// TripViewController
+"trip_view_title" = "Útvonal";
+"trip_view_waypoint_start_label" = "Indít";
+"trip_view_waypoint_end_label" = "Vége";
+"trip_view_tv_distance" = "Távolság";
+"trip_view_tv_duration" = "Időtartam";
+"trip_view_tv_speed" = "Sebesség (átlag/max)";
+"trip_view_tv_shifts" = "Fokozatváltások";
+"trip_view_tv_brakes" = "Fékek (első/hátsó)";
+"trip_view_tv_ambient" = "Környező hőmérséklet (min/átlag/max)";
+"trip_view_tv_engine" = "Motorhőmérséklet (min/átlag/max)";
+"hours" = "Óra";
+"minutes" = "Perc";
+"seconds" = "Másodperc";
+"delete_trip_alert_title" = "Figyelem!";
+"delete_trip_alert_body" = "Útvonal törlése?";
+"delete_bt" = "Töröl";
+"cancel_bt" = "Elvetés";
+
+// WaypointsTableViewController
+"waypoint_title" = "Mentett útipontok";
+
+// WaypointViewController
+"waypoint_view_title" = "Mentett útipont";
+"waypoint_view_tv_date_label" = "Dátum rögzítve";
+"waypoint_view_tv_lat_label" = "Szélesség";
+"waypoint_view_tv_lon_label" = "Hosszúság";
+"waypoint_view_tv_label_label" = "Cimke";
+"waypoint_view_bt_open" = "Megnyitás térképapplikációban";
+"waypoint_view_bt_nav" = "Navigálás";
+"waypoint_view_bt_share" = "Megosztás";
+"waypoint_view_bt_delete" = "Törlés";
+"delete_waypoint_alert_title" = "Figyelem!";
+"delete_waypoint_alert_body" = "Útipont törlése?";
+
+// CompassViewController
+"compass_title" = "Iránytű";
+"north" = "É";
+"north_west" = "ENY";
+"north_east" = "ÉK";
+"south" = "D";
+"south_west" = "DNY";
+"south_east" = "DK";
+"west" = "NY";
+"east" = "K";
+
+// MusicViewController
+"music_title" = "Zene";
+
+// TasksTableViewController
+"quicktask_title" = "Gyorsmenű";
+"task_title_navigation" = "Navigáció";
+"task_title_gohome" = "Vissza a főképernyőre";
+"home" = "Vissza";
+"geocode_error" = "Hiba a geokód keresésénél.";
+"toast_address_not_set" = "Nincs otthoni cím megadva a beállításokban";
+"task_title_favnumber" = "Kedvenc szám hívása";
+"toast_phone_not_set" = "Nincs otthoni szám megadva a beállításokban";
+"task_title_callcontact" = "Kapcsolat felhívása";
+"task_title_photo" = "Fénykép készítése";
+"task_title_selfie" = "Selfie készítése";
+"task_title_start_record" = "Videófelvétel indítása";
+"task_title_stop_record" = "Videófelvétel leállítása";
+"task_title_start_trip" = "Útvonal rögzítése";
+"task_title_stop_trip" = "Útvonal rögzítésének leállítása";
+"task_title_waypoint" = "Útipont mentése";
+"task_title_settings" = "Beállítások";
+"toast_waypoint_saved" = "Útipont elmentve";
+"task_title_waypoint_nav" = "Útiponthoz navigálás";
+"toast_photo_taken" = "Fénykép elkészítve!";
+
+// LocationService
+"time_header" = "Idő";
+"latitude_header" = "Szélesség";
+"longitude_header" = "Hosszúság";
+"altitude_header" = "Magasság";
+"gpsspeed_header" = "GPS sebesség";
+"gear_header" = "Fokozat";
+"enginetemp_header" = "Motor hőmérséklet";
+"ambienttemp_header" = "Környező hőmérséklet";
+"frontpressure_header" = "Első keréknyomás";
+"rearpressure_header" = "Hátsó keréknyomás";
+"odometer_header" = "Kilómeteróra";
+"voltage_header" = "Feszültség";
+"throttle_header" = "Gázkar állása";
+"frontbrakes_header" = "Első fékek";
+"rearbrakes_header" = "Hátsó fékek";
+"shifts_header" = "Váltások";
+"vin_header" = "Alvázszám";
+"ambientlight_header" = "Környező fényerő";
+"tripone_header" = "Napi számláló 1";
+"triptwo_header" = "Napi számláló 2";
+"tripauto_header" = "Automatikus napi számláló";
+"speed_header" = "Sebesség";
+"avgspeed_header" = "Átlagsebesség";
+"cconsumption_header" = "Pillananyi fogyasztás";
+"fueleconomyone_header" = "Üzemanyag takarékosság 1";
+"fueleconomytwo_header" = "Üzemanyag takarékosság 2";
+"fuelrange_header" = "Megtehető távolság";
+"leanangle_header" = "Dőlésszög";
+"gforce_header" = "G-erő";
+"bearing_header" = "Irány";
+
+// ContactsTableViewController
+"contactlist_title" = "Kapcsolatok";
+
+// WaypointsNavTableViewController
+"waypoints_nav_title" = "Útipontok";
+
+// Fault Description
+"fault_ABSSLF" = "ABS diagnosztika nincs befejezve";
+"fault_ABSERR" = "ABS hiba";
+"fault_ABSDAC" = "ABS kikapcsolva";
+"fault_ASCSLF" = "ASC diagnosztika nincs befejezve";
+"fault_ASCINT" = "ASC beavatkozás";
+"fault_ASCERR" = "ASC hiba";
+"fault_ASCDAC" = "ASC kikapcsolva";
+"fault_FUELF" = "Alacsony üzemanyagszint";
+"fault_TIREFWF" = "Első keréknyomás figyelmeztetés";
+"fault_TIRERWF" = "Hátsó keréknyomás figyelmeztetés";
+"fault_TIREFCF" = "Első keréknyomás kritikus";
+"fault_TIRERCF" = "Hátsó keréknyomás kritikus";
+"fault_LAMPAFL1" = "Kiegészítő fényszóró 1";
+"fault_LAMPAFL2" = "Kiegészítő fényszóró 2";
+"fault_LAMPDAY" = "Nappali menetfény";
+"fault_LAMPFLI" = "Bal első irányjelző";
+"fault_LAMPFRI" = "Jobb első irányjelző";
+"fault_LAMPRLI" = "Bal hátsó irányjelző";
+"fault_LAMPRRI" = "Bal hátsó irányjelző";
+"fault_LAMPFPK1" = "Első parkolófény 1";
+"fault_LAMPFPK2" = "Első parkolófény 2";
+"fault_LAMPLOW" = "Topmpított fényszóró";
+"fault_LAMPHI" = "Távolsági fényszóró";
+"fault_LAMPREAR" = "Hátsó világítás";
+"fault_LAMPBRK" = "Féklámpa";
+"fault_LAMPLIC" = "Rendszámtábla világítás";
+"fault_LAMPRFOG" = "Hátsó ködfényszóró";
+"fault_LAMPADDD" = "Kiegészítő tompított/távolsági";
+"fault_LAMPADDB" = "Kiegészítő féklámpa";
+"fault_LAMPFL1" = "Első lámpa 1";
+"fault_LAMPFL2" = "Első lámpa 2";
+"fault_ICEWARN" = "Fagyveszély";
+"fault_GENWARNFSYLW" = "Az általános figyelmeztető jelzés sárgán villog";
+"fault_GENWARNSHYLW" = "Az általános figyelmeztető jelzés sárgán világít";
+"fault_GENWARNFSRED" = "Az általános figyelmeztető jelzés pirosan villog";
+"fault_GENWARNSHRED" = "Az általános figyelmeztető jelzés pirosan világít";
+"fault_OILLOW" = "Alacsony motorolajszint";

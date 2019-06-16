@@ -1,0 +1,17 @@
+/*
+ InfoPlist.strings
+ WunderLINQ
+ 
+ Created by Keith Conger on 12/13/18.
+ Copyright © 2018 Black Box Embedded, LLC. All rights reserved.
+ */
+"NSContactsUsageDescription" = "A WunderLINQ-nek szüksége van hozzáférési jogosultságra a telefonkönyvedhez, hogy kijelezni tudja az ismerősök telefonszámát.";
+"NSCameraUsageDescription" = "A WunderLINQ-nek szüksége van hozzáférési jogosultságra a kamerádhoz hogy féynképeket és videókat készíthessen.";
+"NSLocationAlwaysAndWhenInUseUsageDescription" = "A WunderLINQ-nek szüksége van hozzáférési jogosultságra az aktuális helyzetedhez, hogy az aktuális pozíciód alapján rögzíthesse az útvonalat és az útipontokat.";
+"NSLocationAlwaysUsageDescription" = "A WunderLINQ-nek szüksége van hozzáférési jogosultságra az aktuális helyzetedhez, hogy az aktuális pozíciód alapján rögzíthesse az útvonalat és az útipontokat.";
+"NSLocationWhenInUseUsageDescription" = "A WunderLINQ-nek szüksége van hozzáférési jogosultságra az aktuális helyzetedhez, hogy az aktuális pozíciód alapján rögzíthesse az útvonalat és az útipontokat.";
+"NSAppleMusicUsageDescription" = "A WunderLINQ-nek szüksége van hozzáférési jogosultságra a médiakönyvtáradhoz, hogy tárolt zenét tudjon lejátszani.";
+"NSBluetoothPeripheralUsageDescription" = "A WunderLINQ-nek szüksége van hozzáférési jogosultságra a Bluetooth-hoz, hogy a WunderLINQ eszközzel kommunikálhasson.";
+"NSMicrophoneUsageDescription" = "A WunderLINQ-nek szüksége van hozzáférési jogosultságra a mikorofondhoz, hogy hangot tudjon rögzíteni a videófelvételekhez.";
+"NSPhotoLibraryAddUsageDescription" = "A WunderLINQ-nek szüksége van hozzáférési jogosultságra a fényképek mentéséhez a fénykép könyvtáradba.";
+"NSPhotoLibraryUsageDescription" = "A WunderLINQ-nek szüksége van hozzáférési jogosultságra a fényképek mentéséhez a fénykép könyvtáradba.";
