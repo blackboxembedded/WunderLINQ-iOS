@@ -367,14 +367,12 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
                             geocoder.geocodeAddressString(homeAddress,
                                                           completionHandler: { (placemarks, error) in
                                                             if error == nil {
-                                                                let startLatitude: CLLocationDegrees = (self.currentLocation?.coordinate.latitude)!
-                                                                let startLongitude: CLLocationDegrees = (self.currentLocation?.coordinate.longitude)!
                                                                 let placemark = placemarks?.first
                                                                 let lat = placemark?.location?.coordinate.latitude
                                                                 let lon = placemark?.location?.coordinate.longitude
                                                                 let destLatitude: CLLocationDegrees = lat!
                                                                 let destLongitude: CLLocationDegrees = lon!
-                                                                let urlString = "osmandmaps://?lat=\(destLatitude)&lon=\(destLongitude)&z=8&title=\(NSLocalizedString("home", comment: ""))"
+                                                                let urlString = "osmandmaps://navigate?lat=\(destLatitude)&lon=\(destLongitude)&z=8&title=\(NSLocalizedString("home", comment: ""))"
                                                                 
                                                                 if let osmAndURL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
                                                                     if (UIApplication.shared.canOpenURL(osmAndURL)) {
