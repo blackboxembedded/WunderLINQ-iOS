@@ -151,6 +151,19 @@ class WaypointViewController: UIViewController, UITextFieldDelegate, CLLocationM
                         }
                     }
                 }
+            case 6:
+                //OsmAnd
+                // osmandmaps://?lat=45.6313&lon=34.9955&z=8&title=New+York
+                let urlString = "osmandmaps://navigate?lat=\(destLatitude)&lon=\(destLongitude)&z=8&title=\(label ?? "")"
+                if let mapsMeURL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
+                    if (UIApplication.shared.canOpenURL(mapsMeURL)) {
+                        if #available(iOS 10, *) {
+                            UIApplication.shared.open(mapsMeURL, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
+                        } else {
+                            UIApplication.shared.openURL(mapsMeURL as URL)
+                        }
+                    }
+                }
             default:
                 //Apple Maps
                 let coordinates = CLLocationCoordinate2DMake(destLatitude, destLongitude)
@@ -233,6 +246,19 @@ class WaypointViewController: UIViewController, UITextFieldDelegate, CLLocationM
                 //mapswithme://map?v=1&ll=54.32123,12.34562&n=Point%20Name&id=AnyStringOrEncodedUrl&backurl=UrlToCallOnBackButton&appname=TitleToDisplayInNavBar
                 let urlString = "mapsme://map?ll=\(destLatitude),\(destLongitude)&n=\(label ?? "")&id=\(NSLocalizedString("product", comment: ""))&backurl=wunderlinq://&appname=\(NSLocalizedString("product", comment: ""))"
                 
+                if let mapsMeURL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
+                    if (UIApplication.shared.canOpenURL(mapsMeURL)) {
+                        if #available(iOS 10, *) {
+                            UIApplication.shared.open(mapsMeURL, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
+                        } else {
+                            UIApplication.shared.openURL(mapsMeURL as URL)
+                        }
+                    }
+                }
+            case 6:
+                //OsmAnd
+                // osmandmaps://?lat=45.6313&lon=34.9955&z=8&title=New+York
+                let urlString = "osmandmaps://lat=\(destLatitude)&lon=\(destLongitude)&z=8&title=\(label ?? "")"
                 if let mapsMeURL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
                     if (UIApplication.shared.canOpenURL(mapsMeURL)) {
                         if #available(iOS 10, *) {

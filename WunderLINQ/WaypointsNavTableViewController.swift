@@ -408,6 +408,19 @@ class WaypointsNavTableViewController: UITableViewController, CLLocationManagerD
                         }
                     }
                 }
+            case 6:
+                //OsmAnd
+                // osmandmaps://?lat=45.6313&lon=34.9955&z=8&title=New+York
+                let urlString = "osmandmaps://navigate?lat=\(destLatitude)&lon=\(destLongitude)&z=8&title=\(label ?? "")"
+                if let mapsMeURL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
+                    if (UIApplication.shared.canOpenURL(mapsMeURL)) {
+                        if #available(iOS 10, *) {
+                            UIApplication.shared.open(mapsMeURL, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
+                        } else {
+                            UIApplication.shared.openURL(mapsMeURL as URL)
+                        }
+                    }
+                }
             default:
                 //Apple Maps
                 let coordinates = CLLocationCoordinate2DMake(destLatitude, destLongitude)
