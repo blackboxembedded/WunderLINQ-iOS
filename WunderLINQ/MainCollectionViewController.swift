@@ -24,6 +24,8 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     @IBOutlet weak var mainUIView: UIView!
     @IBOutlet weak var collectionView: UICollectionView!
     
+    let altimeter = CMAltimeter()
+    
     var backBtn: UIButton!
     var backButton: UIBarButtonItem!
     var disconnectBtn: UIButton!
@@ -101,7 +103,8 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                          NSLocalizedString("leanangle_header", comment: ""),
                          NSLocalizedString("gforce_header", comment: ""),
                          NSLocalizedString("bearing_header", comment: ""),
-                         NSLocalizedString("time_header", comment: "")
+                         NSLocalizedString("time_header", comment: ""),
+                         NSLocalizedString("barometric_header", comment: "")
     ]
     
     let locationDelegate = LocationDelegate()
@@ -462,6 +465,12 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         }
         
         updateTimeTimer()
+        
+        if CMAltimeter.isRelativeAltitudeAvailable() {
+            altimeter.startRelativeAltitudeUpdates(to: OperationQueue.main) { (data, error) in
+                self.motorcycleData.setBarometricPressure(barometricPressure: data?.pressure as! Double)
+            }
+        }
         
         updateMessageDisplay()
     }
@@ -968,6 +977,9 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         case 24:
             //time
             label = NSLocalizedString("time_header", comment: "")
+        case 25:
+            //barometric pressure
+            label = NSLocalizedString("barometric_header", comment: "") + " (kPa)"
         default:
             NSLog("Unknown : \(cellDataPoint)")
         }
@@ -1382,9 +1394,14 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                 }
             }
         case 24:
-            //Bearing
+            //Time
             if motorcycleData.time != nil {
                 value = "\(motorcycleData.time!)"
+            }
+        case 25:
+            //Barometric Pressure
+            if motorcycleData.barometricPressure != nil {
+                value = "\(motorcycleData.barometricPressure!.rounded(toPlaces: 2))"
             }
         default:
             NSLog("Unknown : \(dataPoint)")

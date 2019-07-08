@@ -187,6 +187,7 @@
 "leanangle_header" = "Lean Angle";
 "gforce_header" = "g-force";
 "bearing_header" = "Bearing";
+"barometric_header" = "Barometer"; // New
 
 // ContactsTableViewController
 "contactlist_title" = "Contacts";

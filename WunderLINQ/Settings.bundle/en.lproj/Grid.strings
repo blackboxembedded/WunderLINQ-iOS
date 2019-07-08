@@ -37,4 +37,5 @@
 "leanangle_header" = "Lean Angle";
 "gforce_header" = "g-force";
 "bearing_header" = "Bearing";
-"time_header" = "Clock"; // New
+"time_header" = "Time"; // New
+"barometric_header" = "Barometer"; // New

@@ -35,6 +35,7 @@ class MotorcycleData {
     var gForce: Double?
     var bearing: Int?
     var time: String?
+    var barometricPressure: Double?
     
     func setVIN(vin: String?){
         self.vin = vin
@@ -216,6 +217,13 @@ class MotorcycleData {
     }
     func getTime() -> String{
         return self.time!
+    }
+    
+    func setBarometricPressure(barometricPressure: Double?){
+        self.barometricPressure = barometricPressure
+    }
+    func getBarometricPressure() -> Double{
+        return self.barometricPressure!
     }
     
     func clear(){
