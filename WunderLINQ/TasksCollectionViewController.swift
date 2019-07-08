@@ -565,12 +565,14 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
     }
     
     @objc func leftScreen() {
-        performSegue(withIdentifier: "tasksToMusic", sender: [])
+        _ = navigationController?.popViewController(animated: true)
+        //performSegue(withIdentifier: "tasksToMusic", sender: [])
         
     }
     
     @objc func rightScreen() {
-        performSegue(withIdentifier: "taskGridTomotorcycle", sender: [])
+        navigationController?.popToRootViewController(animated: true)
+        //performSegue(withIdentifier: "taskGridTomotorcycle", sender: [])
     }
     
     @IBAction func prepareForUnwind(segue: UIStoryboardSegue) {
@@ -583,10 +585,12 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
     
     @objc func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
         if gesture.direction == UISwipeGestureRecognizer.Direction.right {
-            performSegue(withIdentifier: "tasksToMusic", sender: [])
+             _ = navigationController?.popViewController(animated: true)
+            //performSegue(withIdentifier: "tasksToMusic", sender: [])
         }
         else if gesture.direction == UISwipeGestureRecognizer.Direction.left {
-            performSegue(withIdentifier: "taskGridTomotorcycle", sender: [])
+            navigationController?.popToRootViewController(animated: true)
+            //performSegue(withIdentifier: "taskGridTomotorcycle", sender: [])
         }
     }
 

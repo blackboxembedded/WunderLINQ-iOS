@@ -131,12 +131,14 @@ class WaypointsNavTableViewController: UITableViewController, CLLocationManagerD
     }
     
     @objc func leftScreen() {
-        performSegue(withIdentifier: "waypointsToTaskGrid", sender: [])
+        _ = navigationController?.popViewController(animated: true)
+        //performSegue(withIdentifier: "waypointsToTaskGrid", sender: [])
     }
     
     @objc func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
         if gesture.direction == UISwipeGestureRecognizer.Direction.right {
-            performSegue(withIdentifier: "waypointsToTaskGrid", sender: [])
+            _ = navigationController?.popViewController(animated: true)
+            //performSegue(withIdentifier: "waypointsToTaskGrid", sender: [])
         }
     }
 

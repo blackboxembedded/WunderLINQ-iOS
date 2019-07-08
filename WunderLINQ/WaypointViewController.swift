@@ -42,7 +42,8 @@ class WaypointViewController: UIViewController, UITextFieldDelegate, CLLocationM
     @IBOutlet weak var deleteBtn: UIButton!
     
     @objc func leftScreen() {
-        performSegue(withIdentifier: "waypointToWaypoints", sender: [])
+        _ = navigationController?.popViewController(animated: true)
+        //performSegue(withIdentifier: "waypointToWaypoints", sender: [])
     }
     
     @objc func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {

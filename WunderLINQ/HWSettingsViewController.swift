@@ -25,7 +25,8 @@ class HWSettingsViewController: UIViewController, CBPeripheralDelegate, UIPicker
     @IBOutlet weak var sensitivitySlider: UISlider!
     
     @objc func leftScreen() {
-        performSegue(withIdentifier: "hwSettingsToMotorcycle", sender: [])
+        _ = navigationController?.popViewController(animated: true)
+        //performSegue(withIdentifier: "hwSettingsToMotorcycle", sender: [])
     }
     
     @IBAction func savePressed(_ sender: Any) {

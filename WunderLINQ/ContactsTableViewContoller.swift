@@ -148,7 +148,8 @@ class ContactsTableViewController: UITableViewController {
         self.tableView.reloadData()
     }
     @objc func leftScreen() {
-        performSegue(withIdentifier: "contactsToTaskGrid", sender: [])
+        _ = navigationController?.popViewController(animated: true)
+        //performSegue(withIdentifier: "contactsToTaskGrid", sender: [])
     }    
     @objc func rightScreen() {
         
@@ -156,7 +157,8 @@ class ContactsTableViewController: UITableViewController {
     
     @objc func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
         if gesture.direction == UISwipeGestureRecognizer.Direction.right {
-            performSegue(withIdentifier: "contactsToTaskGrid", sender: [])
+            _ = navigationController?.popViewController(animated: true)
+            //performSegue(withIdentifier: "contactsToTaskGrid", sender: [])
         }
     }
     

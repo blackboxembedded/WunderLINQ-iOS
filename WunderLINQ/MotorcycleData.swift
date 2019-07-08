@@ -34,6 +34,7 @@ class MotorcycleData {
     var leanAngle: Double?
     var gForce: Double?
     var bearing: Int?
+    var time: String?
     
     func setVIN(vin: String?){
         self.vin = vin
@@ -208,6 +209,13 @@ class MotorcycleData {
     }
     func getbearing() -> Int{
         return self.bearing!
+    }
+    
+    func setTime(time: String?){
+        self.time = time
+    }
+    func getTime() -> String{
+        return self.time!
     }
     
     func clear(){

@@ -16,12 +16,14 @@ class WaypointsTableViewController: UITableViewController {
     var record = 0
     
     @objc func leftScreen() {
-        performSegue(withIdentifier: "waypointsToGeoData", sender: [])
+        _ = navigationController?.popViewController(animated: true)
+        //performSegue(withIdentifier: "waypointsToGeoData", sender: [])
     }
     
     @objc func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
         if gesture.direction == UISwipeGestureRecognizer.Direction.right {
-            performSegue(withIdentifier: "waypointsToGeoData", sender: [])
+            _ = navigationController?.popViewController(animated: true)
+            //performSegue(withIdentifier: "waypointsToGeoData", sender: [])
         }
     }
 

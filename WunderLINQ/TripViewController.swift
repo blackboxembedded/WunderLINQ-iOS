@@ -25,7 +25,8 @@ class TripViewController: UIViewController {
     var indexOfFileName: Int?
     
     @objc func leftScreen() {
-        performSegue(withIdentifier: "tripToTrips", sender: [])
+        _ = navigationController?.popViewController(animated: true)
+        //performSegue(withIdentifier: "tripToTrips", sender: [])
     }
     
     @objc func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {

@@ -14,12 +14,14 @@ class GeoDataViewController: UIViewController {
     @IBOutlet weak var waypointsView: UIStackView!
     
     @objc func leftScreen() {
-        performSegue(withIdentifier: "GeoDataToMotorcycle", sender: [])
+        _ = navigationController?.popViewController(animated: true)
+        //performSegue(withIdentifier: "GeoDataToMotorcycle", sender: [])
     }
     
     @objc func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
         if gesture.direction == UISwipeGestureRecognizer.Direction.right {
-            performSegue(withIdentifier: "GeoDataToMotorcycle", sender: [])
+            _ = navigationController?.popViewController(animated: true)
+            //performSegue(withIdentifier: "GeoDataToMotorcycle", sender: [])
         }
     }
     

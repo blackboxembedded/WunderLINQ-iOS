@@ -67,6 +67,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     
     var seconds = 10
     var timer = Timer()
+    var timeTimer = Timer()
     var isTimerRunning = false
     
     let inset: CGFloat = 5
@@ -99,7 +100,8 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                          NSLocalizedString("shifts_header", comment: ""),
                          NSLocalizedString("leanangle_header", comment: ""),
                          NSLocalizedString("gforce_header", comment: ""),
-                         NSLocalizedString("bearing_header", comment: "")
+                         NSLocalizedString("bearing_header", comment: ""),
+                         NSLocalizedString("time_header", comment: "")
     ]
     
     let locationDelegate = LocationDelegate()
@@ -458,6 +460,8 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             
             self.motorcycleData.setbearing(bearing: degrees)
         }
+        
+        updateTimeTimer()
         
         updateMessageDisplay()
     }
@@ -961,6 +965,9 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         case 23:
             //bearing
             label = NSLocalizedString("bearing_header", comment: "")
+        case 24:
+            //time
+            label = NSLocalizedString("time_header", comment: "")
         default:
             NSLog("Unknown : \(cellDataPoint)")
         }
@@ -1373,6 +1380,11 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                     }
                     value = cardinal
                 }
+            }
+        case 24:
+            //Bearing
+            if motorcycleData.time != nil {
+                value = "\(motorcycleData.time!)"
             }
         default:
             NSLog("Unknown : \(dataPoint)")
@@ -3772,6 +3784,24 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         } else {
             seconds -= 1
         }
+    }
+    
+    func updateTimeTimer(){
+        // Scheduling timer to Call the function "updateCounting" with the interval of 1 seconds
+        timeTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.updateTime), userInfo: nil, repeats: true)
+    }
+    
+    @objc func updateTime(){
+        // get the current date and time
+        let currentDateTime = Date()
+        
+        // initialize the date formatter and set the style
+        let formatter = DateFormatter()
+        formatter.timeStyle = .long
+        formatter.dateStyle = .none
+        
+        // get the date time String from the date object
+        motorcycleData.setTime(time: formatter.string(from: currentDateTime))
     }
 }
 
