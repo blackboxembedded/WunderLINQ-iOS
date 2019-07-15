@@ -104,7 +104,9 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                          NSLocalizedString("gforce_header", comment: ""),
                          NSLocalizedString("bearing_header", comment: ""),
                          NSLocalizedString("time_header", comment: ""),
-                         NSLocalizedString("barometric_header", comment: "")
+                         NSLocalizedString("barometric_header", comment: ""),
+                         NSLocalizedString("gpsspeed_header", comment: ""),
+                         NSLocalizedString("altitude_header", comment: "")
     ]
     
     let locationDelegate = LocationDelegate()
@@ -114,10 +116,13 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         get { return UserDefaults.standard.currentLocation }
         set { UserDefaults.standard.currentLocation = newValue }
     }
-    
+
     let locationManager: CLLocationManager = {
-        $0.requestWhenInUseAuthorization()
-        $0.desiredAccuracy = kCLLocationAccuracyBest
+        $0.requestAlwaysAuthorization()
+        $0.desiredAccuracy = kCLLocationAccuracyBestForNavigation
+        $0.activityType = .automotiveNavigation
+        $0.allowsBackgroundLocationUpdates = true
+        $0.pausesLocationUpdatesAutomatically = false
         $0.startUpdatingLocation()
         $0.startUpdatingHeading()
         return $0
@@ -875,6 +880,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             NSLog("Unknown cell")
         }
         var temperatureUnit = "C"
+        var heightUnit = "m"
         var distanceUnit = "km"
         var distanceTimeUnit = "kmh"
         var consumptionUnit = "L/100"
@@ -899,6 +905,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             distanceUnit = "mi"
             distanceTimeUnit = "mph"
             consumptionUnit = "mpg"
+            heightUnit = "ft"
         }
         
         switch (cellDataPoint){
@@ -980,6 +987,12 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         case 25:
             //barometric pressure
             label = NSLocalizedString("barometric_header", comment: "") + " (kPa)"
+        case 26:
+            //GPS Speed
+            label = NSLocalizedString("gpsspeed_header", comment: "") + " (" + distanceTimeUnit + ")"
+        case 27:
+            //altitude
+            label = NSLocalizedString("altitude_header", comment: "") + " (" + heightUnit + ")"
         default:
             NSLog("Unknown : \(cellDataPoint)")
         }
@@ -1402,6 +1415,30 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             //Barometric Pressure
             if motorcycleData.barometricPressure != nil {
                 value = "\(motorcycleData.barometricPressure!.rounded(toPlaces: 2))"
+            }
+        case 26:
+            //GPS speed
+            if motorcycleData.location != nil {
+                var gpsSpeed:String = "0"
+                if motorcycleData.location!.speed >= 0{
+                    gpsSpeed = "\(motorcycleData.location!.speed)"
+                    let gpsSpeedValue:Double = motorcycleData.location!.speed
+                    gpsSpeed = "\(Int(round(gpsSpeedValue)))"
+                    if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
+                        gpsSpeed = "\(Int(round(kmToMiles(gpsSpeedValue))))"
+                    }
+                    value = gpsSpeed
+                }
+            }
+        case 27:
+            //Altitude
+            if motorcycleData.location != nil {
+                //value = "\(motorcycleData.barometricPressure!.rounded(toPlaces: 2))"
+                var altitude:String = "\(Int(round(motorcycleData.location!.altitude)))"
+                if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
+                    altitude = "\(Int(round(mtoFeet(motorcycleData.location!.altitude))))"
+                }
+                value = altitude
             }
         default:
             NSLog("Unknown : \(dataPoint)")
@@ -3413,6 +3450,12 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     //radians to degrees
     func degrees(radians:Double) -> Double {
         return 180 / Double.pi * radians
+    }
+    
+    // meters to feet
+    func mtoFeet(_ meters:Double) -> Double {
+        let meters = meters / 0.3048
+        return meters
     }
     
     @objc func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {

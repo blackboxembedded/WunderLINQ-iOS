@@ -39,3 +39,5 @@
 "bearing_header" = "Bearing";
 "time_header" = "Time"; // New
 "barometric_header" = "Barometer"; // New
+"altitude_header" = "Altitude";
+"gpsspeed_header" = "GPS Speed";

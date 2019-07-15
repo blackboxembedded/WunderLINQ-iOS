@@ -37,3 +37,5 @@
 "leanangle_header" = "Ángulo de inclinación"; // JCAL 20190303
 "gforce_header" = "Fuerza-G"; // JCAL 20190303
 "bearing_header" = "Orientación"; // JCAL 20190303
+"altitude_header" = "Altitud";
+"gpsspeed_header" = "Velocidad GPS";

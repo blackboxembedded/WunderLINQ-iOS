@@ -51,6 +51,8 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
     
     let scenic = ScenicAPI()
     
+    let motorcycleData = MotorcycleData.shared
+    
     private func loadRows() {
         let taskRow1 = UserDefaults.standard.integer(forKey: "task_one_preference")
         if (taskRow1 < 11){
@@ -495,12 +497,7 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
             break
         case 8:
             //Save Waypoint
-            if LocationService.sharedInstance.isRunning(){
-                LocationService.sharedInstance.saveWaypoint()
-            } else {
-                LocationService.sharedInstance.startUpdatingLocation(type: "waypoint")
-            }
-            self.showToast(message: NSLocalizedString("toast_waypoint_saved", comment: ""))
+            saveWaypoint()
             break
         case 9:
             //Navigate to Waypoint
@@ -827,6 +824,62 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
     
     }
     */
+    
+    func saveWaypoint(){
+        // Waypoint stuff below
+        let currentLocation = motorcycleData.getLocation()
+        
+        let databaseURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+            .appendingPathComponent("waypoints.sqlite")
+        //opening the database
+        if sqlite3_open(databaseURL.path, &db) != SQLITE_OK {
+            print("error opening database")
+        }
+        //creating a statement
+        var stmt: OpaquePointer?
+        
+        //the insert query
+        let queryString = "INSERT INTO records (date, latitude, longitude, label) VALUES (?,?,?,?)"
+        
+        //preparing the query
+        if sqlite3_prepare(db, queryString, -1, &stmt, nil) != SQLITE_OK{
+            let errmsg = String(cString: sqlite3_errmsg(db)!)
+            print("error preparing insert: \(errmsg)")
+            return
+        }
+        
+        let date = Date().toString() as NSString
+        let label : String = ""
+        
+        if sqlite3_bind_text(stmt, 1, date.utf8String, -1, nil) != SQLITE_OK{
+            let errmsg = String(cString: sqlite3_errmsg(db)!)
+            print("failure binding name: \(errmsg)")
+            return
+        }
+        if sqlite3_bind_double(stmt, 2, (currentLocation.coordinate.latitude)) != SQLITE_OK{
+            let errmsg = String(cString: sqlite3_errmsg(db)!)
+            print("failure binding name: \(errmsg)")
+            return
+        }
+        if sqlite3_bind_double(stmt, 3, (currentLocation.coordinate.longitude)) != SQLITE_OK{
+            let errmsg = String(cString: sqlite3_errmsg(db)!)
+            print("failure binding name: \(errmsg)")
+            return
+        }
+        if sqlite3_bind_text(stmt, 4, label, -1, nil) != SQLITE_OK{
+            let errmsg = String(cString: sqlite3_errmsg(db)!)
+            print("failure binding name: \(errmsg)")
+            return
+        }
+        
+        //executing the query to insert values
+        if sqlite3_step(stmt) != SQLITE_DONE {
+            let errmsg = String(cString: sqlite3_errmsg(db)!)
+            print("failure inserting wapoint: \(errmsg)")
+            return
+        }
+        self.showToast(message: NSLocalizedString("toast_waypoint_saved", comment: ""))
+    }
     
     func setupCamera(position: AVCaptureDevice.Position) {
         // tweak delay

@@ -6,9 +6,12 @@
 //  Copyright © 2018 Black Box Embedded, LLC. All rights reserved.
 //
 
+import CoreLocation
 import Foundation
+
 class MotorcycleData {
     static let shared = MotorcycleData()
+    var location: CLLocation?
     var vin: String?
     var frontTirePressure: Double?
     var rearTirePressure: Double?
@@ -36,6 +39,13 @@ class MotorcycleData {
     var bearing: Int?
     var time: String?
     var barometricPressure: Double?
+    
+    func setLocation(location: CLLocation?){
+        self.location = location
+    }
+    func getLocation() -> CLLocation{
+        return self.location!
+    }
     
     func setVIN(vin: String?){
         self.vin = vin
