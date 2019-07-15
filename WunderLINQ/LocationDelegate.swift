@@ -18,6 +18,11 @@ class LocationDelegate: NSObject, CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let currentLocation = locations.last else { return }
         motorcycleData.setLocation(location: currentLocation)
+        let loggingStatus = UserDefaults.standard.string(forKey: "loggingStatus")
+        if loggingStatus != nil {
+            //Log
+            Logger.log()
+        }
         locationCallback?(currentLocation)
     }
     

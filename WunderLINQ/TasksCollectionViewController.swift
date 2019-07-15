@@ -131,7 +131,9 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
         }
         // Trip Log Task
         var tripLogLabel = NSLocalizedString("task_title_start_trip", comment: "")
-        if LocationService.sharedInstance.isRunning(){
+        let loggingStatus = UserDefaults.standard.string(forKey: "loggingStatus")
+        if loggingStatus != nil {
+            //Stop Logging
             tripLogLabel = NSLocalizedString("task_title_stop_trip", comment: "")
         }
         guard let task7 = Tasks(label: tripLogLabel, icon: UIImage(named: "Road")?.withRenderingMode(.alwaysTemplate)) else {
@@ -488,10 +490,14 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
             break
         case 7:
             //Trip Log
-            if LocationService.sharedInstance.isRunning(){
-                LocationService.sharedInstance.stopUpdatingLocation()
+            let loggingStatus = UserDefaults.standard.string(forKey: "loggingStatus")
+            if loggingStatus != nil {
+                //Stop Logging
+                UserDefaults.standard.set(nil, forKey: "loggingStatus")
             } else {
-                LocationService.sharedInstance.startUpdatingLocation(type: "triplog")
+                //Start Logging
+                let today = Date().toString()
+                UserDefaults.standard.set(today, forKey: "loggingStatus")
             }
             loadTasks()
             break

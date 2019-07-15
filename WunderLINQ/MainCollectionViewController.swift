@@ -225,7 +225,6 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             }
             label.font = UIFont.boldSystemFont(ofSize: 40)
             label.text = NSLocalizedString("product", comment: "")
-            //mainUIView.addSubview(label)
             let image = UIImage(named: imageName)
             let imageView = UIImageView(image: image!)
             imageView.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: 200)
@@ -245,7 +244,6 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         } else {
             UIScreen.main.brightness = CGFloat(UserDefaults.standard.float(forKey: "systemBrightness"))
         }
-        
         
         centralManager = CBCentralManager(delegate: self,
                                           queue: nil)
@@ -1162,7 +1160,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             if motorcycleData.engineTemperature != nil {
                 var engineTemp:Double = motorcycleData.engineTemperature!
                 if UserDefaults.standard.integer(forKey: "temperature_unit_preference") == 1 {
-                    engineTemp = celciusToFahrenheit(engineTemp)
+                    engineTemp = Utility.celciusToFahrenheit(engineTemp)
                 }
                 value = "\(engineTemp.rounded(toPlaces: 1))"
             } else {
@@ -1173,7 +1171,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             if motorcycleData.ambientTemperature != nil {
                 var ambientTemp:Double = motorcycleData.ambientTemperature!
                 if UserDefaults.standard.integer(forKey: "temperature_unit_preference") == 1 {
-                    ambientTemp = celciusToFahrenheit(ambientTemp)
+                    ambientTemp = Utility.celciusToFahrenheit(ambientTemp)
                 }
                 value = "\(ambientTemp.rounded(toPlaces: 1))"
             } else {
@@ -1185,11 +1183,11 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                 var frontPressure:Double = motorcycleData.frontTirePressure!
                 switch UserDefaults.standard.integer(forKey: "pressure_unit_preference"){
                 case 1:
-                    frontPressure = barTokPa(frontPressure)
+                    frontPressure = Utility.barTokPa(frontPressure)
                 case 2:
-                    frontPressure = barTokgf(frontPressure)
+                    frontPressure = Utility.barTokgf(frontPressure)
                 case 3:
-                    frontPressure = barToPsi(frontPressure)
+                    frontPressure = Utility.barToPsi(frontPressure)
                 default:
                     break
                 }
@@ -1203,11 +1201,11 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                 var rearPressure:Double = motorcycleData.rearTirePressure!
                 switch UserDefaults.standard.integer(forKey: "pressure_unit_preference"){
                 case 1:
-                    rearPressure = barTokPa(rearPressure)
+                    rearPressure = Utility.barTokPa(rearPressure)
                 case 2:
-                    rearPressure = barTokgf(rearPressure)
+                    rearPressure = Utility.barTokgf(rearPressure)
                 case 3:
-                    rearPressure = barToPsi(rearPressure)
+                    rearPressure = Utility.barToPsi(rearPressure)
                 default:
                     break
                 }
@@ -1220,7 +1218,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             if motorcycleData.odometer != nil {
                 var odometer:Double = motorcycleData.odometer!
                 if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
-                    odometer = Double(kmToMiles(Double(odometer)))
+                    odometer = Double(Utility.kmToMiles(Double(odometer)))
                 }
                 value = "\(Int(odometer))"
             } else {
@@ -1266,7 +1264,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             if motorcycleData.tripOne != nil {
                 var tripOne:Double = motorcycleData.tripOne!
                 if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
-                    tripOne = Double(kmToMiles(Double(tripOne)))
+                    tripOne = Double(Utility.kmToMiles(Double(tripOne)))
                 }
                 value = "\(tripOne.rounded(toPlaces: 1))"
             } else {
@@ -1277,7 +1275,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             if motorcycleData.tripTwo != nil {
                 var tripTwo:Double = motorcycleData.gettripTwo()
                 if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
-                    tripTwo = Double(kmToMiles(Double(tripTwo)))
+                    tripTwo = Double(Utility.kmToMiles(Double(tripTwo)))
                 }
                 value = "\(tripTwo.rounded(toPlaces: 1))"
             } else {
@@ -1288,7 +1286,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             if motorcycleData.tripAuto != nil {
                 var tripAuto:Double = motorcycleData.gettripAuto()
                 if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
-                    tripAuto = Double(kmToMiles(Double(tripAuto)))
+                    tripAuto = Double(Utility.kmToMiles(Double(tripAuto)))
                 }
                 value = "\(tripAuto.rounded(toPlaces: 1))"
             } else {
@@ -1300,7 +1298,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                 let speedValue = motorcycleData.speed!
                 value = "\(Int(speedValue))"
                 if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
-                    value = "\(Int(round(kmToMiles(speedValue))))"
+                    value = "\(Int(round(Utility.kmToMiles(speedValue))))"
                 }
             } else {
                 value = NSLocalizedString("blank_field", comment: "")
@@ -1311,7 +1309,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                 let avgSpeedValue:Double = motorcycleData.averageSpeed!
                 value = "\(Int(avgSpeedValue))"
                 if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
-                    value = "\(Int(round(kmToMiles(avgSpeedValue))))"
+                    value = "\(Int(round(Utility.kmToMiles(avgSpeedValue))))"
                 }
             } else {
                 value = NSLocalizedString("blank_field", comment: "")
@@ -1322,7 +1320,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                 let currentConsumptionValue:Double = motorcycleData.currentConsumption!
                 value = "\(currentConsumptionValue.rounded(toPlaces: 1))"
                 if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
-                    value = "\(l100ToMpg(currentConsumptionValue).rounded(toPlaces: 1))"
+                    value = "\(Utility.l100ToMpg(currentConsumptionValue).rounded(toPlaces: 1))"
                 }
             } else {
                 value = NSLocalizedString("blank_field", comment: "")
@@ -1333,7 +1331,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                 let fuelEconomyOneValue:Double = motorcycleData.fuelEconomyOne!
                 value = "\(fuelEconomyOneValue.rounded(toPlaces: 1))"
                 if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
-                    value = "\(l100ToMpg(fuelEconomyOneValue).rounded(toPlaces: 1))"
+                    value = "\(Utility.l100ToMpg(fuelEconomyOneValue).rounded(toPlaces: 1))"
                 }
             } else {
                 value = NSLocalizedString("blank_field", comment: "")
@@ -1344,7 +1342,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                 let fuelEconomyTwoValue:Double = motorcycleData.fuelEconomyTwo!
                 value = "\(fuelEconomyTwoValue.rounded(toPlaces: 1))"
                 if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
-                    value = "\(l100ToMpg(fuelEconomyTwoValue).rounded(toPlaces: 1))"
+                    value = "\(Utility.l100ToMpg(fuelEconomyTwoValue).rounded(toPlaces: 1))"
                 }
             } else {
                 value = NSLocalizedString("blank_field", comment: "")
@@ -1355,7 +1353,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                 let fuelRangeValue:Double = motorcycleData.fuelRange!
                 value = "\(Int(fuelRangeValue))"
                 if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
-                    value = "\(Int(round(kmToMiles(fuelRangeValue))))"
+                    value = "\(Int(round(Utility.kmToMiles(fuelRangeValue))))"
                 }
             } else {
                 value = NSLocalizedString("blank_field", comment: "")
@@ -1425,7 +1423,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                     let gpsSpeedValue:Double = motorcycleData.location!.speed
                     gpsSpeed = "\(Int(round(gpsSpeedValue)))"
                     if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
-                        gpsSpeed = "\(Int(round(kmToMiles(gpsSpeedValue))))"
+                        gpsSpeed = "\(Int(round(Utility.kmToMiles(gpsSpeedValue))))"
                     }
                     value = gpsSpeed
                 }
@@ -1436,7 +1434,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                 //value = "\(motorcycleData.barometricPressure!.rounded(toPlaces: 2))"
                 var altitude:String = "\(Int(round(motorcycleData.location!.altitude)))"
                 if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
-                    altitude = "\(Int(round(mtoFeet(motorcycleData.location!.altitude))))"
+                    altitude = "\(Int(round(Utility.mtoFeet(motorcycleData.location!.altitude))))"
                 }
                 value = altitude
             }
@@ -1509,7 +1507,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             for i in 0 ..< encryptedData.count {
                 messageHexString += String(format: "%02X", encryptedData[i])
             }
-            Logger.log(fileName: "dbg", entry: messageHexString, withDate: true)
+            Logger.logDBG(entry: messageHexString)
         }
         
         lastMessage = dataArray
@@ -1633,14 +1631,14 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                 if UserDefaults.standard.bool(forKey: "custom_tpm_preference"){
                     switch UserDefaults.standard.integer(forKey: "pressure_unit_preference"){
                     case 1:
-                        frontPressure = barTokPa(frontPressure)
-                        rearPressure = barTokPa(rearPressure)
+                        frontPressure = Utility.barTokPa(frontPressure)
+                        rearPressure = Utility.barTokPa(rearPressure)
                     case 2:
-                        frontPressure = barTokgf(frontPressure)
-                        rearPressure = barTokgf(rearPressure)
+                        frontPressure = Utility.barTokgf(frontPressure)
+                        rearPressure = Utility.barTokgf(rearPressure)
                     case 3:
-                        frontPressure = barToPsi(frontPressure)
-                        rearPressure = barToPsi(rearPressure)
+                        frontPressure = Utility.barToPsi(frontPressure)
+                        rearPressure = Utility.barToPsi(rearPressure)
                     default:
                         print("Unknown pressure unit setting")
                     }
@@ -3415,49 +3413,6 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         return cryptData;
     }
     
-    // MARK: - Utility Methods
-    // Unit Conversion Functions
-    // bar to psi
-    func barToPsi(_ bar:Double) -> Double {
-        let psi = bar * 14.5037738
-        return psi
-    }
-    // bar to kpa
-    func barTokPa(_ bar:Double) -> Double {
-        let kpa = bar * 100.0
-        return kpa
-    }
-    // bar to kg-f
-    func barTokgf(_ bar:Double) -> Double {
-        let kgf = bar * 1.0197162129779
-        return kgf
-    }
-    // kilometers to miles
-    func kmToMiles(_ kilometers:Double) -> Double {
-        let miles = kilometers * 0.62137
-        return miles
-    }
-    // Celsius to Fahrenheit
-    func celciusToFahrenheit(_ celcius:Double) -> Double {
-        let fahrenheit = (celcius * 1.8) + Double(32)
-        return fahrenheit
-    }
-    // L/100 to mpg
-    func l100ToMpg(_ l100:Double) -> Double {
-        let mpg = 235.215 / l100
-        return mpg
-    }
-    //radians to degrees
-    func degrees(radians:Double) -> Double {
-        return 180 / Double.pi * radians
-    }
-    
-    // meters to feet
-    func mtoFeet(_ meters:Double) -> Double {
-        let meters = meters / 0.3048
-        return meters
-    }
-    
     @objc func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
         if gesture.direction == UISwipeGestureRecognizer.Direction.right {
             performSegue(withIdentifier: "motorcycleToTaskGrid", sender: [])
@@ -3817,7 +3772,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             } else {
                 referenceAttitude = attitude
             }
-            motorcycleData.setleanAngle(leanAngle: degrees(radians: attitude.pitch))
+            motorcycleData.setleanAngle(leanAngle: Utility.degrees(radians: attitude.pitch))
             motorcycleData.setgForce(gForce: data!.gravity.x + data!.gravity.y + data!.gravity.z)
         }
     }
