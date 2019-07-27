@@ -75,7 +75,7 @@
 // AlertViewController
 "alert_label_fuel" = "Route to the nearest fuel station?";
 "alert_title_fuel" = "Low Fuel";
-"alert_title_photopreview" = "Photo Preview"; // Needs translation
+"alert_title_photopreview" = "Photo Preview";
 "alert_btn_close" = "Close";
 "alert_btn_ok" = "OK";
 
@@ -152,6 +152,9 @@
 "task_title_stop_trip" = "Stop Trip Log";
 "task_title_waypoint" = "Save Waypoint";
 "task_title_settings" = "Settings";
+"task_title_actioncam_start_video" = "Start ActionCam Recording";
+"task_title_actioncam_stop_video" = "Stop ActionCam Recording";
+"toast_actioncam_notconnected" = "ActionCam Not Connected";
 "toast_waypoint_saved" = "Waypoint Saved";
 "task_title_waypoint_nav" = "Navigate to Waypoint";
 "toast_photo_taken" = "Photo Taken!";

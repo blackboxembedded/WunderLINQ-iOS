@@ -151,15 +151,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         let taskSettingsPlist = NSDictionary(contentsOf:taskSettingsUrl)!
         let taskPreferences = taskSettingsPlist["PreferenceSpecifiers"] as! [NSDictionary]
         
-        var settingsDefaultsToRegister = Dictionary<String, Any>()
+        var taskaDefaultsToRegister = Dictionary<String, Any>()
         
         for preference in taskPreferences {
             guard let key = preference["Key"] as? String else {
                 continue
             }
-            settingsDefaultsToRegister[key] = preference["DefaultValue"]
+            taskaDefaultsToRegister[key] = preference["DefaultValue"]
         }
-        UserDefaults.standard.register(defaults: settingsDefaultsToRegister)
+        UserDefaults.standard.register(defaults: taskaDefaultsToRegister)
+        
+        //Integrations Settings
+        let integrationsSettingsUrl = Bundle.main.url(forResource: "Settings", withExtension: "bundle")!.appendingPathComponent("Integrations.plist")
+        let integrationsSettingsPlist = NSDictionary(contentsOf:integrationsSettingsUrl)!
+        let integrationsPreferences = integrationsSettingsPlist["PreferenceSpecifiers"] as! [NSDictionary]
+        
+        var integrationsDefaultsToRegister = Dictionary<String, Any>()
+        
+        for preference in integrationsPreferences {
+            guard let key = preference["Key"] as? String else {
+                continue
+            }
+            integrationsDefaultsToRegister[key] = preference["DefaultValue"]
+        }
+        UserDefaults.standard.register(defaults: integrationsDefaultsToRegister)
     }
 }
 

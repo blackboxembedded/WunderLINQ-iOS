@@ -3,14 +3,6 @@
 "pref_homePhone_name" = "Número de teléfono favorito";
 "ui_title" = "Interfaz de Usuario";
 "pref_motorcycledata_name" = "Disable performance data display"; // Needs translation
-"pref_nav_app" = "App de Navegación";
-"nav_app_apple" = "Apple Maps"; // Needs Translation
-"nav_app_google" = "Google Maps"; // Needs Translation
-"nav_app_scenic" = "Scenic"; // Needs Translation
-"nav_app_sygic" = "Sygic"; // Needs Translation
-"nav_app_waze" = "Waze"; // Needs Translation
-"nav_app_mapsme" = "Maps.me"; // Needs translation
-"nav_app_osmand" = "OsmAnd";
 "pref_nightMode_name" = "Modo nocturno";
 "pref_pressuref_name" = "Unidad de Presión";
 "pressuref_bar" = "Bar"; // Needs Translation
@@ -51,3 +43,4 @@
 "pref_debuglogging_summary" = "Only enable if needed by Support, may impact performance if left running.  Please disable when finished."; // Needs translation
 "advanced_settings_title" = "Ajustes avanzados";
 "pref_photopreview_name" = "Photo Preview"; // Needs Translation
+"pref_integrations_settings_title" = "Integrations"; // Needs Translation

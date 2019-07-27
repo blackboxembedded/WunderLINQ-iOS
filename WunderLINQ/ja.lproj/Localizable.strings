@@ -152,6 +152,9 @@
 "task_title_stop_trip" = "トリップログ終了";
 "task_title_waypoint" = "ウェイポイント記録";
 "task_title_settings" = "設定";
+"task_title_actioncam_start_video" = "Start ActionCam Recording"; // Needs Translation
+"task_title_actioncam_stop_video" = "Stop ActionCam Recording"; // Needs Translation
+"toast_actioncam_notconnected" = "ActionCam Not Connected"; // Needs Translation
 "toast_waypoint_saved" = "ウェイポイント記録完了";
 "task_title_waypoint_nav" = "ウェイポイントへ案内";
 "toast_photo_taken" = "撮影完了";

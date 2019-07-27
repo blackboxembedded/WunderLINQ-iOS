@@ -254,6 +254,13 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		7EA3F95122EA88690075A0E1 /* externalcamera */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = externalcamera;
+			sourceTree = "<group>";
+		};
 		7EA478411F40B154000CEDDC = {
 			isa = PBXGroup;
 			children = (
@@ -278,6 +285,7 @@
 		7EA4784C1F40B154000CEDDC /* WunderLINQ */ = {
 			isa = PBXGroup;
 			children = (
+				7EA3F95122EA88690075A0E1 /* externalcamera */,
 				7E068BCF2102C6280076EAAD /* GoogleMaps.framework */,
 				7E068BD02102C6290076EAAD /* GoogleMapsBase.framework */,
 				7E068BCE2102C6270076EAAD /* GoogleMapsCore.framework */,

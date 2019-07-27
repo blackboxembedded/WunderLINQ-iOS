@@ -9,6 +9,8 @@
 "task_title_waypoint" = "Αποθήκ. προορισμού";
 "task_title_waypoint_nav" = "Πλοήγ. στον προορισμό";
 "task_title_settings" = "Ρυθμίσεις";
+"task_title_actioncam_start_video" = "Start ActionCam Recording"; // Needs Translation
+"task_title_actioncam_stop_video" = "Stop ActionCam Recording"; // Needs Translation
 "task_title_empty" = "Άδεια";
 "pref_task_one" = "Πρώτη";
 "pref_task_two" = "Δεύτερη";

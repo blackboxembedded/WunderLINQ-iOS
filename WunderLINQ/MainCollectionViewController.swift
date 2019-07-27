@@ -773,12 +773,13 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         popUpMenu()
     }
     
-    @IBAction func btButtonTapped(_ sender: UIBarButtonItem) {
+    @objc func btButtonTapped(_ sender: UIBarButtonItem) {
         // if we don't have a WunderLINQ, start scanning for one...
+        print("btButtonTapped()")
         if wunderLINQ == nil {
+            print("btButtonTapped() scan")
             keepScanning = true
             resumeScan()
-            return
         } else {
             disconnect()
         }
@@ -2539,9 +2540,6 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                 case 0x5:
                     faults.setRearFogLightActive(active: true)
                     
-                case 0x7:
-                    faults.setRearFogLightActive(active: true)
-                    
                 case 0x9:
                     faults.setRearFogLightActive(active: true)
                     
@@ -2644,10 +2642,10 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                     faults.setFrontLampTwoLightActive(active: true)
                     
                 case 0xF:
-                    faults.setAddDippedLightActive(active: true)
-                    faults.setAddBrakeLightActive(active: true)
-                    faults.setFrontLampOneLightActive(active: true)
-                    faults.setFrontLampTwoLightActive(active: true)
+                    faults.setAddDippedLightActive(active: false)
+                    faults.setAddBrakeLightActive(active: false)
+                    faults.setFrontLampOneLightActive(active: false)
+                    faults.setFrontLampTwoLightActive(active: false)
                     
                 default:
                     faults.setAddDippedLightActive(active: false)

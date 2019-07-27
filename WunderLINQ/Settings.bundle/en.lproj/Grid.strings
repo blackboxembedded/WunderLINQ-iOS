@@ -37,7 +37,7 @@
 "leanangle_header" = "Lean Angle";
 "gforce_header" = "g-force";
 "bearing_header" = "Bearing";
-"time_header" = "Time"; // New
-"barometric_header" = "Barometer"; // New
+"time_header" = "Time";
+"barometric_header" = "Barometer";
 "altitude_header" = "Altitude";
 "gpsspeed_header" = "GPS Speed";

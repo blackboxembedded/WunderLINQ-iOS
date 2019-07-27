@@ -38,4 +38,6 @@
 "gforce_header" = "Fuerza-G"; // JCAL 20190303
 "bearing_header" = "Orientación"; // JCAL 20190303
 "altitude_header" = "Altitud";
+"time_header" = "Time"; // Needs Translation
+"barometric_header" = "Barometer"; // Needs Translation
 "gpsspeed_header" = "Velocidad GPS";

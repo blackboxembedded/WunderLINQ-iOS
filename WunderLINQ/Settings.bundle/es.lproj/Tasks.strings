@@ -9,6 +9,8 @@
 "task_title_waypoint"="Guardar Waypoint";
 "task_title_waypoint_nav"="Navegar a Waypoint";
 "task_title_settings" = "Ajustes";
+"task_title_actioncam_start_video" = "Start ActionCam Recording"; // Needs Translation
+"task_title_actioncam_stop_video" = "Stop ActionCam Recording"; // Needs Translation
 "task_title_empty" = "Vacía";
 "pref_task_one" = "Primera";
 "pref_task_two" = "Segunda";

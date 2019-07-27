@@ -39,6 +39,8 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
     var activeInput: AVCaptureDeviceInput!
     var outputURL: URL!
     var isRecording = false
+    var actionCamIsOnline = false
+    var actionCamIsRecording = false
     
     var db: OpaquePointer?
     var waypoints = [Waypoint]()
@@ -53,45 +55,47 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
     
     let motorcycleData = MotorcycleData.shared
     
+    let emptyTask = 12;
+    
     private func loadRows() {
         let taskRow1 = UserDefaults.standard.integer(forKey: "task_one_preference")
-        if (taskRow1 < 11){
+        if (taskRow1 < emptyTask){
             mapping.append(taskRow1)
         }
         let taskRow2 = UserDefaults.standard.integer(forKey: "task_two_preference")
-        if (taskRow2 < 11){
+        if (taskRow2 < emptyTask){
             mapping.append(taskRow2)
         }
         let taskRow3 = UserDefaults.standard.integer(forKey: "task_three_preference")
-        if (taskRow3 < 11){
+        if (taskRow3 < emptyTask){
             mapping.append(taskRow3)
         }
         let taskRow4 = UserDefaults.standard.integer(forKey: "task_four_preference")
-        if (taskRow4 < 11){
+        if (taskRow4 < emptyTask){
             mapping.append(taskRow4)
         }
         let taskRow5 = UserDefaults.standard.integer(forKey: "task_five_preference")
-        if (taskRow5 < 11){
+        if (taskRow5 < emptyTask){
             mapping.append(taskRow5)
         }
         let taskRow6 = UserDefaults.standard.integer(forKey: "task_six_preference")
-        if (taskRow6 < 11){
+        if (taskRow6 < emptyTask){
             mapping.append(taskRow6)
         }
         let taskRow7 = UserDefaults.standard.integer(forKey: "task_seven_preference")
-        if (taskRow7 < 11){
+        if (taskRow7 < emptyTask){
             mapping.append(taskRow7)
         }
         let taskRow8 = UserDefaults.standard.integer(forKey: "task_eight_preference")
-        if (taskRow8 < 11){
+        if (taskRow8 < emptyTask){
             mapping.append(taskRow8)
         }
         let taskRow9 = UserDefaults.standard.integer(forKey: "task_nine_preference")
-        if (taskRow9 < 11){
+        if (taskRow9 < emptyTask){
             mapping.append(taskRow9)
         }
         let taskRow10 = UserDefaults.standard.integer(forKey: "task_ten_preference")
-        if (taskRow10 < 11){
+        if (taskRow10 < emptyTask){
             mapping.append(taskRow10)
         }
     }
@@ -123,7 +127,6 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
         // Video Recording Task
         var vidRecLabel = NSLocalizedString("task_title_start_record", comment: "")
         if isRecording{
-            print("loadtasks: isRecording")
             vidRecLabel = NSLocalizedString("task_title_stop_record", comment: "")
         }
         guard let task6 = Tasks(label: vidRecLabel, icon: UIImage(named: "VideoCamera")?.withRenderingMode(.alwaysTemplate)) else {
@@ -151,7 +154,15 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
         guard let task10 = Tasks(label: NSLocalizedString("task_title_settings", comment: ""), icon: UIImage(named: "Cog")?.withRenderingMode(.alwaysTemplate)) else {
             fatalError("Unable to instantiate Settings Task")
         }
-        self.tasks = [task0, task1, task2, task3, task4, task5, task6, task7, task8, task9, task10]
+        // Action Camera Task
+        var actionCamLabel = NSLocalizedString("task_title_actioncam_start_video", comment: "")
+        if actionCamIsRecording{
+            actionCamLabel = NSLocalizedString("task_title_actioncam_stop_video", comment: "")
+        }
+        guard let task11 = Tasks(label: actionCamLabel, icon: UIImage(named: "VideoCamera")?.withRenderingMode(.alwaysTemplate)) else {
+            fatalError("Unable to instantiate ActionCam Video Recording Task")
+        }
+        self.tasks = [task0, task1, task2, task3, task4, task5, task6, task7, task8, task9, task10, task11]
     }
     
     private func execute_task(taskID:Int) {
@@ -486,7 +497,7 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
                     isRecording = true
                 }
             }
-            loadTasks()
+            //loadTasks()
             break
         case 7:
             //Trip Log
@@ -499,7 +510,7 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
                 let today = Date().toString()
                 UserDefaults.standard.set(today, forKey: "loggingStatus")
             }
-            loadTasks()
+            //loadTasks()
             break
         case 8:
             //Save Waypoint
@@ -517,10 +528,408 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
                 }
             }
             break
+        case 11:
+            //ActionCam Control
+            if (actionCamIsOnline){
+                let actionCamType = UserDefaults.standard.integer(forKey: "actioncam_preference")
+                switch (actionCamType){
+                case 1:
+                    //GoPro Hero3
+                    var hero3NeedsPass = false
+                    if let goProPassword = UserDefaults.standard.string(forKey: "ACTIONCAM_GOPRO3_PWD"){
+                        if (goProPassword != ""){
+                            hero3NeedsPass = true
+                        } else {
+                            hero3NeedsPass = false
+                        }
+                    } else {
+                        hero3NeedsPass = false
+                    }
+                    if (self.actionCamIsRecording){
+                        //Off
+                        var offUrl = URL(string: "http://10.5.5.9/bacpac/SH?p=%00")!
+                        if (hero3NeedsPass){
+                            let goProPassword = UserDefaults.standard.string(forKey: "ACTIONCAM_GOPRO3_PWD")
+                            offUrl = URL(string: "http://10.5.5.9/bacpac/SH?t=\(goProPassword ?? "")&p=%00")!
+                        }
+                        let offTask = URLSession.shared.dataTask(with: offUrl) { (data, response, error) in
+                            guard let data = data, let response = response as? HTTPURLResponse else {
+                                print("GoPro Hero3 Off: No Response")
+                                self.actionCamIsOnline = false
+                                if (self.actionCamIsRecording){
+                                    self.actionCamIsRecording = false
+                                    self.loadTasks()
+                                    DispatchQueue.main.async{
+                                        self.collectionView!.reloadData()
+                                    }
+                                }
+                                return
+                            }
+                            
+                            switch response.statusCode {
+                            case 200:
+                                print("GoPro Hero3 Off Response: \(String(data: data, encoding: .utf8)!)")
+                                self.actionCamIsOnline = true
+                                self.actionCamIsRecording = false
+                                self.loadTasks()
+                                DispatchQueue.main.async{
+                                    self.collectionView!.reloadData()
+                                }
+                                break
+                            case 403:
+                                //Bad Pass
+                                print("GoPro Hero3 Off: Bad Password")
+                                let passwordUrl = URL(string: "http://10.5.5.9/bacpac/sd")!
+                                let passwordTask = URLSession.shared.dataTask(with: passwordUrl) { (data, response, error) in
+                                    guard let data = data, let response = response as? HTTPURLResponse else {
+                                        print("GoPro Hero 3 Get Password: No Response")
+                                        self.actionCamIsOnline = false
+                                        if (self.actionCamIsRecording){
+                                            self.actionCamIsRecording = false
+                                            self.loadTasks()
+                                            DispatchQueue.main.async{
+                                                self.collectionView!.reloadData()
+                                            }
+                                        }
+                                        return
+                                    }
+                                    
+                                    switch response.statusCode {
+                                    case 200:
+                                        //Write password into preference
+                                        let goProPassword = (String(data: data, encoding: .utf8)!).dropFirst(2)
+                                        print("GoPro Hero 3 Password: \(goProPassword)")
+                                        UserDefaults.standard.set(goProPassword, forKey: "ACTIONCAM_GOPRO3_PWD")
+                                        let offUrl = URL(string: "http://10.5.5.9/bacpac/SH?t=\(goProPassword )&p=%00")!
+                                        let offTask = URLSession.shared.dataTask(with: offUrl) { (data, response, error) in
+                                            guard let data = data, let response = response as? HTTPURLResponse else {
+                                                print("GoPro Hero3 On(ReAuth): No Response")
+                                                self.actionCamIsOnline = false
+                                                if (self.actionCamIsRecording){
+                                                    self.actionCamIsRecording = false
+                                                    self.loadTasks()
+                                                    DispatchQueue.main.async{
+                                                        self.collectionView!.reloadData()
+                                                    }
+                                                }
+                                                return
+                                            }
+                                            
+                                            switch response.statusCode {
+                                            case 200:
+                                                self.actionCamIsOnline = true
+                                                print("GoPro Hero3 Off(ReAuth) Response: \(data)")
+                                                break
+                                            case 403:
+                                                //Bad Pass
+                                                print("GoPro Hero3 Off(ReAuth): Bad Password")
+                                                break
+                                            default:
+                                                print("GoPro Hero3 Off(ReAuth) Unchecked Status Code: \(response.statusCode)")
+                                                if (self.actionCamIsRecording){
+                                                    print("Changed to NOT Recording")
+                                                    self.actionCamIsRecording = false
+                                                    self.loadTasks()
+                                                    DispatchQueue.main.async{
+                                                        self.collectionView!.reloadData()
+                                                    }
+                                                }
+                                            }
+                                        }
+                                        offTask.resume()
+                                        break
+                                    default:
+                                        print("GoPro Hero3 Status(Auth) Unchecked Status Code: \(response.statusCode)")
+                                        if (self.actionCamIsRecording){
+                                            print("Changed to NOT Recording")
+                                            self.actionCamIsRecording = false
+                                            self.loadTasks()
+                                            DispatchQueue.main.async{
+                                                self.collectionView!.reloadData()
+                                            }
+                                        }
+                                    }
+                                }
+                                passwordTask.resume()
+                                break
+                            default:
+                                print("GoPro Hero3 Off Unchecked Status Code: \(response.statusCode)")
+                                if (self.actionCamIsRecording){
+                                    print("Changed to NOT Recording")
+                                    self.actionCamIsRecording = false
+                                    self.loadTasks()
+                                    DispatchQueue.main.async{
+                                        self.collectionView!.reloadData()
+                                    }
+                                }
+                            }
+                        }
+                        offTask.resume()
+                    } else {
+                        //On
+                        var onUrl = URL(string: "http://10.5.5.9/bacpac/SH?p=%01")!
+                        if (hero3NeedsPass){
+                            let goProPassword = UserDefaults.standard.string(forKey: "ACTIONCAM_GOPRO3_PWD")
+                            onUrl = URL(string: "http://10.5.5.9/bacpac/SH?t=\(goProPassword ?? "")&p=%01")!
+                        }
+                        let onTask = URLSession.shared.dataTask(with: onUrl) { (data, response, error) in
+                            guard let data = data, let response = response as? HTTPURLResponse else {
+                                print("GoPro Hero3 On: No Response")
+                                self.actionCamIsOnline = false
+                                if (self.actionCamIsRecording){
+                                    self.actionCamIsRecording = false
+                                    self.loadTasks()
+                                    DispatchQueue.main.async{
+                                        self.collectionView!.reloadData()
+                                    }
+                                }
+                                return
+                            }
+                            
+                            switch response.statusCode {
+                            case 200:
+                                print("GoPro Hero3 On Response: \(String(data: data, encoding: .utf8)!)")
+                                self.actionCamIsOnline = true
+                                self.actionCamIsRecording = true
+                                self.loadTasks()
+                                DispatchQueue.main.async{
+                                    self.collectionView!.reloadData()
+                                }
+                                break
+                            case 403:
+                                //Bad Pass
+                                print("GoPro Hero3 On: Bad Password")
+                                let passwordUrl = URL(string: "http://10.5.5.9/bacpac/sd")!
+                                let passwordTask = URLSession.shared.dataTask(with: passwordUrl) { (data, response, error) in
+                                    guard let data = data, let response = response as? HTTPURLResponse else {
+                                        print("GoPro Hero 3 Get Password: No Response")
+                                        self.actionCamIsOnline = false
+                                        if (self.actionCamIsRecording){
+                                            self.actionCamIsRecording = false
+                                            self.loadTasks()
+                                            DispatchQueue.main.async{
+                                                self.collectionView!.reloadData()
+                                            }
+                                        }
+                                        return
+                                    }
+                                    
+                                    switch response.statusCode {
+                                    case 200:
+                                        //Write password into preference
+                                        self.actionCamIsOnline = true
+                                        let goProPassword = (String(data: data, encoding: .utf8)!).dropFirst(2)
+                                        print("GoPro Hero 3 Password: \(goProPassword)")
+                                        UserDefaults.standard.set(goProPassword, forKey: "ACTIONCAM_GOPRO3_PWD")
+                                        let onUrl = URL(string: "http://10.5.5.9/bacpac/SH?t=\(goProPassword )&p=%01")!
+                                        let onTask = URLSession.shared.dataTask(with: onUrl) { (data, response, error) in
+                                            guard let data = data, let response = response as? HTTPURLResponse else {
+                                                print("GoPro Hero3 On(ReAuth): No Response")
+                                                self.actionCamIsOnline = false
+                                                if (self.actionCamIsRecording){
+                                                    self.actionCamIsRecording = false
+                                                    self.loadTasks()
+                                                    DispatchQueue.main.async{
+                                                        self.collectionView!.reloadData()
+                                                    }
+                                                }
+                                                return
+                                            }
+                                            
+                                            switch response.statusCode {
+                                            case 200:
+                                                print("GoPro Hero3 On(ReAuth) Response: \(data)")
+                                                self.actionCamIsOnline = true
+                                                break
+                                            case 403:
+                                                //Bad Pass
+                                                print("GoPro Hero3 On(ReAuth): Bad Password")
+                                                break
+                                            default:
+                                                print("GoPro Hero3 On(ReAuth) Unchecked Status Code: \(response.statusCode)")
+                                                if (self.actionCamIsRecording){
+                                                    print("Changed to NOT Recording")
+                                                    self.actionCamIsRecording = false
+                                                    self.loadTasks()
+                                                    DispatchQueue.main.async{
+                                                        self.collectionView!.reloadData()
+                                                    }
+                                                }
+                                            }
+                                        }
+                                        onTask.resume()
+                                        break
+                                    default:
+                                        print("GoPro Hero3 Status(Auth) Unchecked Status Code: \(response.statusCode)")
+                                        if (self.actionCamIsRecording){
+                                            print("Changed to NOT Recording")
+                                            self.actionCamIsRecording = false
+                                            self.loadTasks()
+                                            DispatchQueue.main.async{
+                                                self.collectionView!.reloadData()
+                                            }
+                                        }
+                                    }
+                                }
+                                passwordTask.resume()
+                                break
+                            case 410:
+                                //Camera Off
+                                //Turn Camera On
+                                var powerOnUrl = URL(string: "http://10.5.5.9/bacpac/PW?p=%01")!
+                                if (hero3NeedsPass){
+                                    let goProPassword = UserDefaults.standard.string(forKey: "ACTIONCAM_GOPRO3_PWD")
+                                    powerOnUrl = URL(string: "http://10.5.5.9/bacpac/PW?t=\(goProPassword ?? "")&p=%01")!
+                                }
+                                let powerOnTask = URLSession.shared.dataTask(with: powerOnUrl) { (data, response, error) in
+                                    guard let data = data, let response = response as? HTTPURLResponse else {
+                                        print("GoPro Hero 3 Power On: No Response")
+                                        self.actionCamIsOnline = false
+                                        if (self.actionCamIsRecording){
+                                            self.actionCamIsRecording = false
+                                            self.loadTasks()
+                                            DispatchQueue.main.async{
+                                                self.collectionView!.reloadData()
+                                            }
+                                        }
+                                        return
+                                    }
+                                    switch response.statusCode {
+                                    case 200:
+                                        print("GoPro Hero 3 Power On Response: \(String(data: data, encoding: .utf8)!)")
+                                        self.actionCamIsOnline = true
+                                        self.actionCamIsRecording = false
+                                        self.loadTasks()
+                                        DispatchQueue.main.async{
+                                            self.collectionView!.reloadData()
+                                        }
+                                        break
+                                    default:
+                                        print("GoPro Hero 3 Power On Unchecked Status Code: \(response.statusCode)")
+                                        if (self.actionCamIsRecording){
+                                            print("Changed to NOT Recording")
+                                            self.actionCamIsRecording = false
+                                            self.loadTasks()
+                                            DispatchQueue.main.async{
+                                                self.collectionView!.reloadData()
+                                            }
+                                        }
+                                    }
+                                }
+                                powerOnTask.resume()
+                                break
+                            default:
+                                print("GoPro Hero3 On Unchecked Status Code: \(response.statusCode)")
+                                if (self.actionCamIsRecording){
+                                    print("Changed to NOT Recording")
+                                    self.actionCamIsRecording = false
+                                    self.loadTasks()
+                                    DispatchQueue.main.async{
+                                        self.collectionView!.reloadData()
+                                    }
+                                }
+                            }
+                        }
+                        onTask.resume()
+                    }
+                    break
+                case 2:
+                    //GoPro Hero4+
+                    if (self.actionCamIsRecording){
+                        //Off
+                        let url = URL(string: "http://10.5.5.9/gp/gpControl/command/shutter?p=0")!
+                        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+                            guard let data = data, let response = response as? HTTPURLResponse else {
+                                print("GoPro Hero 4+ Off: No Response")
+                                self.actionCamIsOnline = false
+                                if (self.actionCamIsRecording){
+                                    self.actionCamIsRecording = false
+                                    self.loadTasks()
+                                    DispatchQueue.main.async{
+                                        self.collectionView!.reloadData()
+                                    }
+                                }
+                                return
+                            }
+                            switch response.statusCode {
+                            case 200:
+                                if let body = String(data: data, encoding: .utf8){
+                                    print("GoPro Hero 4+ Off Recording Response: \(body)")
+                                    self.actionCamIsOnline = true
+                                    self.actionCamIsRecording = false
+                                    self.loadTasks()
+                                    DispatchQueue.main.async{
+                                        self.collectionView!.reloadData()
+                                    }
+                                }
+                                break
+                            default:
+                                print("GoPro Hero 4+ Off Unchecked Status Code: \(response.statusCode)")
+                                if (self.actionCamIsRecording){
+                                    print("Changed to NOT Recording")
+                                    self.actionCamIsRecording = false
+                                    self.loadTasks()
+                                    DispatchQueue.main.async{
+                                        self.collectionView!.reloadData()
+                                    }
+                                }
+                            }
+                        }
+                        task.resume()
+                    } else {
+                        //On
+                        let url = URL(string: "http://10.5.5.9/gp/gpControl/command/shutter?p=1")!
+                        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+                            guard let data = data, let response = response as? HTTPURLResponse else {
+                                print("GoPro Hero 4+ On Recording No Response")
+                                self.actionCamIsOnline = false
+                                if (self.actionCamIsRecording){
+                                    self.actionCamIsRecording = false
+                                    self.loadTasks()
+                                    DispatchQueue.main.async{
+                                        self.collectionView!.reloadData()
+                                    }
+                                }
+                                return
+                            }
+                            switch response.statusCode {
+                            case 200:
+                                if let body = String(data: data, encoding: .utf8){
+                                    print("GoPro Hero 4+ On Recording Response: \(body)")
+                                    self.actionCamIsOnline = true
+                                    self.actionCamIsRecording = true
+                                    self.loadTasks()
+                                    DispatchQueue.main.async{
+                                        self.collectionView!.reloadData()
+                                    }
+                                }
+                                break
+                            default:
+                                print("GoPro Hero 4+ On Recording Unchecked Status Code: \(response.statusCode)")
+                                if (self.actionCamIsRecording){
+                                    print("Changed to NOT Recording")
+                                    self.actionCamIsRecording = false
+                                    self.loadTasks()
+                                    DispatchQueue.main.async{
+                                        self.collectionView!.reloadData()
+                                    }
+                                }
+                            }
+                        }
+                        task.resume()
+                    }
+                    break
+                default:
+                    break
+                }
+            } else {
+                self.showToast(message: NSLocalizedString("toast_actioncam_notconnected", comment: ""))
+            }
+            break
         default:
             print("Unknown Task")
         }
-        //loadTasks()
+        loadTasks()
         self.collectionView!.reloadData()
     }
     
@@ -676,6 +1085,333 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
         if CLLocationManager.locationServicesEnabled() {
             locationManager.requestWhenInUseAuthorization()
             locationManager.startUpdatingLocation()
+        }
+        
+        // ActionCam Status Check
+        let actionCamType = UserDefaults.standard.integer(forKey: "actioncam_preference")
+        switch (actionCamType){
+        case 1:
+            //GoPro Hero3
+            var hero3NeedsPass = false
+            if let actionCamPassword = UserDefaults.standard.string(forKey: "ACTIONCAM_GOPRO3_PWD"){
+                if (actionCamPassword != ""){
+                    hero3NeedsPass = true
+                } else {
+                    hero3NeedsPass = false
+                }
+            } else {
+                hero3NeedsPass = false
+            }
+            var statusUrl = URL(string: "http://10.5.5.9/camera/sx")!
+            if (hero3NeedsPass){
+                let goProPassword = UserDefaults.standard.string(forKey: "ACTIONCAM_GOPRO3_PWD")
+                statusUrl = URL(string: "http://10.5.5.9/camera/sx?t=\(goProPassword ?? "")")!
+            }
+            let statusTask = URLSession.shared.dataTask(with: statusUrl) { (data, response, error) in
+                guard let data = data, let response = response as? HTTPURLResponse else {
+                    print("GoPro Hero3 Status: No Response")
+                    self.actionCamIsOnline = false
+                    if (self.actionCamIsRecording){
+                        self.actionCamIsRecording = false
+                        self.loadTasks()
+                        DispatchQueue.main.async{
+                            self.collectionView!.reloadData()
+                        }
+                    }
+                    return
+                }
+                
+                switch response.statusCode {
+                case 200:
+                    print("GoPro Hero3 Status Response: \(data)")
+                    self.actionCamIsOnline = true
+                    break
+                case 403:
+                    //Bad Pass
+                    //Get Pass
+                    print("GoPro Hero3 Status: Bad Pass")
+                    let passwordUrl = URL(string: "http://10.5.5.9/bacpac/sd")!
+                    let passwordTask = URLSession.shared.dataTask(with: passwordUrl) { (data, response, error) in
+                        guard let data = data, let response = response as? HTTPURLResponse else {
+                            print("GoPro Hero 3 Get Password: No Response")
+                            self.actionCamIsOnline = false
+                            if (self.actionCamIsRecording){
+                                self.actionCamIsRecording = false
+                                self.loadTasks()
+                                DispatchQueue.main.async{
+                                    self.collectionView!.reloadData()
+                                }
+                            }
+                            return
+                        }
+                        
+                        switch response.statusCode {
+                        case 200:
+                            //Write password into preference
+                            let goProPassword = (String(data: data, encoding: .utf8)!).dropFirst(2)
+                            print("GoPro Hero 3 Password: \(goProPassword)")
+                            self.actionCamIsOnline = true
+                            UserDefaults.standard.set(goProPassword, forKey: "ACTIONCAM_GOPRO3_PWD")
+                            let statusUrl = URL(string: "http://10.5.5.9/camera/sx?t=\(goProPassword)")!
+                            let statusTask = URLSession.shared.dataTask(with: statusUrl) { (data, response, error) in
+                                guard let data = data, let response = response as? HTTPURLResponse else {
+                                    print("GoPro Hero3 Status(ReAuth): No Response")
+                                    if (self.actionCamIsRecording){
+                                        self.actionCamIsRecording = false
+                                        self.loadTasks()
+                                        DispatchQueue.main.async{
+                                            self.collectionView!.reloadData()
+                                        }
+                                    }
+                                    return
+                                }
+                                
+                                switch response.statusCode {
+                                case 200:
+                                    print("GoPro Hero3 Status(ReAuth) Response: \(data)")
+                                    self.actionCamIsOnline = true
+                                    break
+                                case 403:
+                                    //Bad Pass
+                                    print("GoPro Hero3 Status(ReAuth): Bad Password")
+                                    break
+                                default:
+                                    print("GoPro Hero3 Status(ReAuth) Unchecked Status Code: \(response.statusCode)")
+                                    if (self.actionCamIsRecording){
+                                        print("Changed to NOT Recording")
+                                        self.actionCamIsRecording = false
+                                        self.loadTasks()
+                                        DispatchQueue.main.async{
+                                            self.collectionView!.reloadData()
+                                        }
+                                    }
+                                }
+                            }
+                            statusTask.resume()
+                            break
+                        default:
+                            print("GoPro Hero3 Status(Auth) Unchecked Status Code: \(response.statusCode)")
+                            if (self.actionCamIsRecording){
+                                print("Changed to NOT Recording")
+                                self.actionCamIsRecording = false
+                                self.loadTasks()
+                                DispatchQueue.main.async{
+                                    self.collectionView!.reloadData()
+                                }
+                            }
+                        }
+                    }
+                    passwordTask.resume()
+                    break
+                default:
+                    print("GoPro Hero3 Status Unchecked Status Code: \(response.statusCode)")
+                    if (self.actionCamIsRecording){
+                        print("Changed to NOT Recording")
+                        self.actionCamIsRecording = false
+                        self.loadTasks()
+                        DispatchQueue.main.async{
+                            self.collectionView!.reloadData()
+                        }
+                    }
+                }
+            }
+            statusTask.resume()
+            
+            break
+        case 2:
+            //GoPro Hero4+
+            //Get Status
+            let url = URL(string: "http://10.5.5.9/gp/gpControl/status")!
+            let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+                guard let data = data, let response = response as? HTTPURLResponse else {
+                    print("GoPro Hero4+ Status: No Response")
+                    self.actionCamIsOnline = false
+                    if (self.actionCamIsRecording){
+                        self.actionCamIsRecording = false
+                        self.loadTasks()
+                        DispatchQueue.main.async{
+                            self.collectionView!.reloadData()
+                        }
+                    }
+                    return
+                }
+                
+                switch response.statusCode {
+                case 200:
+                    //print(String(data: data, encoding: .utf8) as Any)
+                    if let body = String(data: data, encoding: .utf8){
+                        print(body)
+                        let json = String(data: data, encoding: .utf8)!
+                        let jsonData = Data(json.utf8)
+                        do {
+                            if let json = try JSONSerialization.jsonObject(with: jsonData, options: []) as? [String: Any] {
+                                let currentStatus = json["status"] as! [String:Any]
+                                print("\(String(describing: currentStatus["8"]))")
+                                self.actionCamIsOnline = true
+                                let recordingStatus:Int = currentStatus["8"] as! Int
+                                if (recordingStatus == 1){
+                                    print("GoPro Hero4+ is Recording")
+                                    if (!self.actionCamIsRecording){
+                                        print("Changed to Recording")
+                                        self.actionCamIsRecording = true
+                                        self.loadTasks()
+                                        DispatchQueue.main.async{
+                                            self.collectionView!.reloadData()
+                                        }
+                                    }
+                                } else {
+                                    print("GoPro Hero4+ is NOT Recording")
+                                    if (self.actionCamIsRecording){
+                                        print("Changed to NOT Recording")
+                                        self.actionCamIsRecording = false
+                                        self.loadTasks()
+                                        DispatchQueue.main.async{
+                                            self.collectionView!.reloadData()
+                                        }
+                                    }
+                                }
+                            }
+                        } catch let parseError {
+                            print("parsing error: \(parseError)")
+                            let responseString = String(data: data, encoding: .utf8)
+                            print("raw response: \(responseString!)")
+                        }
+                    }
+                    break
+                default:
+                    print("Status Code: \(response.statusCode)")
+                    if (self.actionCamIsRecording){
+                        print("Changed to NOT Recording")
+                        self.actionCamIsRecording = false
+                        self.loadTasks()
+                        DispatchQueue.main.async{
+                            self.collectionView!.reloadData()
+                        }
+                    }
+                }
+            }
+            task.resume()
+            
+            //Keep Wifi from going to sleep
+            //"http://10.5.5.9/gp/gpControl/execute?p1=gpStream&a1=proto_v2&c1=restart"
+            //"http://10.5.5.9/gp/gpControl/execute?p1=gpStream&a1=proto_v2&c1=stop"
+            if (self.actionCamIsOnline){
+                print("Trying GoPro Hero4+ KeepAlive Hack")
+                let restartUrl = URL(string: "http://10.5.5.9/gp/gpControl/execute?p1=gpStream&a1=proto_v2&c1=restart")!
+                let restartTask = URLSession.shared.dataTask(with: restartUrl) { (data, response, error) in
+                    guard let data = data, let response = response as? HTTPURLResponse else {
+                        print("No Response")
+                        if (self.actionCamIsRecording){
+                            self.actionCamIsRecording = false
+                            self.loadTasks()
+                            DispatchQueue.main.async{
+                                self.collectionView!.reloadData()
+                            }
+                        }
+                        return
+                    }
+                    
+                    switch response.statusCode {
+                    case 200:
+                        print("Restart Stream Response: \(String(data: data, encoding: .utf8)!)")
+                        break
+                    default:
+                        print("Status Code: \(response.statusCode)")
+                        if (self.actionCamIsRecording){
+                            print("Changed to NOT Recording")
+                            self.actionCamIsRecording = false
+                            self.loadTasks()
+                            DispatchQueue.main.async{
+                                self.collectionView!.reloadData()
+                            }
+                        }
+                    }
+                }
+                restartTask.resume()
+                let stopUrl = URL(string: "http://10.5.5.9/gp/gpControl/execute?p1=gpStream&a1=proto_v2&c1=stop")!
+                let stopTask = URLSession.shared.dataTask(with: stopUrl) { (data, response, error) in
+                    guard let data = data, let response = response as? HTTPURLResponse else {
+                        print("No Response")
+                        if (self.actionCamIsRecording){
+                            self.actionCamIsRecording = false
+                            self.loadTasks()
+                            DispatchQueue.main.async{
+                                self.collectionView!.reloadData()
+                            }
+                        }
+                        return
+                    }
+                    
+                    switch response.statusCode {
+                    case 200:
+                        print("Stop Stream Response: \(String(data: data, encoding: .utf8)!)")
+                        break
+                    default:
+                        print("Status Code: \(response.statusCode)")
+                        if (self.actionCamIsRecording){
+                            print("Changed to NOT Recording")
+                            self.actionCamIsRecording = false
+                            self.loadTasks()
+                            DispatchQueue.main.async{
+                                self.collectionView!.reloadData()
+                            }
+                        }
+                    }
+                }
+                stopTask.resume()
+                //Get MAC
+                /*
+                 let infoUrl = URL(string: "http://10.5.5.9/gp/gpControl/info")!
+                 let infoTask = URLSession.shared.dataTask(with: infoUrl) { (data, response, error) in
+                 guard let data = data, let response = response as? HTTPURLResponse else {
+                 print("GoPro Hero 4+ Info: No Response")
+                 self.actionCamIsOnline = false
+                 if (self.actionCamIsRecording){
+                 self.actionCamIsRecording = false
+                 self.loadTasks()
+                 DispatchQueue.main.async{
+                 self.collectionView!.reloadData()
+                 }
+                 }
+                 return
+                 }
+                 switch response.statusCode {
+                 case 200:
+                 self.actionCamIsOnline = true
+                 if let body = String(data: data, encoding: .utf8){
+                 print(body)
+                 let json = body
+                 let jsonData = Data(json.utf8)
+                 do {
+                 if let json = try JSONSerialization.jsonObject(with: jsonData, options: []) as? [String: Any] {
+                 let currentStatus = json["info"] as! [String:Any]
+                 print("\(String(describing: currentStatus["ap_mac"]))")
+                 }
+                 } catch let parseError {
+                 print("parsing error: \(parseError)")
+                 let responseString = String(data: data, encoding: .utf8)
+                 print("raw response: \(responseString!)")
+                 }
+                 }
+                 break
+                 default:
+                 print("Status Code: \(response.statusCode)")
+                 if (self.actionCamIsRecording){
+                 print("Changed to NOT Recording")
+                 self.actionCamIsRecording = false
+                 self.loadTasks()
+                 DispatchQueue.main.async{
+                 self.collectionView!.reloadData()
+                 }
+                 }
+                 }
+                 }
+                 infoTask.resume()
+                 */
+            }
+            break
+        default:
+            break
         }
     }
     

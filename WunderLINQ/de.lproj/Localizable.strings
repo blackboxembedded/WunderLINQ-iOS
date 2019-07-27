@@ -152,6 +152,9 @@
 "task_title_stop_trip" = "Fahrtaufzeichnung beenden";
 "task_title_waypoint" = "Wegpunkt speichern";
 "task_title_settings" = "Einstellungen";
+"task_title_actioncam_start_video" = "Start ActionCam Recording"; // Needs Translation
+"task_title_actioncam_stop_video" = "Stop ActionCam Recording"; // Needs Translation
+"toast_actioncam_notconnected" = "ActionCam Not Connected"; // Needs Translation
 "toast_waypoint_saved" = "Gespeicherter Wegpunkt";
 "task_title_waypoint_nav" = "Zu Wegpunkt navigieren";
 "toast_photo_taken" = "Foto aufgenommen!";

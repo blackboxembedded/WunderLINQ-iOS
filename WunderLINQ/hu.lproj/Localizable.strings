@@ -152,6 +152,9 @@
 "task_title_stop_trip" = "Útvonal rögzítésének leállítása";
 "task_title_waypoint" = "Útipont mentése";
 "task_title_settings" = "Beállítások";
+"task_title_actioncam_start_video" = "Start ActionCam Recording"; // Needs Translation
+"task_title_actioncam_stop_video" = "Stop ActionCam Recording"; // Needs Translation
+"toast_actioncam_notconnected" = "ActionCam Not Connected"; // Needs Translation
 "toast_waypoint_saved" = "Útipont elmentve";
 "task_title_waypoint_nav" = "Útiponthoz navigálás";
 "toast_photo_taken" = "Fénykép elkészítve!";

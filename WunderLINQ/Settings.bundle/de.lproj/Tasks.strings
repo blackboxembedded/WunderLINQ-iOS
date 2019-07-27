@@ -9,6 +9,8 @@
 "task_title_waypoint" = "Wegpunkt speichern";
 "task_title_waypoint_nav" = "Zu Wegpunkt navigieren";
 "task_title_settings" = "Einstellungen";
+"task_title_actioncam_start_video" = "Start ActionCam Recording"; // Needs Translation
+"task_title_actioncam_stop_video" = "Stop ActionCam Recording"; // Needs Translation
 "task_title_empty" = "Leer";
 "pref_task_one" = "Schnellzugriff #1";
 "pref_task_two" = "Schnellzugriff #2";

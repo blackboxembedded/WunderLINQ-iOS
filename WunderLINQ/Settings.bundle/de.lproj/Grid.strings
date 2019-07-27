@@ -38,4 +38,6 @@
 "gforce_header" = "Beschleunigungskraft";
 "bearing_header" = "Peilung";
 "altitude_header" = "Höhe";
+"time_header" = "Time"; // Needs Translation
+"barometric_header" = "Barometer"; // Needs Translation
 "gpsspeed_header" = "GPS Geschwindigkeit";

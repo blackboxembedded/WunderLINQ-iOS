@@ -152,6 +152,9 @@
 "task_title_stop_trip" = "Παύση καταγρ. διαδρομής";
 "task_title_waypoint" = "Αποθήκ. προορισμού";
 "task_title_settings" = "Ρυθμίσεις";
+"task_title_actioncam_start_video" = "Start ActionCam Recording"; // Needs Translation
+"task_title_actioncam_stop_video" = "Stop ActionCam Recording"; // Needs Translation
+"toast_actioncam_notconnected" = "ActionCam Not Connected"; // Needs Translation
 "toast_waypoint_saved" = "Ο προορισμός αποθηκεύτηκε";
 "task_title_waypoint_nav" = "Πλοήγ. στον προορισμό";
 "toast_photo_taken" = "Επιτυχής λήψη φωτογραφίας";

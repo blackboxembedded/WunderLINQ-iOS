@@ -3,14 +3,6 @@
 "pref_homePhone_name" = "Número de teléfono favorito";
 "ui_title" = "Interfaz de usuario";
 "pref_motorcycledata_name" = "Deshabilitar la visualización de datos de rendimiento"; // JCAL 20190303
-"pref_nav_app" = "App de navegación";
-"nav_app_apple" = "Apple Maps"; // JCAL 20190303
-"nav_app_google" = "Google Maps"; // JCAL 20190303
-"nav_app_scenic" = "Scenic"; // JCAL 20190303
-"nav_app_sygic" = "Sygic"; // JCAL 20190303
-"nav_app_waze" = "Waze"; // JCAL 20190303
-"nav_app_mapsme" = "Maps.me"; // Needs translation
-"nav_app_osmand" = "OsmAnd";
 "pref_nightMode_name" = "Modo noche";
 "pref_pressuref_name" = "Unidad de presión";
 "pressuref_bar" = "Bar"; // JCAL 20190303
@@ -51,3 +43,4 @@
 "pref_debuglogging_summary" = "Sólo habilitar en caso de necesidad de soporte, podría impactar al rendimiento del dispositivo si siempre está activo. Por favor, deshabilitar cuando se termine."; // JCAL 20190303
 "advanced_settings_title" = "Ajustes Avanzados";
 "pref_photopreview_name" = "Photo Preview"; // Needs Translation
+"pref_integrations_settings_title" = "Integrations"; // Needs Translation

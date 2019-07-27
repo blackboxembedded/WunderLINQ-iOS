@@ -38,4 +38,6 @@
 "gforce_header" = "g-force"; // Needs translation
 "bearing_header" = "Bearing"; // Needs translation
 "altitude_header" = "Altitude"; //Needs translation
+"time_header" = "Time"; // Needs Translation
+"barometric_header" = "Barometer"; // Needs Translation
 "gpsspeed_header" = "GPS Speed"; //Needs translation
