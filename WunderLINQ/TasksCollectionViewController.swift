@@ -920,6 +920,7 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
                     }
                     break
                 default:
+                    self.showToast(message: NSLocalizedString("toast_actioncam_notset", comment: ""))
                     break
                 }
             } else {

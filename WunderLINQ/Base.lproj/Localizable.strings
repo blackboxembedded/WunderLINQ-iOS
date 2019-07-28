@@ -155,6 +155,7 @@
 "task_title_actioncam_start_video" = "Start ActionCam Recording";
 "task_title_actioncam_stop_video" = "Stop ActionCam Recording";
 "toast_actioncam_notconnected" = "ActionCam Not Connected";
+"toast_actioncam_notset" = "Set ActionCam type in the app settings"; // Needs translation
 "toast_waypoint_saved" = "Waypoint Saved";
 "task_title_waypoint_nav" = "Navigate to Waypoint";
 "toast_photo_taken" = "Photo Taken!";
