@@ -1420,8 +1420,8 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             if motorcycleData.location != nil {
                 var gpsSpeed:String = "0"
                 if motorcycleData.location!.speed >= 0{
-                    gpsSpeed = "\(motorcycleData.location!.speed)"
-                    let gpsSpeedValue:Double = motorcycleData.location!.speed
+                    gpsSpeed = "\(motorcycleData.location!.speed * 3.6)"
+                    let gpsSpeedValue:Double = motorcycleData.location!.speed * 3.6
                     gpsSpeed = "\(Int(round(gpsSpeedValue)))"
                     if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
                         gpsSpeed = "\(Int(round(Utility.kmToMiles(gpsSpeedValue))))"
@@ -2681,23 +2681,23 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             
         case 0x0A:
             // Odometer
-            let odometer:Double = Double(UInt16(lastMessage[1]) | UInt16(lastMessage[2]) << 8 | UInt16(lastMessage[3]) << 16)
-            motorcycleData.setodometer(odometer: odometer)
+            let odometer:Double = Double(UInt32((UInt32(lastMessage[1]) | UInt32(lastMessage[2]) << 8 | UInt32(lastMessage[3]) << 16)))
+            motorcycleData.setodometer(odometer: (odometer * 1.0))
             
             // Trip Auto
             if ((lastMessage[4] != 0xFF) && (lastMessage[5] != 0xFF) && (lastMessage[6] != 0xFF)){
-                let tripAuto:Double = Double((UInt32(lastMessage[4]) | UInt32(lastMessage[5]) << 8 | UInt32(lastMessage[6]) << 16)) / 10.0
+                let tripAuto:Double = Double(UInt32((UInt32(lastMessage[4]) | UInt32(lastMessage[5]) << 8 | UInt32(lastMessage[6]) << 16))) / 10.0
                 motorcycleData.settripAuto(tripAuto: tripAuto)
             }
             
         case 0x0C:
             // Trip 1 & Trip 2
             if (!((lastMessage[1] == 0xFF) && (lastMessage[2] == 0xFF) && (lastMessage[3] == 0xFF))){
-                let tripOne:Double = Double((UInt32(lastMessage[1]) | UInt32(lastMessage[2]) << 8 | UInt32(lastMessage[3]) << 16)) / 10.0
+                let tripOne:Double = Double(UInt32((UInt32(lastMessage[1]) | UInt32(lastMessage[2]) << 8 | UInt32(lastMessage[3]) << 16))) / 10.0
                 motorcycleData.settripOne(tripOne: tripOne)
             }
             if (!((lastMessage[4] == 0xFF) && (lastMessage[5] == 0xFF) && (lastMessage[6] == 0xFF))){
-                let tripTwo:Double = Double((UInt32(lastMessage[4]) | UInt32(lastMessage[5]) << 8 | UInt32(lastMessage[6]) << 16)) / 10.0
+                let tripTwo:Double = Double(UInt32((UInt32(lastMessage[4]) | UInt32(lastMessage[5]) << 8 | UInt32(lastMessage[6]) << 16))) / 10.0
                 motorcycleData.settripTwo(tripTwo: tripTwo)
             }
             
