@@ -2641,12 +2641,6 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                     faults.setFrontLampOneLightActive(active: true)
                     faults.setFrontLampTwoLightActive(active: true)
                     
-                case 0xF:
-                    faults.setAddDippedLightActive(active: false)
-                    faults.setAddBrakeLightActive(active: false)
-                    faults.setFrontLampOneLightActive(active: false)
-                    faults.setFrontLampTwoLightActive(active: false)
-                    
                 default:
                     faults.setAddDippedLightActive(active: false)
                     faults.setAddBrakeLightActive(active: false)
@@ -3810,8 +3804,9 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         
         // initialize the date formatter and set the style
         let formatter = DateFormatter()
-        formatter.timeStyle = .long
-        formatter.dateStyle = .none
+        formatter.dateFormat = "h:mm a"
+        //formatter.timeStyle = .long
+        //formatter.dateStyle = .none
         
         // get the date time String from the date object
         motorcycleData.setTime(time: formatter.string(from: currentDateTime))
