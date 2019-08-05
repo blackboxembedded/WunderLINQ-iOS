@@ -1413,7 +1413,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         case 25:
             //Barometric Pressure
             if motorcycleData.barometricPressure != nil {
-                value = "\(motorcycleData.barometricPressure!.rounded(toPlaces: 2))"
+                value = "\(round(motorcycleData.barometricPressure!))"
             }
         case 26:
             //GPS speed
