@@ -431,6 +431,8 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             print("Motion Device Available")
         }
         motionManager.startDeviceMotionUpdates()
+        motionManager.deviceMotionUpdateInterval = 1.0 / 50.0
+        
         referenceAttitude = nil
         
         locationManager.delegate = locationDelegate
@@ -3765,7 +3767,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                 referenceAttitude = attitude
             }
             motorcycleData.setleanAngle(leanAngle: Utility.degrees(radians: attitude.pitch))
-            motorcycleData.setgForce(gForce: data!.gravity.x + data!.gravity.y + data!.gravity.z)
+            motorcycleData.setgForce(gForce: sqrt (pow(data!.userAcceleration.x,2) + pow(data!.userAcceleration.y,2) + pow(data!.userAcceleration.z,2)))
         }
     }
 
