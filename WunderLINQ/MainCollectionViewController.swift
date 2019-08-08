@@ -106,7 +106,8 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                          NSLocalizedString("time_header", comment: ""),
                          NSLocalizedString("barometric_header", comment: ""),
                          NSLocalizedString("gpsspeed_header", comment: ""),
-                         NSLocalizedString("altitude_header", comment: "")
+                         NSLocalizedString("altitude_header", comment: ""),
+                         NSLocalizedString("sunrisesunset_header", comment: "")
     ]
     
     let locationDelegate = LocationDelegate()
@@ -995,6 +996,9 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         case 27:
             //altitude
             label = NSLocalizedString("altitude_header", comment: "") + " (" + heightUnit + ")"
+        case 28:
+            //Sunrise/Sunset
+            label = NSLocalizedString("sunrisesunset_header", comment: "")
         default:
             NSLog("Unknown : \(cellDataPoint)")
         }
@@ -1441,6 +1445,18 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                     altitude = "\(Int(round(Utility.mtoFeet(motorcycleData.location!.altitude))))"
                 }
                 value = altitude
+            }
+        case 28:
+            //Sunrise/Sunset
+            if motorcycleData.location != nil {
+                let solar = Solar(coordinate: motorcycleData.location!.coordinate)
+                let sunrise = solar?.sunrise
+                let sunset = solar?.sunset
+                
+                let formatter = DateFormatter()
+                formatter.dateFormat = "h:mm a"
+                
+                value = ("\(formatter.string(from: sunrise!))/\(formatter.string(from: sunset!))")
             }
         default:
             NSLog("Unknown : \(dataPoint)")

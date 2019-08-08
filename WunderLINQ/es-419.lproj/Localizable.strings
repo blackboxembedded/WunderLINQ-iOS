@@ -191,6 +191,8 @@
 "leanangle_header" = "Lean Angle"; // Needs translation
 "gforce_header" = "g-force"; // Needs translation
 "bearing_header" = "Bearing"; // Needs translation
+"barometric_header" = "Barometer"; // Needs Translation
+"sunrisesunset_header" = "Sunrise/Sunset"; // Needs Translation
 
 // ContactsTableViewController
 "contactlist_title" = "Contactos";

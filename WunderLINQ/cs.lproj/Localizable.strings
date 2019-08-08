@@ -191,6 +191,8 @@
 "leanangle_header" = "Úhel náklonu";
 "gforce_header" = "G";
 "bearing_header" = "Směr";
+"barometric_header" = "Barometer"; // Needs Translation
+"sunrisesunset_header" = "Sunrise/Sunset"; // Needs Translation
 
 // ContactsTableViewController
 "contactlist_title" = "Kontakty";

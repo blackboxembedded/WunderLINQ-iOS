@@ -191,6 +191,8 @@
 "leanangle_header" = "Kot nagiba";
 "gforce_header" = "g sila";
 "bearing_header" = "Smer";
+"barometric_header" = "Barometer"; // Needs Translation
+"sunrisesunset_header" = "Sunrise/Sunset"; // Needs Translation
 
 // ContactsTableViewController
 "contactlist_title" = "Stiki";

@@ -191,6 +191,8 @@
 "leanangle_header" = "Neigungswinkel";
 "gforce_header" = "Beschleunigungskraft";
 "bearing_header" = "Peilung";
+"barometric_header" = "Barometer"; // Needs Translation
+"sunrisesunset_header" = "Sunrise/Sunset"; // Needs Translation
 
 // ContactsTableViewController
 "contactlist_title" = "Kontakte";

@@ -191,7 +191,8 @@
 "leanangle_header" = "Lean Angle";
 "gforce_header" = "g-force";
 "bearing_header" = "Bearing";
-"barometric_header" = "Barometer"; // New
+"barometric_header" = "Barometer"; // Needs Translation
+"sunrisesunset_header" = "Sunrise/Sunset"; // Needs Translation
 
 // ContactsTableViewController
 "contactlist_title" = "Contacts";

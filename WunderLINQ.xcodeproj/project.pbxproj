@@ -78,6 +78,7 @@
 		7EC8C9BF1F830C5B000CEDDC /* PhoneContacts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC8C9BE1F830C5B000CEDDC /* PhoneContacts.swift */; };
 		7EC934F22186208A00FD4806 /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC934F12186208A00FD4806 /* AlertViewController.swift */; };
 		7ED2013620D0D0030066BCE6 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7ED2013520D0D0030066BCE6 /* Default-568h@2x.png */; };
+		7EF9B5A022FCB14D009D8D17 /* Solar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF9B59F22FCB14D009D8D17 /* Solar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -192,6 +193,7 @@
 		7EE02FE422A6BCCA0061330B /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		7EE02FE522A6BCCA0061330B /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = WunderLINQ/ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7EE02FE622A6BCCA0061330B /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		7EF9B59F22FCB14D009D8D17 /* Solar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Solar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -339,6 +341,7 @@
 				7EA478561F40B154000CEDDC /* LaunchScreen.storyboard */,
 				7E4D76E521DDAEC100825175 /* InfoPlist.strings */,
 				7EA478591F40B154000CEDDC /* Info.plist */,
+				7EF9B59F22FCB14D009D8D17 /* Solar.swift */,
 			);
 			path = WunderLINQ;
 			sourceTree = "<group>";
@@ -512,6 +515,7 @@
 				7E6987DB20F82F1A00B4781D /* MotorcycleData.swift in Sources */,
 				7E068BCB2102ACF30076EAAD /* Popover.swift in Sources */,
 				7EA478811F44F57C000CEDDC /* MusicViewController.swift in Sources */,
+				7EF9B5A022FCB14D009D8D17 /* Solar.swift in Sources */,
 				7E35A59322DC265800E4AE40 /* Utility.swift in Sources */,
 				7EAE9417211EA30900E24CE9 /* Theme.swift in Sources */,
 				7EC63202219BCE05002E68FF /* AboutViewController.swift in Sources */,

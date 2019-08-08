@@ -191,6 +191,8 @@
 "leanangle_header" = "Γωνία κλίσης";
 "gforce_header" = "Επιτάχυνση G";
 "bearing_header" = "Κύλιση";
+"barometric_header" = "Barometer"; // Needs Translation
+"sunrisesunset_header" = "Sunrise/Sunset"; // Needs Translation
 
 // ContactsTableViewController
 "contactlist_title" = "Επαφές";

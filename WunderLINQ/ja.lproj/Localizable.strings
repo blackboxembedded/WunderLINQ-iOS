@@ -191,6 +191,8 @@
 "leanangle_header" = "バンク角";
 "gforce_header" = "加速度";
 "bearing_header" = "進行方向";
+"barometric_header" = "Barometer"; // Needs Translation
+"sunrisesunset_header" = "Sunrise/Sunset"; // Needs Translation
 
 // ContactsTableViewController
 "contactlist_title" = "連絡先";
