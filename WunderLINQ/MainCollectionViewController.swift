@@ -473,7 +473,8 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         
         if CMAltimeter.isRelativeAltitudeAvailable() {
             altimeter.startRelativeAltitudeUpdates(to: OperationQueue.main) { (data, error) in
-                self.motorcycleData.setBarometricPressure(barometricPressure: data?.pressure as? Double)
+                let pressure:Double = (data?.pressure as? Double)! * 10.0
+                self.motorcycleData.setBarometricPressure(barometricPressure: pressure)
             }
         }
         
@@ -987,7 +988,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             label = NSLocalizedString("time_header", comment: "")
         case 25:
             //barometric pressure
-            label = NSLocalizedString("barometric_header", comment: "") + " (kPa)"
+            label = NSLocalizedString("barometric_header", comment: "") + " (mBar)"
         case 26:
             //GPS Speed
             label = NSLocalizedString("gpsspeed_header", comment: "") + " (" + distanceTimeUnit + ")"
@@ -1237,7 +1238,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         case 7:
             // Trottle
             if motorcycleData.throttlePosition != nil {
-                value = "\(motorcycleData.throttlePosition!)"
+                value = "\(Int(round(motorcycleData.throttlePosition!)))"
             } else {
                 value = NSLocalizedString("blank_field", comment: "")
             }
@@ -1371,7 +1372,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         case 21:
             //Lean Angle
             if motorcycleData.leanAngle != nil {
-                value = "\(motorcycleData.leanAngle!.rounded(toPlaces: 1))"
+                value = "\(Int(round(motorcycleData.leanAngle!)))"
             }
         case 22:
             //g-force
@@ -1415,7 +1416,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         case 25:
             //Barometric Pressure
             if motorcycleData.barometricPressure != nil {
-                value = "\(round(motorcycleData.barometricPressure!))"
+                value = "\(Int(round(motorcycleData.barometricPressure!)))"
             }
         case 26:
             //GPS speed
