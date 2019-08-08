@@ -3766,7 +3766,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             } else {
                 referenceAttitude = attitude
             }
-            motorcycleData.setleanAngle(leanAngle: Utility.degrees(radians: attitude.pitch))
+            motorcycleData.setleanAngle(leanAngle: Utility.degrees(radians: attitude.yaw))
             motorcycleData.setgForce(gForce: sqrt (pow(data!.userAcceleration.x,2) + pow(data!.userAcceleration.y,2) + pow(data!.userAcceleration.z,2)))
         }
     }
