@@ -45,6 +45,7 @@
 "trip2_label" = "KM-Zähler 2";
 "gear_label" = "Gang";
 "settings_label" = "Einstellungen";
+"bike_info_label" = "Bike Info"; // Needs translation
 "geodata_label" = "Aufzeichnungen & Wegpunkte";
 "appsettings_label" = "App-Einstellungen";
 "about_label" = "Über";
@@ -238,3 +239,9 @@
 "fault_GENWARNFSRED" = "Die allgemeine Warnleuchte blinkt Rot";
 "fault_GENWARNSHRED" = "Die allgemeine Warnleuchte leuchtet Rot";
 "fault_OILLOW" = "Ölstand Motor zu niedrig";
+
+//BikeInfoViewController
+"bike_info_title" = "Bike Info"; // Needs translation
+"vin_label" = "Fahrgestellnnummer (VIN)";
+"next_service_date_label" = "Next Service Date"; // Needs translation
+"next_service_label" = "Next Service"; // Needs translation

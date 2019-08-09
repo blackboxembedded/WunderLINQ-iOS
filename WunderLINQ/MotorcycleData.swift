@@ -13,6 +13,8 @@ class MotorcycleData {
     static let shared = MotorcycleData()
     var location: CLLocation?
     var vin: String?
+    var nextService: Int?
+    var nextServiceDate: Date?
     var frontTirePressure: Double?
     var rearTirePressure: Double?
     var ambientTemperature: Double?
@@ -52,6 +54,20 @@ class MotorcycleData {
     }
     func getVIN() -> String{
         return self.vin!
+    }
+    
+    func setNextServiceDate(nextServiceDate: Date?){
+        self.nextServiceDate = nextServiceDate
+    }
+    func getNextServiceDate() -> Date{
+        return self.nextServiceDate!
+    }
+    
+    func setNextService(nextService: Int?){
+        self.nextService = nextService
+    }
+    func getNextService() -> Int{
+        return self.nextService!
     }
     
     func setfrontTirePressure(frontTirePressure: Double?){
@@ -238,6 +254,8 @@ class MotorcycleData {
     
     func clear(){
         self.vin = nil
+        self.nextServiceDate = nil
+        self.nextService = nil
         self.frontTirePressure = nil
         self.rearTirePressure = nil
         self.ambientTemperature = nil

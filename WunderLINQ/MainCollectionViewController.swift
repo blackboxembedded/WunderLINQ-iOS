@@ -60,7 +60,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     var referenceAttitude: CMAttitude?
     
     var menuSelected = 0
-    fileprivate var popoverMenuList = [NSLocalizedString("geodata_label", comment: ""),NSLocalizedString("appsettings_label", comment: ""), NSLocalizedString("about_label", comment: ""), NSLocalizedString("close_label", comment: "")]
+    fileprivate var popoverMenuList = [NSLocalizedString("bike_info_label", comment: ""),NSLocalizedString("geodata_label", comment: ""),NSLocalizedString("appsettings_label", comment: ""), NSLocalizedString("about_label", comment: ""), NSLocalizedString("close_label", comment: "")]
     fileprivate var popover: Popover!
     fileprivate var popoverOptions: [PopoverOption] = [
         .type(.auto),
@@ -1490,7 +1490,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                     print("Received WRW command response")
                     wlqData.setwwMode(wwMode: dataArray[26])
                     wlqData.setwwHoldSensitivity(wwHoldSensitivity: dataArray[34])
-                    popoverMenuList = [NSLocalizedString("geodata_label", comment: ""),NSLocalizedString("appsettings_label", comment: ""), NSLocalizedString("hwsettings_label", comment: ""), NSLocalizedString("about_label", comment: ""), NSLocalizedString("close_label", comment: "")]
+                    popoverMenuList = [NSLocalizedString("bike_info_label", comment: ""), NSLocalizedString("geodata_label", comment: ""),NSLocalizedString("appsettings_label", comment: ""), NSLocalizedString("hwsettings_label", comment: ""), NSLocalizedString("about_label", comment: ""), NSLocalizedString("close_label", comment: "")]
                     break
                 default:
                     break;
@@ -2703,6 +2703,23 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                 motorcycleData.settripAuto(tripAuto: tripAuto)
             }
             
+        case 0x0B:
+            //Next Service Date
+            if ((lastMessage[1] != 0xFF) && (lastMessage[2] != 0xFF) && (lastMessage[3] != 0xFF)){
+                let year = UInt32(UInt32((lastMessage[2] >> 4) & 0x0F) << 8) | UInt32(lastMessage[1])
+                let month = (lastMessage[2] & 0x0F)
+                let day = lastMessage[3]
+                let calendar = Calendar(identifier: .gregorian)
+                // calendar.timeZone = TimeZone(secondsFromGMT: 0)!
+                let components = DateComponents(year: Int(year), month: Int(month), day: Int(day))
+                let nextServiceDate = calendar.date(from: components)
+                motorcycleData.setNextServiceDate(nextServiceDate: nextServiceDate)
+            }
+            //Next Service
+            if (lastMessage[4] != 0xFF){
+                let nextService = UInt16(lastMessage[4]) * 100
+                motorcycleData.setNextService(nextService: Int(nextService))
+            }
         case 0x0C:
             // Trip 1 & Trip 2
             if (!((lastMessage[1] == 0xFF) && (lastMessage[2] == 0xFF) && (lastMessage[3] == 0xFF))){
@@ -2848,7 +2865,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             NSLog("DISCONNECTION DETAILS: \(error!.localizedDescription)")
         }
         wunderLINQ = nil
-        popoverMenuList = [NSLocalizedString("geodata_label", comment: ""),NSLocalizedString("appsettings_label", comment: ""), NSLocalizedString("about_label", comment: ""), NSLocalizedString("close_label", comment: "")]
+        popoverMenuList = [NSLocalizedString("bike_info_label", comment: ""),NSLocalizedString("geodata_label", comment: ""),NSLocalizedString("appsettings_label", comment: ""), NSLocalizedString("about_label", comment: ""), NSLocalizedString("close_label", comment: "")]
         
         // Start trying to reconnect
         keepScanning = true
@@ -3820,13 +3837,9 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     @objc func updateTime(){
         // get the current date and time
         let currentDateTime = Date()
-        
         // initialize the date formatter and set the style
         let formatter = DateFormatter()
         formatter.dateFormat = "h:mm a"
-        //formatter.timeStyle = .long
-        //formatter.dateStyle = .none
-        
         // get the date time String from the date object
         motorcycleData.setTime(time: formatter.string(from: currentDateTime))
     }
@@ -3838,30 +3851,33 @@ extension MainCollectionViewController: UITableViewDelegate {
         switch(indexPath.row) {
         case 0:
             //Geo Data
-            performSegue(withIdentifier: "motorcycleToGeoData", sender: self)
+            performSegue(withIdentifier: "motorcycleToBikeInfo", sender: self)
         case 1:
+            //Geo Data
+            performSegue(withIdentifier: "motorcycleToGeoData", sender: self)
+        case 2:
             //App Settings
             if let appSettings = URL(string: UIApplication.openSettingsURLString + Bundle.main.bundleIdentifier!) {
                 if UIApplication.shared.canOpenURL(appSettings) {
                     UIApplication.shared.open(appSettings)
                 }
             }
-        case 2:
-            if (popoverMenuList.count == 5){
+        case 3:
+            if (popoverMenuList.count == 6){
                 //HW Settings
                 performSegue(withIdentifier: "motorcycleToHWSettings", sender: self)
             } else {
                 //About
                 performSegue(withIdentifier: "motorcycleToAbout", sender: self)
             }
-        case 3:
-            if (popoverMenuList.count == 5){
+        case 4:
+            if (popoverMenuList.count == 6){
                 //About
                 performSegue(withIdentifier: "motorcycleToAbout", sender: self)
             } else {
                 exit(0)
             }
-        case 4:
+        case 5:
             exit(0)
         default:
             NSLog("Unknown option")

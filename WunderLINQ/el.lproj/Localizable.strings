@@ -45,6 +45,7 @@
 "trip2_label" = "Διαδρομή 2";
 "gear_label" = "Ταχύτητα";
 "settings_label" = "Ρυθμίσεις";
+"bike_info_label" = "Bike Info"; // Needs translation
 "geodata_label" = "Διαδρομές & Προορισμοί";
 "appsettings_label" = "Ρυθμίσεις εφαρμογής";
 "about_label" = "Περί...";
@@ -238,3 +239,9 @@
 "fault_GENWARNFSRED" = "Η γενική λυχνία προειδοποίησης αναβοσβήνει με κόκκινο χρώμα";
 "fault_GENWARNSHRED" = "Η γενική λυχνία προειδοποίησης ανάβει με κόκκινο χρώμα";
 "fault_OILLOW" = "Χαμηλή στάθμη λαδιού κινητήρα";
+
+//BikeInfoViewController
+"bike_info_title" = "Bike Info"; // Needs translation
+"vin_label" = "Αριθμός πλαισίου";
+"next_service_date_label" = "Next Service Date"; // Needs translation
+"next_service_label" = "Next Service"; // Needs translation

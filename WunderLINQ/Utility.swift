@@ -50,4 +50,21 @@ class Utility {
     class func degrees(radians:Double) -> Double {
         return 180 / Double.pi * radians
     }
+    
+    // Calculate time duration
+    class func calculateDuration(start:String, end:String) -> String{
+        var dateFormat = "yyyyMMdd-HH:mm:ss"
+        var dateFormatter: DateFormatter {
+            let formatter = DateFormatter()
+            formatter.dateFormat = dateFormat
+            formatter.locale = Locale.current
+            formatter.timeZone = TimeZone.current
+            return formatter
+        }
+        let startDate = dateFormatter.date(from:start)!
+        let endDate = dateFormatter.date(from:end)!
+        let difference = Calendar.current.dateComponents([.hour, .minute, .second], from: startDate, to: endDate)
+        
+        return "\(difference.hour!) \(NSLocalizedString("hours", comment: "")), \(difference.minute!) \(NSLocalizedString("minutes", comment: "")), \(difference.second!) \(NSLocalizedString("seconds", comment: ""))"
+    }
 }

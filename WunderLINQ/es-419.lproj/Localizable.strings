@@ -45,6 +45,7 @@
 "trip2_label" = "Parcial 2";
 "gear_label" = "Marcha";
 "settings_label" = "Settings"; //Needs translation
+"bike_info_label" = "Bike Info"; // Needs translation
 "geodata_label" = "Trips & Waypoints"; // Needs translation
 "appsettings_label" = "App Settings"; //Needs translation
 "about_label" = "About"; //Needs translation
@@ -238,3 +239,9 @@
 "fault_GENWARNFSRED" = "Luz de advertencia general destella en rojo";
 "fault_GENWARNSHRED" = "Luz de advertencia general encendida en rojo";
 "fault_OILLOW" = "Nivel de aceite muy bajo";
+
+//BikeInfoViewController
+"bike_info_title" = "Bike Info"; // Needs translation
+"vin_label" = "VIN"; // Needs translation
+"next_service_date_label" = "Next Service Date"; // Needs translation
+"next_service_label" = "Next Service"; // Needs translation

@@ -70,6 +70,7 @@
 		7EA4BCC921B8CB270084F6EA /* TaskCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA4BCC821B8CB270084F6EA /* TaskCollectionViewCell.swift */; };
 		7EAE9415211E9B3200E24CE9 /* Double+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EAE9414211E9B3200E24CE9 /* Double+Extensions.swift */; };
 		7EAE9417211EA30900E24CE9 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EAE9416211EA30900E24CE9 /* Theme.swift */; };
+		7EAF646822FE17D000B11550 /* BikeInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EAF646722FE17D000B11550 /* BikeInfoViewController.swift */; };
 		7EBFD48E210ADD0000FC9665 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBFD48D210ADD0000FC9665 /* String+Extensions.swift */; };
 		7EBFD490210E108100FC9665 /* segueFromLeft.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBFD48F210E108100FC9665 /* segueFromLeft.swift */; };
 		7EBFE1F3214C7D6500F2185A /* ScenicAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBFE1F2214C7D6500F2185A /* ScenicAPI.swift */; };
@@ -178,6 +179,7 @@
 		7EA4BCC821B8CB270084F6EA /* TaskCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCollectionViewCell.swift; sourceTree = "<group>"; };
 		7EAE9414211E9B3200E24CE9 /* Double+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extensions.swift"; sourceTree = "<group>"; };
 		7EAE9416211EA30900E24CE9 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		7EAF646722FE17D000B11550 /* BikeInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikeInfoViewController.swift; sourceTree = "<group>"; };
 		7EBFD48D210ADD0000FC9665 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		7EBFD48F210E108100FC9665 /* segueFromLeft.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = segueFromLeft.swift; sourceTree = "<group>"; };
 		7EBFE1F2214C7D6500F2185A /* ScenicAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScenicAPI.swift; sourceTree = "<group>"; };
@@ -315,6 +317,7 @@
 				7E62BB7021FE443200FDB10E /* ColumnFlowLayout.swift */,
 				7E25396221CD94A30008D34E /* BLE.swift */,
 				7E25396421CDB1740008D34E /* WLQ.swift */,
+				7EAF646722FE17D000B11550 /* BikeInfoViewController.swift */,
 				7EC63201219BCE05002E68FF /* AboutViewController.swift */,
 				7E6987DC20F8F83500B4781D /* Faults.swift */,
 				7E14EFBC221B5FB7009F37A3 /* GeoDataViewController.swift */,
@@ -516,6 +519,7 @@
 				7E068BCB2102ACF30076EAAD /* Popover.swift in Sources */,
 				7EA478811F44F57C000CEDDC /* MusicViewController.swift in Sources */,
 				7EF9B5A022FCB14D009D8D17 /* Solar.swift in Sources */,
+				7EAF646822FE17D000B11550 /* BikeInfoViewController.swift in Sources */,
 				7E35A59322DC265800E4AE40 /* Utility.swift in Sources */,
 				7EAE9417211EA30900E24CE9 /* Theme.swift in Sources */,
 				7EC63202219BCE05002E68FF /* AboutViewController.swift in Sources */,

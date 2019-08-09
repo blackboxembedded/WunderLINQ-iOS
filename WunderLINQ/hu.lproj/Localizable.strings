@@ -45,6 +45,7 @@
 "trip2_label" = "Napi számláló 2";
 "gear_label" = "Fokozat";
 "settings_label" = "Beállítások";
+"bike_info_label" = "Bike Info"; // Needs translation
 "geodata_label" = "Útvonalak és útipontok";
 "appsettings_label" = "Applikáció beállítások";
 "about_label" = "Információk";
@@ -238,3 +239,9 @@
 "fault_GENWARNFSRED" = "Az általános figyelmeztető jelzés pirosan villog";
 "fault_GENWARNSHRED" = "Az általános figyelmeztető jelzés pirosan világít";
 "fault_OILLOW" = "Alacsony motorolajszint";
+
+//BikeInfoViewController
+"bike_info_title" = "Bike Info"; // Needs translation
+"vin_label" = "Alvázszám";
+"next_service_date_label" = "Next Service Date"; // Needs translation
+"next_service_label" = "Next Service"; // Needs translation

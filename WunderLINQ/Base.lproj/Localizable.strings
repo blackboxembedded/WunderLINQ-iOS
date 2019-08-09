@@ -45,6 +45,7 @@
 "trip2_label" = "Trip 2";
 "gear_label" = "Gear";
 "settings_label" = "Settings";
+"bike_info_label" = "Bike Info";
 "geodata_label" = "Trips & Waypoints";
 "appsettings_label" = "App Settings";
 "about_label" = "About";
@@ -155,7 +156,7 @@
 "task_title_actioncam_start_video" = "Start ActionCam Recording";
 "task_title_actioncam_stop_video" = "Stop ActionCam Recording";
 "toast_actioncam_notconnected" = "ActionCam Not Connected";
-"toast_actioncam_notset" = "Set ActionCam type in the app settings"; // Needs translation
+"toast_actioncam_notset" = "Set ActionCam type in the app settings";
 "toast_waypoint_saved" = "Waypoint Saved";
 "task_title_waypoint_nav" = "Navigate to Waypoint";
 "toast_photo_taken" = "Photo Taken!";
@@ -191,8 +192,8 @@
 "leanangle_header" = "Lean Angle";
 "gforce_header" = "g-force";
 "bearing_header" = "Bearing";
-"barometric_header" = "Barometer"; // Needs Translation
-"sunrisesunset_header" = "Sunrise/Sunset"; // Needs Translation
+"barometric_header" = "Barometer";
+"sunrisesunset_header" = "Sunrise/Sunset";
 
 // ContactsTableViewController
 "contactlist_title" = "Contacts";
@@ -238,3 +239,9 @@
 "fault_GENWARNFSRED" = "The general warning light flashes red";
 "fault_GENWARNSHRED" = "The general warning light shows red";
 "fault_OILLOW" = "Engine oil level too low";
+
+//BikeInfoViewController
+"bike_info_title" = "Bike Info";
+"vin_label" = "VIN";
+"next_service_date_label" = "Next Service Date";
+"next_service_label" = "Next Service";

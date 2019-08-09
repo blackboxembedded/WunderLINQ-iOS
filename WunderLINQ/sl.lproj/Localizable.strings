@@ -45,6 +45,7 @@
 "trip2_label" = "Trip 2";
 "gear_label" = "Prestava";
 "settings_label" = "Nastavitve";
+"bike_info_label" = "Bike Info"; // Needs translation
 "geodata_label" = "Potovanja in kažipoti";
 "appsettings_label" = "Nastavitve aplikacije";
 "about_label" = "O aplikaciji";
@@ -238,3 +239,9 @@
 "fault_GENWARNFSRED" = "Opozorilna lučka utripa rdeče";
 "fault_GENWARNSHRED" = "Opozorilna lučka sveti rdeče";
 "fault_OILLOW" = "Nivo olja prenizek";
+
+//BikeInfoViewController
+"bike_info_title" = "Bike Info"; // Needs translation
+"vin_label" = "VIN"; // Needs translation
+"next_service_date_label" = "Next Service Date"; // Needs translation
+"next_service_label" = "Next Service"; // Needs translation

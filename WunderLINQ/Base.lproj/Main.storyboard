@@ -88,6 +88,7 @@
                         <segue destination="KTW-aa-IYg" kind="show" identifier="motorcycleToFaults" id="b1A-JR-H5R"/>
                         <segue destination="BZZ-xV-I8u" kind="show" identifier="motorcycleToAbout" id="wFc-ro-LF5"/>
                         <segue destination="4YA-h5-Jjs" kind="show" identifier="motorcycleToGeoData" id="end-im-meh"/>
+                        <segue destination="g6h-Xr-9v3" kind="show" identifier="motorcycleToBikeInfo" id="FCu-K5-imH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -1088,16 +1089,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wunderlinq_logo-black" translatesAutoresizingMaskIntoConstraints="NO" id="iK0-Eq-bFT">
-                                <rect key="frame" x="16" y="45" width="343" height="53"/>
+                                <rect key="frame" x="16" y="45" width="343" height="16"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Version: x.x.x" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fPj-pQ-RK7">
-                                <rect key="frame" x="0.0" y="123" width="375" height="17"/>
+                                <rect key="frame" x="0.0" y="86" width="375" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Credits" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bpB-n7-PMj" customClass="LocalisableLabel" customModule="WunderLINQ" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="240" width="375" height="24"/>
+                                <rect key="frame" x="0.0" y="203" width="375" height="24"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -1106,7 +1107,7 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" usesAttributedText="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jAM-2k-3CY">
-                                <rect key="frame" x="0.0" y="269" width="375" height="398"/>
+                                <rect key="frame" x="0.0" y="232" width="375" height="435"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <attributedString key="attributedText">
                                     <fragment>
@@ -1459,7 +1460,7 @@ Cgo
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y9o-7f-NQI">
-                                <rect key="frame" x="0.0" y="145" width="375" height="33"/>
+                                <rect key="frame" x="0.0" y="108" width="375" height="33"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="Black Box Embedded, LLC">
                                     <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1469,7 +1470,7 @@ Cgo
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mYb-5h-qZC" customClass="LocalisableButton" customModule="WunderLINQ" customModuleProvider="target">
-                                <rect key="frame" x="16" y="194" width="343" height="30"/>
+                                <rect key="frame" x="16" y="157" width="343" height="30"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Send Logs">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1516,6 +1517,97 @@ Cgo
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L6N-M1-qfe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="7140.579710144928" y="2203.5326086956525"/>
+        </scene>
+        <!--Bike Info View Controller-->
+        <scene sceneID="2Ms-vl-62O">
+            <objects>
+                <viewController id="g6h-Xr-9v3" customClass="BikeInfoViewController" customModule="WunderLINQ" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="xhC-Jc-QyJ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VIN" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iDW-er-4a7" customClass="LocalisableLabel" customModule="WunderLINQ" customModuleProvider="target">
+                                <rect key="frame" x="16" y="36" width="163.5" height="24"/>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="localisedKey" value="vin_label"/>
+                                </userDefinedRuntimeAttributes>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Next Service Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="o2t-Fs-lwV" customClass="LocalisableLabel" customModule="WunderLINQ" customModuleProvider="target">
+                                <rect key="frame" x="16" y="76" width="163.5" height="24"/>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="localisedKey" value="next_service_date_label"/>
+                                </userDefinedRuntimeAttributes>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Next Service" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jTm-if-vUI" customClass="LocalisableLabel" customModule="WunderLINQ" customModuleProvider="target">
+                                <rect key="frame" x="16" y="116" width="163.5" height="24"/>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="localisedKey" value="next_service_label"/>
+                                </userDefinedRuntimeAttributes>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xhl-61-hyH">
+                                <rect key="frame" x="195.5" y="36" width="163.5" height="24"/>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zq8-qI-2qg">
+                                <rect key="frame" x="195.5" y="76" width="163.5" height="24"/>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ns3-eT-lTX">
+                                <rect key="frame" x="195.5" y="116" width="163.5" height="24"/>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Ns3-eT-lTX" firstAttribute="width" secondItem="jTm-if-vUI" secondAttribute="width" id="3m0-aN-NaV"/>
+                            <constraint firstItem="iDW-er-4a7" firstAttribute="top" secondItem="VQq-iJ-w26" secondAttribute="top" constant="16" id="6Xk-Y7-cy0"/>
+                            <constraint firstItem="Ns3-eT-lTX" firstAttribute="leading" secondItem="jTm-if-vUI" secondAttribute="trailing" constant="16" id="6ct-hh-C7U"/>
+                            <constraint firstItem="xhl-61-hyH" firstAttribute="top" secondItem="VQq-iJ-w26" secondAttribute="top" constant="16" id="8tr-iC-XBV"/>
+                            <constraint firstItem="jTm-if-vUI" firstAttribute="top" secondItem="o2t-Fs-lwV" secondAttribute="bottom" constant="16" id="Eni-ic-wRf"/>
+                            <constraint firstItem="jTm-if-vUI" firstAttribute="leading" secondItem="VQq-iJ-w26" secondAttribute="leading" constant="16" id="Ikb-f8-QpG"/>
+                            <constraint firstItem="VQq-iJ-w26" firstAttribute="trailing" secondItem="xhl-61-hyH" secondAttribute="trailing" constant="16" id="Kij-rn-KrC"/>
+                            <constraint firstItem="Ns3-eT-lTX" firstAttribute="top" secondItem="zq8-qI-2qg" secondAttribute="bottom" constant="16" id="Mra-0Z-kLK"/>
+                            <constraint firstItem="xhl-61-hyH" firstAttribute="leading" secondItem="iDW-er-4a7" secondAttribute="trailing" constant="16" id="Oos-9C-RUB"/>
+                            <constraint firstItem="zq8-qI-2qg" firstAttribute="leading" secondItem="o2t-Fs-lwV" secondAttribute="trailing" constant="16" id="PXl-Hr-5MU"/>
+                            <constraint firstItem="zq8-qI-2qg" firstAttribute="top" secondItem="xhl-61-hyH" secondAttribute="bottom" constant="16" id="R3Q-AE-16Y"/>
+                            <constraint firstItem="jTm-if-vUI" firstAttribute="top" secondItem="o2t-Fs-lwV" secondAttribute="bottom" constant="16" id="Ro5-aK-SWv"/>
+                            <constraint firstItem="zq8-qI-2qg" firstAttribute="top" secondItem="xhl-61-hyH" secondAttribute="bottom" constant="16" id="Was-dq-hYk"/>
+                            <constraint firstItem="iDW-er-4a7" firstAttribute="leading" secondItem="VQq-iJ-w26" secondAttribute="leading" constant="16" id="a3c-ob-8mp"/>
+                            <constraint firstItem="o2t-Fs-lwV" firstAttribute="top" secondItem="iDW-er-4a7" secondAttribute="bottom" constant="16" id="biQ-2J-7yS"/>
+                            <constraint firstItem="o2t-Fs-lwV" firstAttribute="top" secondItem="iDW-er-4a7" secondAttribute="bottom" constant="16" id="eiz-Uk-Jde"/>
+                            <constraint firstItem="Ns3-eT-lTX" firstAttribute="top" secondItem="zq8-qI-2qg" secondAttribute="bottom" constant="16" id="lCo-Vo-tY0"/>
+                            <constraint firstItem="VQq-iJ-w26" firstAttribute="trailing" secondItem="zq8-qI-2qg" secondAttribute="trailing" constant="16" id="m8x-Uq-RPp"/>
+                            <constraint firstItem="zq8-qI-2qg" firstAttribute="width" secondItem="o2t-Fs-lwV" secondAttribute="width" id="o3k-Zc-sl3"/>
+                            <constraint firstItem="xhl-61-hyH" firstAttribute="width" secondItem="iDW-er-4a7" secondAttribute="width" id="usF-Cv-Iiu"/>
+                            <constraint firstItem="o2t-Fs-lwV" firstAttribute="leading" secondItem="VQq-iJ-w26" secondAttribute="leading" constant="16" id="vTC-Dm-A9w"/>
+                            <constraint firstItem="VQq-iJ-w26" firstAttribute="trailing" secondItem="Ns3-eT-lTX" secondAttribute="trailing" constant="16" id="vXo-rj-KFG"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="VQq-iJ-w26"/>
+                    </view>
+                    <connections>
+                        <outlet property="nextServiceDateLabel" destination="zq8-qI-2qg" id="b6D-0F-TXR"/>
+                        <outlet property="nextServiceLabel" destination="Ns3-eT-lTX" id="89B-IL-tH0"/>
+                        <outlet property="vinValueLabel" destination="xhl-61-hyH" id="euB-Oe-OCi"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bVm-aC-uba" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7141.6000000000004" y="2901.4992503748126"/>
         </scene>
         <!--Trip-->
         <scene sceneID="Dq9-Ds-zIF">
@@ -1846,7 +1938,7 @@ Cgo
         <segue reference="5cX-Ys-4mF"/>
         <segue reference="Mvj-Z7-A9C"/>
         <segue reference="kry-jp-5q5"/>
-        <segue reference="gfr-gj-BUz"/>
+        <segue reference="BFW-qY-dw2"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
 </document>

@@ -45,6 +45,7 @@
 "trip2_label"="Trip 2";
 "gear_label"="Marcha";
 "settings_label" = "Ajustes";
+"bike_info_label" = "Bike Info"; // Needs translation
 "geodata_label" = "Viajes (Trips) & Puntos de paso (Waypoints)"; // JCAL 20190303
 "appsettings_label" = "Ajustes de aplicación"; //Needs translation
 "about_label" = "Acerca de";
@@ -238,3 +239,9 @@
 "fault_GENWARNFSRED"="La luz general de avisos parpadea en rojo";
 "fault_GENWARNSHRED"="La luz general de avisos está fija en rojo";
 "fault_OILLOW"="Nivel de aceite del motor bajo";
+
+//BikeInfoViewController
+"bike_info_title" = "Bike Info"; // Needs translation
+"vin_label" = "VIN"; // Needs translation
+"next_service_date_label" = "Next Service Date"; // Needs translation
+"next_service_label" = "Next Service"; // Needs translation

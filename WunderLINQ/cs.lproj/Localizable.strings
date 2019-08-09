@@ -45,6 +45,7 @@
 "trip2_label" = "Trip 2";
 "gear_label" = "Stupeň";
 "settings_label" = "Nastavení";
+"bike_info_label" = "Bike Info"; // Needs translation
 "geodata_label" = "Jízdy & Místa";
 "appsettings_label" = "Nastavení aplikace";
 "about_label" = "O aplikaci";
@@ -239,3 +240,9 @@
 "fault_TIRERWF" = "Nízký tlak v zadní pneu";
 "fault_TIREFCF" = "Velmi nízký tlak v přední pneu";
 "fault_TIRERCF" = "Nízký nízký tlak v zadní pneu";
+
+//BikeInfoViewController
+"bike_info_title" = "Bike Info"; // Needs translation
+"vin_label" = "VIN"; // Needs translation
+"next_service_date_label" = "Next Service Date"; // Needs translation
+"next_service_label" = "Next Service"; // Needs translation

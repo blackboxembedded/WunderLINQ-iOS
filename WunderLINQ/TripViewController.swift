@@ -213,8 +213,8 @@ class TripViewController: UIViewController {
             }
             avgSpeed = avgSpeed / Double((speeds.count))
             if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
-                avgSpeed = kmToMiles(avgSpeed)
-                maxSpeed = kmToMiles(maxSpeed)
+                avgSpeed = Utility.kmToMiles(avgSpeed)
+                maxSpeed = Utility.kmToMiles(maxSpeed)
             }
             speedLabel.text = "\(avgSpeed.rounded(toPlaces: 1))/\(maxSpeed.rounded(toPlaces: 1)) (\(speedUnit))"
         }
@@ -231,9 +231,9 @@ class TripViewController: UIViewController {
             avgEngineTemp = avgEngineTemp / Double((ambientTemps.count))
             if UserDefaults.standard.integer(forKey: "temperature_unit_preference") == 1 {
                 // F
-                minEngineTemp = celciusToFahrenheit(minEngineTemp!)
-                avgEngineTemp = celciusToFahrenheit(avgEngineTemp)
-                maxEngineTemp = celciusToFahrenheit(maxEngineTemp!)
+                minEngineTemp = Utility.celciusToFahrenheit(minEngineTemp!)
+                avgEngineTemp = Utility.celciusToFahrenheit(avgEngineTemp)
+                maxEngineTemp = Utility.celciusToFahrenheit(maxEngineTemp!)
             }
         }
         if(minEngineTemp == nil || maxEngineTemp == nil){
@@ -250,9 +250,9 @@ class TripViewController: UIViewController {
             avgAmbientTemp = avgAmbientTemp / Double(ambientTemps.count)
             if UserDefaults.standard.integer(forKey: "temperature_unit_preference") == 1 {
                 // F
-                minAmbientTemp = celciusToFahrenheit(minAmbientTemp!)
-                avgAmbientTemp = celciusToFahrenheit(avgAmbientTemp)
-                maxAmbientTemp = celciusToFahrenheit(maxAmbientTemp!)
+                minAmbientTemp = Utility.celciusToFahrenheit(minAmbientTemp!)
+                avgAmbientTemp = Utility.celciusToFahrenheit(avgAmbientTemp)
+                maxAmbientTemp = Utility.celciusToFahrenheit(maxAmbientTemp!)
             }
         }
         if(minAmbientTemp == nil || maxAmbientTemp == nil){
@@ -266,14 +266,14 @@ class TripViewController: UIViewController {
         if (endOdometer != nil && startOdometer != nil) {
             distance = endOdometer! - startOdometer!
             if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
-                distance = kmToMiles(distance.rounded(toPlaces: 1))
+                distance = Utility.kmToMiles(distance.rounded(toPlaces: 1))
             }
         }
         distanceLabel.text = "\(distance.rounded(toPlaces: 1)) \(distanceUnit)"
         
         // Calculate Duration
         if ((startTime != nil) && (endTime != nil)){
-            durationLabel.text = calculateDuration(start: startTime!,end: endTime!)
+            durationLabel.text = Utility.calculateDuration(start: startTime!,end: endTime!)
         }
         /*
         let bounds = GMSCoordinateBounds(path: path)
@@ -378,49 +378,7 @@ class TripViewController: UIViewController {
         }
         return result
     }
-    // MARK: - Utility Methods
-    // Unit Conversion Functions
-    // bar to psi
-    func barToPsi(_ bar:Double) -> Double {
-        let psi = bar * 14.5037738
-        return psi
-    }
-    // bar to kpa
-    func barTokPa(_ bar:Double) -> Double {
-        let kpa = bar * 100.0
-        return kpa
-    }
-    // bar to kg-f
-    func barTokgf(_ bar:Double) -> Double {
-        let kgf = bar * 1.0197162129779
-        return kgf
-    }
-    // kilometers to miles
-    func kmToMiles(_ kilometers:Double) -> Double {
-        let miles = kilometers * 0.6214
-        return miles
-    }
-    // Celsius to Fahrenheit
-    func celciusToFahrenheit(_ celcius:Double) -> Double {
-        let fahrenheit = (celcius * 1.8) + Double(32)
-        return fahrenheit
-    }
-    // Calculate time duration
-    func calculateDuration(start:String, end:String) -> String{
-        var dateFormat = "yyyyMMdd-HH:mm:ss"
-        var dateFormatter: DateFormatter {
-            let formatter = DateFormatter()
-            formatter.dateFormat = dateFormat
-            formatter.locale = Locale.current
-            formatter.timeZone = TimeZone.current
-            return formatter
-        }
-        let startDate = dateFormatter.date(from:start)!
-        let endDate = dateFormatter.date(from:end)!
-        let difference = Calendar.current.dateComponents([.hour, .minute, .second], from: startDate, to: endDate)
 
-        return "\(difference.hour!) \(NSLocalizedString("hours", comment: "")), \(difference.minute!) \(NSLocalizedString("minutes", comment: "")), \(difference.second!) \(NSLocalizedString("seconds", comment: ""))"
-    }
     func updateFileList(){
         // Get the document directory url
         let documentsUrl =  FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
