@@ -360,6 +360,39 @@
             </objects>
             <point key="canvasLocation" x="8909" y="-911"/>
         </scene>
+        <!--Weather Map View Controller-->
+        <scene sceneID="bpP-jK-41l">
+            <objects>
+                <viewController id="mgN-4w-lQo" customClass="WeatherMapViewController" customModule="WunderLINQ" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="s1a-NI-mWg">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xBm-3o-5aH" customClass="GMSMapView">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="ignoresInvertColors" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="xBm-3o-5aH" firstAttribute="leading" secondItem="gHP-w0-dFs" secondAttribute="leading" id="6nb-xM-VEs"/>
+                            <constraint firstItem="xBm-3o-5aH" firstAttribute="top" secondItem="gHP-w0-dFs" secondAttribute="top" id="Vdu-lY-QgY"/>
+                            <constraint firstItem="gHP-w0-dFs" firstAttribute="bottom" secondItem="xBm-3o-5aH" secondAttribute="bottom" id="orf-yu-fG1"/>
+                            <constraint firstItem="gHP-w0-dFs" firstAttribute="trailing" secondItem="xBm-3o-5aH" secondAttribute="trailing" id="sIh-tg-3fS"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="gHP-w0-dFs"/>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="xBm-3o-5aH" id="YVc-ml-SyW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9MT-UU-zhD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="9806" y="-1251"/>
+        </scene>
         <!--Music-->
         <scene sceneID="8D1-Ci-pio">
             <objects>
@@ -773,6 +806,7 @@
                         <segue destination="we8-3Z-s79" kind="show" identifier="taskGridToWaypoints" id="VKq-wx-i3D"/>
                         <segue destination="p6n-wZ-mMa" kind="show" identifier="tasksToMusic" customClass="SegueFromLeft" customModule="WunderLINQ" customModuleProvider="target" id="EVI-4B-2VB"/>
                         <segue destination="PSM-zq-09s" kind="show" identifier="tasksToAlert" id="9Kf-ij-uzf"/>
+                        <segue destination="mgN-4w-lQo" kind="show" identifier="taskGridToWeatherMap" id="okP-uG-49O"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y78-9d-MHp" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -946,13 +980,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F4h-OO-sSs">
-                                <rect key="frame" x="0.0" y="224" width="375" height="239"/>
+                                <rect key="frame" x="0.0" y="224" width="375" height="256"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZJi-ju-qN2">
-                                        <rect key="frame" x="16" y="24" width="343" height="91.5"/>
+                                        <rect key="frame" x="16" y="24" width="343" height="100"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Route" translatesAutoresizingMaskIntoConstraints="NO" id="Txn-Ho-UJ3">
-                                                <rect key="frame" x="0.0" y="0.0" width="91.5" height="91.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
@@ -961,7 +995,7 @@
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tSS-qR-yCJ" customClass="LocalisableLabel" customModule="WunderLINQ" customModuleProvider="target">
-                                                <rect key="frame" x="91.5" y="0.0" width="251.5" height="91.5"/>
+                                                <rect key="frame" x="100" y="0.0" width="243" height="100"/>
                                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
@@ -976,10 +1010,10 @@
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </stackView>
                                     <stackView opaque="NO" tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f6L-PO-9xQ">
-                                        <rect key="frame" x="16" y="131.5" width="343" height="91.5"/>
+                                        <rect key="frame" x="16" y="140" width="343" height="100"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MapMarker" translatesAutoresizingMaskIntoConstraints="NO" id="30x-RB-MRc">
-                                                <rect key="frame" x="0.0" y="0.0" width="91.5" height="91.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
@@ -988,7 +1022,7 @@
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FLQ-U1-TsS" customClass="LocalisableLabel" customModule="WunderLINQ" customModuleProvider="target">
-                                                <rect key="frame" x="91.5" y="0.0" width="251.5" height="91.5"/>
+                                                <rect key="frame" x="100" y="0.0" width="243" height="100"/>
                                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
@@ -1089,16 +1123,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wunderlinq_logo-black" translatesAutoresizingMaskIntoConstraints="NO" id="iK0-Eq-bFT">
-                                <rect key="frame" x="16" y="45" width="343" height="16"/>
+                                <rect key="frame" x="16" y="45" width="343" height="53"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Version: x.x.x" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fPj-pQ-RK7">
-                                <rect key="frame" x="0.0" y="86" width="375" height="17"/>
+                                <rect key="frame" x="0.0" y="123" width="375" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Credits" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bpB-n7-PMj" customClass="LocalisableLabel" customModule="WunderLINQ" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="203" width="375" height="24"/>
+                                <rect key="frame" x="0.0" y="240" width="375" height="24"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -1107,7 +1141,7 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" usesAttributedText="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jAM-2k-3CY">
-                                <rect key="frame" x="0.0" y="232" width="375" height="435"/>
+                                <rect key="frame" x="0.0" y="269" width="375" height="398"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <attributedString key="attributedText">
                                     <fragment>
@@ -1460,7 +1494,7 @@ Cgo
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y9o-7f-NQI">
-                                <rect key="frame" x="0.0" y="108" width="375" height="33"/>
+                                <rect key="frame" x="0.0" y="145" width="375" height="33"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="Black Box Embedded, LLC">
                                     <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1470,7 +1504,7 @@ Cgo
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mYb-5h-qZC" customClass="LocalisableButton" customModule="WunderLINQ" customModuleProvider="target">
-                                <rect key="frame" x="16" y="157" width="343" height="30"/>
+                                <rect key="frame" x="16" y="194" width="343" height="30"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Send Logs">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1935,10 +1969,10 @@ Cgo
     <inferredMetricsTieBreakers>
         <segue reference="NWY-sO-7oz"/>
         <segue reference="end-im-meh"/>
-        <segue reference="5cX-Ys-4mF"/>
+        <segue reference="qQx-7G-0NR"/>
         <segue reference="Mvj-Z7-A9C"/>
-        <segue reference="kry-jp-5q5"/>
-        <segue reference="BFW-qY-dw2"/>
+        <segue reference="EVI-4B-2VB"/>
+        <segue reference="P25-cb-auh"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
 </document>

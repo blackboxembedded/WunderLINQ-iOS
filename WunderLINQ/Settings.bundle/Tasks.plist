@@ -30,6 +30,7 @@
                     <integer>10</integer>
                     <integer>11</integer>
                     <integer>12</integer>
+                    <integer>13</integer>
                 </array>
                 <key>Titles</key>
                 <array>
@@ -45,6 +46,7 @@
                     <string>task_title_waypoint_nav</string>
                     <string>task_title_settings</string>
                     <string>task_title_actioncam_start_video</string>
+                    <string>task_title_weathermap</string>
                     <string>task_title_empty</string>
                 </array>
             </dict>
@@ -72,6 +74,7 @@
                     <integer>10</integer>
                     <integer>11</integer>
                     <integer>12</integer>
+                    <integer>13</integer>
                 </array>
                 <key>Titles</key>
                 <array>
@@ -87,6 +90,7 @@
                     <string>task_title_waypoint_nav</string>
                     <string>task_title_settings</string>
                     <string>task_title_actioncam_start_video</string>
+                    <string>task_title_weathermap</string>
                     <string>task_title_empty</string>
                 </array>
             </dict>
@@ -114,6 +118,7 @@
                     <integer>10</integer>
                     <integer>11</integer>
                     <integer>12</integer>
+                    <integer>13</integer>
                 </array>
                 <key>Titles</key>
                 <array>
@@ -129,6 +134,7 @@
                     <string>task_title_waypoint_nav</string>
                     <string>task_title_settings</string>
                     <string>task_title_actioncam_start_video</string>
+                    <string>task_title_weathermap</string>
                     <string>task_title_empty</string>
                 </array>
             </dict>
@@ -156,6 +162,7 @@
                     <integer>10</integer>
                     <integer>11</integer>
                     <integer>12</integer>
+                    <integer>13</integer>
                 </array>
                 <key>Titles</key>
                 <array>
@@ -171,6 +178,7 @@
                     <string>task_title_waypoint_nav</string>
                     <string>task_title_settings</string>
                     <string>task_title_actioncam_start_video</string>
+                    <string>task_title_weathermap</string>
                     <string>task_title_empty</string>
                 </array>
             </dict>
@@ -198,6 +206,7 @@
                     <integer>10</integer>
                     <integer>11</integer>
                     <integer>12</integer>
+                    <integer>13</integer>
                 </array>
                 <key>Titles</key>
                 <array>
@@ -213,6 +222,7 @@
                     <string>task_title_waypoint_nav</string>
                     <string>task_title_settings</string>
                     <string>task_title_actioncam_start_video</string>
+                    <string>task_title_weathermap</string>
                     <string>task_title_empty</string>
                 </array>
             </dict>
@@ -240,6 +250,7 @@
                     <integer>10</integer>
                     <integer>11</integer>
                     <integer>12</integer>
+                    <integer>13</integer>
                 </array>
                 <key>Titles</key>
                 <array>
@@ -255,6 +266,7 @@
                     <string>task_title_waypoint_nav</string>
                     <string>task_title_settings</string>
                     <string>task_title_actioncam_start_video</string>
+                    <string>task_title_weathermap</string>
                     <string>task_title_empty</string>
                 </array>
             </dict>
@@ -282,6 +294,7 @@
                     <integer>10</integer>
                     <integer>11</integer>
                     <integer>12</integer>
+                    <integer>13</integer>
                 </array>
                 <key>Titles</key>
                 <array>
@@ -297,6 +310,7 @@
                     <string>task_title_waypoint_nav</string>
                     <string>task_title_settings</string>
                     <string>task_title_actioncam_start_video</string>
+                    <string>task_title_weathermap</string>
                     <string>task_title_empty</string>
                 </array>
             </dict>
@@ -324,6 +338,7 @@
                     <integer>10</integer>
                     <integer>11</integer>
                     <integer>12</integer>
+                    <integer>13</integer>
                 </array>
                 <key>Titles</key>
                 <array>
@@ -339,6 +354,7 @@
                     <string>task_title_waypoint_nav</string>
                     <string>task_title_settings</string>
                     <string>task_title_actioncam_start_video</string>
+                    <string>task_title_weathermap</string>
                     <string>task_title_empty</string>
                 </array>
             </dict>
@@ -366,6 +382,7 @@
                     <integer>10</integer>
                     <integer>11</integer>
                     <integer>12</integer>
+                    <integer>13</integer>
                 </array>
                 <key>Titles</key>
                 <array>
@@ -381,6 +398,7 @@
                     <string>task_title_waypoint_nav</string>
                     <string>task_title_settings</string>
                     <string>task_title_actioncam_start_video</string>
+                    <string>task_title_weathermap</string>
                     <string>task_title_empty</string>
                 </array>
             </dict>
@@ -408,6 +426,7 @@
                     <integer>10</integer>
                     <integer>11</integer>
                     <integer>12</integer>
+                    <integer>13</integer>
                 </array>
                 <key>Titles</key>
                 <array>
@@ -423,6 +442,7 @@
                     <string>task_title_waypoint_nav</string>
                     <string>task_title_settings</string>
                     <string>task_title_actioncam_start_video</string>
+                    <string>task_title_weathermap</string>
                     <string>task_title_empty</string>
                 </array>
             </dict>

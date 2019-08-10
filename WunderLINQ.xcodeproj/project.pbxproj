@@ -71,6 +71,7 @@
 		7EAE9415211E9B3200E24CE9 /* Double+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EAE9414211E9B3200E24CE9 /* Double+Extensions.swift */; };
 		7EAE9417211EA30900E24CE9 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EAE9416211EA30900E24CE9 /* Theme.swift */; };
 		7EAF646822FE17D000B11550 /* BikeInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EAF646722FE17D000B11550 /* BikeInfoViewController.swift */; };
+		7EAF646A22FE261D00B11550 /* WeatherMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EAF646922FE261D00B11550 /* WeatherMapViewController.swift */; };
 		7EBFD48E210ADD0000FC9665 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBFD48D210ADD0000FC9665 /* String+Extensions.swift */; };
 		7EBFD490210E108100FC9665 /* segueFromLeft.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBFD48F210E108100FC9665 /* segueFromLeft.swift */; };
 		7EBFE1F3214C7D6500F2185A /* ScenicAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBFE1F2214C7D6500F2185A /* ScenicAPI.swift */; };
@@ -180,6 +181,7 @@
 		7EAE9414211E9B3200E24CE9 /* Double+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extensions.swift"; sourceTree = "<group>"; };
 		7EAE9416211EA30900E24CE9 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		7EAF646722FE17D000B11550 /* BikeInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikeInfoViewController.swift; sourceTree = "<group>"; };
+		7EAF646922FE261D00B11550 /* WeatherMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherMapViewController.swift; sourceTree = "<group>"; };
 		7EBFD48D210ADD0000FC9665 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		7EBFD48F210E108100FC9665 /* segueFromLeft.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = segueFromLeft.swift; sourceTree = "<group>"; };
 		7EBFE1F2214C7D6500F2185A /* ScenicAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScenicAPI.swift; sourceTree = "<group>"; };
@@ -294,6 +296,7 @@
 				7E068BD02102C6290076EAAD /* GoogleMapsBase.framework */,
 				7E068BCE2102C6270076EAAD /* GoogleMapsCore.framework */,
 				7EBFE1F2214C7D6500F2185A /* ScenicAPI.swift */,
+				7EF9B59F22FCB14D009D8D17 /* Solar.swift */,
 				7E5E0F77212289140048B9A2 /* AppUtility.swift */,
 				7EA4784D1F40B154000CEDDC /* AppDelegate.swift */,
 				7EA478701F40F273000CEDDC /* Device.swift */,
@@ -326,6 +329,7 @@
 				7E5A767920DDFEF700B48CC6 /* Waypoint.swift */,
 				7E068BC8210190F00076EAAD /* WaypointsTableViewController.swift */,
 				7E068BCC2102ADD20076EAAD /* WaypointViewController.swift */,
+				7EAF646922FE261D00B11550 /* WeatherMapViewController.swift */,
 				7EA478801F44F57C000CEDDC /* MusicViewController.swift */,
 				7EA4788D1F5BA136000CEDDC /* Tasks.swift */,
 				7EA4BCC621B8C9150084F6EA /* TasksCollectionViewController.swift */,
@@ -344,7 +348,6 @@
 				7EA478561F40B154000CEDDC /* LaunchScreen.storyboard */,
 				7E4D76E521DDAEC100825175 /* InfoPlist.strings */,
 				7EA478591F40B154000CEDDC /* Info.plist */,
-				7EF9B59F22FCB14D009D8D17 /* Solar.swift */,
 			);
 			path = WunderLINQ;
 			sourceTree = "<group>";
@@ -517,6 +520,7 @@
 				7EBFD48E210ADD0000FC9665 /* String+Extensions.swift in Sources */,
 				7E6987DB20F82F1A00B4781D /* MotorcycleData.swift in Sources */,
 				7E068BCB2102ACF30076EAAD /* Popover.swift in Sources */,
+				7EAF646A22FE261D00B11550 /* WeatherMapViewController.swift in Sources */,
 				7EA478811F44F57C000CEDDC /* MusicViewController.swift in Sources */,
 				7EF9B5A022FCB14D009D8D17 /* Solar.swift in Sources */,
 				7EAF646822FE17D000B11550 /* BikeInfoViewController.swift in Sources */,

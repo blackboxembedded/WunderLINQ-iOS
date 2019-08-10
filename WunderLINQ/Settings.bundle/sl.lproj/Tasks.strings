@@ -11,6 +11,7 @@
 "task_title_settings" = "Nastavitve";
 "task_title_actioncam_start_video" = "Start ActionCam Recording"; // Needs Translation
 "task_title_actioncam_stop_video" = "Stop ActionCam Recording"; // Needs Translation
+"task_title_weathermap" = "Weather Map"; // Needs translation
 "task_title_empty" = "Prazno";
 "pref_task_one" = "Prvi";
 "pref_task_two" = "Drugi";

@@ -55,7 +55,7 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
     
     let motorcycleData = MotorcycleData.shared
     
-    let emptyTask = 12;
+    let emptyTask = 13;
     
     private func loadRows() {
         let taskRow1 = UserDefaults.standard.integer(forKey: "task_one_preference")
@@ -162,7 +162,11 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
         guard let task11 = Tasks(label: actionCamLabel, icon: UIImage(named: "VideoCamera")?.withRenderingMode(.alwaysTemplate)) else {
             fatalError("Unable to instantiate ActionCam Video Recording Task")
         }
-        self.tasks = [task0, task1, task2, task3, task4, task5, task6, task7, task8, task9, task10, task11]
+        // WeatherMap Task
+        guard let task12 = Tasks(label: NSLocalizedString("task_title_weathermap", comment: ""), icon: UIImage(named: "CloudSun")?.withRenderingMode(.alwaysTemplate)) else {
+            fatalError("Unable to instantiate Settings Task")
+        }
+        self.tasks = [task0, task1, task2, task3, task4, task5, task6, task7, task8, task9, task10, task11, task12]
     }
     
     private func execute_task(taskID:Int) {
@@ -926,6 +930,10 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
             } else {
                 self.showToast(message: NSLocalizedString("toast_actioncam_notconnected", comment: ""))
             }
+            break
+        case 12:
+            //Weather Map
+            performSegue(withIdentifier: "taskGridToWeatherMap", sender: self)
             break
         default:
             print("Unknown Task")

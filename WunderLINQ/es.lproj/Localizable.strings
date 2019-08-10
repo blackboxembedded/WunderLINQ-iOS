@@ -155,6 +155,7 @@
 "task_title_settings" = "Ajustes";
 "task_title_actioncam_start_video" = "Start ActionCam Recording"; // Needs Translation
 "task_title_actioncam_stop_video" = "Stop ActionCam Recording"; // Needs Translation
+"task_title_weathermap" = "Weather Map"; // Needs translation
 "toast_actioncam_notconnected" = "ActionCam Not Connected"; // Needs Translation
 "toast_actioncam_notset" = "Set ActionCam type in the app settings"; // Needs translation
 "toast_waypoint_saved"="Punto de ruta guardado";
