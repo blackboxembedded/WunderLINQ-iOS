@@ -282,6 +282,22 @@
 			<key>DefaultValue</key>
 			<false/>
 		</dict>
+        <dict>
+            <key>Type</key>
+            <string>PSGroupSpecifier</string>
+            <key>Title</key>
+            <string>pref_integrations_settings_title</string>
+            <key>FooterText</key>
+            <string>pref_integrations_settings_summary</string>
+        </dict>
+        <dict>
+            <key>Type</key>
+            <string>PSChildPaneSpecifier</string>
+            <key>Title</key>
+            <string>pref_integrations_settings_title</string>
+            <key>File</key>
+            <string>Integrations</string>
+        </dict>
 		<dict>
 			<key>Type</key>
 			<string>PSGroupSpecifier</string>
@@ -298,14 +314,6 @@
 			<key>DefaultValue</key>
 			<false/>
 		</dict>
-        <dict>
-            <key>Type</key>
-            <string>PSChildPaneSpecifier</string>
-            <key>Title</key>
-            <string>pref_integrations_settings_title</string>
-            <key>File</key>
-            <string>Integrations</string>
-        </dict>
 		<dict>
 			<key>Type</key>
 			<string>PSGroupSpecifier</string>

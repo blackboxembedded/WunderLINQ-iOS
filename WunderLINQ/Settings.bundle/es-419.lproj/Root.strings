@@ -44,3 +44,4 @@
 "advanced_settings_title" = "Ajustes avanzados";
 "pref_photopreview_name" = "Photo Preview"; // Needs Translation
 "pref_integrations_settings_title" = "Integrations"; // Needs Translation
+"pref_integrations_settings_summary" = "Enable integration with 3rd Party Apps and hardware."; // Needs translation
