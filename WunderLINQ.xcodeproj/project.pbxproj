@@ -162,7 +162,7 @@
 		7E8A1E5621DC326600207464 /* sl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sl; path = sl.lproj/Main.strings; sourceTree = "<group>"; };
 		7E8A1E5721DC326600207464 /* sl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sl; path = sl.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		7E8A1E5821DC326600207464 /* sl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sl; path = WunderLINQ/sl.lproj/Localizable.strings; sourceTree = "<group>"; };
-		7E93549B2300797800FCF0C5 /* es */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		7E93549C2300853D00FCF0C5 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		7E96D79121E78B7B00C6AB5F /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		7EA4784A1F40B154000CEDDC /* WunderLINQ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WunderLINQ.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EA4784D1F40B154000CEDDC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -571,7 +571,7 @@
 				7E78DB2D23006FD1009742DF /* es-419 */,
 				7E78DB2F23006FD7009742DF /* cs */,
 				7E78DB3023006FD9009742DF /* el */,
-				7E93549B2300797800FCF0C5 /* es */,
+				7E93549C2300853D00FCF0C5 /* es */,
 			);
 			name = InfoPlist.strings;
 			path = /Users/keithconger/Projects/iOS/WunderLINQ/WunderLINQ;
