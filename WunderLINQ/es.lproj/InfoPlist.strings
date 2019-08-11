@@ -3,7 +3,7 @@
   WunderLINQ
 
   Created by Keith Conger on 12/13/18.
-  Copyright © 2018 Black Box Embedded, LLC. All rights reserved.
+  Copyright Â© 2018 Black Box Embedded, LLC. All rights reserved.
 */
 "NSContactsUsageDescription" = "WunderLINQ necesita acceso a su lista de contactos para mostrar los números de teléfono de sus contactos.";
 "NSCameraUsageDescription" = "WunderLINQ necesita acceso a su cámara para hacer fotos y grabar videos.";
