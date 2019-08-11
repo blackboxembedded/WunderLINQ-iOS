@@ -3,16 +3,16 @@
   WunderLINQ
 
   Created by Keith Conger on 12/13/18.
-  Copyright 漏 2018 Black Box Embedded, LLC. All rights reserved.
+  Copyright 脗漏 2018 Black Box Embedded, LLC. All rights reserved.
 */
-"NSContactsUsageDescription" = "WunderLINQ necesita acceso a su lista de contactos para mostrar los n鷐eros de tel閒ono de sus contactos.";
-"NSCameraUsageDescription" = "WunderLINQ necesita acceso a su c醡ara para hacer fotos y grabar videos.";
-"NSLocationAlwaysAndWhenInUseUsageDescription" = "WunderLINQ necesita acceso a su localizaci髇 para grabar su localizaci髇 en el log de la ruta y salvar los puntos de paso (waypoints).";
-"NSLocationAlwaysUsageDescription" = "WunderLINQ necesita acceso a su localizaci髇 para grabar su localizaci髇 en el log de la ruta y salvar los puntos de paso (waypoints).";
+"NSContactsUsageDescription" = "WunderLINQ necesita acceso a su lista de contactos para mostrar los n煤meros de tel茅fono de sus contactos.";
+"NSCameraUsageDescription" = "WunderLINQ necesita acceso a su c谩mara para hacer fotos y grabar videos.";
+"NSLocationAlwaysAndWhenInUseUsageDescription" = "WunderLINQ necesita acceso a su localizaci贸n para grabar su localizaci贸n en el log de la ruta y salvar los puntos de paso (waypoints).";
+"NSLocationAlwaysUsageDescription" = "WunderLINQ necesita acceso a su localizaci贸n para grabar su localizaci贸n en el log de la ruta y salvar los puntos de paso (waypoints).";
 "WunderLINQ needs access to your location to record your location in the trip log and save waypoints.";
-"NSLocationWhenInUseUsageDescription" = "WunderLINQ necesita acceso a su localizaci髇 para grabar su localizaci髇 en el log de la ruta y salvar los puntos de paso (waypoints).";
-"NSAppleMusicUsageDescription" = "WunderLINQ necesita acceso a su biblioteca de medios para reproducir m鷖ica.";
+"NSLocationWhenInUseUsageDescription" = "WunderLINQ necesita acceso a su localizaci贸n para grabar su localizaci贸n en el log de la ruta y salvar los puntos de paso (waypoints).";
+"NSAppleMusicUsageDescription" = "WunderLINQ necesita acceso a su biblioteca de medios para reproducir m煤sica.";
 "NSBluetoothPeripheralUsageDescription" = "WunderLINQ necesita acceso a Bluetooth para comunicar con el hardware de WunderLINQ.";
-"NSMicrophoneUsageDescription" = "WunderLINQ necesita acceso a su micr骹ono para grabar audio durante la grabaci髇 de video.";
+"NSMicrophoneUsageDescription" = "WunderLINQ necesita acceso a su micr贸fono para grabar audio durante la grabaci贸n de video.";
 "NSPhotoLibraryAddUsageDescription" = "WunderLINQ necesita acceso a su biblioteca de fotos para guardar fotos.";
 "NSPhotoLibraryUsageDescription" = "WunderLINQ necesita acceso a su biblioteca de fotos para guardar fotos.";
