@@ -1,17 +1,18 @@
-﻿/* 
+/* 
   InfoPlist.strings
   WunderLINQ
 
   Created by Keith Conger on 12/13/18.
   Copyright © 2018 Black Box Embedded, LLC. All rights reserved.
 */
-"NSContactsUsageDescription" = "WunderLINQ needs access to your address book to display your contacts phone numbers.";
-"NSCameraUsageDescription" = "WunderLINQ needs access to your camera to take pictures and record videos.";
-"NSLocationAlwaysAndWhenInUseUsageDescription" = "WunderLINQ needs access to your location to record your location in the trip log and save waypoints.";
-"NSLocationAlwaysUsageDescription" = "WunderLINQ needs access to your location to record your location in the trip log and save waypoints.";
-"NSLocationWhenInUseUsageDescription" = "WunderLINQ needs access to your location to record your location in the trip log and save waypoints.";
-"NSAppleMusicUsageDescription" = "WunderLINQ needs access to your media library for music playback.";
-"NSBluetoothPeripheralUsageDescription" = "WunderLINQ needs access to Bluetooth to communicate with the WunderLINQ hardware.";
-"NSMicrophoneUsageDescription" = "WunderLINQ needs access to your microphone to record audio during video recording.";
-"NSPhotoLibraryAddUsageDescription" = "WunderLINQ needs access to save photos taken to your photo library.";
-"NSPhotoLibraryUsageDescription" = "WunderLINQ needs access to save photos taken to your photo library.";
+"NSContactsUsageDescription" = "WunderLINQ necesita acceso a su lista de contactos para mostrar los números de teléfono de sus contactos.";
+"NSCameraUsageDescription" = "WunderLINQ necesita acceso a su cámara para hacer fotos y grabar videos.";
+"NSLocationAlwaysAndWhenInUseUsageDescription" = "WunderLINQ necesita acceso a su localización para grabar su localización en el log de la ruta y salvar los puntos de paso (waypoints).";
+"NSLocationAlwaysUsageDescription" = "WunderLINQ necesita acceso a su localización para grabar su localización en el log de la ruta y salvar los puntos de paso (waypoints).";
+"WunderLINQ needs access to your location to record your location in the trip log and save waypoints.";
+"NSLocationWhenInUseUsageDescription" = "WunderLINQ necesita acceso a su localización para grabar su localización en el log de la ruta y salvar los puntos de paso (waypoints).";
+"NSAppleMusicUsageDescription" = "WunderLINQ necesita acceso a su biblioteca de medios para reproducir música.";
+"NSBluetoothPeripheralUsageDescription" = "WunderLINQ necesita acceso a Bluetooth para comunicar con el hardware de WunderLINQ.";
+"NSMicrophoneUsageDescription" = "WunderLINQ necesita acceso a su micrófono para grabar audio durante la grabación de video.";
+"NSPhotoLibraryAddUsageDescription" = "WunderLINQ necesita acceso a su biblioteca de fotos para guardar fotos.";
+"NSPhotoLibraryUsageDescription" = "WunderLINQ necesita acceso a su biblioteca de fotos para guardar fotos.";
