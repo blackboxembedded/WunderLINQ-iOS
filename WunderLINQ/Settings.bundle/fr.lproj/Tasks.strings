@@ -1,1 +1,22 @@
-
+"pref_task_ten" = "Dixième";
+"pref_task_nine" = "Neuvième";
+"pref_task_eight" = "Huitième";
+"pref_task_seven" = "Septimème";
+"pref_task_six" = "Sixième";
+"pref_task_five" = "Cinquième";
+"pref_task_four" = "Quatrième";
+"pref_task_three" = "Troisième";
+"pref_task_two" = "Deuxième";
+"pref_task_one" = "Première";
+"task_title_empty" = "Vide";
+"task_title_settings" = "Réglages";
+"task_title_waypoint_nav" = "itinéraire vers emplacement";
+"task_title_waypoint" = "Enregistrer emplacement";
+"task_title_start_trip" = "Démarrer enr. voyage";
+"task_title_start_record" = "Démarrer enr. vidéo";
+"task_title_selfie" = "Égoportrait";
+"task_title_photo" = "Caméra";
+"task_title_callcontact" = "Contact";
+"task_title_favnumber" = "Numéro favori";
+"task_title_gohome" = "Domicile";
+"task_title_navigation" = "Navigation";
