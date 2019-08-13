@@ -146,7 +146,6 @@
 		7E70D8F621A5FD2B0016CD74 /* el */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = el; path = el.lproj/Main.strings; sourceTree = "<group>"; };
 		7E70D8F721A5FD2B0016CD74 /* el */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = el; path = el.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		7E70D8F821A5FD2B0016CD74 /* el */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = el; path = WunderLINQ/el.lproj/Localizable.strings; sourceTree = "<group>"; };
-		7E78DB2B23006FB5009742DF /* en */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		7E78DB2C23006FCF009742DF /* de */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		7E78DB2D23006FD1009742DF /* es-419 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		7E78DB2F23006FD7009742DF /* cs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -566,7 +565,6 @@
 				7E4D76E421DDAEC100825175 /* sl */,
 				7EE02FE622A6BCCA0061330B /* ja */,
 				7E586D4022B68E6E00FB2E4C /* hu */,
-				7E78DB2B23006FB5009742DF /* en */,
 				7E78DB2C23006FCF009742DF /* de */,
 				7E78DB2D23006FD1009742DF /* es-419 */,
 				7E78DB2F23006FD7009742DF /* cs */,
