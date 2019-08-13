@@ -8,7 +8,6 @@
 
 // Product
 "product" = "WunderLINQ";
-
 // MyMotorcycleViewController
 "main_title" = "モーターサイクル";
 "disclaimer_alert_title" = "警告！";
@@ -45,14 +44,13 @@
 "trip2_label" = "トリップ２";
 "gear_label" = "ギア";
 "settings_label" = "設定";
-"bike_info_label" = "Bike Info";
+"bike_info_label" = "";
 "geodata_label" = "トリップログとウェイポイント";
 "appsettings_label" = "APP設定";
 "about_label" = "WunderLINQについて";
 "close_label" = "閉じる";
 "hwsettings_label" = "HW 設定";
 "select_bt" = "選択";
-
 //HWSettingsViewController
 "fw_config_title" = "WunderLINQ 設定";
 "wwtype_label" = "タイヤタイプ";
@@ -65,27 +63,22 @@
 "hwsave_alert_body" = "ハードウェアセッティングを変更すると動作が不安定になります。　クレードルから一度外してリセットして下さい.";
 "hwsave_alert_btn_ok" = "Continue";
 "hwsave_alert_btn_cancel" = "Cancel";
-
 //AboutViewController
 "about_title" = "アバウト";
 "version_label" = "バージョン：";
 "btn_sendlogs_title" = "ログを送る";
 "sendlogs_body" = "以下に問題点を記述して下さい:\n";
 "credits_label" = "クレジット";
-
 // AlertViewController
 "alert_label_fuel" = "近くのガソリンスタンドに案内しますか？";
 "alert_title_fuel" = "燃料残量低下";
 "alert_title_photopreview" = "写真プレビュー";
 "alert_btn_close" = "閉じる";
 "alert_btn_ok" = "ＯＫ";
-
 // FaultsTableViewController
 "fault_title" = "アクティブ　フォルト";
-
 // TripsTableViewController
 "trips_title" = "トリップログを記録";
-
 // TripViewController
 "trip_view_title" = "トリップ";
 "trip_view_waypoint_start_label" = "開始";
@@ -104,10 +97,8 @@
 "delete_trip_alert_body" = "トリップログを消去しますか？";
 "delete_bt" = "消去";
 "cancel_bt" = "キャンセル";
-
 // WaypointsTableViewController
 "waypoint_title" = "記録されたウェイポイント一覧";
-
 // WaypointViewController
 "waypoint_view_title" = "記録されたウェイポイント";
 "waypoint_view_tv_date_label" = "記録日";
@@ -120,7 +111,6 @@
 "waypoint_view_bt_delete" = "消去";
 "delete_waypoint_alert_title" = "警告！";
 "delete_waypoint_alert_body" = "ウェイポイントを消去しますか？";
-
 // CompassViewController
 "compass_title" = "コンパス";
 "north" = "北";
@@ -131,10 +121,8 @@
 "south_east" = "南東";
 "west" = "西";
 "east" = "東";
-
 // MusicViewController
 "music_title" = "ミュージック";
-
 // TasksTableViewController
 "quicktask_title" = "クイックタスク";
 "task_title_navigation" = "ナビゲーション";
@@ -153,15 +141,14 @@
 "task_title_stop_trip" = "トリップログ終了";
 "task_title_waypoint" = "ウェイポイント記録";
 "task_title_settings" = "設定";
-"task_title_actioncam_start_video" = "Start ActionCam Recording";
-"task_title_actioncam_stop_video" = "Stop ActionCam Recording";
-"task_title_weathermap" = "Weather Map";
-"toast_actioncam_notconnected" = "ActionCam Not Connected";
-"toast_actioncam_notset" = "Set ActionCam type in the app settings";
+"task_title_actioncam_start_video" = "";
+"task_title_actioncam_stop_video" = "";
+"task_title_weathermap" = "";
+"toast_actioncam_notconnected" = "";
+"toast_actioncam_notset" = "";
 "toast_waypoint_saved" = "ウェイポイント記録完了";
 "task_title_waypoint_nav" = "ウェイポイントへ案内";
 "toast_photo_taken" = "撮影完了";
-
 // LocationService
 "time_header" = "時間";
 "latitude_header" = "緯度";
@@ -193,13 +180,10 @@
 "leanangle_header" = "バンク角";
 "gforce_header" = "加速度";
 "bearing_header" = "進行方向";
-
 // ContactsTableViewController
 "contactlist_title" = "連絡先";
-
 // WaypointsNavTableViewController
 "waypoints_nav_title" = "ウェイポイント";
-
 // Fault Description
 "fault_ABSSLF" = "ＡＢＳ自己診断未終了";
 "fault_ABSERR" = "ＡＢＳエラー";
@@ -238,7 +222,4 @@
 "fault_GENWARNFSRED" = "一般警告　赤ライト点滅";
 "fault_GENWARNSHRED" = "一般警告　赤ライト点灯";
 "fault_OILLOW" = "エンジンオイルレベル下限以下";
-
-
 "vin_label" = "VIN";
-
