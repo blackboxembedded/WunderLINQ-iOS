@@ -193,8 +193,6 @@
 "leanangle_header" = "バンク角";
 "gforce_header" = "加速度";
 "bearing_header" = "進行方向";
-"barometric_header" = "Barometer";
-"sunrisesunset_header" = "Sunrise/Sunset";
 
 // ContactsTableViewController
 "contactlist_title" = "連絡先";
@@ -241,8 +239,6 @@
 "fault_GENWARNSHRED" = "一般警告　赤ライト点灯";
 "fault_OILLOW" = "エンジンオイルレベル下限以下";
 
-//BikeInfoViewController
-"bike_info_title" = "Bike Info";
+
 "vin_label" = "VIN";
-"next_service_date_label" = "Next Service Date";
-"next_service_label" = "Next Service";
+

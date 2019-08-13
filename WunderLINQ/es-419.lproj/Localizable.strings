@@ -15,17 +15,10 @@
 "disclaimer_alert_body" = "No intente ingresar información de ruta ni ajustar el WunderLINQ mientras conduce.\nSi no presta toda su atención a la operación de su vehículo, podría provocar la muerte, lesiones graves o daños materiales.\nUsted asume la total responsabilidad y/o riesgo por la operación de este dispositivo.";
 "disclaimer_ok" = "De Acuerdo";
 "disclaimer_quit" = "Salir";
-"negative_alert_title" = "Functionality limited"; // Needs Translation
-"negative_location_alert_body" = "Since location access has not been granted, this app will not be able to save waypoints or log your location."; // Needs Translation
-"negative_write_alert_body" = "Since Photo Library access has not been granted, this app will not be able to save photos."; // Needs Translation
-"negative_media_alert_body" = "Since Media Library access has not been granted, this app will not be able to play music."; // Needs Translation
-"negative_contacts_alert_body" = "Since contact access has not been granted, this app will not be able to display contacts to call."; // Needs Translation
-"negative_camera_alert_body" = "Since camera access has not been granted, this app will not be able to take photos or videos."; // Needs Translation
-"negative_microphone_alert_body" = "Since microphone access has not been granted, this app will not be able to record videos."; // Needs Translation
-"negative_notification_body" = "Since notifcations were not allowed, this app will not be able to send notifcations for faults"; // Needs Translation
+
+
 "alert_message_exit_ok" = "OK";
-"negative_alert_btn_ok" = "Open Settings"; // Needs Translation
-"negative_alert_btn_cancel" = "Cancel"; // Needs Translation
+
 "bt_powered_off" = "Bluetooth de este dispositivo se encuentra apagado.";
 "bt_not_supported" = "Este dispositivo no soporta Bluetooth Baja Energía.";
 "bt_not_authorized" = "Esta app no está autorizada a utilizar Bluetooth Baja Energía.";
@@ -44,39 +37,13 @@
 "trip1_label" = "Parcial 1";
 "trip2_label" = "Parcial 2";
 "gear_label" = "Marcha";
-"settings_label" = "Settings"; //Needs translation
-"bike_info_label" = "Bike Info"; // Needs translation
-"geodata_label" = "Trips & Waypoints"; // Needs translation
-"appsettings_label" = "App Settings"; //Needs translation
-"about_label" = "About"; //Needs translation
-"close_label" = "Close"; //Needs translation
-"hwsettings_label" = "HW Settings"; //Needs Translation
-"select_bt" = "Select"; // Needs translation
 
-//HWSettingsViewController
-"fw_config_title" = "WunderLINQ Settings"; //Needs Translation
-"wwtype_label" = "Wheel Type"; //Needs Translation
-"wwMode1" = "Full"; //Needs Translation
-"wwMode2" = "RT"; //Needs Translation
-"wwMode3" = "Custom"; //Needs Translation
-"sensitivity_label" = "Hold Sensitivity"; //Needs Translation
-"config_write_label" = "Save Settings"; //Needs Translation
-"hwsave_alert_title" = "Warning!"; // Needs Translation
-"hwsave_alert_body" = "After saving new hardware settings, the WunderLINQ hardware will become unstable and will need to be removed and reinstalled into the cradle."; // Needs Translation
-"hwsave_alert_btn_ok" = "Continue"; // Needs Translation
-"hwsave_alert_btn_cancel" = "Cancel"; // Needs Translation
 
-//AboutViewController
-"about_title" = "About"; // Needs Translation
-"version_label" = "Version:"; // Needs Translation
-"btn_sendlogs_title" = "Send Logs"; // Needs translation
-"sendlogs_body" = "Please describe your problem below:\n"; // Needs translation
-"credits_label" = "Credits"; // Needs Translation
 
 // AlertViewController
 "alert_label_fuel" = "¿Desea la ruta a la gasolinera más cercana?";
 "alert_title_fuel" = "Poco combustible";
-"alert_title_photopreview" = "Photo Preview"; // Needs translation
+
 "alert_btn_close" = "Cerrar";
 "alert_btn_ok" = "OK";
 
@@ -97,13 +64,7 @@
 "trip_view_tv_brakes" = "Frenos (Del/Tras)";
 "trip_view_tv_ambient" = "Temp ambiente(Min/Prom/Máx)";
 "trip_view_tv_engine" = "Temp Motor(Min/Prom/Máx)";
-"hours" = "hours"; //Needs translation
-"minutes" = "minutes"; //Needs translation
-"seconds" = "seconds"; //Needs translation
-"delete_trip_alert_title" = "Warning!"; // Needs translation
-"delete_trip_alert_body" = "Delete Trip Log?"; // Needs translation
-"delete_bt" = "Delete"; // Needs translation
-"cancel_bt" = "Cancel"; // Needs translation
+
 
 // WaypointsTableViewController
 "waypoint_title" = "Waypoints guardados";
@@ -115,22 +76,14 @@
 "waypoint_view_tv_lon_label" = "Longitud";
 "waypoint_view_tv_label_label" = "Etiqueta";
 "waypoint_view_bt_open" = "Abrir en App de mapas";
-"waypoint_view_bt_nav" = "Navigate"; //Needs translation
+
 "waypoint_view_bt_share" = "Compartir";
 "waypoint_view_bt_delete" = "Eliminar";
-"delete_waypoint_alert_title" = "Warning!"; // Needs translation
-"delete_waypoint_alert_body" = "Delete Waypoint?"; // Needs translation
+
 
 // CompassViewController
 "compass_title" = "Compás";
-"north" = "N"; //Needs translation
-"north_west" = "NW"; //Needs translation
-"north_east" = "NE"; //Needs translation
-"south" = "S"; //Needs translation
-"south_west" = "SW"; //Needs translation
-"south_east" = "SE"; //Needs translation
-"west" = "W"; //Needs translation
-"east" = "E"; //Needs translation
+
 
 // MusicViewController
 "music_title" = "Música";
@@ -152,49 +105,12 @@
 "task_title_start_trip" = "Iniciar bitácora";
 "task_title_stop_trip" = "Detener bitácora";
 "task_title_waypoint" = "Guardar Waypoint";
-"task_title_settings" = "Settings"; //Needs Translation
-"task_title_actioncam_start_video" = "Start ActionCam Recording"; // Needs Translation
-"task_title_actioncam_stop_video" = "Stop ActionCam Recording"; // Needs Translation
-"task_title_weathermap" = "Weather Map"; // Needs translation
-"toast_actioncam_notconnected" = "ActionCam Not Connected"; // Needs Translation
-"toast_actioncam_notset" = "Set ActionCam type in the app settings"; // Needs translation
+
 "toast_waypoint_saved" = "Waypoint guardado";
 "task_title_waypoint_nav" = "Navigar hacia Waypoint";
 "toast_photo_taken" = "Fotografía tomada!";
 
-// LocationService
-"time_header" = "Time"; //Needs translation
-"latitude_header" = "Latitude"; //Needs translation
-"longitude_header" = "Longitude"; //Needs translation
-"altitude_header" = "Altitude"; //Needs translation
-"gpsspeed_header" = "GPS Speed"; //Needs translation
-"gear_header" = "Gear"; //Needs translation
-"enginetemp_header" = "Engine Temperature"; //Needs translation
-"ambienttemp_header" = "Ambient Temperature"; //Needs translation
-"frontpressure_header" = "Front Tire Pressure"; //Needs translation
-"rearpressure_header" = "Rear Tire Pressure"; //Needs translation
-"odometer_header" = "Odometer"; //Needs translation
-"voltage_header" = "Voltage"; //Needs translation
-"throttle_header" = "Throttle Position"; //Needs translation
-"frontbrakes_header" = "Front Brakes"; //Needs translation
-"rearbrakes_header" = "Rear Brakes"; //Needs translation
-"shifts_header" = "Shifts"; //Needs translation
-"vin_header" = "VIN"; //Needs translation
-"ambientlight_header" = "Ambient Light"; //Needs translation
-"tripone_header" = "Trip1"; //Needs translation
-"triptwo_header" = "Trip2"; //Needs translation
-"tripauto_header" = "Trip Auto"; //Needs translation
-"speed_header" = "Speed"; //Needs translation
-"avgspeed_header" = "Average Speed"; //Needs translation
-"cconsumption_header" = "Current Consumption"; //Needs translation
-"fueleconomyone_header" = "Fuel Economy 1"; //Needs translation
-"fueleconomytwo_header" = "Fuel Economy 2"; //Needs translation
-"fuelrange_header" = "Fuel Range"; //Needs translation
-"leanangle_header" = "Lean Angle"; // Needs translation
-"gforce_header" = "g-force"; // Needs translation
-"bearing_header" = "Bearing"; // Needs translation
-"barometric_header" = "Barometer"; // Needs Translation
-"sunrisesunset_header" = "Sunrise/Sunset"; // Needs Translation
+
 
 // ContactsTableViewController
 "contactlist_title" = "Contactos";
@@ -241,8 +157,4 @@
 "fault_GENWARNSHRED" = "Luz de advertencia general encendida en rojo";
 "fault_OILLOW" = "Nivel de aceite muy bajo";
 
-//BikeInfoViewController
-"bike_info_title" = "Bike Info"; // Needs translation
-"vin_label" = "VIN"; // Needs translation
-"next_service_date_label" = "Next Service Date"; // Needs translation
-"next_service_label" = "Next Service"; // Needs translation
+

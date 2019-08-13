@@ -38,7 +38,5 @@
 "gforce_header" = "g sila";
 "bearing_header" = "Smer";
 "altitude_header" = "Višina";
-"time_header" = "Time"; // Needs Translation
-"barometric_header" = "Barometer"; // Needs Translation
+
 "gpsspeed_header" = "GPS hitrost";
-"sunrisesunset_header" = "Sunrise/Sunset"; // Needs Translation

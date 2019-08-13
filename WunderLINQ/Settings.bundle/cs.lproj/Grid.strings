@@ -38,7 +38,6 @@
 "gforce_header" = "G";
 "bearing_header" = "Směr";
 "altitude_header" = "Nadm. výška";
-"time_header" = "Time"; // Needs Translation
-"barometric_header" = "Barometer"; // Needs Translation
+
 "gpsspeed_header" = "GPS Rychlos";
-"sunrisesunset_header" = "Sunrise/Sunset"; // Needs Translation
+

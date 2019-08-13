@@ -45,7 +45,7 @@
 "trip2_label" = "KM-Zähler 2";
 "gear_label" = "Gang";
 "settings_label" = "Einstellungen";
-"bike_info_label" = "Bike Info"; // Needs translation
+
 "geodata_label" = "Aufzeichnungen & Wegpunkte";
 "appsettings_label" = "App-Einstellungen";
 "about_label" = "Über";
@@ -76,7 +76,7 @@
 // AlertViewController
 "alert_label_fuel" = "Zur nächsten Tankstelle navigieren?";
 "alert_title_fuel" = "Benzinstand niedrig";
-"alert_title_photopreview" = "Photo Preview"; // Needs translation
+
 "alert_btn_close" = "Schliessen";
 "alert_btn_ok" = "OK";
 
@@ -153,11 +153,7 @@
 "task_title_stop_trip" = "Fahrtaufzeichnung beenden";
 "task_title_waypoint" = "Wegpunkt speichern";
 "task_title_settings" = "Einstellungen";
-"task_title_actioncam_start_video" = "Start ActionCam Recording"; // Needs Translation
-"task_title_actioncam_stop_video" = "Stop ActionCam Recording"; // Needs Translation
-"task_title_weathermap" = "Weather Map"; // Needs translation
-"toast_actioncam_notconnected" = "ActionCam Not Connected"; // Needs Translation
-"toast_actioncam_notset" = "Set ActionCam type in the app settings"; // Needs translation
+
 "toast_waypoint_saved" = "Gespeicherter Wegpunkt";
 "task_title_waypoint_nav" = "Zu Wegpunkt navigieren";
 "toast_photo_taken" = "Foto aufgenommen!";
@@ -193,8 +189,7 @@
 "leanangle_header" = "Neigungswinkel";
 "gforce_header" = "Beschleunigungskraft";
 "bearing_header" = "Peilung";
-"barometric_header" = "Barometer"; // Needs Translation
-"sunrisesunset_header" = "Sunrise/Sunset"; // Needs Translation
+
 
 // ContactsTableViewController
 "contactlist_title" = "Kontakte";
@@ -241,8 +236,4 @@
 "fault_GENWARNSHRED" = "Die allgemeine Warnleuchte leuchtet Rot";
 "fault_OILLOW" = "Ölstand Motor zu niedrig";
 
-//BikeInfoViewController
-"bike_info_title" = "Bike Info"; // Needs translation
-"vin_label" = "Fahrgestellnnummer (VIN)";
-"next_service_date_label" = "Next Service Date"; // Needs translation
-"next_service_label" = "Next Service"; // Needs translation
+

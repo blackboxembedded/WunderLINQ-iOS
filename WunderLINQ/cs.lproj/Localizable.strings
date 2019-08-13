@@ -45,7 +45,7 @@
 "trip2_label" = "Trip 2";
 "gear_label" = "Stupeň";
 "settings_label" = "Nastavení";
-"bike_info_label" = "Bike Info"; // Needs translation
+
 "geodata_label" = "Jízdy & Místa";
 "appsettings_label" = "Nastavení aplikace";
 "about_label" = "O aplikaci";
@@ -76,7 +76,7 @@
 // AlertViewController
 "alert_label_fuel" = "Navigovat k nejbližší čerpací stanici?";
 "alert_title_fuel" = "Nízký stav paliva";
-"alert_title_photopreview" = "Photo Preview"; // Needs translation
+
 "alert_btn_close" = "Zavřít";
 "alert_btn_ok" = "OK";
 
@@ -153,11 +153,7 @@
 "task_title_stop_trip" = "Ukonči záznam jízdy";
 "task_title_waypoint" = "Ulož místo";
 "task_title_settings" = "Nastavení";
-"task_title_actioncam_start_video" = "Start ActionCam Recording"; // Needs Translation
-"task_title_actioncam_stop_video" = "Stop ActionCam Recording"; // Needs Translation
-"task_title_weathermap" = "Weather Map"; // Needs translation
-"toast_actioncam_notconnected" = "ActionCam Not Connected"; // Needs Translation
-"toast_actioncam_notset" = "Set ActionCam type in the app settings"; // Needs translation
+
 "toast_waypoint_saved" = "Místo uloženo";
 "task_title_waypoint_nav" = "Naviguj na uložené místo";
 "toast_photo_taken" = "Fotka pořízena!";
@@ -193,8 +189,7 @@
 "leanangle_header" = "Úhel náklonu";
 "gforce_header" = "G";
 "bearing_header" = "Směr";
-"barometric_header" = "Barometer"; // Needs Translation
-"sunrisesunset_header" = "Sunrise/Sunset"; // Needs Translation
+
 
 // ContactsTableViewController
 "contactlist_title" = "Kontakty";
@@ -242,8 +237,4 @@
 "fault_TIREFCF" = "Velmi nízký tlak v přední pneu";
 "fault_TIRERCF" = "Nízký nízký tlak v zadní pneu";
 
-//BikeInfoViewController
-"bike_info_title" = "Bike Info"; // Needs translation
-"vin_label" = "VIN"; // Needs translation
-"next_service_date_label" = "Next Service Date"; // Needs translation
-"next_service_label" = "Next Service"; // Needs translation
+

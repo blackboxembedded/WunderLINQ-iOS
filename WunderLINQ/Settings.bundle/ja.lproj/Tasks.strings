@@ -9,9 +9,7 @@
 "task_title_waypoint" = "地点登録";
 "task_title_waypoint_nav" = "登録地へのナビゲーション";
 "task_title_settings" = "設定";
-"task_title_actioncam_start_video" = "Start ActionCam Recording";
-"task_title_actioncam_stop_video" = "Stop ActionCam Recording";
-"task_title_weathermap" = "Weather Map";
+
 "task_title_empty" = "Empty";
 "pref_task_one" = "1番目";
 "pref_task_two" = "2番目";

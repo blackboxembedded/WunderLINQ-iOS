@@ -38,7 +38,6 @@
 "gforce_header" = "Επιτάχυνση G";
 "bearing_header" = "Κύλιση";
 "altitude_header" = "Υψόμετρο";
-"time_header" = "Time"; // Needs Translation
-"barometric_header" = "Barometer"; // Needs Translation
+
 "gpsspeed_header" = "Ταχύτητα βάση GPS";
-"sunrisesunset_header" = "Sunrise/Sunset"; // Needs Translation
+

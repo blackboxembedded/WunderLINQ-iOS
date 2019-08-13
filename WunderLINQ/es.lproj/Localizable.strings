@@ -15,17 +15,17 @@
 "disclaimer_alert_body"="No intente introducir información de rutas ni ajuste el WunderLINQ mientras conduce.\nSi no presta toda su atención al manejo de su vehículo, podría provocar la muerte, lesiones graves o daños materiales.\nUsted asume toda la responsabilidad y el riesgo por el uso de este dispositivo.";
 "disclaimer_ok"="Aceptar";
 "disclaimer_quit"="Salir";
-"negative_alert_title" = "Funcionalidad limitada"; // JCAL 20190303
-"negative_location_alert_body" = "Como el acceso a la localización no ha sido permitido, esta aplicación no podrá almacenar waypoints ni registrar (log) su localización."; // JCAL 20190303
-"negative_write_alert_body" = "Como el acceso a la librería de fotos no ha sido permitido. esta aplicación no podrá guardar fotos."; // JCAL 20190303
-"negative_media_alert_body" = "Como el acceso a la librería de multimedia no ha sido permitido, esta aplicación no podrá poner música."; // JCAL 20190303
-"negative_contacts_alert_body" = "Como el acceso a los contactos no ha sido permitido, esta aplicación no podrá mostrar los contactos para llamarlos."; // JCAL 20190303
-"negative_camera_alert_body" = "Como el acceso a la cámara no ha sido permitido, esta aplicación no podrá tomar fotos ni videos."; // JCAL 20190303
-"negative_microphone_alert_body" = "Como el acceso al mícrófoto no ha sido permitido, esta aplicación no podrá grabar videos."; // JCAL 20190303
-"negative_notification_body" = "Como las notificaciones no están permitidas, esta aplicación no podrá enviar notificaciones por fallos"; // JCAL 20190303
+"negative_alert_title" = "Funcionalidad limitada";
+"negative_location_alert_body" = "Como el acceso a la localización no ha sido permitido, esta aplicación no podrá almacenar waypoints ni registrar (log) su localización.";
+"negative_write_alert_body" = "Como el acceso a la librería de fotos no ha sido permitido. esta aplicación no podrá guardar fotos.";
+"negative_media_alert_body" = "Como el acceso a la librería de multimedia no ha sido permitido, esta aplicación no podrá poner música.";
+"negative_contacts_alert_body" = "Como el acceso a los contactos no ha sido permitido, esta aplicación no podrá mostrar los contactos para llamarlos.";
+"negative_camera_alert_body" = "Como el acceso a la cámara no ha sido permitido, esta aplicación no podrá tomar fotos ni videos.";
+"negative_microphone_alert_body" = "Como el acceso al mícrófoto no ha sido permitido, esta aplicación no podrá grabar videos.";
+"negative_notification_body" = "Como las notificaciones no están permitidas, esta aplicación no podrá enviar notificaciones por fallos";
 "alert_message_exit_ok"="OK";
-"negative_alert_btn_ok" = "Abrir Ajustes"; // JCAL 20190303
-"negative_alert_btn_cancel" = "Cancelar"; // JCAL 20190303
+"negative_alert_btn_ok" = "Abrir Ajustes";
+"negative_alert_btn_cancel" = "Cancelar";
 "bt_powered_off"="El Bluetooth en este dispositivo está actualmente apagado.";
 "bt_not_supported"="Este dispositivo no soporte Bluetooth Low Energy (BTE).";
 "bt_not_authorized"="Esta aplicación no está autorizada para usar Bluetooth Low Energy (BTE).";
@@ -45,20 +45,20 @@
 "trip2_label"="Trip 2";
 "gear_label"="Marcha";
 "settings_label" = "Ajustes";
-"bike_info_label" = "Bike Info"; // Needs translation
-"geodata_label" = "Viajes (Trips) & Puntos de paso (Waypoints)"; // JCAL 20190303
-"appsettings_label" = "Ajustes de aplicación"; //Needs translation
+
+"geodata_label" = "Viajes (Trips) & Puntos de paso (Waypoints)";
+"appsettings_label" = "Ajustes de aplicación";
 "about_label" = "Acerca de";
 "close_label" = "Cerrar";
 "hwsettings_label" = "Ajustes del Hardware";
-"select_bt" = "Seleccionar"; // JCAL 20190303
+"select_bt" = "Seleccionar";
 
 //HWSettingsViewController
 "fw_config_title" = "Ajustes del WunderLINQ";
 "wwtype_label" = "Tipo de Rueda";
 "wwMode1" = "Completa (Full)";
 "wwMode2" = "RT"; 
-"wwMode3" = "Custom"; //Translated into SP_ES 20190103
+"wwMode3" = "Custom";
 "sensitivity_label" = "Sensitividad de Mantener (Hold)"; 
 "config_write_label" = "Ajustes de Guardar (Save)";
 "hwsave_alert_title" = "¡Aviso!";
@@ -69,14 +69,14 @@
 //AboutViewController
 "about_title" = "Acerca de";
 "version_label" = "Versión:";
-"btn_sendlogs_title" = "Enviar Logs (registro)"; // JCAL 20190303
-"sendlogs_body" = "Por favor, describa su problema a continuación:\n"; // JCAL 20190303
+"btn_sendlogs_title" = "Enviar Logs (registro)";
+"sendlogs_body" = "Por favor, describa su problema a continuación:\n";
 "credits_label" = "Créditos";
 
 // AlertViewController
 "alert_label_fuel"="¿Ruta a la gasolinera más cercana?";
 "alert_title_fuel"="Combustible bajo";
-"alert_title_photopreview" = "Photo Preview"; // Needs translation
+
 "alert_btn_close"="Cerrado";
 "alert_btn_ok"="OK";
 
@@ -100,10 +100,10 @@
 "hours" = "horas";
 "minutes" = "minutos";
 "seconds" = "segundos";
-"delete_trip_alert_title" = "¡Advertencia!"; // JCAL 20190303
-"delete_trip_alert_body" = "¿Borrar el registro del viaje (trip log)?"; // JCAL 20190303
-"delete_bt" = "Borrar"; // JCAL 20190303
-"cancel_bt" = "Cancelar"; // JCAL 20190303
+"delete_trip_alert_title" = "¡Advertencia!";
+"delete_trip_alert_body" = "¿Borrar el registro del viaje (trip log)?";
+"delete_bt" = "Borrar";
+"cancel_bt" = "Cancelar";
 
 // WaypointsTableViewController
 "waypoint_title"="Puntos de Ruta (Waypoints) guardados";
@@ -118,8 +118,8 @@
 "waypoint_view_bt_nav" = "Navegar";
 "waypoint_view_bt_share"="Compartir";
 "waypoint_view_bt_delete"="Borrar";
-"delete_waypoint_alert_title" = "¡Advertencia!"; // JCAL 20190303
-"delete_waypoint_alert_body" = "¿Borrar punto de paso (Waypoint)?"; // JCAL 20190303
+"delete_waypoint_alert_title" = "¡Advertencia!";
+"delete_waypoint_alert_body" = "¿Borrar punto de paso (Waypoint)?";
 
 // CompassViewController
 "compass_title"="Brújula";
@@ -153,11 +153,7 @@
 "task_title_stop_trip"="Terminar Log de Ruta";
 "task_title_waypoint"="Guardar Waypoint";
 "task_title_settings" = "Ajustes";
-"task_title_actioncam_start_video" = "Start ActionCam Recording"; // Needs Translation
-"task_title_actioncam_stop_video" = "Stop ActionCam Recording"; // Needs Translation
-"task_title_weathermap" = "Weather Map"; // Needs translation
-"toast_actioncam_notconnected" = "ActionCam Not Connected"; // Needs Translation
-"toast_actioncam_notset" = "Set ActionCam type in the app settings"; // Needs translation
+
 "toast_waypoint_saved"="Punto de ruta guardado";
 "task_title_waypoint_nav"="NAvegar a Waypoint";
 "toast_photo_taken"="¡Foto guardada!";
@@ -190,11 +186,9 @@
 "fueleconomyone_header" = "Combustible 1";
 "fueleconomytwo_header" = "Combustible 2";
 "fuelrange_header" = "Rango/Alcance";
-"leanangle_header" = "Ángulo de inclinación"; // JCAL 20190303
-"gforce_header" = "Fuerza-G"; // JCAL 20190303
-"bearing_header" = "Orientación"; // JCAL 20190303
-"barometric_header" = "Barometer"; // Needs Translation
-"sunrisesunset_header" = "Sunrise/Sunset"; // Needs Translation
+"leanangle_header" = "Ángulo de inclinación";
+"gforce_header" = "Fuerza-G";
+"bearing_header" = "Orientación";
 
 // ContactsTableViewController
 "contactlist_title"="Contactos";
@@ -241,8 +235,4 @@
 "fault_GENWARNSHRED"="La luz general de avisos está fija en rojo";
 "fault_OILLOW"="Nivel de aceite del motor bajo";
 
-//BikeInfoViewController
-"bike_info_title" = "Bike Info"; // Needs translation
-"vin_label" = "VIN"; // Needs translation
-"next_service_date_label" = "Next Service Date"; // Needs translation
-"next_service_label" = "Next Service"; // Needs translation
+

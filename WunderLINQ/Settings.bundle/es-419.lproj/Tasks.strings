@@ -8,18 +8,4 @@
 "task_title_start_trip" = "Iniciar bitácora";
 "task_title_waypoint" = "Guardar Waypoint";
 "task_title_waypoint_nav" = "Navigar hacia Waypoint";
-"task_title_settings" = "Settings"; //Needs Translation
-"task_title_actioncam_start_video" = "Start ActionCam Recording"; // Needs Translation
-"task_title_actioncam_stop_video" = "Stop ActionCam Recording"; // Needs Translation
-"task_title_weathermap" = "Weather Map"; // Needs translation
-"task_title_empty" = "Empty"; //Needs Translation
-"pref_task_one" = "First"; //Needs Translation
-"pref_task_two" = "Second"; //Needs Translation
-"pref_task_three" = "Third"; //Needs Translation
-"pref_task_four" = "Fourth"; //Needs Translation
-"pref_task_five" = "Fith"; //Needs Translation
-"pref_task_six" = "Sixth"; //Needs Translation
-"pref_task_seven" = "Seventh"; //Needs Translation
-"pref_task_eight" = "Eigth"; //Needs Translation
-"pref_task_nine" = "Ninth"; //Needs Translation
-"pref_task_ten" = "Tenth"; //Needs Translation
+

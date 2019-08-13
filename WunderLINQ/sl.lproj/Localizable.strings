@@ -45,7 +45,7 @@
 "trip2_label" = "Trip 2";
 "gear_label" = "Prestava";
 "settings_label" = "Nastavitve";
-"bike_info_label" = "Bike Info"; // Needs translation
+
 "geodata_label" = "Potovanja in kažipoti";
 "appsettings_label" = "Nastavitve aplikacije";
 "about_label" = "O aplikaciji";
@@ -76,7 +76,7 @@
 // AlertViewController
 "alert_label_fuel" = "Prikažem pot do najbližje bencinske črpalke?";
 "alert_title_fuel" = "Nizek nivo goriva";
-"alert_title_photopreview" = "Photo Preview"; // Needs translation
+
 "alert_btn_close" = "Zapri";
 "alert_btn_ok" = "V redu";
 
@@ -153,11 +153,7 @@
 "task_title_stop_trip" = "Zaključi dnevnik potovanja";
 "task_title_waypoint" = "Shrani kažipot";
 "task_title_settings" = "Nastavitve";
-"task_title_actioncam_start_video" = "Start ActionCam Recording"; // Needs Translation
-"task_title_actioncam_stop_video" = "Stop ActionCam Recording"; // Needs Translation
-"task_title_weathermap" = "Weather Map"; // Needs translation
-"toast_actioncam_notconnected" = "ActionCam Not Connected"; // Needs Translation
-"toast_actioncam_notset" = "Set ActionCam type in the app settings"; // Needs translation
+
 "toast_waypoint_saved" = "Kažipot shranjen";
 "task_title_waypoint_nav" = "Vodi do kažipota";
 "toast_photo_taken" = "Posnetek zajet!";
@@ -193,8 +189,7 @@
 "leanangle_header" = "Kot nagiba";
 "gforce_header" = "g sila";
 "bearing_header" = "Smer";
-"barometric_header" = "Barometer"; // Needs Translation
-"sunrisesunset_header" = "Sunrise/Sunset"; // Needs Translation
+
 
 // ContactsTableViewController
 "contactlist_title" = "Stiki";
@@ -241,8 +236,3 @@
 "fault_GENWARNSHRED" = "Opozorilna lučka sveti rdeče";
 "fault_OILLOW" = "Nivo olja prenizek";
 
-//BikeInfoViewController
-"bike_info_title" = "Bike Info"; // Needs translation
-"vin_label" = "VIN"; // Needs translation
-"next_service_date_label" = "Next Service Date"; // Needs translation
-"next_service_label" = "Next Service"; // Needs translation

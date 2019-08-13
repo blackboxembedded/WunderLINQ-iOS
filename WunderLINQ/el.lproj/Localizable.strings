@@ -45,7 +45,7 @@
 "trip2_label" = "Διαδρομή 2";
 "gear_label" = "Ταχύτητα";
 "settings_label" = "Ρυθμίσεις";
-"bike_info_label" = "Bike Info"; // Needs translation
+
 "geodata_label" = "Διαδρομές & Προορισμοί";
 "appsettings_label" = "Ρυθμίσεις εφαρμογής";
 "about_label" = "Περί...";
@@ -76,7 +76,7 @@
 // AlertViewController
 "alert_label_fuel" = "Μετάβαση στο πλησιέστερο πρατήριο υγρών καυσίμων";
 "alert_title_fuel" = "Χαμηλή στάθμη καυσίμου";
-"alert_title_photopreview" = "Photo Preview"; // Needs translation
+
 "alert_btn_close" = "Κλείσιμο";
 "alert_btn_ok" = "Εντάξει";
 
@@ -153,11 +153,7 @@
 "task_title_stop_trip" = "Παύση καταγρ. διαδρομής";
 "task_title_waypoint" = "Αποθήκ. προορισμού";
 "task_title_settings" = "Ρυθμίσεις";
-"task_title_actioncam_start_video" = "Start ActionCam Recording"; // Needs Translation
-"task_title_actioncam_stop_video" = "Stop ActionCam Recording"; // Needs Translation
-"task_title_weathermap" = "Weather Map"; // Needs translation
-"toast_actioncam_notconnected" = "ActionCam Not Connected"; // Needs Translation
-"toast_actioncam_notset" = "Set ActionCam type in the app settings"; // Needs translation
+
 "toast_waypoint_saved" = "Ο προορισμός αποθηκεύτηκε";
 "task_title_waypoint_nav" = "Πλοήγ. στον προορισμό";
 "toast_photo_taken" = "Επιτυχής λήψη φωτογραφίας";
@@ -193,8 +189,6 @@
 "leanangle_header" = "Γωνία κλίσης";
 "gforce_header" = "Επιτάχυνση G";
 "bearing_header" = "Κύλιση";
-"barometric_header" = "Barometer"; // Needs Translation
-"sunrisesunset_header" = "Sunrise/Sunset"; // Needs Translation
 
 // ContactsTableViewController
 "contactlist_title" = "Επαφές";
@@ -241,8 +235,5 @@
 "fault_GENWARNSHRED" = "Η γενική λυχνία προειδοποίησης ανάβει με κόκκινο χρώμα";
 "fault_OILLOW" = "Χαμηλή στάθμη λαδιού κινητήρα";
 
-//BikeInfoViewController
-"bike_info_title" = "Bike Info"; // Needs translation
 "vin_label" = "Αριθμός πλαισίου";
-"next_service_date_label" = "Next Service Date"; // Needs translation
-"next_service_label" = "Next Service"; // Needs translation
+
