@@ -1,1 +1,24 @@
-
+"gear_header" = "Versnelling";
+"ambienttemp_header" = "Omgevings Temperature (C)";
+"frontpressure_header" = "Voorwiel Bandenspaaning (bar)";
+"odometer_header" = "Kilometer teller (km)";
+"voltage_header" = "Voltage (V)";
+"throttle_header" = "Gashandel Positie (%)";
+"frontbrakes_header" = "Voor Rem";
+"shifts_header" = "Aantal schakelingen";
+"ambientlight_header" = "Achtergrond Licht";
+"tripone_header" = "Trip1 (km)";
+"triptwo_header" = "Trip2 (km)";
+"tripauto_header" = "Trip Auto (km)";
+"avgspeed_header" = "Gemiddelde Snelheid (kmh)";
+"cconsumption_header" = "Huidig Verbruik(L/100)";
+"fueleconomyone_header" = "Gem. Gebruik 1 (L/100)";
+"gpsspeed_header" = "GPS Snelheid (kmh)";
+"enginetemp_header" = "Motor Temperatuur (C)";
+"rearpressure_header" = "Achterwiel Bandenspanning (bar)";
+"rearbrakes_header" = "Achter Rem";
+"speed_header" = "Snelheids meter (kmh)";
+"fueleconomytwo_header" = "Gem. Gebruik 2 (L/100)";
+"fuelrange_header" = "Bereik (km)";
+"time_header" = "Tijd";
+"altitude_header" = "Hoogte (m)";
