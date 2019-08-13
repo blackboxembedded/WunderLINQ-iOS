@@ -38,7 +38,6 @@
 "gforce_header" = "G-erő";
 "bearing_header" = "Irány";
 "altitude_header" = "Magasság";
-"time_header" = "Time"; // Needs Translation
-"barometric_header" = "Barometer"; // Needs Translation
+
 "gpsspeed_header" = "GPS sebesség";
-"sunrisesunset_header" = "Sunrise/Sunset"; // Needs Translation
+

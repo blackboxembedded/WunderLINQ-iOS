@@ -9,9 +9,7 @@
 "task_title_waypoint" = "Útipont mentése";
 "task_title_waypoint_nav" = "Útiponthoz navigálás";
 "task_title_settings" = "Beállítások";
-"task_title_actioncam_start_video" = "Start ActionCam Recording"; // Needs Translation
-"task_title_actioncam_stop_video" = "Stop ActionCam Recording"; // Needs Translation
-"task_title_weathermap" = "Weather Map"; // Needs translation
+
 "task_title_empty" = "Üres";
 "pref_task_one" = "Elsõ";
 "pref_task_two" = "Második";

@@ -45,7 +45,7 @@
 "trip2_label" = "Napi számláló 2";
 "gear_label" = "Fokozat";
 "settings_label" = "Beállítások";
-"bike_info_label" = "Bike Info"; // Needs translation
+
 "geodata_label" = "Útvonalak és útipontok";
 "appsettings_label" = "Applikáció beállítások";
 "about_label" = "Információk";
@@ -76,7 +76,7 @@
 // AlertViewController
 "alert_label_fuel" = "Útvonal a legközelebbi töltőállomáshoz?";
 "alert_title_fuel" = "Alacsony üzemanyagszint";
-"alert_title_photopreview" = "Fénykép előnézet"; // Needs translation
+
 "alert_btn_close" = "Bezár";
 "alert_btn_ok" = "OK";
 
@@ -153,11 +153,7 @@
 "task_title_stop_trip" = "Útvonal rögzítésének leállítása";
 "task_title_waypoint" = "Útipont mentése";
 "task_title_settings" = "Beállítások";
-"task_title_actioncam_start_video" = "Start ActionCam Recording"; // Needs Translation
-"task_title_actioncam_stop_video" = "Stop ActionCam Recording"; // Needs Translation
-"task_title_weathermap" = "Weather Map"; // Needs translation
-"toast_actioncam_notconnected" = "ActionCam Not Connected"; // Needs Translation
-"toast_actioncam_notset" = "Set ActionCam type in the app settings"; // Needs translation
+
 "toast_waypoint_saved" = "Útipont elmentve";
 "task_title_waypoint_nav" = "Útiponthoz navigálás";
 "toast_photo_taken" = "Fénykép elkészítve!";
@@ -193,8 +189,6 @@
 "leanangle_header" = "Dőlésszög";
 "gforce_header" = "G-erő";
 "bearing_header" = "Irány";
-"barometric_header" = "Barometer"; // Needs Translation
-"sunrisesunset_header" = "Sunrise/Sunset"; // Needs Translation
 
 // ContactsTableViewController
 "contactlist_title" = "Kapcsolatok";
@@ -242,7 +236,6 @@
 "fault_OILLOW" = "Alacsony motorolajszint";
 
 //BikeInfoViewController
-"bike_info_title" = "Bike Info"; // Needs translation
+
 "vin_label" = "Alvázszám";
-"next_service_date_label" = "Next Service Date"; // Needs translation
-"next_service_label" = "Next Service"; // Needs translation
+

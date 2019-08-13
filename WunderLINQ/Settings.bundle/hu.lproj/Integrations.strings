@@ -5,7 +5,4 @@
 "nav_app_sygic" = "Sygic";
 "nav_app_waze" = "Waze";
 "nav_app_mapsme" = "Maps.me";
-"pref_actioncam_title" = "Action Camera"; // Needs Translation
-"actioncam_none" = "None"; // Needs Translation
-"actioncam_hero3" = "Hero3"; // Needs Translation
-"actioncam_hero4" = "Hero4 or Newer"; // Needs Translation
+
