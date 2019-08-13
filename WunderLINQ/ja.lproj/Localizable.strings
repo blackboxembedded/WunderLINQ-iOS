@@ -45,7 +45,7 @@
 "trip2_label" = "トリップ２";
 "gear_label" = "ギア";
 "settings_label" = "設定";
-"bike_info_label" = "Bike Info"; // Needs translation
+"bike_info_label" = "Bike Info";
 "geodata_label" = "トリップログとウェイポイント";
 "appsettings_label" = "APP設定";
 "about_label" = "WunderLINQについて";
@@ -153,11 +153,11 @@
 "task_title_stop_trip" = "トリップログ終了";
 "task_title_waypoint" = "ウェイポイント記録";
 "task_title_settings" = "設定";
-"task_title_actioncam_start_video" = "Start ActionCam Recording"; // Needs Translation
-"task_title_actioncam_stop_video" = "Stop ActionCam Recording"; // Needs Translation
-"task_title_weathermap" = "Weather Map"; // Needs translation
-"toast_actioncam_notconnected" = "ActionCam Not Connected"; // Needs Translation
-"toast_actioncam_notset" = "Set ActionCam type in the app settings"; // Needs translation
+"task_title_actioncam_start_video" = "Start ActionCam Recording";
+"task_title_actioncam_stop_video" = "Stop ActionCam Recording";
+"task_title_weathermap" = "Weather Map";
+"toast_actioncam_notconnected" = "ActionCam Not Connected";
+"toast_actioncam_notset" = "Set ActionCam type in the app settings";
 "toast_waypoint_saved" = "ウェイポイント記録完了";
 "task_title_waypoint_nav" = "ウェイポイントへ案内";
 "toast_photo_taken" = "撮影完了";
@@ -193,8 +193,8 @@
 "leanangle_header" = "バンク角";
 "gforce_header" = "加速度";
 "bearing_header" = "進行方向";
-"barometric_header" = "Barometer"; // Needs Translation
-"sunrisesunset_header" = "Sunrise/Sunset"; // Needs Translation
+"barometric_header" = "Barometer";
+"sunrisesunset_header" = "Sunrise/Sunset";
 
 // ContactsTableViewController
 "contactlist_title" = "連絡先";
@@ -242,7 +242,7 @@
 "fault_OILLOW" = "エンジンオイルレベル下限以下";
 
 //BikeInfoViewController
-"bike_info_title" = "Bike Info"; // Needs translation
-"vin_label" = "VIN"; // Needs translation
-"next_service_date_label" = "Next Service Date"; // Needs translation
-"next_service_label" = "Next Service"; // Needs translation
+"bike_info_title" = "Bike Info";
+"vin_label" = "VIN";
+"next_service_date_label" = "Next Service Date";
+"next_service_label" = "Next Service";
