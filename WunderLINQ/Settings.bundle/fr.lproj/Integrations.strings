@@ -1,1 +1,8 @@
-
+"nav_app_osmand" = "OsmAnd";
+"nav_app_mapsme" = "Maps.me";
+"nav_app_waze" = "Waze";
+"nav_app_sygic" = "Sygic";
+"nav_app_apple" = "Apple Maps";
+"nav_app_scenic" = "Scenic";
+"nav_app_google" = "Google Maps";
+"pref_nav_app" = "Navigation App";
