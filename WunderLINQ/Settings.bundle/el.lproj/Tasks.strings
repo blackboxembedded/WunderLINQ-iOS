@@ -1,6 +1,6 @@
 "task_title_navigation" = "Πλοήγηση";
 "task_title_gohome" = "Πλοήγηση σε προτιμ. διεύθυνση";
-"task_title_favnumber" = "Κλήση προτιμ. αριθμού";
+"task_title_favnumber" = "Κλήση προτιμώμενου αριθμού";
 "task_title_callcontact" = "Κλήση επαφής";
 "task_title_photo" = "Λήψη φωτογραφίας";
 "task_title_selfie" = "Λήψη Selfie";
@@ -9,7 +9,6 @@
 "task_title_waypoint" = "Αποθήκ. προορισμού";
 "task_title_waypoint_nav" = "Πλοήγ. στον προορισμό";
 "task_title_settings" = "Ρυθμίσεις";
-
 "task_title_empty" = "Άδεια";
 "pref_task_one" = "Πρώτη";
 "pref_task_two" = "Δεύτερη";
@@ -21,3 +20,6 @@
 "pref_task_eight" = "Όγδοη";
 "pref_task_nine" = "Ένατη";
 "pref_task_ten" = "Δέκατη";
+"task_title_weathermap" = "Χάρτης καιρού";
+"task_title_actioncam_stop_video" = "Παύση καταγραφής μέσω  action camera";
+"task_title_actioncam_start_video" = "Έναρξη καταγραφής μεσω action camera";
