@@ -8,7 +8,6 @@
 
 // Product
 "product" = "WunderLINQ";
-
 // MyMotorcycleViewController
 "main_title" = "Μοτοσυκλέτα";
 "disclaimer_alert_title" = "ΠΡΟΕΙΔΟΠΟΙΗΣΗ!";
@@ -16,13 +15,13 @@
 "disclaimer_ok" = "Συμφωνώ";
 "disclaimer_quit" = "Κλείσιμο";
 "negative_alert_title" = "Περιορισμένη λειτουργικότητα";
-"negative_location_alert_body" = "Εφόσον δεν έχει εκχωρηθεί δικαίωμα πρόσβασης στη τοποθεσία, η εφαρογή δεν θα μπορεί να αποθηκεύσει προορισμούς ή να καταγράψει την τοποθεσία σας.";
+"negative_location_alert_body" = "Εφόσον δεν έχει εκχωρηθεί δικαίωμα πρόσβασης στη τοποθεσία, η εφαρμογή δεν θα μπορεί να αποθηκεύσει προορισμούς ή να καταγράψει την τοποθεσία σας.";
 "negative_write_alert_body" = "Εφόσον δεν έχει εκχωρηθεί δικαίωμα πρόσβασης στη βιβλιοθήκη φωτογρφιών, η εφαρογή δεν θα μπορεί να κάνει αποθήκευση φωτογραφιών.";
 "negative_media_alert_body" = "Εφόσον δεν έχει εκχωρηθεί δικαίωμα πρόσβασης στη βιβλιοθήκη πολυμέσων, η εφαρμογή δεν θα μπορεί να κάνει αναπαραγωγή μουσικής.";
 "negative_contacts_alert_body" = "Εφόσον δεν έχει εκχωρηθεί δικαίωμα πρόσβασης στις επαφές, η εφαρογή δεν θα μπορεί να εμφανίσει επαφές για πραγματοποίηση κλήσεων.";
 "negative_camera_alert_body" = "Εφόσον δεν έχει εκχωρηθεί δικαίωμα πρόσβασης στην κάμερα, η εφαρμογή δεν θα μπορεί να κάνει λήψη φωτογραφιών ή εγγραφή βίντεο.";
 "negative_microphone_alert_body" = "Εφόσον δεν έχει εκχωρηθεί δικαίωμα πρόσβασης στο μικρόφωνο, η εφαρμογή δεν θα μπορεί να κάνει εγγραφή βίντεο.";
-"negative_notification_body" = "Εφόσον δεν έχει εκχωρηθεί δικαίωμα πρόσβασης στις ειδοποιήσεις, η εφαρμογή δεν θα μπορεί να αποστέλει ειδοποιήσεις για σφάλματα.";
+"negative_notification_body" = "Εφόσον δεν έχει εκχωρηθεί δικαίωμα πρόσβασης στις ειδοποιήσεις, η εφαρμογή δεν θα μπορεί να αποστέλει ειδοποιήσεις για σφάλματα";
 "alert_message_exit_ok" = "Εντάξει";
 "negative_alert_btn_ok" = "Άνοιγμα ρυθμίσεων";
 "negative_alert_btn_cancel" = "Ακύρωση";
@@ -45,14 +44,12 @@
 "trip2_label" = "Διαδρομή 2";
 "gear_label" = "Ταχύτητα";
 "settings_label" = "Ρυθμίσεις";
-
 "geodata_label" = "Διαδρομές & Προορισμοί";
 "appsettings_label" = "Ρυθμίσεις εφαρμογής";
-"about_label" = "Περί...";
+"about_label" = "Περί";
 "close_label" = "Κλείσιμο";
 "hwsettings_label" = "Ρυθμίσεις συσκευής";
 "select_bt" = "Επιλογή";
-
 //HWSettingsViewController
 "fw_config_title" = "Ρυθμίσεις συσκευής WunderLINQ";
 "wwtype_label" = "Τύπος περιστροφ. δαχτυλίου";
@@ -65,27 +62,21 @@
 "hwsave_alert_body" = "Μετά την αποθήκευση των νέων ρυθμίσεων συσκευής, η συσκευή WunderLINQ θα είναι ασταθής και θα πρέπει να αφαιρεθεί και να εγκατασταθεί ξανά στη βάση.";
 "hwsave_alert_btn_ok" = "Συνέχεια";
 "hwsave_alert_btn_cancel" = "Ακύρωση";
-
 //AboutViewController
-"about_title" = "Περί...";
+"about_title" = "Περί";
 "version_label" = "Έκδοση:";
 "btn_sendlogs_title" = "Αποστολή αρχείων καταγραφής";
 "sendlogs_body" = "Παρακαλώ περιγράψτε το πρόβλημα στο πεδίο:\n";
 "credits_label" = "Συντελεστές";
-
 // AlertViewController
-"alert_label_fuel" = "Μετάβαση στο πλησιέστερο πρατήριο υγρών καυσίμων";
+"alert_label_fuel" = "Πλοήγηση στο πλησιέστερο πρατήριο υγρών καυσίμων;";
 "alert_title_fuel" = "Χαμηλή στάθμη καυσίμου";
-
 "alert_btn_close" = "Κλείσιμο";
 "alert_btn_ok" = "Εντάξει";
-
 // FaultsTableViewController
 "fault_title" = "Τρέχοντα σφάλματα";
-
 // TripsTableViewController
 "trips_title" = "Αποθηκευμένες διαδρομές";
-
 // TripViewController
 "trip_view_title" = "Διαδρομή";
 "trip_view_waypoint_start_label" = "Έναρξη";
@@ -104,10 +95,8 @@
 "delete_trip_alert_body" = "Διαγραφή καταγραφής διαδρομής;";
 "delete_bt" = "Διαγραφή";
 "cancel_bt" = "Ακύρωση";
-
 // WaypointsTableViewController
 "waypoint_title" = "Αποθηκευμένοι προορισμοί";
-
 // WaypointViewController
 "waypoint_view_title" = "Αποθηκευμένος προορισμός";
 "waypoint_view_tv_date_label" = "Ημερομηνία αποθήκευσης";
@@ -120,7 +109,6 @@
 "waypoint_view_bt_delete" = "Διαγραφή";
 "delete_waypoint_alert_title" = "Προειδοποίηση!";
 "delete_waypoint_alert_body" = "Διαγραφή προορισμού;";
-
 // CompassViewController
 "compass_title" = "Πυξίδα";
 "north" = "Β";
@@ -131,10 +119,8 @@
 "south_east" = "ΝΑ";
 "west" = "Δ";
 "east" = "Α";
-
 // MusicViewController
 "music_title" = "Μουσική";
-
 // TasksTableViewController
 "quicktask_title" = "Γρήγορα εργαλεία";
 "task_title_navigation" = "Πλοήγηση";
@@ -142,7 +128,7 @@
 "home" = "Αρχική";
 "geocode_error" = "Πρόβλημα προσδιορισμού γεωγραφικού στίγματος";
 "toast_address_not_set" = "Δεν βρέθηκε αποθηκευμένη προτιμώμενη διεύθυνση στις ρυθμίσεις";
-"task_title_favnumber" = "Κλήση προτιμ. αριθμού";
+"task_title_favnumber" = "Κλήση προτιμώμενου αριθμού";
 "toast_phone_not_set" = "Δεν βρέθηκε αποθηκευμένος προτιμώμενος αριθμός στις ρυθμίσεις";
 "task_title_callcontact" = "Κλήση επαφής";
 "task_title_photo" = "Λήψη φωτογραφίας";
@@ -153,17 +139,15 @@
 "task_title_stop_trip" = "Παύση καταγρ. διαδρομής";
 "task_title_waypoint" = "Αποθήκ. προορισμού";
 "task_title_settings" = "Ρυθμίσεις";
-
 "toast_waypoint_saved" = "Ο προορισμός αποθηκεύτηκε";
 "task_title_waypoint_nav" = "Πλοήγ. στον προορισμό";
-"toast_photo_taken" = "Επιτυχής λήψη φωτογραφίας";
-
+"toast_photo_taken" = "Επιτυχής λήψη φωτογραφίας!";
 // LocationService
 "time_header" = "Ώρα";
 "latitude_header" = "Γεωγραφικό πλάτος";
 "longitude_header" = "Γεωγραφικό μήκος";
 "altitude_header" = "Υψόμετρο";
-"gpsspeed_header" = "Ταχύτητα βάση GPS";
+"gpsspeed_header" = "Ταχύτητα βάσει GPS";
 "gear_header" = "Ταχύτητα";
 "enginetemp_header" = "Θερμοκρασία κινητήρα";
 "ambienttemp_header" = "Θερμοκρασία περιβάλλοντος";
@@ -176,9 +160,9 @@
 "rearbrakes_header" = "Πίσω φρένα";
 "shifts_header" = "Εναλλαγές ταχυτήτων";
 "vin_header" = "Αριθμός πλαισίου";
-"ambientlight_header" = "Φως περιβάλλοντος";
-"tripone_header" = "Διαδρομή1";
-"triptwo_header" = "Διαδρομή2";
+"ambientlight_header" = "Φωτισμός";
+"tripone_header" = "Διαδρομή 1";
+"triptwo_header" = "Διαδρομή 2";
 "tripauto_header" = "Διαδρομή (αυτόματη)";
 "speed_header" = "Ταχύτητα";
 "avgspeed_header" = "Μέση ταχύτητα";
@@ -189,13 +173,10 @@
 "leanangle_header" = "Γωνία κλίσης";
 "gforce_header" = "Επιτάχυνση G";
 "bearing_header" = "Κύλιση";
-
 // ContactsTableViewController
 "contactlist_title" = "Επαφές";
-
 // WaypointsNavTableViewController
 "waypoints_nav_title" = "Προορισμοί";
-
 // Fault Description
 "fault_ABSSLF" = "Η αυτοδιάγνωση του ABS δεν ολοκληρώθηκε";
 "fault_ABSERR" = "Σφάλμα στο ABS";
@@ -234,6 +215,19 @@
 "fault_GENWARNFSRED" = "Η γενική λυχνία προειδοποίησης αναβοσβήνει με κόκκινο χρώμα";
 "fault_GENWARNSHRED" = "Η γενική λυχνία προειδοποίησης ανάβει με κόκκινο χρώμα";
 "fault_OILLOW" = "Χαμηλή στάθμη λαδιού κινητήρα";
-
 "vin_label" = "Αριθμός πλαισίου";
-
+"task_title_weathermap" = "Χάρτης καιρού";
+"task_title_actioncam_stop_video" = "Παύση καταγραφής μέσω  action camera";
+"task_title_actioncam_start_video" = "Έναρξη καταγραφής μεσω action camera";
+"sunrisesunset_header" = "Ανατολή/Δύση Ηλίου";
+"barometric_header" = "Βαρόμετρο";
+//WeatherMapViewController
+"weathermap_title" = "Χάρτης καιρού";
+"next_service_label" = "Επόμενη προγραμματισμένη συντήρηση";
+"next_service_date_label" = "Ημερομηνία επόμενης προγραμματισμένης συντήρησης";
+//BikeInfoViewController
+"bike_info_title" = "Πληροφορίες μοτοσυκλέτας";
+"toast_actioncam_notset" = "Ορίστε τύπο action camera στις ρυθμίσεις της εφαρμογής";
+"toast_actioncam_notconnected" = "Μη συνδεδεμένη action camera";
+"alert_title_photopreview" = "Προεπισκόπηση φωτογραφίας";
+"bike_info_label" = "Πληροφορίες μοτοσυκλέτας";
