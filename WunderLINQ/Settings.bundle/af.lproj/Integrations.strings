@@ -1,1 +1,12 @@
-
+"actioncam_hero3" = "Hero3";
+"actioncam_hero4" = "Hero4 of nuwer";
+"actioncam_none" = "Geen";
+"pref_actioncam_title" = "Aksie Kamara";
+"nav_app_mapsme" = "Maps.me";
+"nav_app_osmand" = "OsmAnd";
+"nav_app_waze" = "Waze";
+"nav_app_sygic" = "Sygic";
+"nav_app_scenic" = "Skilderagtig";
+"nav_app_google" = "Google Maps";
+"nav_app_apple" = "Apple Maps";
+"pref_nav_app" = "Navigasie";
