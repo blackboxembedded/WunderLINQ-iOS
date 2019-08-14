@@ -1,1 +1,9 @@
-
+"negative_alert_title" = "Funksionaliteit beperk";
+"disclaimer_quit" = "Maak toe";
+"disclaimer_ok" = "Ek aanvaar";
+"disclaimer_alert_body" = "Moet nie enige roete of WunderLINQ verstellings verander terwyl jy ry nie.\nDeur nie 100% aandag te tewyl jy ry kan jou dood, erenstige beseringe of eiendom beskadig.\nJy neem tevolle verantwoordelikheid vir die risko gedurende die gebruik van hierdie produk.";
+"disclaimer_alert_title" = "WAARSKUWING!";
+// MyMotorcycleViewController
+"main_title" = "Motorfiets";
+// Product
+"product" = "WunderLINQ";
