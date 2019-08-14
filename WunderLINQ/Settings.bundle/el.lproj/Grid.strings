@@ -24,7 +24,7 @@
 "frontbrakes_header" = "Εμπρός φρένα";
 "rearbrakes_header" = "Πίσω φρένα";
 "shifts_header" = "Εναλλαγές ταχυτήτων";
-"ambientlight_header" = "Φως περιβάλλοντος";
+"ambientlight_header" = "Φωτισμός";
 "tripone_header" = "Διαδρομή 1";
 "triptwo_header" = "Διαδρομή 2";
 "tripauto_header" = "Διαδρομή (αυτόματη)";
@@ -38,6 +38,7 @@
 "gforce_header" = "Επιτάχυνση G";
 "bearing_header" = "Κύλιση";
 "altitude_header" = "Υψόμετρο";
-
-"gpsspeed_header" = "Ταχύτητα βάση GPS";
-
+"gpsspeed_header" = "Ταχύτητα βάσει GPS";
+"sunrisesunset_header" = "Ανατολή/Δύση Ηλίου";
+"barometric_header" = "Βαρόμετρο";
+"time_header" = "Ώρα";
