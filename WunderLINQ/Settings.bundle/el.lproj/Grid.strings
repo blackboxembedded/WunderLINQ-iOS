@@ -24,7 +24,7 @@
 "frontbrakes_header" = "Εμπρός φρένα";
 "rearbrakes_header" = "Πίσω φρένα";
 "shifts_header" = "Εναλλαγές ταχυτήτων";
-"ambientlight_header" = "Φωτισμός";
+"ambientlight_header" = "Φωτισμός περιβάλλοντος";
 "tripone_header" = "Διαδρομή 1";
 "triptwo_header" = "Διαδρομή 2";
 "tripauto_header" = "Διαδρομή (αυτόματη)";
