@@ -160,7 +160,7 @@
 "rearbrakes_header" = "Πίσω φρένα";
 "shifts_header" = "Εναλλαγές ταχυτήτων";
 "vin_header" = "Αριθμός πλαισίου";
-"ambientlight_header" = "Φωτισμός";
+"ambientlight_header" = "Φωτισμός περιβάλλοντος";
 "tripone_header" = "Διαδρομή 1";
 "triptwo_header" = "Διαδρομή 2";
 "tripauto_header" = "Διαδρομή (αυτόματη)";
