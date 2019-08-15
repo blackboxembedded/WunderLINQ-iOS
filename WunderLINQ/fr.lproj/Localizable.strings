@@ -120,7 +120,7 @@
 "shifts_header" = "Changement de vitesse";
 "avgspeed_header" = "Vitesse moyenne";
 "gforce_header" = "Force G";
-"disclaimer_alert_title" = "AVERTISSEMENT!";
+"disclaimer_alert_title" = "AVERTISSEMENT !";
 "trip2_label" = "Voyage 2";
 "hwsave_alert_btn_ok" = "Continuer";
 "hwsave_alert_btn_cancel" = "Annuler";
