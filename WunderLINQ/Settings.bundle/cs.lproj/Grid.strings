@@ -15,7 +15,7 @@
 "pref_grid_fifteen" = "Patnáctá";
 "gear_header" = "Převodový stupeň";
 "enginetemp_header" = "Teplota motoru";
-"ambienttemp_header" = "Venkovní teplota";
+"ambienttemp_header" = "Okolní teplota";
 "frontpressure_header" = "Tlak v přední pneu";
 "rearpressure_header" = "Tlak v zadní pneu";
 "odometer_header" = "Celkem najeto";
@@ -38,6 +38,7 @@
 "gforce_header" = "G";
 "bearing_header" = "Směr";
 "altitude_header" = "Nadm. výška";
-
-"gpsspeed_header" = "GPS Rychlos";
-
+"gpsspeed_header" = "GPS Rychlost";
+"sunrisesunset_header" = "Východ/Západ Slunce";
+"barometric_header" = "Barometr";
+"time_header" = "Čas";
