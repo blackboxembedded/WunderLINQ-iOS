@@ -9,7 +9,6 @@
 "task_title_waypoint" = "Ulož místo";
 "task_title_waypoint_nav" = "Naviguj na uložené místo";
 "task_title_settings" = "Nastavení";
-
 "task_title_empty" = "Prázdná";
 "pref_task_one" = "První";
 "pref_task_two" = "Druhá";
@@ -23,3 +22,6 @@
 "pref_task_ten" = "Desátá";
 "pref_task_eleven" = "Jedenáctá";
 "pref_task_twelve" = "Dvanáctá";
+"task_title_weathermap" = "Povětrnostní mapa";
+"task_title_actioncam_stop_video" = "Ukončit nahrávání ext. kamerou";
+"task_title_actioncam_start_video" = "Nahrávat video ext. kamerou";
