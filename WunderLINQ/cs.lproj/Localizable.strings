@@ -8,7 +8,6 @@
 
 // Product
 "product" = "WunderLINQ";
-
 // MyMotorcycleViewController
 "main_title" = "Motocykl";
 "disclaimer_alert_title" = "VAROVÁNÍ!";
@@ -16,22 +15,22 @@
 "disclaimer_ok" = "Souhlasím";
 "disclaimer_quit" = "Ukončit";
 "negative_alert_title" = "Funkcionalita omezena";
-"negative_location_alert_body" = "Chybí oprávnění pro přístup k vaší poloze - nebude možné použít nekteré funkce.";
+"negative_location_alert_body" = "Chybí oprávnění pro přístup k vaší poloze, nebude možné použít nekteré funkce.";
 "negative_write_alert_body" = "Chybí oprávnění k přístupu k fotkám - nebude možné pořizovat fotky nebo nahrávat video.";
 "negative_media_alert_body" = "Chybí oprávnění k přístupu k hudbě - nebude možné přehrávat hudbu.";
 "negative_contacts_alert_body" = "Chybí oprávnění k přístupu ke kontaktům - nebude možné iniciovat hovor z aplikace.";
-"negative_camera_alert_body" = "Chybí oprávnění k použití kamery - nebude možné pořizovat fotky nebo nahrávat video.";
-"negative_microphone_alert_body" = "Chybí oprávnění k použití mikrofonu - nebude možné nahrávat video.";
+"negative_camera_alert_body" = "Chybí oprávnění k použití kamery, nebude možné pořizovat fotky nebo nahrávat video.";
+"negative_microphone_alert_body" = "Chybí oprávnění k použití mikrofonu, nebude možné nahrávat video.";
 "negative_notification_body" = "Chybí oprávnění k zasílání upozornění - aplikace nebude upozorňovat na chyby.";
 "alert_message_exit_ok" = "OK";
 "negative_alert_btn_ok" = "Nastavení";
 "negative_alert_btn_cancel" = "Zrušit";
-"bt_powered_off" = "Bluetooth je vypnut";
+"bt_powered_off" = "Bluetooth je vypnut.";
 "bt_not_supported" = "Toto zařízení nepodporuje Bluetooth Low Energy.";
 "bt_not_authorized" = "Aplikace nemá oprávnění k použití Bluetooth Low Energy.";
-"bt_resetting" = "Správce BLE restartuje; čekám na informaci o stavu";
-"bt_unknown" = "Neznámý stav správce BLE";
-"bt_ready" = "Bluetooth LE je zapnut a připraven komunikovat";
+"bt_resetting" = "Správce BLE restartuje; čekám na informaci o stavu.";
+"bt_unknown" = "Neznámý stav správce BLE.";
+"bt_ready" = "Bluetooth LE je zapnut a připraven komunikovat.";
 "bt_alert_title" = "Central Manager State";
 "trip_logs_label" = "Záznamy jízd";
 "waypoints_label" = "Uložená místa";
@@ -39,20 +38,18 @@
 "rdc_front_label" = "Přední pneu";
 "rdc_rear_label" = "Zadní pneu";
 "engine_temp_label" = "Teplota motoru";
-"ambient_temp_label" = "Venkovní teplota";
+"ambient_temp_label" = "Okolní teplota";
 "odometer_label" = "Ujetá vzdálenost";
 "trip1_label" = "Trip 1";
 "trip2_label" = "Trip 2";
 "gear_label" = "Stupeň";
 "settings_label" = "Nastavení";
-
 "geodata_label" = "Jízdy & Místa";
 "appsettings_label" = "Nastavení aplikace";
 "about_label" = "O aplikaci";
 "close_label" = "Zavřít";
 "hwsettings_label" = "Nastaveni zařízení";
 "select_bt" = "Vybrat";
-
 //HWSettingsViewController
 "fw_config_title" = "Nastavení WunderLINQ";
 "wwtype_label" = "Typ otočného ovladače";
@@ -61,31 +58,25 @@
 "wwMode3" = "Vlastní";
 "sensitivity_label" = "Prodleva pro dlouhý stisk";
 "config_write_label" = "Uložit nastavení";
-"hwsave_alert_title" = "Pozor!"; 
-"hwsave_alert_body" = "Po uložení nové konfigurace restartuje zařízení vyjmutím z držáku navigace."; 
+"hwsave_alert_title" = "Pozor!";
+"hwsave_alert_body" = "Po uložení nové konfigurace restartuje zařízení vyjmutím z držáku navigace.";
 "hwsave_alert_btn_ok" = "Pokračovat";
 "hwsave_alert_btn_cancel" = "Zrušit";
-
 //AboutViewController
-"about_title" = "O Aplikaci";
+"about_title" = "O aplikaci";
 "version_label" = "Verze:";
 "btn_sendlogs_title" = "Odeslat logy";
 "sendlogs_body" = "Prosím popište problém (anglicky):\n";
 "credits_label" = "Spolupracovali";
-
 // AlertViewController
 "alert_label_fuel" = "Navigovat k nejbližší čerpací stanici?";
 "alert_title_fuel" = "Nízký stav paliva";
-
 "alert_btn_close" = "Zavřít";
 "alert_btn_ok" = "OK";
-
 // FaultsTableViewController
 "fault_title" = "Aktivní chyby";
-
 // TripsTableViewController
 "trips_title" = "Záznamy jízd";
-
 // TripViewController
 "trip_view_title" = "Záznam jízdy";
 "trip_view_waypoint_start_label" = "Začátek";
@@ -95,7 +86,7 @@
 "trip_view_tv_speed" = "Rychlost (Průměr/Max)";
 "trip_view_tv_shifts" = "Počet řazení rychlosti";
 "trip_view_tv_brakes" = "Brždění (Přední/Zadní)";
-"trip_view_tv_ambient" = "Venkovní teplota (Min/Prům/Max)";
+"trip_view_tv_ambient" = "Okolní teplota (Min/Prům/Max)";
 "trip_view_tv_engine" = "Teplota motoru (Min/Prům/Max)";
 "hours" = "hod";
 "minutes" = "min";
@@ -103,24 +94,21 @@
 "delete_trip_alert_title" = "Varování!";
 "delete_trip_alert_body" = "Smazat záznam jízdy?";
 "delete_bt" = "Smazat";
-"cancel_bt" = "Zrušit";
-
+"cancel_bt" = "Zrušít";
 // WaypointsTableViewController
 "waypoint_title" = "Uložená místa";
-
 // WaypointViewController
-"waypoint_view_title" = "Uložená místa";
+"waypoint_view_title" = "Uložené místo";
 "waypoint_view_tv_date_label" = "Datum záznamu";
 "waypoint_view_tv_lat_label" = "Šířka";
 "waypoint_view_tv_lon_label" = "Délka";
 "waypoint_view_tv_label_label" = "Popis";
 "waypoint_view_bt_open" = "Otevřít na mapě";
-"waypoint_view_bt_nav" = "Navigate";
+"waypoint_view_bt_nav" = "Naviguj";
 "waypoint_view_bt_share" = "Sdílet";
 "waypoint_view_bt_delete" = "Smazat";
 "delete_waypoint_alert_title" = "Varování!";
 "delete_waypoint_alert_body" = "Smazat místo?";
-
 // CompassViewController
 "compass_title" = "Kompas";
 "north" = "S";
@@ -131,16 +119,14 @@
 "south_east" = "JV";
 "west" = "Z";
 "east" = "V";
-
 // MusicViewController
 "music_title" = "Hudba";
-
 // TasksTableViewController
 "quicktask_title" = "Rychlé Akce";
 "task_title_navigation" = "Navigace";
 "task_title_gohome" = "Naviguj domů";
 "home" = "Domů";
-"geocode_error" = "Geocode nebyl nalezen";
+"geocode_error" = "Nepodařilo se najít geocode";
 "toast_address_not_set" = "V nastavení chybí adresa domů";
 "task_title_favnumber" = "Volej oblíbené číslo";
 "toast_phone_not_set" = "V nastavení chybí oblíbené číslo";
@@ -153,20 +139,18 @@
 "task_title_stop_trip" = "Ukonči záznam jízdy";
 "task_title_waypoint" = "Ulož místo";
 "task_title_settings" = "Nastavení";
-
 "toast_waypoint_saved" = "Místo uloženo";
 "task_title_waypoint_nav" = "Naviguj na uložené místo";
 "toast_photo_taken" = "Fotka pořízena!";
-
 // LocationService
 "time_header" = "Čas";
 "latitude_header" = "Šířka";
 "longitude_header" = "Délka";
 "altitude_header" = "Nadm. výška";
-"gpsspeed_header" = "GPS Rychlos";
+"gpsspeed_header" = "GPS Rychlost";
 "gear_header" = "Převodový stupeň";
 "enginetemp_header" = "Teplota motoru";
-"ambienttemp_header" = "Venkovní teplota";
+"ambienttemp_header" = "Okolní teplota";
 "frontpressure_header" = "Tlak v přední pneu";
 "rearpressure_header" = "Tlak v zadní pneu";
 "odometer_header" = "Celkem najeto";
@@ -177,8 +161,8 @@
 "shifts_header" = "Změny rychlosti";
 "vin_header" = "VIN";
 "ambientlight_header" = "Venkovní světlo";
-"tripone_header" = "Trip1";
-"triptwo_header" = "Trip2";
+"tripone_header" = "Trip 1";
+"triptwo_header" = "Trip 2";
 "tripauto_header" = "Trip Auto";
 "speed_header" = "Rychlost";
 "avgspeed_header" = "Průměrná rychlost";
@@ -189,14 +173,10 @@
 "leanangle_header" = "Úhel náklonu";
 "gforce_header" = "G";
 "bearing_header" = "Směr";
-
-
 // ContactsTableViewController
 "contactlist_title" = "Kontakty";
-
 // WaypointsNavTableViewController
 "waypoints_nav_title" = "Uložená místa";
-
 // Fault Description
 "fault_UARTLF" = "UART Logic";
 "fault_ABSSLF" = "Diagnotiska ABS nebyla dokončena";
@@ -236,5 +216,19 @@
 "fault_TIRERWF" = "Nízký tlak v zadní pneu";
 "fault_TIREFCF" = "Velmi nízký tlak v přední pneu";
 "fault_TIRERCF" = "Nízký nízký tlak v zadní pneu";
-
-
+"task_title_weathermap" = "Povětrnostní mapa";
+"task_title_actioncam_stop_video" = "Ukončit nahrávání ext. kamerou";
+"task_title_actioncam_start_video" = "Nahrávat video ext. kamerou";
+"sunrisesunset_header" = "Východ/Západ Slunce";
+"barometric_header" = "Barometr";
+//WeatherMapViewController
+"weathermap_title" = "Povětrnostní mapa";
+"next_service_label" = "Datum příštího servisu";
+"next_service_date_label" = "Datum příštího servisu";
+"vin_label" = "VIN";
+//BikeInfoViewController
+"bike_info_title" = "Info o motocyklu";
+"toast_actioncam_notset" = "Nastavte typ externí kamery";
+"toast_actioncam_notconnected" = "Ext. kamera není připojena";
+"alert_title_photopreview" = "Náhled foto";
+"bike_info_label" = "Info o motocyklu";
