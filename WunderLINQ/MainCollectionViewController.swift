@@ -1415,7 +1415,12 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         case 24:
             //Time
             if motorcycleData.time != nil {
-                value = "\(motorcycleData.time!)"
+                let formatter = DateFormatter()
+                formatter.dateFormat = "h:mm a"
+                if UserDefaults.standard.integer(forKey: "time_format_preference") > 0 {
+                    formatter.dateFormat = "HH:mm a"
+                }
+                value = ("\(formatter.string(from: motorcycleData.time!))")
             }
         case 25:
             //Barometric Pressure
@@ -1455,7 +1460,9 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                 
                 let formatter = DateFormatter()
                 formatter.dateFormat = "h:mm a"
-                
+                if UserDefaults.standard.integer(forKey: "time_format_preference") > 0 {
+                    formatter.dateFormat = "HH:mm a"
+                }
                 value = ("\(formatter.string(from: sunrise!))/\(formatter.string(from: sunset!))")
             }
         default:
@@ -3837,11 +3844,9 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     @objc func updateTime(){
         // get the current date and time
         let currentDateTime = Date()
-        // initialize the date formatter and set the style
-        let formatter = DateFormatter()
-        formatter.dateFormat = "h:mm a"
         // get the date time String from the date object
-        motorcycleData.setTime(time: formatter.string(from: currentDateTime))
+        motorcycleData.setTime(time: currentDateTime)
+        updateMessageDisplay()
     }
 }
 

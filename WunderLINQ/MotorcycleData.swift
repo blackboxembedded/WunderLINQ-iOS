@@ -39,7 +39,7 @@ class MotorcycleData {
     var leanAngle: Double?
     var gForce: Double?
     var bearing: Int?
-    var time: String?
+    var time: Date?
     var barometricPressure: Double?
     
     func setLocation(location: CLLocation?){
@@ -238,10 +238,10 @@ class MotorcycleData {
         return self.bearing!
     }
     
-    func setTime(time: String?){
+    func setTime(time: Date?){
         self.time = time
     }
-    func getTime() -> String{
+    func getTime() -> Date{
         return self.time!
     }
     
