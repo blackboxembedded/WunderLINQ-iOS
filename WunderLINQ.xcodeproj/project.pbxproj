@@ -146,6 +146,10 @@
 		7E70D8F621A5FD2B0016CD74 /* el */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = el; path = el.lproj/Main.strings; sourceTree = "<group>"; };
 		7E70D8F721A5FD2B0016CD74 /* el */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = el; path = el.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		7E70D8F821A5FD2B0016CD74 /* el */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = el; path = WunderLINQ/el.lproj/Localizable.strings; sourceTree = "<group>"; };
+		7E7440972308F24A001FDE20 /* af */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = af; path = af.lproj/Main.strings; sourceTree = "<group>"; };
+		7E7440982308F24A001FDE20 /* af */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = af; path = af.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		7E7440992308F24F001FDE20 /* af */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = af; path = af.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		7E74409A2308F2F1001FDE20 /* af */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = af; path = WunderLINQ/af.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7E78DB2C23006FCF009742DF /* de */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		7E78DB2D23006FD1009742DF /* es-419 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		7E78DB2F23006FD7009742DF /* cs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -449,6 +453,7 @@
 				sl,
 				ja,
 				hu,
+				af,
 			);
 			mainGroup = 7EA478411F40B154000CEDDC;
 			productRefGroup = 7EA4784B1F40B154000CEDDC /* Products */;
@@ -570,6 +575,7 @@
 				7E78DB2F23006FD7009742DF /* cs */,
 				7E78DB3023006FD9009742DF /* el */,
 				7E93549F23008B2B00FCF0C5 /* es */,
+				7E7440992308F24F001FDE20 /* af */,
 			);
 			name = InfoPlist.strings;
 			path = /Users/keithconger/Projects/iOS/WunderLINQ/WunderLINQ;
@@ -587,6 +593,7 @@
 				7E8A1E5621DC326600207464 /* sl */,
 				7EE02FE322A6BCCA0061330B /* ja */,
 				7E586D3D22B68E6E00FB2E4C /* hu */,
+				7E7440972308F24A001FDE20 /* af */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -603,6 +610,7 @@
 				7E8A1E5721DC326600207464 /* sl */,
 				7EE02FE422A6BCCA0061330B /* ja */,
 				7E586D3E22B68E6E00FB2E4C /* hu */,
+				7E7440982308F24A001FDE20 /* af */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -619,6 +627,7 @@
 				7E8A1E5821DC326600207464 /* sl */,
 				7EE02FE522A6BCCA0061330B /* ja */,
 				7E586D3F22B68E6E00FB2E4C /* hu */,
+				7E74409A2308F2F1001FDE20 /* af */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";

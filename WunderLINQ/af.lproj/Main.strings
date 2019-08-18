@@ -1,0 +1,171 @@
+
+/* Class = "UITableViewController"; title = "Recorded Trips"; ObjectID = "1rx-Mx-oc0"; */
+"1rx-Mx-oc0.title" = "Recorded Trips";
+
+/* Class = "UINavigationItem"; title = "Contacts"; ObjectID = "2cg-kd-QQh"; */
+"2cg-kd-QQh.title" = "Contacts";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "4E4-nV-PGv"; */
+"4E4-nV-PGv.text" = "Title";
+
+/* Class = "UILabel"; text = "∞"; ObjectID = "4ot-xt-lZn"; */
+"4ot-xt-lZn.text" = "∞";
+
+/* Class = "UINavigationItem"; title = "Music"; ObjectID = "7Fx-C3-KuK"; */
+"7Fx-C3-KuK.title" = "Music";
+
+/* Class = "UINavigationItem"; title = "HW Settings"; ObjectID = "7LV-34-HmO"; */
+"7LV-34-HmO.title" = "HW Settings";
+
+/* Class = "UIViewController"; title = "About"; ObjectID = "BZZ-xV-I8u"; */
+"BZZ-xV-I8u.title" = "About";
+
+/* Class = "UIButton"; normalTitle = "CLOSE"; ObjectID = "Ch1-dL-bp2"; */
+"Ch1-dL-bp2.normalTitle" = "CLOSE";
+
+/* Class = "UILabel"; text = "Gear"; ObjectID = "DWL-yK-icr"; */
+"DWL-yK-icr.text" = "Gear";
+
+/* Class = "UILabel"; text = "-"; ObjectID = "ENe-lL-dLJ"; */
+"ENe-lL-dLJ.text" = "-";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "FLQ-U1-TsS"; */
+"FLQ-U1-TsS.text" = "Label";
+
+/* Class = "UILabel"; text = "Date"; ObjectID = "GJH-H2-QvX"; */
+"GJH-H2-QvX.text" = "Date";
+
+/* Class = "UITableViewController"; title = "Faults"; ObjectID = "KTW-aa-IYg"; */
+"KTW-aa-IYg.title" = "Faults";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "Kwv-9e-iLT"; */
+"Kwv-9e-iLT.text" = "Title";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "LK8-Wv-Jeq"; */
+"LK8-Wv-Jeq.text" = "Label";
+
+/* Class = "UINavigationItem"; title = "About"; ObjectID = "Ld0-5t-QtT"; */
+"Ld0-5t-QtT.title" = "About";
+
+/* Class = "UILabel"; text = "-"; ObjectID = "MHP-fk-xUy"; */
+"MHP-fk-xUy.text" = "-";
+
+/* Class = "UILabel"; text = "?"; ObjectID = "Ns3-eT-lTX"; */
+"Ns3-eT-lTX.text" = "?";
+
+/* Class = "UICollectionViewController"; title = "Quick Tasks"; ObjectID = "OIf-TM-fnx"; */
+"OIf-TM-fnx.title" = "Quick Tasks";
+
+/* Class = "UILabel"; text = "Engine"; ObjectID = "OeP-Rl-JEv"; */
+"OeP-Rl-JEv.text" = "Engine";
+
+/* Class = "UIViewController"; title = "Waypoint"; ObjectID = "Plb-k4-fYa"; */
+"Plb-k4-fYa.title" = "Waypoint";
+
+/* Class = "UILabel"; text = "Lat"; ObjectID = "T8S-De-cOZ"; */
+"T8S-De-cOZ.text" = "Lat";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "W8D-lT-MC4"; */
+"W8D-lT-MC4.text" = "Title";
+
+/* Class = "UIButton"; normalTitle = "Black Box Embedded, LLC"; ObjectID = "Y9o-7f-NQI"; */
+"Y9o-7f-NQI.normalTitle" = "Black Box Embedded, LLC";
+
+/* Class = "UILabel"; text = "?"; ObjectID = "aFc-Cs-nd4"; */
+"aFc-Cs-nd4.text" = "?";
+
+/* Class = "UILabel"; text = "Credits"; ObjectID = "bpB-n7-PMj"; */
+"bpB-n7-PMj.text" = "Credits";
+
+/* Class = "UILabel"; text = "Speed"; ObjectID = "btU-DP-vjf"; */
+"btU-DP-vjf.text" = "Speed";
+
+/* Class = "UINavigationItem"; title = "Motorcycle"; ObjectID = "eWq-dV-zOi"; */
+"eWq-dV-zOi.title" = "Motorcycle";
+
+/* Class = "UINavigationItem"; title = "Waypoints"; ObjectID = "fFL-Ow-DpP"; */
+"fFL-Ow-DpP.title" = "Waypoints";
+
+/* Class = "UILabel"; text = "Version: x.x.x"; ObjectID = "fPj-pQ-RK7"; */
+"fPj-pQ-RK7.text" = "Version: x.x.x";
+
+/* Class = "UIViewController"; title = "Alert"; ObjectID = "gJo-MW-rva"; */
+"gJo-MW-rva.title" = "Alert";
+
+/* Class = "UILabel"; text = "VIN"; ObjectID = "iDW-er-4a7"; */
+"iDW-er-4a7.text" = "VIN";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "iIa-MG-kKZ"; */
+"iIa-MG-kKZ.text" = "Label";
+
+/* Class = "UILabel"; text = "Next Service"; ObjectID = "jTm-if-vUI"; */
+"jTm-if-vUI.text" = "Next Service";
+
+/* Class = "UILabel"; text = "Wheel Type"; ObjectID = "kdd-7b-Hvf"; */
+"kdd-7b-Hvf.text" = "Wheel Type";
+
+/* Class = "UILabel"; text = "Lon"; ObjectID = "khk-Ya-Hxq"; */
+"khk-Ya-Hxq.text" = "Lon";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "lKv-aX-sxq"; */
+"lKv-aX-sxq.text" = "Title";
+
+/* Class = "UILabel"; text = "Hold Sensitivity"; ObjectID = "mPy-4d-rgO"; */
+"mPy-4d-rgO.text" = "Hold Sensitivity";
+
+/* Class = "UIViewController"; title = "Trip"; ObjectID = "mYA-Xe-W7Q"; */
+"mYA-Xe-W7Q.title" = "Trip";
+
+/* Class = "UIButton"; normalTitle = "Send Logs"; ObjectID = "mYb-5h-qZC"; */
+"mYb-5h-qZC.normalTitle" = "Send Logs";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "nMA-fJ-rlm"; */
+"nMA-fJ-rlm.text" = "Label";
+
+/* Class = "UILabel"; text = "Next Service Date"; ObjectID = "o2t-Fs-lwV"; */
+"o2t-Fs-lwV.text" = "Next Service Date";
+
+/* Class = "UIButton"; normalTitle = "OK"; ObjectID = "o4A-v0-HaT"; */
+"o4A-v0-HaT.normalTitle" = "OK";
+
+/* Class = "UILabel"; text = "-"; ObjectID = "ojS-iD-NCF"; */
+"ojS-iD-NCF.text" = "-";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "pNL-mh-mKe"; */
+"pNL-mh-mKe.text" = "Label";
+
+/* Class = "UILabel"; text = "Date"; ObjectID = "rXB-ew-aZu"; */
+"rXB-ew-aZu.text" = "Date";
+
+/* Class = "UILabel"; text = "Ambient"; ObjectID = "s0y-qf-aoG"; */
+"s0y-qf-aoG.text" = "Ambient";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "tSS-qR-yCJ"; */
+"tSS-qR-yCJ.text" = "Label";
+
+/* Class = "UINavigationItem"; title = "Faults"; ObjectID = "tZ7-2e-GZM"; */
+"tZ7-2e-GZM.title" = "Faults";
+
+/* Class = "UILabel"; text = "Distance"; ObjectID = "w4h-nK-exC"; */
+"w4h-nK-exC.text" = "Distance";
+
+/* Class = "UILabel"; text = "Duration"; ObjectID = "x1d-vH-HuA"; */
+"x1d-vH-HuA.text" = "Duration";
+
+/* Class = "UILabel"; text = "Brakes"; ObjectID = "xX6-X5-NcR"; */
+"xX6-X5-NcR.text" = "Brakes";
+
+/* Class = "UILabel"; text = "?"; ObjectID = "xhl-61-hyH"; */
+"xhl-61-hyH.text" = "?";
+
+/* Class = "UINavigationItem"; title = "Recorded Trips"; ObjectID = "yFD-LA-Jp9"; */
+"yFD-LA-Jp9.title" = "Recorded Trips";
+
+/* Class = "UINavigationItem"; title = "Saved Waypoints"; ObjectID = "zPP-Eq-n0z"; */
+"zPP-Eq-n0z.title" = "Saved Waypoints";
+
+/* Class = "UITableViewController"; title = "Saved Waypoints"; ObjectID = "zo6-HF-7UD"; */
+"zo6-HF-7UD.title" = "Saved Waypoints";
+
+/* Class = "UILabel"; text = "?"; ObjectID = "zq8-qI-2qg"; */
+"zq8-qI-2qg.text" = "?";
