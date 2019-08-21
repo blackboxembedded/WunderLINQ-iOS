@@ -21,7 +21,7 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
     @IBOutlet weak var taskImage: UIImageView!
     @IBOutlet weak var taskLabel: UILabel!
     
-    var tasks = [Tasks]()
+    var tasks:[Tasks] = [Tasks]()
     
     var mapping = [Int]()
     
@@ -159,6 +159,7 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
         if actionCamIsRecording{
             actionCamLabel = NSLocalizedString("task_title_actioncam_stop_video", comment: "")
         }
+        print("Label: \(actionCamLabel)")
         guard let task11 = Tasks(label: actionCamLabel, icon: UIImage(named: "VideoCamera")?.withRenderingMode(.alwaysTemplate)) else {
             fatalError("Unable to instantiate ActionCam Video Recording Task")
         }
