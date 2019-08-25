@@ -8,7 +8,6 @@
 
 // Product
 "product" = "WunderLINQ";
-
 // MyMotorcycleViewController
 "main_title" = "Motor";
 "disclaimer_alert_title" = "POZOR!";
@@ -16,12 +15,12 @@
 "disclaimer_ok" = "Se strinjam";
 "disclaimer_quit" = "Izhod";
 "negative_alert_title" = "Omejena zmogljivost";
-"negative_location_alert_body" = "Ker dostop do lokacije ni dovoljen, aplikacija ne bo shranjevala kažipotov in beležila vaše lokacije.";
+"negative_location_alert_body" = "Ker dostop do lokacije ni dovoljen, aplikacija ne bo shranjevala kažipotov in vaših lokacij.";
 "negative_write_alert_body" = "Ker dostop do galerije slik ni dovoljen, aplikacija ne bo shranjevala slik.";
 "negative_media_alert_body" = "Ker dostop do glasbene knjižnice ni dovoljen, aplikacija ne bo predvajala glasbe.";
 "negative_contacts_alert_body" = "Ker dostop do stikov ni dovoljen, aplikacija ne bo prikazovala stikov za klic.";
-"negative_camera_alert_body" = "Ker dostop do kamere ni dovoljen, aplikacija ne bo zajemala slik in posnetkov.";
-"negative_microphone_alert_body" = "Ker dostop do mikrofona ni dovoljen, aplikacija ne bo snemala videa.";
+"negative_camera_alert_body" = "Ker dostop do kamere ni dovoljen, aplikacija ne bo zajemala slik ali videoposnetkov.";
+"negative_microphone_alert_body" = "Ker dostop do mikrofona ni dovoljen, aplikacija ne bo zajemala videoposnetkov.";
 "negative_notification_body" = "Ker obvestila niso dovoljena, aplikacija ne bo prikazovala obvestil o napakah";
 "alert_message_exit_ok" = "V redu";
 "negative_alert_btn_ok" = "Odpri nastavitve";
@@ -45,47 +44,39 @@
 "trip2_label" = "Trip 2";
 "gear_label" = "Prestava";
 "settings_label" = "Nastavitve";
-
 "geodata_label" = "Potovanja in kažipoti";
 "appsettings_label" = "Nastavitve aplikacije";
 "about_label" = "O aplikaciji";
 "close_label" = "Zapri";
-"hwsettings_label" = "Nastavitve strojne opreme";
+"hwsettings_label" = "Nastavitve naprave";
 "select_bt" = "Izberi";
-
 //HWSettingsViewController
 "fw_config_title" = "WunderLINQ nastavitve";
 "wwtype_label" = "Vrsta kolesa";
-"wwMode1" = "Polbo";
+"wwMode1" = "Polno";
 "wwMode2" = "RT";
 "wwMode3" = "Po meri";
-"sensitivity_label" = "Občutljivost pritiska";
+"sensitivity_label" = "Občutljivost dotika";
 "config_write_label" = "Shrani nastavitve";
 "hwsave_alert_title" = "Pozor!";
 "hwsave_alert_body" = "Po novih nastavitvah postane naprava WunderLINQ nestabilna. Napravo je potrebno odstraniti z nosilca in jo ponovno namestiti.";
 "hwsave_alert_btn_ok" = "Nadaljuj";
 "hwsave_alert_btn_cancel" = "Prekliči";
-
 //AboutViewController
 "about_title" = "O aplikaciji";
 "version_label" = "Verzija:";
 "btn_sendlogs_title" = "Pošlji dnevnik";
-"sendlogs_body" = "Prosim, spodaj opišite problem:\n";
+"sendlogs_body" = "Prosimo spodaj opišite vaše težave:\n";
 "credits_label" = "Sodelujoči";
-
 // AlertViewController
 "alert_label_fuel" = "Prikažem pot do najbližje bencinske črpalke?";
 "alert_title_fuel" = "Nizek nivo goriva";
-
 "alert_btn_close" = "Zapri";
 "alert_btn_ok" = "V redu";
-
 // FaultsTableViewController
 "fault_title" = "Aktivne napake";
-
 // TripsTableViewController
 "trips_title" = "Shranjena potovanja";
-
 // TripViewController
 "trip_view_title" = "Potovanje";
 "trip_view_waypoint_start_label" = "Začetek";
@@ -93,7 +84,7 @@
 "trip_view_tv_distance" = "Razdalja";
 "trip_view_tv_duration" = "Trajanje";
 "trip_view_tv_speed" = "Hitrost (Povp/Max)";
-"trip_view_tv_shifts" = "Prestavljanj";
+"trip_view_tv_shifts" = "Št. prestavljanj";
 "trip_view_tv_brakes" = "Zaviranje (Spredaj/Zadaj)";
 "trip_view_tv_ambient" = "Temperatura okolice (Min/Povp/Max)";
 "trip_view_tv_engine" = "Temperatura motorja (Min/Povp/Max)";
@@ -104,10 +95,8 @@
 "delete_trip_alert_body" = "Izbrišem dnevnik potovanja?";
 "delete_bt" = "Izbriši";
 "cancel_bt" = "Prekliči";
-
 // WaypointsTableViewController
 "waypoint_title" = "Shranjeni kažipoti";
-
 // WaypointViewController
 "waypoint_view_title" = "Shranjen kažipot";
 "waypoint_view_tv_date_label" = "Datum shranjevanja";
@@ -120,7 +109,6 @@
 "waypoint_view_bt_delete" = "Izbriši";
 "delete_waypoint_alert_title" = "Pozor!";
 "delete_waypoint_alert_body" = "Izbrišem kažipot?";
-
 // CompassViewController
 "compass_title" = "Kompas";
 "north" = "S";
@@ -131,10 +119,8 @@
 "south_east" = "JV";
 "west" = "Z";
 "east" = "V";
-
 // MusicViewController
 "music_title" = "Glasba";
-
 // TasksTableViewController
 "quicktask_title" = "Hitra opravila";
 "task_title_navigation" = "Navigacija";
@@ -144,20 +130,18 @@
 "toast_address_not_set" = "Ni domačega naslova v nastavitvah";
 "task_title_favnumber" = "Hitri klic";
 "toast_phone_not_set" = "Ni nastavljene številke za hitri klic";
-"task_title_callcontact" = "Imenik stikov";
+"task_title_callcontact" = "Pokliči stik";
 "task_title_photo" = "Posnemi fotografijo";
 "task_title_selfie" = "Posnemi selfie";
-"task_title_start_record" = "Začni snemanje";
+"task_title_start_record" = "Začni snemati videoposnetek";
 "task_title_stop_record" = "Prekini snemanje";
 "task_title_start_trip" = "Začni dnevnik potovanja";
 "task_title_stop_trip" = "Zaključi dnevnik potovanja";
 "task_title_waypoint" = "Shrani kažipot";
 "task_title_settings" = "Nastavitve";
-
 "toast_waypoint_saved" = "Kažipot shranjen";
 "task_title_waypoint_nav" = "Vodi do kažipota";
 "toast_photo_taken" = "Posnetek zajet!";
-
 // LocationService
 "time_header" = "Čas";
 "latitude_header" = "Širina";
@@ -174,11 +158,11 @@
 "throttle_header" = "Pozicija ročice plina";
 "frontbrakes_header" = "Prednje zavore";
 "rearbrakes_header" = "Zadnje zavore";
-"shifts_header" = "Prestavljanj";
+"shifts_header" = "Št. prestavljanj";
 "vin_header" = "VIN";
 "ambientlight_header" = "Svetloba okolice";
-"tripone_header" = "Trip1";
-"triptwo_header" = "Trip2";
+"tripone_header" = "Trip 1";
+"triptwo_header" = "Trip 2";
 "tripauto_header" = "Trip Auto";
 "speed_header" = "Hitrost";
 "avgspeed_header" = "Povprečna hitrost";
@@ -189,14 +173,10 @@
 "leanangle_header" = "Kot nagiba";
 "gforce_header" = "g sila";
 "bearing_header" = "Smer";
-
-
 // ContactsTableViewController
 "contactlist_title" = "Stiki";
-
 // WaypointsNavTableViewController
 "waypoints_nav_title" = "Kažipoti";
-
 // Fault Description
 "fault_ABSSLF" = "ABS samodiagnoza ni zaključena";
 "fault_ABSERR" = "ABS napaka";
@@ -235,4 +215,19 @@
 "fault_GENWARNFSRED" = "Opozorilna lučka utripa rdeče";
 "fault_GENWARNSHRED" = "Opozorilna lučka sveti rdeče";
 "fault_OILLOW" = "Nivo olja prenizek";
-
+"task_title_weathermap" = "Vremenska slika";
+"task_title_actioncam_stop_video" = "Ustavi snemanje s kamero";
+"task_title_actioncam_start_video" = "Začni snemanje s kamero";
+"sunrisesunset_header" = "Sončni vzhod/zahod";
+//WeatherMapViewController
+"weathermap_title" = "Vremenska slika";
+"next_service_label" = "Naslednji servis";
+"next_service_date_label" = "Datum naslednjega servisa";
+"vin_label" = "Številka šasije";
+//BikeInfoViewController
+"bike_info_title" = "Podatki o motorju";
+"barometric_header" = "Barometer";
+"toast_actioncam_notset" = "Nastavite tip kamere v nastavitvah aplikacije";
+"toast_actioncam_notconnected" = "Kamera ni povezana";
+"alert_title_photopreview" = "Predogled slike";
+"bike_info_label" = "Podatki o motorju";
