@@ -1,15 +1,14 @@
-"task_title_navigation"="Navegación";
-"task_title_gohome"="Ir a casa";
-"task_title_favnumber"="Llamar a número favorito";
-"task_title_callcontact"="Llamar a contacto";
-"task_title_photo"="Tomar foto";
-"task_title_selfie"="Tomar Selfie";
-"task_title_start_record"="Comenzar grabación";
-"task_title_start_trip"="Comenzar Log de Ruta";
-"task_title_waypoint"="Guardar Waypoint";
-"task_title_waypoint_nav"="Navegar a Waypoint";
+"task_title_navigation" = "Navegación";
+"task_title_gohome" = "Ir a casa";
+"task_title_favnumber" = "Llamar a número favorito";
+"task_title_callcontact" = "Llamar a contacto";
+"task_title_photo" = "Tomar foto";
+"task_title_selfie" = "Tomar Selfie";
+"task_title_start_record" = "Comenzar grabación";
+"task_title_start_trip" = "Comenzar Log de Ruta";
+"task_title_waypoint" = "Guardar Waypoint";
+"task_title_waypoint_nav" = "Navegar a Waypoint";
 "task_title_settings" = "Ajustes";
-
 "task_title_empty" = "Vacía";
 "pref_task_one" = "Primera";
 "pref_task_two" = "Segunda";
@@ -21,3 +20,6 @@
 "pref_task_eight" = "Octava";
 "pref_task_nine" = "Novena";
 "pref_task_ten" = "Décima";
+"task_title_weathermap" = "Mapa del tiempo";
+"task_title_actioncam_stop_video" = "Terminar grabación de la cámara de acción";
+"task_title_actioncam_start_video" = "Iniciar grabación de la cámara de acción";
