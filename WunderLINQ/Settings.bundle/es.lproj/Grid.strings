@@ -38,6 +38,6 @@
 "gforce_header" = "Fuerza-G";
 "bearing_header" = "Orientación";
 "altitude_header" = "Altitud";
-
 "gpsspeed_header" = "Velocidad GPS";
-
+"sunrisesunset_header" = "Amanecer/Anochecer";
+"time_header" = "Tiempo";
