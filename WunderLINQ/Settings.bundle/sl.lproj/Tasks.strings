@@ -9,7 +9,6 @@
 "task_title_waypoint" = "Shrani kažipot";
 "task_title_waypoint_nav" = "Vodi do kažipota";
 "task_title_settings" = "Nastavitve";
-
 "task_title_empty" = "Prazno";
 "pref_task_one" = "Prvi";
 "pref_task_two" = "Drugi";
@@ -21,3 +20,6 @@
 "pref_task_eight" = "Osmi";
 "pref_task_nine" = "Deveti";
 "pref_task_ten" = "Deseti";
+"task_title_weathermap" = "Vremenska slika";
+"task_title_actioncam_stop_video" = "Ustavi snemanje s kamero";
+"task_title_actioncam_start_video" = "Začni snemanje s kamero";

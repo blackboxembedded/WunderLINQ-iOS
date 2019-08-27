@@ -23,7 +23,7 @@
 "throttle_header" = "Pozicija ročice plina";
 "frontbrakes_header" = "Prednje zavore";
 "rearbrakes_header" = "Zadnje zavore";
-"shifts_header" = "Prestavljanj";
+"shifts_header" = "Št. prestavljanj";
 "ambientlight_header" = "Svetloba okolice";
 "tripone_header" = "Trip 1";
 "triptwo_header" = "Trip 2";
@@ -38,5 +38,7 @@
 "gforce_header" = "g sila";
 "bearing_header" = "Smer";
 "altitude_header" = "Višina";
-
 "gpsspeed_header" = "GPS hitrost";
+"barometric_header" = "Barometer";
+"sunrisesunset_header" = "Sončni vzhod/zahod";
+"time_header" = "Čas";
