@@ -44,7 +44,7 @@
 "trip2_label" = "トリップ２";
 "gear_label" = "ギア";
 "settings_label" = "設定";
-"bike_info_label" = "";
+"bike_info_label" = "バイク情報";
 "geodata_label" = "トリップログとウェイポイント";
 "appsettings_label" = "APP設定";
 "about_label" = "WunderLINQについて";
@@ -141,11 +141,11 @@
 "task_title_stop_trip" = "トリップログ終了";
 "task_title_waypoint" = "ウェイポイント記録";
 "task_title_settings" = "設定";
-"task_title_actioncam_start_video" = "";
-"task_title_actioncam_stop_video" = "";
-"task_title_weathermap" = "";
-"toast_actioncam_notconnected" = "";
-"toast_actioncam_notset" = "";
+"task_title_actioncam_start_video" = "アクションカメラ録画開始";
+"task_title_actioncam_stop_video" = "アクションカメラ録画停止";
+"task_title_weathermap" = "ウェザーマップ";
+"toast_actioncam_notconnected" = "アクションカメラが接続されていません";
+"toast_actioncam_notset" = "アクションカメラをAPPセッティングで設定してください";
 "toast_waypoint_saved" = "ウェイポイント記録完了";
 "task_title_waypoint_nav" = "ウェイポイントへ案内";
 "toast_photo_taken" = "撮影完了";
@@ -223,3 +223,11 @@
 "fault_GENWARNSHRED" = "一般警告　赤ライト点灯";
 "fault_OILLOW" = "エンジンオイルレベル下限以下";
 "vin_label" = "VIN";
+//WeatherMapViewController
+"weathermap_title" = "ウェザーマップ";
+"next_service_label" = "次の整備";
+"next_service_date_label" = "次の整備日程";
+//BikeInfoViewController
+"bike_info_title" = "バイク情報";
+"sunrisesunset_header" = "日の出/日没";
+"barometric_header" = "気圧計";
