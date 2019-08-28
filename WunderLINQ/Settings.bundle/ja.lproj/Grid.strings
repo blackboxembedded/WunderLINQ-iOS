@@ -38,5 +38,7 @@
 "gforce_header" = "加速度";
 "bearing_header" = "進行方向";
 "altitude_header" = "標高";
-
 "gpsspeed_header" = "GPS スピード";
+"barometric_header" = "気圧計";
+"sunrisesunset_header" = "日の出/日没";
+"time_header" = "時間";
