@@ -126,20 +126,20 @@
 // TasksTableViewController
 "quicktask_title" = "クイックタスク";
 "task_title_navigation" = "ナビゲーション";
-"task_title_gohome" = "自宅に帰る";
+"task_title_gohome" = "自宅へ帰る";
 "home" = "自宅";
 "geocode_error" = "ジオコードに問題";
 "toast_address_not_set" = "自宅住所が設定されていません";
-"task_title_favnumber" = "お気に入りの電話番号に電話する";
+"task_title_favnumber" = "お気に入りに電話する";
 "toast_phone_not_set" = "お気に入りの番号が設定されていません";
-"task_title_callcontact" = "連絡先に電話する";
+"task_title_callcontact" = "電話する";
 "task_title_photo" = "写真を撮る";
 "task_title_selfie" = "セルフィーを撮る";
-"task_title_start_record" = "動画撮影開始";
+"task_title_start_record" = "ビデオ撮影開始";
 "task_title_stop_record" = "動画撮影終了";
-"task_title_start_trip" = "トリップログ開始";
+"task_title_start_trip" = "トリップログスタート";
 "task_title_stop_trip" = "トリップログ終了";
-"task_title_waypoint" = "ウェイポイント記録";
+"task_title_waypoint" = "地点登録";
 "task_title_settings" = "設定";
 "task_title_actioncam_start_video" = "アクションカメラ録画開始";
 "task_title_actioncam_stop_video" = "アクションカメラ録画停止";
@@ -147,7 +147,7 @@
 "toast_actioncam_notconnected" = "アクションカメラが接続されていません";
 "toast_actioncam_notset" = "アクションカメラをAPPセッティングで設定してください";
 "toast_waypoint_saved" = "ウェイポイント記録完了";
-"task_title_waypoint_nav" = "ウェイポイントへ案内";
+"task_title_waypoint_nav" = "登録地へのナビゲーション";
 "toast_photo_taken" = "撮影完了";
 // LocationService
 "time_header" = "時間";
