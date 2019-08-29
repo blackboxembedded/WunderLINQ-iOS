@@ -13,9 +13,9 @@
 "pref_grid_thirteen" = "１３　";
 "pref_grid_fourteen" = "１４　";
 "pref_grid_fifteen" = "１５　";
-"gear_header" = "ギヤ";
+"gear_header" = "ギア";
 "enginetemp_header" = "エンジン温度";
-"ambienttemp_header" = "外気温";
+"ambienttemp_header" = "外気温度";
 "frontpressure_header" = "前輪空気圧";
 "rearpressure_header" = "後輪空気圧";
 "odometer_header" = "オドメーター";
