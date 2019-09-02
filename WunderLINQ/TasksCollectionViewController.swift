@@ -987,9 +987,21 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
     }
     
     @objc func leftScreen() {
-        _ = navigationController?.popViewController(animated: true)
+        let secondViewController = self.storyboard!.instantiateViewController(withIdentifier: "MusicViewController") as! MusicViewController
+        if let viewControllers = self.navigationController?.viewControllers
+        {
+            if viewControllers.contains(where: {
+                return $0 is MusicViewController
+            })
+            {
+                 _ = navigationController?.popViewController(animated: true)
+                
+            } else {
+                self.navigationController!.pushViewController(secondViewController, animated: true)
+            }
+        }
+        //_ = navigationController?.popViewController(animated: true)
         //performSegue(withIdentifier: "tasksToMusic", sender: [])
-        
     }
     
     @objc func rightScreen() {
