@@ -1418,7 +1418,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                 let formatter = DateFormatter()
                 formatter.dateFormat = "h:mm a"
                 if UserDefaults.standard.integer(forKey: "time_format_preference") > 0 {
-                    formatter.dateFormat = "HH:mm a"
+                    formatter.dateFormat = "HH:mm"
                 }
                 value = ("\(formatter.string(from: motorcycleData.time!))")
             }
@@ -1461,7 +1461,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                 let formatter = DateFormatter()
                 formatter.dateFormat = "h:mm a"
                 if UserDefaults.standard.integer(forKey: "time_format_preference") > 0 {
-                    formatter.dateFormat = "HH:mm a"
+                    formatter.dateFormat = "HH:mm"
                 }
                 value = ("\(formatter.string(from: sunrise!))/\(formatter.string(from: sunset!))")
             }
