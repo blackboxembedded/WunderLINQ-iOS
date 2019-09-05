@@ -9,15 +9,17 @@
 "task_title_waypoint" = "Wegpunkt speichern";
 "task_title_waypoint_nav" = "Zu Wegpunkt navigieren";
 "task_title_settings" = "Einstellungen";
-
 "task_title_empty" = "Leer";
 "pref_task_one" = "Schnellzugriff #1";
 "pref_task_two" = "Schnellzugriff #2";
 "pref_task_three" = "Schnellzugriff #3";
 "pref_task_four" = "Schnellzugriff #4";
-"pref_task_five" = "Schnellzugriff #5";
+"pref_task_five" = "Fünfter";
 "pref_task_six" = "Schnellzugriff #6";
 "pref_task_seven" = "Schnellzugriff #7";
-"pref_task_eight" = "Schnellzugriff #8";
+"pref_task_eight" = "Sechster";
 "pref_task_nine" = "Schnellzugriff #9";
 "pref_task_ten" = "Schnellzugriff #10";
+"task_title_weathermap" = "Wetterkarte";
+"task_title_actioncam_stop_video" = "ActionCam Aufnahmestop";
+"task_title_actioncam_start_video" = "ActionCam Aufnahmestart";

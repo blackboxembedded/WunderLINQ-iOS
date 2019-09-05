@@ -8,7 +8,6 @@
 
 // Product
 "product" = "WunderLINQ";
-
 // MyMotorcycleViewController
 "main_title" = "Motorrad";
 "disclaimer_alert_title" = "WARNUNG!";
@@ -16,12 +15,12 @@
 "disclaimer_ok" = "Ich stimme zu";
 "disclaimer_quit" = "Beenden";
 "negative_alert_title" = "Funktionalität eingeschränkt";
-"negative_location_alert_body" = "Weil Zugriff auf Positionsdaten nicht erlaubt wurde, kann diese App keine Wegpunkte oder Positionsdaten speichern.";
+"negative_location_alert_body" = "Weil der Zugriff zu den Standortdaten nicht gewährt wurde, kann diese App keine Wegpunkte oder Ihren Standort mitschreiben.";
 "negative_write_alert_body" = "Weil Zugriff auf die Foto-Bibliothek nicht erlaubt wurde, kann diese App keine Fotos speichern.";
 "negative_media_alert_body" = "Weil Zugriff auf die Median-Bibliothek nicht erlaubt wurde, kann diese App keine Musik abspielen.";
 "negative_contacts_alert_body" = "Weil Zugriff auf das Adressbuch nicht erlaubt wurde, kann diese App bei Anrufen keine Kontaktdaten anzeigen.";
-"negative_camera_alert_body" = "Weil Zugriff auf die Kamera nicht erlaubt wurde, kann diese App keine Fotos oder Videos aufnehmen.";
-"negative_microphone_alert_body" = "Weil Zugriff auf das Mikrofon nicht erlaubt wurde, kann diese App keine Videos aufnehmen.";
+"negative_camera_alert_body" = "Weil Kamerazugriff nicht gewährt wurde, kann diese App keine Fotos oder Videos aufnehmen.";
+"negative_microphone_alert_body" = "Weil Mikrofonzugriff nicht gewährt wurde, kann diese App keine Videos aufnehmen.";
 "negative_notification_body" = "Weil Benachrichtigungen nicht erlaubt wurden, kann diese App keine Fehler-Benachrichtigungen anzeigen.";
 "alert_message_exit_ok" = "OK";
 "negative_alert_btn_ok" = "Einstellungen öffnen";
@@ -40,52 +39,44 @@
 "rdc_rear_label" = "Hinterreifen";
 "engine_temp_label" = "Motortemperatur";
 "ambient_temp_label" = "Aussentemperatur";
-"odometer_label" = "KM-Zähler Total";
+"odometer_label" = "Kilometerzähler";
 "trip1_label" = "KM-Zähler 1";
 "trip2_label" = "KM-Zähler 2";
 "gear_label" = "Gang";
 "settings_label" = "Einstellungen";
-
 "geodata_label" = "Aufzeichnungen & Wegpunkte";
 "appsettings_label" = "App-Einstellungen";
 "about_label" = "Über";
 "close_label" = "Schliessen";
-"hwsettings_label" = "Hardware-Einstellungen";
+"hwsettings_label" = "Geräte-Einstellungen";
 "select_bt" = "Auswählen";
-
 //HWSettingsViewController
 "fw_config_title" = "WunderLINQ Einstellungen";
-"wwtype_label" = "Drehrad Typ";
+"wwtype_label" = "Scrollrad Typ";
 "wwMode1" = "Normal";
 "wwMode2" = "RT";
-"wwMode3" = "Custom";
-"sensitivity_label" = "Druck-Empfindlichkeit";
+"wwMode3" = "Individuell";
+"sensitivity_label" = "Halte-Empfindlichkeit";
 "config_write_label" = "Einstellungen speichern";
 "hwsave_alert_title" = "Warnung!";
 "hwsave_alert_body" = "Nach dem Speichern von Einstellungen kann das WunderLINQ Gerät u.U. unstabil laufen, bitte entfernen Sie es aus der Halterung und setzen Sie es neu ein.";
-"hwsave_alert_btn_ok" = "Fortfahren";
-"hwsave_alert_btn_cancel" = "Abbruch";
-
+"hwsave_alert_btn_ok" = "Weiter";
+"hwsave_alert_btn_cancel" = "Abbrechen";
 //AboutViewController
 "about_title" = "Über";
 "version_label" = "Version:";
-"btn_sendlogs_title" = "Logs schicken";
-"sendlogs_body" = "Bitte beschreibung Sie nachfolgend Ihr Problem:\n";
+"btn_sendlogs_title" = "Logdaten senden";
+"sendlogs_body" = "Bitte beschreiben Sie Ihr Problem:\n";
 "credits_label" = "Credits";
-
 // AlertViewController
 "alert_label_fuel" = "Zur nächsten Tankstelle navigieren?";
 "alert_title_fuel" = "Benzinstand niedrig";
-
 "alert_btn_close" = "Schliessen";
 "alert_btn_ok" = "OK";
-
 // FaultsTableViewController
 "fault_title" = "Aktive Fehler";
-
 // TripsTableViewController
 "trips_title" = "Gespeicherte Fahrten";
-
 // TripViewController
 "trip_view_title" = "Fahrt";
 "trip_view_waypoint_start_label" = "Start";
@@ -101,13 +92,11 @@
 "minutes" = "m";
 "seconds" = "s";
 "delete_trip_alert_title" = "Warnung!";
-"delete_trip_alert_body" = "Fahrtaufzeichnung löschen?";
+"delete_trip_alert_body" = "Fahrtenlog löschen?";
 "delete_bt" = "Löschen";
-"cancel_bt" = "Abbruch";
-
+"cancel_bt" = "Abbrechen";
 // WaypointsTableViewController
 "waypoint_title" = "Gespeicherte Wegpunkte";
-
 // WaypointViewController
 "waypoint_view_title" = "Gespeicherter Wegpunkt";
 "waypoint_view_tv_date_label" = "Aufzeichnungsdatum";
@@ -120,7 +109,6 @@
 "waypoint_view_bt_delete" = "Löschen";
 "delete_waypoint_alert_title" = "Warnung!";
 "delete_waypoint_alert_body" = "Wegpunkt löschen?";
-
 // CompassViewController
 "compass_title" = "Kompass";
 "north" = "N";
@@ -131,16 +119,14 @@
 "south_east" = "SO";
 "west" = "W";
 "east" = "O";
-
 // MusicViewController
 "music_title" = "Musik";
-
 // TasksTableViewController
 "quicktask_title" = "Schnellzugriff";
 "task_title_navigation" = "Navigation";
 "task_title_gohome" = "Nach Hause";
 "home" = "Zuhause";
-"geocode_error" = "Kann Koordinaten nicht abfragen";
+"geocode_error" = "Problem: Geocode kann nicht gefunden werden";
 "toast_address_not_set" = "Keine Nach Hause Adresse gesetzt in den Einstellungen";
 "task_title_favnumber" = "Bevorzugte Nummer anrufen";
 "toast_phone_not_set" = "Keine Bevorzugte Nummer gesetzt in den Einstellungen";
@@ -153,11 +139,9 @@
 "task_title_stop_trip" = "Fahrtaufzeichnung beenden";
 "task_title_waypoint" = "Wegpunkt speichern";
 "task_title_settings" = "Einstellungen";
-
-"toast_waypoint_saved" = "Gespeicherter Wegpunkt";
+"toast_waypoint_saved" = "Wegpunkt gespeichert";
 "task_title_waypoint_nav" = "Zu Wegpunkt navigieren";
 "toast_photo_taken" = "Foto aufgenommen!";
-
 // LocationService
 "time_header" = "Zeit";
 "latitude_header" = "Breitengrad";
@@ -166,20 +150,20 @@
 "gpsspeed_header" = "GPS Geschwindigkeit";
 "gear_header" = "Gang";
 "enginetemp_header" = "Motortemperatur";
-"ambienttemp_header" = "Aussentemperatur";
+"ambienttemp_header" = "Umgebungstemperatur";
 "frontpressure_header" = "Vorderreifen-Druck";
 "rearpressure_header" = "Hinterreifen-Druck";
-"odometer_header" = "KM-Zähler Total";
+"odometer_header" = "Kilometerzähler";
 "voltage_header" = "Spannung";
 "throttle_header" = "Gasgriffposition";
-"frontbrakes_header" = "Vorderbremse";
-"rearbrakes_header" = "Hinterbremse";
-"shifts_header" = "Gangwechsel";
+"frontbrakes_header" = "Vorderradbremse";
+"rearbrakes_header" = "Hinterradbremse";
+"shifts_header" = "Schaltungen";
 "vin_header" = "Fahrgestellnnummer (VIN)";
 "ambientlight_header" = "Umgebungslicht";
-"tripone_header" = "KM-Zähler 1";
-"triptwo_header" = "KM-Zähler 2";
-"tripauto_header" = "KM-Zähler Auto";
+"tripone_header" = "Tageszähler 1";
+"triptwo_header" = "Tageszähler 2";
+"tripauto_header" = "Tageszähler Auto";
 "speed_header" = "Geschwindigkeit";
 "avgspeed_header" = "Ø Geschwindigkeit";
 "cconsumption_header" = "Aktueller Verbrauch";
@@ -189,14 +173,10 @@
 "leanangle_header" = "Neigungswinkel";
 "gforce_header" = "Beschleunigungskraft";
 "bearing_header" = "Peilung";
-
-
 // ContactsTableViewController
 "contactlist_title" = "Kontakte";
-
 // WaypointsNavTableViewController
 "waypoints_nav_title" = "Wegpunkte";
-
 // Fault Description
 "fault_ABSSLF" = "ABS Eigendiagnose nicht beendet";
 "fault_ABSERR" = "ABS Fehler";
@@ -235,5 +215,19 @@
 "fault_GENWARNFSRED" = "Die allgemeine Warnleuchte blinkt Rot";
 "fault_GENWARNSHRED" = "Die allgemeine Warnleuchte leuchtet Rot";
 "fault_OILLOW" = "Ölstand Motor zu niedrig";
-
-
+"vin_label" = "Fahrgestellnnummer (VIN)";
+"bike_info_label" = "Motorrad-Information";
+"task_title_actioncam_stop_video" = "ActionCam Aufnahmestop";
+"toast_actioncam_notconnected" = "ActionCam nicht verbunden";
+"toast_actioncam_notset" = "Bitte ActionCam in den App-Einstellungen auswählen";
+"sunrisesunset_header" = "Sonnenaufgang/Untergang";
+//BikeInfoViewController
+"bike_info_title" = "Motorrad-Information";
+"next_service_date_label" = "Nächste fällige Wartung";
+"task_title_actioncam_start_video" = "ActionCam Aufnahmestart";
+"barometric_header" = "Barometer";
+"alert_title_photopreview" = "Foto-Vorschau";
+"task_title_weathermap" = "Wetterkarte";
+"next_service_label" = "Nächste Wartung";
+//WeatherMapViewController
+"weathermap_title" = "Wetterkarte";
