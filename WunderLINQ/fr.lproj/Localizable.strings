@@ -100,7 +100,7 @@
 "ambient_temp_label" = "Temp ambiante";
 "close_label" = "Fermer";
 "hwsettings_label" = "Régl. matériels";
-"wwMode2" = "RT";
+"wwMode2" = "RT/K1600";
 "config_write_label" = "Enregistrer réglages";
 "credits_label" = "Crédits";
 "trip_view_waypoint_end_label" = "Fin";
