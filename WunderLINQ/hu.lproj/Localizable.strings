@@ -54,7 +54,7 @@
 "fw_config_title" = "WunderLINQ beállítások";
 "wwtype_label" = "Keréktípus";
 "wwMode1" = "Teljes";
-"wwMode2" = "RT";
+"wwMode2" = "RT/K1600";
 "wwMode3" = "Egyedi";
 "sensitivity_label" = "Érzékenység";
 "config_write_label" = "Beállítások mentése";
