@@ -54,7 +54,7 @@
 "fw_config_title" = "Ajustes del WunderLINQ";
 "wwtype_label" = "Tipo de Rueda";
 "wwMode1" = "Completa (Full)";
-"wwMode2" = "RT";
+"wwMode2" = "RT/K1600";
 "wwMode3" = "Custom";
 "sensitivity_label" = "Sensitividad de Mantener (Hold)";
 "config_write_label" = "Ajustes de Guardar (Save)";
