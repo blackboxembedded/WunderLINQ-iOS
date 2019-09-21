@@ -54,7 +54,7 @@
 "fw_config_title" = "WunderLINQ Einstellungen";
 "wwtype_label" = "Scrollrad Typ";
 "wwMode1" = "Normal";
-"wwMode2" = "RT";
+"wwMode2" = "RT/K1600";
 "wwMode3" = "Individuell";
 "sensitivity_label" = "Halte-Empfindlichkeit";
 "config_write_label" = "Einstellungen speichern";
