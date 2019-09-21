@@ -21,21 +21,26 @@ class TaskCollectionViewCell: UICollectionViewCell {
     }
     
     func highlightEffect(){
+        taskImage.tintColor = UIColor.white
         taskImage.backgroundColor = UIColor(red:0.00, green:0.35, blue:1.00, alpha:1.0)
         taskLabel.backgroundColor = UIColor(red:0.00, green:0.35, blue:1.00, alpha:1.0)
         taskLabel.textColor = UIColor.white
         contentView.backgroundColor = UIColor(red:0.00, green:0.35, blue:1.00, alpha:1.0)
     }
     
-    func removeHighlight(color: UIColor){
-        taskImage.backgroundColor = color
-        taskLabel.backgroundColor = color
-        if (color == UIColor.white){
-            taskLabel.textColor = UIColor.black
-        } else {
+    func removeHighlight(){
+        if UserDefaults.standard.bool(forKey: "nightmode_preference") {
+            taskImage.tintColor = UIColor.white
+            taskImage.backgroundColor = UIColor.black
+            contentView.backgroundColor = UIColor.black
+            taskLabel.backgroundColor = UIColor.black
             taskLabel.textColor = UIColor.white
+        } else {
+            taskImage.tintColor = UIColor.black
+            taskImage.backgroundColor = UIColor.white
+            contentView.backgroundColor = UIColor.white
+            taskLabel.backgroundColor = UIColor.white
+            taskLabel.textColor = UIColor.black
         }
-        contentView.backgroundColor = color
     }
-    
 }

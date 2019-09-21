@@ -1505,21 +1505,10 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
         // Configure the cell
         let tasks = self.tasks[mapping[indexPath.row]]
         cell.displayContent(icon: tasks.icon!, label: tasks.label)
-        
         if (itemRow == indexPath.row){
             cell.highlightEffect()
         } else {
-            if UserDefaults.standard.bool(forKey: "nightmode_preference") {
-                cell.removeHighlight(color: UIColor.black)
-            } else {
-                cell.removeHighlight(color: UIColor.white)
-            }
-        }
-        
-        if UserDefaults.standard.bool(forKey: "nightmode_preference") {
-            cell.taskImage.tintColor = UIColor.white
-        } else {
-            cell.taskImage.tintColor = UIColor.black
+            cell.removeHighlight()
         }
         return cell
     }
