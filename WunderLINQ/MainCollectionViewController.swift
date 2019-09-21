@@ -513,6 +513,11 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                     widthMarginsAndInsets = inset * 2 + collectionView!.layoutMargins.left + collectionView!.layoutMargins.right + minimumInteritemSpacing * CGFloat(cellsPerRow - 1)
                     heightMarginsAndInsets = inset * 2 + (collectionView?.layoutMargins.top)! + collectionView!.layoutMargins.bottom + minimumInteritemSpacing * CGFloat(rowCount - 1)
                 }
+                print("Screen Size: inset:\(inset)")
+                print("Screen Size: widthMarginsAndInsets:\(widthMarginsAndInsets)")
+                print("Screen Size: heightMarginsAndInsets:\(heightMarginsAndInsets)")
+                print("Screen Size: widthMarginsAndInsets:\(widthMarginsAndInsets)")
+                print("Screen Size: Height:\(size.height) and Width:\(size.width)")
                 if ( size.width > size.height){
                     switch (cellCount){
                     case 1:
@@ -593,13 +598,30 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         var widthMarginsAndInsets:CGFloat
         var heightMarginsAndInsets:CGFloat
         if #available(iOS 11.0, *) {
-            widthMarginsAndInsets = inset * 2 + collectionView.safeAreaInsets.left + collectionView.safeAreaInsets.right + minimumInteritemSpacing * CGFloat(cellsPerRow - 1)
-            heightMarginsAndInsets = inset * 2 + collectionView.safeAreaInsets.top + collectionView.safeAreaInsets.bottom + minimumInteritemSpacing * CGFloat(rowCount - 1)
+            widthMarginsAndInsets = inset * 2 + self.view.safeAreaInsets.left + self.view.safeAreaInsets.right + minimumInteritemSpacing * CGFloat(cellsPerRow - 1)
+            heightMarginsAndInsets = inset * 2 + self.view.safeAreaInsets.top + self.view.safeAreaInsets.bottom + minimumInteritemSpacing * CGFloat(rowCount - 1)
         } else {
             // Fallback on earlier versions
             widthMarginsAndInsets = inset * 2 + collectionView.layoutMargins.left + collectionView.layoutMargins.right + minimumInteritemSpacing * CGFloat(cellsPerRow - 1)
             heightMarginsAndInsets = inset * 2 + collectionView.layoutMargins.top + collectionView.layoutMargins.bottom + minimumInteritemSpacing * CGFloat(rowCount - 1)
         }
+        print("Screen Size: inset:\(inset)")
+        print("Screen Size: minimumInteritemSpacing:\(minimumInteritemSpacing)")
+        if #available(iOS 11.0, *) {
+            print("Screen Size: safeAreaInsets.left:\(self.view.safeAreaInsets.left)")
+            print("Screen Size: safeAreaInsets.right:\(self.view.safeAreaInsets.right)")
+            print("Screen Size: safeAreaInsets.top:\(self.view.safeAreaInsets.top)")
+            print("Screen Size: safeAreaInsets.bottom:\(self.view.safeAreaInsets.bottom)")
+        } else {
+            print("Screen Size: layoutMargins.left:\(collectionView.layoutMargins.left)")
+            print("Screen Size: layoutMargins.right:\(collectionView.layoutMargins.right)")
+            print("Screen Size: layoutMargins.top:\(collectionView.layoutMargins.top)")
+            print("Screen Size: layoutMargins.bottom:\(collectionView.layoutMargins.bottom)")
+        }
+        print("Screen Size: heightMarginsAndInsets:\(heightMarginsAndInsets)")
+        print("Screen Size: widthMarginsAndInsets:\(widthMarginsAndInsets)")
+        print("Screen Size: mainUIView Height:\(mainUIView.bounds.height) and Width:\(mainUIView.bounds.width)")
+        print("Screen Size: view Height:\(self.view.bounds.size.height) and Width:\(self.view.bounds.size.width)")
         var cellCount = UserDefaults.standard.integer(forKey: "GRIDCOUNT");
         if ( mainUIView.bounds.width > mainUIView.bounds.height){
             switch (cellCount){
@@ -614,18 +636,18 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                 width = ((self.view.bounds.size.width - widthMarginsAndInsets) / CGFloat(2)).rounded(.down)
             case 8:
                 height = ((self.view.bounds.size.height - (heightMarginsAndInsets)) / CGFloat(2)).rounded(.down)
-                width = ((self.view.bounds.size.width - (widthMarginsAndInsets * 2)) / CGFloat(4)).rounded(.down)
+                width = ((self.view.bounds.size.width - (widthMarginsAndInsets)) / CGFloat(4)).rounded(.down)
             case 12:
                 height = ((self.view.bounds.size.height - (heightMarginsAndInsets)) / CGFloat(3)).rounded(.down)
-                width = ((self.view.bounds.size.width - (widthMarginsAndInsets * 2)) / CGFloat(4)).rounded(.down)
+                width = ((self.view.bounds.size.width - (widthMarginsAndInsets)) / CGFloat(4)).rounded(.down)
             case 15:
                 height = ((self.view.bounds.size.height - (heightMarginsAndInsets)) / CGFloat(3)).rounded(.down)
-                width = ((self.view.bounds.size.width - (widthMarginsAndInsets * 2)) / CGFloat(5)).rounded(.down)
+                width = ((self.view.bounds.size.width - (widthMarginsAndInsets)) / CGFloat(5)).rounded(.down)
             default:
                 cellCount = 15
                 UserDefaults.standard.set(15, forKey: "GRIDCOUNT")
                 height = ((self.view.bounds.size.height - (heightMarginsAndInsets)) / CGFloat(3)).rounded(.down)
-                width = ((self.view.bounds.size.width - (widthMarginsAndInsets * 2)) / CGFloat(5)).rounded(.down)
+                width = ((self.view.bounds.size.width - (widthMarginsAndInsets)) / CGFloat(5)).rounded(.down)
             }
         } else {
             switch (cellCount){
@@ -3831,6 +3853,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             seconds = 10
             // Hide the navigation bar on the this view controller
             self.navigationController?.setNavigationBarHidden(true, animated: true)
+            collectionView.reloadData()
         } else {
             seconds -= 1
         }
