@@ -54,7 +54,7 @@
 "fw_config_title" = "Ρυθμίσεις συσκευής WunderLINQ";
 "wwtype_label" = "Τύπος περιστροφ. δαχτυλίου";
 "wwMode1" = "Πλήρης";
-"wwMode2" = "RT";
+"wwMode2" = "RT/K1600";
 "wwMode3" = "Προσαρμοσμένο";
 "sensitivity_label" = "Ευαισθησία αγγίγματος";
 "config_write_label" = "Αποθήκευση ρυθμίσεων";
