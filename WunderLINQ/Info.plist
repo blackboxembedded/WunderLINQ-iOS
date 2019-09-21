@@ -50,10 +50,10 @@
 	<true/>
 	<key>NSAppleMusicUsageDescription</key>
 	<string>$(PRODUCT_NAME) needs access to your media library for music playback.</string>
+	<key>NSBluetoothAlwaysUsageDescription</key>
+	<string>$(PRODUCT_NAME) needs access to Bluetooth to communicate with the WunderLINQ hardware.</string>
 	<key>NSBluetoothPeripheralUsageDescription</key>
 	<string>$(PRODUCT_NAME) needs access to Bluetooth to communicate with the WunderLINQ hardware.</string>
-    <key>NSBluetoothAlwaysUsageDescription</key>
-    <string>$(PRODUCT_NAME) needs access to Bluetooth to communicate with the WunderLINQ hardware.</string>
 	<key>NSCameraUsageDescription</key>
 	<string>$(PRODUCT_NAME) needs access to your camera to take pictures and record videos.</string>
 	<key>NSContactsUsageDescription</key>
