@@ -63,7 +63,7 @@ class WaypointViewController: UIViewController, UITextFieldDelegate, CLLocationM
 
     @IBAction func sharePressed(_ sender: Any) {
         // text to share
-        let text = "\(latitude!),\(longitude!)"
+        let text = "http://maps.google.com/maps?saddr=\(latitude!),\(longitude!)"
         
         // set up activity view controller
         let textToShare = [ text ]

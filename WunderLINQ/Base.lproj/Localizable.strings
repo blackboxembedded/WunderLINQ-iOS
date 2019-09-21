@@ -57,7 +57,7 @@
 "fw_config_title" = "WunderLINQ Settings";
 "wwtype_label" = "Wheel Type";
 "wwMode1" = "Full";
-"wwMode2" = "RT";
+"wwMode2" = "RT/K1600";
 "wwMode3" = "Custom";
 "sensitivity_label" = "Hold Sensitivity";
 "config_write_label" = "Save Settings";

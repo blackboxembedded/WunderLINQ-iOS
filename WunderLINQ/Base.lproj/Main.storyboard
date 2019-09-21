@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Fp2-Ey-Ypo">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Fp2-Ey-Ypo">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -15,11 +13,11 @@
             <objects>
                 <viewController storyboardIdentifier="Main" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="MainCollectionViewController" customModule="WunderLINQ" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="LeD-DA-8o8">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="DFb-XX-n1q">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="iyU-Dx-uZ6">
                                     <size key="itemSize" width="50" height="50"/>
@@ -100,12 +98,12 @@
             <objects>
                 <tableViewController title="Faults" id="KTW-aa-IYg" customClass="FaultsTableViewController" customModule="WunderLINQ" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="8d5-qJ-gEo">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FaultsTableViewCell" textLabel="Kwv-9e-iLT" style="IBUITableViewCellStyleDefault" id="bA6-iL-1XA">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="28" width="375" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bA6-iL-1XA" id="gpg-Fl-m3S">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -141,18 +139,18 @@
             <objects>
                 <viewController title="Waypoint" id="Plb-k4-fYa" customClass="WaypointViewController" customModule="WunderLINQ" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dZ9-R2-QyW">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AF1-SP-JZP" customClass="GMSMapView">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="275"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="295"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="ignoresInvertColors" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lat" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T8S-De-cOZ" customClass="LocalisableLabel" customModule="WunderLINQ" customModuleProvider="target">
-                                <rect key="frame" x="16" y="329" width="167.5" height="30"/>
+                                <rect key="frame" x="16" y="349" width="167.5" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="aBd-xg-60X"/>
                                 </constraints>
@@ -164,7 +162,7 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lon" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="khk-Ya-Hxq" customClass="LocalisableLabel" customModule="WunderLINQ" customModuleProvider="target">
-                                <rect key="frame" x="16" y="367" width="167.5" height="30"/>
+                                <rect key="frame" x="16" y="387" width="167.5" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="a64-Ta-DjE"/>
                                 </constraints>
@@ -176,7 +174,7 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Brq-vS-Qob">
-                                <rect key="frame" x="191.5" y="329" width="167.5" height="30"/>
+                                <rect key="frame" x="191.5" y="349" width="167.5" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="dXF-gW-ktE"/>
                                 </constraints>
@@ -185,16 +183,15 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UlC-Rp-2La">
-                                <rect key="frame" x="191.5" y="405" width="167.5" height="30"/>
+                                <rect key="frame" x="191.5" y="425" width="167.5" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="1Aq-Fq-RLL"/>
                                 </constraints>
-                                <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" weight="black" pointSize="13"/>
                                 <textInputTraits key="textInputTraits" spellCheckingType="yes" returnKeyType="done"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eeF-zi-YJp" customClass="LocalisableButton" customModule="WunderLINQ" customModuleProvider="target">
-                                <rect key="frame" x="16" y="443" width="343" height="30"/>
+                                <rect key="frame" x="16" y="463" width="343" height="30"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" weight="black" pointSize="15"/>
                                 <state key="normal">
@@ -208,7 +205,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zQg-ao-9yD" customClass="LocalisableButton" customModule="WunderLINQ" customModuleProvider="target">
-                                <rect key="frame" x="16" y="519" width="343" height="30"/>
+                                <rect key="frame" x="16" y="539" width="343" height="30"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" weight="black" pointSize="15"/>
                                 <state key="normal">
@@ -222,7 +219,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gA4-d0-iTO" customClass="LocalisableButton" customModule="WunderLINQ" customModuleProvider="target">
-                                <rect key="frame" x="16" y="557" width="343" height="30"/>
+                                <rect key="frame" x="16" y="577" width="343" height="30"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" weight="black" pointSize="15"/>
                                 <state key="normal">
@@ -236,7 +233,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iIa-MG-kKZ" customClass="LocalisableLabel" customModule="WunderLINQ" customModuleProvider="target">
-                                <rect key="frame" x="16" y="405" width="167.5" height="30"/>
+                                <rect key="frame" x="16" y="425" width="167.5" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="AUo-fI-0xl"/>
                                 </constraints>
@@ -248,7 +245,7 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GJH-H2-QvX" customClass="LocalisableLabel" customModule="WunderLINQ" customModuleProvider="target">
-                                <rect key="frame" x="16" y="291" width="167.5" height="30"/>
+                                <rect key="frame" x="16" y="311" width="167.5" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="D0M-gE-2Je"/>
                                 </constraints>
@@ -260,7 +257,7 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tEo-Bc-Q4M">
-                                <rect key="frame" x="191.5" y="367" width="167.5" height="30"/>
+                                <rect key="frame" x="191.5" y="387" width="167.5" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="Zku-ua-vCT"/>
                                 </constraints>
@@ -269,7 +266,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tZd-Kw-xg4">
-                                <rect key="frame" x="191.5" y="291" width="167.5" height="30"/>
+                                <rect key="frame" x="191.5" y="311" width="167.5" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="Ecq-6a-fsh"/>
                                 </constraints>
@@ -278,7 +275,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Dn-dF-E3o" customClass="LocalisableButton" customModule="WunderLINQ" customModuleProvider="target">
-                                <rect key="frame" x="16" y="481" width="343" height="30"/>
+                                <rect key="frame" x="16" y="501" width="343" height="30"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" weight="black" pointSize="15"/>
                                 <state key="normal">
@@ -365,11 +362,11 @@
             <objects>
                 <viewController id="mgN-4w-lQo" customClass="WeatherMapViewController" customModule="WunderLINQ" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="s1a-NI-mWg">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xBm-3o-5aH" customClass="GMSMapView">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="ignoresInvertColors" value="YES"/>
@@ -398,11 +395,11 @@
             <objects>
                 <viewController storyboardIdentifier="MusicViewController" id="p6n-wZ-mMa" customClass="MusicViewController" customModule="WunderLINQ" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cl2-HO-wNM">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9KV-8n-ffM">
-                                <rect key="frame" x="0.0" y="20" width="375" height="375"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="375"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="9KV-8n-ffM" secondAttribute="height" multiplier="125:125" id="si3-M8-hZI"/>
                                 </constraints>
@@ -411,7 +408,7 @@
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="9kl-zc-Jc0">
-                                <rect key="frame" x="0.0" y="395" width="375" height="272"/>
+                                <rect key="frame" x="0.0" y="375" width="375" height="272"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7h2-4R-M5d">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="52"/>
@@ -573,7 +570,7 @@
             <objects>
                 <tableViewController id="TPs-yr-NM2" customClass="ContactsTableViewController" customModule="WunderLINQ" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Y20-CM-oly">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -581,11 +578,11 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="91W-wB-7yc" id="UcH-Kx-tlt">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="59.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IUU-pb-d73">
-                                            <rect key="frame" x="0.0" y="0.0" width="60" height="60.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="IUU-pb-d73" secondAttribute="height" multiplier="1:1" id="1FP-ZT-gHE"/>
                                                 <constraint firstAttribute="width" secondItem="IUU-pb-d73" secondAttribute="height" multiplier="1:1" id="9WJ-vp-ICx"/>
@@ -594,7 +591,7 @@
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LK8-Wv-Jeq">
-                                            <rect key="frame" x="68" y="11.5" width="291" height="38.5"/>
+                                            <rect key="frame" x="68" y="11" width="291" height="38"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -636,12 +633,12 @@
             <objects>
                 <tableViewController id="we8-3Z-s79" customClass="WaypointsNavTableViewController" customModule="WunderLINQ" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="8Yw-3z-6cz">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="WaypointsNavTableViewCell" textLabel="lKv-aX-sxq" style="IBUITableViewCellStyleDefault" id="6UQ-Ab-cVd">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="28" width="375" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6UQ-Ab-cVd" id="AFc-J5-2Sf">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -677,11 +674,11 @@
             <objects>
                 <viewController storyboardIdentifier="AlertViewControllerID" title="Alert" id="gJo-MW-rva" customClass="AlertViewController" customModule="WunderLINQ" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="GAg-mc-EeP">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ch1-dL-bp2" customClass="LocalisableButton" customModule="WunderLINQ" customModuleProvider="target">
-                                <rect key="frame" x="16" y="611" width="167.5" height="36"/>
+                                <rect key="frame" x="16" y="591" width="167.5" height="36"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                 <state key="normal" title="CLOSE">
@@ -695,7 +692,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o4A-v0-HaT" customClass="LocalisableButton" customModule="WunderLINQ" customModuleProvider="target">
-                                <rect key="frame" x="191.5" y="611" width="167.5" height="36"/>
+                                <rect key="frame" x="191.5" y="591" width="167.5" height="36"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                 <state key="normal" title="OK">
@@ -709,7 +706,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pNL-mh-mKe">
-                                <rect key="frame" x="16" y="321.5" width="343" height="24"/>
+                                <rect key="frame" x="16" y="311.5" width="343" height="24"/>
                                 <fontDescription key="fontDescription" type="system" weight="black" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -746,7 +743,7 @@
             <objects>
                 <collectionViewController title="Quick Tasks" id="OIf-TM-fnx" customClass="TasksCollectionViewController" customModule="WunderLINQ" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="02I-YM-N5d">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="de0-qU-uAt">
@@ -818,11 +815,11 @@
             <objects>
                 <viewController id="IU4-xr-4Bd" customClass="HWSettingsViewController" customModule="WunderLINQ" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JIN-NT-UZ4">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fZ3-Aw-NNr" customClass="LocalisableButton" customModule="WunderLINQ" customModuleProvider="target">
-                                <rect key="frame" x="16" y="609" width="343" height="42"/>
+                                <rect key="frame" x="16" y="589" width="343" height="42"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" weight="black" pointSize="25"/>
                                 <state key="normal">
@@ -836,7 +833,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wheel Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kdd-7b-Hvf" customClass="LocalisableLabel" customModule="WunderLINQ" customModuleProvider="target">
-                                <rect key="frame" x="16" y="45" width="343" height="24"/>
+                                <rect key="frame" x="16" y="25" width="343" height="24"/>
                                 <fontDescription key="fontDescription" type="system" weight="black" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -845,13 +842,13 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tOE-xh-XqU">
-                                <rect key="frame" x="16" y="85" width="343" height="75"/>
+                                <rect key="frame" x="16" y="65" width="343" height="75"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="75" id="WRD-oa-ixa"/>
                                 </constraints>
                             </pickerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hold Sensitivity" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mPy-4d-rgO" customClass="LocalisableLabel" customModule="WunderLINQ" customModuleProvider="target">
-                                <rect key="frame" x="16" y="176" width="163.5" height="24"/>
+                                <rect key="frame" x="16" y="156" width="163.5" height="24"/>
                                 <fontDescription key="fontDescription" type="system" weight="black" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -860,13 +857,13 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="8kR-jJ-u6c">
-                                <rect key="frame" x="14" y="216" width="347" height="31"/>
+                                <rect key="frame" x="14" y="196" width="347" height="31"/>
                                 <connections>
                                     <action selector="sensitivitySliderChanged:" destination="IU4-xr-4Bd" eventType="valueChanged" id="Dyn-7n-ZVA"/>
                                 </connections>
                             </slider>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aFc-Cs-nd4">
-                                <rect key="frame" x="195.5" y="176" width="163.5" height="24"/>
+                                <rect key="frame" x="195.5" y="156" width="163.5" height="24"/>
                                 <fontDescription key="fontDescription" type="system" weight="black" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -916,7 +913,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Fp2-Ey-Ypo" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="Hi4-tw-zgy">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -933,12 +930,12 @@
             <objects>
                 <tableViewController title="Recorded Trips" id="1rx-Mx-oc0" customClass="TripsTableViewController" customModule="WunderLINQ" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="FE6-cp-MLm">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TripsTableViewCell" textLabel="W8D-lT-MC4" style="IBUITableViewCellStyleDefault" id="VJo-Xm-CfP">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="28" width="375" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="VJo-Xm-CfP" id="7qp-iD-Q9N">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -976,7 +973,7 @@
             <objects>
                 <viewController id="4YA-h5-Jjs" customClass="GeoDataViewController" customModule="WunderLINQ" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Jc4-4D-reh">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F4h-OO-sSs">
@@ -1076,12 +1073,12 @@
             <objects>
                 <tableViewController title="Saved Waypoints" id="zo6-HF-7UD" customClass="WaypointsTableViewController" customModule="WunderLINQ" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="fdJ-UO-SgQ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="WaypointsTableViewCell" textLabel="4E4-nV-PGv" style="IBUITableViewCellStyleDefault" id="x1m-tm-9cE">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="28" width="375" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="x1m-tm-9cE" id="IEh-0c-NSb">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -1119,20 +1116,20 @@
             <objects>
                 <viewController title="About" id="BZZ-xV-I8u" customClass="AboutViewController" customModule="WunderLINQ" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ISD-Sy-aSf">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wunderlinq_logo-black" translatesAutoresizingMaskIntoConstraints="NO" id="iK0-Eq-bFT">
-                                <rect key="frame" x="16" y="45" width="343" height="53"/>
+                                <rect key="frame" x="16" y="25" width="343" height="53"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Version: x.x.x" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fPj-pQ-RK7">
-                                <rect key="frame" x="0.0" y="123" width="375" height="17"/>
+                                <rect key="frame" x="0.0" y="103" width="375" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Credits" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bpB-n7-PMj" customClass="LocalisableLabel" customModule="WunderLINQ" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="240" width="375" height="24"/>
+                                <rect key="frame" x="0.0" y="220" width="375" height="24"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -1141,7 +1138,7 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" usesAttributedText="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jAM-2k-3CY">
-                                <rect key="frame" x="0.0" y="269" width="375" height="398"/>
+                                <rect key="frame" x="0.0" y="249" width="375" height="398"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <attributedString key="attributedText">
                                     <fragment>
@@ -1150,7 +1147,7 @@ Cg
 </string>
                                         <attributes>
                                             <color key="NSBackgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <color key="NSColor" red="0.13333" green="0.13333" blue="0.13333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                             <font key="NSFont" size="10" name="ArialMT"/>
                                             <real key="NSKern" value="0.0"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" minimumLineHeight="11" defaultTabInterval="36" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
@@ -1224,7 +1221,7 @@ Frederic Boucher
 </string>
                                         <attributes>
                                             <color key="NSBackgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                             <font key="NSFont" size="14" name="ArialMT"/>
                                             <real key="NSKern" value="0.0"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" minimumLineHeight="17" defaultTabInterval="36" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
@@ -1235,7 +1232,7 @@ Frederic Boucher
                                     <fragment content="Remco van den Ende">
                                         <attributes>
                                             <color key="NSBackgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                             <font key="NSFont" size="14" name="ArialMT"/>
                                             <real key="NSKern" value="0.0"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" minimumLineHeight="17" defaultTabInterval="36" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
@@ -1265,11 +1262,11 @@ Cg
                                         </attributes>
                                     </fragment>
                                     <fragment>
-                                        <string key="content">Taro Mizutani, Touratech Japan
+                                        <string key="content">Touratech Japan
 </string>
                                         <attributes>
                                             <color key="NSBackgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <color key="NSColor" red="0.13363" green="0.13363" blue="0.13328999999999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                             <font key="NSFont" size="14" name="ArialMT"/>
                                             <real key="NSKern" value="0.0"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" minimumLineHeight="17" defaultTabInterval="36" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
@@ -1285,7 +1282,7 @@ Cg
                                     <fragment content="Oliver Ohlendorf">
                                         <attributes>
                                             <color key="NSBackgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <color key="NSColor" red="0.13363" green="0.13363" blue="0.13328999999999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                             <font key="NSFont" size="14" name="ArialMT"/>
                                             <real key="NSKern" value="0.0"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" minimumLineHeight="15" defaultTabInterval="36" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
@@ -1304,7 +1301,7 @@ Cg
 </string>
                                         <attributes>
                                             <color key="NSBackgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <color key="NSColor" red="0.13347999999999999" green="0.13347999999999999" blue="0.13331000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                             <font key="NSFont" size="14.667" name="ArialMT"/>
                                             <real key="NSKern" value="0.0"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" minimumLineHeight="15" defaultTabInterval="36" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
@@ -1438,7 +1435,7 @@ Eddy Concar
                                     <fragment content="Darryl Payne">
                                         <attributes>
                                             <color key="NSBackgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <color key="NSColor" red="0.13333" green="0.13333" blue="0.13333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                             <font key="NSFont" size="14" name="ArialMT"/>
                                             <real key="NSKern" value="0.0"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" minimumLineHeight="11" defaultTabInterval="36" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
@@ -1494,7 +1491,7 @@ Cgo
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y9o-7f-NQI">
-                                <rect key="frame" x="0.0" y="145" width="375" height="33"/>
+                                <rect key="frame" x="0.0" y="125" width="375" height="33"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="Black Box Embedded, LLC">
                                     <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1504,7 +1501,7 @@ Cgo
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mYb-5h-qZC" customClass="LocalisableButton" customModule="WunderLINQ" customModuleProvider="target">
-                                <rect key="frame" x="16" y="194" width="343" height="30"/>
+                                <rect key="frame" x="16" y="174" width="343" height="30"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Send Logs">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1557,11 +1554,11 @@ Cgo
             <objects>
                 <viewController id="g6h-Xr-9v3" customClass="BikeInfoViewController" customModule="WunderLINQ" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xhC-Jc-QyJ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VIN" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iDW-er-4a7" customClass="LocalisableLabel" customModule="WunderLINQ" customModuleProvider="target">
-                                <rect key="frame" x="16" y="36" width="163.5" height="24"/>
+                                <rect key="frame" x="16" y="16" width="163.5" height="24"/>
                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -1570,7 +1567,7 @@ Cgo
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Next Service Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="o2t-Fs-lwV" customClass="LocalisableLabel" customModule="WunderLINQ" customModuleProvider="target">
-                                <rect key="frame" x="16" y="76" width="163.5" height="24"/>
+                                <rect key="frame" x="16" y="56" width="163.5" height="24"/>
                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -1579,7 +1576,7 @@ Cgo
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Next Service" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jTm-if-vUI" customClass="LocalisableLabel" customModule="WunderLINQ" customModuleProvider="target">
-                                <rect key="frame" x="16" y="116" width="163.5" height="24"/>
+                                <rect key="frame" x="16" y="96" width="163.5" height="24"/>
                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -1588,19 +1585,19 @@ Cgo
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xhl-61-hyH">
-                                <rect key="frame" x="195.5" y="36" width="163.5" height="24"/>
+                                <rect key="frame" x="195.5" y="16" width="163.5" height="24"/>
                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zq8-qI-2qg">
-                                <rect key="frame" x="195.5" y="76" width="163.5" height="24"/>
+                                <rect key="frame" x="195.5" y="56" width="163.5" height="24"/>
                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ns3-eT-lTX">
-                                <rect key="frame" x="195.5" y="116" width="163.5" height="24"/>
+                                <rect key="frame" x="195.5" y="96" width="163.5" height="24"/>
                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -1648,18 +1645,18 @@ Cgo
             <objects>
                 <viewController title="Trip" id="mYA-Xe-W7Q" customClass="TripViewController" customModule="WunderLINQ" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6Ds-aL-SNb">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eoN-Uk-I42" customClass="GMSMapView">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="303"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="323"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="ignoresInvertColors" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="18p-lr-k8r" customClass="LocalisableButton" customModule="WunderLINQ" customModuleProvider="target">
-                                <rect key="frame" x="16" y="557" width="343" height="30"/>
+                                <rect key="frame" x="16" y="577" width="343" height="30"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" weight="black" pointSize="15"/>
                                 <state key="normal">
@@ -1673,7 +1670,7 @@ Cgo
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hKk-Ix-tzj" customClass="LocalisableButton" customModule="WunderLINQ" customModuleProvider="target">
-                                <rect key="frame" x="16" y="519" width="343" height="30"/>
+                                <rect key="frame" x="16" y="539" width="343" height="30"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" weight="black" pointSize="15"/>
                                 <state key="normal">
@@ -1687,7 +1684,7 @@ Cgo
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rXB-ew-aZu" customClass="LocalisableLabel" customModule="WunderLINQ" customModuleProvider="target">
-                                <rect key="frame" x="16" y="311" width="167.5" height="18"/>
+                                <rect key="frame" x="16" y="331" width="167.5" height="18"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="18" id="4l3-JV-5tT"/>
                                 </constraints>
@@ -1699,7 +1696,7 @@ Cgo
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Distance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w4h-nK-exC" customClass="LocalisableLabel" customModule="WunderLINQ" customModuleProvider="target">
-                                <rect key="frame" x="16" y="337" width="167.5" height="18"/>
+                                <rect key="frame" x="16" y="357" width="167.5" height="18"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="18" id="mbH-tx-0dW"/>
                                 </constraints>
@@ -1711,7 +1708,7 @@ Cgo
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Duration" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x1d-vH-HuA" customClass="LocalisableLabel" customModule="WunderLINQ" customModuleProvider="target">
-                                <rect key="frame" x="16" y="363" width="167.5" height="18"/>
+                                <rect key="frame" x="16" y="383" width="167.5" height="18"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="18" id="gkD-bK-qLA"/>
                                 </constraints>
@@ -1723,7 +1720,7 @@ Cgo
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Speed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="btU-DP-vjf" customClass="LocalisableLabel" customModule="WunderLINQ" customModuleProvider="target">
-                                <rect key="frame" x="16" y="389" width="167.5" height="18"/>
+                                <rect key="frame" x="16" y="409" width="167.5" height="18"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="18" id="IVx-o1-yp8"/>
                                 </constraints>
@@ -1735,7 +1732,7 @@ Cgo
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Brakes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xX6-X5-NcR" customClass="LocalisableLabel" customModule="WunderLINQ" customModuleProvider="target">
-                                <rect key="frame" x="16" y="441" width="167.5" height="18"/>
+                                <rect key="frame" x="16" y="461" width="167.5" height="18"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="18" id="DFu-YC-3qq"/>
                                 </constraints>
@@ -1747,7 +1744,7 @@ Cgo
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ambient" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s0y-qf-aoG" customClass="LocalisableLabel" customModule="WunderLINQ" customModuleProvider="target">
-                                <rect key="frame" x="16" y="467" width="167.5" height="18"/>
+                                <rect key="frame" x="16" y="487" width="167.5" height="18"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="18" id="xRM-BY-AGR"/>
                                 </constraints>
@@ -1759,7 +1756,7 @@ Cgo
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Engine" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OeP-Rl-JEv" customClass="LocalisableLabel" customModule="WunderLINQ" customModuleProvider="target">
-                                <rect key="frame" x="16" y="493" width="167.5" height="18"/>
+                                <rect key="frame" x="16" y="513" width="167.5" height="18"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="18" id="IuZ-MI-ycZ"/>
                                 </constraints>
@@ -1771,7 +1768,7 @@ Cgo
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QyA-Qw-lKe">
-                                <rect key="frame" x="191.5" y="311" width="167.5" height="18"/>
+                                <rect key="frame" x="191.5" y="331" width="167.5" height="18"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="18" id="Fu0-XN-Puy"/>
                                 </constraints>
@@ -1780,7 +1777,7 @@ Cgo
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1tD-2z-WFW">
-                                <rect key="frame" x="191.5" y="337" width="167.5" height="18"/>
+                                <rect key="frame" x="191.5" y="357" width="167.5" height="18"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="18" id="02c-Gw-Ibb"/>
                                 </constraints>
@@ -1789,7 +1786,7 @@ Cgo
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xwo-hG-jpT">
-                                <rect key="frame" x="191.5" y="363" width="167.5" height="18"/>
+                                <rect key="frame" x="191.5" y="383" width="167.5" height="18"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="18" id="2bw-O5-qM0"/>
                                 </constraints>
@@ -1798,7 +1795,7 @@ Cgo
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bLH-7y-ppF">
-                                <rect key="frame" x="191.5" y="389" width="167.5" height="18"/>
+                                <rect key="frame" x="191.5" y="409" width="167.5" height="18"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="18" id="mqX-MP-ieR"/>
                                 </constraints>
@@ -1807,7 +1804,7 @@ Cgo
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4cL-38-zpa">
-                                <rect key="frame" x="191.5" y="415" width="167.5" height="18"/>
+                                <rect key="frame" x="191.5" y="435" width="167.5" height="18"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="18" id="Op5-Oz-akR"/>
                                 </constraints>
@@ -1816,7 +1813,7 @@ Cgo
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S0R-bS-23A">
-                                <rect key="frame" x="191.5" y="441" width="167.5" height="18"/>
+                                <rect key="frame" x="191.5" y="461" width="167.5" height="18"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="18" id="qsb-DB-Czq"/>
                                 </constraints>
@@ -1825,7 +1822,7 @@ Cgo
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S3O-0j-Cx7">
-                                <rect key="frame" x="191.5" y="493" width="167.5" height="18"/>
+                                <rect key="frame" x="191.5" y="513" width="167.5" height="18"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="18" id="wL5-OK-Xqx"/>
                                 </constraints>
@@ -1834,7 +1831,7 @@ Cgo
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rP8-SI-D3M">
-                                <rect key="frame" x="191.5" y="467" width="167.5" height="18"/>
+                                <rect key="frame" x="191.5" y="487" width="167.5" height="18"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="18" id="pfM-0m-Tja"/>
                                 </constraints>
@@ -1843,7 +1840,7 @@ Cgo
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gear" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DWL-yK-icr" customClass="LocalisableLabel" customModule="WunderLINQ" customModuleProvider="target">
-                                <rect key="frame" x="16" y="415" width="167.5" height="18"/>
+                                <rect key="frame" x="16" y="435" width="167.5" height="18"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="18" id="xOK-Ec-8TR"/>
                                 </constraints>
@@ -1943,7 +1940,7 @@ Cgo
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="PSM-zq-09s" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="5a7-y8-OXS">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -1968,10 +1965,10 @@ Cgo
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="gIM-fx-mWk"/>
-        <segue reference="BW3-cQ-MYh"/>
+        <segue reference="end-im-meh"/>
         <segue reference="qQx-7G-0NR"/>
-        <segue reference="1ij-RL-89b"/>
-        <segue reference="EVI-4B-2VB"/>
+        <segue reference="Mvj-Z7-A9C"/>
+        <segue reference="kry-jp-5q5"/>
         <segue reference="gfr-gj-BUz"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
