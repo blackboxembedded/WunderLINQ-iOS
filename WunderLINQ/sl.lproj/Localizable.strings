@@ -54,7 +54,7 @@
 "fw_config_title" = "WunderLINQ nastavitve";
 "wwtype_label" = "Vrsta kolesa";
 "wwMode1" = "Polno";
-"wwMode2" = "RT";
+"wwMode2" = "RT/K1600";
 "wwMode3" = "Po meri";
 "sensitivity_label" = "Občutljivost dotika";
 "config_write_label" = "Shrani nastavitve";
