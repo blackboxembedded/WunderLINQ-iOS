@@ -21,7 +21,7 @@
 "negative_contacts_alert_body" = "Mivel nem járultál hozzá a telefonkönyvhez való hozzáféréshez, az applikáció nem tud hivható kpcsolatokat kijelezni.";
 "negative_camera_alert_body" = "Mivel nem engedélyezted a kamerához való hozzáférést, az applikáció nem tud fényképeket vagy videókat rögzíteni.";
 "negative_microphone_alert_body" = "Mivel nem engedélyezted a mikrofonhoz való hozzáférést, az applikáció nem tud videókat rögzíteni.";
-"negative_notification_body" = "Mivel nem járultál hozzá az értesítések megjelenítéséhez, az applikáció nem lesz képes a hibákról értesítést küldeni";
+"negative_notification_alert_body" = "Mivel nem járultál hozzá az értesítések megjelenítéséhez, az applikáció nem lesz képes a hibákról értesítést küldeni";
 "alert_message_exit_ok" = "OK";
 "negative_alert_btn_ok" = "Beállítások";
 "negative_alert_btn_cancel" = "Megszakítás";

@@ -21,7 +21,7 @@
 "negative_contacts_alert_body" = "Como el acceso a los contactos no ha sido permitido, esta aplicación no podrá mostrar los contactos para llamarlos.";
 "negative_camera_alert_body" = "Como el acceso a la cámara no ha sido permitido, esta aplicación no podrá tomar fotos ni videos.";
 "negative_microphone_alert_body" = "Como el acceso al mícrófoto no ha sido permitido, esta aplicación no podrá grabar videos.";
-"negative_notification_body" = "Como las notificaciones no están permitidas, esta aplicación no podrá enviar notificaciones por fallos";
+"negative_notification_alert_body" = "Como las notificaciones no están permitidas, esta aplicación no podrá enviar notificaciones por fallos";
 "alert_message_exit_ok" = "OK";
 "negative_alert_btn_ok" = "Abrir Ajustes";
 "negative_alert_btn_cancel" = "Cancelar";

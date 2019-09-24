@@ -21,7 +21,7 @@
 "negative_contacts_alert_body" = "Ker dostop do stikov ni dovoljen, aplikacija ne bo prikazovala stikov za klic.";
 "negative_camera_alert_body" = "Ker dostop do kamere ni dovoljen, aplikacija ne bo zajemala slik ali videoposnetkov.";
 "negative_microphone_alert_body" = "Ker dostop do mikrofona ni dovoljen, aplikacija ne bo zajemala videoposnetkov.";
-"negative_notification_body" = "Ker obvestila niso dovoljena, aplikacija ne bo prikazovala obvestil o napakah";
+"negative_notification_alert_body" = "Ker obvestila niso dovoljena, aplikacija ne bo prikazovala obvestil o napakah";
 "alert_message_exit_ok" = "V redu";
 "negative_alert_btn_ok" = "Odpri nastavitve";
 "negative_alert_btn_cancel" = "Prekliči";

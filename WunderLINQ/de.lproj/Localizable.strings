@@ -21,7 +21,7 @@
 "negative_contacts_alert_body" = "Weil Zugriff auf das Adressbuch nicht erlaubt wurde, kann diese App bei Anrufen keine Kontaktdaten anzeigen.";
 "negative_camera_alert_body" = "Weil Kamerazugriff nicht gewährt wurde, kann diese App keine Fotos oder Videos aufnehmen.";
 "negative_microphone_alert_body" = "Weil Mikrofonzugriff nicht gewährt wurde, kann diese App keine Videos aufnehmen.";
-"negative_notification_body" = "Weil Benachrichtigungen nicht erlaubt wurden, kann diese App keine Fehler-Benachrichtigungen anzeigen.";
+"negative_notification_alert_body" = "Weil Benachrichtigungen nicht erlaubt wurden, kann diese App keine Fehler-Benachrichtigungen anzeigen.";
 "alert_message_exit_ok" = "OK";
 "negative_alert_btn_ok" = "Einstellungen öffnen";
 "negative_alert_btn_cancel" = "Abbruch";

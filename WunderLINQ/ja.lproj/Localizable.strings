@@ -21,7 +21,7 @@
 "negative_contacts_alert_body" = "連絡先へのアクセスが許可されていないため連絡先を表示出来ません.";
 "negative_camera_alert_body" = "カメラへのアクセスが許可されていないため写真やビデオが撮影出来ません.";
 "negative_microphone_alert_body" = "マイクへのアクセスが許可されていないためビデオ撮影が出来ません.";
-"negative_notification_body" = "通知が許可されていないため異常通知が行えません";
+"negative_notification_alert_body" = "通知が許可されていないため異常通知が行えません";
 "alert_message_exit_ok" = "ＯＫ";
 "negative_alert_btn_ok" = "設定を開く";
 "negative_alert_btn_cancel" = "キャンセル";

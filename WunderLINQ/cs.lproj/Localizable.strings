@@ -21,7 +21,7 @@
 "negative_contacts_alert_body" = "Chybí oprávnění k přístupu ke kontaktům - nebude možné iniciovat hovor z aplikace.";
 "negative_camera_alert_body" = "Chybí oprávnění k použití kamery, nebude možné pořizovat fotky nebo nahrávat video.";
 "negative_microphone_alert_body" = "Chybí oprávnění k použití mikrofonu, nebude možné nahrávat video.";
-"negative_notification_body" = "Chybí oprávnění k zasílání upozornění - aplikace nebude upozorňovat na chyby.";
+"negative_notification_alert_body" = "Chybí oprávnění k zasílání upozornění - aplikace nebude upozorňovat na chyby.";
 "alert_message_exit_ok" = "OK";
 "negative_alert_btn_ok" = "Nastavení";
 "negative_alert_btn_cancel" = "Zrušit";
