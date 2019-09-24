@@ -3853,7 +3853,9 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             seconds = 10
             // Hide the navigation bar on the this view controller
             self.navigationController?.setNavigationBarHidden(true, animated: true)
-            collectionView.reloadData()
+            if (self.collectionView != nil){
+                self.collectionView!.reloadData()
+            }
         } else {
             seconds -= 1
         }
