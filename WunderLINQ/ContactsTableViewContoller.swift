@@ -169,14 +169,26 @@ class ContactsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if UserDefaults.standard.bool(forKey: "nightmode_preference") {
-            Theme.dark.apply()
-            self.navigationController?.isNavigationBarHidden = true
-            self.navigationController?.isNavigationBarHidden = false
+        if #available(iOS 13.0, *) {
+            
         } else {
-            Theme.default.apply()
-            self.navigationController?.isNavigationBarHidden = true
-            self.navigationController?.isNavigationBarHidden = false
+            switch(UserDefaults.standard.integer(forKey: "darkmode_preference")){
+            case 0:
+                //OFF
+                Theme.default.apply()
+                self.navigationController?.isNavigationBarHidden = true
+                self.navigationController?.isNavigationBarHidden = false
+            case 1:
+                //On
+                Theme.dark.apply()
+                self.navigationController?.isNavigationBarHidden = true
+                self.navigationController?.isNavigationBarHidden = false
+            default:
+                //Default
+                Theme.default.apply()
+                self.navigationController?.isNavigationBarHidden = true
+                self.navigationController?.isNavigationBarHidden = false
+            }
         }
         
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))
@@ -185,6 +197,9 @@ class ContactsTableViewController: UITableViewController {
         
         let backBtn = UIButton()
         backBtn.setImage(UIImage(named: "Left")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        if #available(iOS 13.0, *) {
+            backBtn.tintColor = UIColor(named: "imageTint")
+        }
         backBtn.addTarget(self, action: #selector(leftScreen), for: .touchUpInside)
         let backButton = UIBarButtonItem(customView: backBtn)
         let backButtonWidth = backButton.customView?.widthAnchor.constraint(equalToConstant: 30)
@@ -235,18 +250,51 @@ class ContactsTableViewController: UITableViewController {
         if (itemRow == indexPath.row){
             cell.highlightEffect()
         } else {
+            if #available(iOS 13.0, *) {
+                cell.removeHighlight(color: UIColor(named: "backgrounds")!)
+            } else {
+                switch(UserDefaults.standard.integer(forKey: "darkmode_preference")){
+                case 0:
+                    //OFF
+                    cell.removeHighlight(color: UIColor.white)
+                case 1:
+                    //On
+                    cell.removeHighlight(color: UIColor.black)
+                default:
+                    //Default
+                    cell.removeHighlight(color: UIColor.white)
+                }
+            }
+            /*
             if UserDefaults.standard.bool(forKey: "nightmode_preference") {
                 cell.removeHighlight(color: UIColor.black)
             } else {
                 cell.removeHighlight(color: UIColor.white)
             }
+             */
         }
-        
+        if #available(iOS 13.0, *) {
+            cell.contactImage.tintColor = UIColor(named: "imageTint")
+        } else {
+            switch(UserDefaults.standard.integer(forKey: "darkmode_preference")){
+            case 0:
+                //OFF
+                cell.contactImage.tintColor = UIColor.black
+            case 1:
+                //On
+                cell.contactImage.tintColor = UIColor.white
+            default:
+                //Default
+                cell.contactImage.tintColor = UIColor.black
+            }
+        }
+        /*
         if UserDefaults.standard.bool(forKey: "nightmode_preference") {
             cell.contactImage.tintColor = UIColor.white
         } else {
             cell.contactImage.tintColor = UIColor.black
         }
+         */
         
         return cell
     }
@@ -254,51 +302,6 @@ class ContactsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         call_contact(contactID: indexPath.row)
     }
-    
-    /*
-     // Override to support conditional editing of the table view.
-     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-     // Return false if you do not want the specified item to be editable.
-     return true
-     }
-     */
-    
-    /*
-     // Override to support editing the table view.
-     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-     if editingStyle == .delete {
-     // Delete the row from the data source
-     tableView.deleteRows(at: [indexPath], with: .fade)
-     } else if editingStyle == .insert {
-     // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-     }
-     }
-     */
-    
-    /*
-     // Override to support rearranging the table view.
-     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-     
-     }
-     */
-    
-    /*
-     // Override to support conditional rearranging of the table view.
-     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-     // Return false if you do not want the item to be re-orderable.
-     return true
-     }
-     */
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
     
 }
 

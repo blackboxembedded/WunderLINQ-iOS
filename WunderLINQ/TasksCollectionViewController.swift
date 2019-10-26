@@ -159,7 +159,6 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
         if actionCamIsRecording{
             actionCamLabel = NSLocalizedString("task_title_actioncam_stop_video", comment: "")
         }
-        print("Label: \(actionCamLabel)")
         guard let task11 = Tasks(label: actionCamLabel, icon: UIImage(named: "VideoCamera")?.withRenderingMode(.alwaysTemplate)) else {
             fatalError("Unable to instantiate ActionCam Video Recording Task")
         }
@@ -1019,8 +1018,21 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
     
     @objc func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
         if gesture.direction == UISwipeGestureRecognizer.Direction.right {
-             _ = navigationController?.popViewController(animated: true)
+             //_ = navigationController?.popViewController(animated: true)
             //performSegue(withIdentifier: "tasksToMusic", sender: [])
+            let secondViewController = self.storyboard!.instantiateViewController(withIdentifier: "MusicViewController") as! MusicViewController
+            if let viewControllers = self.navigationController?.viewControllers
+            {
+                if viewControllers.contains(where: {
+                    return $0 is MusicViewController
+                })
+                {
+                     _ = navigationController?.popViewController(animated: true)
+                    
+                } else {
+                    self.navigationController!.pushViewController(secondViewController, animated: true)
+                }
+            }
         }
         else if gesture.direction == UISwipeGestureRecognizer.Direction.left {
             navigationController?.popToRootViewController(animated: true)
@@ -1038,14 +1050,38 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
         //self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
 
         // Do any additional setup after loading the view.
-        if UserDefaults.standard.bool(forKey: "nightmode_preference") {
-            Theme.dark.apply()
-            self.navigationController?.isNavigationBarHidden = true
-            self.navigationController?.isNavigationBarHidden = false
-        } else {
-            Theme.default.apply()
-            self.navigationController?.isNavigationBarHidden = true
-            self.navigationController?.isNavigationBarHidden = false
+        
+        switch(UserDefaults.standard.integer(forKey: "darkmode_preference")){
+        case 0:
+            //OFF
+            if #available(iOS 13.0, *) {
+                overrideUserInterfaceStyle = .light
+                self.navigationController?.isNavigationBarHidden = true
+                self.navigationController?.isNavigationBarHidden = false
+            } else {
+                Theme.default.apply()
+                self.navigationController?.isNavigationBarHidden = true
+                self.navigationController?.isNavigationBarHidden = false
+            }
+        case 1:
+            //On
+            if #available(iOS 13.0, *) {
+                overrideUserInterfaceStyle = .dark
+                self.navigationController?.isNavigationBarHidden = true
+                self.navigationController?.isNavigationBarHidden = false
+            } else {
+                Theme.dark.apply()
+                self.navigationController?.isNavigationBarHidden = true
+                self.navigationController?.isNavigationBarHidden = false
+            }
+        default:
+            //Default
+            if #available(iOS 13.0, *) {
+            } else {
+                Theme.default.apply()
+                self.navigationController?.isNavigationBarHidden = true
+                self.navigationController?.isNavigationBarHidden = false
+            }
         }
         
         let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))
@@ -1058,6 +1094,9 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
         
         let backBtn = UIButton()
         backBtn.setImage(UIImage(named: "Left")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        if #available(iOS 13.0, *) {
+            backBtn.tintColor = UIColor(named: "imageTint")
+        }
         backBtn.addTarget(self, action: #selector(leftScreen), for: .touchUpInside)
         let backButton = UIBarButtonItem(customView: backBtn)
         let backButtonWidth = backButton.customView?.widthAnchor.constraint(equalToConstant: 30)
@@ -1067,6 +1106,9 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
         
         let forwardBtn = UIButton()
         forwardBtn.setImage(UIImage(named: "Right")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        if #available(iOS 13.0, *) {
+            forwardBtn.tintColor = UIColor(named: "imageTint")
+        }
         forwardBtn.addTarget(self, action: #selector(rightScreen), for: .touchUpInside)
         let forwardButton = UIBarButtonItem(customView: forwardBtn)
         let forwardButtonWidth = forwardButton.customView?.widthAnchor.constraint(equalToConstant: 30)
@@ -1444,10 +1486,25 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
     }
     
     override var preferredStatusBarStyle : UIStatusBarStyle {
-        if UserDefaults.standard.bool(forKey: "nightmode_preference") {
-            return .lightContent
-        } else {
+        
+        switch(UserDefaults.standard.integer(forKey: "darkmode_preference")){
+        case 0:
+            //OFF
             return .default
+        case 1:
+            //On
+            return .lightContent
+        default:
+            //Default
+            if #available(iOS 13.0, *) {
+                if traitCollection.userInterfaceStyle == .light {
+                    return .darkContent
+                } else {
+                    return .lightContent
+                }
+            } else {
+                return .default
+            }
         }
     }
     
@@ -1475,16 +1532,6 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
         // Show the navigation bar on other view controllers
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-    }
-    */
 
     // MARK: UICollectionViewDataSource
 
@@ -1546,37 +1593,6 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
         let sectionInset = UIEdgeInsets.init(top: 0, left: 0, bottom: 0, right: 0)
         return sectionInset
     }
-
-    // MARK: UICollectionViewDelegate
-
-    /*
-    // Uncomment this method to specify if the specified item should be highlighted during tracking
-    override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment this method to specify if the specified item should be selected
-    override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-    override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
-    
-    }
-    */
     
     func saveWaypoint(){
         // Waypoint stuff below

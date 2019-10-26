@@ -47,26 +47,61 @@ class MusicViewController: UIViewController {
     var trackElapsed: TimeInterval!
     
     override var preferredStatusBarStyle : UIStatusBarStyle {
-        if UserDefaults.standard.bool(forKey: "nightmode_preference") {
-            print("StausBarStyle: Setting lightContent")
-            return .lightContent
-        } else {
-            print("StausBarStyle: Setting default")
+        switch(UserDefaults.standard.integer(forKey: "darkmode_preference")){
+        case 0:
+            //OFF
             return .default
+        case 1:
+            //On
+            return .lightContent
+        default:
+            //Default
+            if #available(iOS 13.0, *) {
+                if traitCollection.userInterfaceStyle == .light {
+                    return .darkContent
+                } else {
+                    return .lightContent
+                }
+            } else {
+                return .default
+            }
         }
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        if UserDefaults.standard.bool(forKey: "nightmode_preference") {
-            Theme.dark.apply()
-            self.navigationController?.isNavigationBarHidden = true
-            self.navigationController?.isNavigationBarHidden = false
-        } else {
-            Theme.default.apply()
-            self.navigationController?.isNavigationBarHidden = true
-            self.navigationController?.isNavigationBarHidden = false
+
+        switch(UserDefaults.standard.integer(forKey: "darkmode_preference")){
+        case 0:
+            //OFF
+            if #available(iOS 13.0, *) {
+                overrideUserInterfaceStyle = .light
+                self.navigationController?.isNavigationBarHidden = true
+                self.navigationController?.isNavigationBarHidden = false
+            } else {
+                Theme.default.apply()
+                self.navigationController?.isNavigationBarHidden = true
+                self.navigationController?.isNavigationBarHidden = false
+            }
+        case 1:
+            //On
+            if #available(iOS 13.0, *) {
+                overrideUserInterfaceStyle = .dark
+                self.navigationController?.isNavigationBarHidden = true
+                self.navigationController?.isNavigationBarHidden = false
+            } else {
+                Theme.dark.apply()
+                self.navigationController?.isNavigationBarHidden = true
+                self.navigationController?.isNavigationBarHidden = false
+            }
+        default:
+            //Default
+            if #available(iOS 13.0, *) {
+            } else {
+                Theme.default.apply()
+                self.navigationController?.isNavigationBarHidden = true
+                self.navigationController?.isNavigationBarHidden = false
+            }
         }
         
         let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))
@@ -82,6 +117,9 @@ class MusicViewController: UIViewController {
         
         let backBtn = UIButton()
         backBtn.setImage(UIImage(named: "Left")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        if #available(iOS 13.0, *) {
+            backBtn.tintColor = UIColor(named: "imageTint")
+        }
         backBtn.addTarget(self, action: #selector(leftScreen), for: .touchUpInside)
         let backButton = UIBarButtonItem(customView: backBtn)
         let backButtonWidth = backButton.customView?.widthAnchor.constraint(equalToConstant: 30)
@@ -91,6 +129,9 @@ class MusicViewController: UIViewController {
         
         let forwardBtn = UIButton()
         forwardBtn.setImage(UIImage(named: "Right")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        if #available(iOS 13.0, *) {
+            forwardBtn.tintColor = UIColor(named: "imageTint")
+        }
         forwardBtn.addTarget(self, action: #selector(rightScreen), for: .touchUpInside)
         let forwardButton = UIBarButtonItem(customView: forwardBtn)
         let forwardButtonWidth = forwardButton.customView?.widthAnchor.constraint(equalToConstant: 30)
@@ -145,13 +186,6 @@ class MusicViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    // MARK: - Handling User Interaction
-    /*
-    @IBAction func prepareForUnwind(segue: UIStoryboardSegue) {
-        
-    }
-    */
     
     @objc func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
         if gesture.direction == UISwipeGestureRecognizer.Direction.right {
@@ -233,16 +267,6 @@ class MusicViewController: UIViewController {
     @IBAction func nextButton(_ sender: UIButton) {
         musicPlayer.skipToNextItem()
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
     
     @objc func timerFired(_:AnyObject) {
         if let currentTrack = MPMusicPlayerController.systemMusicPlayer.nowPlayingItem {

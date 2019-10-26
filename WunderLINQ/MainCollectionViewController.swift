@@ -64,6 +64,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     fileprivate var popover: Popover!
     fileprivate var popoverOptions: [PopoverOption] = [
         .type(.auto),
+        .color(UIColor(named: "backgrounds")!),
         .blackOverlayColor(UIColor(white: 0.0, alpha: 0.6))
     ]
     
@@ -153,17 +154,61 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     }
 
     override var preferredStatusBarStyle : UIStatusBarStyle {
-        if UserDefaults.standard.bool(forKey: "nightmode_preference") {
+        switch(UserDefaults.standard.integer(forKey: "darkmode_preference")){
+        case 0:
+            //OFF
             if(self.navigationController?.isToolbarHidden ?? false){
+                if UserDefaults.standard.bool(forKey: "motorcycle_data_preference") {
+                    return .default
+                } else {
+                    return .lightContent
+                }
+            } else {
                 return .default
+            }
+        case 1:
+            //On
+            if(self.navigationController?.isToolbarHidden ?? false){
+                if UserDefaults.standard.bool(forKey: "motorcycle_data_preference") {
+                    return .lightContent
+                } else {
+                    return .default
+                }
             } else {
                 return .lightContent
             }
-        } else {
-            if(self.navigationController?.isToolbarHidden ?? false){
-                return .lightContent
+        default:
+            //Default
+            if #available(iOS 13.0, *) {
+                if traitCollection.userInterfaceStyle == .light {
+                    //OFF
+                    if(self.navigationController?.isToolbarHidden ?? false){
+                        if UserDefaults.standard.bool(forKey: "motorcycle_data_preference") {
+                            return .darkContent
+                        } else {
+                            return .lightContent
+                        }
+                    } else {
+                        return .darkContent
+                    }
+                } else {
+                    //On
+                    if(self.navigationController?.isToolbarHidden ?? false){
+                        if UserDefaults.standard.bool(forKey: "motorcycle_data_preference") {
+                            return .lightContent
+                        } else {
+                            return .darkContent
+                        }
+                    } else {
+                        return .lightContent
+                    }
+                }
             } else {
-                return .default
+                if(self.navigationController?.isToolbarHidden ?? false){
+                    return .lightContent
+                } else {
+                    return .default
+                }
             }
         }
     }
@@ -179,65 +224,76 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Register cell classes
-        //self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-
-        // Do any additional setup after loading the view.
         
         collectionView.delegate = self
         collectionView.dataSource = self
         
         registerSettingsBundle()
         NotificationCenter.default.addObserver(self, selector: #selector(self.defaultsChanged), name: UserDefaults.didChangeNotification, object: nil)
-        if UserDefaults.standard.bool(forKey: "nightmode_preference") {
-            Theme.dark.apply()
-            self.navigationController?.isNavigationBarHidden = true
-            self.navigationController?.isNavigationBarHidden = false
-        } else {
-            Theme.default.apply()
-            self.navigationController?.isNavigationBarHidden = true
-            self.navigationController?.isNavigationBarHidden = false
+        
+        switch(UserDefaults.standard.integer(forKey: "darkmode_preference")){
+        case 0:
+            //OFF
+            if #available(iOS 13.0, *) {
+                overrideUserInterfaceStyle = .light
+                self.navigationController?.isNavigationBarHidden = true
+                self.navigationController?.isNavigationBarHidden = false
+            } else {
+                Theme.default.apply()
+                self.navigationController?.isNavigationBarHidden = true
+                self.navigationController?.isNavigationBarHidden = false
+            }
+        case 1:
+            //On
+            if #available(iOS 13.0, *) {
+                overrideUserInterfaceStyle = .dark
+                self.navigationController?.isNavigationBarHidden = true
+                self.navigationController?.isNavigationBarHidden = false
+            } else {
+                Theme.dark.apply()
+                self.navigationController?.isNavigationBarHidden = true
+                self.navigationController?.isNavigationBarHidden = false
+            }
+        default:
+            //Default
+            //Default
+            if #available(iOS 13.0, *) {
+            } else {
+                Theme.default.apply()
+                self.navigationController?.isNavigationBarHidden = true
+                self.navigationController?.isNavigationBarHidden = false
+            }
         }
         
         if UserDefaults.standard.bool(forKey: "motorcycle_data_preference") {
             for mainUIView in self.mainUIView.subviews {
-            }
-            for mainUIView in self.mainUIView.subviews {
                 mainUIView.removeFromSuperview()
             }
-            
-            let label = UILabel(frame: CGRect(x: 0, y: 0, width: self.mainUIView.bounds.width, height: 75))
-            label.center = self.view.center
-            label.textAlignment = .center
-            var imageName = "wunderlinq_logo-black"
-            if UserDefaults.standard.bool(forKey: "nightmode_preference") {
-                label.textColor = .white
-                mainUIView.backgroundColor = .black
-                imageName = "wunderlinq_logo-white"
-                
+            var imageName = "wunderlinq_logo"
+            if #available(iOS 13.0, *) {
+                imageName = "wunderlinq_logo"
             } else {
-                label.textColor = .black
-                mainUIView.backgroundColor = .white
-                imageName = "wunderlinq_logo-black"
+                switch(UserDefaults.standard.integer(forKey: "darkmode_preference")){
+                case 0:
+                    //OFF
+                    mainUIView.backgroundColor = .white
+                    imageName = "wunderlinq_logo-black"
+                case 1:
+                    //On
+                    mainUIView.backgroundColor = .black
+                    imageName = "wunderlinq_logo-white"
+                default:
+                    //Default
+                    mainUIView.backgroundColor = .white
+                    imageName = "wunderlinq_logo-black"
+                }
             }
-            label.font = UIFont.boldSystemFont(ofSize: 40)
-            label.text = NSLocalizedString("product", comment: "")
             let image = UIImage(named: imageName)
             let imageView = UIImageView(image: image!)
             imageView.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: 200)
             imageView.center = self.view.center
             imageView.contentMode = .scaleAspectFit
             mainUIView.addSubview(imageView)
-        } else {
-            if UserDefaults.standard.bool(forKey: "nightmode_preference") {
-                collectionView.backgroundColor = .white
-            } else {
-                collectionView.backgroundColor = .black
-            }
         }
         
         if UserDefaults.standard.bool(forKey: "display_brightness_preference") {
@@ -277,6 +333,9 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         // Setup Buttons
         backBtn = UIButton()
         backBtn.setImage(UIImage(named: "Left")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        if #available(iOS 13.0, *) {
+            backBtn.tintColor = UIColor(named: "imageTint")
+        }
         backBtn.addTarget(self, action: #selector(leftScreen), for: .touchUpInside)
         backButton = UIBarButtonItem(customView: backBtn)
         let backButtonWidth = backButton.customView?.widthAnchor.constraint(equalToConstant: 30)
@@ -315,6 +374,9 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         
         menuBtn = UIButton()
         menuBtn.setImage(UIImage(named: "Menu")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        if #available(iOS 13.0, *) {
+            menuBtn.tintColor = UIColor(named: "imageTint")
+        }
         menuBtn.addTarget(self, action: #selector(menuButtonTapped), for: .touchUpInside)
         let menuButton = UIBarButtonItem(customView: menuBtn)
         let menuButtonWidth = menuButton.customView?.widthAnchor.constraint(equalToConstant: 30)
@@ -324,6 +386,9 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         
         let forwardBtn = UIButton()
         forwardBtn.setImage(UIImage(named: "Right")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        if #available(iOS 13.0, *) {
+            forwardBtn.tintColor = UIColor(named: "imageTint")
+        }
         forwardBtn.addTarget(self, action: #selector(rightScreen), for: .touchUpInside)
         let forwardButton = UIBarButtonItem(customView: forwardBtn)
         let forwardButtonWidth = forwardButton.customView?.widthAnchor.constraint(equalToConstant: 30)
@@ -513,11 +578,13 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                     widthMarginsAndInsets = inset * 2 + collectionView!.layoutMargins.left + collectionView!.layoutMargins.right + minimumInteritemSpacing * CGFloat(cellsPerRow - 1)
                     heightMarginsAndInsets = inset * 2 + (collectionView?.layoutMargins.top)! + collectionView!.layoutMargins.bottom + minimumInteritemSpacing * CGFloat(rowCount - 1)
                 }
+                /*
                 print("Screen Size: inset:\(inset)")
                 print("Screen Size: widthMarginsAndInsets:\(widthMarginsAndInsets)")
                 print("Screen Size: heightMarginsAndInsets:\(heightMarginsAndInsets)")
                 print("Screen Size: widthMarginsAndInsets:\(widthMarginsAndInsets)")
                 print("Screen Size: Height:\(size.height) and Width:\(size.width)")
+                */
                 if ( size.width > size.height){
                     switch (cellCount){
                     case 1:
@@ -605,23 +672,18 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             widthMarginsAndInsets = inset * 2 + collectionView.layoutMargins.left + collectionView.layoutMargins.right + minimumInteritemSpacing * CGFloat(cellsPerRow - 1)
             heightMarginsAndInsets = inset * 2 + collectionView.layoutMargins.top + collectionView.layoutMargins.bottom + minimumInteritemSpacing * CGFloat(rowCount - 1)
         }
+        /*
         print("Screen Size: inset:\(inset)")
         print("Screen Size: minimumInteritemSpacing:\(minimumInteritemSpacing)")
-        if #available(iOS 11.0, *) {
-            print("Screen Size: safeAreaInsets.left:\(self.view.safeAreaInsets.left)")
-            print("Screen Size: safeAreaInsets.right:\(self.view.safeAreaInsets.right)")
-            print("Screen Size: safeAreaInsets.top:\(self.view.safeAreaInsets.top)")
-            print("Screen Size: safeAreaInsets.bottom:\(self.view.safeAreaInsets.bottom)")
-        } else {
-            print("Screen Size: layoutMargins.left:\(collectionView.layoutMargins.left)")
-            print("Screen Size: layoutMargins.right:\(collectionView.layoutMargins.right)")
-            print("Screen Size: layoutMargins.top:\(collectionView.layoutMargins.top)")
-            print("Screen Size: layoutMargins.bottom:\(collectionView.layoutMargins.bottom)")
-        }
+        print("Screen Size: safeAreaInsets.left:\(self.view.safeAreaInsets.left)")
+        print("Screen Size: safeAreaInsets.right:\(self.view.safeAreaInsets.right)")
+        print("Screen Size: safeAreaInsets.top:\(self.view.safeAreaInsets.top)")
+        print("Screen Size: safeAreaInsets.bottom:\(self.view.safeAreaInsets.bottom)")
         print("Screen Size: heightMarginsAndInsets:\(heightMarginsAndInsets)")
         print("Screen Size: widthMarginsAndInsets:\(widthMarginsAndInsets)")
         print("Screen Size: mainUIView Height:\(mainUIView.bounds.height) and Width:\(mainUIView.bounds.width)")
         print("Screen Size: view Height:\(self.view.bounds.size.height) and Width:\(self.view.bounds.size.width)")
+        */
         var cellCount = UserDefaults.standard.integer(forKey: "GRIDCOUNT");
         if ( mainUIView.bounds.width > mainUIView.bounds.height){
             switch (cellCount){
@@ -726,11 +788,30 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! MainCollectionViewCell
-        if UserDefaults.standard.bool(forKey: "nightmode_preference") {
-            cell.setColors(backgroundColor: .black, textColor: .white)
+
+        if #available(iOS 13.0, *) {
+            //Nothing to do
         } else {
-            cell.setColors(backgroundColor: .white, textColor: .black)
+            switch(UserDefaults.standard.integer(forKey: "darkmode_preference")){
+            case 0:
+                //OFF
+                cell.setColors(backgroundColor: .white, textColor: .black)
+            case 1:
+                //On
+                cell.setColors(backgroundColor: .black, textColor: .white)
+            default:
+                //Default
+                cell.setColors(backgroundColor: .white, textColor: .black)
+            }
+            /*
+            if UserDefaults.standard.bool(forKey: "nightmode_preference") {
+                cell.setColors(backgroundColor: .black, textColor: .white)
+            } else {
+                cell.setColors(backgroundColor: .white, textColor: .black)
+            }
+            */
         }
+
         let label = getLabel(cell: indexPath.row + 1)
         cell.setLabel(label: label)
     
@@ -3002,8 +3083,8 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     
     @objc func defaultsChanged(notification:NSNotification){
         if let defaults = notification.object as? UserDefaults {
-            if defaults.bool(forKey: "nightmode_lastSet") != defaults.bool(forKey: "nightmode_preference"){
-                UserDefaults.standard.set(defaults.bool(forKey: "nightmode_preference"), forKey: "nightmode_lastSet")
+            if defaults.integer(forKey: "darkmode_lastSet") != defaults.integer(forKey: "darkmode_preference"){
+                UserDefaults.standard.set(defaults.integer(forKey: "darkmode_preference"), forKey: "darkmode_lastSet")
                 // quit app
                 exit(0)
             }
@@ -3093,7 +3174,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                 if granted == true {
                     // Authorized
                     //Nothing to do
-                    print("Allowed to access to Camera")
+                    NSLog("Allowed to access to Camera")
                 } else {
                     // Not allowed
                     // Prompt with warning and button to settings
@@ -3135,9 +3216,9 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         case .authorized:
             // Authorized
             //Nothing to do
-            print("Allowed to access to Camera")
+            NSLog("Allowed to access to Camera")
         @unknown default:
-            print("Unknown to access to Camera")
+            NSLog("Unknown to access to Camera")
         }
         
         //Microphone
@@ -3147,7 +3228,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                 if granted == true {
                     // Authorized
                     //Nothing to do
-                    print("Allowed to access to Microphone")
+                    NSLog("Allowed to access to Microphone")
                 } else {
                     // Not allowed
                     // Prompt with warning and button to settings
@@ -3189,9 +3270,9 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         case .authorized:
             // Authorized
             //Nothing to do
-            print("Allowed to access to Microphone")
+            NSLog("Allowed to access to Microphone")
         @unknown default:
-            print("Unknown to access to Microphone")
+            NSLog("Unknown to access to Microphone")
         }
         
         //Save to Photo Library
@@ -3201,7 +3282,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                 if status == .authorized{
                     // Authorized
                     //Nothing to do
-                    print("Allowed to access the Photo Library")
+                    NSLog("Allowed to access the Photo Library")
                 } else {
                     let alertController = UIAlertController(
                         title: NSLocalizedString("negative_alert_title", comment: ""),
@@ -3239,9 +3320,9 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         case .authorized:
             // Authorized
             //Nothing to do
-            print("Allowed to access the Photo Library")
+            NSLog("Allowed to access the Photo Library")
         @unknown default:
-            print("Unknown to access to Photo Library")
+            NSLog("Unknown to access to Photo Library")
         }
         
         //Play from Media Library
@@ -3249,7 +3330,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         case .authorized:
             // Authorized
             //Nothing to do
-            print("Allowed to access to Music Library")
+            NSLog("Allowed to access to Music Library")
         case .notDetermined:
             MPMediaLibrary.requestAuthorization() { status in
                 switch status {
@@ -3272,9 +3353,9 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                 case .authorized:
                     // Authorized
                     //Nothing to do
-                    print("Allowed to access to Music Library")
+                    NSLog("Allowed to access to Music Library")
                 @unknown default:
-                    print("Unknown to access to Music Library")
+                    NSLog("Unknown to access to Music Library")
                 }
             }
         case .denied, .restricted:
@@ -3294,7 +3375,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             alertController.addAction(openAction)
             self.present(alertController, animated: true, completion: nil)
         @unknown default:
-            print("Unknown to access to Music Library")
+            NSLog("Unknown to access to Music Library")
         }
         
         //Contacts
@@ -3303,7 +3384,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         case .authorized:
             // Authorized
             //Nothing to do
-            print("Allowed to access contacts")
+            NSLog("Allowed to access contacts")
         case .restricted, .denied:
             // Not allowed
             // Prompt with warning and button to settings
@@ -3327,7 +3408,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                 if granted {
                     // Authorized
                     //Nothing to do
-                    print("Allowed to access contacts")
+                    NSLog("Allowed to access contacts")
                 } else {
                     // Not allowed
                     // Prompt with warning and button to settings
@@ -3349,7 +3430,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                 }
             }
         @unknown default:
-            print("Unknown to access to Contacts")
+            NSLog("Unknown to access to Contacts")
         }
         
         // Notifications
@@ -3358,7 +3439,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             case .authorized:
                 // Authorized
                 //Nothing to do
-                print("Allowed to use Notifications")
+                NSLog("Allowed to use Notifications")
             case .provisional, .denied:
                 // Not allowed
                 // Prompt with warning and button to settings
@@ -3402,11 +3483,11 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                     } else {
                         // Authorized
                         //Nothing to do
-                        print("Allowed to use Notifications")
+                        NSLog("Allowed to use Notifications")
                     }
                 }
             @unknown default:
-                print("Unknown to access to Camera")
+                NSLog("Unknown to access to Camera")
             }
         }
         
@@ -3416,7 +3497,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         case .authorizedAlways:
             // Authorized
             //Nothing to do
-            print("Allowed Location Access")
+            NSLog("Allowed Location Access")
         case .notDetermined:
             locationManager.requestAlwaysAuthorization()
         case .authorizedWhenInUse, .restricted, .denied:
@@ -3436,7 +3517,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             alertController.addAction(openAction)
             self.present(alertController, animated: true, completion: nil)
         @unknown default:
-            print("Unknown to access to Location")
+            NSLog("Unknown to access to Location")
         }
     }
     
@@ -3930,15 +4011,27 @@ extension MainCollectionViewController: UITableViewDataSource {
     }
 }
 
+
 extension UINavigationController {
-    
     open override var preferredStatusBarStyle: UIStatusBarStyle {
-        print("UINavigationController: preferredStatusBarStyle")
-        if UserDefaults.standard.bool(forKey: "nightmode_preference") {
-            return .lightContent
-        } else {
-            print("UINavigationController: preferredStatusBarStyle - light")
+        switch(UserDefaults.standard.integer(forKey: "darkmode_preference")){
+        case 0:
+            //OFF
             return .default
+        case 1:
+            //On
+            return .lightContent
+        default:
+            //Default
+            if #available(iOS 13.0, *) {
+                if traitCollection.userInterfaceStyle == .light {
+                    return .default
+                } else {
+                    return .lightContent
+                }
+            } else {
+                return .default
+            }
         }
     }
 }

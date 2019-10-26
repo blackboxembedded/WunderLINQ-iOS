@@ -30,7 +30,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             GMSServices.provideAPIKey("***REMOVED***")
             // Override point for customization after application launch.
             
-            Theme.current.apply()
+            switch(UserDefaults.standard.integer(forKey: "darkmode_preference")){
+            case 0:
+                //OFF
+                if #available(iOS 13.0, *) {
+                    window?.overrideUserInterfaceStyle = .light
+                } else {
+                    Theme.default.apply()
+                }
+            case 1:
+                //On
+                if #available(iOS 13.0, *) {
+                    window?.overrideUserInterfaceStyle = .dark
+                } else {
+                    Theme.dark.apply()
+                }
+            default:
+                //Default
+                if #available(iOS 13.0, *) {
+                } else {
+                    Theme.default.apply()
+                }
+            }
             
             switch(UserDefaults.standard.integer(forKey: "orientation_preference")){
             case 0:

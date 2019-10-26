@@ -53,6 +53,7 @@ enum Theme: Int {
         UserDefaults.standard.synchronize()
         
         UILabel.appearance(whenContainedInInstancesOf: [MainCollectionViewController.self]).textColor = textColor
+        UICollectionView.appearance(whenContainedInInstancesOf: [MainCollectionViewController.self]).backgroundColor = textColor
 
         UIView.appearance(whenContainedInInstancesOf: [MusicViewController.self]).backgroundColor = backgroundColor
         UILabel.appearance(whenContainedInInstancesOf: [MusicViewController.self]).textColor = textColor
@@ -60,10 +61,12 @@ enum Theme: Int {
  
         UIView.appearance(whenContainedInInstancesOf: [TasksCollectionViewController.self]).backgroundColor = backgroundColor
         UILabel.appearance(whenContainedInInstancesOf: [TasksCollectionViewController.self]).textColor = textColor
+        UICollectionView.appearance(whenContainedInInstancesOf: [TasksCollectionViewController.self]).backgroundColor = backgroundColor
         UICollectionViewCell.appearance(whenContainedInInstancesOf: [TasksCollectionViewController.self]).backgroundColor = backgroundColor
         UICollectionViewCell.appearance(whenContainedInInstancesOf: [TasksCollectionViewController.self]).tintColor = mainColor
         
         UIView.appearance(whenContainedInInstancesOf: [MusicViewController.self]).backgroundColor = backgroundColor
+        UIImageView.appearance(whenContainedInInstancesOf: [MusicViewController.self]).backgroundColor = backgroundColor
         UILabel.appearance(whenContainedInInstancesOf: [MusicViewController.self]).textColor = textColor
         UIButton.appearance(whenContainedInInstancesOf: [MusicViewController.self]).tintColor = mainColor
         

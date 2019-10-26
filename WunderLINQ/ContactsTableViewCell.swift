@@ -20,9 +20,9 @@ class ContactsTableViewCell: UITableViewCell {
     }
     
     func highlightEffect(){
-        contactImage.backgroundColor = UIColor.blue
-        contactLabel.backgroundColor = UIColor.blue
-        contentView.backgroundColor = UIColor.blue
+        contactImage.backgroundColor = UIColor(named: "accent")!
+        contactLabel.backgroundColor = UIColor(named: "accent")!
+        contentView.backgroundColor = UIColor(named: "accent")!
     }
     
     func removeHighlight(color: UIColor){
