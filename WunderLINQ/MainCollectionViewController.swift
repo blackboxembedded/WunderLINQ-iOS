@@ -531,8 +531,9 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             
             let degrees = abs(Int(fixedHeading))
             //print("degrees: \(degrees) fixedHeading: \(fixedHeading)) newHeading: \(newHeading) angle(degrees): \(angle.radiansToDegrees) ")
-            
-            self.motorcycleData.setbearing(bearing: degrees)
+            if (!UserDefaults.standard.bool(forKey: "bearing_override_preference")){
+                self.motorcycleData.setbearing(bearing: degrees)
+            }
         }
         
         updateTimeTimer()

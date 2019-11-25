@@ -18,6 +18,9 @@ class LocationDelegate: NSObject, CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let currentLocation = locations.last else { return }
         motorcycleData.setLocation(location: currentLocation)
+        if (UserDefaults.standard.bool(forKey: "bearing_override_preference") && currentLocation.course >= 0){
+            motorcycleData.setbearing(bearing: Int(currentLocation.course))
+        }
         let loggingStatus = UserDefaults.standard.string(forKey: "loggingStatus")
         if loggingStatus != nil {
             //Log
