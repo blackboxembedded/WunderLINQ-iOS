@@ -16,8 +16,44 @@ import GoogleMaps
 import UserNotifications
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate, SPTAppRemoteDelegate {
 
+    private let spotifyRedirectUri = URL(string:"wunderlinq://music")!
+    private let spotifyClientIdentifier = "***REMOVED***"
+    
+    // keys
+    static private let kAccessTokenKey = "access-token-key"
+
+    var spotifyAccessToken = UserDefaults.standard.string(forKey: kAccessTokenKey) {
+        didSet {
+            let defaults = UserDefaults.standard
+            defaults.set(spotifyAccessToken, forKey: AppDelegate.kAccessTokenKey)
+            defaults.synchronize()
+        }
+    }
+    
+    var musicViewController: MusicViewController {
+        get {
+            let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let controller = mainStoryboard.instantiateViewController(withIdentifier: "MusicViewController") as! MusicViewController
+            return controller
+        }
+    }
+    
+    lazy var spotifyAppRemote: SPTAppRemote = {
+        let configuration = SPTConfiguration(clientID: self.spotifyClientIdentifier, redirectURL: self.spotifyRedirectUri)
+        let appRemote = SPTAppRemote(configuration: configuration, logLevel: .debug)
+        appRemote.connectionParameters.accessToken = self.spotifyAccessToken
+        appRemote.delegate = self
+        return appRemote
+    }()
+    
+    class var sharedInstance: AppDelegate {
+        get {
+            return UIApplication.shared.delegate as! AppDelegate
+        }
+    }
+    
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) ->
@@ -66,6 +102,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             
             UserDefaults.standard.set(UIScreen.main.brightness, forKey: "systemBrightness")
             
+            // Create and write to log file
             let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
             let documentsDirectory = paths[0]
             let fileName = "wunderlinq.log"
@@ -75,7 +112,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             return true
     }
     
-    /// set orientations you want to be allowed in this property by default
+    // set orientations you want to be allowed in this property by default
     var orientationLock = UIInterfaceOrientationMask.all
     
     func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
@@ -85,6 +122,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
+        print("applicationWillResignActive")
+        musicViewController.spotifyAppRemoteDisconnect()
+        spotifyAppRemote.disconnect()
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
@@ -98,6 +138,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        self.spotifyConnect();
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
@@ -111,32 +152,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         
         // Determine who sent the URL.
         let sendingAppID = options[.sourceApplication]
-        print("source application = \(sendingAppID ?? "Unknown")")
+        print("source application:  \(sendingAppID ?? "Unknown")")
+        print("URL: " + url.absoluteString)
+        let parameters = spotifyAppRemote.authorizationParameters(from: url);
+
+        if let access_token = parameters?[SPTAppRemoteAccessTokenKey] {
+            spotifyAppRemote.connectionParameters.accessToken = access_token
+            self.spotifyAccessToken = access_token
+        } else if let error_description = parameters?[SPTAppRemoteErrorDescriptionKey] {
+            print("AppDelegate Spotify Error: " + error_description)
+            musicViewController.showError(error_description);
+        }
         
         return true
-        // Process the URL.
-        /*
-         guard let components = NSURLComponents(url: url, resolvingAgainstBaseURL: true),
-         let albumPath = components.path,
-         let params = components.queryItems else {
-         print("Invalid URL or album path missing")
-         return false
-         }
-         
-         if let photoIndex = params.first(where: { $0.name == "index" })?.value {
-         print("albumPath = \(albumPath)")
-         print("photoIndex = \(photoIndex)")
-         return true
-         } else {
-         print("Photo index missing")
-         return false
-         }
-         }
-         */
     }
     
-    func registerDefaultsFromSettingsBundle()
-    {
+    func registerDefaultsFromSettingsBundle() {
         // Main Settings
         let rootSettingsUrl = Bundle.main.url(forResource: "Settings", withExtension: "bundle")!.appendingPathComponent("Root.plist")
         let settingsPlist = NSDictionary(contentsOf:rootSettingsUrl)!
@@ -196,6 +227,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             integrationsDefaultsToRegister[key] = preference["DefaultValue"]
         }
         UserDefaults.standard.register(defaults: integrationsDefaultsToRegister)
+    }
+    
+    func spotifyConnect() {
+        print("spotifyConnect()")
+        musicViewController.spotifyAppRemoteConnecting()
+        spotifyAppRemote.connect()
+    }
+    
+    // MARK: Spotify AppRemoteDelegate
+    func appRemoteDidEstablishConnection(_ appRemote: SPTAppRemote) {
+        print("appRemoteDidEstablishConnection")
+        self.spotifyAppRemote = appRemote
+        musicViewController.spotifyAppRemoteConnected()
+    }
+    
+    func appRemote(_ appRemote: SPTAppRemote, didFailConnectionAttemptWithError error: Error?) {
+        print("didFailConnectionAttemptWithError: " + error.debugDescription)
+        musicViewController.spotifyAppRemoteDisconnect()
+    }
+    
+    func appRemote(_ appRemote: SPTAppRemote, didDisconnectWithError error: Error?) {
+        print("didDisconnectWithError")
+        musicViewController.spotifyAppRemoteDisconnect()
     }
 }
 

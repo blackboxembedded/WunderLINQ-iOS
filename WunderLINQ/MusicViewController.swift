@@ -8,8 +8,14 @@
 
 import UIKit
 import MediaPlayer
+import StoreKit
 
-class MusicViewController: UIViewController {
+class MusicViewController: UIViewController, SPTAppRemotePlayerStateDelegate {
+
+    var timer = Timer()
+    var seconds = 10
+    var isTimerRunning = false
+    
     @IBOutlet weak var imageAlbum: UIImageView!
     @IBOutlet weak var artistLabel: UILabel!
     @IBOutlet weak var songLabel: UILabel!
@@ -20,31 +26,6 @@ class MusicViewController: UIViewController {
     
     let playImage = UIImage(named: "play")
     let pauseImage = UIImage(named: "pause")
-    
-    var seconds = 10
-    var timer = Timer()
-    var isTimerRunning = false
-    
-    @IBAction func previousBtnPress(_ sender: Any) {
-    }
-    @IBAction func playPauseBtnPress(_ sender: Any) {
-        print("play/pause touched")
-        if (musicPlayer.playbackState == MPMusicPlaybackState.playing) {
-            musicPlayer.pause()
-            playButton.setImage(playImage, for: .normal)
-            
-        } else {
-            musicPlayer.play()
-            playButton.setImage(pauseImage, for: .normal)
-        }
-    }
-    @IBAction func nextBtnPress(_ sender: Any) {
-    }
-    
-    let musicPlayer = MPMusicPlayerController.systemMusicPlayer
-    var musicTimer = Timer()
-    
-    var trackElapsed: TimeInterval!
     
     override var preferredStatusBarStyle : UIStatusBarStyle {
         switch(UserDefaults.standard.integer(forKey: "darkmode_preference")){
@@ -147,22 +128,30 @@ class MusicViewController: UIViewController {
         } else {
             UIScreen.main.brightness = CGFloat(UserDefaults.standard.float(forKey: "systemBrightness"))
         }
-
-        // Do any additional setup after loading the view.
-        musicPlayer.prepareToPlay()
         
-        self.musicTimer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(MusicViewController.timerFired(_:)), userInfo: nil, repeats: true)
-        self.musicTimer.tolerance = 0.1
-        
-        musicPlayer.beginGeneratingPlaybackNotifications()
-        
-        NotificationCenter.default.addObserver(self, selector:#selector(MusicViewController.updateNowPlayingInfo), name: NSNotification.Name.MPMusicPlayerControllerNowPlayingItemDidChange, object: nil)
-        
-        if (musicPlayer.playbackState == MPMusicPlaybackState.playing) {
-            playButton.setImage(pauseImage, for: .normal)
-
-        } else {
-            playButton.setImage(playImage, for: .normal)
+        let musicApp = UserDefaults.standard.integer(forKey: "musicplayer_preference")
+        switch (musicApp){
+        case 0: // Apple Music
+            appleMusicPlayer.prepareToPlay()
+            
+            self.appleMusicTimer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(MusicViewController.appleMusicTimerFired(_:)), userInfo: nil, repeats: true)
+            self.appleMusicTimer.tolerance = 0.1
+            
+            appleMusicPlayer.beginGeneratingPlaybackNotifications()
+            
+            NotificationCenter.default.addObserver(self, selector:#selector(MusicViewController.appleUpdateNowPlayingInfo), name: NSNotification.Name.MPMusicPlayerControllerNowPlayingItemDidChange, object: nil)
+            
+            if (appleMusicPlayer.playbackState == MPMusicPlaybackState.playing) {
+                updatePlayPauseButtonState(false)
+            } else {
+                updatePlayPauseButtonState(true)
+            }
+            break
+        case 1: // Spotify
+            spotifyGetPlayerState()
+            break
+        default:
+            break
         }
     }
     
@@ -173,9 +162,24 @@ class MusicViewController: UIViewController {
         }
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        let musicApp = UserDefaults.standard.integer(forKey: "musicplayer_preference")
+        switch (musicApp){
+        case 0: // Apple Music
+            // Do nothing
+            break
+        case 1: // Spotify
+            spotifyGetPlayerState()
+            break
+        default:
+            break
+        }
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        
         timer.invalidate()
         seconds = 0
         // Show the navigation bar on other view controllers
@@ -187,10 +191,40 @@ class MusicViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func showError(_ errorDescription: String) {
+        let alert = UIAlertController(title: "Error!", message: errorDescription, preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func runTimer() {
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self,   selector: (#selector(updateTimer)), userInfo: nil, repeats: true)
+        isTimerRunning = true
+    }
+    
+    @objc func updateTimer() {
+        if seconds < 1 {
+            timer.invalidate()
+            //Send alert to indicate "time's up!"
+            isTimerRunning = false
+            seconds = 10
+            // Hide the navigation bar on the this view controller
+            self.navigationController?.setNavigationBarHidden(true, animated: true)
+        } else {
+            seconds -= 1
+        }
+    }
+    
+    @objc func onTouch() {
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+        if isTimerRunning == false {
+            runTimer()
+        }
+    }
+    
     @objc func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
         if gesture.direction == UISwipeGestureRecognizer.Direction.right {
             navigationController?.popToRootViewController(animated: true)
-            //performSegue(withIdentifier: "musicToMotorcycle", sender: [])
         }
         else if gesture.direction == UISwipeGestureRecognizer.Direction.left {
             performSegue(withIdentifier: "musicToTasks", sender: [])
@@ -210,65 +244,120 @@ class MusicViewController: UIViewController {
     
     @objc func leftScreen() {
         navigationController?.popToRootViewController(animated: true)
-        //performSegue(withIdentifier: "musicToMotorcycle", sender: [])
     }
+    
     @objc func rightScreen() {
         performSegue(withIdentifier: "musicToTasks", sender: [])
     }
-    @objc func nextSong() {
-        musicPlayer.skipToNextItem()
-    }
-    @objc func previousSong() {
-        if trackElapsed != nil {
-            if Int(trackElapsed) < 3 {
-                musicPlayer.skipToPreviousItem()
-            } else {
-                musicPlayer.skipToBeginning()
-            }
-        }
-    }
-    @objc func playPause() {
-        if (musicPlayer.playbackState == MPMusicPlaybackState.playing) {
-            musicPlayer.pause()
-            playButton.setImage(playImage, for: .normal)
-            
-        } else {
-            musicPlayer.play()
-            playButton.setImage(pauseImage, for: .normal)
-        }
-    }
     
-    @IBAction func unwindToContainerMusicVC(segue: UIStoryboardSegue) {
-        
+    @objc func playPause() {
+        let musicApp = UserDefaults.standard.integer(forKey: "musicplayer_preference")
+        switch (musicApp){
+        case 0: // Apple Music
+            if (appleMusicPlayer.playbackState == MPMusicPlaybackState.playing) {
+                appleMusicPlayer.pause()
+                updatePlayPauseButtonState(true)
+                playButton.setImage(playImage, for: .normal)
+                
+            } else {
+                appleMusicPlayer.play()
+                updatePlayPauseButtonState(false)
+            }
+            break
+        case 1: // Spotify
+            if !(spotifyAppRemote.isConnected) {
+                if (!spotifyAppRemote.authorizeAndPlayURI(spotifyPlayURI)) {
+                    // The Spotify app is not installed, present the user with an App Store page
+                    print("Spotify Not Installed")
+                    showError("Spotify Not Installed")
+                }
+            } else if spotifyPlayerState == nil || spotifyPlayerState!.isPaused {
+                if (spotifyPlayerState == nil){
+                    spotifyAppRemote.authorizeAndPlayURI(spotifyPlayURI)
+                } else {
+                    spotifyStartPlayback()
+                }
+            } else {
+                spotifyPausePlayback()
+            }
+            break
+        default:
+            break
+        }
     }
-
     
     @IBAction func playButton(_ sender: UIButton) {
-        if (musicPlayer.playbackState == MPMusicPlaybackState.playing) {
-            musicPlayer.pause()
-            playButton.setImage(playImage, for: .normal)
-            
+        playPause()
+    }
+    
+    private func updatePlayPauseButtonState(_ paused: Bool) {
+        if (paused){
+            self.playButton.setImage(playImage, for: .normal)
         } else {
-            musicPlayer.play()
-            playButton.setImage(pauseImage, for: .normal)
+            self.playButton.setImage(pauseImage, for: .normal)
+        }
+    }
+    
+    @objc func previousSong() {
+        let musicApp = UserDefaults.standard.integer(forKey: "musicplayer_preference")
+        switch (musicApp){
+        case 0: // Apple Music
+            if appleMusicTrackElapsed != nil {
+                if Int(appleMusicTrackElapsed) < 3 {
+                    appleMusicPlayer.skipToPreviousItem()
+                } else {
+                    appleMusicPlayer.skipToBeginning()
+                }
+            }
+            break
+        case 1: // Spotify
+            spotifySkipPrevious()
+            break
+        default:
+            break
         }
     }
     
     @IBAction func lastButton(_ sender: UIButton) {
-        if trackElapsed != nil {
-            if Int(trackElapsed) < 3 {
-                musicPlayer.skipToPreviousItem()
-            } else {
-                musicPlayer.skipToBeginning()
-            }
+        previousSong()
+    }
+    
+    @objc func nextSong() {
+        let musicApp = UserDefaults.standard.integer(forKey: "musicplayer_preference")
+        switch (musicApp){
+        case 0: // Apple Music
+            appleMusicPlayer.skipToNextItem()
+            break
+        case 1: // Spotify
+            spotifySkipNext()
+            break
+        default:
+            break
         }
     }
     
     @IBAction func nextButton(_ sender: UIButton) {
-        musicPlayer.skipToNextItem()
+        nextSong()
     }
     
-    @objc func timerFired(_:AnyObject) {
+    private func enableInterface(_ enabled: Bool = true) {
+        if (self.viewIfLoaded?.window != nil ) {
+            nextButton.isEnabled = enabled
+            lastButton.isEnabled = enabled
+
+            if (!enabled) {
+                imageAlbum.image = nil
+            }
+        }
+    }
+    
+    
+    // MARK: - Apple Music
+    let appleMusicPlayer = MPMusicPlayerController.systemMusicPlayer
+    var appleMusicTimer = Timer()
+    var appleMusicTrackElapsed: TimeInterval!
+    
+    @objc func appleMusicTimerFired(_:AnyObject) {
         if let currentTrack = MPMusicPlayerController.systemMusicPlayer.nowPlayingItem {
             // Get Current Track Info
             var trackName = ""
@@ -284,8 +373,7 @@ class MusicViewController: UIViewController {
                 trackAlbum = currentTrack.albumTitle!
             }
             let albumImage = currentTrack.artwork?.image(at: imageAlbum.bounds.size)
-            trackElapsed = musicPlayer.currentPlaybackTime
-            //let trackDuration = currentTrack.playbackDuration
+            appleMusicTrackElapsed = appleMusicPlayer.currentPlaybackTime
             
             // Update UI
             imageAlbum.image = albumImage
@@ -296,32 +384,131 @@ class MusicViewController: UIViewController {
         }
     }
     
-    @objc func updateNowPlayingInfo(){
-        self.timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(MusicViewController.timerFired(_:)), userInfo: nil, repeats: true)
+    @objc func appleUpdateNowPlayingInfo(){
+        self.timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(MusicViewController.appleMusicTimerFired(_:)), userInfo: nil, repeats: true)
         self.timer.tolerance = 0.1
     }
     
-    @objc func onTouch() {
-        self.navigationController?.setNavigationBarHidden(false, animated: true)
-        if isTimerRunning == false {
-            runTimer()
+    // MARK: - Spotify
+    private let spotifyPlayURI = ""
+    private var spotifyPlayerState: SPTAppRemotePlayerState?
+    private var spotifySubscribedToPlayerState: Bool = false
+    
+    
+    var spotifyDefaultCallback: SPTAppRemoteCallback {
+        get {
+            return {[weak self] _, error in
+                if let error = error {
+                    self?.showError(error.localizedDescription)
+                }
+            }
         }
-    }
-    func runTimer() {
-        timer = Timer.scheduledTimer(timeInterval: 1, target: self,   selector: (#selector(updateTimer)), userInfo: nil, repeats: true)
-        isTimerRunning = true
     }
     
-    @objc func updateTimer() {
-        if seconds < 1 {
-            timer.invalidate()
-            //Send alert to indicate "time's up!"
-            isTimerRunning = false
-            seconds = 10
-            // Hide the navigation bar on the this view controller
-            self.navigationController?.setNavigationBarHidden(true, animated: true)
-        } else {
-            seconds -= 1
+    private func spotifyUpdateViewWithRestrictions(_ restrictions: SPTAppRemotePlaybackRestrictions) {
+        nextButton.isEnabled = restrictions.canSkipNext
+        lastButton.isEnabled = restrictions.canSkipPrevious
+    }
+    
+    private func spotifyGetPlayerState() {
+        print("spotifyGetSpotifyPlayerState()")
+        spotifyAppRemote.playerAPI?.getPlayerState { (result, error) -> Void in
+            guard error == nil else { return }
+            let playerState = result as! SPTAppRemotePlayerState
+            self.spotifyPlayerState = playerState
+            self.spotifyUpdateViewWithPlayerState(playerState)
+            self.spotifySubscribeToPlayerState()
         }
     }
+    
+    private func spotifySubscribeToPlayerState() {
+        print("spotifySubscribeToPlayerState()")
+        guard (!spotifySubscribedToPlayerState) else { return }
+        spotifyAppRemote.playerAPI!.delegate = self
+        spotifyAppRemote.playerAPI?.subscribe { (_, error) -> Void in
+            guard error == nil else { return }
+            self.spotifySubscribedToPlayerState = true
+        }
+    }
+
+    private func spotifyUnsubscribeFromPlayerState() {
+        print("spotifyUnsubscribeFromPlayerState()")
+        guard (spotifySubscribedToPlayerState) else { return }
+        spotifyAppRemote.playerAPI?.unsubscribe { (_, error) -> Void in
+            guard error == nil else { return }
+            self.spotifySubscribedToPlayerState = false
+        }
+    }
+    
+    private func spotifySkipNext() {
+        spotifyAppRemote.playerAPI?.skip(toNext: spotifyDefaultCallback)
+    }
+
+    private func spotifySkipPrevious() {
+        spotifyAppRemote.playerAPI?.skip(toPrevious: spotifyDefaultCallback)
+    }
+    
+    private func spotifyStartPlayback() {
+        
+        spotifyAppRemote.playerAPI?.resume(spotifyDefaultCallback)
+    }
+
+    private func spotifyPausePlayback() {
+        spotifyAppRemote.playerAPI?.pause(spotifyDefaultCallback)
+    }
+    
+    // MARK: - Image API
+
+    private func spotifyFetchAlbumArtForTrack(_ track: SPTAppRemoteTrack, callback: @escaping (UIImage) -> Void ) {
+        spotifyAppRemote.imageAPI?.fetchImage(forItem: track, with:CGSize(width: 1000, height: 1000), callback: { (image, error) -> Void in
+            guard error == nil else { return }
+
+            let image = image as! UIImage
+            callback(image)
+        })
+    }
+    
+    var spotifyAppRemote: SPTAppRemote {
+        get {
+            return AppDelegate.sharedInstance.spotifyAppRemote
+        }
+    }
+    
+    // MARK: - <SPTAppRemotePlayerStateDelegate>
+
+    func playerStateDidChange(_ playerState: SPTAppRemotePlayerState) {
+        print("Spotify: playerStateDidChange")
+        self.spotifyPlayerState = playerState
+        spotifyUpdateViewWithPlayerState(playerState)
+    }
+    
+    private func spotifyUpdateViewWithPlayerState(_ playerState: SPTAppRemotePlayerState) {
+        if (self.viewIfLoaded?.window != nil ) {
+            updatePlayPauseButtonState(playerState.isPaused)
+                songLabel.text = playerState.track.name
+                artistLabel.text = playerState.track.artist.name
+                albumLabel.text = playerState.track.album.name
+                spotifyFetchAlbumArtForTrack(playerState.track) { (image) -> Void in
+                    self.imageAlbum.image = image
+            }
+            spotifyUpdateViewWithRestrictions(playerState.playbackRestrictions)
+        }
+    }
+    
+    func spotifyAppRemoteConnecting() {
+        print("spotifyAppRemoteConnecting()")
+    }
+
+    func spotifyAppRemoteConnected() {
+        print("spotifyAppRemoteConnected()")
+        spotifyGetPlayerState()
+        enableInterface(true)
+    }
+
+    func spotifyAppRemoteDisconnect() {
+        print("spotifyAppRemoteDisconnect()")
+        self.spotifySubscribedToPlayerState = false
+        enableInterface(false)
+    }
+
 }

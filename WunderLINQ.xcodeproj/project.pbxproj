@@ -52,6 +52,7 @@
 		7E80BD42211D419C00B8CA0D /* WaypointsNavTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E80BD41211D419C00B8CA0D /* WaypointsNavTableViewController.swift */; };
 		7E80BD44211D5A0600B8CA0D /* UIView+ignoresInvertColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E80BD43211D5A0600B8CA0D /* UIView+ignoresInvertColors.swift */; };
 		7E916DDC230CF10D00011E5F /* NSLocalizedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E916DDB230CF10D00011E5F /* NSLocalizedString.swift */; };
+		7E9516C2238A367000ED25F2 /* SpotifyiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E9516C1238A367000ED25F2 /* SpotifyiOS.framework */; };
 		7E96D79221E78B7B00C6AB5F /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E96D79121E78B7B00C6AB5F /* Security.framework */; };
 		7EA4784E1F40B154000CEDDC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA4784D1F40B154000CEDDC /* AppDelegate.swift */; };
 		7EA478531F40B154000CEDDC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7EA478511F40B154000CEDDC /* Main.storyboard */; };
@@ -168,6 +169,8 @@
 		7E8A1E5821DC326600207464 /* sl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sl; path = WunderLINQ/sl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7E916DDB230CF10D00011E5F /* NSLocalizedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSLocalizedString.swift; sourceTree = "<group>"; };
 		7E93549F23008B2B00FCF0C5 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		7E9516C1238A367000ED25F2 /* SpotifyiOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SpotifyiOS.framework; sourceTree = "<group>"; };
+		7E9516C4238A3CDF00ED25F2 /* WunderLINQ-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WunderLINQ-Bridging-Header.h"; sourceTree = "<group>"; };
 		7E96D79121E78B7B00C6AB5F /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		7EA4784A1F40B154000CEDDC /* WunderLINQ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WunderLINQ.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EA4784D1F40B154000CEDDC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -221,6 +224,7 @@
 				7E068BE92102C8820076EAAD /* libz.tbd in Frameworks */,
 				7E068BEA2102C8820076EAAD /* OpenGLES.framework in Frameworks */,
 				7E068BEB2102C8820076EAAD /* CoreLocation.framework in Frameworks */,
+				7E9516C2238A367000ED25F2 /* SpotifyiOS.framework in Frameworks */,
 				7E068BEC2102C8820076EAAD /* UIKit.framework in Frameworks */,
 				7E068BED2102C8820076EAAD /* GLKit.framework in Frameworks */,
 				7E068BEE2102C8820076EAAD /* CoreImage.framework in Frameworks */,
@@ -281,6 +285,7 @@
 		7EA478411F40B154000CEDDC = {
 			isa = PBXGroup;
 			children = (
+				7E9516C4238A3CDF00ED25F2 /* WunderLINQ-Bridging-Header.h */,
 				7ED2013520D0D0030066BCE6 /* Default-568h@2x.png */,
 				7EA478881F537ED5000CEDDC /* Localizable.strings */,
 				7EA4784C1F40B154000CEDDC /* WunderLINQ */,
@@ -303,6 +308,7 @@
 			isa = PBXGroup;
 			children = (
 				7EA3F95122EA88690075A0E1 /* externalcamera */,
+				7E9516C1238A367000ED25F2 /* SpotifyiOS.framework */,
 				7E068BCF2102C6280076EAAD /* GoogleMaps.framework */,
 				7E068BD02102C6290076EAAD /* GoogleMapsBase.framework */,
 				7E068BCE2102C6270076EAAD /* GoogleMapsCore.framework */,
@@ -310,6 +316,7 @@
 				7EF9B59F22FCB14D009D8D17 /* Solar.swift */,
 				7E5E0F77212289140048B9A2 /* AppUtility.swift */,
 				7EA4784D1F40B154000CEDDC /* AppDelegate.swift */,
+				7EA478801F44F57C000CEDDC /* MusicViewController.swift */,
 				7EA478701F40F273000CEDDC /* Device.swift */,
 				7E068BCA2102ACF30076EAAD /* Popover.swift */,
 				7E80BD3C211CFF7300B8CA0D /* LocalisableButton.swift */,
@@ -341,7 +348,6 @@
 				7E068BC8210190F00076EAAD /* WaypointsTableViewController.swift */,
 				7E068BCC2102ADD20076EAAD /* WaypointViewController.swift */,
 				7EAF646922FE261D00B11550 /* WeatherMapViewController.swift */,
-				7EA478801F44F57C000CEDDC /* MusicViewController.swift */,
 				7EA4788D1F5BA136000CEDDC /* Tasks.swift */,
 				7EA4BCC621B8C9150084F6EA /* TasksCollectionViewController.swift */,
 				7EA4BCC821B8CB270084F6EA /* TaskCollectionViewCell.swift */,
@@ -763,7 +769,7 @@
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 15;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 3J48UMN5W2;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -775,9 +781,11 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.blackboxembedded.wunderlinq;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "WunderLINQ-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -790,7 +798,7 @@
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 15;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 3J48UMN5W2;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -802,9 +810,11 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.blackboxembedded.wunderlinq;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "WunderLINQ-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;

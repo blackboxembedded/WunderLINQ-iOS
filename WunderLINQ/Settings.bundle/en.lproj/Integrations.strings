@@ -10,3 +10,6 @@
 "actioncam_none" = "None";
 "actioncam_hero3" = "Hero3";
 "actioncam_hero4" = "Hero4 or Newer";
+"pref_musicplayer_title" = "Music Player";
+"music_apple" = "Apple Music";
+"music_spotify" = "Spotify";
