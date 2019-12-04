@@ -1597,6 +1597,10 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             switch (dataArray[1]){
             case 0x52:
                 switch (dataArray[2]){
+                case 0x56:
+                    print("Received WRV command response")
+                    wlqData.setfirmwareVersion(firmwareVersion: "\(dataArray[3]).\(dataArray[4])");
+                    break
                 case 0x57:
                     print("Received WRW command response")
                     wlqData.setwwMode(wwMode: dataArray[26])
@@ -3045,6 +3049,11 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                     let getConfigCommand:[UInt8] = [0x57,0x52,0x57,0x0D,0x0A]
                     let writeData =  Data(_: getConfigCommand)
                     peripheral.writeValue(writeData, for: characteristic, type: CBCharacteristicWriteType.withResponse)
+                    peripheral.readValue(for: characteristic)
+                    
+                    let getVersionCommand:[UInt8] = [0x57,0x52,0x56,0x0D,0x0A]
+                    let verCmdWriteData =  Data(_: getVersionCommand)
+                    peripheral.writeValue(verCmdWriteData, for: characteristic, type: CBCharacteristicWriteType.withResponse)
                     peripheral.readValue(for: characteristic)
                 }
                 

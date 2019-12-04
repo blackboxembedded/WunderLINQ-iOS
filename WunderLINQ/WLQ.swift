@@ -11,8 +11,16 @@ import Foundation
 class WLQ {
     static let shared = WLQ()
     
+    var firmwareVersion: String?
     var wwMode: UInt8?
     var wwHoldSensitivity: UInt8?
+    
+    func setfirmwareVersion(firmwareVersion: String?){
+        self.firmwareVersion = firmwareVersion
+    }
+    func getfirmwareVersion() -> String{
+        return self.firmwareVersion!
+    }
     
     func setwwMode(wwMode: UInt8?){
         self.wwMode = wwMode

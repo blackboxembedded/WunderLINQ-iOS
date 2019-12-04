@@ -17,6 +17,7 @@ class HWSettingsViewController: UIViewController, CBPeripheralDelegate, UIPicker
     var peripheral: CBPeripheral?
     var characteristic: CBCharacteristic?
     
+    @IBOutlet weak var currentVersionLabel: UILabel!
     @IBOutlet weak var modeLabel: LocalisableLabel!
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var modePicker: UIPickerView!
@@ -122,6 +123,9 @@ class HWSettingsViewController: UIViewController, CBPeripheralDelegate, UIPicker
         
         peripheral = bleData.getPeripheral()
         characteristic = bleData.getcmdCharacteristic()
+        
+        currentVersionLabel.text = NSLocalizedString("fw_version_label", comment: "") + " " + wlqData.getfirmwareVersion()
+        print(NSLocalizedString("fw_version_label", comment: "") + " " + wlqData.getfirmwareVersion())
         
         if wlqData.getwwMode() == 0x32 {
             modePicker.selectRow(0, inComponent: 0, animated: true)
