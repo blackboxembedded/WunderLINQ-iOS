@@ -123,8 +123,9 @@ class HWSettingsViewController: UIViewController, CBPeripheralDelegate, UIPicker
         
         peripheral = bleData.getPeripheral()
         characteristic = bleData.getcmdCharacteristic()
-        
-        currentVersionLabel.text = NSLocalizedString("fw_version_label", comment: "") + " " + wlqData.getfirmwareVersion()
+        if (wlqData.getfirmwareVersion() != "Unknown"){
+            currentVersionLabel.text = NSLocalizedString("fw_version_label", comment: "") + " " + wlqData.getfirmwareVersion()
+        }
         print(NSLocalizedString("fw_version_label", comment: "") + " " + wlqData.getfirmwareVersion())
         
         if wlqData.getwwMode() == 0x32 {

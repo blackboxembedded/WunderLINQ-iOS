@@ -12,6 +12,7 @@ class WLQ {
     static let shared = WLQ()
     
     var firmwareVersion: String?
+    var hardwareVersion: String?
     var wwMode: UInt8?
     var wwHoldSensitivity: UInt8?
     
@@ -19,7 +20,20 @@ class WLQ {
         self.firmwareVersion = firmwareVersion
     }
     func getfirmwareVersion() -> String{
-        return self.firmwareVersion!
+        if (self.firmwareVersion != nil){
+            return self.firmwareVersion!
+        }
+        return "Unknown"
+    }
+    
+    func sethardwareVersion(hardwareVersion: String?){
+        self.hardwareVersion = hardwareVersion
+    }
+    func gethardwareVersion() -> String{
+        if (self.hardwareVersion != nil){
+            return self.hardwareVersion!
+        }
+        return "Unknown"
     }
     
     func setwwMode(wwMode: UInt8?){
