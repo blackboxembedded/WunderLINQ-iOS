@@ -66,17 +66,7 @@ class WaypointsNavTableViewController: UITableViewController, CLLocationManagerD
                     self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.textLabel?.textColor = UIColor.black
                 }
             }
-            /*
-            if UserDefaults.standard.bool(forKey: "nightmode_preference") {
-                self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.contentView.backgroundColor = UIColor.black
-                self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.textLabel?.backgroundColor = UIColor.black
-                self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.textLabel?.textColor = UIColor.white
-            } else {
-                self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.contentView.backgroundColor = UIColor.white
-                self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.textLabel?.backgroundColor = UIColor.white
-                self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.textLabel?.textColor = UIColor.black
-            }
-            */
+            tableView.reloadData()
             self.tableView.cellForRow(at: IndexPath(row: nextRow, section: 0) as IndexPath)?.contentView.backgroundColor = UIColor(named: "accent")!
             self.tableView.cellForRow(at: IndexPath(row: nextRow, section: 0) as IndexPath)?.textLabel?.backgroundColor = UIColor(named: "accent")!
             self.tableView.cellForRow(at: IndexPath(row: nextRow, section: 0) as IndexPath)?.textLabel?.textColor = UIColor.white
@@ -107,24 +97,13 @@ class WaypointsNavTableViewController: UITableViewController, CLLocationManagerD
                     self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.textLabel?.textColor = UIColor.black
                 }
             }
-            /*
-            if UserDefaults.standard.bool(forKey: "nightmode_preference") {
-                self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.contentView.backgroundColor = UIColor.black
-                self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.textLabel?.backgroundColor = UIColor.black
-                self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.textLabel?.textColor = UIColor.white
-            } else {
-                self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.contentView.backgroundColor = UIColor.white
-                self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.textLabel?.backgroundColor = UIColor.white
-                self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.textLabel?.textColor = UIColor.black
-            }
-            */
+            tableView.reloadData()
             self.tableView.cellForRow(at: IndexPath(row: nextRow, section: 0) as IndexPath)?.contentView.backgroundColor = UIColor(named: "accent")!
             self.tableView.cellForRow(at: IndexPath(row: nextRow, section: 0) as IndexPath)?.textLabel?.backgroundColor = UIColor(named: "accent")!
             self.tableView.cellForRow(at: IndexPath(row: nextRow, section: 0) as IndexPath)?.textLabel?.textColor = UIColor.white
             self.tableView.scrollToRow(at: IndexPath(row: nextRow, section: 0), at: .middle, animated: true)
             itemRow = nextRow
         }
-        self.tableView.reloadData()
     }
     @objc func downRow() {
         if firstRun{
@@ -152,17 +131,6 @@ class WaypointsNavTableViewController: UITableViewController, CLLocationManagerD
                     self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.textLabel?.textColor = UIColor.black
                 }
             }
-            /*
-            if UserDefaults.standard.bool(forKey: "nightmode_preference") {
-                self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.contentView.backgroundColor = UIColor.black
-                self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.textLabel?.backgroundColor = UIColor.black
-                self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.textLabel?.textColor = UIColor.white
-            } else {
-                self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.contentView.backgroundColor = UIColor.white
-                self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.textLabel?.backgroundColor = UIColor.white
-                self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.textLabel?.textColor = UIColor.black
-            }
-            */
             self.tableView.cellForRow(at: IndexPath(row: 0, section: 0) as IndexPath)?.contentView.backgroundColor = UIColor(named: "accent")!
             self.tableView.cellForRow(at: IndexPath(row: 0, section: 0) as IndexPath)?.textLabel?.backgroundColor = UIColor(named: "accent")!
             self.tableView.cellForRow(at: IndexPath(row: 0, section: 0) as IndexPath)?.textLabel?.textColor = UIColor.white
@@ -193,17 +161,7 @@ class WaypointsNavTableViewController: UITableViewController, CLLocationManagerD
                         self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.textLabel?.textColor = UIColor.black
                     }
                 }
-                /*
-                if UserDefaults.standard.bool(forKey: "nightmode_preference") {
-                    self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.contentView.backgroundColor = UIColor.black
-                    self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.textLabel?.backgroundColor = UIColor.black
-                    self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.textLabel?.textColor = UIColor.white
-                } else {
-                    self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.contentView.backgroundColor = UIColor.white
-                    self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.textLabel?.backgroundColor = UIColor.white
-                    self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.textLabel?.textColor = UIColor.black
-                }
-                */
+                tableView.reloadData()
                 self.tableView.cellForRow(at: IndexPath(row: nextRow, section: 0) as IndexPath)?.contentView.backgroundColor = UIColor(named: "accent")!
                 self.tableView.cellForRow(at: IndexPath(row: nextRow, section: 0) as IndexPath)?.textLabel?.backgroundColor = UIColor(named: "accent")!
                 self.tableView.cellForRow(at: IndexPath(row: nextRow, section: 0) as IndexPath)?.textLabel?.textColor = UIColor.white
@@ -234,17 +192,7 @@ class WaypointsNavTableViewController: UITableViewController, CLLocationManagerD
                         self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.textLabel?.textColor = UIColor.black
                     }
                 }
-                /*
-                if UserDefaults.standard.bool(forKey: "nightmode_preference") {
-                    self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.contentView.backgroundColor = UIColor.black
-                    self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.textLabel?.backgroundColor = UIColor.black
-                    self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.textLabel?.textColor = UIColor.white
-                } else {
-                    self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.contentView.backgroundColor = UIColor.white
-                    self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.textLabel?.backgroundColor = UIColor.white
-                    self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.textLabel?.textColor = UIColor.black
-                }
-                */
+                tableView.reloadData()
                 self.tableView.cellForRow(at: IndexPath(row: nextRow, section: 0) as IndexPath)?.contentView.backgroundColor = UIColor(named: "accent")!
                 self.tableView.cellForRow(at: IndexPath(row: nextRow, section: 0) as IndexPath)?.textLabel?.backgroundColor = UIColor(named: "accent")!
                 self.tableView.cellForRow(at: IndexPath(row: nextRow, section: 0) as IndexPath)?.textLabel?.textColor = UIColor.white
@@ -252,7 +200,6 @@ class WaypointsNavTableViewController: UITableViewController, CLLocationManagerD
                 itemRow = nextRow
             }
         }
-        self.tableView.reloadData()
     }
     
     @objc func leftScreen() {
@@ -393,6 +340,29 @@ class WaypointsNavTableViewController: UITableViewController, CLLocationManagerD
         
         cell.textLabel?.text = wpt
         // Configure the cell...
+        if #available(iOS 13.0, *) {
+            cell.contentView.backgroundColor = UIColor(named: "backgrounds")!
+            cell.textLabel?.backgroundColor = UIColor(named: "backgrounds")!
+            cell.textLabel?.textColor = UIColor(named: "imageTint")!
+        } else {
+            switch(UserDefaults.standard.integer(forKey: "darkmode_preference")){
+            case 0:
+                //OFF
+                cell.contentView.backgroundColor = UIColor.white
+                cell.backgroundColor = UIColor.white
+                cell.textLabel?.textColor = UIColor.black
+            case 1:
+                //On
+                cell.contentView.backgroundColor = UIColor.black
+                cell.textLabel?.backgroundColor = UIColor.black
+                cell.textLabel?.textColor = UIColor.white
+            default:
+                //Default
+                cell.contentView.backgroundColor = UIColor.white
+                cell.textLabel?.backgroundColor = UIColor.white
+                cell.textLabel?.textColor = UIColor.black
+            }
+        }
 
         return cell
     }
