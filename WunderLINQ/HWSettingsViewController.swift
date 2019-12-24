@@ -19,6 +19,7 @@ class HWSettingsViewController: UIViewController, CBPeripheralDelegate, UIPicker
     
     @IBOutlet weak var currentVersionLabel: UILabel!
     @IBOutlet weak var modeLabel: LocalisableLabel!
+    @IBOutlet weak var resetButton: UIButton!
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var modePicker: UIPickerView!
     @IBOutlet weak var sensitivityLabel: LocalisableLabel!
@@ -28,6 +29,19 @@ class HWSettingsViewController: UIViewController, CBPeripheralDelegate, UIPicker
     @objc func leftScreen() {
         _ = navigationController?.popViewController(animated: true)
         //performSegue(withIdentifier: "hwSettingsToMotorcycle", sender: [])
+    }
+    @IBAction func resetPressed(_ sender: Any) {
+        if (self.peripheral != nil && self.characteristic != nil){
+            print("Resetting WLQ Config")
+            let resetCommand:[UInt8] = [0x57,0x57,0x43,0x41,0x32,0x01,0x04,0x04,0xFE,0xFC,0x4F,0x28,0x0F,0x04,
+            0x04,0xFD,0xFC,0x50,0x29,0x0F,0x04,0x06,0x00,0x00,0x00,0x00,0x34,0x02,0x01,0x01,0x65,
+            0x55,0x4F,0x28,0x07,0x01,0x01,0x95,0x55,0x50,0x29,0x07,0x01,0x01,0x56,0x59,0x52,0x51,0x0D,0x0A]
+            let writeData =  Data(_: resetCommand)
+            self.peripheral?.writeValue(writeData, for: self.characteristic!, type: CBCharacteristicWriteType.withResponse)
+            
+            self.navigationController?.popViewController(animated: true)
+            self.dismiss(animated: true, completion: nil)
+        }
     }
     
     @IBAction func savePressed(_ sender: Any) {
@@ -127,19 +141,26 @@ class HWSettingsViewController: UIViewController, CBPeripheralDelegate, UIPicker
             currentVersionLabel.text = NSLocalizedString("fw_version_label", comment: "") + " " + wlqData.getfirmwareVersion()
         }
         print(NSLocalizedString("fw_version_label", comment: "") + " " + wlqData.getfirmwareVersion())
-        
+        sensitivitySlider.minimumValue = 0
+        sensitivitySlider.isContinuous = true
         if wlqData.getwwMode() == 0x32 {
             modePicker.selectRow(0, inComponent: 0, animated: true)
             sensitivitySlider.maximumValue = 30
+            sensitivitySlider.value = (Float) (wlqData.getwwHoldSensitivity())
+            sensitivityValueLabel.text = "\((Int)(sensitivitySlider.value))"
         } else if wlqData.getwwMode() == 0x34 {
             modePicker.selectRow(1, inComponent: 0, animated: true)
             sensitivitySlider.maximumValue = 20
+            sensitivitySlider.value = (Float) (wlqData.getwwHoldSensitivity())
+            sensitivityValueLabel.text = "\((Int)(sensitivitySlider.value))"
+        } else {
+            modeLabel.isHidden = true
+            modePicker.isHidden = true
+            sensitivitySlider.isHidden = true
+            sensitivityLabel.isHidden = true
+            sensitivityValueLabel.isHidden = true
+            resetButton.isHidden = false
         }
-        
-        sensitivitySlider.minimumValue = 0
-        sensitivitySlider.isContinuous = true
-        sensitivitySlider.value = (Float) (wlqData.getwwHoldSensitivity())
-        sensitivityValueLabel.text = "\((Int)(sensitivitySlider.value))"
         
         saveButton.isEnabled = false
     }

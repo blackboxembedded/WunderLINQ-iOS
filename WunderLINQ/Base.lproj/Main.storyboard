@@ -842,6 +842,20 @@
                                     <action selector="savePressed:" destination="IU4-xr-4Bd" eventType="touchUpInside" id="xrE-vH-dSq"/>
                                 </connections>
                             </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YMW-LY-so9" customClass="LocalisableButton" customModule="WunderLINQ" customModuleProvider="target">
+                                <rect key="frame" x="16" y="539" width="343" height="42"/>
+                                <color key="backgroundColor" name="imageTint"/>
+                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="25"/>
+                                <state key="normal">
+                                    <color key="titleColor" name="backgrounds"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="localisedKey" value="config_reset_label"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="resetPressed:" destination="IU4-xr-4Bd" eventType="touchUpInside" id="QzA-Cb-hif"/>
+                                </connections>
+                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wheel Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kdd-7b-Hvf" customClass="LocalisableLabel" customModule="WunderLINQ" customModuleProvider="target">
                                 <rect key="frame" x="16" y="32" width="167.5" height="75"/>
                                 <fontDescription key="fontDescription" type="system" weight="black" pointSize="20"/>
@@ -875,16 +889,16 @@
                                     <action selector="sensitivitySliderChanged:" destination="IU4-xr-4Bd" eventType="valueChanged" id="Dyn-7n-ZVA"/>
                                 </connections>
                             </slider>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="28g-4k-ANb">
-                                <rect key="frame" x="0.0" y="16" width="375" height="0.0"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aFc-Cs-nd4">
                                 <rect key="frame" x="195.5" y="123" width="163.5" height="24"/>
                                 <color key="tintColor" name="imageTint"/>
                                 <fontDescription key="fontDescription" type="system" weight="black" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="28g-4k-ANb">
+                                <rect key="frame" x="0.0" y="16" width="375" height="0.0"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -898,15 +912,18 @@
                             <constraint firstItem="aFc-Cs-nd4" firstAttribute="leading" secondItem="mPy-4d-rgO" secondAttribute="trailing" constant="16" id="Ios-FX-pPl"/>
                             <constraint firstItem="28g-4k-ANb" firstAttribute="top" secondItem="swJ-Ex-qo7" secondAttribute="top" constant="16" id="Jxl-Ss-Ldd"/>
                             <constraint firstItem="8kR-jJ-u6c" firstAttribute="leading" secondItem="swJ-Ex-qo7" secondAttribute="leading" constant="16" id="Msd-sG-Jlg"/>
+                            <constraint firstItem="YMW-LY-so9" firstAttribute="leading" secondItem="swJ-Ex-qo7" secondAttribute="leading" constant="16" id="PuB-p0-mi6"/>
                             <constraint firstItem="aFc-Cs-nd4" firstAttribute="width" secondItem="mPy-4d-rgO" secondAttribute="width" id="S9Z-53-Zho"/>
                             <constraint firstItem="fZ3-Aw-NNr" firstAttribute="leading" secondItem="swJ-Ex-qo7" secondAttribute="leading" constant="16" id="SCQ-fX-M5S"/>
                             <constraint firstItem="kdd-7b-Hvf" firstAttribute="top" secondItem="28g-4k-ANb" secondAttribute="bottom" constant="16" id="SdG-sa-LVx"/>
                             <constraint firstItem="swJ-Ex-qo7" firstAttribute="trailing" secondItem="aFc-Cs-nd4" secondAttribute="trailing" constant="16" id="Xoe-zc-eEM"/>
                             <constraint firstItem="mPy-4d-rgO" firstAttribute="top" secondItem="kdd-7b-Hvf" secondAttribute="bottom" constant="16" id="Yl6-hH-5rF"/>
                             <constraint firstItem="tOE-xh-XqU" firstAttribute="height" secondItem="kdd-7b-Hvf" secondAttribute="height" id="Zgh-9K-pg7"/>
+                            <constraint firstItem="fZ3-Aw-NNr" firstAttribute="top" secondItem="YMW-LY-so9" secondAttribute="bottom" constant="8" id="bDa-R7-beV"/>
                             <constraint firstItem="tOE-xh-XqU" firstAttribute="width" secondItem="kdd-7b-Hvf" secondAttribute="width" id="fGt-CW-Eml"/>
                             <constraint firstItem="28g-4k-ANb" firstAttribute="leading" secondItem="swJ-Ex-qo7" secondAttribute="leading" id="fr9-Wg-lKM"/>
                             <constraint firstItem="swJ-Ex-qo7" firstAttribute="trailing" secondItem="fZ3-Aw-NNr" secondAttribute="trailing" constant="16" id="gZc-K3-6j4"/>
+                            <constraint firstItem="swJ-Ex-qo7" firstAttribute="trailing" secondItem="YMW-LY-so9" secondAttribute="trailing" constant="16" id="iZw-BH-bbb"/>
                             <constraint firstItem="swJ-Ex-qo7" firstAttribute="trailing" secondItem="8kR-jJ-u6c" secondAttribute="trailing" constant="16" id="jD6-C7-6YO"/>
                             <constraint firstItem="8kR-jJ-u6c" firstAttribute="top" secondItem="aFc-Cs-nd4" secondAttribute="bottom" constant="16" id="n08-yl-oi9"/>
                             <constraint firstItem="swJ-Ex-qo7" firstAttribute="trailing" secondItem="tOE-xh-XqU" secondAttribute="trailing" constant="16" id="nEw-z8-089"/>
@@ -921,6 +938,7 @@
                         <outlet property="currentVersionLabel" destination="28g-4k-ANb" id="obn-Fu-uQU"/>
                         <outlet property="modeLabel" destination="kdd-7b-Hvf" id="t6u-5l-Oxw"/>
                         <outlet property="modePicker" destination="tOE-xh-XqU" id="5fE-sK-SQg"/>
+                        <outlet property="resetButton" destination="YMW-LY-so9" id="9ls-Jw-4Wa"/>
                         <outlet property="saveButton" destination="fZ3-Aw-NNr" id="P8n-hF-bE9"/>
                         <outlet property="sensitivityLabel" destination="mPy-4d-rgO" id="gHf-pM-eus"/>
                         <outlet property="sensitivitySlider" destination="8kR-jJ-u6c" id="bEX-Uw-Q4h"/>
@@ -1002,13 +1020,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F4h-OO-sSs">
-                                <rect key="frame" x="0.0" y="204" width="375" height="215"/>
+                                <rect key="frame" x="0.0" y="204" width="375" height="256"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZJi-ju-qN2">
-                                        <rect key="frame" x="16" y="24" width="343" height="79.5"/>
+                                        <rect key="frame" x="16" y="24" width="343" height="100"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Route" translatesAutoresizingMaskIntoConstraints="NO" id="Txn-Ho-UJ3">
-                                                <rect key="frame" x="0.0" y="0.0" width="79.5" height="79.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                                 <color key="backgroundColor" name="imageTint"/>
                                                 <color key="tintColor" name="backgrounds"/>
                                                 <constraints>
@@ -1017,7 +1035,7 @@
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tSS-qR-yCJ" customClass="LocalisableLabel" customModule="WunderLINQ" customModuleProvider="target">
-                                                <rect key="frame" x="79.5" y="0.0" width="263.5" height="79.5"/>
+                                                <rect key="frame" x="100" y="0.0" width="243" height="100"/>
                                                 <color key="backgroundColor" name="imageTint"/>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
@@ -1032,10 +1050,10 @@
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </stackView>
                                     <stackView opaque="NO" tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f6L-PO-9xQ">
-                                        <rect key="frame" x="16" y="119.5" width="343" height="79.5"/>
+                                        <rect key="frame" x="16" y="140" width="343" height="100"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MapMarker" translatesAutoresizingMaskIntoConstraints="NO" id="30x-RB-MRc">
-                                                <rect key="frame" x="0.0" y="0.0" width="79.5" height="79.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                                 <color key="backgroundColor" name="imageTint"/>
                                                 <color key="tintColor" name="backgrounds"/>
                                                 <constraints>
@@ -1044,7 +1062,7 @@
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FLQ-U1-TsS" customClass="LocalisableLabel" customModule="WunderLINQ" customModuleProvider="target">
-                                                <rect key="frame" x="79.5" y="0.0" width="263.5" height="79.5"/>
+                                                <rect key="frame" x="100" y="0.0" width="243" height="100"/>
                                                 <color key="backgroundColor" name="imageTint"/>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
@@ -1147,16 +1165,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wunderlinq_logo" translatesAutoresizingMaskIntoConstraints="NO" id="iK0-Eq-bFT">
-                                <rect key="frame" x="16" y="25" width="343" height="53"/>
+                                <rect key="frame" x="16" y="25" width="343" height="106"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Version: x.x.x" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fPj-pQ-RK7">
-                                <rect key="frame" x="0.0" y="103" width="375" height="17"/>
+                                <rect key="frame" x="0.0" y="156" width="375" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Credits" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bpB-n7-PMj" customClass="LocalisableLabel" customModule="WunderLINQ" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="220" width="375" height="24"/>
+                                <rect key="frame" x="0.0" y="273" width="375" height="24"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -1165,7 +1183,7 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jAM-2k-3CY">
-                                <rect key="frame" x="0.0" y="249" width="375" height="398"/>
+                                <rect key="frame" x="0.0" y="302" width="375" height="345"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <string key="text">Support and Patience
 
@@ -1289,7 +1307,7 @@ Icons from fontawesome.com
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y9o-7f-NQI">
-                                <rect key="frame" x="0.0" y="125" width="375" height="33"/>
+                                <rect key="frame" x="0.0" y="178" width="375" height="33"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="Black Box Embedded, LLC">
                                     <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1299,7 +1317,7 @@ Icons from fontawesome.com
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mYb-5h-qZC" customClass="LocalisableButton" customModule="WunderLINQ" customModuleProvider="target">
-                                <rect key="frame" x="16" y="174" width="343" height="30"/>
+                                <rect key="frame" x="16" y="227" width="343" height="30"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Send Logs">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
