@@ -107,6 +107,7 @@ class Logger {
             }
             
             let currentLocation = motorcycleData.getLocation()
+            let currentSpeed = currentLocation.speed * 3.6
             let latitude:String = "\(currentLocation.coordinate.latitude)"
             let longitude:String = "\(currentLocation.coordinate.longitude)"
             
@@ -115,9 +116,9 @@ class Logger {
                 altitude = "\(Utility.mtoFeet(currentLocation.altitude))"
             }
             var gpsSpeed:String = "0"
-            if currentLocation.speed >= 0{
-                gpsSpeed = "\(currentLocation.speed)"
-                let gpsSpeedValue:Double = currentLocation.speed
+            if currentSpeed >= 0{
+                gpsSpeed = "\(currentSpeed)"
+                let gpsSpeedValue:Double = currentSpeed
                 gpsSpeed = "\(gpsSpeedValue)"
                 if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
                     gpsSpeed = "\(Utility.kmToMiles(gpsSpeedValue))"

@@ -347,7 +347,6 @@ class WaypointViewController: UIViewController, UITextFieldDelegate, CLLocationM
             print("failure inserting waypoint: \(errmsg)")
             return
         }
-        
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

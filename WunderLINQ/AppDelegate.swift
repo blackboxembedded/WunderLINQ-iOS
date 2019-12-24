@@ -161,7 +161,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             self.spotifyAccessToken = access_token
         } else if let error_description = parameters?[SPTAppRemoteErrorDescriptionKey] {
             print("AppDelegate Spotify Error: " + error_description)
-            musicViewController.showError(error_description);
+            musicViewController.showError(error_description)
         }
         
         return true
