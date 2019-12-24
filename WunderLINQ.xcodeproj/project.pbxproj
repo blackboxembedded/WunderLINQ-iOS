@@ -74,6 +74,7 @@
 		7EAE9417211EA30900E24CE9 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EAE9416211EA30900E24CE9 /* Theme.swift */; };
 		7EAF646822FE17D000B11550 /* BikeInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EAF646722FE17D000B11550 /* BikeInfoViewController.swift */; };
 		7EAF646A22FE261D00B11550 /* WeatherMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EAF646922FE261D00B11550 /* WeatherMapViewController.swift */; };
+		7EBC8A9E23B19C0B001FE70B /* AddWaypointViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBC8A9D23B19C0B001FE70B /* AddWaypointViewController.swift */; };
 		7EBFD48E210ADD0000FC9665 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBFD48D210ADD0000FC9665 /* String+Extensions.swift */; };
 		7EBFD490210E108100FC9665 /* segueFromLeft.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBFD48F210E108100FC9665 /* segueFromLeft.swift */; };
 		7EBFE1F3214C7D6500F2185A /* ScenicAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBFE1F2214C7D6500F2185A /* ScenicAPI.swift */; };
@@ -196,6 +197,7 @@
 		7EAE9416211EA30900E24CE9 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		7EAF646722FE17D000B11550 /* BikeInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikeInfoViewController.swift; sourceTree = "<group>"; };
 		7EAF646922FE261D00B11550 /* WeatherMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherMapViewController.swift; sourceTree = "<group>"; };
+		7EBC8A9D23B19C0B001FE70B /* AddWaypointViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWaypointViewController.swift; sourceTree = "<group>"; };
 		7EBFD48D210ADD0000FC9665 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		7EBFD48F210E108100FC9665 /* segueFromLeft.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = segueFromLeft.swift; sourceTree = "<group>"; };
 		7EBFE1F2214C7D6500F2185A /* ScenicAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScenicAPI.swift; sourceTree = "<group>"; };
@@ -347,6 +349,7 @@
 				7E5A767920DDFEF700B48CC6 /* Waypoint.swift */,
 				7E068BC8210190F00076EAAD /* WaypointsTableViewController.swift */,
 				7E068BCC2102ADD20076EAAD /* WaypointViewController.swift */,
+				7EBC8A9D23B19C0B001FE70B /* AddWaypointViewController.swift */,
 				7EAF646922FE261D00B11550 /* WeatherMapViewController.swift */,
 				7EA4788D1F5BA136000CEDDC /* Tasks.swift */,
 				7EA4BCC621B8C9150084F6EA /* TasksCollectionViewController.swift */,
@@ -534,6 +537,7 @@
 				7E80BD44211D5A0600B8CA0D /* UIView+ignoresInvertColors.swift in Sources */,
 				7EA4BCC921B8CB270084F6EA /* TaskCollectionViewCell.swift in Sources */,
 				7E916DDC230CF10D00011E5F /* NSLocalizedString.swift in Sources */,
+				7EBC8A9E23B19C0B001FE70B /* AddWaypointViewController.swift in Sources */,
 				7E62BB7121FE443200FDB10E /* ColumnFlowLayout.swift in Sources */,
 				7EBFE1F3214C7D6500F2185A /* ScenicAPI.swift in Sources */,
 				7E5A767820DDEE7200B48CC6 /* UIViewController+Extensions.swift in Sources */,

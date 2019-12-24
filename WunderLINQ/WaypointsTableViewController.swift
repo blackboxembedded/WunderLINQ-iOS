@@ -20,6 +20,11 @@ class WaypointsTableViewController: UITableViewController {
         //performSegue(withIdentifier: "waypointsToGeoData", sender: [])
     }
     
+    @objc func addScreen() {
+        print("addScreen()")
+        performSegue(withIdentifier: "waypointsToAddWaypoint", sender: [])
+    }
+    
     @objc func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
         if gesture.direction == UISwipeGestureRecognizer.Direction.right {
             _ = navigationController?.popViewController(animated: true)
@@ -45,8 +50,22 @@ class WaypointsTableViewController: UITableViewController {
         backButtonWidth?.isActive = true
         let backButtonHeight = backButton.customView?.heightAnchor.constraint(equalToConstant: 30)
         backButtonHeight?.isActive = true
+        
+        let addBtn = UIButton()
+        addBtn.setImage(UIImage(named: "Plus")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        if #available(iOS 13.0, *) {
+            addBtn.tintColor = UIColor(named: "imageTint")
+        }
+        addBtn.addTarget(self, action: #selector(addScreen), for: .touchUpInside)
+        let addButton = UIBarButtonItem(customView: addBtn)
+        let addButtonWidth = addButton.customView?.widthAnchor.constraint(equalToConstant: 30)
+        addButtonWidth?.isActive = true
+        let addButtonHeight = addButton.customView?.heightAnchor.constraint(equalToConstant: 30)
+        addButtonHeight?.isActive = true
+        
         self.navigationItem.title = NSLocalizedString("waypoint_title", comment: "")
         self.navigationItem.leftBarButtonItems = [backButton]
+        self.navigationItem.rightBarButtonItems = [addButton]
         
         let databaseURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
             .appendingPathComponent("waypoints.sqlite")
@@ -68,6 +87,12 @@ class WaypointsTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        readWaypoints()
+        tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {

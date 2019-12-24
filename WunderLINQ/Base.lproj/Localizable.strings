@@ -123,6 +123,13 @@
 "delete_waypoint_alert_title" = "Warning!";
 "delete_waypoint_alert_body" = "Delete Waypoint?";
 
+// AddWaypointViewController
+"addwaypoint_view_title" = "Add Waypoint";
+"addwaypoint_view_tv_search_label" = "Drop pin or lookup address";
+"addwaypoint_view_bt_search" = "Lookup";
+"addwaypoint_view_bt_save" = "Save";
+"toast_waypoint_error" = "Latitude & Logitude Required";
+
 // CompassViewController
 "compass_title" = "Compass";
 "north" = "N";

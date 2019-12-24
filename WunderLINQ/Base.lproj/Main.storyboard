@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Fp2-Ey-Ypo">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Fp2-Ey-Ypo">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -14,11 +14,11 @@
             <objects>
                 <viewController storyboardIdentifier="Main" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="MainCollectionViewController" customModule="WunderLINQ" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="LeD-DA-8o8">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="DFb-XX-n1q">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="iyU-Dx-uZ6">
                                     <size key="itemSize" width="50" height="50"/>
@@ -98,7 +98,7 @@
             <objects>
                 <tableViewController title="Faults" id="KTW-aa-IYg" customClass="FaultsTableViewController" customModule="WunderLINQ" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="8d5-qJ-gEo">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
@@ -339,6 +339,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="5fS-RO-wSG"/>
                     </view>
+                    <navigationItem key="navigationItem" id="fyD-2O-zve"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -356,18 +357,18 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SXT-T2-9wl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="8909" y="-911"/>
+            <point key="canvasLocation" x="8908" y="-1714"/>
         </scene>
         <!--Weather Map View Controller-->
         <scene sceneID="bpP-jK-41l">
             <objects>
                 <viewController id="mgN-4w-lQo" customClass="WeatherMapViewController" customModule="WunderLINQ" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="s1a-NI-mWg">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xBm-3o-5aH" customClass="GMSMapView">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="ignoresInvertColors" value="YES"/>
@@ -383,6 +384,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="gHP-w0-dFs"/>
                     </view>
+                    <navigationItem key="navigationItem" id="xsM-zr-Iwi"/>
                     <connections>
                         <outlet property="mapView" destination="xBm-3o-5aH" id="YVc-ml-SyW"/>
                     </connections>
@@ -396,7 +398,7 @@
             <objects>
                 <viewController storyboardIdentifier="MusicViewController" id="p6n-wZ-mMa" customClass="MusicViewController" customModule="WunderLINQ" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cl2-HO-wNM">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9KV-8n-ffM">
@@ -409,7 +411,7 @@
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="9kl-zc-Jc0">
-                                <rect key="frame" x="0.0" y="375" width="375" height="272"/>
+                                <rect key="frame" x="0.0" y="375" width="375" height="292"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7h2-4R-M5d">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="52"/>
@@ -440,10 +442,10 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SPh-nY-LUF">
-                                        <rect key="frame" x="0.0" y="124" width="375" height="148"/>
+                                        <rect key="frame" x="0.0" y="124" width="375" height="168"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vsu-t3-FAz">
-                                                <rect key="frame" x="0.0" y="0.0" width="125" height="148"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="125" height="168"/>
                                                 <color key="tintColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <state key="normal" image="back"/>
                                                 <connections>
@@ -451,7 +453,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pwh-25-TzL">
-                                                <rect key="frame" x="125" y="0.0" width="125" height="148"/>
+                                                <rect key="frame" x="125" y="0.0" width="125" height="168"/>
                                                 <color key="tintColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <state key="normal" image="play"/>
                                                 <connections>
@@ -459,7 +461,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kxB-1t-Lm7">
-                                                <rect key="frame" x="250" y="0.0" width="125" height="148"/>
+                                                <rect key="frame" x="250" y="0.0" width="125" height="168"/>
                                                 <color key="tintColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <state key="normal" image="forward"/>
                                                 <connections>
@@ -578,7 +580,7 @@
             <objects>
                 <tableViewController id="TPs-yr-NM2" customClass="ContactsTableViewController" customModule="WunderLINQ" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Y20-CM-oly">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -641,7 +643,7 @@
             <objects>
                 <tableViewController id="we8-3Z-s79" customClass="WaypointsNavTableViewController" customModule="WunderLINQ" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="8Yw-3z-6cz">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
@@ -682,11 +684,11 @@
             <objects>
                 <viewController storyboardIdentifier="AlertViewControllerID" title="Alert" id="gJo-MW-rva" customClass="AlertViewController" customModule="WunderLINQ" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="GAg-mc-EeP">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ch1-dL-bp2" customClass="LocalisableButton" customModule="WunderLINQ" customModuleProvider="target">
-                                <rect key="frame" x="16" y="591" width="167.5" height="36"/>
+                                <rect key="frame" x="16" y="611" width="167.5" height="36"/>
                                 <color key="backgroundColor" name="imageTint"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                 <state key="normal" title="CLOSE">
@@ -700,7 +702,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o4A-v0-HaT" customClass="LocalisableButton" customModule="WunderLINQ" customModuleProvider="target">
-                                <rect key="frame" x="191.5" y="591" width="167.5" height="36"/>
+                                <rect key="frame" x="191.5" y="611" width="167.5" height="36"/>
                                 <color key="backgroundColor" name="imageTint"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                 <state key="normal" title="OK">
@@ -714,7 +716,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pNL-mh-mKe">
-                                <rect key="frame" x="16" y="311.5" width="343" height="24"/>
+                                <rect key="frame" x="16" y="321.5" width="343" height="24"/>
                                 <fontDescription key="fontDescription" type="system" weight="black" pointSize="20"/>
                                 <color key="textColor" name="imageTint"/>
                                 <nil key="highlightedColor"/>
@@ -751,7 +753,7 @@
             <objects>
                 <collectionViewController title="Quick Tasks" id="OIf-TM-fnx" customClass="TasksCollectionViewController" customModule="WunderLINQ" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="02I-YM-N5d">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="de0-qU-uAt">
@@ -823,11 +825,11 @@
             <objects>
                 <viewController id="IU4-xr-4Bd" customClass="HWSettingsViewController" customModule="WunderLINQ" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JIN-NT-UZ4">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fZ3-Aw-NNr" customClass="LocalisableButton" customModule="WunderLINQ" customModuleProvider="target">
-                                <rect key="frame" x="16" y="589" width="343" height="42"/>
+                                <rect key="frame" x="16" y="609" width="343" height="42"/>
                                 <color key="backgroundColor" name="imageTint"/>
                                 <fontDescription key="fontDescription" type="system" weight="black" pointSize="25"/>
                                 <state key="normal">
@@ -988,14 +990,14 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r8T-Ax-ZwX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="8035" y="-1714"/>
+            <point key="canvasLocation" x="8033" y="-912"/>
         </scene>
         <!--Geo Data View Controller-->
         <scene sceneID="7Te-5U-Lm2">
             <objects>
                 <viewController id="4YA-h5-Jjs" customClass="GeoDataViewController" customModule="WunderLINQ" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Jc4-4D-reh">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F4h-OO-sSs">
@@ -1078,6 +1080,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Owe-1S-g4I"/>
                     </view>
+                    <navigationItem key="navigationItem" id="4Yd-Ro-Vbg"/>
                     <connections>
                         <outlet property="tripsView" destination="ZJi-ju-qN2" id="V4T-9i-tIN"/>
                         <outlet property="waypointsView" destination="f6L-PO-9xQ" id="1ZL-FM-5RM"/>
@@ -1127,18 +1130,19 @@
                     <connections>
                         <segue destination="Plb-k4-fYa" kind="show" identifier="waypointsToWaypoint" id="Dqr-lf-ahi"/>
                         <segue destination="4YA-h5-Jjs" kind="show" identifier="waypointsToGeoData" customClass="SegueFromLeft" customModule="WunderLINQ" customModuleProvider="target" id="csM-WT-uqP"/>
+                        <segue destination="TYg-xK-io3" kind="show" identifier="waypointsToAddWaypoint" id="ooj-ei-kjD"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="seQ-uU-Npa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="8035" y="-911"/>
+            <point key="canvasLocation" x="8034" y="-1714"/>
         </scene>
         <!--About-->
         <scene sceneID="H6u-dO-Xgf">
             <objects>
                 <viewController title="About" id="BZZ-xV-I8u" customClass="AboutViewController" customModule="WunderLINQ" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ISD-Sy-aSf">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wunderlinq_logo" translatesAutoresizingMaskIntoConstraints="NO" id="iK0-Eq-bFT">
@@ -1160,7 +1164,7 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jAM-2k-3CY">
-                                <rect key="frame" x="0.0" y="302" width="375" height="345"/>
+                                <rect key="frame" x="0.0" y="302" width="375" height="365"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <string key="text">Support and Patience
 
@@ -1347,7 +1351,7 @@ Icons from fontawesome.com
             <objects>
                 <viewController id="g6h-Xr-9v3" customClass="BikeInfoViewController" customModule="WunderLINQ" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xhC-Jc-QyJ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VIN" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iDW-er-4a7" customClass="LocalisableLabel" customModule="WunderLINQ" customModuleProvider="target">
@@ -1423,6 +1427,7 @@ Icons from fontawesome.com
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="VQq-iJ-w26"/>
                     </view>
+                    <navigationItem key="navigationItem" id="rlp-vc-cku"/>
                     <connections>
                         <outlet property="nextServiceDateLabel" destination="zq8-qI-2qg" id="b6D-0F-TXR"/>
                         <outlet property="nextServiceLabel" destination="Ns3-eT-lTX" id="89B-IL-tH0"/>
@@ -1709,6 +1714,7 @@ Icons from fontawesome.com
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Ebu-49-RUF"/>
                     </view>
+                    <navigationItem key="navigationItem" id="CDr-cP-Ape"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <connections>
                         <outlet property="ambientTempLabel" destination="rP8-SI-D3M" id="00G-f6-raW"/>
@@ -1725,15 +1731,16 @@ Icons from fontawesome.com
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ASv-QO-u7O" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="8909" y="-1714"/>
+            <point key="canvasLocation" x="8908" y="-913"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="rkf-pU-wS1">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="PSM-zq-09s" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="yqO-MB-hhu"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="5a7-y8-OXS">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -1744,6 +1751,188 @@ Icons from fontawesome.com
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9gS-ug-857" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="8528.7999999999993" y="1237.3313343328336"/>
+        </scene>
+        <!--Add Waypoint-->
+        <scene sceneID="Tp3-eW-f3T">
+            <objects>
+                <viewController title="Add Waypoint" id="TYg-xK-io3" customClass="AddWaypointViewController" customModule="WunderLINQ" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="nn4-Yi-alS">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bJo-5a-tv5" customClass="GMSMapView">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="295"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="bJo-5a-tv5" secondAttribute="height" multiplier="75:59" id="GKt-7k-kkQ"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="ignoresInvertColors" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lat" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yzz-gh-IN1" customClass="LocalisableLabel" customModule="WunderLINQ" customModuleProvider="target">
+                                <rect key="frame" x="16" y="455" width="167.5" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="JEj-C4-UIF"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="15"/>
+                                <color key="textColor" name="imageTint"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="localisedKey" value="waypoint_view_tv_lat_label"/>
+                                </userDefinedRuntimeAttributes>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lon" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3wm-bF-cHm" customClass="LocalisableLabel" customModule="WunderLINQ" customModuleProvider="target">
+                                <rect key="frame" x="16" y="493" width="167.5" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="xuO-JK-RGC"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="15"/>
+                                <color key="textColor" name="imageTint"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="localisedKey" value="waypoint_view_tv_lon_label"/>
+                                </userDefinedRuntimeAttributes>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n6p-gf-qbI">
+                                <rect key="frame" x="191.5" y="455" width="167.5" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="XeL-a7-FDX"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="13"/>
+                                <color key="textColor" name="imageTint"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pmi-6U-6UJ">
+                                <rect key="frame" x="191.5" y="531" width="167.5" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Ym3-Dv-imW"/>
+                                </constraints>
+                                <color key="textColor" name="imageTint"/>
+                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="13"/>
+                                <textInputTraits key="textInputTraits" spellCheckingType="yes" returnKeyType="done"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MfF-Sk-x7G" customClass="LocalisableButton" customModule="WunderLINQ" customModuleProvider="target">
+                                <rect key="frame" x="16" y="577" width="343" height="30"/>
+                                <color key="backgroundColor" name="imageTint"/>
+                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="15"/>
+                                <state key="normal">
+                                    <color key="titleColor" name="backgrounds"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="localisedKey" value="addwaypoint_view_bt_save"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="savePressed:" destination="TYg-xK-io3" eventType="touchUpInside" id="O2E-8C-6vm"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jG2-gc-3du" customClass="LocalisableLabel" customModule="WunderLINQ" customModuleProvider="target">
+                                <rect key="frame" x="16" y="531" width="167.5" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="wmK-fx-xMz"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="15"/>
+                                <color key="textColor" name="imageTint"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="localisedKey" value="waypoint_view_tv_label_label"/>
+                                </userDefinedRuntimeAttributes>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RIT-4T-DIS">
+                                <rect key="frame" x="191.5" y="493" width="167.5" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="SpD-Yc-Vrc"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="13"/>
+                                <color key="textColor" name="imageTint"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kIm-5b-h9N">
+                                <rect key="frame" x="16" y="337" width="343" height="34"/>
+                                <color key="textColor" name="imageTint"/>
+                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="13"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="done"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Drop pin or lookup address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PJ4-78-Jr7" customClass="LocalisableLabel" customModule="WunderLINQ" customModuleProvider="target">
+                                <rect key="frame" x="16" y="311" width="333" height="18"/>
+                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="15"/>
+                                <color key="textColor" name="imageTint"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="localisedKey" value="addwaypoint_view_tv_search_label"/>
+                                </userDefinedRuntimeAttributes>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PLG-9j-yeG" customClass="LocalisableButton" customModule="WunderLINQ" customModuleProvider="target">
+                                <rect key="frame" x="16" y="379" width="343" height="30"/>
+                                <color key="backgroundColor" name="imageTint"/>
+                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="15"/>
+                                <state key="normal">
+                                    <color key="titleColor" name="backgrounds"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="localisedKey" value="addwaypoint_view_bt_search"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="lookupPressed:" destination="TYg-xK-io3" eventType="touchUpInside" id="W2N-Bf-Jrm"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" name="backgrounds"/>
+                        <constraints>
+                            <constraint firstItem="pmi-6U-6UJ" firstAttribute="top" secondItem="RIT-4T-DIS" secondAttribute="bottom" constant="8" id="01C-NW-scY"/>
+                            <constraint firstItem="MfF-Sk-x7G" firstAttribute="top" secondItem="jG2-gc-3du" secondAttribute="bottom" constant="16" id="3wf-kB-w1E"/>
+                            <constraint firstItem="RIT-4T-DIS" firstAttribute="leading" secondItem="3wm-bF-cHm" secondAttribute="trailing" constant="8" id="5mc-L8-uJO"/>
+                            <constraint firstItem="3wm-bF-cHm" firstAttribute="top" secondItem="yzz-gh-IN1" secondAttribute="bottom" constant="8" id="6Lz-Gc-maz"/>
+                            <constraint firstItem="MfF-Sk-x7G" firstAttribute="top" secondItem="pmi-6U-6UJ" secondAttribute="bottom" constant="16" id="6sm-dH-Xot"/>
+                            <constraint firstItem="n6p-gf-qbI" firstAttribute="width" secondItem="yzz-gh-IN1" secondAttribute="width" id="7g6-Dz-Px5"/>
+                            <constraint firstItem="pmi-6U-6UJ" firstAttribute="width" secondItem="jG2-gc-3du" secondAttribute="width" id="9Hg-dp-5cV"/>
+                            <constraint firstItem="3wm-bF-cHm" firstAttribute="leading" secondItem="tjS-Q3-OJk" secondAttribute="leading" constant="16" id="Fnn-JV-1eC"/>
+                            <constraint firstItem="jG2-gc-3du" firstAttribute="leading" secondItem="tjS-Q3-OJk" secondAttribute="leading" constant="16" id="Gvy-NE-0Xj"/>
+                            <constraint firstItem="PLG-9j-yeG" firstAttribute="top" secondItem="kIm-5b-h9N" secondAttribute="bottom" constant="8" id="H4D-6u-xcR"/>
+                            <constraint firstItem="PJ4-78-Jr7" firstAttribute="top" secondItem="bJo-5a-tv5" secondAttribute="bottom" constant="16" id="KVY-DD-Kd5"/>
+                            <constraint firstItem="PLG-9j-yeG" firstAttribute="top" secondItem="kIm-5b-h9N" secondAttribute="bottom" constant="8" id="QZl-sA-lfx"/>
+                            <constraint firstItem="pmi-6U-6UJ" firstAttribute="leading" secondItem="jG2-gc-3du" secondAttribute="trailing" constant="8" id="QeX-dH-Ohw"/>
+                            <constraint firstItem="tjS-Q3-OJk" firstAttribute="bottom" secondItem="MfF-Sk-x7G" secondAttribute="bottom" constant="16" id="Rq3-KY-91k"/>
+                            <constraint firstItem="tjS-Q3-OJk" firstAttribute="trailing" secondItem="PJ4-78-Jr7" secondAttribute="trailing" constant="26" id="SGC-Tb-t1y"/>
+                            <constraint firstItem="tjS-Q3-OJk" firstAttribute="trailing" secondItem="RIT-4T-DIS" secondAttribute="trailing" constant="16" id="SY6-a1-2NR"/>
+                            <constraint firstItem="PLG-9j-yeG" firstAttribute="leading" secondItem="tjS-Q3-OJk" secondAttribute="leading" constant="16" id="SYR-H3-zrQ"/>
+                            <constraint firstItem="yzz-gh-IN1" firstAttribute="leading" secondItem="tjS-Q3-OJk" secondAttribute="leading" constant="16" id="UQy-He-gyR"/>
+                            <constraint firstItem="tjS-Q3-OJk" firstAttribute="trailing" secondItem="pmi-6U-6UJ" secondAttribute="trailing" constant="16" id="WYe-Fz-9a4"/>
+                            <constraint firstItem="bJo-5a-tv5" firstAttribute="top" secondItem="tjS-Q3-OJk" secondAttribute="top" id="WiD-mB-GGG"/>
+                            <constraint firstItem="n6p-gf-qbI" firstAttribute="leading" secondItem="yzz-gh-IN1" secondAttribute="trailing" constant="8" id="a2S-b0-tna"/>
+                            <constraint firstItem="PJ4-78-Jr7" firstAttribute="leading" secondItem="tjS-Q3-OJk" secondAttribute="leading" constant="16" id="aGg-BA-5dU"/>
+                            <constraint firstItem="tjS-Q3-OJk" firstAttribute="trailing" secondItem="MfF-Sk-x7G" secondAttribute="trailing" constant="16" id="gQJ-Dk-Zwx"/>
+                            <constraint firstItem="tjS-Q3-OJk" firstAttribute="trailing" secondItem="n6p-gf-qbI" secondAttribute="trailing" constant="16" id="gWi-O9-62l"/>
+                            <constraint firstItem="RIT-4T-DIS" firstAttribute="top" secondItem="n6p-gf-qbI" secondAttribute="bottom" constant="8" id="lqE-sV-fMh"/>
+                            <constraint firstItem="tjS-Q3-OJk" firstAttribute="trailing" secondItem="kIm-5b-h9N" secondAttribute="trailing" constant="16" id="mQn-kM-P5o"/>
+                            <constraint firstItem="MfF-Sk-x7G" firstAttribute="leading" secondItem="tjS-Q3-OJk" secondAttribute="leading" constant="16" id="nQn-pm-kYL"/>
+                            <constraint firstItem="tjS-Q3-OJk" firstAttribute="trailing" secondItem="PLG-9j-yeG" secondAttribute="trailing" constant="16" id="nR5-yd-smE"/>
+                            <constraint firstItem="RIT-4T-DIS" firstAttribute="width" secondItem="3wm-bF-cHm" secondAttribute="width" id="nVT-CF-78T"/>
+                            <constraint firstItem="tjS-Q3-OJk" firstAttribute="trailing" secondItem="bJo-5a-tv5" secondAttribute="trailing" id="oYu-RT-D0c"/>
+                            <constraint firstItem="kIm-5b-h9N" firstAttribute="leading" secondItem="tjS-Q3-OJk" secondAttribute="leading" constant="16" id="omY-z5-7Ir"/>
+                            <constraint firstItem="bJo-5a-tv5" firstAttribute="leading" secondItem="tjS-Q3-OJk" secondAttribute="leading" id="rzp-W4-wD9"/>
+                            <constraint firstItem="RIT-4T-DIS" firstAttribute="top" secondItem="n6p-gf-qbI" secondAttribute="bottom" constant="8" id="tLU-Ai-GwQ"/>
+                            <constraint firstItem="RIT-4T-DIS" firstAttribute="top" secondItem="n6p-gf-qbI" secondAttribute="bottom" constant="8" id="wP7-Lq-vRi"/>
+                            <constraint firstItem="jG2-gc-3du" firstAttribute="top" secondItem="3wm-bF-cHm" secondAttribute="bottom" constant="8" id="wjU-F8-vCo"/>
+                            <constraint firstItem="kIm-5b-h9N" firstAttribute="top" secondItem="PJ4-78-Jr7" secondAttribute="bottom" constant="8" id="zEs-Nw-KXX"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="tjS-Q3-OJk"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="nA4-jY-0rd"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="addressField" destination="kIm-5b-h9N" id="v4g-hY-8RG"/>
+                        <outlet property="labelField" destination="pmi-6U-6UJ" id="Kup-RO-dks"/>
+                        <outlet property="latitudeLabel" destination="n6p-gf-qbI" id="Khb-Hq-cEG"/>
+                        <outlet property="longitudeLabel" destination="RIT-4T-DIS" id="N3q-mT-Goi"/>
+                        <outlet property="mapView" destination="bJo-5a-tv5" id="UwQ-Jw-9SS"/>
+                        <segue destination="zo6-HF-7UD" kind="custom" identifier="addWaypointToWaypoints" customClass="SegueFromLeft" customModule="WunderLINQ" customModuleProvider="target" id="U8S-hb-Idp"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bGb-WK-7Ij" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="8908" y="-2414"/>
         </scene>
     </scenes>
     <resources>
@@ -1763,12 +1952,12 @@ Icons from fontawesome.com
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="gIM-fx-mWk"/>
-        <segue reference="end-im-meh"/>
-        <segue reference="qQx-7G-0NR"/>
+        <segue reference="NWY-sO-7oz"/>
+        <segue reference="csM-WT-uqP"/>
+        <segue reference="5cX-Ys-4mF"/>
         <segue reference="1ij-RL-89b"/>
         <segue reference="kry-jp-5q5"/>
-        <segue reference="BFW-qY-dw2"/>
+        <segue reference="gfr-gj-BUz"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
 </document>
