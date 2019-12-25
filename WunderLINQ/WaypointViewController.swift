@@ -382,6 +382,7 @@ class WaypointViewController: UIViewController, UITextFieldDelegate, CLLocationM
         self.navigationItem.leftBarButtonItems = [backButton]
         
         self.labelLabel.delegate = self
+        labelLabel.placeholder = NSLocalizedString("waypoint_view_label_hint", comment: "")
         
         let databaseURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
             .appendingPathComponent("waypoints.sqlite")

@@ -122,6 +122,7 @@
 "waypoint_view_bt_delete" = "Delete";
 "delete_waypoint_alert_title" = "Warning!";
 "delete_waypoint_alert_body" = "Delete Waypoint?";
+"waypoint_view_label_hint" = "Waypoint Label";
 
 // AddWaypointViewController
 "addwaypoint_view_title" = "Add Waypoint";
@@ -129,6 +130,7 @@
 "addwaypoint_view_bt_search" = "Lookup";
 "addwaypoint_view_bt_save" = "Save";
 "toast_waypoint_error" = "Latitude & Logitude Required";
+"addwaypoint_view_search_hint" = "Type Address";
 
 // CompassViewController
 "compass_title" = "Compass";

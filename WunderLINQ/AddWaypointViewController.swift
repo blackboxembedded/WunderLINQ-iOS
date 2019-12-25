@@ -70,6 +70,8 @@ class AddWaypointViewController: UIViewController, UITextFieldDelegate, GMSMapVi
         
         self.labelField.delegate = self
         self.addressField.delegate = self
+        addressField.placeholder = NSLocalizedString("addwaypoint_view_search_hint", comment: "")
+        labelField.placeholder = NSLocalizedString("waypoint_view_label_hint", comment: "")
         
         mapView.delegate = self
         let camera: GMSCameraPosition = GMSCameraPosition.camera(withLatitude:  motorcycleData.getLocation().coordinate.latitude, longitude: motorcycleData.getLocation().coordinate.longitude, zoom: 15.0)
