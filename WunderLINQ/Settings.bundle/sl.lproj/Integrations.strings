@@ -10,3 +10,6 @@
 "actioncam_hero4" = "Hero4 ali novejša";
 "actioncam_none" = "Brez";
 "pref_actioncam_title" = "Zunanja kamera";
+"music_spotify" = "Spotify";
+"music_apple" = "Apple Music";
+"pref_musicplayer_title" = "Predvajalnik glasbe";
