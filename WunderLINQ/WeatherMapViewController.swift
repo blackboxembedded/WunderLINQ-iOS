@@ -22,8 +22,9 @@ class WeatherMapViewController: UIViewController {
     // Implement GMSTileURLConstructor
     // Returns a Tile based on the x,y, and zoom coordinates
     let urls: GMSTileURLConstructor = {(x, y, zoom) in
-        //
-        let url = "https://tile.openweathermap.org/map/precipitation/\(zoom)/\(x)/\(y).png?appid=538274f471a690b07f227bd744307f7d"
+        var unixtime: CLong = CLong(Date().timeIntervalSince1970)
+        var timestamp = unixtime - ( unixtime % (10*60))
+        let url = "https://tilecache.rainviewer.com/v2/radar/\(timestamp)/256/\(zoom)/\(x)/\(y)/4/1_1.png"
         return URL(string: url)
     }
     
