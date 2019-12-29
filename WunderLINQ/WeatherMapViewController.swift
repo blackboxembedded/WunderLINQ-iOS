@@ -98,7 +98,7 @@ class WeatherMapViewController: UIViewController {
         if let lat = motorcycleData.location?.coordinate.latitude, let lon = motorcycleData.location?.coordinate.longitude{
             let camera: GMSCameraPosition = GMSCameraPosition.camera(withLatitude: lat, longitude: lon, zoom: 10.0)
             mapView.camera = camera
-            mapView.mapType = .hybrid
+            mapView.mapType = .normal
             // Create the GMSTileLayer
             let layer = GMSURLTileLayer(urlConstructor: urls)
             
