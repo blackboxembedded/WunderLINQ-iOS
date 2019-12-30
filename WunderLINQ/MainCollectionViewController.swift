@@ -2821,8 +2821,8 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         case 0x0B:
             //Next Service Date
             if ((lastMessage[1] != 0xFF) && (lastMessage[2] != 0xFF) && (lastMessage[3] != 0xFF)){
-                let year = UInt32(UInt32((lastMessage[2] >> 4) & 0x0F) << 8) | UInt32(lastMessage[1])
-                let month = (lastMessage[2] & 0x0F)
+                let year = UInt32(UInt32(lastMessage[2] & 0x0F) << 8) | UInt32(lastMessage[1])
+                let month = ((lastMessage[2] >> 4) & 0x0F)
                 let day = lastMessage[3]
                 let calendar = Calendar(identifier: .gregorian)
                 // calendar.timeZone = TimeZone(secondsFromGMT: 0)!
