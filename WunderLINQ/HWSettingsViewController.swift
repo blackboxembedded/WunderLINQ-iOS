@@ -17,6 +17,8 @@ class HWSettingsViewController: UIViewController, CBPeripheralDelegate, UIPicker
     var peripheral: CBPeripheral?
     var characteristic: CBCharacteristic?
     
+    var modePickerData: [String] = [String]()
+    
     @IBOutlet weak var currentVersionLabel: UILabel!
     @IBOutlet weak var modeLabel: LocalisableLabel!
     @IBOutlet weak var resetButton: UIButton!
@@ -109,8 +111,6 @@ class HWSettingsViewController: UIViewController, CBPeripheralDelegate, UIPicker
         alertController.addAction(openAction)
         self.present(alertController, animated: true, completion: nil)
     }
-    
-    var modePickerData: [String] = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()

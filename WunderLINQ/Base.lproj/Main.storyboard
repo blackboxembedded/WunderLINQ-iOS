@@ -14,11 +14,11 @@
             <objects>
                 <viewController storyboardIdentifier="Main" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="MainCollectionViewController" customModule="WunderLINQ" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="LeD-DA-8o8">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="DFb-XX-n1q">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                                 <color key="backgroundColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="iyU-Dx-uZ6">
                                     <size key="itemSize" width="50" height="50"/>
@@ -98,7 +98,7 @@
             <objects>
                 <tableViewController title="Faults" id="KTW-aa-IYg" customClass="FaultsTableViewController" customModule="WunderLINQ" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="8d5-qJ-gEo">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
@@ -364,11 +364,11 @@
             <objects>
                 <viewController id="mgN-4w-lQo" customClass="WeatherMapViewController" customModule="WunderLINQ" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="s1a-NI-mWg">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xBm-3o-5aH" customClass="GMSMapView">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="ignoresInvertColors" value="YES"/>
@@ -398,7 +398,7 @@
             <objects>
                 <viewController storyboardIdentifier="MusicViewController" id="p6n-wZ-mMa" customClass="MusicViewController" customModule="WunderLINQ" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cl2-HO-wNM">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9KV-8n-ffM">
@@ -411,7 +411,7 @@
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="9kl-zc-Jc0">
-                                <rect key="frame" x="0.0" y="375" width="375" height="272"/>
+                                <rect key="frame" x="0.0" y="375" width="375" height="248"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7h2-4R-M5d">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="52"/>
@@ -442,10 +442,10 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SPh-nY-LUF">
-                                        <rect key="frame" x="0.0" y="124" width="375" height="148"/>
+                                        <rect key="frame" x="0.0" y="124" width="375" height="124"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vsu-t3-FAz">
-                                                <rect key="frame" x="0.0" y="0.0" width="125" height="148"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="125" height="124"/>
                                                 <color key="tintColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <state key="normal" image="back"/>
                                                 <connections>
@@ -453,7 +453,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pwh-25-TzL">
-                                                <rect key="frame" x="125" y="0.0" width="125" height="148"/>
+                                                <rect key="frame" x="125" y="0.0" width="125" height="124"/>
                                                 <color key="tintColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <state key="normal" image="play"/>
                                                 <connections>
@@ -461,7 +461,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kxB-1t-Lm7">
-                                                <rect key="frame" x="250" y="0.0" width="125" height="148"/>
+                                                <rect key="frame" x="250" y="0.0" width="125" height="124"/>
                                                 <color key="tintColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <state key="normal" image="forward"/>
                                                 <connections>
@@ -580,7 +580,7 @@
             <objects>
                 <tableViewController id="TPs-yr-NM2" customClass="ContactsTableViewController" customModule="WunderLINQ" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Y20-CM-oly">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -643,7 +643,7 @@
             <objects>
                 <tableViewController id="we8-3Z-s79" customClass="WaypointsNavTableViewController" customModule="WunderLINQ" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="8Yw-3z-6cz">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
@@ -684,11 +684,11 @@
             <objects>
                 <viewController storyboardIdentifier="AlertViewControllerID" title="Alert" id="gJo-MW-rva" customClass="AlertViewController" customModule="WunderLINQ" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="GAg-mc-EeP">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ch1-dL-bp2" customClass="LocalisableButton" customModule="WunderLINQ" customModuleProvider="target">
-                                <rect key="frame" x="16" y="591" width="167.5" height="36"/>
+                                <rect key="frame" x="16" y="611" width="167.5" height="36"/>
                                 <color key="backgroundColor" name="imageTint"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                 <state key="normal" title="CLOSE">
@@ -702,7 +702,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o4A-v0-HaT" customClass="LocalisableButton" customModule="WunderLINQ" customModuleProvider="target">
-                                <rect key="frame" x="191.5" y="591" width="167.5" height="36"/>
+                                <rect key="frame" x="191.5" y="611" width="167.5" height="36"/>
                                 <color key="backgroundColor" name="imageTint"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                 <state key="normal" title="OK">
@@ -716,7 +716,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pNL-mh-mKe">
-                                <rect key="frame" x="16" y="311.5" width="343" height="24"/>
+                                <rect key="frame" x="16" y="321.5" width="343" height="24"/>
                                 <fontDescription key="fontDescription" type="system" weight="black" pointSize="20"/>
                                 <color key="textColor" name="imageTint"/>
                                 <nil key="highlightedColor"/>
@@ -753,7 +753,7 @@
             <objects>
                 <collectionViewController title="Quick Tasks" id="OIf-TM-fnx" customClass="TasksCollectionViewController" customModule="WunderLINQ" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="02I-YM-N5d">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="de0-qU-uAt">
@@ -825,11 +825,11 @@
             <objects>
                 <viewController id="IU4-xr-4Bd" customClass="HWSettingsViewController" customModule="WunderLINQ" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JIN-NT-UZ4">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fZ3-Aw-NNr" customClass="LocalisableButton" customModule="WunderLINQ" customModuleProvider="target">
-                                <rect key="frame" x="16" y="589" width="343" height="42"/>
+                                <rect key="frame" x="16" y="565" width="343" height="42"/>
                                 <color key="backgroundColor" name="imageTint"/>
                                 <fontDescription key="fontDescription" type="system" weight="black" pointSize="25"/>
                                 <state key="normal">
@@ -843,7 +843,7 @@
                                 </connections>
                             </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YMW-LY-so9" customClass="LocalisableButton" customModule="WunderLINQ" customModuleProvider="target">
-                                <rect key="frame" x="16" y="539" width="343" height="42"/>
+                                <rect key="frame" x="16" y="515" width="343" height="42"/>
                                 <color key="backgroundColor" name="imageTint"/>
                                 <fontDescription key="fontDescription" type="system" weight="black" pointSize="25"/>
                                 <state key="normal">
@@ -1161,7 +1161,7 @@
             <objects>
                 <viewController title="About" id="BZZ-xV-I8u" customClass="AboutViewController" customModule="WunderLINQ" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ISD-Sy-aSf">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wunderlinq_logo" translatesAutoresizingMaskIntoConstraints="NO" id="iK0-Eq-bFT">
@@ -1183,7 +1183,7 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jAM-2k-3CY">
-                                <rect key="frame" x="0.0" y="302" width="375" height="345"/>
+                                <rect key="frame" x="0.0" y="302" width="375" height="321"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <string key="text">Support and Patience
 
@@ -1370,7 +1370,7 @@ Icons from fontawesome.com
             <objects>
                 <viewController id="g6h-Xr-9v3" customClass="BikeInfoViewController" customModule="WunderLINQ" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xhC-Jc-QyJ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VIN" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iDW-er-4a7" customClass="LocalisableLabel" customModule="WunderLINQ" customModuleProvider="target">
@@ -1418,36 +1418,100 @@ Icons from fontawesome.com
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wheel Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BjM-1S-d7N" customClass="LocalisableLabel" customModule="WunderLINQ" customModuleProvider="target">
+                                <rect key="frame" x="16" y="210" width="167.5" height="75"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="75" id="vTa-4K-P7d"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="20"/>
+                                <color key="textColor" name="imageTint"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="localisedKey" value="wwtype_label"/>
+                                </userDefinedRuntimeAttributes>
+                            </label>
+                            <pickerView hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7iQ-8R-xc5">
+                                <rect key="frame" x="191.5" y="210" width="167.5" height="75"/>
+                                <color key="tintColor" name="imageTint"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="75" id="81O-iL-yjA"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="75" id="EQL-92-IuT"/>
+                                </constraints>
+                            </pickerView>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cluster Data Reset" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n5F-cP-bzU" customClass="LocalisableLabel" customModule="WunderLINQ" customModuleProvider="target">
+                                <rect key="frame" x="16" y="170" width="343" height="24"/>
+                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="localisedKey" value="reset_header"/>
+                                </userDefinedRuntimeAttributes>
+                            </label>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="67l-FF-Zqt" customClass="LocalisableButton" customModule="WunderLINQ" customModuleProvider="target">
+                                <rect key="frame" x="16" y="301" width="343" height="42"/>
+                                <color key="backgroundColor" name="imageTint"/>
+                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="25"/>
+                                <state key="normal">
+                                    <color key="titleColor" name="backgrounds"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="localisedKey" value="reset_btn_label"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="resetPressed:" destination="g6h-Xr-9v3" eventType="touchUpInside" id="aX3-wh-L9O"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" name="backgrounds"/>
                         <constraints>
+                            <constraint firstItem="BjM-1S-d7N" firstAttribute="leading" secondItem="VQq-iJ-w26" secondAttribute="leading" constant="16" id="1gE-R1-rwy"/>
                             <constraint firstItem="Ns3-eT-lTX" firstAttribute="width" secondItem="jTm-if-vUI" secondAttribute="width" id="3m0-aN-NaV"/>
+                            <constraint firstItem="7iQ-8R-xc5" firstAttribute="height" secondItem="BjM-1S-d7N" secondAttribute="height" id="6Tf-ZO-bAb"/>
                             <constraint firstItem="iDW-er-4a7" firstAttribute="top" secondItem="VQq-iJ-w26" secondAttribute="top" constant="16" id="6Xk-Y7-cy0"/>
                             <constraint firstItem="Ns3-eT-lTX" firstAttribute="leading" secondItem="jTm-if-vUI" secondAttribute="trailing" constant="16" id="6ct-hh-C7U"/>
                             <constraint firstItem="xhl-61-hyH" firstAttribute="top" secondItem="VQq-iJ-w26" secondAttribute="top" constant="16" id="8tr-iC-XBV"/>
                             <constraint firstItem="jTm-if-vUI" firstAttribute="top" secondItem="o2t-Fs-lwV" secondAttribute="bottom" constant="16" id="Eni-ic-wRf"/>
                             <constraint firstItem="jTm-if-vUI" firstAttribute="leading" secondItem="VQq-iJ-w26" secondAttribute="leading" constant="16" id="Ikb-f8-QpG"/>
+                            <constraint firstItem="7iQ-8R-xc5" firstAttribute="top" secondItem="n5F-cP-bzU" secondAttribute="bottom" constant="16" id="KBl-vm-j3R"/>
                             <constraint firstItem="VQq-iJ-w26" firstAttribute="trailing" secondItem="xhl-61-hyH" secondAttribute="trailing" constant="16" id="Kij-rn-KrC"/>
+                            <constraint firstItem="7iQ-8R-xc5" firstAttribute="height" secondItem="BjM-1S-d7N" secondAttribute="height" id="KqS-Ar-0WU"/>
                             <constraint firstItem="Ns3-eT-lTX" firstAttribute="top" secondItem="zq8-qI-2qg" secondAttribute="bottom" constant="16" id="Mra-0Z-kLK"/>
+                            <constraint firstItem="BjM-1S-d7N" firstAttribute="top" secondItem="n5F-cP-bzU" secondAttribute="bottom" constant="16" id="Mwn-VA-i5Z"/>
                             <constraint firstItem="xhl-61-hyH" firstAttribute="leading" secondItem="iDW-er-4a7" secondAttribute="trailing" constant="16" id="Oos-9C-RUB"/>
                             <constraint firstItem="zq8-qI-2qg" firstAttribute="leading" secondItem="o2t-Fs-lwV" secondAttribute="trailing" constant="16" id="PXl-Hr-5MU"/>
                             <constraint firstItem="zq8-qI-2qg" firstAttribute="top" secondItem="xhl-61-hyH" secondAttribute="bottom" constant="16" id="R3Q-AE-16Y"/>
                             <constraint firstItem="jTm-if-vUI" firstAttribute="top" secondItem="o2t-Fs-lwV" secondAttribute="bottom" constant="16" id="Ro5-aK-SWv"/>
                             <constraint firstItem="zq8-qI-2qg" firstAttribute="top" secondItem="xhl-61-hyH" secondAttribute="bottom" constant="16" id="Was-dq-hYk"/>
+                            <constraint firstItem="VQq-iJ-w26" firstAttribute="trailing" secondItem="67l-FF-Zqt" secondAttribute="trailing" constant="16" id="WbA-jg-7HB"/>
+                            <constraint firstItem="n5F-cP-bzU" firstAttribute="leading" secondItem="VQq-iJ-w26" secondAttribute="leading" constant="16" id="Wzd-B4-dMK"/>
+                            <constraint firstItem="VQq-iJ-w26" firstAttribute="trailing" secondItem="n5F-cP-bzU" secondAttribute="trailing" constant="16" id="Z0j-J7-dNn"/>
                             <constraint firstItem="iDW-er-4a7" firstAttribute="leading" secondItem="VQq-iJ-w26" secondAttribute="leading" constant="16" id="a3c-ob-8mp"/>
                             <constraint firstItem="o2t-Fs-lwV" firstAttribute="top" secondItem="iDW-er-4a7" secondAttribute="bottom" constant="16" id="biQ-2J-7yS"/>
                             <constraint firstItem="o2t-Fs-lwV" firstAttribute="top" secondItem="iDW-er-4a7" secondAttribute="bottom" constant="16" id="eiz-Uk-Jde"/>
+                            <constraint firstItem="7iQ-8R-xc5" firstAttribute="leading" secondItem="BjM-1S-d7N" secondAttribute="trailing" constant="8" id="fVu-Kj-DyS"/>
+                            <constraint firstItem="67l-FF-Zqt" firstAttribute="leading" secondItem="VQq-iJ-w26" secondAttribute="leading" constant="16" id="k1S-C1-hyE"/>
                             <constraint firstItem="Ns3-eT-lTX" firstAttribute="top" secondItem="zq8-qI-2qg" secondAttribute="bottom" constant="16" id="lCo-Vo-tY0"/>
                             <constraint firstItem="VQq-iJ-w26" firstAttribute="trailing" secondItem="zq8-qI-2qg" secondAttribute="trailing" constant="16" id="m8x-Uq-RPp"/>
+                            <constraint firstItem="7iQ-8R-xc5" firstAttribute="width" secondItem="BjM-1S-d7N" secondAttribute="width" id="nkv-V7-O9c"/>
+                            <constraint firstItem="n5F-cP-bzU" firstAttribute="top" secondItem="jTm-if-vUI" secondAttribute="bottom" constant="50" id="o1b-50-iMc"/>
                             <constraint firstItem="zq8-qI-2qg" firstAttribute="width" secondItem="o2t-Fs-lwV" secondAttribute="width" id="o3k-Zc-sl3"/>
+                            <constraint firstItem="VQq-iJ-w26" firstAttribute="trailing" secondItem="67l-FF-Zqt" secondAttribute="trailing" constant="16" id="p8q-Nt-UUL"/>
+                            <constraint firstItem="67l-FF-Zqt" firstAttribute="leading" secondItem="VQq-iJ-w26" secondAttribute="leading" constant="16" id="tlZ-Aj-YeZ"/>
                             <constraint firstItem="xhl-61-hyH" firstAttribute="width" secondItem="iDW-er-4a7" secondAttribute="width" id="usF-Cv-Iiu"/>
+                            <constraint firstItem="7iQ-8R-xc5" firstAttribute="width" secondItem="BjM-1S-d7N" secondAttribute="width" id="v1P-GU-X6I"/>
                             <constraint firstItem="o2t-Fs-lwV" firstAttribute="leading" secondItem="VQq-iJ-w26" secondAttribute="leading" constant="16" id="vTC-Dm-A9w"/>
                             <constraint firstItem="VQq-iJ-w26" firstAttribute="trailing" secondItem="Ns3-eT-lTX" secondAttribute="trailing" constant="16" id="vXo-rj-KFG"/>
+                            <constraint firstItem="67l-FF-Zqt" firstAttribute="top" secondItem="BjM-1S-d7N" secondAttribute="bottom" constant="16" id="vvg-2L-6KE"/>
+                            <constraint firstAttribute="trailing" secondItem="7iQ-8R-xc5" secondAttribute="trailing" constant="16" id="wRL-T2-lRS"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="VQq-iJ-w26"/>
                     </view>
                     <navigationItem key="navigationItem" id="rlp-vc-cku"/>
                     <connections>
+                        <outlet property="clusterResetButton" destination="67l-FF-Zqt" id="iRq-9V-ZGu"/>
+                        <outlet property="clusterResetHeaderLabel" destination="n5F-cP-bzU" id="P3h-iw-ZNQ"/>
+                        <outlet property="clusterResetLabel" destination="BjM-1S-d7N" id="Pgz-6A-OBc"/>
+                        <outlet property="clusterResetTypePicker" destination="7iQ-8R-xc5" id="Q37-x6-tkk"/>
                         <outlet property="nextServiceDateLabel" destination="zq8-qI-2qg" id="b6D-0F-TXR"/>
                         <outlet property="nextServiceLabel" destination="Ns3-eT-lTX" id="89B-IL-tH0"/>
                         <outlet property="vinValueLabel" destination="xhl-61-hyH" id="euB-Oe-OCi"/>
@@ -1759,7 +1823,7 @@ Icons from fontawesome.com
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="yqO-MB-hhu"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="5a7-y8-OXS">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -1971,12 +2035,12 @@ Icons from fontawesome.com
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="gIM-fx-mWk"/>
+        <segue reference="NWY-sO-7oz"/>
         <segue reference="csM-WT-uqP"/>
         <segue reference="5cX-Ys-4mF"/>
         <segue reference="1ij-RL-89b"/>
         <segue reference="kry-jp-5q5"/>
-        <segue reference="BFW-qY-dw2"/>
+        <segue reference="nxI-Kn-oh9"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
 </document>

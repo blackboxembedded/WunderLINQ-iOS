@@ -3963,6 +3963,24 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         // get the date time String from the date object
         motorcycleData.setTime(time: currentDateTime)
         updateMessageDisplay()
+        
+        //Update CLuster Clock
+        let calendar = Calendar.current
+        let yearInt = calendar.component(.year, from: currentDateTime)
+        let monthInt = calendar.component(.month, from: currentDateTime)
+        let dayInt = calendar.component(.day, from: currentDateTime)
+        let hourInt = calendar.component(.hour, from: currentDateTime)
+        let minuteInt = calendar.component(.minute, from: currentDateTime)
+        let secondInt = calendar.component(.second, from: currentDateTime)
+        let yearByte: UInt16 = UInt16(yearInt)
+        let yearHByte:UInt8 = UInt8(yearByte >> 4)
+        let yearLByte:UInt8 = UInt8(yearByte & 0x00ff)
+        let yearNibble:UInt8 = (yearLByte & 0x0F)
+        let monthNibble:UInt8 = UInt8(monthInt)
+        let monthYearByte:UInt8 = ((yearNibble & 0x0F) << 4 | (monthNibble & 0x0F))
+        let clockCommand:[UInt8] = [0x57, 0x57, 0x44, 0x43, UInt8(secondInt), UInt8(minuteInt), UInt8(hourInt), UInt8(dayInt), monthYearByte, yearHByte]
+        let writeData =  Data(_: clockCommand)
+        self.wunderLINQ?.writeValue(writeData, for: self.commandCharacteristic!, type: CBCharacteristicWriteType.withResponse)
     }
 }
 

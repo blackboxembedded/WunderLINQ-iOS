@@ -257,6 +257,9 @@
 "vin_label" = "VIN";
 "next_service_date_label" = "Next Service Date";
 "next_service_label" = "Next Service";
+"reset_header" = "Cluster Data Reset";
+"reset_label" = "Item";
+"reset_btn_label" = "Reset";
 
 //WeatherMapViewController
 "weathermap_title" = "Weather Map";
