@@ -231,3 +231,13 @@
 "toast_actioncam_notconnected" = "Kamera ni povezana";
 "alert_title_photopreview" = "Predogled slike";
 "bike_info_label" = "Podatki o motorju";
+"waypoint_view_label_hint" = "Oznaka kažipota";
+"toast_waypoint_error" = "Potrebni širina in dolžina";
+"addwaypoint_view_search_hint" = "Vnesi naslov";
+"addwaypoint_view_bt_search" = "Poišči";
+"addwaypoint_view_tv_search_label" = "Pokaži točko ali poišči naslov";
+"addwaypoint_view_bt_save" = "Shrani";
+// AddWaypointViewController
+"addwaypoint_view_title" = "Dodaj kažipot";
+"config_reset_label" = "Ponastavi nastavitve";
+"fw_version_label" = "Različica programske opreme";
