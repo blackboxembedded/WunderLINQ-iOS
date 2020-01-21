@@ -46,6 +46,8 @@
 		<string>comgooglemaps-x-callback</string>
 		<string>com.sygic.aura</string>
 		<string>spotify</string>
+		<string>here-route</string>
+		<string>here-location</string>
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>

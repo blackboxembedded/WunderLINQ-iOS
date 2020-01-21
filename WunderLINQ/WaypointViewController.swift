@@ -165,6 +165,21 @@ class WaypointViewController: UIViewController, UITextFieldDelegate, CLLocationM
                         }
                     }
                 }
+            case 7:
+                // Here We Go
+                // https://developer.here.com/documentation/mobility-on-demand-toolkit/dev_guide/topics/navigation.html
+                // here-route://mylocation/37.870090,-122.268150,Downtown%20Berkeley?ref=WunderLINQ&m=d
+                let urlString = "here-route://mylocation/\(destLatitude),\(destLongitude),\(label ?? "")?ref=WunderLINQ&m=d"
+                
+                if let hereURL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
+                    if (UIApplication.shared.canOpenURL(hereURL)) {
+                        if #available(iOS 10, *) {
+                            UIApplication.shared.open(hereURL, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
+                        } else {
+                            UIApplication.shared.openURL(hereURL as URL)
+                        }
+                    }
+                }
             default:
                 //Apple Maps
                 let coordinates = CLLocationCoordinate2DMake(destLatitude, destLongitude)
@@ -266,6 +281,21 @@ class WaypointViewController: UIViewController, UITextFieldDelegate, CLLocationM
                             UIApplication.shared.open(mapsMeURL, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
                         } else {
                             UIApplication.shared.openURL(mapsMeURL as URL)
+                        }
+                    }
+                }
+            case 7:
+                // Here We Go
+                // https://stackoverflow.com/questions/13514532/launch-nokia-here-maps-ios-via-api
+                // here-location://lat,lon,optionalName
+                let urlString = "here-location://\(destLatitude),\(destLongitude),\(label ?? "")?ref=WunderLINQ"
+                
+                if let hereURL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
+                    if (UIApplication.shared.canOpenURL(hereURL)) {
+                        if #available(iOS 10, *) {
+                            UIApplication.shared.open(hereURL, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
+                        } else {
+                            UIApplication.shared.openURL(hereURL as URL)
                         }
                     }
                 }
