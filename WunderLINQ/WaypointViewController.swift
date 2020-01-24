@@ -141,7 +141,7 @@ class WaypointViewController: UIViewController, UITextFieldDelegate, CLLocationM
                 if currentLocation != nil {
                     let startLatitude: CLLocationDegrees = (self.currentLocation?.coordinate.latitude)!
                     let startLongitude: CLLocationDegrees = (self.currentLocation?.coordinate.longitude)!
-                    let urlString = "mapsme://route?sll=\(startLatitude),\(startLongitude)&saddr=\(NSLocalizedString("trip_view_waypoint_start_label", comment: ""))&dll=\(destLatitude),\(destLongitude)&daddr=\(label ?? ""))&type=vehicle"
+                    let urlString = "mapsme://route?sll=\(startLatitude),\(startLongitude)&saddr=\(NSLocalizedString("trip_view_waypoint_start_label", comment: ""))&dll=\(destLatitude),\(destLongitude)&daddr=\(label ?? ""))&type=vehicle&backurl=wunderlinq://"
                     if let mapsMeURL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
                         if (UIApplication.shared.canOpenURL(mapsMeURL)) {
                             if #available(iOS 10, *) {
@@ -260,7 +260,7 @@ class WaypointViewController: UIViewController, UITextFieldDelegate, CLLocationM
                 //Maps.me
                 //https://github.com/mapsme/api-ios
                 //mapswithme://map?v=1&ll=54.32123,12.34562&n=Point%20Name&id=AnyStringOrEncodedUrl&backurl=UrlToCallOnBackButton&appname=TitleToDisplayInNavBar
-                let urlString = "mapsme://map?ll=\(destLatitude),\(destLongitude)&n=\(label ?? "")&id=\(NSLocalizedString("product", comment: ""))&backurl=wunderlinq://&appname=\(NSLocalizedString("product", comment: ""))"
+                let urlString = "mapsme://map?ll=\(destLatitude),\(destLongitude)&n=\(label ?? "")&backurl=wunderlinq://"
                 
                 if let mapsMeURL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
                     if (UIApplication.shared.canOpenURL(mapsMeURL)) {
@@ -285,7 +285,7 @@ class WaypointViewController: UIViewController, UITextFieldDelegate, CLLocationM
                     }
                 }
             case 7:
-                // Here We Go
+                // HERE WeGo
                 // https://stackoverflow.com/questions/13514532/launch-nokia-here-maps-ios-via-api
                 // here-location://lat,lon,optionalName
                 let urlString = "here-location://\(destLatitude),\(destLongitude),\(label ?? "")?ref=WunderLINQ"

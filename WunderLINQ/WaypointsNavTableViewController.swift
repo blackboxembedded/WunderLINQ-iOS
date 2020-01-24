@@ -476,7 +476,7 @@ class WaypointsNavTableViewController: UITableViewController, CLLocationManagerD
                 if currentLocation != nil {
                     let startLatitude: CLLocationDegrees = (self.currentLocation?.coordinate.latitude)!
                     let startLongitude: CLLocationDegrees = (self.currentLocation?.coordinate.longitude)!
-                    let urlString = "mapsme://route?sll=\(startLatitude),\(startLongitude)&saddr=\(NSLocalizedString("trip_view_waypoint_start_label", comment: ""))&dll=\(destLatitude),\(destLongitude)&daddr=\(label ?? ""))&type=vehicle"
+                    let urlString = "mapsme://route?sll=\(startLatitude),\(startLongitude)&saddr=\(NSLocalizedString("trip_view_waypoint_start_label", comment: ""))&dll=\(destLatitude),\(destLongitude)&daddr=\(label ?? ""))&type=vehicle&backurl=wunderlinq://"
                     if let mapsMeURL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
                         if (UIApplication.shared.canOpenURL(mapsMeURL)) {
                             if #available(iOS 10, *) {

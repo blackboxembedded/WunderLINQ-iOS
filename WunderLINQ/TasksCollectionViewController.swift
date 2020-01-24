@@ -223,7 +223,7 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
             case 5:
                 //Maps.me
                 //https://github.com/mapsme/api-ios
-                if let mapsMeURL = URL(string: "mapsme://&id=wunderlinq://&backurl=wunderlinq://&appname=\(NSLocalizedString("product", comment: ""))") {
+                if let mapsMeURL = URL(string: "mapsme://?backurl=wunderlinq://") {
                     if (UIApplication.shared.canOpenURL(mapsMeURL)) {
                         if #available(iOS 10, *) {
                             UIApplication.shared.open(mapsMeURL, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
@@ -387,7 +387,7 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
                                                                 let lon = placemark?.location?.coordinate.longitude
                                                                 let destLatitude: CLLocationDegrees = lat!
                                                                 let destLongitude: CLLocationDegrees = lon!
-                                                                let urlString = "mapsme://route?sll=\(startLatitude),\(startLongitude)&saddr=Start&dll=\(destLatitude),\(destLongitude)&daddr=\(NSLocalizedString("home", comment: ""))&type=vehicle"
+                                                                let urlString = "mapsme://route?sll=\(startLatitude),\(startLongitude)&saddr=Start&dll=\(destLatitude),\(destLongitude)&daddr=\(NSLocalizedString("home", comment: ""))&type=vehicle&backurl=wunderlinq://"
                                                                 
                                                                 if let mapsMeURL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
                                                                     if (UIApplication.shared.canOpenURL(mapsMeURL)) {
