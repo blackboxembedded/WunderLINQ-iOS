@@ -426,6 +426,10 @@
 		7EA478421F40B154000CEDDC /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				KnownAssetTags = (
+					2,
+					3,
+				);
 				LastSwiftUpdateCheck = 0830;
 				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = "Black Box Embedded, LLC";

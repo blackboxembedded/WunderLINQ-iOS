@@ -505,7 +505,6 @@ class WaypointsNavTableViewController: UITableViewController, CLLocationManagerD
                 // https://developer.here.com/documentation/mobility-on-demand-toolkit/dev_guide/topics/navigation.html
                 // here-route://mylocation/37.870090,-122.268150,Downtown%20Berkeley?ref=WunderLINQ&m=d
                 let urlString = "here-route://mylocation/\(destLatitude),\(destLongitude),\(label ?? "")?ref=WunderLINQ&m=d"
-                
                 if let hereURL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
                     if (UIApplication.shared.canOpenURL(hereURL)) {
                         if #available(iOS 10, *) {

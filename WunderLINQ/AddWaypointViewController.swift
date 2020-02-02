@@ -15,16 +15,20 @@ import MapKit
 class AddWaypointViewController: UIViewController, UITextFieldDelegate, GMSMapViewDelegate {
     @IBOutlet weak var mapView: GMSMapView!
     @IBOutlet weak var addressField: UITextField!
-    @IBOutlet weak var latitudeLabel: UILabel!
-    @IBOutlet weak var longitudeLabel: UILabel!
+    @IBOutlet weak var latitudeField: UITextField!
+    @IBOutlet weak var longitudeField: UITextField!
     @IBOutlet weak var labelField: UITextField!
     
+    // This constraint ties an element at zero points from the bottom layout guide
+    @IBOutlet var keyboardHeightLayoutConstraint: NSLayoutConstraint?
     
     let motorcycleData = MotorcycleData.shared
     
+    let LATITUDE_PATTERN:String = "^(\\+|-)?(?:90(?:(?:\\.0{1,16})?)|(?:[0-9]|[1-8][0-9])(?:(?:\\.[0-9]{1,16})?))$"
+    let LONGITUDE_PATTERN:String = "^(\\+|-)?(?:180(?:(?:\\.0{1,16})?)|(?:[0-9]|[1-9][0-9]|1[0-7][0-9])(?:(?:\\.[0-9]{1,16})?))$"
+    
     @objc func leftScreen() {
         _ = navigationController?.popViewController(animated: true)
-        //performSegue(withIdentifier: "waypointToWaypoints", sender: [])
     }
     
     @objc func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
@@ -37,8 +41,67 @@ class AddWaypointViewController: UIViewController, UITextFieldDelegate, GMSMapVi
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        self.view.endEditing(true)
-        return false
+        
+        textField.resignFirstResponder()
+        
+        switch (textField.tag){
+        case 1:
+            //Lat
+            let lat:String = latitudeField.text ?? ""
+            let lon:String = longitudeField.text ?? ""
+            if ( lat.range(of: LATITUDE_PATTERN, options: .regularExpression, range: nil, locale: nil) != nil && lon.range(of: LONGITUDE_PATTERN, options: .regularExpression, range: nil, locale: nil) != nil){
+                self.mapView.clear()
+                let camera: GMSCameraPosition = GMSCameraPosition.camera(withLatitude:  Double(lat)!, longitude: Double(lon)!, zoom: 15.0)
+                self.mapView.camera = camera
+                let marker = GMSMarker()
+                marker.position = CLLocationCoordinate2D(latitude: Double(lat)!, longitude: Double(lon)!)
+                marker.map = self.mapView
+            } else {
+                print("Not a valid lat or lon")
+            }
+            self.view.endEditing(true)
+            return true
+        case 2:
+            //Lon
+            let lat:String = latitudeField.text ?? ""
+            let lon:String = longitudeField.text ?? ""
+            if ( lat.range(of: LATITUDE_PATTERN, options: .regularExpression, range: nil, locale: nil) != nil && lon.range(of: LONGITUDE_PATTERN, options: .regularExpression, range: nil, locale: nil) != nil){
+                self.mapView.clear()
+                let camera: GMSCameraPosition = GMSCameraPosition.camera(withLatitude:  Double(lat)!, longitude: Double(lon)!, zoom: 15.0)
+                self.mapView.camera = camera
+                let marker = GMSMarker()
+                marker.position = CLLocationCoordinate2D(latitude: Double(lat)!, longitude: Double(lon)!)
+                marker.map = self.mapView
+            } else {
+                print("Not a valid lat or lon")
+            }
+            self.view.endEditing(true)
+            return true
+        default:
+            self.view.endEditing(true)
+            return false
+        }
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        moveTextField(textField, moveDistance: -250, up: true)
+    }
+
+    // Finish Editing The Text Field
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        moveTextField(textField, moveDistance: -250, up: false)
+    }
+
+    // Move the text field in a pretty animation!
+    func moveTextField(_ textField: UITextField, moveDistance: Int, up: Bool) {
+        let moveDuration = 0.3
+        let movement: CGFloat = CGFloat(up ? moveDistance : -moveDistance)
+
+        UIView.beginAnimations("animateTextField", context: nil)
+        UIView.setAnimationBeginsFromCurrentState(true)
+        UIView.setAnimationDuration(moveDuration)
+        self.view.frame = self.view.frame.offsetBy(dx: 0, dy: movement)
+        UIView.commitAnimations()
     }
     
     override func viewDidLoad() {
@@ -46,7 +109,6 @@ class AddWaypointViewController: UIViewController, UITextFieldDelegate, GMSMapVi
         AppUtility.lockOrientation(.portrait)
         
         // Do any additional setup after loading the view.
-
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))
         swipeRight.direction = .right
         self.view.addGestureRecognizer(swipeRight)
@@ -70,8 +132,12 @@ class AddWaypointViewController: UIViewController, UITextFieldDelegate, GMSMapVi
         
         self.labelField.delegate = self
         self.addressField.delegate = self
+        self.latitudeField.delegate = self
+        self.longitudeField.delegate = self
         addressField.placeholder = NSLocalizedString("addwaypoint_view_search_hint", comment: "")
         labelField.placeholder = NSLocalizedString("waypoint_view_label_hint", comment: "")
+        latitudeField.text = "\(motorcycleData.getLocation().coordinate.latitude)"
+        longitudeField.text = "\(motorcycleData.getLocation().coordinate.longitude)"
         
         mapView.delegate = self
         let camera: GMSCameraPosition = GMSCameraPosition.camera(withLatitude:  motorcycleData.getLocation().coordinate.latitude, longitude: motorcycleData.getLocation().coordinate.longitude, zoom: 15.0)
@@ -81,8 +147,6 @@ class AddWaypointViewController: UIViewController, UITextFieldDelegate, GMSMapVi
         let marker = GMSMarker()
         marker.position = CLLocationCoordinate2D(latitude: motorcycleData.getLocation().coordinate.latitude, longitude: motorcycleData.getLocation().coordinate.longitude)
         marker.map = mapView
-        latitudeLabel.text = "\(motorcycleData.getLocation().coordinate.latitude)"
-        longitudeLabel.text = "\(motorcycleData.getLocation().coordinate.longitude)"
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -97,8 +161,8 @@ class AddWaypointViewController: UIViewController, UITextFieldDelegate, GMSMapVi
         let marker = GMSMarker(position: coordinate)
         marker.map = mapView
         
-        latitudeLabel.text = "\(coordinate.latitude)"
-        longitudeLabel.text = "\(coordinate.longitude)"
+        latitudeField.text = "\(coordinate.latitude)"
+        longitudeField.text = "\(coordinate.longitude)"
     }
     
     @IBAction func lookupPressed(_ sender: Any) {
@@ -113,8 +177,8 @@ class AddWaypointViewController: UIViewController, UITextFieldDelegate, GMSMapVi
                                                 let lon = placemark?.location?.coordinate.longitude
                                                 let destLatitude: CLLocationDegrees = lat!
                                                 let destLongitude: CLLocationDegrees = lon!
-                                                self.latitudeLabel.text = "\(destLatitude)"
-                                                self.longitudeLabel.text = "\(destLongitude)"
+                                                self.latitudeField.text = "\(destLatitude)"
+                                                self.longitudeField.text = "\(destLongitude)"
                                                 self.mapView.clear()
                                                 let camera: GMSCameraPosition = GMSCameraPosition.camera(withLatitude:  destLatitude, longitude: destLongitude, zoom: 15.0)
                                                 self.mapView.camera = camera
@@ -131,7 +195,7 @@ class AddWaypointViewController: UIViewController, UITextFieldDelegate, GMSMapVi
     }
     
     @IBAction func savePressed(_ sender: Any) {
-        if (latitudeLabel.text != "" && longitudeLabel.text != ""){
+        if (latitudeField.text != "" && longitudeField.text != ""){
             var db: OpaquePointer?
             let databaseURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
                 .appendingPathComponent("waypoints.sqlite")
@@ -167,12 +231,12 @@ class AddWaypointViewController: UIViewController, UITextFieldDelegate, GMSMapVi
                 print("failure binding name: \(errmsg)")
                 return
             }
-            if sqlite3_bind_double(stmt, 2, (Double(latitudeLabel!.text ?? "0.0")!)) != SQLITE_OK{
+            if sqlite3_bind_double(stmt, 2, (Double(latitudeField!.text ?? "0.0")!)) != SQLITE_OK{
                 let errmsg = String(cString: sqlite3_errmsg(db)!)
                 print("failure binding name: \(errmsg)")
                 return
             }
-            if sqlite3_bind_double(stmt, 3, (Double(longitudeLabel!.text ?? "0.0")!)) != SQLITE_OK{
+            if sqlite3_bind_double(stmt, 3, (Double(longitudeField!.text ?? "0.0")!)) != SQLITE_OK{
                 let errmsg = String(cString: sqlite3_errmsg(db)!)
                 print("failure binding name: \(errmsg)")
                 return
