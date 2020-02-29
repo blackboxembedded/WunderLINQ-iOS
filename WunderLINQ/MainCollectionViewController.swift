@@ -158,22 +158,14 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         case 0:
             //OFF
             if(self.navigationController?.isToolbarHidden ?? false){
-                if UserDefaults.standard.bool(forKey: "motorcycle_data_preference") {
-                    return .default
-                } else {
-                    return .lightContent
-                }
+                return .lightContent
             } else {
                 return .default
             }
         case 1:
             //On
             if(self.navigationController?.isToolbarHidden ?? false){
-                if UserDefaults.standard.bool(forKey: "motorcycle_data_preference") {
-                    return .lightContent
-                } else {
-                    return .default
-                }
+                return .default
             } else {
                 return .lightContent
             }
@@ -183,22 +175,14 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                 if traitCollection.userInterfaceStyle == .light {
                     //OFF
                     if(self.navigationController?.isToolbarHidden ?? false){
-                        if UserDefaults.standard.bool(forKey: "motorcycle_data_preference") {
-                            return .darkContent
-                        } else {
-                            return .lightContent
-                        }
+                        return .lightContent
                     } else {
                         return .darkContent
                     }
                 } else {
                     //On
                     if(self.navigationController?.isToolbarHidden ?? false){
-                        if UserDefaults.standard.bool(forKey: "motorcycle_data_preference") {
-                            return .lightContent
-                        } else {
-                            return .darkContent
-                        }
+                        return .darkContent
                     } else {
                         return .lightContent
                     }
@@ -263,37 +247,6 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                 self.navigationController?.isNavigationBarHidden = true
                 self.navigationController?.isNavigationBarHidden = false
             }
-        }
-        
-        if UserDefaults.standard.bool(forKey: "motorcycle_data_preference") {
-            for mainUIView in self.mainUIView.subviews {
-                mainUIView.removeFromSuperview()
-            }
-            var imageName = "wunderlinq_logo"
-            if #available(iOS 13.0, *) {
-                imageName = "wunderlinq_logo"
-            } else {
-                switch(UserDefaults.standard.integer(forKey: "darkmode_preference")){
-                case 0:
-                    //OFF
-                    mainUIView.backgroundColor = .white
-                    imageName = "wunderlinq_logo-black"
-                case 1:
-                    //On
-                    mainUIView.backgroundColor = .black
-                    imageName = "wunderlinq_logo-white"
-                default:
-                    //Default
-                    mainUIView.backgroundColor = .white
-                    imageName = "wunderlinq_logo-black"
-                }
-            }
-            let image = UIImage(named: imageName)
-            let imageView = UIImageView(image: image!)
-            imageView.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: 200)
-            imageView.center = self.view.center
-            imageView.contentMode = .scaleAspectFit
-            mainUIView.addSubview(imageView)
         }
         
         if UserDefaults.standard.bool(forKey: "display_brightness_preference") {
@@ -449,6 +402,9 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             case 8:
                 cellsPerRow = 4
                 rowCount = 2
+            case 10:
+                cellsPerRow = 5
+                rowCount = 2
             case 12:
                 cellsPerRow = 4
                 rowCount = 3
@@ -474,6 +430,9 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             case 8:
                 cellsPerRow = 2
                 rowCount = 4
+            case 10:
+                cellsPerRow = 2
+                rowCount = 5
             case 12:
                 cellsPerRow = 3
                 rowCount = 4
@@ -597,10 +556,12 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                     case 4:
                         height = ((size.height - (heightMarginsAndInsets)) / CGFloat(2)).rounded(.down)
                         width = ((size.width - widthMarginsAndInsets) / CGFloat(2)).rounded(.down)
-                        
                     case 8:
                         height = ((size.height - (heightMarginsAndInsets)) / CGFloat(2)).rounded(.down)
                         width = ((size.width - (widthMarginsAndInsets * 2)) / CGFloat(4)).rounded(.down)
+                    case 10:
+                        height = ((size.height - (heightMarginsAndInsets)) / CGFloat(2)).rounded(.down)
+                        width = ((size.width - (widthMarginsAndInsets * 2)) / CGFloat(5)).rounded(.down)
                     case 12:
                         height = ((size.height - (heightMarginsAndInsets)) / CGFloat(3)).rounded(.down)
                         width = ((size.width - (widthMarginsAndInsets * 2)) / CGFloat(4)).rounded(.down)
@@ -626,6 +587,9 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                         width = (size.width - widthMarginsAndInsets)
                     case 8:
                         height = ((size.height - (heightMarginsAndInsets)) / CGFloat(4)).rounded(.down)
+                        width = ((size.width - widthMarginsAndInsets) / CGFloat(2)).rounded(.down)
+                    case 10:
+                        height = ((size.height - (heightMarginsAndInsets)) / CGFloat(5)).rounded(.down)
                         width = ((size.width - widthMarginsAndInsets) / CGFloat(2)).rounded(.down)
                     case 12:
                         height = ((size.height - (heightMarginsAndInsets)) / CGFloat(4)).rounded(.down)
@@ -700,6 +664,9 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             case 8:
                 height = ((self.view.bounds.size.height - (heightMarginsAndInsets)) / CGFloat(2)).rounded(.down)
                 width = ((self.view.bounds.size.width - (widthMarginsAndInsets)) / CGFloat(4)).rounded(.down)
+            case 10:
+                height = ((self.view.bounds.size.height - (heightMarginsAndInsets)) / CGFloat(2)).rounded(.down)
+                width = ((self.view.bounds.size.width - (widthMarginsAndInsets)) / CGFloat(5)).rounded(.down)
             case 12:
                 height = ((self.view.bounds.size.height - (heightMarginsAndInsets)) / CGFloat(3)).rounded(.down)
                 width = ((self.view.bounds.size.width - (widthMarginsAndInsets)) / CGFloat(4)).rounded(.down)
@@ -725,6 +692,9 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                 width = (self.view.bounds.size.width - widthMarginsAndInsets)
             case 8:
                 height = ((self.view.bounds.size.height - (heightMarginsAndInsets)) / CGFloat(4)).rounded(.down)
+                width = ((self.view.bounds.size.width - widthMarginsAndInsets) / CGFloat(2)).rounded(.down)
+            case 10:
+                height = ((self.view.bounds.size.height - (heightMarginsAndInsets)) / CGFloat(5)).rounded(.down)
                 width = ((self.view.bounds.size.width - widthMarginsAndInsets) / CGFloat(2)).rounded(.down)
             case 12:
                 height = ((self.view.bounds.size.height - (heightMarginsAndInsets)) / CGFloat(4)).rounded(.down)
@@ -775,6 +745,8 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             print("cellCount:4")
         case 8:
             print("cellCount:8")
+        case 10:
+            print("cellCount:10")
         case 12:
             print("cellCount:12")
         case 15:
@@ -1123,134 +1095,151 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         }
         self.navigationItem.leftBarButtonItems = [backButton, disconnectButton, faultsButton]
         
-        if !UserDefaults.standard.bool(forKey: "motorcycle_data_preference"){
-            // Update main display
-            let cellCount = UserDefaults.standard.integer(forKey: "GRIDCOUNT")
-            switch (cellCount){
-            case 15:
-                let cell1 = UserDefaults.standard.integer(forKey: "grid_one_preference")
-                let cell2 = UserDefaults.standard.integer(forKey: "grid_two_preference")
-                let cell3 = UserDefaults.standard.integer(forKey: "grid_three_preference")
-                let cell4 = UserDefaults.standard.integer(forKey: "grid_four_preference")
-                let cell5 = UserDefaults.standard.integer(forKey: "grid_five_preference")
-                let cell6 = UserDefaults.standard.integer(forKey: "grid_six_preference")
-                let cell7 = UserDefaults.standard.integer(forKey: "grid_seven_preference")
-                let cell8 = UserDefaults.standard.integer(forKey: "grid_eight_preference")
-                let cell9 = UserDefaults.standard.integer(forKey: "grid_nine_preference")
-                let cell10 = UserDefaults.standard.integer(forKey: "grid_ten_preference")
-                let cell11 = UserDefaults.standard.integer(forKey: "grid_eleven_preference")
-                let cell12 = UserDefaults.standard.integer(forKey: "grid_twelve_preference")
-                let cell13 = UserDefaults.standard.integer(forKey: "grid_thirteen_preference")
-                let cell14 = UserDefaults.standard.integer(forKey: "grid_fourteen_preference")
-                let cell15 = UserDefaults.standard.integer(forKey: "grid_fifteen_preference")
-                setCellText(1, dataPoint: cell1)
-                setCellText(2, dataPoint: cell2)
-                setCellText(3, dataPoint: cell3)
-                setCellText(4, dataPoint: cell4)
-                setCellText(5, dataPoint: cell5)
-                setCellText(6, dataPoint: cell6)
-                setCellText(7, dataPoint: cell7)
-                setCellText(8, dataPoint: cell8)
-                setCellText(9, dataPoint: cell9)
-                setCellText(10, dataPoint: cell10)
-                setCellText(11, dataPoint: cell11)
-                setCellText(12, dataPoint: cell12)
-                setCellText(13, dataPoint: cell13)
-                setCellText(14, dataPoint: cell14)
-                setCellText(15, dataPoint: cell15)
-            case 12:
-                let cell1 = UserDefaults.standard.integer(forKey: "grid_one_preference")
-                let cell2 = UserDefaults.standard.integer(forKey: "grid_two_preference")
-                let cell3 = UserDefaults.standard.integer(forKey: "grid_three_preference")
-                let cell4 = UserDefaults.standard.integer(forKey: "grid_four_preference")
-                let cell5 = UserDefaults.standard.integer(forKey: "grid_five_preference")
-                let cell6 = UserDefaults.standard.integer(forKey: "grid_six_preference")
-                let cell7 = UserDefaults.standard.integer(forKey: "grid_seven_preference")
-                let cell8 = UserDefaults.standard.integer(forKey: "grid_eight_preference")
-                let cell9 = UserDefaults.standard.integer(forKey: "grid_nine_preference")
-                let cell10 = UserDefaults.standard.integer(forKey: "grid_ten_preference")
-                let cell11 = UserDefaults.standard.integer(forKey: "grid_eleven_preference")
-                let cell12 = UserDefaults.standard.integer(forKey: "grid_twelve_preference")
-                setCellText(1, dataPoint: cell1)
-                setCellText(2, dataPoint: cell2)
-                setCellText(3, dataPoint: cell3)
-                setCellText(4, dataPoint: cell4)
-                setCellText(5, dataPoint: cell5)
-                setCellText(6, dataPoint: cell6)
-                setCellText(7, dataPoint: cell7)
-                setCellText(8, dataPoint: cell8)
-                setCellText(9, dataPoint: cell9)
-                setCellText(10, dataPoint: cell10)
-                setCellText(11, dataPoint: cell11)
-                setCellText(12, dataPoint: cell12)
-            case 8:
-                let cell1 = UserDefaults.standard.integer(forKey: "grid_one_preference")
-                let cell2 = UserDefaults.standard.integer(forKey: "grid_two_preference")
-                let cell3 = UserDefaults.standard.integer(forKey: "grid_three_preference")
-                let cell4 = UserDefaults.standard.integer(forKey: "grid_four_preference")
-                let cell5 = UserDefaults.standard.integer(forKey: "grid_five_preference")
-                let cell6 = UserDefaults.standard.integer(forKey: "grid_six_preference")
-                let cell7 = UserDefaults.standard.integer(forKey: "grid_seven_preference")
-                let cell8 = UserDefaults.standard.integer(forKey: "grid_eight_preference")
-                setCellText(1, dataPoint: cell1)
-                setCellText(2, dataPoint: cell2)
-                setCellText(3, dataPoint: cell3)
-                setCellText(4, dataPoint: cell4)
-                setCellText(5, dataPoint: cell5)
-                setCellText(6, dataPoint: cell6)
-                setCellText(7, dataPoint: cell7)
-                setCellText(8, dataPoint: cell8)
-            case 4:
-                let cell1 = UserDefaults.standard.integer(forKey: "grid_one_preference")
-                let cell2 = UserDefaults.standard.integer(forKey: "grid_two_preference")
-                let cell3 = UserDefaults.standard.integer(forKey: "grid_three_preference")
-                let cell4 = UserDefaults.standard.integer(forKey: "grid_four_preference")
-                setCellText(1, dataPoint: cell1)
-                setCellText(2, dataPoint: cell2)
-                setCellText(3, dataPoint: cell3)
-                setCellText(4, dataPoint: cell4)
-            case 2:
-                let cell1 = UserDefaults.standard.integer(forKey: "grid_one_preference")
-                let cell2 = UserDefaults.standard.integer(forKey: "grid_two_preference")
-                setCellText(1, dataPoint: cell1)
-                setCellText(2, dataPoint: cell2)
-            case 1:
-                let cell1 = UserDefaults.standard.integer(forKey: "grid_one_preference")
-                setCellText(1, dataPoint: cell1)
-            default:
-                let cell1 = UserDefaults.standard.integer(forKey: "grid_one_preference")
-                let cell2 = UserDefaults.standard.integer(forKey: "grid_two_preference")
-                let cell3 = UserDefaults.standard.integer(forKey: "grid_three_preference")
-                let cell4 = UserDefaults.standard.integer(forKey: "grid_four_preference")
-                let cell5 = UserDefaults.standard.integer(forKey: "grid_five_preference")
-                let cell6 = UserDefaults.standard.integer(forKey: "grid_six_preference")
-                let cell7 = UserDefaults.standard.integer(forKey: "grid_seven_preference")
-                let cell8 = UserDefaults.standard.integer(forKey: "grid_eight_preference")
-                let cell9 = UserDefaults.standard.integer(forKey: "grid_nine_preference")
-                let cell10 = UserDefaults.standard.integer(forKey: "grid_ten_preference")
-                let cell11 = UserDefaults.standard.integer(forKey: "grid_eleven_preference")
-                let cell12 = UserDefaults.standard.integer(forKey: "grid_twelve_preference")
-                let cell13 = UserDefaults.standard.integer(forKey: "grid_thirteen_preference")
-                let cell14 = UserDefaults.standard.integer(forKey: "grid_fourteen_preference")
-                let cell15 = UserDefaults.standard.integer(forKey: "grid_fifteen_preference")
-                setCellText(1, dataPoint: cell1)
-                setCellText(2, dataPoint: cell2)
-                setCellText(3, dataPoint: cell3)
-                setCellText(4, dataPoint: cell4)
-                setCellText(5, dataPoint: cell5)
-                setCellText(6, dataPoint: cell6)
-                setCellText(7, dataPoint: cell7)
-                setCellText(8, dataPoint: cell8)
-                setCellText(9, dataPoint: cell9)
-                setCellText(10, dataPoint: cell10)
-                setCellText(11, dataPoint: cell11)
-                setCellText(12, dataPoint: cell12)
-                setCellText(13, dataPoint: cell13)
-                setCellText(14, dataPoint: cell14)
-                setCellText(15, dataPoint: cell15)
-            }
-            
-            
+        // Update main display
+        let cellCount = UserDefaults.standard.integer(forKey: "GRIDCOUNT")
+        switch (cellCount){
+        case 15:
+            let cell1 = UserDefaults.standard.integer(forKey: "grid_one_preference")
+            let cell2 = UserDefaults.standard.integer(forKey: "grid_two_preference")
+            let cell3 = UserDefaults.standard.integer(forKey: "grid_three_preference")
+            let cell4 = UserDefaults.standard.integer(forKey: "grid_four_preference")
+            let cell5 = UserDefaults.standard.integer(forKey: "grid_five_preference")
+            let cell6 = UserDefaults.standard.integer(forKey: "grid_six_preference")
+            let cell7 = UserDefaults.standard.integer(forKey: "grid_seven_preference")
+            let cell8 = UserDefaults.standard.integer(forKey: "grid_eight_preference")
+            let cell9 = UserDefaults.standard.integer(forKey: "grid_nine_preference")
+            let cell10 = UserDefaults.standard.integer(forKey: "grid_ten_preference")
+            let cell11 = UserDefaults.standard.integer(forKey: "grid_eleven_preference")
+            let cell12 = UserDefaults.standard.integer(forKey: "grid_twelve_preference")
+            let cell13 = UserDefaults.standard.integer(forKey: "grid_thirteen_preference")
+            let cell14 = UserDefaults.standard.integer(forKey: "grid_fourteen_preference")
+            let cell15 = UserDefaults.standard.integer(forKey: "grid_fifteen_preference")
+            setCellText(1, dataPoint: cell1)
+            setCellText(2, dataPoint: cell2)
+            setCellText(3, dataPoint: cell3)
+            setCellText(4, dataPoint: cell4)
+            setCellText(5, dataPoint: cell5)
+            setCellText(6, dataPoint: cell6)
+            setCellText(7, dataPoint: cell7)
+            setCellText(8, dataPoint: cell8)
+            setCellText(9, dataPoint: cell9)
+            setCellText(10, dataPoint: cell10)
+            setCellText(11, dataPoint: cell11)
+            setCellText(12, dataPoint: cell12)
+            setCellText(13, dataPoint: cell13)
+            setCellText(14, dataPoint: cell14)
+            setCellText(15, dataPoint: cell15)
+        case 12:
+            let cell1 = UserDefaults.standard.integer(forKey: "grid_one_preference")
+            let cell2 = UserDefaults.standard.integer(forKey: "grid_two_preference")
+            let cell3 = UserDefaults.standard.integer(forKey: "grid_three_preference")
+            let cell4 = UserDefaults.standard.integer(forKey: "grid_four_preference")
+            let cell5 = UserDefaults.standard.integer(forKey: "grid_five_preference")
+            let cell6 = UserDefaults.standard.integer(forKey: "grid_six_preference")
+            let cell7 = UserDefaults.standard.integer(forKey: "grid_seven_preference")
+            let cell8 = UserDefaults.standard.integer(forKey: "grid_eight_preference")
+            let cell9 = UserDefaults.standard.integer(forKey: "grid_nine_preference")
+            let cell10 = UserDefaults.standard.integer(forKey: "grid_ten_preference")
+            let cell11 = UserDefaults.standard.integer(forKey: "grid_eleven_preference")
+            let cell12 = UserDefaults.standard.integer(forKey: "grid_twelve_preference")
+            setCellText(1, dataPoint: cell1)
+            setCellText(2, dataPoint: cell2)
+            setCellText(3, dataPoint: cell3)
+            setCellText(4, dataPoint: cell4)
+            setCellText(5, dataPoint: cell5)
+            setCellText(6, dataPoint: cell6)
+            setCellText(7, dataPoint: cell7)
+            setCellText(8, dataPoint: cell8)
+            setCellText(9, dataPoint: cell9)
+            setCellText(10, dataPoint: cell10)
+            setCellText(11, dataPoint: cell11)
+            setCellText(12, dataPoint: cell12)
+        case 10:
+            let cell1 = UserDefaults.standard.integer(forKey: "grid_one_preference")
+            let cell2 = UserDefaults.standard.integer(forKey: "grid_two_preference")
+            let cell3 = UserDefaults.standard.integer(forKey: "grid_three_preference")
+            let cell4 = UserDefaults.standard.integer(forKey: "grid_four_preference")
+            let cell5 = UserDefaults.standard.integer(forKey: "grid_five_preference")
+            let cell6 = UserDefaults.standard.integer(forKey: "grid_six_preference")
+            let cell7 = UserDefaults.standard.integer(forKey: "grid_seven_preference")
+            let cell8 = UserDefaults.standard.integer(forKey: "grid_eight_preference")
+            let cell9 = UserDefaults.standard.integer(forKey: "grid_nine_preference")
+            let cell10 = UserDefaults.standard.integer(forKey: "grid_ten_preference")
+            setCellText(1, dataPoint: cell1)
+            setCellText(2, dataPoint: cell2)
+            setCellText(3, dataPoint: cell3)
+            setCellText(4, dataPoint: cell4)
+            setCellText(5, dataPoint: cell5)
+            setCellText(6, dataPoint: cell6)
+            setCellText(7, dataPoint: cell7)
+            setCellText(8, dataPoint: cell8)
+            setCellText(9, dataPoint: cell9)
+            setCellText(10, dataPoint: cell10)
+        case 8:
+            let cell1 = UserDefaults.standard.integer(forKey: "grid_one_preference")
+            let cell2 = UserDefaults.standard.integer(forKey: "grid_two_preference")
+            let cell3 = UserDefaults.standard.integer(forKey: "grid_three_preference")
+            let cell4 = UserDefaults.standard.integer(forKey: "grid_four_preference")
+            let cell5 = UserDefaults.standard.integer(forKey: "grid_five_preference")
+            let cell6 = UserDefaults.standard.integer(forKey: "grid_six_preference")
+            let cell7 = UserDefaults.standard.integer(forKey: "grid_seven_preference")
+            let cell8 = UserDefaults.standard.integer(forKey: "grid_eight_preference")
+            setCellText(1, dataPoint: cell1)
+            setCellText(2, dataPoint: cell2)
+            setCellText(3, dataPoint: cell3)
+            setCellText(4, dataPoint: cell4)
+            setCellText(5, dataPoint: cell5)
+            setCellText(6, dataPoint: cell6)
+            setCellText(7, dataPoint: cell7)
+            setCellText(8, dataPoint: cell8)
+        case 4:
+            let cell1 = UserDefaults.standard.integer(forKey: "grid_one_preference")
+            let cell2 = UserDefaults.standard.integer(forKey: "grid_two_preference")
+            let cell3 = UserDefaults.standard.integer(forKey: "grid_three_preference")
+            let cell4 = UserDefaults.standard.integer(forKey: "grid_four_preference")
+            setCellText(1, dataPoint: cell1)
+            setCellText(2, dataPoint: cell2)
+            setCellText(3, dataPoint: cell3)
+            setCellText(4, dataPoint: cell4)
+        case 2:
+            let cell1 = UserDefaults.standard.integer(forKey: "grid_one_preference")
+            let cell2 = UserDefaults.standard.integer(forKey: "grid_two_preference")
+            setCellText(1, dataPoint: cell1)
+            setCellText(2, dataPoint: cell2)
+        case 1:
+            let cell1 = UserDefaults.standard.integer(forKey: "grid_one_preference")
+            setCellText(1, dataPoint: cell1)
+        default:
+            let cell1 = UserDefaults.standard.integer(forKey: "grid_one_preference")
+            let cell2 = UserDefaults.standard.integer(forKey: "grid_two_preference")
+            let cell3 = UserDefaults.standard.integer(forKey: "grid_three_preference")
+            let cell4 = UserDefaults.standard.integer(forKey: "grid_four_preference")
+            let cell5 = UserDefaults.standard.integer(forKey: "grid_five_preference")
+            let cell6 = UserDefaults.standard.integer(forKey: "grid_six_preference")
+            let cell7 = UserDefaults.standard.integer(forKey: "grid_seven_preference")
+            let cell8 = UserDefaults.standard.integer(forKey: "grid_eight_preference")
+            let cell9 = UserDefaults.standard.integer(forKey: "grid_nine_preference")
+            let cell10 = UserDefaults.standard.integer(forKey: "grid_ten_preference")
+            let cell11 = UserDefaults.standard.integer(forKey: "grid_eleven_preference")
+            let cell12 = UserDefaults.standard.integer(forKey: "grid_twelve_preference")
+            let cell13 = UserDefaults.standard.integer(forKey: "grid_thirteen_preference")
+            let cell14 = UserDefaults.standard.integer(forKey: "grid_fourteen_preference")
+            let cell15 = UserDefaults.standard.integer(forKey: "grid_fifteen_preference")
+            setCellText(1, dataPoint: cell1)
+            setCellText(2, dataPoint: cell2)
+            setCellText(3, dataPoint: cell3)
+            setCellText(4, dataPoint: cell4)
+            setCellText(5, dataPoint: cell5)
+            setCellText(6, dataPoint: cell6)
+            setCellText(7, dataPoint: cell7)
+            setCellText(8, dataPoint: cell8)
+            setCellText(9, dataPoint: cell9)
+            setCellText(10, dataPoint: cell10)
+            setCellText(11, dataPoint: cell11)
+            setCellText(12, dataPoint: cell12)
+            setCellText(13, dataPoint: cell13)
+            setCellText(14, dataPoint: cell14)
+            setCellText(15, dataPoint: cell15)
         }
     }
     
@@ -1779,21 +1768,29 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                     }
                     if frontPressure <= UserDefaults.standard.double(forKey: "tpm_threshold_preference"){
                         faults.setFrontTirePressureCriticalActive(active: true)
-                        updateNotification()
-                        faults.frontTirePressureCriticalNotificationActive = true
+                        if (UserDefaults.standard.bool(forKey: "notification_preference")){
+                            updateNotification()
+                            faults.frontTirePressureCriticalNotificationActive = true
+                        }
                     } else {
                         faults.setFrontTirePressureCriticalActive(active: false)
-                        updateNotification()
-                        faults.frontTirePressureCriticalNotificationActive = false
+                        if (UserDefaults.standard.bool(forKey: "notification_preference")){
+                            updateNotification()
+                            faults.frontTirePressureCriticalNotificationActive = false
+                        }
                     }
                     if rearPressure <= UserDefaults.standard.double(forKey: "tpm_threshold_preference"){
                         faults.setRearTirePressureCriticalActive(active: true)
-                        updateNotification()
-                        faults.rearTirePressureCriticalNotificationActive = true
+                        if (UserDefaults.standard.bool(forKey: "notification_preference")){
+                            updateNotification()
+                            faults.rearTirePressureCriticalNotificationActive = true
+                        }
                     } else {
                         faults.setRearTirePressureCriticalActive(active: false)
-                        updateNotification()
-                        faults.rearTirePressureCriticalNotificationActive = false
+                        if (UserDefaults.standard.bool(forKey: "notification_preference")){
+                            updateNotification()
+                            faults.rearTirePressureCriticalNotificationActive = false
+                        }
                     }
                 }
             }
@@ -1806,13 +1803,15 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                     faults.setRearTirePressureWarningActive(active: false)
                     faults.setFrontTirePressureCriticalActive(active: false)
                     faults.setRearTirePressureCriticalActive(active: false)
-                    if(faults.frontTirePressureCriticalNotificationActive) {
-                        updateNotification()
-                        faults.frontTirePressureCriticalNotificationActive = false
-                    }
-                    if(faults.rearTirePressureCriticalNotificationActive) {
-                        updateNotification()
-                        faults.rearTirePressureCriticalNotificationActive = false
+                    if (UserDefaults.standard.bool(forKey: "notification_preference")){
+                        if(faults.frontTirePressureCriticalNotificationActive) {
+                            updateNotification()
+                            faults.frontTirePressureCriticalNotificationActive = false
+                        }
+                        if(faults.rearTirePressureCriticalNotificationActive) {
+                            updateNotification()
+                            faults.rearTirePressureCriticalNotificationActive = false
+                        }
                     }
                     
                 case 0xCA:
@@ -1820,13 +1819,15 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                     faults.setRearTirePressureWarningActive(active: true)
                     faults.setFrontTirePressureCriticalActive(active: false)
                     faults.setRearTirePressureCriticalActive(active: false)
-                    if(faults.frontTirePressureCriticalNotificationActive) {
-                        updateNotification()
-                        faults.frontTirePressureCriticalNotificationActive = false
-                    }
-                    if(faults.rearTirePressureCriticalNotificationActive) {
-                        updateNotification()
-                        faults.rearTirePressureCriticalNotificationActive = false
+                    if (UserDefaults.standard.bool(forKey: "notification_preference")){
+                        if(faults.frontTirePressureCriticalNotificationActive) {
+                            updateNotification()
+                            faults.frontTirePressureCriticalNotificationActive = false
+                        }
+                        if(faults.rearTirePressureCriticalNotificationActive) {
+                            updateNotification()
+                            faults.rearTirePressureCriticalNotificationActive = false
+                        }
                     }
                     
                 case 0xCB:
@@ -1834,13 +1835,15 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                     faults.setRearTirePressureWarningActive(active: true)
                     faults.setFrontTirePressureCriticalActive(active: false)
                     faults.setRearTirePressureCriticalActive(active: false)
-                    if(faults.frontTirePressureCriticalNotificationActive) {
-                        updateNotification()
-                        faults.frontTirePressureCriticalNotificationActive = false
-                    }
-                    if(faults.rearTirePressureCriticalNotificationActive) {
-                        updateNotification()
-                        faults.rearTirePressureCriticalNotificationActive = false
+                    if (UserDefaults.standard.bool(forKey: "notification_preference")){
+                        if(faults.frontTirePressureCriticalNotificationActive) {
+                            updateNotification()
+                            faults.frontTirePressureCriticalNotificationActive = false
+                        }
+                        if(faults.rearTirePressureCriticalNotificationActive) {
+                            updateNotification()
+                            faults.rearTirePressureCriticalNotificationActive = false
+                        }
                     }
                     
                 case 0xD1:
@@ -1848,13 +1851,15 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                     faults.setRearTirePressureWarningActive(active: false)
                     faults.setFrontTirePressureCriticalActive(active: true)
                     faults.setRearTirePressureCriticalActive(active: false)
-                    if(!faults.frontTirePressureCriticalNotificationActive) {
-                        updateNotification()
-                        faults.frontTirePressureCriticalNotificationActive = true
-                    }
-                    if(faults.rearTirePressureCriticalNotificationActive) {
-                        updateNotification()
-                        faults.rearTirePressureCriticalNotificationActive = false
+                    if (UserDefaults.standard.bool(forKey: "notification_preference")){
+                        if(!faults.frontTirePressureCriticalNotificationActive) {
+                            updateNotification()
+                            faults.frontTirePressureCriticalNotificationActive = true
+                        }
+                        if(faults.rearTirePressureCriticalNotificationActive) {
+                            updateNotification()
+                            faults.rearTirePressureCriticalNotificationActive = false
+                        }
                     }
                     
                 case 0xD2:
@@ -1862,13 +1867,15 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                     faults.setRearTirePressureWarningActive(active: false)
                     faults.setFrontTirePressureCriticalActive(active: false)
                     faults.setRearTirePressureCriticalActive(active: true)
-                    if(faults.frontTirePressureCriticalNotificationActive) {
-                        updateNotification()
-                        faults.frontTirePressureCriticalNotificationActive = false
-                    }
-                    if(!faults.rearTirePressureCriticalNotificationActive) {
-                        updateNotification()
-                        faults.rearTirePressureCriticalNotificationActive = true
+                    if (UserDefaults.standard.bool(forKey: "notification_preference")){
+                        if(faults.frontTirePressureCriticalNotificationActive) {
+                            updateNotification()
+                            faults.frontTirePressureCriticalNotificationActive = false
+                        }
+                        if(!faults.rearTirePressureCriticalNotificationActive) {
+                            updateNotification()
+                            faults.rearTirePressureCriticalNotificationActive = true
+                        }
                     }
                     
                 case 0xD3:
@@ -1876,13 +1883,15 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                     faults.setRearTirePressureWarningActive(active: false)
                     faults.setFrontTirePressureCriticalActive(active: true)
                     faults.setRearTirePressureCriticalActive(active: true)
-                    if(!faults.frontTirePressureCriticalNotificationActive) {
-                        updateNotification()
-                        faults.frontTirePressureCriticalNotificationActive = true
-                    }
-                    if(!faults.rearTirePressureCriticalNotificationActive) {
-                        updateNotification()
-                        faults.rearTirePressureCriticalNotificationActive = true
+                    if (UserDefaults.standard.bool(forKey: "notification_preference")){
+                        if(!faults.frontTirePressureCriticalNotificationActive) {
+                            updateNotification()
+                            faults.frontTirePressureCriticalNotificationActive = true
+                        }
+                        if(!faults.rearTirePressureCriticalNotificationActive) {
+                            updateNotification()
+                            faults.rearTirePressureCriticalNotificationActive = true
+                        }
                     }
                     
                 default:
@@ -1890,13 +1899,15 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                     faults.setRearTirePressureWarningActive(active: false)
                     faults.setFrontTirePressureCriticalActive(active: false)
                     faults.setRearTirePressureCriticalActive(active: false)
-                    if(faults.frontTirePressureCriticalNotificationActive) {
-                        updateNotification()
-                        faults.frontTirePressureCriticalNotificationActive = false
-                    }
-                    if(faults.rearTirePressureCriticalNotificationActive) {
-                        updateNotification()
-                        faults.rearTirePressureCriticalNotificationActive = false
+                    if (UserDefaults.standard.bool(forKey: "notification_preference")){
+                        if(faults.frontTirePressureCriticalNotificationActive) {
+                            updateNotification()
+                            faults.frontTirePressureCriticalNotificationActive = false
+                        }
+                        if(faults.rearTirePressureCriticalNotificationActive) {
+                            updateNotification()
+                            faults.rearTirePressureCriticalNotificationActive = false
+                        }
                     }
                 }
             }
@@ -2097,17 +2108,6 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                             navigator.pushViewController(viewController, animated: true)
                         }
                     }
-                    /*
-                     if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AlertViewControllerID") as? AlertViewController
-                     {
-                     vc.ID = 1
-                     present(vc, animated: true, completion: nil)
-                     }
-                     */
-                    
-                    //let alert = AlertViewController()
-                    //present(alert, animated: true, completion: nil)
-                    
                 }
                 
             }
@@ -2119,13 +2119,15 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                 faults.setGeneralShowsYellowActive(active: false)
                 faults.setGeneralFlashingRedActive(active: false)
                 faults.setGeneralShowsRedActive(active: false)
-                if(faults.generalFlashingRedNotificationActive) {
-                    updateNotification()
-                    faults.generalFlashingRedNotificationActive = false
-                }
-                if(faults.generalShowsRedNotificationActive) {
-                    updateNotification()
-                    faults.generalShowsRedNotificationActive = false
+                if (UserDefaults.standard.bool(forKey: "notification_preference")){
+                    if(faults.generalFlashingRedNotificationActive) {
+                        updateNotification()
+                        faults.generalFlashingRedNotificationActive = false
+                    }
+                    if(faults.generalShowsRedNotificationActive) {
+                        updateNotification()
+                        faults.generalShowsRedNotificationActive = false
+                    }
                 }
                 
             case 0x2:
@@ -2133,13 +2135,15 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                 faults.setGeneralShowsYellowActive(active: true)
                 faults.setGeneralFlashingRedActive(active: false)
                 faults.setGeneralShowsRedActive(active: false)
-                if(faults.generalFlashingRedNotificationActive) {
-                    updateNotification()
-                    faults.generalFlashingRedNotificationActive = false
-                }
-                if(faults.generalShowsRedNotificationActive) {
-                    updateNotification()
-                    faults.generalShowsRedNotificationActive = false
+                if (UserDefaults.standard.bool(forKey: "notification_preference")){
+                    if(faults.generalFlashingRedNotificationActive) {
+                        updateNotification()
+                        faults.generalFlashingRedNotificationActive = false
+                    }
+                    if(faults.generalShowsRedNotificationActive) {
+                        updateNotification()
+                        faults.generalShowsRedNotificationActive = false
+                    }
                 }
                 
             case 0x4:
@@ -2147,13 +2151,15 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                 faults.setGeneralShowsYellowActive(active: false)
                 faults.setGeneralFlashingRedActive(active: true)
                 faults.setGeneralShowsRedActive(active: false)
-                if(!faults.generalFlashingRedNotificationActive) {
-                    updateNotification()
-                    faults.generalFlashingRedNotificationActive = true
-                }
-                if(faults.generalShowsRedNotificationActive) {
-                    updateNotification()
-                    faults.generalShowsRedNotificationActive = false
+                if (UserDefaults.standard.bool(forKey: "notification_preference")){
+                    if(!faults.generalFlashingRedNotificationActive) {
+                        updateNotification()
+                        faults.generalFlashingRedNotificationActive = true
+                    }
+                    if(faults.generalShowsRedNotificationActive) {
+                        updateNotification()
+                        faults.generalShowsRedNotificationActive = false
+                    }
                 }
                 
             case 0x5:
@@ -2161,13 +2167,15 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                 faults.setGeneralShowsYellowActive(active: false)
                 faults.setGeneralFlashingRedActive(active: true)
                 faults.setGeneralShowsRedActive(active: false)
-                if(!faults.generalFlashingRedNotificationActive) {
-                    updateNotification()
-                    faults.generalFlashingRedNotificationActive = true
-                }
-                if(faults.generalShowsRedNotificationActive) {
-                    updateNotification()
-                    faults.generalShowsRedNotificationActive = false
+                if (UserDefaults.standard.bool(forKey: "notification_preference")){
+                    if(!faults.generalFlashingRedNotificationActive) {
+                        updateNotification()
+                        faults.generalFlashingRedNotificationActive = true
+                    }
+                    if(faults.generalShowsRedNotificationActive) {
+                        updateNotification()
+                        faults.generalShowsRedNotificationActive = false
+                    }
                 }
                 
             case 0x6:
@@ -2175,13 +2183,15 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                 faults.setGeneralShowsYellowActive(active: true)
                 faults.setGeneralFlashingRedActive(active: true)
                 faults.setGeneralShowsRedActive(active: false)
-                if(!faults.generalFlashingRedNotificationActive) {
-                    updateNotification()
-                    faults.generalFlashingRedNotificationActive = true
-                }
-                if(faults.generalShowsRedNotificationActive) {
-                    updateNotification()
-                    faults.generalShowsRedNotificationActive = false
+                if (UserDefaults.standard.bool(forKey: "notification_preference")){
+                    if(!faults.generalFlashingRedNotificationActive) {
+                        updateNotification()
+                        faults.generalFlashingRedNotificationActive = true
+                    }
+                    if(faults.generalShowsRedNotificationActive) {
+                        updateNotification()
+                        faults.generalShowsRedNotificationActive = false
+                    }
                 }
                 
             case 0x7:
@@ -2189,13 +2199,15 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                 faults.setGeneralShowsYellowActive(active: false)
                 faults.setGeneralFlashingRedActive(active: true)
                 faults.setGeneralShowsRedActive(active: false)
-                if(!faults.generalFlashingRedNotificationActive) {
-                    updateNotification()
-                    faults.generalFlashingRedNotificationActive = true
-                }
-                if(faults.generalShowsRedNotificationActive) {
-                    updateNotification()
-                    faults.generalShowsRedNotificationActive = false
+                if (UserDefaults.standard.bool(forKey: "notification_preference")){
+                    if(!faults.generalFlashingRedNotificationActive) {
+                        updateNotification()
+                        faults.generalFlashingRedNotificationActive = true
+                    }
+                    if(faults.generalShowsRedNotificationActive) {
+                        updateNotification()
+                        faults.generalShowsRedNotificationActive = false
+                    }
                 }
                 
             case 0x8:
@@ -2203,13 +2215,15 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                 faults.setGeneralShowsYellowActive(active: false)
                 faults.setGeneralFlashingRedActive(active: false)
                 faults.setGeneralShowsRedActive(active: true)
-                if(faults.generalFlashingRedNotificationActive) {
-                    updateNotification()
-                    faults.generalFlashingRedNotificationActive = false
-                }
-                if(!faults.generalShowsRedNotificationActive) {
-                    updateNotification()
-                    faults.generalShowsRedNotificationActive = true
+                if (UserDefaults.standard.bool(forKey: "notification_preference")){
+                    if(faults.generalFlashingRedNotificationActive) {
+                        updateNotification()
+                        faults.generalFlashingRedNotificationActive = false
+                    }
+                    if(!faults.generalShowsRedNotificationActive) {
+                        updateNotification()
+                        faults.generalShowsRedNotificationActive = true
+                    }
                 }
                 
             case 0x9:
@@ -2217,10 +2231,12 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                 faults.setGeneralShowsYellowActive(active: false)
                 faults.setGeneralFlashingRedActive(active: true)
                 faults.setGeneralShowsRedActive(active: true)
-                if(!faults.generalFlashingRedNotificationActive && !faults.generalShowsRedNotificationActive) {
-                    updateNotification()
-                    faults.generalFlashingRedNotificationActive = true
-                    faults.generalShowsRedNotificationActive = true
+                if (UserDefaults.standard.bool(forKey: "notification_preference")){
+                    if(!faults.generalFlashingRedNotificationActive && !faults.generalShowsRedNotificationActive) {
+                        updateNotification()
+                        faults.generalFlashingRedNotificationActive = true
+                        faults.generalShowsRedNotificationActive = true
+                    }
                 }
                 
             case 0xA:
@@ -2228,13 +2244,15 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                 faults.setGeneralShowsYellowActive(active: true)
                 faults.setGeneralFlashingRedActive(active: false)
                 faults.setGeneralShowsRedActive(active: true)
-                if(faults.generalFlashingRedNotificationActive) {
-                    updateNotification()
-                    faults.generalFlashingRedNotificationActive = false
-                }
-                if(!faults.generalShowsRedNotificationActive) {
-                    updateNotification()
-                    faults.generalShowsRedNotificationActive = true
+                if (UserDefaults.standard.bool(forKey: "notification_preference")){
+                    if(faults.generalFlashingRedNotificationActive) {
+                        updateNotification()
+                        faults.generalFlashingRedNotificationActive = false
+                    }
+                    if(!faults.generalShowsRedNotificationActive) {
+                        updateNotification()
+                        faults.generalShowsRedNotificationActive = true
+                    }
                 }
                 
             case 0xB:
@@ -2242,13 +2260,15 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                 faults.setGeneralShowsYellowActive(active: false)
                 faults.setGeneralFlashingRedActive(active: false)
                 faults.setGeneralShowsRedActive(active: true)
-                if(faults.generalFlashingRedNotificationActive) {
-                    updateNotification()
-                    faults.generalFlashingRedNotificationActive = false
-                }
-                if(!faults.generalShowsRedNotificationActive) {
-                    updateNotification()
-                    faults.generalShowsRedNotificationActive = true
+                if (UserDefaults.standard.bool(forKey: "notification_preference")){
+                    if(faults.generalFlashingRedNotificationActive) {
+                        updateNotification()
+                        faults.generalFlashingRedNotificationActive = false
+                    }
+                    if(!faults.generalShowsRedNotificationActive) {
+                        updateNotification()
+                        faults.generalShowsRedNotificationActive = true
+                    }
                 }
                 
             case 0xD:
@@ -2256,13 +2276,15 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                 faults.setGeneralShowsYellowActive(active: false)
                 faults.setGeneralFlashingRedActive(active: false)
                 faults.setGeneralShowsRedActive(active: false)
-                if(faults.generalFlashingRedNotificationActive) {
-                    updateNotification()
-                    faults.generalFlashingRedNotificationActive = false
-                }
-                if(faults.generalShowsRedNotificationActive) {
-                    updateNotification()
-                    faults.generalShowsRedNotificationActive = false
+                if (UserDefaults.standard.bool(forKey: "notification_preference")){
+                    if(faults.generalFlashingRedNotificationActive) {
+                        updateNotification()
+                        faults.generalFlashingRedNotificationActive = false
+                    }
+                    if(faults.generalShowsRedNotificationActive) {
+                        updateNotification()
+                        faults.generalShowsRedNotificationActive = false
+                    }
                 }
                 
             case 0xE:
@@ -2270,13 +2292,15 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                 faults.setGeneralShowsYellowActive(active: true)
                 faults.setGeneralFlashingRedActive(active: false)
                 faults.setGeneralShowsRedActive(active: false)
-                if(faults.generalFlashingRedNotificationActive) {
-                    updateNotification()
-                    faults.generalFlashingRedNotificationActive = false
-                }
-                if(faults.generalShowsRedNotificationActive) {
-                    updateNotification()
-                    faults.generalShowsRedNotificationActive = false
+                if (UserDefaults.standard.bool(forKey: "notification_preference")){
+                    if(faults.generalFlashingRedNotificationActive) {
+                        updateNotification()
+                        faults.generalFlashingRedNotificationActive = false
+                    }
+                    if(faults.generalShowsRedNotificationActive) {
+                        updateNotification()
+                        faults.generalShowsRedNotificationActive = false
+                    }
                 }
                 
             default:
@@ -2284,13 +2308,15 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                 faults.setGeneralShowsYellowActive(active: false)
                 faults.setGeneralFlashingRedActive(active: false)
                 faults.setGeneralShowsRedActive(active: false)
-                if(faults.generalFlashingRedNotificationActive) {
-                    updateNotification()
-                    faults.generalFlashingRedNotificationActive = false
-                }
-                if(faults.generalShowsRedNotificationActive) {
-                    updateNotification()
-                    faults.generalShowsRedNotificationActive = false
+                if (UserDefaults.standard.bool(forKey: "notification_preference")){
+                    if(faults.generalFlashingRedNotificationActive) {
+                        updateNotification()
+                        faults.generalFlashingRedNotificationActive = false
+                    }
+                    if(faults.generalShowsRedNotificationActive) {
+                        updateNotification()
+                        faults.generalShowsRedNotificationActive = false
+                    }
                 }
                 
             }
@@ -3098,11 +3124,6 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                 // quit app
                 exit(0)
             }
-            if defaults.bool(forKey: "motorcycle_data_lastSet") != defaults.bool(forKey: "motorcycle_data_preference"){
-                UserDefaults.standard.set(defaults.bool(forKey: "motorcycle_data_preference"), forKey: "motorcycle_data_lastSet")
-                // quit app
-                exit(0)
-            }
             if UserDefaults.standard.bool(forKey: "display_brightness_preference") {
                 UIScreen.main.brightness = CGFloat(1.0)
             } else {
@@ -3570,15 +3591,11 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         }
         else if gesture.direction == UISwipeGestureRecognizer.Direction.up {
             //UP
-            if !UserDefaults.standard.bool(forKey: "motorcycle_data_preference") {
-                upScreen()
-            }
+            upScreen()
         }
         else if gesture.direction == UISwipeGestureRecognizer.Direction.down {
             //DOWN
-            if !UserDefaults.standard.bool(forKey: "motorcycle_data_preference") {
-                downScreen()
-            }
+            downScreen()
         }
     }
     
@@ -3631,6 +3648,10 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                 rowCount = 2
                 nextCellCount = 8
             case 8:
+                cellsPerRow = 5
+                rowCount = 2
+                nextCellCount = 10
+            case 10:
                 cellsPerRow = 4
                 rowCount = 3
                 nextCellCount = 12
@@ -3662,6 +3683,10 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             case 8:
                 cellsPerRow = 3
                 rowCount = 4
+                nextCellCount = 10
+            case 10:
+                cellsPerRow = 2
+                rowCount = 5
                 nextCellCount = 12
             case 12:
                 cellsPerRow = 3
@@ -3702,10 +3727,14 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                 cellsPerRow = 2
                 rowCount = 2
                 nextCellCount = 4
-            case 12:
+            case 10:
                 cellsPerRow = 4
                 rowCount = 2
                 nextCellCount = 8
+            case 12:
+                cellsPerRow = 5
+                rowCount = 2
+                nextCellCount = 10
             case 15:
                 cellsPerRow = 4
                 rowCount = 3
@@ -3731,10 +3760,14 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                 cellsPerRow = 1
                 rowCount = 4
                 nextCellCount = 4
-            case 12:
+            case 10:
                 cellsPerRow = 2
                 rowCount = 4
                 nextCellCount = 8
+            case 12:
+                cellsPerRow = 2
+                rowCount = 5
+                nextCellCount = 10
             case 15:
                 cellsPerRow = 3
                 rowCount = 4

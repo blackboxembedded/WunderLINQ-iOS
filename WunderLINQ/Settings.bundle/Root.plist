@@ -48,16 +48,6 @@
 		</dict>
 		<dict>
 			<key>Type</key>
-			<string>PSToggleSwitchSpecifier</string>
-			<key>Title</key>
-			<string>pref_motorcycledata_name</string>
-			<key>Key</key>
-			<string>motorcycle_data_preference</string>
-			<key>DefaultValue</key>
-			<false/>
-		</dict>
-		<dict>
-			<key>Type</key>
 			<string>PSChildPaneSpecifier</string>
 			<key>Title</key>
 			<string>pref_grid_settings_title</string>
@@ -264,6 +254,16 @@
 			<key>Title</key>
 			<string>alerting_title</string>
 		</dict>
+        <dict>
+            <key>Type</key>
+            <string>PSToggleSwitchSpecifier</string>
+            <key>Title</key>
+            <string>pref_notification_name</string>
+            <key>Key</key>
+            <string>notification_preference</string>
+            <key>DefaultValue</key>
+            <true/>
+        </dict>
 		<dict>
 			<key>Type</key>
 			<string>PSGroupSpecifier</string>
