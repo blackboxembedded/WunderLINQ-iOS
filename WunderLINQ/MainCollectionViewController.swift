@@ -3681,12 +3681,12 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                 rowCount = 4
                 nextCellCount = 8
             case 8:
-                cellsPerRow = 3
-                rowCount = 4
-                nextCellCount = 10
-            case 10:
                 cellsPerRow = 2
                 rowCount = 5
+                nextCellCount = 10
+            case 10:
+                cellsPerRow = 3
+                rowCount = 4
                 nextCellCount = 12
             case 12:
                 cellsPerRow = 3
