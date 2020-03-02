@@ -503,7 +503,6 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                 self.motorcycleData.setBarometricPressure(barometricPressure: pressure)
             }
         }
-        
         updateMessageDisplay()
     }
     
@@ -776,17 +775,12 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                 //Default
                 cell.setColors(backgroundColor: .white, textColor: .black)
             }
-            /*
-            if UserDefaults.standard.bool(forKey: "nightmode_preference") {
-                cell.setColors(backgroundColor: .black, textColor: .white)
-            } else {
-                cell.setColors(backgroundColor: .white, textColor: .black)
-            }
-            */
         }
 
         let label = getLabel(cell: indexPath.row + 1)
         cell.setLabel(label: label)
+        let icon = getIcon(cell: indexPath.row + 1)
+        cell.setIcon(icon: icon)
     
         return cell
     }
@@ -920,10 +914,8 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         }
     }
     
-    func getLabel(cell: Int) -> String {
-        var label:String = ""
+    func getCellDataPoint(cell: Int) -> Int {
         var cellDataPoint:Int = 0
-        
         switch (cell) {
         case 1:
             cellDataPoint = UserDefaults.standard.integer(forKey: "grid_one_preference")
@@ -958,6 +950,12 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         default:
             NSLog("Unknown cell")
         }
+        return cellDataPoint
+    }
+    
+    func getLabel(cell: Int) -> String {
+        var label:String = ""
+        let cellDataPoint = getCellDataPoint(cell: cell)
         var temperatureUnit = "C"
         var heightUnit = "m"
         var distanceUnit = "km"
@@ -1080,6 +1078,104 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         }
         
         return label
+    }
+    
+    func getIcon(cell: Int) -> UIImage {
+        var icon:UIImage = (UIImage(named: "Cog")?.withRenderingMode(.alwaysTemplate))!
+        let cellDataPoint = getCellDataPoint(cell: cell)
+        switch (cellDataPoint){
+        case 0:
+            // Gear
+            icon = (UIImage(named: "Cog")?.withRenderingMode(.alwaysTemplate))!
+        case 1:
+            // Engine Temperature
+            icon = (UIImage(named: "Engine-Temp")?.withRenderingMode(.alwaysTemplate))!
+        case 2:
+            // Ambient Temperature
+            icon = (UIImage(named: "Thermometer")?.withRenderingMode(.alwaysTemplate))!
+        case 3:
+            // Front Tire Pressure
+            icon = (UIImage(named: "Tire")?.withRenderingMode(.alwaysTemplate))!
+        case 4:
+            // Rear Tire Pressure
+            icon = (UIImage(named: "Tire")?.withRenderingMode(.alwaysTemplate))!
+        case 5:
+            // Odometer
+            icon = (UIImage(named: "Odometer")?.withRenderingMode(.alwaysTemplate))!
+        case 6:
+            // Voltage
+            icon = (UIImage(named: "Battery")?.withRenderingMode(.alwaysTemplate))!
+        case 7:
+            // Trottle
+            icon = (UIImage(named: "Signature")?.withRenderingMode(.alwaysTemplate))!
+        case 8:
+            // Front Brakes
+            icon = (UIImage(named: "Brakes")?.withRenderingMode(.alwaysTemplate))!
+        case 9:
+            // Rear Brakes
+            icon = (UIImage(named: "Brakes")?.withRenderingMode(.alwaysTemplate))!
+        case 10:
+            // Ambient Light
+            icon = (UIImage(named: "Lightbulb")?.withRenderingMode(.alwaysTemplate))!
+        case 11:
+            // Trip 1
+            icon = (UIImage(named: "Suitcase")?.withRenderingMode(.alwaysTemplate))!
+        case 12:
+            // Trip 2
+            icon = (UIImage(named: "Suitcase")?.withRenderingMode(.alwaysTemplate))!
+        case 13:
+            // Trip Auto
+            icon = (UIImage(named: "Suitcase")?.withRenderingMode(.alwaysTemplate))!
+        case 14:
+            // Speed
+            icon = (UIImage(named: "Tachometer")?.withRenderingMode(.alwaysTemplate))!
+        case 15:
+            //Average Speed
+            icon = (UIImage(named: "Tachometer")?.withRenderingMode(.alwaysTemplate))!
+        case 16:
+            //Current Consumption
+            icon = (UIImage(named: "Gas-pump")?.withRenderingMode(.alwaysTemplate))!
+        case 17:
+            //Fuel Economy One
+            icon = (UIImage(named: "Gas-pump")?.withRenderingMode(.alwaysTemplate))!
+        case 18:
+            //Fuel Economy Two
+            icon = (UIImage(named: "Gas-pump")?.withRenderingMode(.alwaysTemplate))!
+        case 19:
+            //Fuel Range
+            icon = (UIImage(named: "Gas-pump")?.withRenderingMode(.alwaysTemplate))!
+        case 20:
+            //Shifts
+            icon = (UIImage(named: "Arrows-alt")?.withRenderingMode(.alwaysTemplate))!
+        case 21:
+            //Lean Angle
+            icon = (UIImage(named: "Angle")?.withRenderingMode(.alwaysTemplate))!
+        case 22:
+            //g-force
+            icon = (UIImage(named: "Accelerometer")?.withRenderingMode(.alwaysTemplate))!
+        case 23:
+            //bearing
+            icon = (UIImage(named: "Compass")?.withRenderingMode(.alwaysTemplate))!
+        case 24:
+            //time
+            icon = (UIImage(named: "Clock")?.withRenderingMode(.alwaysTemplate))!
+        case 25:
+            //barometric pressure
+            icon = (UIImage(named: "Barometer")?.withRenderingMode(.alwaysTemplate))!
+        case 26:
+            //GPS Speed
+            icon = (UIImage(named: "Tachometer")?.withRenderingMode(.alwaysTemplate))!
+        case 27:
+            //altitude
+            icon = (UIImage(named: "Mountain")?.withRenderingMode(.alwaysTemplate))!
+        case 28:
+            //Sunrise/Sunset
+            icon = (UIImage(named: "Sun")?.withRenderingMode(.alwaysTemplate))!
+        default:
+            NSLog("Unknown : \(cellDataPoint)")
+        }
+        
+        return icon
     }
     
     // MARK: - Updating UI
@@ -1247,10 +1343,12 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         
         let label = getLabel(cell: cellNumber)
         var value:String = NSLocalizedString("blank_field", comment: "")
+        var icon: UIImage = getIcon(cell: cellNumber)
         
         switch (dataPoint){
         case 0:
             // Gear
+            icon = (UIImage(named: "Cog")?.withRenderingMode(.alwaysTemplate))!
             if motorcycleData.gear != nil {
                 value = motorcycleData.getgear()
             } else {
@@ -1258,9 +1356,13 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             }
         case 1:
             // Engine Temperature
+            icon = (UIImage(named: "Engine-Temp")?.withRenderingMode(.alwaysTemplate))!
             if motorcycleData.engineTemperature != nil {
                 var engineTemp:Double = motorcycleData.engineTemperature!
-                if UserDefaults.standard.integer(forKey: "temperature_unit_preference") == 1 {
+                if (engineTemp >= 104.0){
+                    icon = icon.imageWithColor(color1: UIColor.red)
+                }
+                if (UserDefaults.standard.integer(forKey: "temperature_unit_preference") == 1 ){
                     engineTemp = Utility.celciusToFahrenheit(engineTemp)
                 }
                 value = "\(engineTemp.rounded(toPlaces: 1))"
@@ -1269,8 +1371,12 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             }
         case 2:
             // Ambient Temperature
+            icon = (UIImage(named: "Thermometer")?.withRenderingMode(.alwaysTemplate))!
             if motorcycleData.ambientTemperature != nil {
                 var ambientTemp:Double = motorcycleData.ambientTemperature!
+                if(ambientTemp <= 0){
+                    icon = (UIImage(named: "Snowflake")?.withRenderingMode(.alwaysTemplate))!
+                }
                 if UserDefaults.standard.integer(forKey: "temperature_unit_preference") == 1 {
                     ambientTemp = Utility.celciusToFahrenheit(ambientTemp)
                 }
@@ -1280,6 +1386,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             }
         case 3:
             // Front Tire Pressure
+            icon = (UIImage(named: "Tire")?.withRenderingMode(.alwaysTemplate))!
             if motorcycleData.frontTirePressure != nil {
                 var frontPressure:Double = motorcycleData.frontTirePressure!
                 switch UserDefaults.standard.integer(forKey: "pressure_unit_preference"){
@@ -1298,6 +1405,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             }
         case 4:
             // Rear Tire Pressure
+            icon = (UIImage(named: "Tire")?.withRenderingMode(.alwaysTemplate))!
             if motorcycleData.rearTirePressure != nil {
                 var rearPressure:Double = motorcycleData.rearTirePressure!
                 switch UserDefaults.standard.integer(forKey: "pressure_unit_preference"){
@@ -1316,6 +1424,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             }
         case 5:
             // Odometer
+            icon = (UIImage(named: "Odometer")?.withRenderingMode(.alwaysTemplate))!
             if motorcycleData.odometer != nil {
                 var odometer:Double = motorcycleData.odometer!
                 if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
@@ -1327,6 +1436,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             }
         case 6:
             // Voltage
+            icon = (UIImage(named: "Battery")?.withRenderingMode(.alwaysTemplate))!
             if motorcycleData.voltage != nil {
                 value = "\(motorcycleData.voltage!)"
             } else {
@@ -1334,6 +1444,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             }
         case 7:
             // Trottle
+            icon = (UIImage(named: "Signature")?.withRenderingMode(.alwaysTemplate))!
             if motorcycleData.throttlePosition != nil {
                 value = "\(Int(round(motorcycleData.throttlePosition!)))"
             } else {
@@ -1341,6 +1452,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             }
         case 8:
             // Front Brakes
+            icon = (UIImage(named: "Brakes")?.withRenderingMode(.alwaysTemplate))!
             if motorcycleData.frontBrake != nil {
                 value = "\(motorcycleData.frontBrake!)"
             } else {
@@ -1348,6 +1460,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             }
         case 9:
             // Rear Brakes
+            icon = (UIImage(named: "Brakes")?.withRenderingMode(.alwaysTemplate))!
             if motorcycleData.rearBrake != nil {
                 value = "\(motorcycleData.rearBrake!)"
             } else {
@@ -1355,6 +1468,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             }
         case 10:
             // Ambient Light
+            icon = (UIImage(named: "Lightbulb")?.withRenderingMode(.alwaysTemplate))!
             if motorcycleData.ambientLight != nil {
                 value = "\(motorcycleData.ambientLight!)"
             } else {
@@ -1362,6 +1476,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             }
         case 11:
             // Trip 1
+            icon = (UIImage(named: "Suitcase")?.withRenderingMode(.alwaysTemplate))!
             if motorcycleData.tripOne != nil {
                 var tripOne:Double = motorcycleData.tripOne!
                 if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
@@ -1373,6 +1488,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             }
         case 12:
             // Trip 2
+            icon = (UIImage(named: "Suitcase")?.withRenderingMode(.alwaysTemplate))!
             if motorcycleData.tripTwo != nil {
                 var tripTwo:Double = motorcycleData.gettripTwo()
                 if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
@@ -1384,6 +1500,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             }
         case 13:
             // Trip Auto
+            icon = (UIImage(named: "Suitcase")?.withRenderingMode(.alwaysTemplate))!
             if motorcycleData.tripAuto != nil {
                 var tripAuto:Double = motorcycleData.gettripAuto()
                 if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
@@ -1395,6 +1512,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             }
         case 14:
             // Speed
+            icon = (UIImage(named: "Tachometer")?.withRenderingMode(.alwaysTemplate))!
             if motorcycleData.speed != nil {
                 let speedValue = motorcycleData.speed!
                 value = "\(Int(speedValue))"
@@ -1406,6 +1524,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             }
         case 15:
             //Average Speed
+            icon = (UIImage(named: "Tachometer")?.withRenderingMode(.alwaysTemplate))!
             if motorcycleData.averageSpeed != nil {
                 let avgSpeedValue:Double = motorcycleData.averageSpeed!
                 value = "\(Int(avgSpeedValue))"
@@ -1417,6 +1536,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             }
         case 16:
             //Current Consumption
+            icon = (UIImage(named: "Gas-pump")?.withRenderingMode(.alwaysTemplate))!
             if motorcycleData.currentConsumption != nil {
                 let currentConsumptionValue:Double = motorcycleData.currentConsumption!
                 value = "\(currentConsumptionValue.rounded(toPlaces: 1))"
@@ -1428,6 +1548,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             }
         case 17:
             //Fuel Economy One
+            icon = (UIImage(named: "Gas-pump")?.withRenderingMode(.alwaysTemplate))!
             if motorcycleData.fuelEconomyOne != nil {
                 let fuelEconomyOneValue:Double = motorcycleData.fuelEconomyOne!
                 value = "\(fuelEconomyOneValue.rounded(toPlaces: 1))"
@@ -1439,6 +1560,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             }
         case 18:
             //Fuel Economy Two
+            icon = (UIImage(named: "Gas-pump")?.withRenderingMode(.alwaysTemplate))!
             if motorcycleData.fuelEconomyTwo != nil {
                 let fuelEconomyTwoValue:Double = motorcycleData.fuelEconomyTwo!
                 value = "\(fuelEconomyTwoValue.rounded(toPlaces: 1))"
@@ -1450,6 +1572,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             }
         case 19:
             //Fuel Range
+            icon = (UIImage(named: "Gas-pump")?.withRenderingMode(.alwaysTemplate))!
             if motorcycleData.fuelRange != nil {
                 let fuelRangeValue:Double = motorcycleData.fuelRange!
                 value = "\(Int(fuelRangeValue))"
@@ -1461,6 +1584,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             }
         case 20:
             //Shifts
+            icon = (UIImage(named: "Gas-pump")?.withRenderingMode(.alwaysTemplate))!
             if motorcycleData.shifts != nil {
                 value = "\(motorcycleData.shifts!)"
             } else {
@@ -1468,16 +1592,19 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             }
         case 21:
             //Lean Angle
+            icon = (UIImage(named: "Arrows-alt")?.withRenderingMode(.alwaysTemplate))!
             if motorcycleData.leanAngle != nil {
                 value = "\(Int(round(motorcycleData.leanAngle!)))"
             }
         case 22:
             //g-force
+            icon = (UIImage(named: "Accelerometer")?.withRenderingMode(.alwaysTemplate))!
             if motorcycleData.gForce != nil {
                 value = "\(motorcycleData.gForce!.rounded(toPlaces: 1))"
             }
         case 23:
             //Bearing
+            icon = (UIImage(named: "Compass")?.withRenderingMode(.alwaysTemplate))!
             if motorcycleData.bearing != nil {
                 value = "\(motorcycleData.bearing!)"
                 if UserDefaults.standard.integer(forKey: "bearing_unit_preference") != 0 {
@@ -1507,6 +1634,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             }
         case 24:
             //Time
+            icon = (UIImage(named: "Clock")?.withRenderingMode(.alwaysTemplate))!
             if motorcycleData.time != nil {
                 let formatter = DateFormatter()
                 formatter.dateFormat = "h:mm a"
@@ -1517,11 +1645,13 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             }
         case 25:
             //Barometric Pressure
+            icon = (UIImage(named: "Barometer")?.withRenderingMode(.alwaysTemplate))!
             if motorcycleData.barometricPressure != nil {
                 value = "\(Int(round(motorcycleData.barometricPressure!)))"
             }
         case 26:
             //GPS speed
+            icon = (UIImage(named: "Tachometer")?.withRenderingMode(.alwaysTemplate))!
             if motorcycleData.location != nil {
                 var gpsSpeed:String = "0"
                 if motorcycleData.location!.speed >= 0{
@@ -1536,6 +1666,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             }
         case 27:
             //Altitude
+            icon = (UIImage(named: "Mountain")?.withRenderingMode(.alwaysTemplate))!
             if motorcycleData.location != nil {
                 //value = "\(motorcycleData.barometricPressure!.rounded(toPlaces: 2))"
                 var altitude:String = "\(Int(round(motorcycleData.location!.altitude)))"
@@ -1546,11 +1677,16 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             }
         case 28:
             //Sunrise/Sunset
+            icon = (UIImage(named: "Sun")?.withRenderingMode(.alwaysTemplate))!
             if motorcycleData.location != nil {
                 let solar = Solar(coordinate: motorcycleData.location!.coordinate)
                 let sunrise = solar?.sunrise
                 let sunset = solar?.sunset
-                
+                let date = Date()
+                print("curr:\(date) sunset:\(sunset)")
+                if(date > sunset!){
+                    icon = (UIImage(named: "Moon")?.withRenderingMode(.alwaysTemplate))!
+                }
                 let formatter = DateFormatter()
                 formatter.dateFormat = "h:mm a"
                 if UserDefaults.standard.integer(forKey: "time_format_preference") > 0 {
@@ -1564,6 +1700,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         if let cell = self.collectionView.cellForItem(at: IndexPath(row: cellNumber - 1, section: 0) as IndexPath) as? MainCollectionViewCell{
             cell.setLabel(label: label)
             cell.setValue(value: value)
+            cell.setIcon(icon: icon)
         }
     }
     
@@ -4094,6 +4231,27 @@ extension UINavigationController {
                 return .default
             }
         }
+    }
+}
+
+extension UIImage {
+    func imageWithColor(color1: UIColor) -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(self.size, false, self.scale)
+        color1.setFill()
+
+        let context = UIGraphicsGetCurrentContext()
+        context?.translateBy(x: 0, y: self.size.height)
+        context?.scaleBy(x: 1.0, y: -1.0)
+        context?.setBlendMode(CGBlendMode.normal)
+
+        let rect = CGRect(origin: .zero, size: CGSize(width: self.size.width, height: self.size.height))
+        context?.clip(to: rect, mask: self.cgImage!)
+        context?.fill(rect)
+
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+
+        return newImage!
     }
 }
 

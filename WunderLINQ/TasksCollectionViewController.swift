@@ -121,7 +121,7 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
             fatalError("Unable to instantiate Take Photo Task")
         }
         // Take Selfie Task
-        guard let task5 = Tasks(label: NSLocalizedString("task_title_selfie", comment: ""), icon: UIImage(named: "Camera")?.withRenderingMode(.alwaysTemplate)) else {
+        guard let task5 = Tasks(label: NSLocalizedString("task_title_selfie", comment: ""), icon: UIImage(named: "Portrait")?.withRenderingMode(.alwaysTemplate)) else {
             fatalError("Unable to instantiate Take Photo Task")
         }
         // Video Recording Task
@@ -159,7 +159,7 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
         if actionCamIsRecording{
             actionCamLabel = NSLocalizedString("task_title_actioncam_stop_video", comment: "")
         }
-        guard let task11 = Tasks(label: actionCamLabel, icon: UIImage(named: "VideoCamera")?.withRenderingMode(.alwaysTemplate)) else {
+        guard let task11 = Tasks(label: actionCamLabel, icon: UIImage(named: "Action-Camera")?.withRenderingMode(.alwaysTemplate)) else {
             fatalError("Unable to instantiate ActionCam Video Recording Task")
         }
         // WeatherMap Task
