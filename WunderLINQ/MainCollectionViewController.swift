@@ -1403,6 +1403,13 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             } else {
                 value = NSLocalizedString("blank_field", comment: "")
             }
+            if(faults.getFrontTirePressureCriticalActive()){
+                icon = (UIImage(named: "Tire-Alert")?.withRenderingMode(.alwaysTemplate))!
+                icon = icon.imageWithColor(color1: UIColor.red)
+            } else if(faults.getRearTirePressureWarningActive()){
+                icon = (UIImage(named: "Tire-Alert")?.withRenderingMode(.alwaysTemplate))!
+                icon = icon.imageWithColor(color1: UIColor.yellow)
+            }
         case 4:
             // Rear Tire Pressure
             icon = (UIImage(named: "Tire")?.withRenderingMode(.alwaysTemplate))!
@@ -1421,6 +1428,13 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                 value = "\(rearPressure.rounded(toPlaces: 1))"
             } else {
                 value = NSLocalizedString("blank_field", comment: "")
+            }
+            if(faults.getRearTirePressureCriticalActive()){
+                icon = (UIImage(named: "Tire-Alert")?.withRenderingMode(.alwaysTemplate))!
+                icon = icon.imageWithColor(color1: UIColor.red)
+            } else if(faults.getRearTirePressureWarningActive()){
+                icon = (UIImage(named: "Tire-Alert")?.withRenderingMode(.alwaysTemplate))!
+                icon = icon.imageWithColor(color1: UIColor.yellow)
             }
         case 5:
             // Odometer
@@ -1679,12 +1693,13 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             //Sunrise/Sunset
             icon = (UIImage(named: "Sun")?.withRenderingMode(.alwaysTemplate))!
             if motorcycleData.location != nil {
-                let solar = Solar(coordinate: motorcycleData.location!.coordinate)
+                let today = Date()
+                let yesterday = Calendar.current.date(byAdding: .day, value: -1, to: today)!
+                let solar = Solar(for: yesterday, coordinate: motorcycleData.location!.coordinate)
                 let sunrise = solar?.sunrise
                 let sunset = solar?.sunset
-                let date = Date()
-                print("curr:\(date) sunset:\(sunset)")
-                if(date > sunset!){
+                
+                if(today > sunset!){
                     icon = (UIImage(named: "Moon")?.withRenderingMode(.alwaysTemplate))!
                 }
                 let formatter = DateFormatter()
