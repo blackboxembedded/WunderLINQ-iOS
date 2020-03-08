@@ -122,7 +122,7 @@ class MusicViewController: UIViewController, SPTAppRemotePlayerStateDelegate {
         self.navigationItem.title = NSLocalizedString("music_title", comment: "")
         self.navigationItem.leftBarButtonItems = [backButton]
         self.navigationItem.rightBarButtonItems = [forwardButton]
-        
+
         if UserDefaults.standard.bool(forKey: "display_brightness_preference") {
             UIScreen.main.brightness = CGFloat(1.0)
         } else {

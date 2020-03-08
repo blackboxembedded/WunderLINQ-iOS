@@ -9,6 +9,18 @@
 // Product
 "product" = "WunderLINQ";
 
+// FirstRunViewController
+"firstrun_start" = "The WunderLINQ requires a lot of permissions to enable all the cool features the app provides.  On the next few screens we will explain the need for each permission request.\nYou will only be presented with these screens this one time.  If you need to enable certain permissions after, you will need to go into Android Settings and enable them.";
+"contacts_alert_body" = "The WunderLINQ app needs access to your contacts to list them for dialing.";
+"camera_alert_body" = "The WunderLINQ app needs access to your camera to take pictures and record video.";
+"call_alert_body" = "The WunderLINQ app needs access to phone to initiate calls.";
+"record_audio_alert_body" = "The WunderLINQ app needs access to your microphone to record video audio.";
+"write_photo_alert_body" = "The WunderLINQ app needs access to write photos to your Photo Library.";
+"read_media_alert_body" = "The WunderLINQ app needs access to your Media Library to control music playback.";
+"location_alert_body" = "The WunderLINQ app needs access to your location to allow background track recording and data logging.\nLocation permission is also used for data points such as altitude, GPS speed, and bearing.";
+"notification_alert_body" = "The WunderLINQ app needs notification access to notify you of faults.";
+"firstrun_end" = "Thank you for purchasing the WunderLINQ!  Ride Safe.";
+
 // MyMotorcycleViewController
 "main_title" = "Motorcycle";
 "disclaimer_alert_title" = "WARNING!";

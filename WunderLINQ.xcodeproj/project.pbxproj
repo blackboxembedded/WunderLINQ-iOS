@@ -84,6 +84,7 @@
 		7EC934F22186208A00FD4806 /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC934F12186208A00FD4806 /* AlertViewController.swift */; };
 		7ED2013620D0D0030066BCE6 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7ED2013520D0D0030066BCE6 /* Default-568h@2x.png */; };
 		7EF9B5A022FCB14D009D8D17 /* Solar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF9B59F22FCB14D009D8D17 /* Solar.swift */; };
+		7EFA9908240DFDE700E65078 /* FirstRunViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EFA9907240DFDE700E65078 /* FirstRunViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -214,6 +215,7 @@
 		7EE02FE522A6BCCA0061330B /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = WunderLINQ/ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7EE02FE622A6BCCA0061330B /* ja */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		7EF9B59F22FCB14D009D8D17 /* Solar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Solar.swift; sourceTree = "<group>"; };
+		7EFA9907240DFDE700E65078 /* FirstRunViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstRunViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -318,6 +320,7 @@
 				7EF9B59F22FCB14D009D8D17 /* Solar.swift */,
 				7E5E0F77212289140048B9A2 /* AppUtility.swift */,
 				7EA4784D1F40B154000CEDDC /* AppDelegate.swift */,
+				7EFA9907240DFDE700E65078 /* FirstRunViewController.swift */,
 				7EA478801F44F57C000CEDDC /* MusicViewController.swift */,
 				7EA478701F40F273000CEDDC /* Device.swift */,
 				7E068BCA2102ACF30076EAAD /* Popover.swift */,
@@ -560,6 +563,7 @@
 				7E068BC9210190F00076EAAD /* WaypointsTableViewController.swift in Sources */,
 				7E068BCD2102ADD20076EAAD /* WaypointViewController.swift in Sources */,
 				7EA478751F412B73000CEDDC /* LocationDelegate.swift in Sources */,
+				7EFA9908240DFDE700E65078 /* FirstRunViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
