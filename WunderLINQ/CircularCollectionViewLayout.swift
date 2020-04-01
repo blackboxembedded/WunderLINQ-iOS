@@ -48,7 +48,7 @@ class CircularCollectionViewLayout: UICollectionViewLayout {
     }
     
     var anglePerItem: CGFloat {
-      return atan((itemSize.width + 50) / radius)
+      return atan((itemSize.width + 25) / radius)
     }
     
     var attributesList = [CircularCollectionViewLayoutAttributes]()

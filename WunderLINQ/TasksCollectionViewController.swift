@@ -1033,7 +1033,7 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
             offset = ((collectionView.contentSize.width - collectionView.frame.width) / CGFloat(mapping.count))
         }
         print("Offset: \(offset)")
-        let calculatedOffset: CGFloat = (offset + 3.0) * CGFloat(itemRow)
+        let calculatedOffset: CGFloat = (offset + 6.0) * CGFloat(itemRow)
         //Scroll to the offset calculated
         UIView.animate(withDuration: 0.5, animations: {
             self.collectionView.setContentOffset(CGPoint(x: calculatedOffset, y: 0.0), animated: true)
@@ -1624,6 +1624,7 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
             runTimer()
         }
         setupScreenOrientation()
+        self.collectionView!.reloadData()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
