@@ -3818,7 +3818,7 @@ extension MainCollectionViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch(indexPath.row) {
         case 0:
-            //Geo Data
+            //Bike Info
             performSegue(withIdentifier: "motorcycleToBikeInfo", sender: self)
         case 1:
             //Geo Data
@@ -3837,6 +3837,8 @@ extension MainCollectionViewController: UITableViewDelegate {
             } else {
                 //About
                 performSegue(withIdentifier: "motorcycleToAbout", sender: self)
+                
+                
             }
         case 4:
             if (popoverMenuList.count == 6){

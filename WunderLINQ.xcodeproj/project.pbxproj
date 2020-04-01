@@ -37,6 +37,7 @@
 		7E25396321CD94A30008D34E /* BLE.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E25396221CD94A30008D34E /* BLE.swift */; };
 		7E25396521CDB1740008D34E /* WLQ.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E25396421CDB1740008D34E /* WLQ.swift */; };
 		7E35A59322DC265800E4AE40 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E35A59222DC265800E4AE40 /* Utility.swift */; };
+		7E46AA192419D1540047E87D /* CircularCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E46AA182419D1540047E87D /* CircularCollectionViewLayout.swift */; };
 		7E4D76E321DDAEC100825175 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7E4D76E521DDAEC100825175 /* InfoPlist.strings */; };
 		7E5A767820DDEE7200B48CC6 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5A767720DDEE7200B48CC6 /* UIViewController+Extensions.swift */; };
 		7E5A767A20DDFEF700B48CC6 /* Waypoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5A767920DDFEF700B48CC6 /* Waypoint.swift */; };
@@ -131,6 +132,7 @@
 		7E31915D219A1BB40031A2E3 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		7E31915E219A1BB40031A2E3 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = WunderLINQ/es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7E35A59222DC265800E4AE40 /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
+		7E46AA182419D1540047E87D /* CircularCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularCollectionViewLayout.swift; sourceTree = "<group>"; };
 		7E4D76E421DDAEC100825175 /* sl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = sl; path = sl.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		7E52E9AF21A38D89008082FE /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/Main.strings; sourceTree = "<group>"; };
 		7E52E9B021A38D89008082FE /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
@@ -356,6 +358,7 @@
 				7EBC8A9D23B19C0B001FE70B /* AddWaypointViewController.swift */,
 				7EAF646922FE261D00B11550 /* WeatherMapViewController.swift */,
 				7EA4788D1F5BA136000CEDDC /* Tasks.swift */,
+				7E46AA182419D1540047E87D /* CircularCollectionViewLayout.swift */,
 				7EA4BCC621B8C9150084F6EA /* TasksCollectionViewController.swift */,
 				7EA4BCC821B8CB270084F6EA /* TaskCollectionViewCell.swift */,
 				7EC8C9BC1F827977000CEDDC /* ContactsTableViewContoller.swift */,
@@ -530,6 +533,7 @@
 				7E62BB6D21FE3DBF00FDB10E /* MainCollectionViewController.swift in Sources */,
 				7E7C53CD21F3BA9200C98010 /* ContactsTableViewCell.swift in Sources */,
 				7E068BC7210190CB0076EAAD /* TripsTableViewController.swift in Sources */,
+				7E46AA192419D1540047E87D /* CircularCollectionViewLayout.swift in Sources */,
 				7EA4BCC721B8C9150084F6EA /* TasksCollectionViewController.swift in Sources */,
 				7E62BB6F21FE3DEB00FDB10E /* MainCollectionViewCell.swift in Sources */,
 				7E25396321CD94A30008D34E /* BLE.swift in Sources */,
@@ -781,7 +785,7 @@
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = 3J48UMN5W2;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -810,7 +814,7 @@
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = 3J48UMN5W2;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

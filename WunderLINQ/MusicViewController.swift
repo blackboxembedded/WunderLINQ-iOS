@@ -24,8 +24,8 @@ class MusicViewController: UIViewController, SPTAppRemotePlayerStateDelegate {
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var nextButton: UIButton!
     
-    let playImage = UIImage(named: "play")
-    let pauseImage = UIImage(named: "pause")
+    let playImage = UIImage(named: "playback_play")
+    let pauseImage = UIImage(named: "playback_pause")
     
     override var preferredStatusBarStyle : UIStatusBarStyle {
         switch(UserDefaults.standard.integer(forKey: "darkmode_preference")){
