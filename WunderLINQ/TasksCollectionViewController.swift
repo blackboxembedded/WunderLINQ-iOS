@@ -1614,6 +1614,7 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
         coordinator.animate(alongsideTransition: nil) { _ in
             self.setupScreenOrientation()
             self.collectionView!.reloadData()
+            self.setOffset(itemRow: self.itemRow)
         }
     }
     
@@ -1625,6 +1626,7 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
         }
         setupScreenOrientation()
         self.collectionView!.reloadData()
+        self.setOffset(itemRow: self.itemRow)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
