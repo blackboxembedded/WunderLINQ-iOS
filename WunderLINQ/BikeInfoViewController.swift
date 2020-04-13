@@ -110,8 +110,8 @@ class BikeInfoViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         self.clusterResetTypePicker.dataSource = self
         resetPickerData = [NSLocalizedString("avgspeed_header", comment: ""), NSLocalizedString("fueleconomyone_header", comment: ""), NSLocalizedString("fueleconomytwo_header", comment: ""), NSLocalizedString("trip1_label", comment: ""), NSLocalizedString("trip2_label", comment: "")]
         
-        peripheral = bleData.getPeripheral()
-        characteristic = bleData.getcmdCharacteristic()
+        peripheral = bleData.peripheral
+        characteristic = bleData.cmdCharacteristic
         
         if (motorcycleData.vin != nil){
             vinValueLabel.text = motorcycleData.getVIN()

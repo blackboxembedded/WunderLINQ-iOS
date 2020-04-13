@@ -160,6 +160,15 @@ class MusicViewController: UIViewController, SPTAppRemotePlayerStateDelegate {
         if isTimerRunning == false {
             runTimer()
         }
+        /* TESTING: Read playlists
+         
+        let myPlaylistsQuery = MPMediaQuery.playlists()
+        let playlists = myPlaylistsQuery.collections
+
+        for playlist in playlists! {
+            print(playlist.value(forProperty: MPMediaPlaylistPropertyName) ?? "No name")
+        }
+         */
     }
     
     override func viewDidAppear(_ animated: Bool) {
