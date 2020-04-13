@@ -253,9 +253,6 @@ class MotorcycleData {
     }
     
     func clear(){
-        self.vin = nil
-        self.nextServiceDate = nil
-        self.nextService = nil
         self.frontTirePressure = nil
         self.rearTirePressure = nil
         self.ambientTemperature = nil
