@@ -3809,7 +3809,9 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         let monthYearByte:UInt8 = ((yearNibble & 0x0F) << 4 | (monthNibble & 0x0F))
         let clockCommand:[UInt8] = [0x57, 0x57, 0x44, 0x43, UInt8(secondInt), UInt8(minuteInt), UInt8(hourInt), UInt8(dayInt), monthYearByte, yearHByte]
         let writeData =  Data(_: clockCommand)
-        self.wunderLINQ?.writeValue(writeData, for: self.commandCharacteristic!, type: CBCharacteristicWriteType.withResponse)
+        if (self.commandCharacteristic != nil){
+            self.wunderLINQ?.writeValue(writeData, for: self.commandCharacteristic!, type: CBCharacteristicWriteType.withResponse)
+        }
     }
 }
 
