@@ -946,7 +946,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wheel Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kdd-7b-Hvf" customClass="LocalisableLabel" customModule="WunderLINQ" customModuleProvider="target">
                                 <rect key="frame" x="16" y="32" width="167.5" height="75"/>
                                 <fontDescription key="fontDescription" type="system" weight="black" pointSize="20"/>
-                                <color key="textColor" name="imageTint"/>
+                                <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="localisedKey" value="wwtype_label"/>
@@ -990,7 +990,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" name="backgrounds"/>
                         <constraints>
                             <constraint firstItem="swJ-Ex-qo7" firstAttribute="bottom" secondItem="fZ3-Aw-NNr" secondAttribute="bottom" constant="16" id="1bL-Dn-TkO"/>
                             <constraint firstItem="8kR-jJ-u6c" firstAttribute="top" secondItem="mPy-4d-rgO" secondAttribute="bottom" constant="16" id="3RE-Le-DLg"/>
@@ -2104,9 +2104,9 @@ Icons from fontawesome.com
         <segue reference="NWY-sO-7oz"/>
         <segue reference="end-im-meh"/>
         <segue reference="5cX-Ys-4mF"/>
-        <segue reference="Mvj-Z7-A9C"/>
+        <segue reference="1ij-RL-89b"/>
         <segue reference="EVI-4B-2VB"/>
-        <segue reference="P25-cb-auh"/>
+        <segue reference="BFW-qY-dw2"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
     <resources>
