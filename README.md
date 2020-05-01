@@ -11,7 +11,7 @@ decode performance and fault data.
 ## Build Instructions
 1. Clone the project and open in Xcode
 
-2. Create an xml resource file called WunderLINQ/Secrets.swift with your own Google Maps API key and Spotify app ID it, like so:
+2. Create a file called WunderLINQ/Secrets.swift with your own Google Maps API key and Spotify app ID it, like so:
 ```swift
 struct Secrets {
     static let spotify_app_id = "YOUR_APP_ID_HERE"
