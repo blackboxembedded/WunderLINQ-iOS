@@ -25,13 +25,11 @@ class TripsTableViewController: UITableViewController {
     
     @objc func leftScreen() {
         _ = navigationController?.popViewController(animated: true)
-        //performSegue(withIdentifier: "tripsToGeoData", sender: [])
     }
     
     @objc func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
         if gesture.direction == UISwipeGestureRecognizer.Direction.right {
             _ = navigationController?.popViewController(animated: true)
-            //performSegue(withIdentifier: "tripsToGeoData", sender: [])
         }
     }
 

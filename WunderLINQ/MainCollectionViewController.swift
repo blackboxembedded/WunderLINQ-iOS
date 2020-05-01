@@ -1190,7 +1190,6 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     // MARK: - Updating UI
     func updateMessageDisplay() {
         // Update Buttons
-        //disconnectBtn.tintColor = UIColor.blue
         if (faults.getallActiveDesc().isEmpty){
             faultsBtn.tintColor = UIColor.clear
             faultsButton.isEnabled = false

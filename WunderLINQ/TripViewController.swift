@@ -36,7 +36,6 @@ class TripViewController: UIViewController {
     
     @objc func leftScreen() {
         _ = navigationController?.popViewController(animated: true)
-        //performSegue(withIdentifier: "tripToTrips", sender: [])
     }
     
     @objc func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
