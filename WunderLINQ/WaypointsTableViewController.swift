@@ -1,10 +1,20 @@
-//
-//  WaypointsTableViewController.swift
-//  WunderLINQ
-//
-//  Created by Keith Conger on 7/19/18.
-//  Copyright © 2018 Black Box Embedded, LLC. All rights reserved.
-//
+/*
+WunderLINQ Client Application
+Copyright (C) 2020  Keith Conger, Black Box Embedded, LLC
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <https://www.gnu.org/licenses/>.
+*/
 
 import UIKit
 import SQLite3
@@ -17,7 +27,6 @@ class WaypointsTableViewController: UITableViewController {
     
     @objc func leftScreen() {
         _ = navigationController?.popViewController(animated: true)
-        //performSegue(withIdentifier: "waypointsToGeoData", sender: [])
     }
     
     @objc func addScreen() {
@@ -28,7 +37,6 @@ class WaypointsTableViewController: UITableViewController {
     @objc func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
         if gesture.direction == UISwipeGestureRecognizer.Direction.right {
             _ = navigationController?.popViewController(animated: true)
-            //performSegue(withIdentifier: "waypointsToGeoData", sender: [])
         }
     }
 
