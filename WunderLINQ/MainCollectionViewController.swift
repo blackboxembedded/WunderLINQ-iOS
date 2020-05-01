@@ -1769,18 +1769,9 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         //print(messageHexString)
         // Log raw messages
         if UserDefaults.standard.bool(forKey: "debug_logging_preference") {
-            /*
-             let message       = "Don´t try to read this text. Top Secret Stuff"
-             let messageData   = Array(message.utf8)
-             */
-            let keyData       = Array("wTKkVwtrBbrZKmYj".utf8)
-            let ivData        = Array("abcdefghijklmnop".utf8)
-            let encryptedData = testCrypt(data:dataArray,   keyData:keyData, ivData:ivData, operation:kCCEncrypt)!
-            //let decryptedData = testCrypt(data:encryptedData, keyData:keyData, ivData:ivData, operation:kCCDecrypt)!
-            //var decrypted     = String(bytes:decryptedData, encoding:String.Encoding.utf8)!
             var messageHexString = ""
-            for i in 0 ..< encryptedData.count {
-                messageHexString += String(format: "%02X", encryptedData[i])
+            for i in 0 ..< dataArray.count {
+                messageHexString += String(format: "%02X", dataArray[i])
             }
             Logger.logDBG(entry: messageHexString)
         }

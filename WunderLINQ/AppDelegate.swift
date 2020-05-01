@@ -18,9 +18,8 @@ import UserNotifications
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate, SPTAppRemoteDelegate {
 
     private let spotifyRedirectUri = URL(string:"wunderlinq://music")!
-    private let spotifyClientIdentifier = "***REMOVED***"
+    private let spotifyClientIdentifier = Secrets.spotify_app_id
     
-    // keys
     static private let kAccessTokenKey = "access-token-key"
 
     var spotifyAccessToken = UserDefaults.standard.string(forKey: kAccessTokenKey) {
@@ -70,7 +69,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             // Override point for customization after application launch.
             // Keep screen unlocked
             application.isIdleTimerDisabled = true
-            GMSServices.provideAPIKey("***REMOVED***")
+            GMSServices.provideAPIKey(Secrets.google_maps_api_key)
             // Override point for customization after application launch.
             
             switch(UserDefaults.standard.integer(forKey: "darkmode_preference")){

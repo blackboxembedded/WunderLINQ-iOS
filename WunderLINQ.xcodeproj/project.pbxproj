@@ -75,6 +75,7 @@
 		7EAE9417211EA30900E24CE9 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EAE9416211EA30900E24CE9 /* Theme.swift */; };
 		7EAF646822FE17D000B11550 /* BikeInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EAF646722FE17D000B11550 /* BikeInfoViewController.swift */; };
 		7EAF646A22FE261D00B11550 /* WeatherMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EAF646922FE261D00B11550 /* WeatherMapViewController.swift */; };
+		7EB8B99E245CA7A6007232D2 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB8B99D245CA7A6007232D2 /* Secrets.swift */; };
 		7EBC8A9E23B19C0B001FE70B /* AddWaypointViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBC8A9D23B19C0B001FE70B /* AddWaypointViewController.swift */; };
 		7EBFD48E210ADD0000FC9665 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBFD48D210ADD0000FC9665 /* String+Extensions.swift */; };
 		7EBFD490210E108100FC9665 /* segueFromLeft.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBFD48F210E108100FC9665 /* segueFromLeft.swift */; };
@@ -200,6 +201,7 @@
 		7EAE9416211EA30900E24CE9 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		7EAF646722FE17D000B11550 /* BikeInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikeInfoViewController.swift; sourceTree = "<group>"; };
 		7EAF646922FE261D00B11550 /* WeatherMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherMapViewController.swift; sourceTree = "<group>"; };
+		7EB8B99D245CA7A6007232D2 /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
 		7EBC8A9D23B19C0B001FE70B /* AddWaypointViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWaypointViewController.swift; sourceTree = "<group>"; };
 		7EBFD48D210ADD0000FC9665 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		7EBFD48F210E108100FC9665 /* segueFromLeft.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = segueFromLeft.swift; sourceTree = "<group>"; };
@@ -367,6 +369,8 @@
 				7E80BD41211D419C00B8CA0D /* WaypointsNavTableViewController.swift */,
 				7EC934F12186208A00FD4806 /* AlertViewController.swift */,
 				7EAE9416211EA30900E24CE9 /* Theme.swift */,
+				7E916DDB230CF10D00011E5F /* NSLocalizedString.swift */,
+				7EB8B99D245CA7A6007232D2 /* Secrets.swift */,
 				7EA478511F40B154000CEDDC /* Main.storyboard */,
 				7E068BD62102C6DB0076EAAD /* GoogleMaps.bundle */,
 				7EA478821F4A7260000CEDDC /* Settings.bundle */,
@@ -374,7 +378,6 @@
 				7EA478561F40B154000CEDDC /* LaunchScreen.storyboard */,
 				7E4D76E521DDAEC100825175 /* InfoPlist.strings */,
 				7EA478591F40B154000CEDDC /* Info.plist */,
-				7E916DDB230CF10D00011E5F /* NSLocalizedString.swift */,
 			);
 			path = WunderLINQ;
 			sourceTree = "<group>";
@@ -540,6 +543,7 @@
 				7E14EFBD221B5FB7009F37A3 /* GeoDataViewController.swift in Sources */,
 				7EC8C9BD1F827977000CEDDC /* ContactsTableViewContoller.swift in Sources */,
 				7EA478871F4BC775000CEDDC /* Logger.swift in Sources */,
+				7EB8B99E245CA7A6007232D2 /* Secrets.swift in Sources */,
 				7E068BF8210645290076EAAD /* TripViewController.swift in Sources */,
 				7E5A767A20DDFEF700B48CC6 /* Waypoint.swift in Sources */,
 				7E80BD42211D419C00B8CA0D /* WaypointsNavTableViewController.swift in Sources */,
