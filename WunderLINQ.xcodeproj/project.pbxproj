@@ -608,8 +608,7 @@
 				7E7440992308F24F001FDE20 /* af */,
 			);
 			name = InfoPlist.strings;
-			path = /Users/keithconger/Projects/iOS/WunderLINQ/WunderLINQ;
-			sourceTree = "<absolute>";
+			sourceTree = "<group>";
 		};
 		7EA478511F40B154000CEDDC /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
