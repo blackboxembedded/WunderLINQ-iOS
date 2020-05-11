@@ -1490,7 +1490,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             }
         case 10:
             // Ambient Light
-            icon = (UIImage(named: "Lightbulb")?.withRenderingMode(.alwaysTemplate))!
+            icon = (UIImage(named: "Light-bulb")?.withRenderingMode(.alwaysTemplate))!
             if motorcycleData.ambientLight != nil {
                 value = "\(motorcycleData.ambientLight!)"
             } else {
