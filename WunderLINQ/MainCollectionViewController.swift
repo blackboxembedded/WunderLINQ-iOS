@@ -1125,7 +1125,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             icon = (UIImage(named: "Brakes")?.withRenderingMode(.alwaysTemplate))!
         case 10:
             // Ambient Light
-            icon = (UIImage(named: "Lightbulb")?.withRenderingMode(.alwaysTemplate))!
+            icon = (UIImage(named: "Light-bulb")?.withRenderingMode(.alwaysTemplate))!
         case 11:
             // Trip 1
             icon = (UIImage(named: "Suitcase")?.withRenderingMode(.alwaysTemplate))!
