@@ -250,17 +250,31 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
                         }
                     }
                 }
-                case 7:
+            case 7:
                 // Here We Go
                 // https://developer.here.com/documentation/mobility-on-demand-toolkit/dev_guide/topics/navigation.html
                 // here-route://mylocation/37.870090,-122.268150,Downtown%20Berkeley?ref=WunderLINQ&m=d
                 let urlString = "here-route://"
-                if let osmAndURL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
-                    if (UIApplication.shared.canOpenURL(osmAndURL)) {
+                if let uRL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
+                    if (UIApplication.shared.canOpenURL(uRL)) {
                         if #available(iOS 10, *) {
-                            UIApplication.shared.open(osmAndURL, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
+                            UIApplication.shared.open(uRL, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
                         } else {
-                            UIApplication.shared.openURL(osmAndURL as URL)
+                            UIApplication.shared.openURL(uRL as URL)
+                        }
+                    }
+                }
+            case 8:
+                // TomTom GO
+                // https://discussions.tomtom.com/en/discussion/1118783/url-schemes-for-go-navigation-ios/
+                // tomtomgo://x-callback-url/navigate?destination=52.371183,4.892504
+                let urlString = "tomtomgo://"
+                if let uRL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
+                    if (UIApplication.shared.canOpenURL(uRL)) {
+                        if #available(iOS 10, *) {
+                            UIApplication.shared.open(uRL, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
+                        } else {
+                            UIApplication.shared.openURL(uRL as URL)
                         }
                     }
                 }
@@ -460,6 +474,36 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
                                                                         UIApplication.shared.open(hereURL, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
                                                                     } else {
                                                                         UIApplication.shared.openURL(hereURL as URL)
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                        else {
+                                                            // An error occurred during geocoding.
+                                                            self.showToast(message: NSLocalizedString("geocode_error", comment: ""))
+                                                        }
+                        })
+                    case 8:
+                        // TomTom GO
+                        // https://discussions.tomtom.com/en/discussion/1118783/url-schemes-for-go-navigation-ios/
+                        // tomtomgo://x-callback-url/navigate?destination=52.371183,4.892504
+                        let geocoder = CLGeocoder()
+                        geocoder.geocodeAddressString(homeAddress,
+                                                      completionHandler: { (placemarks, error) in
+                                                        if error == nil {
+                                                            let placemark = placemarks?.first
+                                                            let lat = placemark?.location?.coordinate.latitude
+                                                            let lon = placemark?.location?.coordinate.longitude
+                                                            let destLatitude: CLLocationDegrees = lat!
+                                                            let destLongitude: CLLocationDegrees = lon!
+                                                            let urlString = "tomtomgo://x-callback-url/navigate?destination=\(destLatitude),\(destLongitude)"
+                                                            
+                                                            if let tomTomURL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
+                                                                if (UIApplication.shared.canOpenURL(tomTomURL)) {
+                                                                    if #available(iOS 10, *) {
+                                                                        UIApplication.shared.open(tomTomURL, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
+                                                                    } else {
+                                                                        UIApplication.shared.openURL(tomTomURL as URL)
                                                                     }
                                                                 }
                                                             }

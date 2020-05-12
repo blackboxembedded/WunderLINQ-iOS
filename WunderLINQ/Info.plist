@@ -48,6 +48,7 @@
 		<string>spotify</string>
 		<string>here-route</string>
 		<string>here-location</string>
+        <string>tomtomgo</string>
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>

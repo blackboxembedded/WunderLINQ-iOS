@@ -189,6 +189,20 @@ class WaypointViewController: UIViewController, UITextFieldDelegate, CLLocationM
                         }
                     }
                 }
+            case 8:
+                // TomTom GO
+                // https://discussions.tomtom.com/en/discussion/1118783/url-schemes-for-go-navigation-ios/
+                // tomtomgo://x-callback-url/navigate?destination=52.371183,4.892504
+                let urlString = "tomtomgo://x-callback-url/navigate?destination=\(destLatitude),\(destLongitude)"
+                if let uRL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
+                    if (UIApplication.shared.canOpenURL(uRL)) {
+                        if #available(iOS 10, *) {
+                            UIApplication.shared.open(uRL, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
+                        } else {
+                            UIApplication.shared.openURL(uRL as URL)
+                        }
+                    }
+                }
             default:
                 //Apple Maps
                 let coordinates = CLLocationCoordinate2DMake(destLatitude, destLongitude)
@@ -301,6 +315,20 @@ class WaypointViewController: UIViewController, UITextFieldDelegate, CLLocationM
                             UIApplication.shared.open(hereURL, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
                         } else {
                             UIApplication.shared.openURL(hereURL as URL)
+                        }
+                    }
+                }
+            case 8:
+                // TomTom GO
+                // https://discussions.tomtom.com/en/discussion/1118783/url-schemes-for-go-navigation-ios/
+                // tomtomgo://x-callback-url/navigate?destination=52.371183,4.892504
+                let urlString = "tomtomgo://x-callback-url/navigate?destination=\(destLatitude),\(destLongitude)"
+                if let uRL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
+                    if (UIApplication.shared.canOpenURL(uRL)) {
+                        if #available(iOS 10, *) {
+                            UIApplication.shared.open(uRL, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
+                        } else {
+                            UIApplication.shared.openURL(uRL as URL)
                         }
                     }
                 }
