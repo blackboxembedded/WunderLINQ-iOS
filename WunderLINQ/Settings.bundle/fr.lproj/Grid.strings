@@ -38,3 +38,7 @@
 "bearing_header" = "Boussole";
 "time_header" = "Heure";
 "gpsspeed_header" = "Vitesse GPS";
+"sunrisesunset_header" = "Lever/Coucher du soleil";
+"barometric_header" = "Baromètre";
+"pref_grid_fifteen" = "Quinzième";
+"pref_grid_thirteen" = "Treizième";
