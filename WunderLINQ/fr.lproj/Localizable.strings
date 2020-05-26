@@ -196,3 +196,51 @@
 "leanangle_header" = "Angle d'inclinaison";
 "bearing_header" = "Boussole";
 "gpsspeed_header" = "Vitesse GPS";
+"task_title_weathermap" = "Carte météo";
+"task_title_actioncam_stop_video" = "Arrêter l'enregistrement ActionCam";
+"task_title_actioncam_start_video" = "Démarrer l'enregistrement ActionCam";
+"sunrisesunset_header" = "Lever/Coucher du soleil";
+"barometric_header" = "Baromètre";
+"toast_waypoint_error" = "Latitude & Longitude requises";
+"addwaypoint_view_search_hint" = "Saisissez l'adresse";
+"addwaypoint_view_bt_search" = "Chercher";
+"reset_header" = "Réinitialisation des données";
+"blank_field" = "∞";
+//WeatherMapViewController
+"weathermap_title" = "Carte météo";
+"reset_btn_label" = "Réinitialiser";
+"reset_label" = "Item";
+"next_service_label" = "Prochain entretien";
+"next_service_date_label" = "Prochain entretien";
+//BikeInfoViewController
+"bike_info_title" = "Info motocyclette";
+"toast_actioncam_notconnected" = "Aucune ActionCam détectée";
+"addwaypoint_view_bt_save" = "Enregistrer";
+// AddWaypointViewController
+"addwaypoint_view_title" = "Ajouter un point de contrôle";
+"alert_title_photopreview" = "Aperçu photo";
+"config_reset_label" = "Réinitialiser les paramètres";
+"fw_version_label" = "Version du microcode";
+"select_bt" = "Sélectionner";
+"bike_info_label" = "Informations de la moto";
+"trip_logs_label" = "Journaux de trajets";
+"bt_alert_title" = "État du gestionnaire central";
+"bt_ready" = "Bluetooth LE est activé et prêt pour la communication.";
+"bt_unknown" = "L'état du gestionnaire BLE est inconnu.";
+"bt_resetting" = "Le gestionnaire BLE est en cours de réinitialisation ; une mise à jour d'état est en attente.";
+"bt_not_authorized" = "Cette application n'est pas autorisée à utiliser Bluetooth Low Energy.";
+"bt_powered_off" = "Le Bluetooth sur cet appareil est actuellement désactivé.";
+"negative_alert_btn_ok" = "Paramètres";
+"negative_notification_alert_body" = "Sans la permission des notifications, vous ne serez pas alerté lors d'un problème.";
+"negative_media_alert_body" = "Sans accès à la librairie multimédia, l'application ne pourra pas jouer de musique.";
+"firstrun_end" = "Merci d'avoir acheté WunderLINQ! Rouler en toute sécurité.";
+"notification_alert_body" = "WinderLINQ requiert l'accès aux nodifications pour vous informer des alertes.";
+"location_alert_body" = "WunderLINQ doit avoir accès à votre emplacement pour en permettre l'enregistrement en arrière-plan.\nCette permission est également utilisée pour les données telles que l'altitude, la vitesse et la direction.";
+"read_media_alert_body" = "WunderLINQ doit avoir accès à votre bibliothèque multimédia pour contrôler la lecture de musique.";
+"write_photo_alert_body" = "WunderLINQ requiert l'accès pour enregistrer des photos dans votre photothèque.";
+"record_audio_alert_body" = "WinderLINQ requiert l'accès à votre microphone pour enregistrer l'audio dans les vidéos.";
+"call_alert_body" = "WunderLINQ requiert l'accès à votre téléphone pour lancer des appels.";
+"camera_alert_body" = "WunderLINQ requiert l'accès à votre caméra pour prendre des photos et des enregistrements vidéo.";
+"contacts_alert_body" = "WunderLINQ doit avoir accès à vos contacts pour les listes d'appel.";
+// FirstRunViewController
+"firstrun_start" = "WunderLINQ nécessite de nombreuses autorisations pour activer toutes les fonctionnalités intéressantes de l'application. Sur les prochains écrans, nous expliquerons la nécessité de chaque demande d'autorisation.\nCes écrans ne vous seront présentés qu'une seule fois. Si vous souhaitez activer certaines autorisations par la suite, vous devrez accéder aux paramètres Android et les activer.";
