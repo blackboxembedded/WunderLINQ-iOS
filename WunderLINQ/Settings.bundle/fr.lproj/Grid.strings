@@ -24,9 +24,9 @@
 "rearbrakes_header" = "Frein arrière";
 "shifts_header" = "Changement de vitesse";
 "ambientlight_header" = "Lumière ambiante";
-"tripone_header" = "Voyage1";
-"triptwo_header" = "Voyage2";
-"tripauto_header" = "voyage Auto";
+"tripone_header" = "Trajet 1";
+"triptwo_header" = "Trajet 2";
+"tripauto_header" = "Trajet Auto";
 "speed_header" = "Vitesse";
 "avgspeed_header" = "Vitesse moyenne";
 "cconsumption_header" = "Consommation actuelle";
