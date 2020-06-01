@@ -1217,7 +1217,7 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
         
         let imageView : UIImageView = {
             let iv = UIImageView()
-            iv.image = UIImage(named:"Wheel")
+            iv.image = UIImage(named:"wheel")
             iv.contentMode = .scaleAspectFill
             return iv
         }()
