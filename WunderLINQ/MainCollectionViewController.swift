@@ -2094,10 +2094,12 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             motorcycleData.setgear(gear: gear)
             
             // Throttle Position
-            let minPosition:Double = 36;
-            let maxPosition:Double = 236;
-            let throttlePosition = ((Double(lastMessage[3]) - minPosition) * 100) / (maxPosition - minPosition)
-            motorcycleData.setthrottlePosition(throttlePosition: throttlePosition)
+            if (lastMessage[3] != 0xFF){
+                let minPosition:Double = 36;
+                let maxPosition:Double = 236;
+                let throttlePosition = ((Double(lastMessage[3]) - minPosition) * 100) / (maxPosition - minPosition)
+                motorcycleData.setthrottlePosition(throttlePosition: throttlePosition)
+            }
             
             // Engine Temperature
             if (lastMessage[4] != 0xFF){
@@ -2986,8 +2988,10 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             
         case 0x0A:
             // Odometer
-            let odometer:Double = Double(UInt32((UInt32(lastMessage[1]) | UInt32(lastMessage[2]) << 8 | UInt32(lastMessage[3]) << 16)))
-            motorcycleData.setodometer(odometer: (odometer * 1.0))
+            if ((lastMessage[1] != 0xFF) && (lastMessage[2] != 0xFF) && (lastMessage[3] != 0xFF)){
+                let odometer:Double = Double(UInt32((UInt32(lastMessage[1]) | UInt32(lastMessage[2]) << 8 | UInt32(lastMessage[3]) << 16)))
+                motorcycleData.setodometer(odometer: (odometer * 1.0))
+            }
             
             // Trip Auto
             if ((lastMessage[4] != 0xFF) && (lastMessage[5] != 0xFF) && (lastMessage[6] != 0xFF)){
