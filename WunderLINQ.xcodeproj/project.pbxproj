@@ -36,6 +36,7 @@
 		7E25396121CD65C60008D34E /* HWSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E25396021CD65C60008D34E /* HWSettingsViewController.swift */; };
 		7E25396321CD94A30008D34E /* BLE.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E25396221CD94A30008D34E /* BLE.swift */; };
 		7E25396521CDB1740008D34E /* WLQ.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E25396421CDB1740008D34E /* WLQ.swift */; };
+		7E2EC06424991CE200B0A59B /* NavigationControllerWithTraitOverride.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2EC06324991CE200B0A59B /* NavigationControllerWithTraitOverride.swift */; };
 		7E35A59322DC265800E4AE40 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E35A59222DC265800E4AE40 /* Utility.swift */; };
 		7E46AA192419D1540047E87D /* CircularCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E46AA182419D1540047E87D /* CircularCollectionViewLayout.swift */; };
 		7E4D76E321DDAEC100825175 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7E4D76E521DDAEC100825175 /* InfoPlist.strings */; };
@@ -129,6 +130,7 @@
 		7E25396021CD65C60008D34E /* HWSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HWSettingsViewController.swift; sourceTree = "<group>"; };
 		7E25396221CD94A30008D34E /* BLE.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLE.swift; sourceTree = "<group>"; };
 		7E25396421CDB1740008D34E /* WLQ.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WLQ.swift; sourceTree = "<group>"; };
+		7E2EC06324991CE200B0A59B /* NavigationControllerWithTraitOverride.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationControllerWithTraitOverride.swift; sourceTree = "<group>"; };
 		7E31915C219A1BB40031A2E3 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Main.strings; sourceTree = "<group>"; };
 		7E31915D219A1BB40031A2E3 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		7E31915E219A1BB40031A2E3 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = WunderLINQ/es.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -370,6 +372,7 @@
 				7EC934F12186208A00FD4806 /* AlertViewController.swift */,
 				7EAE9416211EA30900E24CE9 /* Theme.swift */,
 				7E916DDB230CF10D00011E5F /* NSLocalizedString.swift */,
+				7E2EC06324991CE200B0A59B /* NavigationControllerWithTraitOverride.swift */,
 				7EB8B99D245CA7A6007232D2 /* Secrets.swift */,
 				7EA478511F40B154000CEDDC /* Main.storyboard */,
 				7E068BD62102C6DB0076EAAD /* GoogleMaps.bundle */,
@@ -566,6 +569,7 @@
 				7EAE9417211EA30900E24CE9 /* Theme.swift in Sources */,
 				7EC63202219BCE05002E68FF /* AboutViewController.swift in Sources */,
 				7E068BC320FD8A100076EAAD /* FaultsTableViewController.swift in Sources */,
+				7E2EC06424991CE200B0A59B /* NavigationControllerWithTraitOverride.swift in Sources */,
 				7E6987DD20F8F83500B4781D /* Faults.swift in Sources */,
 				7E068BC9210190F00076EAAD /* WaypointsTableViewController.swift in Sources */,
 				7E068BCD2102ADD20076EAAD /* WaypointViewController.swift in Sources */,
