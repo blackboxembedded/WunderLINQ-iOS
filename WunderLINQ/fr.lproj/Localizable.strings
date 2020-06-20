@@ -15,7 +15,7 @@
 "toast_phone_not_set" = "Aucun numéro favori défini dans les réglages";
 "task_title_stop_record" = "Arrêt enr. vidéo";
 "task_title_start_record" = "Démarrer enr. vidéo";
-"trip1_label" = "Voyage 1";
+"trip1_label" = "Trajet 1";
 "wwtype_label" = "Type de molette";
 "south_west" = "SO";
 "fault_LAMPAFL2" = "Lumière avant supplémentaire 2";
@@ -27,7 +27,7 @@
 "altitude_header" = "Altitude (m)";
 "task_title_settings" = "Réglages";
 "gear_label" = "Vitesse";
-"geodata_label" = "Voyages & Destinations";
+"geodata_label" = "Trajets & Destinations";
 "appsettings_label" = "Réglages";
 "sensitivity_label" = "Sensibilité de la molette";
 "trip_view_waypoint_start_label" = "Début";
@@ -49,7 +49,7 @@
 "wwMode3" = "Personnalisé";
 "sendlogs_body" = "Entrez une description du problème ci-dessous:";
 // TripsTableViewController
-"trips_title" = "Voyages sauvegardés";
+"trips_title" = "Trajets sauvegardés";
 "trip_view_tv_distance" = "Distance";
 "waypoint_view_bt_delete" = "Effacer";
 "delete_waypoint_alert_title" = "Attention!";
@@ -69,7 +69,7 @@
 "fault_LAMPLIC" = "Lumière de plaque d'immatriculation";
 "fault_LAMPADDB" = "Lumière de frein additionnelle";
 "fault_OILLOW" = "Le niveau d'huile moteur est trop bas";
-"tripauto_header" = "voyage Auto";
+"tripauto_header" = "Trajet Auto";
 "task_title_callcontact" = "Contact";
 "task_title_selfie" = "Égoportrait";
 "task_title_waypoint" = "Enregistrer emplacement";
@@ -81,7 +81,7 @@
 // FaultsTableViewController
 "fault_title" = "Erreurs actives";
 // TripViewController
-"trip_view_title" = "Voyage";
+"trip_view_title" = "Trajet";
 "trip_view_tv_duration" = "Durée";
 "trip_view_tv_shifts" = "Changement de vitesse";
 "trip_view_tv_ambient" = "Température ambiante (Min/Moy/Max)";
@@ -107,7 +107,7 @@
 // WaypointViewController
 "waypoint_view_title" = "Emplacement sauvegardé";
 "waypoint_view_tv_date_label" = "Date d'enregistrement";
-"task_title_stop_trip" = "Arrêt enr. voyage";
+"task_title_stop_trip" = "Arrêt enr. trajet";
 "voltage_header" = "Voltage";
 "vin_header" = "VIN";
 "fault_ASCDAC" = "ASC désactivé";
@@ -121,7 +121,7 @@
 "avgspeed_header" = "Vitesse moyenne";
 "gforce_header" = "Force G";
 "disclaimer_alert_title" = "AVERTISSEMENT !";
-"trip2_label" = "Voyage 2";
+"trip2_label" = "Trajet 2";
 "hwsave_alert_btn_ok" = "Continuer";
 "hwsave_alert_btn_cancel" = "Annuler";
 //AboutViewController
@@ -140,7 +140,7 @@
 "fault_GENWARNFSYLW" = "L'indicateur d'avertissement général jaune clignote";
 "rearbrakes_header" = "Frein arrière";
 "cconsumption_header" = "Consommation actuelle";
-"task_title_start_trip" = "Démarrer enr. voyage";
+"task_title_start_trip" = "Démarrer enr. trajet";
 "trip_view_tv_speed" = "Vitesse (Moy/Max)";
 "waypoint_view_bt_share" = "Partager";
 "rdc_rear_label" = "Pneu arrière";
@@ -188,11 +188,59 @@
 "ambienttemp_header" = "Température ambiante";
 "odometer_header" = "Odomètre";
 "ambientlight_header" = "Lumière ambiante";
-"tripone_header" = "Voyage1";
-"triptwo_header" = "Voyage2";
+"tripone_header" = "Trajet 1";
+"triptwo_header" = "Trajet 2";
 "speed_header" = "Vitesse";
 "fueleconomytwo_header" = "Consommation 2";
 "fuelrange_header" = "Capacité restante";
 "leanangle_header" = "Angle d'inclinaison";
 "bearing_header" = "Boussole";
 "gpsspeed_header" = "Vitesse GPS";
+"task_title_weathermap" = "Carte météo";
+"task_title_actioncam_stop_video" = "Arrêter l'enregistrement ActionCam";
+"task_title_actioncam_start_video" = "Démarrer l'enregistrement ActionCam";
+"sunrisesunset_header" = "Lever/Coucher du soleil";
+"barometric_header" = "Baromètre";
+"toast_waypoint_error" = "Latitude & Longitude requises";
+"addwaypoint_view_search_hint" = "Saisissez l'adresse";
+"addwaypoint_view_bt_search" = "Chercher";
+"reset_header" = "Réinitialisation des données";
+"blank_field" = "∞";
+//WeatherMapViewController
+"weathermap_title" = "Carte météo";
+"reset_btn_label" = "Réinitialiser";
+"reset_label" = "Item";
+"next_service_label" = "Prochain entretien";
+"next_service_date_label" = "Prochain entretien";
+//BikeInfoViewController
+"bike_info_title" = "Info motocyclette";
+"toast_actioncam_notconnected" = "Aucune ActionCam détectée";
+"addwaypoint_view_bt_save" = "Enregistrer";
+// AddWaypointViewController
+"addwaypoint_view_title" = "Ajouter un point de contrôle";
+"alert_title_photopreview" = "Aperçu photo";
+"config_reset_label" = "Réinitialiser les paramètres";
+"fw_version_label" = "Version du microcode";
+"select_bt" = "Sélectionner";
+"bike_info_label" = "Informations de la moto";
+"trip_logs_label" = "Journaux de trajets";
+"bt_alert_title" = "État du gestionnaire central";
+"bt_ready" = "Bluetooth LE est activé et prêt pour la communication.";
+"bt_unknown" = "L'état du gestionnaire BLE est inconnu.";
+"bt_resetting" = "Le gestionnaire BLE est en cours de réinitialisation ; une mise à jour d'état est en attente.";
+"bt_not_authorized" = "Cette application n'est pas autorisée à utiliser Bluetooth Low Energy.";
+"bt_powered_off" = "Le Bluetooth sur cet appareil est actuellement désactivé.";
+"negative_alert_btn_ok" = "Paramètres";
+"negative_notification_alert_body" = "Sans la permission des notifications, vous ne serez pas alerté lors d'un problème.";
+"negative_media_alert_body" = "Sans accès à la librairie multimédia, l'application ne pourra pas jouer de musique.";
+"firstrun_end" = "Merci d'avoir acheté WunderLINQ! Rouler en toute sécurité.";
+"notification_alert_body" = "WinderLINQ requiert l'accès aux nodifications pour vous informer des alertes.";
+"location_alert_body" = "WunderLINQ doit avoir accès à votre emplacement pour en permettre l'enregistrement en arrière-plan.\nCette permission est également utilisée pour les données telles que l'altitude, la vitesse et la direction.";
+"read_media_alert_body" = "WunderLINQ doit avoir accès à votre bibliothèque multimédia pour contrôler la lecture de musique.";
+"write_photo_alert_body" = "WunderLINQ requiert l'accès pour enregistrer des photos dans votre photothèque.";
+"record_audio_alert_body" = "WinderLINQ requiert l'accès à votre microphone pour enregistrer l'audio dans les vidéos.";
+"call_alert_body" = "WunderLINQ requiert l'accès à votre téléphone pour lancer des appels.";
+"camera_alert_body" = "WunderLINQ requiert l'accès à votre caméra pour prendre des photos et des enregistrements vidéo.";
+"contacts_alert_body" = "WunderLINQ doit avoir accès à vos contacts pour les listes d'appel.";
+// FirstRunViewController
+"firstrun_start" = "WunderLINQ nécessite de nombreuses autorisations pour activer toutes les fonctionnalités intéressantes de l'application. Sur les prochains écrans, nous expliquerons la nécessité de chaque demande d'autorisation.\nCes écrans ne vous seront présentés qu'une seule fois. Si vous souhaitez activer certaines autorisations par la suite, vous devrez accéder aux paramètres Android et les activer.";
