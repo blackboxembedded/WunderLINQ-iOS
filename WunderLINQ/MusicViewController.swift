@@ -243,9 +243,11 @@ class MusicViewController: UIViewController, SPTAppRemotePlayerStateDelegate {
     
     @objc func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
         if gesture.direction == UISwipeGestureRecognizer.Direction.right {
+            NSLog("Music: swipe right")
             navigationController?.popToRootViewController(animated: true)
         }
         else if gesture.direction == UISwipeGestureRecognizer.Direction.left {
+            NSLog("Music: swipe left")
             performSegue(withIdentifier: "musicToTasks", sender: [])
         }
     }
@@ -262,10 +264,12 @@ class MusicViewController: UIViewController, SPTAppRemotePlayerStateDelegate {
     }
     
     @objc func leftScreen() {
+        NSLog("Music: leftScreen()")
         navigationController?.popToRootViewController(animated: true)
     }
     
     @objc func rightScreen() {
+        NSLog("Music: rightScreen()")
         performSegue(withIdentifier: "musicToTasks", sender: [])
     }
     

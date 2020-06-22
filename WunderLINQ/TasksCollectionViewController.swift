@@ -1104,6 +1104,7 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
     }
     
     @objc func leftScreen() {
+        NSLog("Task: leftScreen()")
         let secondViewController = self.storyboard!.instantiateViewController(withIdentifier: "MusicViewController") as! MusicViewController
         if let viewControllers = self.navigationController?.viewControllers
         {
@@ -1120,6 +1121,7 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
     }
     
     @objc func rightScreen() {
+        NSLog("Task: leftScreen()")
         navigationController?.popToRootViewController(animated: true)
     }
     
@@ -1133,6 +1135,7 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
     
     @objc func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
         if gesture.direction == UISwipeGestureRecognizer.Direction.right {
+            NSLog("Task: swipe right")
             let secondViewController = self.storyboard!.instantiateViewController(withIdentifier: "MusicViewController") as! MusicViewController
             if let viewControllers = self.navigationController?.viewControllers
             {
@@ -1148,6 +1151,7 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
             }
         }
         else if gesture.direction == UISwipeGestureRecognizer.Direction.left {
+            NSLog("Task: swipe left")
             navigationController?.popToRootViewController(animated: true)
         }
     }
