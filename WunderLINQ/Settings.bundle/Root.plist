@@ -62,6 +62,26 @@
 			<key>File</key>
 			<string>Tasks</string>
 		</dict>
+        <dict>
+            <key>Type</key>
+            <string>PSMultiValueSpecifier</string>
+            <key>Title</key>
+            <string>pref_contact_sorting</string>
+            <key>Key</key>
+            <string>contact_sort_preference</string>
+            <key>DefaultValue</key>
+            <integer>0</integer>
+            <key>Values</key>
+            <array>
+                <integer>0</integer>
+                <integer>1</integer>
+            </array>
+            <key>Titles</key>
+            <array>
+                <string>lastname</string>
+                <string>firstname</string>
+            </array>
+        </dict>
 		<dict>
 			<key>Type</key>
 			<string>PSMultiValueSpecifier</string>
@@ -166,26 +186,28 @@
                 <integer>1</integer>
             </array>
         </dict>
-		<dict>
-			<key>Type</key>
-			<string>PSMultiValueSpecifier</string>
-			<key>Title</key>
-			<string>pref_contact_sorting</string>
-			<key>Key</key>
-			<string>contact_sort_preference</string>
-			<key>DefaultValue</key>
-			<integer>0</integer>
-			<key>Values</key>
-			<array>
-				<integer>0</integer>
-				<integer>1</integer>
-			</array>
-			<key>Titles</key>
-			<array>
-				<string>lastname</string>
-				<string>firstname</string>
-			</array>
-		</dict>
+        <dict>
+            <key>Type</key>
+            <string>PSMultiValueSpecifier</string>
+            <key>Title</key>
+            <string>pref_orientation_name</string>
+            <key>Key</key>
+            <string>orientation_preference</string>
+            <key>DefaultValue</key>
+            <integer>0</integer>
+            <key>Titles</key>
+            <array>
+                <string>orientation_a</string>
+                <string>orientation_l</string>
+                <string>orientation_p</string>
+            </array>
+            <key>Values</key>
+            <array>
+                <integer>0</integer>
+                <integer>1</integer>
+                <integer>2</integer>
+            </array>
+        </dict>
 		<dict>
 			<key>Type</key>
 			<string>PSToggleSwitchSpecifier</string>
@@ -218,36 +240,6 @@
                 <integer>2</integer>
             </array>
         </dict>
-		<dict>
-			<key>Type</key>
-			<string>PSGroupSpecifier</string>
-			<key>Title</key>
-			<string>pref_orientation_title</string>
-			<key>FooterText</key>
-			<string>pref_orientation_footer</string>
-		</dict>
-		<dict>
-			<key>Type</key>
-			<string>PSMultiValueSpecifier</string>
-			<key>Title</key>
-			<string>pref_orientation_name</string>
-			<key>Key</key>
-			<string>orientation_preference</string>
-			<key>DefaultValue</key>
-			<integer>0</integer>
-			<key>Titles</key>
-			<array>
-				<string>orientation_a</string>
-				<string>orientation_l</string>
-				<string>orientation_p</string>
-			</array>
-			<key>Values</key>
-			<array>
-				<integer>0</integer>
-				<integer>1</integer>
-				<integer>2</integer>
-			</array>
-		</dict>
 		<dict>
 			<key>Type</key>
 			<string>PSGroupSpecifier</string>

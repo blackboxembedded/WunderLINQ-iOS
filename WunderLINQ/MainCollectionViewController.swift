@@ -209,6 +209,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        print("viewWillAppear")
         referenceAttitude = nil
         if isTimerRunning == false {
             runTimer()
@@ -516,6 +517,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        print("viewWillTransition")
         updateCollectionViewLayout(with: size)
         referenceAttitude = nil
         super.viewWillTransition(to: size, with: coordinator)
@@ -3384,9 +3386,11 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     
     @objc func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
         if gesture.direction == UISwipeGestureRecognizer.Direction.right {
+            NSLog("Main: swipe right")
             performSegue(withIdentifier: "motorcycleToTaskGrid", sender: [])
         }
         else if gesture.direction == UISwipeGestureRecognizer.Direction.left {
+            NSLog("Main: swipe left")
             performSegue(withIdentifier: "motorcycleToMusic", sender: [])
         }
         else if gesture.direction == UISwipeGestureRecognizer.Direction.up {
@@ -3422,11 +3426,13 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     
     @objc func leftScreen() {
         // your code here
+        NSLog("Main: leftScreen()")
         performSegue(withIdentifier: "motorcycleToTaskGrid", sender: [])
     }
     
     @objc func rightScreen() {
         // your code here
+        NSLog("Main: rightScreen()")
         performSegue(withIdentifier: "motorcycleToMusic", sender: [])
     }
     
