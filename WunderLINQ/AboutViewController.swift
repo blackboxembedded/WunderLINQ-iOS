@@ -26,6 +26,8 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
     @IBOutlet weak var versionLabel: UILabel!
     @IBOutlet weak var creditsTextView: UITextView!
     
+    let wlqData = WLQ.shared
+    
     @IBAction func corpNameBtnPressed(_ sender: Any) {
         guard let url = URL(string: "https://www.blackboxembedded.com") else {
             return //be safe
@@ -51,7 +53,7 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
             let today = dateFormatter.string(from: Date())
             let mailComposer = MFMailComposeViewController()
             mailComposer.setSubject("WunderLINQ iOS Debug Logs \(today)")
-            mailComposer.setMessageBody("App Version: \(getAppInfo())\niOS Version: \(getOSInfo())\nDevice: \(UIDevice.current.modelName)\n\(NSLocalizedString("sendlogs_body", comment: ""))", isHTML: false)
+            mailComposer.setMessageBody("App Version: \(getAppInfo())\nFirmware Version: \(wlqData.getfirmwareVersion())\niOS Version: \(getOSInfo())\nDevice: \(UIDevice.current.modelName)\n\(NSLocalizedString("sendlogs_body", comment: ""))", isHTML: false)
             mailComposer.setToRecipients(["support@blackboxembedded.com"])
             // Get the documents folder url
             let documentDirectory = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
