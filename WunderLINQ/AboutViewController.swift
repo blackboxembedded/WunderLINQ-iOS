@@ -40,8 +40,17 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
     
     @IBAction func sendLogsBtnPressed(_ sender: Any) {
         if MFMailComposeViewController.canSendMail() {
+            var dateFormat = "yyyyMMdd-HH:mm"
+            var dateFormatter: DateFormatter {
+                let formatter = DateFormatter()
+                formatter.dateFormat = dateFormat
+                formatter.locale = Locale.current
+                formatter.timeZone = TimeZone.current
+                return formatter
+            }
+            let today = dateFormatter.string(from: Date())
             let mailComposer = MFMailComposeViewController()
-            mailComposer.setSubject("WunderLINQ Debug Logs")
+            mailComposer.setSubject("WunderLINQ iOS Debug Logs \(today)")
             mailComposer.setMessageBody("App Version: \(getAppInfo())\niOS Version: \(getOSInfo())\nDevice: \(UIDevice.current.modelName)\n\(NSLocalizedString("sendlogs_body", comment: ""))", isHTML: false)
             mailComposer.setToRecipients(["support@blackboxembedded.com"])
             // Get the documents folder url
