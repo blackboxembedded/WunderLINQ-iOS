@@ -3354,36 +3354,6 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
     }
     
-    // operation: kCCEncrypt or kCCDecrypt
-    func testCrypt(data:[UInt8], keyData:[UInt8], ivData:[UInt8], operation:Int) -> [UInt8]? {
-        let cryptLength  = size_t(data.count+kCCBlockSizeAES128)
-        var cryptData    = [UInt8](repeating:0, count:cryptLength)
-        
-        let keyLength             = size_t(kCCKeySizeAES128)
-        let algoritm: CCAlgorithm = UInt32(kCCAlgorithmAES128)
-        let options:  CCOptions   = UInt32(kCCOptionPKCS7Padding)
-        
-        var numBytesEncrypted :size_t = 0
-        
-        let cryptStatus = CCCrypt(CCOperation(operation),
-                                  algoritm,
-                                  options,
-                                  keyData, keyLength,
-                                  ivData,
-                                  data, data.count,
-                                  &cryptData, cryptLength,
-                                  &numBytesEncrypted)
-        
-        if UInt32(cryptStatus) == UInt32(kCCSuccess) {
-            cryptData.removeSubrange(numBytesEncrypted..<cryptData.count)
-            
-        } else {
-            NSLog("Error: \(cryptStatus)")
-        }
-        
-        return cryptData;
-    }
-    
     @objc func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
         if gesture.direction == UISwipeGestureRecognizer.Direction.right {
             NSLog("Main: swipe right")

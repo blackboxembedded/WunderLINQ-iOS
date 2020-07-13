@@ -26,6 +26,10 @@ class WeatherMapViewController: UIViewController {
     let motorcycleData = MotorcycleData.shared
     
     var currentZoom = 10
+    
+    let marker = GMSMarker()
+    
+    var refreshTimer = Timer()
 
     @IBOutlet weak var mapView: GMSMapView!
     
@@ -83,6 +87,10 @@ class WeatherMapViewController: UIViewController {
         _ = navigationController?.popViewController(animated: true)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         AppUtility.lockOrientation(.portrait)
@@ -117,9 +125,10 @@ class WeatherMapViewController: UIViewController {
             //layer.opacity = 0.5
             layer.map = mapView
             // Creates a marker in the center of the map.
-            let marker = GMSMarker()
             marker.position = CLLocationCoordinate2D(latitude: lat, longitude: lon)
             marker.map = mapView
+            
+            startRefreshTimer()
         } else {
             print("Invalid Value")
         }
@@ -138,4 +147,30 @@ class WeatherMapViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func startRefreshTimer(){
+        // Scheduling timer to Call the function "updateCounting" with the interval of 1 seconds
+        refreshTimer = Timer.scheduledTimer(timeInterval: 60, target: self, selector: #selector(self.refreshMap), userInfo: nil, repeats: true)
+    }
+    
+    @objc func refreshMap(){
+        print("refreshMap()")
+        if let lat = motorcycleData.location?.coordinate.latitude, let lon = motorcycleData.location?.coordinate.longitude{
+            mapView.clear()
+            let camera: GMSCameraPosition = GMSCameraPosition.camera(withLatitude: lat, longitude: lon, zoom: 10.0)
+            mapView.camera = camera
+            mapView.mapType = .normal
+            // Create the GMSTileLayer
+            let layer = GMSURLTileLayer(urlConstructor: urls)
+            
+            // Display on the map at a specific zIndex
+            layer.zIndex = 100
+            //layer.opacity = 0.5
+            layer.map = mapView
+            // Creates a marker in the center of the map.
+            marker.position = CLLocationCoordinate2D(latitude: lat, longitude: lon)
+            marker.map = mapView
+        } else {
+            print("Invalid Value")
+        }
+    }
 }
