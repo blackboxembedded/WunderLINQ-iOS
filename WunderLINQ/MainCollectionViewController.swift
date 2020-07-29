@@ -992,8 +992,19 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
             distanceUnit = "mi"
             distanceTimeUnit = "mph"
-            consumptionUnit = "mpg"
             heightUnit = "ft"
+        }
+        switch UserDefaults.standard.integer(forKey: "consumption_unit_preference"){
+        case 0:
+            consumptionUnit = "L/100"
+        case 1:
+            consumptionUnit = "mpg"
+        case 2:
+            consumptionUnit = "mpg"
+        case 3:
+            consumptionUnit = "km/L"
+        default:
+            print("Unknown consumption unit setting")
         }
         
         switch (cellDataPoint){
@@ -1564,8 +1575,15 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             if motorcycleData.currentConsumption != nil {
                 let currentConsumptionValue:Double = motorcycleData.currentConsumption!
                 value = "\(currentConsumptionValue.rounded(toPlaces: 1))"
-                if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
+                switch UserDefaults.standard.integer(forKey: "consumption_unit_preference"){
+                case 1:
                     value = "\(Utility.l100ToMpg(currentConsumptionValue).rounded(toPlaces: 1))"
+                case 2:
+                    value = "\(Utility.l100ToMpgi(currentConsumptionValue).rounded(toPlaces: 1))"
+                case 3:
+                    value = "\(Utility.l100Tokml(currentConsumptionValue).rounded(toPlaces: 1))"
+                default:
+                    value = "\(currentConsumptionValue.rounded(toPlaces: 1))"
                 }
             } else {
                 value = NSLocalizedString("blank_field", comment: "")
@@ -1576,8 +1594,15 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             if motorcycleData.fuelEconomyOne != nil {
                 let fuelEconomyOneValue:Double = motorcycleData.fuelEconomyOne!
                 value = "\(fuelEconomyOneValue.rounded(toPlaces: 1))"
-                if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
+                switch UserDefaults.standard.integer(forKey: "consumption_unit_preference"){
+                case 1:
                     value = "\(Utility.l100ToMpg(fuelEconomyOneValue).rounded(toPlaces: 1))"
+                case 2:
+                    value = "\(Utility.l100ToMpgi(fuelEconomyOneValue).rounded(toPlaces: 1))"
+                case 3:
+                    value = "\(Utility.l100Tokml(fuelEconomyOneValue).rounded(toPlaces: 1))"
+                default:
+                    value = "\(fuelEconomyOneValue.rounded(toPlaces: 1))"
                 }
             } else {
                 value = NSLocalizedString("blank_field", comment: "")
@@ -1588,8 +1613,15 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             if motorcycleData.fuelEconomyTwo != nil {
                 let fuelEconomyTwoValue:Double = motorcycleData.fuelEconomyTwo!
                 value = "\(fuelEconomyTwoValue.rounded(toPlaces: 1))"
-                if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
+                switch UserDefaults.standard.integer(forKey: "consumption_unit_preference"){
+                case 1:
                     value = "\(Utility.l100ToMpg(fuelEconomyTwoValue).rounded(toPlaces: 1))"
+                case 2:
+                    value = "\(Utility.l100ToMpgi(fuelEconomyTwoValue).rounded(toPlaces: 1))"
+                case 3:
+                    value = "\(Utility.l100Tokml(fuelEconomyTwoValue).rounded(toPlaces: 1))"
+                default:
+                    value = "\(fuelEconomyTwoValue.rounded(toPlaces: 1))"
                 }
             } else {
                 value = NSLocalizedString("blank_field", comment: "")

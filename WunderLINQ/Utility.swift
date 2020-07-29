@@ -51,6 +51,16 @@ class Utility {
         let mpg = 235.215 / l100
         return mpg
     }
+    // L/100 to mpg Imperial
+    class func l100ToMpgi(_ l100:Double) -> Double {
+        let mpgi = (235.215 / l100) * 1.20095
+        return mpgi
+    }
+    // L/100 to km/L
+    class func l100Tokml(_ l100:Double) -> Double {
+        let kml = l100 / 100.0
+        return kml
+    }
     // meters to feet
     class func mtoFeet(_ meters:Double) -> Double {
         let meters = meters / 0.3048

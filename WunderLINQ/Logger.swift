@@ -104,6 +104,18 @@ class Logger {
                     speedUnit = "mph"
                     consumptionUnit = "mpg"
                 }
+                switch UserDefaults.standard.integer(forKey: "consumption_unit_preference"){
+                case 0:
+                    consumptionUnit = "L/100"
+                case 1:
+                    consumptionUnit = "mpg"
+                case 2:
+                    consumptionUnit = "mpg"
+                case 3:
+                    consumptionUnit = "km/L"
+                default:
+                    print("Unknown consumption unit setting")
+                }
                 
                 let header = "\(dateHeader),\(latitudeHeader),\(longitudeHeader),\(altitudeHeader) (\(altitudeUnit)),\(gpsSpeedHeader) (\(speedUnit)),\(gearHeader),\(engineTemperatureHeader) (\(temperatureUnit)),\(ambientTemperatureHeader) (\(temperatureUnit)),\(frontPressureHeader) (\(pressureUnit)),\(rearPressureHeader) (\(pressureUnit)),\(odometerHeader) (\(distanceUnit)),\(voltageHeader) (V),\(throttlePositionHeader) (%),\(frontBrakesHeader),\(rearBrakesHeader),\(shiftsHeader),\(vinHeader),\(ambientLightHeader),\(tripOneHeader) (\(distanceUnit)),\(tripTwoHeader) (\(distanceUnit)),\(tripAutoHeader) (\(distanceUnit)),\(speedHeader) (\(speedUnit)),\(averageSpeedHeader) (\(speedUnit)),\(currentConsumptionHeader) (\(consumptionUnit)),\(fuelEconomyOneHeader) (\(consumptionUnit)),\(fuelEconomyTwoHeader) (\(consumptionUnit)),\(fuelRangeHeader) (\(distanceUnit)),\(leanAngleHeader),\(gForceHeader),\(bearingHeader),\(barometricPressureHeader) (kPa)"
                 formattedEntry = header
@@ -263,16 +275,30 @@ class Logger {
             if motorcycleData.currentConsumption != nil {
                 let currentConsumptionValue:Double = motorcycleData.currentConsumption!
                 currentConsumption = "\(currentConsumptionValue)"
-                if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
+                switch UserDefaults.standard.integer(forKey: "consumption_unit_preference"){
+                case 1:
                     currentConsumption = "\(Utility.l100ToMpg(currentConsumptionValue))"
+                case 2:
+                    currentConsumption = "\(Utility.l100ToMpgi(currentConsumptionValue))"
+                case 3:
+                    currentConsumption = "\(Utility.l100Tokml(currentConsumptionValue))"
+                default:
+                    currentConsumption = "\(currentConsumptionValue)"
                 }
             }
             var fuelEconomyOne:String = ""
             if motorcycleData.fuelEconomyOne != nil {
                 let fuelEconomyOneValue:Double = motorcycleData.fuelEconomyOne!
                 fuelEconomyOne = "\(fuelEconomyOneValue)"
-                if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
+                switch UserDefaults.standard.integer(forKey: "consumption_unit_preference"){
+                case 1:
                     fuelEconomyOne = "\(Utility.l100ToMpg(fuelEconomyOneValue))"
+                case 2:
+                    fuelEconomyOne = "\(Utility.l100ToMpgi(fuelEconomyOneValue))"
+                case 3:
+                    fuelEconomyOne = "\(Utility.l100Tokml(fuelEconomyOneValue))"
+                default:
+                    fuelEconomyOne = "\(fuelEconomyOneValue)"
                 }
             }
             var fuelEconomyTwo:String = ""
@@ -282,6 +308,16 @@ class Logger {
                 fuelEconomyTwo = "\(fuelEconomyTwoValue)"
                 if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
                     fuelEconomyTwo = "\(Utility.l100ToMpg(fuelEconomyTwoValue))"
+                }
+                switch UserDefaults.standard.integer(forKey: "consumption_unit_preference"){
+                case 1:
+                    fuelEconomyTwo = "\(Utility.l100ToMpg(fuelEconomyTwoValue))"
+                case 2:
+                    fuelEconomyTwo = "\(Utility.l100ToMpgi(fuelEconomyTwoValue))"
+                case 3:
+                    fuelEconomyTwo = "\(Utility.l100Tokml(fuelEconomyTwoValue))"
+                default:
+                    fuelEconomyTwo = "\(fuelEconomyTwoValue)"
                 }
             }
             var fuelRange:String = ""
