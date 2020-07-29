@@ -144,7 +144,7 @@
 "trip_view_tv_speed" = "Vitesse (Moy/Max)";
 "waypoint_view_bt_share" = "Partager";
 "rdc_rear_label" = "Pneu arrière";
-"hwsave_alert_title" = "Attention!";
+"hwsave_alert_title" = "Attention !";
 "hwsave_alert_body" = "Après la sauvegarde de vos réglages matériels, le WunderLINQ sera instable et nécessitera d'être retiré et remis dans son support.";
 // AlertViewController
 "alert_label_fuel" = "Itinéraire vers la station d'essence la plus proche?";
@@ -244,3 +244,4 @@
 "contacts_alert_body" = "WunderLINQ doit avoir accès à vos contacts pour les listes d'appel.";
 // FirstRunViewController
 "firstrun_start" = "WunderLINQ nécessite de nombreuses autorisations pour activer toutes les fonctionnalités intéressantes de l'application. Sur les prochains écrans, nous expliquerons la nécessité de chaque demande d'autorisation.\nCes écrans ne vous seront présentés qu'une seule fois. Si vous souhaitez activer certaines autorisations par la suite, vous devrez accéder aux paramètres Android et les activer.";
+"addwaypoint_view_tv_search_label" = "Emplacement ou adresse";
