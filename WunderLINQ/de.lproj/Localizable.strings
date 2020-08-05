@@ -231,3 +231,7 @@
 "next_service_label" = "Nächste Wartung";
 //WeatherMapViewController
 "weathermap_title" = "Wetterkarte";
+"record_audio_alert_body" = "WunderLINQ benutzt Zugriff auf das Mikrofon für den Ton bei Videoaufnahmen.";
+"contacts_alert_body" = "WunderLINQ nutzt Zugriff auf Deine Kontakte, um sie anzurufen.";
+"call_alert_body" = "WunderLINQ benutzt Zugriff auf Dein Telefon, um Anrufe zu tätigen.";
+"camera_alert_body" = "WunderLINQ nutzt Zugriff auf die Kamera, um Fotos und Videos aufzunehmen.";
