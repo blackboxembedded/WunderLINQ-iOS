@@ -11,3 +11,7 @@
 "actioncam_hero3" = "Hero3";
 "actioncam_none" = "Keine";
 "pref_actioncam_title" = "Action-Kamera";
+"pref_musicplayer_title" = "Audio-Player";
+"music_spotify" = "Spotify";
+"music_apple" = "Apple Music";
+"nav_app_here" = "HERE WeGo";
