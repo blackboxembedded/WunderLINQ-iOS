@@ -1786,6 +1786,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                     break
                 case 0x57:
                     print("Received WRW command response")
+                    wlqData.setfirmwareVersion(firmwareVersion: "\(dataArray[9]).\(dataArray[10])");
                     wlqData.setwwMode(wwMode: dataArray[26])
                     wlqData.setwwHoldSensitivity(wwHoldSensitivity: dataArray[34])
                     popoverMenuList = [NSLocalizedString("bike_info_label", comment: ""), NSLocalizedString("geodata_label", comment: ""),NSLocalizedString("appsettings_label", comment: ""), NSLocalizedString("hwsettings_label", comment: ""), NSLocalizedString("about_label", comment: ""), NSLocalizedString("close_label", comment: "")]
@@ -3264,11 +3265,6 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                     let getConfigCommand:[UInt8] = [0x57,0x52,0x57,0x0D,0x0A]
                     let writeData =  Data(_: getConfigCommand)
                     peripheral.writeValue(writeData, for: characteristic, type: CBCharacteristicWriteType.withResponse)
-                    peripheral.readValue(for: characteristic)
-                    
-                    let getVersionCommand:[UInt8] = [0x57,0x52,0x56,0x0D,0x0A]
-                    let verCmdWriteData =  Data(_: getVersionCommand)
-                    peripheral.writeValue(verCmdWriteData, for: characteristic, type: CBCharacteristicWriteType.withResponse)
                     peripheral.readValue(for: characteristic)
                 }
                 
