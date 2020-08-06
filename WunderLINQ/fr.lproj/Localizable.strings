@@ -201,10 +201,10 @@
 "task_title_actioncam_start_video" = "Démarrer l'enregistrement ActionCam";
 "sunrisesunset_header" = "Lever/Coucher du soleil";
 "barometric_header" = "Baromètre";
-"toast_waypoint_error" = "Latitude & Longitude requises";
+"toast_waypoint_error" = "Latitude & Longitude requise";
 "addwaypoint_view_search_hint" = "Saisissez l'adresse";
 "addwaypoint_view_bt_search" = "Chercher";
-"reset_header" = "Réinitialisation des données";
+"reset_header" = "Réinitialisation des données de l'ordinateur de bord";
 "blank_field" = "∞";
 //WeatherMapViewController
 "weathermap_title" = "Carte météo";
