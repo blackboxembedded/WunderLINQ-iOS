@@ -8,7 +8,6 @@
 
 // Product
 "product" = "WunderLINQ";
-
 // FirstRunViewController
 "firstrun_start" = "The WunderLINQ requires a lot of permissions to enable all the cool features the app provides.  On the next few screens we will explain the need for each permission request.\nYou will only be presented with these screens this one time.  If you need to enable certain permissions after, you will need to go into Android Settings and enable them.";
 "contacts_alert_body" = "The WunderLINQ app needs access to your contacts to list them for dialing.";
@@ -20,7 +19,6 @@
 "location_alert_body" = "The WunderLINQ app needs access to your location to allow background track recording and data logging.\nLocation permission is also used for data points such as altitude, GPS speed, and bearing.";
 "notification_alert_body" = "The WunderLINQ app needs notification access to notify you of faults.";
 "firstrun_end" = "Thank you for purchasing the WunderLINQ!  Ride Safe.";
-
 // MyMotorcycleViewController
 "main_title" = "Motorcycle";
 "disclaimer_alert_title" = "WARNING!";
@@ -64,7 +62,6 @@
 "close_label" = "Close";
 "hwsettings_label" = "HW Settings";
 "select_bt" = "Select";
-
 //HWSettingsViewController
 "fw_config_title" = "WunderLINQ Settings";
 "fw_version_label" = "Firmware Version";
@@ -79,27 +76,22 @@
 "hwsave_alert_body" = "After saving new hardware settings, the WunderLINQ hardware will become unstable and will need to be removed and reinstalled into the cradle.";
 "hwsave_alert_btn_ok" = "Continue";
 "hwsave_alert_btn_cancel" = "Cancel";
-
 //AboutViewController
 "about_title" = "About";
 "version_label" = "Version:";
 "btn_sendlogs_title" = "Send Logs";
 "sendlogs_body" = "Please describe your problem below:\n";
 "credits_label" = "Credits";
-
 // AlertViewController
 "alert_label_fuel" = "Route to the nearest fuel station?";
 "alert_title_fuel" = "Low Fuel";
 "alert_title_photopreview" = "Photo Preview";
 "alert_btn_close" = "Close";
 "alert_btn_ok" = "OK";
-
 // FaultsTableViewController
 "fault_title" = "Active Faults";
-
 // TripsTableViewController
 "trips_title" = "Recorded Trips";
-
 // TripViewController
 "trip_view_title" = "Trip";
 "trip_view_waypoint_start_label" = "Start";
@@ -118,10 +110,8 @@
 "delete_trip_alert_body" = "Delete Trip Log?";
 "delete_bt" = "Delete";
 "cancel_bt" = "Cancel";
-
 // WaypointsTableViewController
 "waypoint_title" = "Saved Waypoints";
-
 // WaypointViewController
 "waypoint_view_title" = "Saved Waypoint";
 "waypoint_view_tv_date_label" = "Date Recorded";
@@ -135,15 +125,13 @@
 "delete_waypoint_alert_title" = "Warning!";
 "delete_waypoint_alert_body" = "Delete Waypoint?";
 "waypoint_view_label_hint" = "Waypoint Label";
-
 // AddWaypointViewController
 "addwaypoint_view_title" = "Add Waypoint";
 "addwaypoint_view_tv_search_label" = "Drop pin or lookup address";
 "addwaypoint_view_bt_search" = "Lookup";
 "addwaypoint_view_bt_save" = "Save";
-"toast_waypoint_error" = "Latitude & Logitude Required";
+"toast_waypoint_error" = "Latitude & Longitude Required";
 "addwaypoint_view_search_hint" = "Type Address";
-
 // CompassViewController
 "compass_title" = "Compass";
 "north" = "N";
@@ -154,10 +142,8 @@
 "south_east" = "SE";
 "west" = "W";
 "east" = "E";
-
 // MusicViewController
 "music_title" = "Music";
-
 // TasksTableViewController
 "quicktask_title" = "Quick Tasks";
 "task_title_navigation" = "Navigation";
@@ -184,7 +170,6 @@
 "toast_waypoint_saved" = "Waypoint Saved";
 "task_title_waypoint_nav" = "Navigate to Waypoint";
 "toast_photo_taken" = "Photo Taken!";
-
 // LocationService
 "time_header" = "Time";
 "latitude_header" = "Latitude";
@@ -218,13 +203,10 @@
 "bearing_header" = "Bearing";
 "barometric_header" = "Barometer";
 "sunrisesunset_header" = "Sunrise/Sunset";
-
 // ContactsTableViewController
 "contactlist_title" = "Contacts";
-
 // WaypointsNavTableViewController
 "waypoints_nav_title" = "Waypoints";
-
 // Fault Description
 "fault_ABSSLF" = "ABS self-diagnosis not completed";
 "fault_ABSERR" = "ABS error";
@@ -263,7 +245,6 @@
 "fault_GENWARNFSRED" = "The general warning light flashes red";
 "fault_GENWARNSHRED" = "The general warning light shows red";
 "fault_OILLOW" = "Engine oil level too low";
-
 //BikeInfoViewController
 "bike_info_title" = "Bike Info";
 "vin_label" = "VIN";
@@ -272,6 +253,5 @@
 "reset_header" = "Cluster Data Reset";
 "reset_label" = "Item";
 "reset_btn_label" = "Reset";
-
 //WeatherMapViewController
 "weathermap_title" = "Weather Map";
