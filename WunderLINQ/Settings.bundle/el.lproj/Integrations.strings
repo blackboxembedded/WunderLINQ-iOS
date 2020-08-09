@@ -7,7 +7,11 @@
 "nav_app_mapsme" = "Maps.me";
 "nav_app_osmand" = "OsmAnd";
 "nav_app_tomtomgo" = "TomTom GO";
-"actioncam_hero4" = "Hero4  ή νεώτερη";
+"actioncam_hero4" = "Hero4  ή νεότερη";
 "actioncam_hero3" = "Hero3";
 "actioncam_none" = "Καμία";
 "pref_actioncam_title" = "Action Camera";
+"music_spotify" = "Spotify";
+"music_apple" = "Apple Music";
+"pref_musicplayer_title" = "Πρόγραμμα αναπαραγωγής μουσικής";
+"nav_app_here" = "HERE WeGo";
