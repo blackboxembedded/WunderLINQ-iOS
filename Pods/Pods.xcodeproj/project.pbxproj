@@ -1,0 +1,1109 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0226AAC61C721D66430913CA45E4AAD1 /* hr.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 5E2E2517F07152B128B486E9E39060BC /* hr.lproj */; };
+		0230FBF349B4E03B93D471AAE80A0391 /* IASKPSSliderSpecifierViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A9C95747E69748BAB0A13F22C06619 /* IASKPSSliderSpecifierViewCell.m */; };
+		05A24C337B2221739842F11E3DD81897 /* IASKSettingsStore.m in Sources */ = {isa = PBXBuildFile; fileRef = F9BB257B44C39EEDE129891A06440686 /* IASKSettingsStore.m */; };
+		081811CF200139854AC62C19DBA97465 /* UIColor+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D159AAF7C664101A5B9A5927550610 /* UIColor+Utils.swift */; };
+		0932FE5BCA48102FC41A8806202AE05D /* IASKDatePicker.h in Headers */ = {isa = PBXBuildFile; fileRef = 52B6D5554154A82511D90E890176A50C /* IASKDatePicker.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		0E5FD664EFDE508D9D05FD5F0A39C25A /* uk.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 14AF338478E1845BFF88B90DC6F783E0 /* uk.lproj */; };
+		10A7DD1766DC2A20C749B7FFC65B9197 /* IASKTextView.h in Headers */ = {isa = PBXBuildFile; fileRef = 34A8FD80E49971F0008F4DE2C3A8ECE4 /* IASKTextView.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		1393DCB0E47F97377E7226E33A4A814E /* IASKAppSettingsWebViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = EBBDE5FAA795E947C7F370C9AAF5573D /* IASKAppSettingsWebViewController.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		149010CB3CE4D0B8BA8D9CFCC3CAB0B4 /* ru.lproj in Resources */ = {isa = PBXBuildFile; fileRef = DDE4238F223AA61E3AEB55D0CBD265C6 /* ru.lproj */; };
+		174242016434C342FA7D9C4CD357A234 /* IASKSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = BE4FF86D081D67C14632A47692CCC6C1 /* IASKSwitch.m */; };
+		1924FBFADE2BF2147C7B74F466AC3A35 /* Base.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 946C0279E7201F491516BE68AAC8F86F /* Base.lproj */; };
+		1ACADCCB0BAF7D1B6CB1B750729C56AA /* SliderTrackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD914214E8CA0C8A6EAF763CDC4ED9A8 /* SliderTrackView.swift */; };
+		1B97C47203D3F0A7FCE09CF0BCDD83CC /* ChromaColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450ACFA2213F1D5CC52829408162E580 /* ChromaColorPicker.swift */; };
+		1D3A9019EE207C836FC6C630A3E0C739 /* it.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 1A2B64E4E7B3F46AE538A73530141DB5 /* it.lproj */; };
+		244C75D155FDA36617230B4741887DA8 /* IASKSettingsReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 002EE632ECF5327BC9B7AEDC2E347AD4 /* IASKSettingsReader.m */; };
+		28BEA6A5A14ABC8801AA36C53C1CAB7C /* IASKSettingsStore.h in Headers */ = {isa = PBXBuildFile; fileRef = AAB51CD3AFD3E6B8E95B2FA415ADF9D4 /* IASKSettingsStore.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		2CF3519B74D1F929D211C70BC5DA0291 /* pt.lproj in Resources */ = {isa = PBXBuildFile; fileRef = BE16E5B5ED7B6272F19C5E1B4C212FCC /* pt.lproj */; };
+		2F626486DD1AAF5AE1C132F2540452D3 /* IASKSlider.h in Headers */ = {isa = PBXBuildFile; fileRef = CBC9263CA7B3CFABEF52933E05C7B7AF /* IASKSlider.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		334070E3F289A8C702EE431B158F0914 /* IASKSettingsStoreUserDefaults.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A9FE4DDC4C5BA072DB62541802716F0 /* IASKSettingsStoreUserDefaults.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		40471214FFD3C34B6ACDC3090503BAAA /* IASKEmbeddedDatePickerViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C76591B059F2C7D3A08DAC3ECB40D2A /* IASKEmbeddedDatePickerViewCell.m */; };
+		475DEED90D70827381C7E237C0DCA3A2 /* IASKSettingsStoreInMemory.m in Sources */ = {isa = PBXBuildFile; fileRef = E72B3267B6A9401BC1871E07A2E6BBCB /* IASKSettingsStoreInMemory.m */; };
+		4961996E98660EFA0CFEFD670B23095B /* IASKPSSliderSpecifierViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 7542B64595231DF4016C554D10C1AD99 /* IASKPSSliderSpecifierViewCell.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		49E205227C86D3167A0EA6487A884CAB /* IASKTextViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CD6281F885937A7C278D2AE9074B814 /* IASKTextViewCell.m */; };
+		4F3C91378368C2CF5CC2C267E995DD8D /* Pods-WunderLINQ-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D46B1ADFDE2445FBA4A1E0F0BC4C88D /* Pods-WunderLINQ-umbrella.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		5269A2102BC6FFDF250ABDAC5506BCF7 /* tr.lproj in Resources */ = {isa = PBXBuildFile; fileRef = F5C2A9D856794E5505F5D76D9E2A6ECA /* tr.lproj */; };
+		599C5D24B559617AEE13C486DDFD36B6 /* UIView+DropShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD8905CC06A93CE071F176BC5FDBFAB /* UIView+DropShadow.swift */; };
+		5C5B61AEF286CD7CABCDC6663E8D690E /* IASKSpecifier.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D8AB4A966B26AF7841D2F652FA2F66 /* IASKSpecifier.m */; };
+		6052879F0DFAC80B33244301E81FB101 /* IASKAppSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EFA643D4A83CE4031ACCF8B3423D5C22 /* IASKAppSettingsViewController.m */; };
+		60B0510A0D1C2B6690896F89B2988FC0 /* IASKAppSettingsViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 481F0349DA86558D96F4A9677C8EAEDD /* IASKAppSettingsViewController.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		61BED379D6537AC6373C3DEED247FC82 /* IASKSettingsReader.h in Headers */ = {isa = PBXBuildFile; fileRef = 3EAF69866B74E011A912875D9D25341B /* IASKSettingsReader.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		61BF900807954863DCFD5370C82CB6CC /* fr.lproj in Resources */ = {isa = PBXBuildFile; fileRef = A55DC2C5526160D285A910B510C2C4A7 /* fr.lproj */; };
+		62B9BAD90228A27C4C4D7B1701D10A8C /* IASKSpecifierValuesViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 1B3E0B14E4E61379A7E5B0F5B0E0D495 /* IASKSpecifierValuesViewController.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		659801F73CD7E59F22BBE403926443DB /* en.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 658258F8BF5EE881D2A97A95DEAC56CD /* en.lproj */; };
+		6C4D6EABE06255B86207A0EE69379C1A /* pl.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 2426DA2AF9C678C7DFEBBBDB6059A5B1 /* pl.lproj */; };
+		71AD8F9A097FE4499CBD962E542169FB /* zh-Hans.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 0737751D47612D4DF3DF00CE78CDC99A /* zh-Hans.lproj */; };
+		78D864F115D04E396D31A8C52D93D230 /* ChromaColorHandle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D163DE6322C6E1D295CFA54395B275CA /* ChromaColorHandle.swift */; };
+		79051CEDC4752661ED448FEAE0DA60D0 /* hu.lproj in Resources */ = {isa = PBXBuildFile; fileRef = AA7BA64F26464B4BC7AC923738B53DEF /* hu.lproj */; };
+		7E17588FD51460467EF1EC2FBE451A4C /* SliderHandleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0E7E4339E898311D7A998361ED552C /* SliderHandleView.swift */; };
+		86B216ABB2C16DA5547756D971F8AEED /* ChromaColorPicker-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = FD66991CFC87D9DE5ABDD9BAB0C9B709 /* ChromaColorPicker-umbrella.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		87EE48B3056DE4011112C7B604393AD3 /* IASKSettingsStoreFile.h in Headers */ = {isa = PBXBuildFile; fileRef = F3EA02126CEAD9AE7B878ACD333B3AE6 /* IASKSettingsStoreFile.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		893FB570C2BFF2D2D5CA9C12332B4C5C /* IASKDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 295DCA9A0D081E7C5987196B46DA65EC /* IASKDatePicker.m */; };
+		8DC15CA9D2C0560102C3ECDC22DE0EA9 /* ColorWheelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C7A394F5D417A72E086F5265CA5A42 /* ColorWheelView.swift */; };
+		8F89B7426C642E3F50DE361DC815C900 /* IASKSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = ACFA13A6D77281DDF03D294E81038928 /* IASKSlider.m */; };
+		908D234B669DCD2C335BF704B2884516 /* IASKColor.h in Headers */ = {isa = PBXBuildFile; fileRef = 7CC96B44E591EDF91D918757BB92AD15 /* IASKColor.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		965CDF0BFB364000C87D84943C3138DA /* IASKEmbeddedDatePickerViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 28845D0082F3F927E6E45F69A4290EEE /* IASKEmbeddedDatePickerViewCell.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		96F07CFF20FE37BA80909A981403BAF1 /* IASKDatePickerViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B9601F8BC1F43D3F4618CE8ABADA510 /* IASKDatePickerViewCell.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		98B0BC4244B4677A8F942A5050B652D0 /* nb.lproj in Resources */ = {isa = PBXBuildFile; fileRef = A99831AE9C1318069F6B012070DEBFFF /* nb.lproj */; };
+		9C3F2560AF69919D031732F4497A8D0D /* IASKSettingsStoreFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 3820746C7C914FAB678C49B6896FFD8A /* IASKSettingsStoreFile.m */; };
+		9DDE65FD083D5F4831D85E4840806200 /* IASKSpecifier.h in Headers */ = {isa = PBXBuildFile; fileRef = 7EE22EA37DDD91B0263A1C222A890C8B /* IASKSpecifier.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		A3A6B5468C79A1B5FE74BC5BE43FAA58 /* es-MX.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 9D68FA8ED3290D0412632DA7FE1C5499 /* es-MX.lproj */; };
+		A55E8148686619C29C45A60139713606 /* IASKTextField.h in Headers */ = {isa = PBXBuildFile; fileRef = 71D91D596F995579FF3E0C353B17B930 /* IASKTextField.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		AB4FA31C958505194D8CCB24BB9ACE84 /* es-419.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 1683D2251E86BB35F9FAD87A497CAA01 /* es-419.lproj */; };
+		AF2157F95A224F4119A770A171D38F5F /* ChromaControlStylable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F669D623F616803FE789D8624F625A56 /* ChromaControlStylable.swift */; };
+		B4C0D9F1256EB193A9429B5365C34603 /* IASKMultipleValueSelection.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F804D98695DE904E31DF20CB324DA5C /* IASKMultipleValueSelection.m */; };
+		B58A55C1ACDA3D5C38C06E0F1D3AFE47 /* ChromaBrightnessSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79D111FB31226C47386B04D989BDE664 /* ChromaBrightnessSlider.swift */; };
+		B7B258EF208AB49FA1BE0AE7E2B85586 /* IASKTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CEAF88C9DB6C9697FEEC56966CFF644 /* IASKTextView.m */; };
+		BC99236DFA98C44B3CEF76F0AD666FD1 /* IASKTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 111D9A9B5C92EDD3AF9B734068B48862 /* IASKTextField.m */; };
+		BF877F559F4C791B88F43277FE9B1398 /* IASKPSTextFieldSpecifierViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 349EAD590D5F730E488A27DC1CBC0FC8 /* IASKPSTextFieldSpecifierViewCell.m */; };
+		C21D025529E176865407205D7FADD36C /* IASKTextViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = BB9AE2B7483CB444E85DB2E4BA1D1378 /* IASKTextViewCell.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		C436D70E9EA3C81BA8C98EA2D5165714 /* es.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 994CC3A58F563B8D89AE65835E9FBD4E /* es.lproj */; };
+		CA41FB698E185F0B8324C02095362573 /* IASKMultipleValueSelection.h in Headers */ = {isa = PBXBuildFile; fileRef = D7FDEF2F1DB88B3B2B9C4BCCE1D03030 /* IASKMultipleValueSelection.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		D01A75273BAB7D803C00B9FB334B3263 /* pt-PT.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 4F13A16DFEB255877CEAD0B7615F5790 /* pt-PT.lproj */; };
+		D0B7B80A058F936BF660CFA8E087B51C /* InAppSettingsKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 72D89A981274B4ABCA6FE92A3A8E64C7 /* InAppSettingsKit-dummy.m */; };
+		D2126DECB57164949F39453A111D09ED /* zh-Hant.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 5A20E122A47B9460E5AA3D88CBA3F57E /* zh-Hant.lproj */; };
+		D25408880E690F9C247C3E4E50699170 /* ChromaColorPicker-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7A3D600C3155C5DAAEF98F11B74698 /* ChromaColorPicker-dummy.m */; };
+		DB3865C4781FF4DE7C4B05030E321806 /* Pods-WunderLINQ-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = FE963B6BAFB9AA3110DFF5E27234EC06 /* Pods-WunderLINQ-dummy.m */; };
+		DC4F7D6EB0663DF0D89C6C2A182F3753 /* sv.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 7F189BEBAEF4AD03C6BB581AD4CA9BE6 /* sv.lproj */; };
+		E151379B9CDD0386F3CA671A2D9CC8CA /* el.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 97BD49B6FBBD2E25E000F5881FBD8AB6 /* el.lproj */; };
+		E33E0240A191D8DE8A3C3BFCD1812685 /* IASKPSTextFieldSpecifierViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = EBA36D8C455556A642BFEF6484655D09 /* IASKPSTextFieldSpecifierViewCell.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		E4A70EEA26A456B1EE483EE8F718AF63 /* ca.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 914D31CA7138FA75CDBB74ADC9D2AE20 /* ca.lproj */; };
+		E5A4060758FFCE7D6EA1E3417B450F4A /* IASKSpecifierValuesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6B95CC240C7111AB653056F64F1E0C /* IASKSpecifierValuesViewController.m */; };
+		E5A5F1DBA6C2209BDB39BB2F7ABC2094 /* nl.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 752578894AA75C84D0A623EE7AE49CB1 /* nl.lproj */; };
+		E8B98D56FE53121D4F2A2D265345D4BB /* UIColor+Brightness.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5B78FD9196DC1E2F031B714F890A70 /* UIColor+Brightness.swift */; };
+		EA600700AF05772808C9641A6E641D80 /* th.lproj in Resources */ = {isa = PBXBuildFile; fileRef = EC77F9099EBDBFD682B5AFD1C2876F04 /* th.lproj */; };
+		EB6DCE27D017D1FCB04952CCCA3E8753 /* IASKDatePickerViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BF9D89AB5CBA2851E6E5E7FB791F3C41 /* IASKDatePickerViewCell.m */; };
+		EDB644198B84C9368C21F3357ACC4ABF /* IASKSettingsStoreUserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = A0BE837766FEB0073B61CAD679E91E86 /* IASKSettingsStoreUserDefaults.m */; };
+		EE273322EFC8B72AAD66355FF8E0F9BD /* IASKAppSettingsWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B17DB33A01BD2E4C710686FC8AE35DE4 /* IASKAppSettingsWebViewController.m */; };
+		EEE1E13796522220E17832E5C3BB7ABC /* ja.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 07D2DE0FFB5569A8A66034FB0AB60F86 /* ja.lproj */; };
+		F1D9DFED244DA698653A7577CADB5A2A /* de.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 62BD8A90D90C5FF53E7954FDE3845E71 /* de.lproj */; };
+		F306F62A3B671DC40B287F025CB054EA /* IASKViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 3EC7916D07193519BA620FD31C3E06D4 /* IASKViewController.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		F56DF8DB4C152092DDDD0830605ABA12 /* UIView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9654DDB1A4C11F9A48521F4DDB01A405 /* UIView+Utils.swift */; };
+		F57D4C7E62A45FC50D6049857C129352 /* IASKColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 377387D486F702C0029689A19491D207 /* IASKColor.m */; };
+		F6A03D49B2454018462603DE0F13768C /* IASKSwitch.h in Headers */ = {isa = PBXBuildFile; fileRef = D6800A5FBD37FA4065C94B433F791D16 /* IASKSwitch.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		F80702F56D68654D0820D8C4E637B2AA /* IASKSettingsStoreInMemory.h in Headers */ = {isa = PBXBuildFile; fileRef = 44F3B3F3FD41908FD4214736E7AFEF28 /* IASKSettingsStoreInMemory.h */; settings = {ATTRIBUTES = (Project, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		23C3FCB5E0CE94409C9A97E4A5886BFA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5B4848122435F4C22D574A5DA6D2EFB3;
+			remoteInfo = InAppSettingsKit;
+		};
+		319596D95C212F10EC913C4C954B77FC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7961A0F04FB3D96E3E703CF075D6DACD;
+			remoteInfo = ChromaColorPicker;
+		};
+		B8FEDA13C4F5BAD3A8B542F7A4318C0C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8A996938DFC560C0A3EF0DD6CA6B032A;
+			remoteInfo = "InAppSettingsKit-InAppSettingsKit";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		002EE632ECF5327BC9B7AEDC2E347AD4 /* IASKSettingsReader.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IASKSettingsReader.m; path = InAppSettingsKit/Models/IASKSettingsReader.m; sourceTree = "<group>"; };
+		0737751D47612D4DF3DF00CE78CDC99A /* zh-Hans.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = "zh-Hans.lproj"; path = "InAppSettingsKit/Resources/zh-Hans.lproj"; sourceTree = "<group>"; };
+		07D2DE0FFB5569A8A66034FB0AB60F86 /* ja.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = ja.lproj; path = InAppSettingsKit/Resources/ja.lproj; sourceTree = "<group>"; };
+		0CEAF88C9DB6C9697FEEC56966CFF644 /* IASKTextView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IASKTextView.m; path = InAppSettingsKit/Views/IASKTextView.m; sourceTree = "<group>"; };
+		0D46B1ADFDE2445FBA4A1E0F0BC4C88D /* Pods-WunderLINQ-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-WunderLINQ-umbrella.h"; sourceTree = "<group>"; };
+		0F0A05985CBEC554F0DEC92B1837016C /* Pods-WunderLINQ.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-WunderLINQ.release.xcconfig"; sourceTree = "<group>"; };
+		111D9A9B5C92EDD3AF9B734068B48862 /* IASKTextField.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IASKTextField.m; path = InAppSettingsKit/Views/IASKTextField.m; sourceTree = "<group>"; };
+		13E170F7A77DE8D046429A0D976E8C9E /* Pods-WunderLINQ.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-WunderLINQ.debug.xcconfig"; sourceTree = "<group>"; };
+		14AF338478E1845BFF88B90DC6F783E0 /* uk.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = uk.lproj; path = InAppSettingsKit/Resources/uk.lproj; sourceTree = "<group>"; };
+		1683D2251E86BB35F9FAD87A497CAA01 /* es-419.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = "es-419.lproj"; path = "InAppSettingsKit/Resources/es-419.lproj"; sourceTree = "<group>"; };
+		1A2B64E4E7B3F46AE538A73530141DB5 /* it.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = it.lproj; path = InAppSettingsKit/Resources/it.lproj; sourceTree = "<group>"; };
+		1B3E0B14E4E61379A7E5B0F5B0E0D495 /* IASKSpecifierValuesViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IASKSpecifierValuesViewController.h; path = InAppSettingsKit/Controllers/IASKSpecifierValuesViewController.h; sourceTree = "<group>"; };
+		1CD6281F885937A7C278D2AE9074B814 /* IASKTextViewCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IASKTextViewCell.m; path = InAppSettingsKit/Views/IASKTextViewCell.m; sourceTree = "<group>"; };
+		1F7A3D600C3155C5DAAEF98F11B74698 /* ChromaColorPicker-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ChromaColorPicker-dummy.m"; sourceTree = "<group>"; };
+		20BC061F7DFA9EC6DEAE3AC2C0766DE7 /* Pods-WunderLINQ-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-WunderLINQ-acknowledgements.markdown"; sourceTree = "<group>"; };
+		22C7A394F5D417A72E086F5265CA5A42 /* ColorWheelView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ColorWheelView.swift; path = Source/ColorWheelView.swift; sourceTree = "<group>"; };
+		2426DA2AF9C678C7DFEBBBDB6059A5B1 /* pl.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = pl.lproj; path = InAppSettingsKit/Resources/pl.lproj; sourceTree = "<group>"; };
+		28845D0082F3F927E6E45F69A4290EEE /* IASKEmbeddedDatePickerViewCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IASKEmbeddedDatePickerViewCell.h; path = InAppSettingsKit/Views/IASKEmbeddedDatePickerViewCell.h; sourceTree = "<group>"; };
+		295DCA9A0D081E7C5987196B46DA65EC /* IASKDatePicker.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IASKDatePicker.m; path = InAppSettingsKit/Views/IASKDatePicker.m; sourceTree = "<group>"; };
+		325E862631E06444E4504511C87F1E9C /* InAppSettingsKit.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = InAppSettingsKit.bundle; path = "InAppSettingsKit-InAppSettingsKit.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
+		349EAD590D5F730E488A27DC1CBC0FC8 /* IASKPSTextFieldSpecifierViewCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IASKPSTextFieldSpecifierViewCell.m; path = InAppSettingsKit/Views/IASKPSTextFieldSpecifierViewCell.m; sourceTree = "<group>"; };
+		34A8FD80E49971F0008F4DE2C3A8ECE4 /* IASKTextView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IASKTextView.h; path = InAppSettingsKit/Views/IASKTextView.h; sourceTree = "<group>"; };
+		362FA5500A3D8F9231B0F5250B42284C /* ChromaColorPicker.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = ChromaColorPicker.modulemap; sourceTree = "<group>"; };
+		377387D486F702C0029689A19491D207 /* IASKColor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IASKColor.m; path = InAppSettingsKit/Views/IASKColor.m; sourceTree = "<group>"; };
+		3820746C7C914FAB678C49B6896FFD8A /* IASKSettingsStoreFile.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IASKSettingsStoreFile.m; path = InAppSettingsKit/Models/IASKSettingsStoreFile.m; sourceTree = "<group>"; };
+		3EAF69866B74E011A912875D9D25341B /* IASKSettingsReader.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IASKSettingsReader.h; path = InAppSettingsKit/Models/IASKSettingsReader.h; sourceTree = "<group>"; };
+		3EC7916D07193519BA620FD31C3E06D4 /* IASKViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IASKViewController.h; path = InAppSettingsKit/Controllers/IASKViewController.h; sourceTree = "<group>"; };
+		44F3B3F3FD41908FD4214736E7AFEF28 /* IASKSettingsStoreInMemory.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IASKSettingsStoreInMemory.h; path = InAppSettingsKit/Models/IASKSettingsStoreInMemory.h; sourceTree = "<group>"; };
+		450ACFA2213F1D5CC52829408162E580 /* ChromaColorPicker.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ChromaColorPicker.swift; path = Source/ChromaColorPicker.swift; sourceTree = "<group>"; };
+		481F0349DA86558D96F4A9677C8EAEDD /* IASKAppSettingsViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IASKAppSettingsViewController.h; path = InAppSettingsKit/Controllers/IASKAppSettingsViewController.h; sourceTree = "<group>"; };
+		4F13A16DFEB255877CEAD0B7615F5790 /* pt-PT.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = "pt-PT.lproj"; path = "InAppSettingsKit/Resources/pt-PT.lproj"; sourceTree = "<group>"; };
+		52B6D5554154A82511D90E890176A50C /* IASKDatePicker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IASKDatePicker.h; path = InAppSettingsKit/Views/IASKDatePicker.h; sourceTree = "<group>"; };
+		5A20E122A47B9460E5AA3D88CBA3F57E /* zh-Hant.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = "zh-Hant.lproj"; path = "InAppSettingsKit/Resources/zh-Hant.lproj"; sourceTree = "<group>"; };
+		5ADA735E83945FA87AF56FD85DD72091 /* ResourceBundle-InAppSettingsKit-InAppSettingsKit-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-InAppSettingsKit-InAppSettingsKit-Info.plist"; sourceTree = "<group>"; };
+		5B9601F8BC1F43D3F4618CE8ABADA510 /* IASKDatePickerViewCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IASKDatePickerViewCell.h; path = InAppSettingsKit/Views/IASKDatePickerViewCell.h; sourceTree = "<group>"; };
+		5D0E7E4339E898311D7A998361ED552C /* SliderHandleView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SliderHandleView.swift; path = "Source/Supporting Views/SliderHandleView.swift"; sourceTree = "<group>"; };
+		5E2E2517F07152B128B486E9E39060BC /* hr.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = hr.lproj; path = InAppSettingsKit/Resources/hr.lproj; sourceTree = "<group>"; };
+		62BD8A90D90C5FF53E7954FDE3845E71 /* de.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = de.lproj; path = InAppSettingsKit/Resources/de.lproj; sourceTree = "<group>"; };
+		658258F8BF5EE881D2A97A95DEAC56CD /* en.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = en.lproj; path = InAppSettingsKit/Resources/en.lproj; sourceTree = "<group>"; };
+		6C76591B059F2C7D3A08DAC3ECB40D2A /* IASKEmbeddedDatePickerViewCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IASKEmbeddedDatePickerViewCell.m; path = InAppSettingsKit/Views/IASKEmbeddedDatePickerViewCell.m; sourceTree = "<group>"; };
+		71D91D596F995579FF3E0C353B17B930 /* IASKTextField.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IASKTextField.h; path = InAppSettingsKit/Views/IASKTextField.h; sourceTree = "<group>"; };
+		72D89A981274B4ABCA6FE92A3A8E64C7 /* InAppSettingsKit-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "InAppSettingsKit-dummy.m"; sourceTree = "<group>"; };
+		752578894AA75C84D0A623EE7AE49CB1 /* nl.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = nl.lproj; path = InAppSettingsKit/Resources/nl.lproj; sourceTree = "<group>"; };
+		7542B64595231DF4016C554D10C1AD99 /* IASKPSSliderSpecifierViewCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IASKPSSliderSpecifierViewCell.h; path = InAppSettingsKit/Views/IASKPSSliderSpecifierViewCell.h; sourceTree = "<group>"; };
+		79D111FB31226C47386B04D989BDE664 /* ChromaBrightnessSlider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ChromaBrightnessSlider.swift; path = Source/ChromaBrightnessSlider.swift; sourceTree = "<group>"; };
+		7A9FE4DDC4C5BA072DB62541802716F0 /* IASKSettingsStoreUserDefaults.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IASKSettingsStoreUserDefaults.h; path = InAppSettingsKit/Models/IASKSettingsStoreUserDefaults.h; sourceTree = "<group>"; };
+		7CC96B44E591EDF91D918757BB92AD15 /* IASKColor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IASKColor.h; path = InAppSettingsKit/Views/IASKColor.h; sourceTree = "<group>"; };
+		7EE22EA37DDD91B0263A1C222A890C8B /* IASKSpecifier.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IASKSpecifier.h; path = InAppSettingsKit/Models/IASKSpecifier.h; sourceTree = "<group>"; };
+		7F189BEBAEF4AD03C6BB581AD4CA9BE6 /* sv.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = sv.lproj; path = InAppSettingsKit/Resources/sv.lproj; sourceTree = "<group>"; };
+		83A9C95747E69748BAB0A13F22C06619 /* IASKPSSliderSpecifierViewCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IASKPSSliderSpecifierViewCell.m; path = InAppSettingsKit/Views/IASKPSSliderSpecifierViewCell.m; sourceTree = "<group>"; };
+		8F804D98695DE904E31DF20CB324DA5C /* IASKMultipleValueSelection.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IASKMultipleValueSelection.m; path = InAppSettingsKit/Controllers/IASKMultipleValueSelection.m; sourceTree = "<group>"; };
+		914D31CA7138FA75CDBB74ADC9D2AE20 /* ca.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = ca.lproj; path = InAppSettingsKit/Resources/ca.lproj; sourceTree = "<group>"; };
+		945C7111BB6B86E966125C38EBFFDC5E /* ChromaColorPicker-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ChromaColorPicker-prefix.pch"; sourceTree = "<group>"; };
+		946C0279E7201F491516BE68AAC8F86F /* Base.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = Base.lproj; path = InAppSettingsKit/Resources/Base.lproj; sourceTree = "<group>"; };
+		9654DDB1A4C11F9A48521F4DDB01A405 /* UIView+Utils.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIView+Utils.swift"; path = "Source/Extensions/UIView+Utils.swift"; sourceTree = "<group>"; };
+		97BD49B6FBBD2E25E000F5881FBD8AB6 /* el.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = el.lproj; path = InAppSettingsKit/Resources/el.lproj; sourceTree = "<group>"; };
+		9853C235B80B33BDB6C4E080449583D6 /* Pods-WunderLINQ-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-WunderLINQ-resources.sh"; sourceTree = "<group>"; };
+		994CC3A58F563B8D89AE65835E9FBD4E /* es.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = es.lproj; path = InAppSettingsKit/Resources/es.lproj; sourceTree = "<group>"; };
+		9D68FA8ED3290D0412632DA7FE1C5499 /* es-MX.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = "es-MX.lproj"; path = "InAppSettingsKit/Resources/es-MX.lproj"; sourceTree = "<group>"; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9FF10435870A5C8B9F842AC8C6544495 /* Pods-WunderLINQ-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-WunderLINQ-acknowledgements.plist"; sourceTree = "<group>"; };
+		A0BE837766FEB0073B61CAD679E91E86 /* IASKSettingsStoreUserDefaults.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IASKSettingsStoreUserDefaults.m; path = InAppSettingsKit/Models/IASKSettingsStoreUserDefaults.m; sourceTree = "<group>"; };
+		A55DC2C5526160D285A910B510C2C4A7 /* fr.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = fr.lproj; path = InAppSettingsKit/Resources/fr.lproj; sourceTree = "<group>"; };
+		A5D159AAF7C664101A5B9A5927550610 /* UIColor+Utils.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIColor+Utils.swift"; path = "Source/Extensions/UIColor+Utils.swift"; sourceTree = "<group>"; };
+		A99831AE9C1318069F6B012070DEBFFF /* nb.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = nb.lproj; path = InAppSettingsKit/Resources/nb.lproj; sourceTree = "<group>"; };
+		AA7BA64F26464B4BC7AC923738B53DEF /* hu.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = hu.lproj; path = InAppSettingsKit/Resources/hu.lproj; sourceTree = "<group>"; };
+		AAB51CD3AFD3E6B8E95B2FA415ADF9D4 /* IASKSettingsStore.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IASKSettingsStore.h; path = InAppSettingsKit/Models/IASKSettingsStore.h; sourceTree = "<group>"; };
+		ACFA13A6D77281DDF03D294E81038928 /* IASKSlider.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IASKSlider.m; path = InAppSettingsKit/Views/IASKSlider.m; sourceTree = "<group>"; };
+		B17DB33A01BD2E4C710686FC8AE35DE4 /* IASKAppSettingsWebViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IASKAppSettingsWebViewController.m; path = InAppSettingsKit/Controllers/IASKAppSettingsWebViewController.m; sourceTree = "<group>"; };
+		BB9AE2B7483CB444E85DB2E4BA1D1378 /* IASKTextViewCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IASKTextViewCell.h; path = InAppSettingsKit/Views/IASKTextViewCell.h; sourceTree = "<group>"; };
+		BC56E92278214B3F5935B6C2410B0329 /* Pods-WunderLINQ.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-WunderLINQ.modulemap"; sourceTree = "<group>"; };
+		BE16E5B5ED7B6272F19C5E1B4C212FCC /* pt.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = pt.lproj; path = InAppSettingsKit/Resources/pt.lproj; sourceTree = "<group>"; };
+		BE4FF86D081D67C14632A47692CCC6C1 /* IASKSwitch.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IASKSwitch.m; path = InAppSettingsKit/Views/IASKSwitch.m; sourceTree = "<group>"; };
+		BF9D89AB5CBA2851E6E5E7FB791F3C41 /* IASKDatePickerViewCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IASKDatePickerViewCell.m; path = InAppSettingsKit/Views/IASKDatePickerViewCell.m; sourceTree = "<group>"; };
+		C082AE78A2C795A7CD50CE6E5575AB9C /* libInAppSettingsKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libInAppSettingsKit.a; path = libInAppSettingsKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		C2D8AB4A966B26AF7841D2F652FA2F66 /* IASKSpecifier.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IASKSpecifier.m; path = InAppSettingsKit/Models/IASKSpecifier.m; sourceTree = "<group>"; };
+		C2FDAE1536FF09CC2163C2DD3B704156 /* libPods-WunderLINQ.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-WunderLINQ.a"; path = "libPods-WunderLINQ.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CBC9263CA7B3CFABEF52933E05C7B7AF /* IASKSlider.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IASKSlider.h; path = InAppSettingsKit/Views/IASKSlider.h; sourceTree = "<group>"; };
+		CC5B78FD9196DC1E2F031B714F890A70 /* UIColor+Brightness.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIColor+Brightness.swift"; path = "Source/Extensions/UIColor+Brightness.swift"; sourceTree = "<group>"; };
+		CD494F83579D0F51A96E8D77369DCB0B /* InAppSettingsKit-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "InAppSettingsKit-prefix.pch"; sourceTree = "<group>"; };
+		CD914214E8CA0C8A6EAF763CDC4ED9A8 /* SliderTrackView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SliderTrackView.swift; path = "Source/Supporting Views/SliderTrackView.swift"; sourceTree = "<group>"; };
+		D163DE6322C6E1D295CFA54395B275CA /* ChromaColorHandle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ChromaColorHandle.swift; path = "Source/Supporting Views/ChromaColorHandle.swift"; sourceTree = "<group>"; };
+		D40FF0F11E7F2EF29D1A92D25FB2D60D /* libChromaColorPicker.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libChromaColorPicker.a; path = libChromaColorPicker.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		D416161037CE0250A51E64EC5D367A90 /* InAppSettingsKit.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = InAppSettingsKit.xcconfig; sourceTree = "<group>"; };
+		D6800A5FBD37FA4065C94B433F791D16 /* IASKSwitch.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IASKSwitch.h; path = InAppSettingsKit/Views/IASKSwitch.h; sourceTree = "<group>"; };
+		D7FDEF2F1DB88B3B2B9C4BCCE1D03030 /* IASKMultipleValueSelection.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IASKMultipleValueSelection.h; path = InAppSettingsKit/Controllers/IASKMultipleValueSelection.h; sourceTree = "<group>"; };
+		DD6B95CC240C7111AB653056F64F1E0C /* IASKSpecifierValuesViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IASKSpecifierValuesViewController.m; path = InAppSettingsKit/Controllers/IASKSpecifierValuesViewController.m; sourceTree = "<group>"; };
+		DDD8905CC06A93CE071F176BC5FDBFAB /* UIView+DropShadow.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIView+DropShadow.swift"; path = "Source/Extensions/UIView+DropShadow.swift"; sourceTree = "<group>"; };
+		DDE4238F223AA61E3AEB55D0CBD265C6 /* ru.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = ru.lproj; path = InAppSettingsKit/Resources/ru.lproj; sourceTree = "<group>"; };
+		E72B3267B6A9401BC1871E07A2E6BBCB /* IASKSettingsStoreInMemory.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IASKSettingsStoreInMemory.m; path = InAppSettingsKit/Models/IASKSettingsStoreInMemory.m; sourceTree = "<group>"; };
+		EBA36D8C455556A642BFEF6484655D09 /* IASKPSTextFieldSpecifierViewCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IASKPSTextFieldSpecifierViewCell.h; path = InAppSettingsKit/Views/IASKPSTextFieldSpecifierViewCell.h; sourceTree = "<group>"; };
+		EBBDE5FAA795E947C7F370C9AAF5573D /* IASKAppSettingsWebViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IASKAppSettingsWebViewController.h; path = InAppSettingsKit/Controllers/IASKAppSettingsWebViewController.h; sourceTree = "<group>"; };
+		EC77F9099EBDBFD682B5AFD1C2876F04 /* th.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = th.lproj; path = InAppSettingsKit/Resources/th.lproj; sourceTree = "<group>"; };
+		ED2DA7C790C0DA5C7459FE0EAC8E80B7 /* ChromaColorPicker.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ChromaColorPicker.xcconfig; sourceTree = "<group>"; };
+		EFA643D4A83CE4031ACCF8B3423D5C22 /* IASKAppSettingsViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IASKAppSettingsViewController.m; path = InAppSettingsKit/Controllers/IASKAppSettingsViewController.m; sourceTree = "<group>"; };
+		F3EA02126CEAD9AE7B878ACD333B3AE6 /* IASKSettingsStoreFile.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IASKSettingsStoreFile.h; path = InAppSettingsKit/Models/IASKSettingsStoreFile.h; sourceTree = "<group>"; };
+		F5C2A9D856794E5505F5D76D9E2A6ECA /* tr.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = tr.lproj; path = InAppSettingsKit/Resources/tr.lproj; sourceTree = "<group>"; };
+		F669D623F616803FE789D8624F625A56 /* ChromaControlStylable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ChromaControlStylable.swift; path = Source/ChromaControlStylable.swift; sourceTree = "<group>"; };
+		F9BB257B44C39EEDE129891A06440686 /* IASKSettingsStore.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IASKSettingsStore.m; path = InAppSettingsKit/Models/IASKSettingsStore.m; sourceTree = "<group>"; };
+		FD66991CFC87D9DE5ABDD9BAB0C9B709 /* ChromaColorPicker-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ChromaColorPicker-umbrella.h"; sourceTree = "<group>"; };
+		FE963B6BAFB9AA3110DFF5E27234EC06 /* Pods-WunderLINQ-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-WunderLINQ-dummy.m"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6548C1B46E7C027E033BB1B940AD7743 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		94E4C4DABB427ED42791242797924110 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C5B4913B372E2129943848AC2664779D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FE0330F7D5C6DDE9B6ED629A49509BDA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1F5E230FCD636D577327247EA599A384 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				362FA5500A3D8F9231B0F5250B42284C /* ChromaColorPicker.modulemap */,
+				ED2DA7C790C0DA5C7459FE0EAC8E80B7 /* ChromaColorPicker.xcconfig */,
+				1F7A3D600C3155C5DAAEF98F11B74698 /* ChromaColorPicker-dummy.m */,
+				945C7111BB6B86E966125C38EBFFDC5E /* ChromaColorPicker-prefix.pch */,
+				FD66991CFC87D9DE5ABDD9BAB0C9B709 /* ChromaColorPicker-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/ChromaColorPicker";
+			sourceTree = "<group>";
+		};
+		4FCD160B85B64389B7A0B043EE92A5E8 /* Pods-WunderLINQ */ = {
+			isa = PBXGroup;
+			children = (
+				BC56E92278214B3F5935B6C2410B0329 /* Pods-WunderLINQ.modulemap */,
+				20BC061F7DFA9EC6DEAE3AC2C0766DE7 /* Pods-WunderLINQ-acknowledgements.markdown */,
+				9FF10435870A5C8B9F842AC8C6544495 /* Pods-WunderLINQ-acknowledgements.plist */,
+				FE963B6BAFB9AA3110DFF5E27234EC06 /* Pods-WunderLINQ-dummy.m */,
+				9853C235B80B33BDB6C4E080449583D6 /* Pods-WunderLINQ-resources.sh */,
+				0D46B1ADFDE2445FBA4A1E0F0BC4C88D /* Pods-WunderLINQ-umbrella.h */,
+				13E170F7A77DE8D046429A0D976E8C9E /* Pods-WunderLINQ.debug.xcconfig */,
+				0F0A05985CBEC554F0DEC92B1837016C /* Pods-WunderLINQ.release.xcconfig */,
+			);
+			name = "Pods-WunderLINQ";
+			path = "Target Support Files/Pods-WunderLINQ";
+			sourceTree = "<group>";
+		};
+		5F8374E7C3E4F3C69054C174A73A56E5 /* InAppSettingsKit */ = {
+			isa = PBXGroup;
+			children = (
+				481F0349DA86558D96F4A9677C8EAEDD /* IASKAppSettingsViewController.h */,
+				EFA643D4A83CE4031ACCF8B3423D5C22 /* IASKAppSettingsViewController.m */,
+				EBBDE5FAA795E947C7F370C9AAF5573D /* IASKAppSettingsWebViewController.h */,
+				B17DB33A01BD2E4C710686FC8AE35DE4 /* IASKAppSettingsWebViewController.m */,
+				7CC96B44E591EDF91D918757BB92AD15 /* IASKColor.h */,
+				377387D486F702C0029689A19491D207 /* IASKColor.m */,
+				52B6D5554154A82511D90E890176A50C /* IASKDatePicker.h */,
+				295DCA9A0D081E7C5987196B46DA65EC /* IASKDatePicker.m */,
+				5B9601F8BC1F43D3F4618CE8ABADA510 /* IASKDatePickerViewCell.h */,
+				BF9D89AB5CBA2851E6E5E7FB791F3C41 /* IASKDatePickerViewCell.m */,
+				28845D0082F3F927E6E45F69A4290EEE /* IASKEmbeddedDatePickerViewCell.h */,
+				6C76591B059F2C7D3A08DAC3ECB40D2A /* IASKEmbeddedDatePickerViewCell.m */,
+				D7FDEF2F1DB88B3B2B9C4BCCE1D03030 /* IASKMultipleValueSelection.h */,
+				8F804D98695DE904E31DF20CB324DA5C /* IASKMultipleValueSelection.m */,
+				7542B64595231DF4016C554D10C1AD99 /* IASKPSSliderSpecifierViewCell.h */,
+				83A9C95747E69748BAB0A13F22C06619 /* IASKPSSliderSpecifierViewCell.m */,
+				EBA36D8C455556A642BFEF6484655D09 /* IASKPSTextFieldSpecifierViewCell.h */,
+				349EAD590D5F730E488A27DC1CBC0FC8 /* IASKPSTextFieldSpecifierViewCell.m */,
+				3EAF69866B74E011A912875D9D25341B /* IASKSettingsReader.h */,
+				002EE632ECF5327BC9B7AEDC2E347AD4 /* IASKSettingsReader.m */,
+				AAB51CD3AFD3E6B8E95B2FA415ADF9D4 /* IASKSettingsStore.h */,
+				F9BB257B44C39EEDE129891A06440686 /* IASKSettingsStore.m */,
+				F3EA02126CEAD9AE7B878ACD333B3AE6 /* IASKSettingsStoreFile.h */,
+				3820746C7C914FAB678C49B6896FFD8A /* IASKSettingsStoreFile.m */,
+				44F3B3F3FD41908FD4214736E7AFEF28 /* IASKSettingsStoreInMemory.h */,
+				E72B3267B6A9401BC1871E07A2E6BBCB /* IASKSettingsStoreInMemory.m */,
+				7A9FE4DDC4C5BA072DB62541802716F0 /* IASKSettingsStoreUserDefaults.h */,
+				A0BE837766FEB0073B61CAD679E91E86 /* IASKSettingsStoreUserDefaults.m */,
+				CBC9263CA7B3CFABEF52933E05C7B7AF /* IASKSlider.h */,
+				ACFA13A6D77281DDF03D294E81038928 /* IASKSlider.m */,
+				7EE22EA37DDD91B0263A1C222A890C8B /* IASKSpecifier.h */,
+				C2D8AB4A966B26AF7841D2F652FA2F66 /* IASKSpecifier.m */,
+				1B3E0B14E4E61379A7E5B0F5B0E0D495 /* IASKSpecifierValuesViewController.h */,
+				DD6B95CC240C7111AB653056F64F1E0C /* IASKSpecifierValuesViewController.m */,
+				D6800A5FBD37FA4065C94B433F791D16 /* IASKSwitch.h */,
+				BE4FF86D081D67C14632A47692CCC6C1 /* IASKSwitch.m */,
+				71D91D596F995579FF3E0C353B17B930 /* IASKTextField.h */,
+				111D9A9B5C92EDD3AF9B734068B48862 /* IASKTextField.m */,
+				34A8FD80E49971F0008F4DE2C3A8ECE4 /* IASKTextView.h */,
+				0CEAF88C9DB6C9697FEEC56966CFF644 /* IASKTextView.m */,
+				BB9AE2B7483CB444E85DB2E4BA1D1378 /* IASKTextViewCell.h */,
+				1CD6281F885937A7C278D2AE9074B814 /* IASKTextViewCell.m */,
+				3EC7916D07193519BA620FD31C3E06D4 /* IASKViewController.h */,
+				B8B6F5A004124B436C892E9E7E99DFD7 /* Resources */,
+				EE4DD07D09B0835F6BF07AA0669DDE06 /* Support Files */,
+			);
+			name = InAppSettingsKit;
+			path = InAppSettingsKit;
+			sourceTree = "<group>";
+		};
+		958453DD16A30804497C423CF414C9EE /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				4FCD160B85B64389B7A0B043EE92A5E8 /* Pods-WunderLINQ */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		AB059B8377CCB0F9EFB9436DCF5137EA /* ChromaColorPicker */ = {
+			isa = PBXGroup;
+			children = (
+				79D111FB31226C47386B04D989BDE664 /* ChromaBrightnessSlider.swift */,
+				D163DE6322C6E1D295CFA54395B275CA /* ChromaColorHandle.swift */,
+				450ACFA2213F1D5CC52829408162E580 /* ChromaColorPicker.swift */,
+				F669D623F616803FE789D8624F625A56 /* ChromaControlStylable.swift */,
+				22C7A394F5D417A72E086F5265CA5A42 /* ColorWheelView.swift */,
+				5D0E7E4339E898311D7A998361ED552C /* SliderHandleView.swift */,
+				CD914214E8CA0C8A6EAF763CDC4ED9A8 /* SliderTrackView.swift */,
+				CC5B78FD9196DC1E2F031B714F890A70 /* UIColor+Brightness.swift */,
+				A5D159AAF7C664101A5B9A5927550610 /* UIColor+Utils.swift */,
+				DDD8905CC06A93CE071F176BC5FDBFAB /* UIView+DropShadow.swift */,
+				9654DDB1A4C11F9A48521F4DDB01A405 /* UIView+Utils.swift */,
+				1F5E230FCD636D577327247EA599A384 /* Support Files */,
+			);
+			name = ChromaColorPicker;
+			path = ChromaColorPicker;
+			sourceTree = "<group>";
+		};
+		B8B6F5A004124B436C892E9E7E99DFD7 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				946C0279E7201F491516BE68AAC8F86F /* Base.lproj */,
+				914D31CA7138FA75CDBB74ADC9D2AE20 /* ca.lproj */,
+				62BD8A90D90C5FF53E7954FDE3845E71 /* de.lproj */,
+				97BD49B6FBBD2E25E000F5881FBD8AB6 /* el.lproj */,
+				658258F8BF5EE881D2A97A95DEAC56CD /* en.lproj */,
+				994CC3A58F563B8D89AE65835E9FBD4E /* es.lproj */,
+				1683D2251E86BB35F9FAD87A497CAA01 /* es-419.lproj */,
+				9D68FA8ED3290D0412632DA7FE1C5499 /* es-MX.lproj */,
+				A55DC2C5526160D285A910B510C2C4A7 /* fr.lproj */,
+				5E2E2517F07152B128B486E9E39060BC /* hr.lproj */,
+				AA7BA64F26464B4BC7AC923738B53DEF /* hu.lproj */,
+				1A2B64E4E7B3F46AE538A73530141DB5 /* it.lproj */,
+				07D2DE0FFB5569A8A66034FB0AB60F86 /* ja.lproj */,
+				A99831AE9C1318069F6B012070DEBFFF /* nb.lproj */,
+				752578894AA75C84D0A623EE7AE49CB1 /* nl.lproj */,
+				2426DA2AF9C678C7DFEBBBDB6059A5B1 /* pl.lproj */,
+				BE16E5B5ED7B6272F19C5E1B4C212FCC /* pt.lproj */,
+				4F13A16DFEB255877CEAD0B7615F5790 /* pt-PT.lproj */,
+				DDE4238F223AA61E3AEB55D0CBD265C6 /* ru.lproj */,
+				7F189BEBAEF4AD03C6BB581AD4CA9BE6 /* sv.lproj */,
+				EC77F9099EBDBFD682B5AFD1C2876F04 /* th.lproj */,
+				F5C2A9D856794E5505F5D76D9E2A6ECA /* tr.lproj */,
+				14AF338478E1845BFF88B90DC6F783E0 /* uk.lproj */,
+				0737751D47612D4DF3DF00CE78CDC99A /* zh-Hans.lproj */,
+				5A20E122A47B9460E5AA3D88CBA3F57E /* zh-Hant.lproj */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		CD054D35ED0BE4318FD5C733D7099F1A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				AB059B8377CCB0F9EFB9436DCF5137EA /* ChromaColorPicker */,
+				5F8374E7C3E4F3C69054C174A73A56E5 /* InAppSettingsKit */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		CF1408CF629C7361332E53B88F7BD30C = {
+			isa = PBXGroup;
+			children = (
+				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
+				D89477F20FB1DE18A04690586D7808C4 /* Frameworks */,
+				CD054D35ED0BE4318FD5C733D7099F1A /* Pods */,
+				F87C383D0CC13D921F804607297D658A /* Products */,
+				958453DD16A30804497C423CF414C9EE /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		D89477F20FB1DE18A04690586D7808C4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EE4DD07D09B0835F6BF07AA0669DDE06 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				D416161037CE0250A51E64EC5D367A90 /* InAppSettingsKit.xcconfig */,
+				72D89A981274B4ABCA6FE92A3A8E64C7 /* InAppSettingsKit-dummy.m */,
+				CD494F83579D0F51A96E8D77369DCB0B /* InAppSettingsKit-prefix.pch */,
+				5ADA735E83945FA87AF56FD85DD72091 /* ResourceBundle-InAppSettingsKit-InAppSettingsKit-Info.plist */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/InAppSettingsKit";
+			sourceTree = "<group>";
+		};
+		F87C383D0CC13D921F804607297D658A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				325E862631E06444E4504511C87F1E9C /* InAppSettingsKit.bundle */,
+				D40FF0F11E7F2EF29D1A92D25FB2D60D /* libChromaColorPicker.a */,
+				C082AE78A2C795A7CD50CE6E5575AB9C /* libInAppSettingsKit.a */,
+				C2FDAE1536FF09CC2163C2DD3B704156 /* libPods-WunderLINQ.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		05863E2DA9EF406F0BDA442059FD7D20 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				86B216ABB2C16DA5547756D971F8AEED /* ChromaColorPicker-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		240307A3EFDBA482BD5FDB36721CBDDE /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				60B0510A0D1C2B6690896F89B2988FC0 /* IASKAppSettingsViewController.h in Headers */,
+				1393DCB0E47F97377E7226E33A4A814E /* IASKAppSettingsWebViewController.h in Headers */,
+				908D234B669DCD2C335BF704B2884516 /* IASKColor.h in Headers */,
+				0932FE5BCA48102FC41A8806202AE05D /* IASKDatePicker.h in Headers */,
+				96F07CFF20FE37BA80909A981403BAF1 /* IASKDatePickerViewCell.h in Headers */,
+				965CDF0BFB364000C87D84943C3138DA /* IASKEmbeddedDatePickerViewCell.h in Headers */,
+				CA41FB698E185F0B8324C02095362573 /* IASKMultipleValueSelection.h in Headers */,
+				4961996E98660EFA0CFEFD670B23095B /* IASKPSSliderSpecifierViewCell.h in Headers */,
+				E33E0240A191D8DE8A3C3BFCD1812685 /* IASKPSTextFieldSpecifierViewCell.h in Headers */,
+				61BED379D6537AC6373C3DEED247FC82 /* IASKSettingsReader.h in Headers */,
+				28BEA6A5A14ABC8801AA36C53C1CAB7C /* IASKSettingsStore.h in Headers */,
+				87EE48B3056DE4011112C7B604393AD3 /* IASKSettingsStoreFile.h in Headers */,
+				F80702F56D68654D0820D8C4E637B2AA /* IASKSettingsStoreInMemory.h in Headers */,
+				334070E3F289A8C702EE431B158F0914 /* IASKSettingsStoreUserDefaults.h in Headers */,
+				2F626486DD1AAF5AE1C132F2540452D3 /* IASKSlider.h in Headers */,
+				9DDE65FD083D5F4831D85E4840806200 /* IASKSpecifier.h in Headers */,
+				62B9BAD90228A27C4C4D7B1701D10A8C /* IASKSpecifierValuesViewController.h in Headers */,
+				F6A03D49B2454018462603DE0F13768C /* IASKSwitch.h in Headers */,
+				A55E8148686619C29C45A60139713606 /* IASKTextField.h in Headers */,
+				10A7DD1766DC2A20C749B7FFC65B9197 /* IASKTextView.h in Headers */,
+				C21D025529E176865407205D7FADD36C /* IASKTextViewCell.h in Headers */,
+				F306F62A3B671DC40B287F025CB054EA /* IASKViewController.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AB35567CD4A9FA954EFE9C45A4DCBFB4 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4F3C91378368C2CF5CC2C267E995DD8D /* Pods-WunderLINQ-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		5B4848122435F4C22D574A5DA6D2EFB3 /* InAppSettingsKit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2E2983DB26D03F24B649956AE00671CA /* Build configuration list for PBXNativeTarget "InAppSettingsKit" */;
+			buildPhases = (
+				240307A3EFDBA482BD5FDB36721CBDDE /* Headers */,
+				F4121CC16D9AF2657802C2891B64EFFA /* Sources */,
+				94E4C4DABB427ED42791242797924110 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				46ED1FF75A6066826AFE562C47009A20 /* PBXTargetDependency */,
+			);
+			name = InAppSettingsKit;
+			productName = InAppSettingsKit;
+			productReference = C082AE78A2C795A7CD50CE6E5575AB9C /* libInAppSettingsKit.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		7961A0F04FB3D96E3E703CF075D6DACD /* ChromaColorPicker */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 80101B9FF3220CC017858C8B4D9F0744 /* Build configuration list for PBXNativeTarget "ChromaColorPicker" */;
+			buildPhases = (
+				05863E2DA9EF406F0BDA442059FD7D20 /* Headers */,
+				9CA0982C59353F693D0E1873FE2348AA /* Sources */,
+				C5B4913B372E2129943848AC2664779D /* Frameworks */,
+				7EF776DEE18C93552E52971D9F57F395 /* Copy generated compatibility header */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ChromaColorPicker;
+			productName = ChromaColorPicker;
+			productReference = D40FF0F11E7F2EF29D1A92D25FB2D60D /* libChromaColorPicker.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		8A996938DFC560C0A3EF0DD6CA6B032A /* InAppSettingsKit-InAppSettingsKit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A3780511AB738A8B385FF214339E9877 /* Build configuration list for PBXNativeTarget "InAppSettingsKit-InAppSettingsKit" */;
+			buildPhases = (
+				C9834C10A06A5CAE3894DC621BCA8B81 /* Sources */,
+				FE0330F7D5C6DDE9B6ED629A49509BDA /* Frameworks */,
+				AEB1A977AC52F94ED38463F6F074EE15 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "InAppSettingsKit-InAppSettingsKit";
+			productName = "InAppSettingsKit-InAppSettingsKit";
+			productReference = 325E862631E06444E4504511C87F1E9C /* InAppSettingsKit.bundle */;
+			productType = "com.apple.product-type.bundle";
+		};
+		FAF21BE37EB65063DA9127CAC1CE75D9 /* Pods-WunderLINQ */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 89E697B33237ADA07E66457065B75431 /* Build configuration list for PBXNativeTarget "Pods-WunderLINQ" */;
+			buildPhases = (
+				AB35567CD4A9FA954EFE9C45A4DCBFB4 /* Headers */,
+				42E9BDD33A16EC7CBACEAB962A71C5CC /* Sources */,
+				6548C1B46E7C027E033BB1B940AD7743 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D79A8948132A46B581E2C601D3BB7B96 /* PBXTargetDependency */,
+				6E6B9AF334E0C0E90A47495AEB856159 /* PBXTargetDependency */,
+			);
+			name = "Pods-WunderLINQ";
+			productName = "Pods-WunderLINQ";
+			productReference = C2FDAE1536FF09CC2163C2DD3B704156 /* libPods-WunderLINQ.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BFDFE7DC352907FC980B868725387E98 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1100;
+				LastUpgradeCheck = 1100;
+			};
+			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 10.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
+			productRefGroup = F87C383D0CC13D921F804607297D658A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				7961A0F04FB3D96E3E703CF075D6DACD /* ChromaColorPicker */,
+				5B4848122435F4C22D574A5DA6D2EFB3 /* InAppSettingsKit */,
+				8A996938DFC560C0A3EF0DD6CA6B032A /* InAppSettingsKit-InAppSettingsKit */,
+				FAF21BE37EB65063DA9127CAC1CE75D9 /* Pods-WunderLINQ */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AEB1A977AC52F94ED38463F6F074EE15 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1924FBFADE2BF2147C7B74F466AC3A35 /* Base.lproj in Resources */,
+				E4A70EEA26A456B1EE483EE8F718AF63 /* ca.lproj in Resources */,
+				F1D9DFED244DA698653A7577CADB5A2A /* de.lproj in Resources */,
+				E151379B9CDD0386F3CA671A2D9CC8CA /* el.lproj in Resources */,
+				659801F73CD7E59F22BBE403926443DB /* en.lproj in Resources */,
+				AB4FA31C958505194D8CCB24BB9ACE84 /* es-419.lproj in Resources */,
+				A3A6B5468C79A1B5FE74BC5BE43FAA58 /* es-MX.lproj in Resources */,
+				C436D70E9EA3C81BA8C98EA2D5165714 /* es.lproj in Resources */,
+				61BF900807954863DCFD5370C82CB6CC /* fr.lproj in Resources */,
+				0226AAC61C721D66430913CA45E4AAD1 /* hr.lproj in Resources */,
+				79051CEDC4752661ED448FEAE0DA60D0 /* hu.lproj in Resources */,
+				1D3A9019EE207C836FC6C630A3E0C739 /* it.lproj in Resources */,
+				EEE1E13796522220E17832E5C3BB7ABC /* ja.lproj in Resources */,
+				98B0BC4244B4677A8F942A5050B652D0 /* nb.lproj in Resources */,
+				E5A5F1DBA6C2209BDB39BB2F7ABC2094 /* nl.lproj in Resources */,
+				6C4D6EABE06255B86207A0EE69379C1A /* pl.lproj in Resources */,
+				D01A75273BAB7D803C00B9FB334B3263 /* pt-PT.lproj in Resources */,
+				2CF3519B74D1F929D211C70BC5DA0291 /* pt.lproj in Resources */,
+				149010CB3CE4D0B8BA8D9CFCC3CAB0B4 /* ru.lproj in Resources */,
+				DC4F7D6EB0663DF0D89C6C2A182F3753 /* sv.lproj in Resources */,
+				EA600700AF05772808C9641A6E641D80 /* th.lproj in Resources */,
+				5269A2102BC6FFDF250ABDAC5506BCF7 /* tr.lproj in Resources */,
+				0E5FD664EFDE508D9D05FD5F0A39C25A /* uk.lproj in Resources */,
+				71AD8F9A097FE4499CBD962E542169FB /* zh-Hans.lproj in Resources */,
+				D2126DECB57164949F39453A111D09ED /* zh-Hant.lproj in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		7EF776DEE18C93552E52971D9F57F395 /* Copy generated compatibility header */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${DERIVED_SOURCES_DIR}/${PRODUCT_MODULE_NAME}-Swift.h",
+				"${PODS_ROOT}/Headers/Public/ChromaColorPicker/ChromaColorPicker.modulemap",
+				"${PODS_ROOT}/Headers/Public/ChromaColorPicker/ChromaColorPicker-umbrella.h",
+			);
+			name = "Copy generated compatibility header";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${BUILT_PRODUCTS_DIR}/${PRODUCT_MODULE_NAME}.modulemap",
+				"${BUILT_PRODUCTS_DIR}/ChromaColorPicker-umbrella.h",
+				"${BUILT_PRODUCTS_DIR}/Swift Compatibility Header/${PRODUCT_MODULE_NAME}-Swift.h",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "COMPATIBILITY_HEADER_PATH=\"${BUILT_PRODUCTS_DIR}/Swift Compatibility Header/${PRODUCT_MODULE_NAME}-Swift.h\"\nMODULE_MAP_PATH=\"${BUILT_PRODUCTS_DIR}/${PRODUCT_MODULE_NAME}.modulemap\"\n\nditto \"${DERIVED_SOURCES_DIR}/${PRODUCT_MODULE_NAME}-Swift.h\" \"${COMPATIBILITY_HEADER_PATH}\"\nditto \"${PODS_ROOT}/Headers/Public/ChromaColorPicker/ChromaColorPicker.modulemap\" \"${MODULE_MAP_PATH}\"\nditto \"${PODS_ROOT}/Headers/Public/ChromaColorPicker/ChromaColorPicker-umbrella.h\" \"${BUILT_PRODUCTS_DIR}\"\nprintf \"\\n\\nmodule ${PRODUCT_MODULE_NAME}.Swift {\\n  header \\\"${COMPATIBILITY_HEADER_PATH}\\\"\\n  requires objc\\n}\\n\" >> \"${MODULE_MAP_PATH}\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		42E9BDD33A16EC7CBACEAB962A71C5CC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DB3865C4781FF4DE7C4B05030E321806 /* Pods-WunderLINQ-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9CA0982C59353F693D0E1873FE2348AA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B58A55C1ACDA3D5C38C06E0F1D3AFE47 /* ChromaBrightnessSlider.swift in Sources */,
+				78D864F115D04E396D31A8C52D93D230 /* ChromaColorHandle.swift in Sources */,
+				D25408880E690F9C247C3E4E50699170 /* ChromaColorPicker-dummy.m in Sources */,
+				1B97C47203D3F0A7FCE09CF0BCDD83CC /* ChromaColorPicker.swift in Sources */,
+				AF2157F95A224F4119A770A171D38F5F /* ChromaControlStylable.swift in Sources */,
+				8DC15CA9D2C0560102C3ECDC22DE0EA9 /* ColorWheelView.swift in Sources */,
+				7E17588FD51460467EF1EC2FBE451A4C /* SliderHandleView.swift in Sources */,
+				1ACADCCB0BAF7D1B6CB1B750729C56AA /* SliderTrackView.swift in Sources */,
+				E8B98D56FE53121D4F2A2D265345D4BB /* UIColor+Brightness.swift in Sources */,
+				081811CF200139854AC62C19DBA97465 /* UIColor+Utils.swift in Sources */,
+				599C5D24B559617AEE13C486DDFD36B6 /* UIView+DropShadow.swift in Sources */,
+				F56DF8DB4C152092DDDD0830605ABA12 /* UIView+Utils.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C9834C10A06A5CAE3894DC621BCA8B81 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F4121CC16D9AF2657802C2891B64EFFA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6052879F0DFAC80B33244301E81FB101 /* IASKAppSettingsViewController.m in Sources */,
+				EE273322EFC8B72AAD66355FF8E0F9BD /* IASKAppSettingsWebViewController.m in Sources */,
+				F57D4C7E62A45FC50D6049857C129352 /* IASKColor.m in Sources */,
+				893FB570C2BFF2D2D5CA9C12332B4C5C /* IASKDatePicker.m in Sources */,
+				EB6DCE27D017D1FCB04952CCCA3E8753 /* IASKDatePickerViewCell.m in Sources */,
+				40471214FFD3C34B6ACDC3090503BAAA /* IASKEmbeddedDatePickerViewCell.m in Sources */,
+				B4C0D9F1256EB193A9429B5365C34603 /* IASKMultipleValueSelection.m in Sources */,
+				0230FBF349B4E03B93D471AAE80A0391 /* IASKPSSliderSpecifierViewCell.m in Sources */,
+				BF877F559F4C791B88F43277FE9B1398 /* IASKPSTextFieldSpecifierViewCell.m in Sources */,
+				244C75D155FDA36617230B4741887DA8 /* IASKSettingsReader.m in Sources */,
+				05A24C337B2221739842F11E3DD81897 /* IASKSettingsStore.m in Sources */,
+				9C3F2560AF69919D031732F4497A8D0D /* IASKSettingsStoreFile.m in Sources */,
+				475DEED90D70827381C7E237C0DCA3A2 /* IASKSettingsStoreInMemory.m in Sources */,
+				EDB644198B84C9368C21F3357ACC4ABF /* IASKSettingsStoreUserDefaults.m in Sources */,
+				8F89B7426C642E3F50DE361DC815C900 /* IASKSlider.m in Sources */,
+				5C5B61AEF286CD7CABCDC6663E8D690E /* IASKSpecifier.m in Sources */,
+				E5A4060758FFCE7D6EA1E3417B450F4A /* IASKSpecifierValuesViewController.m in Sources */,
+				174242016434C342FA7D9C4CD357A234 /* IASKSwitch.m in Sources */,
+				BC99236DFA98C44B3CEF76F0AD666FD1 /* IASKTextField.m in Sources */,
+				B7B258EF208AB49FA1BE0AE7E2B85586 /* IASKTextView.m in Sources */,
+				49E205227C86D3167A0EA6487A884CAB /* IASKTextViewCell.m in Sources */,
+				D0B7B80A058F936BF660CFA8E087B51C /* InAppSettingsKit-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		46ED1FF75A6066826AFE562C47009A20 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "InAppSettingsKit-InAppSettingsKit";
+			target = 8A996938DFC560C0A3EF0DD6CA6B032A /* InAppSettingsKit-InAppSettingsKit */;
+			targetProxy = B8FEDA13C4F5BAD3A8B542F7A4318C0C /* PBXContainerItemProxy */;
+		};
+		6E6B9AF334E0C0E90A47495AEB856159 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = InAppSettingsKit;
+			target = 5B4848122435F4C22D574A5DA6D2EFB3 /* InAppSettingsKit */;
+			targetProxy = 23C3FCB5E0CE94409C9A97E4A5886BFA /* PBXContainerItemProxy */;
+		};
+		D79A8948132A46B581E2C601D3BB7B96 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = ChromaColorPicker;
+			target = 7961A0F04FB3D96E3E703CF075D6DACD /* ChromaColorPicker */;
+			targetProxy = 319596D95C212F10EC913C4C954B77FC /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		211A8170B9FA9DD84FA88CA2E34120AA /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = ED2DA7C790C0DA5C7459FE0EAC8E80B7 /* ChromaColorPicker.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				GCC_PREFIX_HEADER = "Target Support Files/ChromaColorPicker/ChromaColorPicker-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MODULEMAP_FILE = Headers/Public/ChromaColorPicker/ChromaColorPicker.modulemap;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_MODULE_NAME = ChromaColorPicker;
+				PRODUCT_NAME = ChromaColorPicker;
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		257497152829C177993B5EC99C1D227A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+		48DC51835D7594B4C41F246099237C51 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 13E170F7A77DE8D046429A0D976E8C9E /* Pods-WunderLINQ.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-WunderLINQ/Pods-WunderLINQ.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		5F7B2EFF258447545C7FF63D8F53B3CC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = ED2DA7C790C0DA5C7459FE0EAC8E80B7 /* ChromaColorPicker.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				GCC_PREFIX_HEADER = "Target Support Files/ChromaColorPicker/ChromaColorPicker-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MODULEMAP_FILE = Headers/Public/ChromaColorPicker/ChromaColorPicker.modulemap;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_MODULE_NAME = ChromaColorPicker;
+				PRODUCT_NAME = ChromaColorPicker;
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		6229DB402CCF7491BCB058F3035D6896 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D416161037CE0250A51E64EC5D367A90 /* InAppSettingsKit.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/InAppSettingsKit";
+				IBSC_MODULE = InAppSettingsKit;
+				INFOPLIST_FILE = "Target Support Files/InAppSettingsKit/ResourceBundle-InAppSettingsKit-InAppSettingsKit-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				PRODUCT_NAME = InAppSettingsKit;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
+		};
+		646DBF979CC6034492A66A8ADB96961A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0F0A05985CBEC554F0DEC92B1837016C /* Pods-WunderLINQ.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-WunderLINQ/Pods-WunderLINQ.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		6C5D6CF860928A4E9ECD79872069CE82 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D416161037CE0250A51E64EC5D367A90 /* InAppSettingsKit.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				GCC_PREFIX_HEADER = "Target Support Files/InAppSettingsKit/InAppSettingsKit-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_MODULE_NAME = InAppSettingsKit;
+				PRODUCT_NAME = InAppSettingsKit;
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		6FDE0D574836E807BED0B7FCC6A211F6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D416161037CE0250A51E64EC5D367A90 /* InAppSettingsKit.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/InAppSettingsKit";
+				IBSC_MODULE = InAppSettingsKit;
+				INFOPLIST_FILE = "Target Support Files/InAppSettingsKit/ResourceBundle-InAppSettingsKit-InAppSettingsKit-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				PRODUCT_NAME = InAppSettingsKit;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
+		B5A014647225A7F979DF66A8C614AE22 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D416161037CE0250A51E64EC5D367A90 /* InAppSettingsKit.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				GCC_PREFIX_HEADER = "Target Support Files/InAppSettingsKit/InAppSettingsKit-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_MODULE_NAME = InAppSettingsKit;
+				PRODUCT_NAME = InAppSettingsKit;
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		DD8F832993327D1DD8046C3CBCBD97CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2E2983DB26D03F24B649956AE00671CA /* Build configuration list for PBXNativeTarget "InAppSettingsKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B5A014647225A7F979DF66A8C614AE22 /* Debug */,
+				6C5D6CF860928A4E9ECD79872069CE82 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DD8F832993327D1DD8046C3CBCBD97CD /* Debug */,
+				257497152829C177993B5EC99C1D227A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		80101B9FF3220CC017858C8B4D9F0744 /* Build configuration list for PBXNativeTarget "ChromaColorPicker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5F7B2EFF258447545C7FF63D8F53B3CC /* Debug */,
+				211A8170B9FA9DD84FA88CA2E34120AA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		89E697B33237ADA07E66457065B75431 /* Build configuration list for PBXNativeTarget "Pods-WunderLINQ" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				48DC51835D7594B4C41F246099237C51 /* Debug */,
+				646DBF979CC6034492A66A8ADB96961A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A3780511AB738A8B385FF214339E9877 /* Build configuration list for PBXNativeTarget "InAppSettingsKit-InAppSettingsKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6FDE0D574836E807BED0B7FCC6A211F6 /* Debug */,
+				6229DB402CCF7491BCB058F3035D6896 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+}

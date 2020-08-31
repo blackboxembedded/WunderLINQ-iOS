@@ -30,9 +30,15 @@ class ContactsTableViewCell: UITableViewCell {
     }
     
     func highlightEffect(){
-        contactImage.backgroundColor = UIColor(named: "accent")!
-        contactLabel.backgroundColor = UIColor(named: "accent")!
-        contentView.backgroundColor = UIColor(named: "accent")!
+        var highlightColor: UIColor?
+        if let colorData = UserDefaults.standard.data(forKey: "highlight_color_preference"){
+            highlightColor = NSKeyedUnarchiver.unarchiveObject(with: colorData) as? UIColor
+        } else {
+            highlightColor = UIColor(named: "accent")
+        }
+        contactImage.backgroundColor = highlightColor
+        contactLabel.backgroundColor = highlightColor
+        contentView.backgroundColor = highlightColor
     }
     
     func removeHighlight(color: UIColor){

@@ -198,7 +198,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     
     func registerDefaultsFromSettingsBundle() {
         // Main Settings
-        let rootSettingsUrl = Bundle.main.url(forResource: "Settings", withExtension: "bundle")!.appendingPathComponent("Root.plist")
+        let rootSettingsUrl = Bundle.main.url(forResource: "InAppSettings", withExtension: "bundle")!.appendingPathComponent("Root.plist")
         let settingsPlist = NSDictionary(contentsOf:rootSettingsUrl)!
         let preferences = settingsPlist["PreferenceSpecifiers"] as! [NSDictionary]
         
@@ -213,7 +213,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         UserDefaults.standard.register(defaults: defaultsToRegister)
         
         //Grid Settings
-        let gridSettingsUrl = Bundle.main.url(forResource: "Settings", withExtension: "bundle")!.appendingPathComponent("Grid.plist")
+        let gridSettingsUrl = Bundle.main.url(forResource: "InAppSettings", withExtension: "bundle")!.appendingPathComponent("Grid.plist")
         let gridSettingsPlist = NSDictionary(contentsOf:gridSettingsUrl)!
         let gridPreferences = gridSettingsPlist["PreferenceSpecifiers"] as! [NSDictionary]
         
@@ -228,7 +228,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         UserDefaults.standard.register(defaults: gridDefaultsToRegister)
         
         //Quick Task Settings
-        let taskSettingsUrl = Bundle.main.url(forResource: "Settings", withExtension: "bundle")!.appendingPathComponent("Tasks.plist")
+        let taskSettingsUrl = Bundle.main.url(forResource: "InAppSettings", withExtension: "bundle")!.appendingPathComponent("Tasks.plist")
         let taskSettingsPlist = NSDictionary(contentsOf:taskSettingsUrl)!
         let taskPreferences = taskSettingsPlist["PreferenceSpecifiers"] as! [NSDictionary]
         
@@ -243,7 +243,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         UserDefaults.standard.register(defaults: taskaDefaultsToRegister)
         
         //Integrations Settings
-        let integrationsSettingsUrl = Bundle.main.url(forResource: "Settings", withExtension: "bundle")!.appendingPathComponent("Integrations.plist")
+        let integrationsSettingsUrl = Bundle.main.url(forResource: "InAppSettings", withExtension: "bundle")!.appendingPathComponent("Integrations.plist")
         let integrationsSettingsPlist = NSDictionary(contentsOf:integrationsSettingsUrl)!
         let integrationsPreferences = integrationsSettingsPlist["PreferenceSpecifiers"] as! [NSDictionary]
         

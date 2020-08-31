@@ -47,6 +47,16 @@
 			<string>ui_title</string>
 		</dict>
 		<dict>
+			<key>IASKViewControllerClass</key>
+			<string>ColorPickerViewController</string>
+			<key>IASKViewControllerSelector</key>
+			<string>initWithFile:specifier:</string>
+			<key>Title</key>
+			<string>pref_highlightColor_title</string>
+			<key>Type</key>
+			<string>PSChildPaneSpecifier</string>
+		</dict>
+		<dict>
 			<key>Type</key>
 			<string>PSChildPaneSpecifier</string>
 			<key>Title</key>
@@ -62,26 +72,26 @@
 			<key>File</key>
 			<string>Tasks</string>
 		</dict>
-        <dict>
-            <key>Type</key>
-            <string>PSMultiValueSpecifier</string>
-            <key>Title</key>
-            <string>pref_contact_sorting</string>
-            <key>Key</key>
-            <string>contact_sort_preference</string>
-            <key>DefaultValue</key>
-            <integer>0</integer>
-            <key>Values</key>
-            <array>
-                <integer>0</integer>
-                <integer>1</integer>
-            </array>
-            <key>Titles</key>
-            <array>
-                <string>lastname</string>
-                <string>firstname</string>
-            </array>
-        </dict>
+		<dict>
+			<key>Type</key>
+			<string>PSMultiValueSpecifier</string>
+			<key>Title</key>
+			<string>pref_contact_sorting</string>
+			<key>Key</key>
+			<string>contact_sort_preference</string>
+			<key>DefaultValue</key>
+			<integer>0</integer>
+			<key>Values</key>
+			<array>
+				<integer>0</integer>
+				<integer>1</integer>
+			</array>
+			<key>Titles</key>
+			<array>
+				<string>lastname</string>
+				<string>firstname</string>
+			</array>
+		</dict>
 		<dict>
 			<key>Type</key>
 			<string>PSMultiValueSpecifier</string>
@@ -146,30 +156,30 @@
 				<integer>1</integer>
 			</array>
 		</dict>
-        <dict>
-            <key>Type</key>
-            <string>PSMultiValueSpecifier</string>
-            <key>Title</key>
-            <string>pref_consumption_name</string>
-            <key>Key</key>
-            <string>consumption_unit_preference</string>
-            <key>DefaultValue</key>
-            <integer>0</integer>
-            <key>Titles</key>
-            <array>
-                <string>consumption_hundred_km</string>
-                <string>consumption_gallon_us</string>
-                <string>consumption_gallon_imperial</string>
-                <string>consumption_km</string>
-            </array>
-            <key>Values</key>
-            <array>
-                <integer>0</integer>
-                <integer>1</integer>
-                <integer>2</integer>
-                <integer>3</integer>
-            </array>
-        </dict>
+		<dict>
+			<key>Type</key>
+			<string>PSMultiValueSpecifier</string>
+			<key>Title</key>
+			<string>pref_consumption_name</string>
+			<key>Key</key>
+			<string>consumption_unit_preference</string>
+			<key>DefaultValue</key>
+			<integer>0</integer>
+			<key>Titles</key>
+			<array>
+				<string>consumption_hundred_km</string>
+				<string>consumption_gallon_us</string>
+				<string>consumption_gallon_imperial</string>
+				<string>consumption_km</string>
+			</array>
+			<key>Values</key>
+			<array>
+				<integer>0</integer>
+				<integer>1</integer>
+				<integer>2</integer>
+				<integer>3</integer>
+			</array>
+		</dict>
 		<dict>
 			<key>Type</key>
 			<string>PSMultiValueSpecifier</string>
@@ -190,48 +200,48 @@
 				<integer>1</integer>
 			</array>
 		</dict>
-        <dict>
-            <key>Type</key>
-            <string>PSMultiValueSpecifier</string>
-            <key>Title</key>
-            <string>pref_time_name</string>
-            <key>Key</key>
-            <string>time_format_preference</string>
-            <key>DefaultValue</key>
-            <integer>0</integer>
-            <key>Titles</key>
-            <array>
-                <string>timef_12h</string>
-                <string>timef_24h</string>
-            </array>
-            <key>Values</key>
-            <array>
-                <integer>0</integer>
-                <integer>1</integer>
-            </array>
-        </dict>
-        <dict>
-            <key>Type</key>
-            <string>PSMultiValueSpecifier</string>
-            <key>Title</key>
-            <string>pref_orientation_name</string>
-            <key>Key</key>
-            <string>orientation_preference</string>
-            <key>DefaultValue</key>
-            <integer>0</integer>
-            <key>Titles</key>
-            <array>
-                <string>orientation_a</string>
-                <string>orientation_l</string>
-                <string>orientation_p</string>
-            </array>
-            <key>Values</key>
-            <array>
-                <integer>0</integer>
-                <integer>1</integer>
-                <integer>2</integer>
-            </array>
-        </dict>
+		<dict>
+			<key>Type</key>
+			<string>PSMultiValueSpecifier</string>
+			<key>Title</key>
+			<string>pref_time_name</string>
+			<key>Key</key>
+			<string>time_format_preference</string>
+			<key>DefaultValue</key>
+			<integer>0</integer>
+			<key>Titles</key>
+			<array>
+				<string>timef_12h</string>
+				<string>timef_24h</string>
+			</array>
+			<key>Values</key>
+			<array>
+				<integer>0</integer>
+				<integer>1</integer>
+			</array>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSMultiValueSpecifier</string>
+			<key>Title</key>
+			<string>pref_orientation_name</string>
+			<key>Key</key>
+			<string>orientation_preference</string>
+			<key>DefaultValue</key>
+			<integer>0</integer>
+			<key>Titles</key>
+			<array>
+				<string>orientation_a</string>
+				<string>orientation_l</string>
+				<string>orientation_p</string>
+			</array>
+			<key>Values</key>
+			<array>
+				<integer>0</integer>
+				<integer>1</integer>
+				<integer>2</integer>
+			</array>
+		</dict>
 		<dict>
 			<key>Type</key>
 			<string>PSToggleSwitchSpecifier</string>
@@ -242,44 +252,44 @@
 			<key>DefaultValue</key>
 			<false/>
 		</dict>
-        <dict>
-            <key>Type</key>
-            <string>PSMultiValueSpecifier</string>
-            <key>Title</key>
-            <string>pref_nightMode_name</string>
-            <key>Key</key>
-            <string>darkmode_preference</string>
-            <key>DefaultValue</key>
-            <integer>0</integer>
-            <key>Titles</key>
-            <array>
-                <string>off</string>
-                <string>on</string>
-                <string>system_default</string>
-            </array>
-            <key>Values</key>
-            <array>
-                <integer>0</integer>
-                <integer>1</integer>
-                <integer>2</integer>
-            </array>
-        </dict>
+		<dict>
+			<key>Type</key>
+			<string>PSMultiValueSpecifier</string>
+			<key>Title</key>
+			<string>pref_nightMode_name</string>
+			<key>Key</key>
+			<string>darkmode_preference</string>
+			<key>DefaultValue</key>
+			<integer>0</integer>
+			<key>Titles</key>
+			<array>
+				<string>off</string>
+				<string>on</string>
+				<string>system_default</string>
+			</array>
+			<key>Values</key>
+			<array>
+				<integer>0</integer>
+				<integer>1</integer>
+				<integer>2</integer>
+			</array>
+		</dict>
 		<dict>
 			<key>Type</key>
 			<string>PSGroupSpecifier</string>
 			<key>Title</key>
 			<string>alerting_title</string>
 		</dict>
-        <dict>
-            <key>Type</key>
-            <string>PSToggleSwitchSpecifier</string>
-            <key>Title</key>
-            <string>pref_notification_name</string>
-            <key>Key</key>
-            <string>notification_preference</string>
-            <key>DefaultValue</key>
-            <true/>
-        </dict>
+		<dict>
+			<key>Type</key>
+			<string>PSToggleSwitchSpecifier</string>
+			<key>Title</key>
+			<string>pref_notification_name</string>
+			<key>Key</key>
+			<string>notification_preference</string>
+			<key>DefaultValue</key>
+			<true/>
+		</dict>
 		<dict>
 			<key>Type</key>
 			<string>PSGroupSpecifier</string>
@@ -336,16 +346,16 @@
 			<key>Title</key>
 			<string>advanced_settings_title</string>
 		</dict>
-        <dict>
-            <key>Type</key>
-            <string>PSToggleSwitchSpecifier</string>
-            <key>Title</key>
-            <string>pref_bearing_override_name</string>
-            <key>Key</key>
-            <string>bearing_override_preference</string>
-            <key>DefaultValue</key>
-            <false/>
-        </dict>
+		<dict>
+			<key>Type</key>
+			<string>PSToggleSwitchSpecifier</string>
+			<key>Title</key>
+			<string>pref_bearing_override_name</string>
+			<key>Key</key>
+			<string>bearing_override_preference</string>
+			<key>DefaultValue</key>
+			<false/>
+		</dict>
 		<dict>
 			<key>Type</key>
 			<string>PSToggleSwitchSpecifier</string>
@@ -356,22 +366,22 @@
 			<key>DefaultValue</key>
 			<false/>
 		</dict>
-        <dict>
-            <key>Type</key>
-            <string>PSGroupSpecifier</string>
-            <key>Title</key>
-            <string>pref_integrations_settings_title</string>
-            <key>FooterText</key>
-            <string>pref_integrations_settings_summary</string>
-        </dict>
-        <dict>
-            <key>Type</key>
-            <string>PSChildPaneSpecifier</string>
-            <key>Title</key>
-            <string>pref_integrations_settings_title</string>
-            <key>File</key>
-            <string>Integrations</string>
-        </dict>
+		<dict>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+			<key>Title</key>
+			<string>pref_integrations_settings_title</string>
+			<key>FooterText</key>
+			<string>pref_integrations_settings_summary</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSChildPaneSpecifier</string>
+			<key>Title</key>
+			<string>pref_integrations_settings_title</string>
+			<key>File</key>
+			<string>Integrations</string>
+		</dict>
 		<dict>
 			<key>Type</key>
 			<string>PSGroupSpecifier</string>

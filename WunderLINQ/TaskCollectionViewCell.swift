@@ -41,7 +41,15 @@ class TaskCollectionViewCell: UICollectionViewCell {
         uiView.clipsToBounds = true
         uiView.layer.masksToBounds = false
         uiView.layer.borderWidth = 0
-        uiView.backgroundColor = UIColor(named: "accent")!
+        
+        var highlightColor: UIColor?
+        if let colorData = UserDefaults.standard.data(forKey: "highlight_color_preference"){
+            highlightColor = NSKeyedUnarchiver.unarchiveObject(with: colorData) as? UIColor
+        } else {
+            highlightColor = UIColor(named: "accent")
+        }
+        
+        uiView.backgroundColor = highlightColor
 
         taskImage.tintColor = UIColor.white
     }

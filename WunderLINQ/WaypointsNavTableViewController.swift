@@ -29,6 +29,7 @@ class WaypointsNavTableViewController: UITableViewController, CLLocationManagerD
     
     private var locationManager: CLLocationManager!
     private var currentLocation: CLLocation?
+    private var highlightColor: UIColor?
     
     var firstRun = true;
     
@@ -77,8 +78,8 @@ class WaypointsNavTableViewController: UITableViewController, CLLocationManagerD
                 }
             }
             tableView.reloadData()
-            self.tableView.cellForRow(at: IndexPath(row: nextRow, section: 0) as IndexPath)?.contentView.backgroundColor = UIColor(named: "accent")!
-            self.tableView.cellForRow(at: IndexPath(row: nextRow, section: 0) as IndexPath)?.textLabel?.backgroundColor = UIColor(named: "accent")!
+            self.tableView.cellForRow(at: IndexPath(row: nextRow, section: 0) as IndexPath)?.contentView.backgroundColor = highlightColor
+            self.tableView.cellForRow(at: IndexPath(row: nextRow, section: 0) as IndexPath)?.textLabel?.backgroundColor = highlightColor
             self.tableView.cellForRow(at: IndexPath(row: nextRow, section: 0) as IndexPath)?.textLabel?.textColor = UIColor.white
             self.tableView.scrollToRow(at: IndexPath(row: nextRow, section: 0), at: .middle, animated: true)
             itemRow = nextRow
@@ -108,8 +109,8 @@ class WaypointsNavTableViewController: UITableViewController, CLLocationManagerD
                 }
             }
             tableView.reloadData()
-            self.tableView.cellForRow(at: IndexPath(row: nextRow, section: 0) as IndexPath)?.contentView.backgroundColor = UIColor(named: "accent")!
-            self.tableView.cellForRow(at: IndexPath(row: nextRow, section: 0) as IndexPath)?.textLabel?.backgroundColor = UIColor(named: "accent")!
+            self.tableView.cellForRow(at: IndexPath(row: nextRow, section: 0) as IndexPath)?.contentView.backgroundColor = highlightColor
+            self.tableView.cellForRow(at: IndexPath(row: nextRow, section: 0) as IndexPath)?.textLabel?.backgroundColor = highlightColor
             self.tableView.cellForRow(at: IndexPath(row: nextRow, section: 0) as IndexPath)?.textLabel?.textColor = UIColor.white
             self.tableView.scrollToRow(at: IndexPath(row: nextRow, section: 0), at: .middle, animated: true)
             itemRow = nextRow
@@ -141,8 +142,8 @@ class WaypointsNavTableViewController: UITableViewController, CLLocationManagerD
                     self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.textLabel?.textColor = UIColor.black
                 }
             }
-            self.tableView.cellForRow(at: IndexPath(row: 0, section: 0) as IndexPath)?.contentView.backgroundColor = UIColor(named: "accent")!
-            self.tableView.cellForRow(at: IndexPath(row: 0, section: 0) as IndexPath)?.textLabel?.backgroundColor = UIColor(named: "accent")!
+            self.tableView.cellForRow(at: IndexPath(row: 0, section: 0) as IndexPath)?.contentView.backgroundColor = highlightColor
+            self.tableView.cellForRow(at: IndexPath(row: 0, section: 0) as IndexPath)?.textLabel?.backgroundColor = highlightColor
             self.tableView.cellForRow(at: IndexPath(row: 0, section: 0) as IndexPath)?.textLabel?.textColor = UIColor.white
             self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .middle, animated: true)
         } else {
@@ -172,8 +173,8 @@ class WaypointsNavTableViewController: UITableViewController, CLLocationManagerD
                     }
                 }
                 tableView.reloadData()
-                self.tableView.cellForRow(at: IndexPath(row: nextRow, section: 0) as IndexPath)?.contentView.backgroundColor = UIColor(named: "accent")!
-                self.tableView.cellForRow(at: IndexPath(row: nextRow, section: 0) as IndexPath)?.textLabel?.backgroundColor = UIColor(named: "accent")!
+                self.tableView.cellForRow(at: IndexPath(row: nextRow, section: 0) as IndexPath)?.contentView.backgroundColor = highlightColor
+                self.tableView.cellForRow(at: IndexPath(row: nextRow, section: 0) as IndexPath)?.textLabel?.backgroundColor = highlightColor
                 self.tableView.cellForRow(at: IndexPath(row: nextRow, section: 0) as IndexPath)?.textLabel?.textColor = UIColor.white
                 self.tableView.scrollToRow(at: IndexPath(row: nextRow, section: 0), at: .middle, animated: true)
                 itemRow = nextRow
@@ -203,8 +204,8 @@ class WaypointsNavTableViewController: UITableViewController, CLLocationManagerD
                     }
                 }
                 tableView.reloadData()
-                self.tableView.cellForRow(at: IndexPath(row: nextRow, section: 0) as IndexPath)?.contentView.backgroundColor = UIColor(named: "accent")!
-                self.tableView.cellForRow(at: IndexPath(row: nextRow, section: 0) as IndexPath)?.textLabel?.backgroundColor = UIColor(named: "accent")!
+                self.tableView.cellForRow(at: IndexPath(row: nextRow, section: 0) as IndexPath)?.contentView.backgroundColor = highlightColor
+                self.tableView.cellForRow(at: IndexPath(row: nextRow, section: 0) as IndexPath)?.textLabel?.backgroundColor = highlightColor
                 self.tableView.cellForRow(at: IndexPath(row: nextRow, section: 0) as IndexPath)?.textLabel?.textColor = UIColor.white
                 self.tableView.scrollToRow(at: IndexPath(row: nextRow, section: 0), at: .middle, animated: true)
                 itemRow = nextRow
@@ -226,6 +227,12 @@ class WaypointsNavTableViewController: UITableViewController, CLLocationManagerD
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if let colorData = UserDefaults.standard.data(forKey: "highlight_color_preference"){
+            highlightColor = NSKeyedUnarchiver.unarchiveObject(with: colorData) as? UIColor
+        } else {
+            highlightColor = UIColor(named: "accent")
+        }
 
         switch(UserDefaults.standard.integer(forKey: "darkmode_preference")){
         case 0:

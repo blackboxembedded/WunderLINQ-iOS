@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0822A377E3BBDC4D19384809 /* libPods-WunderLINQ.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A0C40FCF2F9DD02D2DEA0C0 /* libPods-WunderLINQ.a */; };
 		7E068BC320FD8A100076EAAD /* FaultsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E068BC220FD8A100076EAAD /* FaultsTableViewController.swift */; };
 		7E068BC7210190CB0076EAAD /* TripsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E068BC6210190CB0076EAAD /* TripsTableViewController.swift */; };
 		7E068BC9210190F00076EAAD /* WaypointsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E068BC8210190F00076EAAD /* WaypointsTableViewController.swift */; };
@@ -48,6 +49,7 @@
 		7E62BB7121FE443200FDB10E /* ColumnFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E62BB7021FE443200FDB10E /* ColumnFlowLayout.swift */; };
 		7E6987DB20F82F1A00B4781D /* MotorcycleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6987DA20F82F1A00B4781D /* MotorcycleData.swift */; };
 		7E6987DD20F8F83500B4781D /* Faults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6987DC20F8F83500B4781D /* Faults.swift */; };
+		7E6E0A6824FC022200149387 /* ColorPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6E0A6724FC022200149387 /* ColorPickerViewController.swift */; };
 		7E7C53CD21F3BA9200C98010 /* ContactsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7C53CC21F3BA9200C98010 /* ContactsTableViewCell.swift */; };
 		7E80BD3B211CF80600B8CA0D /* LocalisableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E80BD3A211CF80600B8CA0D /* LocalisableLabel.swift */; };
 		7E80BD3D211CFF7300B8CA0D /* LocalisableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E80BD3C211CFF7300B8CA0D /* LocalisableButton.swift */; };
@@ -66,7 +68,7 @@
 		7EA478771F412BAC000CEDDC /* CLLocation+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA478761F412BAC000CEDDC /* CLLocation+Extension.swift */; };
 		7EA478791F412BE9000CEDDC /* UserDefauts+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA478781F412BE9000CEDDC /* UserDefauts+Extensions.swift */; };
 		7EA478811F44F57C000CEDDC /* MusicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA478801F44F57C000CEDDC /* MusicViewController.swift */; };
-		7EA478831F4A7260000CEDDC /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7EA478821F4A7260000CEDDC /* Settings.bundle */; };
+		7EA478831F4A7260000CEDDC /* InAppSettings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7EA478821F4A7260000CEDDC /* InAppSettings.bundle */; };
 		7EA478871F4BC775000CEDDC /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA478861F4BC775000CEDDC /* Logger.swift */; };
 		7EA4788A1F537ED5000CEDDC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7EA478881F537ED5000CEDDC /* Localizable.strings */; };
 		7EA4788E1F5BA136000CEDDC /* Tasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA4788D1F5BA136000CEDDC /* Tasks.swift */; };
@@ -101,6 +103,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2A0C40FCF2F9DD02D2DEA0C0 /* libPods-WunderLINQ.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WunderLINQ.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4E2D3628243A0841E630E538 /* Pods-WunderLINQ.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WunderLINQ.debug.xcconfig"; path = "Target Support Files/Pods-WunderLINQ/Pods-WunderLINQ.debug.xcconfig"; sourceTree = "<group>"; };
+		5B6A75C94A76FEE610EF7F86 /* Pods-WunderLINQ.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WunderLINQ.release.xcconfig"; path = "Target Support Files/Pods-WunderLINQ/Pods-WunderLINQ.release.xcconfig"; sourceTree = "<group>"; };
 		7E068BC220FD8A100076EAAD /* FaultsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaultsTableViewController.swift; sourceTree = "<group>"; };
 		7E068BC6210190CB0076EAAD /* TripsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripsTableViewController.swift; sourceTree = "<group>"; };
 		7E068BC8210190F00076EAAD /* WaypointsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaypointsTableViewController.swift; sourceTree = "<group>"; };
@@ -146,12 +151,14 @@
 		7E586D4022B68E6E00FB2E4C /* hu */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = hu; path = hu.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		7E5A767720DDEE7200B48CC6 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		7E5A767920DDFEF700B48CC6 /* Waypoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Waypoint.swift; sourceTree = "<group>"; };
+		7E5D59F824FBFA3E005E5017 /* InAppSettingsKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = InAppSettingsKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E5E0F77212289140048B9A2 /* AppUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUtility.swift; sourceTree = "<group>"; };
 		7E62BB6C21FE3DBF00FDB10E /* MainCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCollectionViewController.swift; sourceTree = "<group>"; };
 		7E62BB6E21FE3DEB00FDB10E /* MainCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCollectionViewCell.swift; sourceTree = "<group>"; };
 		7E62BB7021FE443200FDB10E /* ColumnFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColumnFlowLayout.swift; sourceTree = "<group>"; };
 		7E6987DA20F82F1A00B4781D /* MotorcycleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotorcycleData.swift; sourceTree = "<group>"; };
 		7E6987DC20F8F83500B4781D /* Faults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Faults.swift; sourceTree = "<group>"; };
+		7E6E0A6724FC022200149387 /* ColorPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerViewController.swift; sourceTree = "<group>"; };
 		7E70D8F621A5FD2B0016CD74 /* el */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = el; path = el.lproj/Main.strings; sourceTree = "<group>"; };
 		7E70D8F721A5FD2B0016CD74 /* el */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = el; path = el.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		7E70D8F821A5FD2B0016CD74 /* el */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = el; path = WunderLINQ/el.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -193,7 +200,7 @@
 		7EA478761F412BAC000CEDDC /* CLLocation+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CLLocation+Extension.swift"; sourceTree = "<group>"; };
 		7EA478781F412BE9000CEDDC /* UserDefauts+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserDefauts+Extensions.swift"; sourceTree = "<group>"; };
 		7EA478801F44F57C000CEDDC /* MusicViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicViewController.swift; sourceTree = "<group>"; };
-		7EA478821F4A7260000CEDDC /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		7EA478821F4A7260000CEDDC /* InAppSettings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = InAppSettings.bundle; sourceTree = "<group>"; };
 		7EA478861F4BC775000CEDDC /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		7EA478891F537ED5000CEDDC /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = WunderLINQ/Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7EA4788D1F5BA136000CEDDC /* Tasks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tasks.swift; sourceTree = "<group>"; };
@@ -249,6 +256,7 @@
 				7E068BD22102C6290076EAAD /* GoogleMaps.framework in Frameworks */,
 				7E068BD12102C6290076EAAD /* GoogleMapsCore.framework in Frameworks */,
 				7E068BD92102C7DE0076EAAD /* Accelerate.framework in Frameworks */,
+				0822A377E3BBDC4D19384809 /* libPods-WunderLINQ.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -262,9 +270,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6BDFE6152DE617FDCACF2500 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4E2D3628243A0841E630E538 /* Pods-WunderLINQ.debug.xcconfig */,
+				5B6A75C94A76FEE610EF7F86 /* Pods-WunderLINQ.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		7E068BD72102C7DE0076EAAD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7E5D59F824FBFA3E005E5017 /* InAppSettingsKit.framework */,
 				7E96D79121E78B7B00C6AB5F /* Security.framework */,
 				7E068BE62102C8820076EAAD /* CoreData.framework */,
 				7E068BDA2102C8810076EAAD /* CoreGraphics.framework */,
@@ -281,6 +299,7 @@
 				7E068BE22102C8810076EAAD /* SystemConfiguration.framework */,
 				7E068BDE2102C8810076EAAD /* UIKit.framework */,
 				7E068BD82102C7DE0076EAAD /* Accelerate.framework */,
+				2A0C40FCF2F9DD02D2DEA0C0 /* libPods-WunderLINQ.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -302,6 +321,7 @@
 				7EA478611F40B154000CEDDC /* WunderLINQTests */,
 				7EA4784B1F40B154000CEDDC /* Products */,
 				7E068BD72102C7DE0076EAAD /* Frameworks */,
+				6BDFE6152DE617FDCACF2500 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -373,10 +393,11 @@
 				7EAE9416211EA30900E24CE9 /* Theme.swift */,
 				7E916DDB230CF10D00011E5F /* NSLocalizedString.swift */,
 				7E2EC06324991CE200B0A59B /* NavigationControllerWithTraitOverride.swift */,
+				7E6E0A6724FC022200149387 /* ColorPickerViewController.swift */,
 				7EB8B99D245CA7A6007232D2 /* Secrets.swift */,
 				7EA478511F40B154000CEDDC /* Main.storyboard */,
 				7E068BD62102C6DB0076EAAD /* GoogleMaps.bundle */,
-				7EA478821F4A7260000CEDDC /* Settings.bundle */,
+				7EA478821F4A7260000CEDDC /* InAppSettings.bundle */,
 				7EA478541F40B154000CEDDC /* Assets.xcassets */,
 				7EA478561F40B154000CEDDC /* LaunchScreen.storyboard */,
 				7E4D76E521DDAEC100825175 /* InfoPlist.strings */,
@@ -401,9 +422,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7EA478671F40B154000CEDDC /* Build configuration list for PBXNativeTarget "WunderLINQ" */;
 			buildPhases = (
+				AACDFDB8C897E28740A768ED /* [CP] Check Pods Manifest.lock */,
 				7EA478461F40B154000CEDDC /* Sources */,
 				7EA478471F40B154000CEDDC /* Frameworks */,
 				7EA478481F40B154000CEDDC /* Resources */,
+				FB5E93D257227654372F9FF5 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -500,7 +523,7 @@
 			files = (
 				7E068BF62102D1A90076EAAD /* GoogleMaps.bundle in Resources */,
 				7E4D76E321DDAEC100825175 /* InfoPlist.strings in Resources */,
-				7EA478831F4A7260000CEDDC /* Settings.bundle in Resources */,
+				7EA478831F4A7260000CEDDC /* InAppSettings.bundle in Resources */,
 				7EA4788A1F537ED5000CEDDC /* Localizable.strings in Resources */,
 				7EA478581F40B154000CEDDC /* LaunchScreen.storyboard in Resources */,
 				7EA478551F40B154000CEDDC /* Assets.xcassets in Resources */,
@@ -517,6 +540,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		AACDFDB8C897E28740A768ED /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-WunderLINQ-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FB5E93D257227654372F9FF5 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-WunderLINQ/Pods-WunderLINQ-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-WunderLINQ/Pods-WunderLINQ-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-WunderLINQ/Pods-WunderLINQ-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		7EA478461F40B154000CEDDC /* Sources */ = {
@@ -538,6 +603,7 @@
 				7E62BB6D21FE3DBF00FDB10E /* MainCollectionViewController.swift in Sources */,
 				7E7C53CD21F3BA9200C98010 /* ContactsTableViewCell.swift in Sources */,
 				7E068BC7210190CB0076EAAD /* TripsTableViewController.swift in Sources */,
+				7E6E0A6824FC022200149387 /* ColorPickerViewController.swift in Sources */,
 				7E46AA192419D1540047E87D /* CircularCollectionViewLayout.swift in Sources */,
 				7EA4BCC721B8C9150084F6EA /* TasksCollectionViewController.swift in Sources */,
 				7E62BB6F21FE3DEB00FDB10E /* MainCollectionViewCell.swift in Sources */,
@@ -785,6 +851,7 @@
 		};
 		7EA478681F40B154000CEDDC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4E2D3628243A0841E630E538 /* Pods-WunderLINQ.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ANALYZER_LOCALIZABILITY_EMPTY_CONTEXT = YES;
@@ -814,6 +881,7 @@
 		};
 		7EA478691F40B154000CEDDC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5B6A75C94A76FEE610EF7F86 /* Pods-WunderLINQ.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ANALYZER_LOCALIZABILITY_EMPTY_CONTEXT = YES;

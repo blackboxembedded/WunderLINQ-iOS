@@ -3835,10 +3835,11 @@ extension MainCollectionViewController: UITableViewDelegate {
             performSegue(withIdentifier: "motorcycleToGeoData", sender: self)
         case 2:
             //App Settings
-            if let appSettings = URL(string: UIApplication.openSettingsURLString + Bundle.main.bundleIdentifier!) {
-                if UIApplication.shared.canOpenURL(appSettings) {
-                    UIApplication.shared.open(appSettings)
-                }
+            if let navigationController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController {
+                let appSettingsViewController = IASKAppSettingsViewController()
+                appSettingsViewController.showDoneButton = false
+                navigationController.pushViewController(appSettingsViewController, animated: true)
+
             }
         case 3:
             if (popoverMenuList.count == 6){

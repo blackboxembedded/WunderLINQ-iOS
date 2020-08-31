@@ -9,7 +9,7 @@ If your motorcycle also has the On Board Computer Pro option the WunderLINQ can 
 decode performance and fault data.
 
 ## Build Instructions
-1. Clone the project and open in Xcode
+1. Clone the project and open the workspace in Xcode
 
 2. Create a file called WunderLINQ/Secrets.swift with your own Google Maps API key and Spotify app ID it, like so:
 ```swift
