@@ -1488,7 +1488,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         case 8:
             // Front Brakes
             icon = (UIImage(named: "Brakes")?.withRenderingMode(.alwaysTemplate))!
-            if motorcycleData.frontBrake != nil {
+            if ((motorcycleData.frontBrake != nil) && motorcycleData.frontBrake != 0) {
                 value = "\(motorcycleData.frontBrake!)"
             } else {
                 value = NSLocalizedString("blank_field", comment: "")
@@ -1496,7 +1496,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         case 9:
             // Rear Brakes
             icon = (UIImage(named: "Brakes")?.withRenderingMode(.alwaysTemplate))!
-            if motorcycleData.rearBrake != nil {
+            if ((motorcycleData.rearBrake != nil) && motorcycleData.rearBrake != 0)  {
                 value = "\(motorcycleData.rearBrake!)"
             } else {
                 value = NSLocalizedString("blank_field", comment: "")
