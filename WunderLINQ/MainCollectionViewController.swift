@@ -85,7 +85,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     
     let inset: CGFloat = 5
     let minimumLineSpacing: CGFloat = 5
-    let minimumInteritemSpacing: CGFloat = 5
+    let minimumInteritemSpacing: CGFloat = 6
     var cellsPerRow = 5
     var rowCount = 3
     var selectedCell = 0
@@ -209,11 +209,15 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print("viewWillAppear")
         referenceAttitude = nil
         if isTimerRunning == false {
             runTimer()
         }
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        updateCollectionViewLayout(with: self.view.frame.size)
     }
 
     override func viewDidLoad() {
@@ -517,10 +521,8 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        print("viewWillTransition")
-        updateCollectionViewLayout(with: size)
-        referenceAttitude = nil
         super.viewWillTransition(to: size, with: coordinator)
+        referenceAttitude = nil
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -540,6 +542,65 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                 var width:CGFloat
                 var widthMarginsAndInsets:CGFloat
                 var heightMarginsAndInsets:CGFloat
+                
+                if ( collectionView!.bounds.width > collectionView!.bounds.height){
+                    switch (cellCount){
+                        case 1:
+                            cellsPerRow = 1
+                            rowCount = 1
+                        case 2:
+                            cellsPerRow = 2
+                            rowCount = 1
+                        case 4:
+                            cellsPerRow = 2
+                            rowCount = 2
+                        case 8:
+                            cellsPerRow = 4
+                            rowCount = 2
+                        case 10:
+                            cellsPerRow = 5
+                            rowCount = 2
+                        case 12:
+                            cellsPerRow = 4
+                            rowCount = 3
+                        case 15:
+                            cellsPerRow = 5
+                            rowCount = 3
+                        default:
+                            cellsPerRow = 5
+                            rowCount = 3
+                            UserDefaults.standard.set(15, forKey: "GRIDCOUNT")
+                        }
+                    } else {
+                        switch (cellCount){
+                        case 1:
+                            cellsPerRow = 1
+                            rowCount = 1
+                        case 2:
+                            cellsPerRow = 1
+                            rowCount = 2
+                        case 4:
+                            cellsPerRow = 1
+                            rowCount = 4
+                        case 8:
+                            cellsPerRow = 2
+                            rowCount = 4
+                        case 10:
+                            cellsPerRow = 2
+                            rowCount = 5
+                        case 12:
+                            cellsPerRow = 3
+                            rowCount = 4
+                        case 15:
+                            cellsPerRow = 3
+                            rowCount = 5
+                        default:
+                            cellsPerRow = 3
+                            rowCount = 5
+                            UserDefaults.standard.set(15, forKey: "GRIDCOUNT")
+                        }
+                }
+
                 if #available(iOS 11.0, *) {
                     widthMarginsAndInsets = inset * 2 + collectionView!.safeAreaInsets.left + collectionView!.safeAreaInsets.right + minimumInteritemSpacing * CGFloat(cellsPerRow - 1)
                     heightMarginsAndInsets = inset * 2 + collectionView!.safeAreaInsets.top + collectionView!.safeAreaInsets.bottom + minimumInteritemSpacing * CGFloat(rowCount - 1)
@@ -548,13 +609,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                     widthMarginsAndInsets = inset * 2 + collectionView!.layoutMargins.left + collectionView!.layoutMargins.right + minimumInteritemSpacing * CGFloat(cellsPerRow - 1)
                     heightMarginsAndInsets = inset * 2 + (collectionView?.layoutMargins.top)! + collectionView!.layoutMargins.bottom + minimumInteritemSpacing * CGFloat(rowCount - 1)
                 }
-                /*
-                print("Screen Size: inset:\(inset)")
-                print("Screen Size: widthMarginsAndInsets:\(widthMarginsAndInsets)")
-                print("Screen Size: heightMarginsAndInsets:\(heightMarginsAndInsets)")
-                print("Screen Size: widthMarginsAndInsets:\(widthMarginsAndInsets)")
-                print("Screen Size: Height:\(size.height) and Width:\(size.width)")
-                */
+
                 if ( size.width > size.height){
                     switch (cellCount){
                     case 1:
@@ -647,18 +702,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             widthMarginsAndInsets = inset * 2 + collectionView.layoutMargins.left + collectionView.layoutMargins.right + minimumInteritemSpacing * CGFloat(cellsPerRow - 1)
             heightMarginsAndInsets = inset * 2 + collectionView.layoutMargins.top + collectionView.layoutMargins.bottom + minimumInteritemSpacing * CGFloat(rowCount - 1)
         }
-        /*
-        print("Screen Size: inset:\(inset)")
-        print("Screen Size: minimumInteritemSpacing:\(minimumInteritemSpacing)")
-        print("Screen Size: safeAreaInsets.left:\(self.view.safeAreaInsets.left)")
-        print("Screen Size: safeAreaInsets.right:\(self.view.safeAreaInsets.right)")
-        print("Screen Size: safeAreaInsets.top:\(self.view.safeAreaInsets.top)")
-        print("Screen Size: safeAreaInsets.bottom:\(self.view.safeAreaInsets.bottom)")
-        print("Screen Size: heightMarginsAndInsets:\(heightMarginsAndInsets)")
-        print("Screen Size: widthMarginsAndInsets:\(widthMarginsAndInsets)")
-        print("Screen Size: mainUIView Height:\(mainUIView.bounds.height) and Width:\(mainUIView.bounds.width)")
-        print("Screen Size: view Height:\(self.view.bounds.size.height) and Width:\(self.view.bounds.size.width)")
-        */
+
         var cellCount = UserDefaults.standard.integer(forKey: "GRIDCOUNT");
         if ( mainUIView.bounds.width > mainUIView.bounds.height){
             switch (cellCount){
@@ -840,16 +884,12 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         tableView.isScrollEnabled = false
         self.popover = Popover(options: self.popoverOptions)
         self.popover.willShowHandler = {
-            //print("willShowHandler")
         }
         self.popover.didShowHandler = {
-            //print("didDismissHandler")
         }
         self.popover.willDismissHandler = {
-            //print("willDismissHandler")
         }
         self.popover.didDismissHandler = {
-            //print("didDismissHandler")
         }
         self.popover.show(tableView, fromView: self.menuBtn)
     }
@@ -861,13 +901,8 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     @objc func btButtonTapped(_ sender: UIBarButtonItem) {
         // if we don't have a WunderLINQ, start scanning for one...
         print("btButtonTapped()")
-        if wunderLINQ == nil {
-            print("btButtonTapped() scan")
-            keepScanning = true
-            resumeScan()
-        } else {
-            disconnect()
-        }
+        keepScanning = true
+        resumeScan()
     }
     
     func disconnect() {
@@ -1809,8 +1844,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         let dataLength = data.count / MemoryLayout<UInt8>.size
         var dataArray = [UInt8](repeating: 0, count: dataLength)
         (data as NSData).getBytes(&dataArray, length: dataLength * MemoryLayout<Int16>.size)
-        
-        //print(messageHexString)
+
         // Log raw messages
         if UserDefaults.standard.bool(forKey: "debug_logging_preference") {
             var messageHexString = ""
