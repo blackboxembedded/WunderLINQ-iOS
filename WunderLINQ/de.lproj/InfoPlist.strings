@@ -5,13 +5,13 @@
   Created by Keith Conger on 12/13/18.
   Copyright © 2018 Black Box Embedded, LLC. All rights reserved.
 */
-"NSContactsUsageDescription" = "WunderLINQ benötigt Zugriff auf das Adressbuch, um Ihre Kontakte und deren Telefonnummern anzuzeigen.";
+"NSContactsUsageDescription" = "WunderLINQ benötigt Zugriff auf das Adressbuch, um Deine Kontakte und deren Telefonnummern anzuzeigen.";
 "NSCameraUsageDescription" = "WunderLINQ benötigt Zugriff auf die Kamera, um Fotos und Videos aufzunehmen.";
 "NSLocationAlwaysAndWhenInUseUsageDescription" = "WunderLINQ benötigt Zugriff auf die Positionsdaten, um Wegpunkte und Fahrtaufzeichnungen zu speichern.";
 "NSLocationAlwaysUsageDescription" = "WunderLINQ benötigt Zugriff auf die Positionsdaten, um Wegpunkte und Fahrtaufzeichnungen zu speichern.";
 "NSLocationWhenInUseUsageDescription" = "WunderLINQ benötigt Zugriff auf die Positionsdaten, um Wegpunkte und Fahrtaufzeichnungen zu speichern.";
 "NSAppleMusicUsageDescription" = "WunderLINQ benötigt Zugriff auf die Medien-Bibliothek, um Musik abzuspielen.";
 "NSBluetoothPeripheralUsageDescription" = "WunderLINQ benötigt Zugriff auf Bluetooth, um mit der WunderLINQ Hardware zu kommunizieren.";
-"NSMicrophoneUsageDescription" = "WunderLINQ benötigt Zugriff auf das Mikrofon, um Ton aufzuzeichnen während einer Video-Aufnahme.";
+"NSMicrophoneUsageDescription" = "WunderLINQ benötigt Zugriff auf das Mikrofon, um Ton während einer Video-Aufnahme aufzuzeichnen.";
 "NSPhotoLibraryAddUsageDescription" = "WunderLINQ benötigt Zugriff auf die Foto-Bibliothek um aufgenommene Fotos zu speichern.";
 "NSPhotoLibraryUsageDescription" = "WunderLINQ benötigt Zugriff auf die Foto-Bibliothek um aufgenommene Fotos zu speichern.";
