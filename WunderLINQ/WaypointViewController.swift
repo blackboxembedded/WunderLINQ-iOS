@@ -20,6 +20,7 @@ import UIKit
 import SQLite3
 import GoogleMaps
 import MapKit
+import CoreGPX
 
 class WaypointViewController: UIViewController, UITextFieldDelegate, CLLocationManagerDelegate {
     
@@ -29,7 +30,7 @@ class WaypointViewController: UIViewController, UITextFieldDelegate, CLLocationM
     var date: String?
     var latitude: String? = ""
     var longitude: String? = ""
-    var label: String?
+    var label: String? = ""
     var waypoints = [Waypoint]()
     var waypoint: Waypoint?
     var indexOfWaypoint: Int?
@@ -37,19 +38,24 @@ class WaypointViewController: UIViewController, UITextFieldDelegate, CLLocationM
     private var locationManager: CLLocationManager!
     private var currentLocation: CLLocation?
     
+    fileprivate var popoverMenuList = [NSLocalizedString("waypoint_view_bt_open", comment: ""),NSLocalizedString("waypoint_view_bt_nav", comment: ""),NSLocalizedString("waypoint_view_bt_share", comment: ""), NSLocalizedString("share_gpx", comment: ""), NSLocalizedString("waypoint_view_bt_delete", comment: "")]
+    fileprivate var popover: Popover!
+    fileprivate var popoverOptions: [PopoverOption] = [
+        .type(.auto),
+        .color(UIColor(named: "backgrounds")!),
+        .blackOverlayColor(UIColor(white: 0.0, alpha: 0.6))
+    ]
+    
     let scenic = ScenicAPI()
+    
+    var menuBtn: UIButton!
+    var menuButton: UIBarButtonItem!
     
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var longLabel: UILabel!
     @IBOutlet weak var latLabel: UILabel!
     @IBOutlet weak var labelLabel: UITextField!
-    
-    
     @IBOutlet weak var mapView: GMSMapView!
-    @IBOutlet weak var openBtn: UIButton!
-    @IBOutlet weak var navBtn: UIButton!
-    @IBOutlet weak var shareBtn: UIButton!
-    @IBOutlet weak var deleteBtn: UIButton!
     
     @objc func leftScreen() {
         _ = navigationController?.popViewController(animated: true)
@@ -62,160 +68,243 @@ class WaypointViewController: UIViewController, UITextFieldDelegate, CLLocationM
                 record = waypoints[indexOfWaypoint! - 1].id
                 self.viewDidLoad()
             }
-        }
-        else if gesture.direction == UISwipeGestureRecognizer.Direction.left {
+        } else if gesture.direction == UISwipeGestureRecognizer.Direction.left {
             if (indexOfWaypoint != (waypoints.count - 1)){
                 record = waypoints[indexOfWaypoint! + 1].id
                 self.viewDidLoad()
             }
         }
     }
-
-    @IBAction func sharePressed(_ sender: Any) {
-        // text to share
-        let text = "http://maps.google.com/maps?saddr=\(latitude!),\(longitude!)"
-        
-        // set up activity view controller
-        let textToShare = [ text ]
-        let activityViewController = UIActivityViewController(activityItems: textToShare, applicationActivities: nil)
-        activityViewController.popoverPresentationController?.sourceView = self.view // so that iPads won't crash
-        
-        // exclude some activity types from the list (optional)
-        activityViewController.excludedActivityTypes = [ UIActivity.ActivityType.airDrop, UIActivity.ActivityType.postToFacebook ]
-        
-        // present the view controller
-        self.present(activityViewController, animated: true, completion: nil)
+    
+    @objc func menuButtonTapped() {
+        popUpMenu()
     }
     
-    @IBAction func navPressed(_ sender: Any) {
-        if let lat = latitude?.toDouble(), let lon = longitude?.toDouble(){
-            
-            let destLatitude: CLLocationDegrees = lat
-            let destLongitude: CLLocationDegrees = lon
-            
-            let navApp = UserDefaults.standard.integer(forKey: "nav_app_preference")
-            switch (navApp){
-            case 0:
-                //Apple Maps
-                let coordinates = CLLocationCoordinate2DMake(destLatitude, destLongitude)
-                let navPlacemark = MKPlacemark(coordinate: coordinates, addressDictionary: nil)
-                let mapitem = MKMapItem(placemark: navPlacemark)
-                let options = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving]
-                mapitem.openInMaps(launchOptions: options)
-            case 1:
-                //Google Maps
-                //googlemaps://
-                if let googleMapsURL = URL(string: "comgooglemaps-x-callback://?daddr=\(destLatitude),\(destLongitude)&directionsmode=driving&x-success=wunderlinq://?resume=true&x-source=WunderLINQ") {
-                    if (UIApplication.shared.canOpenURL(googleMapsURL)) {
-                        if #available(iOS 10, *) {
-                            UIApplication.shared.open(googleMapsURL, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
-                        } else {
-                            UIApplication.shared.openURL(googleMapsURL as URL)
-                        }
-                    }
-                }
-            case 2:
-                //Scenic
-                //https://github.com/guidove/Scenic-Integration/blob/master/README.md
-                self.scenic.sendToScenicForNavigation(coordinate: CLLocationCoordinate2D(latitude: destLatitude,longitude: destLongitude), name: label ?? "WunderLINQ")
-            case 3:
-                //Sygic
-                //https://www.sygic.com/developers/professional-navigation-sdk/ios/custom-url
-                let urlString = "com.sygic.aura://coordinate|\(destLongitude)|\(destLatitude)|drive"
-                
-                if let sygicURL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
-                    if (UIApplication.shared.canOpenURL(sygicURL)) {
-                        if #available(iOS 10, *) {
-                            UIApplication.shared.open(sygicURL, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
-                        } else {
-                            UIApplication.shared.openURL(sygicURL as URL)
-                        }
-                    }
-                }
-            case 4:
-                //Waze
-                //waze://?ll=[lat],[lon]&z=10
-                if let wazeURL = URL(string: "waze://?ll=\(destLatitude),\(destLongitude)&navigate=yes") {
-                    if (UIApplication.shared.canOpenURL(wazeURL)) {
-                        if #available(iOS 10, *) {
-                            UIApplication.shared.open(wazeURL, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
-                        } else {
-                            UIApplication.shared.openURL(wazeURL as URL)
-                        }
-                    }
-                }
-            case 5:
-                //Maps.me
-                //https://github.com/mapsme/api-ios
-                //https://dlink.maps.me/route?sll=55.800800,37.532754&saddr=PointA&dll=55.760158,37.618756&daddr=PointB&type=vehicle
-                if currentLocation != nil {
-                    let startLatitude: CLLocationDegrees = (self.currentLocation?.coordinate.latitude)!
-                    let startLongitude: CLLocationDegrees = (self.currentLocation?.coordinate.longitude)!
-                    let urlString = "mapsme://route?sll=\(startLatitude),\(startLongitude)&saddr=\(NSLocalizedString("trip_view_waypoint_start_label", comment: ""))&dll=\(destLatitude),\(destLongitude)&daddr=\(label ?? ""))&type=vehicle&backurl=wunderlinq://"
-                    if let mapsMeURL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
-                        if (UIApplication.shared.canOpenURL(mapsMeURL)) {
-                            if #available(iOS 10, *) {
-                                UIApplication.shared.open(mapsMeURL, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
-                            } else {
-                                UIApplication.shared.openURL(mapsMeURL as URL)
-                            }
-                        }
-                    }
-                }
-            case 6:
-                //OsmAnd
-                // osmandmaps://?lat=45.6313&lon=34.9955&z=8&title=New+York
-                let urlString = "osmandmaps://navigate?lat=\(destLatitude)&lon=\(destLongitude)&z=8&title=\(label ?? "")"
-                if let mapsMeURL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
-                    if (UIApplication.shared.canOpenURL(mapsMeURL)) {
-                        if #available(iOS 10, *) {
-                            UIApplication.shared.open(mapsMeURL, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
-                        } else {
-                            UIApplication.shared.openURL(mapsMeURL as URL)
-                        }
-                    }
-                }
-            case 7:
-                // Here We Go
-                // https://developer.here.com/documentation/mobility-on-demand-toolkit/dev_guide/topics/navigation.html
-                // here-route://mylocation/37.870090,-122.268150,Downtown%20Berkeley?ref=WunderLINQ&m=d
-                let urlString = "here-route://mylocation/\(destLatitude),\(destLongitude),\(label ?? "")?ref=WunderLINQ&m=d"
-                if let hereURL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
-                    if (UIApplication.shared.canOpenURL(hereURL)) {
-                        if #available(iOS 10, *) {
-                            UIApplication.shared.open(hereURL, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
-                        } else {
-                            UIApplication.shared.openURL(hereURL as URL)
-                        }
-                    }
-                }
-            case 8:
-                // TomTom GO
-                // https://discussions.tomtom.com/en/discussion/1118783/url-schemes-for-go-navigation-ios/
-                // tomtomgo://x-callback-url/navigate?destination=52.371183,4.892504
-                let urlString = "tomtomgo://x-callback-url/navigate?destination=\(destLatitude),\(destLongitude)"
-                if let uRL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
-                    if (UIApplication.shared.canOpenURL(uRL)) {
-                        if #available(iOS 10, *) {
-                            UIApplication.shared.open(uRL, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
-                        } else {
-                            UIApplication.shared.openURL(uRL as URL)
-                        }
-                    }
-                }
-            default:
-                //Apple Maps
-                let coordinates = CLLocationCoordinate2DMake(destLatitude, destLongitude)
-                let navPlacemark = MKPlacemark(coordinate: coordinates, addressDictionary: nil)
-                let mapitem = MKMapItem(placemark: navPlacemark)
-                let options = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving]
-                mapitem.openInMaps(launchOptions: options)
-            }
-        } else {
-            
+    func popUpMenu() {
+        var menuHeight:CGFloat = 46
+        menuHeight = CGFloat(46 * popoverMenuList.count)
+        let tableView = UITableView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width / 2, height: menuHeight))
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.isScrollEnabled = false
+        self.popover = Popover(options: self.popoverOptions)
+        self.popover.willShowHandler = {
+        }
+        self.popover.didShowHandler = {
+        }
+        self.popover.willDismissHandler = {
+        }
+        self.popover.didDismissHandler = {
+        }
+        self.popover.show(tableView, fromView: self.menuBtn)
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        //Update waypoint label in DB
+        let databaseURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+            .appendingPathComponent("waypoints.sqlite")
+        
+        //opening the database
+        if sqlite3_open(databaseURL.path, &db) != SQLITE_OK {
+            print("error opening database")
+        }
+        
+        //creating a statement
+        var stmt: OpaquePointer?
+        
+        //the insert query
+        let queryString = "UPDATE records SET label='\(labelLabel.text!)' WHERE id = \(record!)"
+        
+        //preparing the query
+        if sqlite3_prepare(db, queryString, -1, &stmt, nil) != SQLITE_OK{
+            let errmsg = String(cString: sqlite3_errmsg(db)!)
+            print("error preparing insert: \(errmsg)")
+            return
+        }
+
+        //executing the query to insert values
+        if sqlite3_step(stmt) != SQLITE_DONE {
+            let errmsg = String(cString: sqlite3_errmsg(db)!)
+            print("failure inserting waypoint: \(errmsg)")
+            return
         }
     }
-    @IBAction func openPressed(_ sender: Any) {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        AppUtility.lockOrientation(.portrait)
+        
+        // Do any additional setup after loading the view.
+
+        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))
+        swipeRight.direction = .right
+        self.view.addGestureRecognizer(swipeRight)
+        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))
+        swipeLeft.direction = .left
+        self.view.addGestureRecognizer(swipeLeft)
+        
+        let backBtn = UIButton()
+        backBtn.setImage(UIImage(named: "Left")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        if #available(iOS 13.0, *) {
+            backBtn.tintColor = UIColor(named: "imageTint")
+        }
+        backBtn.addTarget(self, action: #selector(leftScreen), for: .touchUpInside)
+        let backButton = UIBarButtonItem(customView: backBtn)
+        let backButtonWidth = backButton.customView?.widthAnchor.constraint(equalToConstant: 30)
+        backButtonWidth?.isActive = true
+        let backButtonHeight = backButton.customView?.heightAnchor.constraint(equalToConstant: 30)
+        backButtonHeight?.isActive = true
+        menuBtn = UIButton()
+        menuBtn.setImage(UIImage(named: "Menu")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        if #available(iOS 13.0, *) {
+            menuBtn.tintColor = UIColor(named: "imageTint")
+        }
+        menuBtn.addTarget(self, action: #selector(menuButtonTapped), for: .touchUpInside)
+        let menuButton = UIBarButtonItem(customView: menuBtn)
+        let menuButtonWidth = menuButton.customView?.widthAnchor.constraint(equalToConstant: 30)
+        menuButtonWidth?.isActive = true
+        let menuButtonHeight = menuButton.customView?.heightAnchor.constraint(equalToConstant: 30)
+        menuButtonHeight?.isActive = true
+        self.navigationItem.title = NSLocalizedString("waypoint_view_title", comment: "")
+        self.navigationItem.leftBarButtonItems = [backButton]
+        self.navigationItem.rightBarButtonItems = [menuButton]
+        
+        self.labelLabel.delegate = self
+        labelLabel.placeholder = NSLocalizedString("waypoint_view_label_hint", comment: "")
+        
+        let databaseURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+            .appendingPathComponent("waypoints.sqlite")
+        //opening the database
+        if sqlite3_open(databaseURL.path, &db) != SQLITE_OK {
+            print("error opening database")
+        }
+        
+        //creating table
+        if sqlite3_exec(db, "CREATE TABLE IF NOT EXISTS records (id INTEGER PRIMARY KEY AUTOINCREMENT, date TEXT, latitude TEXT, longitude TEXT, label TEXT)", nil, nil, nil) != SQLITE_OK {
+            let errmsg = String(cString: sqlite3_errmsg(db)!)
+            print("error creating table: \(errmsg)")
+        }
+        readWaypoints()
+        readWaypoint()
+        
+        indexOfWaypoint = waypoints.firstIndex(of: waypoint!)
+
+        mapView.clear()
+        if let lat = latitude?.toDouble(), let lon = longitude?.toDouble(){
+            let camera: GMSCameraPosition = GMSCameraPosition.camera(withLatitude: lat, longitude: lon, zoom: 15.0)
+            mapView.camera = camera
+            mapView.mapType = .hybrid
+            // Creates a marker in the center of the map.
+            let marker = GMSMarker()
+            marker.position = CLLocationCoordinate2D(latitude: lat, longitude: lon)
+            marker.title = label
+            marker.snippet = label
+            marker.map = mapView
+        } else {
+            print("Invalid Value")
+        }
+        
+        dateLabel.text = date
+        latLabel.text = latitude
+        longLabel.text = longitude
+        labelLabel.text = label
+        
+        locationManager = CLLocationManager()
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        
+        // Check for Location Services
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.requestWhenInUseAuthorization()
+            locationManager.startUpdatingLocation()
+        }
+    }
+    
+    // MARK - CLLocationManagerDelegate
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        do { currentLocation = locations.last }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        // Don't forget to reset when view is being removed
+        AppUtility.lockOrientation(.all)
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+
+    func readWaypoint(){
+        //this is our select query
+        let queryString = "SELECT * FROM records WHERE id = \(record ?? 0)"
+        
+        //statement pointer
+        var stmt:OpaquePointer?
+        
+        //preparing the query
+        if sqlite3_prepare(db, queryString, -1, &stmt, nil) != SQLITE_OK{
+            let errmsg = String(cString: sqlite3_errmsg(db)!)
+            print("error preparing insert: \(errmsg)")
+            return
+        }
+        
+        //traversing through all the records
+        while(sqlite3_step(stmt) == SQLITE_ROW){
+            let id = Int(sqlite3_column_int(stmt, 0))
+            date = String(cString: sqlite3_column_text(stmt, 1))
+            latitude = String(cString: sqlite3_column_text(stmt, 2))
+            longitude = String(cString: sqlite3_column_text(stmt, 3))
+            label = ""
+            if ( sqlite3_column_text(stmt, 4) != nil ){
+                label = String(cString: sqlite3_column_text(stmt, 4))
+            }
+            waypoint = Waypoint(id: Int(id), date: String(describing: date), latitude: String(describing: latitude), longitude: String(describing: longitude), label: String(describing: label))
+        }
+    }
+    
+    func readWaypoints(){
+        
+        //first empty the list of watpoints
+        waypoints.removeAll()
+        
+        //this is our select query
+        let queryString = "SELECT id,date,latitude,longitude,label FROM records ORDER BY id DESC"
+        
+        //statement pointer
+        var stmt:OpaquePointer?
+        
+        //preparing the query
+        if sqlite3_prepare(db, queryString, -1, &stmt, nil) != SQLITE_OK{
+            let errmsg = String(cString: sqlite3_errmsg(db)!)
+            print("error preparing insert: \(errmsg)")
+            return
+        }
+        
+        //traversing through all the records
+        while(sqlite3_step(stmt) == SQLITE_ROW){
+            let id = sqlite3_column_int(stmt, 0)
+            let date = String(cString: sqlite3_column_text(stmt, 1))
+            let latitude = String(cString: sqlite3_column_text(stmt, 2))
+            let longitude = String(cString: sqlite3_column_text(stmt, 3))
+            var label = ""
+            if ( sqlite3_column_text(stmt, 4) != nil ){
+                label = String(cString: sqlite3_column_text(stmt, 4))
+            }
+            //adding values to list
+            waypoints.append(Waypoint(id: Int(id), date: String(describing: date), latitude: String(describing: latitude), longitude: String(describing: longitude), label: String(describing: label)))
+        }
+    }
+    
+    func open(){
         if let lat = latitude?.toDouble(), let lon = longitude?.toDouble(){
             let destLatitude: CLLocationDegrees = lat
             let destLongitude: CLLocationDegrees = lon
@@ -349,8 +438,172 @@ class WaypointViewController: UIViewController, UITextFieldDelegate, CLLocationM
         }
     }
     
-    @IBAction func deletePressed(_ sender: Any) {
+    func navigate(){
+        if let lat = latitude?.toDouble(), let lon = longitude?.toDouble(){
+            let destLatitude: CLLocationDegrees = lat
+            let destLongitude: CLLocationDegrees = lon
+            
+            let navApp = UserDefaults.standard.integer(forKey: "nav_app_preference")
+            switch (navApp){
+            case 0:
+                //Apple Maps
+                let coordinates = CLLocationCoordinate2DMake(destLatitude, destLongitude)
+                let navPlacemark = MKPlacemark(coordinate: coordinates, addressDictionary: nil)
+                let mapitem = MKMapItem(placemark: navPlacemark)
+                let options = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving]
+                mapitem.openInMaps(launchOptions: options)
+            case 1:
+                //Google Maps
+                //googlemaps://
+                if let googleMapsURL = URL(string: "comgooglemaps-x-callback://?daddr=\(destLatitude),\(destLongitude)&directionsmode=driving&x-success=wunderlinq://?resume=true&x-source=WunderLINQ") {
+                    if (UIApplication.shared.canOpenURL(googleMapsURL)) {
+                        if #available(iOS 10, *) {
+                            UIApplication.shared.open(googleMapsURL, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
+                        } else {
+                            UIApplication.shared.openURL(googleMapsURL as URL)
+                        }
+                    }
+                }
+            case 2:
+                //Scenic
+                //https://github.com/guidove/Scenic-Integration/blob/master/README.md
+                self.scenic.sendToScenicForNavigation(coordinate: CLLocationCoordinate2D(latitude: destLatitude,longitude: destLongitude), name: label ?? "WunderLINQ")
+            case 3:
+                //Sygic
+                //https://www.sygic.com/developers/professional-navigation-sdk/ios/custom-url
+                let urlString = "com.sygic.aura://coordinate|\(destLongitude)|\(destLatitude)|drive"
+                
+                if let sygicURL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
+                    if (UIApplication.shared.canOpenURL(sygicURL)) {
+                        if #available(iOS 10, *) {
+                            UIApplication.shared.open(sygicURL, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
+                        } else {
+                            UIApplication.shared.openURL(sygicURL as URL)
+                        }
+                    }
+                }
+            case 4:
+                //Waze
+                //waze://?ll=[lat],[lon]&z=10
+                if let wazeURL = URL(string: "waze://?ll=\(destLatitude),\(destLongitude)&navigate=yes") {
+                    if (UIApplication.shared.canOpenURL(wazeURL)) {
+                        if #available(iOS 10, *) {
+                            UIApplication.shared.open(wazeURL, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
+                        } else {
+                            UIApplication.shared.openURL(wazeURL as URL)
+                        }
+                    }
+                }
+            case 5:
+                //Maps.me
+                //https://github.com/mapsme/api-ios
+                //https://dlink.maps.me/route?sll=55.800800,37.532754&saddr=PointA&dll=55.760158,37.618756&daddr=PointB&type=vehicle
+                if currentLocation != nil {
+                    let startLatitude: CLLocationDegrees = (self.currentLocation?.coordinate.latitude)!
+                    let startLongitude: CLLocationDegrees = (self.currentLocation?.coordinate.longitude)!
+                    let urlString = "mapsme://route?sll=\(startLatitude),\(startLongitude)&saddr=\(NSLocalizedString("trip_view_waypoint_start_label", comment: ""))&dll=\(destLatitude),\(destLongitude)&daddr=\(label ?? ""))&type=vehicle&backurl=wunderlinq://"
+                    if let mapsMeURL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
+                        if (UIApplication.shared.canOpenURL(mapsMeURL)) {
+                            if #available(iOS 10, *) {
+                                UIApplication.shared.open(mapsMeURL, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
+                            } else {
+                                UIApplication.shared.openURL(mapsMeURL as URL)
+                            }
+                        }
+                    }
+                }
+            case 6:
+                //OsmAnd
+                // osmandmaps://?lat=45.6313&lon=34.9955&z=8&title=New+York
+                let urlString = "osmandmaps://navigate?lat=\(destLatitude)&lon=\(destLongitude)&z=8&title=\(label ?? "")"
+                if let mapsMeURL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
+                    if (UIApplication.shared.canOpenURL(mapsMeURL)) {
+                        if #available(iOS 10, *) {
+                            UIApplication.shared.open(mapsMeURL, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
+                        } else {
+                            UIApplication.shared.openURL(mapsMeURL as URL)
+                        }
+                    }
+                }
+            case 7:
+                // Here We Go
+                // https://developer.here.com/documentation/mobility-on-demand-toolkit/dev_guide/topics/navigation.html
+                // here-route://mylocation/37.870090,-122.268150,Downtown%20Berkeley?ref=WunderLINQ&m=d
+                let urlString = "here-route://mylocation/\(destLatitude),\(destLongitude),\(label ?? "")?ref=WunderLINQ&m=d"
+                if let hereURL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
+                    if (UIApplication.shared.canOpenURL(hereURL)) {
+                        if #available(iOS 10, *) {
+                            UIApplication.shared.open(hereURL, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
+                        } else {
+                            UIApplication.shared.openURL(hereURL as URL)
+                        }
+                    }
+                }
+            case 8:
+                // TomTom GO
+                // https://discussions.tomtom.com/en/discussion/1118783/url-schemes-for-go-navigation-ios/
+                // tomtomgo://x-callback-url/navigate?destination=52.371183,4.892504
+                let urlString = "tomtomgo://x-callback-url/navigate?destination=\(destLatitude),\(destLongitude)"
+                if let uRL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
+                    if (UIApplication.shared.canOpenURL(uRL)) {
+                        if #available(iOS 10, *) {
+                            UIApplication.shared.open(uRL, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
+                        } else {
+                            UIApplication.shared.openURL(uRL as URL)
+                        }
+                    }
+                }
+            default:
+                //Apple Maps
+                let coordinates = CLLocationCoordinate2DMake(destLatitude, destLongitude)
+                let navPlacemark = MKPlacemark(coordinate: coordinates, addressDictionary: nil)
+                let mapitem = MKMapItem(placemark: navPlacemark)
+                let options = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving]
+                mapitem.openInMaps(launchOptions: options)
+            }
+        } else {
+            
+        }
+    }
+    
+    func share(){
+        let text = "http://maps.google.com/maps?saddr=\(latitude!),\(longitude!)"
         
+        // set up activity view controller
+        let textToShare = [ text ]
+        let activityViewController = UIActivityViewController(activityItems: textToShare, applicationActivities: nil)
+        activityViewController.popoverPresentationController?.sourceView = self.view // so that iPads won't crash
+        
+        // exclude some activity types from the list (optional)
+        activityViewController.excludedActivityTypes = [ UIActivity.ActivityType.airDrop, UIActivity.ActivityType.postToFacebook ]
+        
+        // present the view controller
+        self.present(activityViewController, animated: true, completion: nil)
+    }
+    
+    func exportGPX(){
+        if let lat = latitude?.toDouble(), let lon = longitude?.toDouble(){
+            let root = GPXRoot(creator: "WunderLINQ")
+            let singleWaypoint = GPXWaypoint(latitude: (lat), longitude: (lon))
+            singleWaypoint.comment = label
+            var fileName = "Waypoint"
+            if (label != ""){
+                fileName = label!
+            }
+            root.add(waypoint: singleWaypoint)
+            let url = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0] as URL
+            do {
+                try root.outputToFile(saveAt: url, fileName: fileName)
+                let fileURL = url.appendingPathComponent("\(fileName).gpx")
+                let vc = UIActivityViewController(activityItems: [fileURL], applicationActivities: [])
+                self.present(vc, animated: true)
+            } catch {
+                print(error)
+            }
+        }
+    }
+    
+    func delete(){
         let alert = UIAlertController(title: NSLocalizedString("delete_waypoint_alert_title", comment: ""), message: NSLocalizedString("delete_waypoint_alert_body", comment: ""), preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: NSLocalizedString("delete_bt", comment: ""), style: UIAlertAction.Style.default, handler: { action in
             let queryString = "DELETE FROM records WHERE id = \(self.record ?? 0)"
@@ -374,207 +627,50 @@ class WaypointViewController: UIViewController, UITextFieldDelegate, CLLocationM
             self.performSegue(withIdentifier: "waypointToWaypoints", sender: [])
         }))
         alert.addAction(UIAlertAction(title: NSLocalizedString("cancel_bt", comment: ""), style: UIAlertAction.Style.cancel, handler: { action in
-            // quit app
-            //exit(0)
         }))
         self.present(alert, animated: true, completion: nil)
-        
-    }
-    
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        //Update waypoint label in DB
-        let databaseURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
-            .appendingPathComponent("waypoints.sqlite")
-        
-        //opening the database
-        if sqlite3_open(databaseURL.path, &db) != SQLITE_OK {
-            print("error opening database")
-        }
-        
-        //creating a statement
-        var stmt: OpaquePointer?
-        
-        //the insert query
-        let queryString = "UPDATE records SET label='\(labelLabel.text!)' WHERE id = \(record!)"
-        
-        //preparing the query
-        if sqlite3_prepare(db, queryString, -1, &stmt, nil) != SQLITE_OK{
-            let errmsg = String(cString: sqlite3_errmsg(db)!)
-            print("error preparing insert: \(errmsg)")
-            return
-        }
-
-        //executing the query to insert values
-        if sqlite3_step(stmt) != SQLITE_DONE {
-            let errmsg = String(cString: sqlite3_errmsg(db)!)
-            print("failure inserting waypoint: \(errmsg)")
-            return
-        }
-    }
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        self.view.endEditing(true)
-        return false
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        AppUtility.lockOrientation(.portrait)
-        
-        // Do any additional setup after loading the view.
-
-        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))
-        swipeRight.direction = .right
-        self.view.addGestureRecognizer(swipeRight)
-        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))
-        swipeLeft.direction = .left
-        self.view.addGestureRecognizer(swipeLeft)
-        
-        let backBtn = UIButton()
-        backBtn.setImage(UIImage(named: "Left")?.withRenderingMode(.alwaysTemplate), for: .normal)
-        if #available(iOS 13.0, *) {
-            backBtn.tintColor = UIColor(named: "imageTint")
-        }
-        backBtn.addTarget(self, action: #selector(leftScreen), for: .touchUpInside)
-        let backButton = UIBarButtonItem(customView: backBtn)
-        let backButtonWidth = backButton.customView?.widthAnchor.constraint(equalToConstant: 30)
-        backButtonWidth?.isActive = true
-        let backButtonHeight = backButton.customView?.heightAnchor.constraint(equalToConstant: 30)
-        backButtonHeight?.isActive = true
-        self.navigationItem.title = NSLocalizedString("waypoint_view_title", comment: "")
-        self.navigationItem.leftBarButtonItems = [backButton]
-        
-        self.labelLabel.delegate = self
-        labelLabel.placeholder = NSLocalizedString("waypoint_view_label_hint", comment: "")
-        
-        let databaseURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
-            .appendingPathComponent("waypoints.sqlite")
-        //opening the database
-        if sqlite3_open(databaseURL.path, &db) != SQLITE_OK {
-            print("error opening database")
-        }
-        
-        //creating table
-        if sqlite3_exec(db, "CREATE TABLE IF NOT EXISTS records (id INTEGER PRIMARY KEY AUTOINCREMENT, date TEXT, latitude TEXT, longitude TEXT, label TEXT)", nil, nil, nil) != SQLITE_OK {
-            let errmsg = String(cString: sqlite3_errmsg(db)!)
-            print("error creating table: \(errmsg)")
-        }
-        readWaypoints()
-        readWaypoint()
-        
-        indexOfWaypoint = waypoints.firstIndex(of: waypoint!)
-
-        mapView.clear()
-        if let lat = latitude?.toDouble(), let lon = longitude?.toDouble(){
-            let camera: GMSCameraPosition = GMSCameraPosition.camera(withLatitude: lat, longitude: lon, zoom: 15.0)
-            mapView.camera = camera
-            mapView.mapType = .hybrid
-            // Creates a marker in the center of the map.
-            let marker = GMSMarker()
-            marker.position = CLLocationCoordinate2D(latitude: lat, longitude: lon)
-            marker.title = label
-            marker.snippet = label
-            marker.map = mapView
-        } else {
-            print("Invalid Value")
-        }
-        
-        dateLabel.text = date
-        latLabel.text = latitude
-        longLabel.text = longitude
-        labelLabel.text = label
-        
-        locationManager = CLLocationManager()
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        
-        // Check for Location Services
-        if CLLocationManager.locationServicesEnabled() {
-            locationManager.requestWhenInUseAuthorization()
-            locationManager.startUpdatingLocation()
-        }
-    }
-    
-    // MARK - CLLocationManagerDelegate
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        do { currentLocation = locations.last }
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-        // Don't forget to reset when view is being removed
-        AppUtility.lockOrientation(.all)
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-    func readWaypoint(){
-        //this is our select query
-        let queryString = "SELECT * FROM records WHERE id = \(record ?? 0)"
-        
-        //statement pointer
-        var stmt:OpaquePointer?
-        
-        //preparing the query
-        if sqlite3_prepare(db, queryString, -1, &stmt, nil) != SQLITE_OK{
-            let errmsg = String(cString: sqlite3_errmsg(db)!)
-            print("error preparing insert: \(errmsg)")
-            return
-        }
-        
-        //traversing through all the records
-        while(sqlite3_step(stmt) == SQLITE_ROW){
-            let id = Int(sqlite3_column_int(stmt, 0))
-            date = String(cString: sqlite3_column_text(stmt, 1))
-            latitude = String(cString: sqlite3_column_text(stmt, 2))
-            longitude = String(cString: sqlite3_column_text(stmt, 3))
-            label = ""
-            if ( sqlite3_column_text(stmt, 4) != nil ){
-                label = String(cString: sqlite3_column_text(stmt, 4))
-            }
-            waypoint = Waypoint(id: Int(id), date: String(describing: date), latitude: String(describing: latitude), longitude: String(describing: longitude), label: String(describing: label))
-        }
-    }
-    
-    func readWaypoints(){
-        
-        //first empty the list of watpoints
-        waypoints.removeAll()
-        
-        //this is our select query
-        let queryString = "SELECT id,date,latitude,longitude,label FROM records ORDER BY id DESC"
-        
-        //statement pointer
-        var stmt:OpaquePointer?
-        
-        //preparing the query
-        if sqlite3_prepare(db, queryString, -1, &stmt, nil) != SQLITE_OK{
-            let errmsg = String(cString: sqlite3_errmsg(db)!)
-            print("error preparing insert: \(errmsg)")
-            return
-        }
-        
-        //traversing through all the records
-        while(sqlite3_step(stmt) == SQLITE_ROW){
-            let id = sqlite3_column_int(stmt, 0)
-            let date = String(cString: sqlite3_column_text(stmt, 1))
-            let latitude = String(cString: sqlite3_column_text(stmt, 2))
-            let longitude = String(cString: sqlite3_column_text(stmt, 3))
-            var label = ""
-            if ( sqlite3_column_text(stmt, 4) != nil ){
-                label = String(cString: sqlite3_column_text(stmt, 4))
-            }
-            //adding values to list
-            waypoints.append(Waypoint(id: Int(id), date: String(describing: date), latitude: String(describing: latitude), longitude: String(describing: longitude), label: String(describing: label)))
-        }
     }
 }
 
+extension WaypointViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch(indexPath.row) {
+        case 0:
+            // Open
+            open()
+        case 1:
+            //Navigate
+            navigate()
+        case 2:
+            //Share
+            share()
+        case 3:
+            //Share GPX
+            exportGPX()
+        case 4:
+            //Delete
+            delete()
+        default:
+            NSLog("Unknown option")
+        }
+        self.popover.dismiss()
+    }
+    
+}
+
+extension WaypointViewController: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
+        return popoverMenuList.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
+        cell.textLabel?.text = self.popoverMenuList[(indexPath as NSIndexPath).row]
+        return cell
+    }
+}
 
 // Helper function inserted by Swift 4.2 migrator.
 fileprivate func convertToUIApplicationOpenExternalURLOptionsKeyDictionary(_ input: [String: Any]) -> [UIApplication.OpenExternalURLOptionsKey: Any] {

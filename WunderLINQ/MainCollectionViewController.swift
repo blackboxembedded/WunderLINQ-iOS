@@ -3915,7 +3915,6 @@ extension MainCollectionViewController: UITableViewDataSource {
     }
 }
 
-
 extension UINavigationController {
     open override var preferredStatusBarStyle: UIStatusBarStyle {
         switch(UserDefaults.standard.integer(forKey: "darkmode_preference")){

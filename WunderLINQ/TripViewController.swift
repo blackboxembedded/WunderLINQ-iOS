@@ -18,6 +18,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 import UIKit
 import GoogleMaps
+import CoreGPX
 
 class TripViewController: UIViewController {
     @IBOutlet weak var mapView: GMSMapView!
@@ -33,6 +34,17 @@ class TripViewController: UIViewController {
     var fileName: String?
     var csvFileNames : [String]?
     var indexOfFileName: Int?
+    
+    var menuBtn: UIButton!
+    var menuButton: UIBarButtonItem!
+    
+    fileprivate var popoverMenuList = [NSLocalizedString("waypoint_view_bt_share", comment: ""), NSLocalizedString("share_gpx", comment: ""), NSLocalizedString("waypoint_view_bt_delete", comment: "")]
+    fileprivate var popover: Popover!
+    fileprivate var popoverOptions: [PopoverOption] = [
+        .type(.auto),
+        .color(UIColor(named: "backgrounds")!),
+        .blackOverlayColor(UIColor(white: 0.0, alpha: 0.6))
+    ]
     
     @objc func leftScreen() {
         _ = navigationController?.popViewController(animated: true)
@@ -53,14 +65,88 @@ class TripViewController: UIViewController {
         }
     }
     
-    @IBAction func shareBtn(_ sender: Any) {
+    @objc func menuButtonTapped() {
+        popUpMenu()
+    }
+    
+    func popUpMenu() {
+        var menuHeight:CGFloat = 46
+        menuHeight = CGFloat(46 * popoverMenuList.count)
+        let tableView = UITableView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width / 2, height: menuHeight))
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.isScrollEnabled = false
+        self.popover = Popover(options: self.popoverOptions)
+        self.popover.willShowHandler = {
+        }
+        self.popover.didShowHandler = {
+        }
+        self.popover.willDismissHandler = {
+        }
+        self.popover.didDismissHandler = {
+        }
+        self.popover.show(tableView, fromView: self.menuBtn)
+    }
+    
+    func share(){
         let filename = "\(self.getDocumentsDirectory())/\(fileName!).csv"
         let fileURL = URL(fileURLWithPath: filename)
         let vc = UIActivityViewController(activityItems: [fileURL], applicationActivities: [])
         self.present(vc, animated: true)
     }
     
-    @IBAction func deleteBtn(_ sender: Any) {
+    func exportGPX(){
+        let root = GPXRoot(creator: "WunderLINQ")
+        let track = GPXTrack()                          // inits a track
+        let tracksegment = GPXTrackSegment()            // inits a tracksegment
+        var trackpoints = [GPXTrackPoint]()
+        
+        var data = readDataFromCSV(fileName: "\(fileName!)", fileType: "csv")
+        data = cleanRows(file: data!)
+        var lineNumber = 0
+        let csvRows = csv(data: data!)
+        for row in csvRows{
+            if((lineNumber > 0) && (lineNumber < csvRows.count - 1)) {
+                if !(row[1].contains("No Fix") || row[2].contains("No Fix")){
+                    if let lat = row[1].toDouble(),let lon = row[2].toDouble() {
+                        let trackpoint = GPXTrackPoint(latitude: lat, longitude: lon)
+                        var dateFormat = "yyyyMMdd-HH:mm:ss"
+                        var dateFormatter: DateFormatter {
+                            let formatter = DateFormatter()
+                            formatter.dateFormat = dateFormat
+                            formatter.locale = Locale.current
+                            formatter.timeZone = TimeZone.current
+                            return formatter
+                        }
+                        let time = dateFormatter.date(from:row[0])!
+                        trackpoint.time = time // set time to current date
+                        trackpoints.append(trackpoint)
+                    }
+                } else {
+                    //no Fix
+                }
+                
+            }
+            
+            lineNumber = lineNumber + 1
+        }
+        tracksegment.add(trackpoints: trackpoints)      // adds an array of trackpoints to a track segment
+        track.add(trackSegment: tracksegment)           // adds a track segment to a track
+        root.add(track: track)                          // adds a track
+
+        let url = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0] as URL
+        do {
+            let array = fileName!.components(separatedBy: ".")
+            try root.outputToFile(saveAt: url, fileName: array[0])
+            let fileURL = url.appendingPathComponent("\(array[0]).gpx")
+            let vc = UIActivityViewController(activityItems: [fileURL], applicationActivities: [])
+            self.present(vc, animated: true)
+        } catch {
+            print(error)
+        }
+    }
+    
+    func delete(){
         let alert = UIAlertController(title: NSLocalizedString("delete_trip_alert_title", comment: ""), message: NSLocalizedString("delete_trip_alert_body", comment: ""), preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: NSLocalizedString("delete_bt", comment: ""), style: UIAlertAction.Style.default, handler: { action in
             let fileManager = FileManager.default
@@ -103,8 +189,20 @@ class TripViewController: UIViewController {
         backButtonWidth?.isActive = true
         let backButtonHeight = backButton.customView?.heightAnchor.constraint(equalToConstant: 30)
         backButtonHeight?.isActive = true
+        menuBtn = UIButton()
+        menuBtn.setImage(UIImage(named: "Menu")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        if #available(iOS 13.0, *) {
+            menuBtn.tintColor = UIColor(named: "imageTint")
+        }
+        menuBtn.addTarget(self, action: #selector(menuButtonTapped), for: .touchUpInside)
+        let menuButton = UIBarButtonItem(customView: menuBtn)
+        let menuButtonWidth = menuButton.customView?.widthAnchor.constraint(equalToConstant: 30)
+        menuButtonWidth?.isActive = true
+        let menuButtonHeight = menuButton.customView?.heightAnchor.constraint(equalToConstant: 30)
+        menuButtonHeight?.isActive = true
         self.navigationItem.title = NSLocalizedString("trip_view_title", comment: "")
         self.navigationItem.leftBarButtonItems = [backButton]
+        self.navigationItem.rightBarButtonItems = [menuButton]
         
         updateFileList()
         indexOfFileName = csvFileNames!.firstIndex(of: fileName!)
@@ -140,7 +238,7 @@ class TripViewController: UIViewController {
             }
         
             if((lineNumber > 1) && (lineNumber < csvRows.count)) {
-                if !(row[0].contains("No Fix") || row[1].contains("No Fix") || row[4].contains("No Fix")){
+                if !(row[1].contains("No Fix") || row[2].contains("No Fix") || row[4].contains("No Fix")){
                     if let lat = row[1].toDouble(),let lon = row[2].toDouble() {
                         path.add(CLLocationCoordinate2D(latitude: lat, longitude: lon))
                     }
@@ -156,7 +254,6 @@ class TripViewController: UIViewController {
                 } else {
                     //no Fix
                 }
-                
             }
             if ((lineNumber > 1) && (lineNumber < csvRows.count)) {
                 if !(row[6] == ""){
@@ -409,5 +506,39 @@ class TripViewController: UIViewController {
         } catch {
             print(error.localizedDescription)
         }
+    }
+}
+
+extension TripViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch(indexPath.row) {
+        case 0:
+            //Share
+            share()
+        case 1:
+            //Share GPX
+            exportGPX()
+        case 2:
+            //Delete
+            delete()
+        default:
+            NSLog("Unknown option")
+        }
+        self.popover.dismiss()
+    }
+    
+}
+
+extension TripViewController: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
+        return popoverMenuList.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
+        cell.textLabel?.text = self.popoverMenuList[(indexPath as NSIndexPath).row]
+        return cell
     }
 }
