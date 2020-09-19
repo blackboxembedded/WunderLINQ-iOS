@@ -122,7 +122,6 @@
 "waypoint_view_bt_nav" = "Navigate";
 "waypoint_view_bt_share" = "Share";
 "waypoint_view_bt_delete" = "Delete";
-"waypoint_view_bt_nav" = "Navigate";
 "share_gpx" = "Share GPX";
 "cancel" = "Cancel";
 "delete_waypoint_alert_title" = "Warning!";
