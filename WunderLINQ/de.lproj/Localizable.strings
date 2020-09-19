@@ -21,7 +21,7 @@
 "negative_contacts_alert_body" = "Weil Zugriff auf das Adressbuch nicht erlaubt wurde, kann diese App bei Anrufen keine Kontaktdaten anzeigen.";
 "negative_camera_alert_body" = "Weil Kamerazugriff nicht gewährt wurde, kann diese App keine Fotos oder Videos aufnehmen.";
 "negative_microphone_alert_body" = "Weil Mikrofonzugriff nicht gewährt wurde, kann diese App keine Videos aufnehmen.";
-"negative_notification_alert_body" = "Weil Benachrichtigungen nicht erlaubt wurden, kann diese App keine Fehler-Benachrichtigungen anzeigen.";
+"negative_notification_alert_body" = "Weil Benachrichtigungen nicht erlaubt wurden, kann diese App keine Fehlermeldungen anzeigen";
 "alert_message_exit_ok" = "OK";
 "negative_alert_btn_ok" = "Einstellungen öffnen";
 "negative_alert_btn_cancel" = "Abbruch";
@@ -67,7 +67,7 @@
 "version_label" = "Version:";
 "btn_sendlogs_title" = "Logdaten senden";
 "sendlogs_body" = "Bitte beschreiben Sie Ihr Problem:\n";
-"credits_label" = "Credits";
+"credits_label" = "Danksagung";
 // AlertViewController
 "alert_label_fuel" = "Zur nächsten Tankstelle navigieren?";
 "alert_title_fuel" = "Benzinstand niedrig";
@@ -231,7 +231,27 @@
 "next_service_label" = "Nächste Wartung";
 //WeatherMapViewController
 "weathermap_title" = "Wetterkarte";
-"record_audio_alert_body" = "WunderLINQ benutzt Zugriff auf das Mikrofon für den Ton bei Videoaufnahmen.";
-"contacts_alert_body" = "WunderLINQ nutzt Zugriff auf Deine Kontakte, um sie anzurufen.";
-"call_alert_body" = "WunderLINQ benutzt Zugriff auf Dein Telefon, um Anrufe zu tätigen.";
-"camera_alert_body" = "WunderLINQ nutzt Zugriff auf die Kamera, um Fotos und Videos aufzunehmen.";
+"record_audio_alert_body" = "WunderLINQ benötigt Zugriff auf das Mikrofon für den Ton bei Videoaufnahmen.";
+"contacts_alert_body" = "WunderLINQ benötigt Zugriff auf Deine Kontakte, um sie anzurufen.";
+"call_alert_body" = "WunderLINQ benötigt Zugriff auf Dein Telefon, um Anrufe zu tätigen.";
+"camera_alert_body" = "WunderLINQ benötigt Zugriff auf die Kamera, um Fotos und Videos aufzunehmen.";
+// FirstRunViewController
+"firstrun_start" = "WunderLINQ benötigt einige Zugriffsrechte, um all die coolen Funktionen der App zu ermöglichen. Auf den nächsten Seiten erklären wir, wofür sie im Einzelnen erforderlich sind.\n Wir zeigen diese Erklärungsseiten nur einmalig. Zur späteren Freischaltung einzelner Zugriffsrechte kannst Du die Android Einstellungen benutzen.";
+"reset_btn_label" = "Zurücksetzen";
+"reset_label" = "Kachel";
+"reset_header" = "Datenkacheln zurücksetzen";
+"addwaypoint_view_search_hint" = "Adresse eingeben";
+"toast_waypoint_error" = "Längen- & Breitengrade erforderlich";
+"addwaypoint_view_bt_save" = "Sichern";
+"addwaypoint_view_bt_search" = "Suchen";
+"addwaypoint_view_tv_search_label" = "Stecknadel setzen oder Adresse suchen";
+// AddWaypointViewController
+"addwaypoint_view_title" = "Wegpunkt hinzufügen";
+"waypoint_view_label_hint" = "Wegpunkt Beschreibung";
+"config_reset_label" = "Einstellungen zurücksetzen";
+"fw_version_label" = "Firmware-Version";
+"firstrun_end" = "Vielen Dank, dass Du WunderLINQ gekauft hast! Wir wünschen Dir eine sichere Fahrt.";
+"notification_alert_body" = "WunderLINQ benötigt Zugriff auf Mitteilungen, um Dir Fehler anzeigen zu können.";
+"location_alert_body" = "WunderLINQ benötigt Zugriff auf die Positionsdaten, um Wegpunkte und Fahrtaufzeichnungen zu speichern.\nDer Zugriff wird außerdem für Höhe, GPS-Geschwindigkeit und Fahrtrichtung genutzt.";
+"read_media_alert_body" = "WunderLINQ benötigt Zugriff auf die Medien-Bibliothek, um Musik abzuspielen.";
+"write_photo_alert_body" = "WunderLINQ benötigt Zugriff auf die Foto-Bibliothek um aufgenommene Fotos zu speichern.";
