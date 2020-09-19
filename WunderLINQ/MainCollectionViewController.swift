@@ -118,7 +118,8 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                          NSLocalizedString("barometric_header", comment: ""),
                          NSLocalizedString("gpsspeed_header", comment: ""),
                          NSLocalizedString("altitude_header", comment: ""),
-                         NSLocalizedString("sunrisesunset_header", comment: "")
+                         NSLocalizedString("vc set_header", comment: ""),
+                         NSLocalizedString("rpm_header", comment: "")
     ]
     
     let locationDelegate = LocationDelegate()
@@ -1130,6 +1131,9 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         case 28:
             //Sunrise/Sunset
             label = NSLocalizedString("sunrisesunset_header", comment: "")
+        case 29:
+            //RPM
+            label = NSLocalizedString("rpm_header", comment: "")
         default:
             NSLog("Unknown : \(cellDataPoint)")
         }
@@ -1228,6 +1232,9 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         case 28:
             //Sunrise/Sunset
             icon = (UIImage(named: "Sun")?.withRenderingMode(.alwaysTemplate))!
+        case 29:
+            // RPM
+            icon = (UIImage(named: "Tachometer")?.withRenderingMode(.alwaysTemplate))!
         default:
             NSLog("Unknown : \(cellDataPoint)")
         }
@@ -1785,6 +1792,14 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                     formatter.dateFormat = "HH:mm"
                 }
                 value = ("\(formatter.string(from: sunrise!))/\(formatter.string(from: sunset!))")
+            }
+        case 29:
+            //RPM
+            icon = (UIImage(named: "Tachometer")?.withRenderingMode(.alwaysTemplate))!
+            if ((motorcycleData.rpm != nil) && motorcycleData.rpm != 0) {
+                value = "\(motorcycleData.rpm!)"
+            } else {
+                value = NSLocalizedString("blank_field", comment: "")
             }
         default:
             NSLog("Unknown : \(dataPoint)")

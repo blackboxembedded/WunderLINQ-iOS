@@ -21,8 +21,12 @@ import UIKit
 import SQLite3
 import GoogleMaps
 import MapKit
+import CoreGPX
 
 class AddWaypointViewController: UIViewController, UITextFieldDelegate, GMSMapViewDelegate {
+    
+    var importFile: URL?
+    
     @IBOutlet weak var mapView: GMSMapView!
     @IBOutlet weak var addressField: UITextField!
     @IBOutlet weak var latitudeField: UITextField!
@@ -157,6 +161,39 @@ class AddWaypointViewController: UIViewController, UITextFieldDelegate, GMSMapVi
         let marker = GMSMarker()
         marker.position = CLLocationCoordinate2D(latitude: motorcycleData.getLocation().coordinate.latitude, longitude: motorcycleData.getLocation().coordinate.longitude)
         marker.map = mapView
+        
+        if (importFile != nil){
+            print("URL: " + importFile!.absoluteString)
+            let alert = UIAlertController(title: NSLocalizedString("gpx_import_alert_title", comment: ""), message: NSLocalizedString("gpx_import_alert_body", comment: ""), preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: NSLocalizedString("alert_message_exit_ok", comment: ""), style: UIAlertAction.Style.default, handler: { action in
+                guard let gpx = GPXParser(withURL: self.importFile!)?.parsedData() else { return }
+
+                // waypoints, tracks, tracksegements, trackpoints are all stored as Array depends on the amount stored in the GPX file.
+                for waypoint in gpx.waypoints {  // for loop example, every waypoint is written
+                    print(waypoint.latitude)     // prints every waypoint's latitude, etc: 1.3521, as a Double object
+                    print(waypoint.longitude)    // prints every waypoint's latitude, etc: 103.8198, as a Double object
+                    print(waypoint.time)         // prints every waypoint's date, as a Date object
+                    print(waypoint.name)         // prints every waypoint's name, as a String
+                    print(waypoint.comment)         // prints every waypoint's name, as a String
+                    
+                    self.mapView.clear()
+                    let camera: GMSCameraPosition = GMSCameraPosition.camera(withLatitude:  waypoint.latitude!, longitude: waypoint.longitude!, zoom: 15.0)
+                    self.mapView.camera = camera
+                    let marker = GMSMarker()
+                    marker.position = CLLocationCoordinate2D(latitude: waypoint.latitude!, longitude: waypoint.longitude!)
+                    marker.map = self.mapView
+                    
+                    self.saveWaypoint(lat: waypoint.latitude!,
+                                 long: waypoint.longitude!,
+                                 label: waypoint.comment ?? "",
+                                 date: waypoint.time ?? Date())
+                }
+            }))
+            alert.addAction(UIAlertAction(title: NSLocalizedString("negative_alert_btn_cancel", comment: ""), style: UIAlertAction.Style.cancel, handler: { action in
+            }))
+            self.present(alert, animated: true, completion: nil)
+            
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -206,66 +243,75 @@ class AddWaypointViewController: UIViewController, UITextFieldDelegate, GMSMapVi
     
     @IBAction func savePressed(_ sender: Any) {
         if (latitudeField.text != "" && longitudeField.text != ""){
-            var db: OpaquePointer?
-            let databaseURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
-                .appendingPathComponent("waypoints.sqlite")
-            //opening the database
-            if sqlite3_open(databaseURL.path, &db) != SQLITE_OK {
-                print("error opening database")
-            }
-            
-            //creating table
-            if sqlite3_exec(db, "CREATE TABLE IF NOT EXISTS records (id INTEGER PRIMARY KEY AUTOINCREMENT, date TEXT, latitude TEXT, longitude TEXT, label TEXT)", nil, nil, nil) != SQLITE_OK {
-                let errmsg = String(cString: sqlite3_errmsg(db)!)
-                print("error creating table: \(errmsg)")
-            }
-            
-            //creating a statement
-            var stmt: OpaquePointer?
-
-            //the insert query
-            let queryString = "INSERT INTO records (date, latitude, longitude, label) VALUES (?,?,?,?)"
-            
-            //preparing the query
-            if sqlite3_prepare(db, queryString, -1, &stmt, nil) != SQLITE_OK{
-                let errmsg = String(cString: sqlite3_errmsg(db)!)
-                print("error preparing insert: \(errmsg)")
-                return
-            }
-            
-            let date = Date().toString() as NSString
-            let label : String = labelField.text ?? ""
-            
-            if sqlite3_bind_text(stmt, 1, date.utf8String, -1, nil) != SQLITE_OK{
-                let errmsg = String(cString: sqlite3_errmsg(db)!)
-                print("failure binding name: \(errmsg)")
-                return
-            }
-            if sqlite3_bind_double(stmt, 2, (Double(latitudeField!.text ?? "0.0")!)) != SQLITE_OK{
-                let errmsg = String(cString: sqlite3_errmsg(db)!)
-                print("failure binding name: \(errmsg)")
-                return
-            }
-            if sqlite3_bind_double(stmt, 3, (Double(longitudeField!.text ?? "0.0")!)) != SQLITE_OK{
-                let errmsg = String(cString: sqlite3_errmsg(db)!)
-                print("failure binding name: \(errmsg)")
-                return
-            }
-            if sqlite3_bind_text(stmt, 4, label, -1, nil) != SQLITE_OK{
-                let errmsg = String(cString: sqlite3_errmsg(db)!)
-                print("failure binding name: \(errmsg)")
-                return
-            }
-            
-            //executing the query to insert values
-            if sqlite3_step(stmt) != SQLITE_DONE {
-                let errmsg = String(cString: sqlite3_errmsg(db)!)
-                print("failure inserting wapoint: \(errmsg)")
-                return
-            }
+            saveWaypoint(lat: (Double(latitudeField!.text ?? "0.0")!),
+                         long: (Double(longitudeField!.text ?? "0.0")!),
+                         label: labelField.text ?? "",
+                         date: Date())
             self.showToast(message: NSLocalizedString("toast_waypoint_saved", comment: ""))
         } else {
             self.showToast(message: NSLocalizedString("toast_waypoint_error", comment: ""))
+        }
+    }
+    
+    func saveWaypoint(lat: Double, long: Double, label: String, date: Date?){
+        var db: OpaquePointer?
+        let databaseURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+            .appendingPathComponent("waypoints.sqlite")
+        //opening the database
+        if sqlite3_open(databaseURL.path, &db) != SQLITE_OK {
+            print("error opening database")
+        }
+        
+        //creating table
+        if sqlite3_exec(db, "CREATE TABLE IF NOT EXISTS records (id INTEGER PRIMARY KEY AUTOINCREMENT, date TEXT, latitude TEXT, longitude TEXT, label TEXT)", nil, nil, nil) != SQLITE_OK {
+            let errmsg = String(cString: sqlite3_errmsg(db)!)
+            print("error creating table: \(errmsg)")
+        }
+        
+        //creating a statement
+        var stmt: OpaquePointer?
+
+        //the insert query
+        let queryString = "INSERT INTO records (date, latitude, longitude, label) VALUES (?,?,?,?)"
+        
+        //preparing the query
+        if sqlite3_prepare(db, queryString, -1, &stmt, nil) != SQLITE_OK{
+            let errmsg = String(cString: sqlite3_errmsg(db)!)
+            print("error preparing insert: \(errmsg)")
+            return
+        }
+        
+        var timestamp = Date().toString() as NSString
+        if (date != nil){
+            timestamp = (date?.toString())! as NSString
+        }
+        
+        if sqlite3_bind_text(stmt, 1, timestamp.utf8String, -1, nil) != SQLITE_OK{
+            let errmsg = String(cString: sqlite3_errmsg(db)!)
+            print("failure binding name: \(errmsg)")
+            return
+        }
+        if sqlite3_bind_double(stmt, 2, lat) != SQLITE_OK{
+            let errmsg = String(cString: sqlite3_errmsg(db)!)
+            print("failure binding name: \(errmsg)")
+            return
+        }
+        if sqlite3_bind_double(stmt, 3, long) != SQLITE_OK{
+            let errmsg = String(cString: sqlite3_errmsg(db)!)
+            print("failure binding name: \(errmsg)")
+            return
+        }
+        if sqlite3_bind_text(stmt, 4, label, -1, nil) != SQLITE_OK{
+            let errmsg = String(cString: sqlite3_errmsg(db)!)
+            print("failure binding name: \(errmsg)")
+            return
+        }
+        
+        //executing the query to insert values
+        if sqlite3_step(stmt) != SQLITE_DONE {
+            let errmsg = String(cString: sqlite3_errmsg(db)!)
+            print("failure inserting wapoint: \(errmsg)")
+            return
         }
     }
 }

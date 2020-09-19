@@ -175,22 +175,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         UIScreen.main.brightness = CGFloat(UserDefaults.standard.float(forKey: "systemBrightness"))
     }
     
-    func application(_ application: UIApplication,
-                     open url: URL,
-                     options: [UIApplication.OpenURLOptionsKey : Any] = [:] ) -> Bool {
+    func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:] ) -> Bool {
         
         // Determine who sent the URL.
         let sendingAppID = options[.sourceApplication]
         print("source application:  \(sendingAppID ?? "Unknown")")
         print("URL: " + url.absoluteString)
-        let parameters = spotifyAppRemote.authorizationParameters(from: url);
+        print("Scheme: \(url.scheme ?? "wunderlinq")")
+        if (url.scheme == "file"){
+            //Check if GPX file and import
+            print("File URL sent")
+            let rootViewController = self.window!.rootViewController as! UINavigationController
+            let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let addWaypointViewController = mainStoryboard.instantiateViewController(withIdentifier: "addWaypoint") as! AddWaypointViewController
+            addWaypointViewController.importFile = url
+            rootViewController.pushViewController(addWaypointViewController, animated: true)
+            
+        } else {
+            let parameters = spotifyAppRemote.authorizationParameters(from: url);
 
-        if let access_token = parameters?[SPTAppRemoteAccessTokenKey] {
-            spotifyAppRemote.connectionParameters.accessToken = access_token
-            self.spotifyAccessToken = access_token
-        } else if let error_description = parameters?[SPTAppRemoteErrorDescriptionKey] {
-            print("AppDelegate Spotify Error: " + error_description)
-            musicViewController.showError(error_description)
+            if let access_token = parameters?[SPTAppRemoteAccessTokenKey] {
+                spotifyAppRemote.connectionParameters.accessToken = access_token
+                self.spotifyAccessToken = access_token
+            } else if let error_description = parameters?[SPTAppRemoteErrorDescriptionKey] {
+                print("AppDelegate Spotify Error: " + error_description)
+                musicViewController.showError(error_description)
+            }
         }
         
         return true

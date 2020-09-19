@@ -42,3 +42,4 @@
 "altitude_header" = "Altitude";
 "gpsspeed_header" = "GPS Speed";
 "sunrisesunset_header" = "Sunrise/Sunset";
+"rpm_header" = "RPM";

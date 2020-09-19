@@ -137,6 +137,8 @@
 "addwaypoint_view_bt_save" = "Save";
 "toast_waypoint_error" = "Latitude & Longitude Required";
 "addwaypoint_view_search_hint" = "Type Address";
+"gpx_import_alert_title" = "GPX Import";
+"gpx_import_alert_body" = "Import waypoints from GPX?";
 // CompassViewController
 "compass_title" = "Compass";
 "north" = "N";
@@ -208,6 +210,7 @@
 "bearing_header" = "Bearing";
 "barometric_header" = "Barometer";
 "sunrisesunset_header" = "Sunrise/Sunset";
+"rpm_header" = "RPM";
 // ContactsTableViewController
 "contactlist_title" = "Contacts";
 // WaypointsNavTableViewController

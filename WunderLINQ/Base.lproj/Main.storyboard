@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Fp2-Ey-Ypo">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Fp2-Ey-Ypo">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -20,7 +21,7 @@
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" restorationIdentifier="MainCollectionVC" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="DFb-XX-n1q">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="591"/>
-                                <color key="backgroundColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="backgroundColor" systemColor="labelColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="iyU-Dx-uZ6">
                                     <size key="itemSize" width="66" height="70"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -57,7 +58,7 @@
                                                 </label>
                                             </subviews>
                                         </view>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="4ot-xt-lZn" secondAttribute="trailing" id="2N9-3H-eyi"/>
                                             <constraint firstItem="st8-4c-dmF" firstAttribute="top" secondItem="amu-te-ZZs" secondAttribute="top" constant="4" id="4Ll-7D-ZEx"/>
@@ -80,14 +81,14 @@
                                 </cells>
                             </collectionView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="cbE-Dn-tYJ"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="DFb-XX-n1q" firstAttribute="leading" secondItem="cbE-Dn-tYJ" secondAttribute="leading" id="Cl2-Wc-0iE"/>
                             <constraint firstItem="DFb-XX-n1q" firstAttribute="trailing" secondItem="cbE-Dn-tYJ" secondAttribute="trailing" id="jAF-uA-0yM"/>
                             <constraint firstItem="DFb-XX-n1q" firstAttribute="bottom" secondItem="cbE-Dn-tYJ" secondAttribute="bottom" id="vFZ-VQ-tEj"/>
                             <constraint firstItem="DFb-XX-n1q" firstAttribute="top" secondItem="LeD-DA-8o8" secondAttribute="top" id="xcy-6N-95x"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="cbE-Dn-tYJ"/>
                     </view>
                     <navigationItem key="navigationItem" title="Motorcycle" id="eWq-dV-zOi"/>
                     <connections>
@@ -114,7 +115,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A5I-Ms-I7Z" customClass="LocalisableButton" customModule="WunderLINQ" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A5I-Ms-I7Z" customClass="LocalisableButton" customModule="WunderLINQ" customModuleProvider="target">
                                 <rect key="frame" x="16" y="605" width="343" height="46"/>
                                 <color key="backgroundColor" name="imageTint"/>
                                 <constraints>
@@ -144,7 +145,8 @@
                                 <rect key="frame" x="16" y="25" width="343" height="75"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="8Cr-GI-CzD"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="YD2-nw-Fpx" firstAttribute="top" secondItem="8Cr-GI-CzD" secondAttribute="top" constant="25" id="0oW-9H-5Lz"/>
                             <constraint firstItem="YD2-nw-Fpx" firstAttribute="leading" secondItem="8Cr-GI-CzD" secondAttribute="leading" constant="16" id="47f-sI-1eL"/>
@@ -157,7 +159,6 @@
                             <constraint firstItem="8Cr-GI-CzD" firstAttribute="trailing" secondItem="YD2-nw-Fpx" secondAttribute="trailing" constant="16" id="pTM-8L-GrM"/>
                             <constraint firstItem="A5I-Ms-I7Z" firstAttribute="top" secondItem="BDT-Xy-uU6" secondAttribute="bottom" constant="16" id="sxY-s2-1YC"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="8Cr-GI-CzD"/>
                     </view>
                     <connections>
                         <outlet property="messageTextField" destination="BDT-Xy-uU6" id="iI9-kj-JWS"/>
@@ -310,6 +311,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="5fS-RO-wSG"/>
                         <color key="backgroundColor" name="backgrounds"/>
                         <constraints>
                             <constraint firstItem="tEo-Bc-Q4M" firstAttribute="top" secondItem="Brq-vS-Qob" secondAttribute="bottom" constant="8" id="1Ob-LA-NkB"/>
@@ -344,7 +346,6 @@
                             <constraint firstItem="tEo-Bc-Q4M" firstAttribute="top" secondItem="Brq-vS-Qob" secondAttribute="bottom" constant="8" id="wNW-48-Hdr"/>
                             <constraint firstItem="Brq-vS-Qob" firstAttribute="top" secondItem="tZd-Kw-xg4" secondAttribute="bottom" constant="8" id="xw5-ge-Vr8"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="5fS-RO-wSG"/>
                     </view>
                     <navigationItem key="navigationItem" id="fyD-2O-zve"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
@@ -378,6 +379,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="gHP-w0-dFs"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="xBm-3o-5aH" firstAttribute="leading" secondItem="gHP-w0-dFs" secondAttribute="leading" id="6nb-xM-VEs"/>
@@ -385,7 +387,6 @@
                             <constraint firstItem="gHP-w0-dFs" firstAttribute="bottom" secondItem="xBm-3o-5aH" secondAttribute="bottom" id="orf-yu-fG1"/>
                             <constraint firstItem="gHP-w0-dFs" firstAttribute="trailing" secondItem="xBm-3o-5aH" secondAttribute="trailing" id="sIh-tg-3fS"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="gHP-w0-dFs"/>
                     </view>
                     <navigationItem key="navigationItem" id="xsM-zr-Iwi"/>
                     <connections>
@@ -418,7 +419,7 @@
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7h2-4R-M5d">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="25"/>
-                                        <color key="tintColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="tintColor" systemColor="labelColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="25" id="yre-vE-Dnx"/>
                                         </constraints>
@@ -428,21 +429,21 @@
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MHP-fk-xUy">
                                         <rect key="frame" x="0.0" y="25" width="375" height="25"/>
-                                        <color key="tintColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="tintColor" systemColor="labelColor"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ojS-iD-NCF">
                                         <rect key="frame" x="0.0" y="50" width="375" height="25"/>
-                                        <color key="tintColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="tintColor" systemColor="labelColor"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ENe-lL-dLJ">
                                         <rect key="frame" x="0.0" y="75" width="375" height="25"/>
-                                        <color key="tintColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="tintColor" systemColor="labelColor"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -452,7 +453,7 @@
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vsu-t3-FAz">
                                                 <rect key="frame" x="0.0" y="0.0" width="125" height="172"/>
-                                                <color key="tintColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <color key="tintColor" systemColor="labelColor"/>
                                                 <state key="normal" image="playback_back"/>
                                                 <connections>
                                                     <action selector="lastButton:" destination="p6n-wZ-mMa" eventType="touchUpInside" id="AHf-FW-rrk"/>
@@ -463,7 +464,7 @@
                                                 <accessibility key="accessibilityConfiguration">
                                                     <accessibilityTraits key="traits" button="YES" summaryElement="YES"/>
                                                 </accessibility>
-                                                <color key="tintColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <color key="tintColor" systemColor="labelColor"/>
                                                 <state key="normal" image="playback_play"/>
                                                 <connections>
                                                     <action selector="playButton:" destination="p6n-wZ-mMa" eventType="touchUpInside" id="zrO-H3-A4V"/>
@@ -471,7 +472,7 @@
                                             </button>
                                             <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kxB-1t-Lm7">
                                                 <rect key="frame" x="250" y="0.0" width="125" height="172"/>
-                                                <color key="tintColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <color key="tintColor" systemColor="labelColor"/>
                                                 <state key="normal" image="playback_forward"/>
                                                 <connections>
                                                     <action selector="nextButton:" destination="p6n-wZ-mMa" eventType="touchUpInside" id="OHU-u9-qfP"/>
@@ -492,7 +493,8 @@
                                 </constraints>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="7Zv-aa-Udi"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="9KV-8n-ffM" firstAttribute="leading" secondItem="7Zv-aa-Udi" secondAttribute="leading" id="8Zd-Fq-5er"/>
                             <constraint firstItem="7Zv-aa-Udi" firstAttribute="bottom" secondItem="9kl-zc-Jc0" secondAttribute="bottom" id="C6C-Cn-Lty">
@@ -515,7 +517,6 @@
                             <constraint firstItem="9KV-8n-ffM" firstAttribute="top" secondItem="cl2-HO-wNM" secondAttribute="top" id="kFe-Mf-mfc"/>
                             <constraint firstItem="9kl-zc-Jc0" firstAttribute="bottom" secondItem="7Zv-aa-Udi" secondAttribute="bottom" id="rQm-UZ-HkA"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="7Zv-aa-Udi"/>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="C6C-Cn-Lty"/>
@@ -701,7 +702,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ch1-dL-bp2" customClass="LocalisableButton" customModule="WunderLINQ" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ch1-dL-bp2" customClass="LocalisableButton" customModule="WunderLINQ" customModuleProvider="target">
                                 <rect key="frame" x="16" y="591" width="167.5" height="36"/>
                                 <color key="backgroundColor" name="imageTint"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
@@ -715,7 +716,7 @@
                                     <action selector="closeBtn:" destination="gJo-MW-rva" eventType="touchUpInside" id="NE6-Dx-IZW"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o4A-v0-HaT" customClass="LocalisableButton" customModule="WunderLINQ" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o4A-v0-HaT" customClass="LocalisableButton" customModule="WunderLINQ" customModuleProvider="target">
                                 <rect key="frame" x="191.5" y="591" width="167.5" height="36"/>
                                 <color key="backgroundColor" name="imageTint"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
@@ -736,6 +737,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="Msr-4U-mAY"/>
                         <color key="backgroundColor" name="backgrounds"/>
                         <constraints>
                             <constraint firstItem="Ch1-dL-bp2" firstAttribute="leading" secondItem="Msr-4U-mAY" secondAttribute="leading" constant="16" id="102-fv-MoI"/>
@@ -748,7 +750,6 @@
                             <constraint firstItem="pNL-mh-mKe" firstAttribute="leading" secondItem="Msr-4U-mAY" secondAttribute="leading" constant="16" id="y0Z-wK-wma"/>
                             <constraint firstItem="o4A-v0-HaT" firstAttribute="width" secondItem="Ch1-dL-bp2" secondAttribute="width" id="zhx-Cx-OKh"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="Msr-4U-mAY"/>
                     </view>
                     <navigationItem key="navigationItem" id="h9t-JR-1oL"/>
                     <connections>
@@ -842,7 +843,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="591"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fZ3-Aw-NNr" customClass="LocalisableButton" customModule="WunderLINQ" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fZ3-Aw-NNr" customClass="LocalisableButton" customModule="WunderLINQ" customModuleProvider="target">
                                 <rect key="frame" x="16" y="533" width="343" height="42"/>
                                 <color key="backgroundColor" name="imageTint"/>
                                 <fontDescription key="fontDescription" type="system" weight="black" pointSize="25"/>
@@ -856,7 +857,7 @@
                                     <action selector="savePressed:" destination="IU4-xr-4Bd" eventType="touchUpInside" id="xrE-vH-dSq"/>
                                 </connections>
                             </button>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YMW-LY-so9" customClass="LocalisableButton" customModule="WunderLINQ" customModuleProvider="target">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YMW-LY-so9" customClass="LocalisableButton" customModule="WunderLINQ" customModuleProvider="target">
                                 <rect key="frame" x="16" y="483" width="343" height="42"/>
                                 <color key="backgroundColor" name="imageTint"/>
                                 <fontDescription key="fontDescription" type="system" weight="black" pointSize="25"/>
@@ -917,6 +918,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="swJ-Ex-qo7"/>
                         <color key="backgroundColor" name="backgrounds"/>
                         <constraints>
                             <constraint firstItem="swJ-Ex-qo7" firstAttribute="bottom" secondItem="fZ3-Aw-NNr" secondAttribute="bottom" constant="16" id="1bL-Dn-TkO"/>
@@ -945,7 +947,6 @@
                             <constraint firstItem="tOE-xh-XqU" firstAttribute="top" secondItem="28g-4k-ANb" secondAttribute="bottom" constant="16" id="tpe-Vg-9xC"/>
                             <constraint firstItem="mPy-4d-rgO" firstAttribute="leading" secondItem="swJ-Ex-qo7" secondAttribute="leading" constant="16" id="xah-OH-rSD"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="swJ-Ex-qo7"/>
                     </view>
                     <navigationItem key="navigationItem" title="HW Settings" id="7LV-34-HmO"/>
                     <connections>
@@ -1105,6 +1106,7 @@
                                 </constraints>
                             </view>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="Owe-1S-g4I"/>
                         <color key="backgroundColor" name="backgrounds"/>
                         <constraints>
                             <constraint firstItem="F4h-OO-sSs" firstAttribute="centerY" secondItem="Owe-1S-g4I" secondAttribute="centerY" id="HtX-DI-gBN"/>
@@ -1112,7 +1114,6 @@
                             <constraint firstItem="F4h-OO-sSs" firstAttribute="leading" secondItem="Owe-1S-g4I" secondAttribute="leading" id="fTW-lz-odN"/>
                             <constraint firstItem="F4h-OO-sSs" firstAttribute="trailing" secondItem="Owe-1S-g4I" secondAttribute="trailing" id="hue-aR-6Rm"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="Owe-1S-g4I"/>
                     </view>
                     <navigationItem key="navigationItem" id="4Yd-Ro-Vbg"/>
                     <connections>
@@ -1321,7 +1322,7 @@ Icons from fontawesome.com
                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="10"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y9o-7f-NQI">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y9o-7f-NQI">
                                 <rect key="frame" x="0.0" y="125" width="375" height="33"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="Black Box Embedded, LLC">
@@ -1331,7 +1332,7 @@ Icons from fontawesome.com
                                     <action selector="corpNameBtnPressed:" destination="BZZ-xV-I8u" eventType="touchUpInside" id="yxM-Oa-kmV"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mYb-5h-qZC" customClass="LocalisableButton" customModule="WunderLINQ" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mYb-5h-qZC" customClass="LocalisableButton" customModule="WunderLINQ" customModuleProvider="target">
                                 <rect key="frame" x="16" y="174" width="343" height="30"/>
                                 <color key="backgroundColor" name="imageTint"/>
                                 <state key="normal" title="Send Logs">
@@ -1345,6 +1346,7 @@ Icons from fontawesome.com
                                 </connections>
                             </button>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="XEV-0z-jeW"/>
                         <color key="backgroundColor" name="backgrounds"/>
                         <constraints>
                             <constraint firstItem="Y9o-7f-NQI" firstAttribute="leading" secondItem="XEV-0z-jeW" secondAttribute="leading" id="3Bj-5r-VTi"/>
@@ -1367,7 +1369,6 @@ Icons from fontawesome.com
                             <constraint firstItem="bpB-n7-PMj" firstAttribute="top" secondItem="mYb-5h-qZC" secondAttribute="bottom" constant="16" id="soM-7a-YFa"/>
                             <constraint firstItem="XEV-0z-jeW" firstAttribute="trailing" secondItem="mYb-5h-qZC" secondAttribute="trailing" constant="16" id="tAc-nY-XKH"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="XEV-0z-jeW"/>
                     </view>
                     <navigationItem key="navigationItem" title="About" id="Ld0-5t-QtT"/>
                     <connections>
@@ -1462,7 +1463,7 @@ Icons from fontawesome.com
                                     <userDefinedRuntimeAttribute type="string" keyPath="localisedKey" value="reset_header"/>
                                 </userDefinedRuntimeAttributes>
                             </label>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="67l-FF-Zqt" customClass="LocalisableButton" customModule="WunderLINQ" customModuleProvider="target">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="67l-FF-Zqt" customClass="LocalisableButton" customModule="WunderLINQ" customModuleProvider="target">
                                 <rect key="frame" x="16" y="301" width="343" height="42"/>
                                 <color key="backgroundColor" name="imageTint"/>
                                 <fontDescription key="fontDescription" type="system" weight="black" pointSize="25"/>
@@ -1477,6 +1478,7 @@ Icons from fontawesome.com
                                 </connections>
                             </button>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="VQq-iJ-w26"/>
                         <color key="backgroundColor" name="backgrounds"/>
                         <constraints>
                             <constraint firstItem="BjM-1S-d7N" firstAttribute="leading" secondItem="VQq-iJ-w26" secondAttribute="leading" constant="16" id="1gE-R1-rwy"/>
@@ -1519,7 +1521,6 @@ Icons from fontawesome.com
                             <constraint firstItem="67l-FF-Zqt" firstAttribute="top" secondItem="BjM-1S-d7N" secondAttribute="bottom" constant="16" id="vvg-2L-6KE"/>
                             <constraint firstAttribute="trailing" secondItem="7iQ-8R-xc5" secondAttribute="trailing" constant="16" id="wRL-T2-lRS"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="VQq-iJ-w26"/>
                     </view>
                     <navigationItem key="navigationItem" id="rlp-vc-cku"/>
                     <connections>
@@ -1720,6 +1721,7 @@ Icons from fontawesome.com
                                 </userDefinedRuntimeAttributes>
                             </label>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="Ebu-49-RUF"/>
                         <color key="backgroundColor" name="backgrounds"/>
                         <constraints>
                             <constraint firstItem="xwo-hG-jpT" firstAttribute="leading" secondItem="x1d-vH-HuA" secondAttribute="trailing" constant="8" id="0q2-rF-iYp"/>
@@ -1775,7 +1777,6 @@ Icons from fontawesome.com
                             <constraint firstItem="rP8-SI-D3M" firstAttribute="leading" secondItem="s0y-qf-aoG" secondAttribute="trailing" constant="8" id="yf8-cd-NZl"/>
                             <constraint firstItem="Ebu-49-RUF" firstAttribute="trailing" secondItem="S0R-bS-23A" secondAttribute="trailing" constant="16" id="zQJ-Wi-7oh"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="Ebu-49-RUF"/>
                     </view>
                     <navigationItem key="navigationItem" id="CDr-cP-Ape"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
@@ -1818,7 +1819,7 @@ Icons from fontawesome.com
         <!--Add Waypoint-->
         <scene sceneID="Tp3-eW-f3T">
             <objects>
-                <viewController title="Add Waypoint" id="TYg-xK-io3" customClass="AddWaypointViewController" customModule="WunderLINQ" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="addWaypoint" title="Add Waypoint" id="TYg-xK-io3" customClass="AddWaypointViewController" customModule="WunderLINQ" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nn4-Yi-alS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1866,7 +1867,7 @@ Icons from fontawesome.com
                                 <fontDescription key="fontDescription" type="system" weight="black" pointSize="13"/>
                                 <textInputTraits key="textInputTraits" spellCheckingType="yes" returnKeyType="done"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MfF-Sk-x7G" customClass="LocalisableButton" customModule="WunderLINQ" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MfF-Sk-x7G" customClass="LocalisableButton" customModule="WunderLINQ" customModuleProvider="target">
                                 <rect key="frame" x="16" y="577" width="343" height="30"/>
                                 <color key="backgroundColor" name="imageTint"/>
                                 <fontDescription key="fontDescription" type="system" weight="black" pointSize="15"/>
@@ -1907,7 +1908,7 @@ Icons from fontawesome.com
                                     <userDefinedRuntimeAttribute type="string" keyPath="localisedKey" value="addwaypoint_view_tv_search_label"/>
                                 </userDefinedRuntimeAttributes>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PLG-9j-yeG" customClass="LocalisableButton" customModule="WunderLINQ" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PLG-9j-yeG" customClass="LocalisableButton" customModule="WunderLINQ" customModuleProvider="target">
                                 <rect key="frame" x="16" y="379" width="343" height="30"/>
                                 <color key="backgroundColor" name="imageTint"/>
                                 <fontDescription key="fontDescription" type="system" weight="black" pointSize="15"/>
@@ -1932,6 +1933,7 @@ Icons from fontawesome.com
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numbersAndPunctuation" returnKeyType="done" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                             </textField>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="tjS-Q3-OJk"/>
                         <color key="backgroundColor" name="backgrounds"/>
                         <constraints>
                             <constraint firstItem="AGm-Rv-H8Z" firstAttribute="leading" secondItem="yzz-gh-IN1" secondAttribute="trailing" constant="8" id="3S6-6w-5p7"/>
@@ -1973,7 +1975,6 @@ Icons from fontawesome.com
                             <constraint firstItem="Ghf-QM-MBk" firstAttribute="height" secondItem="3wm-bF-cHm" secondAttribute="height" id="xzT-Ba-TJ4"/>
                             <constraint firstItem="kIm-5b-h9N" firstAttribute="top" secondItem="PJ4-78-Jr7" secondAttribute="bottom" constant="8" id="zEs-Nw-KXX"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="tjS-Q3-OJk"/>
                     </view>
                     <navigationItem key="navigationItem" id="nA4-jY-0rd"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
@@ -1993,7 +1994,7 @@ Icons from fontawesome.com
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="gIM-fx-mWk"/>
+        <segue reference="U8S-hb-Idp"/>
         <segue reference="end-im-meh"/>
         <segue reference="qQx-7G-0NR"/>
         <segue reference="1ij-RL-89b"/>
@@ -2017,5 +2018,11 @@ Icons from fontawesome.com
         <namedColor name="imageTint">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>
