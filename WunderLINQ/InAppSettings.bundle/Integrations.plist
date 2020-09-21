@@ -24,6 +24,7 @@
 				<integer>6</integer>
 				<integer>7</integer>
                 <integer>8</integer>
+                <integer>9</integer>
 			</array>
 			<key>Titles</key>
 			<array>
@@ -36,6 +37,7 @@
 				<string>nav_app_osmand</string>
 				<string>nav_app_here</string>
                 <string>nav_app_tomtomgo</string>
+                <string>nav_app_inroute</string>
 			</array>
 		</dict>
 		<dict>

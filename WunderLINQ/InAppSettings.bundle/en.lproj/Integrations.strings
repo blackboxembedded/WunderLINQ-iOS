@@ -8,6 +8,7 @@
 "nav_app_osmand" = "OsmAnd";
 "nav_app_here" = "HERE WeGo";
 "nav_app_tomtomgo" = "TomTom GO";
+"nav_app_inroute" = "inRoute";
 "pref_actioncam_title" = "Action Camera";
 "actioncam_none" = "None";
 "actioncam_hero3" = "Hero3";

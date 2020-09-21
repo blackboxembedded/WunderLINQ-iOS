@@ -67,6 +67,7 @@
 		<string>here-route</string>
 		<string>here-location</string>
 		<string>tomtomgo</string>
+		<string>inroute</string>
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
