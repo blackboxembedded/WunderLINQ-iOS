@@ -2149,6 +2149,12 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             
         case 0x06:
             //print("Message ID: 6")
+            //RPM
+            if ((lastMessage[1] != 0xFF) && (lastMessage[2] != 0xFF)){
+                let rpm = ((Double(lastMessage[1]) + (Double(lastMessage[2] & 0x0F) * 255)) * 5)
+                motorcycleData.setRPM(rpm: Int16(rpm))
+            }
+            
             // Gear
             var gear = "-"
             switch (lastMessage[2] >> 4) & 0x0F {

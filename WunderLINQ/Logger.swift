@@ -351,7 +351,7 @@ class Logger {
             }
             var rpm:String = ""
             if motorcycleData.rpm != nil {
-                let rpmValue:Int = motorcycleData.rpm!
+                let rpmValue:Int16 = motorcycleData.rpm!
                 rpm = "\(rpmValue)"
             }
             

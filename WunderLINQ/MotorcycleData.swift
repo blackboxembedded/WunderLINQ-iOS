@@ -51,7 +51,7 @@ class MotorcycleData {
     var bearing: Int?
     var time: Date?
     var barometricPressure: Double?
-    var rpm: Int? = 0
+    var rpm: Int16? = 0
     
     func setLocation(location: CLLocation?){
         self.location = location
@@ -263,10 +263,10 @@ class MotorcycleData {
         return self.barometricPressure!
     }
     
-    func setRPM(rpm: Int?){
+    func setRPM(rpm: Int16?){
         self.rpm = rpm
     }
-    func getRPM() -> Int{
+    func getRPM() -> Int16{
         return self.rpm!
     }
     
