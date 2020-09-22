@@ -71,6 +71,8 @@
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>LSSupportsOpeningDocumentsInPlace</key>
+	<true/>
 	<key>NSAppleMusicUsageDescription</key>
 	<string>$(PRODUCT_NAME) needs access to your media library for music playback.</string>
 	<key>NSBluetoothAlwaysUsageDescription</key>
@@ -153,7 +155,5 @@
 			</dict>
 		</dict>
 	</array>
-    <key>LSSupportsOpeningDocumentsInPlace</key>
-    <true/>
 </dict>
 </plist>
