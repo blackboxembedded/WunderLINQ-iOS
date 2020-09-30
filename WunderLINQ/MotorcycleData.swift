@@ -52,6 +52,7 @@ class MotorcycleData {
     var time: Date?
     var barometricPressure: Double?
     var rpm: Int16? = 0
+    var leanAngleBike: Double?
     
     func setLocation(location: CLLocation?){
         self.location = location
@@ -270,6 +271,13 @@ class MotorcycleData {
         return self.rpm!
     }
     
+    func setleanAngleBike(leanAngleBike: Double?){
+        self.leanAngleBike = leanAngleBike
+    }
+    func getleanAngleBike() -> Double{
+        return self.leanAngleBike!
+    }
+    
     func clear(){
         self.frontTirePressure = nil
         self.rearTirePressure = nil
@@ -296,5 +304,6 @@ class MotorcycleData {
         self.gForce = nil
         self.bearing = nil
         self.rpm = 0
+        self.leanAngleBike = nil
     }
 }

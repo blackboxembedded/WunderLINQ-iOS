@@ -75,6 +75,7 @@ class Logger {
                 let bearingHeader = NSLocalizedString("bearing_header", comment: "")
                 let barometricPressureHeader = NSLocalizedString("barometric_header", comment: "")
                 let rpmHeader = NSLocalizedString("rpm_header", comment: "")
+                let leanAngleBikeHeader = NSLocalizedString("leanangle_bike_header", comment: "")
                 
                 // Update main display
                 var temperatureUnit = "C"
@@ -118,7 +119,7 @@ class Logger {
                     print("Unknown consumption unit setting")
                 }
                 
-                let header = "\(dateHeader),\(latitudeHeader),\(longitudeHeader),\(altitudeHeader) (\(altitudeUnit)),\(gpsSpeedHeader) (\(speedUnit)),\(gearHeader),\(engineTemperatureHeader) (\(temperatureUnit)),\(ambientTemperatureHeader) (\(temperatureUnit)),\(frontPressureHeader) (\(pressureUnit)),\(rearPressureHeader) (\(pressureUnit)),\(odometerHeader) (\(distanceUnit)),\(voltageHeader) (V),\(throttlePositionHeader) (%),\(frontBrakesHeader),\(rearBrakesHeader),\(shiftsHeader),\(vinHeader),\(ambientLightHeader),\(tripOneHeader) (\(distanceUnit)),\(tripTwoHeader) (\(distanceUnit)),\(tripAutoHeader) (\(distanceUnit)),\(speedHeader) (\(speedUnit)),\(averageSpeedHeader) (\(speedUnit)),\(currentConsumptionHeader) (\(consumptionUnit)),\(fuelEconomyOneHeader) (\(consumptionUnit)),\(fuelEconomyTwoHeader) (\(consumptionUnit)),\(fuelRangeHeader) (\(distanceUnit)),\(leanAngleHeader),\(gForceHeader),\(bearingHeader),\(barometricPressureHeader) (kPa),\(rpmHeader)"
+                let header = "\(dateHeader),\(latitudeHeader),\(longitudeHeader),\(altitudeHeader) (\(altitudeUnit)),\(gpsSpeedHeader) (\(speedUnit)),\(gearHeader),\(engineTemperatureHeader) (\(temperatureUnit)),\(ambientTemperatureHeader) (\(temperatureUnit)),\(frontPressureHeader) (\(pressureUnit)),\(rearPressureHeader) (\(pressureUnit)),\(odometerHeader) (\(distanceUnit)),\(voltageHeader) (V),\(throttlePositionHeader) (%),\(frontBrakesHeader),\(rearBrakesHeader),\(shiftsHeader),\(vinHeader),\(ambientLightHeader),\(tripOneHeader) (\(distanceUnit)),\(tripTwoHeader) (\(distanceUnit)),\(tripAutoHeader) (\(distanceUnit)),\(speedHeader) (\(speedUnit)),\(averageSpeedHeader) (\(speedUnit)),\(currentConsumptionHeader) (\(consumptionUnit)),\(fuelEconomyOneHeader) (\(consumptionUnit)),\(fuelEconomyTwoHeader) (\(consumptionUnit)),\(fuelRangeHeader) (\(distanceUnit)),\(leanAngleHeader),\(gForceHeader),\(bearingHeader),\(barometricPressureHeader) (kPa),\(rpmHeader),\(leanAngleBikeHeader)"
                 formattedEntry = header
                 do {
                     // Write to log
@@ -354,8 +355,13 @@ class Logger {
                 let rpmValue:Int16 = motorcycleData.rpm!
                 rpm = "\(rpmValue)"
             }
+            var leanAngleBike:String = ""
+            if motorcycleData.leanAngleBike != nil {
+                let leanAngleBikeValue:Double = motorcycleData.leanAngleBike!
+                leanAngleBike = "\(leanAngleBikeValue.rounded(toPlaces: 1))"
+            }
             
-            let entry = "\(latitude),\(longitude),\(altitude),\(gpsSpeed),\(gear),\(engineTemp),\(ambientTemp),\(frontTirePressure),\(rearTirePressure),\(odometer),\(voltage),\(throttlePosition),\(frontBrakes),\(rearBrakes),\(shifts),\(vin),\(ambientLight),\(tripOne),\(tripTwo),\(tripAuto),\(speed),\(avgSpeed),\(currentConsumption),\(fuelEconomyOne),\(fuelEconomyTwo),\(fuelRange),\(leanAngle),\(gForce),\(bearing),\(barometricPressure),\(rpm)"
+            let entry = "\(latitude),\(longitude),\(altitude),\(gpsSpeed),\(gear),\(engineTemp),\(ambientTemp),\(frontTirePressure),\(rearTirePressure),\(odometer),\(voltage),\(throttlePosition),\(frontBrakes),\(rearBrakes),\(shifts),\(vin),\(ambientLight),\(tripOne),\(tripTwo),\(tripAuto),\(speed),\(avgSpeed),\(currentConsumption),\(fuelEconomyOne),\(fuelEconomyTwo),\(fuelRange),\(leanAngle),\(gForce),\(bearing),\(barometricPressure),\(rpm),\(leanAngleBike)"
             formattedEntry = Date().toString() + "," + entry
             do {
                 // Write to log

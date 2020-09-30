@@ -202,12 +202,13 @@
 "fueleconomyone_header" = "Fuel Economy 1";
 "fueleconomytwo_header" = "Fuel Economy 2";
 "fuelrange_header" = "Fuel Range";
-"leanangle_header" = "Lean Angle";
+"leanangle_header" = "Lean Angle Mobile";
 "gforce_header" = "g-force";
 "bearing_header" = "Bearing";
 "barometric_header" = "Barometer";
 "sunrisesunset_header" = "Sunrise/Sunset";
 "rpm_header" = "RPM";
+"leanangle_bike_header" = "Lean Angle";
 // ContactsTableViewController
 "contactlist_title" = "Contacts";
 // WaypointsNavTableViewController

@@ -119,7 +119,8 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                          NSLocalizedString("gpsspeed_header", comment: ""),
                          NSLocalizedString("altitude_header", comment: ""),
                          NSLocalizedString("vc set_header", comment: ""),
-                         NSLocalizedString("rpm_header", comment: "")
+                         NSLocalizedString("rpm_header", comment: ""),
+                         NSLocalizedString("leanangle_bike_header", comment: "")
     ]
     
     let locationDelegate = LocationDelegate()
@@ -368,7 +369,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         self.navigationItem.leftBarButtonItems = [backButton, disconnectButton, faultsButton]
         self.navigationItem.rightBarButtonItems = [forwardButton, menuButton]
         
-        var dateFormat = "yyyyMMdd"
+        let dateFormat = "yyyyMMdd"
         var dateFormatter: DateFormatter {
             let formatter = DateFormatter()
             formatter.dateFormat = dateFormat
@@ -1134,6 +1135,9 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         case 29:
             //RPM
             label = NSLocalizedString("rpm_header", comment: "")
+        case 30:
+            //RPM
+            label = NSLocalizedString("leanangle_bike_header", comment: "")
         default:
             NSLog("Unknown : \(cellDataPoint)")
         }
@@ -1233,8 +1237,11 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             //Sunrise/Sunset
             icon = (UIImage(named: "Sun")?.withRenderingMode(.alwaysTemplate))!
         case 29:
-            // RPM
+            //RPM
             icon = (UIImage(named: "Tachometer")?.withRenderingMode(.alwaysTemplate))!
+        case 30:
+            //Lean Angle Bike
+            icon = (UIImage(named: "Angle")?.withRenderingMode(.alwaysTemplate))!
         default:
             NSLog("Unknown : \(cellDataPoint)")
         }
@@ -1801,6 +1808,12 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             } else {
                 value = NSLocalizedString("blank_field", comment: "")
             }
+        case 30:
+            //Lean Angle Bike
+            icon = (UIImage(named: "Arrows-alt")?.withRenderingMode(.alwaysTemplate))!
+            if motorcycleData.leanAngleBike != nil {
+                value = "\(Int(round(motorcycleData.leanAngleBike!)))"
+            }
         default:
             NSLog("Unknown : \(dataPoint)")
         }
@@ -1891,6 +1904,19 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             motorcycleData.setambientLight(ambientLight: Double(ambientLightValue))
         case 0x05:
             //print("Message ID: 5")
+            //Lean Angle
+            if ((lastMessage[1] != 0xFF) && ((lastMessage[2] & 0x0F) != 0xF)){
+                let leanAngleBike:Double = Double(UInt32((UInt32((lastMessage[2] & 0x0F)) << 8 | UInt32(lastMessage[1]))))
+                var leanAngleBikeFixed:Double = 0
+                if(leanAngleBike >= 2048){
+                    leanAngleBikeFixed = leanAngleBike - 2048
+                } else {
+                    leanAngleBikeFixed = (2048 - leanAngleBike) * -1
+                }
+                motorcycleData.setleanAngleBike(leanAngleBike: (Double(leanAngleBikeFixed) * 0.045))
+            }
+            
+            // Brakes
             let brakes = (lastMessage[2] >> 4) & 0x0F // the highest 4 bits.
             if(prevBrakeValue == 0){
                 prevBrakeValue = Int(brakes)
