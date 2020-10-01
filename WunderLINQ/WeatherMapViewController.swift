@@ -93,7 +93,6 @@ class WeatherMapViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        AppUtility.lockOrientation(.portrait)
         
         // Do any additional setup after loading the view.
         
@@ -137,9 +136,6 @@ class WeatherMapViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        
-        // Don't forget to reset when view is being removed
-        AppUtility.lockOrientation(.all)
     }
     
     override func didReceiveMemoryWarning() {

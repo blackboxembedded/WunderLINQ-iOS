@@ -274,9 +274,6 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         centralManager = CBCentralManager(delegate: self,
                                           queue: nil)
         
-        /*
-         centralManager = CBCentralManager(delegate: self, queue: nil, options: [CBCentralManagerOptionRestoreIdentifierKey : Device.restoreIdentifier])
-         */
         let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))
         swipeLeft.direction = .left
         self.view.addGestureRecognizer(swipeLeft)
@@ -1697,7 +1694,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             }
         case 21:
             //Lean Angle
-            icon = (UIImage(named: "Arrows-alt")?.withRenderingMode(.alwaysTemplate))!
+            icon = (UIImage(named: "Angle")?.withRenderingMode(.alwaysTemplate))!
             if motorcycleData.leanAngle != nil {
                 value = "\(Int(round(motorcycleData.leanAngle!)))"
             }
@@ -1810,7 +1807,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             }
         case 30:
             //Lean Angle Bike
-            icon = (UIImage(named: "Arrows-alt")?.withRenderingMode(.alwaysTemplate))!
+            icon = (UIImage(named: "Angle")?.withRenderingMode(.alwaysTemplate))!
             if motorcycleData.leanAngleBike != nil {
                 value = "\(Int(round(motorcycleData.leanAngleBike!)))"
             }
@@ -3465,12 +3462,10 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     
     @objc func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
         if gesture.direction == UISwipeGestureRecognizer.Direction.right {
-            NSLog("Main: swipe right")
-            performSegue(withIdentifier: "motorcycleToTaskGrid", sender: [])
+            rightScreen()
         }
         else if gesture.direction == UISwipeGestureRecognizer.Direction.left {
-            NSLog("Main: swipe left")
-            performSegue(withIdentifier: "motorcycleToMusic", sender: [])
+            leftScreen()
         }
         else if gesture.direction == UISwipeGestureRecognizer.Direction.up {
             //UP
@@ -3504,15 +3499,15 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     }
     
     @objc func leftScreen() {
-        // your code here
-        NSLog("Main: leftScreen()")
         performSegue(withIdentifier: "motorcycleToTaskGrid", sender: [])
     }
     
     @objc func rightScreen() {
-        // your code here
-        NSLog("Main: rightScreen()")
-        performSegue(withIdentifier: "motorcycleToMusic", sender: [])
+        if UserDefaults.standard.bool(forKey: "display_dashboard_preference") {
+            performSegue(withIdentifier: "motorcycleToDash", sender: [])
+        } else {
+            performSegue(withIdentifier: "motorcycleToMusic", sender: [])
+        }
     }
     
     @objc func upScreen() {

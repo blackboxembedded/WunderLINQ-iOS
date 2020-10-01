@@ -60,7 +60,6 @@
 		7E9516C2238A367000ED25F2 /* SpotifyiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E9516C1238A367000ED25F2 /* SpotifyiOS.framework */; };
 		7E96D79221E78B7B00C6AB5F /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E96D79121E78B7B00C6AB5F /* Security.framework */; };
 		7EA4784E1F40B154000CEDDC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA4784D1F40B154000CEDDC /* AppDelegate.swift */; };
-		7EA478531F40B154000CEDDC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7EA478511F40B154000CEDDC /* Main.storyboard */; };
 		7EA478551F40B154000CEDDC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7EA478541F40B154000CEDDC /* Assets.xcassets */; };
 		7EA478581F40B154000CEDDC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7EA478561F40B154000CEDDC /* LaunchScreen.storyboard */; };
 		7EA478631F40B154000CEDDC /* WunderLINQTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA478621F40B154000CEDDC /* WunderLINQTests.swift */; };
@@ -79,6 +78,11 @@
 		7EAE9417211EA30900E24CE9 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EAE9416211EA30900E24CE9 /* Theme.swift */; };
 		7EAF646822FE17D000B11550 /* BikeInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EAF646722FE17D000B11550 /* BikeInfoViewController.swift */; };
 		7EAF646A22FE261D00B11550 /* WeatherMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EAF646922FE261D00B11550 /* WeatherMapViewController.swift */; };
+		7EB5ED7D251FE8FA00B61160 /* DashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB5ED7C251FE8FA00B61160 /* DashViewController.swift */; };
+		7EB5EDD725211BCF00B61160 /* agencyfb.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7EB5EDD625211BCF00B61160 /* agencyfb.ttf */; };
+		7EB5EDE4252136F800B61160 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7EB5EDE2252136F800B61160 /* Main.storyboard */; };
+		7EB5EDEE25216ACF00B61160 /* gstft-dashboard.svg in Resources */ = {isa = PBXBuildFile; fileRef = 7EB5EDEC25216ACF00B61160 /* gstft-dashboard.svg */; };
+		7EB5EE122523C57100B61160 /* XML.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB5EE112523C57100B61160 /* XML.swift */; };
 		7EB8B99E245CA7A6007232D2 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB8B99D245CA7A6007232D2 /* Secrets.swift */; };
 		7EBC8A9E23B19C0B001FE70B /* AddWaypointViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBC8A9D23B19C0B001FE70B /* AddWaypointViewController.swift */; };
 		7EBFD48E210ADD0000FC9665 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBFD48D210ADD0000FC9665 /* String+Extensions.swift */; };
@@ -137,17 +141,14 @@
 		7E25396221CD94A30008D34E /* BLE.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLE.swift; sourceTree = "<group>"; };
 		7E25396421CDB1740008D34E /* WLQ.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WLQ.swift; sourceTree = "<group>"; };
 		7E2EC06324991CE200B0A59B /* NavigationControllerWithTraitOverride.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationControllerWithTraitOverride.swift; sourceTree = "<group>"; };
-		7E31915C219A1BB40031A2E3 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Main.strings; sourceTree = "<group>"; };
 		7E31915D219A1BB40031A2E3 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		7E31915E219A1BB40031A2E3 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = WunderLINQ/es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7E35A59222DC265800E4AE40 /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		7E4669F62518647C00E7E291 /* NavAppHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavAppHelper.swift; sourceTree = "<group>"; };
 		7E46AA182419D1540047E87D /* CircularCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularCollectionViewLayout.swift; sourceTree = "<group>"; };
 		7E4D76E421DDAEC100825175 /* sl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = sl; path = sl.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		7E52E9AF21A38D89008082FE /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/Main.strings; sourceTree = "<group>"; };
 		7E52E9B021A38D89008082FE /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		7E52E9B121A38D89008082FE /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = WunderLINQ/cs.lproj/Localizable.strings; sourceTree = "<group>"; };
-		7E586D3D22B68E6E00FB2E4C /* hu */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hu; path = hu.lproj/Main.strings; sourceTree = "<group>"; };
 		7E586D3E22B68E6E00FB2E4C /* hu */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hu; path = hu.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		7E586D3F22B68E6E00FB2E4C /* hu */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hu; path = WunderLINQ/hu.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7E586D4022B68E6E00FB2E4C /* hu */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = hu; path = hu.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -161,10 +162,8 @@
 		7E6987DA20F82F1A00B4781D /* MotorcycleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotorcycleData.swift; sourceTree = "<group>"; };
 		7E6987DC20F8F83500B4781D /* Faults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Faults.swift; sourceTree = "<group>"; };
 		7E6E0A6724FC022200149387 /* ColorPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerViewController.swift; sourceTree = "<group>"; };
-		7E70D8F621A5FD2B0016CD74 /* el */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = el; path = el.lproj/Main.strings; sourceTree = "<group>"; };
 		7E70D8F721A5FD2B0016CD74 /* el */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = el; path = el.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		7E70D8F821A5FD2B0016CD74 /* el */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = el; path = WunderLINQ/el.lproj/Localizable.strings; sourceTree = "<group>"; };
-		7E7440972308F24A001FDE20 /* af */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = af; path = af.lproj/Main.strings; sourceTree = "<group>"; };
 		7E7440982308F24A001FDE20 /* af */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = af; path = af.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		7E7440992308F24F001FDE20 /* af */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = af; path = af.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		7E74409A2308F2F1001FDE20 /* af */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = af; path = WunderLINQ/af.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -175,12 +174,10 @@
 		7E7C53CC21F3BA9200C98010 /* ContactsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsTableViewCell.swift; sourceTree = "<group>"; };
 		7E80BD3A211CF80600B8CA0D /* LocalisableLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalisableLabel.swift; sourceTree = "<group>"; };
 		7E80BD3C211CFF7300B8CA0D /* LocalisableButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalisableButton.swift; sourceTree = "<group>"; };
-		7E80BD3E211D2CB100B8CA0D /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
 		7E80BD3F211D2CB100B8CA0D /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		7E80BD40211D2CB100B8CA0D /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = WunderLINQ/de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7E80BD41211D419C00B8CA0D /* WaypointsNavTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaypointsNavTableViewController.swift; sourceTree = "<group>"; };
 		7E80BD43211D5A0600B8CA0D /* UIView+ignoresInvertColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+ignoresInvertColors.swift"; sourceTree = "<group>"; };
-		7E8A1E5621DC326600207464 /* sl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sl; path = sl.lproj/Main.strings; sourceTree = "<group>"; };
 		7E8A1E5721DC326600207464 /* sl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sl; path = sl.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		7E8A1E5821DC326600207464 /* sl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sl; path = WunderLINQ/sl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7E916DDB230CF10D00011E5F /* NSLocalizedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSLocalizedString.swift; sourceTree = "<group>"; };
@@ -190,7 +187,6 @@
 		7E96D79121E78B7B00C6AB5F /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		7EA4784A1F40B154000CEDDC /* WunderLINQ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WunderLINQ.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EA4784D1F40B154000CEDDC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		7EA478521F40B154000CEDDC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7EA478541F40B154000CEDDC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7EA478571F40B154000CEDDC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7EA478591F40B154000CEDDC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; wrapsLines = 0; };
@@ -212,6 +208,12 @@
 		7EAE9416211EA30900E24CE9 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		7EAF646722FE17D000B11550 /* BikeInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikeInfoViewController.swift; sourceTree = "<group>"; };
 		7EAF646922FE261D00B11550 /* WeatherMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherMapViewController.swift; sourceTree = "<group>"; };
+		7EB5ED7C251FE8FA00B61160 /* DashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashViewController.swift; sourceTree = "<group>"; };
+		7EB5ED8B251FED8300B61160 /* libCocoaLumberjack.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libCocoaLumberjack.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		7EB5EDD625211BCF00B61160 /* agencyfb.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = agencyfb.ttf; sourceTree = "<group>"; };
+		7EB5EDE3252136F800B61160 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		7EB5EDEC25216ACF00B61160 /* gstft-dashboard.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "gstft-dashboard.svg"; sourceTree = "<group>"; };
+		7EB5EE112523C57100B61160 /* XML.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XML.swift; sourceTree = "<group>"; };
 		7EB8B99D245CA7A6007232D2 /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
 		7EBC8A9D23B19C0B001FE70B /* AddWaypointViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWaypointViewController.swift; sourceTree = "<group>"; };
 		7EBFD48D210ADD0000FC9665 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
@@ -221,11 +223,9 @@
 		7EC8C9BC1F827977000CEDDC /* ContactsTableViewContoller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsTableViewContoller.swift; sourceTree = "<group>"; };
 		7EC8C9BE1F830C5B000CEDDC /* PhoneContacts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneContacts.swift; sourceTree = "<group>"; };
 		7EC934F12186208A00FD4806 /* AlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
-		7EC934F32187BE5100FD4806 /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/Main.strings"; sourceTree = "<group>"; };
 		7EC934F42187BE5100FD4806 /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		7EC934F52187BE5100FD4806 /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "WunderLINQ/es-419.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		7ED2013520D0D0030066BCE6 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		7EE02FE322A6BCCA0061330B /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Main.strings; sourceTree = "<group>"; };
 		7EE02FE422A6BCCA0061330B /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		7EE02FE522A6BCCA0061330B /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = WunderLINQ/ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7EE02FE622A6BCCA0061330B /* ja */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -284,6 +284,7 @@
 		7E068BD72102C7DE0076EAAD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7EB5ED8B251FED8300B61160 /* libCocoaLumberjack.a */,
 				7E5D59F824FBFA3E005E5017 /* InAppSettingsKit.framework */,
 				7E96D79121E78B7B00C6AB5F /* Security.framework */,
 				7E068BE62102C8820076EAAD /* CoreData.framework */,
@@ -339,11 +340,14 @@
 		7EA4784C1F40B154000CEDDC /* WunderLINQ */ = {
 			isa = PBXGroup;
 			children = (
+				7EB5EDE9252169B800B61160 /* svg */,
+				7EB5EDD525211B6100B61160 /* fonts */,
 				7EA3F95122EA88690075A0E1 /* externalcamera */,
 				7E9516C1238A367000ED25F2 /* SpotifyiOS.framework */,
 				7E068BCF2102C6280076EAAD /* GoogleMaps.framework */,
 				7E068BD02102C6290076EAAD /* GoogleMapsBase.framework */,
 				7E068BCE2102C6270076EAAD /* GoogleMapsCore.framework */,
+				7EB5EDE2252136F800B61160 /* Main.storyboard */,
 				7EBFE1F2214C7D6500F2185A /* ScenicAPI.swift */,
 				7EF9B59F22FCB14D009D8D17 /* Solar.swift */,
 				7E5E0F77212289140048B9A2 /* AppUtility.swift */,
@@ -397,8 +401,9 @@
 				7E2EC06324991CE200B0A59B /* NavigationControllerWithTraitOverride.swift */,
 				7E6E0A6724FC022200149387 /* ColorPickerViewController.swift */,
 				7E4669F62518647C00E7E291 /* NavAppHelper.swift */,
+				7EB5ED7C251FE8FA00B61160 /* DashViewController.swift */,
+				7EB5EE112523C57100B61160 /* XML.swift */,
 				7EB8B99D245CA7A6007232D2 /* Secrets.swift */,
-				7EA478511F40B154000CEDDC /* Main.storyboard */,
 				7E068BD62102C6DB0076EAAD /* GoogleMaps.bundle */,
 				7EA478821F4A7260000CEDDC /* InAppSettings.bundle */,
 				7EA478541F40B154000CEDDC /* Assets.xcassets */,
@@ -416,6 +421,22 @@
 				7EA478641F40B154000CEDDC /* Info.plist */,
 			);
 			path = WunderLINQTests;
+			sourceTree = "<group>";
+		};
+		7EB5EDD525211B6100B61160 /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				7EB5EDD625211BCF00B61160 /* agencyfb.ttf */,
+			);
+			path = fonts;
+			sourceTree = "<group>";
+		};
+		7EB5EDE9252169B800B61160 /* svg */ = {
+			isa = PBXGroup;
+			children = (
+				7EB5EDEC25216ACF00B61160 /* gstft-dashboard.svg */,
+			);
+			path = svg;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -530,8 +551,10 @@
 				7EA4788A1F537ED5000CEDDC /* Localizable.strings in Resources */,
 				7EA478581F40B154000CEDDC /* LaunchScreen.storyboard in Resources */,
 				7EA478551F40B154000CEDDC /* Assets.xcassets in Resources */,
-				7EA478531F40B154000CEDDC /* Main.storyboard in Resources */,
+				7EB5EDE4252136F800B61160 /* Main.storyboard in Resources */,
 				7ED2013620D0D0030066BCE6 /* Default-568h@2x.png in Resources */,
+				7EB5EDEE25216ACF00B61160 /* gstft-dashboard.svg in Resources */,
+				7EB5EDD725211BCF00B61160 /* agencyfb.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -612,6 +635,7 @@
 				7EA4BCC721B8C9150084F6EA /* TasksCollectionViewController.swift in Sources */,
 				7E62BB6F21FE3DEB00FDB10E /* MainCollectionViewCell.swift in Sources */,
 				7E25396321CD94A30008D34E /* BLE.swift in Sources */,
+				7EB5EE122523C57100B61160 /* XML.swift in Sources */,
 				7E14EFBD221B5FB7009F37A3 /* GeoDataViewController.swift in Sources */,
 				7EC8C9BD1F827977000CEDDC /* ContactsTableViewContoller.swift in Sources */,
 				7EA478871F4BC775000CEDDC /* Logger.swift in Sources */,
@@ -638,6 +662,7 @@
 				7E35A59322DC265800E4AE40 /* Utility.swift in Sources */,
 				7EAE9417211EA30900E24CE9 /* Theme.swift in Sources */,
 				7EC63202219BCE05002E68FF /* AboutViewController.swift in Sources */,
+				7EB5ED7D251FE8FA00B61160 /* DashViewController.swift in Sources */,
 				7E068BC320FD8A100076EAAD /* FaultsTableViewController.swift in Sources */,
 				7E2EC06424991CE200B0A59B /* NavigationControllerWithTraitOverride.swift in Sources */,
 				7E6987DD20F8F83500B4781D /* Faults.swift in Sources */,
@@ -683,23 +708,6 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		7EA478511F40B154000CEDDC /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				7EA478521F40B154000CEDDC /* Base */,
-				7E80BD3E211D2CB100B8CA0D /* de */,
-				7EC934F32187BE5100FD4806 /* es-419 */,
-				7E31915C219A1BB40031A2E3 /* es */,
-				7E52E9AF21A38D89008082FE /* cs */,
-				7E70D8F621A5FD2B0016CD74 /* el */,
-				7E8A1E5621DC326600207464 /* sl */,
-				7EE02FE322A6BCCA0061330B /* ja */,
-				7E586D3D22B68E6E00FB2E4C /* hu */,
-				7E7440972308F24A001FDE20 /* af */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		7EA478561F40B154000CEDDC /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -732,6 +740,14 @@
 				7E74409A2308F2F1001FDE20 /* af */,
 			);
 			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		7EB5EDE2252136F800B61160 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7EB5EDE3252136F800B61160 /* Base */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

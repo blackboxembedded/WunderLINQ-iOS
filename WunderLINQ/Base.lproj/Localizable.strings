@@ -261,3 +261,10 @@
 "reset_btn_label" = "Reset";
 //WeatherMapViewController
 "weathermap_title" = "Weather Map";
+//DashViewController
+"dash_title" = "Dashboard";
+"dash_ambient_label" = "Air:";
+"dash_engine_label" = "Eng:";
+"dash_range_label" = "Range:";
+"dash_rdcf_label" = "F:";
+"dash_rdcr_label" = "R:";
