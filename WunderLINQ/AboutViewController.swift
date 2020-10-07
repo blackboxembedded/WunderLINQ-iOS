@@ -64,20 +64,19 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
                 let attachmentData = try Data(contentsOf: fileURL)
                 mailComposer.addAttachmentData(attachmentData, mimeType: "text/csv", fileName: "dbg")
             } catch let error {
-                NSLog("We have encountered error \(error.localizedDescription)")
+                print("We have encountered error \(error.localizedDescription)")
             }
             do {
                 let logAttachmentData = try Data(contentsOf: logURL)
                 mailComposer.addAttachmentData(logAttachmentData, mimeType: "text/log", fileName: "wunderlinq.log")
             } catch let error {
-                NSLog("We have encountered error \(error.localizedDescription)")
+                print("We have encountered error \(error.localizedDescription)")
             }
             mailComposer.mailComposeDelegate = self
-            self.present(mailComposer, animated: true
-                , completion: nil)
+            self.present(mailComposer, animated: true, completion: nil)
             
         } else {
-            NSLog("Email is not configured in settings app or we are not able to send an email")
+            print("Email is not configured in settings app or we are not able to send an email")
         }
     }
     
@@ -87,10 +86,8 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
     }
     
     @objc func logoTap() {
-        guard let url = URL(string: "http://www.wunderlinq.com") else {
-            return //be safe
-        }
-        
+        let url = URL(string: "http://www.wunderlinq.com")!
+
         if #available(iOS 10.0, *) {
             UIApplication.shared.open(url, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
         } else {
@@ -159,19 +156,19 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
         var shouldDelete = true
         switch result {
         case .cancelled:
-            NSLog("User cancelled")
+            print("User cancelled")
             shouldDelete = false
             break
         case .saved:
-            NSLog("Mail is saved by user")
+            print("Mail is saved by user")
             shouldDelete = true
             break
         case .sent:
-            NSLog("Mail is sent successfully")
+            print("Mail is sent successfully")
             shouldDelete = true
             break
         case .failed:
-            NSLog("Sending mail is failed")
+            print("Sending mail is failed")
             shouldDelete = false
             break
         default:
@@ -185,7 +182,7 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
             do {
                 try FileManager.default.removeItem(at: fileURL)
             } catch _ as NSError {
-                //NSLog("Error: \(error.domain)")
+                //print("Error: \(error.domain)")
             }
         }
         controller.dismiss(animated: true)
@@ -196,7 +193,7 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
         return String(os.majorVersion) + "." + String(os.minorVersion) + "." + String(os.patchVersion)
     }
     
-    func getAppInfo()->String {
+    func getAppInfo() -> String {
         let dictionary = Bundle.main.infoDictionary!
         let version = dictionary["CFBundleShortVersionString"] as! String
         let build = dictionary["CFBundleVersion"] as! String

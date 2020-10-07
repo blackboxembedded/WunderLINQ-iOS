@@ -523,7 +523,7 @@ extension TripViewController: UITableViewDelegate {
             //Delete
             delete()
         default:
-            NSLog("Unknown option")
+            print("Unknown option")
         }
         self.popover.dismiss()
     }
