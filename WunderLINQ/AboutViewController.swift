@@ -42,15 +42,15 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
     
     @IBAction func sendLogsBtnPressed(_ sender: Any) {
         if MFMailComposeViewController.canSendMail() {
-            var dateFormat = "yyyyMMdd-HH:mm"
             var dateFormatter: DateFormatter {
                 let formatter = DateFormatter()
-                formatter.dateFormat = dateFormat
+                formatter.dateFormat = "yyyyMMdd-HH:mm"
                 formatter.locale = Locale.current
                 formatter.timeZone = TimeZone.current
                 return formatter
             }
             let today = dateFormatter.string(from: Date())
+
             let mailComposer = MFMailComposeViewController()
             mailComposer.setSubject("WunderLINQ iOS Debug Logs \(today)")
             mailComposer.setMessageBody("App Version: \(getAppInfo())\nFirmware Version: \(wlqData.getfirmwareVersion())\niOS Version: \(getOSInfo())\nDevice: \(UIDevice.current.modelName)\n\(NSLocalizedString("sendlogs_body", comment: ""))", isHTML: false)
@@ -188,8 +188,8 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
         controller.dismiss(animated: true)
     }
     
-    func getOSInfo()->String {
-        let os = ProcessInfo().operatingSystemVersion
+    func getOSInfo() -> String {
+        let os = ProcessInfo.processInfo.operatingSystemVersion
         return String(os.majorVersion) + "." + String(os.minorVersion) + "." + String(os.patchVersion)
     }
     
