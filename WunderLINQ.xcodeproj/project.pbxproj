@@ -19,10 +19,8 @@
 		7E068BD92102C7DE0076EAAD /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E068BD82102C7DE0076EAAD /* Accelerate.framework */; };
 		7E068BE82102C8820076EAAD /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E068BDA2102C8810076EAAD /* CoreGraphics.framework */; };
 		7E068BE92102C8820076EAAD /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E068BDB2102C8810076EAAD /* libz.tbd */; };
-		7E068BEA2102C8820076EAAD /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E068BDC2102C8810076EAAD /* OpenGLES.framework */; };
 		7E068BEB2102C8820076EAAD /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E068BDD2102C8810076EAAD /* CoreLocation.framework */; };
 		7E068BEC2102C8820076EAAD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E068BDE2102C8810076EAAD /* UIKit.framework */; };
-		7E068BED2102C8820076EAAD /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E068BDF2102C8810076EAAD /* GLKit.framework */; };
 		7E068BEE2102C8820076EAAD /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E068BE02102C8810076EAAD /* CoreImage.framework */; };
 		7E068BEF2102C8820076EAAD /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E068BE12102C8810076EAAD /* ImageIO.framework */; };
 		7E068BF02102C8820076EAAD /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E068BE22102C8810076EAAD /* SystemConfiguration.framework */; };
@@ -241,11 +239,9 @@
 				7E96D79221E78B7B00C6AB5F /* Security.framework in Frameworks */,
 				7E068BE82102C8820076EAAD /* CoreGraphics.framework in Frameworks */,
 				7E068BE92102C8820076EAAD /* libz.tbd in Frameworks */,
-				7E068BEA2102C8820076EAAD /* OpenGLES.framework in Frameworks */,
 				7E068BEB2102C8820076EAAD /* CoreLocation.framework in Frameworks */,
 				7E9516C2238A367000ED25F2 /* SpotifyiOS.framework in Frameworks */,
 				7E068BEC2102C8820076EAAD /* UIKit.framework in Frameworks */,
-				7E068BED2102C8820076EAAD /* GLKit.framework in Frameworks */,
 				7E068BEE2102C8820076EAAD /* CoreImage.framework in Frameworks */,
 				7E068BEF2102C8820076EAAD /* ImageIO.framework in Frameworks */,
 				7E068BF02102C8820076EAAD /* SystemConfiguration.framework in Frameworks */,
