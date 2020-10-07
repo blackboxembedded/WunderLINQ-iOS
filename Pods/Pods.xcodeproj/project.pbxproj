@@ -7,624 +7,671 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0226AAC61C721D66430913CA45E4AAD1 /* hr.lproj in Resources */ = {isa = PBXBuildFile; fileRef = DC70CE8F301CB0BA17AB9925751449F9 /* hr.lproj */; };
-		0230FBF349B4E03B93D471AAE80A0391 /* IASKPSSliderSpecifierViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 28AE84C3BA6404F88304A230F090AF9E /* IASKPSSliderSpecifierViewCell.m */; };
-		05A24C337B2221739842F11E3DD81897 /* IASKSettingsStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F7AC4FEC8E3950B031722E9F057EEEB /* IASKSettingsStore.m */; };
-		081811CF200139854AC62C19DBA97465 /* UIColor+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 308801963669BBA828306C7DB19D5686 /* UIColor+Utils.swift */; };
-		0932FE5BCA48102FC41A8806202AE05D /* IASKDatePicker.h in Headers */ = {isa = PBXBuildFile; fileRef = 809097A1C10EAEFEA05E14F623B20E7F /* IASKDatePicker.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		0CBFF803D2B2774089C159DBBC0121DA /* GPXCompression.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D85570DB4C67D8351F93946C45C442 /* GPXCompression.swift */; };
-		0E2E30E70BAA7444765178FED2A1804F /* GPXRawElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F53F4D38B8E93EB6F7B07307A318345 /* GPXRawElement.swift */; };
-		0E5FD664EFDE508D9D05FD5F0A39C25A /* uk.lproj in Resources */ = {isa = PBXBuildFile; fileRef = F29D405BB8DB40620E59C7FA114BD3FF /* uk.lproj */; };
-		10A7DD1766DC2A20C749B7FFC65B9197 /* IASKTextView.h in Headers */ = {isa = PBXBuildFile; fileRef = C55061CB51ADCD84955B35FA2B8A92C4 /* IASKTextView.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		12C989867ED408BE7ADA69F2ED5B2971 /* GPXRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E5AB3B140AB4000CE0720D0DEC21100 /* GPXRoot.swift */; };
-		1393DCB0E47F97377E7226E33A4A814E /* IASKAppSettingsWebViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = F59271EC83BAE89DA2550F4DB8D6C078 /* IASKAppSettingsWebViewController.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		13DA5484934BE56A37FDA3E461F0D88E /* GPXPerson.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E8DDEB98977189E6FC29EE8130238A /* GPXPerson.swift */; };
-		149010CB3CE4D0B8BA8D9CFCC3CAB0B4 /* ru.lproj in Resources */ = {isa = PBXBuildFile; fileRef = DBFF13563FC830F05E36B6E8A942BA68 /* ru.lproj */; };
-		174242016434C342FA7D9C4CD357A234 /* IASKSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D35B135A17A1962E46526C9D37CFDA5 /* IASKSwitch.m */; };
-		1924FBFADE2BF2147C7B74F466AC3A35 /* Base.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 9F315D5E86B42E90605E80EACBD8DB02 /* Base.lproj */; };
-		1ACADCCB0BAF7D1B6CB1B750729C56AA /* SliderTrackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8038F0859DE23FB874C50C1AFB2A339 /* SliderTrackView.swift */; };
-		1B97C47203D3F0A7FCE09CF0BCDD83CC /* ChromaColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A42AFA3EEAEC98C3D88AE6DACD1D2E9 /* ChromaColorPicker.swift */; };
-		1C0680BD8AC53E93809889AF2819BF29 /* GPXExtensionsElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = D78B82B5463292431E9C0C80A4CC952E /* GPXExtensionsElement.swift */; };
-		1D3A9019EE207C836FC6C630A3E0C739 /* it.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 58B17C7CFBA107555936CD0F67BAD9A3 /* it.lproj */; };
-		244C75D155FDA36617230B4741887DA8 /* IASKSettingsReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FFE574556CE4AF8A38A1B20AAF283E8 /* IASKSettingsReader.m */; };
-		28BEA6A5A14ABC8801AA36C53C1CAB7C /* IASKSettingsStore.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CFAF5ACAFEA5629497BB0D12E6492E0 /* IASKSettingsStore.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		2CF3519B74D1F929D211C70BC5DA0291 /* pt.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 37277957D7A137C2A6C516C451CD2EAB /* pt.lproj */; };
-		2F626486DD1AAF5AE1C132F2540452D3 /* IASKSlider.h in Headers */ = {isa = PBXBuildFile; fileRef = 3342673C1F656316FC188D308403E3C8 /* IASKSlider.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		334070E3F289A8C702EE431B158F0914 /* IASKSettingsStoreUserDefaults.h in Headers */ = {isa = PBXBuildFile; fileRef = 228182918686A4916A5A6069CE6C159D /* IASKSettingsStoreUserDefaults.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		369D611835B87F288879DD2DA43D73AB /* GPXTrackPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD47493BC007FABA4540013E68F60CC /* GPXTrackPoint.swift */; };
-		37A8B029BFB2A9577CA6CFA72A0B4DB4 /* GPXWaypoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B00212F868CE956102E5F222A97F7F7 /* GPXWaypoint.swift */; };
-		3E002399CFA03B4D091AFD80038087A0 /* GPXExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B989AC110C6278435B18F2BEFF94B871 /* GPXExtensions.swift */; };
-		40471214FFD3C34B6ACDC3090503BAAA /* IASKEmbeddedDatePickerViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 315D1EDB063FFF44C9647BF1DE8C3F21 /* IASKEmbeddedDatePickerViewCell.m */; };
-		475DEED90D70827381C7E237C0DCA3A2 /* IASKSettingsStoreInMemory.m in Sources */ = {isa = PBXBuildFile; fileRef = C0BE1F2B5F82BA2DAB71A879D27BE6B8 /* IASKSettingsStoreInMemory.m */; };
-		4961996E98660EFA0CFEFD670B23095B /* IASKPSSliderSpecifierViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = F3E86215088DFC8114E3A00C3F13D3BA /* IASKPSSliderSpecifierViewCell.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		49E205227C86D3167A0EA6487A884CAB /* IASKTextViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 57C6F56F7A82525BE498C3C5C256B8F4 /* IASKTextViewCell.m */; };
-		4B015BC50EE558A799C514137BC6F21A /* GPXMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7329418BB56EDEAF68C79333C16856 /* GPXMetadata.swift */; };
-		4C1467BFC65CF5322A17B905DF76405C /* GPXElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D2F10E0ED764158CA4E5C889DE08273 /* GPXElement.swift */; };
-		5269A2102BC6FFDF250ABDAC5506BCF7 /* tr.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 17DCCDDA892805D68225E4FD89ADB37D /* tr.lproj */; };
-		5649893E3D0B4367C5194C1EB215DC3E /* GPXPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E17611827CF185868D223627DF2870A /* GPXPoint.swift */; };
-		587D349D2AA584B4BCE51263C6F343E7 /* CoreGPX-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = ED5B58FA54EF36D2778DB4B28C227F4F /* CoreGPX-umbrella.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		599C5D24B559617AEE13C486DDFD36B6 /* UIView+DropShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D883E480610AF5629E4EB0001D3C73 /* UIView+DropShadow.swift */; };
-		5C5B61AEF286CD7CABCDC6663E8D690E /* IASKSpecifier.m in Sources */ = {isa = PBXBuildFile; fileRef = 67B0D2C8C2A1597B71CC99F1526E826C /* IASKSpecifier.m */; };
-		6052879F0DFAC80B33244301E81FB101 /* IASKAppSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B55A61618E29B12F0F2792A7BEC1D79 /* IASKAppSettingsViewController.m */; };
-		60B0510A0D1C2B6690896F89B2988FC0 /* IASKAppSettingsViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 614EDDDCB456F165325435C0EBDEF1DF /* IASKAppSettingsViewController.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		61BED379D6537AC6373C3DEED247FC82 /* IASKSettingsReader.h in Headers */ = {isa = PBXBuildFile; fileRef = 415351F188A5FF65E387EB3C84E69C78 /* IASKSettingsReader.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		61BF900807954863DCFD5370C82CB6CC /* fr.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 70272E04DAE94C652F8202F4ABFE8034 /* fr.lproj */; };
-		62B9BAD90228A27C4C4D7B1701D10A8C /* IASKSpecifierValuesViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = D11F56D0D06AD711A6818BB919B30FB6 /* IASKSpecifierValuesViewController.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		6373EF88CAB8C9B3EE4C4F846A79E387 /* GPXTrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F22D88F581BD8EBCBA3B2DFE75300D1 /* GPXTrack.swift */; };
-		643C15726C7FDA6BD43F304674546E67 /* GPXRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4F65174694B1E16AF33F4E66662C01 /* GPXRoute.swift */; };
-		659801F73CD7E59F22BBE403926443DB /* en.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 80BA1D669460EB30B706F32884EC97CE /* en.lproj */; };
-		6C4D6EABE06255B86207A0EE69379C1A /* pl.lproj in Resources */ = {isa = PBXBuildFile; fileRef = B8FD64E712AC97FCB00B3DE098C19EFA /* pl.lproj */; };
-		71AD8F9A097FE4499CBD962E542169FB /* zh-Hans.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 4D5A4AB9267CC2DD419889F5C09462D1 /* zh-Hans.lproj */; };
-		72B2EE29E53150E0697BEB37536329A2 /* GPXRoutePoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA46DBDA1ABEA6BEEA5D5E58E1F44574 /* GPXRoutePoint.swift */; };
-		78D864F115D04E396D31A8C52D93D230 /* ChromaColorHandle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652BEA4ECD40016D1C77FBADE001E4AF /* ChromaColorHandle.swift */; };
-		79051CEDC4752661ED448FEAE0DA60D0 /* hu.lproj in Resources */ = {isa = PBXBuildFile; fileRef = D756D215EEDBE3CFAE343B7EA1CF256E /* hu.lproj */; };
-		7B77251BF96D277E23278B1605DCB5A5 /* GPXLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F676840471EFB9D62343078799F183F /* GPXLink.swift */; };
-		7E17588FD51460467EF1EC2FBE451A4C /* SliderHandleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4333BDBE8E4F9FD37B5D6257463DDDD4 /* SliderHandleView.swift */; };
-		86B216ABB2C16DA5547756D971F8AEED /* ChromaColorPicker-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C98518A99BB2F04521FBC7BE6C185564 /* ChromaColorPicker-umbrella.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		87EE48B3056DE4011112C7B604393AD3 /* IASKSettingsStoreFile.h in Headers */ = {isa = PBXBuildFile; fileRef = 96C6DDA9078E9C42204920B79C1120A1 /* IASKSettingsStoreFile.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		893FB570C2BFF2D2D5CA9C12332B4C5C /* IASKDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = A79D7323910169AFC0695E3A25D670DF /* IASKDatePicker.m */; };
-		8C9FDD4FC3FBF93788EF5C5516C3554A /* DateTimeParsers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D67A67B3096EE14129CC450EF048E7 /* DateTimeParsers.swift */; };
-		8DC15CA9D2C0560102C3ECDC22DE0EA9 /* ColorWheelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03186632B3209DC1BBA83FE1DD5BA75 /* ColorWheelView.swift */; };
-		8F89B7426C642E3F50DE361DC815C900 /* IASKSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = FB344A7572C36B0F76DCF7669ADF84EC /* IASKSlider.m */; };
-		908D234B669DCD2C335BF704B2884516 /* IASKColor.h in Headers */ = {isa = PBXBuildFile; fileRef = 1456AD4F5D793E1397B21F4916725161 /* IASKColor.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		965CDF0BFB364000C87D84943C3138DA /* IASKEmbeddedDatePickerViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = D0D1B92190E5F47E9677656DFEF79762 /* IASKEmbeddedDatePickerViewCell.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		968D7A251070ECC40781827B7BF8C9E8 /* GPXAuthor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66D8790A0FCC88729E66DFD8350EB83 /* GPXAuthor.swift */; };
-		96F07CFF20FE37BA80909A981403BAF1 /* IASKDatePickerViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = F96B41371E15A72E76C0CDD07643D869 /* IASKDatePickerViewCell.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		98B0BC4244B4677A8F942A5050B652D0 /* nb.lproj in Resources */ = {isa = PBXBuildFile; fileRef = EA4903153B6B5EF163BBA1536B2F4E52 /* nb.lproj */; };
-		9C3F2560AF69919D031732F4497A8D0D /* IASKSettingsStoreFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 471918195DB57D2742800435380BB7EE /* IASKSettingsStoreFile.m */; };
-		9DDE65FD083D5F4831D85E4840806200 /* IASKSpecifier.h in Headers */ = {isa = PBXBuildFile; fileRef = 31462206D3093EA83181F69B96629900 /* IASKSpecifier.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		A3A6B5468C79A1B5FE74BC5BE43FAA58 /* es-MX.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 1E6D45F32B379FFD4BA26BAB13293471 /* es-MX.lproj */; };
-		A55E8148686619C29C45A60139713606 /* IASKTextField.h in Headers */ = {isa = PBXBuildFile; fileRef = 3DA461293139D15E64DE1A947D11406E /* IASKTextField.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		AA27144CAEF6D69BB1EC7DB1B759ACD2 /* GPXTrackSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D46FC2768B10C49EA85B7C5CEE7EF1 /* GPXTrackSegment.swift */; };
-		AB4FA31C958505194D8CCB24BB9ACE84 /* es-419.lproj in Resources */ = {isa = PBXBuildFile; fileRef = A687407C18414314CD88210D1EFBFCE4 /* es-419.lproj */; };
-		AC64F64988B6EDC36412A4851452E98D /* GPXError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D92A1BAB93A9DDBD7917E25CF4D2F63 /* GPXError.swift */; };
-		AF2157F95A224F4119A770A171D38F5F /* ChromaControlStylable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2AC596469CCE80FF40259BEEC31B9A /* ChromaControlStylable.swift */; };
-		AF6964157ABB17F1CF7151ECF6D95E41 /* NSMutableString+XML.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68718E4613438A823411A1D65D4AE9F0 /* NSMutableString+XML.swift */; };
-		B3C25B55BE04838CC5012EDD0BECE78C /* GPXBounds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95258CD4E09F8BEBD1269F08ED920F53 /* GPXBounds.swift */; };
-		B3E725B7068CBA7D9202AD31C0F6137C /* GPXCopyright.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819CA0F7E815D13AD40D9423F8750CD7 /* GPXCopyright.swift */; };
-		B478B38ECD27325FAD542CFE9E80FB9A /* Pods-WunderLINQ-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D46B1ADFDE2445FBA4A1E0F0BC4C88D /* Pods-WunderLINQ-umbrella.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		B4C0D9F1256EB193A9429B5365C34603 /* IASKMultipleValueSelection.m in Sources */ = {isa = PBXBuildFile; fileRef = 16553CBAD1091503B84D00CAFE4E1E7A /* IASKMultipleValueSelection.m */; };
-		B58A55C1ACDA3D5C38C06E0F1D3AFE47 /* ChromaBrightnessSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8090367597DEE602F69BAA6B54447B4 /* ChromaBrightnessSlider.swift */; };
-		B7B258EF208AB49FA1BE0AE7E2B85586 /* IASKTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 874724A0C98AFB26527ECB62A395019A /* IASKTextView.m */; };
-		BC99236DFA98C44B3CEF76F0AD666FD1 /* IASKTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 26E261AF097F6C4B145198CDB54379B4 /* IASKTextField.m */; };
-		BEC6AF6C3B741C8ACFA53B5984507E41 /* GPXParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAD7323D5F56525A57487C5EFF1E6BB4 /* GPXParser.swift */; };
-		BF877F559F4C791B88F43277FE9B1398 /* IASKPSTextFieldSpecifierViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 793A482301220A59630E508C50DB4C99 /* IASKPSTextFieldSpecifierViewCell.m */; };
-		C21D025529E176865407205D7FADD36C /* IASKTextViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 02326DEE7100B0FCFEA97C791E0D3165 /* IASKTextViewCell.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		C436D70E9EA3C81BA8C98EA2D5165714 /* es.lproj in Resources */ = {isa = PBXBuildFile; fileRef = B98AFCFEE3745ABBE0041E316EE5B698 /* es.lproj */; };
-		C7EDBC5BE5180B11173924C334805490 /* Converters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E6AA84EE91536B46A7F690CF589F2BE /* Converters.swift */; };
-		CA41FB698E185F0B8324C02095362573 /* IASKMultipleValueSelection.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C27AF1428625AEECEF5218A643E805A /* IASKMultipleValueSelection.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		D01A75273BAB7D803C00B9FB334B3263 /* pt-PT.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 9050608A8221087C3BAAD08A12D9FF00 /* pt-PT.lproj */; };
-		D0B7B80A058F936BF660CFA8E087B51C /* InAppSettingsKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = ED37010C2F3BF4859FD40843EFE9080E /* InAppSettingsKit-dummy.m */; };
-		D2126DECB57164949F39453A111D09ED /* zh-Hant.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 1C18CB568E12DDD48C2FE254AE9044ED /* zh-Hant.lproj */; };
-		D25408880E690F9C247C3E4E50699170 /* ChromaColorPicker-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 192AD68C7195222BFCC48EE31994CB09 /* ChromaColorPicker-dummy.m */; };
-		DA8C855B911062E1E715879022C8172A /* Pods-WunderLINQ-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = FE963B6BAFB9AA3110DFF5E27234EC06 /* Pods-WunderLINQ-dummy.m */; };
-		DC4F7D6EB0663DF0D89C6C2A182F3753 /* sv.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 23B49FCE21B66BB68F2C9237C9141E8A /* sv.lproj */; };
-		E151379B9CDD0386F3CA671A2D9CC8CA /* el.lproj in Resources */ = {isa = PBXBuildFile; fileRef = E1E83A5B3AA2BA2A3859737C9AA479BF /* el.lproj */; };
-		E33E0240A191D8DE8A3C3BFCD1812685 /* IASKPSTextFieldSpecifierViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 9CEC6539BCBC1E3DF699902AB9F2DD99 /* IASKPSTextFieldSpecifierViewCell.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		E4A70EEA26A456B1EE483EE8F718AF63 /* ca.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 08BB7563FEC4AE94E0B6CE1BCD1D9118 /* ca.lproj */; };
-		E5A4060758FFCE7D6EA1E3417B450F4A /* IASKSpecifierValuesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F58D4C89E75DC34750B3EB95988015A6 /* IASKSpecifierValuesViewController.m */; };
-		E5A5F1DBA6C2209BDB39BB2F7ABC2094 /* nl.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 6636B3A381754AF841C97AA54F079211 /* nl.lproj */; };
-		E8B98D56FE53121D4F2A2D265345D4BB /* UIColor+Brightness.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051A945C218E43382A3CF212F3D398A6 /* UIColor+Brightness.swift */; };
-		E9B636D4C9BE80FDE2A8FDA45142949D /* GPXEmail.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BFF76221CF83FA9F664433A721797B /* GPXEmail.swift */; };
-		EA600700AF05772808C9641A6E641D80 /* th.lproj in Resources */ = {isa = PBXBuildFile; fileRef = C58BC510EC4BA8D846180881E7A90346 /* th.lproj */; };
-		EABFA22B141DA4CB3CEB26BB9A0A1D67 /* GPXPointSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A315F120116D2F34C7B24D19F4EFBFE /* GPXPointSegment.swift */; };
-		EB6DCE27D017D1FCB04952CCCA3E8753 /* IASKDatePickerViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 08AE22C95523344B6E46550AA5A4F115 /* IASKDatePickerViewCell.m */; };
-		EDB644198B84C9368C21F3357ACC4ABF /* IASKSettingsStoreUserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = F7A196D676BD01674087ED8107841DDE /* IASKSettingsStoreUserDefaults.m */; };
-		EE273322EFC8B72AAD66355FF8E0F9BD /* IASKAppSettingsWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C63719A95736450E495E946EF2490A32 /* IASKAppSettingsWebViewController.m */; };
-		EEE1E13796522220E17832E5C3BB7ABC /* ja.lproj in Resources */ = {isa = PBXBuildFile; fileRef = FCA20BA160FA54B1479D8FA96384693A /* ja.lproj */; };
-		F19143A89DAB3F6A484D23BCC8AEB315 /* GPXFix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21EBA8616242D62F3C5DC1648297CD77 /* GPXFix.swift */; };
-		F1D9DFED244DA698653A7577CADB5A2A /* de.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 798743BB6554A495CFF96551846891FB /* de.lproj */; };
-		F306F62A3B671DC40B287F025CB054EA /* IASKViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = FD0069076E21558CF09C1BF53BDF8412 /* IASKViewController.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		F56DF8DB4C152092DDDD0830605ABA12 /* UIView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321AEB0F5E1BAE37193670CB8DD509BC /* UIView+Utils.swift */; };
-		F57D4C7E62A45FC50D6049857C129352 /* IASKColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F47A7DDCAC9D4D084E525844AF2B83D /* IASKColor.m */; };
-		F6A03D49B2454018462603DE0F13768C /* IASKSwitch.h in Headers */ = {isa = PBXBuildFile; fileRef = 445EFDC29E01F30736CEE230050F9D56 /* IASKSwitch.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		F80702F56D68654D0820D8C4E637B2AA /* IASKSettingsStoreInMemory.h in Headers */ = {isa = PBXBuildFile; fileRef = D4FB37F26DF231B093E683E41F1B784E /* IASKSettingsStoreInMemory.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		FCE1DC91C4B4C1608C0CCC5F0DB94CE4 /* CoreGPX-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8222062AF8581E22CE2BC4E0B584F972 /* CoreGPX-dummy.m */; };
+		0781540189ECE3F925380BFECCB41341 /* tr.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 6DF1023CCC6D5DF1F6DBC2AEEE51ACD0 /* tr.lproj */; };
+		07BB5F72F8B1DC407E19ED11100E4A52 /* SliderTrackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C51A94D585947A098D9FE3FCC1B73E1 /* SliderTrackView.swift */; };
+		0850DEFB99E706BB5BF2F6CEDDB9B2F0 /* IASKSlider.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A2FD0983EFFD450AEE3099D1AEBCD68 /* IASKSlider.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0A250D91C982F24D314F9BA8E761BC00 /* IASKSpecifier.m in Sources */ = {isa = PBXBuildFile; fileRef = 28F257213522E2160F78AEFD94BB9EB7 /* IASKSpecifier.m */; };
+		0A6B6EA5EA7DBA5DBBEB8A340ABDB6C4 /* ChromaColorPicker-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F8729D5610CBE6B77D77F5DC478026D4 /* ChromaColorPicker-dummy.m */; };
+		0AC75CAA7766EA46A38EFF35F70E0CB0 /* GPXRoutePoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A9D2886CA121442F574F4CC9E961D2 /* GPXRoutePoint.swift */; };
+		0B80D6073FDC4E1E569BABADD895BEE4 /* IASKPSTextFieldSpecifierViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C1B3FD8ED1128A429A9E55B5347A855F /* IASKPSTextFieldSpecifierViewCell.m */; };
+		0ECF4AF40C638E9086696BEFEBEA5B5C /* IASKColor.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C60E691547BF1D2011BC6B15DA1A621 /* IASKColor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0EF69F5394E2E653BC03E58054B251BE /* GPXPointSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911E8C20CEABABB9C54E6073B8A65428 /* GPXPointSegment.swift */; };
+		103CA6899065D8E3F27514FDE3B95852 /* GPXExtensionsElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67E2C5D29E284801039D885CD2C5EE38 /* GPXExtensionsElement.swift */; };
+		1243FD056E942FADBBFDEC8FF041D99E /* UIView+DropShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B5DDE50393AE3FA62E68CA7B4E69EF /* UIView+DropShadow.swift */; };
+		158E2F830D0ED44ACFA130E659C4C82C /* pt-PT.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 60FDC3B9388629D9B4BBCF6CB9DBCC6C /* pt-PT.lproj */; };
+		19465F51F361C48FFC8DA852B4AEE6C3 /* pt.lproj in Resources */ = {isa = PBXBuildFile; fileRef = D93D13A226EF9EA03E3750E5666648F1 /* pt.lproj */; };
+		198BD078FDD3D7109F3D35D0FF887526 /* nb.lproj in Resources */ = {isa = PBXBuildFile; fileRef = C63D29D37ECB73F542715D11DD79EF69 /* nb.lproj */; };
+		1EB8CB2A0D6F460CC49E01756D39E4E4 /* IASKDatePickerViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = A50FE15072CA8EDD50D2B15F95D31977 /* IASKDatePickerViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1EC9B1B1EE727D94AFC3076D1A6225E0 /* IASKMultipleValueSelection.m in Sources */ = {isa = PBXBuildFile; fileRef = A717AF3CD76895CCB6104DB921FA897A /* IASKMultipleValueSelection.m */; };
+		20C559F7FB2AB8042CC36AFA5EF3A523 /* IASKSettingsStoreInMemory.h in Headers */ = {isa = PBXBuildFile; fileRef = 53D1CFE99E292928FA424B074B3A2B40 /* IASKSettingsStoreInMemory.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		215495936326BA60595AA30FF56EDD18 /* Pods-WunderLINQ-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 427E56F4CF2E99993434B5ACC466869E /* Pods-WunderLINQ-dummy.m */; };
+		21D173AD8D03118F8500C306885B9A47 /* Converters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED9DD2A2891B916B3F2B3FDEE7BD47A /* Converters.swift */; };
+		2334E2053513B1BF98AD4C35B1E1D8CB /* GPXRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0C6F9262E63D82E9915794BB432214 /* GPXRoot.swift */; };
+		267E030A8BB798FC60097320A2D1BF47 /* UIColor+Brightness.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFAEFED72D36816EB2F5473E0D323B7F /* UIColor+Brightness.swift */; };
+		280C8715A9CD08421E47FFD8DDB573FC /* IASKSettingsStoreInMemory.m in Sources */ = {isa = PBXBuildFile; fileRef = D6E8DC9948629809909E18001505D902 /* IASKSettingsStoreInMemory.m */; };
+		314A478C4220B6CCB4B68E60ABCCFBB5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49FC1D574A2F3239D89F533C8D0BE07C /* Foundation.framework */; };
+		32D841ED22E0A6AECC4EC57B55F5A1AB /* IASKMultipleValueSelection.h in Headers */ = {isa = PBXBuildFile; fileRef = 15E5903EB5DF83B6667F97D3536BC6D4 /* IASKMultipleValueSelection.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3489676B77DC8145FA736DB8E7CB1CA1 /* InAppSettingsKit-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 25FEBABB92166D9E780842E899269D74 /* InAppSettingsKit-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		370133E35E3051477D59B2EFA3C11146 /* Base.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 6B78527E270F30F5C962F35DA93A9C8D /* Base.lproj */; };
+		373997AD67F9E0B3FB7A459D42B0D6BB /* IASKPSTextFieldSpecifierViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 0ACC741F91328726F0CCB79FE89F9B1D /* IASKPSTextFieldSpecifierViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3AA3054C52B04D5BC87D8F02E7CF5006 /* es-MX.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 38D3685A0248AB87B794A12B85B64157 /* es-MX.lproj */; };
+		3C06F432A6D333FB6A2786F403779DD3 /* IASKEmbeddedDatePickerViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 4DBA1496F35D1BA863E8703B2C689529 /* IASKEmbeddedDatePickerViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		50CF785A1DB0BEFA0AD46670900BD8AF /* IASKSpecifierValuesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E0BE05C97E3F2D3027BB7FC6AE6D69 /* IASKSpecifierValuesViewController.m */; };
+		51687062CFF963FE2F4A16AC7FC53D89 /* CoreGPX-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = FFA0DAD4892218B6E2796904E2FE868B /* CoreGPX-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		51EBA0FA2766B5069910893F950F2C62 /* DateTimeParsers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41AA5B48C3BD4FFF57BE13F8A21C7F29 /* DateTimeParsers.swift */; };
+		51FCA1BD53F65721E75F1373AE05E1C3 /* IASKTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B7C891A061AB6059FF03A9323C886A5 /* IASKTextField.m */; };
+		525F4DFFBD58FE846D6C238C52D0B53D /* InAppSettingsKit.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 325E862631E06444E4504511C87F1E9C /* InAppSettingsKit.bundle */; };
+		539A61FE3E12083EB893C183489AE066 /* IASKSettingsReader.h in Headers */ = {isa = PBXBuildFile; fileRef = F713BB5250C4DC14BA1ED012D43E0D90 /* IASKSettingsReader.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		54EFD105AA129119AEEF50DE06E54D29 /* InAppSettingsKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A2A68DB17E5AE6DA98D58567451B0F09 /* InAppSettingsKit-dummy.m */; };
+		5855F3A6278EA50A8CBBBB4F65C2FF00 /* es.lproj in Resources */ = {isa = PBXBuildFile; fileRef = B56C7C7BBD910A54DBD4821D1AD10677 /* es.lproj */; };
+		58BD477C11FAD09D21ED5A003FBB20FC /* ru.lproj in Resources */ = {isa = PBXBuildFile; fileRef = D9CD3C7F51F0F21158ADC5A856BBCB0D /* ru.lproj */; };
+		5C49E724C06AE91FEC3EDFBB1D52631C /* GPXParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648C1EB1E8DCBA08914CB2DC9611EFA1 /* GPXParser.swift */; };
+		5C6DFC00287030B7E65AE490CB44879F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49FC1D574A2F3239D89F533C8D0BE07C /* Foundation.framework */; };
+		5E1B122229E4DE1F73B26EED14F09199 /* en.lproj in Resources */ = {isa = PBXBuildFile; fileRef = DEB0F573462E4077E8AB5968BF3FF46F /* en.lproj */; };
+		5FFB9DC0CCD59678695EEC4CB56AE47B /* zh-Hant.lproj in Resources */ = {isa = PBXBuildFile; fileRef = B0BA2006CB9DEFA796C4AC6E48F36858 /* zh-Hant.lproj */; };
+		64204C9EE25C3B1A248A81E4508C1790 /* GPXError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47D2AB3F30CF2465222E5F6FAA446FA /* GPXError.swift */; };
+		64E644A5890D441F235DE4C0405BEA10 /* GPXEmail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190CAA6A9A13F6876998F2413961D904 /* GPXEmail.swift */; };
+		69BC77F6453EB3D10DCE5FB79B601511 /* IASKSpecifierValuesViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = D50F10BAAFD244DC7525A73D9AE89CE1 /* IASKSpecifierValuesViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6B36BB24920BB1D89F64D4E57B0EB1C8 /* IASKTextField.h in Headers */ = {isa = PBXBuildFile; fileRef = 600A575CAEF646FBB46EC26CC314BBCB /* IASKTextField.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6C74A091F45A67D40E608BDE7752AECA /* GPXFix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E5768685E4B650CD779412D69B212A /* GPXFix.swift */; };
+		6C8032EEFDBCA9004280D91FBD0849FA /* IASKTextView.h in Headers */ = {isa = PBXBuildFile; fileRef = FE7968976D0FC569B5E07EC593CCA1E9 /* IASKTextView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6D9FDBC5166325F1480B2EBF35114F69 /* GPXBounds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EEB8AD844303CA8FF7B3654F9E802F7 /* GPXBounds.swift */; };
+		70BD4F620780C462AF888CADDC674E1C /* IASKPSSliderSpecifierViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = EBDA3226189A93D70F4011B1C591C5B9 /* IASKPSSliderSpecifierViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7110586A3B932B5E1C9784254AE25FEA /* IASKColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 6598DC58B96E9A3BF71AD9E08F61A36A /* IASKColor.m */; };
+		75A21E0B47EC5EFCAE091FD9ACCEF9D9 /* GPXAuthor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486DAC7DB7D2D52E1D1620EB30BF7A21 /* GPXAuthor.swift */; };
+		772F287E6B73F1AA6E44401CBD6F194F /* IASKSettingsStoreFile.h in Headers */ = {isa = PBXBuildFile; fileRef = 70117508D3D7AA4A3D7B8109198D54BD /* IASKSettingsStoreFile.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		774EB82433D77B509D25507733FA696C /* GPXTrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04525978230106D557061C28C204E97 /* GPXTrack.swift */; };
+		775A48595E5DC4C6AD1AAF5F87B4AE9E /* th.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 95B6236633A18A70917A80E49305C093 /* th.lproj */; };
+		77D5D7172C843E80D232A0787943F3C1 /* fr.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 82FDE13F6AA2985732FBC4AB671FA7C4 /* fr.lproj */; };
+		7964306BDA1A90D21E63B7112C6EE80A /* ColorWheelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8124A03FB7C8BA857520BDFBEBA645 /* ColorWheelView.swift */; };
+		79875805D1B2228CE9AEC19F90A701CE /* GPXRawElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A672FCA77A1F5BAA929EC9C835832A /* GPXRawElement.swift */; };
+		7D1D0573EEB4E669600E81F066C2FAC5 /* GPXTrackSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B094F78982EEC4D417F896AD28E436 /* GPXTrackSegment.swift */; };
+		7FB1C3C27A44C63409D2313DA96D76D2 /* IASKTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 57A581F9461D5A858ABE6590D2849821 /* IASKTextView.m */; };
+		7FD1C420FCD1672FF8A881440852B635 /* el.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 49EA764C84AFB5F8BD2E2B9A7DA6219E /* el.lproj */; };
+		809A150C62FA5600D820AADB6168FE1C /* IASKAppSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57D007F278F548E4AEEB7FD019AE2646 /* IASKAppSettingsViewController.m */; };
+		80B0FAB433E55B25F22BAE629303CE2D /* Pods-WunderLINQ-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 62C8E513795A3691B5AE49498FCBEEE8 /* Pods-WunderLINQ-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		82C1FC507A64DA12AAB836D330294BC2 /* GPXCopyright.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8DD22DF79885BBEE58D69A54C53164 /* GPXCopyright.swift */; };
+		89A078FFE58D143CC8B50140CBA390BC /* GPXWaypoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08375098688981D30362D12361C71215 /* GPXWaypoint.swift */; };
+		8CDF21E0C5CA6B5E70761895515E9ECC /* GPXElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F7EF7F99B59A7575DF5EA9F7EEBE87 /* GPXElement.swift */; };
+		8EFA25BC525F066BA191843220C2F76E /* GPXLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E36B0C6ABB4B2B13C0D6B6E4A9C5CC7 /* GPXLink.swift */; };
+		8F08F32CC11B98BA49BFA96790E3AF99 /* sv.lproj in Resources */ = {isa = PBXBuildFile; fileRef = B840752D9190C5C5EF3B81406F2CF548 /* sv.lproj */; };
+		93B6BD7CEE2BEA293209A43A575778A8 /* GPXMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C16A43488013517E1618FE71DDDA901 /* GPXMetadata.swift */; };
+		93F306B0572F7A0E5DD14B8F8B871946 /* IASKAppSettingsWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D89526A107712A7126398A712C74965 /* IASKAppSettingsWebViewController.m */; };
+		95D33D1BB086B6DB388FC119F62284D1 /* UIView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD0B321ED2DD12CD8632CC30DDDD7C3 /* UIView+Utils.swift */; };
+		97AC41C0F1132445CAFB45BEE6ED2A6C /* uk.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 1DE39995E8EBF498DDBFD05C760B6EDB /* uk.lproj */; };
+		97BE0C2E56447B9B7F28D06054657293 /* it.lproj in Resources */ = {isa = PBXBuildFile; fileRef = FB22956F6AC5C5BB8CA4411AAA3817CC /* it.lproj */; };
+		9D0D27051CCBD1F04E9156F71B45B505 /* IASKSettingsReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F66DAF510F5B659B6680A44C511C912 /* IASKSettingsReader.m */; };
+		A662C1D00E941D28646106B843E9DB2E /* IASKPSSliderSpecifierViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D03D722044F344CBF9FAA3E728FB5B7 /* IASKPSSliderSpecifierViewCell.m */; };
+		A8C40DD1BEC15AD8171C080A0EC8150B /* nl.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 24E51B9962C2EC939FE84411CD132DF7 /* nl.lproj */; };
+		A91F60039195B79035E7477EE2748C9F /* IASKTextViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = DF8FF08C6BB6F4AB957E829A3BBF9CC0 /* IASKTextViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A92446EBE805179A5A7F159FED012BB9 /* IASKViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FDA3C650ABCCFEE52B9814A1257EB00 /* IASKViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A9A46BFA5ED52E83F02F2A7A163DEBF4 /* de.lproj in Resources */ = {isa = PBXBuildFile; fileRef = D49DA4A012EE58D5BF86E6945BB1E093 /* de.lproj */; };
+		AB265B6CFC55BDE1EA364C4E24F2211E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9D1DCF06681788BA852BDC475398A32 /* UIKit.framework */; };
+		ACEBCB8AC08F46015B90751FC34D3C34 /* pl.lproj in Resources */ = {isa = PBXBuildFile; fileRef = E4EEC0528E4CFA1B3584C2B48C16727C /* pl.lproj */; };
+		AEDD2CF3399EE0D0F6FF722BF150BDCB /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 144A53FDC58FFA8FFF1B994C3E866B77 /* MessageUI.framework */; };
+		AFFD51829244034E585136FF82702C32 /* IASKSpecifier.h in Headers */ = {isa = PBXBuildFile; fileRef = A661A034C224452931FA125EBED0BBC5 /* IASKSpecifier.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B03FF4607CB1E0791BBEC04A3340848D /* IASKAppSettingsWebViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C17C74CED92BE2773B5FDF0248403FE /* IASKAppSettingsWebViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B1CCEC70D55204C7F3829F3C28C91A42 /* ChromaColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10892F1C33D9559E9ADFBC4ED9B9D137 /* ChromaColorPicker.swift */; };
+		B45DAB82217CFBDB31A82C0B06B92CDE /* IASKAppSettingsViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 1C3730C274288FB60B07F4F30EE90249 /* IASKAppSettingsViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B6E077981B54BAA241130686BE6BAB30 /* IASKSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C91C90262A6A8120D9287BB0A1627C3 /* IASKSwitch.m */; };
+		B720988FFC14CF97F3AF7F3CD2751203 /* IASKDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 716605907D9558BD60106CC278E48142 /* IASKDatePicker.m */; };
+		C34E074BC227F8CC4733F0FC81A9874E /* IASKDatePickerViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 36ABCF3D111919E3B5F06CCAA42A030F /* IASKDatePickerViewCell.m */; };
+		C39AD3C8D7E43EE2C4EFBA3387353A10 /* ChromaBrightnessSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB693E65D816DD76D5C17057EDA048E /* ChromaBrightnessSlider.swift */; };
+		C88529FED472213F278007BBE000FE4D /* hr.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 48C05E539C4BBCFC149A408BFA23D8DF /* hr.lproj */; };
+		C9C4EB3E25AE6BA226C10BD4CC5D9151 /* IASKDatePicker.h in Headers */ = {isa = PBXBuildFile; fileRef = 4BB5EFEBA9301184C014D527D3EB3D85 /* IASKDatePicker.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C9E99DC5DB43C36CB311FE0045646519 /* CoreGPX-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B08648CC53A31CB846B12C9615D13C61 /* CoreGPX-dummy.m */; };
+		CB2A978B571DEF808CCCEA651E34B3DF /* ChromaColorPicker-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 4779E85723F830CB9E3433DB1C078371 /* ChromaColorPicker-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CB5D442E6F4B5CB481FEC37D553E851F /* UIColor+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9FB31B33BA4F911D3822836AFFACE02 /* UIColor+Utils.swift */; };
+		CD064B8CE099E863A27445A9E2AE7474 /* GPXExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BCB70FEB7E0498A407FB2A50E5E926D /* GPXExtensions.swift */; };
+		D00EAD8E5AFF357DBCF89928D1EF8400 /* GPXTrackPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118C869825B744374D16020C06CCFFDA /* GPXTrackPoint.swift */; };
+		D05B1BBD79717E34B4925E845D030C44 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49FC1D574A2F3239D89F533C8D0BE07C /* Foundation.framework */; };
+		D121BF49CB0B07A4B3DE8979BED374F9 /* IASKSettingsStoreUserDefaults.h in Headers */ = {isa = PBXBuildFile; fileRef = 9143F0AAB9281FE622B686C6B1D1E234 /* IASKSettingsStoreUserDefaults.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D17820D5B9F95688C640CF6C7BE0B7C7 /* GPXCompression.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB166DAC0E33FA2EDA2C8D3CE28D6AE2 /* GPXCompression.swift */; };
+		D6A714A6E5B086EBEC8805CC80B52A44 /* ca.lproj in Resources */ = {isa = PBXBuildFile; fileRef = AC6ED54D731406F62976B0216A873EF7 /* ca.lproj */; };
+		D718C017CC908073E736275CCAAB35C2 /* GPXPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8520BACD7D2829B203C97CF64B338F /* GPXPoint.swift */; };
+		D9EDD85780D3EEF8BFA61EB5D5396489 /* GPXPerson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FED07C0DA2BA165232316255606364 /* GPXPerson.swift */; };
+		DEBA81DEB0423C226F4C3E1B3CDD520E /* ChromaColorHandle.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE80548799260F280C8C66AB6CA0FB2D /* ChromaColorHandle.swift */; };
+		DF061DE17219E2E6C3B432F8F761D0E3 /* hu.lproj in Resources */ = {isa = PBXBuildFile; fileRef = B247A7FA6B0F7677F27135B38A31B223 /* hu.lproj */; };
+		E044A5663506E9504ECB71D87653FDF3 /* IASKSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 140C7CFDF68D50AD95D21E6E1DF16461 /* IASKSlider.m */; };
+		E3D22C11507BB4F06478B05BDDFFBECC /* ChromaControlStylable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0954A8F6E73048C0E1622468D12CCE /* ChromaControlStylable.swift */; };
+		E578099B1DD29D3288824C93F25453DB /* ja.lproj in Resources */ = {isa = PBXBuildFile; fileRef = FF9C70583C070838AC56EF55BE14554A /* ja.lproj */; };
+		E6231FDD5DACC1A38775AB693B97C3A1 /* SliderHandleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC8D68B7B1EE80A6AB2052CAB5EF22E /* SliderHandleView.swift */; };
+		E6FE54C804800460FA951EC95FE2E4F2 /* IASKSettingsStoreUserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = 5195535F31E37E0E05FA197B33375EE3 /* IASKSettingsStoreUserDefaults.m */; };
+		E742F841A203D0E95635E60821F8CE68 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49FC1D574A2F3239D89F533C8D0BE07C /* Foundation.framework */; };
+		E8DF12A19E571B0616165C7759598FFF /* IASKSwitch.h in Headers */ = {isa = PBXBuildFile; fileRef = B1549AEBB53D47390FF662A5FC53EE83 /* IASKSwitch.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E9C956B07238358FE6ACBFA57C0D42B9 /* GPXRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB2382A6A5F45F0D56684245B53C5C2 /* GPXRoute.swift */; };
+		EE098BBFFBE7464F9A68D241F426FEC5 /* NSMutableString+XML.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451DB1DCEF8EB100349B62DC8C82432E /* NSMutableString+XML.swift */; };
+		EE40D15C02CBC3E7123F751963883088 /* IASKSettingsStoreFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 228AC6940A9451170E23A60616DF61E6 /* IASKSettingsStoreFile.m */; };
+		EFF9DC9377B0D4B5D85E8F4474DD1790 /* IASKSettingsStore.m in Sources */ = {isa = PBXBuildFile; fileRef = BB3F99CB8656D0A56D8DF54573174DEE /* IASKSettingsStore.m */; };
+		F370006C4E0E44EAE8AA0A80E37BCCFA /* IASKTextViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1620AE3DC05AC86C0F3A5F3345084392 /* IASKTextViewCell.m */; };
+		F70F72592091F0946CCBBE883933ED4D /* zh-Hans.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 8E4F266B549F5178921C958B82D1FB89 /* zh-Hans.lproj */; };
+		F7291EA086FA2A9B83323B9A00581B57 /* es-419.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 416D7ADDA090559C5675A94FFBA0FA8E /* es-419.lproj */; };
+		F89E43DD21A2825E2B5A25228E86CC85 /* IASKSettingsStore.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DF06BE018E76AFED3B38080387D8C28 /* IASKSettingsStore.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FBFDB6378E189A93C03B2C6ED011D8B5 /* IASKEmbeddedDatePickerViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 653AC7692F0C479DFB641BF61F88BD1B /* IASKEmbeddedDatePickerViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		554F9BE8273989CE25856A32064D8465 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 493735E92C5B6068F445B48D0CA7B736;
-			remoteInfo = CoreGPX;
-		};
-		7FE78BD9A0A3081781E64716BBF0C11C /* PBXContainerItemProxy */ = {
+		08DE627D7E44AE37FA0E383B845CA161 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 5B4848122435F4C22D574A5DA6D2EFB3;
 			remoteInfo = InAppSettingsKit;
 		};
-		B8FEDA13C4F5BAD3A8B542F7A4318C0C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 8A996938DFC560C0A3EF0DD6CA6B032A;
-			remoteInfo = "InAppSettingsKit-InAppSettingsKit";
-		};
-		D921CF83CA4C5FD3C6F814C7F8BB66AC /* PBXContainerItemProxy */ = {
+		548007164DB93815B51A750AA0703313 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 7961A0F04FB3D96E3E703CF075D6DACD;
 			remoteInfo = ChromaColorPicker;
 		};
+		76683C65D4BCFE4C77BA473D1323A11B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 493735E92C5B6068F445B48D0CA7B736;
+			remoteInfo = CoreGPX;
+		};
+		B4E5D1CBD8924033792D473E32CB8E71 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8A996938DFC560C0A3EF0DD6CA6B032A;
+			remoteInfo = "InAppSettingsKit-InAppSettingsKit";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		02326DEE7100B0FCFEA97C791E0D3165 /* IASKTextViewCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IASKTextViewCell.h; path = InAppSettingsKit/Views/IASKTextViewCell.h; sourceTree = "<group>"; };
-		051A945C218E43382A3CF212F3D398A6 /* UIColor+Brightness.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIColor+Brightness.swift"; path = "Source/Extensions/UIColor+Brightness.swift"; sourceTree = "<group>"; };
-		08AE22C95523344B6E46550AA5A4F115 /* IASKDatePickerViewCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IASKDatePickerViewCell.m; path = InAppSettingsKit/Views/IASKDatePickerViewCell.m; sourceTree = "<group>"; };
-		08BB7563FEC4AE94E0B6CE1BCD1D9118 /* ca.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = ca.lproj; path = InAppSettingsKit/Resources/ca.lproj; sourceTree = "<group>"; };
-		0A42AFA3EEAEC98C3D88AE6DACD1D2E9 /* ChromaColorPicker.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ChromaColorPicker.swift; path = Source/ChromaColorPicker.swift; sourceTree = "<group>"; };
-		0D46B1ADFDE2445FBA4A1E0F0BC4C88D /* Pods-WunderLINQ-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-WunderLINQ-umbrella.h"; sourceTree = "<group>"; };
-		0F0A05985CBEC554F0DEC92B1837016C /* Pods-WunderLINQ.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-WunderLINQ.release.xcconfig"; sourceTree = "<group>"; };
-		0F53F4D38B8E93EB6F7B07307A318345 /* GPXRawElement.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GPXRawElement.swift; path = Classes/GPXRawElement.swift; sourceTree = "<group>"; };
-		13E170F7A77DE8D046429A0D976E8C9E /* Pods-WunderLINQ.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-WunderLINQ.debug.xcconfig"; sourceTree = "<group>"; };
-		1456AD4F5D793E1397B21F4916725161 /* IASKColor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IASKColor.h; path = InAppSettingsKit/Views/IASKColor.h; sourceTree = "<group>"; };
-		16553CBAD1091503B84D00CAFE4E1E7A /* IASKMultipleValueSelection.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IASKMultipleValueSelection.m; path = InAppSettingsKit/Controllers/IASKMultipleValueSelection.m; sourceTree = "<group>"; };
-		17DCCDDA892805D68225E4FD89ADB37D /* tr.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = tr.lproj; path = InAppSettingsKit/Resources/tr.lproj; sourceTree = "<group>"; };
-		192AD68C7195222BFCC48EE31994CB09 /* ChromaColorPicker-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ChromaColorPicker-dummy.m"; sourceTree = "<group>"; };
-		1C18CB568E12DDD48C2FE254AE9044ED /* zh-Hant.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = "zh-Hant.lproj"; path = "InAppSettingsKit/Resources/zh-Hant.lproj"; sourceTree = "<group>"; };
-		1E5AB3B140AB4000CE0720D0DEC21100 /* GPXRoot.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GPXRoot.swift; path = Classes/GPXRoot.swift; sourceTree = "<group>"; };
-		1E6D45F32B379FFD4BA26BAB13293471 /* es-MX.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = "es-MX.lproj"; path = "InAppSettingsKit/Resources/es-MX.lproj"; sourceTree = "<group>"; };
-		20BC061F7DFA9EC6DEAE3AC2C0766DE7 /* Pods-WunderLINQ-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-WunderLINQ-acknowledgements.markdown"; sourceTree = "<group>"; };
-		21EBA8616242D62F3C5DC1648297CD77 /* GPXFix.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GPXFix.swift; path = Classes/GPXFix.swift; sourceTree = "<group>"; };
-		228182918686A4916A5A6069CE6C159D /* IASKSettingsStoreUserDefaults.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IASKSettingsStoreUserDefaults.h; path = InAppSettingsKit/Models/IASKSettingsStoreUserDefaults.h; sourceTree = "<group>"; };
-		23B49FCE21B66BB68F2C9237C9141E8A /* sv.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = sv.lproj; path = InAppSettingsKit/Resources/sv.lproj; sourceTree = "<group>"; };
-		26E261AF097F6C4B145198CDB54379B4 /* IASKTextField.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IASKTextField.m; path = InAppSettingsKit/Views/IASKTextField.m; sourceTree = "<group>"; };
-		28AE84C3BA6404F88304A230F090AF9E /* IASKPSSliderSpecifierViewCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IASKPSSliderSpecifierViewCell.m; path = InAppSettingsKit/Views/IASKPSSliderSpecifierViewCell.m; sourceTree = "<group>"; };
-		2EB8D5EB807985F7E0492E6CD863CCF0 /* ResourceBundle-InAppSettingsKit-InAppSettingsKit-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-InAppSettingsKit-InAppSettingsKit-Info.plist"; sourceTree = "<group>"; };
-		2F676840471EFB9D62343078799F183F /* GPXLink.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GPXLink.swift; path = Classes/GPXLink.swift; sourceTree = "<group>"; };
-		2F7AC4FEC8E3950B031722E9F057EEEB /* IASKSettingsStore.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IASKSettingsStore.m; path = InAppSettingsKit/Models/IASKSettingsStore.m; sourceTree = "<group>"; };
-		308801963669BBA828306C7DB19D5686 /* UIColor+Utils.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIColor+Utils.swift"; path = "Source/Extensions/UIColor+Utils.swift"; sourceTree = "<group>"; };
-		31462206D3093EA83181F69B96629900 /* IASKSpecifier.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IASKSpecifier.h; path = InAppSettingsKit/Models/IASKSpecifier.h; sourceTree = "<group>"; };
-		315D1EDB063FFF44C9647BF1DE8C3F21 /* IASKEmbeddedDatePickerViewCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IASKEmbeddedDatePickerViewCell.m; path = InAppSettingsKit/Views/IASKEmbeddedDatePickerViewCell.m; sourceTree = "<group>"; };
-		321AEB0F5E1BAE37193670CB8DD509BC /* UIView+Utils.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIView+Utils.swift"; path = "Source/Extensions/UIView+Utils.swift"; sourceTree = "<group>"; };
+		04A9D2886CA121442F574F4CC9E961D2 /* GPXRoutePoint.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GPXRoutePoint.swift; path = Classes/GPXRoutePoint.swift; sourceTree = "<group>"; };
+		08375098688981D30362D12361C71215 /* GPXWaypoint.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GPXWaypoint.swift; path = Classes/GPXWaypoint.swift; sourceTree = "<group>"; };
+		0AB693E65D816DD76D5C17057EDA048E /* ChromaBrightnessSlider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ChromaBrightnessSlider.swift; path = Source/ChromaBrightnessSlider.swift; sourceTree = "<group>"; };
+		0ACC741F91328726F0CCB79FE89F9B1D /* IASKPSTextFieldSpecifierViewCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IASKPSTextFieldSpecifierViewCell.h; path = InAppSettingsKit/Views/IASKPSTextFieldSpecifierViewCell.h; sourceTree = "<group>"; };
+		0E8124A03FB7C8BA857520BDFBEBA645 /* ColorWheelView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ColorWheelView.swift; path = Source/ColorWheelView.swift; sourceTree = "<group>"; };
+		10892F1C33D9559E9ADFBC4ED9B9D137 /* ChromaColorPicker.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ChromaColorPicker.swift; path = Source/ChromaColorPicker.swift; sourceTree = "<group>"; };
+		118C869825B744374D16020C06CCFFDA /* GPXTrackPoint.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GPXTrackPoint.swift; path = Classes/GPXTrackPoint.swift; sourceTree = "<group>"; };
+		140C7CFDF68D50AD95D21E6E1DF16461 /* IASKSlider.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IASKSlider.m; path = InAppSettingsKit/Views/IASKSlider.m; sourceTree = "<group>"; };
+		144A53FDC58FFA8FFF1B994C3E866B77 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/MessageUI.framework; sourceTree = DEVELOPER_DIR; };
+		155774EF7639BBFA9D7197EB5222CBF9 /* Pods-WunderLINQ-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-WunderLINQ-frameworks.sh"; sourceTree = "<group>"; };
+		15E5903EB5DF83B6667F97D3536BC6D4 /* IASKMultipleValueSelection.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IASKMultipleValueSelection.h; path = InAppSettingsKit/Controllers/IASKMultipleValueSelection.h; sourceTree = "<group>"; };
+		1620AE3DC05AC86C0F3A5F3345084392 /* IASKTextViewCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IASKTextViewCell.m; path = InAppSettingsKit/Views/IASKTextViewCell.m; sourceTree = "<group>"; };
+		16E5768685E4B650CD779412D69B212A /* GPXFix.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GPXFix.swift; path = Classes/GPXFix.swift; sourceTree = "<group>"; };
+		18E0BE05C97E3F2D3027BB7FC6AE6D69 /* IASKSpecifierValuesViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IASKSpecifierValuesViewController.m; path = InAppSettingsKit/Controllers/IASKSpecifierValuesViewController.m; sourceTree = "<group>"; };
+		190CAA6A9A13F6876998F2413961D904 /* GPXEmail.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GPXEmail.swift; path = Classes/GPXEmail.swift; sourceTree = "<group>"; };
+		1C3730C274288FB60B07F4F30EE90249 /* IASKAppSettingsViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IASKAppSettingsViewController.h; path = InAppSettingsKit/Controllers/IASKAppSettingsViewController.h; sourceTree = "<group>"; };
+		1DE39995E8EBF498DDBFD05C760B6EDB /* uk.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = uk.lproj; path = InAppSettingsKit/Resources/uk.lproj; sourceTree = "<group>"; };
+		1F8520BACD7D2829B203C97CF64B338F /* GPXPoint.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GPXPoint.swift; path = Classes/GPXPoint.swift; sourceTree = "<group>"; };
+		228AC6940A9451170E23A60616DF61E6 /* IASKSettingsStoreFile.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IASKSettingsStoreFile.m; path = InAppSettingsKit/Models/IASKSettingsStoreFile.m; sourceTree = "<group>"; };
+		24B5DDE50393AE3FA62E68CA7B4E69EF /* UIView+DropShadow.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIView+DropShadow.swift"; path = "Source/Extensions/UIView+DropShadow.swift"; sourceTree = "<group>"; };
+		24E51B9962C2EC939FE84411CD132DF7 /* nl.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = nl.lproj; path = InAppSettingsKit/Resources/nl.lproj; sourceTree = "<group>"; };
+		256F25DA58D2E2DD9005FC3132F5C754 /* InAppSettingsKit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = InAppSettingsKit.modulemap; sourceTree = "<group>"; };
+		25FEBABB92166D9E780842E899269D74 /* InAppSettingsKit-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "InAppSettingsKit-umbrella.h"; sourceTree = "<group>"; };
+		275BDAB28B3AF54A928476F03C9EA706 /* ChromaColorPicker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ChromaColorPicker.debug.xcconfig; sourceTree = "<group>"; };
+		28F257213522E2160F78AEFD94BB9EB7 /* IASKSpecifier.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IASKSpecifier.m; path = InAppSettingsKit/Models/IASKSpecifier.m; sourceTree = "<group>"; };
+		2BCB70FEB7E0498A407FB2A50E5E926D /* GPXExtensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GPXExtensions.swift; path = Classes/GPXExtensions.swift; sourceTree = "<group>"; };
+		2BF9472E73161208EAA0E2625C652868 /* Pods-WunderLINQ-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-WunderLINQ-Info.plist"; sourceTree = "<group>"; };
 		325E862631E06444E4504511C87F1E9C /* InAppSettingsKit.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = InAppSettingsKit.bundle; path = "InAppSettingsKit-InAppSettingsKit.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
-		3342673C1F656316FC188D308403E3C8 /* IASKSlider.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IASKSlider.h; path = InAppSettingsKit/Views/IASKSlider.h; sourceTree = "<group>"; };
-		37277957D7A137C2A6C516C451CD2EAB /* pt.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = pt.lproj; path = InAppSettingsKit/Resources/pt.lproj; sourceTree = "<group>"; };
-		3DA461293139D15E64DE1A947D11406E /* IASKTextField.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IASKTextField.h; path = InAppSettingsKit/Views/IASKTextField.h; sourceTree = "<group>"; };
-		3E17611827CF185868D223627DF2870A /* GPXPoint.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GPXPoint.swift; path = Classes/GPXPoint.swift; sourceTree = "<group>"; };
-		415351F188A5FF65E387EB3C84E69C78 /* IASKSettingsReader.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IASKSettingsReader.h; path = InAppSettingsKit/Models/IASKSettingsReader.h; sourceTree = "<group>"; };
-		4333BDBE8E4F9FD37B5D6257463DDDD4 /* SliderHandleView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SliderHandleView.swift; path = "Source/Supporting Views/SliderHandleView.swift"; sourceTree = "<group>"; };
-		445EFDC29E01F30736CEE230050F9D56 /* IASKSwitch.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IASKSwitch.h; path = InAppSettingsKit/Views/IASKSwitch.h; sourceTree = "<group>"; };
-		471918195DB57D2742800435380BB7EE /* IASKSettingsStoreFile.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IASKSettingsStoreFile.m; path = InAppSettingsKit/Models/IASKSettingsStoreFile.m; sourceTree = "<group>"; };
-		49D85570DB4C67D8351F93946C45C442 /* GPXCompression.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GPXCompression.swift; path = Classes/GPXCompression.swift; sourceTree = "<group>"; };
-		4B00212F868CE956102E5F222A97F7F7 /* GPXWaypoint.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GPXWaypoint.swift; path = Classes/GPXWaypoint.swift; sourceTree = "<group>"; };
-		4CFAF5ACAFEA5629497BB0D12E6492E0 /* IASKSettingsStore.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IASKSettingsStore.h; path = InAppSettingsKit/Models/IASKSettingsStore.h; sourceTree = "<group>"; };
-		4D2F10E0ED764158CA4E5C889DE08273 /* GPXElement.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GPXElement.swift; path = Classes/GPXElement.swift; sourceTree = "<group>"; };
-		4D35B135A17A1962E46526C9D37CFDA5 /* IASKSwitch.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IASKSwitch.m; path = InAppSettingsKit/Views/IASKSwitch.m; sourceTree = "<group>"; };
-		4D5A4AB9267CC2DD419889F5C09462D1 /* zh-Hans.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = "zh-Hans.lproj"; path = "InAppSettingsKit/Resources/zh-Hans.lproj"; sourceTree = "<group>"; };
-		57C6F56F7A82525BE498C3C5C256B8F4 /* IASKTextViewCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IASKTextViewCell.m; path = InAppSettingsKit/Views/IASKTextViewCell.m; sourceTree = "<group>"; };
-		58B17C7CFBA107555936CD0F67BAD9A3 /* it.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = it.lproj; path = InAppSettingsKit/Resources/it.lproj; sourceTree = "<group>"; };
-		5D92A1BAB93A9DDBD7917E25CF4D2F63 /* GPXError.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GPXError.swift; path = Classes/GPXError.swift; sourceTree = "<group>"; };
-		5E6AA84EE91536B46A7F690CF589F2BE /* Converters.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Converters.swift; path = Classes/Converters.swift; sourceTree = "<group>"; };
-		5F22D88F581BD8EBCBA3B2DFE75300D1 /* GPXTrack.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GPXTrack.swift; path = Classes/GPXTrack.swift; sourceTree = "<group>"; };
-		614EDDDCB456F165325435C0EBDEF1DF /* IASKAppSettingsViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IASKAppSettingsViewController.h; path = InAppSettingsKit/Controllers/IASKAppSettingsViewController.h; sourceTree = "<group>"; };
-		652BEA4ECD40016D1C77FBADE001E4AF /* ChromaColorHandle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ChromaColorHandle.swift; path = "Source/Supporting Views/ChromaColorHandle.swift"; sourceTree = "<group>"; };
-		65BC406488756B2A1E7A2DD6FF5F0773 /* ChromaColorPicker-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ChromaColorPicker-prefix.pch"; sourceTree = "<group>"; };
-		6636B3A381754AF841C97AA54F079211 /* nl.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = nl.lproj; path = InAppSettingsKit/Resources/nl.lproj; sourceTree = "<group>"; };
-		67B0D2C8C2A1597B71CC99F1526E826C /* IASKSpecifier.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IASKSpecifier.m; path = InAppSettingsKit/Models/IASKSpecifier.m; sourceTree = "<group>"; };
-		68676CD591957EA4525B4B03D1CF22AD /* libCoreGPX.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libCoreGPX.a; path = libCoreGPX.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		68718E4613438A823411A1D65D4AE9F0 /* NSMutableString+XML.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "NSMutableString+XML.swift"; path = "Classes/NSMutableString+XML.swift"; sourceTree = "<group>"; };
-		6A315F120116D2F34C7B24D19F4EFBFE /* GPXPointSegment.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GPXPointSegment.swift; path = Classes/GPXPointSegment.swift; sourceTree = "<group>"; };
-		6FFE574556CE4AF8A38A1B20AAF283E8 /* IASKSettingsReader.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IASKSettingsReader.m; path = InAppSettingsKit/Models/IASKSettingsReader.m; sourceTree = "<group>"; };
-		70272E04DAE94C652F8202F4ABFE8034 /* fr.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = fr.lproj; path = InAppSettingsKit/Resources/fr.lproj; sourceTree = "<group>"; };
-		70D67A67B3096EE14129CC450EF048E7 /* DateTimeParsers.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DateTimeParsers.swift; path = Classes/DateTimeParsers.swift; sourceTree = "<group>"; };
-		7757D1E5DE7DFC259EB56F851E151AAF /* CoreGPX-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CoreGPX-prefix.pch"; sourceTree = "<group>"; };
-		793A482301220A59630E508C50DB4C99 /* IASKPSTextFieldSpecifierViewCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IASKPSTextFieldSpecifierViewCell.m; path = InAppSettingsKit/Views/IASKPSTextFieldSpecifierViewCell.m; sourceTree = "<group>"; };
-		798743BB6554A495CFF96551846891FB /* de.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = de.lproj; path = InAppSettingsKit/Resources/de.lproj; sourceTree = "<group>"; };
-		7C27AF1428625AEECEF5218A643E805A /* IASKMultipleValueSelection.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IASKMultipleValueSelection.h; path = InAppSettingsKit/Controllers/IASKMultipleValueSelection.h; sourceTree = "<group>"; };
-		809097A1C10EAEFEA05E14F623B20E7F /* IASKDatePicker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IASKDatePicker.h; path = InAppSettingsKit/Views/IASKDatePicker.h; sourceTree = "<group>"; };
-		80BA1D669460EB30B706F32884EC97CE /* en.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = en.lproj; path = InAppSettingsKit/Resources/en.lproj; sourceTree = "<group>"; };
-		80D46FC2768B10C49EA85B7C5CEE7EF1 /* GPXTrackSegment.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GPXTrackSegment.swift; path = Classes/GPXTrackSegment.swift; sourceTree = "<group>"; };
-		819CA0F7E815D13AD40D9423F8750CD7 /* GPXCopyright.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GPXCopyright.swift; path = Classes/GPXCopyright.swift; sourceTree = "<group>"; };
-		8222062AF8581E22CE2BC4E0B584F972 /* CoreGPX-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "CoreGPX-dummy.m"; sourceTree = "<group>"; };
-		83E157C2075805C10CC82C143940480D /* ChromaColorPicker.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ChromaColorPicker.xcconfig; sourceTree = "<group>"; };
-		874724A0C98AFB26527ECB62A395019A /* IASKTextView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IASKTextView.m; path = InAppSettingsKit/Views/IASKTextView.m; sourceTree = "<group>"; };
-		8E2AC596469CCE80FF40259BEEC31B9A /* ChromaControlStylable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ChromaControlStylable.swift; path = Source/ChromaControlStylable.swift; sourceTree = "<group>"; };
-		8F47A7DDCAC9D4D084E525844AF2B83D /* IASKColor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IASKColor.m; path = InAppSettingsKit/Views/IASKColor.m; sourceTree = "<group>"; };
-		9050608A8221087C3BAAD08A12D9FF00 /* pt-PT.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = "pt-PT.lproj"; path = "InAppSettingsKit/Resources/pt-PT.lproj"; sourceTree = "<group>"; };
-		95258CD4E09F8BEBD1269F08ED920F53 /* GPXBounds.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GPXBounds.swift; path = Classes/GPXBounds.swift; sourceTree = "<group>"; };
-		95D883E480610AF5629E4EB0001D3C73 /* UIView+DropShadow.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIView+DropShadow.swift"; path = "Source/Extensions/UIView+DropShadow.swift"; sourceTree = "<group>"; };
-		95F8534888E80AEB5954E00BAEA7E70C /* CoreGPX.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = CoreGPX.modulemap; sourceTree = "<group>"; };
-		96C6DDA9078E9C42204920B79C1120A1 /* IASKSettingsStoreFile.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IASKSettingsStoreFile.h; path = InAppSettingsKit/Models/IASKSettingsStoreFile.h; sourceTree = "<group>"; };
-		9853C235B80B33BDB6C4E080449583D6 /* Pods-WunderLINQ-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-WunderLINQ-resources.sh"; sourceTree = "<group>"; };
-		9B55A61618E29B12F0F2792A7BEC1D79 /* IASKAppSettingsViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IASKAppSettingsViewController.m; path = InAppSettingsKit/Controllers/IASKAppSettingsViewController.m; sourceTree = "<group>"; };
-		9CEC6539BCBC1E3DF699902AB9F2DD99 /* IASKPSTextFieldSpecifierViewCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IASKPSTextFieldSpecifierViewCell.h; path = InAppSettingsKit/Views/IASKPSTextFieldSpecifierViewCell.h; sourceTree = "<group>"; };
+		36ABCF3D111919E3B5F06CCAA42A030F /* IASKDatePickerViewCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IASKDatePickerViewCell.m; path = InAppSettingsKit/Views/IASKDatePickerViewCell.m; sourceTree = "<group>"; };
+		38D3685A0248AB87B794A12B85B64157 /* es-MX.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = "es-MX.lproj"; path = "InAppSettingsKit/Resources/es-MX.lproj"; sourceTree = "<group>"; };
+		3B8DD22DF79885BBEE58D69A54C53164 /* GPXCopyright.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GPXCopyright.swift; path = Classes/GPXCopyright.swift; sourceTree = "<group>"; };
+		3C16A43488013517E1618FE71DDDA901 /* GPXMetadata.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GPXMetadata.swift; path = Classes/GPXMetadata.swift; sourceTree = "<group>"; };
+		3C51A94D585947A098D9FE3FCC1B73E1 /* SliderTrackView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SliderTrackView.swift; path = "Source/Supporting Views/SliderTrackView.swift"; sourceTree = "<group>"; };
+		3D89526A107712A7126398A712C74965 /* IASKAppSettingsWebViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IASKAppSettingsWebViewController.m; path = InAppSettingsKit/Controllers/IASKAppSettingsWebViewController.m; sourceTree = "<group>"; };
+		3ED9DD2A2891B916B3F2B3FDEE7BD47A /* Converters.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Converters.swift; path = Classes/Converters.swift; sourceTree = "<group>"; };
+		3EEB8AD844303CA8FF7B3654F9E802F7 /* GPXBounds.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GPXBounds.swift; path = Classes/GPXBounds.swift; sourceTree = "<group>"; };
+		416D7ADDA090559C5675A94FFBA0FA8E /* es-419.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = "es-419.lproj"; path = "InAppSettingsKit/Resources/es-419.lproj"; sourceTree = "<group>"; };
+		41AA5B48C3BD4FFF57BE13F8A21C7F29 /* DateTimeParsers.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DateTimeParsers.swift; path = Classes/DateTimeParsers.swift; sourceTree = "<group>"; };
+		427E56F4CF2E99993434B5ACC466869E /* Pods-WunderLINQ-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-WunderLINQ-dummy.m"; sourceTree = "<group>"; };
+		451DB1DCEF8EB100349B62DC8C82432E /* NSMutableString+XML.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "NSMutableString+XML.swift"; path = "Classes/NSMutableString+XML.swift"; sourceTree = "<group>"; };
+		4779E85723F830CB9E3433DB1C078371 /* ChromaColorPicker-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ChromaColorPicker-umbrella.h"; sourceTree = "<group>"; };
+		47C00870D8B2B8DE7340513190E67D8E /* InAppSettingsKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = InAppSettingsKit.debug.xcconfig; sourceTree = "<group>"; };
+		47FED07C0DA2BA165232316255606364 /* GPXPerson.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GPXPerson.swift; path = Classes/GPXPerson.swift; sourceTree = "<group>"; };
+		486DAC7DB7D2D52E1D1620EB30BF7A21 /* GPXAuthor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GPXAuthor.swift; path = Classes/GPXAuthor.swift; sourceTree = "<group>"; };
+		48C05E539C4BBCFC149A408BFA23D8DF /* hr.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = hr.lproj; path = InAppSettingsKit/Resources/hr.lproj; sourceTree = "<group>"; };
+		49EA764C84AFB5F8BD2E2B9A7DA6219E /* el.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = el.lproj; path = InAppSettingsKit/Resources/el.lproj; sourceTree = "<group>"; };
+		49FC1D574A2F3239D89F533C8D0BE07C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		4BB5EFEBA9301184C014D527D3EB3D85 /* IASKDatePicker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IASKDatePicker.h; path = InAppSettingsKit/Views/IASKDatePicker.h; sourceTree = "<group>"; };
+		4C0C6F9262E63D82E9915794BB432214 /* GPXRoot.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GPXRoot.swift; path = Classes/GPXRoot.swift; sourceTree = "<group>"; };
+		4DBA1496F35D1BA863E8703B2C689529 /* IASKEmbeddedDatePickerViewCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IASKEmbeddedDatePickerViewCell.h; path = InAppSettingsKit/Views/IASKEmbeddedDatePickerViewCell.h; sourceTree = "<group>"; };
+		4F66DAF510F5B659B6680A44C511C912 /* IASKSettingsReader.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IASKSettingsReader.m; path = InAppSettingsKit/Models/IASKSettingsReader.m; sourceTree = "<group>"; };
+		5195535F31E37E0E05FA197B33375EE3 /* IASKSettingsStoreUserDefaults.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IASKSettingsStoreUserDefaults.m; path = InAppSettingsKit/Models/IASKSettingsStoreUserDefaults.m; sourceTree = "<group>"; };
+		53A66033C6D418BB99D1858304AA56B7 /* CoreGPX-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CoreGPX-prefix.pch"; sourceTree = "<group>"; };
+		53D1CFE99E292928FA424B074B3A2B40 /* IASKSettingsStoreInMemory.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IASKSettingsStoreInMemory.h; path = InAppSettingsKit/Models/IASKSettingsStoreInMemory.h; sourceTree = "<group>"; };
+		57A581F9461D5A858ABE6590D2849821 /* IASKTextView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IASKTextView.m; path = InAppSettingsKit/Views/IASKTextView.m; sourceTree = "<group>"; };
+		57D007F278F548E4AEEB7FD019AE2646 /* IASKAppSettingsViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IASKAppSettingsViewController.m; path = InAppSettingsKit/Controllers/IASKAppSettingsViewController.m; sourceTree = "<group>"; };
+		5AB2382A6A5F45F0D56684245B53C5C2 /* GPXRoute.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GPXRoute.swift; path = Classes/GPXRoute.swift; sourceTree = "<group>"; };
+		5B7C891A061AB6059FF03A9323C886A5 /* IASKTextField.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IASKTextField.m; path = InAppSettingsKit/Views/IASKTextField.m; sourceTree = "<group>"; };
+		5C17C74CED92BE2773B5FDF0248403FE /* IASKAppSettingsWebViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IASKAppSettingsWebViewController.h; path = InAppSettingsKit/Controllers/IASKAppSettingsWebViewController.h; sourceTree = "<group>"; };
+		5C60E691547BF1D2011BC6B15DA1A621 /* IASKColor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IASKColor.h; path = InAppSettingsKit/Views/IASKColor.h; sourceTree = "<group>"; };
+		5DF06BE018E76AFED3B38080387D8C28 /* IASKSettingsStore.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IASKSettingsStore.h; path = InAppSettingsKit/Models/IASKSettingsStore.h; sourceTree = "<group>"; };
+		5E5281A942FF40E675BE29998F8B29C4 /* Pods-WunderLINQ-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-WunderLINQ-acknowledgements.markdown"; sourceTree = "<group>"; };
+		5FED87D80BE6BFCC4115242B5319F13C /* CoreGPX-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "CoreGPX-Info.plist"; sourceTree = "<group>"; };
+		600A575CAEF646FBB46EC26CC314BBCB /* IASKTextField.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IASKTextField.h; path = InAppSettingsKit/Views/IASKTextField.h; sourceTree = "<group>"; };
+		60FDC3B9388629D9B4BBCF6CB9DBCC6C /* pt-PT.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = "pt-PT.lproj"; path = "InAppSettingsKit/Resources/pt-PT.lproj"; sourceTree = "<group>"; };
+		62C8E513795A3691B5AE49498FCBEEE8 /* Pods-WunderLINQ-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-WunderLINQ-umbrella.h"; sourceTree = "<group>"; };
+		648C1EB1E8DCBA08914CB2DC9611EFA1 /* GPXParser.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GPXParser.swift; path = Classes/GPXParser.swift; sourceTree = "<group>"; };
+		653AC7692F0C479DFB641BF61F88BD1B /* IASKEmbeddedDatePickerViewCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IASKEmbeddedDatePickerViewCell.m; path = InAppSettingsKit/Views/IASKEmbeddedDatePickerViewCell.m; sourceTree = "<group>"; };
+		6598DC58B96E9A3BF71AD9E08F61A36A /* IASKColor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IASKColor.m; path = InAppSettingsKit/Views/IASKColor.m; sourceTree = "<group>"; };
+		67E2C5D29E284801039D885CD2C5EE38 /* GPXExtensionsElement.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GPXExtensionsElement.swift; path = Classes/GPXExtensionsElement.swift; sourceTree = "<group>"; };
+		68676CD591957EA4525B4B03D1CF22AD /* CoreGPX.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = CoreGPX.framework; path = CoreGPX.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6B78527E270F30F5C962F35DA93A9C8D /* Base.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = Base.lproj; path = InAppSettingsKit/Resources/Base.lproj; sourceTree = "<group>"; };
+		6C6FBA085D235F785009C4AE1A74B5AA /* ResourceBundle-InAppSettingsKit-InAppSettingsKit-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-InAppSettingsKit-InAppSettingsKit-Info.plist"; sourceTree = "<group>"; };
+		6C91C90262A6A8120D9287BB0A1627C3 /* IASKSwitch.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IASKSwitch.m; path = InAppSettingsKit/Views/IASKSwitch.m; sourceTree = "<group>"; };
+		6D03D722044F344CBF9FAA3E728FB5B7 /* IASKPSSliderSpecifierViewCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IASKPSSliderSpecifierViewCell.m; path = InAppSettingsKit/Views/IASKPSSliderSpecifierViewCell.m; sourceTree = "<group>"; };
+		6DF1023CCC6D5DF1F6DBC2AEEE51ACD0 /* tr.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = tr.lproj; path = InAppSettingsKit/Resources/tr.lproj; sourceTree = "<group>"; };
+		6E90E196CC6DB2B822EEFEBEC428D3E8 /* ChromaColorPicker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ChromaColorPicker.release.xcconfig; sourceTree = "<group>"; };
+		70117508D3D7AA4A3D7B8109198D54BD /* IASKSettingsStoreFile.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IASKSettingsStoreFile.h; path = InAppSettingsKit/Models/IASKSettingsStoreFile.h; sourceTree = "<group>"; };
+		716605907D9558BD60106CC278E48142 /* IASKDatePicker.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IASKDatePicker.m; path = InAppSettingsKit/Views/IASKDatePicker.m; sourceTree = "<group>"; };
+		7A2FD0983EFFD450AEE3099D1AEBCD68 /* IASKSlider.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IASKSlider.h; path = InAppSettingsKit/Views/IASKSlider.h; sourceTree = "<group>"; };
+		7CCF55B2F6FE3631FA8CAD9B8FD0F466 /* CoreGPX.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = CoreGPX.release.xcconfig; sourceTree = "<group>"; };
+		7D28AC43DF0C20092EFEC43D3DC5769E /* ChromaColorPicker.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = ChromaColorPicker.modulemap; sourceTree = "<group>"; };
+		7E36B0C6ABB4B2B13C0D6B6E4A9C5CC7 /* GPXLink.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GPXLink.swift; path = Classes/GPXLink.swift; sourceTree = "<group>"; };
+		7FDA3C650ABCCFEE52B9814A1257EB00 /* IASKViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IASKViewController.h; path = InAppSettingsKit/Controllers/IASKViewController.h; sourceTree = "<group>"; };
+		82FDE13F6AA2985732FBC4AB671FA7C4 /* fr.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = fr.lproj; path = InAppSettingsKit/Resources/fr.lproj; sourceTree = "<group>"; };
+		8E4F266B549F5178921C958B82D1FB89 /* zh-Hans.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = "zh-Hans.lproj"; path = "InAppSettingsKit/Resources/zh-Hans.lproj"; sourceTree = "<group>"; };
+		911E8C20CEABABB9C54E6073B8A65428 /* GPXPointSegment.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GPXPointSegment.swift; path = Classes/GPXPointSegment.swift; sourceTree = "<group>"; };
+		9143F0AAB9281FE622B686C6B1D1E234 /* IASKSettingsStoreUserDefaults.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IASKSettingsStoreUserDefaults.h; path = InAppSettingsKit/Models/IASKSettingsStoreUserDefaults.h; sourceTree = "<group>"; };
+		95B6236633A18A70917A80E49305C093 /* th.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = th.lproj; path = InAppSettingsKit/Resources/th.lproj; sourceTree = "<group>"; };
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		9F315D5E86B42E90605E80EACBD8DB02 /* Base.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = Base.lproj; path = InAppSettingsKit/Resources/Base.lproj; sourceTree = "<group>"; };
-		9FF10435870A5C8B9F842AC8C6544495 /* Pods-WunderLINQ-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-WunderLINQ-acknowledgements.plist"; sourceTree = "<group>"; };
-		A687407C18414314CD88210D1EFBFCE4 /* es-419.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = "es-419.lproj"; path = "InAppSettingsKit/Resources/es-419.lproj"; sourceTree = "<group>"; };
-		A79D7323910169AFC0695E3A25D670DF /* IASKDatePicker.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IASKDatePicker.m; path = InAppSettingsKit/Views/IASKDatePicker.m; sourceTree = "<group>"; };
-		A8090367597DEE602F69BAA6B54447B4 /* ChromaBrightnessSlider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ChromaBrightnessSlider.swift; path = Source/ChromaBrightnessSlider.swift; sourceTree = "<group>"; };
-		ACEE1BCB6C8734C2B0AB43088D21DC64 /* ChromaColorPicker.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = ChromaColorPicker.modulemap; sourceTree = "<group>"; };
-		B03186632B3209DC1BBA83FE1DD5BA75 /* ColorWheelView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ColorWheelView.swift; path = Source/ColorWheelView.swift; sourceTree = "<group>"; };
-		B37CAEC2BAB1D8596FE3841FEFE357CA /* InAppSettingsKit.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = InAppSettingsKit.xcconfig; sourceTree = "<group>"; };
-		B4E8DDEB98977189E6FC29EE8130238A /* GPXPerson.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GPXPerson.swift; path = Classes/GPXPerson.swift; sourceTree = "<group>"; };
-		B8FD64E712AC97FCB00B3DE098C19EFA /* pl.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = pl.lproj; path = InAppSettingsKit/Resources/pl.lproj; sourceTree = "<group>"; };
-		B989AC110C6278435B18F2BEFF94B871 /* GPXExtensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GPXExtensions.swift; path = Classes/GPXExtensions.swift; sourceTree = "<group>"; };
-		B98AFCFEE3745ABBE0041E316EE5B698 /* es.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = es.lproj; path = InAppSettingsKit/Resources/es.lproj; sourceTree = "<group>"; };
-		BAD7323D5F56525A57487C5EFF1E6BB4 /* GPXParser.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GPXParser.swift; path = Classes/GPXParser.swift; sourceTree = "<group>"; };
-		BC56E92278214B3F5935B6C2410B0329 /* Pods-WunderLINQ.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-WunderLINQ.modulemap"; sourceTree = "<group>"; };
-		C082AE78A2C795A7CD50CE6E5575AB9C /* libInAppSettingsKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libInAppSettingsKit.a; path = libInAppSettingsKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		C0BE1F2B5F82BA2DAB71A879D27BE6B8 /* IASKSettingsStoreInMemory.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IASKSettingsStoreInMemory.m; path = InAppSettingsKit/Models/IASKSettingsStoreInMemory.m; sourceTree = "<group>"; };
-		C2B442C0961B866815CAA75D81575763 /* CoreGPX.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = CoreGPX.xcconfig; sourceTree = "<group>"; };
-		C2FDAE1536FF09CC2163C2DD3B704156 /* libPods-WunderLINQ.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-WunderLINQ.a"; path = "libPods-WunderLINQ.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		C4BFF76221CF83FA9F664433A721797B /* GPXEmail.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GPXEmail.swift; path = Classes/GPXEmail.swift; sourceTree = "<group>"; };
-		C55061CB51ADCD84955B35FA2B8A92C4 /* IASKTextView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IASKTextView.h; path = InAppSettingsKit/Views/IASKTextView.h; sourceTree = "<group>"; };
-		C58BC510EC4BA8D846180881E7A90346 /* th.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = th.lproj; path = InAppSettingsKit/Resources/th.lproj; sourceTree = "<group>"; };
-		C63719A95736450E495E946EF2490A32 /* IASKAppSettingsWebViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IASKAppSettingsWebViewController.m; path = InAppSettingsKit/Controllers/IASKAppSettingsWebViewController.m; sourceTree = "<group>"; };
-		C98518A99BB2F04521FBC7BE6C185564 /* ChromaColorPicker-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ChromaColorPicker-umbrella.h"; sourceTree = "<group>"; };
-		D0D1B92190E5F47E9677656DFEF79762 /* IASKEmbeddedDatePickerViewCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IASKEmbeddedDatePickerViewCell.h; path = InAppSettingsKit/Views/IASKEmbeddedDatePickerViewCell.h; sourceTree = "<group>"; };
-		D11F56D0D06AD711A6818BB919B30FB6 /* IASKSpecifierValuesViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IASKSpecifierValuesViewController.h; path = InAppSettingsKit/Controllers/IASKSpecifierValuesViewController.h; sourceTree = "<group>"; };
-		D40FF0F11E7F2EF29D1A92D25FB2D60D /* libChromaColorPicker.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libChromaColorPicker.a; path = libChromaColorPicker.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		D4FB37F26DF231B093E683E41F1B784E /* IASKSettingsStoreInMemory.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IASKSettingsStoreInMemory.h; path = InAppSettingsKit/Models/IASKSettingsStoreInMemory.h; sourceTree = "<group>"; };
-		D66D8790A0FCC88729E66DFD8350EB83 /* GPXAuthor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GPXAuthor.swift; path = Classes/GPXAuthor.swift; sourceTree = "<group>"; };
-		D756D215EEDBE3CFAE343B7EA1CF256E /* hu.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = hu.lproj; path = InAppSettingsKit/Resources/hu.lproj; sourceTree = "<group>"; };
-		D78B82B5463292431E9C0C80A4CC952E /* GPXExtensionsElement.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GPXExtensionsElement.swift; path = Classes/GPXExtensionsElement.swift; sourceTree = "<group>"; };
-		DBFF13563FC830F05E36B6E8A942BA68 /* ru.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = ru.lproj; path = InAppSettingsKit/Resources/ru.lproj; sourceTree = "<group>"; };
-		DC70CE8F301CB0BA17AB9925751449F9 /* hr.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = hr.lproj; path = InAppSettingsKit/Resources/hr.lproj; sourceTree = "<group>"; };
-		DD7329418BB56EDEAF68C79333C16856 /* GPXMetadata.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GPXMetadata.swift; path = Classes/GPXMetadata.swift; sourceTree = "<group>"; };
-		E1E83A5B3AA2BA2A3859737C9AA479BF /* el.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = el.lproj; path = InAppSettingsKit/Resources/el.lproj; sourceTree = "<group>"; };
-		EA46DBDA1ABEA6BEEA5D5E58E1F44574 /* GPXRoutePoint.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GPXRoutePoint.swift; path = Classes/GPXRoutePoint.swift; sourceTree = "<group>"; };
-		EA4903153B6B5EF163BBA1536B2F4E52 /* nb.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = nb.lproj; path = InAppSettingsKit/Resources/nb.lproj; sourceTree = "<group>"; };
-		EAD47493BC007FABA4540013E68F60CC /* GPXTrackPoint.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GPXTrackPoint.swift; path = Classes/GPXTrackPoint.swift; sourceTree = "<group>"; };
-		ED37010C2F3BF4859FD40843EFE9080E /* InAppSettingsKit-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "InAppSettingsKit-dummy.m"; sourceTree = "<group>"; };
-		ED5B58FA54EF36D2778DB4B28C227F4F /* CoreGPX-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CoreGPX-umbrella.h"; sourceTree = "<group>"; };
-		EE4F65174694B1E16AF33F4E66662C01 /* GPXRoute.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GPXRoute.swift; path = Classes/GPXRoute.swift; sourceTree = "<group>"; };
-		F29D405BB8DB40620E59C7FA114BD3FF /* uk.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = uk.lproj; path = InAppSettingsKit/Resources/uk.lproj; sourceTree = "<group>"; };
-		F3E86215088DFC8114E3A00C3F13D3BA /* IASKPSSliderSpecifierViewCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IASKPSSliderSpecifierViewCell.h; path = InAppSettingsKit/Views/IASKPSSliderSpecifierViewCell.h; sourceTree = "<group>"; };
-		F58D4C89E75DC34750B3EB95988015A6 /* IASKSpecifierValuesViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IASKSpecifierValuesViewController.m; path = InAppSettingsKit/Controllers/IASKSpecifierValuesViewController.m; sourceTree = "<group>"; };
-		F59271EC83BAE89DA2550F4DB8D6C078 /* IASKAppSettingsWebViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IASKAppSettingsWebViewController.h; path = InAppSettingsKit/Controllers/IASKAppSettingsWebViewController.h; sourceTree = "<group>"; };
-		F758890E350493B0EA057D928DE83A74 /* InAppSettingsKit-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "InAppSettingsKit-prefix.pch"; sourceTree = "<group>"; };
-		F7A196D676BD01674087ED8107841DDE /* IASKSettingsStoreUserDefaults.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IASKSettingsStoreUserDefaults.m; path = InAppSettingsKit/Models/IASKSettingsStoreUserDefaults.m; sourceTree = "<group>"; };
-		F8038F0859DE23FB874C50C1AFB2A339 /* SliderTrackView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SliderTrackView.swift; path = "Source/Supporting Views/SliderTrackView.swift"; sourceTree = "<group>"; };
-		F96B41371E15A72E76C0CDD07643D869 /* IASKDatePickerViewCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IASKDatePickerViewCell.h; path = InAppSettingsKit/Views/IASKDatePickerViewCell.h; sourceTree = "<group>"; };
-		FB344A7572C36B0F76DCF7669ADF84EC /* IASKSlider.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IASKSlider.m; path = InAppSettingsKit/Views/IASKSlider.m; sourceTree = "<group>"; };
-		FCA20BA160FA54B1479D8FA96384693A /* ja.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = ja.lproj; path = InAppSettingsKit/Resources/ja.lproj; sourceTree = "<group>"; };
-		FD0069076E21558CF09C1BF53BDF8412 /* IASKViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IASKViewController.h; path = InAppSettingsKit/Controllers/IASKViewController.h; sourceTree = "<group>"; };
-		FE963B6BAFB9AA3110DFF5E27234EC06 /* Pods-WunderLINQ-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-WunderLINQ-dummy.m"; sourceTree = "<group>"; };
+		A2A68DB17E5AE6DA98D58567451B0F09 /* InAppSettingsKit-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "InAppSettingsKit-dummy.m"; sourceTree = "<group>"; };
+		A47D2AB3F30CF2465222E5F6FAA446FA /* GPXError.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GPXError.swift; path = Classes/GPXError.swift; sourceTree = "<group>"; };
+		A50FE15072CA8EDD50D2B15F95D31977 /* IASKDatePickerViewCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IASKDatePickerViewCell.h; path = InAppSettingsKit/Views/IASKDatePickerViewCell.h; sourceTree = "<group>"; };
+		A661A034C224452931FA125EBED0BBC5 /* IASKSpecifier.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IASKSpecifier.h; path = InAppSettingsKit/Models/IASKSpecifier.h; sourceTree = "<group>"; };
+		A717AF3CD76895CCB6104DB921FA897A /* IASKMultipleValueSelection.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IASKMultipleValueSelection.m; path = InAppSettingsKit/Controllers/IASKMultipleValueSelection.m; sourceTree = "<group>"; };
+		AC6ED54D731406F62976B0216A873EF7 /* ca.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = ca.lproj; path = InAppSettingsKit/Resources/ca.lproj; sourceTree = "<group>"; };
+		B08648CC53A31CB846B12C9615D13C61 /* CoreGPX-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "CoreGPX-dummy.m"; sourceTree = "<group>"; };
+		B0BA2006CB9DEFA796C4AC6E48F36858 /* zh-Hant.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = "zh-Hant.lproj"; path = "InAppSettingsKit/Resources/zh-Hant.lproj"; sourceTree = "<group>"; };
+		B1549AEBB53D47390FF662A5FC53EE83 /* IASKSwitch.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IASKSwitch.h; path = InAppSettingsKit/Views/IASKSwitch.h; sourceTree = "<group>"; };
+		B247A7FA6B0F7677F27135B38A31B223 /* hu.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = hu.lproj; path = InAppSettingsKit/Resources/hu.lproj; sourceTree = "<group>"; };
+		B2B094F78982EEC4D417F896AD28E436 /* GPXTrackSegment.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GPXTrackSegment.swift; path = Classes/GPXTrackSegment.swift; sourceTree = "<group>"; };
+		B56C7C7BBD910A54DBD4821D1AD10677 /* es.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = es.lproj; path = InAppSettingsKit/Resources/es.lproj; sourceTree = "<group>"; };
+		B840752D9190C5C5EF3B81406F2CF548 /* sv.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = sv.lproj; path = InAppSettingsKit/Resources/sv.lproj; sourceTree = "<group>"; };
+		BB166DAC0E33FA2EDA2C8D3CE28D6AE2 /* GPXCompression.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GPXCompression.swift; path = Classes/GPXCompression.swift; sourceTree = "<group>"; };
+		BB3F99CB8656D0A56D8DF54573174DEE /* IASKSettingsStore.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IASKSettingsStore.m; path = InAppSettingsKit/Models/IASKSettingsStore.m; sourceTree = "<group>"; };
+		BE3DB26AF4903C61AF3D8008619128A4 /* InAppSettingsKit-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "InAppSettingsKit-prefix.pch"; sourceTree = "<group>"; };
+		C04525978230106D557061C28C204E97 /* GPXTrack.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GPXTrack.swift; path = Classes/GPXTrack.swift; sourceTree = "<group>"; };
+		C082AE78A2C795A7CD50CE6E5575AB9C /* InAppSettingsKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = InAppSettingsKit.framework; path = InAppSettingsKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C1B3FD8ED1128A429A9E55B5347A855F /* IASKPSTextFieldSpecifierViewCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IASKPSTextFieldSpecifierViewCell.m; path = InAppSettingsKit/Views/IASKPSTextFieldSpecifierViewCell.m; sourceTree = "<group>"; };
+		C1F7EF7F99B59A7575DF5EA9F7EEBE87 /* GPXElement.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GPXElement.swift; path = Classes/GPXElement.swift; sourceTree = "<group>"; };
+		C2FDAE1536FF09CC2163C2DD3B704156 /* Pods_WunderLINQ.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_WunderLINQ.framework; path = "Pods-WunderLINQ.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C3A672FCA77A1F5BAA929EC9C835832A /* GPXRawElement.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GPXRawElement.swift; path = Classes/GPXRawElement.swift; sourceTree = "<group>"; };
+		C63D29D37ECB73F542715D11DD79EF69 /* nb.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = nb.lproj; path = InAppSettingsKit/Resources/nb.lproj; sourceTree = "<group>"; };
+		C79E5A789AA12CD0191E074CB2FDEBFB /* InAppSettingsKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = InAppSettingsKit.release.xcconfig; sourceTree = "<group>"; };
+		C873F75C552BAAE952A6C27FE5A4A1B3 /* Pods-WunderLINQ-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-WunderLINQ-acknowledgements.plist"; sourceTree = "<group>"; };
+		D3D31C3EEE9AA92EC6AEE3F53C66B46A /* CoreGPX.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = CoreGPX.modulemap; sourceTree = "<group>"; };
+		D40FF0F11E7F2EF29D1A92D25FB2D60D /* ChromaColorPicker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = ChromaColorPicker.framework; path = ChromaColorPicker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D49DA4A012EE58D5BF86E6945BB1E093 /* de.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = de.lproj; path = InAppSettingsKit/Resources/de.lproj; sourceTree = "<group>"; };
+		D50F10BAAFD244DC7525A73D9AE89CE1 /* IASKSpecifierValuesViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IASKSpecifierValuesViewController.h; path = InAppSettingsKit/Controllers/IASKSpecifierValuesViewController.h; sourceTree = "<group>"; };
+		D622DC03AEA18D79C812B523F2E0A3EA /* ChromaColorPicker-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ChromaColorPicker-prefix.pch"; sourceTree = "<group>"; };
+		D6E8DC9948629809909E18001505D902 /* IASKSettingsStoreInMemory.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IASKSettingsStoreInMemory.m; path = InAppSettingsKit/Models/IASKSettingsStoreInMemory.m; sourceTree = "<group>"; };
+		D93D13A226EF9EA03E3750E5666648F1 /* pt.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = pt.lproj; path = InAppSettingsKit/Resources/pt.lproj; sourceTree = "<group>"; };
+		D9CD3C7F51F0F21158ADC5A856BBCB0D /* ru.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = ru.lproj; path = InAppSettingsKit/Resources/ru.lproj; sourceTree = "<group>"; };
+		DBD0B321ED2DD12CD8632CC30DDDD7C3 /* UIView+Utils.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIView+Utils.swift"; path = "Source/Extensions/UIView+Utils.swift"; sourceTree = "<group>"; };
+		DD0954A8F6E73048C0E1622468D12CCE /* ChromaControlStylable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ChromaControlStylable.swift; path = Source/ChromaControlStylable.swift; sourceTree = "<group>"; };
+		DDC8D68B7B1EE80A6AB2052CAB5EF22E /* SliderHandleView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SliderHandleView.swift; path = "Source/Supporting Views/SliderHandleView.swift"; sourceTree = "<group>"; };
+		DEB0F573462E4077E8AB5968BF3FF46F /* en.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = en.lproj; path = InAppSettingsKit/Resources/en.lproj; sourceTree = "<group>"; };
+		DF8FF08C6BB6F4AB957E829A3BBF9CC0 /* IASKTextViewCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IASKTextViewCell.h; path = InAppSettingsKit/Views/IASKTextViewCell.h; sourceTree = "<group>"; };
+		DFAEFED72D36816EB2F5473E0D323B7F /* UIColor+Brightness.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIColor+Brightness.swift"; path = "Source/Extensions/UIColor+Brightness.swift"; sourceTree = "<group>"; };
+		E0C17EC28151E583D62BB32E1CAB1504 /* Pods-WunderLINQ.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-WunderLINQ.debug.xcconfig"; sourceTree = "<group>"; };
+		E4EEC0528E4CFA1B3584C2B48C16727C /* pl.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = pl.lproj; path = InAppSettingsKit/Resources/pl.lproj; sourceTree = "<group>"; };
+		E726520443C9EB10959252AA64C635F0 /* CoreGPX.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = CoreGPX.debug.xcconfig; sourceTree = "<group>"; };
+		EBDA3226189A93D70F4011B1C591C5B9 /* IASKPSSliderSpecifierViewCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IASKPSSliderSpecifierViewCell.h; path = InAppSettingsKit/Views/IASKPSSliderSpecifierViewCell.h; sourceTree = "<group>"; };
+		EE80548799260F280C8C66AB6CA0FB2D /* ChromaColorHandle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ChromaColorHandle.swift; path = "Source/Supporting Views/ChromaColorHandle.swift"; sourceTree = "<group>"; };
+		F0489AEF4D830462E90D620924705F0B /* ChromaColorPicker-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ChromaColorPicker-Info.plist"; sourceTree = "<group>"; };
+		F17ED7B0B064A63357452FDFB293CFCE /* Pods-WunderLINQ.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-WunderLINQ.modulemap"; sourceTree = "<group>"; };
+		F59F27BFF82BC49099EE2D221CA623DA /* Pods-WunderLINQ.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-WunderLINQ.release.xcconfig"; sourceTree = "<group>"; };
+		F713BB5250C4DC14BA1ED012D43E0D90 /* IASKSettingsReader.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IASKSettingsReader.h; path = InAppSettingsKit/Models/IASKSettingsReader.h; sourceTree = "<group>"; };
+		F8729D5610CBE6B77D77F5DC478026D4 /* ChromaColorPicker-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ChromaColorPicker-dummy.m"; sourceTree = "<group>"; };
+		F9D1DCF06681788BA852BDC475398A32 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		F9FB31B33BA4F911D3822836AFFACE02 /* UIColor+Utils.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIColor+Utils.swift"; path = "Source/Extensions/UIColor+Utils.swift"; sourceTree = "<group>"; };
+		FB22956F6AC5C5BB8CA4411AAA3817CC /* it.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = it.lproj; path = InAppSettingsKit/Resources/it.lproj; sourceTree = "<group>"; };
+		FDA5B2667A19348AA7C8934275DD33D1 /* InAppSettingsKit-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "InAppSettingsKit-Info.plist"; sourceTree = "<group>"; };
+		FE7968976D0FC569B5E07EC593CCA1E9 /* IASKTextView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IASKTextView.h; path = InAppSettingsKit/Views/IASKTextView.h; sourceTree = "<group>"; };
+		FF9C70583C070838AC56EF55BE14554A /* ja.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = ja.lproj; path = InAppSettingsKit/Resources/ja.lproj; sourceTree = "<group>"; };
+		FFA0DAD4892218B6E2796904E2FE868B /* CoreGPX-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CoreGPX-umbrella.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		319AB3A15B0DF7E81BB773AB90742368 /* Frameworks */ = {
+		0838352822E83D207569A3752485DAD1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D05B1BBD79717E34B4925E845D030C44 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		17948D2B0C7973874D7487686722CEF3 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		94E4C4DABB427ED42791242797924110 /* Frameworks */ = {
+		602EC3246502A239BD68BAA725A2F4C3 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				314A478C4220B6CCB4B68E60ABCCFBB5 /* Foundation.framework in Frameworks */,
+				AEDD2CF3399EE0D0F6FF722BF150BDCB /* MessageUI.framework in Frameworks */,
+				AB265B6CFC55BDE1EA364C4E24F2211E /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C5B4913B372E2129943848AC2664779D /* Frameworks */ = {
+		EE9D52AB7B9D89F86F2CD29397F573ED /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E742F841A203D0E95635E60821F8CE68 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E4749467B48F2914A995B9A13CE9B845 /* Frameworks */ = {
+		F2F35721D28A458808644F6BB8BF44AD /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		FE0330F7D5C6DDE9B6ED629A49509BDA /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				5C6DFC00287030B7E65AE490CB44879F /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1C2D7EBE5FCB8B11F83D5537837EA93F /* Support Files */ = {
+		03C5C200A0787E300053CFA8F53CA094 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				95F8534888E80AEB5954E00BAEA7E70C /* CoreGPX.modulemap */,
-				C2B442C0961B866815CAA75D81575763 /* CoreGPX.xcconfig */,
-				8222062AF8581E22CE2BC4E0B584F972 /* CoreGPX-dummy.m */,
-				7757D1E5DE7DFC259EB56F851E151AAF /* CoreGPX-prefix.pch */,
-				ED5B58FA54EF36D2778DB4B28C227F4F /* CoreGPX-umbrella.h */,
+				A7F017F6C2D3B79FB97CE448310F3937 /* iOS */,
 			);
-			name = "Support Files";
-			path = "../Target Support Files/CoreGPX";
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		26470858DF4BCBFF27DDCAA535643FA9 /* Pods */ = {
+		08B32CF356F84511114EE4C8AC1D8EFB /* CoreGPX */ = {
 			isa = PBXGroup;
 			children = (
-				670457A3B6307F66D7008EAB3101F801 /* ChromaColorPicker */,
-				781766A7BA490A36053095480C1B4159 /* CoreGPX */,
-				EFA91379335CB1D77C004F004DB4483E /* InAppSettingsKit */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-		4FCD160B85B64389B7A0B043EE92A5E8 /* Pods-WunderLINQ */ = {
-			isa = PBXGroup;
-			children = (
-				BC56E92278214B3F5935B6C2410B0329 /* Pods-WunderLINQ.modulemap */,
-				20BC061F7DFA9EC6DEAE3AC2C0766DE7 /* Pods-WunderLINQ-acknowledgements.markdown */,
-				9FF10435870A5C8B9F842AC8C6544495 /* Pods-WunderLINQ-acknowledgements.plist */,
-				FE963B6BAFB9AA3110DFF5E27234EC06 /* Pods-WunderLINQ-dummy.m */,
-				9853C235B80B33BDB6C4E080449583D6 /* Pods-WunderLINQ-resources.sh */,
-				0D46B1ADFDE2445FBA4A1E0F0BC4C88D /* Pods-WunderLINQ-umbrella.h */,
-				13E170F7A77DE8D046429A0D976E8C9E /* Pods-WunderLINQ.debug.xcconfig */,
-				0F0A05985CBEC554F0DEC92B1837016C /* Pods-WunderLINQ.release.xcconfig */,
-			);
-			name = "Pods-WunderLINQ";
-			path = "Target Support Files/Pods-WunderLINQ";
-			sourceTree = "<group>";
-		};
-		670457A3B6307F66D7008EAB3101F801 /* ChromaColorPicker */ = {
-			isa = PBXGroup;
-			children = (
-				A8090367597DEE602F69BAA6B54447B4 /* ChromaBrightnessSlider.swift */,
-				652BEA4ECD40016D1C77FBADE001E4AF /* ChromaColorHandle.swift */,
-				0A42AFA3EEAEC98C3D88AE6DACD1D2E9 /* ChromaColorPicker.swift */,
-				8E2AC596469CCE80FF40259BEEC31B9A /* ChromaControlStylable.swift */,
-				B03186632B3209DC1BBA83FE1DD5BA75 /* ColorWheelView.swift */,
-				4333BDBE8E4F9FD37B5D6257463DDDD4 /* SliderHandleView.swift */,
-				F8038F0859DE23FB874C50C1AFB2A339 /* SliderTrackView.swift */,
-				051A945C218E43382A3CF212F3D398A6 /* UIColor+Brightness.swift */,
-				308801963669BBA828306C7DB19D5686 /* UIColor+Utils.swift */,
-				95D883E480610AF5629E4EB0001D3C73 /* UIView+DropShadow.swift */,
-				321AEB0F5E1BAE37193670CB8DD509BC /* UIView+Utils.swift */,
-				C28832DF9514E77CE781598E48C7E1CE /* Support Files */,
-			);
-			name = ChromaColorPicker;
-			path = ChromaColorPicker;
-			sourceTree = "<group>";
-		};
-		781766A7BA490A36053095480C1B4159 /* CoreGPX */ = {
-			isa = PBXGroup;
-			children = (
-				5E6AA84EE91536B46A7F690CF589F2BE /* Converters.swift */,
-				70D67A67B3096EE14129CC450EF048E7 /* DateTimeParsers.swift */,
-				D66D8790A0FCC88729E66DFD8350EB83 /* GPXAuthor.swift */,
-				95258CD4E09F8BEBD1269F08ED920F53 /* GPXBounds.swift */,
-				49D85570DB4C67D8351F93946C45C442 /* GPXCompression.swift */,
-				819CA0F7E815D13AD40D9423F8750CD7 /* GPXCopyright.swift */,
-				4D2F10E0ED764158CA4E5C889DE08273 /* GPXElement.swift */,
-				C4BFF76221CF83FA9F664433A721797B /* GPXEmail.swift */,
-				5D92A1BAB93A9DDBD7917E25CF4D2F63 /* GPXError.swift */,
-				B989AC110C6278435B18F2BEFF94B871 /* GPXExtensions.swift */,
-				D78B82B5463292431E9C0C80A4CC952E /* GPXExtensionsElement.swift */,
-				21EBA8616242D62F3C5DC1648297CD77 /* GPXFix.swift */,
-				2F676840471EFB9D62343078799F183F /* GPXLink.swift */,
-				DD7329418BB56EDEAF68C79333C16856 /* GPXMetadata.swift */,
-				BAD7323D5F56525A57487C5EFF1E6BB4 /* GPXParser.swift */,
-				B4E8DDEB98977189E6FC29EE8130238A /* GPXPerson.swift */,
-				3E17611827CF185868D223627DF2870A /* GPXPoint.swift */,
-				6A315F120116D2F34C7B24D19F4EFBFE /* GPXPointSegment.swift */,
-				0F53F4D38B8E93EB6F7B07307A318345 /* GPXRawElement.swift */,
-				1E5AB3B140AB4000CE0720D0DEC21100 /* GPXRoot.swift */,
-				EE4F65174694B1E16AF33F4E66662C01 /* GPXRoute.swift */,
-				EA46DBDA1ABEA6BEEA5D5E58E1F44574 /* GPXRoutePoint.swift */,
-				5F22D88F581BD8EBCBA3B2DFE75300D1 /* GPXTrack.swift */,
-				EAD47493BC007FABA4540013E68F60CC /* GPXTrackPoint.swift */,
-				80D46FC2768B10C49EA85B7C5CEE7EF1 /* GPXTrackSegment.swift */,
-				4B00212F868CE956102E5F222A97F7F7 /* GPXWaypoint.swift */,
-				68718E4613438A823411A1D65D4AE9F0 /* NSMutableString+XML.swift */,
-				1C2D7EBE5FCB8B11F83D5537837EA93F /* Support Files */,
+				3ED9DD2A2891B916B3F2B3FDEE7BD47A /* Converters.swift */,
+				41AA5B48C3BD4FFF57BE13F8A21C7F29 /* DateTimeParsers.swift */,
+				486DAC7DB7D2D52E1D1620EB30BF7A21 /* GPXAuthor.swift */,
+				3EEB8AD844303CA8FF7B3654F9E802F7 /* GPXBounds.swift */,
+				BB166DAC0E33FA2EDA2C8D3CE28D6AE2 /* GPXCompression.swift */,
+				3B8DD22DF79885BBEE58D69A54C53164 /* GPXCopyright.swift */,
+				C1F7EF7F99B59A7575DF5EA9F7EEBE87 /* GPXElement.swift */,
+				190CAA6A9A13F6876998F2413961D904 /* GPXEmail.swift */,
+				A47D2AB3F30CF2465222E5F6FAA446FA /* GPXError.swift */,
+				2BCB70FEB7E0498A407FB2A50E5E926D /* GPXExtensions.swift */,
+				67E2C5D29E284801039D885CD2C5EE38 /* GPXExtensionsElement.swift */,
+				16E5768685E4B650CD779412D69B212A /* GPXFix.swift */,
+				7E36B0C6ABB4B2B13C0D6B6E4A9C5CC7 /* GPXLink.swift */,
+				3C16A43488013517E1618FE71DDDA901 /* GPXMetadata.swift */,
+				648C1EB1E8DCBA08914CB2DC9611EFA1 /* GPXParser.swift */,
+				47FED07C0DA2BA165232316255606364 /* GPXPerson.swift */,
+				1F8520BACD7D2829B203C97CF64B338F /* GPXPoint.swift */,
+				911E8C20CEABABB9C54E6073B8A65428 /* GPXPointSegment.swift */,
+				C3A672FCA77A1F5BAA929EC9C835832A /* GPXRawElement.swift */,
+				4C0C6F9262E63D82E9915794BB432214 /* GPXRoot.swift */,
+				5AB2382A6A5F45F0D56684245B53C5C2 /* GPXRoute.swift */,
+				04A9D2886CA121442F574F4CC9E961D2 /* GPXRoutePoint.swift */,
+				C04525978230106D557061C28C204E97 /* GPXTrack.swift */,
+				118C869825B744374D16020C06CCFFDA /* GPXTrackPoint.swift */,
+				B2B094F78982EEC4D417F896AD28E436 /* GPXTrackSegment.swift */,
+				08375098688981D30362D12361C71215 /* GPXWaypoint.swift */,
+				451DB1DCEF8EB100349B62DC8C82432E /* NSMutableString+XML.swift */,
+				0B770A0F42B6DD2CDC2AF49A8138BA59 /* Support Files */,
 			);
 			name = CoreGPX;
 			path = CoreGPX;
 			sourceTree = "<group>";
 		};
-		8C020AE60E53389ED33AD32A0E7266B3 /* Products */ = {
+		0B770A0F42B6DD2CDC2AF49A8138BA59 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				325E862631E06444E4504511C87F1E9C /* InAppSettingsKit.bundle */,
-				D40FF0F11E7F2EF29D1A92D25FB2D60D /* libChromaColorPicker.a */,
-				68676CD591957EA4525B4B03D1CF22AD /* libCoreGPX.a */,
-				C082AE78A2C795A7CD50CE6E5575AB9C /* libInAppSettingsKit.a */,
-				C2FDAE1536FF09CC2163C2DD3B704156 /* libPods-WunderLINQ.a */,
+				D3D31C3EEE9AA92EC6AEE3F53C66B46A /* CoreGPX.modulemap */,
+				B08648CC53A31CB846B12C9615D13C61 /* CoreGPX-dummy.m */,
+				5FED87D80BE6BFCC4115242B5319F13C /* CoreGPX-Info.plist */,
+				53A66033C6D418BB99D1858304AA56B7 /* CoreGPX-prefix.pch */,
+				FFA0DAD4892218B6E2796904E2FE868B /* CoreGPX-umbrella.h */,
+				E726520443C9EB10959252AA64C635F0 /* CoreGPX.debug.xcconfig */,
+				7CCF55B2F6FE3631FA8CAD9B8FD0F466 /* CoreGPX.release.xcconfig */,
 			);
-			name = Products;
+			name = "Support Files";
+			path = "../Target Support Files/CoreGPX";
 			sourceTree = "<group>";
 		};
-		958453DD16A30804497C423CF414C9EE /* Targets Support Files */ = {
+		20528241E1065E707DEB7F1E5E60DA49 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				4FCD160B85B64389B7A0B043EE92A5E8 /* Pods-WunderLINQ */,
-			);
-			name = "Targets Support Files";
-			sourceTree = "<group>";
-		};
-		9A32A066B713B71F3D14391628BA92A5 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				9F315D5E86B42E90605E80EACBD8DB02 /* Base.lproj */,
-				08BB7563FEC4AE94E0B6CE1BCD1D9118 /* ca.lproj */,
-				798743BB6554A495CFF96551846891FB /* de.lproj */,
-				E1E83A5B3AA2BA2A3859737C9AA479BF /* el.lproj */,
-				80BA1D669460EB30B706F32884EC97CE /* en.lproj */,
-				B98AFCFEE3745ABBE0041E316EE5B698 /* es.lproj */,
-				A687407C18414314CD88210D1EFBFCE4 /* es-419.lproj */,
-				1E6D45F32B379FFD4BA26BAB13293471 /* es-MX.lproj */,
-				70272E04DAE94C652F8202F4ABFE8034 /* fr.lproj */,
-				DC70CE8F301CB0BA17AB9925751449F9 /* hr.lproj */,
-				D756D215EEDBE3CFAE343B7EA1CF256E /* hu.lproj */,
-				58B17C7CFBA107555936CD0F67BAD9A3 /* it.lproj */,
-				FCA20BA160FA54B1479D8FA96384693A /* ja.lproj */,
-				EA4903153B6B5EF163BBA1536B2F4E52 /* nb.lproj */,
-				6636B3A381754AF841C97AA54F079211 /* nl.lproj */,
-				B8FD64E712AC97FCB00B3DE098C19EFA /* pl.lproj */,
-				37277957D7A137C2A6C516C451CD2EAB /* pt.lproj */,
-				9050608A8221087C3BAAD08A12D9FF00 /* pt-PT.lproj */,
-				DBFF13563FC830F05E36B6E8A942BA68 /* ru.lproj */,
-				23B49FCE21B66BB68F2C9237C9141E8A /* sv.lproj */,
-				C58BC510EC4BA8D846180881E7A90346 /* th.lproj */,
-				17DCCDDA892805D68225E4FD89ADB37D /* tr.lproj */,
-				F29D405BB8DB40620E59C7FA114BD3FF /* uk.lproj */,
-				4D5A4AB9267CC2DD419889F5C09462D1 /* zh-Hans.lproj */,
-				1C18CB568E12DDD48C2FE254AE9044ED /* zh-Hant.lproj */,
+				6B78527E270F30F5C962F35DA93A9C8D /* Base.lproj */,
+				AC6ED54D731406F62976B0216A873EF7 /* ca.lproj */,
+				D49DA4A012EE58D5BF86E6945BB1E093 /* de.lproj */,
+				49EA764C84AFB5F8BD2E2B9A7DA6219E /* el.lproj */,
+				DEB0F573462E4077E8AB5968BF3FF46F /* en.lproj */,
+				B56C7C7BBD910A54DBD4821D1AD10677 /* es.lproj */,
+				416D7ADDA090559C5675A94FFBA0FA8E /* es-419.lproj */,
+				38D3685A0248AB87B794A12B85B64157 /* es-MX.lproj */,
+				82FDE13F6AA2985732FBC4AB671FA7C4 /* fr.lproj */,
+				48C05E539C4BBCFC149A408BFA23D8DF /* hr.lproj */,
+				B247A7FA6B0F7677F27135B38A31B223 /* hu.lproj */,
+				FB22956F6AC5C5BB8CA4411AAA3817CC /* it.lproj */,
+				FF9C70583C070838AC56EF55BE14554A /* ja.lproj */,
+				C63D29D37ECB73F542715D11DD79EF69 /* nb.lproj */,
+				24E51B9962C2EC939FE84411CD132DF7 /* nl.lproj */,
+				E4EEC0528E4CFA1B3584C2B48C16727C /* pl.lproj */,
+				D93D13A226EF9EA03E3750E5666648F1 /* pt.lproj */,
+				60FDC3B9388629D9B4BBCF6CB9DBCC6C /* pt-PT.lproj */,
+				D9CD3C7F51F0F21158ADC5A856BBCB0D /* ru.lproj */,
+				B840752D9190C5C5EF3B81406F2CF548 /* sv.lproj */,
+				95B6236633A18A70917A80E49305C093 /* th.lproj */,
+				6DF1023CCC6D5DF1F6DBC2AEEE51ACD0 /* tr.lproj */,
+				1DE39995E8EBF498DDBFD05C760B6EDB /* uk.lproj */,
+				8E4F266B549F5178921C958B82D1FB89 /* zh-Hans.lproj */,
+				B0BA2006CB9DEFA796C4AC6E48F36858 /* zh-Hant.lproj */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
 		};
-		C28832DF9514E77CE781598E48C7E1CE /* Support Files */ = {
+		26470858DF4BCBFF27DDCAA535643FA9 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				ACEE1BCB6C8734C2B0AB43088D21DC64 /* ChromaColorPicker.modulemap */,
-				83E157C2075805C10CC82C143940480D /* ChromaColorPicker.xcconfig */,
-				192AD68C7195222BFCC48EE31994CB09 /* ChromaColorPicker-dummy.m */,
-				65BC406488756B2A1E7A2DD6FF5F0773 /* ChromaColorPicker-prefix.pch */,
-				C98518A99BB2F04521FBC7BE6C185564 /* ChromaColorPicker-umbrella.h */,
+				7FCAE19E78353FCD14C67A743CF89EF8 /* ChromaColorPicker */,
+				08B32CF356F84511114EE4C8AC1D8EFB /* CoreGPX */,
+				554531D2FAE1192975D75E255BCCABF6 /* InAppSettingsKit */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		47E81DF85AC621FC3B1E5CD65BF761BB /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				7D28AC43DF0C20092EFEC43D3DC5769E /* ChromaColorPicker.modulemap */,
+				F8729D5610CBE6B77D77F5DC478026D4 /* ChromaColorPicker-dummy.m */,
+				F0489AEF4D830462E90D620924705F0B /* ChromaColorPicker-Info.plist */,
+				D622DC03AEA18D79C812B523F2E0A3EA /* ChromaColorPicker-prefix.pch */,
+				4779E85723F830CB9E3433DB1C078371 /* ChromaColorPicker-umbrella.h */,
+				275BDAB28B3AF54A928476F03C9EA706 /* ChromaColorPicker.debug.xcconfig */,
+				6E90E196CC6DB2B822EEFEBEC428D3E8 /* ChromaColorPicker.release.xcconfig */,
 			);
 			name = "Support Files";
 			path = "../Target Support Files/ChromaColorPicker";
+			sourceTree = "<group>";
+		};
+		554531D2FAE1192975D75E255BCCABF6 /* InAppSettingsKit */ = {
+			isa = PBXGroup;
+			children = (
+				1C3730C274288FB60B07F4F30EE90249 /* IASKAppSettingsViewController.h */,
+				57D007F278F548E4AEEB7FD019AE2646 /* IASKAppSettingsViewController.m */,
+				5C17C74CED92BE2773B5FDF0248403FE /* IASKAppSettingsWebViewController.h */,
+				3D89526A107712A7126398A712C74965 /* IASKAppSettingsWebViewController.m */,
+				5C60E691547BF1D2011BC6B15DA1A621 /* IASKColor.h */,
+				6598DC58B96E9A3BF71AD9E08F61A36A /* IASKColor.m */,
+				4BB5EFEBA9301184C014D527D3EB3D85 /* IASKDatePicker.h */,
+				716605907D9558BD60106CC278E48142 /* IASKDatePicker.m */,
+				A50FE15072CA8EDD50D2B15F95D31977 /* IASKDatePickerViewCell.h */,
+				36ABCF3D111919E3B5F06CCAA42A030F /* IASKDatePickerViewCell.m */,
+				4DBA1496F35D1BA863E8703B2C689529 /* IASKEmbeddedDatePickerViewCell.h */,
+				653AC7692F0C479DFB641BF61F88BD1B /* IASKEmbeddedDatePickerViewCell.m */,
+				15E5903EB5DF83B6667F97D3536BC6D4 /* IASKMultipleValueSelection.h */,
+				A717AF3CD76895CCB6104DB921FA897A /* IASKMultipleValueSelection.m */,
+				EBDA3226189A93D70F4011B1C591C5B9 /* IASKPSSliderSpecifierViewCell.h */,
+				6D03D722044F344CBF9FAA3E728FB5B7 /* IASKPSSliderSpecifierViewCell.m */,
+				0ACC741F91328726F0CCB79FE89F9B1D /* IASKPSTextFieldSpecifierViewCell.h */,
+				C1B3FD8ED1128A429A9E55B5347A855F /* IASKPSTextFieldSpecifierViewCell.m */,
+				F713BB5250C4DC14BA1ED012D43E0D90 /* IASKSettingsReader.h */,
+				4F66DAF510F5B659B6680A44C511C912 /* IASKSettingsReader.m */,
+				5DF06BE018E76AFED3B38080387D8C28 /* IASKSettingsStore.h */,
+				BB3F99CB8656D0A56D8DF54573174DEE /* IASKSettingsStore.m */,
+				70117508D3D7AA4A3D7B8109198D54BD /* IASKSettingsStoreFile.h */,
+				228AC6940A9451170E23A60616DF61E6 /* IASKSettingsStoreFile.m */,
+				53D1CFE99E292928FA424B074B3A2B40 /* IASKSettingsStoreInMemory.h */,
+				D6E8DC9948629809909E18001505D902 /* IASKSettingsStoreInMemory.m */,
+				9143F0AAB9281FE622B686C6B1D1E234 /* IASKSettingsStoreUserDefaults.h */,
+				5195535F31E37E0E05FA197B33375EE3 /* IASKSettingsStoreUserDefaults.m */,
+				7A2FD0983EFFD450AEE3099D1AEBCD68 /* IASKSlider.h */,
+				140C7CFDF68D50AD95D21E6E1DF16461 /* IASKSlider.m */,
+				A661A034C224452931FA125EBED0BBC5 /* IASKSpecifier.h */,
+				28F257213522E2160F78AEFD94BB9EB7 /* IASKSpecifier.m */,
+				D50F10BAAFD244DC7525A73D9AE89CE1 /* IASKSpecifierValuesViewController.h */,
+				18E0BE05C97E3F2D3027BB7FC6AE6D69 /* IASKSpecifierValuesViewController.m */,
+				B1549AEBB53D47390FF662A5FC53EE83 /* IASKSwitch.h */,
+				6C91C90262A6A8120D9287BB0A1627C3 /* IASKSwitch.m */,
+				600A575CAEF646FBB46EC26CC314BBCB /* IASKTextField.h */,
+				5B7C891A061AB6059FF03A9323C886A5 /* IASKTextField.m */,
+				FE7968976D0FC569B5E07EC593CCA1E9 /* IASKTextView.h */,
+				57A581F9461D5A858ABE6590D2849821 /* IASKTextView.m */,
+				DF8FF08C6BB6F4AB957E829A3BBF9CC0 /* IASKTextViewCell.h */,
+				1620AE3DC05AC86C0F3A5F3345084392 /* IASKTextViewCell.m */,
+				7FDA3C650ABCCFEE52B9814A1257EB00 /* IASKViewController.h */,
+				20528241E1065E707DEB7F1E5E60DA49 /* Resources */,
+				AF0B69EF540FFA4356433F4F3D296E54 /* Support Files */,
+			);
+			name = InAppSettingsKit;
+			path = InAppSettingsKit;
+			sourceTree = "<group>";
+		};
+		603F5E2F7312283F9EF0E024EB440C6D /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				A7B6F39C8F2E8A7FDC1F607643B01445 /* Pods-WunderLINQ */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		7FCAE19E78353FCD14C67A743CF89EF8 /* ChromaColorPicker */ = {
+			isa = PBXGroup;
+			children = (
+				0AB693E65D816DD76D5C17057EDA048E /* ChromaBrightnessSlider.swift */,
+				EE80548799260F280C8C66AB6CA0FB2D /* ChromaColorHandle.swift */,
+				10892F1C33D9559E9ADFBC4ED9B9D137 /* ChromaColorPicker.swift */,
+				DD0954A8F6E73048C0E1622468D12CCE /* ChromaControlStylable.swift */,
+				0E8124A03FB7C8BA857520BDFBEBA645 /* ColorWheelView.swift */,
+				DDC8D68B7B1EE80A6AB2052CAB5EF22E /* SliderHandleView.swift */,
+				3C51A94D585947A098D9FE3FCC1B73E1 /* SliderTrackView.swift */,
+				DFAEFED72D36816EB2F5473E0D323B7F /* UIColor+Brightness.swift */,
+				F9FB31B33BA4F911D3822836AFFACE02 /* UIColor+Utils.swift */,
+				24B5DDE50393AE3FA62E68CA7B4E69EF /* UIView+DropShadow.swift */,
+				DBD0B321ED2DD12CD8632CC30DDDD7C3 /* UIView+Utils.swift */,
+				47E81DF85AC621FC3B1E5CD65BF761BB /* Support Files */,
+			);
+			name = ChromaColorPicker;
+			path = ChromaColorPicker;
+			sourceTree = "<group>";
+		};
+		A7B6F39C8F2E8A7FDC1F607643B01445 /* Pods-WunderLINQ */ = {
+			isa = PBXGroup;
+			children = (
+				F17ED7B0B064A63357452FDFB293CFCE /* Pods-WunderLINQ.modulemap */,
+				5E5281A942FF40E675BE29998F8B29C4 /* Pods-WunderLINQ-acknowledgements.markdown */,
+				C873F75C552BAAE952A6C27FE5A4A1B3 /* Pods-WunderLINQ-acknowledgements.plist */,
+				427E56F4CF2E99993434B5ACC466869E /* Pods-WunderLINQ-dummy.m */,
+				155774EF7639BBFA9D7197EB5222CBF9 /* Pods-WunderLINQ-frameworks.sh */,
+				2BF9472E73161208EAA0E2625C652868 /* Pods-WunderLINQ-Info.plist */,
+				62C8E513795A3691B5AE49498FCBEEE8 /* Pods-WunderLINQ-umbrella.h */,
+				E0C17EC28151E583D62BB32E1CAB1504 /* Pods-WunderLINQ.debug.xcconfig */,
+				F59F27BFF82BC49099EE2D221CA623DA /* Pods-WunderLINQ.release.xcconfig */,
+			);
+			name = "Pods-WunderLINQ";
+			path = "Target Support Files/Pods-WunderLINQ";
+			sourceTree = "<group>";
+		};
+		A7F017F6C2D3B79FB97CE448310F3937 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				49FC1D574A2F3239D89F533C8D0BE07C /* Foundation.framework */,
+				144A53FDC58FFA8FFF1B994C3E866B77 /* MessageUI.framework */,
+				F9D1DCF06681788BA852BDC475398A32 /* UIKit.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		AF0B69EF540FFA4356433F4F3D296E54 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				256F25DA58D2E2DD9005FC3132F5C754 /* InAppSettingsKit.modulemap */,
+				A2A68DB17E5AE6DA98D58567451B0F09 /* InAppSettingsKit-dummy.m */,
+				FDA5B2667A19348AA7C8934275DD33D1 /* InAppSettingsKit-Info.plist */,
+				BE3DB26AF4903C61AF3D8008619128A4 /* InAppSettingsKit-prefix.pch */,
+				25FEBABB92166D9E780842E899269D74 /* InAppSettingsKit-umbrella.h */,
+				47C00870D8B2B8DE7340513190E67D8E /* InAppSettingsKit.debug.xcconfig */,
+				C79E5A789AA12CD0191E074CB2FDEBFB /* InAppSettingsKit.release.xcconfig */,
+				6C6FBA085D235F785009C4AE1A74B5AA /* ResourceBundle-InAppSettingsKit-InAppSettingsKit-Info.plist */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/InAppSettingsKit";
+			sourceTree = "<group>";
+		};
+		C4E3E17E5E3490A4B0F3B5069BB439BF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D40FF0F11E7F2EF29D1A92D25FB2D60D /* ChromaColorPicker.framework */,
+				68676CD591957EA4525B4B03D1CF22AD /* CoreGPX.framework */,
+				325E862631E06444E4504511C87F1E9C /* InAppSettingsKit.bundle */,
+				C082AE78A2C795A7CD50CE6E5575AB9C /* InAppSettingsKit.framework */,
+				C2FDAE1536FF09CC2163C2DD3B704156 /* Pods_WunderLINQ.framework */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		CF1408CF629C7361332E53B88F7BD30C = {
 			isa = PBXGroup;
 			children = (
 				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
-				D89477F20FB1DE18A04690586D7808C4 /* Frameworks */,
+				03C5C200A0787E300053CFA8F53CA094 /* Frameworks */,
 				26470858DF4BCBFF27DDCAA535643FA9 /* Pods */,
-				8C020AE60E53389ED33AD32A0E7266B3 /* Products */,
-				958453DD16A30804497C423CF414C9EE /* Targets Support Files */,
+				C4E3E17E5E3490A4B0F3B5069BB439BF /* Products */,
+				603F5E2F7312283F9EF0E024EB440C6D /* Targets Support Files */,
 			);
-			sourceTree = "<group>";
-		};
-		D89477F20FB1DE18A04690586D7808C4 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		E87B26DB6CCD59EE51F8327B962B5942 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				B37CAEC2BAB1D8596FE3841FEFE357CA /* InAppSettingsKit.xcconfig */,
-				ED37010C2F3BF4859FD40843EFE9080E /* InAppSettingsKit-dummy.m */,
-				F758890E350493B0EA057D928DE83A74 /* InAppSettingsKit-prefix.pch */,
-				2EB8D5EB807985F7E0492E6CD863CCF0 /* ResourceBundle-InAppSettingsKit-InAppSettingsKit-Info.plist */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/InAppSettingsKit";
-			sourceTree = "<group>";
-		};
-		EFA91379335CB1D77C004F004DB4483E /* InAppSettingsKit */ = {
-			isa = PBXGroup;
-			children = (
-				614EDDDCB456F165325435C0EBDEF1DF /* IASKAppSettingsViewController.h */,
-				9B55A61618E29B12F0F2792A7BEC1D79 /* IASKAppSettingsViewController.m */,
-				F59271EC83BAE89DA2550F4DB8D6C078 /* IASKAppSettingsWebViewController.h */,
-				C63719A95736450E495E946EF2490A32 /* IASKAppSettingsWebViewController.m */,
-				1456AD4F5D793E1397B21F4916725161 /* IASKColor.h */,
-				8F47A7DDCAC9D4D084E525844AF2B83D /* IASKColor.m */,
-				809097A1C10EAEFEA05E14F623B20E7F /* IASKDatePicker.h */,
-				A79D7323910169AFC0695E3A25D670DF /* IASKDatePicker.m */,
-				F96B41371E15A72E76C0CDD07643D869 /* IASKDatePickerViewCell.h */,
-				08AE22C95523344B6E46550AA5A4F115 /* IASKDatePickerViewCell.m */,
-				D0D1B92190E5F47E9677656DFEF79762 /* IASKEmbeddedDatePickerViewCell.h */,
-				315D1EDB063FFF44C9647BF1DE8C3F21 /* IASKEmbeddedDatePickerViewCell.m */,
-				7C27AF1428625AEECEF5218A643E805A /* IASKMultipleValueSelection.h */,
-				16553CBAD1091503B84D00CAFE4E1E7A /* IASKMultipleValueSelection.m */,
-				F3E86215088DFC8114E3A00C3F13D3BA /* IASKPSSliderSpecifierViewCell.h */,
-				28AE84C3BA6404F88304A230F090AF9E /* IASKPSSliderSpecifierViewCell.m */,
-				9CEC6539BCBC1E3DF699902AB9F2DD99 /* IASKPSTextFieldSpecifierViewCell.h */,
-				793A482301220A59630E508C50DB4C99 /* IASKPSTextFieldSpecifierViewCell.m */,
-				415351F188A5FF65E387EB3C84E69C78 /* IASKSettingsReader.h */,
-				6FFE574556CE4AF8A38A1B20AAF283E8 /* IASKSettingsReader.m */,
-				4CFAF5ACAFEA5629497BB0D12E6492E0 /* IASKSettingsStore.h */,
-				2F7AC4FEC8E3950B031722E9F057EEEB /* IASKSettingsStore.m */,
-				96C6DDA9078E9C42204920B79C1120A1 /* IASKSettingsStoreFile.h */,
-				471918195DB57D2742800435380BB7EE /* IASKSettingsStoreFile.m */,
-				D4FB37F26DF231B093E683E41F1B784E /* IASKSettingsStoreInMemory.h */,
-				C0BE1F2B5F82BA2DAB71A879D27BE6B8 /* IASKSettingsStoreInMemory.m */,
-				228182918686A4916A5A6069CE6C159D /* IASKSettingsStoreUserDefaults.h */,
-				F7A196D676BD01674087ED8107841DDE /* IASKSettingsStoreUserDefaults.m */,
-				3342673C1F656316FC188D308403E3C8 /* IASKSlider.h */,
-				FB344A7572C36B0F76DCF7669ADF84EC /* IASKSlider.m */,
-				31462206D3093EA83181F69B96629900 /* IASKSpecifier.h */,
-				67B0D2C8C2A1597B71CC99F1526E826C /* IASKSpecifier.m */,
-				D11F56D0D06AD711A6818BB919B30FB6 /* IASKSpecifierValuesViewController.h */,
-				F58D4C89E75DC34750B3EB95988015A6 /* IASKSpecifierValuesViewController.m */,
-				445EFDC29E01F30736CEE230050F9D56 /* IASKSwitch.h */,
-				4D35B135A17A1962E46526C9D37CFDA5 /* IASKSwitch.m */,
-				3DA461293139D15E64DE1A947D11406E /* IASKTextField.h */,
-				26E261AF097F6C4B145198CDB54379B4 /* IASKTextField.m */,
-				C55061CB51ADCD84955B35FA2B8A92C4 /* IASKTextView.h */,
-				874724A0C98AFB26527ECB62A395019A /* IASKTextView.m */,
-				02326DEE7100B0FCFEA97C791E0D3165 /* IASKTextViewCell.h */,
-				57C6F56F7A82525BE498C3C5C256B8F4 /* IASKTextViewCell.m */,
-				FD0069076E21558CF09C1BF53BDF8412 /* IASKViewController.h */,
-				9A32A066B713B71F3D14391628BA92A5 /* Resources */,
-				E87B26DB6CCD59EE51F8327B962B5942 /* Support Files */,
-			);
-			name = InAppSettingsKit;
-			path = InAppSettingsKit;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		05863E2DA9EF406F0BDA442059FD7D20 /* Headers */ = {
+		71047198B4901F8EB201A6E67435DFC2 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				86B216ABB2C16DA5547756D971F8AEED /* ChromaColorPicker-umbrella.h in Headers */,
+				51687062CFF963FE2F4A16AC7FC53D89 /* CoreGPX-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		240307A3EFDBA482BD5FDB36721CBDDE /* Headers */ = {
+		8CF33FEF7903AD60243C2D7622160A8B /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				60B0510A0D1C2B6690896F89B2988FC0 /* IASKAppSettingsViewController.h in Headers */,
-				1393DCB0E47F97377E7226E33A4A814E /* IASKAppSettingsWebViewController.h in Headers */,
-				908D234B669DCD2C335BF704B2884516 /* IASKColor.h in Headers */,
-				0932FE5BCA48102FC41A8806202AE05D /* IASKDatePicker.h in Headers */,
-				96F07CFF20FE37BA80909A981403BAF1 /* IASKDatePickerViewCell.h in Headers */,
-				965CDF0BFB364000C87D84943C3138DA /* IASKEmbeddedDatePickerViewCell.h in Headers */,
-				CA41FB698E185F0B8324C02095362573 /* IASKMultipleValueSelection.h in Headers */,
-				4961996E98660EFA0CFEFD670B23095B /* IASKPSSliderSpecifierViewCell.h in Headers */,
-				E33E0240A191D8DE8A3C3BFCD1812685 /* IASKPSTextFieldSpecifierViewCell.h in Headers */,
-				61BED379D6537AC6373C3DEED247FC82 /* IASKSettingsReader.h in Headers */,
-				28BEA6A5A14ABC8801AA36C53C1CAB7C /* IASKSettingsStore.h in Headers */,
-				87EE48B3056DE4011112C7B604393AD3 /* IASKSettingsStoreFile.h in Headers */,
-				F80702F56D68654D0820D8C4E637B2AA /* IASKSettingsStoreInMemory.h in Headers */,
-				334070E3F289A8C702EE431B158F0914 /* IASKSettingsStoreUserDefaults.h in Headers */,
-				2F626486DD1AAF5AE1C132F2540452D3 /* IASKSlider.h in Headers */,
-				9DDE65FD083D5F4831D85E4840806200 /* IASKSpecifier.h in Headers */,
-				62B9BAD90228A27C4C4D7B1701D10A8C /* IASKSpecifierValuesViewController.h in Headers */,
-				F6A03D49B2454018462603DE0F13768C /* IASKSwitch.h in Headers */,
-				A55E8148686619C29C45A60139713606 /* IASKTextField.h in Headers */,
-				10A7DD1766DC2A20C749B7FFC65B9197 /* IASKTextView.h in Headers */,
-				C21D025529E176865407205D7FADD36C /* IASKTextViewCell.h in Headers */,
-				F306F62A3B671DC40B287F025CB054EA /* IASKViewController.h in Headers */,
+				CB2A978B571DEF808CCCEA651E34B3DF /* ChromaColorPicker-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		8307B6E1F6A63DED3F456B61F750A165 /* Headers */ = {
+		96448B746E32C48CF5BEA829AD783745 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				587D349D2AA584B4BCE51263C6F343E7 /* CoreGPX-umbrella.h in Headers */,
+				80B0FAB433E55B25F22BAE629303CE2D /* Pods-WunderLINQ-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		AB073FA6FBEA907AA915E137E8220725 /* Headers */ = {
+		9C575362B8E0DB598F6E357C4E66D75B /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B478B38ECD27325FAD542CFE9E80FB9A /* Pods-WunderLINQ-umbrella.h in Headers */,
+				B45DAB82217CFBDB31A82C0B06B92CDE /* IASKAppSettingsViewController.h in Headers */,
+				B03FF4607CB1E0791BBEC04A3340848D /* IASKAppSettingsWebViewController.h in Headers */,
+				0ECF4AF40C638E9086696BEFEBEA5B5C /* IASKColor.h in Headers */,
+				C9C4EB3E25AE6BA226C10BD4CC5D9151 /* IASKDatePicker.h in Headers */,
+				1EB8CB2A0D6F460CC49E01756D39E4E4 /* IASKDatePickerViewCell.h in Headers */,
+				3C06F432A6D333FB6A2786F403779DD3 /* IASKEmbeddedDatePickerViewCell.h in Headers */,
+				32D841ED22E0A6AECC4EC57B55F5A1AB /* IASKMultipleValueSelection.h in Headers */,
+				70BD4F620780C462AF888CADDC674E1C /* IASKPSSliderSpecifierViewCell.h in Headers */,
+				373997AD67F9E0B3FB7A459D42B0D6BB /* IASKPSTextFieldSpecifierViewCell.h in Headers */,
+				539A61FE3E12083EB893C183489AE066 /* IASKSettingsReader.h in Headers */,
+				F89E43DD21A2825E2B5A25228E86CC85 /* IASKSettingsStore.h in Headers */,
+				772F287E6B73F1AA6E44401CBD6F194F /* IASKSettingsStoreFile.h in Headers */,
+				20C559F7FB2AB8042CC36AFA5EF3A523 /* IASKSettingsStoreInMemory.h in Headers */,
+				D121BF49CB0B07A4B3DE8979BED374F9 /* IASKSettingsStoreUserDefaults.h in Headers */,
+				0850DEFB99E706BB5BF2F6CEDDB9B2F0 /* IASKSlider.h in Headers */,
+				AFFD51829244034E585136FF82702C32 /* IASKSpecifier.h in Headers */,
+				69BC77F6453EB3D10DCE5FB79B601511 /* IASKSpecifierValuesViewController.h in Headers */,
+				E8DF12A19E571B0616165C7759598FFF /* IASKSwitch.h in Headers */,
+				6B36BB24920BB1D89F64D4E57B0EB1C8 /* IASKTextField.h in Headers */,
+				6C8032EEFDBCA9004280D91FBD0849FA /* IASKTextView.h in Headers */,
+				A91F60039195B79035E7477EE2748C9F /* IASKTextViewCell.h in Headers */,
+				A92446EBE805179A5A7F159FED012BB9 /* IASKViewController.h in Headers */,
+				3489676B77DC8145FA736DB8E7CB1CA1 /* InAppSettingsKit-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -633,12 +680,12 @@
 /* Begin PBXNativeTarget section */
 		493735E92C5B6068F445B48D0CA7B736 /* CoreGPX */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 67F418599692883693EC6F6C834F716A /* Build configuration list for PBXNativeTarget "CoreGPX" */;
+			buildConfigurationList = BB04281494E2DD7239D625006530C88C /* Build configuration list for PBXNativeTarget "CoreGPX" */;
 			buildPhases = (
-				8307B6E1F6A63DED3F456B61F750A165 /* Headers */,
-				67BAE49FD0C9B1F333EFD47A7C7E554B /* Sources */,
-				E4749467B48F2914A995B9A13CE9B845 /* Frameworks */,
-				18DF1765058CE07A4FA69CF4A7E0D135 /* Copy generated compatibility header */,
+				71047198B4901F8EB201A6E67435DFC2 /* Headers */,
+				9484283DBDB6286FBCF0575A4323351C /* Sources */,
+				0838352822E83D207569A3752485DAD1 /* Frameworks */,
+				CFAFC45CEE2F22728B1E9A8F084B4A53 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -646,35 +693,36 @@
 			);
 			name = CoreGPX;
 			productName = CoreGPX;
-			productReference = 68676CD591957EA4525B4B03D1CF22AD /* libCoreGPX.a */;
-			productType = "com.apple.product-type.library.static";
+			productReference = 68676CD591957EA4525B4B03D1CF22AD /* CoreGPX.framework */;
+			productType = "com.apple.product-type.framework";
 		};
 		5B4848122435F4C22D574A5DA6D2EFB3 /* InAppSettingsKit */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2E2983DB26D03F24B649956AE00671CA /* Build configuration list for PBXNativeTarget "InAppSettingsKit" */;
+			buildConfigurationList = CB0C105582AE031F4F49379CE5469314 /* Build configuration list for PBXNativeTarget "InAppSettingsKit" */;
 			buildPhases = (
-				240307A3EFDBA482BD5FDB36721CBDDE /* Headers */,
-				F4121CC16D9AF2657802C2891B64EFFA /* Sources */,
-				94E4C4DABB427ED42791242797924110 /* Frameworks */,
+				9C575362B8E0DB598F6E357C4E66D75B /* Headers */,
+				13206B69B2A5CD3086B7CBB1DAD0ED8C /* Sources */,
+				602EC3246502A239BD68BAA725A2F4C3 /* Frameworks */,
+				7899CB34F1CBEF3646F0AE135182D90F /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				46ED1FF75A6066826AFE562C47009A20 /* PBXTargetDependency */,
+				29898ED6F2C3AC237D15E6899AF38F2E /* PBXTargetDependency */,
 			);
 			name = InAppSettingsKit;
 			productName = InAppSettingsKit;
-			productReference = C082AE78A2C795A7CD50CE6E5575AB9C /* libInAppSettingsKit.a */;
-			productType = "com.apple.product-type.library.static";
+			productReference = C082AE78A2C795A7CD50CE6E5575AB9C /* InAppSettingsKit.framework */;
+			productType = "com.apple.product-type.framework";
 		};
 		7961A0F04FB3D96E3E703CF075D6DACD /* ChromaColorPicker */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 80101B9FF3220CC017858C8B4D9F0744 /* Build configuration list for PBXNativeTarget "ChromaColorPicker" */;
+			buildConfigurationList = 50901C6627F17673F7A57D9C1E3A49EF /* Build configuration list for PBXNativeTarget "ChromaColorPicker" */;
 			buildPhases = (
-				05863E2DA9EF406F0BDA442059FD7D20 /* Headers */,
-				9CA0982C59353F693D0E1873FE2348AA /* Sources */,
-				C5B4913B372E2129943848AC2664779D /* Frameworks */,
-				7EF776DEE18C93552E52971D9F57F395 /* Copy generated compatibility header */,
+				8CF33FEF7903AD60243C2D7622160A8B /* Headers */,
+				B84FA16A92DCEFF988737BAEDBC8FDA6 /* Sources */,
+				F2F35721D28A458808644F6BB8BF44AD /* Frameworks */,
+				A891CFB7231DD650D8651C8802E20101 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -682,16 +730,16 @@
 			);
 			name = ChromaColorPicker;
 			productName = ChromaColorPicker;
-			productReference = D40FF0F11E7F2EF29D1A92D25FB2D60D /* libChromaColorPicker.a */;
-			productType = "com.apple.product-type.library.static";
+			productReference = D40FF0F11E7F2EF29D1A92D25FB2D60D /* ChromaColorPicker.framework */;
+			productType = "com.apple.product-type.framework";
 		};
 		8A996938DFC560C0A3EF0DD6CA6B032A /* InAppSettingsKit-InAppSettingsKit */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A3780511AB738A8B385FF214339E9877 /* Build configuration list for PBXNativeTarget "InAppSettingsKit-InAppSettingsKit" */;
+			buildConfigurationList = 5B50BD6EC031B40BA9315F22BB5C947C /* Build configuration list for PBXNativeTarget "InAppSettingsKit-InAppSettingsKit" */;
 			buildPhases = (
-				C9834C10A06A5CAE3894DC621BCA8B81 /* Sources */,
-				FE0330F7D5C6DDE9B6ED629A49509BDA /* Frameworks */,
-				AEB1A977AC52F94ED38463F6F074EE15 /* Resources */,
+				D50112850D3ED621791A65C346FE29AC /* Sources */,
+				17948D2B0C7973874D7487686722CEF3 /* Frameworks */,
+				B7C95AE327D0CC6D4CA0B7E8225CCF2D /* Resources */,
 			);
 			buildRules = (
 			);
@@ -704,23 +752,24 @@
 		};
 		FAF21BE37EB65063DA9127CAC1CE75D9 /* Pods-WunderLINQ */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C6D20C11F627CC41AC7CA6EE095E7C8F /* Build configuration list for PBXNativeTarget "Pods-WunderLINQ" */;
+			buildConfigurationList = 7B7FD5EFAA73B291EDDA17EAB375C4AB /* Build configuration list for PBXNativeTarget "Pods-WunderLINQ" */;
 			buildPhases = (
-				AB073FA6FBEA907AA915E137E8220725 /* Headers */,
-				C9E3631753AAD9B72C3A232309467C7A /* Sources */,
-				319AB3A15B0DF7E81BB773AB90742368 /* Frameworks */,
+				96448B746E32C48CF5BEA829AD783745 /* Headers */,
+				002881CBB5B2F70D867979698A5E8C6A /* Sources */,
+				EE9D52AB7B9D89F86F2CD29397F573ED /* Frameworks */,
+				688206186F35220BA4C09CE5972844B3 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				77CAEF517181EEDA692596FBDBC43EFE /* PBXTargetDependency */,
-				8BE0DA43CBEF938F0CE28814C9CF73A6 /* PBXTargetDependency */,
-				E1F75E4A332012D73BDA61DA4171C6AC /* PBXTargetDependency */,
+				0506D9B5C229E84A6CC2BFC976D27170 /* PBXTargetDependency */,
+				CE1F0F828119FCDB37522DC3F5D3D767 /* PBXTargetDependency */,
+				79336A5F2C5CDDB734E71FA872C1D7AF /* PBXTargetDependency */,
 			);
 			name = "Pods-WunderLINQ";
 			productName = "Pods-WunderLINQ";
-			productReference = C2FDAE1536FF09CC2163C2DD3B704156 /* libPods-WunderLINQ.a */;
-			productType = "com.apple.product-type.library.static";
+			productReference = C2FDAE1536FF09CC2163C2DD3B704156 /* Pods_WunderLINQ.framework */;
+			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
 
@@ -740,7 +789,7 @@
 				Base,
 			);
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
-			productRefGroup = 8C020AE60E53389ED33AD32A0E7266B3 /* Products */;
+			productRefGroup = C4E3E17E5E3490A4B0F3B5069BB439BF /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -754,272 +803,233 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		AEB1A977AC52F94ED38463F6F074EE15 /* Resources */ = {
+		688206186F35220BA4C09CE5972844B3 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1924FBFADE2BF2147C7B74F466AC3A35 /* Base.lproj in Resources */,
-				E4A70EEA26A456B1EE483EE8F718AF63 /* ca.lproj in Resources */,
-				F1D9DFED244DA698653A7577CADB5A2A /* de.lproj in Resources */,
-				E151379B9CDD0386F3CA671A2D9CC8CA /* el.lproj in Resources */,
-				659801F73CD7E59F22BBE403926443DB /* en.lproj in Resources */,
-				AB4FA31C958505194D8CCB24BB9ACE84 /* es-419.lproj in Resources */,
-				A3A6B5468C79A1B5FE74BC5BE43FAA58 /* es-MX.lproj in Resources */,
-				C436D70E9EA3C81BA8C98EA2D5165714 /* es.lproj in Resources */,
-				61BF900807954863DCFD5370C82CB6CC /* fr.lproj in Resources */,
-				0226AAC61C721D66430913CA45E4AAD1 /* hr.lproj in Resources */,
-				79051CEDC4752661ED448FEAE0DA60D0 /* hu.lproj in Resources */,
-				1D3A9019EE207C836FC6C630A3E0C739 /* it.lproj in Resources */,
-				EEE1E13796522220E17832E5C3BB7ABC /* ja.lproj in Resources */,
-				98B0BC4244B4677A8F942A5050B652D0 /* nb.lproj in Resources */,
-				E5A5F1DBA6C2209BDB39BB2F7ABC2094 /* nl.lproj in Resources */,
-				6C4D6EABE06255B86207A0EE69379C1A /* pl.lproj in Resources */,
-				D01A75273BAB7D803C00B9FB334B3263 /* pt-PT.lproj in Resources */,
-				2CF3519B74D1F929D211C70BC5DA0291 /* pt.lproj in Resources */,
-				149010CB3CE4D0B8BA8D9CFCC3CAB0B4 /* ru.lproj in Resources */,
-				DC4F7D6EB0663DF0D89C6C2A182F3753 /* sv.lproj in Resources */,
-				EA600700AF05772808C9641A6E641D80 /* th.lproj in Resources */,
-				5269A2102BC6FFDF250ABDAC5506BCF7 /* tr.lproj in Resources */,
-				0E5FD664EFDE508D9D05FD5F0A39C25A /* uk.lproj in Resources */,
-				71AD8F9A097FE4499CBD962E542169FB /* zh-Hans.lproj in Resources */,
-				D2126DECB57164949F39453A111D09ED /* zh-Hant.lproj in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7899CB34F1CBEF3646F0AE135182D90F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				525F4DFFBD58FE846D6C238C52D0B53D /* InAppSettingsKit.bundle in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A891CFB7231DD650D8651C8802E20101 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B7C95AE327D0CC6D4CA0B7E8225CCF2D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				370133E35E3051477D59B2EFA3C11146 /* Base.lproj in Resources */,
+				D6A714A6E5B086EBEC8805CC80B52A44 /* ca.lproj in Resources */,
+				A9A46BFA5ED52E83F02F2A7A163DEBF4 /* de.lproj in Resources */,
+				7FD1C420FCD1672FF8A881440852B635 /* el.lproj in Resources */,
+				5E1B122229E4DE1F73B26EED14F09199 /* en.lproj in Resources */,
+				F7291EA086FA2A9B83323B9A00581B57 /* es-419.lproj in Resources */,
+				3AA3054C52B04D5BC87D8F02E7CF5006 /* es-MX.lproj in Resources */,
+				5855F3A6278EA50A8CBBBB4F65C2FF00 /* es.lproj in Resources */,
+				77D5D7172C843E80D232A0787943F3C1 /* fr.lproj in Resources */,
+				C88529FED472213F278007BBE000FE4D /* hr.lproj in Resources */,
+				DF061DE17219E2E6C3B432F8F761D0E3 /* hu.lproj in Resources */,
+				97BE0C2E56447B9B7F28D06054657293 /* it.lproj in Resources */,
+				E578099B1DD29D3288824C93F25453DB /* ja.lproj in Resources */,
+				198BD078FDD3D7109F3D35D0FF887526 /* nb.lproj in Resources */,
+				A8C40DD1BEC15AD8171C080A0EC8150B /* nl.lproj in Resources */,
+				ACEBCB8AC08F46015B90751FC34D3C34 /* pl.lproj in Resources */,
+				158E2F830D0ED44ACFA130E659C4C82C /* pt-PT.lproj in Resources */,
+				19465F51F361C48FFC8DA852B4AEE6C3 /* pt.lproj in Resources */,
+				58BD477C11FAD09D21ED5A003FBB20FC /* ru.lproj in Resources */,
+				8F08F32CC11B98BA49BFA96790E3AF99 /* sv.lproj in Resources */,
+				775A48595E5DC4C6AD1AAF5F87B4AE9E /* th.lproj in Resources */,
+				0781540189ECE3F925380BFECCB41341 /* tr.lproj in Resources */,
+				97AC41C0F1132445CAFB45BEE6ED2A6C /* uk.lproj in Resources */,
+				F70F72592091F0946CCBBE883933ED4D /* zh-Hans.lproj in Resources */,
+				5FFB9DC0CCD59678695EEC4CB56AE47B /* zh-Hant.lproj in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CFAFC45CEE2F22728B1E9A8F084B4A53 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		18DF1765058CE07A4FA69CF4A7E0D135 /* Copy generated compatibility header */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${DERIVED_SOURCES_DIR}/${PRODUCT_MODULE_NAME}-Swift.h",
-				"${PODS_ROOT}/Headers/Public/CoreGPX/CoreGPX.modulemap",
-				"${PODS_ROOT}/Headers/Public/CoreGPX/CoreGPX-umbrella.h",
-			);
-			name = "Copy generated compatibility header";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${BUILT_PRODUCTS_DIR}/${PRODUCT_MODULE_NAME}.modulemap",
-				"${BUILT_PRODUCTS_DIR}/CoreGPX-umbrella.h",
-				"${BUILT_PRODUCTS_DIR}/Swift Compatibility Header/${PRODUCT_MODULE_NAME}-Swift.h",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "COMPATIBILITY_HEADER_PATH=\"${BUILT_PRODUCTS_DIR}/Swift Compatibility Header/${PRODUCT_MODULE_NAME}-Swift.h\"\nMODULE_MAP_PATH=\"${BUILT_PRODUCTS_DIR}/${PRODUCT_MODULE_NAME}.modulemap\"\n\nditto \"${DERIVED_SOURCES_DIR}/${PRODUCT_MODULE_NAME}-Swift.h\" \"${COMPATIBILITY_HEADER_PATH}\"\nditto \"${PODS_ROOT}/Headers/Public/CoreGPX/CoreGPX.modulemap\" \"${MODULE_MAP_PATH}\"\nditto \"${PODS_ROOT}/Headers/Public/CoreGPX/CoreGPX-umbrella.h\" \"${BUILT_PRODUCTS_DIR}\"\nprintf \"\\n\\nmodule ${PRODUCT_MODULE_NAME}.Swift {\\n  header \\\"${COMPATIBILITY_HEADER_PATH}\\\"\\n  requires objc\\n}\\n\" >> \"${MODULE_MAP_PATH}\"\n";
-		};
-		7EF776DEE18C93552E52971D9F57F395 /* Copy generated compatibility header */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${DERIVED_SOURCES_DIR}/${PRODUCT_MODULE_NAME}-Swift.h",
-				"${PODS_ROOT}/Headers/Public/ChromaColorPicker/ChromaColorPicker.modulemap",
-				"${PODS_ROOT}/Headers/Public/ChromaColorPicker/ChromaColorPicker-umbrella.h",
-			);
-			name = "Copy generated compatibility header";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${BUILT_PRODUCTS_DIR}/${PRODUCT_MODULE_NAME}.modulemap",
-				"${BUILT_PRODUCTS_DIR}/ChromaColorPicker-umbrella.h",
-				"${BUILT_PRODUCTS_DIR}/Swift Compatibility Header/${PRODUCT_MODULE_NAME}-Swift.h",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "COMPATIBILITY_HEADER_PATH=\"${BUILT_PRODUCTS_DIR}/Swift Compatibility Header/${PRODUCT_MODULE_NAME}-Swift.h\"\nMODULE_MAP_PATH=\"${BUILT_PRODUCTS_DIR}/${PRODUCT_MODULE_NAME}.modulemap\"\n\nditto \"${DERIVED_SOURCES_DIR}/${PRODUCT_MODULE_NAME}-Swift.h\" \"${COMPATIBILITY_HEADER_PATH}\"\nditto \"${PODS_ROOT}/Headers/Public/ChromaColorPicker/ChromaColorPicker.modulemap\" \"${MODULE_MAP_PATH}\"\nditto \"${PODS_ROOT}/Headers/Public/ChromaColorPicker/ChromaColorPicker-umbrella.h\" \"${BUILT_PRODUCTS_DIR}\"\nprintf \"\\n\\nmodule ${PRODUCT_MODULE_NAME}.Swift {\\n  header \\\"${COMPATIBILITY_HEADER_PATH}\\\"\\n  requires objc\\n}\\n\" >> \"${MODULE_MAP_PATH}\"\n";
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
-		67BAE49FD0C9B1F333EFD47A7C7E554B /* Sources */ = {
+		002881CBB5B2F70D867979698A5E8C6A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C7EDBC5BE5180B11173924C334805490 /* Converters.swift in Sources */,
-				FCE1DC91C4B4C1608C0CCC5F0DB94CE4 /* CoreGPX-dummy.m in Sources */,
-				8C9FDD4FC3FBF93788EF5C5516C3554A /* DateTimeParsers.swift in Sources */,
-				968D7A251070ECC40781827B7BF8C9E8 /* GPXAuthor.swift in Sources */,
-				B3C25B55BE04838CC5012EDD0BECE78C /* GPXBounds.swift in Sources */,
-				0CBFF803D2B2774089C159DBBC0121DA /* GPXCompression.swift in Sources */,
-				B3E725B7068CBA7D9202AD31C0F6137C /* GPXCopyright.swift in Sources */,
-				4C1467BFC65CF5322A17B905DF76405C /* GPXElement.swift in Sources */,
-				E9B636D4C9BE80FDE2A8FDA45142949D /* GPXEmail.swift in Sources */,
-				AC64F64988B6EDC36412A4851452E98D /* GPXError.swift in Sources */,
-				3E002399CFA03B4D091AFD80038087A0 /* GPXExtensions.swift in Sources */,
-				1C0680BD8AC53E93809889AF2819BF29 /* GPXExtensionsElement.swift in Sources */,
-				F19143A89DAB3F6A484D23BCC8AEB315 /* GPXFix.swift in Sources */,
-				7B77251BF96D277E23278B1605DCB5A5 /* GPXLink.swift in Sources */,
-				4B015BC50EE558A799C514137BC6F21A /* GPXMetadata.swift in Sources */,
-				BEC6AF6C3B741C8ACFA53B5984507E41 /* GPXParser.swift in Sources */,
-				13DA5484934BE56A37FDA3E461F0D88E /* GPXPerson.swift in Sources */,
-				5649893E3D0B4367C5194C1EB215DC3E /* GPXPoint.swift in Sources */,
-				EABFA22B141DA4CB3CEB26BB9A0A1D67 /* GPXPointSegment.swift in Sources */,
-				0E2E30E70BAA7444765178FED2A1804F /* GPXRawElement.swift in Sources */,
-				12C989867ED408BE7ADA69F2ED5B2971 /* GPXRoot.swift in Sources */,
-				643C15726C7FDA6BD43F304674546E67 /* GPXRoute.swift in Sources */,
-				72B2EE29E53150E0697BEB37536329A2 /* GPXRoutePoint.swift in Sources */,
-				6373EF88CAB8C9B3EE4C4F846A79E387 /* GPXTrack.swift in Sources */,
-				369D611835B87F288879DD2DA43D73AB /* GPXTrackPoint.swift in Sources */,
-				AA27144CAEF6D69BB1EC7DB1B759ACD2 /* GPXTrackSegment.swift in Sources */,
-				37A8B029BFB2A9577CA6CFA72A0B4DB4 /* GPXWaypoint.swift in Sources */,
-				AF6964157ABB17F1CF7151ECF6D95E41 /* NSMutableString+XML.swift in Sources */,
+				215495936326BA60595AA30FF56EDD18 /* Pods-WunderLINQ-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9CA0982C59353F693D0E1873FE2348AA /* Sources */ = {
+		13206B69B2A5CD3086B7CBB1DAD0ED8C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B58A55C1ACDA3D5C38C06E0F1D3AFE47 /* ChromaBrightnessSlider.swift in Sources */,
-				78D864F115D04E396D31A8C52D93D230 /* ChromaColorHandle.swift in Sources */,
-				D25408880E690F9C247C3E4E50699170 /* ChromaColorPicker-dummy.m in Sources */,
-				1B97C47203D3F0A7FCE09CF0BCDD83CC /* ChromaColorPicker.swift in Sources */,
-				AF2157F95A224F4119A770A171D38F5F /* ChromaControlStylable.swift in Sources */,
-				8DC15CA9D2C0560102C3ECDC22DE0EA9 /* ColorWheelView.swift in Sources */,
-				7E17588FD51460467EF1EC2FBE451A4C /* SliderHandleView.swift in Sources */,
-				1ACADCCB0BAF7D1B6CB1B750729C56AA /* SliderTrackView.swift in Sources */,
-				E8B98D56FE53121D4F2A2D265345D4BB /* UIColor+Brightness.swift in Sources */,
-				081811CF200139854AC62C19DBA97465 /* UIColor+Utils.swift in Sources */,
-				599C5D24B559617AEE13C486DDFD36B6 /* UIView+DropShadow.swift in Sources */,
-				F56DF8DB4C152092DDDD0830605ABA12 /* UIView+Utils.swift in Sources */,
+				809A150C62FA5600D820AADB6168FE1C /* IASKAppSettingsViewController.m in Sources */,
+				93F306B0572F7A0E5DD14B8F8B871946 /* IASKAppSettingsWebViewController.m in Sources */,
+				7110586A3B932B5E1C9784254AE25FEA /* IASKColor.m in Sources */,
+				B720988FFC14CF97F3AF7F3CD2751203 /* IASKDatePicker.m in Sources */,
+				C34E074BC227F8CC4733F0FC81A9874E /* IASKDatePickerViewCell.m in Sources */,
+				FBFDB6378E189A93C03B2C6ED011D8B5 /* IASKEmbeddedDatePickerViewCell.m in Sources */,
+				1EC9B1B1EE727D94AFC3076D1A6225E0 /* IASKMultipleValueSelection.m in Sources */,
+				A662C1D00E941D28646106B843E9DB2E /* IASKPSSliderSpecifierViewCell.m in Sources */,
+				0B80D6073FDC4E1E569BABADD895BEE4 /* IASKPSTextFieldSpecifierViewCell.m in Sources */,
+				9D0D27051CCBD1F04E9156F71B45B505 /* IASKSettingsReader.m in Sources */,
+				EFF9DC9377B0D4B5D85E8F4474DD1790 /* IASKSettingsStore.m in Sources */,
+				EE40D15C02CBC3E7123F751963883088 /* IASKSettingsStoreFile.m in Sources */,
+				280C8715A9CD08421E47FFD8DDB573FC /* IASKSettingsStoreInMemory.m in Sources */,
+				E6FE54C804800460FA951EC95FE2E4F2 /* IASKSettingsStoreUserDefaults.m in Sources */,
+				E044A5663506E9504ECB71D87653FDF3 /* IASKSlider.m in Sources */,
+				0A250D91C982F24D314F9BA8E761BC00 /* IASKSpecifier.m in Sources */,
+				50CF785A1DB0BEFA0AD46670900BD8AF /* IASKSpecifierValuesViewController.m in Sources */,
+				B6E077981B54BAA241130686BE6BAB30 /* IASKSwitch.m in Sources */,
+				51FCA1BD53F65721E75F1373AE05E1C3 /* IASKTextField.m in Sources */,
+				7FB1C3C27A44C63409D2313DA96D76D2 /* IASKTextView.m in Sources */,
+				F370006C4E0E44EAE8AA0A80E37BCCFA /* IASKTextViewCell.m in Sources */,
+				54EFD105AA129119AEEF50DE06E54D29 /* InAppSettingsKit-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C9834C10A06A5CAE3894DC621BCA8B81 /* Sources */ = {
+		9484283DBDB6286FBCF0575A4323351C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				21D173AD8D03118F8500C306885B9A47 /* Converters.swift in Sources */,
+				C9E99DC5DB43C36CB311FE0045646519 /* CoreGPX-dummy.m in Sources */,
+				51EBA0FA2766B5069910893F950F2C62 /* DateTimeParsers.swift in Sources */,
+				75A21E0B47EC5EFCAE091FD9ACCEF9D9 /* GPXAuthor.swift in Sources */,
+				6D9FDBC5166325F1480B2EBF35114F69 /* GPXBounds.swift in Sources */,
+				D17820D5B9F95688C640CF6C7BE0B7C7 /* GPXCompression.swift in Sources */,
+				82C1FC507A64DA12AAB836D330294BC2 /* GPXCopyright.swift in Sources */,
+				8CDF21E0C5CA6B5E70761895515E9ECC /* GPXElement.swift in Sources */,
+				64E644A5890D441F235DE4C0405BEA10 /* GPXEmail.swift in Sources */,
+				64204C9EE25C3B1A248A81E4508C1790 /* GPXError.swift in Sources */,
+				CD064B8CE099E863A27445A9E2AE7474 /* GPXExtensions.swift in Sources */,
+				103CA6899065D8E3F27514FDE3B95852 /* GPXExtensionsElement.swift in Sources */,
+				6C74A091F45A67D40E608BDE7752AECA /* GPXFix.swift in Sources */,
+				8EFA25BC525F066BA191843220C2F76E /* GPXLink.swift in Sources */,
+				93B6BD7CEE2BEA293209A43A575778A8 /* GPXMetadata.swift in Sources */,
+				5C49E724C06AE91FEC3EDFBB1D52631C /* GPXParser.swift in Sources */,
+				D9EDD85780D3EEF8BFA61EB5D5396489 /* GPXPerson.swift in Sources */,
+				D718C017CC908073E736275CCAAB35C2 /* GPXPoint.swift in Sources */,
+				0EF69F5394E2E653BC03E58054B251BE /* GPXPointSegment.swift in Sources */,
+				79875805D1B2228CE9AEC19F90A701CE /* GPXRawElement.swift in Sources */,
+				2334E2053513B1BF98AD4C35B1E1D8CB /* GPXRoot.swift in Sources */,
+				E9C956B07238358FE6ACBFA57C0D42B9 /* GPXRoute.swift in Sources */,
+				0AC75CAA7766EA46A38EFF35F70E0CB0 /* GPXRoutePoint.swift in Sources */,
+				774EB82433D77B509D25507733FA696C /* GPXTrack.swift in Sources */,
+				D00EAD8E5AFF357DBCF89928D1EF8400 /* GPXTrackPoint.swift in Sources */,
+				7D1D0573EEB4E669600E81F066C2FAC5 /* GPXTrackSegment.swift in Sources */,
+				89A078FFE58D143CC8B50140CBA390BC /* GPXWaypoint.swift in Sources */,
+				EE098BBFFBE7464F9A68D241F426FEC5 /* NSMutableString+XML.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C9E3631753AAD9B72C3A232309467C7A /* Sources */ = {
+		B84FA16A92DCEFF988737BAEDBC8FDA6 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DA8C855B911062E1E715879022C8172A /* Pods-WunderLINQ-dummy.m in Sources */,
+				C39AD3C8D7E43EE2C4EFBA3387353A10 /* ChromaBrightnessSlider.swift in Sources */,
+				DEBA81DEB0423C226F4C3E1B3CDD520E /* ChromaColorHandle.swift in Sources */,
+				0A6B6EA5EA7DBA5DBBEB8A340ABDB6C4 /* ChromaColorPicker-dummy.m in Sources */,
+				B1CCEC70D55204C7F3829F3C28C91A42 /* ChromaColorPicker.swift in Sources */,
+				E3D22C11507BB4F06478B05BDDFFBECC /* ChromaControlStylable.swift in Sources */,
+				7964306BDA1A90D21E63B7112C6EE80A /* ColorWheelView.swift in Sources */,
+				E6231FDD5DACC1A38775AB693B97C3A1 /* SliderHandleView.swift in Sources */,
+				07BB5F72F8B1DC407E19ED11100E4A52 /* SliderTrackView.swift in Sources */,
+				267E030A8BB798FC60097320A2D1BF47 /* UIColor+Brightness.swift in Sources */,
+				CB5D442E6F4B5CB481FEC37D553E851F /* UIColor+Utils.swift in Sources */,
+				1243FD056E942FADBBFDEC8FF041D99E /* UIView+DropShadow.swift in Sources */,
+				95D33D1BB086B6DB388FC119F62284D1 /* UIView+Utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F4121CC16D9AF2657802C2891B64EFFA /* Sources */ = {
+		D50112850D3ED621791A65C346FE29AC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6052879F0DFAC80B33244301E81FB101 /* IASKAppSettingsViewController.m in Sources */,
-				EE273322EFC8B72AAD66355FF8E0F9BD /* IASKAppSettingsWebViewController.m in Sources */,
-				F57D4C7E62A45FC50D6049857C129352 /* IASKColor.m in Sources */,
-				893FB570C2BFF2D2D5CA9C12332B4C5C /* IASKDatePicker.m in Sources */,
-				EB6DCE27D017D1FCB04952CCCA3E8753 /* IASKDatePickerViewCell.m in Sources */,
-				40471214FFD3C34B6ACDC3090503BAAA /* IASKEmbeddedDatePickerViewCell.m in Sources */,
-				B4C0D9F1256EB193A9429B5365C34603 /* IASKMultipleValueSelection.m in Sources */,
-				0230FBF349B4E03B93D471AAE80A0391 /* IASKPSSliderSpecifierViewCell.m in Sources */,
-				BF877F559F4C791B88F43277FE9B1398 /* IASKPSTextFieldSpecifierViewCell.m in Sources */,
-				244C75D155FDA36617230B4741887DA8 /* IASKSettingsReader.m in Sources */,
-				05A24C337B2221739842F11E3DD81897 /* IASKSettingsStore.m in Sources */,
-				9C3F2560AF69919D031732F4497A8D0D /* IASKSettingsStoreFile.m in Sources */,
-				475DEED90D70827381C7E237C0DCA3A2 /* IASKSettingsStoreInMemory.m in Sources */,
-				EDB644198B84C9368C21F3357ACC4ABF /* IASKSettingsStoreUserDefaults.m in Sources */,
-				8F89B7426C642E3F50DE361DC815C900 /* IASKSlider.m in Sources */,
-				5C5B61AEF286CD7CABCDC6663E8D690E /* IASKSpecifier.m in Sources */,
-				E5A4060758FFCE7D6EA1E3417B450F4A /* IASKSpecifierValuesViewController.m in Sources */,
-				174242016434C342FA7D9C4CD357A234 /* IASKSwitch.m in Sources */,
-				BC99236DFA98C44B3CEF76F0AD666FD1 /* IASKTextField.m in Sources */,
-				B7B258EF208AB49FA1BE0AE7E2B85586 /* IASKTextView.m in Sources */,
-				49E205227C86D3167A0EA6487A884CAB /* IASKTextViewCell.m in Sources */,
-				D0B7B80A058F936BF660CFA8E087B51C /* InAppSettingsKit-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		46ED1FF75A6066826AFE562C47009A20 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "InAppSettingsKit-InAppSettingsKit";
-			target = 8A996938DFC560C0A3EF0DD6CA6B032A /* InAppSettingsKit-InAppSettingsKit */;
-			targetProxy = B8FEDA13C4F5BAD3A8B542F7A4318C0C /* PBXContainerItemProxy */;
-		};
-		77CAEF517181EEDA692596FBDBC43EFE /* PBXTargetDependency */ = {
+		0506D9B5C229E84A6CC2BFC976D27170 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = ChromaColorPicker;
 			target = 7961A0F04FB3D96E3E703CF075D6DACD /* ChromaColorPicker */;
-			targetProxy = D921CF83CA4C5FD3C6F814C7F8BB66AC /* PBXContainerItemProxy */;
+			targetProxy = 548007164DB93815B51A750AA0703313 /* PBXContainerItemProxy */;
 		};
-		8BE0DA43CBEF938F0CE28814C9CF73A6 /* PBXTargetDependency */ = {
+		29898ED6F2C3AC237D15E6899AF38F2E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = CoreGPX;
-			target = 493735E92C5B6068F445B48D0CA7B736 /* CoreGPX */;
-			targetProxy = 554F9BE8273989CE25856A32064D8465 /* PBXContainerItemProxy */;
+			name = "InAppSettingsKit-InAppSettingsKit";
+			target = 8A996938DFC560C0A3EF0DD6CA6B032A /* InAppSettingsKit-InAppSettingsKit */;
+			targetProxy = B4E5D1CBD8924033792D473E32CB8E71 /* PBXContainerItemProxy */;
 		};
-		E1F75E4A332012D73BDA61DA4171C6AC /* PBXTargetDependency */ = {
+		79336A5F2C5CDDB734E71FA872C1D7AF /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = InAppSettingsKit;
 			target = 5B4848122435F4C22D574A5DA6D2EFB3 /* InAppSettingsKit */;
-			targetProxy = 7FE78BD9A0A3081781E64716BBF0C11C /* PBXContainerItemProxy */;
+			targetProxy = 08DE627D7E44AE37FA0E383B845CA161 /* PBXContainerItemProxy */;
+		};
+		CE1F0F828119FCDB37522DC3F5D3D767 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = CoreGPX;
+			target = 493735E92C5B6068F445B48D0CA7B736 /* CoreGPX */;
+			targetProxy = 76683C65D4BCFE4C77BA473D1323A11B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		211A8170B9FA9DD84FA88CA2E34120AA /* Release */ = {
+		084BEFF01E7C53E3BBDFE70066E01A6A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 83E157C2075805C10CC82C143940480D /* ChromaColorPicker.xcconfig */;
+			baseConfigurationReference = 275BDAB28B3AF54A928476F03C9EA706 /* ChromaColorPicker.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				GCC_PREFIX_HEADER = "Target Support Files/ChromaColorPicker/ChromaColorPicker-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/ChromaColorPicker/ChromaColorPicker-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				MODULEMAP_FILE = Headers/Public/ChromaColorPicker/ChromaColorPicker.modulemap;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRIVATE_HEADERS_FOLDER_PATH = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/ChromaColorPicker/ChromaColorPicker.modulemap";
 				PRODUCT_MODULE_NAME = ChromaColorPicker;
 				PRODUCT_NAME = ChromaColorPicker;
-				PUBLIC_HEADERS_FOLDER_PATH = "";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
 			};
-			name = Release;
-		};
-		2338FAE1F09A96D134B0A0AD88206C29 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = C2B442C0961B866815CAA75D81575763 /* CoreGPX.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				GCC_PREFIX_HEADER = "Target Support Files/CoreGPX/CoreGPX-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				MODULEMAP_FILE = Headers/Public/CoreGPX/CoreGPX.modulemap;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRIVATE_HEADERS_FOLDER_PATH = "";
-				PRODUCT_MODULE_NAME = CoreGPX;
-				PRODUCT_NAME = CoreGPX;
-				PUBLIC_HEADERS_FOLDER_PATH = "";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
+			name = Debug;
 		};
 		257497152829C177993B5EC99C1D227A /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -1081,35 +1091,9 @@
 			};
 			name = Release;
 		};
-		5F7B2EFF258447545C7FF63D8F53B3CC /* Debug */ = {
+		2F5F5CE25D9487CBA8CD11F95FAAB4C2 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 83E157C2075805C10CC82C143940480D /* ChromaColorPicker.xcconfig */;
-			buildSettings = {
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				GCC_PREFIX_HEADER = "Target Support Files/ChromaColorPicker/ChromaColorPicker-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				MODULEMAP_FILE = Headers/Public/ChromaColorPicker/ChromaColorPicker.modulemap;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRIVATE_HEADERS_FOLDER_PATH = "";
-				PRODUCT_MODULE_NAME = ChromaColorPicker;
-				PRODUCT_NAME = ChromaColorPicker;
-				PUBLIC_HEADERS_FOLDER_PATH = "";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		6229DB402CCF7491BCB058F3035D6896 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = B37CAEC2BAB1D8596FE3841FEFE357CA /* InAppSettingsKit.xcconfig */;
+			baseConfigurationReference = C79E5A789AA12CD0191E074CB2FDEBFB /* InAppSettingsKit.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/InAppSettingsKit";
@@ -1124,119 +1108,205 @@
 			};
 			name = Release;
 		};
-		6B83DC0B4D148294F55686677B13C288 /* Debug */ = {
+		41CC1C3527C5776719B0FA2D04A1156F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C2B442C0961B866815CAA75D81575763 /* CoreGPX.xcconfig */;
+			baseConfigurationReference = 47C00870D8B2B8DE7340513190E67D8E /* InAppSettingsKit.debug.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				GCC_PREFIX_HEADER = "Target Support Files/CoreGPX/CoreGPX-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				MODULEMAP_FILE = Headers/Public/CoreGPX/CoreGPX.modulemap;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRIVATE_HEADERS_FOLDER_PATH = "";
-				PRODUCT_MODULE_NAME = CoreGPX;
-				PRODUCT_NAME = CoreGPX;
-				PUBLIC_HEADERS_FOLDER_PATH = "";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		6C5D6CF860928A4E9ECD79872069CE82 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = B37CAEC2BAB1D8596FE3841FEFE357CA /* InAppSettingsKit.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				GCC_PREFIX_HEADER = "Target Support Files/InAppSettingsKit/InAppSettingsKit-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/InAppSettingsKit/InAppSettingsKit-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRIVATE_HEADERS_FOLDER_PATH = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/InAppSettingsKit/InAppSettingsKit.modulemap";
 				PRODUCT_MODULE_NAME = InAppSettingsKit;
 				PRODUCT_NAME = InAppSettingsKit;
-				PUBLIC_HEADERS_FOLDER_PATH = "";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		6FDE0D574836E807BED0B7FCC6A211F6 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = B37CAEC2BAB1D8596FE3841FEFE357CA /* InAppSettingsKit.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/InAppSettingsKit";
-				IBSC_MODULE = InAppSettingsKit;
-				INFOPLIST_FILE = "Target Support Files/InAppSettingsKit/ResourceBundle-InAppSettingsKit-InAppSettingsKit-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				PRODUCT_NAME = InAppSettingsKit;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				WRAPPER_EXTENSION = bundle;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
 		};
-		7976873E7A3EC939575E95F733007549 /* Debug */ = {
+		43C5FE609857564EDC339BD53096442B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 13E170F7A77DE8D046429A0D976E8C9E /* Pods-WunderLINQ.debug.xcconfig */;
+			baseConfigurationReference = E0C17EC28151E583D62BB32E1CAB1504 /* Pods-WunderLINQ.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-WunderLINQ/Pods-WunderLINQ-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-WunderLINQ/Pods-WunderLINQ.modulemap";
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PODS_ROOT = "$(SRCROOT)";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
 		};
-		B5A014647225A7F979DF66A8C614AE22 /* Debug */ = {
+		6D2D702C64717FE266C993FBB44BFFF9 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B37CAEC2BAB1D8596FE3841FEFE357CA /* InAppSettingsKit.xcconfig */;
+			baseConfigurationReference = 47C00870D8B2B8DE7340513190E67D8E /* InAppSettingsKit.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/InAppSettingsKit";
+				IBSC_MODULE = InAppSettingsKit;
+				INFOPLIST_FILE = "Target Support Files/InAppSettingsKit/ResourceBundle-InAppSettingsKit-InAppSettingsKit-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				PRODUCT_NAME = InAppSettingsKit;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
+		729BE207E4272600A1BADEC08582C3C8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7CCF55B2F6FE3631FA8CAD9B8FD0F466 /* CoreGPX.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				GCC_PREFIX_HEADER = "Target Support Files/InAppSettingsKit/InAppSettingsKit-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRIVATE_HEADERS_FOLDER_PATH = "";
-				PRODUCT_MODULE_NAME = InAppSettingsKit;
-				PRODUCT_NAME = InAppSettingsKit;
-				PUBLIC_HEADERS_FOLDER_PATH = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/CoreGPX/CoreGPX-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/CoreGPX/CoreGPX-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/CoreGPX/CoreGPX.modulemap";
+				PRODUCT_MODULE_NAME = CoreGPX;
+				PRODUCT_NAME = CoreGPX;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		81855395FF8DBAE8B3F32788D9A838C5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E726520443C9EB10959252AA64C635F0 /* CoreGPX.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/CoreGPX/CoreGPX-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/CoreGPX/CoreGPX-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/CoreGPX/CoreGPX.modulemap";
+				PRODUCT_MODULE_NAME = CoreGPX;
+				PRODUCT_NAME = CoreGPX;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
+		};
+		D1B3AAE3F200D77A10780068C2A0EA24 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F59F27BFF82BC49099EE2D221CA623DA /* Pods-WunderLINQ.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-WunderLINQ/Pods-WunderLINQ-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-WunderLINQ/Pods-WunderLINQ.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
 		};
 		DD8F832993327D1DD8046C3CBCBD97CD /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -1302,42 +1372,82 @@
 			};
 			name = Debug;
 		};
-		FEE6B02E21416F0983157A9A6217BDE8 /* Release */ = {
+		EB64E586BA5B36EBF0E8E06315B97F4F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0F0A05985CBEC554F0DEC92B1837016C /* Pods-WunderLINQ.release.xcconfig */;
+			baseConfigurationReference = C79E5A789AA12CD0191E074CB2FDEBFB /* InAppSettingsKit.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-WunderLINQ/Pods-WunderLINQ.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/InAppSettingsKit/InAppSettingsKit-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/InAppSettingsKit/InAppSettingsKit-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/InAppSettingsKit/InAppSettingsKit.modulemap";
+				PRODUCT_MODULE_NAME = InAppSettingsKit;
+				PRODUCT_NAME = InAppSettingsKit;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		F6D9EC935445CF76F9073556E01A0654 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6E90E196CC6DB2B822EEFEBEC428D3E8 /* ChromaColorPicker.release.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/ChromaColorPicker/ChromaColorPicker-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/ChromaColorPicker/ChromaColorPicker-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/ChromaColorPicker/ChromaColorPicker.modulemap";
+				PRODUCT_MODULE_NAME = ChromaColorPicker;
+				PRODUCT_NAME = ChromaColorPicker;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2E2983DB26D03F24B649956AE00671CA /* Build configuration list for PBXNativeTarget "InAppSettingsKit" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				B5A014647225A7F979DF66A8C614AE22 /* Debug */,
-				6C5D6CF860928A4E9ECD79872069CE82 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1347,38 +1457,47 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		67F418599692883693EC6F6C834F716A /* Build configuration list for PBXNativeTarget "CoreGPX" */ = {
+		50901C6627F17673F7A57D9C1E3A49EF /* Build configuration list for PBXNativeTarget "ChromaColorPicker" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				6B83DC0B4D148294F55686677B13C288 /* Debug */,
-				2338FAE1F09A96D134B0A0AD88206C29 /* Release */,
+				084BEFF01E7C53E3BBDFE70066E01A6A /* Debug */,
+				F6D9EC935445CF76F9073556E01A0654 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		80101B9FF3220CC017858C8B4D9F0744 /* Build configuration list for PBXNativeTarget "ChromaColorPicker" */ = {
+		5B50BD6EC031B40BA9315F22BB5C947C /* Build configuration list for PBXNativeTarget "InAppSettingsKit-InAppSettingsKit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				5F7B2EFF258447545C7FF63D8F53B3CC /* Debug */,
-				211A8170B9FA9DD84FA88CA2E34120AA /* Release */,
+				6D2D702C64717FE266C993FBB44BFFF9 /* Debug */,
+				2F5F5CE25D9487CBA8CD11F95FAAB4C2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A3780511AB738A8B385FF214339E9877 /* Build configuration list for PBXNativeTarget "InAppSettingsKit-InAppSettingsKit" */ = {
+		7B7FD5EFAA73B291EDDA17EAB375C4AB /* Build configuration list for PBXNativeTarget "Pods-WunderLINQ" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				6FDE0D574836E807BED0B7FCC6A211F6 /* Debug */,
-				6229DB402CCF7491BCB058F3035D6896 /* Release */,
+				43C5FE609857564EDC339BD53096442B /* Debug */,
+				D1B3AAE3F200D77A10780068C2A0EA24 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C6D20C11F627CC41AC7CA6EE095E7C8F /* Build configuration list for PBXNativeTarget "Pods-WunderLINQ" */ = {
+		BB04281494E2DD7239D625006530C88C /* Build configuration list for PBXNativeTarget "CoreGPX" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				7976873E7A3EC939575E95F733007549 /* Debug */,
-				FEE6B02E21416F0983157A9A6217BDE8 /* Release */,
+				81855395FF8DBAE8B3F32788D9A838C5 /* Debug */,
+				729BE207E4272600A1BADEC08582C3C8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CB0C105582AE031F4F49379CE5469314 /* Build configuration list for PBXNativeTarget "InAppSettingsKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				41CC1C3527C5776719B0FA2D04A1156F /* Debug */,
+				EB64E586BA5B36EBF0E8E06315B97F4F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

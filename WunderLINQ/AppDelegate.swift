@@ -42,8 +42,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     
     var musicViewController: MusicViewController {
         get {
-            let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            let controller = mainStoryboard.instantiateViewController(withIdentifier: "MusicViewController") as! MusicViewController
+            let controller = UIStoryboard.main.instantiateViewController(withIdentifier: "MusicViewController") as! MusicViewController
             return controller
         }
     }
@@ -127,7 +126,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             
             if !UserDefaults.standard.bool(forKey: "firstRun") {
 
-                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                 let storyboard = UIStoryboard.main
                  let viewController = storyboard.instantiateViewController(withIdentifier: "firstRunVC")
                  self.window?.rootViewController = viewController
                  self.window?.makeKeyAndVisible()
@@ -151,15 +150,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             musicViewController.spotifyAppRemoteDisconnect()
             spotifyAppRemote.disconnect()
         }
-    }
-
-    func applicationDidEnterBackground(_ application: UIApplication) {
-        // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-        // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-    }
-
-    func applicationWillEnterForeground(_ application: UIApplication) {
-        // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
@@ -186,8 +176,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             //Check if GPX file and import
             print("File URL sent")
             let rootViewController = self.window!.rootViewController as! UINavigationController
-            let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            let addWaypointViewController = mainStoryboard.instantiateViewController(withIdentifier: "addWaypoint") as! AddWaypointViewController
+
+            let addWaypointViewController = UIStoryboard.main.instantiateViewController(withIdentifier: "addWaypoint") as! AddWaypointViewController
             addWaypointViewController.importFile = url
             rootViewController.pushViewController(addWaypointViewController, animated: true)
             

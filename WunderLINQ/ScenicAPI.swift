@@ -28,7 +28,7 @@ class ScenicAPI {
      **************************************************************/
     
     func sendToScenicForImport(gpxurl: String) {
-        if let encodedgpxurl = gpxurl.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed) {
+        if let encodedgpxurl = gpxurl.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) {
             let param = "gpxurl=\(encodedgpxurl)"
             self.getCopiedGPXURL("import/gpxurl", parameters: param) { (error, url) -> Void in
                 if !error {

@@ -1,4 +1,4 @@
-module Pods_WunderLINQ {
+framework module Pods_WunderLINQ {
   umbrella header "Pods-WunderLINQ-umbrella.h"
 
   export *

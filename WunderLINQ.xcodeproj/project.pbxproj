@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0822A377E3BBDC4D19384809 /* libPods-WunderLINQ.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A0C40FCF2F9DD02D2DEA0C0 /* libPods-WunderLINQ.a */; };
+		482C618362EA74729FE53E2A /* Pods_WunderLINQ.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA150AA674E4880933A5281B /* Pods_WunderLINQ.framework */; };
 		7E068BC320FD8A100076EAAD /* FaultsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E068BC220FD8A100076EAAD /* FaultsTableViewController.swift */; };
 		7E068BC7210190CB0076EAAD /* TripsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E068BC6210190CB0076EAAD /* TripsTableViewController.swift */; };
 		7E068BC9210190F00076EAAD /* WaypointsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E068BC8210190F00076EAAD /* WaypointsTableViewController.swift */; };
@@ -93,6 +93,8 @@
 		7ED2013620D0D0030066BCE6 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7ED2013520D0D0030066BCE6 /* Default-568h@2x.png */; };
 		7EF9B5A022FCB14D009D8D17 /* Solar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF9B59F22FCB14D009D8D17 /* Solar.swift */; };
 		7EFA9908240DFDE700E65078 /* FirstRunViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EFA9907240DFDE700E65078 /* FirstRunViewController.swift */; };
+		B98CA75D252E6C6B00530075 /* UIStoryboard+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98CA75C252E6C6B00530075 /* UIStoryboard+extensions.swift */; };
+		B98CA762252E6F5500530075 /* String+Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98CA761252E6F5500530075 /* String+Localizable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,7 +108,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		2A0C40FCF2F9DD02D2DEA0C0 /* libPods-WunderLINQ.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WunderLINQ.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E2D3628243A0841E630E538 /* Pods-WunderLINQ.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WunderLINQ.debug.xcconfig"; path = "Target Support Files/Pods-WunderLINQ/Pods-WunderLINQ.debug.xcconfig"; sourceTree = "<group>"; };
 		5B6A75C94A76FEE610EF7F86 /* Pods-WunderLINQ.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WunderLINQ.release.xcconfig"; path = "Target Support Files/Pods-WunderLINQ/Pods-WunderLINQ.release.xcconfig"; sourceTree = "<group>"; };
 		7E068BC220FD8A100076EAAD /* FaultsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaultsTableViewController.swift; sourceTree = "<group>"; };
@@ -229,6 +230,9 @@
 		7EE02FE622A6BCCA0061330B /* ja */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		7EF9B59F22FCB14D009D8D17 /* Solar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Solar.swift; sourceTree = "<group>"; };
 		7EFA9907240DFDE700E65078 /* FirstRunViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstRunViewController.swift; sourceTree = "<group>"; };
+		B98CA75C252E6C6B00530075 /* UIStoryboard+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+extensions.swift"; sourceTree = "<group>"; };
+		B98CA761252E6F5500530075 /* String+Localizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Localizable.swift"; sourceTree = "<group>"; };
+		DA150AA674E4880933A5281B /* Pods_WunderLINQ.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WunderLINQ.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -254,7 +258,7 @@
 				7E068BD22102C6290076EAAD /* GoogleMaps.framework in Frameworks */,
 				7E068BD12102C6290076EAAD /* GoogleMapsCore.framework in Frameworks */,
 				7E068BD92102C7DE0076EAAD /* Accelerate.framework in Frameworks */,
-				0822A377E3BBDC4D19384809 /* libPods-WunderLINQ.a in Frameworks */,
+				482C618362EA74729FE53E2A /* Pods_WunderLINQ.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -298,7 +302,7 @@
 				7E068BE22102C8810076EAAD /* SystemConfiguration.framework */,
 				7E068BDE2102C8810076EAAD /* UIKit.framework */,
 				7E068BD82102C7DE0076EAAD /* Accelerate.framework */,
-				2A0C40FCF2F9DD02D2DEA0C0 /* libPods-WunderLINQ.a */,
+				DA150AA674E4880933A5281B /* Pods_WunderLINQ.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -349,18 +353,16 @@
 				7E5E0F77212289140048B9A2 /* AppUtility.swift */,
 				7EA4784D1F40B154000CEDDC /* AppDelegate.swift */,
 				7EFA9907240DFDE700E65078 /* FirstRunViewController.swift */,
+				B98CA75B252E6C5200530075 /* Utils */,
 				7EA478801F44F57C000CEDDC /* MusicViewController.swift */,
 				7EA478701F40F273000CEDDC /* Device.swift */,
-				7E068BCA2102ACF30076EAAD /* Popover.swift */,
+				B98CA760252E6DD400530075 /* External */,
 				7E80BD3C211CFF7300B8CA0D /* LocalisableButton.swift */,
 				7E80BD3A211CF80600B8CA0D /* LocalisableLabel.swift */,
 				7E35A59222DC265800E4AE40 /* Utility.swift */,
 				7EA478861F4BC775000CEDDC /* Logger.swift */,
 				7EBFD48F210E108100FC9665 /* segueFromLeft.swift */,
 				7EA478741F412B73000CEDDC /* LocationDelegate.swift */,
-				7EBFD48D210ADD0000FC9665 /* String+Extensions.swift */,
-				7EAE9414211E9B3200E24CE9 /* Double+Extensions.swift */,
-				7EA478761F412BAC000CEDDC /* CLLocation+Extension.swift */,
 				7E5A767720DDEE7200B48CC6 /* UIViewController+Extensions.swift */,
 				7E80BD43211D5A0600B8CA0D /* UIView+ignoresInvertColors.swift */,
 				7EA478781F412BE9000CEDDC /* UserDefauts+Extensions.swift */,
@@ -435,6 +437,26 @@
 			path = svg;
 			sourceTree = "<group>";
 		};
+		B98CA75B252E6C5200530075 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				B98CA75C252E6C6B00530075 /* UIStoryboard+extensions.swift */,
+				B98CA761252E6F5500530075 /* String+Localizable.swift */,
+				7EBFD48D210ADD0000FC9665 /* String+Extensions.swift */,
+				7EAE9414211E9B3200E24CE9 /* Double+Extensions.swift */,
+				7EA478761F412BAC000CEDDC /* CLLocation+Extension.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		B98CA760252E6DD400530075 /* External */ = {
+			isa = PBXGroup;
+			children = (
+				7E068BCA2102ACF30076EAAD /* Popover.swift */,
+			);
+			path = External;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -446,7 +468,7 @@
 				7EA478461F40B154000CEDDC /* Sources */,
 				7EA478471F40B154000CEDDC /* Frameworks */,
 				7EA478481F40B154000CEDDC /* Resources */,
-				FB5E93D257227654372F9FF5 /* [CP] Copy Pods Resources */,
+				8E985EC67182A309FD22AF54 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -564,6 +586,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		8E985EC67182A309FD22AF54 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-WunderLINQ/Pods-WunderLINQ-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-WunderLINQ/Pods-WunderLINQ-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-WunderLINQ/Pods-WunderLINQ-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		AACDFDB8C897E28740A768ED /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -584,23 +623,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		FB5E93D257227654372F9FF5 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-WunderLINQ/Pods-WunderLINQ-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-WunderLINQ/Pods-WunderLINQ-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-WunderLINQ/Pods-WunderLINQ-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -646,6 +668,7 @@
 				7E916DDC230CF10D00011E5F /* NSLocalizedString.swift in Sources */,
 				7EBC8A9E23B19C0B001FE70B /* AddWaypointViewController.swift in Sources */,
 				7E62BB7121FE443200FDB10E /* ColumnFlowLayout.swift in Sources */,
+				B98CA75D252E6C6B00530075 /* UIStoryboard+extensions.swift in Sources */,
 				7EBFE1F3214C7D6500F2185A /* ScenicAPI.swift in Sources */,
 				7E5A767820DDEE7200B48CC6 /* UIViewController+Extensions.swift in Sources */,
 				7EBFD48E210ADD0000FC9665 /* String+Extensions.swift in Sources */,
@@ -666,6 +689,7 @@
 				7E068BCD2102ADD20076EAAD /* WaypointViewController.swift in Sources */,
 				7EA478751F412B73000CEDDC /* LocationDelegate.swift in Sources */,
 				7EFA9908240DFDE700E65078 /* FirstRunViewController.swift in Sources */,
+				B98CA762252E6F5500530075 /* String+Localizable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
