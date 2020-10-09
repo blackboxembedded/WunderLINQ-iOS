@@ -178,7 +178,7 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
         switch taskID {
         case 0:
             //Navigation
-            NavAppHelper.open()
+            NavAppHelper().open()
             break
         case 1:
             //Go Home
