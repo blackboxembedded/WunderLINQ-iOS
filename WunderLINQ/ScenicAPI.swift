@@ -11,7 +11,10 @@ import UIKit
 import CoreLocation
 
 class ScenicAPI {
-    
+
+    enum Constants {
+        static let deeplinkURL = "https://scenicapp.space/api/openScenic.php"
+    }
     
     //  All functions attempt to open the Scenic App on the users' device.
     //  If Scenic is not on the device the App Store App will open on the Scenic Download Page.
@@ -124,7 +127,7 @@ class ScenicAPI {
      ****  vehicleType (Optional): VehicleType.carMotorcycle, .bicycle, .pedestrian (Defaults to .carMotorcycle)
      **************************************************************/
     
-    func sendToScenicForNavigation(coordinates: Array<CLLocationCoordinate2D>, name: String = "", routeMode: RouteMode = RouteMode.fast, vehicleType: VehicleType = VehicleType.carMotorcycle) {
+    func sendToScenicForNavigation(coordinates: [CLLocationCoordinate2D], name: String = "", routeMode: RouteMode = RouteMode.fast, vehicleType: VehicleType = VehicleType.carMotorcycle) {
         let polyline: String = encodeCoordinates(coordinates)
         self.sendPolyline(polyline, name: name, routeMode: routeMode, vehicleType: vehicleType)
     }
@@ -141,6 +144,15 @@ class ScenicAPI {
     func sendToScenicForNavigation(coordinate: CLLocationCoordinate2D, name: String = "") {
         let stringOfCoordinate = "\(coordinate.latitude.toNonScientificString()),\(coordinate.longitude.toNonScientificString())"
         self.sendCoordinate(stringOfCoordinate, name: name)
+    }
+
+    func generateCoordinateURL(_ coordinate: String, name: String) -> URL? {
+        var urlComponents = URLComponents(string: Constants.deeplinkURL)!
+        urlComponents.queryItems = [
+            URLQueryItem(name: "navigatelocation", value: coordinate),
+            URLQueryItem(name: "name", value: name)
+        ]
+        return urlComponents.url
     }
     
     
@@ -175,15 +187,10 @@ class ScenicAPI {
         ]
         UIApplication.shared.open(urlComponents.url!, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
     }
-    
+
     fileprivate func sendCoordinate(_ coordinate: String, name: String) {
-        var urlComponents = URLComponents(string: "https://scenicapp.space/api/openScenic.php")!
-        urlComponents.queryItems = [
-            URLQueryItem(name: "navigatelocation", value: coordinate),
-            URLQueryItem(name: "name", value: name)
-            
-        ]
-        UIApplication.shared.open(urlComponents.url!, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
+        let url = generateCoordinateURL(coordinate, name: name)
+        UIApplication.shared.open(url!, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
     }
     
     

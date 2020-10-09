@@ -57,7 +57,7 @@ class MotorcycleData {
     func setLocation(location: CLLocation?){
         self.location = location
     }
-    func getLocation() -> CLLocation{
+    func getLocation() -> CLLocation {
         return self.location!
     }
     

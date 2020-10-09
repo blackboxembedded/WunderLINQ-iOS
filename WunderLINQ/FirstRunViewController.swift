@@ -47,10 +47,10 @@ class FirstRunViewController: UIViewController {
                 if granted {
                     // Authorized
                     //Nothing to do
-                    NSLog("Allowed to access contacts")
+                    print("Allowed to access contacts")
                 } else {
                     // Not allowed
-                    NSLog("Not Allowed to access contacts")
+                    print("Not Allowed to access contacts")
                 }
             }
             step = step + 1
@@ -63,11 +63,11 @@ class FirstRunViewController: UIViewController {
                 if granted == true {
                     // Authorized
                     //Nothing to do
-                    NSLog("Allowed to access to Camera")
+                    print("Allowed to access to Camera")
                 } else {
                     // Not allowed
                     // Prompt with warning and button to settings
-                    NSLog("Not Allowed to access Camera")
+                    print("Not Allowed to access Camera")
                 }
             })
             step = step + 1
@@ -80,11 +80,11 @@ class FirstRunViewController: UIViewController {
                 if granted == true {
                     // Authorized
                     //Nothing to do
-                    NSLog("Allowed to access to Microphone")
+                    print("Allowed to access to Microphone")
                 } else {
                     // Not allowed
                     // Prompt with warning and button to settings
-                    NSLog("Not Allowed to access to Microphone")
+                    print("Not Allowed to access to Microphone")
                 }
             })
             step = step + 1
@@ -97,9 +97,9 @@ class FirstRunViewController: UIViewController {
                 if status == .authorized{
                     // Authorized
                     //Nothing to do
-                    NSLog("Allowed to access the Photo Library")
+                    print("Allowed to access the Photo Library")
                 } else {
-                    NSLog("Not Allowed to access the Photo Library")
+                    print("Not Allowed to access the Photo Library")
                 }
             })
             step = step + 1
@@ -112,9 +112,9 @@ class FirstRunViewController: UIViewController {
                 if status == .authorized{
                     // Authorized
                     //Nothing to do
-                    NSLog("Allowed to access the Media Library")
+                    print("Allowed to access the Media Library")
                 } else {
-                    NSLog("Not Allowed to access the Media Library")
+                    print("Not Allowed to access the Media Library")
                 }
             }
             step = step + 1
@@ -124,9 +124,9 @@ class FirstRunViewController: UIViewController {
             messageTextField.text = NSLocalizedString("notification_alert_body", comment: "")
 
             if CLLocationManager.authorizationStatus() == .authorizedAlways {
-                NSLog("Allowed Always Location Access")
+                print("Allowed Always Location Access")
             } else {
-                NSLog("Not Allowed Location Access")
+                print("Not Allowed Location Access")
                 locationManager.requestAlwaysAuthorization()
             }
             step = step + 1
@@ -137,19 +137,19 @@ class FirstRunViewController: UIViewController {
             
             UNUserNotificationCenter.current().getNotificationSettings { (settings) in
                 if (settings.authorizationStatus == .authorized){
-                    NSLog("Allowed to use Notifications")
+                    print("Allowed to use Notifications")
                 } else {
                     if #available(iOS 10.0, *) {
                         let center  = UNUserNotificationCenter.current()
 
                         center.requestAuthorization(options: [.sound, .alert, .badge]) { (granted, error) in
                             if error == nil{
-                                NSLog("Allowed to use Notifications")
+                                print("Allowed to use Notifications")
                             }
                         }
 
                     }
-                    NSLog("Not Allowed to use Notifications")
+                    print("Not Allowed to use Notifications")
                 }
             }
             step = step + 1

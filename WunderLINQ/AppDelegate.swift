@@ -75,7 +75,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                 .forEach { $0.perform(setHardwareLayout, with: nil) }
             
             //Read and populate defaults
-            registerDefaultsFromSettingsBundle();
+            registerDefaultsFromSettingsBundle()
             // Override point for customization after application launch.
             // Keep screen unlocked
             application.isIdleTimerDisabled = true

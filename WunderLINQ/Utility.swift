@@ -19,60 +19,68 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 import Foundation
 
 class Utility {
+
+    private static func convert<T: Dimension>(value: Double, from: T, to: T) -> Double {
+        let measurement = Measurement(value: value, unit: from)
+        return measurement.converted(to: to).value
+    }
+
     // MARK: - Utility Methods
     // Unit Conversion Functions
     // bar to psi
-    class func barToPsi(_ bar:Double) -> Double {
-        let psi = bar * 14.5037738
-        return psi
+    static func barToPsi(_ bar:Double) -> Double {
+        return convert(value: bar, from: UnitPressure.bars,
+                       to: UnitPressure.poundsForcePerSquareInch)
     }
+
     // bar to kpa
-    class func barTokPa(_ bar:Double) -> Double {
-        let kpa = bar * 100.0
-        return kpa
+    static func barTokPa(_ bar: Double) -> Double {
+        convert(value: bar, from: UnitPressure.bars,
+                       to: UnitPressure.kilopascals)
     }
     // bar to kg-f
-    class func barTokgf(_ bar:Double) -> Double {
+    static func barTokgf(_ bar: Double) -> Double {
         let kgf = bar * 1.0197162129779
         return kgf
     }
     // kilometers to miles
-    class func kmToMiles(_ kilometers:Double) -> Double {
-        let miles = kilometers * 0.62137
-        return miles
+    class func kmToMiles(_ kilometers: Double) -> Double {
+        convert(value: kilometers, from: UnitLength.kilometers,
+                to: UnitLength.miles)
     }
+
     // Celsius to Fahrenheit
-    class func celciusToFahrenheit(_ celcius:Double) -> Double {
-        let fahrenheit = (celcius * 1.8) + Double(32)
-        return fahrenheit
+    static func celciusToFahrenheit(_ celcius:Double) -> Double {
+        convert(value: celcius, from: UnitTemperature.celsius, to: UnitTemperature.fahrenheit)
     }
     // L/100 to mpg
     class func l100ToMpg(_ l100:Double) -> Double {
-        let mpg = 235.215 / l100
-        return mpg
+        convert(value: l100, from: UnitFuelEfficiency.litersPer100Kilometers,
+                to: UnitFuelEfficiency.milesPerGallon)
     }
+
     // L/100 to mpg Imperial
     class func l100ToMpgi(_ l100:Double) -> Double {
-        let mpgi = (235.215 / l100) * 1.20095
-        return mpgi
+        convert(value: l100, from: UnitFuelEfficiency.litersPer100Kilometers,
+                to: UnitFuelEfficiency.milesPerImperialGallon)
     }
     // L/100 to km/L
-    class func l100Tokml(_ l100:Double) -> Double {
+    class func l100Tokml(_ l100: Double) -> Double {
         let kml = l100 / 100.0
         return kml
     }
     // meters to feet
     class func mtoFeet(_ meters:Double) -> Double {
-        let meters = meters / 0.3048
-        return meters
+        convert(value: meters, from: UnitLength.meters, to: UnitLength.feet)
     }
+
     //radians to degrees
     class func degrees(radians:Double) -> Double {
-        return 180 / Double.pi * radians
+        convert(value: radians, from: UnitAngle.radians, to: UnitAngle.degrees)
     }
     
     // Calculate time duration
-    class func calculateDuration(start:String, end:String) -> String{
+    class func calculateDuration(start:String, end:String) -> String {
         var dateFormat = "yyyyMMdd-HH:mm:ss"
         var dateFormatter: DateFormatter {
             let formatter = DateFormatter()
