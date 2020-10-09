@@ -20,144 +20,129 @@ import Foundation
 import MapKit
 import UIKit
 
-class NavAppHelper {
-    
-    class func open() {
-        let navApp = UserDefaults.standard.integer(forKey: "nav_app_preference")
-        switch (navApp){
-        case 0:
-            //Apple Maps
-            let map = MKMapItem()
-            map.openInMaps(launchOptions: nil)
-        case 1:
-            //Google Maps
-            //https://developers.google.com/maps/documentation/urls/ios-urlscheme
-            if let googleMapsURL = URL(string: "comgooglemaps-x-callback://?x-success=wunderlinq://&x-source=WunderLINQ") {
-                if (UIApplication.shared.canOpenURL(googleMapsURL)) {
-                    if #available(iOS 10, *) {
-                        UIApplication.shared.open(googleMapsURL, options: [:], completionHandler: nil)
-                    } else {
-                        UIApplication.shared.openURL(googleMapsURL as URL)
-                    }
-                }
-            }
-        case 2:
-            //Scenic
-            //https://github.com/guidove/Scenic-Integration/blob/master/README.md
-            let scenic = ScenicAPI()
-            scenic.sendToScenicForNavigation(coordinate: CLLocationCoordinate2D(latitude: 0,longitude: 0), name: "WunderLINQ")
-        case 3:
-            //Sygic
-            //https://www.sygic.com/developers/professional-navigation-sdk/ios/custom-url
-            let urlString = "com.sygic.aura://"
-            
-            if let sygicURL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
-                if (UIApplication.shared.canOpenURL(sygicURL)) {
-                    if #available(iOS 10, *) {
-                        UIApplication.shared.open(sygicURL, options: [:], completionHandler: nil)
-                    } else {
-                        UIApplication.shared.openURL(sygicURL as URL)
-                    }
-                }
-            }
-        case 4:
-            //Waze
-            if let wazeURL = URL(string: "waze://") {
-                if (UIApplication.shared.canOpenURL(wazeURL)) {
-                    if #available(iOS 10, *) {
-                        UIApplication.shared.open(wazeURL, options: [:], completionHandler: nil)
-                    } else {
-                        UIApplication.shared.openURL(wazeURL as URL)
-                    }
-                }
-            }
-        case 5:
-            //Maps.me
-            //https://github.com/mapsme/api-ios
-            if let mapsMeURL = URL(string: "mapsme://?backurl=wunderlinq://") {
-                if (UIApplication.shared.canOpenURL(mapsMeURL)) {
-                    if #available(iOS 10, *) {
-                        UIApplication.shared.open(mapsMeURL, options: [:], completionHandler: nil)
-                    } else {
-                        UIApplication.shared.openURL(mapsMeURL as URL)
-                    }
-                }
-            }
-        case 6:
-            //OsmAnd
-            // osmandmaps://?lat=45.6313&lon=34.9955&z=8&title=New+York
-            let urlString = "osmandmaps://"
-            if let osmAndURL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
-                if (UIApplication.shared.canOpenURL(osmAndURL)) {
-                    if #available(iOS 10, *) {
-                        UIApplication.shared.open(osmAndURL, options: [:], completionHandler: nil)
-                    } else {
-                        UIApplication.shared.openURL(osmAndURL as URL)
-                    }
-                }
-            }
-        case 7:
-            // Here We Go
-            // https://developer.here.com/documentation/mobility-on-demand-toolkit/dev_guide/topics/navigation.html
-            // here-route://mylocation/37.870090,-122.268150,Downtown%20Berkeley?ref=WunderLINQ&m=d
-            let urlString = "here-route://"
-            if let uRL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
-                if (UIApplication.shared.canOpenURL(uRL)) {
-                    if #available(iOS 10, *) {
-                        UIApplication.shared.open(uRL, options: [:], completionHandler: nil)
-                    } else {
-                        UIApplication.shared.openURL(uRL as URL)
-                    }
-                }
-            }
-        case 8:
-            // TomTom GO
-            // https://discussions.tomtom.com/en/discussion/1118783/url-schemes-for-go-navigation-ios/
-            // tomtomgo://x-callback-url/navigate?destination=52.371183,4.892504
-            let urlString = "tomtomgo://"
-            if let uRL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
-                if (UIApplication.shared.canOpenURL(uRL)) {
-                    if #available(iOS 10, *) {
-                        UIApplication.shared.open(uRL, options: [:], completionHandler: nil)
-                    } else {
-                        UIApplication.shared.openURL(uRL as URL)
-                    }
-                }
-            }
-        case 9:
-            //inRoute
-            //http://carobapps.com/products/inroute/url-scheme/
-            let urlString = "inroute://"
-            if let uRL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
-                if (UIApplication.shared.canOpenURL(uRL)) {
-                    if #available(iOS 10, *) {
-                        UIApplication.shared.open(uRL, options: [:], completionHandler: nil)
-                    } else {
-                        UIApplication.shared.openURL(uRL as URL)
-                    }
-                }
-            }
-        default:
-            //Apple Maps
-            let map = MKMapItem()
-            map.openInMaps(launchOptions: nil)
+/// All descriptions are accessible with option + click
+enum NavigationAppPreference: Int, CaseIterable {
+    /// Universal app link accessible with `maps://`
+    case appleMaps = 0
+
+    /// Universal app link accessible with `googlemaps://`, or x-callback `comgooglemaps-x-callback://`
+    case googleMaps
+
+    /// Integration guide: https://github.com/guidove/Scenic-Integration/blob/master/README.md
+    /// https://scenicapp.space/api/openScenic.php is a deeplink with app-site-association
+    case scenic
+
+    /// https://www.sygic.com/developers/professional-navigation-sdk/ios/custom-url
+    case sygic
+
+    /// Universal app link accessible with `waze://`
+    case waze
+
+    /// https://github.com/mapsme/api-ios
+    case mapsMe
+
+    /// Universal app link accessible with `osmandmaps://?lat=45.6313&lon=34.9955&z=8&title=New+York`
+    case osmAnd
+
+    /// https://developer.here.com/documentation/mobility-on-demand-toolkit/dev_guide/topics/navigation.html
+    /// Universal app link accessible with `here-route://mylocation/37.870090,-122.268150,Downtown%20Berkeley?ref=WunderLINQ&m=d`
+    case hereWeGo
+
+    /// https://discussions.tomtom.com/en/discussion/1118783/url-schemes-for-go-navigation-ios/
+    /// Universal app link accessible with `tomtomgo://x-callback-url/navigate?destination=52.371183,4.892504`
+    case tomTomGo
+
+    /// http://carobapps.com/products/inroute/url-scheme/
+    case inRoute
+
+    var isAvailable: Bool {
+        UIApplication.shared.canOpenURL(URL(string: self.urlScheme)!)
+    }
+
+    var urlScheme: String {
+        switch self {
+        case .appleMaps:
+            return "maps://"
+
+        case .googleMaps:
+            return "comgooglemaps-x-callback://?x-success=wunderlinq://&x-source=WunderLINQ"
+
+        case .scenic:
+            return ScenicAPI.Constants.deeplinkURL
+
+        case .sygic:
+            return "com.sygic.aura://"
+
+        case .waze:
+            return "waze://"
+
+        case .hereWeGo:
+            return "here-route://"
+
+        case .mapsMe:
+            return "mapsme://?backurl=wunderlinq://"
+
+        case .osmAnd:
+            return "osmandmaps://"
+
+        case .tomTomGo:
+            return "tomtomgo://"
+
+        case .inRoute:
+            return "inroute://"
         }
     }
-    
+
+    func open(_ app: UIApplication = .shared) {
+        let url = URL(string: urlScheme)!
+
+        guard isAvailable else {
+            Self.appleMaps.open()
+            return
+        }
+
+        app.open(url)
+    }
+}
+
+class NavAppHelper {
+
+    private let app: UIApplication
+
+    init(_ app: UIApplication = .shared) {
+        self.app = app
+    }
+
+    private func openAppleMaps() {
+        NavigationAppPreference.appleMaps.open()
+    }
+
+    func open() {
+        let navAppValue = UserDefaults.standard.integer(forKey: "nav_app_preference")
+        guard let navApp = NavigationAppPreference(rawValue: navAppValue) else {
+            openAppleMaps()
+            return
+        }
+        navApp.open()
+    }
+
+}
+
+extension NavAppHelper {
     class func navigateTo(destLatitude: Double, destLongitude: Double, destLabel: String?, currentLatitude: Double, currentLongitude: Double) {
-        let navApp = UserDefaults.standard.integer(forKey: "nav_app_preference")
-        switch (navApp){
-        case 0:
-            //Apple Maps
+        let navAppValue = UserDefaults.standard.integer(forKey: "nav_app_preference")
+        guard let navApp = NavigationAppPreference(rawValue: navAppValue) else { return }
+
+        switch navApp {
+        case .appleMaps:
             let coordinates = CLLocationCoordinate2DMake(destLatitude, destLongitude)
             let navPlacemark = MKPlacemark(coordinate: coordinates, addressDictionary: nil)
             let mapitem = MKMapItem(placemark: navPlacemark)
             let options = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving]
             mapitem.openInMaps(launchOptions: options)
-        case 1:
-            //Google Maps
-            //googlemaps://
-            if let googleMapsURL = URL(string: "comgooglemaps-x-callback://?daddr=\(destLatitude),\(destLongitude)&directionsmode=driving&x-success=wunderlinq://?resume=true&x-source=WunderLINQ") {
+
+        case .googleMaps:
+            if let googleMapsURL = URL(string: "\(navApp.urlScheme)?daddr=\(destLatitude),\(destLongitude)&directionsmode=driving&x-success=wunderlinq://?resume=true&x-source=WunderLINQ") {
                 if (UIApplication.shared.canOpenURL(googleMapsURL)) {
                     if #available(iOS 10, *) {
                         UIApplication.shared.open(googleMapsURL, options: [:], completionHandler: nil)
@@ -166,15 +151,12 @@ class NavAppHelper {
                     }
                 }
             }
-        case 2:
-            //Scenic
-            //https://github.com/guidove/Scenic-Integration/blob/master/README.md
+        case .scenic:
             let scenic = ScenicAPI()
             scenic.sendToScenicForNavigation(coordinate: CLLocationCoordinate2D(latitude: destLatitude,longitude: destLongitude), name: destLabel ?? "WunderLINQ")
-        case 3:
-            //Sygic
-            //https://www.sygic.com/developers/professional-navigation-sdk/ios/custom-url
-            let urlString = "com.sygic.aura://coordinate|\(destLongitude)|\(destLatitude)|drive"
+
+        case .sygic:
+            let urlString = "\(navApp.urlScheme)coordinate|\(destLongitude)|\(destLatitude)|drive"
             
             if let sygicURL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
                 if (UIApplication.shared.canOpenURL(sygicURL)) {
@@ -185,10 +167,9 @@ class NavAppHelper {
                     }
                 }
             }
-        case 4:
-            //Waze
-            //waze://?ll=[lat],[lon]&z=10
-            if let wazeURL = URL(string: "waze://?ll=\(destLatitude),\(destLongitude)&navigate=yes") {
+
+        case .waze:
+            if let wazeURL = URL(string: "\(navApp.urlScheme)?ll=\(destLatitude),\(destLongitude)&navigate=yes") {
                 if (UIApplication.shared.canOpenURL(wazeURL)) {
                     if #available(iOS 10, *) {
                         UIApplication.shared.open(wazeURL, options: [:], completionHandler: nil)
@@ -197,10 +178,9 @@ class NavAppHelper {
                     }
                 }
             }
-        case 5:
-            //Maps.me
-            //https://github.com/mapsme/api-ios
-            let urlString = "mapsme://route?sll=\(currentLatitude),\(currentLongitude)&saddr=\(NSLocalizedString("trip_view_waypoint_start_label", comment: ""))&dll=\(destLatitude),\(destLongitude)&daddr=\(destLabel ?? ""))&type=vehicle&backurl=wunderlinq://"
+
+        case .mapsMe:
+            let urlString = "\(navApp.urlScheme)route?sll=\(currentLatitude),\(currentLongitude)&saddr=\(NSLocalizedString("trip_view_waypoint_start_label", comment: ""))&dll=\(destLatitude),\(destLongitude)&daddr=\(destLabel ?? ""))&type=vehicle&backurl=wunderlinq://"
             if let mapsMeURL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
                 if (UIApplication.shared.canOpenURL(mapsMeURL)) {
                     if #available(iOS 10, *) {
@@ -210,10 +190,9 @@ class NavAppHelper {
                     }
                 }
             }
-        case 6:
-            //OsmAnd
-            // osmandmaps://?lat=45.6313&lon=34.9955&z=8&title=New+York
-            let urlString = "osmandmaps://navigate?lat=\(destLatitude)&lon=\(destLongitude)&z=8&title=\(destLabel ?? "")"
+
+        case .osmAnd:
+            let urlString = "\(navApp.urlScheme)navigate?lat=\(destLatitude)&lon=\(destLongitude)&z=8&title=\(destLabel ?? "")"
             if let mapsMeURL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
                 if (UIApplication.shared.canOpenURL(mapsMeURL)) {
                     if #available(iOS 10, *) {
@@ -223,11 +202,9 @@ class NavAppHelper {
                     }
                 }
             }
-        case 7:
-            // Here We Go
-            // https://developer.here.com/documentation/mobility-on-demand-toolkit/dev_guide/topics/navigation.html
-            // here-route://mylocation/37.870090,-122.268150,Downtown%20Berkeley?ref=WunderLINQ&m=d
-            let urlString = "here-route://mylocation/\(destLatitude),\(destLongitude),\(destLabel ?? "")?ref=WunderLINQ&m=d"
+
+        case .hereWeGo:
+            let urlString = "\(navApp.urlScheme)mylocation/\(destLatitude),\(destLongitude),\(destLabel ?? "")?ref=WunderLINQ&m=d"
             if let hereURL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
                 if (UIApplication.shared.canOpenURL(hereURL)) {
                     if #available(iOS 10, *) {
@@ -237,11 +214,12 @@ class NavAppHelper {
                     }
                 }
             }
-        case 8:
+
+        case .tomTomGo:
             // TomTom GO
             // https://discussions.tomtom.com/en/discussion/1118783/url-schemes-for-go-navigation-ios/
             // tomtomgo://x-callback-url/navigate?destination=52.371183,4.892504
-            let urlString = "tomtomgo://x-callback-url/navigate?destination=\(destLatitude),\(destLongitude)"
+            let urlString = "\(navApp.urlScheme)x-callback-url/navigate?destination=\(destLatitude),\(destLongitude)"
             if let uRL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
                 if (UIApplication.shared.canOpenURL(uRL)) {
                     if #available(iOS 10, *) {
@@ -251,10 +229,11 @@ class NavAppHelper {
                     }
                 }
             }
-        case 9:
+
+        case .inRoute:
             //inRoute
             //http://carobapps.com/products/inroute/url-scheme/
-            let urlString = "inroute://coordinates?action=opt&loc=Start/\(currentLatitude)/\(currentLongitude)&loc=\(destLabel ?? "")/\(destLatitude)/\(destLongitude)"
+            let urlString = "\(navApp.urlScheme)coordinates?action=opt&loc=Start/\(currentLatitude)/\(currentLongitude)&loc=\(destLabel ?? "")/\(destLatitude)/\(destLongitude)"
             if let uRL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
                 if (UIApplication.shared.canOpenURL(uRL)) {
                     if #available(iOS 10, *) {
@@ -264,13 +243,6 @@ class NavAppHelper {
                     }
                 }
             }
-        default:
-            //Apple Maps
-            let coordinates = CLLocationCoordinate2DMake(destLatitude, destLongitude)
-            let navPlacemark = MKPlacemark(coordinate: coordinates, addressDictionary: nil)
-            let mapitem = MKMapItem(placemark: navPlacemark)
-            let options = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving]
-            mapitem.openInMaps(launchOptions: options)
         }
     }
     
@@ -406,7 +378,7 @@ class NavAppHelper {
             }
         default:
             //Apple Maps
-            let regionDistance:CLLocationDistance = 10000
+            let regionDistance: CLLocationDistance = 10000
             let coordinates = CLLocationCoordinate2DMake(destLatitude, destLongitude)
             let regionSpan = MKCoordinateRegion.init(center: coordinates, latitudinalMeters: regionDistance, longitudinalMeters: regionDistance)
             let options = [
