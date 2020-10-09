@@ -55,6 +55,10 @@ enum NavigationAppPreference: Int, CaseIterable {
     /// http://carobapps.com/products/inroute/url-scheme/
     case inRoute
 
+    /// Universal app link accessible with `mapout://`
+    /// `mapout://longitude=-0.209659096912497345&latitude=51.52214776018867&zoom=8.6681337356567383&rotation=0`
+    case mapout
+
     var isAvailable: Bool {
         UIApplication.shared.canOpenURL(URL(string: self.urlScheme)!)
     }
@@ -90,11 +94,14 @@ enum NavigationAppPreference: Int, CaseIterable {
 
         case .inRoute:
             return "inroute://"
+
+        case .mapout:
+            return "mapout://"
         }
     }
 
-    func open(_ app: UIApplication = .shared) {
-        let url = URL(string: urlScheme)!
+    /// Interface to open an external navigation app with a universal link
+    func open(_ app: UIApplication = .shared, url: URL) {
 
         guard isAvailable else {
             Self.appleMaps.open()
@@ -102,6 +109,12 @@ enum NavigationAppPreference: Int, CaseIterable {
         }
 
         app.open(url)
+    }
+
+    /// Interface to open an external navigation app with no arguments
+    func open(_ app: UIApplication = .shared) {
+        let url = URL(string: urlScheme)!
+        open(url: url)
     }
 }
 
@@ -236,13 +249,26 @@ extension NavAppHelper {
             let urlString = "\(navApp.urlScheme)coordinates?action=opt&loc=Start/\(currentLatitude)/\(currentLongitude)&loc=\(destLabel ?? "")/\(destLatitude)/\(destLongitude)"
             if let uRL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
                 if (UIApplication.shared.canOpenURL(uRL)) {
-                    if #available(iOS 10, *) {
-                        UIApplication.shared.open(uRL, options: [:], completionHandler: nil)
-                    } else {
-                        UIApplication.shared.openURL(uRL as URL)
-                    }
+                    UIApplication.shared.open(uRL, options: [:], completionHandler: nil)
                 }
             }
+
+        case .mapout:
+            var components = URLComponents()
+
+            let queryItems = [URLQueryItem(name: "longitude", value: "\(destLongitude)"),
+                              URLQueryItem(name: "latitude", value: "\(destLatitude)"),
+                              URLQueryItem(name: "zoom", value: "8"),
+                              URLQueryItem(name: "rotation", value: "0")]
+
+            components.queryItems = queryItems
+            components.scheme = navApp.urlScheme
+
+            guard let url = components.url else {
+                return
+            }
+
+            navApp.open(url: url)
         }
     }
     
