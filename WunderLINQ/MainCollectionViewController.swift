@@ -26,6 +26,7 @@ import Photos
 import UIKit
 import UserNotifications
 import CommonCrypto
+import InAppSettingsKit
 
 private let reuseIdentifier = "MainCollectionViewCell"
 
