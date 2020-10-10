@@ -81,7 +81,7 @@ class Utility {
     
     // Calculate time duration
     class func calculateDuration(start:String, end:String) -> String {
-        var dateFormat = "yyyyMMdd-HH:mm:ss"
+        let dateFormat = "yyyyMMdd-HH:mm:ss"
         var dateFormatter: DateFormatter {
             let formatter = DateFormatter()
             formatter.dateFormat = dateFormat
