@@ -1,4 +1,4 @@
-module ChromaColorPicker {
+framework module ChromaColorPicker {
   umbrella header "ChromaColorPicker-umbrella.h"
 
   export *

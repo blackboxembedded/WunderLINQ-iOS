@@ -17,15 +17,3 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 #import <SpotifyiOS/SpotifyiOS.h>
-
-#ifdef USES_IASK_STATIC_LIBRARY
-#import "InAppSettingsKit/IASKSettingsReader.h"
-#else
-#import "IASKSettingsReader.h"
-#endif
-
-#if USES_IASK_STATIC_LIBRARY
-#import "InAppSettingsKit/IASKAppSettingsViewController.h"
-#else
-#import "IASKAppSettingsViewController.h"
-#endif

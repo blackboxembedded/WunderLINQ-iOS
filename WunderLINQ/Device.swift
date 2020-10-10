@@ -18,7 +18,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 import Foundation
 
-struct Device {
+enum Device {
     
     static let WunderLINQAdvertisingUUID = "7340"
     static let DeviceInformationServiceUUID = "0000180A-0000-1000-8000-00805F9B34FB"
