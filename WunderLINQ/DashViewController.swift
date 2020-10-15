@@ -61,8 +61,6 @@ class DashViewController: UIViewController, UIWebViewDelegate {
         if isTimerRunning == false {
             runTimer()
         }
-        let value = UIInterfaceOrientation.landscapeLeft.rawValue
-        UIDevice.current.setValue(value, forKey: "orientation")
         
         switch(UserDefaults.standard.integer(forKey: "darkmode_preference")){
         case 0:
@@ -173,6 +171,10 @@ class DashViewController: UIViewController, UIWebViewDelegate {
         webView.scrollView.zoomScale = scaleFactor
         webView.backgroundColor = .clear
     }
+    override func viewWillAppear(_ animated: Bool) {
+        let value = UIInterfaceOrientation.landscapeRight.rawValue
+        UIDevice.current.setValue(value, forKey: "orientation")
+    }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -182,19 +184,20 @@ class DashViewController: UIViewController, UIWebViewDelegate {
         // Show the navigation bar on other view controllers
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
     }
-    
-    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-        return .landscape
-    }
+
 
     override var shouldAutorotate: Bool {
-        return true
+        return false
+    }
+    
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return .landscapeRight
     }
 
     override public var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
-        return .landscapeLeft
+        return .landscapeRight
     }
-    
+
     @objc func onTouch() {
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         if isTimerRunning == false {
@@ -264,11 +267,13 @@ class DashViewController: UIViewController, UIWebViewDelegate {
             var speedValue = motorcycleData.speed!
             if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
                 speedValue = Utility.kmToMiles(speedValue)
-                distanceTimeUnit = "MPH"
-                xml[0][4][10][1]["text"]?["tspan"]?.text = distanceTimeUnit
             }
             xml[0][4][11][0]["tspan"]?.text = "\(Int(round(speedValue)))"
         }
+        if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
+            distanceTimeUnit = "MPH"
+        }
+        xml[0][4][10][1]["text"]?["tspan"]?.text = distanceTimeUnit
         
         //Gear
         var gearValue = "-"
@@ -938,15 +943,5 @@ class DashViewController: UIViewController, UIWebViewDelegate {
         
         webView.loadHTMLString(xml.description, baseURL: nil)
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
