@@ -231,3 +231,5 @@
 "bike_info_title" = "バイク情報";
 "sunrisesunset_header" = "日の出/日没";
 "barometric_header" = "気圧計";
+// FirstRunViewController
+"firstrun_start" = "WunderLINQは沢山の便利機能を使用するために「許可」が必要です。このあとその許可がなぜ必要かという説明が続きますこの許可のプロセスは今回1回のみです。あとから許可の変更をする場合は設定から行えます。詳しくはツアラテックジャパンのWunderLINQページでも確認できます。";
