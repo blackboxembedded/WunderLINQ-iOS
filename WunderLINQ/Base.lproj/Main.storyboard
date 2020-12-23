@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Fp2-Ey-Ypo">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Fp2-Ey-Ypo">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -16,11 +16,11 @@
             <objects>
                 <viewController storyboardIdentifier="Main" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="MainCollectionViewController" customModule="WunderLINQ" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="LeD-DA-8o8">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" restorationIdentifier="MainCollectionVC" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="DFb-XX-n1q">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                                 <color key="backgroundColor" systemColor="labelColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="iyU-Dx-uZ6">
                                     <size key="itemSize" width="66" height="70"/>
@@ -94,7 +94,6 @@
                     <connections>
                         <outlet property="collectionView" destination="DFb-XX-n1q" id="uDa-vr-x3S"/>
                         <outlet property="mainUIView" destination="LeD-DA-8o8" id="BgD-k4-2xL"/>
-                        <segue destination="IU4-xr-4Bd" kind="show" identifier="motorcycleToHWSettings" id="U7e-Tj-3zM"/>
                         <segue destination="OIf-TM-fnx" kind="show" identifier="motorcycleToTaskGrid" customClass="SegueFromLeft" customModule="WunderLINQ" customModuleProvider="target" id="Mvj-Z7-A9C"/>
                         <segue destination="p6n-wZ-mMa" kind="show" identifier="motorcycleToMusic" id="kry-jp-5q5"/>
                         <segue destination="KTW-aa-IYg" kind="show" identifier="motorcycleToFaults" id="b1A-JR-H5R"/>
@@ -102,6 +101,7 @@
                         <segue destination="4YA-h5-Jjs" kind="show" identifier="motorcycleToGeoData" id="end-im-meh"/>
                         <segue destination="g6h-Xr-9v3" kind="show" identifier="motorcycleToBikeInfo" id="FCu-K5-imH"/>
                         <segue destination="IAt-8c-fIu" kind="show" identifier="motorcycleToDash" id="1bf-BN-ttT"/>
+                        <segue destination="dmI-P5-Pbu" kind="show" identifier="motorcycleToHWSettings" id="Lnd-6B-Y8x"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -176,7 +176,7 @@
             <objects>
                 <tableViewController title="Faults" id="KTW-aa-IYg" customClass="FaultsTableViewController" customModule="WunderLINQ" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="8d5-qJ-gEo">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
@@ -369,11 +369,11 @@
             <objects>
                 <viewController id="mgN-4w-lQo" customClass="WeatherMapViewController" customModule="WunderLINQ" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="s1a-NI-mWg">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xBm-3o-5aH" customClass="GMSMapView">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="ignoresInvertColors" value="YES"/>
@@ -403,7 +403,7 @@
             <objects>
                 <viewController storyboardIdentifier="MusicViewController" id="p6n-wZ-mMa" customClass="MusicViewController" customModule="WunderLINQ" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cl2-HO-wNM">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9KV-8n-ffM">
@@ -416,7 +416,7 @@
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="9kl-zc-Jc0">
-                                <rect key="frame" x="0.0" y="375" width="375" height="292"/>
+                                <rect key="frame" x="0.0" y="375" width="375" height="272"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7h2-4R-M5d">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="25"/>
@@ -450,10 +450,10 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SPh-nY-LUF">
-                                        <rect key="frame" x="0.0" y="100" width="375" height="192"/>
+                                        <rect key="frame" x="0.0" y="100" width="375" height="172"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vsu-t3-FAz">
-                                                <rect key="frame" x="0.0" y="0.0" width="125" height="192"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="125" height="172"/>
                                                 <color key="tintColor" systemColor="labelColor"/>
                                                 <state key="normal" image="playback_back"/>
                                                 <connections>
@@ -461,7 +461,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="fill" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pwh-25-TzL">
-                                                <rect key="frame" x="125" y="0.0" width="125" height="192"/>
+                                                <rect key="frame" x="125" y="0.0" width="125" height="172"/>
                                                 <accessibility key="accessibilityConfiguration">
                                                     <accessibilityTraits key="traits" button="YES" summaryElement="YES"/>
                                                 </accessibility>
@@ -472,7 +472,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kxB-1t-Lm7">
-                                                <rect key="frame" x="250" y="0.0" width="125" height="192"/>
+                                                <rect key="frame" x="250" y="0.0" width="125" height="172"/>
                                                 <color key="tintColor" systemColor="labelColor"/>
                                                 <state key="normal" image="playback_forward"/>
                                                 <connections>
@@ -597,7 +597,7 @@
             <objects>
                 <tableViewController id="TPs-yr-NM2" customClass="ContactsTableViewController" customModule="WunderLINQ" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Y20-CM-oly">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -660,7 +660,7 @@
             <objects>
                 <tableViewController id="we8-3Z-s79" customClass="WaypointsNavTableViewController" customModule="WunderLINQ" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="8Yw-3z-6cz">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
@@ -701,11 +701,11 @@
             <objects>
                 <viewController storyboardIdentifier="AlertViewControllerID" title="Alert" id="gJo-MW-rva" customClass="AlertViewController" customModule="WunderLINQ" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="GAg-mc-EeP">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ch1-dL-bp2" customClass="LocalisableButton" customModule="WunderLINQ" customModuleProvider="target">
-                                <rect key="frame" x="16" y="611" width="167.5" height="36"/>
+                                <rect key="frame" x="16" y="591" width="167.5" height="36"/>
                                 <color key="backgroundColor" name="imageTint"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                 <state key="normal" title="CLOSE">
@@ -719,7 +719,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o4A-v0-HaT" customClass="LocalisableButton" customModule="WunderLINQ" customModuleProvider="target">
-                                <rect key="frame" x="191.5" y="611" width="167.5" height="36"/>
+                                <rect key="frame" x="191.5" y="591" width="167.5" height="36"/>
                                 <color key="backgroundColor" name="imageTint"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                 <state key="normal" title="OK">
@@ -733,7 +733,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pNL-mh-mKe">
-                                <rect key="frame" x="16" y="321.5" width="343" height="24"/>
+                                <rect key="frame" x="16" y="311.5" width="343" height="24"/>
                                 <fontDescription key="fontDescription" type="system" weight="black" pointSize="20"/>
                                 <color key="textColor" name="imageTint"/>
                                 <nil key="highlightedColor"/>
@@ -770,7 +770,7 @@
             <objects>
                 <viewController id="IAt-8c-fIu" customClass="DashViewController" customModule="WunderLINQ" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Diz-f5-e5x">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <viewLayoutGuide key="safeArea" id="5y8-vY-FJ9"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -790,7 +790,7 @@
             <objects>
                 <collectionViewController title="Quick Tasks" id="OIf-TM-fnx" customClass="TasksCollectionViewController" customModule="WunderLINQ" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" id="02I-YM-N5d">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" name="backgrounds"/>
                         <collectionViewLayout key="collectionViewLayout" id="mD6-xu-BlN" customClass="CircularCollectionViewLayout" customModule="WunderLINQ" customModuleProvider="target"/>
@@ -858,29 +858,15 @@
             <point key="canvasLocation" x="8908" y="-126.38680659670166"/>
         </scene>
         <!--HW Settings-->
-        <scene sceneID="gKl-xS-Cwg">
+        <scene sceneID="x9N-ZM-1lT">
             <objects>
-                <viewController id="IU4-xr-4Bd" customClass="HWSettingsViewController" customModule="WunderLINQ" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="JIN-NT-UZ4">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                <viewController title="HW Settings" id="dmI-P5-Pbu" customClass="HWSettingsViewController" customModule="WunderLINQ" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Vna-Dx-laf">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fZ3-Aw-NNr" customClass="LocalisableButton" customModule="WunderLINQ" customModuleProvider="target">
-                                <rect key="frame" x="16" y="609" width="343" height="42"/>
-                                <color key="backgroundColor" name="imageTint"/>
-                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="25"/>
-                                <state key="normal">
-                                    <color key="titleColor" name="backgrounds"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="localisedKey" value="config_write_label"/>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="savePressed:" destination="IU4-xr-4Bd" eventType="touchUpInside" id="xrE-vH-dSq"/>
-                                </connections>
-                            </button>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YMW-LY-so9" customClass="LocalisableButton" customModule="WunderLINQ" customModuleProvider="target">
-                                <rect key="frame" x="16" y="559" width="343" height="42"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XOn-y4-h7t" customClass="LocalisableButton" customModule="WunderLINQ" customModuleProvider="target">
+                                <rect key="frame" x="16" y="593" width="343" height="42"/>
                                 <color key="backgroundColor" name="imageTint"/>
                                 <fontDescription key="fontDescription" type="system" weight="black" pointSize="25"/>
                                 <state key="normal">
@@ -890,102 +876,197 @@
                                     <userDefinedRuntimeAttribute type="string" keyPath="localisedKey" value="config_reset_label"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="resetPressed:" destination="IU4-xr-4Bd" eventType="touchUpInside" id="QzA-Cb-hif"/>
+                                    <action selector="configPressed:" destination="dmI-P5-Pbu" eventType="touchUpInside" id="eW6-8x-hhS"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wheel Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kdd-7b-Hvf" customClass="LocalisableLabel" customModule="WunderLINQ" customModuleProvider="target">
-                                <rect key="frame" x="16" y="32" width="167.5" height="75"/>
-                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="20"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="localisedKey" value="wwtype_label"/>
-                                </userDefinedRuntimeAttributes>
-                            </label>
-                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tOE-xh-XqU">
-                                <rect key="frame" x="191.5" y="32" width="167.5" height="75"/>
-                                <color key="tintColor" name="imageTint"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="75" id="fDe-xg-E3f"/>
-                                </constraints>
-                            </pickerView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hold Sensitivity" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mPy-4d-rgO" customClass="LocalisableLabel" customModule="WunderLINQ" customModuleProvider="target">
-                                <rect key="frame" x="16" y="123" width="163.5" height="24"/>
-                                <color key="tintColor" name="imageTint"/>
-                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="20"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="localisedKey" value="sensitivity_label"/>
-                                </userDefinedRuntimeAttributes>
-                            </label>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="8kR-jJ-u6c">
-                                <rect key="frame" x="14" y="163" width="347" height="31"/>
-                                <color key="tintColor" name="imageTint"/>
-                                <connections>
-                                    <action selector="sensitivitySliderChanged:" destination="IU4-xr-4Bd" eventType="valueChanged" id="Dyn-7n-ZVA"/>
-                                </connections>
-                            </slider>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aFc-Cs-nd4">
-                                <rect key="frame" x="195.5" y="123" width="163.5" height="24"/>
-                                <color key="tintColor" name="imageTint"/>
-                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="20"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mode: ?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YwJ-Rh-mK3">
+                                <rect key="frame" x="0.0" y="25.5" width="375" height="26"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="28g-4k-ANb">
-                                <rect key="frame" x="0.0" y="16" width="375" height="0.0"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="y6X-E9-mPs">
+                                <rect key="frame" x="0.0" y="51.5" width="375" height="541.5"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="hwActionCell" id="ORR-ga-rGW" customClass="HWSettingsTableViewCell" customModule="WunderLINQ" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ORR-ga-rGW" id="u8h-mc-bnW">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="32s-bB-EZK">
+                                                    <rect key="frame" x="16" y="11" width="171.5" height="21.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rs5-hB-OEc">
+                                                    <rect key="frame" x="187.5" y="11" width="171.5" height="21.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Rs5-hB-OEc" firstAttribute="width" secondItem="32s-bB-EZK" secondAttribute="width" id="3TY-H3-14t"/>
+                                                <constraint firstItem="32s-bB-EZK" firstAttribute="top" secondItem="u8h-mc-bnW" secondAttribute="topMargin" id="4O6-sg-qif"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="Rs5-hB-OEc" secondAttribute="bottom" id="CDy-DX-IHU"/>
+                                                <constraint firstItem="Rs5-hB-OEc" firstAttribute="leading" secondItem="32s-bB-EZK" secondAttribute="trailing" id="VZk-Yf-OXk"/>
+                                                <constraint firstItem="Rs5-hB-OEc" firstAttribute="height" secondItem="32s-bB-EZK" secondAttribute="height" id="XM3-K1-DBh"/>
+                                                <constraint firstItem="32s-bB-EZK" firstAttribute="leading" secondItem="u8h-mc-bnW" secondAttribute="leadingMargin" id="cAE-iI-wNW"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="32s-bB-EZK" secondAttribute="bottom" id="g3f-aj-3b1"/>
+                                                <constraint firstItem="Rs5-hB-OEc" firstAttribute="top" secondItem="u8h-mc-bnW" secondAttribute="topMargin" id="onc-D2-sQT"/>
+                                                <constraint firstItem="Rs5-hB-OEc" firstAttribute="trailing" secondItem="u8h-mc-bnW" secondAttribute="trailingMargin" id="yQ7-u8-ZHP"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="hwActionLabel" destination="32s-bB-EZK" id="7c7-AY-W86"/>
+                                            <outlet property="hwActionMappingLabel" destination="Rs5-hB-OEc" id="aLj-XB-5Ex"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Firmware Version: 2.xx" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="63r-Cj-J96">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="25.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="swJ-Ex-qo7"/>
-                        <color key="backgroundColor" name="backgrounds"/>
+                        <viewLayoutGuide key="safeArea" id="re3-P7-yg7"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="swJ-Ex-qo7" firstAttribute="bottom" secondItem="fZ3-Aw-NNr" secondAttribute="bottom" constant="16" id="1bL-Dn-TkO"/>
-                            <constraint firstItem="8kR-jJ-u6c" firstAttribute="top" secondItem="mPy-4d-rgO" secondAttribute="bottom" constant="16" id="3RE-Le-DLg"/>
-                            <constraint firstItem="swJ-Ex-qo7" firstAttribute="trailing" secondItem="28g-4k-ANb" secondAttribute="trailing" id="DF9-BG-gpp"/>
-                            <constraint firstItem="kdd-7b-Hvf" firstAttribute="leading" secondItem="swJ-Ex-qo7" secondAttribute="leading" constant="16" id="DXO-a6-lF2"/>
-                            <constraint firstItem="aFc-Cs-nd4" firstAttribute="leading" secondItem="mPy-4d-rgO" secondAttribute="trailing" constant="16" id="Ios-FX-pPl"/>
-                            <constraint firstItem="28g-4k-ANb" firstAttribute="top" secondItem="swJ-Ex-qo7" secondAttribute="top" constant="16" id="Jxl-Ss-Ldd"/>
-                            <constraint firstItem="8kR-jJ-u6c" firstAttribute="leading" secondItem="swJ-Ex-qo7" secondAttribute="leading" constant="16" id="Msd-sG-Jlg"/>
-                            <constraint firstItem="YMW-LY-so9" firstAttribute="leading" secondItem="swJ-Ex-qo7" secondAttribute="leading" constant="16" id="PuB-p0-mi6"/>
-                            <constraint firstItem="aFc-Cs-nd4" firstAttribute="width" secondItem="mPy-4d-rgO" secondAttribute="width" id="S9Z-53-Zho"/>
-                            <constraint firstItem="fZ3-Aw-NNr" firstAttribute="leading" secondItem="swJ-Ex-qo7" secondAttribute="leading" constant="16" id="SCQ-fX-M5S"/>
-                            <constraint firstItem="kdd-7b-Hvf" firstAttribute="top" secondItem="28g-4k-ANb" secondAttribute="bottom" constant="16" id="SdG-sa-LVx"/>
-                            <constraint firstItem="swJ-Ex-qo7" firstAttribute="trailing" secondItem="aFc-Cs-nd4" secondAttribute="trailing" constant="16" id="Xoe-zc-eEM"/>
-                            <constraint firstItem="mPy-4d-rgO" firstAttribute="top" secondItem="kdd-7b-Hvf" secondAttribute="bottom" constant="16" id="Yl6-hH-5rF"/>
-                            <constraint firstItem="tOE-xh-XqU" firstAttribute="height" secondItem="kdd-7b-Hvf" secondAttribute="height" id="Zgh-9K-pg7"/>
-                            <constraint firstItem="fZ3-Aw-NNr" firstAttribute="top" secondItem="YMW-LY-so9" secondAttribute="bottom" constant="8" id="bDa-R7-beV"/>
-                            <constraint firstItem="tOE-xh-XqU" firstAttribute="width" secondItem="kdd-7b-Hvf" secondAttribute="width" id="fGt-CW-Eml"/>
-                            <constraint firstItem="28g-4k-ANb" firstAttribute="leading" secondItem="swJ-Ex-qo7" secondAttribute="leading" id="fr9-Wg-lKM"/>
-                            <constraint firstItem="swJ-Ex-qo7" firstAttribute="trailing" secondItem="fZ3-Aw-NNr" secondAttribute="trailing" constant="16" id="gZc-K3-6j4"/>
-                            <constraint firstItem="swJ-Ex-qo7" firstAttribute="trailing" secondItem="YMW-LY-so9" secondAttribute="trailing" constant="16" id="iZw-BH-bbb"/>
-                            <constraint firstItem="swJ-Ex-qo7" firstAttribute="trailing" secondItem="8kR-jJ-u6c" secondAttribute="trailing" constant="16" id="jD6-C7-6YO"/>
-                            <constraint firstItem="8kR-jJ-u6c" firstAttribute="top" secondItem="aFc-Cs-nd4" secondAttribute="bottom" constant="16" id="n08-yl-oi9"/>
-                            <constraint firstItem="swJ-Ex-qo7" firstAttribute="trailing" secondItem="tOE-xh-XqU" secondAttribute="trailing" constant="16" id="nEw-z8-089"/>
-                            <constraint firstItem="tOE-xh-XqU" firstAttribute="leading" secondItem="kdd-7b-Hvf" secondAttribute="trailing" constant="8" id="nau-ke-XwW"/>
-                            <constraint firstItem="tOE-xh-XqU" firstAttribute="top" secondItem="28g-4k-ANb" secondAttribute="bottom" constant="16" id="tpe-Vg-9xC"/>
-                            <constraint firstItem="mPy-4d-rgO" firstAttribute="leading" secondItem="swJ-Ex-qo7" secondAttribute="leading" constant="16" id="xah-OH-rSD"/>
+                            <constraint firstItem="XOn-y4-h7t" firstAttribute="leading" secondItem="re3-P7-yg7" secondAttribute="leading" constant="16" id="1Xz-vk-gnV"/>
+                            <constraint firstItem="XOn-y4-h7t" firstAttribute="top" secondItem="y6X-E9-mPs" secondAttribute="bottom" id="FBj-Y9-1jP"/>
+                            <constraint firstItem="re3-P7-yg7" firstAttribute="trailing" secondItem="XOn-y4-h7t" secondAttribute="trailing" constant="16" id="NFL-rf-xqk"/>
+                            <constraint firstItem="re3-P7-yg7" firstAttribute="bottom" secondItem="XOn-y4-h7t" secondAttribute="bottom" constant="12" id="Nkp-b4-fV6"/>
+                            <constraint firstItem="re3-P7-yg7" firstAttribute="trailing" secondItem="63r-Cj-J96" secondAttribute="trailing" id="QdF-wU-r5u"/>
+                            <constraint firstItem="re3-P7-yg7" firstAttribute="trailing" secondItem="y6X-E9-mPs" secondAttribute="trailing" id="Snz-uE-nwE"/>
+                            <constraint firstItem="63r-Cj-J96" firstAttribute="top" secondItem="re3-P7-yg7" secondAttribute="top" id="Vuc-5E-h0q"/>
+                            <constraint firstItem="YwJ-Rh-mK3" firstAttribute="leading" secondItem="re3-P7-yg7" secondAttribute="leading" id="WHJ-Eg-leV"/>
+                            <constraint firstItem="63r-Cj-J96" firstAttribute="leading" secondItem="re3-P7-yg7" secondAttribute="leading" id="XtT-jX-JAs"/>
+                            <constraint firstItem="YwJ-Rh-mK3" firstAttribute="top" secondItem="63r-Cj-J96" secondAttribute="bottom" id="ZjI-kc-3Y6"/>
+                            <constraint firstItem="y6X-E9-mPs" firstAttribute="leading" secondItem="re3-P7-yg7" secondAttribute="leading" id="bSp-OU-kpd"/>
+                            <constraint firstItem="re3-P7-yg7" firstAttribute="trailing" secondItem="YwJ-Rh-mK3" secondAttribute="trailing" id="fVM-tO-Cos"/>
+                            <constraint firstItem="y6X-E9-mPs" firstAttribute="top" secondItem="YwJ-Rh-mK3" secondAttribute="bottom" id="lZ3-tf-SQg"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="HW Settings" id="7LV-34-HmO"/>
+                    <navigationItem key="navigationItem" id="6qb-lI-lp0"/>
                     <connections>
-                        <outlet property="currentVersionLabel" destination="28g-4k-ANb" id="obn-Fu-uQU"/>
-                        <outlet property="modeLabel" destination="kdd-7b-Hvf" id="t6u-5l-Oxw"/>
-                        <outlet property="modePicker" destination="tOE-xh-XqU" id="5fE-sK-SQg"/>
-                        <outlet property="resetButton" destination="YMW-LY-so9" id="9ls-Jw-4Wa"/>
-                        <outlet property="saveButton" destination="fZ3-Aw-NNr" id="P8n-hF-bE9"/>
-                        <outlet property="sensitivityLabel" destination="mPy-4d-rgO" id="gHf-pM-eus"/>
-                        <outlet property="sensitivitySlider" destination="8kR-jJ-u6c" id="bEX-Uw-Q4h"/>
-                        <outlet property="sensitivityValueLabel" destination="aFc-Cs-nd4" id="jqy-1E-Lz2"/>
-                        <segue destination="BYZ-38-t0r" kind="show" identifier="hwSettingsToMotorcycle" id="BFW-qY-dw2"/>
+                        <outlet property="actionsTableView" destination="y6X-E9-mPs" id="ZUJ-2I-g5o"/>
+                        <outlet property="configButton" destination="XOn-y4-h7t" id="WmX-y9-h8G"/>
+                        <outlet property="firmwareVersionLabel" destination="63r-Cj-J96" id="xyF-Cn-3tZ"/>
+                        <outlet property="modeLabel" destination="YwJ-Rh-mK3" id="NN5-CA-Nui"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="hwSettingsToMotorcycle" id="8G0-KU-AL0"/>
+                        <segue destination="bVV-3d-otX" kind="show" identifier="hwSettingsToSettingsAction" id="zp0-BX-IhN"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Pij-nb-6dj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="scb-xK-kkL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7140" y="1421.7391304347827"/>
+            <point key="canvasLocation" x="7141.6000000000004" y="2156.6716641679163"/>
+        </scene>
+        <!--Settings Action View Controller-->
+        <scene sceneID="hXL-ET-x0B">
+            <objects>
+                <viewController id="bVV-3d-otX" customClass="HWSettingsActionViewController" customModule="WunderLINQ" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8uX-2k-Vks">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iYo-Ux-3aP" customClass="LocalisableButton" customModule="WunderLINQ" customModuleProvider="target">
+                                <rect key="frame" x="16" y="589" width="343" height="42"/>
+                                <color key="backgroundColor" name="imageTint"/>
+                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="25"/>
+                                <state key="normal">
+                                    <color key="titleColor" name="backgrounds"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="localisedKey" value="cancel_bt"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="cancelPressed:" destination="bVV-3d-otX" eventType="touchUpInside" id="ZB7-Eq-IGX"/>
+                                </connections>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t8Y-8U-JkR" customClass="LocalisableButton" customModule="WunderLINQ" customModuleProvider="target">
+                                <rect key="frame" x="16" y="531" width="343" height="42"/>
+                                <color key="backgroundColor" name="imageTint"/>
+                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="25"/>
+                                <state key="normal">
+                                    <color key="titleColor" name="backgrounds"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="localisedKey" value="addwaypoint_view_bt_save"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="savePressed:" destination="bVV-3d-otX" eventType="touchUpInside" id="0Gu-bJ-zJh"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XPN-G5-O4w">
+                                <rect key="frame" x="16" y="16" width="343" height="30"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TxP-fc-ju0">
+                                <rect key="frame" x="16" y="62" width="343" height="75"/>
+                                <color key="tintColor" name="imageTint"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="75" id="XEZ-CW-X8B"/>
+                                </constraints>
+                            </pickerView>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hNL-IO-lbK">
+                                <rect key="frame" x="16" y="153" width="343" height="75"/>
+                                <color key="tintColor" name="imageTint"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="75" id="wbf-vH-Efm"/>
+                                </constraints>
+                            </pickerView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QbZ-Qa-JkK" customClass="UIMultiPicker" customModule="UIMultiPicker">
+                                <rect key="frame" x="16" y="244" width="343" height="75"/>
+                                <color key="tintColor" name="imageTint"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="75" id="z7u-hH-mfT"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="xuJ-Vu-FcX"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="xuJ-Vu-FcX" firstAttribute="trailing" secondItem="hNL-IO-lbK" secondAttribute="trailing" constant="16" id="1JR-4a-Q9R"/>
+                            <constraint firstItem="iYo-Ux-3aP" firstAttribute="top" secondItem="t8Y-8U-JkR" secondAttribute="bottom" constant="16" id="7Tj-DD-Egg"/>
+                            <constraint firstItem="QbZ-Qa-JkK" firstAttribute="top" secondItem="hNL-IO-lbK" secondAttribute="bottom" constant="16" id="D3G-4c-cl2"/>
+                            <constraint firstItem="xuJ-Vu-FcX" firstAttribute="trailing" secondItem="iYo-Ux-3aP" secondAttribute="trailing" constant="16" id="OUW-63-HyX"/>
+                            <constraint firstItem="hNL-IO-lbK" firstAttribute="leading" secondItem="xuJ-Vu-FcX" secondAttribute="leading" constant="16" id="PQy-w8-zOg"/>
+                            <constraint firstItem="xuJ-Vu-FcX" firstAttribute="trailing" secondItem="TxP-fc-ju0" secondAttribute="trailing" constant="16" id="RQd-17-cvx"/>
+                            <constraint firstItem="iYo-Ux-3aP" firstAttribute="leading" secondItem="xuJ-Vu-FcX" secondAttribute="leading" constant="16" id="Vhs-sa-PNi"/>
+                            <constraint firstItem="xuJ-Vu-FcX" firstAttribute="bottom" secondItem="iYo-Ux-3aP" secondAttribute="bottom" constant="16" id="Vpl-At-6Fb"/>
+                            <constraint firstItem="XPN-G5-O4w" firstAttribute="top" secondItem="xuJ-Vu-FcX" secondAttribute="top" constant="16" id="blJ-BD-grr"/>
+                            <constraint firstItem="t8Y-8U-JkR" firstAttribute="leading" secondItem="xuJ-Vu-FcX" secondAttribute="leading" constant="16" id="cPe-W5-bzr"/>
+                            <constraint firstItem="xuJ-Vu-FcX" firstAttribute="trailing" secondItem="XPN-G5-O4w" secondAttribute="trailing" constant="16" id="cbs-85-wFh"/>
+                            <constraint firstItem="QbZ-Qa-JkK" firstAttribute="leading" secondItem="xuJ-Vu-FcX" secondAttribute="leading" constant="16" id="ewF-R9-Mbf"/>
+                            <constraint firstItem="TxP-fc-ju0" firstAttribute="leading" secondItem="xuJ-Vu-FcX" secondAttribute="leading" constant="16" id="gjw-9j-6BJ"/>
+                            <constraint firstItem="xuJ-Vu-FcX" firstAttribute="trailing" secondItem="QbZ-Qa-JkK" secondAttribute="trailing" constant="16" id="hUd-bR-bBu"/>
+                            <constraint firstItem="hNL-IO-lbK" firstAttribute="top" secondItem="TxP-fc-ju0" secondAttribute="bottom" constant="16" id="lkb-sC-xms"/>
+                            <constraint firstItem="xuJ-Vu-FcX" firstAttribute="trailing" secondItem="t8Y-8U-JkR" secondAttribute="trailing" constant="16" id="ngM-Og-R5I"/>
+                            <constraint firstItem="TxP-fc-ju0" firstAttribute="top" secondItem="XPN-G5-O4w" secondAttribute="bottom" constant="16" id="xSW-tN-H0C"/>
+                            <constraint firstItem="XPN-G5-O4w" firstAttribute="leading" secondItem="xuJ-Vu-FcX" secondAttribute="leading" constant="16" id="yp7-ZS-LP0"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="n6n-bi-Muq"/>
+                    <connections>
+                        <outlet property="actionLabel" destination="XPN-G5-O4w" id="meS-q1-33r"/>
+                        <outlet property="cancelButton" destination="iYo-Ux-3aP" id="ojT-cU-ffm"/>
+                        <outlet property="keyPicker" destination="hNL-IO-lbK" id="zKY-Ap-Xqu"/>
+                        <outlet property="modifierMultiPicker" destination="QbZ-Qa-JkK" id="BRR-rY-qDD"/>
+                        <outlet property="saveButton" destination="t8Y-8U-JkR" id="mGq-i6-oPW"/>
+                        <outlet property="typePicker" destination="TxP-fc-ju0" id="cqx-in-Dp2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Lgx-A8-XYm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="8033" y="2157"/>
         </scene>
         <!--Navigation Controller With Trait Override-->
         <scene sceneID="m7N-1a-hHU">
@@ -1054,17 +1135,17 @@
             <objects>
                 <viewController id="4YA-h5-Jjs" customClass="GeoDataViewController" customModule="WunderLINQ" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Jc4-4D-reh">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F4h-OO-sSs">
-                                <rect key="frame" x="0.0" y="204" width="375" height="259"/>
+                                <rect key="frame" x="0.0" y="204" width="375" height="256"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZJi-ju-qN2">
-                                        <rect key="frame" x="16" y="24" width="343" height="101.5"/>
+                                        <rect key="frame" x="16" y="24" width="343" height="100"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Route" translatesAutoresizingMaskIntoConstraints="NO" id="Txn-Ho-UJ3">
-                                                <rect key="frame" x="0.0" y="0.0" width="101.5" height="101.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                                 <color key="backgroundColor" name="imageTint"/>
                                                 <color key="tintColor" name="backgrounds"/>
                                                 <constraints>
@@ -1073,7 +1154,7 @@
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tSS-qR-yCJ" customClass="LocalisableLabel" customModule="WunderLINQ" customModuleProvider="target">
-                                                <rect key="frame" x="101.5" y="0.0" width="241.5" height="101.5"/>
+                                                <rect key="frame" x="100" y="0.0" width="243" height="100"/>
                                                 <color key="backgroundColor" name="imageTint"/>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
@@ -1088,10 +1169,10 @@
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </stackView>
                                     <stackView opaque="NO" tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f6L-PO-9xQ">
-                                        <rect key="frame" x="16" y="141.5" width="343" height="101.5"/>
+                                        <rect key="frame" x="16" y="140" width="343" height="100"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MapMarker" translatesAutoresizingMaskIntoConstraints="NO" id="30x-RB-MRc">
-                                                <rect key="frame" x="0.0" y="0.0" width="101.5" height="101.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                                 <color key="backgroundColor" name="imageTint"/>
                                                 <color key="tintColor" name="backgrounds"/>
                                                 <constraints>
@@ -1100,7 +1181,7 @@
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FLQ-U1-TsS" customClass="LocalisableLabel" customModule="WunderLINQ" customModuleProvider="target">
-                                                <rect key="frame" x="101.5" y="0.0" width="241.5" height="101.5"/>
+                                                <rect key="frame" x="100" y="0.0" width="243" height="100"/>
                                                 <color key="backgroundColor" name="imageTint"/>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
@@ -1199,7 +1280,7 @@
             <objects>
                 <viewController title="About" id="BZZ-xV-I8u" customClass="AboutViewController" customModule="WunderLINQ" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ISD-Sy-aSf">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wunderlinq_logo" translatesAutoresizingMaskIntoConstraints="NO" id="iK0-Eq-bFT">
@@ -1221,7 +1302,7 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jAM-2k-3CY">
-                                <rect key="frame" x="0.0" y="249" width="375" height="418"/>
+                                <rect key="frame" x="0.0" y="249" width="375" height="398"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <string key="text">Support and Patience
 
@@ -1401,14 +1482,14 @@ Icons from fontawesome.com
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L6N-M1-qfe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7140.579710144928" y="2203.5326086956525"/>
+            <point key="canvasLocation" x="7142" y="1422"/>
         </scene>
         <!--Bike Info View Controller-->
         <scene sceneID="2Ms-vl-62O">
             <objects>
                 <viewController id="g6h-Xr-9v3" customClass="BikeInfoViewController" customModule="WunderLINQ" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xhC-Jc-QyJ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VIN" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iDW-er-4a7" customClass="LocalisableLabel" customModule="WunderLINQ" customModuleProvider="target">
@@ -1826,7 +1907,7 @@ Icons from fontawesome.com
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="yqO-MB-hhu"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="5a7-y8-OXS">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -2019,10 +2100,10 @@ Icons from fontawesome.com
         <segue reference="U8S-hb-Idp"/>
         <segue reference="end-im-meh"/>
         <segue reference="qQx-7G-0NR"/>
-        <segue reference="1ij-RL-89b"/>
-        <segue reference="d0K-ne-9up"/>
-        <segue reference="43A-bp-xAE"/>
-        <segue reference="gfr-gj-BUz"/>
+        <segue reference="Mvj-Z7-A9C"/>
+        <segue reference="1bf-BN-ttT"/>
+        <segue reference="kry-jp-5q5"/>
+        <segue reference="8G0-KU-AL0"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
     <resources>
