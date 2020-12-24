@@ -49,7 +49,6 @@ class WLQ {
     
     var wheelMode:UInt8?
     var sensitivity:UInt8?
-    var tempWheelMode: UInt8?
     var tempSensitivity: UInt8?
     
     let wheelMode_INDEX:Int = 26
@@ -258,7 +257,7 @@ class WLQ {
                        fullToggleLeft: NSLocalizedString("full_toggle_left_label", comment: ""),
                        fullToggleLeftLongPress: NSLocalizedString("full_toggle_left_long_label", comment: ""),
                        fullSignalCancel: NSLocalizedString("full_signal_cancel_label", comment: ""),
-                       fullSignalCancelLongPress: NSLocalizedString("full_toggle_signal_cancel_long_label", comment: "")]
+                       fullSignalCancelLongPress: NSLocalizedString("full_signal_cancel_long_label", comment: "")]
     }
     
     func parseConfig(bytes: [UInt8]) {
@@ -355,11 +354,10 @@ class WLQ {
             self.sensitivity = bytes[self.sensitivity_INDEX]
             self.wheelMode = bytes[self.wheelMode_INDEX]
             self.tempSensitivity = self.sensitivity
-            self.tempWheelMode = self.wheelMode
         }
     }
     
-    func getActionKeyMode(action: Int?) -> UInt8{
+    func getActionKeyType(action: Int?) -> UInt8{
         switch (action){
         case RTKPage:
             return RTKPagePressKeyType!
@@ -406,7 +404,7 @@ class WLQ {
         }
     }
     
-    func setKey(action: Int?, key: [UInt8]){
+    func setActionKey(action: Int?, key: [UInt8]){
         if (key.count == 3){
             switch (action){
             case RTKPage:
@@ -493,6 +491,528 @@ class WLQ {
                 print("Invalid acitonID")
             }
         }
+    }
+    
+    func getActionKeyPosition(action: Int) -> Int{
+        var position:Int = 0
+        let keyboardHID = KeyboardHID.shared
+        switch (action){
+        case fullScrollUp:
+            if(fullScrollUpKeyType == KEYBOARD_HID){
+                if let index = keyboardHID.keyboardCodes.firstIndex(where: { $0.0 == fullScrollUpKey! }) {
+                    position = index
+                }
+            } else if(fullScrollUpKeyType == CONSUMER_HID){
+                if let index = keyboardHID.consumerCodes.firstIndex(where: { $0.0 == fullScrollUpKey! }) {
+                    position = index
+                }
+            }
+        case fullScrollDown:
+            if(fullScrollDownKeyType == KEYBOARD_HID){
+                if let index = keyboardHID.keyboardCodes.firstIndex(where: { $0.0 == fullScrollDownKey! }) {
+                    position = index
+                }
+            } else if(fullScrollDownKeyType == CONSUMER_HID){
+                if let index = keyboardHID.consumerCodes.firstIndex(where: { $0.0 == fullScrollDownKey! }) {
+                    position = index
+                }
+            }
+        case fullToggleRight:
+            if(fullRightPressKeyType == KEYBOARD_HID){
+                if let index = keyboardHID.keyboardCodes.firstIndex(where: { $0.0 == fullRightPressKey! }) {
+                    position = index
+                }
+            } else if(fullRightPressKeyType == CONSUMER_HID){
+                if let index = keyboardHID.consumerCodes.firstIndex(where: { $0.0 == fullRightPressKey! }) {
+                    position = index
+                }
+            }
+        case fullToggleRightLongPress:
+            if(fullRightLongPressKeyType == KEYBOARD_HID){
+                if let index = keyboardHID.keyboardCodes.firstIndex(where: { $0.0 == fullRightLongPressKey! }) {
+                    position = index
+                }
+            } else if(fullRightLongPressKeyType == CONSUMER_HID){
+                if let index = keyboardHID.consumerCodes.firstIndex(where: { $0.0 == fullRightLongPressKey! }) {
+                    position = index
+                }
+            }
+        case fullToggleLeft:
+            if(fullLeftPressKeyType == KEYBOARD_HID){
+                if let index = keyboardHID.keyboardCodes.firstIndex(where: { $0.0 == fullLeftPressKey! }) {
+                    position = index
+                }
+            } else if(fullLeftPressKeyType == CONSUMER_HID){
+                if let index = keyboardHID.consumerCodes.firstIndex(where: { $0.0 == fullLeftPressKey! }) {
+                    position = index
+                }
+            }
+        case fullToggleLeftLongPress:
+            if(fullLeftLongPressKeyType == KEYBOARD_HID){
+                if let index = keyboardHID.keyboardCodes.firstIndex(where: { $0.0 == fullLeftLongPressKey! }) {
+                    position = index
+                }
+            } else if(fullLeftLongPressKeyType == CONSUMER_HID){
+                if let index = keyboardHID.consumerCodes.firstIndex(where: { $0.0 == fullLeftLongPressKey! }) {
+                    position = index
+                }
+            }
+        case fullSignalCancel:
+            if(fullSignalPressKeyType == KEYBOARD_HID){
+                if let index = keyboardHID.keyboardCodes.firstIndex(where: { $0.0 == fullSignalPressKey! }) {
+                    position = index
+                }
+            } else if(fullSignalPressKeyType == CONSUMER_HID){
+                if let index = keyboardHID.consumerCodes.firstIndex(where: { $0.0 == fullSignalPressKey! }) {
+                    position = index
+                }
+            }
+        case fullSignalCancelLongPress:
+            if(fullSignalLongPressKeyType == KEYBOARD_HID){
+                if let index = keyboardHID.keyboardCodes.firstIndex(where: { $0.0 == fullSignalLongPressKey! }) {
+                    position = index
+                }
+            } else if(fullSignalLongPressKeyType == CONSUMER_HID){
+                if let index = keyboardHID.consumerCodes.firstIndex(where: { $0.0 == fullSignalLongPressKey! }) {
+                    position = index
+                }
+            }
+        case RTKPage:
+            if(RTKPagePressKeyType == KEYBOARD_HID){
+                if let index = keyboardHID.keyboardCodes.firstIndex(where: { $0.0 == RTKPagePressKey! }) {
+                    position = index
+                }
+            } else if(RTKPagePressKeyType == CONSUMER_HID){
+                if let index = keyboardHID.consumerCodes.firstIndex(where: { $0.0 == RTKPagePressKey! }) {
+                    position = index
+                }
+            }
+        case RTKPageDoublePress:
+            if(RTKPageDoublePressKeyType == KEYBOARD_HID){
+                if let index = keyboardHID.keyboardCodes.firstIndex(where: { $0.0 == RTKPageDoublePressKey! }) {
+                    position = index
+                }
+            } else if(RTKPageDoublePressKeyType == CONSUMER_HID){
+                if let index = keyboardHID.consumerCodes.firstIndex(where: { $0.0 == RTKPageDoublePressKey! }) {
+                    position = index
+                }
+            }
+        case RTKZoomPlus:
+            if(RTKZoomPPressKeyType == KEYBOARD_HID){
+                if let index = keyboardHID.keyboardCodes.firstIndex(where: { $0.0 == RTKZoomPPressKey! }) {
+                    position = index
+                }
+            } else if(RTKZoomPPressKeyType == CONSUMER_HID){
+                if let index = keyboardHID.consumerCodes.firstIndex(where: { $0.0 == RTKZoomPPressKey! }) {
+                    position = index
+                }
+            }
+        case RTKZoomPlusDoublePress:
+            if(RTKZoomPDoublePressKeyType == KEYBOARD_HID){
+                if let index = keyboardHID.keyboardCodes.firstIndex(where: { $0.0 == RTKZoomPDoublePressKey! }) {
+                    position = index
+                }
+            } else if(RTKZoomPDoublePressKeyType == CONSUMER_HID){
+                if let index = keyboardHID.consumerCodes.firstIndex(where: { $0.0 == RTKZoomPDoublePressKey! }) {
+                    position = index
+                }
+            }
+        case RTKZoomMinus:
+            if(RTKZoomMPressKeyType == KEYBOARD_HID){
+                if let index = keyboardHID.keyboardCodes.firstIndex(where: { $0.0 == RTKZoomMPressKey! }) {
+                    position = index
+                }
+            } else if(RTKZoomMPressKeyType == CONSUMER_HID){
+                if let index = keyboardHID.consumerCodes.firstIndex(where: { $0.0 == RTKZoomMPressKey! }) {
+                    position = index
+                }
+            }
+        case RTKZoomMinusDoublePress:
+            if(RTKZoomMDoublePressKeyType == KEYBOARD_HID){
+                if let index = keyboardHID.keyboardCodes.firstIndex(where: { $0.0 == RTKZoomMDoublePressKey! }) {
+                    position = index
+                }
+            } else if(RTKZoomMDoublePressKeyType == CONSUMER_HID){
+                if let index = keyboardHID.consumerCodes.firstIndex(where: { $0.0 == RTKZoomMDoublePressKey! }) {
+                    position = index
+                }
+            }
+        case RTKSpeak:
+            if(RTKSpeakPressKeyType == KEYBOARD_HID){
+                if let index = keyboardHID.keyboardCodes.firstIndex(where: { $0.0 == RTKSpeakPressKey! }) {
+                    position = index
+                }
+            } else if(RTKSpeakPressKeyType == CONSUMER_HID){
+                if let index = keyboardHID.consumerCodes.firstIndex(where: { $0.0 == RTKSpeakPressKey! }) {
+                    position = index
+                }
+            }
+        case RTKSpeakDoublePress:
+            if(RTKSpeakDoublePressKeyType == KEYBOARD_HID){
+                if let index = keyboardHID.keyboardCodes.firstIndex(where: { $0.0 == RTKSpeakDoublePressKey! }) {
+                    position = index
+                }
+            } else if(RTKSpeakDoublePressKeyType == CONSUMER_HID){
+                if let index = keyboardHID.consumerCodes.firstIndex(where: { $0.0 == RTKSpeakDoublePressKey! }) {
+                    position = index
+                }
+            }
+        case RTKMute:
+            if(RTKMutePressKeyType == KEYBOARD_HID){
+                if let index = keyboardHID.keyboardCodes.firstIndex(where: { $0.0 == RTKMutePressKey! }) {
+                    position = index
+                }
+            } else if(RTKMutePressKeyType == CONSUMER_HID){
+                if let index = keyboardHID.consumerCodes.firstIndex(where: { $0.0 == RTKMutePressKey! }) {
+                    position = index
+                }
+            }
+        case RTKMuteDoublePress:
+            if(RTKMuteDoublePressKeyType == KEYBOARD_HID){
+                if let index = keyboardHID.keyboardCodes.firstIndex(where: { $0.0 == RTKMuteDoublePressKey! }) {
+                    position = index
+                }
+            } else if(RTKMuteDoublePressKeyType == CONSUMER_HID){
+                if let index = keyboardHID.consumerCodes.firstIndex(where: { $0.0 == RTKMuteDoublePressKey! }) {
+                    position = index
+                }
+            }
+        case RTKDisplayOff:
+            if(RTKDisplayPressKeyType == KEYBOARD_HID){
+                if let index = keyboardHID.keyboardCodes.firstIndex(where: { $0.0 == RTKDisplayPressKey! }) {
+                    position = index
+                }
+            } else if(RTKDisplayPressKeyType == CONSUMER_HID){
+                if let index = keyboardHID.consumerCodes.firstIndex(where: { $0.0 == RTKDisplayPressKey! }) {
+                    position = index
+                }
+            }
+        case RTKDisplayOffDoublePress:
+            if(RTKDisplayDoublePressKeyType == KEYBOARD_HID){
+                if let index = keyboardHID.keyboardCodes.firstIndex(where: { $0.0 == RTKDisplayDoublePressKey! }) {
+                    position = index
+                }
+            } else if(RTKDisplayDoublePressKeyType == CONSUMER_HID){
+                if let index = keyboardHID.consumerCodes.firstIndex(where: { $0.0 == RTKDisplayDoublePressKey! }) {
+                    position = index
+                }
+            }
+        default:
+            position = 0
+        }
+        return position
+    }
+    
+    func getActionValue(action: Int) -> String{
+        var returnString = NSLocalizedString("hid_0x00_label", comment: "")
+        let keyboardHID = KeyboardHID.shared
+        switch (action){
+        case USB:
+            if (USBVinThreshold == 0x0000){
+                returnString = NSLocalizedString("usbcontrol_on_label", comment: "")
+            } else if (USBVinThreshold == 0xFFFF){
+                returnString = NSLocalizedString("usbcontrol_off_label", comment: "")
+            } else {
+                returnString = NSLocalizedString("usbcontrol_engine_label", comment: "")
+            }
+        case RTKDoublePressSensitivity:
+            returnString = "\(RTKSensitivity!)"
+        case fullLongPressSensitivity:
+            returnString = "\(fullSensitivity!)"
+        case fullScrollUp:
+            if(fullScrollUpKeyType == KEYBOARD_HID){
+                if let index = keyboardHID.keyboardCodes.firstIndex(where: { $0.0 == fullScrollUpKey! }) {
+                    let name = keyboardHID.keyboardCodes[index].1
+                    returnString = name
+                }
+            } else if(fullScrollUpKeyType == CONSUMER_HID){
+                if let index = keyboardHID.consumerCodes.firstIndex(where: { $0.0 == fullScrollUpKey! }) {
+                    let name = keyboardHID.consumerCodes[index].1
+                    returnString = name
+                }
+            }
+        case fullScrollDown:
+            if(fullScrollDownKeyType == KEYBOARD_HID){
+                if let index = keyboardHID.keyboardCodes.firstIndex(where: { $0.0 == fullScrollDownKey! }) {
+                    let name = keyboardHID.keyboardCodes[index].1
+                    returnString = name
+                }
+            } else if(fullScrollDownKeyType == CONSUMER_HID){
+                if let index = keyboardHID.consumerCodes.firstIndex(where: { $0.0 == fullScrollDownKey! }) {
+                    let name = keyboardHID.consumerCodes[index].1
+                    returnString = name
+                }
+            }
+        case fullToggleRight:
+            if(fullRightPressKeyType == KEYBOARD_HID){
+                if let index = keyboardHID.keyboardCodes.firstIndex(where: { $0.0 == fullRightPressKey! }) {
+                    let name = keyboardHID.keyboardCodes[index].1
+                    returnString = name
+                }
+            } else if(fullRightPressKeyType == CONSUMER_HID){
+                if let index = keyboardHID.consumerCodes.firstIndex(where: { $0.0 == fullRightPressKey! }) {
+                    let name = keyboardHID.consumerCodes[index].1
+                    returnString = name
+                }
+            }
+        case fullToggleRightLongPress:
+            if(fullRightLongPressKeyType == KEYBOARD_HID){
+                if let index = keyboardHID.keyboardCodes.firstIndex(where: { $0.0 == fullRightLongPressKey! }) {
+                    let name = keyboardHID.keyboardCodes[index].1
+                    returnString = name
+                }
+            } else if(fullRightLongPressKeyType == CONSUMER_HID){
+                if let index = keyboardHID.consumerCodes.firstIndex(where: { $0.0 == fullRightLongPressKey! }) {
+                    let name = keyboardHID.consumerCodes[index].1
+                    returnString = name
+                }
+            }
+        case fullToggleLeft:
+            if(fullLeftPressKeyType == KEYBOARD_HID){
+                if let index = keyboardHID.keyboardCodes.firstIndex(where: { $0.0 == fullLeftPressKey! }) {
+                    let name = keyboardHID.keyboardCodes[index].1
+                    returnString = name
+                }
+            } else if(fullLeftPressKeyType == CONSUMER_HID){
+                if let index = keyboardHID.consumerCodes.firstIndex(where: { $0.0 == fullLeftPressKey! }) {
+                    let name = keyboardHID.consumerCodes[index].1
+                    returnString = name
+                }
+            }
+        case fullToggleLeftLongPress:
+            if(fullLeftLongPressKeyType == KEYBOARD_HID){
+                if let index = keyboardHID.keyboardCodes.firstIndex(where: { $0.0 == fullLeftLongPressKey! }) {
+                    let name = keyboardHID.keyboardCodes[index].1
+                    returnString = name
+                }
+            } else if(fullLeftLongPressKeyType == CONSUMER_HID){
+                if let index = keyboardHID.consumerCodes.firstIndex(where: { $0.0 == fullLeftLongPressKey! }) {
+                    let name = keyboardHID.consumerCodes[index].1
+                    returnString = name
+                }
+            }
+        case fullSignalCancel:
+            if(fullSignalPressKeyType == KEYBOARD_HID){
+                if let index = keyboardHID.keyboardCodes.firstIndex(where: { $0.0 == fullSignalPressKey! }) {
+                    let name = keyboardHID.keyboardCodes[index].1
+                    returnString = name
+                }
+            } else if(fullSignalPressKeyType == CONSUMER_HID){
+                if let index = keyboardHID.consumerCodes.firstIndex(where: { $0.0 == fullSignalPressKey! }) {
+                    let name = keyboardHID.consumerCodes[index].1
+                    returnString = name
+                }
+            }
+        case fullSignalCancelLongPress:
+            if(fullSignalLongPressKeyType == KEYBOARD_HID){
+                if let index = keyboardHID.keyboardCodes.firstIndex(where: { $0.0 == fullSignalLongPressKey! }) {
+                    let name = keyboardHID.keyboardCodes[index].1
+                    returnString = name
+                }
+            } else if(fullSignalLongPressKeyType == CONSUMER_HID){
+                if let index = keyboardHID.consumerCodes.firstIndex(where: { $0.0 == fullSignalLongPressKey! }) {
+                    let name = keyboardHID.consumerCodes[index].1
+                    returnString = name
+                }
+            }
+        case RTKPage:
+            if(RTKPagePressKeyType == KEYBOARD_HID){
+                if let index = keyboardHID.keyboardCodes.firstIndex(where: { $0.0 == RTKPagePressKey! }) {
+                    let name = keyboardHID.keyboardCodes[index].1
+                    returnString = name
+                }
+            } else if(RTKPagePressKeyType == CONSUMER_HID){
+                if let index = keyboardHID.consumerCodes.firstIndex(where: { $0.0 == RTKPagePressKey! }) {
+                    let name = keyboardHID.consumerCodes[index].1
+                    returnString = name
+                }
+            }
+        case RTKPageDoublePress:
+            if(RTKPageDoublePressKeyType == KEYBOARD_HID){
+                if let index = keyboardHID.keyboardCodes.firstIndex(where: { $0.0 == RTKPageDoublePressKey! }) {
+                    let name = keyboardHID.keyboardCodes[index].1
+                    returnString = name
+                }
+            } else if(RTKPageDoublePressKeyType == CONSUMER_HID){
+                if let index = keyboardHID.consumerCodes.firstIndex(where: { $0.0 == RTKPageDoublePressKey! }) {
+                    let name = keyboardHID.consumerCodes[index].1
+                    returnString = name
+                }
+            }
+        case RTKZoomPlus:
+            if(RTKZoomPPressKeyType == KEYBOARD_HID){
+                if let index = keyboardHID.keyboardCodes.firstIndex(where: { $0.0 == RTKZoomPPressKey! }) {
+                    let name = keyboardHID.keyboardCodes[index].1
+                    returnString = name
+                }
+            } else if(RTKZoomPPressKeyType == CONSUMER_HID){
+                if let index = keyboardHID.consumerCodes.firstIndex(where: { $0.0 == RTKZoomPPressKey! }) {
+                    let name = keyboardHID.consumerCodes[index].1
+                    returnString = name
+                }
+            }
+        case RTKZoomPlusDoublePress:
+            if(RTKZoomPDoublePressKeyType == KEYBOARD_HID){
+                if let index = keyboardHID.keyboardCodes.firstIndex(where: { $0.0 == RTKZoomPDoublePressKey! }) {
+                    let name = keyboardHID.keyboardCodes[index].1
+                    returnString = name
+                }
+            } else if(RTKZoomPDoublePressKeyType == CONSUMER_HID){
+                if let index = keyboardHID.consumerCodes.firstIndex(where: { $0.0 == RTKZoomPDoublePressKey! }) {
+                    let name = keyboardHID.consumerCodes[index].1
+                    returnString = name
+                }
+            }
+        case RTKZoomMinus:
+            if(RTKZoomMPressKeyType == KEYBOARD_HID){
+                if let index = keyboardHID.keyboardCodes.firstIndex(where: { $0.0 == RTKZoomMPressKey! }) {
+                    let name = keyboardHID.keyboardCodes[index].1
+                    returnString = name
+                }
+            } else if(RTKZoomMPressKeyType == CONSUMER_HID){
+                if let index = keyboardHID.consumerCodes.firstIndex(where: { $0.0 == RTKZoomMPressKey! }) {
+                    let name = keyboardHID.consumerCodes[index].1
+                    returnString = name
+                }
+            }
+        case RTKZoomMinusDoublePress:
+            if(RTKZoomMDoublePressKeyType == KEYBOARD_HID){
+                if let index = keyboardHID.keyboardCodes.firstIndex(where: { $0.0 == RTKZoomMDoublePressKey! }) {
+                    let name = keyboardHID.keyboardCodes[index].1
+                    returnString = name
+                }
+            } else if(RTKZoomMDoublePressKeyType == CONSUMER_HID){
+                if let index = keyboardHID.consumerCodes.firstIndex(where: { $0.0 == RTKZoomMDoublePressKey! }) {
+                    let name = keyboardHID.consumerCodes[index].1
+                    returnString = name
+                }
+            }
+        case RTKSpeak:
+            if(RTKSpeakPressKeyType == KEYBOARD_HID){
+                if let index = keyboardHID.keyboardCodes.firstIndex(where: { $0.0 == RTKSpeakPressKey! }) {
+                    let name = keyboardHID.keyboardCodes[index].1
+                    returnString = name
+                }
+            } else if(RTKSpeakPressKeyType == CONSUMER_HID){
+                if let index = keyboardHID.consumerCodes.firstIndex(where: { $0.0 == RTKSpeakPressKey! }) {
+                    let name = keyboardHID.consumerCodes[index].1
+                    returnString = name
+                }
+            }
+        case RTKSpeakDoublePress:
+            if(RTKSpeakDoublePressKeyType == KEYBOARD_HID){
+                if let index = keyboardHID.keyboardCodes.firstIndex(where: { $0.0 == RTKSpeakDoublePressKey! }) {
+                    let name = keyboardHID.keyboardCodes[index].1
+                    returnString = name
+                }
+            } else if(RTKSpeakDoublePressKeyType == CONSUMER_HID){
+                if let index = keyboardHID.consumerCodes.firstIndex(where: { $0.0 == RTKSpeakDoublePressKey! }) {
+                    let name = keyboardHID.consumerCodes[index].1
+                    returnString = name
+                }
+            }
+        case RTKMute:
+            if(RTKMutePressKeyType == KEYBOARD_HID){
+                if let index = keyboardHID.keyboardCodes.firstIndex(where: { $0.0 == RTKMutePressKey! }) {
+                    let name = keyboardHID.keyboardCodes[index].1
+                    returnString = name
+                }
+            } else if(RTKMutePressKeyType == CONSUMER_HID){
+                if let index = keyboardHID.consumerCodes.firstIndex(where: { $0.0 == RTKMutePressKey! }) {
+                    let name = keyboardHID.consumerCodes[index].1
+                    returnString = name
+                }
+            }
+        case RTKMuteDoublePress:
+            if(RTKMuteDoublePressKeyType == KEYBOARD_HID){
+                if let index = keyboardHID.keyboardCodes.firstIndex(where: { $0.0 == RTKMuteDoublePressKey! }) {
+                    let name = keyboardHID.keyboardCodes[index].1
+                    returnString = name
+                }
+            } else if(RTKMuteDoublePressKeyType == CONSUMER_HID){
+                if let index = keyboardHID.consumerCodes.firstIndex(where: { $0.0 == RTKMuteDoublePressKey! }) {
+                    let name = keyboardHID.consumerCodes[index].1
+                    returnString = name
+                }
+            }
+        case RTKDisplayOff:
+            if(RTKDisplayPressKeyType == KEYBOARD_HID){
+                if let index = keyboardHID.keyboardCodes.firstIndex(where: { $0.0 == RTKDisplayPressKey! }) {
+                    let name = keyboardHID.keyboardCodes[index].1
+                    returnString = name
+                }
+            } else if(RTKDisplayPressKeyType == CONSUMER_HID){
+                if let index = keyboardHID.consumerCodes.firstIndex(where: { $0.0 == RTKDisplayPressKey! }) {
+                    let name = keyboardHID.consumerCodes[index].1
+                    returnString = name
+                }
+            }
+        case RTKDisplayOffDoublePress:
+            if(RTKDisplayDoublePressKeyType == KEYBOARD_HID){
+                if let index = keyboardHID.keyboardCodes.firstIndex(where: { $0.0 == RTKDisplayDoublePressKey! }) {
+                    let name = keyboardHID.keyboardCodes[index].1
+                    returnString = name
+                }
+            } else if(RTKDisplayDoublePressKeyType == CONSUMER_HID){
+                if let index = keyboardHID.consumerCodes.firstIndex(where: { $0.0 == RTKDisplayDoublePressKey! }) {
+                    let name = keyboardHID.consumerCodes[index].1
+                    returnString = name
+                }
+            }
+        default:
+            returnString = "Unknown Action Number: \(action)"
+        }
+        return returnString
+    }
+    
+    func getActionKeyModifiers(action: Int) -> UInt8{
+        var modifiers:UInt8 = 0x00
+        let wlqData = WLQ.shared
+        switch (action){
+        case wlqData.fullScrollUp:
+            modifiers = wlqData.fullScrollUpKeyModifier!
+        case wlqData.fullScrollDown:
+            modifiers = wlqData.fullScrollDownKeyModifier!
+        case wlqData.fullToggleRight:
+            modifiers = wlqData.fullRightPressKeyModifier!
+        case wlqData.fullToggleRightLongPress:
+            modifiers = wlqData.fullRightLongPressKeyModifier!
+        case wlqData.fullToggleLeft:
+            modifiers = wlqData.fullLeftPressKeyModifier!
+        case wlqData.fullToggleLeftLongPress:
+            modifiers = wlqData.fullLeftLongPressKeyModifier!
+        case wlqData.fullSignalCancel:
+            modifiers = wlqData.fullSignalPressKeyModifier!
+        case wlqData.fullSignalCancelLongPress:
+            modifiers = wlqData.fullSignalLongPressKeyModifier!
+        case wlqData.RTKPage:
+            modifiers = wlqData.RTKPagePressKeyModifier!
+        case wlqData.RTKPageDoublePress:
+            modifiers = wlqData.RTKPageDoublePressKeyModifier!
+        case wlqData.RTKZoomPlus:
+            modifiers = wlqData.RTKZoomPPressKeyModifier!
+        case wlqData.RTKZoomPlusDoublePress:
+            modifiers = wlqData.RTKZoomPDoublePressKeyModifier!
+        case wlqData.RTKZoomMinus:
+            modifiers = wlqData.RTKZoomMPressKeyModifier!
+        case wlqData.RTKZoomMinusDoublePress:
+            modifiers = wlqData.RTKZoomMDoublePressKeyModifier!
+        case wlqData.RTKSpeak:
+            modifiers = wlqData.RTKSpeakPressKeyModifier!
+        case wlqData.RTKSpeakDoublePress:
+            modifiers = wlqData.RTKSpeakDoublePressKeyModifier!
+        case wlqData.RTKMute:
+            modifiers = wlqData.RTKMutePressKeyModifier!
+        case wlqData.RTKMuteDoublePress:
+            modifiers = wlqData.RTKMuteDoublePressKeyModifier!
+        case wlqData.RTKDisplayOff:
+            modifiers = wlqData.RTKDisplayPressKeyModifier!
+        case wlqData.RTKDisplayOffDoublePress:
+            modifiers = wlqData.RTKDisplayDoublePressKeyModifier!
+        default:
+            modifiers = 0x00
+        }
+        return modifiers
     }
     
     //Old

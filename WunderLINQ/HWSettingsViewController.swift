@@ -169,10 +169,8 @@ class HWSettingsViewController: UIViewController, UITableViewDelegate, UITableVi
         cell.actionID = self.actionID[indexPath.row]
         if(self.actionTableMappingLabels[indexPath.row] == ""){
             cell.hwActionLabel.font = cell.hwActionLabel.font.withSize(25)
-            cell.backgroundColor = .gray
         } else {
             cell.hwActionLabel.font = cell.hwActionLabel.font.withSize(17)
-            cell.backgroundColor = UIColor(named: "backgrounds")
         }
         
         return cell
@@ -221,59 +219,51 @@ class HWSettingsViewController: UIViewController, UITableViewDelegate, UITableVi
                                          NSLocalizedString("full_scroll_up_label", comment: ""),
                                          NSLocalizedString("full_scroll_down_label", comment: ""),
                                          NSLocalizedString("full_toggle_right_label", comment: ""),
-                                         "\(NSLocalizedString("full_toggle_right_label", comment: "")) \(NSLocalizedString("full_long_press_label", comment: ""))",
+                                         NSLocalizedString("full_toggle_right_long_label", comment: ""),
                                          NSLocalizedString("full_toggle_left_label", comment: ""),
-                                         "\(NSLocalizedString("full_toggle_left_label", comment: "")) \(NSLocalizedString("full_long_press_label", comment: ""))",
+                                         NSLocalizedString("full_toggle_left_long_label", comment: ""),
                                          NSLocalizedString("full_signal_cancel_label", comment: ""),
-                                         "\(NSLocalizedString("full_signal_cancel_label", comment: "")) \(NSLocalizedString("full_long_press_label", comment: ""))",
+                                         NSLocalizedString("full_signal_cancel_long_label", comment: ""),
                                          NSLocalizedString("wwMode2", comment: ""),       //RT/K1600
                                          NSLocalizedString("double_press_label", comment: ""),
                                          NSLocalizedString("rtk_page_label", comment: ""),
-                                         "\(NSLocalizedString("rtk_page_label", comment: "")) \(NSLocalizedString("rtk_double_press_label", comment: ""))",
+                                         NSLocalizedString("rtk_page_double_label", comment: ""),
                                          NSLocalizedString("rtk_zoomp_label", comment: ""),
-                                         "\(NSLocalizedString("rtk_zoomp_label", comment: "")) \(NSLocalizedString("rtk_double_press_label", comment: ""))",
+                                         NSLocalizedString("rtk_zoomp_double_label", comment: ""),
                                          NSLocalizedString("rtk_zoomm_label", comment: ""),
-                                         "\(NSLocalizedString("rtk_zoomm_label", comment: "")) \(NSLocalizedString("rtk_double_press_label", comment: ""))",
+                                         NSLocalizedString("rtk_zoomm_double_label", comment: ""),
                                          NSLocalizedString("rtk_speak_label", comment: ""),
-                                         "\(NSLocalizedString("rtk_speak_label", comment: "")) \(NSLocalizedString("rtk_double_press_label", comment: ""))",
+                                         NSLocalizedString("rtk_speak_double_label", comment: ""),
                                          NSLocalizedString("rtk_mute_label", comment: ""),
-                                         "\(NSLocalizedString("rtk_mute_label", comment: "")) \(NSLocalizedString("rtk_double_press_label", comment: ""))",
+                                         NSLocalizedString("rtk_mute_double_label", comment: ""),
                                          NSLocalizedString("rtk_display_label", comment: ""),
-                                         "\(NSLocalizedString("rtk_display_label", comment: "")) \(NSLocalizedString("rtk_double_press_label", comment: ""))"]
+                                         NSLocalizedString("rtk_display_double_label", comment: "")]
                                                       
-                    var USBThreshold:String = ""
-                    if (wlqData.USBVinThreshold == 0x0000){
-                        USBThreshold = NSLocalizedString("usbcontrol_on_label", comment: "")
-                    } else if (wlqData.USBVinThreshold == 0xFFFF){
-                        USBThreshold = NSLocalizedString("usbcontrol_off_label", comment: "")
-                    } else {
-                        USBThreshold = NSLocalizedString("usbcontrol_engine_label", comment: "")
-                    }
-                    actionTableMappingLabels = [USBThreshold,   //USB
+                    actionTableMappingLabels = [wlqData.getActionValue(action: wlqData.USB),   //USB
                                                 "",       //Full
-                                                "\(wlqData.fullSensitivity!)",
-                                                keyboardHID.getKey(action: wlqData.fullScrollUp),
-                                                keyboardHID.getKey(action: wlqData.fullScrollDown),
-                                                keyboardHID.getKey(action: wlqData.fullToggleRight),
-                                                keyboardHID.getKey(action: wlqData.fullToggleRightLongPress),
-                                                keyboardHID.getKey(action: wlqData.fullToggleLeft),
-                                                keyboardHID.getKey(action: wlqData.fullToggleLeftLongPress),
-                                                keyboardHID.getKey(action: wlqData.fullSignalCancel),
-                                                keyboardHID.getKey(action: wlqData.fullSignalCancelLongPress),
+                                                wlqData.getActionValue(action: wlqData.fullLongPressSensitivity),
+                                                wlqData.getActionValue(action: wlqData.fullScrollUp),
+                                                wlqData.getActionValue(action: wlqData.fullScrollDown),
+                                                wlqData.getActionValue(action: wlqData.fullToggleRight),
+                                                wlqData.getActionValue(action: wlqData.fullToggleRightLongPress),
+                                                wlqData.getActionValue(action: wlqData.fullToggleLeft),
+                                                wlqData.getActionValue(action: wlqData.fullToggleLeftLongPress),
+                                                wlqData.getActionValue(action: wlqData.fullSignalCancel),
+                                                wlqData.getActionValue(action: wlqData.fullSignalCancelLongPress),
                                                 "",       //RT/K1600
-                                                "\(wlqData.RTKSensitivity!)",
-                                                keyboardHID.getKey(action: wlqData.RTKPage),
-                                                keyboardHID.getKey(action: wlqData.RTKPageDoublePress),
-                                                keyboardHID.getKey(action: wlqData.RTKZoomPlus),
-                                                keyboardHID.getKey(action: wlqData.RTKZoomPlusDoublePress),
-                                                keyboardHID.getKey(action: wlqData.RTKZoomMinus),
-                                                keyboardHID.getKey(action: wlqData.RTKZoomMinusDoublePress),
-                                                keyboardHID.getKey(action: wlqData.RTKSpeak),
-                                                keyboardHID.getKey(action: wlqData.RTKSpeakDoublePress),
-                                                keyboardHID.getKey(action: wlqData.RTKMute),
-                                                keyboardHID.getKey(action: wlqData.RTKMuteDoublePress),
-                                                keyboardHID.getKey(action: wlqData.RTKDisplayOff),
-                                                keyboardHID.getKey(action: wlqData.RTKDisplayOffDoublePress)]
+                                                wlqData.getActionValue(action: wlqData.RTKDoublePressSensitivity),
+                                                wlqData.getActionValue(action: wlqData.RTKPage),
+                                                wlqData.getActionValue(action: wlqData.RTKPageDoublePress),
+                                                wlqData.getActionValue(action: wlqData.RTKZoomPlus),
+                                                wlqData.getActionValue(action: wlqData.RTKZoomPlusDoublePress),
+                                                wlqData.getActionValue(action: wlqData.RTKZoomMinus),
+                                                wlqData.getActionValue(action: wlqData.RTKZoomMinusDoublePress),
+                                                wlqData.getActionValue(action: wlqData.RTKSpeak),
+                                                wlqData.getActionValue(action: wlqData.RTKSpeakDoublePress),
+                                                wlqData.getActionValue(action: wlqData.RTKMute),
+                                                wlqData.getActionValue(action: wlqData.RTKMuteDoublePress),
+                                                wlqData.getActionValue(action: wlqData.RTKDisplayOff),
+                                                wlqData.getActionValue(action: wlqData.RTKDisplayOffDoublePress)]
                     
                     actionID = [wlqData.USB,    //USB
                                 -1,       //Full
@@ -330,32 +320,25 @@ class HWSettingsViewController: UIViewController, UITableViewDelegate, UITableVi
                     }
                     if (wlqData.wheelMode == wlqData.wheelMode_full) { //Full
                         modeLabel.text = "\(NSLocalizedString("wwtype_label", comment: "")) \(NSLocalizedString("wwMode1", comment: ""))"
-                        actionTableLabels = [NSLocalizedString("double_press_label", comment: ""),
-                                             NSLocalizedString("rtk_page_label", comment: ""),
-                                             "\(NSLocalizedString("rtk_page_label", comment: "")) \(NSLocalizedString("rtk_double_press_label", comment: ""))",
-                                             NSLocalizedString("rtk_zoomp_label", comment: ""),
-                                             "\(NSLocalizedString("rtk_zoomp_label", comment: "")) \(NSLocalizedString("rtk_double_press_label", comment: ""))",
-                                             NSLocalizedString("rtk_zoomm_label", comment: ""),
-                                             "\(NSLocalizedString("rtk_zoomm_label", comment: "")) \(NSLocalizedString("rtk_double_press_label", comment: ""))",
-                                             NSLocalizedString("rtk_speak_label", comment: ""),
-                                             "\(NSLocalizedString("rtk_speak_label", comment: "")) \(NSLocalizedString("rtk_double_press_label", comment: ""))",
-                                             NSLocalizedString("rtk_mute_label", comment: ""),
-                                             "\(NSLocalizedString("rtk_mute_label", comment: "")) \(NSLocalizedString("rtk_double_press_label", comment: ""))",
-                                             NSLocalizedString("rtk_display_label", comment: ""),
-                                             "\(NSLocalizedString("rtk_display_label", comment: "")) \(NSLocalizedString("rtk_double_press_label", comment: ""))"]
+                        actionTableLabels = [NSLocalizedString("long_press_label", comment: ""),
+                                             NSLocalizedString("full_scroll_up_label", comment: ""),
+                                             NSLocalizedString("full_scroll_down_label", comment: ""),
+                                             NSLocalizedString("full_toggle_right_label", comment: ""),
+                                             NSLocalizedString("full_toggle_right_long_label", comment: ""),
+                                             NSLocalizedString("full_toggle_left_label", comment: ""),
+                                             NSLocalizedString("full_toggle_left_long_label", comment: ""),
+                                             NSLocalizedString("full_signal_cancel_long_label", comment: "")]
                                                            
                         actionTableMappingLabels = ["\(wlqData.sensitivity!)",
-                                                    keyboardHID.getKey(action: wlqData.fullScrollUp),
-                                                    keyboardHID.getKey(action: wlqData.fullScrollDown),
-                                                    keyboardHID.getKey(action: wlqData.fullToggleRight),
-                                                    keyboardHID.getKey(action: wlqData.fullToggleRightLongPress),
-                                                    keyboardHID.getKey(action: wlqData.fullToggleLeft),
-                                                    keyboardHID.getKey(action: wlqData.fullToggleLeftLongPress),
-                                                    keyboardHID.getKey(action: wlqData.fullSignalCancel),
-                                                    keyboardHID.getKey(action: wlqData.fullSignalCancelLongPress)]
+                                                    NSLocalizedString("keyboard_hid_0x52_label", comment: ""),
+                                                    NSLocalizedString("keyboard_hid_0x51_label", comment: ""),
+                                                    NSLocalizedString("keyboard_hid_0x4F_label", comment: ""),
+                                                    NSLocalizedString("keyboard_hid_0x28_label", comment: ""),
+                                                    NSLocalizedString("keyboard_hid_0x50_label", comment: ""),
+                                                    NSLocalizedString("keyboard_hid_0x29_label", comment: ""),
+                                                    NSLocalizedString("consumer_hid_0xB8_label", comment: "")]
                         
                         actionID = [wlqData.fullLongPressSensitivity,
-                                    -1,
                                     -1,
                                     -1,
                                     -1,
@@ -365,32 +348,24 @@ class HWSettingsViewController: UIViewController, UITableViewDelegate, UITableVi
                                     -1]
                     } else if (wlqData.wheelMode == wlqData.wheelMode_rtk) { //RTK1600
                         modeLabel.text = "\(NSLocalizedString("wwtype_label", comment: "")) \(NSLocalizedString("wwMode2", comment: ""))"
-                        actionTableLabels = [NSLocalizedString("rtk_page_label", comment: ""),
-                                             "\(NSLocalizedString("rtk_page_label", comment: "")) \(NSLocalizedString("rtk_double_press_label", comment: ""))",
+                        actionTableLabels = [NSLocalizedString("double_press_label", comment: ""),
+                                             NSLocalizedString("rtk_page_label", comment: ""),
+                                             NSLocalizedString("rtk_page_double_label", comment: ""),
                                              NSLocalizedString("rtk_zoomp_label", comment: ""),
                                              NSLocalizedString("rtk_zoomm_label", comment: ""),
                                              NSLocalizedString("rtk_speak_label", comment: ""),
-                                             "\(NSLocalizedString("rtk_speak_label", comment: "")) \(NSLocalizedString("rtk_double_press_label", comment: ""))",
+                                             NSLocalizedString("rtk_speak_double_label", comment: ""),
                                              NSLocalizedString("rtk_display_label", comment: "")]
 
-                        actionTableMappingLabels = [keyboardHID.getKey(action: wlqData.RTKPage),
-                                                    keyboardHID.getKey(action: wlqData.RTKPageDoublePress),
-                                                    keyboardHID.getKey(action: wlqData.RTKZoomPlus),
-                                                    keyboardHID.getKey(action: wlqData.RTKZoomPlusDoublePress),
-                                                    keyboardHID.getKey(action: wlqData.RTKZoomMinus),
-                                                    keyboardHID.getKey(action: wlqData.RTKZoomMinusDoublePress),
-                                                    keyboardHID.getKey(action: wlqData.RTKSpeak),
-                                                    keyboardHID.getKey(action: wlqData.RTKSpeakDoublePress),
-                                                    keyboardHID.getKey(action: wlqData.RTKMute),
-                                                    keyboardHID.getKey(action: wlqData.RTKMuteDoublePress),
-                                                    keyboardHID.getKey(action: wlqData.RTKDisplayOff),
-                                                    keyboardHID.getKey(action: wlqData.RTKDisplayOffDoublePress)]
+                        actionTableMappingLabels = ["\(wlqData.sensitivity!)",
+                                                    NSLocalizedString("keyboard_hid_0x4F_label", comment: ""),
+                                                    NSLocalizedString("keyboard_hid_0x28_label", comment: ""),
+                                                    NSLocalizedString("keyboard_hid_0x52_label", comment: ""),
+                                                    NSLocalizedString("keyboard_hid_0x51_label", comment: ""),
+                                                    NSLocalizedString("keyboard_hid_0x50_label", comment: ""),
+                                                    NSLocalizedString("keyboard_hid_0x29_label", comment: ""),
+                                                    NSLocalizedString("consumer_hid_0xB8_label", comment: "")]
                         actionID = [wlqData.RTKDoublePressSensitivity,
-                                    -1,
-                                    -1,
-                                    -1,
-                                    -1,
-                                    -1,
                                     -1,
                                     -1,
                                     -1,

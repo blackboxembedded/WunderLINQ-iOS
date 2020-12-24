@@ -90,7 +90,7 @@ class HWSettingsActionViewController: UIViewController, UIPickerViewDataSource, 
                         key = UInt8(keyboardHID.keyboardCodes[self.keyPicker.selectedRow(inComponent: 0)].key)
                     }
                     print("Modifiers: \(modifiers)")
-                    wlqData.setKey(action: actionID, key: [keyType, modifiers, key])
+                    wlqData.setActionKey(action: actionID, key: [keyType, modifiers, key])
                 }
             } else {
                 if(actionID == 2 || actionID == 3){ // Sensitivity
@@ -169,9 +169,9 @@ class HWSettingsActionViewController: UIViewController, UIPickerViewDataSource, 
                     modifierMultiPicker.font = .systemFont(ofSize: 20, weight: .bold)
                     modifierMultiPicker.addTarget(self, action: #selector(self.selected(_:)), for: .valueChanged)
                     
-                    let keyMode = (Int)(wlqData.getActionKeyMode(action: actionID))
+                    let keyMode = (Int)(wlqData.getActionKeyType(action: actionID))
                     typePicker.selectRow(keyMode, inComponent: 0, animated: true)
-                    keyPicker.selectRow(keyboardHID.getKeyPosition(action: actionID!), inComponent: 0, animated: true)
+                    keyPicker.selectRow(wlqData.getActionKeyPosition(action: actionID!), inComponent: 0, animated: true)
                     
                     if (keyMode == wlqData.UNDEFINED){
                         keyPicker.isHidden = true
@@ -179,7 +179,7 @@ class HWSettingsActionViewController: UIViewController, UIPickerViewDataSource, 
                     } else if (keyMode == wlqData.KEYBOARD_HID){
                         keyPicker.isHidden = false
                         modifierMultiPicker.isHidden = false
-                        let mask = keyboardHID.getModifiers(action: actionID!)
+                        let mask = wlqData.getActionKeyModifiers(action: actionID!)
                         var selectedModifiers:[Int] = []
                         if (mask != 0x00) {
                             if (isSet(value: mask, bit: 0x01)) {
