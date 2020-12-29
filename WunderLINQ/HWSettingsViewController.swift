@@ -66,24 +66,16 @@ class HWSettingsViewController: UIViewController, UITableViewDelegate, UITableVi
                     print("Apply WLQ Config")
                     if (self.wlqData.getfirmwareVersion().toDouble()! >= 2.0) {
                         let command = self.wlqData.WRITE_CONFIG_CMD + self.wlqData.tempConfig! + self.wlqData.CMD_EOM
-                        
-                        var messageHexString = ""
-                        for i in 0 ..< command.count {
-                            messageHexString += String(format: "%02X", command[i])
-                            if i < command.count - 1 {
-                                messageHexString += ","
-                            }
-                        }
-                        print("Writing flashConfig: \(messageHexString)")
                         let writeData =  Data(_: command)
                         self.peripheral?.writeValue(writeData, for: self.characteristic!, type: CBCharacteristicWriteType.withResponse)
                     } else {
                         if (self.wlqData.sensitivity != self.wlqData.tempSensitivity){
+                            let prefix:[UInt8] = [self.wlqData.wheelMode!, 0x45]
                             let sensInt:Int = (Int)(self.wlqData.tempSensitivity!)
                             let sensString:String = (String)(sensInt)
                             let sensCharacters = Array(sensString)
                             let sensUInt8Array = String(sensCharacters).utf8.map{ UInt8($0) }
-                            let command = self.wlqData.WRITE_SENSITIVITY_CMD + sensUInt8Array + self.wlqData.CMD_EOM
+                            let command = self.wlqData.WRITE_SENSITIVITY_CMD + prefix + sensUInt8Array + self.wlqData.CMD_EOM
                             let writeData =  Data(_: command)
                             self.peripheral?.writeValue(writeData, for: self.characteristic!, type: CBCharacteristicWriteType.withResponse)
                         }
@@ -187,7 +179,10 @@ class HWSettingsViewController: UIViewController, UITableViewDelegate, UITableVi
                     }
                 }
             } else {
-                
+                if (self.actionID[indexPath.row] == wlqData.OldSensitivity){
+                    selectedActionID = self.actionID[indexPath.row]
+                    performSegue(withIdentifier: "hwSettingsToSettingsAction", sender: [])
+                }
             }
         }
     }
@@ -305,6 +300,7 @@ class HWSettingsViewController: UIViewController, UITableViewDelegate, UITableVi
                 }
             } else {            // FW <2.0
                 if (wlqData.wheelMode == wlqData.wheelMode_full || wlqData.wheelMode == wlqData.wheelMode_rtk) {
+                    modeLabel.isHidden = false
                     if(wlqData.sensitivity != wlqData.tempSensitivity){
                         configButton.setTitle(NSLocalizedString("config_write_label", comment: ""), for: .normal)
                         configButton.isHidden = false
@@ -338,7 +334,7 @@ class HWSettingsViewController: UIViewController, UITableViewDelegate, UITableVi
                                                     NSLocalizedString("keyboard_hid_0x29_label", comment: ""),
                                                     NSLocalizedString("consumer_hid_0xB8_label", comment: "")]
                         
-                        actionID = [wlqData.fullLongPressSensitivity,
+                        actionID = [wlqData.OldSensitivity,
                                     -1,
                                     -1,
                                     -1,
@@ -365,7 +361,7 @@ class HWSettingsViewController: UIViewController, UITableViewDelegate, UITableVi
                                                     NSLocalizedString("keyboard_hid_0x50_label", comment: ""),
                                                     NSLocalizedString("keyboard_hid_0x29_label", comment: ""),
                                                     NSLocalizedString("consumer_hid_0xB8_label", comment: "")]
-                        actionID = [wlqData.RTKDoublePressSensitivity,
+                        actionID = [wlqData.OldSensitivity,
                                     -1,
                                     -1,
                                     -1,
@@ -374,8 +370,6 @@ class HWSettingsViewController: UIViewController, UITableViewDelegate, UITableVi
                                     -1,
                                     -1]
                     }
-                    modeLabel.isHidden = false
-                    configButton.isHidden = true
                 }  else {
                     configButton.setTitle(NSLocalizedString("config_reset_label", comment: ""), for: .normal)
                     modeLabel.isHidden = true

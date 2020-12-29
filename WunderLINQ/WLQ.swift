@@ -78,6 +78,7 @@ class WLQ {
     let CONSUMER_HID:UInt8 = 0x02
     let UNDEFINED:UInt8 = 0x00
 
+    let OldSensitivity:Int = 0
     let USB:Int = 1
     let RTKDoublePressSensitivity:Int = 2
     let fullLongPressSensitivity:Int = 3
@@ -235,7 +236,8 @@ class WLQ {
     var fullSignalLongPressKey:UInt8?
     
     init() {
-        actionNames = [USB: NSLocalizedString("usb_threshold_label", comment: ""),
+        actionNames = [OldSensitivity: NSLocalizedString("sensitivity_label", comment: ""),
+                       USB: NSLocalizedString("usb_threshold_label", comment: ""),
                        RTKDoublePressSensitivity: NSLocalizedString("double_press_label", comment: ""),
                        fullLongPressSensitivity: NSLocalizedString("long_press_label", comment: ""),
                        RTKPage: NSLocalizedString("rtk_page_label", comment: ""),
@@ -707,6 +709,8 @@ class WLQ {
         var returnString = NSLocalizedString("hid_0x00_label", comment: "")
         let keyboardHID = KeyboardHID.shared
         switch (action){
+        case OldSensitivity:
+            returnString = "\(sensitivity!)"
         case USB:
             if (USBVinThreshold == 0x0000){
                 returnString = NSLocalizedString("usbcontrol_on_label", comment: "")

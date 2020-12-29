@@ -109,11 +109,12 @@
 "wwMode1" = "Full";
 "wwMode2" = "RT/K1600";
 "wwMode3" = "Custom";
-"sensitivity_label" = "Hold Sensitivity";
+"sensitivity_label" = "Sensitivity";
 "config_reset_label" = "Reset Settings";
 "config_write_label" = "Save Settings";
 "hwsave_alert_title" = "Warning!";
-"hwsave_alert_body" = "After saving new hardware settings, the WunderLINQ hardware will become unstable and will need to be removed and reinstalled into the cradle.";
+"hwsave_alert_body" = "After saving new hardware settings, the WunderLINQ hardware will become unstable and will need to be removed and reinstalled into the cradle.\n  Key mapping changes can impact app navigation with the wheel.";
+"keysave_alert_body" = "!!!Modifying key mappings can impact App navigation!!!";
 "hwsave_alert_btn_ok" = "Continue";
 "hwsave_alert_btn_cancel" = "Cancel";
 //AboutViewController
