@@ -289,7 +289,10 @@ class WLQ {
             print("tempConfig: \(tmessageHexString)")
             
             self.keyMode = bytes[self.keyMode_INDEX]
-            self.USBVinThreshold = UInt16(self.flashConfig![self.USBVinThresholdLow_INDEX] | self.flashConfig![self.USBVinThresholdHigh_INDEX] << 8)
+            let usbBytes: [UInt8] = [self.flashConfig![self.USBVinThresholdHigh_INDEX], self.flashConfig![self.USBVinThresholdLow_INDEX]]
+            self.USBVinThreshold = usbBytes.withUnsafeBytes { $0.load(as: UInt16.self) }
+            //self.USBVinThreshold = UInt16(self.flashConfig![self.USBVinThresholdLow_INDEX] | self.flashConfig![self.USBVinThresholdHigh_INDEX] << 8)
+            print("USB value: \(USBVinThreshold!)")
             self.RTKSensitivity = self.flashConfig![self.RTKSensitivity_INDEX]
             self.RTKPagePressKeyType = self.flashConfig![self.RTKPagePressKeyType_INDEX]
             self.RTKPagePressKeyModifier = self.flashConfig![self.RTKPagePressKeyModifier_INDEX]

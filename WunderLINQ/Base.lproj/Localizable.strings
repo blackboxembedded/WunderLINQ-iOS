@@ -70,10 +70,6 @@
 "keymode_label" = "Key Mode";
 "keymode_default_label" = "Default";
 "keymode_custom_label" = "Custom";
-"usb_threshold_label" = "USB Port Control";
-"usbcontrol_on_label" = "Always On";
-"usbcontrol_engine_label" = "On Engine";
-"usbcontrol_off_label" = "Off";
 "keymode_custom_title" = "Key Customization";
 "long_press_label" = "Long Press Sensitivity";
 "double_press_label" = "Double Press Sensitivity";
@@ -103,7 +99,7 @@
 "usb_threshold_label" = "USB Port Control";
 "usbcontrol_on_label" = "Always On";
 "usbcontrol_engine_label" = "On Engine";
-"usbcontrol_off_label" = "Off";
+"usbcontrol_off_label" = "Always Off";
 "fw_config_title" = "WunderLINQ Settings";
 "fw_version_label" = "Firmware Version";
 "wwtype_label" = "Wheel Type";
