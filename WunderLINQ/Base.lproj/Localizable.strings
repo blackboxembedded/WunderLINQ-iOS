@@ -65,6 +65,7 @@
 //HWSettingsViewController
 "customize_btn_label" = "Customize";
 "default_btn_label" = "Default Mode";
+"corrupt_config_label" = "Corrupt Config! Reset Needed";
 "mode_label" = "Mode:";
 "keymode_label" = "Key Mode";
 "keymode_default_label" = "Default";
@@ -114,7 +115,7 @@
 "config_write_label" = "Save Settings";
 "hwsave_alert_title" = "Warning!";
 "hwsave_alert_body" = "After saving new hardware settings, the WunderLINQ hardware will become unstable and will need to be removed and reinstalled into the cradle.\n  Key mapping changes can impact app navigation with the wheel.";
-"keysave_alert_body" = "!!!Modifying key mappings can impact App navigation!!!";
+"hwreset_alert_body" = "The current WunderLINQ Custom settings will be reset to the factory defaults.";
 "hwsave_alert_btn_ok" = "Continue";
 "hwsave_alert_btn_cancel" = "Cancel";
 //AboutViewController
