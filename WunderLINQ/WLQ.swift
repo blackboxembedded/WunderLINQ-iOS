@@ -34,6 +34,12 @@ class WLQ {
     let WRITE_CONFIG_CMD:[UInt8] = [0x57, 0x57, 0x43, 0x41]
     let WRITE_MODE_CMD:[UInt8] = [0x57, 0x57, 0x53, 0x53]
     let WRITE_SENSITIVITY_CMD:[UInt8] = [0x57, 0x57, 0x43, 0x53]
+    let SET_CLUSTER_CLOCK_CMD:[UInt8] = [0x57, 0x57, 0x44, 0x43]
+    let RESET_CLUSTER_SPEED_CMD:[UInt8] = [0x57, 0x57, 0x44, 0x52, 0x53]
+    let RESET_CLUSTER_ECONO1_CMD:[UInt8] = [0x57, 0x57, 0x44, 0x52, 0x45, 0x01]
+    let RESET_CLUSTER_ECONO2_CMD:[UInt8] = [0x57, 0x57, 0x44, 0x52, 0x45, 0x02]
+    let RESET_CLUSTER_TRIP1_CMD:[UInt8] = [0x57, 0x57, 0x44, 0x52, 0x54, 0x01]
+    let RESET_CLUSTER_TRIP2_CMD:[UInt8] = [0x57, 0x57, 0x44, 0x52, 0x54, 0x02]
     let CMD_EOM:[UInt8] = [0x0D, 0x0A]
     
     //FW <2.0
@@ -291,8 +297,6 @@ class WLQ {
             self.keyMode = bytes[self.keyMode_INDEX]
             let usbBytes: [UInt8] = [self.flashConfig![self.USBVinThresholdHigh_INDEX], self.flashConfig![self.USBVinThresholdLow_INDEX]]
             self.USBVinThreshold = usbBytes.withUnsafeBytes { $0.load(as: UInt16.self) }
-            //self.USBVinThreshold = UInt16(self.flashConfig![self.USBVinThresholdLow_INDEX] | self.flashConfig![self.USBVinThresholdHigh_INDEX] << 8)
-            print("USB value: \(USBVinThreshold!)")
             self.RTKSensitivity = self.flashConfig![self.RTKSensitivity_INDEX]
             self.RTKPagePressKeyType = self.flashConfig![self.RTKPagePressKeyType_INDEX]
             self.RTKPagePressKeyModifier = self.flashConfig![self.RTKPagePressKeyModifier_INDEX]

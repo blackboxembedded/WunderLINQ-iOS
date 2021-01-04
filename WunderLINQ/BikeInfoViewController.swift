@@ -57,28 +57,23 @@ class BikeInfoViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
             print("Resetting Cluster Data Point")
             switch (clusterResetTypePicker.selectedRow(inComponent: 0)){
             case 0: // Reset Cluster Average Speed
-                let resetCommand:[UInt8] = [0x57, 0x57, 0x44, 0x52, 0x53]
-                let writeData =  Data(_: resetCommand)
+                let writeData =  Data(_: wlqData.RESET_CLUSTER_SPEED_CMD)
                 self.peripheral?.writeValue(writeData, for: self.characteristic!, type: CBCharacteristicWriteType.withResponse)
                 break;
             case 1: // Reset Cluster Economy 1
-                let resetCommand:[UInt8] = [0x57, 0x57, 0x44, 0x52, 0x45, 0x01]
-                let writeData =  Data(_: resetCommand)
+                let writeData =  Data(_: wlqData.RESET_CLUSTER_ECONO1_CMD)
                 self.peripheral?.writeValue(writeData, for: self.characteristic!, type: CBCharacteristicWriteType.withResponse)
                 break;
             case 2: // Reset Cluster Economy 2
-                let resetCommand:[UInt8] = [0x57, 0x57, 0x44, 0x52, 0x45, 0x02]
-                let writeData =  Data(_: resetCommand)
+                let writeData =  Data(_: wlqData.RESET_CLUSTER_ECONO2_CMD)
                 self.peripheral?.writeValue(writeData, for: self.characteristic!, type: CBCharacteristicWriteType.withResponse)
                 break;
             case 3: // Reset Cluster Trip 1
-                let resetCommand:[UInt8] = [0x57, 0x57, 0x44, 0x52, 0x54, 0x01]
-                let writeData =  Data(_: resetCommand)
+                let writeData =  Data(_: wlqData.RESET_CLUSTER_TRIP1_CMD)
                 self.peripheral?.writeValue(writeData, for: self.characteristic!, type: CBCharacteristicWriteType.withResponse)
                 break;
             case 4: // Reset Cluster Trip 2
-                let resetCommand:[UInt8] = [0x57, 0x57, 0x44, 0x52, 0x54, 0x02]
-                let writeData =  Data(_: resetCommand)
+                let writeData =  Data(_: wlqData.RESET_CLUSTER_TRIP2_CMD)
                 self.peripheral?.writeValue(writeData, for: self.characteristic!, type: CBCharacteristicWriteType.withResponse)
                 break;
             default:
