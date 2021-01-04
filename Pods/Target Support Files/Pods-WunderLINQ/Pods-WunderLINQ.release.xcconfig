@@ -1,9 +1,10 @@
 ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES
-FRAMEWORK_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/ChromaColorPicker" "${PODS_CONFIGURATION_BUILD_DIR}/CoreGPX" "${PODS_CONFIGURATION_BUILD_DIR}/InAppSettingsKit"
+FRAMEWORK_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/ChromaColorPicker" "${PODS_CONFIGURATION_BUILD_DIR}/CoreGPX" "${PODS_CONFIGURATION_BUILD_DIR}/InAppSettingsKit" "${PODS_CONFIGURATION_BUILD_DIR}/UIMultiPicker"
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
-HEADER_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/ChromaColorPicker/ChromaColorPicker.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/CoreGPX/CoreGPX.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/InAppSettingsKit/InAppSettingsKit.framework/Headers"
+HEADER_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/ChromaColorPicker/ChromaColorPicker.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/CoreGPX/CoreGPX.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/InAppSettingsKit/InAppSettingsKit.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/UIMultiPicker/UIMultiPicker.framework/Headers"
 LD_RUNPATH_SEARCH_PATHS = $(inherited) '@executable_path/Frameworks' '@loader_path/Frameworks'
-OTHER_LDFLAGS = $(inherited) -framework "ChromaColorPicker" -framework "CoreGPX" -framework "InAppSettingsKit" -framework "MessageUI" -framework "UIKit"
+OTHER_CFLAGS = $(inherited) -isystem "${PODS_CONFIGURATION_BUILD_DIR}/ChromaColorPicker/ChromaColorPicker.framework/Headers" -isystem "${PODS_CONFIGURATION_BUILD_DIR}/CoreGPX/CoreGPX.framework/Headers" -isystem "${PODS_CONFIGURATION_BUILD_DIR}/InAppSettingsKit/InAppSettingsKit.framework/Headers" -isystem "${PODS_CONFIGURATION_BUILD_DIR}/UIMultiPicker/UIMultiPicker.framework/Headers" -iframework "${PODS_CONFIGURATION_BUILD_DIR}/ChromaColorPicker" -iframework "${PODS_CONFIGURATION_BUILD_DIR}/CoreGPX" -iframework "${PODS_CONFIGURATION_BUILD_DIR}/InAppSettingsKit" -iframework "${PODS_CONFIGURATION_BUILD_DIR}/UIMultiPicker"
+OTHER_LDFLAGS = $(inherited) -framework "ChromaColorPicker" -framework "CoreGPX" -framework "InAppSettingsKit" -framework "MessageUI" -framework "UIKit" -framework "UIMultiPicker"
 OTHER_SWIFT_FLAGS = $(inherited) -D COCOAPODS
 PODS_BUILD_DIR = ${BUILD_DIR}
 PODS_CONFIGURATION_BUILD_DIR = ${PODS_BUILD_DIR}/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)

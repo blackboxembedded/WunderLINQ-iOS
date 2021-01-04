@@ -32,7 +32,6 @@
 		7E068BF62102D1A90076EAAD /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7E068BD62102C6DB0076EAAD /* GoogleMaps.bundle */; };
 		7E068BF8210645290076EAAD /* TripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E068BF7210645290076EAAD /* TripViewController.swift */; };
 		7E14EFBD221B5FB7009F37A3 /* GeoDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E14EFBC221B5FB7009F37A3 /* GeoDataViewController.swift */; };
-		7E25396121CD65C60008D34E /* HWSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E25396021CD65C60008D34E /* HWSettingsViewController.swift */; };
 		7E25396321CD94A30008D34E /* BLE.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E25396221CD94A30008D34E /* BLE.swift */; };
 		7E25396521CDB1740008D34E /* WLQ.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E25396421CDB1740008D34E /* WLQ.swift */; };
 		7E2EC06424991CE200B0A59B /* NavigationControllerWithTraitOverride.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2EC06324991CE200B0A59B /* NavigationControllerWithTraitOverride.swift */; };
@@ -91,6 +90,10 @@
 		7EC8C9BF1F830C5B000CEDDC /* PhoneContacts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC8C9BE1F830C5B000CEDDC /* PhoneContacts.swift */; };
 		7EC934F22186208A00FD4806 /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC934F12186208A00FD4806 /* AlertViewController.swift */; };
 		7ED2013620D0D0030066BCE6 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7ED2013520D0D0030066BCE6 /* Default-568h@2x.png */; };
+		7EF0775B258D796F009A6BAA /* HWSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF0775A258D796F009A6BAA /* HWSettingsViewController.swift */; };
+		7EF07768258E653E009A6BAA /* HWSettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF07767258E653E009A6BAA /* HWSettingsTableViewCell.swift */; };
+		7EF0776C258FBDEF009A6BAA /* KeyboardHID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF0776B258FBDEF009A6BAA /* KeyboardHID.swift */; };
+		7EF07772258FF762009A6BAA /* HWSettingsActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF07771258FF762009A6BAA /* HWSettingsActionViewController.swift */; };
 		7EF9B5A022FCB14D009D8D17 /* Solar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF9B59F22FCB14D009D8D17 /* Solar.swift */; };
 		7EFA9908240DFDE700E65078 /* FirstRunViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EFA9907240DFDE700E65078 /* FirstRunViewController.swift */; };
 		B98CA75D252E6C6B00530075 /* UIStoryboard+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98CA75C252E6C6B00530075 /* UIStoryboard+extensions.swift */; };
@@ -136,7 +139,6 @@
 		7E068BE72102C8820076EAAD /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		7E068BF7210645290076EAAD /* TripViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripViewController.swift; sourceTree = "<group>"; };
 		7E14EFBC221B5FB7009F37A3 /* GeoDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoDataViewController.swift; sourceTree = "<group>"; };
-		7E25396021CD65C60008D34E /* HWSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HWSettingsViewController.swift; sourceTree = "<group>"; };
 		7E25396221CD94A30008D34E /* BLE.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLE.swift; sourceTree = "<group>"; };
 		7E25396421CDB1740008D34E /* WLQ.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WLQ.swift; sourceTree = "<group>"; };
 		7E2EC06324991CE200B0A59B /* NavigationControllerWithTraitOverride.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationControllerWithTraitOverride.swift; sourceTree = "<group>"; };
@@ -228,6 +230,10 @@
 		7EE02FE422A6BCCA0061330B /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		7EE02FE522A6BCCA0061330B /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = WunderLINQ/ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7EE02FE622A6BCCA0061330B /* ja */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		7EF0775A258D796F009A6BAA /* HWSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HWSettingsViewController.swift; sourceTree = "<group>"; };
+		7EF07767258E653E009A6BAA /* HWSettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HWSettingsTableViewCell.swift; sourceTree = "<group>"; };
+		7EF0776B258FBDEF009A6BAA /* KeyboardHID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardHID.swift; sourceTree = "<group>"; };
+		7EF07771258FF762009A6BAA /* HWSettingsActionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HWSettingsActionViewController.swift; sourceTree = "<group>"; };
 		7EF9B59F22FCB14D009D8D17 /* Solar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Solar.swift; sourceTree = "<group>"; };
 		7EFA9907240DFDE700E65078 /* FirstRunViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstRunViewController.swift; sourceTree = "<group>"; };
 		B98CA75C252E6C6B00530075 /* UIStoryboard+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+extensions.swift"; sourceTree = "<group>"; };
@@ -340,8 +346,10 @@
 		7EA4784C1F40B154000CEDDC /* WunderLINQ */ = {
 			isa = PBXGroup;
 			children = (
+				B98CA760252E6DD400530075 /* External */,
 				7EB5EDE9252169B800B61160 /* svg */,
 				7EB5EDD525211B6100B61160 /* fonts */,
+				B98CA75B252E6C5200530075 /* Utils */,
 				7EA3F95122EA88690075A0E1 /* externalcamera */,
 				7E9516C1238A367000ED25F2 /* SpotifyiOS.framework */,
 				7E068BCF2102C6280076EAAD /* GoogleMaps.framework */,
@@ -349,14 +357,11 @@
 				7E068BCE2102C6270076EAAD /* GoogleMapsCore.framework */,
 				7EB5EDE2252136F800B61160 /* Main.storyboard */,
 				7EBFE1F2214C7D6500F2185A /* ScenicAPI.swift */,
-				7EF9B59F22FCB14D009D8D17 /* Solar.swift */,
 				7E5E0F77212289140048B9A2 /* AppUtility.swift */,
 				7EA4784D1F40B154000CEDDC /* AppDelegate.swift */,
 				7EFA9907240DFDE700E65078 /* FirstRunViewController.swift */,
-				B98CA75B252E6C5200530075 /* Utils */,
 				7EA478801F44F57C000CEDDC /* MusicViewController.swift */,
 				7EA478701F40F273000CEDDC /* Device.swift */,
-				B98CA760252E6DD400530075 /* External */,
 				7E80BD3C211CFF7300B8CA0D /* LocalisableButton.swift */,
 				7E80BD3A211CF80600B8CA0D /* LocalisableLabel.swift */,
 				7E35A59222DC265800E4AE40 /* Utility.swift */,
@@ -372,9 +377,12 @@
 				7E62BB7021FE443200FDB10E /* ColumnFlowLayout.swift */,
 				7E25396221CD94A30008D34E /* BLE.swift */,
 				7E25396421CDB1740008D34E /* WLQ.swift */,
+				7EF0776B258FBDEF009A6BAA /* KeyboardHID.swift */,
 				7E068BC220FD8A100076EAAD /* FaultsTableViewController.swift */,
 				7EAF646722FE17D000B11550 /* BikeInfoViewController.swift */,
-				7E25396021CD65C60008D34E /* HWSettingsViewController.swift */,
+				7EF07771258FF762009A6BAA /* HWSettingsActionViewController.swift */,
+				7EF07767258E653E009A6BAA /* HWSettingsTableViewCell.swift */,
+				7EF0775A258D796F009A6BAA /* HWSettingsViewController.swift */,
 				7EC63201219BCE05002E68FF /* AboutViewController.swift */,
 				7E6987DC20F8F83500B4781D /* Faults.swift */,
 				7E14EFBC221B5FB7009F37A3 /* GeoDataViewController.swift */,
@@ -400,7 +408,6 @@
 				7E6E0A6724FC022200149387 /* ColorPickerViewController.swift */,
 				7E4669F62518647C00E7E291 /* NavAppHelper.swift */,
 				7EB5ED7C251FE8FA00B61160 /* DashViewController.swift */,
-				7EB5EE112523C57100B61160 /* XML.swift */,
 				7EB8B99D245CA7A6007232D2 /* Secrets.swift */,
 				7E068BD62102C6DB0076EAAD /* GoogleMaps.bundle */,
 				7EA478821F4A7260000CEDDC /* InAppSettings.bundle */,
@@ -452,6 +459,8 @@
 		B98CA760252E6DD400530075 /* External */ = {
 			isa = PBXGroup;
 			children = (
+				7EB5EE112523C57100B61160 /* XML.swift */,
+				7EF9B59F22FCB14D009D8D17 /* Solar.swift */,
 				7E068BCA2102ACF30076EAAD /* Popover.swift */,
 			);
 			path = External;
@@ -640,7 +649,6 @@
 				7EA4788E1F5BA136000CEDDC /* Tasks.swift in Sources */,
 				7E80BD3B211CF80600B8CA0D /* LocalisableLabel.swift in Sources */,
 				7EC934F22186208A00FD4806 /* AlertViewController.swift in Sources */,
-				7E25396121CD65C60008D34E /* HWSettingsViewController.swift in Sources */,
 				7EAE9415211E9B3200E24CE9 /* Double+Extensions.swift in Sources */,
 				7EA478791F412BE9000CEDDC /* UserDefauts+Extensions.swift in Sources */,
 				7EA4784E1F40B154000CEDDC /* AppDelegate.swift in Sources */,
@@ -667,6 +675,7 @@
 				7EA4BCC921B8CB270084F6EA /* TaskCollectionViewCell.swift in Sources */,
 				7E916DDC230CF10D00011E5F /* NSLocalizedString.swift in Sources */,
 				7EBC8A9E23B19C0B001FE70B /* AddWaypointViewController.swift in Sources */,
+				7EF07768258E653E009A6BAA /* HWSettingsTableViewCell.swift in Sources */,
 				7E62BB7121FE443200FDB10E /* ColumnFlowLayout.swift in Sources */,
 				B98CA75D252E6C6B00530075 /* UIStoryboard+extensions.swift in Sources */,
 				7EBFE1F3214C7D6500F2185A /* ScenicAPI.swift in Sources */,
@@ -676,10 +685,12 @@
 				7E068BCB2102ACF30076EAAD /* Popover.swift in Sources */,
 				7EAF646A22FE261D00B11550 /* WeatherMapViewController.swift in Sources */,
 				7EA478811F44F57C000CEDDC /* MusicViewController.swift in Sources */,
+				7EF07772258FF762009A6BAA /* HWSettingsActionViewController.swift in Sources */,
 				7EF9B5A022FCB14D009D8D17 /* Solar.swift in Sources */,
 				7EAF646822FE17D000B11550 /* BikeInfoViewController.swift in Sources */,
 				7E35A59322DC265800E4AE40 /* Utility.swift in Sources */,
 				7EAE9417211EA30900E24CE9 /* Theme.swift in Sources */,
+				7EF0776C258FBDEF009A6BAA /* KeyboardHID.swift in Sources */,
 				7EC63202219BCE05002E68FF /* AboutViewController.swift in Sources */,
 				7EB5ED7D251FE8FA00B61160 /* DashViewController.swift in Sources */,
 				7E068BC320FD8A100076EAAD /* FaultsTableViewController.swift in Sources */,
@@ -690,6 +701,7 @@
 				7EA478751F412B73000CEDDC /* LocationDelegate.swift in Sources */,
 				7EFA9908240DFDE700E65078 /* FirstRunViewController.swift in Sources */,
 				B98CA762252E6F5500530075 /* String+Localizable.swift in Sources */,
+				7EF0775B258D796F009A6BAA /* HWSettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -898,7 +910,7 @@
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = 3J48UMN5W2;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -928,7 +940,7 @@
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = 3J48UMN5W2;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

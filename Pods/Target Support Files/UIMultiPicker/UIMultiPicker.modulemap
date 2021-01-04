@@ -1,0 +1,6 @@
+framework module UIMultiPicker {
+  umbrella header "UIMultiPicker-umbrella.h"
+
+  export *
+  module * { export * }
+}

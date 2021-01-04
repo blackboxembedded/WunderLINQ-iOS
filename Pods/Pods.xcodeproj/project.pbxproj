@@ -7,307 +7,323 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0781540189ECE3F925380BFECCB41341 /* tr.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 6DF1023CCC6D5DF1F6DBC2AEEE51ACD0 /* tr.lproj */; };
-		07BB5F72F8B1DC407E19ED11100E4A52 /* SliderTrackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C51A94D585947A098D9FE3FCC1B73E1 /* SliderTrackView.swift */; };
-		0850DEFB99E706BB5BF2F6CEDDB9B2F0 /* IASKSlider.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A2FD0983EFFD450AEE3099D1AEBCD68 /* IASKSlider.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0A250D91C982F24D314F9BA8E761BC00 /* IASKSpecifier.m in Sources */ = {isa = PBXBuildFile; fileRef = 28F257213522E2160F78AEFD94BB9EB7 /* IASKSpecifier.m */; };
-		0A6B6EA5EA7DBA5DBBEB8A340ABDB6C4 /* ChromaColorPicker-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F8729D5610CBE6B77D77F5DC478026D4 /* ChromaColorPicker-dummy.m */; };
-		0AC75CAA7766EA46A38EFF35F70E0CB0 /* GPXRoutePoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A9D2886CA121442F574F4CC9E961D2 /* GPXRoutePoint.swift */; };
-		0B80D6073FDC4E1E569BABADD895BEE4 /* IASKPSTextFieldSpecifierViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C1B3FD8ED1128A429A9E55B5347A855F /* IASKPSTextFieldSpecifierViewCell.m */; };
-		0ECF4AF40C638E9086696BEFEBEA5B5C /* IASKColor.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C60E691547BF1D2011BC6B15DA1A621 /* IASKColor.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0EF69F5394E2E653BC03E58054B251BE /* GPXPointSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911E8C20CEABABB9C54E6073B8A65428 /* GPXPointSegment.swift */; };
-		103CA6899065D8E3F27514FDE3B95852 /* GPXExtensionsElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67E2C5D29E284801039D885CD2C5EE38 /* GPXExtensionsElement.swift */; };
-		1243FD056E942FADBBFDEC8FF041D99E /* UIView+DropShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B5DDE50393AE3FA62E68CA7B4E69EF /* UIView+DropShadow.swift */; };
-		158E2F830D0ED44ACFA130E659C4C82C /* pt-PT.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 60FDC3B9388629D9B4BBCF6CB9DBCC6C /* pt-PT.lproj */; };
-		19465F51F361C48FFC8DA852B4AEE6C3 /* pt.lproj in Resources */ = {isa = PBXBuildFile; fileRef = D93D13A226EF9EA03E3750E5666648F1 /* pt.lproj */; };
-		198BD078FDD3D7109F3D35D0FF887526 /* nb.lproj in Resources */ = {isa = PBXBuildFile; fileRef = C63D29D37ECB73F542715D11DD79EF69 /* nb.lproj */; };
-		1EB8CB2A0D6F460CC49E01756D39E4E4 /* IASKDatePickerViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = A50FE15072CA8EDD50D2B15F95D31977 /* IASKDatePickerViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		1EC9B1B1EE727D94AFC3076D1A6225E0 /* IASKMultipleValueSelection.m in Sources */ = {isa = PBXBuildFile; fileRef = A717AF3CD76895CCB6104DB921FA897A /* IASKMultipleValueSelection.m */; };
-		20C559F7FB2AB8042CC36AFA5EF3A523 /* IASKSettingsStoreInMemory.h in Headers */ = {isa = PBXBuildFile; fileRef = 53D1CFE99E292928FA424B074B3A2B40 /* IASKSettingsStoreInMemory.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		215495936326BA60595AA30FF56EDD18 /* Pods-WunderLINQ-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 427E56F4CF2E99993434B5ACC466869E /* Pods-WunderLINQ-dummy.m */; };
-		21D173AD8D03118F8500C306885B9A47 /* Converters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED9DD2A2891B916B3F2B3FDEE7BD47A /* Converters.swift */; };
-		2334E2053513B1BF98AD4C35B1E1D8CB /* GPXRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0C6F9262E63D82E9915794BB432214 /* GPXRoot.swift */; };
-		267E030A8BB798FC60097320A2D1BF47 /* UIColor+Brightness.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFAEFED72D36816EB2F5473E0D323B7F /* UIColor+Brightness.swift */; };
-		280C8715A9CD08421E47FFD8DDB573FC /* IASKSettingsStoreInMemory.m in Sources */ = {isa = PBXBuildFile; fileRef = D6E8DC9948629809909E18001505D902 /* IASKSettingsStoreInMemory.m */; };
-		314A478C4220B6CCB4B68E60ABCCFBB5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49FC1D574A2F3239D89F533C8D0BE07C /* Foundation.framework */; };
-		32D841ED22E0A6AECC4EC57B55F5A1AB /* IASKMultipleValueSelection.h in Headers */ = {isa = PBXBuildFile; fileRef = 15E5903EB5DF83B6667F97D3536BC6D4 /* IASKMultipleValueSelection.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3489676B77DC8145FA736DB8E7CB1CA1 /* InAppSettingsKit-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 25FEBABB92166D9E780842E899269D74 /* InAppSettingsKit-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		370133E35E3051477D59B2EFA3C11146 /* Base.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 6B78527E270F30F5C962F35DA93A9C8D /* Base.lproj */; };
-		373997AD67F9E0B3FB7A459D42B0D6BB /* IASKPSTextFieldSpecifierViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 0ACC741F91328726F0CCB79FE89F9B1D /* IASKPSTextFieldSpecifierViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3AA3054C52B04D5BC87D8F02E7CF5006 /* es-MX.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 38D3685A0248AB87B794A12B85B64157 /* es-MX.lproj */; };
-		3C06F432A6D333FB6A2786F403779DD3 /* IASKEmbeddedDatePickerViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 4DBA1496F35D1BA863E8703B2C689529 /* IASKEmbeddedDatePickerViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		50CF785A1DB0BEFA0AD46670900BD8AF /* IASKSpecifierValuesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E0BE05C97E3F2D3027BB7FC6AE6D69 /* IASKSpecifierValuesViewController.m */; };
-		51687062CFF963FE2F4A16AC7FC53D89 /* CoreGPX-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = FFA0DAD4892218B6E2796904E2FE868B /* CoreGPX-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		51EBA0FA2766B5069910893F950F2C62 /* DateTimeParsers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41AA5B48C3BD4FFF57BE13F8A21C7F29 /* DateTimeParsers.swift */; };
-		51FCA1BD53F65721E75F1373AE05E1C3 /* IASKTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B7C891A061AB6059FF03A9323C886A5 /* IASKTextField.m */; };
-		525F4DFFBD58FE846D6C238C52D0B53D /* InAppSettingsKit.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 325E862631E06444E4504511C87F1E9C /* InAppSettingsKit.bundle */; };
-		539A61FE3E12083EB893C183489AE066 /* IASKSettingsReader.h in Headers */ = {isa = PBXBuildFile; fileRef = F713BB5250C4DC14BA1ED012D43E0D90 /* IASKSettingsReader.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		54EFD105AA129119AEEF50DE06E54D29 /* InAppSettingsKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A2A68DB17E5AE6DA98D58567451B0F09 /* InAppSettingsKit-dummy.m */; };
-		5855F3A6278EA50A8CBBBB4F65C2FF00 /* es.lproj in Resources */ = {isa = PBXBuildFile; fileRef = B56C7C7BBD910A54DBD4821D1AD10677 /* es.lproj */; };
-		58BD477C11FAD09D21ED5A003FBB20FC /* ru.lproj in Resources */ = {isa = PBXBuildFile; fileRef = D9CD3C7F51F0F21158ADC5A856BBCB0D /* ru.lproj */; };
-		5C49E724C06AE91FEC3EDFBB1D52631C /* GPXParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648C1EB1E8DCBA08914CB2DC9611EFA1 /* GPXParser.swift */; };
+		0063F241F44E9198688CD79596657DA0 /* IASKViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 5132B944EBE2D3C996F837C1A2C80EDC /* IASKViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		01FD5C47AB6B63702616ADEB6217068C /* IASKTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = BE80A9A1F89F025AEF9BEED0F1061132 /* IASKTextField.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		05891BE013E3508A4289E1CE26D9CC50 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49FC1D574A2F3239D89F533C8D0BE07C /* Foundation.framework */; };
+		0707A81E3E55B7E437A42D893BC9B94A /* nl.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 57C73D1F2145F69D34401290136A4351 /* nl.lproj */; };
+		07BB5F72F8B1DC407E19ED11100E4A52 /* SliderTrackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06DC8ED04BFE63F52D8816F63608395 /* SliderTrackView.swift */; };
+		0A6B6EA5EA7DBA5DBBEB8A340ABDB6C4 /* ChromaColorPicker-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D02313A05C0E0A0EE5CD325295414653 /* ChromaColorPicker-dummy.m */; };
+		0AC75CAA7766EA46A38EFF35F70E0CB0 /* GPXRoutePoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A464B2114A84403A77BA070C766FE08 /* GPXRoutePoint.swift */; };
+		0EF69F5394E2E653BC03E58054B251BE /* GPXPointSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE7AA4472DF55C8E52DF0C8184F4BAB4 /* GPXPointSegment.swift */; };
+		103CA6899065D8E3F27514FDE3B95852 /* GPXExtensionsElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8249BE63CF4824FE2605F622A4C3F5 /* GPXExtensionsElement.swift */; };
+		1243FD056E942FADBBFDEC8FF041D99E /* UIView+DropShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63568EB40283FE7C4410BFF6BFF39A6 /* UIView+DropShadow.swift */; };
+		15A03ED7E300A0DCC6DAF0B4C8024033 /* IASKSettingsStoreInMemory.m in Sources */ = {isa = PBXBuildFile; fileRef = 820340336E059D22C6FF551C4CBAD421 /* IASKSettingsStoreInMemory.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		182698DCDDB0D2962A03D0B16690C0CD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9D1DCF06681788BA852BDC475398A32 /* UIKit.framework */; };
+		1903D996006B4277F75113D88A0AB64D /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 144A53FDC58FFA8FFF1B994C3E866B77 /* MessageUI.framework */; };
+		198BDDC4F9AE7FA2EE6676F1E32EDC41 /* IASKSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = E10DDF31F706FFE548B63C1C0B0C82F0 /* IASKSlider.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		19B3D7E1F0586B49B9BDF8EBAC12D077 /* IASKEmbeddedDatePickerViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 31F0314E156C6B967C153A74DCF0D909 /* IASKEmbeddedDatePickerViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1CE8D51D488720BF2F69870E52FFC988 /* es-MX.lproj in Resources */ = {isa = PBXBuildFile; fileRef = D3C200E7957DA1CA300ACEA0F4F50D52 /* es-MX.lproj */; };
+		21D173AD8D03118F8500C306885B9A47 /* Converters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A861C67568388C469F16FC086767E8 /* Converters.swift */; };
+		22E7BE62BD55ED41D9DD4970ABF383B6 /* IASKDatePickerViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B072FC07F485B98B8839BBE3760F79E7 /* IASKDatePickerViewCell.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		2334E2053513B1BF98AD4C35B1E1D8CB /* GPXRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74D8513B1772641FA9F34DC8EB8E276 /* GPXRoot.swift */; };
+		247D74D5F9D5EEED4EBEB4F2F2CC9843 /* hu.lproj in Resources */ = {isa = PBXBuildFile; fileRef = AE1B10D8780ABA33AE43D09F56CCB3B5 /* hu.lproj */; };
+		267E030A8BB798FC60097320A2D1BF47 /* UIColor+Brightness.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BC63E1C92915B27EA894D537246E15 /* UIColor+Brightness.swift */; };
+		2931315254DCC23AC8A14CE2EBD04B4A /* hr.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 7BFEB308821C12E9F6508BA092A7804E /* hr.lproj */; };
+		2E30DFE275B30BBD04814CE329526554 /* zh-Hans.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 9723167667EEBAB1D05B281B6096E839 /* zh-Hans.lproj */; };
+		2F6357C84F1269D45EA0FB721CFED24F /* IASKTextField.h in Headers */ = {isa = PBXBuildFile; fileRef = B601EDD5B85EC0C40F154FF37A6EDDF2 /* IASKTextField.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		34D3CEE2161DFC65A27172D6A418110B /* IASKTextViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 64154819B8C34F0CE8F1FEAE71703F33 /* IASKTextViewCell.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		37CDABB7A22165D4B62E1845E1BCAA0B /* IASKAppSettingsViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 00CD0847598A8025B791FBDE104201BE /* IASKAppSettingsViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3A0B461BA5370D8B134EE5BAD9131614 /* IASKMultipleValueSelection.m in Sources */ = {isa = PBXBuildFile; fileRef = E6DBCF85CA6C4E385DFB95B1E0BBA785 /* IASKMultipleValueSelection.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		3C62C5952B2D0C2F64507AA39DFCD20F /* IASKColor.h in Headers */ = {isa = PBXBuildFile; fileRef = 84D2CBEA4CEABC5A6CE9B5CA4BE0DED6 /* IASKColor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3E646D1AECC8012C098621138DB6A506 /* ja.lproj in Resources */ = {isa = PBXBuildFile; fileRef = C7E6F15D79D41988F72C39A8BC2426DE /* ja.lproj */; };
+		3EF8FE0827502787D40D0311A4B0D69A /* Pods-WunderLINQ-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 427E56F4CF2E99993434B5ACC466869E /* Pods-WunderLINQ-dummy.m */; };
+		3FA59CF624341EFEB37DD020359B4984 /* ru.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 32F48D7AF518DBF3D39E772B6B633750 /* ru.lproj */; };
+		42321201D37A9DC7F3A626412C4E9557 /* InAppSettingsKit-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 129D0C65E354C248DD51847AAF03C326 /* InAppSettingsKit-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		47BDDAD4F77A47DE1FA2D0BE32574673 /* it.lproj in Resources */ = {isa = PBXBuildFile; fileRef = B9C3292EA348F1A15FD6370B65FBE89B /* it.lproj */; };
+		49F50DC6C7080CBF9DD12E17B549422C /* IASKEmbeddedDatePickerViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE2D226EF70B5F810B5C0E1DB4D3927 /* IASKEmbeddedDatePickerViewCell.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		4C8677E09C0DC203C31AEC1310E73DA7 /* IASKSettingsReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B6C900F28D25427DDA5865369FE20A1 /* IASKSettingsReader.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		4CE4C7E6F6FE9FCCCE57A68E3811E232 /* IASKPSSliderSpecifierViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 0E77C4A6BB71168ECCC19DF864F0FA5B /* IASKPSSliderSpecifierViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4EB4DF35BF148093A48643C191091CAF /* IASKSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BAB9FCEB1D8175840FB0D14E3E31EA2 /* IASKSwitch.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		51220CDAA28D314065DE9F122142B871 /* IASKPSTextFieldSpecifierViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 3EDFE29F9C1F27AB0A174662CD9AF824 /* IASKPSTextFieldSpecifierViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5146A0EFA17ED8486DE3B44F839C42A4 /* IASKSpecifierValuesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67FC8331B992FF8CF72A916CC5113061 /* IASKSpecifierValuesViewController.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		51687062CFF963FE2F4A16AC7FC53D89 /* CoreGPX-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = D93AECDA631D3C7F9462901F06CD6398 /* CoreGPX-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		51EBA0FA2766B5069910893F950F2C62 /* DateTimeParsers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA912794B9C98FEF0CC2656E1D4F9848 /* DateTimeParsers.swift */; };
+		5316869A13520883A47888EEB389C064 /* IASKSettingsStoreInMemory.h in Headers */ = {isa = PBXBuildFile; fileRef = 20D9E0F3569F9A8B5D37569B2251201D /* IASKSettingsStoreInMemory.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		534DCB5D993AAB15FBF3C2070C7F0CFD /* IASKTextViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C02210CD3E93F854F08CC2F58A3F0C3 /* IASKTextViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		572DB7B3463784262577E9314FA355E5 /* el.lproj in Resources */ = {isa = PBXBuildFile; fileRef = E2791568E21E43BCCE6D6CFE15C58660 /* el.lproj */; };
+		582B559195B101F24B4A6A07D833027D /* Pods-WunderLINQ-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 62C8E513795A3691B5AE49498FCBEEE8 /* Pods-WunderLINQ-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5A1B2ED37A385E3E5F02152EC2DF5CD8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49FC1D574A2F3239D89F533C8D0BE07C /* Foundation.framework */; };
+		5C32DDAA442910B473741F2B78795887 /* IASKSpecifier.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A13235C749656A42867AD5EC183B689 /* IASKSpecifier.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5C49E724C06AE91FEC3EDFBB1D52631C /* GPXParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335BAAD5E840904AE581B287CFA8CBAE /* GPXParser.swift */; };
 		5C6DFC00287030B7E65AE490CB44879F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49FC1D574A2F3239D89F533C8D0BE07C /* Foundation.framework */; };
-		5E1B122229E4DE1F73B26EED14F09199 /* en.lproj in Resources */ = {isa = PBXBuildFile; fileRef = DEB0F573462E4077E8AB5968BF3FF46F /* en.lproj */; };
-		5FFB9DC0CCD59678695EEC4CB56AE47B /* zh-Hant.lproj in Resources */ = {isa = PBXBuildFile; fileRef = B0BA2006CB9DEFA796C4AC6E48F36858 /* zh-Hant.lproj */; };
-		64204C9EE25C3B1A248A81E4508C1790 /* GPXError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47D2AB3F30CF2465222E5F6FAA446FA /* GPXError.swift */; };
-		64E644A5890D441F235DE4C0405BEA10 /* GPXEmail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190CAA6A9A13F6876998F2413961D904 /* GPXEmail.swift */; };
-		69BC77F6453EB3D10DCE5FB79B601511 /* IASKSpecifierValuesViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = D50F10BAAFD244DC7525A73D9AE89CE1 /* IASKSpecifierValuesViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6B36BB24920BB1D89F64D4E57B0EB1C8 /* IASKTextField.h in Headers */ = {isa = PBXBuildFile; fileRef = 600A575CAEF646FBB46EC26CC314BBCB /* IASKTextField.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6C74A091F45A67D40E608BDE7752AECA /* GPXFix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E5768685E4B650CD779412D69B212A /* GPXFix.swift */; };
-		6C8032EEFDBCA9004280D91FBD0849FA /* IASKTextView.h in Headers */ = {isa = PBXBuildFile; fileRef = FE7968976D0FC569B5E07EC593CCA1E9 /* IASKTextView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6D9FDBC5166325F1480B2EBF35114F69 /* GPXBounds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EEB8AD844303CA8FF7B3654F9E802F7 /* GPXBounds.swift */; };
-		70BD4F620780C462AF888CADDC674E1C /* IASKPSSliderSpecifierViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = EBDA3226189A93D70F4011B1C591C5B9 /* IASKPSSliderSpecifierViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7110586A3B932B5E1C9784254AE25FEA /* IASKColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 6598DC58B96E9A3BF71AD9E08F61A36A /* IASKColor.m */; };
-		75A21E0B47EC5EFCAE091FD9ACCEF9D9 /* GPXAuthor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486DAC7DB7D2D52E1D1620EB30BF7A21 /* GPXAuthor.swift */; };
-		772F287E6B73F1AA6E44401CBD6F194F /* IASKSettingsStoreFile.h in Headers */ = {isa = PBXBuildFile; fileRef = 70117508D3D7AA4A3D7B8109198D54BD /* IASKSettingsStoreFile.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		774EB82433D77B509D25507733FA696C /* GPXTrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04525978230106D557061C28C204E97 /* GPXTrack.swift */; };
-		775A48595E5DC4C6AD1AAF5F87B4AE9E /* th.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 95B6236633A18A70917A80E49305C093 /* th.lproj */; };
-		77D5D7172C843E80D232A0787943F3C1 /* fr.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 82FDE13F6AA2985732FBC4AB671FA7C4 /* fr.lproj */; };
-		7964306BDA1A90D21E63B7112C6EE80A /* ColorWheelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8124A03FB7C8BA857520BDFBEBA645 /* ColorWheelView.swift */; };
-		79875805D1B2228CE9AEC19F90A701CE /* GPXRawElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A672FCA77A1F5BAA929EC9C835832A /* GPXRawElement.swift */; };
-		7D1D0573EEB4E669600E81F066C2FAC5 /* GPXTrackSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B094F78982EEC4D417F896AD28E436 /* GPXTrackSegment.swift */; };
-		7FB1C3C27A44C63409D2313DA96D76D2 /* IASKTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 57A581F9461D5A858ABE6590D2849821 /* IASKTextView.m */; };
-		7FD1C420FCD1672FF8A881440852B635 /* el.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 49EA764C84AFB5F8BD2E2B9A7DA6219E /* el.lproj */; };
-		809A150C62FA5600D820AADB6168FE1C /* IASKAppSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57D007F278F548E4AEEB7FD019AE2646 /* IASKAppSettingsViewController.m */; };
-		80B0FAB433E55B25F22BAE629303CE2D /* Pods-WunderLINQ-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 62C8E513795A3691B5AE49498FCBEEE8 /* Pods-WunderLINQ-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		82C1FC507A64DA12AAB836D330294BC2 /* GPXCopyright.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8DD22DF79885BBEE58D69A54C53164 /* GPXCopyright.swift */; };
-		89A078FFE58D143CC8B50140CBA390BC /* GPXWaypoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08375098688981D30362D12361C71215 /* GPXWaypoint.swift */; };
-		8CDF21E0C5CA6B5E70761895515E9ECC /* GPXElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F7EF7F99B59A7575DF5EA9F7EEBE87 /* GPXElement.swift */; };
-		8EFA25BC525F066BA191843220C2F76E /* GPXLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E36B0C6ABB4B2B13C0D6B6E4A9C5CC7 /* GPXLink.swift */; };
-		8F08F32CC11B98BA49BFA96790E3AF99 /* sv.lproj in Resources */ = {isa = PBXBuildFile; fileRef = B840752D9190C5C5EF3B81406F2CF548 /* sv.lproj */; };
-		93B6BD7CEE2BEA293209A43A575778A8 /* GPXMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C16A43488013517E1618FE71DDDA901 /* GPXMetadata.swift */; };
-		93F306B0572F7A0E5DD14B8F8B871946 /* IASKAppSettingsWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D89526A107712A7126398A712C74965 /* IASKAppSettingsWebViewController.m */; };
-		95D33D1BB086B6DB388FC119F62284D1 /* UIView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD0B321ED2DD12CD8632CC30DDDD7C3 /* UIView+Utils.swift */; };
-		97AC41C0F1132445CAFB45BEE6ED2A6C /* uk.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 1DE39995E8EBF498DDBFD05C760B6EDB /* uk.lproj */; };
-		97BE0C2E56447B9B7F28D06054657293 /* it.lproj in Resources */ = {isa = PBXBuildFile; fileRef = FB22956F6AC5C5BB8CA4411AAA3817CC /* it.lproj */; };
-		9D0D27051CCBD1F04E9156F71B45B505 /* IASKSettingsReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F66DAF510F5B659B6680A44C511C912 /* IASKSettingsReader.m */; };
-		A662C1D00E941D28646106B843E9DB2E /* IASKPSSliderSpecifierViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D03D722044F344CBF9FAA3E728FB5B7 /* IASKPSSliderSpecifierViewCell.m */; };
-		A8C40DD1BEC15AD8171C080A0EC8150B /* nl.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 24E51B9962C2EC939FE84411CD132DF7 /* nl.lproj */; };
-		A91F60039195B79035E7477EE2748C9F /* IASKTextViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = DF8FF08C6BB6F4AB957E829A3BBF9CC0 /* IASKTextViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A92446EBE805179A5A7F159FED012BB9 /* IASKViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FDA3C650ABCCFEE52B9814A1257EB00 /* IASKViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A9A46BFA5ED52E83F02F2A7A163DEBF4 /* de.lproj in Resources */ = {isa = PBXBuildFile; fileRef = D49DA4A012EE58D5BF86E6945BB1E093 /* de.lproj */; };
-		AB265B6CFC55BDE1EA364C4E24F2211E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9D1DCF06681788BA852BDC475398A32 /* UIKit.framework */; };
-		ACEBCB8AC08F46015B90751FC34D3C34 /* pl.lproj in Resources */ = {isa = PBXBuildFile; fileRef = E4EEC0528E4CFA1B3584C2B48C16727C /* pl.lproj */; };
-		AEDD2CF3399EE0D0F6FF722BF150BDCB /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 144A53FDC58FFA8FFF1B994C3E866B77 /* MessageUI.framework */; };
-		AFFD51829244034E585136FF82702C32 /* IASKSpecifier.h in Headers */ = {isa = PBXBuildFile; fileRef = A661A034C224452931FA125EBED0BBC5 /* IASKSpecifier.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B03FF4607CB1E0791BBEC04A3340848D /* IASKAppSettingsWebViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C17C74CED92BE2773B5FDF0248403FE /* IASKAppSettingsWebViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B1CCEC70D55204C7F3829F3C28C91A42 /* ChromaColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10892F1C33D9559E9ADFBC4ED9B9D137 /* ChromaColorPicker.swift */; };
-		B45DAB82217CFBDB31A82C0B06B92CDE /* IASKAppSettingsViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 1C3730C274288FB60B07F4F30EE90249 /* IASKAppSettingsViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B6E077981B54BAA241130686BE6BAB30 /* IASKSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C91C90262A6A8120D9287BB0A1627C3 /* IASKSwitch.m */; };
-		B720988FFC14CF97F3AF7F3CD2751203 /* IASKDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 716605907D9558BD60106CC278E48142 /* IASKDatePicker.m */; };
-		C34E074BC227F8CC4733F0FC81A9874E /* IASKDatePickerViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 36ABCF3D111919E3B5F06CCAA42A030F /* IASKDatePickerViewCell.m */; };
-		C39AD3C8D7E43EE2C4EFBA3387353A10 /* ChromaBrightnessSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB693E65D816DD76D5C17057EDA048E /* ChromaBrightnessSlider.swift */; };
-		C88529FED472213F278007BBE000FE4D /* hr.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 48C05E539C4BBCFC149A408BFA23D8DF /* hr.lproj */; };
-		C9C4EB3E25AE6BA226C10BD4CC5D9151 /* IASKDatePicker.h in Headers */ = {isa = PBXBuildFile; fileRef = 4BB5EFEBA9301184C014D527D3EB3D85 /* IASKDatePicker.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C9E99DC5DB43C36CB311FE0045646519 /* CoreGPX-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B08648CC53A31CB846B12C9615D13C61 /* CoreGPX-dummy.m */; };
-		CB2A978B571DEF808CCCEA651E34B3DF /* ChromaColorPicker-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 4779E85723F830CB9E3433DB1C078371 /* ChromaColorPicker-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		CB5D442E6F4B5CB481FEC37D553E851F /* UIColor+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9FB31B33BA4F911D3822836AFFACE02 /* UIColor+Utils.swift */; };
-		CD064B8CE099E863A27445A9E2AE7474 /* GPXExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BCB70FEB7E0498A407FB2A50E5E926D /* GPXExtensions.swift */; };
-		D00EAD8E5AFF357DBCF89928D1EF8400 /* GPXTrackPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118C869825B744374D16020C06CCFFDA /* GPXTrackPoint.swift */; };
+		624951CB0506527053DBED5122AA75A4 /* IASKDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7BE031E2AB1BADC7351E07DBDB0DD2 /* IASKDatePicker.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		64204C9EE25C3B1A248A81E4508C1790 /* GPXError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8B42C7D14ACC14B3F3D83F213A0215 /* GPXError.swift */; };
+		64E644A5890D441F235DE4C0405BEA10 /* GPXEmail.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA246073D11B0D3E1493A40C3EFE7F69 /* GPXEmail.swift */; };
+		653C9D4B56DCECCB0BA86179E6F2EA77 /* Base.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 8C3CE4231478BFFF91E905268C3A81A9 /* Base.lproj */; };
+		65AFAD0E763098F45BF8099F41B78356 /* IASKSpecifier.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D2ABAEC4248C1C777753C90FA5EE1B /* IASKSpecifier.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		6C74A091F45A67D40E608BDE7752AECA /* GPXFix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F20B517649088D4134BB857D07E85BD /* GPXFix.swift */; };
+		6D9FDBC5166325F1480B2EBF35114F69 /* GPXBounds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4144711DA2EEC0602CC02BE3DA6D96F0 /* GPXBounds.swift */; };
+		71080C2D06295A23F8DAD5F3829AF6CA /* IASKSwitch.h in Headers */ = {isa = PBXBuildFile; fileRef = 8C52F3A1E187223B455343DE5FC6B45C /* IASKSwitch.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7259A49FA702584B7984E07010D4AC11 /* sv.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 7A0E0A0498FA12FE51BD1C8F81D215A6 /* sv.lproj */; };
+		74A27EE7F5F9615F4BB494C3BFEE5214 /* ca.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 9FE09871506219D9C635339973E243E6 /* ca.lproj */; };
+		75A21E0B47EC5EFCAE091FD9ACCEF9D9 /* GPXAuthor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A82C19405ED5C4D63B9E183BA282489 /* GPXAuthor.swift */; };
+		774EB82433D77B509D25507733FA696C /* GPXTrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3743F50E0AF57D60B250C4D4481C9763 /* GPXTrack.swift */; };
+		7964306BDA1A90D21E63B7112C6EE80A /* ColorWheelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECAF3AB229E490B0F3D827E11CC37406 /* ColorWheelView.swift */; };
+		79875805D1B2228CE9AEC19F90A701CE /* GPXRawElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6983DA580181904345689E153B9295 /* GPXRawElement.swift */; };
+		7B38B97B7ADAE1D1D592D01613CCACF5 /* nb.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 85BB1DB393AF021540BA46D753C2E605 /* nb.lproj */; };
+		7D1D0573EEB4E669600E81F066C2FAC5 /* GPXTrackSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0AA6ED5BA7C988CE547CDB2FD32024 /* GPXTrackSegment.swift */; };
+		82C1FC507A64DA12AAB836D330294BC2 /* GPXCopyright.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A384C9E24EEBC45AF667A914A8A066 /* GPXCopyright.swift */; };
+		8629F275B8429968C720BAEAB2493508 /* IASKAppSettingsWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1E969E01C5A056B8EC59635B40C8964 /* IASKAppSettingsWebViewController.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		871A6BAAEE308CA55EC4EF93F1B6D810 /* IASKSettingsStore.h in Headers */ = {isa = PBXBuildFile; fileRef = E0D9B0DDC1608018B821AF8B931D3C05 /* IASKSettingsStore.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		890DB428B1D0BADED3DEA9055397F5BD /* IASKMultipleValueSelection.h in Headers */ = {isa = PBXBuildFile; fileRef = FB593E9CB4338D6AACEF8D25D2C02BE4 /* IASKMultipleValueSelection.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		89A078FFE58D143CC8B50140CBA390BC /* GPXWaypoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9365027931888BC45801313A818848 /* GPXWaypoint.swift */; };
+		8A513BDCC46C08F82F6E9D5F165030B3 /* tr.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 2757F18E95C791B7028772C102E19734 /* tr.lproj */; };
+		8B14F63A3ECFDC56B5369CED0948AB01 /* IASKPSTextFieldSpecifierViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FDE0C5628E177D79133596C40A50CFBD /* IASKPSTextFieldSpecifierViewCell.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		8CDF21E0C5CA6B5E70761895515E9ECC /* GPXElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA02F0D5B7F5EA2EB47B0A689A55ABFB /* GPXElement.swift */; };
+		8EC951E549CF0C1F9C7DBAB16BD73989 /* IASKAppSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01B67AB8F06AAD75F890808177D5FED4 /* IASKAppSettingsViewController.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		8EFA25BC525F066BA191843220C2F76E /* GPXLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3423315BDA192BEEA4918C71218CE77 /* GPXLink.swift */; };
+		93B6BD7CEE2BEA293209A43A575778A8 /* GPXMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743ECF1374663D5534BDECC04A4FEAE6 /* GPXMetadata.swift */; };
+		95D33D1BB086B6DB388FC119F62284D1 /* UIView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BEAB9E46863B34D3BD3DE889675F0C /* UIView+Utils.swift */; };
+		9739D278025AAE84D6A7510E6286C862 /* IASKTextView.h in Headers */ = {isa = PBXBuildFile; fileRef = 0E03690D65B9E5470B578E160DF7B133 /* IASKTextView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9896F69C26057CDFBC4BDA3C0928ED57 /* fr.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 80E4810221EE1DF8DA307DAB4C3CCC93 /* fr.lproj */; };
+		9E8B88F2B4DC18D3EF85415A1203766F /* zh-Hant.lproj in Resources */ = {isa = PBXBuildFile; fileRef = C49FC2734688FB6B13704B313A34C873 /* zh-Hant.lproj */; };
+		9E969F230A764492EF8976F62AA35CD8 /* pt.lproj in Resources */ = {isa = PBXBuildFile; fileRef = E42803EE3EC79E286624E50CC9E624D0 /* pt.lproj */; };
+		A0EC5F162029BAE14A6EB171568D0E27 /* IASKSettingsStoreUserDefaults.h in Headers */ = {isa = PBXBuildFile; fileRef = AEC1E736197AD7E8701DBEE3AA880459 /* IASKSettingsStoreUserDefaults.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A2B9A497C86513317F5093485245650B /* InAppSettingsKit.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 325E862631E06444E4504511C87F1E9C /* InAppSettingsKit.bundle */; };
+		A3F0D18FB975549B2ADBE15CD6CAD00E /* IASKSettingsStoreUserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = FF983E4D840F81AC985B72E75D7B841C /* IASKSettingsStoreUserDefaults.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		AA187E3835934AF0AD0330EDBF46BEA5 /* IASKSettingsStoreFile.m in Sources */ = {isa = PBXBuildFile; fileRef = EEC589FCF1E3249DE6548D4F33DFA5B4 /* IASKSettingsStoreFile.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		AFDD7B3A492D975C7523425B05978834 /* es-419.lproj in Resources */ = {isa = PBXBuildFile; fileRef = F3EC36C5D3ED6BED4EC0EBD8F5EB0A39 /* es-419.lproj */; };
+		B1CCEC70D55204C7F3829F3C28C91A42 /* ChromaColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56296BC09450325FF1761E71A72CA364 /* ChromaColorPicker.swift */; };
+		B2B3C8783D90A845544060EF9243DEC4 /* UIMultiPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32326E88F501CEDA4C8FB321C73171A4 /* UIMultiPicker.swift */; };
+		B55A8045B2E827F69F888818D5DD343A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49FC1D574A2F3239D89F533C8D0BE07C /* Foundation.framework */; };
+		B61860F0438966A5B5D1F10A78131D5B /* IASKDatePickerViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 5EF398283201DEF26206DD26F1995282 /* IASKDatePickerViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B7B1D79BE2004CCF8608E49C5035B40D /* IASKSettingsStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AA77B71D5672D49B0E5432773CF0769 /* IASKSettingsStore.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		BCF7FBD9151F52F357EADE0C7031CE90 /* pl.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 891D97B075F22168406804A430B2598B /* pl.lproj */; };
+		C0C3D0672BBA8449AAB18D0F8A0AB6F5 /* IASKAppSettingsWebViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = A1C9A1F830E1E7C594FF23FEB8AC4F3A /* IASKAppSettingsWebViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C39AD3C8D7E43EE2C4EFBA3387353A10 /* ChromaBrightnessSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BF9E75B123D15CC9F12E192768A35B /* ChromaBrightnessSlider.swift */; };
+		C7E18172417A6D080939FBECE81B00B4 /* IASKDatePicker.h in Headers */ = {isa = PBXBuildFile; fileRef = CF846EBBFDE2DE8261B7B18FE90A0B16 /* IASKDatePicker.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C7E7BC1221F3795A798A8AB0DA5F2227 /* IASKSettingsReader.h in Headers */ = {isa = PBXBuildFile; fileRef = FF0F265B59EC38468483918B66340247 /* IASKSettingsReader.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C926CD1EC1D8062EF1A692927E524CFC /* IASKColor.m in Sources */ = {isa = PBXBuildFile; fileRef = DB22AF9C4D5F459F4998CB76BE109AA8 /* IASKColor.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		C9E99DC5DB43C36CB311FE0045646519 /* CoreGPX-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5230ED3C97BBDDE2AA1437E2520CC654 /* CoreGPX-dummy.m */; };
+		CB2A978B571DEF808CCCEA651E34B3DF /* ChromaColorPicker-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 95F15F7C781E599BEF56CA59D9B98AF1 /* ChromaColorPicker-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CB5D442E6F4B5CB481FEC37D553E851F /* UIColor+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C97E775E5F351C3840EB98F3E7275F9 /* UIColor+Utils.swift */; };
+		CC4EC6E7F04ACED382AD46DEBFD6F65E /* th.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 8EC7E4EE272F62CBE628778177A507AD /* th.lproj */; };
+		CD064B8CE099E863A27445A9E2AE7474 /* GPXExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E8D8F42C8B86556848BFD4E167E13F /* GPXExtensions.swift */; };
+		CE195F6A87C8FEC79F2093C3C6163BF6 /* uk.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 6918AB2E464C95A5B3521C710315DB26 /* uk.lproj */; };
+		D00EAD8E5AFF357DBCF89928D1EF8400 /* GPXTrackPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7CB3AB73A8A5EBE59136C154FBE766 /* GPXTrackPoint.swift */; };
 		D05B1BBD79717E34B4925E845D030C44 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49FC1D574A2F3239D89F533C8D0BE07C /* Foundation.framework */; };
-		D121BF49CB0B07A4B3DE8979BED374F9 /* IASKSettingsStoreUserDefaults.h in Headers */ = {isa = PBXBuildFile; fileRef = 9143F0AAB9281FE622B686C6B1D1E234 /* IASKSettingsStoreUserDefaults.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D17820D5B9F95688C640CF6C7BE0B7C7 /* GPXCompression.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB166DAC0E33FA2EDA2C8D3CE28D6AE2 /* GPXCompression.swift */; };
-		D6A714A6E5B086EBEC8805CC80B52A44 /* ca.lproj in Resources */ = {isa = PBXBuildFile; fileRef = AC6ED54D731406F62976B0216A873EF7 /* ca.lproj */; };
-		D718C017CC908073E736275CCAAB35C2 /* GPXPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8520BACD7D2829B203C97CF64B338F /* GPXPoint.swift */; };
-		D9EDD85780D3EEF8BFA61EB5D5396489 /* GPXPerson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FED07C0DA2BA165232316255606364 /* GPXPerson.swift */; };
-		DEBA81DEB0423C226F4C3E1B3CDD520E /* ChromaColorHandle.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE80548799260F280C8C66AB6CA0FB2D /* ChromaColorHandle.swift */; };
-		DF061DE17219E2E6C3B432F8F761D0E3 /* hu.lproj in Resources */ = {isa = PBXBuildFile; fileRef = B247A7FA6B0F7677F27135B38A31B223 /* hu.lproj */; };
-		E044A5663506E9504ECB71D87653FDF3 /* IASKSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 140C7CFDF68D50AD95D21E6E1DF16461 /* IASKSlider.m */; };
-		E3D22C11507BB4F06478B05BDDFFBECC /* ChromaControlStylable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0954A8F6E73048C0E1622468D12CCE /* ChromaControlStylable.swift */; };
-		E578099B1DD29D3288824C93F25453DB /* ja.lproj in Resources */ = {isa = PBXBuildFile; fileRef = FF9C70583C070838AC56EF55BE14554A /* ja.lproj */; };
-		E6231FDD5DACC1A38775AB693B97C3A1 /* SliderHandleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC8D68B7B1EE80A6AB2052CAB5EF22E /* SliderHandleView.swift */; };
-		E6FE54C804800460FA951EC95FE2E4F2 /* IASKSettingsStoreUserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = 5195535F31E37E0E05FA197B33375EE3 /* IASKSettingsStoreUserDefaults.m */; };
-		E742F841A203D0E95635E60821F8CE68 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49FC1D574A2F3239D89F533C8D0BE07C /* Foundation.framework */; };
-		E8DF12A19E571B0616165C7759598FFF /* IASKSwitch.h in Headers */ = {isa = PBXBuildFile; fileRef = B1549AEBB53D47390FF662A5FC53EE83 /* IASKSwitch.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E9C956B07238358FE6ACBFA57C0D42B9 /* GPXRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB2382A6A5F45F0D56684245B53C5C2 /* GPXRoute.swift */; };
-		EE098BBFFBE7464F9A68D241F426FEC5 /* NSMutableString+XML.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451DB1DCEF8EB100349B62DC8C82432E /* NSMutableString+XML.swift */; };
-		EE40D15C02CBC3E7123F751963883088 /* IASKSettingsStoreFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 228AC6940A9451170E23A60616DF61E6 /* IASKSettingsStoreFile.m */; };
-		EFF9DC9377B0D4B5D85E8F4474DD1790 /* IASKSettingsStore.m in Sources */ = {isa = PBXBuildFile; fileRef = BB3F99CB8656D0A56D8DF54573174DEE /* IASKSettingsStore.m */; };
-		F370006C4E0E44EAE8AA0A80E37BCCFA /* IASKTextViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1620AE3DC05AC86C0F3A5F3345084392 /* IASKTextViewCell.m */; };
-		F70F72592091F0946CCBBE883933ED4D /* zh-Hans.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 8E4F266B549F5178921C958B82D1FB89 /* zh-Hans.lproj */; };
-		F7291EA086FA2A9B83323B9A00581B57 /* es-419.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 416D7ADDA090559C5675A94FFBA0FA8E /* es-419.lproj */; };
-		F89E43DD21A2825E2B5A25228E86CC85 /* IASKSettingsStore.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DF06BE018E76AFED3B38080387D8C28 /* IASKSettingsStore.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FBFDB6378E189A93C03B2C6ED011D8B5 /* IASKEmbeddedDatePickerViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 653AC7692F0C479DFB641BF61F88BD1B /* IASKEmbeddedDatePickerViewCell.m */; };
+		D17820D5B9F95688C640CF6C7BE0B7C7 /* GPXCompression.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3009C7289FE3CB404BB6DFDC64737142 /* GPXCompression.swift */; };
+		D2068FAD8CE9A5D1C6431670B21E91F5 /* IASKSettingsStoreFile.h in Headers */ = {isa = PBXBuildFile; fileRef = A5053BCDA1310C96BDD2BD1CF1ABB31C /* IASKSettingsStoreFile.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D718C017CC908073E736275CCAAB35C2 /* GPXPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 677C418A075CDE580542B05235045469 /* GPXPoint.swift */; };
+		D9EDD85780D3EEF8BFA61EB5D5396489 /* GPXPerson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C60F1E438AF539BFBB94B30C213209C /* GPXPerson.swift */; };
+		DEBA81DEB0423C226F4C3E1B3CDD520E /* ChromaColorHandle.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACFF1FEEDC8D5EF5577DCE3F558DEC6 /* ChromaColorHandle.swift */; };
+		E378347AF31DBE13631763B3097FDE5D /* de.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 8DF64CEEA431669E99D31468494426C5 /* de.lproj */; };
+		E3D22C11507BB4F06478B05BDDFFBECC /* ChromaControlStylable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E2B805E4438CEEF3EA15006366F6F8 /* ChromaControlStylable.swift */; };
+		E6231FDD5DACC1A38775AB693B97C3A1 /* SliderHandleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36FF30EA0A5FAFEA08AC5E4E4C3577F /* SliderHandleView.swift */; };
+		E86A92BC291C25E0B1FF8F6E147B9E5D /* InAppSettingsKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F25BF7A739A0DE0842E41BA043799FA5 /* InAppSettingsKit-dummy.m */; };
+		E8F3C15AFB502265C8367AF0E3276D17 /* IASKSpecifierValuesViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 65ADD78528D1D03CA81CD618C473772D /* IASKSpecifierValuesViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E9C956B07238358FE6ACBFA57C0D42B9 /* GPXRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044734068D067EC63DC5A55738A5C3AA /* GPXRoute.swift */; };
+		ECAD20A88EF4DE866238E227204186E1 /* IASKPSSliderSpecifierViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6213CBAB7B1786EA54990DC918E3E83E /* IASKPSSliderSpecifierViewCell.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		EE098BBFFBE7464F9A68D241F426FEC5 /* NSMutableString+XML.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9244EAD8BFBEA46791624C36BC3F9BA7 /* NSMutableString+XML.swift */; };
+		F19A3D22D8F48EFD802406D519BC2317 /* IASKTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 007C182B6B138080E187646032BA2B07 /* IASKTextView.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		F1E00430EB33CB501101027657F3388A /* es.lproj in Resources */ = {isa = PBXBuildFile; fileRef = FD780D04B6E38BEA229444A9048F6B8D /* es.lproj */; };
+		F4D29537B46899C73238287C8E96FA0E /* UIMultiPicker-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F887E65A402E728D123CEECF7C839DA2 /* UIMultiPicker-dummy.m */; };
+		F517FE648BBBE277C547B6FB42638C39 /* pt-PT.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 4D939BFEAA886E168CD0892849AE90B9 /* pt-PT.lproj */; };
+		F697DB03BB5992CE11B955902F4D6965 /* UIMultiPicker-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 97A86FF2AE82D32748EC58EDAB455D15 /* UIMultiPicker-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FCC056081697C104E7E78F257BE72187 /* en.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 70406A8782EF9B0EDF5AAC3CFF82665B /* en.lproj */; };
+		FD5E8855F296D55F00CBEF0962EF4609 /* IASKSlider.h in Headers */ = {isa = PBXBuildFile; fileRef = 421CB8400CD25B503F56B62BB27A9D5A /* IASKSlider.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		08DE627D7E44AE37FA0E383B845CA161 /* PBXContainerItemProxy */ = {
+		66529DCD9F4682D1D990337F08A31075 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 5B4848122435F4C22D574A5DA6D2EFB3;
-			remoteInfo = InAppSettingsKit;
+			remoteGlobalIDString = C29B8E66676DEE2FC332C8BE854A34BA;
+			remoteInfo = UIMultiPicker;
 		};
-		548007164DB93815B51A750AA0703313 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 7961A0F04FB3D96E3E703CF075D6DACD;
-			remoteInfo = ChromaColorPicker;
-		};
-		76683C65D4BCFE4C77BA473D1323A11B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 493735E92C5B6068F445B48D0CA7B736;
-			remoteInfo = CoreGPX;
-		};
-		B4E5D1CBD8924033792D473E32CB8E71 /* PBXContainerItemProxy */ = {
+		6BC7566B2E3CFD54298D1AB6BDE05E3B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 8A996938DFC560C0A3EF0DD6CA6B032A;
 			remoteInfo = "InAppSettingsKit-InAppSettingsKit";
 		};
+		83BBBFB0D0391EA6BAE0C865B123EE9E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7961A0F04FB3D96E3E703CF075D6DACD;
+			remoteInfo = ChromaColorPicker;
+		};
+		86C582D1BEDFF936E27C79B9620C255B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5B4848122435F4C22D574A5DA6D2EFB3;
+			remoteInfo = InAppSettingsKit;
+		};
+		B671B5BC8F67152162B88E010BD8E5A2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 493735E92C5B6068F445B48D0CA7B736;
+			remoteInfo = CoreGPX;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		04A9D2886CA121442F574F4CC9E961D2 /* GPXRoutePoint.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GPXRoutePoint.swift; path = Classes/GPXRoutePoint.swift; sourceTree = "<group>"; };
-		08375098688981D30362D12361C71215 /* GPXWaypoint.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GPXWaypoint.swift; path = Classes/GPXWaypoint.swift; sourceTree = "<group>"; };
-		0AB693E65D816DD76D5C17057EDA048E /* ChromaBrightnessSlider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ChromaBrightnessSlider.swift; path = Source/ChromaBrightnessSlider.swift; sourceTree = "<group>"; };
-		0ACC741F91328726F0CCB79FE89F9B1D /* IASKPSTextFieldSpecifierViewCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IASKPSTextFieldSpecifierViewCell.h; path = InAppSettingsKit/Views/IASKPSTextFieldSpecifierViewCell.h; sourceTree = "<group>"; };
-		0E8124A03FB7C8BA857520BDFBEBA645 /* ColorWheelView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ColorWheelView.swift; path = Source/ColorWheelView.swift; sourceTree = "<group>"; };
-		10892F1C33D9559E9ADFBC4ED9B9D137 /* ChromaColorPicker.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ChromaColorPicker.swift; path = Source/ChromaColorPicker.swift; sourceTree = "<group>"; };
-		118C869825B744374D16020C06CCFFDA /* GPXTrackPoint.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GPXTrackPoint.swift; path = Classes/GPXTrackPoint.swift; sourceTree = "<group>"; };
-		140C7CFDF68D50AD95D21E6E1DF16461 /* IASKSlider.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IASKSlider.m; path = InAppSettingsKit/Views/IASKSlider.m; sourceTree = "<group>"; };
+		007C182B6B138080E187646032BA2B07 /* IASKTextView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IASKTextView.m; path = InAppSettingsKit/Views/IASKTextView.m; sourceTree = "<group>"; };
+		00CD0847598A8025B791FBDE104201BE /* IASKAppSettingsViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IASKAppSettingsViewController.h; path = InAppSettingsKit/Controllers/IASKAppSettingsViewController.h; sourceTree = "<group>"; };
+		01B67AB8F06AAD75F890808177D5FED4 /* IASKAppSettingsViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IASKAppSettingsViewController.m; path = InAppSettingsKit/Controllers/IASKAppSettingsViewController.m; sourceTree = "<group>"; };
+		044734068D067EC63DC5A55738A5C3AA /* GPXRoute.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GPXRoute.swift; path = Classes/GPXRoute.swift; sourceTree = "<group>"; };
+		0BAB9FCEB1D8175840FB0D14E3E31EA2 /* IASKSwitch.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IASKSwitch.m; path = InAppSettingsKit/Views/IASKSwitch.m; sourceTree = "<group>"; };
+		0E03690D65B9E5470B578E160DF7B133 /* IASKTextView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IASKTextView.h; path = InAppSettingsKit/Views/IASKTextView.h; sourceTree = "<group>"; };
+		0E77C4A6BB71168ECCC19DF864F0FA5B /* IASKPSSliderSpecifierViewCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IASKPSSliderSpecifierViewCell.h; path = InAppSettingsKit/Views/IASKPSSliderSpecifierViewCell.h; sourceTree = "<group>"; };
+		0E8B42C7D14ACC14B3F3D83F213A0215 /* GPXError.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GPXError.swift; path = Classes/GPXError.swift; sourceTree = "<group>"; };
+		129D0C65E354C248DD51847AAF03C326 /* InAppSettingsKit-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "InAppSettingsKit-umbrella.h"; sourceTree = "<group>"; };
+		13BF9E75B123D15CC9F12E192768A35B /* ChromaBrightnessSlider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ChromaBrightnessSlider.swift; path = Source/ChromaBrightnessSlider.swift; sourceTree = "<group>"; };
 		144A53FDC58FFA8FFF1B994C3E866B77 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/MessageUI.framework; sourceTree = DEVELOPER_DIR; };
 		155774EF7639BBFA9D7197EB5222CBF9 /* Pods-WunderLINQ-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-WunderLINQ-frameworks.sh"; sourceTree = "<group>"; };
-		15E5903EB5DF83B6667F97D3536BC6D4 /* IASKMultipleValueSelection.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IASKMultipleValueSelection.h; path = InAppSettingsKit/Controllers/IASKMultipleValueSelection.h; sourceTree = "<group>"; };
-		1620AE3DC05AC86C0F3A5F3345084392 /* IASKTextViewCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IASKTextViewCell.m; path = InAppSettingsKit/Views/IASKTextViewCell.m; sourceTree = "<group>"; };
-		16E5768685E4B650CD779412D69B212A /* GPXFix.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GPXFix.swift; path = Classes/GPXFix.swift; sourceTree = "<group>"; };
-		18E0BE05C97E3F2D3027BB7FC6AE6D69 /* IASKSpecifierValuesViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IASKSpecifierValuesViewController.m; path = InAppSettingsKit/Controllers/IASKSpecifierValuesViewController.m; sourceTree = "<group>"; };
-		190CAA6A9A13F6876998F2413961D904 /* GPXEmail.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GPXEmail.swift; path = Classes/GPXEmail.swift; sourceTree = "<group>"; };
-		1C3730C274288FB60B07F4F30EE90249 /* IASKAppSettingsViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IASKAppSettingsViewController.h; path = InAppSettingsKit/Controllers/IASKAppSettingsViewController.h; sourceTree = "<group>"; };
-		1DE39995E8EBF498DDBFD05C760B6EDB /* uk.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = uk.lproj; path = InAppSettingsKit/Resources/uk.lproj; sourceTree = "<group>"; };
-		1F8520BACD7D2829B203C97CF64B338F /* GPXPoint.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GPXPoint.swift; path = Classes/GPXPoint.swift; sourceTree = "<group>"; };
-		228AC6940A9451170E23A60616DF61E6 /* IASKSettingsStoreFile.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IASKSettingsStoreFile.m; path = InAppSettingsKit/Models/IASKSettingsStoreFile.m; sourceTree = "<group>"; };
-		24B5DDE50393AE3FA62E68CA7B4E69EF /* UIView+DropShadow.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIView+DropShadow.swift"; path = "Source/Extensions/UIView+DropShadow.swift"; sourceTree = "<group>"; };
-		24E51B9962C2EC939FE84411CD132DF7 /* nl.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = nl.lproj; path = InAppSettingsKit/Resources/nl.lproj; sourceTree = "<group>"; };
-		256F25DA58D2E2DD9005FC3132F5C754 /* InAppSettingsKit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = InAppSettingsKit.modulemap; sourceTree = "<group>"; };
-		25FEBABB92166D9E780842E899269D74 /* InAppSettingsKit-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "InAppSettingsKit-umbrella.h"; sourceTree = "<group>"; };
-		275BDAB28B3AF54A928476F03C9EA706 /* ChromaColorPicker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ChromaColorPicker.debug.xcconfig; sourceTree = "<group>"; };
-		28F257213522E2160F78AEFD94BB9EB7 /* IASKSpecifier.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IASKSpecifier.m; path = InAppSettingsKit/Models/IASKSpecifier.m; sourceTree = "<group>"; };
-		2BCB70FEB7E0498A407FB2A50E5E926D /* GPXExtensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GPXExtensions.swift; path = Classes/GPXExtensions.swift; sourceTree = "<group>"; };
+		1B6C900F28D25427DDA5865369FE20A1 /* IASKSettingsReader.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IASKSettingsReader.m; path = InAppSettingsKit/Models/IASKSettingsReader.m; sourceTree = "<group>"; };
+		1C60F1E438AF539BFBB94B30C213209C /* GPXPerson.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GPXPerson.swift; path = Classes/GPXPerson.swift; sourceTree = "<group>"; };
+		20312343CD8EFF23A8C5027A465A3616 /* CoreGPX-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CoreGPX-prefix.pch"; sourceTree = "<group>"; };
+		20D9E0F3569F9A8B5D37569B2251201D /* IASKSettingsStoreInMemory.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IASKSettingsStoreInMemory.h; path = InAppSettingsKit/Models/IASKSettingsStoreInMemory.h; sourceTree = "<group>"; };
+		2757F18E95C791B7028772C102E19734 /* tr.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = tr.lproj; path = InAppSettingsKit/Resources/tr.lproj; sourceTree = "<group>"; };
 		2BF9472E73161208EAA0E2625C652868 /* Pods-WunderLINQ-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-WunderLINQ-Info.plist"; sourceTree = "<group>"; };
+		3009C7289FE3CB404BB6DFDC64737142 /* GPXCompression.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GPXCompression.swift; path = Classes/GPXCompression.swift; sourceTree = "<group>"; };
+		31F0314E156C6B967C153A74DCF0D909 /* IASKEmbeddedDatePickerViewCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IASKEmbeddedDatePickerViewCell.h; path = InAppSettingsKit/Views/IASKEmbeddedDatePickerViewCell.h; sourceTree = "<group>"; };
+		32326E88F501CEDA4C8FB321C73171A4 /* UIMultiPicker.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UIMultiPicker.swift; path = Classes/UIMultiPicker.swift; sourceTree = "<group>"; };
 		325E862631E06444E4504511C87F1E9C /* InAppSettingsKit.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = InAppSettingsKit.bundle; path = "InAppSettingsKit-InAppSettingsKit.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
-		36ABCF3D111919E3B5F06CCAA42A030F /* IASKDatePickerViewCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IASKDatePickerViewCell.m; path = InAppSettingsKit/Views/IASKDatePickerViewCell.m; sourceTree = "<group>"; };
-		38D3685A0248AB87B794A12B85B64157 /* es-MX.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = "es-MX.lproj"; path = "InAppSettingsKit/Resources/es-MX.lproj"; sourceTree = "<group>"; };
-		3B8DD22DF79885BBEE58D69A54C53164 /* GPXCopyright.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GPXCopyright.swift; path = Classes/GPXCopyright.swift; sourceTree = "<group>"; };
-		3C16A43488013517E1618FE71DDDA901 /* GPXMetadata.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GPXMetadata.swift; path = Classes/GPXMetadata.swift; sourceTree = "<group>"; };
-		3C51A94D585947A098D9FE3FCC1B73E1 /* SliderTrackView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SliderTrackView.swift; path = "Source/Supporting Views/SliderTrackView.swift"; sourceTree = "<group>"; };
-		3D89526A107712A7126398A712C74965 /* IASKAppSettingsWebViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IASKAppSettingsWebViewController.m; path = InAppSettingsKit/Controllers/IASKAppSettingsWebViewController.m; sourceTree = "<group>"; };
-		3ED9DD2A2891B916B3F2B3FDEE7BD47A /* Converters.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Converters.swift; path = Classes/Converters.swift; sourceTree = "<group>"; };
-		3EEB8AD844303CA8FF7B3654F9E802F7 /* GPXBounds.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GPXBounds.swift; path = Classes/GPXBounds.swift; sourceTree = "<group>"; };
-		416D7ADDA090559C5675A94FFBA0FA8E /* es-419.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = "es-419.lproj"; path = "InAppSettingsKit/Resources/es-419.lproj"; sourceTree = "<group>"; };
-		41AA5B48C3BD4FFF57BE13F8A21C7F29 /* DateTimeParsers.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DateTimeParsers.swift; path = Classes/DateTimeParsers.swift; sourceTree = "<group>"; };
+		32F48D7AF518DBF3D39E772B6B633750 /* ru.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = ru.lproj; path = InAppSettingsKit/Resources/ru.lproj; sourceTree = "<group>"; };
+		335BAAD5E840904AE581B287CFA8CBAE /* GPXParser.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GPXParser.swift; path = Classes/GPXParser.swift; sourceTree = "<group>"; };
+		350B41D63AC9885FDB89E3A2EB82EB99 /* CoreGPX.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = CoreGPX.xcconfig; sourceTree = "<group>"; };
+		37344FECA1CD0A08A88D1CB526D26756 /* UIMultiPicker-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "UIMultiPicker-Info.plist"; sourceTree = "<group>"; };
+		3743F50E0AF57D60B250C4D4481C9763 /* GPXTrack.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GPXTrack.swift; path = Classes/GPXTrack.swift; sourceTree = "<group>"; };
+		3EDFE29F9C1F27AB0A174662CD9AF824 /* IASKPSTextFieldSpecifierViewCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IASKPSTextFieldSpecifierViewCell.h; path = InAppSettingsKit/Views/IASKPSTextFieldSpecifierViewCell.h; sourceTree = "<group>"; };
+		4144711DA2EEC0602CC02BE3DA6D96F0 /* GPXBounds.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GPXBounds.swift; path = Classes/GPXBounds.swift; sourceTree = "<group>"; };
+		421CB8400CD25B503F56B62BB27A9D5A /* IASKSlider.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IASKSlider.h; path = InAppSettingsKit/Views/IASKSlider.h; sourceTree = "<group>"; };
 		427E56F4CF2E99993434B5ACC466869E /* Pods-WunderLINQ-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-WunderLINQ-dummy.m"; sourceTree = "<group>"; };
-		451DB1DCEF8EB100349B62DC8C82432E /* NSMutableString+XML.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "NSMutableString+XML.swift"; path = "Classes/NSMutableString+XML.swift"; sourceTree = "<group>"; };
-		4779E85723F830CB9E3433DB1C078371 /* ChromaColorPicker-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ChromaColorPicker-umbrella.h"; sourceTree = "<group>"; };
-		47C00870D8B2B8DE7340513190E67D8E /* InAppSettingsKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = InAppSettingsKit.debug.xcconfig; sourceTree = "<group>"; };
-		47FED07C0DA2BA165232316255606364 /* GPXPerson.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GPXPerson.swift; path = Classes/GPXPerson.swift; sourceTree = "<group>"; };
-		486DAC7DB7D2D52E1D1620EB30BF7A21 /* GPXAuthor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GPXAuthor.swift; path = Classes/GPXAuthor.swift; sourceTree = "<group>"; };
-		48C05E539C4BBCFC149A408BFA23D8DF /* hr.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = hr.lproj; path = InAppSettingsKit/Resources/hr.lproj; sourceTree = "<group>"; };
-		49EA764C84AFB5F8BD2E2B9A7DA6219E /* el.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = el.lproj; path = InAppSettingsKit/Resources/el.lproj; sourceTree = "<group>"; };
 		49FC1D574A2F3239D89F533C8D0BE07C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		4BB5EFEBA9301184C014D527D3EB3D85 /* IASKDatePicker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IASKDatePicker.h; path = InAppSettingsKit/Views/IASKDatePicker.h; sourceTree = "<group>"; };
-		4C0C6F9262E63D82E9915794BB432214 /* GPXRoot.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GPXRoot.swift; path = Classes/GPXRoot.swift; sourceTree = "<group>"; };
-		4DBA1496F35D1BA863E8703B2C689529 /* IASKEmbeddedDatePickerViewCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IASKEmbeddedDatePickerViewCell.h; path = InAppSettingsKit/Views/IASKEmbeddedDatePickerViewCell.h; sourceTree = "<group>"; };
-		4F66DAF510F5B659B6680A44C511C912 /* IASKSettingsReader.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IASKSettingsReader.m; path = InAppSettingsKit/Models/IASKSettingsReader.m; sourceTree = "<group>"; };
-		5195535F31E37E0E05FA197B33375EE3 /* IASKSettingsStoreUserDefaults.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IASKSettingsStoreUserDefaults.m; path = InAppSettingsKit/Models/IASKSettingsStoreUserDefaults.m; sourceTree = "<group>"; };
-		53A66033C6D418BB99D1858304AA56B7 /* CoreGPX-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CoreGPX-prefix.pch"; sourceTree = "<group>"; };
-		53D1CFE99E292928FA424B074B3A2B40 /* IASKSettingsStoreInMemory.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IASKSettingsStoreInMemory.h; path = InAppSettingsKit/Models/IASKSettingsStoreInMemory.h; sourceTree = "<group>"; };
-		57A581F9461D5A858ABE6590D2849821 /* IASKTextView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IASKTextView.m; path = InAppSettingsKit/Views/IASKTextView.m; sourceTree = "<group>"; };
-		57D007F278F548E4AEEB7FD019AE2646 /* IASKAppSettingsViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IASKAppSettingsViewController.m; path = InAppSettingsKit/Controllers/IASKAppSettingsViewController.m; sourceTree = "<group>"; };
-		5AB2382A6A5F45F0D56684245B53C5C2 /* GPXRoute.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GPXRoute.swift; path = Classes/GPXRoute.swift; sourceTree = "<group>"; };
-		5B7C891A061AB6059FF03A9323C886A5 /* IASKTextField.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IASKTextField.m; path = InAppSettingsKit/Views/IASKTextField.m; sourceTree = "<group>"; };
-		5C17C74CED92BE2773B5FDF0248403FE /* IASKAppSettingsWebViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IASKAppSettingsWebViewController.h; path = InAppSettingsKit/Controllers/IASKAppSettingsWebViewController.h; sourceTree = "<group>"; };
-		5C60E691547BF1D2011BC6B15DA1A621 /* IASKColor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IASKColor.h; path = InAppSettingsKit/Views/IASKColor.h; sourceTree = "<group>"; };
-		5DF06BE018E76AFED3B38080387D8C28 /* IASKSettingsStore.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IASKSettingsStore.h; path = InAppSettingsKit/Models/IASKSettingsStore.h; sourceTree = "<group>"; };
+		4BE2D226EF70B5F810B5C0E1DB4D3927 /* IASKEmbeddedDatePickerViewCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IASKEmbeddedDatePickerViewCell.m; path = InAppSettingsKit/Views/IASKEmbeddedDatePickerViewCell.m; sourceTree = "<group>"; };
+		4C02210CD3E93F854F08CC2F58A3F0C3 /* IASKTextViewCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IASKTextViewCell.h; path = InAppSettingsKit/Views/IASKTextViewCell.h; sourceTree = "<group>"; };
+		4D939BFEAA886E168CD0892849AE90B9 /* pt-PT.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = "pt-PT.lproj"; path = "InAppSettingsKit/Resources/pt-PT.lproj"; sourceTree = "<group>"; };
+		4E0AA6ED5BA7C988CE547CDB2FD32024 /* GPXTrackSegment.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GPXTrackSegment.swift; path = Classes/GPXTrackSegment.swift; sourceTree = "<group>"; };
+		4E76EAA8E5A9C7DA162020DDE494677F /* ChromaColorPicker.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = ChromaColorPicker.modulemap; sourceTree = "<group>"; };
+		4E8249BE63CF4824FE2605F622A4C3F5 /* GPXExtensionsElement.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GPXExtensionsElement.swift; path = Classes/GPXExtensionsElement.swift; sourceTree = "<group>"; };
+		4F20B517649088D4134BB857D07E85BD /* GPXFix.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GPXFix.swift; path = Classes/GPXFix.swift; sourceTree = "<group>"; };
+		5132B944EBE2D3C996F837C1A2C80EDC /* IASKViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IASKViewController.h; path = InAppSettingsKit/Controllers/IASKViewController.h; sourceTree = "<group>"; };
+		5230ED3C97BBDDE2AA1437E2520CC654 /* CoreGPX-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "CoreGPX-dummy.m"; sourceTree = "<group>"; };
+		55A861C67568388C469F16FC086767E8 /* Converters.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Converters.swift; path = Classes/Converters.swift; sourceTree = "<group>"; };
+		56296BC09450325FF1761E71A72CA364 /* ChromaColorPicker.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ChromaColorPicker.swift; path = Source/ChromaColorPicker.swift; sourceTree = "<group>"; };
+		57C73D1F2145F69D34401290136A4351 /* nl.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = nl.lproj; path = InAppSettingsKit/Resources/nl.lproj; sourceTree = "<group>"; };
+		59BE5F097566C39D1A60B400E6EEAF19 /* CoreGPX-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "CoreGPX-Info.plist"; sourceTree = "<group>"; };
+		5C97E775E5F351C3840EB98F3E7275F9 /* UIColor+Utils.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIColor+Utils.swift"; path = "Source/Extensions/UIColor+Utils.swift"; sourceTree = "<group>"; };
 		5E5281A942FF40E675BE29998F8B29C4 /* Pods-WunderLINQ-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-WunderLINQ-acknowledgements.markdown"; sourceTree = "<group>"; };
-		5FED87D80BE6BFCC4115242B5319F13C /* CoreGPX-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "CoreGPX-Info.plist"; sourceTree = "<group>"; };
-		600A575CAEF646FBB46EC26CC314BBCB /* IASKTextField.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IASKTextField.h; path = InAppSettingsKit/Views/IASKTextField.h; sourceTree = "<group>"; };
-		60FDC3B9388629D9B4BBCF6CB9DBCC6C /* pt-PT.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = "pt-PT.lproj"; path = "InAppSettingsKit/Resources/pt-PT.lproj"; sourceTree = "<group>"; };
+		5EF398283201DEF26206DD26F1995282 /* IASKDatePickerViewCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IASKDatePickerViewCell.h; path = InAppSettingsKit/Views/IASKDatePickerViewCell.h; sourceTree = "<group>"; };
+		6213CBAB7B1786EA54990DC918E3E83E /* IASKPSSliderSpecifierViewCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IASKPSSliderSpecifierViewCell.m; path = InAppSettingsKit/Views/IASKPSSliderSpecifierViewCell.m; sourceTree = "<group>"; };
 		62C8E513795A3691B5AE49498FCBEEE8 /* Pods-WunderLINQ-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-WunderLINQ-umbrella.h"; sourceTree = "<group>"; };
-		648C1EB1E8DCBA08914CB2DC9611EFA1 /* GPXParser.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GPXParser.swift; path = Classes/GPXParser.swift; sourceTree = "<group>"; };
-		653AC7692F0C479DFB641BF61F88BD1B /* IASKEmbeddedDatePickerViewCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IASKEmbeddedDatePickerViewCell.m; path = InAppSettingsKit/Views/IASKEmbeddedDatePickerViewCell.m; sourceTree = "<group>"; };
-		6598DC58B96E9A3BF71AD9E08F61A36A /* IASKColor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IASKColor.m; path = InAppSettingsKit/Views/IASKColor.m; sourceTree = "<group>"; };
-		67E2C5D29E284801039D885CD2C5EE38 /* GPXExtensionsElement.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GPXExtensionsElement.swift; path = Classes/GPXExtensionsElement.swift; sourceTree = "<group>"; };
+		64154819B8C34F0CE8F1FEAE71703F33 /* IASKTextViewCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IASKTextViewCell.m; path = InAppSettingsKit/Views/IASKTextViewCell.m; sourceTree = "<group>"; };
+		65ADD78528D1D03CA81CD618C473772D /* IASKSpecifierValuesViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IASKSpecifierValuesViewController.h; path = InAppSettingsKit/Controllers/IASKSpecifierValuesViewController.h; sourceTree = "<group>"; };
+		677C418A075CDE580542B05235045469 /* GPXPoint.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GPXPoint.swift; path = Classes/GPXPoint.swift; sourceTree = "<group>"; };
+		67FC8331B992FF8CF72A916CC5113061 /* IASKSpecifierValuesViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IASKSpecifierValuesViewController.m; path = InAppSettingsKit/Controllers/IASKSpecifierValuesViewController.m; sourceTree = "<group>"; };
 		68676CD591957EA4525B4B03D1CF22AD /* CoreGPX.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = CoreGPX.framework; path = CoreGPX.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		6B78527E270F30F5C962F35DA93A9C8D /* Base.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = Base.lproj; path = InAppSettingsKit/Resources/Base.lproj; sourceTree = "<group>"; };
-		6C6FBA085D235F785009C4AE1A74B5AA /* ResourceBundle-InAppSettingsKit-InAppSettingsKit-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-InAppSettingsKit-InAppSettingsKit-Info.plist"; sourceTree = "<group>"; };
-		6C91C90262A6A8120D9287BB0A1627C3 /* IASKSwitch.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IASKSwitch.m; path = InAppSettingsKit/Views/IASKSwitch.m; sourceTree = "<group>"; };
-		6D03D722044F344CBF9FAA3E728FB5B7 /* IASKPSSliderSpecifierViewCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IASKPSSliderSpecifierViewCell.m; path = InAppSettingsKit/Views/IASKPSSliderSpecifierViewCell.m; sourceTree = "<group>"; };
-		6DF1023CCC6D5DF1F6DBC2AEEE51ACD0 /* tr.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = tr.lproj; path = InAppSettingsKit/Resources/tr.lproj; sourceTree = "<group>"; };
-		6E90E196CC6DB2B822EEFEBEC428D3E8 /* ChromaColorPicker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ChromaColorPicker.release.xcconfig; sourceTree = "<group>"; };
-		70117508D3D7AA4A3D7B8109198D54BD /* IASKSettingsStoreFile.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IASKSettingsStoreFile.h; path = InAppSettingsKit/Models/IASKSettingsStoreFile.h; sourceTree = "<group>"; };
-		716605907D9558BD60106CC278E48142 /* IASKDatePicker.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IASKDatePicker.m; path = InAppSettingsKit/Views/IASKDatePicker.m; sourceTree = "<group>"; };
-		7A2FD0983EFFD450AEE3099D1AEBCD68 /* IASKSlider.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IASKSlider.h; path = InAppSettingsKit/Views/IASKSlider.h; sourceTree = "<group>"; };
-		7CCF55B2F6FE3631FA8CAD9B8FD0F466 /* CoreGPX.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = CoreGPX.release.xcconfig; sourceTree = "<group>"; };
-		7D28AC43DF0C20092EFEC43D3DC5769E /* ChromaColorPicker.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = ChromaColorPicker.modulemap; sourceTree = "<group>"; };
-		7E36B0C6ABB4B2B13C0D6B6E4A9C5CC7 /* GPXLink.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GPXLink.swift; path = Classes/GPXLink.swift; sourceTree = "<group>"; };
-		7FDA3C650ABCCFEE52B9814A1257EB00 /* IASKViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IASKViewController.h; path = InAppSettingsKit/Controllers/IASKViewController.h; sourceTree = "<group>"; };
-		82FDE13F6AA2985732FBC4AB671FA7C4 /* fr.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = fr.lproj; path = InAppSettingsKit/Resources/fr.lproj; sourceTree = "<group>"; };
-		8E4F266B549F5178921C958B82D1FB89 /* zh-Hans.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = "zh-Hans.lproj"; path = "InAppSettingsKit/Resources/zh-Hans.lproj"; sourceTree = "<group>"; };
-		911E8C20CEABABB9C54E6073B8A65428 /* GPXPointSegment.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GPXPointSegment.swift; path = Classes/GPXPointSegment.swift; sourceTree = "<group>"; };
-		9143F0AAB9281FE622B686C6B1D1E234 /* IASKSettingsStoreUserDefaults.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IASKSettingsStoreUserDefaults.h; path = InAppSettingsKit/Models/IASKSettingsStoreUserDefaults.h; sourceTree = "<group>"; };
-		95B6236633A18A70917A80E49305C093 /* th.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = th.lproj; path = InAppSettingsKit/Resources/th.lproj; sourceTree = "<group>"; };
+		6918AB2E464C95A5B3521C710315DB26 /* uk.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = uk.lproj; path = InAppSettingsKit/Resources/uk.lproj; sourceTree = "<group>"; };
+		6A464B2114A84403A77BA070C766FE08 /* GPXRoutePoint.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GPXRoutePoint.swift; path = Classes/GPXRoutePoint.swift; sourceTree = "<group>"; };
+		6A9365027931888BC45801313A818848 /* GPXWaypoint.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GPXWaypoint.swift; path = Classes/GPXWaypoint.swift; sourceTree = "<group>"; };
+		70406A8782EF9B0EDF5AAC3CFF82665B /* en.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = en.lproj; path = InAppSettingsKit/Resources/en.lproj; sourceTree = "<group>"; };
+		73D1616A2C62EC850934C0D6EB5C1DC9 /* ChromaColorPicker-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ChromaColorPicker-prefix.pch"; sourceTree = "<group>"; };
+		743ECF1374663D5534BDECC04A4FEAE6 /* GPXMetadata.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GPXMetadata.swift; path = Classes/GPXMetadata.swift; sourceTree = "<group>"; };
+		7A0E0A0498FA12FE51BD1C8F81D215A6 /* sv.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = sv.lproj; path = InAppSettingsKit/Resources/sv.lproj; sourceTree = "<group>"; };
+		7A82C19405ED5C4D63B9E183BA282489 /* GPXAuthor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GPXAuthor.swift; path = Classes/GPXAuthor.swift; sourceTree = "<group>"; };
+		7BFEB308821C12E9F6508BA092A7804E /* hr.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = hr.lproj; path = InAppSettingsKit/Resources/hr.lproj; sourceTree = "<group>"; };
+		802CE35293AA3871D2AD7CEEF1D0B9F1 /* CoreGPX.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = CoreGPX.modulemap; sourceTree = "<group>"; };
+		80E4810221EE1DF8DA307DAB4C3CCC93 /* fr.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = fr.lproj; path = InAppSettingsKit/Resources/fr.lproj; sourceTree = "<group>"; };
+		815753C9F4E57BF5BFC991F7579AF420 /* ChromaColorPicker-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ChromaColorPicker-Info.plist"; sourceTree = "<group>"; };
+		820340336E059D22C6FF551C4CBAD421 /* IASKSettingsStoreInMemory.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IASKSettingsStoreInMemory.m; path = InAppSettingsKit/Models/IASKSettingsStoreInMemory.m; sourceTree = "<group>"; };
+		84D2ABAEC4248C1C777753C90FA5EE1B /* IASKSpecifier.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IASKSpecifier.m; path = InAppSettingsKit/Models/IASKSpecifier.m; sourceTree = "<group>"; };
+		84D2CBEA4CEABC5A6CE9B5CA4BE0DED6 /* IASKColor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IASKColor.h; path = InAppSettingsKit/Views/IASKColor.h; sourceTree = "<group>"; };
+		85BB1DB393AF021540BA46D753C2E605 /* nb.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = nb.lproj; path = InAppSettingsKit/Resources/nb.lproj; sourceTree = "<group>"; };
+		891D97B075F22168406804A430B2598B /* pl.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = pl.lproj; path = InAppSettingsKit/Resources/pl.lproj; sourceTree = "<group>"; };
+		8958A4B9C310BCF9D82B158E2AFAAD3B /* UIMultiPicker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = UIMultiPicker.framework; path = UIMultiPicker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8A13235C749656A42867AD5EC183B689 /* IASKSpecifier.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IASKSpecifier.h; path = InAppSettingsKit/Models/IASKSpecifier.h; sourceTree = "<group>"; };
+		8AA77B71D5672D49B0E5432773CF0769 /* IASKSettingsStore.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IASKSettingsStore.m; path = InAppSettingsKit/Models/IASKSettingsStore.m; sourceTree = "<group>"; };
+		8C3CE4231478BFFF91E905268C3A81A9 /* Base.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = Base.lproj; path = InAppSettingsKit/Resources/Base.lproj; sourceTree = "<group>"; };
+		8C52F3A1E187223B455343DE5FC6B45C /* IASKSwitch.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IASKSwitch.h; path = InAppSettingsKit/Views/IASKSwitch.h; sourceTree = "<group>"; };
+		8DF64CEEA431669E99D31468494426C5 /* de.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = de.lproj; path = InAppSettingsKit/Resources/de.lproj; sourceTree = "<group>"; };
+		8EBF3FAF713B87BF7531E7B45C64AA48 /* InAppSettingsKit-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "InAppSettingsKit-Info.plist"; sourceTree = "<group>"; };
+		8EC7E4EE272F62CBE628778177A507AD /* th.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = th.lproj; path = InAppSettingsKit/Resources/th.lproj; sourceTree = "<group>"; };
+		8EEF095606BDCBCFF542F1587E3A5F34 /* ResourceBundle-InAppSettingsKit-InAppSettingsKit-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-InAppSettingsKit-InAppSettingsKit-Info.plist"; sourceTree = "<group>"; };
+		9244EAD8BFBEA46791624C36BC3F9BA7 /* NSMutableString+XML.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "NSMutableString+XML.swift"; path = "Classes/NSMutableString+XML.swift"; sourceTree = "<group>"; };
+		95F15F7C781E599BEF56CA59D9B98AF1 /* ChromaColorPicker-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ChromaColorPicker-umbrella.h"; sourceTree = "<group>"; };
+		9723167667EEBAB1D05B281B6096E839 /* zh-Hans.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = "zh-Hans.lproj"; path = "InAppSettingsKit/Resources/zh-Hans.lproj"; sourceTree = "<group>"; };
+		97A86FF2AE82D32748EC58EDAB455D15 /* UIMultiPicker-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "UIMultiPicker-umbrella.h"; sourceTree = "<group>"; };
+		9B7CB3AB73A8A5EBE59136C154FBE766 /* GPXTrackPoint.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GPXTrackPoint.swift; path = Classes/GPXTrackPoint.swift; sourceTree = "<group>"; };
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		A2A68DB17E5AE6DA98D58567451B0F09 /* InAppSettingsKit-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "InAppSettingsKit-dummy.m"; sourceTree = "<group>"; };
-		A47D2AB3F30CF2465222E5F6FAA446FA /* GPXError.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GPXError.swift; path = Classes/GPXError.swift; sourceTree = "<group>"; };
-		A50FE15072CA8EDD50D2B15F95D31977 /* IASKDatePickerViewCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IASKDatePickerViewCell.h; path = InAppSettingsKit/Views/IASKDatePickerViewCell.h; sourceTree = "<group>"; };
-		A661A034C224452931FA125EBED0BBC5 /* IASKSpecifier.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IASKSpecifier.h; path = InAppSettingsKit/Models/IASKSpecifier.h; sourceTree = "<group>"; };
-		A717AF3CD76895CCB6104DB921FA897A /* IASKMultipleValueSelection.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IASKMultipleValueSelection.m; path = InAppSettingsKit/Controllers/IASKMultipleValueSelection.m; sourceTree = "<group>"; };
-		AC6ED54D731406F62976B0216A873EF7 /* ca.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = ca.lproj; path = InAppSettingsKit/Resources/ca.lproj; sourceTree = "<group>"; };
-		B08648CC53A31CB846B12C9615D13C61 /* CoreGPX-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "CoreGPX-dummy.m"; sourceTree = "<group>"; };
-		B0BA2006CB9DEFA796C4AC6E48F36858 /* zh-Hant.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = "zh-Hant.lproj"; path = "InAppSettingsKit/Resources/zh-Hant.lproj"; sourceTree = "<group>"; };
-		B1549AEBB53D47390FF662A5FC53EE83 /* IASKSwitch.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IASKSwitch.h; path = InAppSettingsKit/Views/IASKSwitch.h; sourceTree = "<group>"; };
-		B247A7FA6B0F7677F27135B38A31B223 /* hu.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = hu.lproj; path = InAppSettingsKit/Resources/hu.lproj; sourceTree = "<group>"; };
-		B2B094F78982EEC4D417F896AD28E436 /* GPXTrackSegment.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GPXTrackSegment.swift; path = Classes/GPXTrackSegment.swift; sourceTree = "<group>"; };
-		B56C7C7BBD910A54DBD4821D1AD10677 /* es.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = es.lproj; path = InAppSettingsKit/Resources/es.lproj; sourceTree = "<group>"; };
-		B840752D9190C5C5EF3B81406F2CF548 /* sv.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = sv.lproj; path = InAppSettingsKit/Resources/sv.lproj; sourceTree = "<group>"; };
-		BB166DAC0E33FA2EDA2C8D3CE28D6AE2 /* GPXCompression.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GPXCompression.swift; path = Classes/GPXCompression.swift; sourceTree = "<group>"; };
-		BB3F99CB8656D0A56D8DF54573174DEE /* IASKSettingsStore.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IASKSettingsStore.m; path = InAppSettingsKit/Models/IASKSettingsStore.m; sourceTree = "<group>"; };
-		BE3DB26AF4903C61AF3D8008619128A4 /* InAppSettingsKit-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "InAppSettingsKit-prefix.pch"; sourceTree = "<group>"; };
-		C04525978230106D557061C28C204E97 /* GPXTrack.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GPXTrack.swift; path = Classes/GPXTrack.swift; sourceTree = "<group>"; };
+		9FE09871506219D9C635339973E243E6 /* ca.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = ca.lproj; path = InAppSettingsKit/Resources/ca.lproj; sourceTree = "<group>"; };
+		A1C9A1F830E1E7C594FF23FEB8AC4F3A /* IASKAppSettingsWebViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IASKAppSettingsWebViewController.h; path = InAppSettingsKit/Controllers/IASKAppSettingsWebViewController.h; sourceTree = "<group>"; };
+		A3423315BDA192BEEA4918C71218CE77 /* GPXLink.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GPXLink.swift; path = Classes/GPXLink.swift; sourceTree = "<group>"; };
+		A5053BCDA1310C96BDD2BD1CF1ABB31C /* IASKSettingsStoreFile.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IASKSettingsStoreFile.h; path = InAppSettingsKit/Models/IASKSettingsStoreFile.h; sourceTree = "<group>"; };
+		AA246073D11B0D3E1493A40C3EFE7F69 /* GPXEmail.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GPXEmail.swift; path = Classes/GPXEmail.swift; sourceTree = "<group>"; };
+		AA4D84569656C109D79CB8E068BE2DF6 /* UIMultiPicker-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "UIMultiPicker-prefix.pch"; sourceTree = "<group>"; };
+		AC6983DA580181904345689E153B9295 /* GPXRawElement.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GPXRawElement.swift; path = Classes/GPXRawElement.swift; sourceTree = "<group>"; };
+		AD7BE031E2AB1BADC7351E07DBDB0DD2 /* IASKDatePicker.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IASKDatePicker.m; path = InAppSettingsKit/Views/IASKDatePicker.m; sourceTree = "<group>"; };
+		AE1B10D8780ABA33AE43D09F56CCB3B5 /* hu.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = hu.lproj; path = InAppSettingsKit/Resources/hu.lproj; sourceTree = "<group>"; };
+		AEC1E736197AD7E8701DBEE3AA880459 /* IASKSettingsStoreUserDefaults.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IASKSettingsStoreUserDefaults.h; path = InAppSettingsKit/Models/IASKSettingsStoreUserDefaults.h; sourceTree = "<group>"; };
+		B072FC07F485B98B8839BBE3760F79E7 /* IASKDatePickerViewCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IASKDatePickerViewCell.m; path = InAppSettingsKit/Views/IASKDatePickerViewCell.m; sourceTree = "<group>"; };
+		B5A22676AAE55F8E120D42FB74B365D3 /* ChromaColorPicker.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ChromaColorPicker.xcconfig; sourceTree = "<group>"; };
+		B601EDD5B85EC0C40F154FF37A6EDDF2 /* IASKTextField.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IASKTextField.h; path = InAppSettingsKit/Views/IASKTextField.h; sourceTree = "<group>"; };
+		B74D8513B1772641FA9F34DC8EB8E276 /* GPXRoot.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GPXRoot.swift; path = Classes/GPXRoot.swift; sourceTree = "<group>"; };
+		B7BC63E1C92915B27EA894D537246E15 /* UIColor+Brightness.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIColor+Brightness.swift"; path = "Source/Extensions/UIColor+Brightness.swift"; sourceTree = "<group>"; };
+		B9677E0EA5AFB7EC5DFA16C316801FCA /* InAppSettingsKit-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "InAppSettingsKit-prefix.pch"; sourceTree = "<group>"; };
+		B9C3292EA348F1A15FD6370B65FBE89B /* it.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = it.lproj; path = InAppSettingsKit/Resources/it.lproj; sourceTree = "<group>"; };
+		BE80A9A1F89F025AEF9BEED0F1061132 /* IASKTextField.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IASKTextField.m; path = InAppSettingsKit/Views/IASKTextField.m; sourceTree = "<group>"; };
 		C082AE78A2C795A7CD50CE6E5575AB9C /* InAppSettingsKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = InAppSettingsKit.framework; path = InAppSettingsKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C1B3FD8ED1128A429A9E55B5347A855F /* IASKPSTextFieldSpecifierViewCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IASKPSTextFieldSpecifierViewCell.m; path = InAppSettingsKit/Views/IASKPSTextFieldSpecifierViewCell.m; sourceTree = "<group>"; };
-		C1F7EF7F99B59A7575DF5EA9F7EEBE87 /* GPXElement.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GPXElement.swift; path = Classes/GPXElement.swift; sourceTree = "<group>"; };
 		C2FDAE1536FF09CC2163C2DD3B704156 /* Pods_WunderLINQ.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_WunderLINQ.framework; path = "Pods-WunderLINQ.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		C3A672FCA77A1F5BAA929EC9C835832A /* GPXRawElement.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GPXRawElement.swift; path = Classes/GPXRawElement.swift; sourceTree = "<group>"; };
-		C63D29D37ECB73F542715D11DD79EF69 /* nb.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = nb.lproj; path = InAppSettingsKit/Resources/nb.lproj; sourceTree = "<group>"; };
-		C79E5A789AA12CD0191E074CB2FDEBFB /* InAppSettingsKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = InAppSettingsKit.release.xcconfig; sourceTree = "<group>"; };
+		C3BEAB9E46863B34D3BD3DE889675F0C /* UIView+Utils.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIView+Utils.swift"; path = "Source/Extensions/UIView+Utils.swift"; sourceTree = "<group>"; };
+		C49FC2734688FB6B13704B313A34C873 /* zh-Hant.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = "zh-Hant.lproj"; path = "InAppSettingsKit/Resources/zh-Hant.lproj"; sourceTree = "<group>"; };
+		C633C87A2DD6489AB6B40BA0E328C903 /* UIMultiPicker.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = UIMultiPicker.xcconfig; sourceTree = "<group>"; };
+		C63568EB40283FE7C4410BFF6BFF39A6 /* UIView+DropShadow.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIView+DropShadow.swift"; path = "Source/Extensions/UIView+DropShadow.swift"; sourceTree = "<group>"; };
+		C7E6F15D79D41988F72C39A8BC2426DE /* ja.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = ja.lproj; path = InAppSettingsKit/Resources/ja.lproj; sourceTree = "<group>"; };
 		C873F75C552BAAE952A6C27FE5A4A1B3 /* Pods-WunderLINQ-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-WunderLINQ-acknowledgements.plist"; sourceTree = "<group>"; };
-		D3D31C3EEE9AA92EC6AEE3F53C66B46A /* CoreGPX.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = CoreGPX.modulemap; sourceTree = "<group>"; };
+		CA02F0D5B7F5EA2EB47B0A689A55ABFB /* GPXElement.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GPXElement.swift; path = Classes/GPXElement.swift; sourceTree = "<group>"; };
+		CA912794B9C98FEF0CC2656E1D4F9848 /* DateTimeParsers.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DateTimeParsers.swift; path = Classes/DateTimeParsers.swift; sourceTree = "<group>"; };
+		CF846EBBFDE2DE8261B7B18FE90A0B16 /* IASKDatePicker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IASKDatePicker.h; path = InAppSettingsKit/Views/IASKDatePicker.h; sourceTree = "<group>"; };
+		D02313A05C0E0A0EE5CD325295414653 /* ChromaColorPicker-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ChromaColorPicker-dummy.m"; sourceTree = "<group>"; };
+		D06DC8ED04BFE63F52D8816F63608395 /* SliderTrackView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SliderTrackView.swift; path = "Source/Supporting Views/SliderTrackView.swift"; sourceTree = "<group>"; };
+		D1E2B805E4438CEEF3EA15006366F6F8 /* ChromaControlStylable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ChromaControlStylable.swift; path = Source/ChromaControlStylable.swift; sourceTree = "<group>"; };
+		D3C200E7957DA1CA300ACEA0F4F50D52 /* es-MX.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = "es-MX.lproj"; path = "InAppSettingsKit/Resources/es-MX.lproj"; sourceTree = "<group>"; };
 		D40FF0F11E7F2EF29D1A92D25FB2D60D /* ChromaColorPicker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = ChromaColorPicker.framework; path = ChromaColorPicker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D49DA4A012EE58D5BF86E6945BB1E093 /* de.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = de.lproj; path = InAppSettingsKit/Resources/de.lproj; sourceTree = "<group>"; };
-		D50F10BAAFD244DC7525A73D9AE89CE1 /* IASKSpecifierValuesViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IASKSpecifierValuesViewController.h; path = InAppSettingsKit/Controllers/IASKSpecifierValuesViewController.h; sourceTree = "<group>"; };
-		D622DC03AEA18D79C812B523F2E0A3EA /* ChromaColorPicker-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ChromaColorPicker-prefix.pch"; sourceTree = "<group>"; };
-		D6E8DC9948629809909E18001505D902 /* IASKSettingsStoreInMemory.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IASKSettingsStoreInMemory.m; path = InAppSettingsKit/Models/IASKSettingsStoreInMemory.m; sourceTree = "<group>"; };
-		D93D13A226EF9EA03E3750E5666648F1 /* pt.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = pt.lproj; path = InAppSettingsKit/Resources/pt.lproj; sourceTree = "<group>"; };
-		D9CD3C7F51F0F21158ADC5A856BBCB0D /* ru.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = ru.lproj; path = InAppSettingsKit/Resources/ru.lproj; sourceTree = "<group>"; };
-		DBD0B321ED2DD12CD8632CC30DDDD7C3 /* UIView+Utils.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIView+Utils.swift"; path = "Source/Extensions/UIView+Utils.swift"; sourceTree = "<group>"; };
-		DD0954A8F6E73048C0E1622468D12CCE /* ChromaControlStylable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ChromaControlStylable.swift; path = Source/ChromaControlStylable.swift; sourceTree = "<group>"; };
-		DDC8D68B7B1EE80A6AB2052CAB5EF22E /* SliderHandleView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SliderHandleView.swift; path = "Source/Supporting Views/SliderHandleView.swift"; sourceTree = "<group>"; };
-		DEB0F573462E4077E8AB5968BF3FF46F /* en.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = en.lproj; path = InAppSettingsKit/Resources/en.lproj; sourceTree = "<group>"; };
-		DF8FF08C6BB6F4AB957E829A3BBF9CC0 /* IASKTextViewCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IASKTextViewCell.h; path = InAppSettingsKit/Views/IASKTextViewCell.h; sourceTree = "<group>"; };
-		DFAEFED72D36816EB2F5473E0D323B7F /* UIColor+Brightness.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIColor+Brightness.swift"; path = "Source/Extensions/UIColor+Brightness.swift"; sourceTree = "<group>"; };
+		D93AECDA631D3C7F9462901F06CD6398 /* CoreGPX-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CoreGPX-umbrella.h"; sourceTree = "<group>"; };
+		DB22AF9C4D5F459F4998CB76BE109AA8 /* IASKColor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IASKColor.m; path = InAppSettingsKit/Views/IASKColor.m; sourceTree = "<group>"; };
+		E042AD4E9322895B42DA8DFE0012E363 /* InAppSettingsKit.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = InAppSettingsKit.xcconfig; sourceTree = "<group>"; };
 		E0C17EC28151E583D62BB32E1CAB1504 /* Pods-WunderLINQ.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-WunderLINQ.debug.xcconfig"; sourceTree = "<group>"; };
-		E4EEC0528E4CFA1B3584C2B48C16727C /* pl.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = pl.lproj; path = InAppSettingsKit/Resources/pl.lproj; sourceTree = "<group>"; };
-		E726520443C9EB10959252AA64C635F0 /* CoreGPX.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = CoreGPX.debug.xcconfig; sourceTree = "<group>"; };
-		EBDA3226189A93D70F4011B1C591C5B9 /* IASKPSSliderSpecifierViewCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IASKPSSliderSpecifierViewCell.h; path = InAppSettingsKit/Views/IASKPSSliderSpecifierViewCell.h; sourceTree = "<group>"; };
-		EE80548799260F280C8C66AB6CA0FB2D /* ChromaColorHandle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ChromaColorHandle.swift; path = "Source/Supporting Views/ChromaColorHandle.swift"; sourceTree = "<group>"; };
-		F0489AEF4D830462E90D620924705F0B /* ChromaColorPicker-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ChromaColorPicker-Info.plist"; sourceTree = "<group>"; };
+		E0D9B0DDC1608018B821AF8B931D3C05 /* IASKSettingsStore.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IASKSettingsStore.h; path = InAppSettingsKit/Models/IASKSettingsStore.h; sourceTree = "<group>"; };
+		E10DDF31F706FFE548B63C1C0B0C82F0 /* IASKSlider.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IASKSlider.m; path = InAppSettingsKit/Views/IASKSlider.m; sourceTree = "<group>"; };
+		E1E969E01C5A056B8EC59635B40C8964 /* IASKAppSettingsWebViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IASKAppSettingsWebViewController.m; path = InAppSettingsKit/Controllers/IASKAppSettingsWebViewController.m; sourceTree = "<group>"; };
+		E2791568E21E43BCCE6D6CFE15C58660 /* el.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = el.lproj; path = InAppSettingsKit/Resources/el.lproj; sourceTree = "<group>"; };
+		E36FF30EA0A5FAFEA08AC5E4E4C3577F /* SliderHandleView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SliderHandleView.swift; path = "Source/Supporting Views/SliderHandleView.swift"; sourceTree = "<group>"; };
+		E42803EE3EC79E286624E50CC9E624D0 /* pt.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = pt.lproj; path = InAppSettingsKit/Resources/pt.lproj; sourceTree = "<group>"; };
+		E5A384C9E24EEBC45AF667A914A8A066 /* GPXCopyright.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GPXCopyright.swift; path = Classes/GPXCopyright.swift; sourceTree = "<group>"; };
+		E6DBCF85CA6C4E385DFB95B1E0BBA785 /* IASKMultipleValueSelection.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IASKMultipleValueSelection.m; path = InAppSettingsKit/Controllers/IASKMultipleValueSelection.m; sourceTree = "<group>"; };
+		EACFF1FEEDC8D5EF5577DCE3F558DEC6 /* ChromaColorHandle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ChromaColorHandle.swift; path = "Source/Supporting Views/ChromaColorHandle.swift"; sourceTree = "<group>"; };
+		ECAF3AB229E490B0F3D827E11CC37406 /* ColorWheelView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ColorWheelView.swift; path = Source/ColorWheelView.swift; sourceTree = "<group>"; };
+		EEC589FCF1E3249DE6548D4F33DFA5B4 /* IASKSettingsStoreFile.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IASKSettingsStoreFile.m; path = InAppSettingsKit/Models/IASKSettingsStoreFile.m; sourceTree = "<group>"; };
 		F17ED7B0B064A63357452FDFB293CFCE /* Pods-WunderLINQ.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-WunderLINQ.modulemap"; sourceTree = "<group>"; };
+		F25BF7A739A0DE0842E41BA043799FA5 /* InAppSettingsKit-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "InAppSettingsKit-dummy.m"; sourceTree = "<group>"; };
+		F2E8D8F42C8B86556848BFD4E167E13F /* GPXExtensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GPXExtensions.swift; path = Classes/GPXExtensions.swift; sourceTree = "<group>"; };
+		F3EC36C5D3ED6BED4EC0EBD8F5EB0A39 /* es-419.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = "es-419.lproj"; path = "InAppSettingsKit/Resources/es-419.lproj"; sourceTree = "<group>"; };
+		F5030A25E6C926D37F70D5FCA976163D /* InAppSettingsKit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = InAppSettingsKit.modulemap; sourceTree = "<group>"; };
 		F59F27BFF82BC49099EE2D221CA623DA /* Pods-WunderLINQ.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-WunderLINQ.release.xcconfig"; sourceTree = "<group>"; };
-		F713BB5250C4DC14BA1ED012D43E0D90 /* IASKSettingsReader.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IASKSettingsReader.h; path = InAppSettingsKit/Models/IASKSettingsReader.h; sourceTree = "<group>"; };
-		F8729D5610CBE6B77D77F5DC478026D4 /* ChromaColorPicker-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ChromaColorPicker-dummy.m"; sourceTree = "<group>"; };
+		F887E65A402E728D123CEECF7C839DA2 /* UIMultiPicker-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "UIMultiPicker-dummy.m"; sourceTree = "<group>"; };
 		F9D1DCF06681788BA852BDC475398A32 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
-		F9FB31B33BA4F911D3822836AFFACE02 /* UIColor+Utils.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIColor+Utils.swift"; path = "Source/Extensions/UIColor+Utils.swift"; sourceTree = "<group>"; };
-		FB22956F6AC5C5BB8CA4411AAA3817CC /* it.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = it.lproj; path = InAppSettingsKit/Resources/it.lproj; sourceTree = "<group>"; };
-		FDA5B2667A19348AA7C8934275DD33D1 /* InAppSettingsKit-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "InAppSettingsKit-Info.plist"; sourceTree = "<group>"; };
-		FE7968976D0FC569B5E07EC593CCA1E9 /* IASKTextView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IASKTextView.h; path = InAppSettingsKit/Views/IASKTextView.h; sourceTree = "<group>"; };
-		FF9C70583C070838AC56EF55BE14554A /* ja.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = ja.lproj; path = InAppSettingsKit/Resources/ja.lproj; sourceTree = "<group>"; };
-		FFA0DAD4892218B6E2796904E2FE868B /* CoreGPX-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CoreGPX-umbrella.h"; sourceTree = "<group>"; };
+		FA37DEEF504EA34A635CB4CC25929A3A /* UIMultiPicker.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = UIMultiPicker.modulemap; sourceTree = "<group>"; };
+		FB593E9CB4338D6AACEF8D25D2C02BE4 /* IASKMultipleValueSelection.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IASKMultipleValueSelection.h; path = InAppSettingsKit/Controllers/IASKMultipleValueSelection.h; sourceTree = "<group>"; };
+		FD780D04B6E38BEA229444A9048F6B8D /* es.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = es.lproj; path = InAppSettingsKit/Resources/es.lproj; sourceTree = "<group>"; };
+		FDE0C5628E177D79133596C40A50CFBD /* IASKPSTextFieldSpecifierViewCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IASKPSTextFieldSpecifierViewCell.m; path = InAppSettingsKit/Views/IASKPSTextFieldSpecifierViewCell.m; sourceTree = "<group>"; };
+		FE7AA4472DF55C8E52DF0C8184F4BAB4 /* GPXPointSegment.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GPXPointSegment.swift; path = Classes/GPXPointSegment.swift; sourceTree = "<group>"; };
+		FF0F265B59EC38468483918B66340247 /* IASKSettingsReader.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IASKSettingsReader.h; path = InAppSettingsKit/Models/IASKSettingsReader.h; sourceTree = "<group>"; };
+		FF983E4D840F81AC985B72E75D7B841C /* IASKSettingsStoreUserDefaults.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IASKSettingsStoreUserDefaults.m; path = InAppSettingsKit/Models/IASKSettingsStoreUserDefaults.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -319,28 +335,36 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		17948D2B0C7973874D7487686722CEF3 /* Frameworks */ = {
+		3D2D23D247385672D2C640751BABA4A2 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05891BE013E3508A4289E1CE26D9CC50 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		602EC3246502A239BD68BAA725A2F4C3 /* Frameworks */ = {
+		9F01620FBF3C3FA23E8A8C3F8C60029F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				314A478C4220B6CCB4B68E60ABCCFBB5 /* Foundation.framework in Frameworks */,
-				AEDD2CF3399EE0D0F6FF722BF150BDCB /* MessageUI.framework in Frameworks */,
-				AB265B6CFC55BDE1EA364C4E24F2211E /* UIKit.framework in Frameworks */,
+				B55A8045B2E827F69F888818D5DD343A /* Foundation.framework in Frameworks */,
+				1903D996006B4277F75113D88A0AB64D /* MessageUI.framework in Frameworks */,
+				182698DCDDB0D2962A03D0B16690C0CD /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		EE9D52AB7B9D89F86F2CD29397F573ED /* Frameworks */ = {
+		A3C0CB65EEAB41A58E42703AC5B76B20 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E742F841A203D0E95635E60821F8CE68 /* Foundation.framework in Frameworks */,
+				5A1B2ED37A385E3E5F02152EC2DF5CD8 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B11A6F35A9D2188F9ABA816F78043C19 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -363,165 +387,37 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		08B32CF356F84511114EE4C8AC1D8EFB /* CoreGPX */ = {
+		0425AE4E4DF9837571C7913D59C52D99 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3ED9DD2A2891B916B3F2B3FDEE7BD47A /* Converters.swift */,
-				41AA5B48C3BD4FFF57BE13F8A21C7F29 /* DateTimeParsers.swift */,
-				486DAC7DB7D2D52E1D1620EB30BF7A21 /* GPXAuthor.swift */,
-				3EEB8AD844303CA8FF7B3654F9E802F7 /* GPXBounds.swift */,
-				BB166DAC0E33FA2EDA2C8D3CE28D6AE2 /* GPXCompression.swift */,
-				3B8DD22DF79885BBEE58D69A54C53164 /* GPXCopyright.swift */,
-				C1F7EF7F99B59A7575DF5EA9F7EEBE87 /* GPXElement.swift */,
-				190CAA6A9A13F6876998F2413961D904 /* GPXEmail.swift */,
-				A47D2AB3F30CF2465222E5F6FAA446FA /* GPXError.swift */,
-				2BCB70FEB7E0498A407FB2A50E5E926D /* GPXExtensions.swift */,
-				67E2C5D29E284801039D885CD2C5EE38 /* GPXExtensionsElement.swift */,
-				16E5768685E4B650CD779412D69B212A /* GPXFix.swift */,
-				7E36B0C6ABB4B2B13C0D6B6E4A9C5CC7 /* GPXLink.swift */,
-				3C16A43488013517E1618FE71DDDA901 /* GPXMetadata.swift */,
-				648C1EB1E8DCBA08914CB2DC9611EFA1 /* GPXParser.swift */,
-				47FED07C0DA2BA165232316255606364 /* GPXPerson.swift */,
-				1F8520BACD7D2829B203C97CF64B338F /* GPXPoint.swift */,
-				911E8C20CEABABB9C54E6073B8A65428 /* GPXPointSegment.swift */,
-				C3A672FCA77A1F5BAA929EC9C835832A /* GPXRawElement.swift */,
-				4C0C6F9262E63D82E9915794BB432214 /* GPXRoot.swift */,
-				5AB2382A6A5F45F0D56684245B53C5C2 /* GPXRoute.swift */,
-				04A9D2886CA121442F574F4CC9E961D2 /* GPXRoutePoint.swift */,
-				C04525978230106D557061C28C204E97 /* GPXTrack.swift */,
-				118C869825B744374D16020C06CCFFDA /* GPXTrackPoint.swift */,
-				B2B094F78982EEC4D417F896AD28E436 /* GPXTrackSegment.swift */,
-				08375098688981D30362D12361C71215 /* GPXWaypoint.swift */,
-				451DB1DCEF8EB100349B62DC8C82432E /* NSMutableString+XML.swift */,
-				0B770A0F42B6DD2CDC2AF49A8138BA59 /* Support Files */,
+				D40FF0F11E7F2EF29D1A92D25FB2D60D /* ChromaColorPicker.framework */,
+				68676CD591957EA4525B4B03D1CF22AD /* CoreGPX.framework */,
+				325E862631E06444E4504511C87F1E9C /* InAppSettingsKit.bundle */,
+				C082AE78A2C795A7CD50CE6E5575AB9C /* InAppSettingsKit.framework */,
+				C2FDAE1536FF09CC2163C2DD3B704156 /* Pods_WunderLINQ.framework */,
+				8958A4B9C310BCF9D82B158E2AFAAD3B /* UIMultiPicker.framework */,
 			);
-			name = CoreGPX;
-			path = CoreGPX;
+			name = Products;
 			sourceTree = "<group>";
 		};
-		0B770A0F42B6DD2CDC2AF49A8138BA59 /* Support Files */ = {
+		3070536747DC401E3D8E99A6AC966021 /* ChromaColorPicker */ = {
 			isa = PBXGroup;
 			children = (
-				D3D31C3EEE9AA92EC6AEE3F53C66B46A /* CoreGPX.modulemap */,
-				B08648CC53A31CB846B12C9615D13C61 /* CoreGPX-dummy.m */,
-				5FED87D80BE6BFCC4115242B5319F13C /* CoreGPX-Info.plist */,
-				53A66033C6D418BB99D1858304AA56B7 /* CoreGPX-prefix.pch */,
-				FFA0DAD4892218B6E2796904E2FE868B /* CoreGPX-umbrella.h */,
-				E726520443C9EB10959252AA64C635F0 /* CoreGPX.debug.xcconfig */,
-				7CCF55B2F6FE3631FA8CAD9B8FD0F466 /* CoreGPX.release.xcconfig */,
+				13BF9E75B123D15CC9F12E192768A35B /* ChromaBrightnessSlider.swift */,
+				EACFF1FEEDC8D5EF5577DCE3F558DEC6 /* ChromaColorHandle.swift */,
+				56296BC09450325FF1761E71A72CA364 /* ChromaColorPicker.swift */,
+				D1E2B805E4438CEEF3EA15006366F6F8 /* ChromaControlStylable.swift */,
+				ECAF3AB229E490B0F3D827E11CC37406 /* ColorWheelView.swift */,
+				E36FF30EA0A5FAFEA08AC5E4E4C3577F /* SliderHandleView.swift */,
+				D06DC8ED04BFE63F52D8816F63608395 /* SliderTrackView.swift */,
+				B7BC63E1C92915B27EA894D537246E15 /* UIColor+Brightness.swift */,
+				5C97E775E5F351C3840EB98F3E7275F9 /* UIColor+Utils.swift */,
+				C63568EB40283FE7C4410BFF6BFF39A6 /* UIView+DropShadow.swift */,
+				C3BEAB9E46863B34D3BD3DE889675F0C /* UIView+Utils.swift */,
+				F05A4F89CADE2C822FED5381CC24557B /* Support Files */,
 			);
-			name = "Support Files";
-			path = "../Target Support Files/CoreGPX";
-			sourceTree = "<group>";
-		};
-		20528241E1065E707DEB7F1E5E60DA49 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				6B78527E270F30F5C962F35DA93A9C8D /* Base.lproj */,
-				AC6ED54D731406F62976B0216A873EF7 /* ca.lproj */,
-				D49DA4A012EE58D5BF86E6945BB1E093 /* de.lproj */,
-				49EA764C84AFB5F8BD2E2B9A7DA6219E /* el.lproj */,
-				DEB0F573462E4077E8AB5968BF3FF46F /* en.lproj */,
-				B56C7C7BBD910A54DBD4821D1AD10677 /* es.lproj */,
-				416D7ADDA090559C5675A94FFBA0FA8E /* es-419.lproj */,
-				38D3685A0248AB87B794A12B85B64157 /* es-MX.lproj */,
-				82FDE13F6AA2985732FBC4AB671FA7C4 /* fr.lproj */,
-				48C05E539C4BBCFC149A408BFA23D8DF /* hr.lproj */,
-				B247A7FA6B0F7677F27135B38A31B223 /* hu.lproj */,
-				FB22956F6AC5C5BB8CA4411AAA3817CC /* it.lproj */,
-				FF9C70583C070838AC56EF55BE14554A /* ja.lproj */,
-				C63D29D37ECB73F542715D11DD79EF69 /* nb.lproj */,
-				24E51B9962C2EC939FE84411CD132DF7 /* nl.lproj */,
-				E4EEC0528E4CFA1B3584C2B48C16727C /* pl.lproj */,
-				D93D13A226EF9EA03E3750E5666648F1 /* pt.lproj */,
-				60FDC3B9388629D9B4BBCF6CB9DBCC6C /* pt-PT.lproj */,
-				D9CD3C7F51F0F21158ADC5A856BBCB0D /* ru.lproj */,
-				B840752D9190C5C5EF3B81406F2CF548 /* sv.lproj */,
-				95B6236633A18A70917A80E49305C093 /* th.lproj */,
-				6DF1023CCC6D5DF1F6DBC2AEEE51ACD0 /* tr.lproj */,
-				1DE39995E8EBF498DDBFD05C760B6EDB /* uk.lproj */,
-				8E4F266B549F5178921C958B82D1FB89 /* zh-Hans.lproj */,
-				B0BA2006CB9DEFA796C4AC6E48F36858 /* zh-Hant.lproj */,
-			);
-			name = Resources;
-			sourceTree = "<group>";
-		};
-		26470858DF4BCBFF27DDCAA535643FA9 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				7FCAE19E78353FCD14C67A743CF89EF8 /* ChromaColorPicker */,
-				08B32CF356F84511114EE4C8AC1D8EFB /* CoreGPX */,
-				554531D2FAE1192975D75E255BCCABF6 /* InAppSettingsKit */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-		47E81DF85AC621FC3B1E5CD65BF761BB /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				7D28AC43DF0C20092EFEC43D3DC5769E /* ChromaColorPicker.modulemap */,
-				F8729D5610CBE6B77D77F5DC478026D4 /* ChromaColorPicker-dummy.m */,
-				F0489AEF4D830462E90D620924705F0B /* ChromaColorPicker-Info.plist */,
-				D622DC03AEA18D79C812B523F2E0A3EA /* ChromaColorPicker-prefix.pch */,
-				4779E85723F830CB9E3433DB1C078371 /* ChromaColorPicker-umbrella.h */,
-				275BDAB28B3AF54A928476F03C9EA706 /* ChromaColorPicker.debug.xcconfig */,
-				6E90E196CC6DB2B822EEFEBEC428D3E8 /* ChromaColorPicker.release.xcconfig */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/ChromaColorPicker";
-			sourceTree = "<group>";
-		};
-		554531D2FAE1192975D75E255BCCABF6 /* InAppSettingsKit */ = {
-			isa = PBXGroup;
-			children = (
-				1C3730C274288FB60B07F4F30EE90249 /* IASKAppSettingsViewController.h */,
-				57D007F278F548E4AEEB7FD019AE2646 /* IASKAppSettingsViewController.m */,
-				5C17C74CED92BE2773B5FDF0248403FE /* IASKAppSettingsWebViewController.h */,
-				3D89526A107712A7126398A712C74965 /* IASKAppSettingsWebViewController.m */,
-				5C60E691547BF1D2011BC6B15DA1A621 /* IASKColor.h */,
-				6598DC58B96E9A3BF71AD9E08F61A36A /* IASKColor.m */,
-				4BB5EFEBA9301184C014D527D3EB3D85 /* IASKDatePicker.h */,
-				716605907D9558BD60106CC278E48142 /* IASKDatePicker.m */,
-				A50FE15072CA8EDD50D2B15F95D31977 /* IASKDatePickerViewCell.h */,
-				36ABCF3D111919E3B5F06CCAA42A030F /* IASKDatePickerViewCell.m */,
-				4DBA1496F35D1BA863E8703B2C689529 /* IASKEmbeddedDatePickerViewCell.h */,
-				653AC7692F0C479DFB641BF61F88BD1B /* IASKEmbeddedDatePickerViewCell.m */,
-				15E5903EB5DF83B6667F97D3536BC6D4 /* IASKMultipleValueSelection.h */,
-				A717AF3CD76895CCB6104DB921FA897A /* IASKMultipleValueSelection.m */,
-				EBDA3226189A93D70F4011B1C591C5B9 /* IASKPSSliderSpecifierViewCell.h */,
-				6D03D722044F344CBF9FAA3E728FB5B7 /* IASKPSSliderSpecifierViewCell.m */,
-				0ACC741F91328726F0CCB79FE89F9B1D /* IASKPSTextFieldSpecifierViewCell.h */,
-				C1B3FD8ED1128A429A9E55B5347A855F /* IASKPSTextFieldSpecifierViewCell.m */,
-				F713BB5250C4DC14BA1ED012D43E0D90 /* IASKSettingsReader.h */,
-				4F66DAF510F5B659B6680A44C511C912 /* IASKSettingsReader.m */,
-				5DF06BE018E76AFED3B38080387D8C28 /* IASKSettingsStore.h */,
-				BB3F99CB8656D0A56D8DF54573174DEE /* IASKSettingsStore.m */,
-				70117508D3D7AA4A3D7B8109198D54BD /* IASKSettingsStoreFile.h */,
-				228AC6940A9451170E23A60616DF61E6 /* IASKSettingsStoreFile.m */,
-				53D1CFE99E292928FA424B074B3A2B40 /* IASKSettingsStoreInMemory.h */,
-				D6E8DC9948629809909E18001505D902 /* IASKSettingsStoreInMemory.m */,
-				9143F0AAB9281FE622B686C6B1D1E234 /* IASKSettingsStoreUserDefaults.h */,
-				5195535F31E37E0E05FA197B33375EE3 /* IASKSettingsStoreUserDefaults.m */,
-				7A2FD0983EFFD450AEE3099D1AEBCD68 /* IASKSlider.h */,
-				140C7CFDF68D50AD95D21E6E1DF16461 /* IASKSlider.m */,
-				A661A034C224452931FA125EBED0BBC5 /* IASKSpecifier.h */,
-				28F257213522E2160F78AEFD94BB9EB7 /* IASKSpecifier.m */,
-				D50F10BAAFD244DC7525A73D9AE89CE1 /* IASKSpecifierValuesViewController.h */,
-				18E0BE05C97E3F2D3027BB7FC6AE6D69 /* IASKSpecifierValuesViewController.m */,
-				B1549AEBB53D47390FF662A5FC53EE83 /* IASKSwitch.h */,
-				6C91C90262A6A8120D9287BB0A1627C3 /* IASKSwitch.m */,
-				600A575CAEF646FBB46EC26CC314BBCB /* IASKTextField.h */,
-				5B7C891A061AB6059FF03A9323C886A5 /* IASKTextField.m */,
-				FE7968976D0FC569B5E07EC593CCA1E9 /* IASKTextView.h */,
-				57A581F9461D5A858ABE6590D2849821 /* IASKTextView.m */,
-				DF8FF08C6BB6F4AB957E829A3BBF9CC0 /* IASKTextViewCell.h */,
-				1620AE3DC05AC86C0F3A5F3345084392 /* IASKTextViewCell.m */,
-				7FDA3C650ABCCFEE52B9814A1257EB00 /* IASKViewController.h */,
-				20528241E1065E707DEB7F1E5E60DA49 /* Resources */,
-				AF0B69EF540FFA4356433F4F3D296E54 /* Support Files */,
-			);
-			name = InAppSettingsKit;
-			path = InAppSettingsKit;
+			name = ChromaColorPicker;
+			path = ChromaColorPicker;
 			sourceTree = "<group>";
 		};
 		603F5E2F7312283F9EF0E024EB440C6D /* Targets Support Files */ = {
@@ -532,24 +428,72 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		7FCAE19E78353FCD14C67A743CF89EF8 /* ChromaColorPicker */ = {
+		67AC7BDA7E5B7023FACACBA36AFC68B6 /* InAppSettingsKit */ = {
 			isa = PBXGroup;
 			children = (
-				0AB693E65D816DD76D5C17057EDA048E /* ChromaBrightnessSlider.swift */,
-				EE80548799260F280C8C66AB6CA0FB2D /* ChromaColorHandle.swift */,
-				10892F1C33D9559E9ADFBC4ED9B9D137 /* ChromaColorPicker.swift */,
-				DD0954A8F6E73048C0E1622468D12CCE /* ChromaControlStylable.swift */,
-				0E8124A03FB7C8BA857520BDFBEBA645 /* ColorWheelView.swift */,
-				DDC8D68B7B1EE80A6AB2052CAB5EF22E /* SliderHandleView.swift */,
-				3C51A94D585947A098D9FE3FCC1B73E1 /* SliderTrackView.swift */,
-				DFAEFED72D36816EB2F5473E0D323B7F /* UIColor+Brightness.swift */,
-				F9FB31B33BA4F911D3822836AFFACE02 /* UIColor+Utils.swift */,
-				24B5DDE50393AE3FA62E68CA7B4E69EF /* UIView+DropShadow.swift */,
-				DBD0B321ED2DD12CD8632CC30DDDD7C3 /* UIView+Utils.swift */,
-				47E81DF85AC621FC3B1E5CD65BF761BB /* Support Files */,
+				00CD0847598A8025B791FBDE104201BE /* IASKAppSettingsViewController.h */,
+				01B67AB8F06AAD75F890808177D5FED4 /* IASKAppSettingsViewController.m */,
+				A1C9A1F830E1E7C594FF23FEB8AC4F3A /* IASKAppSettingsWebViewController.h */,
+				E1E969E01C5A056B8EC59635B40C8964 /* IASKAppSettingsWebViewController.m */,
+				84D2CBEA4CEABC5A6CE9B5CA4BE0DED6 /* IASKColor.h */,
+				DB22AF9C4D5F459F4998CB76BE109AA8 /* IASKColor.m */,
+				CF846EBBFDE2DE8261B7B18FE90A0B16 /* IASKDatePicker.h */,
+				AD7BE031E2AB1BADC7351E07DBDB0DD2 /* IASKDatePicker.m */,
+				5EF398283201DEF26206DD26F1995282 /* IASKDatePickerViewCell.h */,
+				B072FC07F485B98B8839BBE3760F79E7 /* IASKDatePickerViewCell.m */,
+				31F0314E156C6B967C153A74DCF0D909 /* IASKEmbeddedDatePickerViewCell.h */,
+				4BE2D226EF70B5F810B5C0E1DB4D3927 /* IASKEmbeddedDatePickerViewCell.m */,
+				FB593E9CB4338D6AACEF8D25D2C02BE4 /* IASKMultipleValueSelection.h */,
+				E6DBCF85CA6C4E385DFB95B1E0BBA785 /* IASKMultipleValueSelection.m */,
+				0E77C4A6BB71168ECCC19DF864F0FA5B /* IASKPSSliderSpecifierViewCell.h */,
+				6213CBAB7B1786EA54990DC918E3E83E /* IASKPSSliderSpecifierViewCell.m */,
+				3EDFE29F9C1F27AB0A174662CD9AF824 /* IASKPSTextFieldSpecifierViewCell.h */,
+				FDE0C5628E177D79133596C40A50CFBD /* IASKPSTextFieldSpecifierViewCell.m */,
+				FF0F265B59EC38468483918B66340247 /* IASKSettingsReader.h */,
+				1B6C900F28D25427DDA5865369FE20A1 /* IASKSettingsReader.m */,
+				E0D9B0DDC1608018B821AF8B931D3C05 /* IASKSettingsStore.h */,
+				8AA77B71D5672D49B0E5432773CF0769 /* IASKSettingsStore.m */,
+				A5053BCDA1310C96BDD2BD1CF1ABB31C /* IASKSettingsStoreFile.h */,
+				EEC589FCF1E3249DE6548D4F33DFA5B4 /* IASKSettingsStoreFile.m */,
+				20D9E0F3569F9A8B5D37569B2251201D /* IASKSettingsStoreInMemory.h */,
+				820340336E059D22C6FF551C4CBAD421 /* IASKSettingsStoreInMemory.m */,
+				AEC1E736197AD7E8701DBEE3AA880459 /* IASKSettingsStoreUserDefaults.h */,
+				FF983E4D840F81AC985B72E75D7B841C /* IASKSettingsStoreUserDefaults.m */,
+				421CB8400CD25B503F56B62BB27A9D5A /* IASKSlider.h */,
+				E10DDF31F706FFE548B63C1C0B0C82F0 /* IASKSlider.m */,
+				8A13235C749656A42867AD5EC183B689 /* IASKSpecifier.h */,
+				84D2ABAEC4248C1C777753C90FA5EE1B /* IASKSpecifier.m */,
+				65ADD78528D1D03CA81CD618C473772D /* IASKSpecifierValuesViewController.h */,
+				67FC8331B992FF8CF72A916CC5113061 /* IASKSpecifierValuesViewController.m */,
+				8C52F3A1E187223B455343DE5FC6B45C /* IASKSwitch.h */,
+				0BAB9FCEB1D8175840FB0D14E3E31EA2 /* IASKSwitch.m */,
+				B601EDD5B85EC0C40F154FF37A6EDDF2 /* IASKTextField.h */,
+				BE80A9A1F89F025AEF9BEED0F1061132 /* IASKTextField.m */,
+				0E03690D65B9E5470B578E160DF7B133 /* IASKTextView.h */,
+				007C182B6B138080E187646032BA2B07 /* IASKTextView.m */,
+				4C02210CD3E93F854F08CC2F58A3F0C3 /* IASKTextViewCell.h */,
+				64154819B8C34F0CE8F1FEAE71703F33 /* IASKTextViewCell.m */,
+				5132B944EBE2D3C996F837C1A2C80EDC /* IASKViewController.h */,
+				EB757D3F368481C9E7B000B49AB06A4E /* Resources */,
+				746664E4D1C27313A9BC9E8279D0E35B /* Support Files */,
 			);
-			name = ChromaColorPicker;
-			path = ChromaColorPicker;
+			name = InAppSettingsKit;
+			path = InAppSettingsKit;
+			sourceTree = "<group>";
+		};
+		746664E4D1C27313A9BC9E8279D0E35B /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				F5030A25E6C926D37F70D5FCA976163D /* InAppSettingsKit.modulemap */,
+				E042AD4E9322895B42DA8DFE0012E363 /* InAppSettingsKit.xcconfig */,
+				F25BF7A739A0DE0842E41BA043799FA5 /* InAppSettingsKit-dummy.m */,
+				8EBF3FAF713B87BF7531E7B45C64AA48 /* InAppSettingsKit-Info.plist */,
+				B9677E0EA5AFB7EC5DFA16C316801FCA /* InAppSettingsKit-prefix.pch */,
+				129D0C65E354C248DD51847AAF03C326 /* InAppSettingsKit-umbrella.h */,
+				8EEF095606BDCBCFF542F1587E3A5F34 /* ResourceBundle-InAppSettingsKit-InAppSettingsKit-Info.plist */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/InAppSettingsKit";
 			sourceTree = "<group>";
 		};
 		A7B6F39C8F2E8A7FDC1F607643B01445 /* Pods-WunderLINQ */ = {
@@ -579,32 +523,39 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
-		AF0B69EF540FFA4356433F4F3D296E54 /* Support Files */ = {
+		B5F06EA1F22DC82371434A5933376AE5 /* UIMultiPicker */ = {
 			isa = PBXGroup;
 			children = (
-				256F25DA58D2E2DD9005FC3132F5C754 /* InAppSettingsKit.modulemap */,
-				A2A68DB17E5AE6DA98D58567451B0F09 /* InAppSettingsKit-dummy.m */,
-				FDA5B2667A19348AA7C8934275DD33D1 /* InAppSettingsKit-Info.plist */,
-				BE3DB26AF4903C61AF3D8008619128A4 /* InAppSettingsKit-prefix.pch */,
-				25FEBABB92166D9E780842E899269D74 /* InAppSettingsKit-umbrella.h */,
-				47C00870D8B2B8DE7340513190E67D8E /* InAppSettingsKit.debug.xcconfig */,
-				C79E5A789AA12CD0191E074CB2FDEBFB /* InAppSettingsKit.release.xcconfig */,
-				6C6FBA085D235F785009C4AE1A74B5AA /* ResourceBundle-InAppSettingsKit-InAppSettingsKit-Info.plist */,
+				32326E88F501CEDA4C8FB321C73171A4 /* UIMultiPicker.swift */,
+				F4FA98B4EA477B557F8E0C0CFF3E7972 /* Support Files */,
 			);
-			name = "Support Files";
-			path = "../Target Support Files/InAppSettingsKit";
+			name = UIMultiPicker;
+			path = UIMultiPicker;
 			sourceTree = "<group>";
 		};
-		C4E3E17E5E3490A4B0F3B5069BB439BF /* Products */ = {
+		BB1B800CE963590AC545B596C30267DE /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				D40FF0F11E7F2EF29D1A92D25FB2D60D /* ChromaColorPicker.framework */,
-				68676CD591957EA4525B4B03D1CF22AD /* CoreGPX.framework */,
-				325E862631E06444E4504511C87F1E9C /* InAppSettingsKit.bundle */,
-				C082AE78A2C795A7CD50CE6E5575AB9C /* InAppSettingsKit.framework */,
-				C2FDAE1536FF09CC2163C2DD3B704156 /* Pods_WunderLINQ.framework */,
+				802CE35293AA3871D2AD7CEEF1D0B9F1 /* CoreGPX.modulemap */,
+				350B41D63AC9885FDB89E3A2EB82EB99 /* CoreGPX.xcconfig */,
+				5230ED3C97BBDDE2AA1437E2520CC654 /* CoreGPX-dummy.m */,
+				59BE5F097566C39D1A60B400E6EEAF19 /* CoreGPX-Info.plist */,
+				20312343CD8EFF23A8C5027A465A3616 /* CoreGPX-prefix.pch */,
+				D93AECDA631D3C7F9462901F06CD6398 /* CoreGPX-umbrella.h */,
 			);
-			name = Products;
+			name = "Support Files";
+			path = "../Target Support Files/CoreGPX";
+			sourceTree = "<group>";
+		};
+		C69868CBE6117E23D58911F951C732CA /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3070536747DC401E3D8E99A6AC966021 /* ChromaColorPicker */,
+				E6055E0A7EB7CE557C8FB6C1933A3D84 /* CoreGPX */,
+				67AC7BDA7E5B7023FACACBA36AFC68B6 /* InAppSettingsKit */,
+				B5F06EA1F22DC82371434A5933376AE5 /* UIMultiPicker */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 		CF1408CF629C7361332E53B88F7BD30C = {
@@ -612,15 +563,149 @@
 			children = (
 				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
 				03C5C200A0787E300053CFA8F53CA094 /* Frameworks */,
-				26470858DF4BCBFF27DDCAA535643FA9 /* Pods */,
-				C4E3E17E5E3490A4B0F3B5069BB439BF /* Products */,
+				C69868CBE6117E23D58911F951C732CA /* Pods */,
+				0425AE4E4DF9837571C7913D59C52D99 /* Products */,
 				603F5E2F7312283F9EF0E024EB440C6D /* Targets Support Files */,
 			);
+			sourceTree = "<group>";
+		};
+		E6055E0A7EB7CE557C8FB6C1933A3D84 /* CoreGPX */ = {
+			isa = PBXGroup;
+			children = (
+				55A861C67568388C469F16FC086767E8 /* Converters.swift */,
+				CA912794B9C98FEF0CC2656E1D4F9848 /* DateTimeParsers.swift */,
+				7A82C19405ED5C4D63B9E183BA282489 /* GPXAuthor.swift */,
+				4144711DA2EEC0602CC02BE3DA6D96F0 /* GPXBounds.swift */,
+				3009C7289FE3CB404BB6DFDC64737142 /* GPXCompression.swift */,
+				E5A384C9E24EEBC45AF667A914A8A066 /* GPXCopyright.swift */,
+				CA02F0D5B7F5EA2EB47B0A689A55ABFB /* GPXElement.swift */,
+				AA246073D11B0D3E1493A40C3EFE7F69 /* GPXEmail.swift */,
+				0E8B42C7D14ACC14B3F3D83F213A0215 /* GPXError.swift */,
+				F2E8D8F42C8B86556848BFD4E167E13F /* GPXExtensions.swift */,
+				4E8249BE63CF4824FE2605F622A4C3F5 /* GPXExtensionsElement.swift */,
+				4F20B517649088D4134BB857D07E85BD /* GPXFix.swift */,
+				A3423315BDA192BEEA4918C71218CE77 /* GPXLink.swift */,
+				743ECF1374663D5534BDECC04A4FEAE6 /* GPXMetadata.swift */,
+				335BAAD5E840904AE581B287CFA8CBAE /* GPXParser.swift */,
+				1C60F1E438AF539BFBB94B30C213209C /* GPXPerson.swift */,
+				677C418A075CDE580542B05235045469 /* GPXPoint.swift */,
+				FE7AA4472DF55C8E52DF0C8184F4BAB4 /* GPXPointSegment.swift */,
+				AC6983DA580181904345689E153B9295 /* GPXRawElement.swift */,
+				B74D8513B1772641FA9F34DC8EB8E276 /* GPXRoot.swift */,
+				044734068D067EC63DC5A55738A5C3AA /* GPXRoute.swift */,
+				6A464B2114A84403A77BA070C766FE08 /* GPXRoutePoint.swift */,
+				3743F50E0AF57D60B250C4D4481C9763 /* GPXTrack.swift */,
+				9B7CB3AB73A8A5EBE59136C154FBE766 /* GPXTrackPoint.swift */,
+				4E0AA6ED5BA7C988CE547CDB2FD32024 /* GPXTrackSegment.swift */,
+				6A9365027931888BC45801313A818848 /* GPXWaypoint.swift */,
+				9244EAD8BFBEA46791624C36BC3F9BA7 /* NSMutableString+XML.swift */,
+				BB1B800CE963590AC545B596C30267DE /* Support Files */,
+			);
+			name = CoreGPX;
+			path = CoreGPX;
+			sourceTree = "<group>";
+		};
+		EB757D3F368481C9E7B000B49AB06A4E /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				8C3CE4231478BFFF91E905268C3A81A9 /* Base.lproj */,
+				9FE09871506219D9C635339973E243E6 /* ca.lproj */,
+				8DF64CEEA431669E99D31468494426C5 /* de.lproj */,
+				E2791568E21E43BCCE6D6CFE15C58660 /* el.lproj */,
+				70406A8782EF9B0EDF5AAC3CFF82665B /* en.lproj */,
+				FD780D04B6E38BEA229444A9048F6B8D /* es.lproj */,
+				F3EC36C5D3ED6BED4EC0EBD8F5EB0A39 /* es-419.lproj */,
+				D3C200E7957DA1CA300ACEA0F4F50D52 /* es-MX.lproj */,
+				80E4810221EE1DF8DA307DAB4C3CCC93 /* fr.lproj */,
+				7BFEB308821C12E9F6508BA092A7804E /* hr.lproj */,
+				AE1B10D8780ABA33AE43D09F56CCB3B5 /* hu.lproj */,
+				B9C3292EA348F1A15FD6370B65FBE89B /* it.lproj */,
+				C7E6F15D79D41988F72C39A8BC2426DE /* ja.lproj */,
+				85BB1DB393AF021540BA46D753C2E605 /* nb.lproj */,
+				57C73D1F2145F69D34401290136A4351 /* nl.lproj */,
+				891D97B075F22168406804A430B2598B /* pl.lproj */,
+				E42803EE3EC79E286624E50CC9E624D0 /* pt.lproj */,
+				4D939BFEAA886E168CD0892849AE90B9 /* pt-PT.lproj */,
+				32F48D7AF518DBF3D39E772B6B633750 /* ru.lproj */,
+				7A0E0A0498FA12FE51BD1C8F81D215A6 /* sv.lproj */,
+				8EC7E4EE272F62CBE628778177A507AD /* th.lproj */,
+				2757F18E95C791B7028772C102E19734 /* tr.lproj */,
+				6918AB2E464C95A5B3521C710315DB26 /* uk.lproj */,
+				9723167667EEBAB1D05B281B6096E839 /* zh-Hans.lproj */,
+				C49FC2734688FB6B13704B313A34C873 /* zh-Hant.lproj */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		F05A4F89CADE2C822FED5381CC24557B /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				4E76EAA8E5A9C7DA162020DDE494677F /* ChromaColorPicker.modulemap */,
+				B5A22676AAE55F8E120D42FB74B365D3 /* ChromaColorPicker.xcconfig */,
+				D02313A05C0E0A0EE5CD325295414653 /* ChromaColorPicker-dummy.m */,
+				815753C9F4E57BF5BFC991F7579AF420 /* ChromaColorPicker-Info.plist */,
+				73D1616A2C62EC850934C0D6EB5C1DC9 /* ChromaColorPicker-prefix.pch */,
+				95F15F7C781E599BEF56CA59D9B98AF1 /* ChromaColorPicker-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/ChromaColorPicker";
+			sourceTree = "<group>";
+		};
+		F4FA98B4EA477B557F8E0C0CFF3E7972 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				FA37DEEF504EA34A635CB4CC25929A3A /* UIMultiPicker.modulemap */,
+				C633C87A2DD6489AB6B40BA0E328C903 /* UIMultiPicker.xcconfig */,
+				F887E65A402E728D123CEECF7C839DA2 /* UIMultiPicker-dummy.m */,
+				37344FECA1CD0A08A88D1CB526D26756 /* UIMultiPicker-Info.plist */,
+				AA4D84569656C109D79CB8E068BE2DF6 /* UIMultiPicker-prefix.pch */,
+				97A86FF2AE82D32748EC58EDAB455D15 /* UIMultiPicker-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/UIMultiPicker";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		05187673F83204B35427A2CA1169722B /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				582B559195B101F24B4A6A07D833027D /* Pods-WunderLINQ-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0FB0D4F730BB02305CBE32E185ED2910 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				37CDABB7A22165D4B62E1845E1BCAA0B /* IASKAppSettingsViewController.h in Headers */,
+				C0C3D0672BBA8449AAB18D0F8A0AB6F5 /* IASKAppSettingsWebViewController.h in Headers */,
+				3C62C5952B2D0C2F64507AA39DFCD20F /* IASKColor.h in Headers */,
+				C7E18172417A6D080939FBECE81B00B4 /* IASKDatePicker.h in Headers */,
+				B61860F0438966A5B5D1F10A78131D5B /* IASKDatePickerViewCell.h in Headers */,
+				19B3D7E1F0586B49B9BDF8EBAC12D077 /* IASKEmbeddedDatePickerViewCell.h in Headers */,
+				890DB428B1D0BADED3DEA9055397F5BD /* IASKMultipleValueSelection.h in Headers */,
+				4CE4C7E6F6FE9FCCCE57A68E3811E232 /* IASKPSSliderSpecifierViewCell.h in Headers */,
+				51220CDAA28D314065DE9F122142B871 /* IASKPSTextFieldSpecifierViewCell.h in Headers */,
+				C7E7BC1221F3795A798A8AB0DA5F2227 /* IASKSettingsReader.h in Headers */,
+				871A6BAAEE308CA55EC4EF93F1B6D810 /* IASKSettingsStore.h in Headers */,
+				D2068FAD8CE9A5D1C6431670B21E91F5 /* IASKSettingsStoreFile.h in Headers */,
+				5316869A13520883A47888EEB389C064 /* IASKSettingsStoreInMemory.h in Headers */,
+				A0EC5F162029BAE14A6EB171568D0E27 /* IASKSettingsStoreUserDefaults.h in Headers */,
+				FD5E8855F296D55F00CBEF0962EF4609 /* IASKSlider.h in Headers */,
+				5C32DDAA442910B473741F2B78795887 /* IASKSpecifier.h in Headers */,
+				E8F3C15AFB502265C8367AF0E3276D17 /* IASKSpecifierValuesViewController.h in Headers */,
+				71080C2D06295A23F8DAD5F3829AF6CA /* IASKSwitch.h in Headers */,
+				2F6357C84F1269D45EA0FB721CFED24F /* IASKTextField.h in Headers */,
+				9739D278025AAE84D6A7510E6286C862 /* IASKTextView.h in Headers */,
+				534DCB5D993AAB15FBF3C2070C7F0CFD /* IASKTextViewCell.h in Headers */,
+				0063F241F44E9198688CD79596657DA0 /* IASKViewController.h in Headers */,
+				42321201D37A9DC7F3A626412C4E9557 /* InAppSettingsKit-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		71047198B4901F8EB201A6E67435DFC2 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -637,41 +722,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		96448B746E32C48CF5BEA829AD783745 /* Headers */ = {
+		A13FA07D35B05688E95361FD0C0DE1FF /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				80B0FAB433E55B25F22BAE629303CE2D /* Pods-WunderLINQ-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		9C575362B8E0DB598F6E357C4E66D75B /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B45DAB82217CFBDB31A82C0B06B92CDE /* IASKAppSettingsViewController.h in Headers */,
-				B03FF4607CB1E0791BBEC04A3340848D /* IASKAppSettingsWebViewController.h in Headers */,
-				0ECF4AF40C638E9086696BEFEBEA5B5C /* IASKColor.h in Headers */,
-				C9C4EB3E25AE6BA226C10BD4CC5D9151 /* IASKDatePicker.h in Headers */,
-				1EB8CB2A0D6F460CC49E01756D39E4E4 /* IASKDatePickerViewCell.h in Headers */,
-				3C06F432A6D333FB6A2786F403779DD3 /* IASKEmbeddedDatePickerViewCell.h in Headers */,
-				32D841ED22E0A6AECC4EC57B55F5A1AB /* IASKMultipleValueSelection.h in Headers */,
-				70BD4F620780C462AF888CADDC674E1C /* IASKPSSliderSpecifierViewCell.h in Headers */,
-				373997AD67F9E0B3FB7A459D42B0D6BB /* IASKPSTextFieldSpecifierViewCell.h in Headers */,
-				539A61FE3E12083EB893C183489AE066 /* IASKSettingsReader.h in Headers */,
-				F89E43DD21A2825E2B5A25228E86CC85 /* IASKSettingsStore.h in Headers */,
-				772F287E6B73F1AA6E44401CBD6F194F /* IASKSettingsStoreFile.h in Headers */,
-				20C559F7FB2AB8042CC36AFA5EF3A523 /* IASKSettingsStoreInMemory.h in Headers */,
-				D121BF49CB0B07A4B3DE8979BED374F9 /* IASKSettingsStoreUserDefaults.h in Headers */,
-				0850DEFB99E706BB5BF2F6CEDDB9B2F0 /* IASKSlider.h in Headers */,
-				AFFD51829244034E585136FF82702C32 /* IASKSpecifier.h in Headers */,
-				69BC77F6453EB3D10DCE5FB79B601511 /* IASKSpecifierValuesViewController.h in Headers */,
-				E8DF12A19E571B0616165C7759598FFF /* IASKSwitch.h in Headers */,
-				6B36BB24920BB1D89F64D4E57B0EB1C8 /* IASKTextField.h in Headers */,
-				6C8032EEFDBCA9004280D91FBD0849FA /* IASKTextView.h in Headers */,
-				A91F60039195B79035E7477EE2748C9F /* IASKTextViewCell.h in Headers */,
-				A92446EBE805179A5A7F159FED012BB9 /* IASKViewController.h in Headers */,
-				3489676B77DC8145FA736DB8E7CB1CA1 /* InAppSettingsKit-umbrella.h in Headers */,
+				F697DB03BB5992CE11B955902F4D6965 /* UIMultiPicker-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -698,17 +753,17 @@
 		};
 		5B4848122435F4C22D574A5DA6D2EFB3 /* InAppSettingsKit */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CB0C105582AE031F4F49379CE5469314 /* Build configuration list for PBXNativeTarget "InAppSettingsKit" */;
+			buildConfigurationList = 2461F9F1B7134D91F6B5A50DC5A128EE /* Build configuration list for PBXNativeTarget "InAppSettingsKit" */;
 			buildPhases = (
-				9C575362B8E0DB598F6E357C4E66D75B /* Headers */,
-				13206B69B2A5CD3086B7CBB1DAD0ED8C /* Sources */,
-				602EC3246502A239BD68BAA725A2F4C3 /* Frameworks */,
-				7899CB34F1CBEF3646F0AE135182D90F /* Resources */,
+				0FB0D4F730BB02305CBE32E185ED2910 /* Headers */,
+				D3109EB97C8515DB16C55D880D70E42B /* Sources */,
+				9F01620FBF3C3FA23E8A8C3F8C60029F /* Frameworks */,
+				C46C7F027DF90F4BCB70F3D113DDA1F8 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				29898ED6F2C3AC237D15E6899AF38F2E /* PBXTargetDependency */,
+				48A67BD40C499CD05B531EEA38699E24 /* PBXTargetDependency */,
 			);
 			name = InAppSettingsKit;
 			productName = InAppSettingsKit;
@@ -735,11 +790,11 @@
 		};
 		8A996938DFC560C0A3EF0DD6CA6B032A /* InAppSettingsKit-InAppSettingsKit */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 5B50BD6EC031B40BA9315F22BB5C947C /* Build configuration list for PBXNativeTarget "InAppSettingsKit-InAppSettingsKit" */;
+			buildConfigurationList = 57DAF4B6BE21D2C6D98A030BDF82AF6E /* Build configuration list for PBXNativeTarget "InAppSettingsKit-InAppSettingsKit" */;
 			buildPhases = (
-				D50112850D3ED621791A65C346FE29AC /* Sources */,
-				17948D2B0C7973874D7487686722CEF3 /* Frameworks */,
-				B7C95AE327D0CC6D4CA0B7E8225CCF2D /* Resources */,
+				2064F79214546088424E8893C3D6BB8F /* Sources */,
+				B11A6F35A9D2188F9ABA816F78043C19 /* Frameworks */,
+				18DA3DD7EB6E063FE8F68B9F0AF63CE3 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -750,21 +805,40 @@
 			productReference = 325E862631E06444E4504511C87F1E9C /* InAppSettingsKit.bundle */;
 			productType = "com.apple.product-type.bundle";
 		};
-		FAF21BE37EB65063DA9127CAC1CE75D9 /* Pods-WunderLINQ */ = {
+		C29B8E66676DEE2FC332C8BE854A34BA /* UIMultiPicker */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7B7FD5EFAA73B291EDDA17EAB375C4AB /* Build configuration list for PBXNativeTarget "Pods-WunderLINQ" */;
+			buildConfigurationList = E545A246276E2E0A4C33DA1C03B7ADF3 /* Build configuration list for PBXNativeTarget "UIMultiPicker" */;
 			buildPhases = (
-				96448B746E32C48CF5BEA829AD783745 /* Headers */,
-				002881CBB5B2F70D867979698A5E8C6A /* Sources */,
-				EE9D52AB7B9D89F86F2CD29397F573ED /* Frameworks */,
-				688206186F35220BA4C09CE5972844B3 /* Resources */,
+				A13FA07D35B05688E95361FD0C0DE1FF /* Headers */,
+				D7022C2F9B70BB6ECC87ADD38299F60C /* Sources */,
+				A3C0CB65EEAB41A58E42703AC5B76B20 /* Frameworks */,
+				1503848ABE26B5E8F6F69CE1270A7E7C /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				0506D9B5C229E84A6CC2BFC976D27170 /* PBXTargetDependency */,
-				CE1F0F828119FCDB37522DC3F5D3D767 /* PBXTargetDependency */,
-				79336A5F2C5CDDB734E71FA872C1D7AF /* PBXTargetDependency */,
+			);
+			name = UIMultiPicker;
+			productName = UIMultiPicker;
+			productReference = 8958A4B9C310BCF9D82B158E2AFAAD3B /* UIMultiPicker.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		FAF21BE37EB65063DA9127CAC1CE75D9 /* Pods-WunderLINQ */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DB7334074EAE93AE004739B15412DB49 /* Build configuration list for PBXNativeTarget "Pods-WunderLINQ" */;
+			buildPhases = (
+				05187673F83204B35427A2CA1169722B /* Headers */,
+				83F8128535CA0FBB615B6F4C3DCF5019 /* Sources */,
+				3D2D23D247385672D2C640751BABA4A2 /* Frameworks */,
+				4C6630C072A283DB7179D6DED599BFD1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9B6B2BC4A155659BDCAAF4A9B8FD9E92 /* PBXTargetDependency */,
+				56A230383AC3A063D2241EC7546F056E /* PBXTargetDependency */,
+				DCBF1935931AE876E5B5D376CD951125 /* PBXTargetDependency */,
+				539A7FB8E66B17F62BC754DD10E44E5B /* PBXTargetDependency */,
 			);
 			name = "Pods-WunderLINQ";
 			productName = "Pods-WunderLINQ";
@@ -789,7 +863,7 @@
 				Base,
 			);
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
-			productRefGroup = C4E3E17E5E3490A4B0F3B5069BB439BF /* Products */;
+			productRefGroup = 0425AE4E4DF9837571C7913D59C52D99 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -798,23 +872,55 @@
 				5B4848122435F4C22D574A5DA6D2EFB3 /* InAppSettingsKit */,
 				8A996938DFC560C0A3EF0DD6CA6B032A /* InAppSettingsKit-InAppSettingsKit */,
 				FAF21BE37EB65063DA9127CAC1CE75D9 /* Pods-WunderLINQ */,
+				C29B8E66676DEE2FC332C8BE854A34BA /* UIMultiPicker */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		688206186F35220BA4C09CE5972844B3 /* Resources */ = {
+		1503848ABE26B5E8F6F69CE1270A7E7C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		7899CB34F1CBEF3646F0AE135182D90F /* Resources */ = {
+		18DA3DD7EB6E063FE8F68B9F0AF63CE3 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				525F4DFFBD58FE846D6C238C52D0B53D /* InAppSettingsKit.bundle in Resources */,
+				653C9D4B56DCECCB0BA86179E6F2EA77 /* Base.lproj in Resources */,
+				74A27EE7F5F9615F4BB494C3BFEE5214 /* ca.lproj in Resources */,
+				E378347AF31DBE13631763B3097FDE5D /* de.lproj in Resources */,
+				572DB7B3463784262577E9314FA355E5 /* el.lproj in Resources */,
+				FCC056081697C104E7E78F257BE72187 /* en.lproj in Resources */,
+				AFDD7B3A492D975C7523425B05978834 /* es-419.lproj in Resources */,
+				1CE8D51D488720BF2F69870E52FFC988 /* es-MX.lproj in Resources */,
+				F1E00430EB33CB501101027657F3388A /* es.lproj in Resources */,
+				9896F69C26057CDFBC4BDA3C0928ED57 /* fr.lproj in Resources */,
+				2931315254DCC23AC8A14CE2EBD04B4A /* hr.lproj in Resources */,
+				247D74D5F9D5EEED4EBEB4F2F2CC9843 /* hu.lproj in Resources */,
+				47BDDAD4F77A47DE1FA2D0BE32574673 /* it.lproj in Resources */,
+				3E646D1AECC8012C098621138DB6A506 /* ja.lproj in Resources */,
+				7B38B97B7ADAE1D1D592D01613CCACF5 /* nb.lproj in Resources */,
+				0707A81E3E55B7E437A42D893BC9B94A /* nl.lproj in Resources */,
+				BCF7FBD9151F52F357EADE0C7031CE90 /* pl.lproj in Resources */,
+				F517FE648BBBE277C547B6FB42638C39 /* pt-PT.lproj in Resources */,
+				9E969F230A764492EF8976F62AA35CD8 /* pt.lproj in Resources */,
+				3FA59CF624341EFEB37DD020359B4984 /* ru.lproj in Resources */,
+				7259A49FA702584B7984E07010D4AC11 /* sv.lproj in Resources */,
+				CC4EC6E7F04ACED382AD46DEBFD6F65E /* th.lproj in Resources */,
+				8A513BDCC46C08F82F6E9D5F165030B3 /* tr.lproj in Resources */,
+				CE195F6A87C8FEC79F2093C3C6163BF6 /* uk.lproj in Resources */,
+				2E30DFE275B30BBD04814CE329526554 /* zh-Hans.lproj in Resources */,
+				9E8B88F2B4DC18D3EF85415A1203766F /* zh-Hant.lproj in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4C6630C072A283DB7179D6DED599BFD1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -825,35 +931,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B7C95AE327D0CC6D4CA0B7E8225CCF2D /* Resources */ = {
+		C46C7F027DF90F4BCB70F3D113DDA1F8 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				370133E35E3051477D59B2EFA3C11146 /* Base.lproj in Resources */,
-				D6A714A6E5B086EBEC8805CC80B52A44 /* ca.lproj in Resources */,
-				A9A46BFA5ED52E83F02F2A7A163DEBF4 /* de.lproj in Resources */,
-				7FD1C420FCD1672FF8A881440852B635 /* el.lproj in Resources */,
-				5E1B122229E4DE1F73B26EED14F09199 /* en.lproj in Resources */,
-				F7291EA086FA2A9B83323B9A00581B57 /* es-419.lproj in Resources */,
-				3AA3054C52B04D5BC87D8F02E7CF5006 /* es-MX.lproj in Resources */,
-				5855F3A6278EA50A8CBBBB4F65C2FF00 /* es.lproj in Resources */,
-				77D5D7172C843E80D232A0787943F3C1 /* fr.lproj in Resources */,
-				C88529FED472213F278007BBE000FE4D /* hr.lproj in Resources */,
-				DF061DE17219E2E6C3B432F8F761D0E3 /* hu.lproj in Resources */,
-				97BE0C2E56447B9B7F28D06054657293 /* it.lproj in Resources */,
-				E578099B1DD29D3288824C93F25453DB /* ja.lproj in Resources */,
-				198BD078FDD3D7109F3D35D0FF887526 /* nb.lproj in Resources */,
-				A8C40DD1BEC15AD8171C080A0EC8150B /* nl.lproj in Resources */,
-				ACEBCB8AC08F46015B90751FC34D3C34 /* pl.lproj in Resources */,
-				158E2F830D0ED44ACFA130E659C4C82C /* pt-PT.lproj in Resources */,
-				19465F51F361C48FFC8DA852B4AEE6C3 /* pt.lproj in Resources */,
-				58BD477C11FAD09D21ED5A003FBB20FC /* ru.lproj in Resources */,
-				8F08F32CC11B98BA49BFA96790E3AF99 /* sv.lproj in Resources */,
-				775A48595E5DC4C6AD1AAF5F87B4AE9E /* th.lproj in Resources */,
-				0781540189ECE3F925380BFECCB41341 /* tr.lproj in Resources */,
-				97AC41C0F1132445CAFB45BEE6ED2A6C /* uk.lproj in Resources */,
-				F70F72592091F0946CCBBE883933ED4D /* zh-Hans.lproj in Resources */,
-				5FFB9DC0CCD59678695EEC4CB56AE47B /* zh-Hant.lproj in Resources */,
+				A2B9A497C86513317F5093485245650B /* InAppSettingsKit.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -867,40 +949,18 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		002881CBB5B2F70D867979698A5E8C6A /* Sources */ = {
+		2064F79214546088424E8893C3D6BB8F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				215495936326BA60595AA30FF56EDD18 /* Pods-WunderLINQ-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		13206B69B2A5CD3086B7CBB1DAD0ED8C /* Sources */ = {
+		83F8128535CA0FBB615B6F4C3DCF5019 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				809A150C62FA5600D820AADB6168FE1C /* IASKAppSettingsViewController.m in Sources */,
-				93F306B0572F7A0E5DD14B8F8B871946 /* IASKAppSettingsWebViewController.m in Sources */,
-				7110586A3B932B5E1C9784254AE25FEA /* IASKColor.m in Sources */,
-				B720988FFC14CF97F3AF7F3CD2751203 /* IASKDatePicker.m in Sources */,
-				C34E074BC227F8CC4733F0FC81A9874E /* IASKDatePickerViewCell.m in Sources */,
-				FBFDB6378E189A93C03B2C6ED011D8B5 /* IASKEmbeddedDatePickerViewCell.m in Sources */,
-				1EC9B1B1EE727D94AFC3076D1A6225E0 /* IASKMultipleValueSelection.m in Sources */,
-				A662C1D00E941D28646106B843E9DB2E /* IASKPSSliderSpecifierViewCell.m in Sources */,
-				0B80D6073FDC4E1E569BABADD895BEE4 /* IASKPSTextFieldSpecifierViewCell.m in Sources */,
-				9D0D27051CCBD1F04E9156F71B45B505 /* IASKSettingsReader.m in Sources */,
-				EFF9DC9377B0D4B5D85E8F4474DD1790 /* IASKSettingsStore.m in Sources */,
-				EE40D15C02CBC3E7123F751963883088 /* IASKSettingsStoreFile.m in Sources */,
-				280C8715A9CD08421E47FFD8DDB573FC /* IASKSettingsStoreInMemory.m in Sources */,
-				E6FE54C804800460FA951EC95FE2E4F2 /* IASKSettingsStoreUserDefaults.m in Sources */,
-				E044A5663506E9504ECB71D87653FDF3 /* IASKSlider.m in Sources */,
-				0A250D91C982F24D314F9BA8E761BC00 /* IASKSpecifier.m in Sources */,
-				50CF785A1DB0BEFA0AD46670900BD8AF /* IASKSpecifierValuesViewController.m in Sources */,
-				B6E077981B54BAA241130686BE6BAB30 /* IASKSwitch.m in Sources */,
-				51FCA1BD53F65721E75F1373AE05E1C3 /* IASKTextField.m in Sources */,
-				7FB1C3C27A44C63409D2313DA96D76D2 /* IASKTextView.m in Sources */,
-				F370006C4E0E44EAE8AA0A80E37BCCFA /* IASKTextViewCell.m in Sources */,
-				54EFD105AA129119AEEF50DE06E54D29 /* InAppSettingsKit-dummy.m in Sources */,
+				3EF8FE0827502787D40D0311A4B0D69A /* Pods-WunderLINQ-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -958,78 +1018,96 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D50112850D3ED621791A65C346FE29AC /* Sources */ = {
+		D3109EB97C8515DB16C55D880D70E42B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8EC951E549CF0C1F9C7DBAB16BD73989 /* IASKAppSettingsViewController.m in Sources */,
+				8629F275B8429968C720BAEAB2493508 /* IASKAppSettingsWebViewController.m in Sources */,
+				C926CD1EC1D8062EF1A692927E524CFC /* IASKColor.m in Sources */,
+				624951CB0506527053DBED5122AA75A4 /* IASKDatePicker.m in Sources */,
+				22E7BE62BD55ED41D9DD4970ABF383B6 /* IASKDatePickerViewCell.m in Sources */,
+				49F50DC6C7080CBF9DD12E17B549422C /* IASKEmbeddedDatePickerViewCell.m in Sources */,
+				3A0B461BA5370D8B134EE5BAD9131614 /* IASKMultipleValueSelection.m in Sources */,
+				ECAD20A88EF4DE866238E227204186E1 /* IASKPSSliderSpecifierViewCell.m in Sources */,
+				8B14F63A3ECFDC56B5369CED0948AB01 /* IASKPSTextFieldSpecifierViewCell.m in Sources */,
+				4C8677E09C0DC203C31AEC1310E73DA7 /* IASKSettingsReader.m in Sources */,
+				B7B1D79BE2004CCF8608E49C5035B40D /* IASKSettingsStore.m in Sources */,
+				AA187E3835934AF0AD0330EDBF46BEA5 /* IASKSettingsStoreFile.m in Sources */,
+				15A03ED7E300A0DCC6DAF0B4C8024033 /* IASKSettingsStoreInMemory.m in Sources */,
+				A3F0D18FB975549B2ADBE15CD6CAD00E /* IASKSettingsStoreUserDefaults.m in Sources */,
+				198BDDC4F9AE7FA2EE6676F1E32EDC41 /* IASKSlider.m in Sources */,
+				65AFAD0E763098F45BF8099F41B78356 /* IASKSpecifier.m in Sources */,
+				5146A0EFA17ED8486DE3B44F839C42A4 /* IASKSpecifierValuesViewController.m in Sources */,
+				4EB4DF35BF148093A48643C191091CAF /* IASKSwitch.m in Sources */,
+				01FD5C47AB6B63702616ADEB6217068C /* IASKTextField.m in Sources */,
+				F19A3D22D8F48EFD802406D519BC2317 /* IASKTextView.m in Sources */,
+				34D3CEE2161DFC65A27172D6A418110B /* IASKTextViewCell.m in Sources */,
+				E86A92BC291C25E0B1FF8F6E147B9E5D /* InAppSettingsKit-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D7022C2F9B70BB6ECC87ADD38299F60C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F4D29537B46899C73238287C8E96FA0E /* UIMultiPicker-dummy.m in Sources */,
+				B2B3C8783D90A845544060EF9243DEC4 /* UIMultiPicker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		0506D9B5C229E84A6CC2BFC976D27170 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = ChromaColorPicker;
-			target = 7961A0F04FB3D96E3E703CF075D6DACD /* ChromaColorPicker */;
-			targetProxy = 548007164DB93815B51A750AA0703313 /* PBXContainerItemProxy */;
-		};
-		29898ED6F2C3AC237D15E6899AF38F2E /* PBXTargetDependency */ = {
+		48A67BD40C499CD05B531EEA38699E24 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "InAppSettingsKit-InAppSettingsKit";
 			target = 8A996938DFC560C0A3EF0DD6CA6B032A /* InAppSettingsKit-InAppSettingsKit */;
-			targetProxy = B4E5D1CBD8924033792D473E32CB8E71 /* PBXContainerItemProxy */;
+			targetProxy = 6BC7566B2E3CFD54298D1AB6BDE05E3B /* PBXContainerItemProxy */;
 		};
-		79336A5F2C5CDDB734E71FA872C1D7AF /* PBXTargetDependency */ = {
+		539A7FB8E66B17F62BC754DD10E44E5B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = InAppSettingsKit;
-			target = 5B4848122435F4C22D574A5DA6D2EFB3 /* InAppSettingsKit */;
-			targetProxy = 08DE627D7E44AE37FA0E383B845CA161 /* PBXContainerItemProxy */;
+			name = UIMultiPicker;
+			target = C29B8E66676DEE2FC332C8BE854A34BA /* UIMultiPicker */;
+			targetProxy = 66529DCD9F4682D1D990337F08A31075 /* PBXContainerItemProxy */;
 		};
-		CE1F0F828119FCDB37522DC3F5D3D767 /* PBXTargetDependency */ = {
+		56A230383AC3A063D2241EC7546F056E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = CoreGPX;
 			target = 493735E92C5B6068F445B48D0CA7B736 /* CoreGPX */;
-			targetProxy = 76683C65D4BCFE4C77BA473D1323A11B /* PBXContainerItemProxy */;
+			targetProxy = B671B5BC8F67152162B88E010BD8E5A2 /* PBXContainerItemProxy */;
+		};
+		9B6B2BC4A155659BDCAAF4A9B8FD9E92 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = ChromaColorPicker;
+			target = 7961A0F04FB3D96E3E703CF075D6DACD /* ChromaColorPicker */;
+			targetProxy = 83BBBFB0D0391EA6BAE0C865B123EE9E /* PBXContainerItemProxy */;
+		};
+		DCBF1935931AE876E5B5D376CD951125 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = InAppSettingsKit;
+			target = 5B4848122435F4C22D574A5DA6D2EFB3 /* InAppSettingsKit */;
+			targetProxy = 86C582D1BEDFF936E27C79B9620C255B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		084BEFF01E7C53E3BBDFE70066E01A6A /* Debug */ = {
+		240604A33B1184C8C1ACD31F6DDA6B3F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 275BDAB28B3AF54A928476F03C9EA706 /* ChromaColorPicker.debug.xcconfig */;
+			baseConfigurationReference = E042AD4E9322895B42DA8DFE0012E363 /* InAppSettingsKit.xcconfig */;
 			buildSettings = {
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/ChromaColorPicker/ChromaColorPicker-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/ChromaColorPicker/ChromaColorPicker-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MODULEMAP_FILE = "Target Support Files/ChromaColorPicker/ChromaColorPicker.modulemap";
-				PRODUCT_MODULE_NAME = ChromaColorPicker;
-				PRODUCT_NAME = ChromaColorPicker;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/InAppSettingsKit";
+				IBSC_MODULE = InAppSettingsKit;
+				INFOPLIST_FILE = "Target Support Files/InAppSettingsKit/ResourceBundle-InAppSettingsKit-InAppSettingsKit-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				PRODUCT_NAME = InAppSettingsKit;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
+				WRAPPER_EXTENSION = bundle;
 			};
-			name = Debug;
+			name = Release;
 		};
 		257497152829C177993B5EC99C1D227A /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -1091,26 +1169,45 @@
 			};
 			name = Release;
 		};
-		2F5F5CE25D9487CBA8CD11F95FAAB4C2 /* Release */ = {
+		47E5C3D05A52C76A5A446C88A4D505FE /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C79E5A789AA12CD0191E074CB2FDEBFB /* InAppSettingsKit.release.xcconfig */;
+			baseConfigurationReference = 350B41D63AC9885FDB89E3A2EB82EB99 /* CoreGPX.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/InAppSettingsKit";
-				IBSC_MODULE = InAppSettingsKit;
-				INFOPLIST_FILE = "Target Support Files/InAppSettingsKit/ResourceBundle-InAppSettingsKit-InAppSettingsKit-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				PRODUCT_NAME = InAppSettingsKit;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/CoreGPX/CoreGPX-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/CoreGPX/CoreGPX-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/CoreGPX/CoreGPX.modulemap";
+				PRODUCT_MODULE_NAME = CoreGPX;
+				PRODUCT_NAME = CoreGPX;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				WRAPPER_EXTENSION = bundle;
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
 		};
-		41CC1C3527C5776719B0FA2D04A1156F /* Debug */ = {
+		4FCAB587395AA9ED2287395F05EC1488 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 47C00870D8B2B8DE7340513190E67D8E /* InAppSettingsKit.debug.xcconfig */;
+			baseConfigurationReference = E042AD4E9322895B42DA8DFE0012E363 /* InAppSettingsKit.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -1143,7 +1240,152 @@
 			};
 			name = Debug;
 		};
-		43C5FE609857564EDC339BD53096442B /* Debug */ = {
+		5891FFA6F9D42643FB13DEBA3D1DF3D6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 350B41D63AC9885FDB89E3A2EB82EB99 /* CoreGPX.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/CoreGPX/CoreGPX-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/CoreGPX/CoreGPX-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/CoreGPX/CoreGPX.modulemap";
+				PRODUCT_MODULE_NAME = CoreGPX;
+				PRODUCT_NAME = CoreGPX;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		68FF8FE43D2B6B6FDDF1FB87598801A0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C633C87A2DD6489AB6B40BA0E328C903 /* UIMultiPicker.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/UIMultiPicker/UIMultiPicker-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/UIMultiPicker/UIMultiPicker-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/UIMultiPicker/UIMultiPicker.modulemap";
+				PRODUCT_MODULE_NAME = UIMultiPicker;
+				PRODUCT_NAME = UIMultiPicker;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		7E5C2DFB05D89DE78247BB59A2C631C9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C633C87A2DD6489AB6B40BA0E328C903 /* UIMultiPicker.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/UIMultiPicker/UIMultiPicker-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/UIMultiPicker/UIMultiPicker-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/UIMultiPicker/UIMultiPicker.modulemap";
+				PRODUCT_MODULE_NAME = UIMultiPicker;
+				PRODUCT_NAME = UIMultiPicker;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		843304369D287EC15441B64053DC0551 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F59F27BFF82BC49099EE2D221CA623DA /* Pods-WunderLINQ.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-WunderLINQ/Pods-WunderLINQ-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-WunderLINQ/Pods-WunderLINQ.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		981E4D4C0366AE8FFA73728D71CF27D7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E0C17EC28151E583D62BB32E1CAB1504 /* Pods-WunderLINQ.debug.xcconfig */;
 			buildSettings = {
@@ -1181,9 +1423,46 @@
 			};
 			name = Debug;
 		};
-		6D2D702C64717FE266C993FBB44BFFF9 /* Debug */ = {
+		A27B1BFA8CAE476B653EEC171B0C5CE0 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 47C00870D8B2B8DE7340513190E67D8E /* InAppSettingsKit.debug.xcconfig */;
+			baseConfigurationReference = B5A22676AAE55F8E120D42FB74B365D3 /* ChromaColorPicker.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/ChromaColorPicker/ChromaColorPicker-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/ChromaColorPicker/ChromaColorPicker-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/ChromaColorPicker/ChromaColorPicker.modulemap";
+				PRODUCT_MODULE_NAME = ChromaColorPicker;
+				PRODUCT_NAME = ChromaColorPicker;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		AA83CA87B0910405579BF70729958EC1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E042AD4E9322895B42DA8DFE0012E363 /* InAppSettingsKit.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/InAppSettingsKit";
@@ -1198,82 +1477,10 @@
 			};
 			name = Debug;
 		};
-		729BE207E4272600A1BADEC08582C3C8 /* Release */ = {
+		AC6F477AD38D3B51B2793610CFFD6A12 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7CCF55B2F6FE3631FA8CAD9B8FD0F466 /* CoreGPX.release.xcconfig */;
+			baseConfigurationReference = B5A22676AAE55F8E120D42FB74B365D3 /* ChromaColorPicker.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/CoreGPX/CoreGPX-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/CoreGPX/CoreGPX-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MODULEMAP_FILE = "Target Support Files/CoreGPX/CoreGPX.modulemap";
-				PRODUCT_MODULE_NAME = CoreGPX;
-				PRODUCT_NAME = CoreGPX;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		81855395FF8DBAE8B3F32788D9A838C5 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = E726520443C9EB10959252AA64C635F0 /* CoreGPX.debug.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/CoreGPX/CoreGPX-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/CoreGPX/CoreGPX-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MODULEMAP_FILE = "Target Support Files/CoreGPX/CoreGPX.modulemap";
-				PRODUCT_MODULE_NAME = CoreGPX;
-				PRODUCT_NAME = CoreGPX;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		D1B3AAE3F200D77A10780068C2A0EA24 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = F59F27BFF82BC49099EE2D221CA623DA /* Pods-WunderLINQ.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -1284,23 +1491,57 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-WunderLINQ/Pods-WunderLINQ-Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/ChromaColorPicker/ChromaColorPicker-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/ChromaColorPicker/ChromaColorPicker-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-WunderLINQ/Pods-WunderLINQ.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				MODULEMAP_FILE = "Target Support Files/ChromaColorPicker/ChromaColorPicker.modulemap";
+				PRODUCT_MODULE_NAME = ChromaColorPicker;
+				PRODUCT_NAME = ChromaColorPicker;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		AF58541AAF3314D222C2C783F9C813E8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E042AD4E9322895B42DA8DFE0012E363 /* InAppSettingsKit.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/InAppSettingsKit/InAppSettingsKit-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/InAppSettingsKit/InAppSettingsKit-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/InAppSettingsKit/InAppSettingsKit.modulemap";
+				PRODUCT_MODULE_NAME = InAppSettingsKit;
+				PRODUCT_NAME = InAppSettingsKit;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1372,82 +1613,18 @@
 			};
 			name = Debug;
 		};
-		EB64E586BA5B36EBF0E8E06315B97F4F /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = C79E5A789AA12CD0191E074CB2FDEBFB /* InAppSettingsKit.release.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/InAppSettingsKit/InAppSettingsKit-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/InAppSettingsKit/InAppSettingsKit-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MODULEMAP_FILE = "Target Support Files/InAppSettingsKit/InAppSettingsKit.modulemap";
-				PRODUCT_MODULE_NAME = InAppSettingsKit;
-				PRODUCT_NAME = InAppSettingsKit;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		F6D9EC935445CF76F9073556E01A0654 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6E90E196CC6DB2B822EEFEBEC428D3E8 /* ChromaColorPicker.release.xcconfig */;
-			buildSettings = {
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/ChromaColorPicker/ChromaColorPicker-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/ChromaColorPicker/ChromaColorPicker-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MODULEMAP_FILE = "Target Support Files/ChromaColorPicker/ChromaColorPicker.modulemap";
-				PRODUCT_MODULE_NAME = ChromaColorPicker;
-				PRODUCT_NAME = ChromaColorPicker;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		2461F9F1B7134D91F6B5A50DC5A128EE /* Build configuration list for PBXNativeTarget "InAppSettingsKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4FCAB587395AA9ED2287395F05EC1488 /* Debug */,
+				AF58541AAF3314D222C2C783F9C813E8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1460,26 +1637,17 @@
 		50901C6627F17673F7A57D9C1E3A49EF /* Build configuration list for PBXNativeTarget "ChromaColorPicker" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				084BEFF01E7C53E3BBDFE70066E01A6A /* Debug */,
-				F6D9EC935445CF76F9073556E01A0654 /* Release */,
+				AC6F477AD38D3B51B2793610CFFD6A12 /* Debug */,
+				A27B1BFA8CAE476B653EEC171B0C5CE0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		5B50BD6EC031B40BA9315F22BB5C947C /* Build configuration list for PBXNativeTarget "InAppSettingsKit-InAppSettingsKit" */ = {
+		57DAF4B6BE21D2C6D98A030BDF82AF6E /* Build configuration list for PBXNativeTarget "InAppSettingsKit-InAppSettingsKit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				6D2D702C64717FE266C993FBB44BFFF9 /* Debug */,
-				2F5F5CE25D9487CBA8CD11F95FAAB4C2 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		7B7FD5EFAA73B291EDDA17EAB375C4AB /* Build configuration list for PBXNativeTarget "Pods-WunderLINQ" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				43C5FE609857564EDC339BD53096442B /* Debug */,
-				D1B3AAE3F200D77A10780068C2A0EA24 /* Release */,
+				AA83CA87B0910405579BF70729958EC1 /* Debug */,
+				240604A33B1184C8C1ACD31F6DDA6B3F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1487,17 +1655,26 @@
 		BB04281494E2DD7239D625006530C88C /* Build configuration list for PBXNativeTarget "CoreGPX" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				81855395FF8DBAE8B3F32788D9A838C5 /* Debug */,
-				729BE207E4272600A1BADEC08582C3C8 /* Release */,
+				5891FFA6F9D42643FB13DEBA3D1DF3D6 /* Debug */,
+				47E5C3D05A52C76A5A446C88A4D505FE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CB0C105582AE031F4F49379CE5469314 /* Build configuration list for PBXNativeTarget "InAppSettingsKit" */ = {
+		DB7334074EAE93AE004739B15412DB49 /* Build configuration list for PBXNativeTarget "Pods-WunderLINQ" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				41CC1C3527C5776719B0FA2D04A1156F /* Debug */,
-				EB64E586BA5B36EBF0E8E06315B97F4F /* Release */,
+				981E4D4C0366AE8FFA73728D71CF27D7 /* Debug */,
+				843304369D287EC15441B64053DC0551 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E545A246276E2E0A4C33DA1C03B7ADF3 /* Build configuration list for PBXNativeTarget "UIMultiPicker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				68FF8FE43D2B6B6FDDF1FB87598801A0 /* Debug */,
+				7E5C2DFB05D89DE78247BB59A2C631C9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

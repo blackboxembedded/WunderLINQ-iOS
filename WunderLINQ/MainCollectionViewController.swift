@@ -216,6 +216,11 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         if isTimerRunning == false {
             runTimer()
         }
+        let writeData =  Data(_: wlqData.GET_CONFIG_CMD)
+        if ( self.wunderLINQ != nil && self.commandCharacteristic != nil){
+            self.wunderLINQ!.writeValue(writeData, for: self.commandCharacteristic!, type: CBCharacteristicWriteType.withResponse)
+            self.wunderLINQ!.readValue(for: self.commandCharacteristic!)
+        }
     }
     
     override func viewDidLayoutSubviews() {
@@ -1847,9 +1852,8 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                     break
                 case 0x57:
                     print("Received WRW command response")
-                    wlqData.setfirmwareVersion(firmwareVersion: "\(dataArray[9]).\(dataArray[10])");
-                    wlqData.setwwMode(wwMode: dataArray[26])
-                    wlqData.setwwHoldSensitivity(wwHoldSensitivity: dataArray[34])
+                    print("Command Response Received: \(messageHexString)")
+                    wlqData.parseConfig(bytes: dataArray)
                     popoverMenuList = [NSLocalizedString("bike_info_label", comment: ""), NSLocalizedString("geodata_label", comment: ""),NSLocalizedString("appsettings_label", comment: ""), NSLocalizedString("hwsettings_label", comment: ""), NSLocalizedString("about_label", comment: ""), NSLocalizedString("close_label", comment: "")]
                     break
                 default:
@@ -3340,9 +3344,8 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                 } else if characteristic.uuid == CBUUID(string: Device.CommandCharacteristicUUID) {
                     commandCharacteristic = characteristic
                     bleData.setcmdCharacteristic(cmdCharacteristic: characteristic)
-                    
-                    let getConfigCommand:[UInt8] = [0x57,0x52,0x57,0x0D,0x0A]
-                    let writeData =  Data(_: getConfigCommand)
+
+                    let writeData =  Data(_: wlqData.GET_CONFIG_CMD)
                     peripheral.writeValue(writeData, for: characteristic, type: CBCharacteristicWriteType.withResponse)
                     peripheral.readValue(for: characteristic)
                 }
