@@ -207,220 +207,431 @@ class TripViewController: UIViewController {
         updateFileList()
         indexOfFileName = csvFileNames!.firstIndex(of: fileName!)
 
-        var data = readDataFromCSV(fileName: "\(fileName!)", fileType: "csv")
-        data = cleanRows(file: data!)
-        let csvRows = csv(data: data!)
-        
-        let path = GMSMutablePath()
-        var speeds : [Double] = []
-        var maxSpeed: Double = 0
-        var ambientTemps : [Double] = []
-        var minAmbientTemp : Double?
-        var maxAmbientTemp : Double?
-        var engineTemps : [Double] = []
-        var minEngineTemp : Double?
-        var maxEngineTemp : Double?
-        var startTime : String?
-        var endTime : String?
-        var startOdometer : Double?
-        var endOdometer : Double?
-        var endShiftCnt : Int = 0
-        var endFrontBrakeCnt : Int = 0
-        var endRearBrakeCnt : Int = 0
-        
-        var lineNumber = 0
-        for row in csvRows{
-            lineNumber = lineNumber + 1
-            if (lineNumber == 2) {
-                startTime = row[0]
-            } else if ((lineNumber > 2) && (lineNumber < csvRows.count)){
-                endTime = row[0]
-            }
-        
-            if((lineNumber > 1) && (lineNumber < csvRows.count)) {
-                if !(row[1].contains("No Fix") || row[2].contains("No Fix") || row[4].contains("No Fix")){
-                    if let lat = row[1].toDouble(),let lon = row[2].toDouble() {
-                        path.add(CLLocationCoordinate2D(latitude: lat, longitude: lon))
-                    }
-                    
-                    if let speed = row[4].toDouble() {
-                        if speed > 0 {
-                            speeds.append(speed)
-                            if (maxSpeed < speed){
-                                maxSpeed = speed
+        var rawData = readDataFromCSV(fileName: "\(fileName!)", fileType: "csv")
+        if (rawData != nil){
+            let data = cleanRows(file: rawData!)
+            let csvRows = csv(data: data)
+            
+            let path = GMSMutablePath()
+            var speeds : [Double] = []
+            var maxSpeed: Double = 0
+            var ambientTemps : [Double] = []
+            var minAmbientTemp : Double?
+            var maxAmbientTemp : Double?
+            var engineTemps : [Double] = []
+            var minEngineTemp : Double?
+            var maxEngineTemp : Double?
+            var startTime : String?
+            var endTime : String?
+            var startOdometer : Double?
+            var endOdometer : Double?
+            var endShiftCnt : Int = 0
+            var endFrontBrakeCnt : Int = 0
+            var endRearBrakeCnt : Int = 0
+            
+            var lineNumber = 0
+            for row in csvRows{
+                lineNumber = lineNumber + 1
+                if (lineNumber == 2) {
+                    startTime = row[0]
+                } else if ((lineNumber > 2) && (lineNumber < csvRows.count)){
+                    endTime = row[0]
+                }
+            
+                if((lineNumber > 1) && (lineNumber < csvRows.count)) {
+                    if !(row[1].contains("No Fix") || row[2].contains("No Fix") || row[4].contains("No Fix")){
+                        if let lat = row[1].toDouble(),let lon = row[2].toDouble() {
+                            path.add(CLLocationCoordinate2D(latitude: lat, longitude: lon))
+                        }
+                        
+                        if let speed = row[4].toDouble() {
+                            if speed > 0 {
+                                speeds.append(speed)
+                                if (maxSpeed < speed){
+                                    maxSpeed = speed
+                                }
                             }
                         }
+                    } else {
+                        //no Fix
                     }
-                } else {
-                    //no Fix
+                }
+                if ((lineNumber > 1) && (lineNumber < csvRows.count)) {
+                    if !(row[6] == ""){
+                        engineTemps.append(row[6].toDouble()!)
+                        if (maxEngineTemp == nil || maxEngineTemp! < row[6].toDouble()!){
+                            maxEngineTemp = row[6].toDouble()
+                        }
+                        if (minEngineTemp == nil || minEngineTemp! > row[6].toDouble()!){
+                            minEngineTemp = row[6].toDouble()
+                        }
+                    }
+                    if !(row[7] == ""){
+                        ambientTemps.append(row[7].toDouble()!)
+                        if (maxAmbientTemp == nil || maxAmbientTemp! < row[7].toDouble()!){
+                            maxAmbientTemp = row[7].toDouble()
+                        }
+                        if (minAmbientTemp == nil || minAmbientTemp! > row[7].toDouble()!){
+                            minAmbientTemp = row[7].toDouble()
+                        }
+                    }
+                    if !(row[10] == ""){
+                        if (endOdometer == nil || endOdometer! < row[10].toDouble()!){
+                            endOdometer = row[10].toDouble()
+                        }
+                        if (startOdometer == nil || startOdometer! > row[10].toDouble()!){
+                            startOdometer = row[10].toDouble()
+                        }
+                    }
+                    if !(row[13] == ""){
+                        if (endFrontBrakeCnt < row[13].toInt()!){
+                            endFrontBrakeCnt = row[13].toInt()!
+                        }
+                    }
+                    if !(row[14] == ""){
+                        if (endRearBrakeCnt < row[14].toInt()!){
+                            endRearBrakeCnt = row[14].toInt()!
+                        }
+                    }
+                    if !(row[15] == ""){
+                        if (endShiftCnt < row[15].toInt()!){
+                            endShiftCnt = row[15].toInt()!
+                        }
+                    }
+                }
+                if(lineNumber == 2){
+                    dateLabel.text = row[0]
                 }
             }
-            if ((lineNumber > 1) && (lineNumber < csvRows.count)) {
-                if !(row[6] == ""){
-                    engineTemps.append(row[6].toDouble()!)
-                    if (maxEngineTemp == nil || maxEngineTemp! < row[6].toDouble()!){
-                        maxEngineTemp = row[6].toDouble()
-                    }
-                    if (minEngineTemp == nil || minEngineTemp! > row[6].toDouble()!){
-                        minEngineTemp = row[6].toDouble()
-                    }
-                }
-                if !(row[7] == ""){
-                    ambientTemps.append(row[7].toDouble()!)
-                    if (maxAmbientTemp == nil || maxAmbientTemp! < row[7].toDouble()!){
-                        maxAmbientTemp = row[7].toDouble()
-                    }
-                    if (minAmbientTemp == nil || minAmbientTemp! > row[7].toDouble()!){
-                        minAmbientTemp = row[7].toDouble()
-                    }
-                }
-                if !(row[10] == ""){
-                    if (endOdometer == nil || endOdometer! < row[10].toDouble()!){
-                        endOdometer = row[10].toDouble()
-                    }
-                    if (startOdometer == nil || startOdometer! > row[10].toDouble()!){
-                        startOdometer = row[10].toDouble()
-                    }
-                }
-                if !(row[13] == ""){
-                    if (endFrontBrakeCnt < row[13].toInt()!){
-                        endFrontBrakeCnt = row[13].toInt()!
-                    }
-                }
-                if !(row[14] == ""){
-                    if (endRearBrakeCnt < row[14].toInt()!){
-                        endRearBrakeCnt = row[14].toInt()!
-                    }
-                }
-                if !(row[15] == ""){
-                    if (endShiftCnt < row[15].toInt()!){
-                        endShiftCnt = row[15].toInt()!
-                    }
-                }
-            }
-            if(lineNumber == 2){
-                dateLabel.text = row[0]
-            }
-        }
-        // TODO: read from CSV header
-        var distanceUnit : String = "km"
-        var speedUnit : String = "km/h"
-        if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
-            distanceUnit = "mi"
-            speedUnit = "mi/h"
-        }
-        var temperatureUnit : String = "C";
-        if UserDefaults.standard.integer(forKey: "temperature_unit_preference") == 1 {
-            // F
-            temperatureUnit = "F";
-        }
-        
-        if ((speeds.count) > 0){
-            var avgSpeed : Double = 0.0
-            for speed in speeds {
-                avgSpeed = avgSpeed + speed
-            }
-            avgSpeed = avgSpeed / Double((speeds.count))
+            // TODO: read from CSV header
+            var distanceUnit : String = "km"
+            var speedUnit : String = "km/h"
             if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
-                avgSpeed = Utility.kmToMiles(avgSpeed)
-                maxSpeed = Utility.kmToMiles(maxSpeed)
+                distanceUnit = "mi"
+                speedUnit = "mi/h"
             }
-            speedLabel.text = "\(avgSpeed.rounded(toPlaces: 1))/\(maxSpeed.rounded(toPlaces: 1)) (\(speedUnit))"
-        }
-        
-        gearShiftsLabel.text = "\(endShiftCnt)"
-        
-        brakesLabel.text = "\(endFrontBrakeCnt)/\(endRearBrakeCnt)"
-        
-        var avgEngineTemp: Double = 0
-        if ((engineTemps.count) > 0) {
-            for engineTemp in engineTemps {
-                avgEngineTemp = avgEngineTemp + engineTemp
-            }
-            avgEngineTemp = avgEngineTemp / Double((ambientTemps.count))
+            var temperatureUnit : String = "C";
             if UserDefaults.standard.integer(forKey: "temperature_unit_preference") == 1 {
                 // F
-                minEngineTemp = Utility.celciusToFahrenheit(minEngineTemp!)
-                avgEngineTemp = Utility.celciusToFahrenheit(avgEngineTemp)
-                maxEngineTemp = Utility.celciusToFahrenheit(maxEngineTemp!)
+                temperatureUnit = "F";
             }
-        }
-        if(minEngineTemp == nil || maxEngineTemp == nil){
-            minEngineTemp = 0.0
-            maxEngineTemp = 0.0
-        }
-        engineTempLabel.text = "\(minEngineTemp!.rounded(toPlaces: 1))/\(avgEngineTemp.rounded(toPlaces: 1))/\(maxEngineTemp!.rounded(toPlaces: 1)) (\(temperatureUnit))"
-        
-        var avgAmbientTemp: Double = 0
-        if ((ambientTemps.count) > 0) {
-            for ambientTemp in ambientTemps {
-                avgAmbientTemp = avgAmbientTemp + ambientTemp
+            
+            if ((speeds.count) > 0){
+                var avgSpeed : Double = 0.0
+                for speed in speeds {
+                    avgSpeed = avgSpeed + speed
+                }
+                avgSpeed = avgSpeed / Double((speeds.count))
+                if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
+                    avgSpeed = Utility.kmToMiles(avgSpeed)
+                    maxSpeed = Utility.kmToMiles(maxSpeed)
+                }
+                speedLabel.text = "\(avgSpeed.rounded(toPlaces: 1))/\(maxSpeed.rounded(toPlaces: 1)) (\(speedUnit))"
             }
-            avgAmbientTemp = avgAmbientTemp / Double(ambientTemps.count)
-            if UserDefaults.standard.integer(forKey: "temperature_unit_preference") == 1 {
-                // F
-                minAmbientTemp = Utility.celciusToFahrenheit(minAmbientTemp!)
-                avgAmbientTemp = Utility.celciusToFahrenheit(avgAmbientTemp)
-                maxAmbientTemp = Utility.celciusToFahrenheit(maxAmbientTemp!)
+            
+            gearShiftsLabel.text = "\(endShiftCnt)"
+            
+            brakesLabel.text = "\(endFrontBrakeCnt)/\(endRearBrakeCnt)"
+            
+            var avgEngineTemp: Double = 0
+            if ((engineTemps.count) > 0) {
+                for engineTemp in engineTemps {
+                    avgEngineTemp = avgEngineTemp + engineTemp
+                }
+                avgEngineTemp = avgEngineTemp / Double((ambientTemps.count))
+                if UserDefaults.standard.integer(forKey: "temperature_unit_preference") == 1 {
+                    // F
+                    minEngineTemp = Utility.celciusToFahrenheit(minEngineTemp!)
+                    avgEngineTemp = Utility.celciusToFahrenheit(avgEngineTemp)
+                    maxEngineTemp = Utility.celciusToFahrenheit(maxEngineTemp!)
+                }
             }
-        }
-        if(minAmbientTemp == nil || maxAmbientTemp == nil){
-            minAmbientTemp = 0.0
-            maxAmbientTemp = 0.0
-        }
-        ambientTempLabel.text = "\(minAmbientTemp!.rounded(toPlaces: 1))/\(avgAmbientTemp.rounded(toPlaces: 1))/\(maxAmbientTemp!.rounded(toPlaces: 1)) (\(temperatureUnit))"
-        
-        // Calculate Distance
-        var distance: Double = 0
-        if (endOdometer != nil && startOdometer != nil) {
-            distance = endOdometer! - startOdometer!
-            if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
-                distance = Utility.kmToMiles(distance.rounded(toPlaces: 1))
+            if(minEngineTemp == nil || maxEngineTemp == nil){
+                minEngineTemp = 0.0
+                maxEngineTemp = 0.0
             }
-        }
-        distanceLabel.text = "\(distance.rounded(toPlaces: 1)) \(distanceUnit)"
-        
-        // Calculate Duration
-        if ((startTime != nil) && (endTime != nil)){
-            durationLabel.text = Utility.calculateDuration(start: startTime!,end: endTime!)
-        }
-        /*
-        let bounds = GMSCoordinateBounds(path: path)
-        let camera = mapView.camera(for: bounds, insets: UIEdgeInsets())!
-        mapView.camera = camera
-        mapView.mapType = .hybrid
-        */
-        mapView.clear()
-        if path.count() > 0 {
+            engineTempLabel.text = "\(minEngineTemp!.rounded(toPlaces: 1))/\(avgEngineTemp.rounded(toPlaces: 1))/\(maxEngineTemp!.rounded(toPlaces: 1)) (\(temperatureUnit))"
+            
+            var avgAmbientTemp: Double = 0
+            if ((ambientTemps.count) > 0) {
+                for ambientTemp in ambientTemps {
+                    avgAmbientTemp = avgAmbientTemp + ambientTemp
+                }
+                avgAmbientTemp = avgAmbientTemp / Double(ambientTemps.count)
+                if UserDefaults.standard.integer(forKey: "temperature_unit_preference") == 1 {
+                    // F
+                    minAmbientTemp = Utility.celciusToFahrenheit(minAmbientTemp!)
+                    avgAmbientTemp = Utility.celciusToFahrenheit(avgAmbientTemp)
+                    maxAmbientTemp = Utility.celciusToFahrenheit(maxAmbientTemp!)
+                }
+            }
+            if(minAmbientTemp == nil || maxAmbientTemp == nil){
+                minAmbientTemp = 0.0
+                maxAmbientTemp = 0.0
+            }
+            ambientTempLabel.text = "\(minAmbientTemp!.rounded(toPlaces: 1))/\(avgAmbientTemp.rounded(toPlaces: 1))/\(maxAmbientTemp!.rounded(toPlaces: 1)) (\(temperatureUnit))"
+            
+            // Calculate Distance
+            var distance: Double = 0
+            if (endOdometer != nil && startOdometer != nil) {
+                distance = endOdometer! - startOdometer!
+                if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
+                    distance = Utility.kmToMiles(distance.rounded(toPlaces: 1))
+                }
+            }
+            distanceLabel.text = "\(distance.rounded(toPlaces: 1)) \(distanceUnit)"
+            
+            // Calculate Duration
+            if ((startTime != nil) && (endTime != nil)){
+                durationLabel.text = Utility.calculateDuration(start: startTime!,end: endTime!)
+            }
+            /*
             let bounds = GMSCoordinateBounds(path: path)
             let camera = mapView.camera(for: bounds, insets: UIEdgeInsets())!
             mapView.camera = camera
             mapView.mapType = .hybrid
+            */
+            mapView.clear()
+            if path.count() > 0 {
+                let bounds = GMSCoordinateBounds(path: path)
+                let camera = mapView.camera(for: bounds, insets: UIEdgeInsets())!
+                mapView.camera = camera
+                mapView.mapType = .hybrid
+                
+                // Creates a marker in the center of the map.
+                let startMarker = GMSMarker()
+                startMarker.position = path.coordinate(at: 0)
+                startMarker.title = NSLocalizedString("trip_view_waypoint_start_label", comment: "")
+                startMarker.snippet = NSLocalizedString("trip_view_waypoint_start_label", comment: "")
+                startMarker.icon = GMSMarker.markerImage(with: .green)
+                startMarker.map = mapView
+                
+                let endMarker = GMSMarker()
+                endMarker.position = path.coordinate(at: path.count() - 1)
+                endMarker.title = NSLocalizedString("trip_view_waypoint_end_label", comment: "")
+                endMarker.snippet = NSLocalizedString("trip_view_waypoint_end_label", comment: "")
+                endMarker.icon = GMSMarker.markerImage(with: .red)
+                endMarker.map = mapView
+                
+                let polyline = GMSPolyline(path: path)
+                polyline.strokeColor = .red
+                polyline.strokeWidth = 5.0
+                polyline.map = mapView
+                
+                let cameraUpdate =  GMSCameraUpdate.fit(bounds, withPadding: 10.0)
+                mapView.animate(with: cameraUpdate)
+            }let csvRows = csv(data: data!)
             
-            // Creates a marker in the center of the map.
-            let startMarker = GMSMarker()
-            startMarker.position = path.coordinate(at: 0)
-            startMarker.title = NSLocalizedString("trip_view_waypoint_start_label", comment: "")
-            startMarker.snippet = NSLocalizedString("trip_view_waypoint_start_label", comment: "")
-            startMarker.icon = GMSMarker.markerImage(with: .green)
-            startMarker.map = mapView
+            let path = GMSMutablePath()
+            var speeds : [Double] = []
+            var maxSpeed: Double = 0
+            var ambientTemps : [Double] = []
+            var minAmbientTemp : Double?
+            var maxAmbientTemp : Double?
+            var engineTemps : [Double] = []
+            var minEngineTemp : Double?
+            var maxEngineTemp : Double?
+            var startTime : String?
+            var endTime : String?
+            var startOdometer : Double?
+            var endOdometer : Double?
+            var endShiftCnt : Int = 0
+            var endFrontBrakeCnt : Int = 0
+            var endRearBrakeCnt : Int = 0
             
-            let endMarker = GMSMarker()
-            endMarker.position = path.coordinate(at: path.count() - 1)
-            endMarker.title = NSLocalizedString("trip_view_waypoint_end_label", comment: "")
-            endMarker.snippet = NSLocalizedString("trip_view_waypoint_end_label", comment: "")
-            endMarker.icon = GMSMarker.markerImage(with: .red)
-            endMarker.map = mapView
+            var lineNumber = 0
+            for row in csvRows{
+                lineNumber = lineNumber + 1
+                if (lineNumber == 2) {
+                    startTime = row[0]
+                } else if ((lineNumber > 2) && (lineNumber < csvRows.count)){
+                    endTime = row[0]
+                }
             
-            let polyline = GMSPolyline(path: path)
-            polyline.strokeColor = .red
-            polyline.strokeWidth = 5.0
-            polyline.map = mapView
+                if((lineNumber > 1) && (lineNumber < csvRows.count)) {
+                    if !(row[1].contains("No Fix") || row[2].contains("No Fix") || row[4].contains("No Fix")){
+                        if let lat = row[1].toDouble(),let lon = row[2].toDouble() {
+                            path.add(CLLocationCoordinate2D(latitude: lat, longitude: lon))
+                        }
+                        
+                        if let speed = row[4].toDouble() {
+                            if speed > 0 {
+                                speeds.append(speed)
+                                if (maxSpeed < speed){
+                                    maxSpeed = speed
+                                }
+                            }
+                        }
+                    } else {
+                        //no Fix
+                    }
+                }
+                if ((lineNumber > 1) && (lineNumber < csvRows.count)) {
+                    if !(row[6] == ""){
+                        engineTemps.append(row[6].toDouble()!)
+                        if (maxEngineTemp == nil || maxEngineTemp! < row[6].toDouble()!){
+                            maxEngineTemp = row[6].toDouble()
+                        }
+                        if (minEngineTemp == nil || minEngineTemp! > row[6].toDouble()!){
+                            minEngineTemp = row[6].toDouble()
+                        }
+                    }
+                    if !(row[7] == ""){
+                        ambientTemps.append(row[7].toDouble()!)
+                        if (maxAmbientTemp == nil || maxAmbientTemp! < row[7].toDouble()!){
+                            maxAmbientTemp = row[7].toDouble()
+                        }
+                        if (minAmbientTemp == nil || minAmbientTemp! > row[7].toDouble()!){
+                            minAmbientTemp = row[7].toDouble()
+                        }
+                    }
+                    if !(row[10] == ""){
+                        if (endOdometer == nil || endOdometer! < row[10].toDouble()!){
+                            endOdometer = row[10].toDouble()
+                        }
+                        if (startOdometer == nil || startOdometer! > row[10].toDouble()!){
+                            startOdometer = row[10].toDouble()
+                        }
+                    }
+                    if !(row[13] == ""){
+                        if (endFrontBrakeCnt < row[13].toInt()!){
+                            endFrontBrakeCnt = row[13].toInt()!
+                        }
+                    }
+                    if !(row[14] == ""){
+                        if (endRearBrakeCnt < row[14].toInt()!){
+                            endRearBrakeCnt = row[14].toInt()!
+                        }
+                    }
+                    if !(row[15] == ""){
+                        if (endShiftCnt < row[15].toInt()!){
+                            endShiftCnt = row[15].toInt()!
+                        }
+                    }
+                }
+                if(lineNumber == 2){
+                    dateLabel.text = row[0]
+                }
+            }
+            // TODO: read from CSV header
+            var distanceUnit : String = "km"
+            var speedUnit : String = "km/h"
+            if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
+                distanceUnit = "mi"
+                speedUnit = "mi/h"
+            }
+            var temperatureUnit : String = "C";
+            if UserDefaults.standard.integer(forKey: "temperature_unit_preference") == 1 {
+                // F
+                temperatureUnit = "F";
+            }
             
-            let cameraUpdate =  GMSCameraUpdate.fit(bounds, withPadding: 10.0)
-            mapView.animate(with: cameraUpdate)
+            if ((speeds.count) > 0){
+                var avgSpeed : Double = 0.0
+                for speed in speeds {
+                    avgSpeed = avgSpeed + speed
+                }
+                avgSpeed = avgSpeed / Double((speeds.count))
+                if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
+                    avgSpeed = Utility.kmToMiles(avgSpeed)
+                    maxSpeed = Utility.kmToMiles(maxSpeed)
+                }
+                speedLabel.text = "\(avgSpeed.rounded(toPlaces: 1))/\(maxSpeed.rounded(toPlaces: 1)) (\(speedUnit))"
+            }
+            
+            gearShiftsLabel.text = "\(endShiftCnt)"
+            
+            brakesLabel.text = "\(endFrontBrakeCnt)/\(endRearBrakeCnt)"
+            
+            var avgEngineTemp: Double = 0
+            if ((engineTemps.count) > 0) {
+                for engineTemp in engineTemps {
+                    avgEngineTemp = avgEngineTemp + engineTemp
+                }
+                avgEngineTemp = avgEngineTemp / Double((ambientTemps.count))
+                if UserDefaults.standard.integer(forKey: "temperature_unit_preference") == 1 {
+                    // F
+                    minEngineTemp = Utility.celciusToFahrenheit(minEngineTemp!)
+                    avgEngineTemp = Utility.celciusToFahrenheit(avgEngineTemp)
+                    maxEngineTemp = Utility.celciusToFahrenheit(maxEngineTemp!)
+                }
+            }
+            if(minEngineTemp == nil || maxEngineTemp == nil){
+                minEngineTemp = 0.0
+                maxEngineTemp = 0.0
+            }
+            engineTempLabel.text = "\(minEngineTemp!.rounded(toPlaces: 1))/\(avgEngineTemp.rounded(toPlaces: 1))/\(maxEngineTemp!.rounded(toPlaces: 1)) (\(temperatureUnit))"
+            
+            var avgAmbientTemp: Double = 0
+            if ((ambientTemps.count) > 0) {
+                for ambientTemp in ambientTemps {
+                    avgAmbientTemp = avgAmbientTemp + ambientTemp
+                }
+                avgAmbientTemp = avgAmbientTemp / Double(ambientTemps.count)
+                if UserDefaults.standard.integer(forKey: "temperature_unit_preference") == 1 {
+                    // F
+                    minAmbientTemp = Utility.celciusToFahrenheit(minAmbientTemp!)
+                    avgAmbientTemp = Utility.celciusToFahrenheit(avgAmbientTemp)
+                    maxAmbientTemp = Utility.celciusToFahrenheit(maxAmbientTemp!)
+                }
+            }
+            if(minAmbientTemp == nil || maxAmbientTemp == nil){
+                minAmbientTemp = 0.0
+                maxAmbientTemp = 0.0
+            }
+            ambientTempLabel.text = "\(minAmbientTemp!.rounded(toPlaces: 1))/\(avgAmbientTemp.rounded(toPlaces: 1))/\(maxAmbientTemp!.rounded(toPlaces: 1)) (\(temperatureUnit))"
+            
+            // Calculate Distance
+            var distance: Double = 0
+            if (endOdometer != nil && startOdometer != nil) {
+                distance = endOdometer! - startOdometer!
+                if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
+                    distance = Utility.kmToMiles(distance.rounded(toPlaces: 1))
+                }
+            }
+            distanceLabel.text = "\(distance.rounded(toPlaces: 1)) \(distanceUnit)"
+            
+            // Calculate Duration
+            if ((startTime != nil) && (endTime != nil)){
+                durationLabel.text = Utility.calculateDuration(start: startTime!,end: endTime!)
+            }
+            /*
+            let bounds = GMSCoordinateBounds(path: path)
+            let camera = mapView.camera(for: bounds, insets: UIEdgeInsets())!
+            mapView.camera = camera
+            mapView.mapType = .hybrid
+            */
+            mapView.clear()
+            if path.count() > 0 {
+                let bounds = GMSCoordinateBounds(path: path)
+                let camera = mapView.camera(for: bounds, insets: UIEdgeInsets())!
+                mapView.camera = camera
+                mapView.mapType = .hybrid
+                
+                // Creates a marker in the center of the map.
+                let startMarker = GMSMarker()
+                startMarker.position = path.coordinate(at: 0)
+                startMarker.title = NSLocalizedString("trip_view_waypoint_start_label", comment: "")
+                startMarker.snippet = NSLocalizedString("trip_view_waypoint_start_label", comment: "")
+                startMarker.icon = GMSMarker.markerImage(with: .green)
+                startMarker.map = mapView
+                
+                let endMarker = GMSMarker()
+                endMarker.position = path.coordinate(at: path.count() - 1)
+                endMarker.title = NSLocalizedString("trip_view_waypoint_end_label", comment: "")
+                endMarker.snippet = NSLocalizedString("trip_view_waypoint_end_label", comment: "")
+                endMarker.icon = GMSMarker.markerImage(with: .red)
+                endMarker.map = mapView
+                
+                let polyline = GMSPolyline(path: path)
+                polyline.strokeColor = .red
+                polyline.strokeWidth = 5.0
+                polyline.map = mapView
+                
+                let cameraUpdate =  GMSCameraUpdate.fit(bounds, withPadding: 10.0)
+                mapView.animate(with: cameraUpdate)
+            }
         }
-        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
