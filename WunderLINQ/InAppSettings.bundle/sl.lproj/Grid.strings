@@ -42,3 +42,4 @@
 "barometric_header" = "Barometer";
 "sunrisesunset_header" = "Sončni vzhod/zahod";
 "time_header" = "Čas";
+"rpm_header" = "Obr/min";
