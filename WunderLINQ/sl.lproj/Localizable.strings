@@ -241,3 +241,4 @@
 "addwaypoint_view_title" = "Dodaj kažipot";
 "config_reset_label" = "Ponastavi nastavitve";
 "fw_version_label" = "Različica programske opreme";
+"rpm_header" = "Obr/min";
