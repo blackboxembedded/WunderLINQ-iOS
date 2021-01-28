@@ -263,13 +263,23 @@ class DashViewController: UIViewController, UIWebViewDelegate {
         guard let xml = XML(contentsOf: url) else { return }
 
         //Speed
-        if motorcycleData.speed != nil {
-            var speedValue = motorcycleData.speed!
+        if UserDefaults.standard.bool(forKey: "dashboard_gps_speed_preference") {
+            let currentLocation = motorcycleData.getLocation()
+            var speedValue = currentLocation.speed * 3.6
             if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
                 speedValue = Utility.kmToMiles(speedValue)
             }
             xml[0][4][11][0]["tspan"]?.text = "\(Int(round(speedValue)))"
+        } else {
+            if motorcycleData.speed != nil {
+                var speedValue = motorcycleData.speed!
+                if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
+                    speedValue = Utility.kmToMiles(speedValue)
+                }
+                xml[0][4][11][0]["tspan"]?.text = "\(Int(round(speedValue)))"
+            }
         }
+        
         if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
             distanceTimeUnit = "MPH"
         }
