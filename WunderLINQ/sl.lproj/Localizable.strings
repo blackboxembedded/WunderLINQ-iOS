@@ -56,7 +56,7 @@
 "wwMode1" = "Polno";
 "wwMode2" = "RT/K1600";
 "wwMode3" = "Po meri";
-"sensitivity_label" = "Občutljivost dotika";
+"sensitivity_label" = "Občutljivost";
 "config_write_label" = "Shrani nastavitve";
 "hwsave_alert_title" = "Pozor!";
 "hwsave_alert_body" = "Po novih nastavitvah postane naprava WunderLINQ nestabilna. Napravo je potrebno odstraniti z nosilca in jo ponovno namestiti.";
@@ -242,3 +242,55 @@
 "config_reset_label" = "Ponastavi nastavitve";
 "fw_version_label" = "Različica programske opreme";
 "rpm_header" = "Obr/min";
+"reset_header" = "Ponastavitev podatkov gruče";
+"leanangle_bike_header" = "Kot nagiba";
+"share_gpx" = "Deli GPX";
+"gpx_import_alert_title" = "Uvozi GPX";
+//DashViewController
+"dash_title" = "Armatura";
+//HWSettingsViewController
+"customize_btn_label" = "Prilagodi";
+"hwreset_alert_body" = "Trenutne WunderLINQ nastavitve po meri bodo povrnjene na tovarniške.";
+"corrupt_config_label" = "Poškodovan Config! Potreben ponovni zagon";
+"usbcontrol_off_label" = "Vedno izklopljeno";
+"full_toggle_right_long_label" = "Dolg pritisk koleščka v desno";
+"rtk_zoomp_double_label" = "Približaj, dvojni pritisk";
+"rtk_double_press_label" = "Dvojni pritisk";
+"default_btn_label" = "Privzeti način";
+"keymode_default_label" = "Privzeto";
+"keymode_custom_title" = "Prilagoditev tipk";
+"long_press_label" = "Občutljivost dolgega pritiska";
+"double_press_label" = "Občutljivost dvojnega pritiska";
+"full_scroll_up_label" = "Zavrti gor";
+"full_scroll_down_label" = "Zavrti dol";
+"full_toggle_left_label" = "Kolešček v levo";
+"full_toggle_right_label" = "Kolešček v desno";
+"full_toggle_left_long_label" = "Dolg pritisk koleščka v levo";
+"full_signal_cancel_label" = "Prekliči signal";
+"full_signal_cancel_long_label" = "Prekliči signal dolgega pritiska";
+"full_long_press_label" = "Dolg pritisk";
+"rtk_page_label" = "Izzovi";
+"rtk_page_double_label" = "Izzovi dvojni pritisk";
+"rtk_zoomm_label" = "Oddalji";
+"rtk_zoomp_label" = "Približaj";
+"rtk_zoomm_double_label" = "Oddalji, dvojni pritisk";
+"rtk_speak_label" = "Govori";
+"rtk_speak_double_label" = "Govori, dvojni pritisk";
+"rtk_mute_label" = "Utišaj";
+"rtk_mute_double_label" = "Utišaj, dvojni pritisk";
+"rtk_display_label" = "Izklopi prikaz";
+//HWCustomizeViewController
+"usb_threshold_label" = "Nadzor USB vtičnice";
+"usbcontrol_on_label" = "Vedno vklopljeno";
+"usbcontrol_engine_label" = "Vklopljen motor";
+"cancel" = "Prekliči";
+"gpx_import_alert_body" = "Uvozi kažipote iz GPX?";
+"reset_label" = "Predmet";
+"reset_btn_label" = "Ponastavitev";
+"dash_rdcf_label" = "F:";
+"dash_rdcr_label" = "R:";
+"dash_ambient_label" = "Air:";
+"dash_engine_label" = "Eng:";
+"dash_range_label" = "Range:";
+//Keyboard HID
+"hid_0x00_label" = "Ni nastavljeno";
