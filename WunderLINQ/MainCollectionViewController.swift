@@ -119,9 +119,10 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                          NSLocalizedString("barometric_header", comment: ""),
                          NSLocalizedString("gpsspeed_header", comment: ""),
                          NSLocalizedString("altitude_header", comment: ""),
-                         NSLocalizedString("vc set_header", comment: ""),
+                         NSLocalizedString("sunrisesunset_header", comment: ""),
                          NSLocalizedString("rpm_header", comment: ""),
-                         NSLocalizedString("leanangle_bike_header", comment: "")
+                         NSLocalizedString("leanangle_bike_header", comment: ""),
+                         NSLocalizedString("rearwheel_speed_header", comment: "")
     ]
     
     let locationDelegate = LocationDelegate()
@@ -1139,8 +1140,11 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             //RPM
             label = NSLocalizedString("rpm_header", comment: "")
         case 30:
-            //RPM
+            //Lean Angle
             label = NSLocalizedString("leanangle_bike_header", comment: "")
+        case 31:
+            //Rear Wheel Speed
+            label = NSLocalizedString("rearwheel_speed_header", comment: "")
         default:
             print("Unknown : \(cellDataPoint)")
         }
@@ -1817,6 +1821,18 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             if motorcycleData.leanAngleBike != nil {
                 value = "\(Int(round(motorcycleData.leanAngleBike!)))"
             }
+        case 31:
+            // Rear Wheel Speed
+            icon = (UIImage(named: "Tachometer")?.withRenderingMode(.alwaysTemplate))!
+            if motorcycleData.rearSpeed != nil {
+                let speedValue = motorcycleData.rearSpeed!
+                value = "\(Int(speedValue))"
+                if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
+                    value = "\(Int(round(Utility.kmToMiles(speedValue))))"
+                }
+            } else {
+                value = NSLocalizedString("blank_field", comment: "")
+            }
         default:
             print("Unknown : \(dataPoint)")
         }
@@ -1893,6 +1909,11 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             motorcycleData.setVIN(vin: vin)
         case 0x01:
             //print("Message ID: 1")
+            // Rear Wheel Speed
+            if ((lastMessage[3] != 0xFF) && (lastMessage[4] != 0xFF)){
+                let rearSpeed = Double(lastMessage[3] | ((lastMessage[4] & 0x0F) << 8))  * 0.14
+                motorcycleData.setRearSpeed(rearSpeed: rearSpeed)
+            }
             // Fuel Range
             if ((lastMessage[4] != 0xFF) && (lastMessage[5] != 0xFF)){
                 let firstNibble = Double((lastMessage[4] >> 4) & 0x0F)

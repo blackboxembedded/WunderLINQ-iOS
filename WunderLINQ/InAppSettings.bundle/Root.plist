@@ -82,16 +82,6 @@
             <key>DefaultValue</key>
             <false/>
         </dict>
-        <dict>
-            <key>Type</key>
-            <string>PSToggleSwitchSpecifier</string>
-            <key>Title</key>
-            <string>pref_dashboard_gps_speed_name</string>
-            <key>Key</key>
-            <string>dashboard_gps_speed_preference</string>
-            <key>DefaultValue</key>
-            <false/>
-        </dict>
 		<dict>
 			<key>Type</key>
 			<string>PSMultiValueSpecifier</string>
@@ -366,6 +356,28 @@
 			<key>Title</key>
 			<string>advanced_settings_title</string>
 		</dict>
+        <dict>
+            <key>Type</key>
+            <string>PSMultiValueSpecifier</string>
+            <key>Title</key>
+            <string>pref_dashboard_speedsource_name</string>
+            <key>Key</key>
+            <string>dashboard_speed_source_preference</string>
+            <key>DefaultValue</key>
+            <integer>0</integer>
+            <key>Titles</key>
+            <array>
+                <string>speed_header</string>
+                <string>rearwheel_speed_header</string>
+                <string>gpsspeed_header</string>
+            </array>
+            <key>Values</key>
+            <array>
+                <integer>0</integer>
+                <integer>1</integer>
+                <integer>2</integer>
+            </array>
+        </dict>
 		<dict>
 			<key>Type</key>
 			<string>PSToggleSwitchSpecifier</string>
