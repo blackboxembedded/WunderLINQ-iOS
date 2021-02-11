@@ -55,6 +55,7 @@
 	<string></string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
+		<string>yjcarnavi</string>
 		<string>mapsme</string>
 		<string>osmandmaps</string>
 		<string>mapswithme</string>

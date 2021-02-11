@@ -58,6 +58,10 @@ enum NavigationAppPreference: Int, CaseIterable {
     /// Universal app link accessible with `mapout://`
     /// `mapout://longitude=-0.209659096912497345&latitude=51.52214776018867&zoom=8.6681337356567383&rotation=0`
     case mapout
+    
+    /// Universal app link accessible with `yjcarnavi://`
+    /// https://note.com/yahoo_carnavi/n/n1d6b819a816c
+    case yjcarnavi
 
     var isAvailable: Bool {
         UIApplication.shared.canOpenURL(URL(string: self.urlScheme)!)
@@ -97,6 +101,9 @@ enum NavigationAppPreference: Int, CaseIterable {
 
         case .mapout:
             return "mapout://"
+            
+        case .yjcarnavi:
+            return "yjcarnavi://"
         }
     }
 
@@ -269,6 +276,14 @@ extension NavAppHelper {
             }
 
             navApp.open(url: url)
+            
+        case .yjcarnavi:
+            let urlString = "\(navApp.urlScheme)navi/select?lat=\(destLatitude)&lon=\(destLongitude)&name=\(destLabel ?? "")"
+            if let uRL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
+                if (UIApplication.shared.canOpenURL(uRL)) {
+                    UIApplication.shared.open(uRL, options: [:], completionHandler: nil)
+                }
+            }
         }
     }
     
