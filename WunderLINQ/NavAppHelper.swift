@@ -61,7 +61,7 @@ enum NavigationAppPreference: Int, CaseIterable {
     
     /// Universal app link accessible with `yjcarnavi://`
     /// https://note.com/yahoo_carnavi/n/n1d6b819a816c
-    case yjcarnavi
+    case yahooJapan
 
     var isAvailable: Bool {
         UIApplication.shared.canOpenURL(URL(string: self.urlScheme)!)
@@ -102,7 +102,7 @@ enum NavigationAppPreference: Int, CaseIterable {
         case .mapout:
             return "mapout://"
             
-        case .yjcarnavi:
+        case .yahooJapan:
             return "yjcarnavi://"
         }
     }
@@ -114,12 +114,13 @@ enum NavigationAppPreference: Int, CaseIterable {
             Self.appleMaps.open()
             return
         }
-
+        
         app.open(url)
     }
 
     /// Interface to open an external navigation app with no arguments
     func open(_ app: UIApplication = .shared) {
+    
         let url = URL(string: urlScheme)!
         open(url: url)
     }
@@ -261,23 +262,18 @@ extension NavAppHelper {
             }
 
         case .mapout:
-            var components = URLComponents()
-
-            let queryItems = [URLQueryItem(name: "longitude", value: "\(destLongitude)"),
-                              URLQueryItem(name: "latitude", value: "\(destLatitude)"),
-                              URLQueryItem(name: "zoom", value: "8"),
-                              URLQueryItem(name: "rotation", value: "0")]
-
-            components.queryItems = queryItems
-            components.scheme = navApp.urlScheme
-
-            guard let url = components.url else {
-                return
+            //Mapout
+            //mapout://longitude=-0.209659096912497345&latitude=51.52214776018867&zoom=8.6681337356567383&rotation=0
+            //let urlString = "mapout://longitude=-0.209659096912497345&latitude=51.52214776018867&zoom=8.6681337356567383&rotation=0"
+            let urlString = "\(navApp.urlScheme)longitude=\(destLongitude)&latitude=\(destLatitude)&zoom=15&rotation=0"
+            if let uRL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
+                if (UIApplication.shared.canOpenURL(uRL)) {
+                    UIApplication.shared.open(uRL, options: [:], completionHandler: nil)
+                }
             }
 
-            navApp.open(url: url)
-            
-        case .yjcarnavi:
+        case .yahooJapan:
+            //Yahoo Japan Car Navigation
             let urlString = "\(navApp.urlScheme)navi/select?lat=\(destLatitude)&lon=\(destLongitude)&name=\(destLabel ?? "")"
             if let uRL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
                 if (UIApplication.shared.canOpenURL(uRL)) {
@@ -289,7 +285,6 @@ extension NavAppHelper {
     
     class func viewWaypoint(destLatitude: Double, destLongitude: Double, destLabel: String?) {
         let navApp = UserDefaults.standard.integer(forKey: "nav_app_preference")
-        print("Open NavApp: \(navApp)")
         switch (navApp){
         case 0:
             //Apple Maps
@@ -309,7 +304,6 @@ extension NavAppHelper {
             //https://developers.google.com/maps/documentation/urls/ios-urlscheme
             let urlString = "comgooglemaps-x-callback://?q=\(destLatitude),\(destLongitude)&x-success=wunderlinq://?resume=true&x-source=WunderLINQ"
             if let googleMapsURL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
-                print("google map selected url")
                 if (UIApplication.shared.canOpenURL(googleMapsURL)) {
                     if #available(iOS 10, *) {
                         UIApplication.shared.open(googleMapsURL, options: [:], completionHandler: nil)
@@ -415,6 +409,14 @@ extension NavAppHelper {
                     } else {
                         UIApplication.shared.openURL(uRL as URL)
                     }
+                }
+            }
+        case 10:
+            //Mapout
+            let urlString = "mapout://longitude=\(destLongitude)&latitude=\(destLatitude)&zoom=15&rotation=0"
+            if let uRL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
+                if (UIApplication.shared.canOpenURL(uRL)) {
+                    UIApplication.shared.open(uRL, options: [:], completionHandler: nil)
                 }
             }
         default:
