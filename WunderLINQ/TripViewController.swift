@@ -207,7 +207,7 @@ class TripViewController: UIViewController {
         updateFileList()
         indexOfFileName = csvFileNames!.firstIndex(of: fileName!)
 
-        var rawData = readDataFromCSV(fileName: "\(fileName!)", fileType: "csv")
+        let rawData = readDataFromCSV(fileName: "\(fileName!)", fileType: "csv")
         if (rawData != nil){
             let data = cleanRows(file: rawData!)
             let csvRows = csv(data: data)
