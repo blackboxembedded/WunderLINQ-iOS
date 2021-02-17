@@ -1,1 +1,23 @@
 
+
+
+"pref_nav_app" = "Nawigacja";
+"nav_app_apple" = "Mapy Apple";
+"nav_app_google" = "Mapy Google";
+"nav_app_scenic" = "Scenic";
+"nav_app_sygic" = "Sygic";
+"nav_app_waze" = "Waze";
+"nav_app_mapsme" = "Maps.me";
+"nav_app_osmand" = "OsmAnd";
+"nav_app_here" = "Here WeGo";
+"nav_app_tomtomgo" = "TomTom Go";
+"nav_app_inroute" = "inRoute";
+"nav_app_mapout" = "MapOut";
+"nav_app_yahoojapan" = "Yahoo Japonia";
+"pref_actioncam_title" = "Action Kamera";
+"actioncam_none" = "Żaden";
+"actioncam_hero3" = "Hero3";
+"actioncam_hero4" = "Hero4 lub nowszy";
+"pref_musicplayer_title" = "Odtwarzacz muzyki";
+"music_apple" = "Apple Music";
+"music_spotify" = "Spotify";
