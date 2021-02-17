@@ -1,1 +1,20 @@
 
+
+
+/* 
+  InfoPlist.strings
+  WunderLINQ
+
+  Created by Keith Conger on 12/13/18.
+  Copyright © 2018 Black Box Embedded, LLC. All rights reserved.
+*/
+"NSContactsUsageDescription" = "WunderLINQ wymaga dostępu do listy kontaktów żeby je wyświetlać w appce.";
+"NSCameraUsageDescription" = "WunderLINQ wymaga dostępu do aparatu żeby robić dla Ciebie zdjęcia i nagrywać filmy.";
+"NSLocationAlwaysAndWhenInUseUsageDescription" = "WunderLINQ wymaga dostępu do Twojej lokalizacji żeby móc zapisywać dla Ciebie przebieg trasy i punkty przelotowe.";
+"NSLocationAlwaysUsageDescription" = "WunderLINQ wymaga dostępu do Twojej lokalizacji żeby móc zapisywać dla Ciebie przebieg trasy i punkty przelotowe.";
+"NSLocationWhenInUseUsageDescription" = "WunderLINQ wymaga dostępu do Twojej lokalizacji żeby móc zapisywać dla Ciebie przebieg trasy i punkty przelotowe.";
+"NSAppleMusicUsageDescription" = "WunderLINQ wymaga dostępu do biblioteki mediów żeby móc odtwarzać muzykę.";
+"NSBluetoothPeripheralUsageDescription" = "WunderLINQ wymaga dostępu do Bluetooth żeby móc połączyć się z urządzeniem WunderLINQ.";
+"NSMicrophoneUsageDescription" = "WunderLINQ wymaga dostępu do mikrofonu żeby móc zapisywać dla Ciebie audio w trakcie nagrywania video.";
+"NSPhotoLibraryAddUsageDescription" = "WunderLINQ wymaga dostępu do pamięci żeby móc zapisać zdjęcia i filmy.";
+"NSPhotoLibraryUsageDescription" = "WunderLINQ wymaga dostępu do pamięci żeby móc zapisać zdjęcia i filmy.";
