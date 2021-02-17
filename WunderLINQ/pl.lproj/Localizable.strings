@@ -1,1 +1,14 @@
 
+
+
+"task_title_gohome" = "Prowadź na chatę";
+"task_title_favnumber" = "Zadzwoń na ulubiony numer";
+"task_title_callcontact" = "Zadzwoń do kontaktu";
+"task_title_selfie" = "Strzel selfiaka";
+"task_title_start_record" = "Nagrywaj film";
+"task_title_start_trip" = "Rozpocznij zapis trasy";
+"task_title_waypoint" = "Zapisz punkt przelotowy";
+"task_title_navigation" = "Nawigacja";
+"task_title_photo" = "Strzel fotę";
+// Product
+"product" = "WunderLINQ";
