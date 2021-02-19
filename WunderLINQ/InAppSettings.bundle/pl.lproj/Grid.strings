@@ -20,7 +20,7 @@
 "rearpressure_header" = "Ciśnienie w kole tylnym";
 "odometer_header" = "Przebieg";
 "throttle_header" = "Pozycja rollgazu";
-"frontbrakes_header" = "Przednie hamulce";
+"frontbrakes_header" = "Przedni hamulec";
 "rearbrakes_header" = "Tylny hamulec";
 "shifts_header" = "Zmiany biegów";
 "ambientlight_header" = "Oświetlenie";
