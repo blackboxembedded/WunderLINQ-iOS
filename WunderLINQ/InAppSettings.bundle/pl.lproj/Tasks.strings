@@ -21,3 +21,8 @@
 "pref_task_eight" = "Ósmy";
 "pref_task_nine" = "Dziewiąty";
 "pref_task_ten" = "Dziesiąty";
+"task_title_waypoint_nav" = "Kieruj do punktu przelotowego";
+"task_title_settings" = "Ustawienia";
+"task_title_actioncam_start_video" = "Uruchom nagrywanie kamery";
+"task_title_actioncam_stop_video" = "Zatrzymaj nagrywanie kamery";
+"task_title_weathermap" = "Mapa pogody";
