@@ -435,7 +435,7 @@
 "keyboard_hid_0x60_label" = "Klawiatura numeryczna 8 i strzałka w górę";
 "keyboard_hid_0x61_label" = "Klawiatura numeryczna 9 i PageUp";
 "keyboard_hid_0x63_label" = "Klawiatura numeryczna . i Delete";
-"keyboard_hid_0x64_label" = "Klawiatura numeryczna Nie-US  and |";
+"keyboard_hid_0x64_label" = "Klawiatura numeryczna Nie-US i |";
 "keyboard_hid_0x65_label" = "Klawiatura Aplikacje";
 "keyboard_hid_0x67_label" = "Klawiatura numeryczna =";
 "keyboard_hid_0x68_label" = "Klawiatura F13";
