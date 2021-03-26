@@ -278,8 +278,8 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             UIScreen.main.brightness = CGFloat(UserDefaults.standard.float(forKey: "systemBrightness"))
         }
         
-        centralManager = CBCentralManager(delegate: self,
-                                          queue: nil)
+        //centralManager = CBCentralManager(delegate: self, queue: nil)
+        centralManager = CBCentralManager(delegate: self, queue: nil, options: [CBCentralManagerOptionRestoreIdentifierKey: "com.blackboxembedded.wunderlinq"])
         
         let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))
         swipeLeft.direction = .left
@@ -1936,7 +1936,27 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                 } else {
                     leanAngleBikeFixed = (2048 - leanAngleBike) * -1
                 }
-                motorcycleData.setleanAngleBike(leanAngleBike: (Double(leanAngleBikeFixed) * 0.045))
+                leanAngleBikeFixed = (leanAngleBikeFixed * 0.045)
+                motorcycleData.setleanAngleBike(leanAngleBike: leanAngleBikeFixed)
+                
+                //Store Max L and R lean angle
+                if(leanAngleBikeFixed > 0){
+                    if (motorcycleData.leanAngleMaxR != nil) {
+                        if (leanAngleBikeFixed > motorcycleData.leanAngleMaxR!) {
+                            motorcycleData.setleanAngleMaxR(leanAngleMaxR: leanAngleBikeFixed)
+                        }
+                    } else {
+                        motorcycleData.setleanAngleMaxR(leanAngleMaxR: leanAngleBikeFixed)
+                    }
+                } else if(leanAngleBikeFixed < 0){
+                    if (motorcycleData.leanAngleMaxL != nil) {
+                        if (abs(leanAngleBikeFixed) > motorcycleData.leanAngleMaxL!) {
+                            motorcycleData.setleanAngleMaxL(leanAngleMaxL: abs(leanAngleBikeFixed))
+                        }
+                    } else {
+                        motorcycleData.setleanAngleMaxL(leanAngleMaxL: abs(leanAngleBikeFixed))
+                    }
+                }
             }
             
             // Brakes
@@ -3307,6 +3327,15 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         resumeScan()
     }
     
+    func centralManager(_ central: CBCentralManager, willRestoreState dict: [String : Any]) {
+      if let peripheralsObject = dict[CBCentralManagerRestoredStatePeripheralsKey] {
+        let peripherals = peripheralsObject as! Array<CBPeripheral>
+        if peripherals.count > 0 {
+            wunderLINQ = peripherals[0]
+            wunderLINQ?.delegate = self
+        }
+      }
+    }
     
     //MARK: - CBPeripheralDelegate methods
     
@@ -3858,7 +3887,30 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             } else {
                 referenceAttitude = attitude
             }
-            motorcycleData.setleanAngle(leanAngle: Utility.degrees(radians: attitude.yaw))
+            let leanAngle = Utility.degrees(radians: attitude.yaw)
+            //Filter out impossible values, max sport bike lean is +/-60
+            if ((leanAngle >= -60.0) && (leanAngle <= 60.0)) {
+                motorcycleData.setleanAngle(leanAngle: Utility.degrees(radians: attitude.yaw))
+                //Store Max L and R lean angle
+                if (leanAngle < 0) {
+                    if (motorcycleData.leanAngleMaxR != nil) {
+                        if (abs(leanAngle) > motorcycleData.getleanAngleMaxR()) {
+                            motorcycleData.setleanAngleMaxR(leanAngleMaxR: abs(leanAngle))
+                        }
+                    } else {
+                        motorcycleData.setleanAngleMaxR(leanAngleMaxR: abs(leanAngle));
+                    }
+                } else if (leanAngle > 0) {
+                    if (motorcycleData.leanAngleMaxL != nil) {
+                        if (leanAngle > motorcycleData.getleanAngleMaxL()) {
+                            motorcycleData.setleanAngleMaxL(leanAngleMaxL: leanAngle);
+                        }
+                    } else {
+                        motorcycleData.setleanAngleMaxL(leanAngleMaxL: leanAngle);
+                    }
+                }
+            }
+            //g force
             motorcycleData.setgForce(gForce: sqrt (pow(data!.userAcceleration.x,2) + pow(data!.userAcceleration.y,2) + pow(data!.userAcceleration.z,2)))
         }
     }

@@ -302,11 +302,19 @@
 "weathermap_title" = "Weather Map";
 //DashViewController
 "dash_title" = "Dashboard";
-"dash_ambient_label" = "Air:";
-"dash_engine_label" = "Eng:";
-"dash_range_label" = "Range:";
-"dash_rdcf_label" = "F:";
-"dash_rdcr_label" = "R:";
+"dash_ambient_label" = "Air";
+"dash_engine_label" = "Eng";
+"dash_range_label" = "Range";
+"dash_rdcf_label" = "F";
+"dash_rdcr_label" = "R";
+"dash_odometer_label" = "Odo";
+"dash_trip1_label" = "Trip1";
+"dash_trip2_label" = "Trip2";
+"dash_tripauto_label" = "TripA";
+"dash_avgspeed_label" = "AVG";
+"dash_cconsumption_label" = "CONS";
+"dash_fueleconomyone_label" = "Econo1";
+"dash_fueleconomytwo_label" = "Econo2";
 //Keyboard HID
 "hid_0x00_label" = "Not Set";
 "hid_keyboard_label" = "Standard";

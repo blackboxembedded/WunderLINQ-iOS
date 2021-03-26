@@ -48,6 +48,10 @@
 		7E6987DB20F82F1A00B4781D /* MotorcycleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6987DA20F82F1A00B4781D /* MotorcycleData.swift */; };
 		7E6987DD20F8F83500B4781D /* Faults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6987DC20F8F83500B4781D /* Faults.swift */; };
 		7E6E0A6824FC022200149387 /* ColorPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6E0A6724FC022200149387 /* ColorPickerViewController.swift */; };
+		7E755C12260A787100B29507 /* sport-dashboard.svg in Resources */ = {isa = PBXBuildFile; fileRef = 7E755C10260A787100B29507 /* sport-dashboard.svg */; };
+		7E755C13260A787100B29507 /* standard-dashboard.svg in Resources */ = {isa = PBXBuildFile; fileRef = 7E755C11260A787100B29507 /* standard-dashboard.svg */; };
+		7E755C18260AA78900B29507 /* StandardDashboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E755C17260AA78900B29507 /* StandardDashboard.swift */; };
+		7E755C1E260AA80700B29507 /* SportDashboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E755C1D260AA80700B29507 /* SportDashboard.swift */; };
 		7E7C53CD21F3BA9200C98010 /* ContactsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7C53CC21F3BA9200C98010 /* ContactsTableViewCell.swift */; };
 		7E80BD3B211CF80600B8CA0D /* LocalisableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E80BD3A211CF80600B8CA0D /* LocalisableLabel.swift */; };
 		7E80BD3D211CFF7300B8CA0D /* LocalisableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E80BD3C211CFF7300B8CA0D /* LocalisableButton.swift */; };
@@ -78,7 +82,6 @@
 		7EB5ED7D251FE8FA00B61160 /* DashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB5ED7C251FE8FA00B61160 /* DashViewController.swift */; };
 		7EB5EDD725211BCF00B61160 /* agencyfb.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7EB5EDD625211BCF00B61160 /* agencyfb.ttf */; };
 		7EB5EDE4252136F800B61160 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7EB5EDE2252136F800B61160 /* Main.storyboard */; };
-		7EB5EDEE25216ACF00B61160 /* gstft-dashboard.svg in Resources */ = {isa = PBXBuildFile; fileRef = 7EB5EDEC25216ACF00B61160 /* gstft-dashboard.svg */; };
 		7EB5EE122523C57100B61160 /* XML.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB5EE112523C57100B61160 /* XML.swift */; };
 		7EB8B99E245CA7A6007232D2 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB8B99D245CA7A6007232D2 /* Secrets.swift */; };
 		7EBC8A9E23B19C0B001FE70B /* AddWaypointViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBC8A9D23B19C0B001FE70B /* AddWaypointViewController.swift */; };
@@ -168,6 +171,10 @@
 		7E7440982308F24A001FDE20 /* af */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = af; path = af.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		7E7440992308F24F001FDE20 /* af */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = af; path = af.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		7E74409A2308F2F1001FDE20 /* af */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = af; path = WunderLINQ/af.lproj/Localizable.strings; sourceTree = "<group>"; };
+		7E755C10260A787100B29507 /* sport-dashboard.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "sport-dashboard.svg"; sourceTree = "<group>"; };
+		7E755C11260A787100B29507 /* standard-dashboard.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "standard-dashboard.svg"; sourceTree = "<group>"; };
+		7E755C17260AA78900B29507 /* StandardDashboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardDashboard.swift; sourceTree = "<group>"; };
+		7E755C1D260AA80700B29507 /* SportDashboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportDashboard.swift; sourceTree = "<group>"; };
 		7E78DB2C23006FCF009742DF /* de */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		7E78DB2D23006FD1009742DF /* es-419 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		7E78DB2F23006FD7009742DF /* cs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -213,7 +220,6 @@
 		7EB5ED8B251FED8300B61160 /* libCocoaLumberjack.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libCocoaLumberjack.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EB5EDD625211BCF00B61160 /* agencyfb.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = agencyfb.ttf; sourceTree = "<group>"; };
 		7EB5EDE3252136F800B61160 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		7EB5EDEC25216ACF00B61160 /* gstft-dashboard.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "gstft-dashboard.svg"; sourceTree = "<group>"; };
 		7EB5EE112523C57100B61160 /* XML.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XML.swift; sourceTree = "<group>"; };
 		7EB8B99D245CA7A6007232D2 /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
 		7EBC8A9D23B19C0B001FE70B /* AddWaypointViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWaypointViewController.swift; sourceTree = "<group>"; };
@@ -313,6 +319,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		7E755C16260A997100B29507 /* SVGDashboards */ = {
+			isa = PBXGroup;
+			children = (
+				7E755C17260AA78900B29507 /* StandardDashboard.swift */,
+				7E755C1D260AA80700B29507 /* SportDashboard.swift */,
+			);
+			path = SVGDashboards;
+			sourceTree = "<group>";
+		};
 		7EA3F95122EA88690075A0E1 /* externalcamera */ = {
 			isa = PBXGroup;
 			children = (
@@ -346,6 +361,7 @@
 		7EA4784C1F40B154000CEDDC /* WunderLINQ */ = {
 			isa = PBXGroup;
 			children = (
+				7E755C16260A997100B29507 /* SVGDashboards */,
 				B98CA760252E6DD400530075 /* External */,
 				7EB5EDE9252169B800B61160 /* svg */,
 				7EB5EDD525211B6100B61160 /* fonts */,
@@ -439,7 +455,8 @@
 		7EB5EDE9252169B800B61160 /* svg */ = {
 			isa = PBXGroup;
 			children = (
-				7EB5EDEC25216ACF00B61160 /* gstft-dashboard.svg */,
+				7E755C10260A787100B29507 /* sport-dashboard.svg */,
+				7E755C11260A787100B29507 /* standard-dashboard.svg */,
 			);
 			path = svg;
 			sourceTree = "<group>";
@@ -574,13 +591,14 @@
 			files = (
 				7E068BF62102D1A90076EAAD /* GoogleMaps.bundle in Resources */,
 				7E4D76E321DDAEC100825175 /* InfoPlist.strings in Resources */,
+				7E755C12260A787100B29507 /* sport-dashboard.svg in Resources */,
 				7EA478831F4A7260000CEDDC /* InAppSettings.bundle in Resources */,
 				7EA4788A1F537ED5000CEDDC /* Localizable.strings in Resources */,
 				7EA478581F40B154000CEDDC /* LaunchScreen.storyboard in Resources */,
 				7EA478551F40B154000CEDDC /* Assets.xcassets in Resources */,
 				7EB5EDE4252136F800B61160 /* Main.storyboard in Resources */,
 				7ED2013620D0D0030066BCE6 /* Default-568h@2x.png in Resources */,
-				7EB5EDEE25216ACF00B61160 /* gstft-dashboard.svg in Resources */,
+				7E755C13260A787100B29507 /* standard-dashboard.svg in Resources */,
 				7EB5EDD725211BCF00B61160 /* agencyfb.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -670,6 +688,7 @@
 				7E5A767A20DDFEF700B48CC6 /* Waypoint.swift in Sources */,
 				7E80BD42211D419C00B8CA0D /* WaypointsNavTableViewController.swift in Sources */,
 				7E25396521CDB1740008D34E /* WLQ.swift in Sources */,
+				7E755C18260AA78900B29507 /* StandardDashboard.swift in Sources */,
 				7EC8C9BF1F830C5B000CEDDC /* PhoneContacts.swift in Sources */,
 				7E80BD44211D5A0600B8CA0D /* UIView+ignoresInvertColors.swift in Sources */,
 				7EA4BCC921B8CB270084F6EA /* TaskCollectionViewCell.swift in Sources */,
@@ -690,6 +709,7 @@
 				7EAF646822FE17D000B11550 /* BikeInfoViewController.swift in Sources */,
 				7E35A59322DC265800E4AE40 /* Utility.swift in Sources */,
 				7EAE9417211EA30900E24CE9 /* Theme.swift in Sources */,
+				7E755C1E260AA80700B29507 /* SportDashboard.swift in Sources */,
 				7EF0776C258FBDEF009A6BAA /* KeyboardHID.swift in Sources */,
 				7EC63202219BCE05002E68FF /* AboutViewController.swift in Sources */,
 				7EB5ED7D251FE8FA00B61160 /* DashViewController.swift in Sources */,

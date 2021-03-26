@@ -5,6 +5,8 @@
 //  Created by Craig Grummitt on 24/08/2016.
 //  Copyright © 2016 interactivecoconut. All rights reserved.
 //
+//  25/03/2021 - Modified to use id for subscript lookup Black Box Emedded, LLC 
+//
 import Foundation
 //Use XML class for XML document
 //Parse using Foundation's XMLParser
@@ -29,6 +31,7 @@ class XML: XMLNode {
 //<name attribute="attribute_data">text<child></child></name>
 class XMLNode: NSObject {
     var name: String?
+    var id: String?
     var attributes: [String: String] = [:]
     var text = ""
     var children: [XMLNode] = []
@@ -62,7 +65,8 @@ class XMLNode: NSObject {
     subscript(index: String) -> XMLNode? {
         //if more than one exists, assume the first
         get {
-            return children.filter({ $0.name == index }).first
+            //return children.filter({ $0.name == index }).first
+            return children.filter({ $0.id == index }).first
         }
         set {
             guard let newNode = newValue,
@@ -113,6 +117,7 @@ extension XMLNode: XMLParserDelegate {
         childNode.name = elementName
         childNode.parent = self
         childNode.attributes = attributeDict
+        childNode.id = attributeDict["id"]
         parser.delegate = childNode
 
         children.append(childNode)

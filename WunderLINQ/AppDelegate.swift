@@ -65,7 +65,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) ->
         Bool {
-            
+
             //Hack to enable Virtual Keyboard
             let setHardwareLayout = NSSelectorFromString("setHardwareLayout:")
             UITextInputMode.activeInputModes

@@ -53,6 +53,10 @@ class MotorcycleData {
     var barometricPressure: Double?
     var rpm: Int16? = 0
     var leanAngleBike: Double?
+    var leanAngleBikeMaxL: Double?
+    var leanAngleBikeMaxR: Double?
+    var leanAngleMaxL: Double?
+    var leanAngleMaxR: Double?
     var rearSpeed: Double?
     
     func setLocation(location: CLLocation?){
@@ -279,6 +283,34 @@ class MotorcycleData {
         return self.leanAngleBike!
     }
     
+    func setleanAngleBikeMaxL(leanAngleBikeMaxL: Double?){
+        self.leanAngleBikeMaxL = leanAngleBikeMaxL
+    }
+    func getleanAngleBikeMaxL() -> Double{
+        return self.leanAngleBikeMaxL!
+    }
+    
+    func setleanAngleBikeMaxR(leanAngleBikeMaxR: Double?){
+        self.leanAngleBikeMaxR = leanAngleBikeMaxR
+    }
+    func getleanAngleBikeMaxR() -> Double{
+        return self.leanAngleBikeMaxR!
+    }
+    
+    func setleanAngleMaxL(leanAngleMaxL: Double?){
+        self.leanAngleMaxL = leanAngleMaxL
+    }
+    func getleanAngleMaxL() -> Double{
+        return self.leanAngleMaxL!
+    }
+    
+    func setleanAngleMaxR(leanAngleMaxR: Double?){
+        self.leanAngleMaxR = leanAngleMaxR
+    }
+    func getleanAngleMaxR() -> Double{
+        return self.leanAngleMaxR!
+    }
+    
     func setRearSpeed(rearSpeed: Double?){
         self.rearSpeed = rearSpeed
     }
@@ -313,6 +345,10 @@ class MotorcycleData {
         self.bearing = nil
         self.rpm = 0
         self.leanAngleBike = nil
+        self.leanAngleBikeMaxL = nil
+        self.leanAngleBikeMaxR = nil
+        self.leanAngleMaxL = nil
+        self.leanAngleMaxR = nil
         self.rearSpeed = nil
     }
 }

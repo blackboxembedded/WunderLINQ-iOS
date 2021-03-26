@@ -33,6 +33,9 @@ class DashViewController: UIViewController, UIWebViewDelegate {
     var seconds = 10
     var isTimerRunning = false
     
+    var currentDashboard = 1
+    var currentInfoLine = 1
+    
     override var preferredStatusBarStyle : UIStatusBarStyle {
         switch(UserDefaults.standard.integer(forKey: "darkmode_preference")){
         case 0:
@@ -103,6 +106,17 @@ class DashViewController: UIViewController, UIWebViewDelegate {
         swipeRight.direction = .right
         self.view.addGestureRecognizer(swipeRight)
         
+        let swipeUp = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))
+        swipeUp.direction = .up
+        self.view.addGestureRecognizer(swipeUp)
+        
+        let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))
+        swipeDown.direction = .down
+        self.view.addGestureRecognizer(swipeDown)
+        
+        let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(longPress(longPressGestureRecognizer:)))
+        self.view.addGestureRecognizer(longPressRecognizer)
+        
         let touchRecognizer = UITapGestureRecognizer(target: self, action:  #selector(onTouch))
         self.view.addGestureRecognizer(touchRecognizer)
         
@@ -171,6 +185,7 @@ class DashViewController: UIViewController, UIWebViewDelegate {
         webView.scrollView.zoomScale = scaleFactor
         webView.backgroundColor = .clear
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         let value = UIInterfaceOrientation.landscapeRight.rawValue
         UIDevice.current.setValue(value, forKey: "orientation")
@@ -205,6 +220,12 @@ class DashViewController: UIViewController, UIWebViewDelegate {
         }
     }
     
+    @objc func longPress(longPressGestureRecognizer: UILongPressGestureRecognizer) {
+        if longPressGestureRecognizer.state == UIGestureRecognizer.State.began {
+            nextDashboard()
+        }
+    }
+    
     @objc func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
         if gesture.direction == UISwipeGestureRecognizer.Direction.right {
             leftScreen()
@@ -212,12 +233,21 @@ class DashViewController: UIViewController, UIWebViewDelegate {
         else if gesture.direction == UISwipeGestureRecognizer.Direction.left {
             rightScreen()
         }
+        else if gesture.direction == UISwipeGestureRecognizer.Direction.up {
+            nextInfo()
+        }
+        else if gesture.direction == UISwipeGestureRecognizer.Direction.down {
+            previousInfo()
+        }
     }
     
     override var keyCommands: [UIKeyCommand]? {
         let commands = [
+            UIKeyCommand(input: "\u{d}", modifierFlags:[], action: #selector(nextDashboard), discoverabilityTitle: "Next Dashboard"),
             UIKeyCommand(input: UIKeyCommand.inputLeftArrow, modifierFlags:[], action: #selector(leftScreen), discoverabilityTitle: "Go left"),
             UIKeyCommand(input: UIKeyCommand.inputRightArrow, modifierFlags:[], action: #selector(rightScreen), discoverabilityTitle: "Go right"),
+            UIKeyCommand(input: UIKeyCommand.inputUpArrow, modifierFlags:[], action: #selector(nextInfo), discoverabilityTitle: "Next Info"),
+            UIKeyCommand(input: UIKeyCommand.inputDownArrow, modifierFlags:[], action: #selector(previousInfo), discoverabilityTitle: "Previous Info")
         ]
         return commands
     }
@@ -228,6 +258,33 @@ class DashViewController: UIViewController, UIWebViewDelegate {
     
     @objc func rightScreen() {
         performSegue(withIdentifier: "dashToMusic", sender: [])
+    }
+    
+    @objc func nextInfo() {
+        if (currentInfoLine == 3){
+            currentInfoLine = 1
+        } else {
+            currentInfoLine = currentInfoLine + 1
+        }
+        updateDashboard()
+    }
+    
+    @objc func previousInfo() {
+        if (currentInfoLine == 1){
+            currentInfoLine = 3
+        } else {
+            currentInfoLine = currentInfoLine - 1
+        }
+        updateDashboard()
+    }
+    
+    @objc func nextDashboard() {
+        if (currentDashboard == 2){
+            currentDashboard = 1
+        } else {
+            currentDashboard = currentDashboard + 1
+        }
+        updateDashboard()
     }
     
     func runTimer() {
@@ -253,713 +310,11 @@ class DashViewController: UIViewController, UIWebViewDelegate {
     }
 
     @objc func updateDashboard(){
-
-        var temperatureUnit = "C"
-        var distanceUnit = "km"
-        var distanceTimeUnit = "KMH"
-        var pressureUnit = "psi"
-        
-        guard let url = Bundle.main.url(forResource: "gstft-dashboard", withExtension: "svg") else { return }
-        guard let xml = XML(contentsOf: url) else { return }
-
-        //Speed
-        switch UserDefaults.standard.integer(forKey: "dashboard_speed_source_preference"){
-        case 0:
-            if motorcycleData.speed != nil {
-                var speedValue = motorcycleData.speed!
-                if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
-                    speedValue = Utility.kmToMiles(speedValue)
-                }
-                xml[0][4][11][0]["tspan"]?.text = "\(Int(round(speedValue)))"
-            }
-        case 1:
-            if motorcycleData.rearSpeed != nil {
-                var speedValue = motorcycleData.rearSpeed!
-                if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
-                    speedValue = Utility.kmToMiles(speedValue)
-                }
-                xml[0][4][11][0]["tspan"]?.text = "\(Int(round(speedValue)))"
-            }
-        case 2:
-            let currentLocation = motorcycleData.getLocation()
-            var speedValue = currentLocation.speed * 3.6
-            if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
-                speedValue = Utility.kmToMiles(speedValue)
-            }
-            xml[0][4][11][0]["tspan"]?.text = "\(Int(round(speedValue)))"
-        default:
-            print("Unknown pressure unit setting")
-        }
-        
-        if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
-            distanceTimeUnit = "MPH"
-        }
-        xml[0][4][10][1]["text"]?["tspan"]?.text = distanceTimeUnit
-        
-        //Gear
-        var gearValue = "-"
-        if motorcycleData.gear != nil {
-            gearValue = motorcycleData.getgear()
-            if gearValue == "N"{
-                guard let style = xml[0][4][11][1]["tspan"]?.attributes["style"] else {return}
-                let regex = try! NSRegularExpression(pattern: "fill:([^<]*);", options: NSRegularExpression.Options.caseInsensitive)
-                let range = NSMakeRange(0, style.count)
-                let modString = regex.stringByReplacingMatches(in: style, options: [], range: range, withTemplate: "fill:#03ae1e;")
-                xml[0][4][11][1]["tspan"]?.attributes["style"] = modString
-            }
-        }
-        xml[0][4][11][1]["tspan"]?.text = gearValue
-        
-        // Ambient Temperature
-        var ambientTempValue = "-"
-        if motorcycleData.ambientTemperature != nil {
-            var ambientTemp:Double = motorcycleData.ambientTemperature!
-            if(ambientTemp <= 0){
-                //icon = (UIImage(named: "Snowflake")?.withRenderingMode(.alwaysTemplate))!
-            }
-            if UserDefaults.standard.integer(forKey: "temperature_unit_preference") == 1 {
-                temperatureUnit = "F"
-                ambientTemp = Utility.celciusToFahrenheit(ambientTemp)
-            }
-            ambientTempValue = "\(Int(round(ambientTemp)))\(temperatureUnit)"
-        }
-        xml[0][4][11][2]["tspan"]?.text = ambientTempValue
-        
-        // Engine Temperature
-        var engineTempValue = "-"
-        if motorcycleData.engineTemperature != nil {
-            var engineTemp:Double = motorcycleData.engineTemperature!
-            if (engineTemp >= 104.0){
-                guard let style = xml[0][4][11][3]["tspan"]?.attributes["style"] else {return}
-                let regex = try! NSRegularExpression(pattern: "fill:([^<]*);", options: NSRegularExpression.Options.caseInsensitive)
-                let range = NSMakeRange(0, style.count)
-                let modString = regex.stringByReplacingMatches(in: style, options: [], range: range, withTemplate: "fill:#e20505;")
-                xml[0][4][11][3]["tspan"]?.attributes["style"] = modString
-            }
-            if (UserDefaults.standard.integer(forKey: "temperature_unit_preference") == 1 ){
-                temperatureUnit = "F"
-                engineTemp = Utility.celciusToFahrenheit(engineTemp)
-            }
-            engineTempValue = "\(Int(round(engineTemp)))\(temperatureUnit)"
-        }
-        xml[0][4][11][3]["tspan"]?.text = engineTempValue
-        
-        //Fuel Range
-        var fuelRangeValue = "-"
-        if motorcycleData.fuelRange != nil {
-            var fuelRange:Double = motorcycleData.fuelRange!
-            if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
-                distanceUnit = "mls"
-                fuelRange = Utility.kmToMiles(fuelRange)
-            }
-            fuelRangeValue = "\(Int(round(fuelRange)))\(distanceUnit)"
-        }
-        xml[0][4][11][4]["tspan"]?.text = fuelRangeValue
-        if(faults.getFuelFaultActive()){
-            guard let style = xml[0][4][11][4]["tspan"]?.attributes["style"] else {return}
-            let regex = try! NSRegularExpression(pattern: "fill:([^<]*);", options: NSRegularExpression.Options.caseInsensitive)
-            let range = NSMakeRange(0, style.count)
-            let modString = regex.stringByReplacingMatches(in: style, options: [], range: range, withTemplate: "fill:#e20505;")
-            xml[0][4][11][4]["tspan"]?.attributes["style"] = modString
-            //Fuel Icon
-            xml[0][4][12][3].attributes["style"] = "display:inline"
-        }
-        
-        //Time
-        var timeValue = ":"
-        if motorcycleData.time != nil {
-            let formatter = DateFormatter()
-            formatter.dateFormat = "h:mm"
-            if UserDefaults.standard.integer(forKey: "time_format_preference") > 0 {
-                formatter.dateFormat = "HH:mm"
-            }
-            timeValue = ("\(formatter.string(from: motorcycleData.time!))")
-        }
-        xml[0][4][11][5]["tspan"]?.text = timeValue
-        
-        // Front Tire Pressure
-        var rdcFValue = "-"
-        if motorcycleData.frontTirePressure != nil {
-            var frontPressure:Double = motorcycleData.frontTirePressure!
-            switch UserDefaults.standard.integer(forKey: "pressure_unit_preference"){
-            case 1:
-                pressureUnit = "kPa"
-                frontPressure = Utility.barTokPa(frontPressure)
-            case 2:
-                pressureUnit = "kgf"
-                frontPressure = Utility.barTokgf(frontPressure)
-            case 3:
-                pressureUnit = "psi"
-                frontPressure = Utility.barToPsi(frontPressure)
-            default:
-                pressureUnit = "bar"
-                break
-            }
-            rdcFValue = "\(frontPressure.rounded(toPlaces: 1))\(pressureUnit)"
-        }
-        xml[0][4][11][6]["tspan"]?.text = rdcFValue
-        
-        if(faults.getFrontTirePressureCriticalActive()){
-            guard let style = xml[0][4][11][6]["tspan"]?.attributes["style"] else {return}
-            let regex = try! NSRegularExpression(pattern: "fill:([^<]*);", options: NSRegularExpression.Options.caseInsensitive)
-            let range = NSMakeRange(0, style.count)
-            let modString = regex.stringByReplacingMatches(in: style, options: [], range: range, withTemplate: "fill:#e20505;")
-            xml[0][4][11][6]["tspan"]?.attributes["style"] = modString
-        } else if(faults.getRearTirePressureWarningActive()){
-            guard let style = xml[0][4][11][6]["tspan"]?.attributes["style"] else {return}
-            let regex = try! NSRegularExpression(pattern: "fill:([^<]*);", options: NSRegularExpression.Options.caseInsensitive)
-            let range = NSMakeRange(0, style.count)
-            let modString = regex.stringByReplacingMatches(in: style, options: [], range: range, withTemplate: "fill:#fcc914;")
-            xml[0][4][11][6]["tspan"]?.attributes["style"] = modString
-        }
-        
-        // Rear Tire Pressure
-        var rdcRValue = "-"
-        if motorcycleData.rearTirePressure != nil {
-            var rearPressure:Double = motorcycleData.rearTirePressure!
-            switch UserDefaults.standard.integer(forKey: "pressure_unit_preference"){
-            case 1:
-                pressureUnit = "kPa"
-                rearPressure = Utility.barTokPa(rearPressure)
-            case 2:
-                pressureUnit = "kgf"
-                rearPressure = Utility.barTokgf(rearPressure)
-            case 3:
-                pressureUnit = "psi"
-                rearPressure = Utility.barToPsi(rearPressure)
-            default:
-                pressureUnit = "bar"
-                break
-            }
-            rdcRValue = "\(rearPressure.rounded(toPlaces: 1))\(pressureUnit)"
-        }
-        xml[0][4][11][7]["tspan"]?.text = rdcRValue
-        
-        if(faults.getRearTirePressureCriticalActive()){
-            guard let style = xml[0][4][11][7]["tspan"]?.attributes["style"] else {return}
-            let regex = try! NSRegularExpression(pattern: "fill:([^<]*);", options: NSRegularExpression.Options.caseInsensitive)
-            let range = NSMakeRange(0, style.count)
-            let modString = regex.stringByReplacingMatches(in: style, options: [], range: range, withTemplate: "fill:#e20505;")
-            xml[0][4][11][7]["tspan"]?.attributes["style"] = modString
-        } else if(faults.getRearTirePressureWarningActive()){
-            guard let style = xml[0][4][11][7]["tspan"]?.attributes["style"] else {return}
-            let regex = try! NSRegularExpression(pattern: "fill:([^<]*);", options: NSRegularExpression.Options.caseInsensitive)
-            let range = NSMakeRange(0, style.count)
-            let modString = regex.stringByReplacingMatches(in: style, options: [], range: range, withTemplate: "fill:#fcc914;")
-            xml[0][4][11][7]["tspan"]?.attributes["style"] = modString
-        }
-        
-        //Trip Logging
-        //xml[0][5][0].attributes["style"] = "display:inline"
-        //Camera
-        //xml[0][5][1].attributes["style"] = "display:inline"
-        
-        // Fault icon
-        if(!faults.getallActiveDesc().isEmpty){
-            xml[0][4][12][2].attributes["style"] = "display:inline"
-        }
-        
-        // RPM Tiles
-        if motorcycleData.rpm != nil {
-            switch (motorcycleData.getRPM()){
-            case 1..<334:
-                xml[0][4][13][1].attributes["style"] = "display:inline"
-            case 334..<667:
-                xml[0][4][13][1].attributes["style"] = "display:inline"
-                xml[0][4][13][2].attributes["style"] = "display:inline"
-            case 667..<1001:
-                xml[0][4][13][1].attributes["style"] = "display:inline"
-                xml[0][4][13][2].attributes["style"] = "display:inline"
-                xml[0][4][13][3].attributes["style"] = "display:inline"
-            case 1001..<1334:
-                xml[0][4][13][1].attributes["style"] = "display:inline"
-                xml[0][4][13][2].attributes["style"] = "display:inline"
-                xml[0][4][13][3].attributes["style"] = "display:inline"
-                xml[0][4][13][4].attributes["style"] = "display:inline"
-            case 1334..<1667:
-                xml[0][4][13][1].attributes["style"] = "display:inline"
-                xml[0][4][13][2].attributes["style"] = "display:inline"
-                xml[0][4][13][3].attributes["style"] = "display:inline"
-                xml[0][4][13][4].attributes["style"] = "display:inline"
-                xml[0][4][13][5].attributes["style"] = "display:inline"
-            case 1667..<2001:
-                xml[0][4][13][1].attributes["style"] = "display:inline"
-                xml[0][4][13][2].attributes["style"] = "display:inline"
-                xml[0][4][13][3].attributes["style"] = "display:inline"
-                xml[0][4][13][4].attributes["style"] = "display:inline"
-                xml[0][4][13][5].attributes["style"] = "display:inline"
-                xml[0][4][13][6].attributes["style"] = "display:inline"
-            case 2001..<2334:
-                xml[0][4][13][1].attributes["style"] = "display:inline"
-                xml[0][4][13][2].attributes["style"] = "display:inline"
-                xml[0][4][13][3].attributes["style"] = "display:inline"
-                xml[0][4][13][4].attributes["style"] = "display:inline"
-                xml[0][4][13][5].attributes["style"] = "display:inline"
-                xml[0][4][13][6].attributes["style"] = "display:inline"
-                xml[0][4][13][7].attributes["style"] = "display:inline"
-            case 2334..<2667:
-                xml[0][4][13][1].attributes["style"] = "display:inline"
-                xml[0][4][13][2].attributes["style"] = "display:inline"
-                xml[0][4][13][3].attributes["style"] = "display:inline"
-                xml[0][4][13][4].attributes["style"] = "display:inline"
-                xml[0][4][13][5].attributes["style"] = "display:inline"
-                xml[0][4][13][6].attributes["style"] = "display:inline"
-                xml[0][4][13][7].attributes["style"] = "display:inline"
-                xml[0][4][13][8].attributes["style"] = "display:inline"
-            case 2667..<3001:
-                xml[0][4][13][1].attributes["style"] = "display:inline"
-                xml[0][4][13][2].attributes["style"] = "display:inline"
-                xml[0][4][13][3].attributes["style"] = "display:inline"
-                xml[0][4][13][4].attributes["style"] = "display:inline"
-                xml[0][4][13][5].attributes["style"] = "display:inline"
-                xml[0][4][13][6].attributes["style"] = "display:inline"
-                xml[0][4][13][7].attributes["style"] = "display:inline"
-                xml[0][4][13][8].attributes["style"] = "display:inline"
-                xml[0][4][13][9].attributes["style"] = "display:inline"
-            case 3001..<3334:
-                xml[0][4][13][1].attributes["style"] = "display:inline"
-                xml[0][4][13][2].attributes["style"] = "display:inline"
-                xml[0][4][13][3].attributes["style"] = "display:inline"
-                xml[0][4][13][4].attributes["style"] = "display:inline"
-                xml[0][4][13][5].attributes["style"] = "display:inline"
-                xml[0][4][13][6].attributes["style"] = "display:inline"
-                xml[0][4][13][7].attributes["style"] = "display:inline"
-                xml[0][4][13][8].attributes["style"] = "display:inline"
-                xml[0][4][13][9].attributes["style"] = "display:inline"
-                xml[0][4][13][10].attributes["style"] = "display:inline"
-            case 3334..<3667:
-                xml[0][4][13][1].attributes["style"] = "display:inline"
-                xml[0][4][13][2].attributes["style"] = "display:inline"
-                xml[0][4][13][3].attributes["style"] = "display:inline"
-                xml[0][4][13][4].attributes["style"] = "display:inline"
-                xml[0][4][13][5].attributes["style"] = "display:inline"
-                xml[0][4][13][6].attributes["style"] = "display:inline"
-                xml[0][4][13][7].attributes["style"] = "display:inline"
-                xml[0][4][13][8].attributes["style"] = "display:inline"
-                xml[0][4][13][9].attributes["style"] = "display:inline"
-                xml[0][4][13][10].attributes["style"] = "display:inline"
-                xml[0][4][13][11].attributes["style"] = "display:inline"
-            case 3667..<4001:
-                xml[0][4][13][1].attributes["style"] = "display:inline"
-                xml[0][4][13][2].attributes["style"] = "display:inline"
-                xml[0][4][13][3].attributes["style"] = "display:inline"
-                xml[0][4][13][4].attributes["style"] = "display:inline"
-                xml[0][4][13][5].attributes["style"] = "display:inline"
-                xml[0][4][13][6].attributes["style"] = "display:inline"
-                xml[0][4][13][7].attributes["style"] = "display:inline"
-                xml[0][4][13][8].attributes["style"] = "display:inline"
-                xml[0][4][13][9].attributes["style"] = "display:inline"
-                xml[0][4][13][10].attributes["style"] = "display:inline"
-                xml[0][4][13][11].attributes["style"] = "display:inline"
-                xml[0][4][13][12].attributes["style"] = "display:inline"
-            case 4001..<4334:
-                xml[0][4][13][1].attributes["style"] = "display:inline"
-                xml[0][4][13][2].attributes["style"] = "display:inline"
-                xml[0][4][13][3].attributes["style"] = "display:inline"
-                xml[0][4][13][4].attributes["style"] = "display:inline"
-                xml[0][4][13][5].attributes["style"] = "display:inline"
-                xml[0][4][13][6].attributes["style"] = "display:inline"
-                xml[0][4][13][7].attributes["style"] = "display:inline"
-                xml[0][4][13][8].attributes["style"] = "display:inline"
-                xml[0][4][13][9].attributes["style"] = "display:inline"
-                xml[0][4][13][10].attributes["style"] = "display:inline"
-                xml[0][4][13][11].attributes["style"] = "display:inline"
-                xml[0][4][13][12].attributes["style"] = "display:inline"
-                xml[0][4][13][13].attributes["style"] = "display:inline"
-            case 4334..<4667:
-                xml[0][4][13][1].attributes["style"] = "display:inline"
-                xml[0][4][13][2].attributes["style"] = "display:inline"
-                xml[0][4][13][3].attributes["style"] = "display:inline"
-                xml[0][4][13][4].attributes["style"] = "display:inline"
-                xml[0][4][13][5].attributes["style"] = "display:inline"
-                xml[0][4][13][6].attributes["style"] = "display:inline"
-                xml[0][4][13][7].attributes["style"] = "display:inline"
-                xml[0][4][13][8].attributes["style"] = "display:inline"
-                xml[0][4][13][9].attributes["style"] = "display:inline"
-                xml[0][4][13][10].attributes["style"] = "display:inline"
-                xml[0][4][13][11].attributes["style"] = "display:inline"
-                xml[0][4][13][12].attributes["style"] = "display:inline"
-                xml[0][4][13][13].attributes["style"] = "display:inline"
-                xml[0][4][13][14].attributes["style"] = "display:inline"
-            case 4667..<5001:
-                xml[0][4][13][1].attributes["style"] = "display:inline"
-                xml[0][4][13][2].attributes["style"] = "display:inline"
-                xml[0][4][13][3].attributes["style"] = "display:inline"
-                xml[0][4][13][4].attributes["style"] = "display:inline"
-                xml[0][4][13][5].attributes["style"] = "display:inline"
-                xml[0][4][13][6].attributes["style"] = "display:inline"
-                xml[0][4][13][7].attributes["style"] = "display:inline"
-                xml[0][4][13][8].attributes["style"] = "display:inline"
-                xml[0][4][13][9].attributes["style"] = "display:inline"
-                xml[0][4][13][10].attributes["style"] = "display:inline"
-                xml[0][4][13][11].attributes["style"] = "display:inline"
-                xml[0][4][13][12].attributes["style"] = "display:inline"
-                xml[0][4][13][13].attributes["style"] = "display:inline"
-                xml[0][4][13][14].attributes["style"] = "display:inline"
-                xml[0][4][13][15].attributes["style"] = "display:inline"
-            case 5001..<5334:
-                xml[0][4][13][1].attributes["style"] = "display:inline"
-                xml[0][4][13][2].attributes["style"] = "display:inline"
-                xml[0][4][13][3].attributes["style"] = "display:inline"
-                xml[0][4][13][4].attributes["style"] = "display:inline"
-                xml[0][4][13][5].attributes["style"] = "display:inline"
-                xml[0][4][13][6].attributes["style"] = "display:inline"
-                xml[0][4][13][7].attributes["style"] = "display:inline"
-                xml[0][4][13][8].attributes["style"] = "display:inline"
-                xml[0][4][13][9].attributes["style"] = "display:inline"
-                xml[0][4][13][10].attributes["style"] = "display:inline"
-                xml[0][4][13][11].attributes["style"] = "display:inline"
-                xml[0][4][13][12].attributes["style"] = "display:inline"
-                xml[0][4][13][13].attributes["style"] = "display:inline"
-                xml[0][4][13][14].attributes["style"] = "display:inline"
-                xml[0][4][13][15].attributes["style"] = "display:inline"
-                xml[0][4][13][16].attributes["style"] = "display:inline"
-            case 5334..<5667:
-                xml[0][4][13][1].attributes["style"] = "display:inline"
-                xml[0][4][13][2].attributes["style"] = "display:inline"
-                xml[0][4][13][3].attributes["style"] = "display:inline"
-                xml[0][4][13][4].attributes["style"] = "display:inline"
-                xml[0][4][13][5].attributes["style"] = "display:inline"
-                xml[0][4][13][6].attributes["style"] = "display:inline"
-                xml[0][4][13][7].attributes["style"] = "display:inline"
-                xml[0][4][13][8].attributes["style"] = "display:inline"
-                xml[0][4][13][9].attributes["style"] = "display:inline"
-                xml[0][4][13][10].attributes["style"] = "display:inline"
-                xml[0][4][13][11].attributes["style"] = "display:inline"
-                xml[0][4][13][12].attributes["style"] = "display:inline"
-                xml[0][4][13][13].attributes["style"] = "display:inline"
-                xml[0][4][13][14].attributes["style"] = "display:inline"
-                xml[0][4][13][15].attributes["style"] = "display:inline"
-                xml[0][4][13][16].attributes["style"] = "display:inline"
-                xml[0][4][13][17].attributes["style"] = "display:inline"
-            case 5667..<6001:
-                xml[0][4][13][1].attributes["style"] = "display:inline"
-                xml[0][4][13][2].attributes["style"] = "display:inline"
-                xml[0][4][13][3].attributes["style"] = "display:inline"
-                xml[0][4][13][4].attributes["style"] = "display:inline"
-                xml[0][4][13][5].attributes["style"] = "display:inline"
-                xml[0][4][13][6].attributes["style"] = "display:inline"
-                xml[0][4][13][7].attributes["style"] = "display:inline"
-                xml[0][4][13][8].attributes["style"] = "display:inline"
-                xml[0][4][13][9].attributes["style"] = "display:inline"
-                xml[0][4][13][10].attributes["style"] = "display:inline"
-                xml[0][4][13][11].attributes["style"] = "display:inline"
-                xml[0][4][13][12].attributes["style"] = "display:inline"
-                xml[0][4][13][13].attributes["style"] = "display:inline"
-                xml[0][4][13][14].attributes["style"] = "display:inline"
-                xml[0][4][13][15].attributes["style"] = "display:inline"
-                xml[0][4][13][16].attributes["style"] = "display:inline"
-                xml[0][4][13][17].attributes["style"] = "display:inline"
-                xml[0][4][13][18].attributes["style"] = "display:inline"
-            case 6001..<6334:
-                xml[0][4][13][1].attributes["style"] = "display:inline"
-                xml[0][4][13][2].attributes["style"] = "display:inline"
-                xml[0][4][13][3].attributes["style"] = "display:inline"
-                xml[0][4][13][4].attributes["style"] = "display:inline"
-                xml[0][4][13][5].attributes["style"] = "display:inline"
-                xml[0][4][13][6].attributes["style"] = "display:inline"
-                xml[0][4][13][7].attributes["style"] = "display:inline"
-                xml[0][4][13][8].attributes["style"] = "display:inline"
-                xml[0][4][13][9].attributes["style"] = "display:inline"
-                xml[0][4][13][10].attributes["style"] = "display:inline"
-                xml[0][4][13][11].attributes["style"] = "display:inline"
-                xml[0][4][13][12].attributes["style"] = "display:inline"
-                xml[0][4][13][13].attributes["style"] = "display:inline"
-                xml[0][4][13][14].attributes["style"] = "display:inline"
-                xml[0][4][13][15].attributes["style"] = "display:inline"
-                xml[0][4][13][16].attributes["style"] = "display:inline"
-                xml[0][4][13][17].attributes["style"] = "display:inline"
-                xml[0][4][13][18].attributes["style"] = "display:inline"
-                xml[0][4][13][19].attributes["style"] = "display:inline"
-            case 6334..<6667:
-                xml[0][4][13][1].attributes["style"] = "display:inline"
-                xml[0][4][13][2].attributes["style"] = "display:inline"
-                xml[0][4][13][3].attributes["style"] = "display:inline"
-                xml[0][4][13][4].attributes["style"] = "display:inline"
-                xml[0][4][13][5].attributes["style"] = "display:inline"
-                xml[0][4][13][6].attributes["style"] = "display:inline"
-                xml[0][4][13][7].attributes["style"] = "display:inline"
-                xml[0][4][13][8].attributes["style"] = "display:inline"
-                xml[0][4][13][9].attributes["style"] = "display:inline"
-                xml[0][4][13][10].attributes["style"] = "display:inline"
-                xml[0][4][13][11].attributes["style"] = "display:inline"
-                xml[0][4][13][12].attributes["style"] = "display:inline"
-                xml[0][4][13][13].attributes["style"] = "display:inline"
-                xml[0][4][13][14].attributes["style"] = "display:inline"
-                xml[0][4][13][15].attributes["style"] = "display:inline"
-                xml[0][4][13][16].attributes["style"] = "display:inline"
-                xml[0][4][13][17].attributes["style"] = "display:inline"
-                xml[0][4][13][18].attributes["style"] = "display:inline"
-                xml[0][4][13][19].attributes["style"] = "display:inline"
-                xml[0][4][13][20].attributes["style"] = "display:inline"
-            case 6667..<7001:
-                xml[0][4][13][1].attributes["style"] = "display:inline"
-                xml[0][4][13][2].attributes["style"] = "display:inline"
-                xml[0][4][13][3].attributes["style"] = "display:inline"
-                xml[0][4][13][4].attributes["style"] = "display:inline"
-                xml[0][4][13][5].attributes["style"] = "display:inline"
-                xml[0][4][13][6].attributes["style"] = "display:inline"
-                xml[0][4][13][7].attributes["style"] = "display:inline"
-                xml[0][4][13][8].attributes["style"] = "display:inline"
-                xml[0][4][13][9].attributes["style"] = "display:inline"
-                xml[0][4][13][10].attributes["style"] = "display:inline"
-                xml[0][4][13][11].attributes["style"] = "display:inline"
-                xml[0][4][13][12].attributes["style"] = "display:inline"
-                xml[0][4][13][13].attributes["style"] = "display:inline"
-                xml[0][4][13][14].attributes["style"] = "display:inline"
-                xml[0][4][13][15].attributes["style"] = "display:inline"
-                xml[0][4][13][16].attributes["style"] = "display:inline"
-                xml[0][4][13][17].attributes["style"] = "display:inline"
-                xml[0][4][13][18].attributes["style"] = "display:inline"
-                xml[0][4][13][19].attributes["style"] = "display:inline"
-                xml[0][4][13][20].attributes["style"] = "display:inline"
-                xml[0][4][13][21].attributes["style"] = "display:inline"
-            case 7001..<7334:
-                xml[0][4][13][1].attributes["style"] = "display:inline"
-                xml[0][4][13][2].attributes["style"] = "display:inline"
-                xml[0][4][13][3].attributes["style"] = "display:inline"
-                xml[0][4][13][4].attributes["style"] = "display:inline"
-                xml[0][4][13][5].attributes["style"] = "display:inline"
-                xml[0][4][13][6].attributes["style"] = "display:inline"
-                xml[0][4][13][7].attributes["style"] = "display:inline"
-                xml[0][4][13][8].attributes["style"] = "display:inline"
-                xml[0][4][13][9].attributes["style"] = "display:inline"
-                xml[0][4][13][10].attributes["style"] = "display:inline"
-                xml[0][4][13][11].attributes["style"] = "display:inline"
-                xml[0][4][13][12].attributes["style"] = "display:inline"
-                xml[0][4][13][13].attributes["style"] = "display:inline"
-                xml[0][4][13][14].attributes["style"] = "display:inline"
-                xml[0][4][13][15].attributes["style"] = "display:inline"
-                xml[0][4][13][16].attributes["style"] = "display:inline"
-                xml[0][4][13][17].attributes["style"] = "display:inline"
-                xml[0][4][13][18].attributes["style"] = "display:inline"
-                xml[0][4][13][19].attributes["style"] = "display:inline"
-                xml[0][4][13][20].attributes["style"] = "display:inline"
-                xml[0][4][13][21].attributes["style"] = "display:inline"
-                xml[0][4][13][22].attributes["style"] = "display:inline"
-            case 7334..<7667:
-                xml[0][4][13][1].attributes["style"] = "display:inline"
-                xml[0][4][13][2].attributes["style"] = "display:inline"
-                xml[0][4][13][3].attributes["style"] = "display:inline"
-                xml[0][4][13][4].attributes["style"] = "display:inline"
-                xml[0][4][13][5].attributes["style"] = "display:inline"
-                xml[0][4][13][6].attributes["style"] = "display:inline"
-                xml[0][4][13][7].attributes["style"] = "display:inline"
-                xml[0][4][13][8].attributes["style"] = "display:inline"
-                xml[0][4][13][9].attributes["style"] = "display:inline"
-                xml[0][4][13][10].attributes["style"] = "display:inline"
-                xml[0][4][13][11].attributes["style"] = "display:inline"
-                xml[0][4][13][12].attributes["style"] = "display:inline"
-                xml[0][4][13][13].attributes["style"] = "display:inline"
-                xml[0][4][13][14].attributes["style"] = "display:inline"
-                xml[0][4][13][15].attributes["style"] = "display:inline"
-                xml[0][4][13][16].attributes["style"] = "display:inline"
-                xml[0][4][13][17].attributes["style"] = "display:inline"
-                xml[0][4][13][18].attributes["style"] = "display:inline"
-                xml[0][4][13][19].attributes["style"] = "display:inline"
-                xml[0][4][13][20].attributes["style"] = "display:inline"
-                xml[0][4][13][21].attributes["style"] = "display:inline"
-                xml[0][4][13][22].attributes["style"] = "display:inline"
-                xml[0][4][13][23].attributes["style"] = "display:inline"
-            case 7667..<8001:
-                xml[0][4][13][1].attributes["style"] = "display:inline"
-                xml[0][4][13][2].attributes["style"] = "display:inline"
-                xml[0][4][13][3].attributes["style"] = "display:inline"
-                xml[0][4][13][4].attributes["style"] = "display:inline"
-                xml[0][4][13][5].attributes["style"] = "display:inline"
-                xml[0][4][13][6].attributes["style"] = "display:inline"
-                xml[0][4][13][7].attributes["style"] = "display:inline"
-                xml[0][4][13][8].attributes["style"] = "display:inline"
-                xml[0][4][13][9].attributes["style"] = "display:inline"
-                xml[0][4][13][10].attributes["style"] = "display:inline"
-                xml[0][4][13][11].attributes["style"] = "display:inline"
-                xml[0][4][13][12].attributes["style"] = "display:inline"
-                xml[0][4][13][13].attributes["style"] = "display:inline"
-                xml[0][4][13][14].attributes["style"] = "display:inline"
-                xml[0][4][13][15].attributes["style"] = "display:inline"
-                xml[0][4][13][16].attributes["style"] = "display:inline"
-                xml[0][4][13][17].attributes["style"] = "display:inline"
-                xml[0][4][13][18].attributes["style"] = "display:inline"
-                xml[0][4][13][19].attributes["style"] = "display:inline"
-                xml[0][4][13][20].attributes["style"] = "display:inline"
-                xml[0][4][13][21].attributes["style"] = "display:inline"
-                xml[0][4][13][22].attributes["style"] = "display:inline"
-                xml[0][4][13][23].attributes["style"] = "display:inline"
-                xml[0][4][13][24].attributes["style"] = "display:inline"
-            case 8001..<8334:
-                xml[0][4][13][1].attributes["style"] = "display:inline"
-                xml[0][4][13][2].attributes["style"] = "display:inline"
-                xml[0][4][13][3].attributes["style"] = "display:inline"
-                xml[0][4][13][4].attributes["style"] = "display:inline"
-                xml[0][4][13][5].attributes["style"] = "display:inline"
-                xml[0][4][13][6].attributes["style"] = "display:inline"
-                xml[0][4][13][7].attributes["style"] = "display:inline"
-                xml[0][4][13][8].attributes["style"] = "display:inline"
-                xml[0][4][13][9].attributes["style"] = "display:inline"
-                xml[0][4][13][10].attributes["style"] = "display:inline"
-                xml[0][4][13][11].attributes["style"] = "display:inline"
-                xml[0][4][13][12].attributes["style"] = "display:inline"
-                xml[0][4][13][13].attributes["style"] = "display:inline"
-                xml[0][4][13][14].attributes["style"] = "display:inline"
-                xml[0][4][13][15].attributes["style"] = "display:inline"
-                xml[0][4][13][16].attributes["style"] = "display:inline"
-                xml[0][4][13][17].attributes["style"] = "display:inline"
-                xml[0][4][13][18].attributes["style"] = "display:inline"
-                xml[0][4][13][19].attributes["style"] = "display:inline"
-                xml[0][4][13][20].attributes["style"] = "display:inline"
-                xml[0][4][13][21].attributes["style"] = "display:inline"
-                xml[0][4][13][22].attributes["style"] = "display:inline"
-                xml[0][4][13][23].attributes["style"] = "display:inline"
-                xml[0][4][13][24].attributes["style"] = "display:inline"
-                xml[0][4][13][25].attributes["style"] = "display:inline"
-            case 8334..<8667:
-                xml[0][4][13][1].attributes["style"] = "display:inline"
-                xml[0][4][13][2].attributes["style"] = "display:inline"
-                xml[0][4][13][3].attributes["style"] = "display:inline"
-                xml[0][4][13][4].attributes["style"] = "display:inline"
-                xml[0][4][13][5].attributes["style"] = "display:inline"
-                xml[0][4][13][6].attributes["style"] = "display:inline"
-                xml[0][4][13][7].attributes["style"] = "display:inline"
-                xml[0][4][13][8].attributes["style"] = "display:inline"
-                xml[0][4][13][9].attributes["style"] = "display:inline"
-                xml[0][4][13][10].attributes["style"] = "display:inline"
-                xml[0][4][13][11].attributes["style"] = "display:inline"
-                xml[0][4][13][12].attributes["style"] = "display:inline"
-                xml[0][4][13][13].attributes["style"] = "display:inline"
-                xml[0][4][13][14].attributes["style"] = "display:inline"
-                xml[0][4][13][15].attributes["style"] = "display:inline"
-                xml[0][4][13][16].attributes["style"] = "display:inline"
-                xml[0][4][13][17].attributes["style"] = "display:inline"
-                xml[0][4][13][18].attributes["style"] = "display:inline"
-                xml[0][4][13][19].attributes["style"] = "display:inline"
-                xml[0][4][13][20].attributes["style"] = "display:inline"
-                xml[0][4][13][21].attributes["style"] = "display:inline"
-                xml[0][4][13][22].attributes["style"] = "display:inline"
-                xml[0][4][13][23].attributes["style"] = "display:inline"
-                xml[0][4][13][24].attributes["style"] = "display:inline"
-                xml[0][4][13][25].attributes["style"] = "display:inline"
-                xml[0][4][13][26].attributes["style"] = "display:inline"
-            case 8667..<9001:
-                xml[0][4][13][1].attributes["style"] = "display:inline"
-                xml[0][4][13][2].attributes["style"] = "display:inline"
-                xml[0][4][13][3].attributes["style"] = "display:inline"
-                xml[0][4][13][4].attributes["style"] = "display:inline"
-                xml[0][4][13][5].attributes["style"] = "display:inline"
-                xml[0][4][13][6].attributes["style"] = "display:inline"
-                xml[0][4][13][7].attributes["style"] = "display:inline"
-                xml[0][4][13][8].attributes["style"] = "display:inline"
-                xml[0][4][13][9].attributes["style"] = "display:inline"
-                xml[0][4][13][10].attributes["style"] = "display:inline"
-                xml[0][4][13][11].attributes["style"] = "display:inline"
-                xml[0][4][13][12].attributes["style"] = "display:inline"
-                xml[0][4][13][13].attributes["style"] = "display:inline"
-                xml[0][4][13][14].attributes["style"] = "display:inline"
-                xml[0][4][13][15].attributes["style"] = "display:inline"
-                xml[0][4][13][16].attributes["style"] = "display:inline"
-                xml[0][4][13][17].attributes["style"] = "display:inline"
-                xml[0][4][13][18].attributes["style"] = "display:inline"
-                xml[0][4][13][19].attributes["style"] = "display:inline"
-                xml[0][4][13][20].attributes["style"] = "display:inline"
-                xml[0][4][13][21].attributes["style"] = "display:inline"
-                xml[0][4][13][22].attributes["style"] = "display:inline"
-                xml[0][4][13][23].attributes["style"] = "display:inline"
-                xml[0][4][13][24].attributes["style"] = "display:inline"
-                xml[0][4][13][25].attributes["style"] = "display:inline"
-                xml[0][4][13][26].attributes["style"] = "display:inline"
-                xml[0][4][13][27].attributes["style"] = "display:inline"
-            case 9001..<9334:
-                xml[0][4][13][1].attributes["style"] = "display:inline"
-                xml[0][4][13][2].attributes["style"] = "display:inline"
-                xml[0][4][13][3].attributes["style"] = "display:inline"
-                xml[0][4][13][4].attributes["style"] = "display:inline"
-                xml[0][4][13][5].attributes["style"] = "display:inline"
-                xml[0][4][13][6].attributes["style"] = "display:inline"
-                xml[0][4][13][7].attributes["style"] = "display:inline"
-                xml[0][4][13][8].attributes["style"] = "display:inline"
-                xml[0][4][13][9].attributes["style"] = "display:inline"
-                xml[0][4][13][10].attributes["style"] = "display:inline"
-                xml[0][4][13][11].attributes["style"] = "display:inline"
-                xml[0][4][13][12].attributes["style"] = "display:inline"
-                xml[0][4][13][13].attributes["style"] = "display:inline"
-                xml[0][4][13][14].attributes["style"] = "display:inline"
-                xml[0][4][13][15].attributes["style"] = "display:inline"
-                xml[0][4][13][16].attributes["style"] = "display:inline"
-                xml[0][4][13][17].attributes["style"] = "display:inline"
-                xml[0][4][13][18].attributes["style"] = "display:inline"
-                xml[0][4][13][19].attributes["style"] = "display:inline"
-                xml[0][4][13][20].attributes["style"] = "display:inline"
-                xml[0][4][13][21].attributes["style"] = "display:inline"
-                xml[0][4][13][22].attributes["style"] = "display:inline"
-                xml[0][4][13][23].attributes["style"] = "display:inline"
-                xml[0][4][13][24].attributes["style"] = "display:inline"
-                xml[0][4][13][25].attributes["style"] = "display:inline"
-                xml[0][4][13][26].attributes["style"] = "display:inline"
-                xml[0][4][13][27].attributes["style"] = "display:inline"
-                xml[0][4][13][28].attributes["style"] = "display:inline"
-            case 9334..<9667:
-                xml[0][4][13][1].attributes["style"] = "display:inline"
-                xml[0][4][13][2].attributes["style"] = "display:inline"
-                xml[0][4][13][3].attributes["style"] = "display:inline"
-                xml[0][4][13][4].attributes["style"] = "display:inline"
-                xml[0][4][13][5].attributes["style"] = "display:inline"
-                xml[0][4][13][6].attributes["style"] = "display:inline"
-                xml[0][4][13][7].attributes["style"] = "display:inline"
-                xml[0][4][13][8].attributes["style"] = "display:inline"
-                xml[0][4][13][9].attributes["style"] = "display:inline"
-                xml[0][4][13][10].attributes["style"] = "display:inline"
-                xml[0][4][13][11].attributes["style"] = "display:inline"
-                xml[0][4][13][12].attributes["style"] = "display:inline"
-                xml[0][4][13][13].attributes["style"] = "display:inline"
-                xml[0][4][13][14].attributes["style"] = "display:inline"
-                xml[0][4][13][15].attributes["style"] = "display:inline"
-                xml[0][4][13][16].attributes["style"] = "display:inline"
-                xml[0][4][13][17].attributes["style"] = "display:inline"
-                xml[0][4][13][18].attributes["style"] = "display:inline"
-                xml[0][4][13][19].attributes["style"] = "display:inline"
-                xml[0][4][13][20].attributes["style"] = "display:inline"
-                xml[0][4][13][21].attributes["style"] = "display:inline"
-                xml[0][4][13][22].attributes["style"] = "display:inline"
-                xml[0][4][13][23].attributes["style"] = "display:inline"
-                xml[0][4][13][24].attributes["style"] = "display:inline"
-                xml[0][4][13][25].attributes["style"] = "display:inline"
-                xml[0][4][13][26].attributes["style"] = "display:inline"
-                xml[0][4][13][27].attributes["style"] = "display:inline"
-                xml[0][4][13][28].attributes["style"] = "display:inline"
-                xml[0][4][13][29].attributes["style"] = "display:inline"
-            case 9667..<10001:
-                xml[0][4][13][1].attributes["style"] = "display:inline"
-                xml[0][4][13][2].attributes["style"] = "display:inline"
-                xml[0][4][13][3].attributes["style"] = "display:inline"
-                xml[0][4][13][4].attributes["style"] = "display:inline"
-                xml[0][4][13][5].attributes["style"] = "display:inline"
-                xml[0][4][13][6].attributes["style"] = "display:inline"
-                xml[0][4][13][7].attributes["style"] = "display:inline"
-                xml[0][4][13][8].attributes["style"] = "display:inline"
-                xml[0][4][13][9].attributes["style"] = "display:inline"
-                xml[0][4][13][10].attributes["style"] = "display:inline"
-                xml[0][4][13][11].attributes["style"] = "display:inline"
-                xml[0][4][13][12].attributes["style"] = "display:inline"
-                xml[0][4][13][13].attributes["style"] = "display:inline"
-                xml[0][4][13][14].attributes["style"] = "display:inline"
-                xml[0][4][13][15].attributes["style"] = "display:inline"
-                xml[0][4][13][16].attributes["style"] = "display:inline"
-                xml[0][4][13][17].attributes["style"] = "display:inline"
-                xml[0][4][13][18].attributes["style"] = "display:inline"
-                xml[0][4][13][19].attributes["style"] = "display:inline"
-                xml[0][4][13][20].attributes["style"] = "display:inline"
-                xml[0][4][13][21].attributes["style"] = "display:inline"
-                xml[0][4][13][22].attributes["style"] = "display:inline"
-                xml[0][4][13][23].attributes["style"] = "display:inline"
-                xml[0][4][13][24].attributes["style"] = "display:inline"
-                xml[0][4][13][25].attributes["style"] = "display:inline"
-                xml[0][4][13][26].attributes["style"] = "display:inline"
-                xml[0][4][13][27].attributes["style"] = "display:inline"
-                xml[0][4][13][28].attributes["style"] = "display:inline"
-                xml[0][4][13][29].attributes["style"] = "display:inline"
-                xml[0][4][13][30].attributes["style"] = "display:inline"
-            default:
-                xml[0][4][13][0].attributes["style"] = "display:inline"
-            }
+        var xml = StandardDashboard.updateDashboard(currentInfoLine)
+        if (currentDashboard == 1){
+            xml = StandardDashboard.updateDashboard(currentInfoLine)
+        } else {
+            xml = SportDashboard.updateDashboard(currentInfoLine)
         }
         
         webView.loadHTMLString(xml.description, baseURL: nil)
