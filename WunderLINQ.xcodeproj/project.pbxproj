@@ -57,6 +57,8 @@
 		7E80BD3D211CFF7300B8CA0D /* LocalisableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E80BD3C211CFF7300B8CA0D /* LocalisableButton.swift */; };
 		7E80BD42211D419C00B8CA0D /* WaypointsNavTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E80BD41211D419C00B8CA0D /* WaypointsNavTableViewController.swift */; };
 		7E80BD44211D5A0600B8CA0D /* UIView+ignoresInvertColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E80BD43211D5A0600B8CA0D /* UIView+ignoresInvertColors.swift */; };
+		7E8AD3D926141BA10089F590 /* ADVDashboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8AD3D826141BA10089F590 /* ADVDashboard.swift */; };
+		7E8AD3DD26141E150089F590 /* adv-dashboard.svg in Resources */ = {isa = PBXBuildFile; fileRef = 7E8AD3DC26141E150089F590 /* adv-dashboard.svg */; };
 		7E916DDC230CF10D00011E5F /* NSLocalizedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E916DDB230CF10D00011E5F /* NSLocalizedString.swift */; };
 		7E9516C2238A367000ED25F2 /* SpotifyiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E9516C1238A367000ED25F2 /* SpotifyiOS.framework */; };
 		7E96D79221E78B7B00C6AB5F /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E96D79121E78B7B00C6AB5F /* Security.framework */; };
@@ -188,6 +190,8 @@
 		7E80BD43211D5A0600B8CA0D /* UIView+ignoresInvertColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+ignoresInvertColors.swift"; sourceTree = "<group>"; };
 		7E8A1E5721DC326600207464 /* sl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sl; path = sl.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		7E8A1E5821DC326600207464 /* sl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sl; path = WunderLINQ/sl.lproj/Localizable.strings; sourceTree = "<group>"; };
+		7E8AD3D826141BA10089F590 /* ADVDashboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ADVDashboard.swift; sourceTree = "<group>"; };
+		7E8AD3DC26141E150089F590 /* adv-dashboard.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "adv-dashboard.svg"; sourceTree = "<group>"; };
 		7E916DDB230CF10D00011E5F /* NSLocalizedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSLocalizedString.swift; sourceTree = "<group>"; };
 		7E93549F23008B2B00FCF0C5 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		7E9516C1238A367000ED25F2 /* SpotifyiOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SpotifyiOS.framework; sourceTree = "<group>"; };
@@ -324,6 +328,7 @@
 			children = (
 				7E755C17260AA78900B29507 /* StandardDashboard.swift */,
 				7E755C1D260AA80700B29507 /* SportDashboard.swift */,
+				7E8AD3D826141BA10089F590 /* ADVDashboard.swift */,
 			);
 			path = SVGDashboards;
 			sourceTree = "<group>";
@@ -455,6 +460,7 @@
 		7EB5EDE9252169B800B61160 /* svg */ = {
 			isa = PBXGroup;
 			children = (
+				7E8AD3DC26141E150089F590 /* adv-dashboard.svg */,
 				7E755C10260A787100B29507 /* sport-dashboard.svg */,
 				7E755C11260A787100B29507 /* standard-dashboard.svg */,
 			);
@@ -600,6 +606,7 @@
 				7ED2013620D0D0030066BCE6 /* Default-568h@2x.png in Resources */,
 				7E755C13260A787100B29507 /* standard-dashboard.svg in Resources */,
 				7EB5EDD725211BCF00B61160 /* agencyfb.ttf in Resources */,
+				7E8AD3DD26141E150089F590 /* adv-dashboard.svg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -675,6 +682,7 @@
 				7E068BC7210190CB0076EAAD /* TripsTableViewController.swift in Sources */,
 				7E4669F72518647C00E7E291 /* NavAppHelper.swift in Sources */,
 				7E6E0A6824FC022200149387 /* ColorPickerViewController.swift in Sources */,
+				7E8AD3D926141BA10089F590 /* ADVDashboard.swift in Sources */,
 				7E46AA192419D1540047E87D /* CircularCollectionViewLayout.swift in Sources */,
 				7EA4BCC721B8C9150084F6EA /* TasksCollectionViewController.swift in Sources */,
 				7E62BB6F21FE3DEB00FDB10E /* MainCollectionViewCell.swift in Sources */,

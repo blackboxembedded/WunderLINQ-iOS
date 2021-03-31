@@ -26,6 +26,7 @@ class SportDashboard {
         
         var temperatureUnit = "C"
         var distanceUnit = "km"
+        var heightUnit = "m"
         var distanceTimeUnit = "KMH"
         var pressureUnit = "psi"
 
@@ -69,7 +70,7 @@ class SportDashboard {
         if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
             distanceTimeUnit = "MPH"
         }
-        xml?[0]["dashboard"]?["labels"]?["speedLabel"]?.text = distanceTimeUnit
+        xml?[0]["dashboard"]?["labels"]?["speedUnit"]?.text = distanceTimeUnit
         
         //Gear
         var gearValue = "-"
@@ -163,6 +164,17 @@ class SportDashboard {
                     }
                 }
                 dataLabel = "\(NSLocalizedString("dash_range_label", comment: "")): "
+                break
+            case 4://Altitude
+                if motorcycleData.location != nil {
+                    dataUnit = heightUnit
+                    dataValue = "\(Int(round(motorcycleData.location!.altitude)))"
+                    if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
+                        dataValue = "\(Int(round(Utility.mtoFeet(motorcycleData.location!.altitude))))"
+                        dataUnit = "ft"
+                    }
+                    dataLabel = "\(NSLocalizedString("dash_altitude_label", comment: "")): "
+                }
                 break
             default:
                 break

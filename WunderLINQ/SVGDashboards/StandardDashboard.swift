@@ -26,6 +26,7 @@ class StandardDashboard {
         
         var temperatureUnit = "C"
         var distanceUnit = "km"
+        var heightUnit = "m"
         var distanceTimeUnit = "KMH"
         var pressureUnit = "psi"
 
@@ -162,6 +163,17 @@ class StandardDashboard {
                     }
                 }
                 dataLabel = "\(NSLocalizedString("dash_range_label", comment: "")): "
+                break
+            case 4://Altitude
+                if motorcycleData.location != nil {
+                    var altitude = motorcycleData.location!.altitude
+                    if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
+                        altitude = Utility.mtoFeet(motorcycleData.location!.altitude)
+                        heightUnit = "ft"
+                    }
+                    dataValue = "\(Int(round(altitude)))\(heightUnit)"
+                }
+                dataLabel = "\(NSLocalizedString("dash_altitude_label", comment: "")): "
                 break
             default:
                 break

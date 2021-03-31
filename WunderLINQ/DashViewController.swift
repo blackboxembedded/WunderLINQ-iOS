@@ -261,7 +261,7 @@ class DashViewController: UIViewController, UIWebViewDelegate {
     }
     
     @objc func nextInfo() {
-        if (currentInfoLine == 3){
+        if (currentInfoLine == 4){
             currentInfoLine = 1
         } else {
             currentInfoLine = currentInfoLine + 1
@@ -271,7 +271,7 @@ class DashViewController: UIViewController, UIWebViewDelegate {
     
     @objc func previousInfo() {
         if (currentInfoLine == 1){
-            currentInfoLine = 3
+            currentInfoLine = 4
         } else {
             currentInfoLine = currentInfoLine - 1
         }
@@ -279,7 +279,7 @@ class DashViewController: UIViewController, UIWebViewDelegate {
     }
     
     @objc func nextDashboard() {
-        if (currentDashboard == 2){
+        if (currentDashboard == 3){
             currentDashboard = 1
         } else {
             currentDashboard = currentDashboard + 1
@@ -313,8 +313,10 @@ class DashViewController: UIViewController, UIWebViewDelegate {
         var xml = StandardDashboard.updateDashboard(currentInfoLine)
         if (currentDashboard == 1){
             xml = StandardDashboard.updateDashboard(currentInfoLine)
-        } else {
+        } else if (currentDashboard == 2){
             xml = SportDashboard.updateDashboard(currentInfoLine)
+        } else if (currentDashboard == 3){
+            xml = ADVDashboard.updateDashboard(currentInfoLine)
         }
         
         webView.loadHTMLString(xml.description, baseURL: nil)

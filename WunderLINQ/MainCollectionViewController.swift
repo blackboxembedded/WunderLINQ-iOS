@@ -1780,7 +1780,6 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             //Altitude
             icon = (UIImage(named: "Mountain")?.withRenderingMode(.alwaysTemplate))!
             if motorcycleData.location != nil {
-                //value = "\(motorcycleData.barometricPressure!.rounded(toPlaces: 2))"
                 var altitude:String = "\(Int(round(motorcycleData.location!.altitude)))"
                 if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
                     altitude = "\(Int(round(Utility.mtoFeet(motorcycleData.location!.altitude))))"
