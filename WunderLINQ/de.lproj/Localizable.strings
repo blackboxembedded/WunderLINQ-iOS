@@ -255,3 +255,6 @@
 "location_alert_body" = "WunderLINQ benötigt Zugriff auf die Positionsdaten, um Wegpunkte und Fahrtaufzeichnungen zu speichern.\nDer Zugriff wird außerdem für Höhe, GPS-Geschwindigkeit und Fahrtrichtung genutzt.";
 "read_media_alert_body" = "WunderLINQ benötigt Zugriff auf die Medien-Bibliothek, um Musik abzuspielen.";
 "write_photo_alert_body" = "WunderLINQ benötigt Zugriff auf die Foto-Bibliothek um aufgenommene Fotos zu speichern.";
+"rpm_header" = "Drehzahl";
+"leanangle_bike_header" = "Schräglage";
+"rearwheel_speed_header" = "Geschwindigkeit am Hinterrad";
