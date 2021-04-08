@@ -150,18 +150,19 @@ class AddWaypointViewController: UIViewController, UITextFieldDelegate, GMSMapVi
         self.longitudeField.delegate = self
         addressField.placeholder = NSLocalizedString("addwaypoint_view_search_hint", comment: "")
         labelField.placeholder = NSLocalizedString("waypoint_view_label_hint", comment: "")
-        latitudeField.text = "\(motorcycleData.getLocation().coordinate.latitude)"
-        longitudeField.text = "\(motorcycleData.getLocation().coordinate.longitude)"
-        
+    
         mapView.delegate = self
         let camera: GMSCameraPosition = GMSCameraPosition.camera(withLatitude:  motorcycleData.getLocation().coordinate.latitude, longitude: motorcycleData.getLocation().coordinate.longitude, zoom: 15.0)
         mapView.camera = camera
         mapView.mapType = .hybrid
         // Creates a marker in the center of the map.
-        let marker = GMSMarker()
-        marker.position = CLLocationCoordinate2D(latitude: motorcycleData.getLocation().coordinate.latitude, longitude: motorcycleData.getLocation().coordinate.longitude)
-        marker.map = mapView
-        
+        if(motorcycleData.location != nil){
+            latitudeField.text = "\(motorcycleData.getLocation().coordinate.latitude)"
+            longitudeField.text = "\(motorcycleData.getLocation().coordinate.longitude)"
+            let marker = GMSMarker()
+            marker.position = CLLocationCoordinate2D(latitude: motorcycleData.getLocation().coordinate.latitude, longitude: motorcycleData.getLocation().coordinate.longitude)
+            marker.map = mapView
+        }
         if (importFile != nil){
             print("URL: " + importFile!.absoluteString)
             let alert = UIAlertController(title: NSLocalizedString("gpx_import_alert_title", comment: ""), message: NSLocalizedString("gpx_import_alert_body", comment: ""), preferredStyle: UIAlertController.Style.alert)
@@ -169,13 +170,7 @@ class AddWaypointViewController: UIViewController, UITextFieldDelegate, GMSMapVi
                 guard let gpx = GPXParser(withURL: self.importFile!)?.parsedData() else { return }
 
                 // waypoints, tracks, tracksegements, trackpoints are all stored as Array depends on the amount stored in the GPX file.
-                for waypoint in gpx.waypoints {  // for loop example, every waypoint is written
-                    print(waypoint.latitude)     // prints every waypoint's latitude, etc: 1.3521, as a Double object
-                    print(waypoint.longitude)    // prints every waypoint's latitude, etc: 103.8198, as a Double object
-                    print(waypoint.time)         // prints every waypoint's date, as a Date object
-                    print(waypoint.name)         // prints every waypoint's name, as a String
-                    print(waypoint.comment)         // prints every waypoint's name, as a String
-                    
+                for waypoint in gpx.waypoints {
                     self.mapView.clear()
                     let camera: GMSCameraPosition = GMSCameraPosition.camera(withLatitude:  waypoint.latitude!, longitude: waypoint.longitude!, zoom: 15.0)
                     self.mapView.camera = camera
