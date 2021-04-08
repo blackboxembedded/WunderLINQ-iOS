@@ -34,7 +34,7 @@
 "fueleconomyone_header" = "Üzemanyag takarékosság 1";
 "fueleconomytwo_header" = "Üzemanyag takarékosság 2";
 "fuelrange_header" = "Megtehető távolság";
-"leanangle_header" = "Dőlésszög";
+"leanangle_header" = "Dőlésszög mobil";
 "gforce_header" = "g-erő";
 "bearing_header" = "Iránylat";
 "altitude_header" = "Magasság";
@@ -42,3 +42,6 @@
 "sunrisesunset_header" = "Napfelkelte/napnyugta";
 "time_header" = "Idő";
 "barometric_header" = "Barométer";
+"leanangle_bike_header" = "Dőlésszög";
+"rearwheel_speed_header" = "Hátsó kerék sebessége";
+"rpm_header" = "Fordulatszám";
