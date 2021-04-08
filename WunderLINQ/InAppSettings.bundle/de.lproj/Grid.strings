@@ -42,3 +42,6 @@
 "barometric_header" = "Barometer";
 "time_header" = "Zeit";
 "sunrisesunset_header" = "Sonnenaufgang/Untergang";
+"leanangle_bike_header" = "Schräglage";
+"rearwheel_speed_header" = "Geschwindigkeit am Hinterrad";
+"rpm_header" = "Drehzahl";
