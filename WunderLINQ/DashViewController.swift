@@ -189,6 +189,12 @@ class DashViewController: UIViewController, UIWebViewDelegate {
     override func viewWillAppear(_ animated: Bool) {
         let value = UIInterfaceOrientation.landscapeRight.rawValue
         UIDevice.current.setValue(value, forKey: "orientation")
+        let lastSelection = UserDefaults.standard.string(forKey: "lastDashboard")
+        if lastSelection != nil {
+            currentDashboard = Int(lastSelection ?? "1") ?? 1
+        } else {
+            currentDashboard = 1
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -198,6 +204,7 @@ class DashViewController: UIViewController, UIWebViewDelegate {
         seconds = 0
         // Show the navigation bar on other view controllers
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
+        UserDefaults.standard.set(currentDashboard, forKey: "lastDashboard")
     }
 
 
@@ -310,16 +317,16 @@ class DashViewController: UIViewController, UIWebViewDelegate {
     }
 
     @objc func updateDashboard(){
-        var xml = StandardDashboard.updateDashboard(currentInfoLine)
         if (currentDashboard == 1){
-            xml = StandardDashboard.updateDashboard(currentInfoLine)
+            let xml = StandardDashboard.updateDashboard(currentInfoLine)
+            webView.loadHTMLString(xml.description, baseURL: nil)
         } else if (currentDashboard == 2){
-            xml = SportDashboard.updateDashboard(currentInfoLine)
+            let xml = SportDashboard.updateDashboard(currentInfoLine)
+            webView.loadHTMLString(xml.description, baseURL: nil)
         } else if (currentDashboard == 3){
-            xml = ADVDashboard.updateDashboard(currentInfoLine)
+            let xml = ADVDashboard.updateDashboard(currentInfoLine)
+            webView.loadHTMLString(xml.description, baseURL: nil)
         }
-        
-        webView.loadHTMLString(xml.description, baseURL: nil)
     }
 
 }
