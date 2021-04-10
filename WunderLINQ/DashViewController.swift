@@ -33,6 +33,8 @@ class DashViewController: UIViewController, UIWebViewDelegate {
     var seconds = 10
     var isTimerRunning = false
     
+    let numDashboard = 3
+    let numInfoLine = 4
     var currentDashboard = 1
     var currentInfoLine = 1
     
@@ -189,6 +191,8 @@ class DashViewController: UIViewController, UIWebViewDelegate {
     override func viewWillAppear(_ animated: Bool) {
         let value = UIInterfaceOrientation.landscapeRight.rawValue
         UIDevice.current.setValue(value, forKey: "orientation")
+        
+        //Read last used dashboard
         let lastSelection = UserDefaults.standard.string(forKey: "lastDashboard")
         if lastSelection != nil {
             currentDashboard = Int(lastSelection ?? "1") ?? 1
@@ -204,6 +208,7 @@ class DashViewController: UIViewController, UIWebViewDelegate {
         seconds = 0
         // Show the navigation bar on other view controllers
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
+        // Save away current dashboard
         UserDefaults.standard.set(currentDashboard, forKey: "lastDashboard")
     }
 
@@ -251,6 +256,7 @@ class DashViewController: UIViewController, UIWebViewDelegate {
     override var keyCommands: [UIKeyCommand]? {
         let commands = [
             UIKeyCommand(input: "\u{d}", modifierFlags:[], action: #selector(nextDashboard), discoverabilityTitle: "Next Dashboard"),
+            UIKeyCommand(input: UIKeyCommand.inputEscape, modifierFlags:[], action: #selector(prevDashboard), discoverabilityTitle: "Previous Dashboard"),
             UIKeyCommand(input: UIKeyCommand.inputLeftArrow, modifierFlags:[], action: #selector(leftScreen), discoverabilityTitle: "Go left"),
             UIKeyCommand(input: UIKeyCommand.inputRightArrow, modifierFlags:[], action: #selector(rightScreen), discoverabilityTitle: "Go right"),
             UIKeyCommand(input: UIKeyCommand.inputUpArrow, modifierFlags:[], action: #selector(nextInfo), discoverabilityTitle: "Next Info"),
@@ -268,7 +274,7 @@ class DashViewController: UIViewController, UIWebViewDelegate {
     }
     
     @objc func nextInfo() {
-        if (currentInfoLine == 4){
+        if (currentInfoLine == numInfoLine){
             currentInfoLine = 1
         } else {
             currentInfoLine = currentInfoLine + 1
@@ -278,7 +284,7 @@ class DashViewController: UIViewController, UIWebViewDelegate {
     
     @objc func previousInfo() {
         if (currentInfoLine == 1){
-            currentInfoLine = 4
+            currentInfoLine = numInfoLine
         } else {
             currentInfoLine = currentInfoLine - 1
         }
@@ -286,10 +292,19 @@ class DashViewController: UIViewController, UIWebViewDelegate {
     }
     
     @objc func nextDashboard() {
-        if (currentDashboard == 3){
+        if (currentDashboard == numDashboard){
             currentDashboard = 1
         } else {
             currentDashboard = currentDashboard + 1
+        }
+        updateDashboard()
+    }
+    
+    @objc func prevDashboard() {
+        if (currentDashboard == 1){
+            currentDashboard = numDashboard
+        } else {
+            currentDashboard = currentDashboard - 1
         }
         updateDashboard()
     }
