@@ -95,35 +95,19 @@ enum Theme: Int {
         
         UIImageView.appearance(whenContainedInInstancesOf: [GeoDataViewController.self]).tintColor = UIColor.white
         
+        UINavigationBar.appearance().backItem?.backBarButtonItem?.tintColor = mainColor
         UINavigationBar.appearance().barStyle = .black
         UINavigationBar.appearance().barTintColor = backgroundColor
         UINavigationBar.appearance().backgroundColor = backgroundColor
         UINavigationBar.appearance().titleTextAttributes = convertToOptionalNSAttributedStringKeyDictionary([
             NSAttributedString.Key.foregroundColor.rawValue: mainColor
         ])
+        UINavigationBar.appearance().tintColor = mainColor
+        UINavigationBar.appearance().backItem?.leftBarButtonItem?.tintColor = mainColor
+
         UIButton.appearance().tintColor = mainColor
         UIBarButtonItem.appearance().tintColor = mainColor
-        
-        //UIApplication.shared.delegate?.window??.tintColor = mainColor
-        //UIApplication.shared.delegate?.window??.backgroundColor = backgroundColor
-        //UIButton.appearance().tintColor = mainColor
-        //UIBarButtonItem.appearance().tintColor = mainColor
-        //UINavigationBar.appearance().titleTextAttributes = [
-        //    NSForegroundColorAttributeName: mainColor
-        //]
-        //UINavigationBar.appearance().backgroundColor = backgroundColor
-        //UINavigationBar.appearance().tintColor = mainColor
-        //UIView.appearance().backgroundColor = backgroundColor
-        //UIView.appearance(whenContainedInInstancesOf: [GMSMapView.self]).backgroundColor = nil
-        //UIView.appearance().tintColor = mainColor
-        //UILabel.appearance().textColor = textColor
-        //UITextField.appearance().backgroundColor = backgroundColor
-        //UITextField.appearance().textColor = textColor
-        //UITableViewCell.appearance().backgroundColor = backgroundColor
-        //UITableViewCell.appearance().tintColor = mainColor
-        //UITableViewCell.appearance().contentView.backgroundColor = backgroundColor
-        //UITableViewCell.appearance().contentView.tintColor = mainColor
-        //UILabel.appearance(whenContainedInInstancesOf: [UITableViewCell.self]).textColor = textColor
+
     }
 }
 

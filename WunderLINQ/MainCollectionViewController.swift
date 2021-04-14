@@ -3987,21 +3987,14 @@ extension MainCollectionViewController: UITableViewDelegate {
             performSegue(withIdentifier: "motorcycleToGeoData", sender: self)
         case 2:
             //App Settings
-            if let navigationController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController {
-                let appSettingsViewController = IASKAppSettingsViewController()
-                appSettingsViewController.showDoneButton = false
-                navigationController.pushViewController(appSettingsViewController, animated: true)
-
-            }
+            performSegue(withIdentifier: "motorcycleToSettings", sender: self)
         case 3:
             if (popoverMenuList.count == 6){
                 //HW Settings
                 performSegue(withIdentifier: "motorcycleToHWSettings", sender: self)
             } else {
                 //About
-                performSegue(withIdentifier: "motorcycleToAbout", sender: self)
-                
-                
+                performSegue(withIdentifier: "motorcycleToAbout", sender: self)   
             }
         case 4:
             if (popoverMenuList.count == 6){
