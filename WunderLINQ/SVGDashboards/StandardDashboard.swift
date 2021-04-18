@@ -155,7 +155,7 @@ class StandardDashboard {
                     }
                     dataValue = "\(Int(round(fuelRange)))\(distanceUnit)"
                     if(faults.getFuelFaultActive()){
-                        let style = xml![0][4][11][4]["tspan"]?.attributes["style"]
+                        let style = xml?[0]["dashboard"]?["values"]?["dataValue"]?.attributes["style"]
                         let regex = try! NSRegularExpression(pattern: "fill:([^<]*);", options: NSRegularExpression.Options.caseInsensitive)
                         let range = NSMakeRange(0, style!.count)
                         let modString = regex.stringByReplacingMatches(in: style!, options: [], range: range, withTemplate: "fill:#e20505;")
