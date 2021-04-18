@@ -44,6 +44,24 @@
 				<string>nav_app_yahoojapan</string>
 			</array>
 		</dict>
+        <dict>
+            <key>Type</key>
+            <string>PSMultiValueSpecifier</string>
+            <key>Title</key>
+            <string>pref_roadbook_app</string>
+            <key>Key</key>
+            <string>roadbook_app_preference</string>
+            <key>DefaultValue</key>
+            <integer>0</integer>
+            <key>Values</key>
+            <array>
+                <integer>0</integer>
+            </array>
+            <key>Titles</key>
+            <array>
+                <string>roadbook_app_rabbitrally</string>
+            </array>
+        </dict>
 		<dict>
 			<key>Type</key>
 			<string>PSMultiValueSpecifier</string>

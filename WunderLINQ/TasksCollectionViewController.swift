@@ -60,7 +60,7 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
     
     let motorcycleData = MotorcycleData.shared
     
-    let emptyTask = 13
+    let emptyTask = 14
     
     private func loadRows() {
         let taskRow1 = UserDefaults.standard.integer(forKey: "task_one_preference")
@@ -171,7 +171,11 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
         guard let task12 = Tasks(label: NSLocalizedString("task_title_weathermap", comment: ""), icon: UIImage(named: "CloudSun")?.withRenderingMode(.alwaysTemplate)) else {
             fatalError("Unable to instantiate Settings Task")
         }
-        self.tasks = [task0, task1, task2, task3, task4, task5, task6, task7, task8, task9, task10, task11, task12]
+        // Road Book Task
+        guard let task13 = Tasks(label: NSLocalizedString("task_title_roadbook", comment: ""), icon: UIImage(named: "RoadBook")?.withRenderingMode(.alwaysTemplate)) else {
+            fatalError("Unable to instantiate Settings Task")
+        }
+        self.tasks = [task0, task1, task2, task3, task4, task5, task6, task7, task8, task9, task10, task11, task12, task13]
     }
     
     private func execute_task(taskID:Int) {
@@ -693,6 +697,21 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
             //Weather Map
             performSegue(withIdentifier: "taskGridToWeatherMap", sender: self)
             break
+        case 13:
+            //Road Book
+            let roadbookAppValue = UserDefaults.standard.integer(forKey: "roadbook_app_preference")
+            switch roadbookAppValue {
+                case 0: //Rabbit Rally
+                    let urlString = "rabbitrally://app?back_url=wunderlinq://app"
+                    if let uRL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
+                        if (UIApplication.shared.canOpenURL(uRL)) {
+                            UIApplication.shared.open(uRL, options: [:], completionHandler: nil)
+                        }
+                    }
+                    break
+                default:
+                    break
+            }
         default:
             print("Unknown Task")
         }

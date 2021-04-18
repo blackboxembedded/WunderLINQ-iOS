@@ -42,6 +42,7 @@
 		7E5A767820DDEE7200B48CC6 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5A767720DDEE7200B48CC6 /* UIViewController+Extensions.swift */; };
 		7E5A767A20DDFEF700B48CC6 /* Waypoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5A767920DDFEF700B48CC6 /* Waypoint.swift */; };
 		7E5E0F78212289140048B9A2 /* AppUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5E0F77212289140048B9A2 /* AppUtility.swift */; };
+		7E620A0D26278E4900F6E23B /* AppSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E620A0C26278E4900F6E23B /* AppSettingsViewController.swift */; };
 		7E62BB6D21FE3DBF00FDB10E /* MainCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E62BB6C21FE3DBF00FDB10E /* MainCollectionViewController.swift */; };
 		7E62BB6F21FE3DEB00FDB10E /* MainCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E62BB6E21FE3DEB00FDB10E /* MainCollectionViewCell.swift */; };
 		7E62BB7121FE443200FDB10E /* ColumnFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E62BB7021FE443200FDB10E /* ColumnFlowLayout.swift */; };
@@ -162,6 +163,7 @@
 		7E5A767920DDFEF700B48CC6 /* Waypoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Waypoint.swift; sourceTree = "<group>"; };
 		7E5D59F824FBFA3E005E5017 /* InAppSettingsKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = InAppSettingsKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E5E0F77212289140048B9A2 /* AppUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUtility.swift; sourceTree = "<group>"; };
+		7E620A0C26278E4900F6E23B /* AppSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettingsViewController.swift; sourceTree = "<group>"; };
 		7E62BB6C21FE3DBF00FDB10E /* MainCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCollectionViewController.swift; sourceTree = "<group>"; };
 		7E62BB6E21FE3DEB00FDB10E /* MainCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCollectionViewCell.swift; sourceTree = "<group>"; };
 		7E62BB7021FE443200FDB10E /* ColumnFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColumnFlowLayout.swift; sourceTree = "<group>"; };
@@ -436,6 +438,7 @@
 				7EA478561F40B154000CEDDC /* LaunchScreen.storyboard */,
 				7E4D76E521DDAEC100825175 /* InfoPlist.strings */,
 				7EA478591F40B154000CEDDC /* Info.plist */,
+				7E620A0C26278E4900F6E23B /* AppSettingsViewController.swift */,
 			);
 			path = WunderLINQ;
 			sourceTree = "<group>";
@@ -713,6 +716,7 @@
 				7EAF646A22FE261D00B11550 /* WeatherMapViewController.swift in Sources */,
 				7EA478811F44F57C000CEDDC /* MusicViewController.swift in Sources */,
 				7EF07772258FF762009A6BAA /* HWSettingsActionViewController.swift in Sources */,
+				7E620A0D26278E4900F6E23B /* AppSettingsViewController.swift in Sources */,
 				7EF9B5A022FCB14D009D8D17 /* Solar.swift in Sources */,
 				7EAF646822FE17D000B11550 /* BikeInfoViewController.swift in Sources */,
 				7E35A59322DC265800E4AE40 /* Utility.swift in Sources */,
