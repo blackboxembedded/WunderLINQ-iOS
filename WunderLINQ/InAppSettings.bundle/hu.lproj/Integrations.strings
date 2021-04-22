@@ -6,8 +6,15 @@
 "nav_app_waze" = "Waze";
 "nav_app_mapsme" = "Maps.me";
 "nav_app_tomtomgo" = "TomTom GO";
-"actioncam_hero4" = "Hero4 vagy újabb";
+"actioncam_hero4" = "Hero4 - Hero8";
 "actioncam_hero3" = "Hero3";
 "actioncam_none" = "Nincs";
 "pref_actioncam_title" = "Akciókamera";
 "nav_app_osmand" = "OsmAnd";
+"nav_app_inroute" = "inRoute";
+"nav_app_mapout" = "MapOut";
+"pref_musicplayer_title" = "Zenelejátszó";
+"music_apple" = "Apple Music";
+"music_spotify" = "Spotify";
+"nav_app_here" = "HERE WeGo";
+"nav_app_yahoojapan" = "Yahoo Japan";
