@@ -7,9 +7,12 @@
 
 import Foundation
 
-// MARK:- Issue #56
+/// Simple class for some basic lossy compression.
 public class GPXCompression {
     
+    /// Use this function to compression `GPXRoot`.
+    ///
+    /// Type of compression can be chose here.
     public static func compress(gpx: GPXRoot, by type: lossyTypes, affecting types: [lossyOptions]) -> GPXRoot {
         switch type {
             
@@ -20,28 +23,42 @@ public class GPXCompression {
         }
     }
     
+    /// Currently supported types of compression.
     public enum lossyTypes {
         
+        /// Removal of duplicated points.
         case stripDuplicates
+        /// Removal of points with nearby co ordinates, subject to distance radius provided.
         case stripNearbyData(distanceRadius: Double)
+        /// Removal of points in a random manner, with a percentage of removal.
         case randomRemoval(percentage: Double)
         
+        /// Internal function to get a value, should it be supported by the type.
         func value() -> Double {
             switch self {
             case .stripNearbyData(distanceRadius: let rad): return rad
             case .randomRemoval(percentage: let percent): return percent
-            default: fatalError("GPXParserLossyTypes: No value to get")
+            default: fatalError("GPXParserLossyTypes: type of id \(self.rawValue) has no value to get")
             }
         }
     }
 
+    /// Selectable scope of removal of points.
     public enum lossyOptions {
+        /// Remove Track Points
         case trackpoint
+        /// Remove Waypoints
         case waypoint
+        /// Remove Route Points
         case routepoint
     }
     
-    //
+    /// Internal function to call for when removal of duplicates is needed.
+    ///
+    /// - Parameters:
+    ///    - gpx: GPX data in an instance.
+    ///    - types: Chosen point types, scope of lossy removals.
+    ///
     static func stripDuplicates(_ gpx: GPXRoot, types: [lossyOptions]) -> GPXRoot {
         let gpx = gpx
         
@@ -78,8 +95,8 @@ public class GPXCompression {
         
         if types.contains(.trackpoint) {
              for track in gpx.tracks {
-                        for segment in track.tracksegments {
-                            for trkpt in segment.trackpoints {
+                        for segment in track.segments {
+                            for trkpt in segment.points {
                                 if trkpt.compareCoordinates(with: lastTrackpoints.last) {
                                     lastTrackpoints.append(trkpt)
                                     continue
@@ -94,8 +111,8 @@ public class GPXCompression {
                                             lastTrackpoints = [GPXTrackPoint]()
                                             lastTrackpoints.append(trkpt)
                                         }
-                                        else if let i = segment.trackpoints.firstIndex(of: dupTrkpt) {
-                                            segment.trackpoints.remove(at: i)
+                                        else if let i = segment.points.firstIndex(of: dupTrkpt) {
+                                            segment.points.remove(at: i)
                                         }
                                     }
 
@@ -109,7 +126,7 @@ public class GPXCompression {
          
          if types.contains(.routepoint) {
              for route in gpx.routes {
-                for rtept in route.routepoints {
+                for rtept in route.points {
                    if rtept.compareCoordinates(with: lastRoutepoints.last) {
                         lastRoutepoints.append(rtept)
                         continue
@@ -124,8 +141,8 @@ public class GPXCompression {
                                 lastRoutepoints = [GPXRoutePoint]()
                                 lastRoutepoints.append(rtept)
                             }
-                            else if let i = route.routepoints.firstIndex(of: dupRtept) {
-                                route.routepoints.remove(at: i)
+                            else if let i = route.points.firstIndex(of: dupRtept) {
+                                route.points.remove(at: i)
                             }
                         }
 
@@ -138,10 +155,15 @@ public class GPXCompression {
         return gpx
     }
     
-    // distanceRadius in metres
+    /// Internal function to call for when removal of nearby points is needed.
+    ///
+    /// - Parameters:
+    ///    - gpx: GPX data in an instance.
+    ///    - types: Chosen point types, scope of lossy removals.
+    ///    - distanceRadius: Radius to be affected. In unit of metres (m)
+    ///
     static func stripNearbyData(_ gpx: GPXRoot, types: [lossyOptions], distanceRadius: Double = 100) -> GPXRoot {
         let gpx = gpx
-        print("DR: \(distanceRadius)")
         var lastPointCoordinates: GPXWaypoint?
 
         if types.contains(.waypoint) {
@@ -162,13 +184,12 @@ public class GPXCompression {
         
         if types.contains(.trackpoint) {
              for track in gpx.tracks {
-                        for segment in track.tracksegments {
-                            for trkpt in segment.trackpoints {
+                        for segment in track.segments {
+                            for trkpt in segment.points {
                                 if let distance = GPXCompressionCalculate.getDistance(from: lastPointCoordinates, and: trkpt) {
-                                    print("DIS: \(distance)")
                                     if distance < distanceRadius {
-                                        if let i = segment.trackpoints.firstIndex(of: trkpt) {
-                                            segment.trackpoints.remove(at: i)
+                                        if let i = segment.points.firstIndex(of: trkpt) {
+                                            segment.points.remove(at: i)
                                         }
                                         lastPointCoordinates = nil
                                         continue
@@ -184,11 +205,11 @@ public class GPXCompression {
          
          if types.contains(.routepoint) {
              for route in gpx.routes {
-                for rtept in route.routepoints {
+                for rtept in route.points {
                     if let distance = GPXCompressionCalculate.getDistance(from: lastPointCoordinates, and: rtept) {
                         if distance < distanceRadius {
-                            if let i = route.routepoints.firstIndex(of: rtept) {
-                                route.routepoints.remove(at: i)
+                            if let i = route.points.firstIndex(of: rtept) {
+                                route.points.remove(at: i)
                             }
                             lastPointCoordinates = nil
                             continue
@@ -203,6 +224,13 @@ public class GPXCompression {
         return gpx
     }
     
+    /// Internal function to call for when removal of points randomly is needed.
+    ///
+    /// - Parameters:
+    ///    - gpx: GPX data in an instance.
+    ///    - types: Chosen point types, scope of lossy removals.
+    ///    - percent: Pecentage to be accepted to be removed. Expressed in decimal. (20% --> 0.2)
+    ///
     static func lossyRandom(_ gpx: GPXRoot, types: [lossyOptions], percent: Double = 0.2) -> GPXRoot {
         
         let gpx = gpx
@@ -220,13 +248,13 @@ public class GPXCompression {
         
         if types.contains(.trackpoint) {
             for track in gpx.tracks {
-                       for segment in track.tracksegments {
-                           let trkptCount = segment.trackpoints.count
+                       for segment in track.segments {
+                           let trkptCount = segment.points.count
                            if trkptCount != 0 {
                                let removalAmount = Int(percent * Double(trkptCount))
                                for i in 0...removalAmount {
                                    let randomInt = Int.random(in: 0...trkptCount - (i+1))
-                                   segment.trackpoints.remove(at: randomInt)
+                                   segment.points.remove(at: randomInt)
                                }
                            }
                        }
@@ -236,12 +264,12 @@ public class GPXCompression {
         
         if types.contains(.routepoint) {
             for route in gpx.routes {
-                let rteCount = route.routepoints.count
+                let rteCount = route.points.count
                 if rteCount != 0 {
                     let removalAmount = Int(percent * Double(rteCount))
                     for i in 0...removalAmount {
                         let randomInt = Int.random(in: 0...rteCount - (i+1))
-                        route.routepoints.remove(at: randomInt)
+                        route.points.remove(at: randomInt)
                     }
                 }
             }
@@ -253,9 +281,10 @@ public class GPXCompression {
     
 }
 
+/// Raw Representable for Lossy types enum
 extension GPXCompression.lossyTypes: RawRepresentable {
+    /// Represented as an integer
     public typealias RawValue = Int
-    
     
     /// Initializes raw
     public init?(rawValue: Int, value: Double?) {
@@ -279,10 +308,11 @@ extension GPXCompression.lossyTypes: RawRepresentable {
             self = .stripDuplicates
         }
         else {
-            fatalError("This initalizer is NOT supported for this associated type. Please use init(rawValue:value:) instead.")
+            fatalError("GPXCompression.lossyTypes: This initalizer is NOT supported for this associated type. Please use init(rawValue:value:) instead.")
         }
     }
     
+    /// Raw Value
     public var rawValue: Int {
         switch self {
         case .stripDuplicates: return 0
@@ -333,7 +363,9 @@ class GPXCompressionCalculate {
     
 }
 
+/// Extension to allow for easy coordinates comparison.
 extension GPXWaypoint {
+    /// Private function for coordinates comparsions
     fileprivate func compareCoordinates<pt: GPXWaypoint>(with pointType: pt?) -> Bool {
         guard let pointType = pointType else { return false }
         return (self.latitude == pointType.latitude && self.longitude == pointType.longitude) ? true : false

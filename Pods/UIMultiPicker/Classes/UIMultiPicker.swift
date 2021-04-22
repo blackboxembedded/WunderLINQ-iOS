@@ -111,7 +111,7 @@ class UIMultiPickerView: UIPickerView, UIPickerViewDelegate, UIPickerViewDataSou
         // Component borders
         subviews.forEach {
             $0.layer.borderWidth = 0
-            $0.isHidden = $0.frame.height <= 1.0
+            $0.isHidden = $0.frame.height <= 1.0 || $0.subviews.count == 0
         }
 
         let tables = [
@@ -156,8 +156,8 @@ class TableViewProxy: NSObject, UITableViewDataSource
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = dataSource.tableView(tableView, cellForRowAt: indexPath)
-        let label = cell.subviews.first(where: { (temp) -> Bool in
-                    return temp is UILabel}) as! UILabel
+        let label = cell.subviews.first(where: { $0 is UILabel }) as! UILabel
+
         let tap = cell.gestureRecognizers![0] as! UITapGestureRecognizer
         cell.tag = indexPath.row
         tap.addTarget(self, action: #selector(self.handleCellTap))

@@ -1,13 +1,13 @@
 PODS:
   - ChromaColorPicker (2.0.2)
-  - CoreGPX (0.8.0)
-  - InAppSettingsKit (3.1.3)
-  - UIMultiPicker (0.6.0)
+  - CoreGPX (0.9.0)
+  - InAppSettingsKit (3.3.1)
+  - UIMultiPicker (0.6.2)
 
 DEPENDENCIES:
   - ChromaColorPicker (~> 2.0.2)
   - CoreGPX
-  - InAppSettingsKit
+  - InAppSettingsKit (~> 3.1)
   - UIMultiPicker
 
 SPEC REPOS:
@@ -19,10 +19,10 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   ChromaColorPicker: 307585f2dc23d4d72f24cad320c1e08825cb5c09
-  CoreGPX: 7d1cd0caafc0037dd19d6e2070b427f9d386dbd9
-  InAppSettingsKit: 665a44fe11d4f06be6ec91516ae8c8b11d658b26
-  UIMultiPicker: 814ef851119183662347ed15ebbad26879c49073
+  CoreGPX: 1381c8c47428c3a6bcac2f93d25ca1c5e3525811
+  InAppSettingsKit: 5ca0b43b3fff3caab2e8fe5590a1216ab708e365
+  UIMultiPicker: 29bf824c5251822ca4040b933f6204e617e6ba3f
 
-PODFILE CHECKSUM: ebbf47c64c92debb25d5ca49e7b722d3ccc0b578
+PODFILE CHECKSUM: 557b5b856bf2a940960555b17137a34c98b7e98b
 
-COCOAPODS: 1.8.4
+COCOAPODS: 1.10.1

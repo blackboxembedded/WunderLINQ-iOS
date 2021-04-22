@@ -2,16 +2,49 @@
 
 [![Build Status](https://travis-ci.org/futuretap/InAppSettingsKit.svg?branch=master)](https://travis-ci.org/futuretap/InAppSettingsKit)
 [![Version](https://img.shields.io/cocoapods/v/InAppSettingsKit.svg?style=flat)](http://cocoapods.org/pods/InAppSettingsKit)
+[![Swift Package Manager compatible](https://img.shields.io/badge/SPM-compatible-brightgreen.svg)](https://swiftpackageindex.com/futuretap/InAppSettingsKit)
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![License](https://img.shields.io/cocoapods/l/InAppSettingsKit.svg?style=flat)](https://github.com/futuretap/InAppSettingsKit/blob/master/LICENSE)
-[![Platform](https://img.shields.io/cocoapods/p/InAppSettingsKit.svg?style=flat)](http://cocoapods.org/pods/FTLinearActivityIndicator)
+![Platform](https://img.shields.io/badge/Platforms-iOS%20|%20macOS%20Catalyst-lightgrey.svg)
 [![Sponsor](https://img.shields.io/badge/Sponsor-ff40a0)](https://github.com/sponsors/futuretap)
 [![Twitter](https://img.shields.io/twitter/follow/ortwingentz.svg?style=social&label=Follow)](https://twitter.com/ortwingentz)
 
-InAppSettingsKit (IASK) is an open source framework to easily add in-app settings to your iPhone apps. Normally iOS apps use the `Settings.bundle` resource to add app-specific settings in the Settings app. InAppSettingsKit takes advantage of the same bundle and allows you to present the same settings screen within your app. So the user has the choice where to change the settings.
+InAppSettingsKit (IASK) is an open source framework to easily add in-app settings to your iOS or Catalyst apps. Normally iOS apps use the `Settings.bundle` resource to add app-specific settings in the Settings app. InAppSettingsKit takes advantage of the same bundle and allows you to present the same settings screen within your app. So the user has the choice where to change the settings.
 
 IASK not only replicates the feature set of system settings but supports a large number of additional elements and configuration options.
 
 **Updating from IASK 2.x?** Please read the [Release Notes](RELEASE_NOTES.md).
+
+![](IASK.gif)
+
+- [How does it work?](#how-does-it-work)
+- [How to include it?](#how-to-include-it)
+- [App Integration](#app-integration)
+- [Goodies](#goodies)
+	- [Custom inApp plists](#custom-inapp-plists)
+	- [Privacy link](#privacy-link)
+	- [Open URL](#open-url)
+	- [Mail Composer](#mail-composer)
+	- [Button](#button)
+	- [Multiline Text View](#multiline-text-view)
+	- [Date Picker](#date-picker)
+	- [List Groups](#list-groups)
+	- [Custom Views](#custom-views)
+	- [Section Headers and Footers](#section-headers-and-footers)
+	- [Extending Child Panes](#extending-child-panes)
+	- [Extending various specifiers](#extending-various-specifiers)
+	- [Extending Text Fields](#extending-text-fields)
+	- [Customizing Toggles](#customizing-toggles)
+	- [Dynamic MultiValue Lists](#dynamic-multivalue-lists)
+	- [Settings Storage](#settings-storage)
+	- [Notifications](#notifications)
+	- [Dynamic cell hiding](#dynamic-cell-hiding)
+	- [Register default values](#register-default-values)
+- [iCloud sync](#icloud-sync)
+- [Support](#support)
+- [License](#license)
+- [Author](#author)
+    
 
 # How does it work?
 
@@ -36,6 +69,14 @@ Add to your `Podfile`:
     pod 'InAppSettingsKit'
 
 
+**Using SPM**
+
+Add to your Package.swift
+
+    .package(name: "InAppSettingsKit", url: "https://github.com/futuretap/InAppSettingsKit.git", .branch("master"))
+
+Alternatively go to Xcodes `File->Swift Packages->Add Package Dependency...` menu entry and add `https://github.com/futuretap/InAppSettingsKit.git`.
+
 
 # App Integration
 
@@ -44,13 +85,13 @@ In order to start using IASK add `Settings.bundle` to your project (`File` -> `A
 To display InAppSettingsKit, instantiate `IASKAppSettingsViewController` and push it onto the navigation stack or embed it as the root view controller of a navigation controller.
 
 **In code, using Swift:**
-```
+```swift
 let appSettingsViewController = IASKAppSettingsViewController()
 navigationController.pushViewController(appSettingsViewController, animated: true)
 ```
 
 **In code, using Objective-C:**
-```
+```objc
 IASKAppSettingsViewController *appSettingsViewController = [[IASKAppSettingsViewController alloc] init];
 [self.navigationController pushViewController:appSettingsViewController animated:YES];
 ```
@@ -59,8 +100,11 @@ IASKAppSettingsViewController *appSettingsViewController = [[IASKAppSettingsView
 
 - Drag and drop a Table View Controller embedded into a Navigation Controller into your app and wire the storyboard to your app UI
 - Set the Table View Controller class to `IASKAppSettingsViewController`
-- In the Table View Controller set "Show Done Button" under "App Settings View Controller" to "On" if you’re presenting the navigation controller modally.
 - Set the Table View to "Grouped" style.
+- If you’re presenting the navigation controller modally: 
+	- In the Table View Controller set "Show Done Button" under "App Settings View Controller" to "On"
+	- Set the delegate comforming to `IASKAppSettingsViewControllerDelegate`.
+	- Implement the delegate method `-settingsViewControllerDidEnd:` and dismiss the view controller.
 
 The sample application shows how to wire everything up.
 

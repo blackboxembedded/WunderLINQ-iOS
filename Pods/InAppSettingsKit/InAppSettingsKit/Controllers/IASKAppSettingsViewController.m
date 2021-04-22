@@ -16,21 +16,21 @@
 
 
 #import "IASKAppSettingsViewController.h"
-#import "IASKSettingsReader.h"
-#import "IASKSettingsStoreUserDefaults.h"
-#import "IASKSettingsStoreInMemory.h"
-#import "IASKPSSliderSpecifierViewCell.h"
-#import "IASKPSTextFieldSpecifierViewCell.h"
 #import "IASKSwitch.h"
-#import "IASKSlider.h"
+#import "IASKDatePicker.h"
+#import "IASKTextView.h"
+#import "IASKSettingsReader.h"
+#import "IASKMultipleValueSelection.h"
+#import "IASKSettingsStoreUserDefaults.h"
 #import "IASKSpecifier.h"
-#import "IASKSpecifierValuesViewController.h"
+#import "IASKSlider.h"
+#import "IASKEmbeddedDatePickerViewCell.h"
+#import "IASKPSTextFieldSpecifierViewCell.h"
 #import "IASKTextField.h"
 #import "IASKTextViewCell.h"
-#import "IASKMultipleValueSelection.h"
-#import "IASKDatePicker.h"
-#import "IASKDatePickerViewCell.h"
-#import "IASKEmbeddedDatePickerViewCell.h"
+#import "IASKPSSliderSpecifierViewCell.h"
+#import "IASKSpecifierValuesViewController.h"
+#import "IASKSettingsStoreInMemory.h"
 
 #if !__has_feature(objc_arc)
 #error "IASK needs ARC"
@@ -65,6 +65,7 @@ CGRect IASKCGRectSwap(CGRect rect);
 @synthesize file = _file;
 @synthesize childPaneHandler = _childPaneHandler;
 @synthesize currentFirstResponder = _currentFirstResponder;
+@synthesize listParentViewController;
 
 #pragma mark accessors
 - (IASKSettingsReader*)settingsReader {
@@ -81,6 +82,13 @@ CGRect IASKCGRectSwap(CGRect rect);
 - (void)setSettingsStore:(id<IASKSettingsStore>)settingsStore {
 	_settingsStore = settingsStore;
 	_settingsReader.settingsStore = _settingsStore;
+	
+	// Workaround for PSRadioGroupSpecifier's in List Groups
+	for (IASKMultipleValueSelection *selection in _selections) {
+		if (![selection isEqual:[NSNull null]]) {
+			selection.settingsStore = _settingsStore;
+		}
+	}
 }
 
 - (id<IASKSettingsStore>)settingsStore {
@@ -968,9 +976,13 @@ CGRect IASKCGRectSwap(CGRect rect);
 		if ([MFMailComposeViewController canSendMail]) {
 			mailViewController.mailComposeDelegate = self;
             _currentChildViewController = mailViewController;
+#if !TARGET_OS_MACCATALYST
             UIStatusBarStyle savedStatusBarStyle = [UIApplication sharedApplication].statusBarStyle;
+#endif
             [self presentViewController:mailViewController animated:YES completion:^{
+#if !TARGET_OS_MACCATALYST
 			    [UIApplication sharedApplication].statusBarStyle = savedStatusBarStyle;
+#endif
             }];
 			
         } else {
@@ -1025,16 +1037,19 @@ CGRect IASKCGRectSwap(CGRect rect);
 			id value = [self.settingsStore objectForSpecifier:specifier];
 			if ([value isKindOfClass:NSDictionary.class]) {
 				itemDict = value;
+			} else if (specifier.key && value) {
+				itemDict = @{(id)specifier.key: value};
 			}
 		}
 		IASKSettingsStoreInMemory *inMemoryStore = [[IASKSettingsStoreInMemory alloc] initWithDictionary:itemDict];
 		targetViewController.settingsStore = inMemoryStore;
+		targetViewController.listParentViewController = self;
 		[targetViewController.settingsReader applyDefaultsToStore];
 		UINavigationController *navCtrl = [[UINavigationController alloc] initWithRootViewController:targetViewController];
 		navCtrl.modalPresentationStyle = self.navigationController.modalPresentationStyle;
 		navCtrl.popoverPresentationController.sourceView = [self.tableView cellForRowAtIndexPath:indexPath];
-		targetViewController.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(addListItemCancel:)];
-		targetViewController.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(addListItemDone:)];
+		targetViewController.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(listItemCancel:)];
+		targetViewController.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(listItemDone:)];
 		[self.navigationController presentViewController:navCtrl animated:YES completion:nil];
 		
 		__weak typeof(self)weakSelf = self;
@@ -1094,8 +1109,10 @@ CGRect IASKCGRectSwap(CGRect rect);
 }
 
 - (void)textChanged:(IASKTextField*)textField {
-    // Wait with setting the property for the addSpecifier of list groups until editing ends
-    if (!textField.specifier.isAddSpecifier) {
+    // Wait with setting the property until editing ends for the addSpecifier of list groups or if a validation delegate is implemented
+    if ((!textField.specifier.isAddSpecifier && ![self.delegate respondsToSelector:@selector(settingsViewController:validateSpecifier:textField:previousValue:replacement:)]) ||
+		(self.listParentViewController && [self.delegate respondsToSelector:@selector(settingsViewController:childPaneIsValidForSpecifier:contentDictionary:)]))
+	{
 		[self.settingsStore setObject:textField.text forSpecifier:textField.specifier];
         NSDictionary *userInfo = textField.specifier.key && textField.text ? @{(id)textField.specifier.key : (NSString *)textField.text} : nil;
         [NSNotificationCenter.defaultCenter postNotificationName:kIASKAppSettingChanged
@@ -1184,7 +1201,7 @@ CGRect IASKCGRectSwap(CGRect rect);
 
 	[self.settingsStore setObject:textView.text forSpecifier:textView.specifier];
 	[[NSNotificationCenter defaultCenter] postNotificationName:kIASKAppSettingChanged
-														object:textView.specifier.key
+														object:self
 													  userInfo:@{(id)textView.specifier.key: textView.text}];
 	
 }
@@ -1209,12 +1226,12 @@ CGRect IASKCGRectSwap(CGRect rect);
 }
 
 #pragma mark - List groups
-- (void)addListItemCancel:(id)sender {
+- (void)listItemCancel:(id)sender {
 	self.childPaneHandler = nil;
 	[self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (void)addListItemDone:(id)sender {
+- (void)listItemDone:(id)sender {
 	self.childPaneHandler(YES);
 	self.childPaneHandler = nil;
 	[self dismissViewControllerAnimated:YES completion:nil];
