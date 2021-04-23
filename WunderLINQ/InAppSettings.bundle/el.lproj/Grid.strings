@@ -34,11 +34,14 @@
 "fueleconomyone_header" = "Κατανάλωση καυσίμου 1";
 "fueleconomytwo_header" = "Κατανάλωση καυσίμου 2";
 "fuelrange_header" = "Αυτονομία καυσίμου";
-"leanangle_header" = "Γωνία κλίσης";
+"leanangle_header" = "Γωνία κλίσης κινητού";
 "gforce_header" = "Επιτάχυνση G";
 "bearing_header" = "Κύλιση";
 "altitude_header" = "Υψόμετρο";
-"gpsspeed_header" = "Ταχύτητα βάσει GPS";
+"gpsspeed_header" = "Ταχύτητα GPS";
 "sunrisesunset_header" = "Ανατολή/Δύση Ηλίου";
 "barometric_header" = "Βαρόμετρο";
 "time_header" = "Ώρα";
+"leanangle_bike_header" = "Γωνία πλαγιάσματος";
+"rearwheel_speed_header" = "Ταχύτητα πίσω τροχού";
+"rpm_header" = "Σ.Α.Λ.";
