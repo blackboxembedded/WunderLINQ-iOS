@@ -43,3 +43,4 @@
 "sunrisesunset_header" = "Sončni vzhod/zahod";
 "time_header" = "Čas";
 "rpm_header" = "Obr/min";
+"rearwheel_speed_header" = "Hitrost na zadnjem kolesu";
