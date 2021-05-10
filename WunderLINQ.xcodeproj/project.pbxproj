@@ -169,6 +169,13 @@
 		7E62BB7021FE443200FDB10E /* ColumnFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColumnFlowLayout.swift; sourceTree = "<group>"; };
 		7E6987DA20F82F1A00B4781D /* MotorcycleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotorcycleData.swift; sourceTree = "<group>"; };
 		7E6987DC20F8F83500B4781D /* Faults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Faults.swift; sourceTree = "<group>"; };
+		7E6DA9032648BE08001073E2 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = WunderLINQ/fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		7E6DA9072648BE33001073E2 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		7E6DA9082648BE5E001073E2 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		7E6DA9092648BE79001073E2 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = WunderLINQ/pl.lproj/Localizable.strings; sourceTree = "<group>"; };
+		7E6DA90A2648BF7F001073E2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		7E6DA90B2648C008001073E2 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = WunderLINQ/nl.lproj/Localizable.strings; sourceTree = "<group>"; };
+		7E6DA90C2648C01A001073E2 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		7E6E0A6724FC022200149387 /* ColorPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerViewController.swift; sourceTree = "<group>"; };
 		7E70D8F721A5FD2B0016CD74 /* el */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = el; path = el.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		7E70D8F821A5FD2B0016CD74 /* el */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = el; path = WunderLINQ/el.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -581,6 +588,9 @@
 				ja,
 				hu,
 				af,
+				fr,
+				pl,
+				nl,
 			);
 			mainGroup = 7EA478411F40B154000CEDDC;
 			productRefGroup = 7EA4784B1F40B154000CEDDC /* Products */;
@@ -768,6 +778,10 @@
 				7E78DB3023006FD9009742DF /* el */,
 				7E93549F23008B2B00FCF0C5 /* es */,
 				7E7440992308F24F001FDE20 /* af */,
+				7E6DA9072648BE33001073E2 /* fr */,
+				7E6DA9082648BE5E001073E2 /* pl */,
+				7E6DA90A2648BF7F001073E2 /* Base */,
+				7E6DA90C2648C01A001073E2 /* nl */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -802,6 +816,9 @@
 				7EE02FE522A6BCCA0061330B /* ja */,
 				7E586D3F22B68E6E00FB2E4C /* hu */,
 				7E74409A2308F2F1001FDE20 /* af */,
+				7E6DA9032648BE08001073E2 /* fr */,
+				7E6DA9092648BE79001073E2 /* pl */,
+				7E6DA90B2648C008001073E2 /* nl */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";

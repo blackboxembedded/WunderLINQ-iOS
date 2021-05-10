@@ -1,3 +1,10 @@
+/*
+  InfoPlist.strings
+  WunderLINQ
+
+  Created by Keith Conger on 12/13/18.
+  Copyright © 2018 Black Box Embedded, LLC. All rights reserved.
+*/
 "NSPhotoLibraryUsageDescription" = "WunderLINQ requiert l'accès de sauvegarder des photos dans votre librairie.";
 "NSPhotoLibraryAddUsageDescription" = "WunderLINQ requiert l'accès de sauvegarder des photos dans votre librairie.";
 "NSMicrophoneUsageDescription" = "WunderLINQ requiert l'accès à votre micro pour enregistrer l'audio durant les vidéos.";
@@ -7,11 +14,4 @@
 "NSLocationAlwaysUsageDescription" = "WunderLINQ requiert l'accès à votre localisation pour l'enregistrer dans les voyages et emplacements.";
 "NSLocationAlwaysAndWhenInUseUsageDescription" = "WunderLINQ requiert l'accès à votre localisation pour l'enregistrer dans les voyages et emplacements.";
 "NSCameraUsageDescription" = "WunderLINQ requiert l'accès à votre caméra pour prendre des photos et des vidéos.";
-/* 
-  InfoPlist.strings
-  WunderLINQ
-
-  Created by Keith Conger on 12/13/18.
-  Copyright © 2018 Black Box Embedded, LLC. All rights reserved.
-*/
 "NSContactsUsageDescription" = "WunderLINQ requiert l'accès à votre carnet d'adresse pour afficher les numéros de téléphone de vos contacts.";
