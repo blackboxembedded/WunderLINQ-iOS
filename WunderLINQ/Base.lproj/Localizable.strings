@@ -207,7 +207,7 @@
 "task_title_actioncam_start_video" = "Start ActionCam Recording";
 "task_title_actioncam_stop_video" = "Stop ActionCam Recording";
 "task_title_weathermap" = "Weather Map";
-"task_title_roadbook" = "Road Book";
+"task_title_roadbook" = "Roadbook";
 "toast_actioncam_notconnected" = "ActionCam Not Connected";
 "toast_actioncam_notset" = "Set ActionCam type in the app settings";
 "toast_waypoint_saved" = "Waypoint Saved";
