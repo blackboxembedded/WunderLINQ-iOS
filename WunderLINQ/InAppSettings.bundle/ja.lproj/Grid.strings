@@ -42,3 +42,6 @@
 "barometric_header" = "気圧計";
 "sunrisesunset_header" = "日の出/日没";
 "time_header" = "時間";
+"leanangle_bike_header" = "Lean Angle";
+"rearwheel_speed_header" = "Rear Wheel Speed";
+"rpm_header" = "RPM";

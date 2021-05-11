@@ -11,3 +11,12 @@
 "actioncam_hero3" = "ヒーロー3";
 "actioncam_none" = "無し";
 "pref_actioncam_title" = "アクションカメラ";
+"music_apple" = "Apple Music";
+"music_spotify" = "Spotify";
+"nav_app_here" = "HERE WeGo";
+"nav_app_inroute" = "inRoute";
+"nav_app_mapout" = "MapOut";
+"nav_app_yahoojapan" = "Yahoo Japan";
+"pref_musicplayer_title" = "Music Player";
+"pref_roadbook_app" = "Roadbook App";
+"roadbook_app_rabbitrally" = "Rabbit Rally";

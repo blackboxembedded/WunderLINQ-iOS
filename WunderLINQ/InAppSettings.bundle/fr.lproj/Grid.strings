@@ -42,3 +42,6 @@
 "barometric_header" = "Baromètre";
 "pref_grid_fifteen" = "Quinzième";
 "pref_grid_thirteen" = "Treizième";
+"leanangle_bike_header" = "Lean Angle";
+"rearwheel_speed_header" = "Rear Wheel Speed";
+"rpm_header" = "RPM";

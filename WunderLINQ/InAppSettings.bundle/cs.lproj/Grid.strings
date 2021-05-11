@@ -42,3 +42,6 @@
 "sunrisesunset_header" = "Východ/Západ Slunce";
 "barometric_header" = "Barometr";
 "time_header" = "Čas";
+"leanangle_bike_header" = "Lean Angle";
+"rearwheel_speed_header" = "Rear Wheel Speed";
+"rpm_header" = "RPM";
