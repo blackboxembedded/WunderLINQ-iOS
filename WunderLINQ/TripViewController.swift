@@ -110,7 +110,7 @@ class TripViewController: UIViewController {
                 if !(row[1].contains("No Fix") || row[2].contains("No Fix")){
                     if let lat = row[1].toDouble(),let lon = row[2].toDouble() {
                         let trackpoint = GPXTrackPoint(latitude: lat, longitude: lon)
-                        var dateFormat = "yyyyMMdd-HH:mm:ss"
+                        let dateFormat = "yyyyMMdd-HH:mm:ss"
                         var dateFormatter: DateFormatter {
                             let formatter = DateFormatter()
                             formatter.dateFormat = dateFormat

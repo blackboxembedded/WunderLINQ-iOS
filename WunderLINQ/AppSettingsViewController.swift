@@ -50,7 +50,7 @@ class ApppSettingsViewController: IASKAppSettingsViewController {
     }
 
     func myinit (file: NSString, specifier: IASKSpecifier) -> ApppSettingsViewController {
-        var vc = ApppSettingsViewController()
+        let vc = ApppSettingsViewController()
         vc.showDoneButton = false;
         vc.showCreditsFooter = false;
         vc.delegate = self.delegate;

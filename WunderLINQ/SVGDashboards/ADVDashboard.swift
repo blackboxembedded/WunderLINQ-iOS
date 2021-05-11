@@ -128,33 +128,36 @@ class ADVDashboard {
             case 1://Trip1
                 if motorcycleData.tripOne != nil {
                     var trip1:Double = motorcycleData.tripOne!
-                    dataUnit = distanceUnit
                     if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
                         trip1 = Utility.kmToMiles(trip1)
+                        distanceUnit = "mi"
                     }
                     dataValue = "\(Int(round(trip1)))"
+                    dataUnit = distanceUnit
                 }
                 dataLabel = "\(NSLocalizedString("dash_trip1_label", comment: "")): "
                 break
             case 2://Trip2
                 if motorcycleData.tripTwo != nil {
                     var trip2:Double = motorcycleData.tripTwo!
-                    dataUnit = distanceUnit
                     if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
                         trip2 = Utility.kmToMiles(trip2)
+                        distanceUnit = "mi"
                     }
                     dataValue = "\(Int(round(trip2)))\(distanceUnit)"
+                    dataUnit = distanceUnit
                 }
                 dataLabel = "\(NSLocalizedString("dash_trip2_label", comment: "")): "
                 break
             case 3://Range
                 if motorcycleData.fuelRange != nil {
-                    dataUnit = distanceUnit
                     var fuelRange:Double = motorcycleData.fuelRange!
                     if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
                         fuelRange = Utility.kmToMiles(fuelRange)
+                        distanceUnit = "mi"
                     }
                     dataValue = "\(Int(round(fuelRange)))\(distanceUnit)"
+                    dataUnit = distanceUnit
                     if(faults.getFuelFaultActive()){
                         let style = xml?[0]["dashboard"]?["values"]?["dataValue"]?.attributes["style"]
                         let regex = try! NSRegularExpression(pattern: "fill:([^<]*);", options: NSRegularExpression.Options.caseInsensitive)
@@ -167,12 +170,12 @@ class ADVDashboard {
                 break
             case 4://Altitude
                 if motorcycleData.location != nil {
-                    dataUnit = heightUnit
                     dataValue = "\(Int(round(motorcycleData.location!.altitude)))"
                     if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
                         dataValue = "\(Int(round(Utility.mtoFeet(motorcycleData.location!.altitude))))"
-                        dataUnit = "ft"
+                        heightUnit = "ft"
                     }
+                    dataUnit = heightUnit
                     dataLabel = "\(NSLocalizedString("dash_altitude_label", comment: "")): "
                 }
                 break
