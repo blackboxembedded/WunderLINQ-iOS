@@ -216,13 +216,13 @@ class StandardDashboard {
         xml?[0]["dashboard"]?["values"]?["rdcF"]?.text = rdcFValue
         
         if(faults.getFrontTirePressureCriticalActive()){
-            let style = xml![0][4][11][6]["tspan"]?.attributes["style"]
+            let style = xml?[0]["dashboard"]?["values"]?["rdcF"]?.attributes["style"]
             let regex = try! NSRegularExpression(pattern: "fill:([^<]*);", options: NSRegularExpression.Options.caseInsensitive)
             let range = NSMakeRange(0, style!.count)
             let modString = regex.stringByReplacingMatches(in: style!, options: [], range: range, withTemplate: "fill:#e20505;")
             xml?[0]["dashboard"]?["values"]?["rdcF"]?.attributes["style"] = modString
         } else if(faults.getRearTirePressureWarningActive()){
-            let style = xml![0][4][11][6]["tspan"]?.attributes["style"]
+            let style = xml?[0]["dashboard"]?["values"]?["rdcF"]?.attributes["style"]
             let regex = try! NSRegularExpression(pattern: "fill:([^<]*);", options: NSRegularExpression.Options.caseInsensitive)
             let range = NSMakeRange(0, style!.count)
             let modString = regex.stringByReplacingMatches(in: style!, options: [], range: range, withTemplate: "fill:#fcc914;")
@@ -252,13 +252,13 @@ class StandardDashboard {
         xml?[0]["dashboard"]?["values"]?["rdcR"]?.text = rdcRValue
         
         if(faults.getRearTirePressureCriticalActive()){
-            let style = xml![0][4][11][7]["tspan"]?.attributes["style"]
+            let style = xml?[0]["dashboard"]?["values"]?["rdcR"]?.attributes["style"]
             let regex = try! NSRegularExpression(pattern: "fill:([^<]*);", options: NSRegularExpression.Options.caseInsensitive)
             let range = NSMakeRange(0, style!.count)
             let modString = regex.stringByReplacingMatches(in: style!, options: [], range: range, withTemplate: "fill:#e20505;")
             xml?[0]["dashboard"]?["values"]?["rdcR"]?.attributes["style"] = modString
         } else if(faults.getRearTirePressureWarningActive()){
-            let style = xml![0][4][11][7]["tspan"]?.attributes["style"]
+            let style = xml?[0]["dashboard"]?["values"]?["rdcR"]?.attributes["style"]
             let regex = try! NSRegularExpression(pattern: "fill:([^<]*);", options: NSRegularExpression.Options.caseInsensitive)
             let range = NSMakeRange(0, style!.count)
             let modString = regex.stringByReplacingMatches(in: style!, options: [], range: range, withTemplate: "fill:#fcc914;")
