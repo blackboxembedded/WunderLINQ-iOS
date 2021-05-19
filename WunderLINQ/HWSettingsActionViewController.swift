@@ -37,6 +37,9 @@ class HWSettingsActionViewController: UIViewController, UIPickerViewDataSource, 
                           NSLocalizedString("hid_keyboard_label", comment: ""),
                           NSLocalizedString("hid_consumer_label", comment: "")]
     
+    var modePickerDataHW1 = [NSLocalizedString("hid_0x00_label", comment: ""),
+                          NSLocalizedString("hid_keyboard_label", comment: "")]
+    
     var usbPickerData = [NSLocalizedString("usbcontrol_on_label", comment: ""),
                           NSLocalizedString("usbcontrol_engine_label", comment: ""),
                           NSLocalizedString("usbcontrol_off_label", comment: "")]
@@ -233,7 +236,11 @@ class HWSettingsActionViewController: UIViewController, UIPickerViewDataSource, 
             } else if(actionID == wlqData.fullLongPressSensitivity){ // Full Sensititvity
                 return 30
             } else {
-                return modePickerData.count
+                if (wlqData.gethardwareVersion() == wlqData.hardwareVersion1){
+                    return modePickerDataHW1.count
+                } else {
+                    return modePickerData.count
+                }
             }
         } else if pickerView == keyPicker{
             if (typePicker.selectedRow(inComponent: 0) == 0){
@@ -258,7 +265,12 @@ class HWSettingsActionViewController: UIViewController, UIPickerViewDataSource, 
             } else if(actionID == wlqData.fullLongPressSensitivity){ // Full Sensititvity
                 return "\(row + 1)"
             } else {
-                return modePickerData[row]
+                if (wlqData.gethardwareVersion() == wlqData.hardwareVersion1){
+                    return modePickerDataHW1[row]
+                } else {
+                    return modePickerData[row]
+                }
+                
             }
         } else if (pickerView == keyPicker){
             if (typePicker.selectedRow(inComponent: 0) == 0){

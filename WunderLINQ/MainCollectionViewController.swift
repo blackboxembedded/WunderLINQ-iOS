@@ -3360,7 +3360,9 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             for service in services {
                 print("DISCOVERED SERVICE: \(service)")
                 // discover the characteristic.
-                if (service.uuid == CBUUID(string: Device.WunderLINQServiceUUID)) {
+                if (service.uuid == CBUUID(string: Device.DeviceInformationServiceUUID)) {
+                    peripheral.discoverCharacteristics(nil, for: service)
+                } else if (service.uuid == CBUUID(string: Device.WunderLINQServiceUUID)) {
                     peripheral.discoverCharacteristics(nil, for: service)
                 }
             }
@@ -3386,7 +3388,9 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             
             for characteristic in characteristics {
                 // Message Data Characteristic
-                if characteristic.uuid == CBUUID(string: Device.MessageCharacteristicUUID) {
+                if characteristic.uuid == CBUUID(string: Device.HWRevisionCharacteristicUUID) {
+                    peripheral.readValue(for: characteristic)
+                } else if characteristic.uuid == CBUUID(string: Device.MessageCharacteristicUUID) {
                     // Enable the message notifications
                     messageCharacteristic = characteristic
                     wunderLINQ?.setNotifyValue(true, for: characteristic)
@@ -3425,7 +3429,12 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         
         // extract the data from the characteristic's value property and display the value based on the characteristic type
         if let dataBytes = characteristic.value {
-            if characteristic.uuid == CBUUID(string: Device.MessageCharacteristicUUID) {
+            if characteristic.uuid == CBUUID(string: Device.HWRevisionCharacteristicUUID) {
+                if let versionString = String(bytes: dataBytes, encoding: .utf8) {
+                    print("HW Version: \(versionString)")
+                    wlqData.sethardwareVersion(hardwareVersion: versionString)
+                }
+            } else if characteristic.uuid == CBUUID(string: Device.MessageCharacteristicUUID) {
                 parseMessage(dataBytes)
             } else if characteristic.uuid == CBUUID(string: Device.CommandCharacteristicUUID) {
                 parseCommandResponse(dataBytes)

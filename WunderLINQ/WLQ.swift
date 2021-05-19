@@ -19,12 +19,15 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 class WLQ {
     static let shared = WLQ()
 
-    var hardwareVersion: String?
+    var hardwareVersion:String?
+    let hardwareVersion1:String = "2PCB1.9 10/18";
+    let hardwareVersion2:String = "1PCB2.0 12/19";
+    let hardwareVersion2_1:String = "2PCB2.2 081920";
     
     var wunderLINQConfig:[UInt8]?
     var flashConfig:[UInt8]?
     var tempConfig:[UInt8]?
-    var firmwareVersion: String?
+    var firmwareVersion:String?
     var USBVinThreshold:UInt16?
 
     let firmwareVersionMajor_INDEX:Int = 9
@@ -76,6 +79,21 @@ class WLQ {
                 0x01, 0x00, 0x50, 0x01, 0x00, 0x29, // Left Toggle
                 0x01, 0x00, 0x52, 0x01, 0x00, 0x51, // Scroll
                 0x02, 0x00, 0xB8, 0x02, 0x00, 0xE2] // Signal Cancel
+    
+    let defaultConfig2HW1:[UInt8] = [
+                0x00, 0x00, // USB Input Voltage threshold
+                0x07, // RT/K Start // Sensitivity
+                0x01, 0x00, 0x4F, 0x01, 0x00, 0x28, // Menu
+                0x01, 0x00, 0x52, 0x00, 0x00, 0x00, // Zoom+
+                0x01, 0x00, 0x51, 0x00, 0x00, 0x00, // Zoom-
+                0x01, 0x00, 0x50, 0x01, 0x00, 0x29, // Speak
+                0x00, 0x00, 0x00, 0x00, 0x00, 0x00, // Mute
+                0x00, 0x00, 0x00, 0x00, 0x00, 0x00, // Display
+                0x11, // Full Start // Sensitivity
+                0x01, 0x00, 0x4F, 0x01, 0x00, 0x28, // Right Toggle
+                0x01, 0x00, 0x50, 0x01, 0x00, 0x29, // Left Toggle
+                0x01, 0x00, 0x52, 0x01, 0x00, 0x51, // Scroll
+                0x00, 0x00, 0x00, 0x00, 0x00, 0x00] // Signal Cancel
 
     let keyMode_default:UInt8 = 0x00
     let keyMode_custom:UInt8 = 0x01

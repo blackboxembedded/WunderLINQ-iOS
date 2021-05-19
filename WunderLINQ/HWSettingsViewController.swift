@@ -373,10 +373,13 @@ class HWSettingsViewController: UIViewController, UITableViewDelegate, UITableVi
             preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: NSLocalizedString("hwsave_alert_btn_cancel", comment: ""), style: .cancel, handler: nil)
         alertController.addAction(cancelAction)
-        let openAction = UIAlertAction(title: NSLocalizedString("hwsave_alert_btn_ok", comment: ""), style: .default) { (action) in
+        let openAction = UIAlertAction(title: NSLocalizedString("hwsave_alert_btn_ok", comment: ""), style: .default) { [self] (action) in
             if (self.wlqData.getfirmwareVersion() != "Unknown"){
                 if (self.wlqData.getfirmwareVersion().toDouble()! >= 2.0) {
-                    let command = self.wlqData.WRITE_CONFIG_CMD + self.wlqData.defaultConfig2 + self.wlqData.CMD_EOM
+                    var command = self.wlqData.WRITE_CONFIG_CMD + self.wlqData.defaultConfig2 + self.wlqData.CMD_EOM
+                    if (self.wlqData.gethardwareVersion() == self.wlqData.hardwareVersion1){
+                        command = self.wlqData.WRITE_CONFIG_CMD + self.wlqData.defaultConfig2HW1 + self.wlqData.CMD_EOM
+                    }
                     let writeData =  Data(_: command)
                     self.peripheral?.writeValue(writeData, for: self.characteristic!, type: CBCharacteristicWriteType.withResponse)
                 } else {
