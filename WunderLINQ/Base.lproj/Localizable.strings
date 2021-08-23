@@ -208,6 +208,7 @@
 "task_title_actioncam_stop_video" = "Stop ActionCam Recording";
 "task_title_weathermap" = "Weather Map";
 "task_title_roadbook" = "Roadbook";
+"task_title_systemvolume" = "Volume";
 "toast_actioncam_notconnected" = "ActionCam Not Connected";
 "toast_actioncam_notset" = "Set ActionCam type in the app settings";
 "toast_waypoint_saved" = "Waypoint Saved";
@@ -317,6 +318,8 @@
 "dash_fueleconomyone_label" = "Econo1";
 "dash_fueleconomytwo_label" = "Econo2";
 "dash_altitude_label" = "ALT";
+//VolumeViewController
+"systemvolume_title" = "System Volume";
 //Keyboard HID
 "hid_0x00_label" = "Not Set";
 "hid_keyboard_label" = "Standard";

@@ -53,6 +53,7 @@
 		7E755C13260A787100B29507 /* standard-dashboard.svg in Resources */ = {isa = PBXBuildFile; fileRef = 7E755C11260A787100B29507 /* standard-dashboard.svg */; };
 		7E755C18260AA78900B29507 /* StandardDashboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E755C17260AA78900B29507 /* StandardDashboard.swift */; };
 		7E755C1E260AA80700B29507 /* SportDashboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E755C1D260AA80700B29507 /* SportDashboard.swift */; };
+		7E75E2DB26D2E6210077CA5A /* VolumeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E75E2DA26D2E6210077CA5A /* VolumeViewController.swift */; };
 		7E7C53CD21F3BA9200C98010 /* ContactsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7C53CC21F3BA9200C98010 /* ContactsTableViewCell.swift */; };
 		7E80BD3B211CF80600B8CA0D /* LocalisableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E80BD3A211CF80600B8CA0D /* LocalisableLabel.swift */; };
 		7E80BD3D211CFF7300B8CA0D /* LocalisableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E80BD3C211CFF7300B8CA0D /* LocalisableButton.swift */; };
@@ -186,6 +187,7 @@
 		7E755C11260A787100B29507 /* standard-dashboard.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "standard-dashboard.svg"; sourceTree = "<group>"; };
 		7E755C17260AA78900B29507 /* StandardDashboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardDashboard.swift; sourceTree = "<group>"; };
 		7E755C1D260AA80700B29507 /* SportDashboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportDashboard.swift; sourceTree = "<group>"; };
+		7E75E2DA26D2E6210077CA5A /* VolumeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolumeViewController.swift; sourceTree = "<group>"; };
 		7E78DB2C23006FCF009742DF /* de */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		7E78DB2D23006FD1009742DF /* es-419 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		7E78DB2F23006FD7009742DF /* cs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -423,6 +425,7 @@
 				7E068BCC2102ADD20076EAAD /* WaypointViewController.swift */,
 				7EBC8A9D23B19C0B001FE70B /* AddWaypointViewController.swift */,
 				7EAF646922FE261D00B11550 /* WeatherMapViewController.swift */,
+				7E75E2DA26D2E6210077CA5A /* VolumeViewController.swift */,
 				7EA4788D1F5BA136000CEDDC /* Tasks.swift */,
 				7E46AA182419D1540047E87D /* CircularCollectionViewLayout.swift */,
 				7EA4BCC621B8C9150084F6EA /* TasksCollectionViewController.swift */,
@@ -717,6 +720,7 @@
 				7EBC8A9E23B19C0B001FE70B /* AddWaypointViewController.swift in Sources */,
 				7EF07768258E653E009A6BAA /* HWSettingsTableViewCell.swift in Sources */,
 				7E62BB7121FE443200FDB10E /* ColumnFlowLayout.swift in Sources */,
+				7E75E2DB26D2E6210077CA5A /* VolumeViewController.swift in Sources */,
 				B98CA75D252E6C6B00530075 /* UIStoryboard+extensions.swift in Sources */,
 				7EBFE1F3214C7D6500F2185A /* ScenicAPI.swift in Sources */,
 				7E5A767820DDEE7200B48CC6 /* UIViewController+Extensions.swift in Sources */,
@@ -971,7 +975,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0.5;
+				MARKETING_VERSION = 2.0.6;
 				PRODUCT_BUNDLE_IDENTIFIER = com.blackboxembedded.wunderlinq;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1001,7 +1005,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0.5;
+				MARKETING_VERSION = 2.0.6;
 				PRODUCT_BUNDLE_IDENTIFIER = com.blackboxembedded.wunderlinq;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

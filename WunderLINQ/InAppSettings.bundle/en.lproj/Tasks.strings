@@ -13,6 +13,7 @@
 "task_title_actioncam_stop_video" = "Stop ActionCam Recording";
 "task_title_weathermap" = "Weather Map";
 "task_title_roadbook" = "Roadbook";
+"task_title_systemvolume" = "Volume";
 "task_title_empty" = "Empty";
 "pref_task_one" = "First";
 "pref_task_two" = "Second";

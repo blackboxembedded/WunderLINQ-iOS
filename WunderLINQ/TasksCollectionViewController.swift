@@ -60,7 +60,7 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
     
     let motorcycleData = MotorcycleData.shared
     
-    let emptyTask = 14
+    let emptyTask = 15
     
     private func loadRows() {
         let taskRow1 = UserDefaults.standard.integer(forKey: "task_one_preference")
@@ -175,7 +175,11 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
         guard let task13 = Tasks(label: NSLocalizedString("task_title_roadbook", comment: ""), icon: UIImage(named: "RoadBook")?.withRenderingMode(.alwaysTemplate)) else {
             fatalError("Unable to instantiate Settings Task")
         }
-        self.tasks = [task0, task1, task2, task3, task4, task5, task6, task7, task8, task9, task10, task11, task12, task13]
+        // System Volume Task
+        guard let task14 = Tasks(label: NSLocalizedString("task_title_systemvolume", comment: ""), icon: UIImage(named: "Speaker")?.withRenderingMode(.alwaysTemplate)) else {
+            fatalError("Unable to instantiate Settings Task")
+        }
+        self.tasks = [task0, task1, task2, task3, task4, task5, task6, task7, task8, task9, task10, task11, task12, task13, task14]
     }
     
     private func execute_task(taskID:Int) {
@@ -712,6 +716,10 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
                 default:
                     break
             }
+        case 14:
+            //System Volume
+            performSegue(withIdentifier: "taskGridToVolume", sender: self)
+            break
         default:
             print("Unknown Task")
         }

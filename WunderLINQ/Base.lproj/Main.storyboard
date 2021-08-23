@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Fp2-Ey-Ypo">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Fp2-Ey-Ypo">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -16,11 +16,11 @@
             <objects>
                 <viewController storyboardIdentifier="Main" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="MainCollectionViewController" customModule="WunderLINQ" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="LeD-DA-8o8">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" restorationIdentifier="MainCollectionVC" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="DFb-XX-n1q">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="591"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                                 <color key="backgroundColor" systemColor="labelColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="iyU-Dx-uZ6">
                                     <size key="itemSize" width="66" height="70"/>
@@ -177,12 +177,12 @@
             <objects>
                 <tableViewController title="Faults" id="KTW-aa-IYg" customClass="FaultsTableViewController" customModule="WunderLINQ" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="8d5-qJ-gEo">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FaultsTableViewCell" textLabel="Kwv-9e-iLT" style="IBUITableViewCellStyleDefault" id="bA6-iL-1XA">
-                                <rect key="frame" x="0.0" y="28" width="375" height="43.5"/>
+                                <rect key="frame" x="0.0" y="24.5" width="375" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bA6-iL-1XA" id="gpg-Fl-m3S">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -603,7 +603,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFit" selectionStyle="default" indentationWidth="10" reuseIdentifier="ContactsTableViewCell" rowHeight="60" id="91W-wB-7yc" customClass="ContactsTableViewCell" customModule="WunderLINQ" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="60"/>
+                                <rect key="frame" x="0.0" y="24.5" width="375" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="91W-wB-7yc" id="UcH-Kx-tlt">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
@@ -666,7 +666,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="WaypointsNavTableViewCell" textLabel="lKv-aX-sxq" style="IBUITableViewCellStyleDefault" id="6UQ-Ab-cVd">
-                                <rect key="frame" x="0.0" y="28" width="375" height="43.5"/>
+                                <rect key="frame" x="0.0" y="24.5" width="375" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6UQ-Ab-cVd" id="AFc-J5-2Sf">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -696,6 +696,126 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vYP-M3-Xw8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="9807" y="261"/>
+        </scene>
+        <!--Volume View Controller-->
+        <scene sceneID="egy-CP-wIt">
+            <objects>
+                <viewController id="1bi-3i-8Fd" customClass="VolumeViewController" customModule="WunderLINQ" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="HG0-Of-xp0">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="n3M-Xt-NJV">
+                                <rect key="frame" x="8" y="544" width="359" height="4"/>
+                                <color key="progressTintColor" name="imageTint"/>
+                            </progressView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="250" image="Speaker" translatesAutoresizingMaskIntoConstraints="NO" id="sip-mZ-kxW">
+                                <rect key="frame" x="8" y="16" width="359" height="512"/>
+                                <color key="tintColor" name="imageTint"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="314" id="0aS-oT-2RU"/>
+                                    <constraint firstAttribute="height" constant="256" id="XcN-SV-oLO"/>
+                                    <constraint firstAttribute="width" secondItem="sip-mZ-kxW" secondAttribute="height" multiplier="343:512" id="hSH-BR-Xn7"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="0aS-oT-2RU"/>
+                                        <exclude reference="XcN-SV-oLO"/>
+                                        <exclude reference="hSH-BR-Xn7"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=compact">
+                                    <mask key="constraints">
+                                        <exclude reference="0aS-oT-2RU"/>
+                                        <exclude reference="XcN-SV-oLO"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular">
+                                    <mask key="constraints">
+                                        <exclude reference="hSH-BR-Xn7"/>
+                                    </mask>
+                                </variation>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="gso-dX-osp"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="n3M-Xt-NJV" secondAttribute="trailing" id="CM7-UW-1Wa">
+                                <variation key="heightClass=regular" constant="8"/>
+                            </constraint>
+                            <constraint firstItem="n3M-Xt-NJV" firstAttribute="top" secondItem="sip-mZ-kxW" secondAttribute="bottom" constant="8" id="CVF-P4-Ag5">
+                                <variation key="heightClass=regular" constant="16"/>
+                            </constraint>
+                            <constraint firstAttribute="bottom" secondItem="n3M-Xt-NJV" secondAttribute="bottom" id="JJ4-c8-WXP">
+                                <variation key="heightClass=compact" constant="32"/>
+                            </constraint>
+                            <constraint firstItem="n3M-Xt-NJV" firstAttribute="top" secondItem="sip-mZ-kxW" secondAttribute="bottom" constant="8" id="PaQ-7A-1Va">
+                                <variation key="heightClass=compact" constant="16"/>
+                            </constraint>
+                            <constraint firstItem="gso-dX-osp" firstAttribute="trailing" secondItem="sip-mZ-kxW" secondAttribute="trailing" id="Qns-tJ-L2H">
+                                <variation key="heightClass=regular" constant="8"/>
+                            </constraint>
+                            <constraint firstItem="sip-mZ-kxW" firstAttribute="leading" secondItem="gso-dX-osp" secondAttribute="leading" id="XFx-LX-Wjs">
+                                <variation key="heightClass=regular" constant="8"/>
+                            </constraint>
+                            <constraint firstItem="sip-mZ-kxW" firstAttribute="top" secondItem="HG0-Of-xp0" secondAttribute="top" id="Z3Z-G0-GEb"/>
+                            <constraint firstItem="sip-mZ-kxW" firstAttribute="centerX" secondItem="HG0-Of-xp0" secondAttribute="centerX" id="blC-WW-qFH"/>
+                            <constraint firstItem="sip-mZ-kxW" firstAttribute="top" secondItem="gso-dX-osp" secondAttribute="top" id="hVZ-mn-06z">
+                                <variation key="heightClass=regular" constant="16"/>
+                            </constraint>
+                            <constraint firstItem="n3M-Xt-NJV" firstAttribute="leading" secondItem="HG0-Of-xp0" secondAttribute="leading" id="hq2-9q-28v">
+                                <variation key="heightClass=regular" constant="8"/>
+                            </constraint>
+                            <constraint firstItem="n3M-Xt-NJV" firstAttribute="centerX" secondItem="HG0-Of-xp0" secondAttribute="centerX" id="kQ0-RD-mdD"/>
+                            <constraint firstItem="n3M-Xt-NJV" firstAttribute="width" secondItem="sip-mZ-kxW" secondAttribute="width" id="mO4-cw-MNp"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Qns-tJ-L2H"/>
+                                <exclude reference="XFx-LX-Wjs"/>
+                                <exclude reference="Z3Z-G0-GEb"/>
+                                <exclude reference="blC-WW-qFH"/>
+                                <exclude reference="hVZ-mn-06z"/>
+                                <exclude reference="CM7-UW-1Wa"/>
+                                <exclude reference="CVF-P4-Ag5"/>
+                                <exclude reference="JJ4-c8-WXP"/>
+                                <exclude reference="PaQ-7A-1Va"/>
+                                <exclude reference="hq2-9q-28v"/>
+                                <exclude reference="kQ0-RD-mdD"/>
+                                <exclude reference="mO4-cw-MNp"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=compact">
+                            <mask key="constraints">
+                                <include reference="Z3Z-G0-GEb"/>
+                                <include reference="blC-WW-qFH"/>
+                                <include reference="JJ4-c8-WXP"/>
+                                <include reference="PaQ-7A-1Va"/>
+                                <include reference="kQ0-RD-mdD"/>
+                                <include reference="mO4-cw-MNp"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular">
+                            <mask key="constraints">
+                                <include reference="Qns-tJ-L2H"/>
+                                <include reference="XFx-LX-Wjs"/>
+                                <include reference="hVZ-mn-06z"/>
+                                <include reference="CM7-UW-1Wa"/>
+                                <include reference="CVF-P4-Ag5"/>
+                                <include reference="hq2-9q-28v"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <navigationItem key="navigationItem" id="snv-Oa-RZf"/>
+                    <connections>
+                        <outlet property="image" destination="sip-mZ-kxW" id="ez3-rM-Zu1"/>
+                        <outlet property="progressBar" destination="n3M-Xt-NJV" id="IOn-lz-caO"/>
+                        <segue destination="OIf-TM-fnx" kind="show" identifier="volumeToTaskGrid" id="8Uw-mK-dDj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NrJ-MZ-Rzc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="9803.7481259370325" y="-1999.2"/>
         </scene>
         <!--Alert-->
         <scene sceneID="2jd-t5-irf">
@@ -791,7 +911,7 @@
             <objects>
                 <collectionViewController title="Quick Tasks" id="OIf-TM-fnx" customClass="TasksCollectionViewController" customModule="WunderLINQ" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" id="02I-YM-N5d">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" name="backgrounds"/>
                         <collectionViewLayout key="collectionViewLayout" id="mD6-xu-BlN" customClass="CircularCollectionViewLayout" customModule="WunderLINQ" customModuleProvider="target"/>
@@ -852,6 +972,7 @@
                         <segue destination="p6n-wZ-mMa" kind="show" identifier="tasksToMusic" customClass="SegueFromLeft" customModule="WunderLINQ" customModuleProvider="target" id="EVI-4B-2VB"/>
                         <segue destination="PSM-zq-09s" kind="show" identifier="tasksToAlert" id="9Kf-ij-uzf"/>
                         <segue destination="mgN-4w-lQo" kind="show" identifier="taskGridToWeatherMap" id="okP-uG-49O"/>
+                        <segue destination="1bi-3i-8Fd" kind="show" identifier="taskGridToVolume" id="PQC-gk-MLT"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y78-9d-MHp" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -863,11 +984,11 @@
             <objects>
                 <viewController title="HW Settings" id="dmI-P5-Pbu" customClass="HWSettingsViewController" customModule="WunderLINQ" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Vna-Dx-laf">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XOn-y4-h7t" customClass="LocalisableButton" customModule="WunderLINQ" customModuleProvider="target">
-                                <rect key="frame" x="16" y="537" width="343" height="42"/>
+                                <rect key="frame" x="16" y="593" width="343" height="42"/>
                                 <color key="backgroundColor" name="imageTint"/>
                                 <fontDescription key="fontDescription" type="system" weight="black" pointSize="25"/>
                                 <state key="normal">
@@ -887,24 +1008,24 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="y6X-E9-mPs">
-                                <rect key="frame" x="0.0" y="51.5" width="375" height="485.5"/>
+                                <rect key="frame" x="0.0" y="51.5" width="375" height="541.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="hwActionCell" id="ORR-ga-rGW" customClass="HWSettingsTableViewCell" customModule="WunderLINQ" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="43"/>
+                                        <rect key="frame" x="0.0" y="24.5" width="375" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ORR-ga-rGW" id="u8h-mc-bnW">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="32s-bB-EZK">
-                                                    <rect key="frame" x="16" y="11" width="171.5" height="21"/>
+                                                    <rect key="frame" x="16" y="11" width="171.5" height="21.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rs5-hB-OEc">
-                                                    <rect key="frame" x="187.5" y="11" width="171.5" height="21"/>
+                                                    <rect key="frame" x="187.5" y="11" width="171.5" height="21.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -973,11 +1094,11 @@
             <objects>
                 <viewController id="bVV-3d-otX" customClass="HWSettingsActionViewController" customModule="WunderLINQ" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8uX-2k-Vks">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iYo-Ux-3aP" customClass="LocalisableButton" customModule="WunderLINQ" customModuleProvider="target">
-                                <rect key="frame" x="16" y="533" width="343" height="42"/>
+                                <rect key="frame" x="16" y="589" width="343" height="42"/>
                                 <color key="backgroundColor" name="imageTint"/>
                                 <fontDescription key="fontDescription" type="system" weight="black" pointSize="25"/>
                                 <state key="normal">
@@ -991,7 +1112,7 @@
                                 </connections>
                             </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t8Y-8U-JkR" customClass="LocalisableButton" customModule="WunderLINQ" customModuleProvider="target">
-                                <rect key="frame" x="16" y="475" width="343" height="42"/>
+                                <rect key="frame" x="16" y="531" width="343" height="42"/>
                                 <color key="backgroundColor" name="imageTint"/>
                                 <fontDescription key="fontDescription" type="system" weight="black" pointSize="25"/>
                                 <state key="normal">
@@ -1100,7 +1221,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="blue" indentationWidth="10" reuseIdentifier="TripsTableViewCell" textLabel="W8D-lT-MC4" style="IBUITableViewCellStyleDefault" id="VJo-Xm-CfP">
-                                <rect key="frame" x="0.0" y="28" width="375" height="43.5"/>
+                                <rect key="frame" x="0.0" y="24.5" width="375" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="VJo-Xm-CfP" id="7qp-iD-Q9N">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -1138,7 +1259,7 @@
             <objects>
                 <viewController id="4YA-h5-Jjs" customClass="GeoDataViewController" customModule="WunderLINQ" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Jc4-4D-reh">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F4h-OO-sSs">
@@ -1244,7 +1365,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="blue" indentationWidth="10" reuseIdentifier="WaypointsTableViewCell" textLabel="4E4-nV-PGv" style="IBUITableViewCellStyleDefault" id="x1m-tm-9cE">
-                                <rect key="frame" x="0.0" y="28" width="375" height="43.5"/>
+                                <rect key="frame" x="0.0" y="24.5" width="375" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="x1m-tm-9cE" id="IEh-0c-NSb">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -1283,7 +1404,7 @@
             <objects>
                 <viewController title="About" id="BZZ-xV-I8u" customClass="AboutViewController" customModule="WunderLINQ" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ISD-Sy-aSf">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wunderlinq_logo" translatesAutoresizingMaskIntoConstraints="NO" id="iK0-Eq-bFT">
@@ -1305,7 +1426,7 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jAM-2k-3CY">
-                                <rect key="frame" x="0.0" y="249" width="375" height="342"/>
+                                <rect key="frame" x="0.0" y="249" width="375" height="398"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <string key="text">Support and Patience
 
@@ -1492,7 +1613,7 @@ Icons from fontawesome.com
             <objects>
                 <viewController id="g6h-Xr-9v3" customClass="BikeInfoViewController" customModule="WunderLINQ" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xhC-Jc-QyJ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VIN" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iDW-er-4a7" customClass="LocalisableLabel" customModule="WunderLINQ" customModuleProvider="target">
@@ -1648,12 +1769,12 @@ Icons from fontawesome.com
             <objects>
                 <tableViewController id="37p-4g-kqc" customClass="ApppSettingsViewController" customModule="WunderLINQ" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="l7g-5s-MWA">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="rLG-0V-H4i">
-                                <rect key="frame" x="0.0" y="55.5" width="375" height="43.5"/>
+                                <rect key="frame" x="0.0" y="49.5" width="375" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="rLG-0V-H4i" id="Xvg-g4-EkQ">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -1666,6 +1787,7 @@ Icons from fontawesome.com
                             <outlet property="delegate" destination="37p-4g-kqc" id="IwO-Wn-ttS"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="Um8-JD-lDm"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZYk-WG-38j" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -2131,10 +2253,10 @@ Icons from fontawesome.com
         <segue reference="U8S-hb-Idp"/>
         <segue reference="end-im-meh"/>
         <segue reference="qQx-7G-0NR"/>
-        <segue reference="1ij-RL-89b"/>
+        <segue reference="8Uw-mK-dDj"/>
         <segue reference="d0K-ne-9up"/>
         <segue reference="EVI-4B-2VB"/>
-        <segue reference="Qtw-28-k9d"/>
+        <segue reference="P25-cb-auh"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
     <resources>
@@ -2143,6 +2265,7 @@ Icons from fontawesome.com
         <image name="MapMarker" width="288" height="384"/>
         <image name="Right" width="240" height="384"/>
         <image name="Route" width="384" height="384"/>
+        <image name="Speaker" width="576" height="512"/>
         <image name="playback_back" width="336" height="384"/>
         <image name="playback_forward" width="336" height="384"/>
         <image name="playback_play" width="336" height="384"/>
