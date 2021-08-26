@@ -155,6 +155,14 @@ class VolumeViewController: UIViewController {
         let touchRecognizer = UITapGestureRecognizer(target: self, action:  #selector(VolumeViewController.onTouch))
         self.view.addGestureRecognizer(touchRecognizer)
         
+        var highlightColor: UIColor?
+        if let colorData = UserDefaults.standard.data(forKey: "highlight_color_preference"){
+            highlightColor = NSKeyedUnarchiver.unarchiveObject(with: colorData) as? UIColor
+        } else {
+            highlightColor = UIColor(named: "accent")
+        }
+        progressBar.progressTintColor = highlightColor
+        
         let volumeView = MPVolumeView(frame: CGRect(x: -CGFloat.greatestFiniteMagnitude, y:0, width:0, height:0))
         view.addSubview(volumeView)
             hiddenSystemVolumeSlider = volumeView.subviews.first(where: { $0 is UISlider }) as? UISlider
