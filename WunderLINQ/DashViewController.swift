@@ -189,9 +189,6 @@ class DashViewController: UIViewController, UIWebViewDelegate {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        let value = UIInterfaceOrientation.landscapeRight.rawValue
-        UIDevice.current.setValue(value, forKey: "orientation")
-        
         //Read last used dashboard
         let lastSelection = UserDefaults.standard.string(forKey: "lastDashboard")
         if lastSelection != nil {
