@@ -59,7 +59,7 @@
 "south" = "S";
 "gear_header" = "Versnelling";
 "shifts_header" = "Aantal schakelingen";
-"task_title_settings" = "Settings";
+"task_title_settings" = "Instellingen";
 // LocationService
 "time_header" = "Tijd";
 "task_title_start_trip" = "Start Route Oslag";
