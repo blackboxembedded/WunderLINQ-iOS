@@ -1,7 +1,7 @@
 "gear_header" = "Versnelling";
 "ambienttemp_header" = "Omgevings Temperature (C)";
 "frontpressure_header" = "Voorwiel Bandenspaaning (bar)";
-"odometer_header" = "Kilometer teller (km)";
+"odometer_header" = "Kilometerteller (km)";
 "voltage_header" = "Voltage (V)";
 "throttle_header" = "Gashandel Positie (%)";
 "frontbrakes_header" = "Voor Rem";
