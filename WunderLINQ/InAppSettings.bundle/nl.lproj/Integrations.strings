@@ -6,9 +6,9 @@
 "nav_app_google" = "Google Maps";
 "nav_app_apple" = "Apple Maps";
 "nav_app_tomtomgo" = "TomTom GO";
-"actioncam_hero3" = "Hero3";
-"actioncam_hero4" = "Hero4 - Hero8";
-"actioncam_none" = "None";
+"actioncam_hero3" = "Hero 3";
+"actioncam_hero4" = "Hero 4 - Hero 8";
+"actioncam_none" = "Geen";
 "music_apple" = "Apple Music";
 "music_spotify" = "Spotify";
 "nav_app_here" = "HERE WeGo";
@@ -16,7 +16,7 @@
 "nav_app_mapout" = "MapOut";
 "nav_app_yahoojapan" = "Yahoo Japan";
 "pref_actioncam_title" = "Action Camera";
-"pref_musicplayer_title" = "Music Player";
-"pref_nav_app" = "Navigation App";
-"pref_roadbook_app" = "Roadbook App";
+"pref_musicplayer_title" = "Muziekspeler";
+"pref_nav_app" = "Navigatie App";
+"pref_roadbook_app" = "Wegenkaart App";
 "roadbook_app_rabbitrally" = "Rabbit Rally";
