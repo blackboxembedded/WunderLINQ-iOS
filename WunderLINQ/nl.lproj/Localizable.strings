@@ -12,15 +12,15 @@
 "north" = "N";
 "fault_LAMPREAR" = "Achter licht";
 "fault_LAMPLIC" = "Kenteken plaat verlichting";
-"toast_address_not_set" = "Geen Huis Adres in instelling gevonden";
+"toast_address_not_set" = "Geen Huis Adres in instellingen gevonden";
 "fault_LAMPADDD" = "Extra Dim/groot licht";
 "fault_GENWARNFSYLW" = "Algemeen waarschuwings lamp knippert geel";
 "task_title_favnumber" = "Bel Favoriet Nummer";
 "fault_GENWARNSHYLW" = "Algemeen waarschuwings lamp brandt geel";
 "task_title_photo" = "Maak Foto";
-"fault_GENWARNFSRED" = "Algemeen waarsschuwings lamp knippert rood";
+"fault_GENWARNFSRED" = "Algemeen waarschuwingslamp knippert rood";
 "task_title_stop_trip" = "Stop Route Opslag";
-"fault_GENWARNSHRED" = "Algemeen waarschuwings lamp brandt rood";
+"fault_GENWARNSHRED" = "Algemeen waarschuwingslamp brandt rood";
 "toast_photo_taken" = "Foto Gemaakt!";
 "ambientlight_header" = "Achtergrond Licht";
 "fuelrange_header" = "Bereik (km)";
@@ -31,18 +31,18 @@
 "disclaimer_alert_body" = ". Probeer geen route-informatie in te voeren of pas de WunderLINQ tijdens het rijden aan. Het niet volledig opletten van de werking van uw voertuig kan de dood, ernstig letsel of schade aan eigendommen tot gevolg hebben. U neemt de volledige verantwoordelijkheid en het risico op zich voor het gebruik van dit apparaat.";
 "negative_write_alert_body" = "Door geen wijziging toestemming, kan deze app geen bestanden opslaan.";
 "alert_message_exit_ok" = "OK";
-"negative_alert_btn_cancel" = "Cancel";
+"negative_alert_btn_cancel" = "Annuleren";
 "bt_not_supported" = "BLE wordt niet ondersteund";
 "waypoints_label" = "Waypoints";
 "settings_label" = "";
 "about_label" = "Over";
 "wwMode3" = "Algemeen";
 "hwsave_alert_btn_cancel" = "Cancel";
-"hours" = "h";
-"minutes" = "m";
-"seconds" = "s";
+"hours" = "uren";
+"minutes" = "minuten";
+"seconds" = "seconden";
 "delete_bt" = "Verwijderen";
-"waypoint_view_bt_nav" = "Navigate";
+"waypoint_view_bt_nav" = "Navigeer";
 "east" = "E";
 "task_title_start_record" = "Start Opname";
 "home" = "Thuis";
@@ -51,9 +51,9 @@
 "fault_ICEWARN" = "Vorst waarschuwing";
 // Fault Description
 "fault_ABSSLF" = "ABS zelf-diagnose niet compleet";
-"fault_LAMPAFL1" = "koplamp 1";
+"fault_LAMPAFL1" = "Koplamp 1";
 "version_label" = "Version:";
-"fault_OILLOW" = "Motorolie nivo te laag";
+"fault_OILLOW" = "Motorolieniveau te laag";
 "trip_view_tv_distance" = "Afstand";
 "north_west" = "NW";
 "south" = "S";
@@ -98,7 +98,7 @@
 // TasksTableViewController
 "quicktask_title" = "Stop Taak";
 "west" = "W";
-"fault_LAMPFRI" = "Richtingaanwijzer rechts voor";
+"fault_LAMPFRI" = "Richtingaanwijzer rechtsvoor";
 "fault_LAMPRRI" = "Richtingaanwijzer rechts achter";
 "fault_ASCINT" = "ASC onderbreking";
 // TripsTableViewController
@@ -114,7 +114,7 @@
 "fault_ASCDAC" = "ASC gedeactivated";
 "rdc_rear_label" = "Achterwiel";
 "fault_LAMPLOW" = "Dim licht";
-"alert_title_fuel" = "laag brandstof peil";
+"alert_title_fuel" = "Laag brandstofniveau";
 "ambienttemp_header" = "Omgevings Temperature (C)";
 "task_title_waypoint_nav" = "Navigeer naar Route Punt";
 "fault_LAMPHI" = "Groot licht";
@@ -132,17 +132,17 @@
 // TripViewController
 "trip_view_title" = "Reis/route";
 "trip_view_tv_brakes" = "Remmen (Voor/Achter)";
-"cancel_bt" = "Cancel";
+"cancel_bt" = "Annuleren";
 "fault_FUELF" = "Tank bijna leeg";
 // WaypointsTableViewController
-"waypoint_title" = "Route punten opgeslagen";
+"waypoint_title" = "Routepunten opgeslagen";
 "fault_TIRERCF" = "Achterwiel bandenspanning gevaarlijk";
-"odometer_header" = "Kilometer teller (km)";
+"odometer_header" = "Kilometerteller (km)";
 "tripauto_header" = "Trip Auto (km)";
 // MyMotorcycleViewController
 "main_title" = "Motorfiets";
 "disclaimer_alert_title" = "WAARSCHUWING!";
-"disclaimer_ok" = "Accoord";
+"disclaimer_ok" = "Akkoord";
 "disclaimer_quit" = "Stop";
 "negative_alert_title" = "Functionaliteit beperkt";
 "negative_location_alert_body" = "Door geen locatie toestemming, kan deze app je WunderLINQ niet zien op de achtergrond.";
@@ -151,7 +151,7 @@
 "rdc_front_label" = "Voorwiel";
 "engine_temp_label" = "Motor temperatuur";
 "ambient_temp_label" = "Buiten temperatuur";
-"odometer_label" = "Kilometer teller";
+"odometer_label" = "Kilometerteller";
 "gear_label" = "Versnelling";
 //AboutViewController
 "about_title" = "Over";
@@ -160,15 +160,33 @@
 "alert_label_fuel" = "Route naar dichtbijzijnde tankstation?";
 "alert_btn_ok" = "OK";
 // FaultsTableViewController
-"fault_title" = "Actieve fout meldingen";
+"fault_title" = "Actieve foutmeldingen";
 "trip_view_waypoint_start_label" = "Start";
 "trip_view_waypoint_end_label" = "Einde";
-"trip_view_tv_duration" = "gereden tijd";
+"trip_view_tv_duration" = "Gereden tijd";
 "trip_view_tv_speed" = "Snelheid (Gem/Max)";
-"trip_view_tv_ambient" = "Omgevings Temp (Min/Gem/Max)";
+"trip_view_tv_ambient" = "Omgevingstemperatuur (Min/Gem/Max)";
 // WaypointViewController
-"waypoint_view_title" = "Route punt opgeslagen";
+"waypoint_view_title" = "Routepunt opgeslagen";
 "waypoint_view_tv_date_label" = "Datum opgeslagen";
 "waypoint_view_tv_label_label" = "Naam";
 "waypoint_view_bt_delete" = "Verwijderen";
 "wwMode2" = "RT/K1600";
+//WeatherMapViewController
+"weathermap_title" = "Weerkaart";
+//DashViewController
+"dash_title" = "Dashboard";
+"cancel" = "Annuleren";
+"delete_waypoint_alert_title" = "Waarschuwing!";
+"task_title_systemvolume" = "Volume";
+"negative_alert_btn_ok" = "Open Instellingen";
+"task_title_roadbook" = "Wegenkaart";
+"toast_actioncam_notconnected" = "ActionCam niet verbonden";
+"alert_title_photopreview" = "Foto Voorbeeld";
+"delete_trip_alert_title" = "Waarschuwing!";
+"delete_trip_alert_body" = "Verwijder Trip Log?";
+"share_gpx" = "Deel GPX";
+"delete_waypoint_alert_body" = "Verwijder Routepunt?";
+"task_title_actioncam_start_video" = "Start ActionCam Opname";
+"task_title_actioncam_stop_video" = "Stop ActionCam Opname";
+"task_title_weathermap" = "Weerkaart";
