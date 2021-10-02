@@ -1,10 +1,10 @@
 "longitude_header" = "Lengtegraad";
-"frontpressure_header" = "Voorwiel Bandenspaaning (bar)";
-"rearpressure_header" = "Achterwiel Bandenspanning (bar)";
-"tripone_header" = "Trip1 (km)";
-"avgspeed_header" = "Gemiddelde Snelheid (kmh)";
-"cconsumption_header" = "Huidig Verbruik(L/100)";
-"fueleconomytwo_header" = "Gem. Gebruik 2 (L/100)";
+"frontpressure_header" = "Voorwiel Bandenspanning";
+"rearpressure_header" = "Achterwiel Bandenspanning";
+"tripone_header" = "Trip 1";
+"avgspeed_header" = "Gemiddelde Snelheid";
+"cconsumption_header" = "Huidig Verbruik";
+"fueleconomytwo_header" = "Gem. Verbruik 2";
 "fault_ASCSLF" = "ASC zelf-diagnose niet compleet";
 // CompassViewController
 "compass_title" = "Compas";
@@ -22,22 +22,22 @@
 "task_title_stop_trip" = "Stop Route Opslag";
 "fault_GENWARNSHRED" = "Algemeen waarschuwingslamp brandt rood";
 "toast_photo_taken" = "Foto Gemaakt!";
-"ambientlight_header" = "Achtergrond Licht";
-"fuelrange_header" = "Bereik (km)";
-"throttle_header" = "Gashandel Positie (%)";
-"gpsspeed_header" = "GPS Snelheid (kmh)";
+"ambientlight_header" = "Omgevingslicht";
+"fuelrange_header" = "Bereik";
+"throttle_header" = "Gashendelpositie";
+"gpsspeed_header" = "GPS Snelheid";
 // Product
 "product" = "WunderLINQ";
 "disclaimer_alert_body" = ". Probeer geen route-informatie in te voeren of pas de WunderLINQ tijdens het rijden aan. Het niet volledig opletten van de werking van uw voertuig kan de dood, ernstig letsel of schade aan eigendommen tot gevolg hebben. U neemt de volledige verantwoordelijkheid en het risico op zich voor het gebruik van dit apparaat.";
 "negative_write_alert_body" = "Door geen wijziging toestemming, kan deze app geen bestanden opslaan.";
 "alert_message_exit_ok" = "OK";
 "negative_alert_btn_cancel" = "Annuleren";
-"bt_not_supported" = "BLE wordt niet ondersteund";
-"waypoints_label" = "Waypoints";
-"settings_label" = "";
+"bt_not_supported" = "BLE wordt niet ondersteund op dit apparaat.";
+"waypoints_label" = "Routepunten";
+"settings_label" = "Instellingen";
 "about_label" = "Over";
 "wwMode3" = "Algemeen";
-"hwsave_alert_btn_cancel" = "Cancel";
+"hwsave_alert_btn_cancel" = "Annuleren";
 "hours" = "uren";
 "minutes" = "minuten";
 "seconds" = "seconden";
@@ -52,13 +52,13 @@
 // Fault Description
 "fault_ABSSLF" = "ABS zelf-diagnose niet compleet";
 "fault_LAMPAFL1" = "Koplamp 1";
-"version_label" = "Version:";
+"version_label" = "Versie:";
 "fault_OILLOW" = "Motorolieniveau te laag";
 "trip_view_tv_distance" = "Afstand";
 "north_west" = "NW";
 "south" = "S";
 "gear_header" = "Versnelling";
-"shifts_header" = "Aantal schakelingen";
+"shifts_header" = "Aantal keer geschakeld";
 "task_title_settings" = "Instellingen";
 // LocationService
 "time_header" = "Tijd";
@@ -71,28 +71,28 @@
 "waypoint_view_tv_lon_label" = "Lengtegraad";
 "south_east" = "SE";
 "task_title_selfie" = "Maak Selfie";
-"rearbrakes_header" = "Achter Rem";
+"rearbrakes_header" = "Achterrem";
 "fault_ASCERR" = "ASC storing";
-"enginetemp_header" = "Motor Temperatuur (C)";
-"trip_view_tv_shifts" = "Schakelingen versnelilng";
+"enginetemp_header" = "Motortemperatuur";
+"trip_view_tv_shifts" = "Aantal keer geschakeld";
 // WaypointsNavTableViewController
 "waypoints_nav_title" = "Waypoints";
 "fault_LAMPFLI" = "Richtingaanwijzer links voor";
 "task_title_gohome" = "Naar Huis";
-"voltage_header" = "Voltage (V)";
+"voltage_header" = "Voltage";
 "fault_TIREFWF" = "Voorwiel bandenspanning te laag";
 "vin_label" = "VIN";
 "trip1_label" = "Dagteller 1";
-"sendlogs_body" = "Beschrijf uw problem hieronder:";
+"sendlogs_body" = "Beschrijf uw probleem hieronder:\n";
 "alert_btn_close" = "Sluiten";
-"trip_view_tv_engine" = "Motor Temp (Min/Gem/Max)";
+"trip_view_tv_engine" = "Motortemperatuur (Min/Gem/Max)";
 "waypoint_view_bt_open" = "Open in kaart App";
 "fault_LAMPFL2" = "Koplamp 2";
 "fault_ABSERR" = "ABS storing";
 "waypoint_view_tv_lat_label" = "Breedtegraad";
 "fault_LAMPAFL2" = "Koplamp 2";
 "south_west" = "SW";
-"frontbrakes_header" = "Voor Rem";
+"frontbrakes_header" = "Voorrem";
 "fault_TIRERWF" = "Achterwiel bandenspanning te laag";
 "task_title_callcontact" = "Bel Contact";
 // TasksTableViewController
@@ -105,7 +105,7 @@
 "trips_title" = "Opgeslagen routes";
 "fault_LAMPDAY" = "Dagrijverlichting";
 "fault_LAMPFPK2" = "Parkeerlicht 2";
-"speed_header" = "Snelheids meter (kmh)";
+"speed_header" = "Snelheidsmeter";
 "fault_LAMPADDB" = "Extra rem licht";
 "task_title_navigation" = "Navigatie";
 "waypoint_view_bt_share" = "Delen";
@@ -115,7 +115,7 @@
 "rdc_rear_label" = "Achterwiel";
 "fault_LAMPLOW" = "Dim licht";
 "alert_title_fuel" = "Laag brandstofniveau";
-"ambienttemp_header" = "Omgevings Temperature (C)";
+"ambienttemp_header" = "Omgevingstemperatuur";
 "task_title_waypoint_nav" = "Navigeer naar Route Punt";
 "fault_LAMPHI" = "Groot licht";
 "vin_header" = "VIN";
@@ -124,11 +124,11 @@
 "fault_LAMPFPK1" = "Parkeerlicht 1";
 "latitude_header" = "Breedtegraad";
 "fault_LAMPFL1" = "Koplamp 1";
-"fueleconomyone_header" = "Gem. Gebruik 1 (L/100)";
-"altitude_header" = "Hoogte (m)";
+"fueleconomyone_header" = "Gem. Verbruik 1";
+"altitude_header" = "Hoogte";
 "close_label" = "Sluiten";
 "north_east" = "NE";
-"triptwo_header" = "Trip2 (km)";
+"triptwo_header" = "Trip 2";
 // TripViewController
 "trip_view_title" = "Reis/route";
 "trip_view_tv_brakes" = "Remmen (Voor/Achter)";
@@ -137,8 +137,8 @@
 // WaypointsTableViewController
 "waypoint_title" = "Routepunten opgeslagen";
 "fault_TIRERCF" = "Achterwiel bandenspanning gevaarlijk";
-"odometer_header" = "Kilometerteller (km)";
-"tripauto_header" = "Trip Auto (km)";
+"odometer_header" = "Kilometerteller";
+"tripauto_header" = "Trip Auto";
 // MyMotorcycleViewController
 "main_title" = "Motorfiets";
 "disclaimer_alert_title" = "WAARSCHUWING!";
@@ -149,15 +149,15 @@
 "negative_camera_alert_body" = "Door geen camera toestemming, kan deze app geen foto of video’s maken.";
 "negative_microphone_alert_body" = "Door geen microfoon toestemming, kan deze app geen video’s opnemen.";
 "rdc_front_label" = "Voorwiel";
-"engine_temp_label" = "Motor temperatuur";
-"ambient_temp_label" = "Buiten temperatuur";
+"engine_temp_label" = "Motortemperatuur";
+"ambient_temp_label" = "Buitentemperatuur";
 "odometer_label" = "Kilometerteller";
 "gear_label" = "Versnelling";
 //AboutViewController
 "about_title" = "Over";
 "btn_sendlogs_title" = "Stuur Logbestanden";
 // AlertViewController
-"alert_label_fuel" = "Route naar dichtbijzijnde tankstation?";
+"alert_label_fuel" = "Route starten naar dichtstbijzijnde tankstation?";
 "alert_btn_ok" = "OK";
 // FaultsTableViewController
 "fault_title" = "Actieve foutmeldingen";
@@ -190,3 +190,42 @@
 "task_title_actioncam_start_video" = "Start ActionCam Opname";
 "task_title_actioncam_stop_video" = "Stop ActionCam Opname";
 "task_title_weathermap" = "Weerkaart";
+"bt_powered_off" = "Bluetooth op dit apparaat staat momenteel uit.";
+//HWSettingsViewController
+"customize_btn_label" = "Aanpassen";
+"wwtype_label" = "Wiel Type";
+"rearwheel_speed_header" = "Achterwiel Snelheid";
+"sunrisesunset_header" = "Zonsopgang/Zonsondergang";
+"leanangle_header" = "Hellingshoeks Device";
+"gforce_header" = "g-kracht";
+"bearing_header" = "Richting";
+"barometric_header" = "Barometer";
+"rpm_header" = "RPM";
+"leanangle_bike_header" = "Hellingshoek";
+"blank_field" = "∞";
+"bike_info_label" = "Voertuiginformatie";
+"appsettings_label" = "App Instellingen";
+"hwsettings_label" = "HW Instellingen";
+"select_bt" = "Selecteer";
+"default_btn_label" = "Standaard Modus";
+"corrupt_config_label" = "Configuratie is beschadigd! Reset is nodig";
+"mode_label" = "Modus:";
+"keymode_label" = "Sleutel Modus";
+//HWCustomizeViewController
+"usb_threshold_label" = "USB Poort Controle";
+"usbcontrol_off_label" = "Altijd Uit";
+"usbcontrol_on_label" = "Altijd Aan";
+"fw_config_title" = "WunderLINQ Instellingen";
+"fw_version_label" = "Firmware Versie";
+"sensitivity_label" = "Gevoeligheid";
+"config_reset_label" = "Herstel Instellingen";
+"config_write_label" = "Instellingen Opslaan";
+"hwsave_alert_title" = "Waarschuwing!";
+"waypoint_view_label_hint" = "Routepunt Label";
+// AddWaypointViewController
+"addwaypoint_view_title" = "Voeg Routepunt toe";
+"addwaypoint_view_bt_search" = "Opzoeken";
+"addwaypoint_view_bt_save" = "Opslaan";
+"toast_waypoint_error" = "Breedtegraad & Lengtegraad Verplicht";
+"hwsave_alert_btn_ok" = "Doorgaan";
+"addwaypoint_view_search_hint" = "Voer Adres In";
