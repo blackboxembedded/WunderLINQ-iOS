@@ -28,8 +28,6 @@ class ADVDashboard {
         var distanceUnit = "km"
         var heightUnit = "m"
         var distanceTimeUnit = "KMH"
-        var pressureUnit = "psi"
-
         
         let url = Bundle.main.url(forResource: "adv-dashboard", withExtension: "svg")!
         let xml = XML(contentsOf: url)

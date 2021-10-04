@@ -71,6 +71,7 @@
 		<string>inroute</string>
 		<string>mapout</string>
 		<string>rabbitrally</string>
+		<string>shortcuts</string>
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
