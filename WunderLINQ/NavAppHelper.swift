@@ -63,6 +63,10 @@ enum NavigationAppPreference: Int, CaseIterable {
     /// https://note.com/yahoo_carnavi/n/n1d6b819a816c
     case yahooJapan
 
+    /// Universal app link accessible with `copilot://`
+    /// https://developer.trimblemaps.com/copilot-navigation/v10-19/feature-guide/advanced-features/url-launch/
+    case copilot
+    
     var isAvailable: Bool {
         UIApplication.shared.canOpenURL(URL(string: self.urlScheme)!)
     }
@@ -104,6 +108,9 @@ enum NavigationAppPreference: Int, CaseIterable {
             
         case .yahooJapan:
             return "yjcarnavi://"
+            
+        case .copilot:
+            return "copilot://"
         }
     }
 
@@ -280,6 +287,14 @@ extension NavAppHelper {
                     UIApplication.shared.open(uRL, options: [:], completionHandler: nil)
                 }
             }
+        case .copilot:
+            //CoPilot GPS
+            let urlString = "\(navApp.urlScheme)options?type=STOPS&stop=Start||||||\(currentLatitude)|\(currentLongitude)&stop=Stop||||||\(destLatitude)|\(destLongitude)"
+            if let uRL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
+                if (UIApplication.shared.canOpenURL(uRL)) {
+                    UIApplication.shared.open(uRL, options: [:], completionHandler: nil)
+                }
+            }
         }
     }
     
@@ -414,6 +429,14 @@ extension NavAppHelper {
         case 10:
             //Mapout
             let urlString = "mapout://longitude=\(destLongitude)&latitude=\(destLatitude)&zoom=15&rotation=0"
+            if let uRL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
+                if (UIApplication.shared.canOpenURL(uRL)) {
+                    UIApplication.shared.open(uRL, options: [:], completionHandler: nil)
+                }
+            }
+        case 12:
+            //CoPilot
+            let urlString = "copilot://mydestination?type=LOCATION&action=VIEW&lat=\(destLatitude)&long=\(destLongitude)"
             if let uRL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
                 if (UIApplication.shared.canOpenURL(uRL)) {
                     UIApplication.shared.open(uRL, options: [:], completionHandler: nil)

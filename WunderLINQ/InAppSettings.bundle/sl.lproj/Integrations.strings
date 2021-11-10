@@ -24,3 +24,4 @@
 "speed_header" = "Speed";
 "rearwheel_speed_header" = "Rear Wheel Speed";
 "gpsspeed_header" = "GPS Speed";
+"nav_app_copilot" = "CoPilot";
