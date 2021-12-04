@@ -64,23 +64,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) ->
-        Bool {
-
-            //Hack to enable Virtual Keyboard
-            let setHardwareLayout = NSSelectorFromString("setHardwareLayout:")
-            UITextInputMode.activeInputModes
-                // Filter `UIKeyboardInputMode`s.
-                .filter({ $0.responds(to: setHardwareLayout) })
-                .forEach { $0.perform(setHardwareLayout, with: nil) }
+    Bool {
             
             //Read and populate defaults
             registerDefaultsFromSettingsBundle()
+            
             // Override point for customization after application launch.
             // Keep screen unlocked
             application.isIdleTimerDisabled = true
             GMSServices.provideAPIKey(Secrets.google_maps_api_key)
-            // Override point for customization after application launch.
             
+            // Override point for customization after application launch.
             switch(UserDefaults.standard.integer(forKey: "darkmode_preference")){
             case 0:
                 //OFF
@@ -102,8 +96,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                 } else {
                     Theme.default.apply()
                 }
-            }
+             }
             
+            //Hack to enable Virtual Keyboard
+            let setHardwareLayout = NSSelectorFromString("setHardwareLayout:")
+            UITextInputMode.activeInputModes
+            // Filter `UIKeyboardInputMode`s.
+            .filter({ $0.responds(to: setHardwareLayout) })
+            .forEach { $0.perform(setHardwareLayout, with: nil) }
+        
             switch(UserDefaults.standard.integer(forKey: "orientation_preference")){
             case 0:
                 AppUtility.lockOrientation(.all)

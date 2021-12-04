@@ -95,16 +95,24 @@ enum Theme: Int {
         
         UIImageView.appearance(whenContainedInInstancesOf: [GeoDataViewController.self]).tintColor = UIColor.white
         
+        if #available(iOS 13.0, *) { // For compatibility with earlier iOS.
+            let appearance = UINavigationBarAppearance()
+            appearance.configureWithOpaqueBackground()
+            appearance.backgroundColor = UIColor.white
+            UINavigationBar.appearance().standardAppearance = appearance
+            UINavigationBar.appearance().scrollEdgeAppearance = appearance
+        }else{
+            UINavigationBar.appearance().backgroundColor = backgroundColor
+        }
         UINavigationBar.appearance().backItem?.backBarButtonItem?.tintColor = mainColor
-        UINavigationBar.appearance().barStyle = .black
+        UINavigationBar.appearance().barStyle = .default
         UINavigationBar.appearance().barTintColor = backgroundColor
-        UINavigationBar.appearance().backgroundColor = backgroundColor
         UINavigationBar.appearance().titleTextAttributes = convertToOptionalNSAttributedStringKeyDictionary([
             NSAttributedString.Key.foregroundColor.rawValue: mainColor
         ])
         UINavigationBar.appearance().tintColor = mainColor
         UINavigationBar.appearance().backItem?.leftBarButtonItem?.tintColor = mainColor
-
+        
         UIButton.appearance().tintColor = mainColor
         UIBarButtonItem.appearance().tintColor = mainColor
 
