@@ -15,10 +15,11 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
+import Foundation
 
-class WLQ {
-    static let shared = WLQ()
-
+class WLQ_N: WLQ {
+    
+    var firmwareVersion:String?
     var hardwareVersion:String?
     let hardwareVersion1:String = "2PCB1.9 10/18";
     let hardwareVersion2:String = "1PCB2.0 12/19";
@@ -27,41 +28,7 @@ class WLQ {
     var wunderLINQConfig:[UInt8]?
     var flashConfig:[UInt8]?
     var tempConfig:[UInt8]?
-    var firmwareVersion:String?
     var USBVinThreshold:UInt16?
-
-    let firmwareVersionMajor_INDEX:Int = 9
-    let firmwareVersionMinor_INDEX:Int = 10
-    
-    let GET_CONFIG_CMD:[UInt8] = [0x57, 0x52, 0x57, 0x0D, 0x0A]
-    let WRITE_CONFIG_CMD:[UInt8] = [0x57, 0x57, 0x43, 0x41]
-    let WRITE_MODE_CMD:[UInt8] = [0x57, 0x57, 0x53, 0x53]
-    let WRITE_SENSITIVITY_CMD:[UInt8] = [0x57, 0x57, 0x43, 0x53]
-    let SET_CLUSTER_CLOCK_CMD:[UInt8] = [0x57, 0x57, 0x44, 0x43]
-    let RESET_CLUSTER_SPEED_CMD:[UInt8] = [0x57, 0x57, 0x44, 0x52, 0x53]
-    let RESET_CLUSTER_ECONO1_CMD:[UInt8] = [0x57, 0x57, 0x44, 0x52, 0x45, 0x01]
-    let RESET_CLUSTER_ECONO2_CMD:[UInt8] = [0x57, 0x57, 0x44, 0x52, 0x45, 0x02]
-    let RESET_CLUSTER_TRIP1_CMD:[UInt8] = [0x57, 0x57, 0x44, 0x52, 0x54, 0x01]
-    let RESET_CLUSTER_TRIP2_CMD:[UInt8] = [0x57, 0x57, 0x44, 0x52, 0x54, 0x02]
-    let CMD_EOM:[UInt8] = [0x0D, 0x0A]
-    
-    //FW <2.0
-    let defaultConfig1:[UInt8] = [0x32, 0x01, 0x04, 0x04, 0xFE, 0xFC, 0x4F, 0x28,
-                                  0x0F, 0x04, 0x04, 0xFD, 0xFC, 0x50, 0x29, 0x0F,
-                                  0x04, 0x06, 0x00, 0x00, 0x00, 0x00, 0x34, 0x02,
-                                  0x01, 0x01, 0x65, 0x55, 0x4F, 0x28, 0x07, 0x01,
-                                  0x01, 0x95, 0x55, 0x50, 0x29, 0x07, 0x01, 0x01,
-                                  0x56, 0x59, 0x52, 0x51];
-
-    let wheelMode_full:UInt8 = 0x32
-    let wheelMode_rtk:UInt8 = 0x34
-    
-    var wheelMode:UInt8?
-    var sensitivity:UInt8?
-    var tempSensitivity: UInt8?
-    
-    let wheelMode_INDEX:Int = 26
-    let sensitivity_INDEX:Int = 34
     
     //FW >=2.0
     let configFlashSize:Int = 64
@@ -129,6 +96,8 @@ class WLQ {
     
     var actionNames: [Int: String] = [:]
 
+    let firmwareVersionMajor_INDEX:Int = 9
+    let firmwareVersionMinor_INDEX:Int = 10
     let keyMode_INDEX:Int = 25
     let USBVinThresholdHigh_INDEX:Int = 0
     let USBVinThresholdLow_INDEX:Int = 1
@@ -258,8 +227,10 @@ class WLQ {
     var fullSignalLongPressKeyType:UInt8?
     var fullSignalLongPressKeyModifier:UInt8?
     var fullSignalLongPressKey:UInt8?
-    
-    init() {
+
+    required override init() {
+        super.init()
+        WLQ.shared = self
         actionNames = [OldSensitivity: NSLocalizedString("sensitivity_label", comment: ""),
                        USB: NSLocalizedString("usb_threshold_label", comment: ""),
                        RTKDoublePressSensitivity: NSLocalizedString("double_press_label", comment: ""),
@@ -286,7 +257,7 @@ class WLQ {
                        fullSignalCancelLongPress: NSLocalizedString("full_signal_cancel_long_label", comment: "")]
     }
     
-    func parseConfig(bytes: [UInt8]) {
+    override func parseConfig(bytes: [UInt8]) {
         
         self.wunderLINQConfig = bytes
         self.firmwareVersion = "\(bytes[self.firmwareVersionMajor_INDEX]).\(bytes[self.firmwareVersionMinor_INDEX])"
@@ -377,14 +348,36 @@ class WLQ {
             self.fullSignalLongPressKeyType = self.flashConfig![self.fullSignalLongPressKeyType_INDEX]
             self.fullSignalLongPressKeyModifier = self.flashConfig![self.fullSignalLongPressKeyModifier_INDEX]
             self.fullSignalLongPressKey = self.flashConfig![self.fullSignalLongPressKey_INDEX]
-        } else { // FW <2.0
-            self.sensitivity = bytes[self.sensitivity_INDEX]
-            self.wheelMode = bytes[self.wheelMode_INDEX]
-            self.tempSensitivity = self.sensitivity
         }
     }
     
-    func getActionKeyType(action: Int?) -> UInt8{
+    override func getTempConfig() -> [UInt8]{
+        return tempConfig!
+    }
+    override func setTempConfigByte(index: Int, value: UInt8){
+        tempConfig![index] = value
+    }
+    
+    override func getConfig() -> [UInt8]{
+        return flashConfig!
+    }
+    
+    override func gethardwareType() -> Int{
+        return 1
+    }
+    
+    override func getKeyMode() -> UInt8{
+        return keyMode!
+    }
+
+    override func getActionName(action: Int?) -> String{
+        return actionNames[action!]!
+    }
+    override func setActionName(action: Int?, key: String){
+        actionNames[action!] = key
+    }
+    
+    override func getActionKeyType(action: Int?) -> UInt8{
         switch (action){
         case RTKPage:
             return RTKPagePressKeyType!
@@ -431,7 +424,7 @@ class WLQ {
         }
     }
     
-    func setActionKey(action: Int?, key: [UInt8]){
+    override func setActionKey(action: Int?, key: [UInt8]) {
         if (key.count == 3){
             switch (action){
             case RTKPage:
@@ -520,7 +513,7 @@ class WLQ {
         }
     }
     
-    func getActionKeyPosition(action: Int) -> Int{
+    override func getActionKeyPosition(action: Int) -> Int{
         var position:Int = 0
         let keyboardHID = KeyboardHID.shared
         switch (action){
@@ -730,12 +723,10 @@ class WLQ {
         return position
     }
     
-    func getActionValue(action: Int) -> String{
+    override func getActionValue(action: Int) -> String{
         var returnString = NSLocalizedString("hid_0x00_label", comment: "")
         let keyboardHID = KeyboardHID.shared
         switch (action){
-        case OldSensitivity:
-            returnString = "\(sensitivity!)"
         case USB:
             if (USBVinThreshold == 0x0000){
                 returnString = NSLocalizedString("usbcontrol_on_label", comment: "")
@@ -994,50 +985,49 @@ class WLQ {
         return returnString
     }
     
-    func getActionKeyModifiers(action: Int) -> UInt8{
+    override func getActionKeyModifiers(action: Int) -> UInt8{
         var modifiers:UInt8 = 0x00
-        let wlqData = WLQ.shared
         switch (action){
-        case wlqData.fullScrollUp:
-            modifiers = wlqData.fullScrollUpKeyModifier!
-        case wlqData.fullScrollDown:
-            modifiers = wlqData.fullScrollDownKeyModifier!
-        case wlqData.fullToggleRight:
-            modifiers = wlqData.fullRightPressKeyModifier!
-        case wlqData.fullToggleRightLongPress:
-            modifiers = wlqData.fullRightLongPressKeyModifier!
-        case wlqData.fullToggleLeft:
-            modifiers = wlqData.fullLeftPressKeyModifier!
-        case wlqData.fullToggleLeftLongPress:
-            modifiers = wlqData.fullLeftLongPressKeyModifier!
-        case wlqData.fullSignalCancel:
-            modifiers = wlqData.fullSignalPressKeyModifier!
-        case wlqData.fullSignalCancelLongPress:
-            modifiers = wlqData.fullSignalLongPressKeyModifier!
-        case wlqData.RTKPage:
-            modifiers = wlqData.RTKPagePressKeyModifier!
-        case wlqData.RTKPageDoublePress:
-            modifiers = wlqData.RTKPageDoublePressKeyModifier!
-        case wlqData.RTKZoomPlus:
-            modifiers = wlqData.RTKZoomPPressKeyModifier!
-        case wlqData.RTKZoomPlusDoublePress:
-            modifiers = wlqData.RTKZoomPDoublePressKeyModifier!
-        case wlqData.RTKZoomMinus:
-            modifiers = wlqData.RTKZoomMPressKeyModifier!
-        case wlqData.RTKZoomMinusDoublePress:
-            modifiers = wlqData.RTKZoomMDoublePressKeyModifier!
-        case wlqData.RTKSpeak:
-            modifiers = wlqData.RTKSpeakPressKeyModifier!
-        case wlqData.RTKSpeakDoublePress:
-            modifiers = wlqData.RTKSpeakDoublePressKeyModifier!
-        case wlqData.RTKMute:
-            modifiers = wlqData.RTKMutePressKeyModifier!
-        case wlqData.RTKMuteDoublePress:
-            modifiers = wlqData.RTKMuteDoublePressKeyModifier!
-        case wlqData.RTKDisplayOff:
-            modifiers = wlqData.RTKDisplayPressKeyModifier!
-        case wlqData.RTKDisplayOffDoublePress:
-            modifiers = wlqData.RTKDisplayDoublePressKeyModifier!
+        case self.fullScrollUp:
+            modifiers = self.fullScrollUpKeyModifier!
+        case self.fullScrollDown:
+            modifiers = self.fullScrollDownKeyModifier!
+        case self.fullToggleRight:
+            modifiers = self.fullRightPressKeyModifier!
+        case self.fullToggleRightLongPress:
+            modifiers = self.fullRightLongPressKeyModifier!
+        case self.fullToggleLeft:
+            modifiers = self.fullLeftPressKeyModifier!
+        case self.fullToggleLeftLongPress:
+            modifiers = self.fullLeftLongPressKeyModifier!
+        case self.fullSignalCancel:
+            modifiers = self.fullSignalPressKeyModifier!
+        case self.fullSignalCancelLongPress:
+            modifiers = self.fullSignalLongPressKeyModifier!
+        case self.RTKPage:
+            modifiers = self.RTKPagePressKeyModifier!
+        case self.RTKPageDoublePress:
+            modifiers = self.RTKPageDoublePressKeyModifier!
+        case self.RTKZoomPlus:
+            modifiers = self.RTKZoomPPressKeyModifier!
+        case self.RTKZoomPlusDoublePress:
+            modifiers = self.RTKZoomPDoublePressKeyModifier!
+        case self.RTKZoomMinus:
+            modifiers = self.RTKZoomMPressKeyModifier!
+        case self.RTKZoomMinusDoublePress:
+            modifiers = self.RTKZoomMDoublePressKeyModifier!
+        case self.RTKSpeak:
+            modifiers = self.RTKSpeakPressKeyModifier!
+        case self.RTKSpeakDoublePress:
+            modifiers = self.RTKSpeakDoublePressKeyModifier!
+        case self.RTKMute:
+            modifiers = self.RTKMutePressKeyModifier!
+        case self.RTKMuteDoublePress:
+            modifiers = self.RTKMuteDoublePressKeyModifier!
+        case self.RTKDisplayOff:
+            modifiers = self.RTKDisplayPressKeyModifier!
+        case self.RTKDisplayOffDoublePress:
+            modifiers = self.RTKDisplayDoublePressKeyModifier!
         default:
             modifiers = 0x00
         }
@@ -1045,20 +1035,20 @@ class WLQ {
     }
     
     //Old
-    func setfirmwareVersion(firmwareVersion: String?){
+    override func setfirmwareVersion(firmwareVersion: String?){
         self.firmwareVersion = firmwareVersion
     }
-    func getfirmwareVersion() -> String{
+    override func getfirmwareVersion() -> String{
         if (self.firmwareVersion != nil){
             return self.firmwareVersion!
         }
         return "Unknown"
     }
-    
-    func sethardwareVersion(hardwareVersion: String?){
+
+    override func sethardwareVersion(hardwareVersion: String?){
         self.hardwareVersion = hardwareVersion
     }
-    func gethardwareVersion() -> String{
+    override func gethardwareVersion() -> String{
         if (self.hardwareVersion != nil){
             return self.hardwareVersion!
         }

@@ -57,23 +57,23 @@ class BikeInfoViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
             print("Resetting Cluster Data Point")
             switch (clusterResetTypePicker.selectedRow(inComponent: 0)){
             case 0: // Reset Cluster Average Speed
-                let writeData =  Data(_: wlqData.RESET_CLUSTER_SPEED_CMD)
+                let writeData =  Data(_: wlqData.RESET_CLUSTER_SPEED_CMD())
                 self.peripheral?.writeValue(writeData, for: self.characteristic!, type: CBCharacteristicWriteType.withResponse)
                 break;
             case 1: // Reset Cluster Economy 1
-                let writeData =  Data(_: wlqData.RESET_CLUSTER_ECONO1_CMD)
+                let writeData =  Data(_: wlqData.RESET_CLUSTER_ECONO1_CMD())
                 self.peripheral?.writeValue(writeData, for: self.characteristic!, type: CBCharacteristicWriteType.withResponse)
                 break;
             case 2: // Reset Cluster Economy 2
-                let writeData =  Data(_: wlqData.RESET_CLUSTER_ECONO2_CMD)
+                let writeData =  Data(_: wlqData.RESET_CLUSTER_ECONO2_CMD())
                 self.peripheral?.writeValue(writeData, for: self.characteristic!, type: CBCharacteristicWriteType.withResponse)
                 break;
             case 3: // Reset Cluster Trip 1
-                let writeData =  Data(_: wlqData.RESET_CLUSTER_TRIP1_CMD)
+                let writeData =  Data(_: wlqData.RESET_CLUSTER_TRIP1_CMD())
                 self.peripheral?.writeValue(writeData, for: self.characteristic!, type: CBCharacteristicWriteType.withResponse)
                 break;
             case 4: // Reset Cluster Trip 2
-                let writeData =  Data(_: wlqData.RESET_CLUSTER_TRIP2_CMD)
+                let writeData =  Data(_: wlqData.RESET_CLUSTER_TRIP2_CMD())
                 self.peripheral?.writeValue(writeData, for: self.characteristic!, type: CBCharacteristicWriteType.withResponse)
                 break;
             default:
@@ -132,13 +132,15 @@ class BikeInfoViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
                 nextServiceLabel.text = "\(motorcycleData.getNextService())(km)"
             }
         }
-        if (wlqData.getfirmwareVersion() != "Unknown"){
-            let firmwareVersion: Double = wlqData.getfirmwareVersion().toDouble() ?? 0.0
-            if (firmwareVersion >= 1.8){
-                clusterResetHeaderLabel.isHidden = false
-                clusterResetLabel.isHidden = false
-                clusterResetTypePicker.isHidden = false
-                clusterResetButton.isHidden = false
+        if (wlqData.gethardwareType() == wlqData.TYPE_NAVIGATOR()){
+            if (wlqData.getfirmwareVersion() != "Unknown"){
+                let firmwareVersion: Double = wlqData.getfirmwareVersion().toDouble() ?? 0.0
+                if (firmwareVersion >= 1.8){
+                    clusterResetHeaderLabel.isHidden = false
+                    clusterResetLabel.isHidden = false
+                    clusterResetTypePicker.isHidden = false
+                    clusterResetButton.isHidden = false
+                }
             }
         }
     }
