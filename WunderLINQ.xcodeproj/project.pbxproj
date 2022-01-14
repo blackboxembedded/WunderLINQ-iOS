@@ -409,10 +409,6 @@
 				7EA478861F4BC775000CEDDC /* Logger.swift */,
 				7EBFD48F210E108100FC9665 /* segueFromLeft.swift */,
 				7EA478741F412B73000CEDDC /* LocationDelegate.swift */,
-				7E5A767720DDEE7200B48CC6 /* UIViewController+Extensions.swift */,
-				7E80BD43211D5A0600B8CA0D /* UIView+ignoresInvertColors.swift */,
-				7EA478781F412BE9000CEDDC /* UserDefauts+Extensions.swift */,
-				7E6987DA20F82F1A00B4781D /* MotorcycleData.swift */,
 				7E62BB6C21FE3DBF00FDB10E /* MainCollectionViewController.swift */,
 				7E62BB6E21FE3DEB00FDB10E /* MainCollectionViewCell.swift */,
 				7E62BB7021FE443200FDB10E /* ColumnFlowLayout.swift */,
@@ -424,7 +420,6 @@
 				7EF07767258E653E009A6BAA /* HWSettingsTableViewCell.swift */,
 				7EF0775A258D796F009A6BAA /* HWSettingsViewController.swift */,
 				7EC63201219BCE05002E68FF /* AboutViewController.swift */,
-				7E6987DC20F8F83500B4781D /* Faults.swift */,
 				7E14EFBC221B5FB7009F37A3 /* GeoDataViewController.swift */,
 				7E068BC6210190CB0076EAAD /* TripsTableViewController.swift */,
 				7E068BF7210645290076EAAD /* TripViewController.swift */,
@@ -509,6 +504,8 @@
 		7EB80AB92790FFAC00D3A051 /* WLQ */ = {
 			isa = PBXGroup;
 			children = (
+				7E6987DA20F82F1A00B4781D /* MotorcycleData.swift */,
+				7E6987DC20F8F83500B4781D /* Faults.swift */,
 				7E9DDA9A278DE8A2006C6D12 /* WLQ.swift */,
 				7E9DDA9E278DFFD4006C6D12 /* WLQ_N.swift */,
 				7E9DDAA0278E2403006C6D12 /* WLQ_C.swift */,
@@ -519,6 +516,9 @@
 		B98CA75B252E6C5200530075 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				7E5A767720DDEE7200B48CC6 /* UIViewController+Extensions.swift */,
+				7E80BD43211D5A0600B8CA0D /* UIView+ignoresInvertColors.swift */,
+				7EA478781F412BE9000CEDDC /* UserDefauts+Extensions.swift */,
 				B98CA75C252E6C6B00530075 /* UIStoryboard+extensions.swift */,
 				B98CA761252E6F5500530075 /* String+Localizable.swift */,
 				7EBFD48D210ADD0000FC9665 /* String+Extensions.swift */,
