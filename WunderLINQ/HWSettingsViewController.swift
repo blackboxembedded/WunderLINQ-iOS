@@ -132,19 +132,10 @@ class HWSettingsViewController: UIViewController, UITableViewDelegate, UITableVi
     
     // method to run when table view cell is tapped
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if (wlqData.getfirmwareVersion() != "Unknown"){
-            if (wlqData.getfirmwareVersion().toDouble()! >= 2.0) {
-                if (wlqData.keyMode == wlqData.keyMode_custom){
-                    if (self.actionID[indexPath.row] != -1){
-                        selectedActionID = self.actionID[indexPath.row]
-                        performSegue(withIdentifier: "hwSettingsToSettingsAction", sender: [])
-                    }
-                }
-            } else {
-                if (self.actionID[indexPath.row] == wlqData.OldSensitivity){
-                    selectedActionID = self.actionID[indexPath.row]
-                    performSegue(withIdentifier: "hwSettingsToSettingsAction", sender: [])
-                }
+        if (wlqData.getKeyMode() == wlqData.KEYMODE_CUSTOM()){
+            if (self.actionID[indexPath.row] != -1){
+                selectedActionID = self.actionID[indexPath.row]
+                performSegue(withIdentifier: "hwSettingsToSettingsAction", sender: [])
             }
         }
     }
@@ -152,40 +143,30 @@ class HWSettingsViewController: UIViewController, UITableViewDelegate, UITableVi
     func updateDisplay(){
         if (wlqData.getfirmwareVersion() != "Unknown"){
             firmwareVersionLabel.text = NSLocalizedString("fw_version_label", comment: "") + " " + wlqData.getfirmwareVersion()
-            if (wlqData.getfirmwareVersion().toDouble()! >= 2.0) {      // FW >2.0
-                if (wlqData.keyMode == wlqData.keyMode_default || wlqData.keyMode == wlqData.keyMode_custom) {
-                    if (wlqData.keyMode == wlqData.keyMode_default) { // Default Config
-                        modeLabel.text = "\(NSLocalizedString("mode_label", comment: "")) \(NSLocalizedString("keymode_default_label", comment: ""))"
-                        menuBtn.isHidden = true
-                    } else if (wlqData.keyMode == wlqData.keyMode_custom) { // Custom Config
-                        modeLabel.text = "\(NSLocalizedString("mode_label", comment: "")) \(NSLocalizedString("keymode_custom_label", comment: ""))"
-                        menuBtn.isHidden = false
-                    }
-                    modeLabel.isHidden = false
-                    
-                    //Check for config from FW 1.x
-                    if (wlqData.keyMode == wlqData.keyMode_custom &&
-                            wlqData.flashConfig![0] == wlqData.defaultConfig1[0] &&
-                            wlqData.flashConfig![1] == wlqData.defaultConfig1[1] &&
-                            wlqData.flashConfig![2] == wlqData.defaultConfig1[2] &&
-                            wlqData.flashConfig![3] == wlqData.defaultConfig1[3]){
-                        
-                        modeLabel.text = NSLocalizedString("corrupt_config_label", comment: "")
+        }
+        if (wlqData.gethardwareType() == wlqData.TYPE_NAVIGATOR()){
+            if (wlqData.getfirmwareVersion() != "Unknown"){
+                if (wlqData.getfirmwareVersion().toDouble()! >= 2.0) {      // FW >2.0
+                    if (wlqData.getKeyMode() == wlqData.KEYMODE_DEFAULT() || wlqData.getKeyMode() == wlqData.KEYMODE_CUSTOM()) {
+                        if (wlqData.getKeyMode() == wlqData.KEYMODE_DEFAULT()) { // Default Config
+                            modeLabel.text = "\(NSLocalizedString("mode_label", comment: "")) \(NSLocalizedString("keymode_default_label", comment: ""))"
+                            menuBtn.isHidden = true
+                        } else if (wlqData.getKeyMode() == wlqData.KEYMODE_CUSTOM()) { // Custom Config
+                            modeLabel.text = "\(NSLocalizedString("mode_label", comment: "")) \(NSLocalizedString("keymode_custom_label", comment: ""))"
+                            menuBtn.isHidden = false
+                        }
                         modeLabel.isHidden = false
-                        configButton.setTitle(NSLocalizedString("config_reset_label", comment: ""), for: .normal)
-                        configButton.isHidden = false
-                        configButton.tag = 0
-                    } else {
-                        if (wlqData.keyMode == wlqData.keyMode_default){
+                        
+                        if (wlqData.getKeyMode() == wlqData.KEYMODE_DEFAULT()){
                             configButton.setTitle(NSLocalizedString("customize_btn_label", comment: ""), for: .normal)
                             configButton.isHidden = false
                             configButton.tag = 2
-                        } else if (!wlqData.flashConfig!.elementsEqual(wlqData.tempConfig!)){
+                        } else if (!wlqData.getConfig().elementsEqual(wlqData.getTempConfig())){
                             print("!!!Change detected!!!")
                             configButton.setTitle(NSLocalizedString("config_write_label", comment: ""), for: .normal)
                             configButton.isHidden = false
                             configButton.tag = 1
-                        } else if (wlqData.keyMode == wlqData.keyMode_custom){
+                        } else if (wlqData.getKeyMode() == wlqData.KEYMODE_CUSTOM()){
                             configButton.setTitle(NSLocalizedString("default_btn_label", comment: ""), for: .normal)
                             configButton.isHidden = false
                             configButton.tag = 2
@@ -218,142 +199,132 @@ class HWSettingsViewController: UIViewController, UITableViewDelegate, UITableVi
                                              NSLocalizedString("rtk_display_label", comment: ""),
                                              NSLocalizedString("rtk_display_double_label", comment: "")]
                                                           
-                        actionTableMappingLabels = [wlqData.getActionValue(action: wlqData.USB),   //USB
+                        actionTableMappingLabels = [wlqData.getActionValue(action: WLQ_N().USB),   //USB
                                                     "",       //Full
-                                                    wlqData.getActionValue(action: wlqData.fullLongPressSensitivity),
-                                                    wlqData.getActionValue(action: wlqData.fullScrollUp),
-                                                    wlqData.getActionValue(action: wlqData.fullScrollDown),
-                                                    wlqData.getActionValue(action: wlqData.fullToggleRight),
-                                                    wlqData.getActionValue(action: wlqData.fullToggleRightLongPress),
-                                                    wlqData.getActionValue(action: wlqData.fullToggleLeft),
-                                                    wlqData.getActionValue(action: wlqData.fullToggleLeftLongPress),
-                                                    wlqData.getActionValue(action: wlqData.fullSignalCancel),
-                                                    wlqData.getActionValue(action: wlqData.fullSignalCancelLongPress),
+                                                    wlqData.getActionValue(action: WLQ_N().fullLongPressSensitivity),
+                                                    wlqData.getActionValue(action: WLQ_N().fullScrollUp),
+                                                    wlqData.getActionValue(action: WLQ_N().fullScrollDown),
+                                                    wlqData.getActionValue(action: WLQ_N().fullToggleRight),
+                                                    wlqData.getActionValue(action: WLQ_N().fullToggleRightLongPress),
+                                                    wlqData.getActionValue(action: WLQ_N().fullToggleLeft),
+                                                    wlqData.getActionValue(action: WLQ_N().fullToggleLeftLongPress),
+                                                    wlqData.getActionValue(action: WLQ_N().fullSignalCancel),
+                                                    wlqData.getActionValue(action: WLQ_N().fullSignalCancelLongPress),
                                                     "",       //RT/K1600
-                                                    wlqData.getActionValue(action: wlqData.RTKDoublePressSensitivity),
-                                                    wlqData.getActionValue(action: wlqData.RTKPage),
-                                                    wlqData.getActionValue(action: wlqData.RTKPageDoublePress),
-                                                    wlqData.getActionValue(action: wlqData.RTKZoomPlus),
-                                                    wlqData.getActionValue(action: wlqData.RTKZoomPlusDoublePress),
-                                                    wlqData.getActionValue(action: wlqData.RTKZoomMinus),
-                                                    wlqData.getActionValue(action: wlqData.RTKZoomMinusDoublePress),
-                                                    wlqData.getActionValue(action: wlqData.RTKSpeak),
-                                                    wlqData.getActionValue(action: wlqData.RTKSpeakDoublePress),
-                                                    wlqData.getActionValue(action: wlqData.RTKMute),
-                                                    wlqData.getActionValue(action: wlqData.RTKMuteDoublePress),
-                                                    wlqData.getActionValue(action: wlqData.RTKDisplayOff),
-                                                    wlqData.getActionValue(action: wlqData.RTKDisplayOffDoublePress)]
+                                                    wlqData.getActionValue(action: WLQ_N().RTKDoublePressSensitivity),
+                                                    wlqData.getActionValue(action: WLQ_N().RTKPage),
+                                                    wlqData.getActionValue(action: WLQ_N().RTKPageDoublePress),
+                                                    wlqData.getActionValue(action: WLQ_N().RTKZoomPlus),
+                                                    wlqData.getActionValue(action: WLQ_N().RTKZoomPlusDoublePress),
+                                                    wlqData.getActionValue(action: WLQ_N().RTKZoomMinus),
+                                                    wlqData.getActionValue(action: WLQ_N().RTKZoomMinusDoublePress),
+                                                    wlqData.getActionValue(action: WLQ_N().RTKSpeak),
+                                                    wlqData.getActionValue(action: WLQ_N().RTKSpeakDoublePress),
+                                                    wlqData.getActionValue(action: WLQ_N().RTKMute),
+                                                    wlqData.getActionValue(action: WLQ_N().RTKMuteDoublePress),
+                                                    wlqData.getActionValue(action: WLQ_N().RTKDisplayOff),
+                                                    wlqData.getActionValue(action: WLQ_N().RTKDisplayOffDoublePress)]
                         
-                        actionID = [wlqData.USB,    //USB
+                        actionID = [WLQ_N().USB,    //USB
                                     -1,       //Full
-                                    wlqData.fullLongPressSensitivity,
-                                    wlqData.fullScrollUp,
-                                    wlqData.fullScrollDown,
-                                    wlqData.fullToggleRight,
-                                    wlqData.fullToggleRightLongPress,
-                                    wlqData.fullToggleLeft,
-                                    wlqData.fullToggleLeftLongPress,
-                                    wlqData.fullSignalCancel,
-                                    wlqData.fullSignalCancelLongPress,
+                                    WLQ_N().fullLongPressSensitivity,
+                                    WLQ_N().fullScrollUp,
+                                    WLQ_N().fullScrollDown,
+                                    WLQ_N().fullToggleRight,
+                                    WLQ_N().fullToggleRightLongPress,
+                                    WLQ_N().fullToggleLeft,
+                                    WLQ_N().fullToggleLeftLongPress,
+                                    WLQ_N().fullSignalCancel,
+                                    WLQ_N().fullSignalCancelLongPress,
                                     -1,       //RT/K1600
-                                    wlqData.RTKDoublePressSensitivity,
-                                    wlqData.RTKPage,
-                                    wlqData.RTKPageDoublePress,
-                                    wlqData.RTKZoomPlus,
-                                    wlqData.RTKZoomPlusDoublePress,
-                                    wlqData.RTKZoomMinus,
-                                    wlqData.RTKZoomMinusDoublePress,
-                                    wlqData.RTKSpeak,
-                                    wlqData.RTKSpeakDoublePress,
-                                    wlqData.RTKMute,
-                                    wlqData.RTKMuteDoublePress,
-                                    wlqData.RTKDisplayOff,
-                                    wlqData.RTKDisplayOffDoublePress]
-                    }
-                } else {
-                    configButton.setTitle(NSLocalizedString("config_reset_label", comment: ""), for: .normal)
-                    modeLabel.isHidden = true
-                    configButton.isHidden = false
-                    configButton.tag = 0
-                }
-            } else {            // FW <2.0
-                if (wlqData.wheelMode == wlqData.wheelMode_full || wlqData.wheelMode == wlqData.wheelMode_rtk) {
-                    modeLabel.isHidden = false
-                    if(wlqData.sensitivity != wlqData.tempSensitivity){
-                        configButton.setTitle(NSLocalizedString("config_write_label", comment: ""), for: .normal)
-                        configButton.isHidden = false
-                        configButton.tag = 1
+                                    WLQ_N().RTKDoublePressSensitivity,
+                                    WLQ_N().RTKPage,
+                                    WLQ_N().RTKPageDoublePress,
+                                    WLQ_N().RTKZoomPlus,
+                                    WLQ_N().RTKZoomPlusDoublePress,
+                                    WLQ_N().RTKZoomMinus,
+                                    WLQ_N().RTKZoomMinusDoublePress,
+                                    WLQ_N().RTKSpeak,
+                                    WLQ_N().RTKSpeakDoublePress,
+                                    WLQ_N().RTKMute,
+                                    WLQ_N().RTKMuteDoublePress,
+                                    WLQ_N().RTKDisplayOff,
+                                    WLQ_N().RTKDisplayOffDoublePress]
                     } else {
-                        if (wlqData.wheelMode == wlqData.wheelMode_full) {
-                            configButton.setTitle(NSLocalizedString("wwMode2", comment: ""), for: .normal)
-                        } else if (wlqData.wheelMode == wlqData.wheelMode_rtk){
-                            configButton.setTitle(NSLocalizedString("wwMode1", comment: ""), for: .normal)
-                        }
+                        configButton.setTitle(NSLocalizedString("config_reset_label", comment: ""), for: .normal)
+                        modeLabel.isHidden = true
                         configButton.isHidden = false
-                        configButton.tag = 2
+                        configButton.tag = 0
                     }
-                    if (wlqData.wheelMode == wlqData.wheelMode_full) { //Full
-                        modeLabel.text = "\(NSLocalizedString("wwtype_label", comment: "")) \(NSLocalizedString("wwMode1", comment: ""))"
-                        actionTableLabels = [NSLocalizedString("long_press_label", comment: ""),
-                                             NSLocalizedString("full_scroll_up_label", comment: ""),
-                                             NSLocalizedString("full_scroll_down_label", comment: ""),
-                                             NSLocalizedString("full_toggle_right_label", comment: ""),
-                                             NSLocalizedString("full_toggle_right_long_label", comment: ""),
-                                             NSLocalizedString("full_toggle_left_label", comment: ""),
-                                             NSLocalizedString("full_toggle_left_long_label", comment: ""),
-                                             NSLocalizedString("full_signal_cancel_long_label", comment: "")]
-                                                           
-                        actionTableMappingLabels = ["\(wlqData.sensitivity!)",
-                                                    NSLocalizedString("keyboard_hid_0x52_label", comment: ""),
-                                                    NSLocalizedString("keyboard_hid_0x51_label", comment: ""),
-                                                    NSLocalizedString("keyboard_hid_0x4F_label", comment: ""),
-                                                    NSLocalizedString("keyboard_hid_0x28_label", comment: ""),
-                                                    NSLocalizedString("keyboard_hid_0x50_label", comment: ""),
-                                                    NSLocalizedString("keyboard_hid_0x29_label", comment: ""),
-                                                    NSLocalizedString("consumer_hid_0xB8_label", comment: "")]
-                        
-                        actionID = [wlqData.OldSensitivity,
-                                    -1,
-                                    -1,
-                                    -1,
-                                    -1,
-                                    -1,
-                                    -1,
-                                    -1]
-                    } else if (wlqData.wheelMode == wlqData.wheelMode_rtk) { //RTK1600
-                        modeLabel.text = "\(NSLocalizedString("wwtype_label", comment: "")) \(NSLocalizedString("wwMode2", comment: ""))"
-                        actionTableLabels = [NSLocalizedString("double_press_label", comment: ""),
-                                             NSLocalizedString("rtk_page_label", comment: ""),
-                                             NSLocalizedString("rtk_page_double_label", comment: ""),
-                                             NSLocalizedString("rtk_zoomp_label", comment: ""),
-                                             NSLocalizedString("rtk_zoomm_label", comment: ""),
-                                             NSLocalizedString("rtk_speak_label", comment: ""),
-                                             NSLocalizedString("rtk_speak_double_label", comment: ""),
-                                             NSLocalizedString("rtk_display_label", comment: "")]
-
-                        actionTableMappingLabels = ["\(wlqData.sensitivity!)",
-                                                    NSLocalizedString("keyboard_hid_0x4F_label", comment: ""),
-                                                    NSLocalizedString("keyboard_hid_0x28_label", comment: ""),
-                                                    NSLocalizedString("keyboard_hid_0x52_label", comment: ""),
-                                                    NSLocalizedString("keyboard_hid_0x51_label", comment: ""),
-                                                    NSLocalizedString("keyboard_hid_0x50_label", comment: ""),
-                                                    NSLocalizedString("keyboard_hid_0x29_label", comment: ""),
-                                                    NSLocalizedString("consumer_hid_0xB8_label", comment: "")]
-                        actionID = [wlqData.OldSensitivity,
-                                    -1,
-                                    -1,
-                                    -1,
-                                    -1,
-                                    -1,
-                                    -1,
-                                    -1]
-                    }
-                }  else {
-                    configButton.setTitle(NSLocalizedString("config_reset_label", comment: ""), for: .normal)
-                    modeLabel.isHidden = true
-                    configButton.isHidden = false
-                    configButton.tag = 0
                 }
+            }
+        } else if (wlqData.gethardwareType() == wlqData.TYPE_COMNMANDER()){
+            if (wlqData.getKeyMode() == wlqData.KEYMODE_DEFAULT() || wlqData.getKeyMode() == wlqData.KEYMODE_CUSTOM()) {
+                if (wlqData.getKeyMode() == wlqData.KEYMODE_DEFAULT()) { // Default Config
+                    modeLabel.text = "\(NSLocalizedString("mode_label", comment: "")) \(NSLocalizedString("keymode_default_label", comment: ""))"
+                    menuBtn.isHidden = true
+                } else if (wlqData.getKeyMode() == wlqData.KEYMODE_CUSTOM()) { // Custom Config
+                    modeLabel.text = "\(NSLocalizedString("mode_label", comment: "")) \(NSLocalizedString("keymode_custom_label", comment: ""))"
+                    menuBtn.isHidden = false
+                }
+                modeLabel.isHidden = false
+                
+                if (wlqData.getKeyMode() == wlqData.KEYMODE_DEFAULT()){
+                    configButton.setTitle(NSLocalizedString("customize_btn_label", comment: ""), for: .normal)
+                    configButton.isHidden = false
+                    configButton.tag = 2
+                } else if (!wlqData.getConfig().elementsEqual(wlqData.getTempConfig())){
+                    print("!!!Change detected!!!")
+                    configButton.setTitle(NSLocalizedString("config_write_label", comment: ""), for: .normal)
+                    configButton.isHidden = false
+                    configButton.tag = 1
+                } else if (wlqData.getKeyMode() == wlqData.KEYMODE_CUSTOM()){
+                    configButton.setTitle(NSLocalizedString("default_btn_label", comment: ""), for: .normal)
+                    configButton.isHidden = false
+                    configButton.tag = 2
+                } else {
+                    configButton.isHidden = true
+                }
+                actionTableLabels = [NSLocalizedString("long_press_label", comment: ""),
+                                     NSLocalizedString("full_scroll_up_label", comment: ""),
+                                     NSLocalizedString("full_scroll_down_label", comment: ""),
+                                     NSLocalizedString("full_toggle_right_label", comment: ""),
+                                     NSLocalizedString("full_toggle_right_long_label", comment: ""),
+                                     NSLocalizedString("full_toggle_left_label", comment: ""),
+                                     NSLocalizedString("full_toggle_left_long_label", comment: ""),
+                                     NSLocalizedString("full_menu_up_label", comment: ""),
+                                     NSLocalizedString("full_menu_up_long_label", comment: ""),
+                                     NSLocalizedString("full_menu_down_label", comment: ""),
+                                     NSLocalizedString("full_menu_down_long_label", comment: "")]
+                                                  
+                actionTableMappingLabels = [wlqData.getActionValue(action: WLQ_C().longPressSensitivity),
+                                            wlqData.getActionValue(action: WLQ_C().wheelScrollUp),
+                                            wlqData.getActionValue(action: WLQ_C().wheelScrollDown),
+                                            wlqData.getActionValue(action: WLQ_C().wheelToggleRight),
+                                            wlqData.getActionValue(action: WLQ_C().wheelToggleRightLongPress),
+                                            wlqData.getActionValue(action: WLQ_C().wheelToggleLeft),
+                                            wlqData.getActionValue(action: WLQ_C().wheelToggleLeftLongPress),
+                                            wlqData.getActionValue(action: WLQ_C().menuUp),
+                                            wlqData.getActionValue(action: WLQ_C().menuUpLongPress),
+                                            wlqData.getActionValue(action: WLQ_C().menuDown),
+                                            wlqData.getActionValue(action: WLQ_C().menuDownLongPress)]
+                
+                actionID = [WLQ_C().longPressSensitivity,
+                            WLQ_C().wheelScrollUp,
+                            WLQ_C().wheelScrollDown,
+                            WLQ_C().wheelToggleRight,
+                            WLQ_C().wheelToggleRightLongPress,
+                            WLQ_C().wheelToggleLeft,
+                            WLQ_C().wheelToggleLeftLongPress,
+                            WLQ_C().menuUp,
+                            WLQ_C().menuUpLongPress,
+                            WLQ_C().menuDown,
+                            WLQ_C().menuDownLongPress]
+            } else {
+                configButton.setTitle(NSLocalizedString("config_reset_label", comment: ""), for: .normal)
+                modeLabel.isHidden = true
+                configButton.isHidden = false
+                configButton.tag = 0
             }
         }
         self.actionsTableView.reloadData()
@@ -374,19 +345,21 @@ class HWSettingsViewController: UIViewController, UITableViewDelegate, UITableVi
         let cancelAction = UIAlertAction(title: NSLocalizedString("hwsave_alert_btn_cancel", comment: ""), style: .cancel, handler: nil)
         alertController.addAction(cancelAction)
         let openAction = UIAlertAction(title: NSLocalizedString("hwsave_alert_btn_ok", comment: ""), style: .default) { [self] (action) in
-            if (self.wlqData.getfirmwareVersion() != "Unknown"){
-                if (self.wlqData.getfirmwareVersion().toDouble()! >= 2.0) {
-                    var command = self.wlqData.WRITE_CONFIG_CMD + self.wlqData.defaultConfig2 + self.wlqData.CMD_EOM
-                    if (self.wlqData.gethardwareVersion() == self.wlqData.hardwareVersion1){
-                        command = self.wlqData.WRITE_CONFIG_CMD + self.wlqData.defaultConfig2HW1 + self.wlqData.CMD_EOM
+            if (wlqData.gethardwareType() == wlqData.TYPE_NAVIGATOR()){
+                if (self.wlqData.getfirmwareVersion() != "Unknown"){
+                    if (self.wlqData.getfirmwareVersion().toDouble()! >= 2.0) {
+                        var command = self.wlqData.WRITE_CONFIG_CMD() + WLQ_N().defaultConfig2 + self.wlqData.CMD_EOM()
+                        if (self.wlqData.gethardwareVersion() == WLQ_N().hardwareVersion1){
+                            command = self.wlqData.WRITE_CONFIG_CMD() + WLQ_N().defaultConfig2HW1 + self.wlqData.CMD_EOM()
+                        }
+                        let writeData =  Data(_: command)
+                        self.peripheral?.writeValue(writeData, for: self.characteristic!, type: CBCharacteristicWriteType.withResponse)
                     }
-                    let writeData =  Data(_: command)
-                    self.peripheral?.writeValue(writeData, for: self.characteristic!, type: CBCharacteristicWriteType.withResponse)
-                } else {
-                    let command = self.wlqData.WRITE_CONFIG_CMD + self.wlqData.defaultConfig1 + self.wlqData.CMD_EOM
-                    let writeData =  Data(_: command)
-                    self.peripheral?.writeValue(writeData, for: self.characteristic!, type: CBCharacteristicWriteType.withResponse)
                 }
+            } else if (wlqData.gethardwareType() == wlqData.TYPE_COMNMANDER()){
+                let command = self.wlqData.WRITE_CONFIG_CMD() + WLQ_C().defaultConfig + self.wlqData.CMD_EOM()
+                let writeData =  Data(_: command)
+                self.peripheral?.writeValue(writeData, for: self.characteristic!, type: CBCharacteristicWriteType.withResponse)
             }
             self.navigationController?.popViewController(animated: true)
             self.dismiss(animated: true, completion: nil)
@@ -404,23 +377,18 @@ class HWSettingsViewController: UIViewController, UITableViewDelegate, UITableVi
         let cancelAction = UIAlertAction(title: NSLocalizedString("hwsave_alert_btn_cancel", comment: ""), style: .cancel, handler: nil)
         alertController.addAction(cancelAction)
         let openAction = UIAlertAction(title: NSLocalizedString("hwsave_alert_btn_ok", comment: ""), style: .default) { (action) in
-            if (self.wlqData.getfirmwareVersion() != "Unknown"){
-                if (self.wlqData.getfirmwareVersion().toDouble()! >= 2.0) {
-                    let command = self.wlqData.WRITE_CONFIG_CMD + self.wlqData.tempConfig! + self.wlqData.CMD_EOM
-                    let writeData =  Data(_: command)
-                    self.peripheral?.writeValue(writeData, for: self.characteristic!, type: CBCharacteristicWriteType.withResponse)
-                } else {
-                    if (self.wlqData.sensitivity != self.wlqData.tempSensitivity){
-                        let prefix:[UInt8] = [self.wlqData.wheelMode!, 0x45]
-                        let sensInt:Int = (Int)(self.wlqData.tempSensitivity!)
-                        let sensString:String = (String)(sensInt)
-                        let sensCharacters = Array(sensString)
-                        let sensUInt8Array = String(sensCharacters).utf8.map{ UInt8($0) }
-                        let command = self.wlqData.WRITE_SENSITIVITY_CMD + prefix + sensUInt8Array + self.wlqData.CMD_EOM
+            if (self.wlqData.gethardwareType() == self.wlqData.TYPE_NAVIGATOR()){
+                if (self.wlqData.getfirmwareVersion() != "Unknown"){
+                    if (self.wlqData.getfirmwareVersion().toDouble()! >= 2.0) {
+                        let command = self.wlqData.WRITE_CONFIG_CMD() + self.wlqData.getTempConfig() + self.wlqData.CMD_EOM()
                         let writeData =  Data(_: command)
                         self.peripheral?.writeValue(writeData, for: self.characteristic!, type: CBCharacteristicWriteType.withResponse)
                     }
                 }
+            } else if (self.wlqData.gethardwareType() == self.wlqData.TYPE_COMNMANDER()){
+                let command = self.wlqData.WRITE_CONFIG_CMD() + self.wlqData.getTempConfig() + self.wlqData.CMD_EOM()
+                let writeData =  Data(_: command)
+                self.peripheral?.writeValue(writeData, for: self.characteristic!, type: CBCharacteristicWriteType.withResponse)
             }
             self.navigationController?.popViewController(animated: true)
             self.dismiss(animated: true, completion: nil)
@@ -438,24 +406,26 @@ class HWSettingsViewController: UIViewController, UITableViewDelegate, UITableVi
         let cancelAction = UIAlertAction(title: NSLocalizedString("hwsave_alert_btn_cancel", comment: ""), style: .cancel, handler: nil)
         alertController.addAction(cancelAction)
         let openAction = UIAlertAction(title: NSLocalizedString("hwsave_alert_btn_ok", comment: ""), style: .default) { (action) in
-            if (self.wlqData.getfirmwareVersion() != "Unknown"){
-                if (self.wlqData.getfirmwareVersion().toDouble()! >= 2.0) {
-                    var value:[UInt8] = [self.wlqData.keyMode_custom]
-                    if (self.wlqData.keyMode == self.wlqData.keyMode_custom){
-                        value = [self.wlqData.keyMode_default]
+            if (self.wlqData.gethardwareType() == self.wlqData.TYPE_NAVIGATOR()){
+                if (self.wlqData.getfirmwareVersion() != "Unknown"){
+                    if (self.wlqData.getfirmwareVersion().toDouble()! >= 2.0) {
+                        var value:[UInt8] = [self.wlqData.KEYMODE_CUSTOM()]
+                        if (self.wlqData.getKeyMode() == self.wlqData.KEYMODE_CUSTOM()){
+                            value = [self.wlqData.KEYMODE_DEFAULT()]
+                        }
+                        let command = self.wlqData.WRITE_MODE_CMD() + value + self.wlqData.CMD_EOM()
+                        let writeData =  Data(_: command)
+                        self.peripheral?.writeValue(writeData, for: self.characteristic!, type: CBCharacteristicWriteType.withResponse)
                     }
-                    let command = self.wlqData.WRITE_MODE_CMD + value + self.wlqData.CMD_EOM
-                    let writeData =  Data(_: command)
-                    self.peripheral?.writeValue(writeData, for: self.characteristic!, type: CBCharacteristicWriteType.withResponse)
-                } else {
-                    var value:[UInt8] = [self.wlqData.wheelMode_full]
-                    if (self.wlqData.wheelMode == self.wlqData.wheelMode_full){
-                        value = [self.wlqData.wheelMode_rtk]
-                    }
-                    let command = self.wlqData.WRITE_MODE_CMD + value + self.wlqData.CMD_EOM
-                    let writeData =  Data(_: command)
-                    self.peripheral?.writeValue(writeData, for: self.characteristic!, type: CBCharacteristicWriteType.withResponse)
                 }
+            } else if (self.wlqData.gethardwareType() == self.wlqData.TYPE_COMNMANDER()){
+                var value:[UInt8] = [self.wlqData.KEYMODE_CUSTOM()]
+                if (self.wlqData.getKeyMode() == self.wlqData.KEYMODE_CUSTOM()){
+                    value = [self.wlqData.KEYMODE_DEFAULT()]
+                }
+                let command = self.wlqData.WRITE_MODE_CMD() + value + self.wlqData.CMD_EOM()
+                let writeData =  Data(_: command)
+                self.peripheral?.writeValue(writeData, for: self.characteristic!, type: CBCharacteristicWriteType.withResponse)
             }
             self.navigationController?.popViewController(animated: true)
             self.dismiss(animated: true, completion: nil)
