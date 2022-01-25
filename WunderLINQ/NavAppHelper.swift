@@ -67,6 +67,10 @@ enum NavigationAppPreference: Int, CaseIterable {
     /// https://developer.trimblemaps.com/copilot-navigation/v10-19/feature-guide/advanced-features/url-launch/
     case copilot
     
+    /// Universal app link accessible with `yandexnavi://`
+    /// https://yandex-ru.translate.goog/dev/yandex-apps-launch/navigator/doc/concepts/navigator-url-params.html?_x_tr_sl=ru&_x_tr_tl=en&_x_tr_hl=tr&_x_tr_pto=wapp#navigator-url-params__point
+    case yandex
+    
     var isAvailable: Bool {
         UIApplication.shared.canOpenURL(URL(string: self.urlScheme)!)
     }
@@ -111,6 +115,9 @@ enum NavigationAppPreference: Int, CaseIterable {
             
         case .copilot:
             return "copilot://"
+        
+        case .yandex:
+            return "yandexnavi://"
         }
     }
 
@@ -295,6 +302,14 @@ extension NavAppHelper {
                     UIApplication.shared.open(uRL, options: [:], completionHandler: nil)
                 }
             }
+        case .yandex:
+            //Yandex.Navigator
+            let urlString = "\(navApp.urlScheme)build_route_on_map?lat_to=\(destLatitude)&lon_to=\(destLongitude)"
+            if let uRL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
+                if (UIApplication.shared.canOpenURL(uRL)) {
+                    UIApplication.shared.open(uRL, options: [:], completionHandler: nil)
+                }
+            }
         }
     }
     
@@ -437,6 +452,14 @@ extension NavAppHelper {
         case 12:
             //CoPilot
             let urlString = "copilot://mydestination?type=LOCATION&action=VIEW&lat=\(destLatitude)&long=\(destLongitude)"
+            if let uRL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
+                if (UIApplication.shared.canOpenURL(uRL)) {
+                    UIApplication.shared.open(uRL, options: [:], completionHandler: nil)
+                }
+            }
+        case 13:
+            //Yandex
+            let urlString = "yandexnavi://show_point_on_map?lat=\(destLatitude)&lon=\(destLongitude)&zoom=12&no-balloon=0&desc=\(destLabel ?? "")"
             if let uRL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
                 if (UIApplication.shared.canOpenURL(uRL)) {
                     UIApplication.shared.open(uRL, options: [:], completionHandler: nil)
