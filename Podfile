@@ -4,7 +4,7 @@ inhibit_all_warnings!
 use_frameworks!
 
 target 'WunderLINQ' do
-  pod 'InAppSettingsKit', '~> 3.1'
+  pod 'InAppSettingsKit', '~> 3.3.5'
   pod 'ChromaColorPicker', '~> 2.0.2'
   pod 'CoreGPX'
   pod 'UIMultiPicker'

@@ -9,7 +9,7 @@
 import UIKit
 import InAppSettingsKit
 
-class ApppSettingsViewController: IASKAppSettingsViewController {
+class AppSettingsViewController: IASKAppSettingsViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,8 +49,8 @@ class ApppSettingsViewController: IASKAppSettingsViewController {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
 
-    func myinit (file: NSString, specifier: IASKSpecifier) -> ApppSettingsViewController {
-        let vc = ApppSettingsViewController()
+    func myinit (file: NSString, specifier: IASKSpecifier) -> AppSettingsViewController {
+        let vc = AppSettingsViewController()
         vc.showDoneButton = false;
         vc.showCreditsFooter = false;
         vc.delegate = self.delegate;

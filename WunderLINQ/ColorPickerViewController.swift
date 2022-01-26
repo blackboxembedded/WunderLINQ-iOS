@@ -55,14 +55,11 @@ class ColorPickerViewController: UIViewController
         pickerHandle = colorPicker.addHandle(at: highlightColor)
     }
     
-    @objc func initWithFile (_ name: NSString, specifier: IASKSpecifier ) -> ColorPickerViewController {
-        return self
+    @objc func initWithFile (_ file: NSString, specifier: IASKSpecifier ) -> ColorPickerViewController {
+        let vc = ColorPickerViewController()
+        return vc
     }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
-    
+
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
