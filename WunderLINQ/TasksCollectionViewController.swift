@@ -1586,7 +1586,10 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
             } else {
                 print("Picture Saved")
                 if (UserDefaults.standard.bool(forKey: "photo_preview_enable_preference")){
-                    self.performSegue(withIdentifier: "tasksToAlert", sender: [])
+                    DispatchQueue.main.async(){
+                        [unowned self] in
+                        self.performSegue(withIdentifier: "tasksToAlert", sender: [])
+                    }
                 }
             }
         })
