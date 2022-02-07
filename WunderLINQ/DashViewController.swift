@@ -204,7 +204,9 @@ class DashViewController: UIViewController, UIWebViewDelegate {
         refreshTimer.invalidate()
         seconds = 0
         // Show the navigation bar on other view controllers
-        self.navigationController?.setNavigationBarHidden(false, animated: animated)
+        DispatchQueue.main.async(){
+            self.navigationController?.setNavigationBarHidden(false, animated: animated)
+        }
         // Save away current dashboard
         UserDefaults.standard.set(currentDashboard, forKey: "lastDashboard")
     }
@@ -223,7 +225,9 @@ class DashViewController: UIViewController, UIWebViewDelegate {
     }
 
     @objc func onTouch() {
-        self.navigationController?.setNavigationBarHidden(false, animated: true)
+        DispatchQueue.main.async(){
+            self.navigationController?.setNavigationBarHidden(false, animated: true)
+        }
         if isTimerRunning == false {
             runTimer()
         }

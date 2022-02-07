@@ -789,7 +789,9 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
     }
     
     @objc func onTouch(recognizer: UITapGestureRecognizer){
-        self.navigationController?.setNavigationBarHidden(false, animated: true)
+        DispatchQueue.main.async(){
+            self.navigationController?.setNavigationBarHidden(false, animated: true)
+        }
         if isTimerRunning == false {
             runTimer()
         }
@@ -1385,7 +1387,9 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
         timer.invalidate()
         seconds = 0
         // Show the navigation bar on other view controllers
-        self.navigationController?.setNavigationBarHidden(false, animated: animated)
+        DispatchQueue.main.async(){
+            self.navigationController?.setNavigationBarHidden(false, animated: animated)
+        }
     }
 
     // MARK: UICollectionViewDataSource
@@ -1419,7 +1423,9 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         itemRow = indexPath.row
         //self.collectionView!.scrollToItem(at: IndexPath(row: itemRow, section: 0), at: .centeredVertically, animated: true)
-        self.navigationController?.setNavigationBarHidden(false, animated: true)
+        DispatchQueue.main.async(){
+            self.navigationController?.setNavigationBarHidden(false, animated: true)
+        }
         if isTimerRunning == false {
             runTimer()
         }

@@ -441,6 +441,7 @@
 				7E6E0A6724FC022200149387 /* ColorPickerViewController.swift */,
 				7E4669F62518647C00E7E291 /* NavAppHelper.swift */,
 				7EB5ED7C251FE8FA00B61160 /* DashViewController.swift */,
+				7E620A0C26278E4900F6E23B /* AppSettingsViewController.swift */,
 				7EB8B99D245CA7A6007232D2 /* Secrets.swift */,
 				7E068BD62102C6DB0076EAAD /* GoogleMaps.bundle */,
 				7EA478821F4A7260000CEDDC /* InAppSettings.bundle */,
@@ -448,7 +449,6 @@
 				7EA478561F40B154000CEDDC /* LaunchScreen.storyboard */,
 				7E4D76E521DDAEC100825175 /* InfoPlist.strings */,
 				7EA478591F40B154000CEDDC /* Info.plist */,
-				7E620A0C26278E4900F6E23B /* AppSettingsViewController.swift */,
 			);
 			path = WunderLINQ;
 			sourceTree = "<group>";
@@ -963,7 +963,7 @@
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 3J48UMN5W2;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -993,7 +993,7 @@
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 3J48UMN5W2;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

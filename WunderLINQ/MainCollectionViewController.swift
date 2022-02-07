@@ -537,7 +537,9 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         timer.invalidate()
         seconds = 0
         // Show the navigation bar on other view controllers
-        self.navigationController?.setNavigationBarHidden(false, animated: animated)
+        DispatchQueue.main.async(){
+            self.navigationController?.setNavigationBarHidden(false, animated: animated)
+        }
     }
     
     private func updateCollectionViewLayout(with size: CGSize) {
@@ -3726,18 +3728,29 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     func showPickerInActionSheet(cell: Int) {
         let title = ""
         let message = "\n\n\n\n\n\n\n\n\n\n";
-        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.actionSheet);
-        alert.isModalInPopover = true;
+
+        let width:CGFloat = 300
+        let highth:CGFloat = 150
         
-        var width = self.view.bounds.width
-        if (self.view.bounds.width > self.view.bounds.height){
-            width = self.view.bounds.height
-        }
+        let alertStyle = UIAlertController.Style.alert
+        let alert = UIAlertController(title: title, message: message, preferredStyle: alertStyle);
+        alert.isModalInPopover = true;
+
+        // height constraint
+        let constraintHeight = NSLayoutConstraint(
+           item: alert.view!, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute:
+           NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: highth)
+        alert.view.addConstraint(constraintHeight)
+
+        // width constraint
+        let constraintWidth = NSLayoutConstraint(
+           item: alert.view!, attribute: NSLayoutConstraint.Attribute.width, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute:
+           NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: width)
+        alert.view.addConstraint(constraintWidth)
         
         //Create a frame (placeholder/wrapper) for the picker and then create the picker
-        let pickerFrame = CGRect(x: 0, y: 52, width: width, height: 100)
+        let pickerFrame = CGRect(x: 16, y: 0, width: width - (16 * 2), height: highth - 50)
         let picker: UIPickerView = UIPickerView(frame: pickerFrame)
-        
         
         //set the pickers datasource and delegate
         picker.delegate   = self
@@ -3785,47 +3798,21 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         
         //Add the picker to the alert controller
         alert.view.addSubview(picker)
+
+        let okAction: UIAlertAction = UIAlertAction(title: NSLocalizedString("select_bt", comment: ""), style: .default) { action -> Void in
+            self.saveCellPref()
+        }
+
+        let cancelAction: UIAlertAction = UIAlertAction(title: NSLocalizedString("cancel_bt", comment: ""), style: .default) { action -> Void in }
+
+        alert.addAction(okAction)
+        alert.addAction(cancelAction)
         
-        //Create the toolbar view - the view witch will hold our 2 buttons
-        let toolFrame = CGRect(x: 0, y: 5, width: width, height: 45)
-        let toolView: UIView = UIView(frame: toolFrame)
-        
-        
-        //add buttons to the view
-        let buttonCancelFrame = CGRect(x: 0, y: 7, width: (width / 2), height: 30) //size & position of the button as placed on the toolView
-        
-        //Create the cancel button & set its title
-        let buttonCancel: UIButton = UIButton(frame: buttonCancelFrame);
-        buttonCancel.setTitle(NSLocalizedString("cancel_bt", comment: ""), for: .normal)
-        buttonCancel.setTitleColor(UIColor.blue, for: .normal)
-        toolView.addSubview(buttonCancel); //add it to the toolView
-        
-        //Add the target - target, function to call, the event witch will trigger the function call
-        buttonCancel.addTarget(self, action: #selector(MainCollectionViewController.cancelSelection(sender:)), for: UIControl.Event.touchDown);
-        
-        
-        //add buttons to the view
-        
-        let buttonOkFrame = CGRect(x: (width / 2), y: 7, width: (width / 2), height: 30)//size & position of the button as placed on the toolView
-        
-        //Create the Select button & set the title
-        let buttonOk: UIButton = UIButton(frame: buttonOkFrame);
-        buttonOk.setTitle(NSLocalizedString("select_bt", comment: ""), for: UIControl.State.normal);
-        buttonOk.setTitleColor(UIColor.blue, for: UIControl.State.normal);
-        toolView.addSubview(buttonOk); //add to the subview
-        
-        buttonOk.addTarget(self, action: #selector(MainCollectionViewController.saveCellPref), for: UIControl.Event.touchDown);
-        
-        //add the toolbar to the alert controller
-        alert.view.addSubview(toolView);
-        
-        self.present(alert, animated: true, completion: nil);
-    }
-    
-    @objc func cancelSelection(sender: UIButton){
-        self.dismiss(animated: true, completion: nil)
-        
-        // We dismiss the alert. Here you can add your additional code to execute when cancel is pressed
+        if let presenter = alert.popoverPresentationController {
+            presenter.sourceView = self.view
+                presenter.sourceRect = self.view.bounds
+        }
+        present(alert, animated: true, completion: nil)
     }
     
     // returns number of rows in each component..
@@ -3924,7 +3911,9 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     }
 
     @objc func onTouch() {
-        self.navigationController?.setNavigationBarHidden(false, animated: true)
+        DispatchQueue.main.async(){
+            self.navigationController?.setNavigationBarHidden(false, animated: true)
+        }
         if isTimerRunning == false {
             runTimer()
         }

@@ -202,7 +202,9 @@ class MusicViewController: UIViewController, SPTAppRemotePlayerStateDelegate {
         timer.invalidate()
         seconds = 0
         // Show the navigation bar on other view controllers
-        self.navigationController?.setNavigationBarHidden(false, animated: animated)
+        DispatchQueue.main.async(){
+            self.navigationController?.setNavigationBarHidden(false, animated: animated)
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -237,7 +239,9 @@ class MusicViewController: UIViewController, SPTAppRemotePlayerStateDelegate {
     }
     
     @objc func onTouch() {
-        self.navigationController?.setNavigationBarHidden(false, animated: true)
+        DispatchQueue.main.async(){
+            self.navigationController?.setNavigationBarHidden(false, animated: true)
+        }
         if isTimerRunning == false {
             runTimer()
         }
