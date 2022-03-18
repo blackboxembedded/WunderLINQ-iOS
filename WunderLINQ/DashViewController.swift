@@ -336,14 +336,32 @@ class DashViewController: UIViewController, UIWebViewDelegate {
 
     @objc func updateDashboard(){
         if (currentDashboard == 1){
-            let xml = StandardDashboard.updateDashboard(currentInfoLine)
-            webView.loadHTMLString(xml.description, baseURL: nil)
+            DispatchQueue.global(qos: .userInitiated).async {
+               // Do long running task here
+                let xml = StandardDashboard.updateDashboard(self.currentInfoLine)
+               // Bounce back to the main thread to update the UI
+               DispatchQueue.main.async {
+                   self.webView.loadHTMLString(xml.description, baseURL: nil)
+               }
+            }
         } else if (currentDashboard == 2){
-            let xml = SportDashboard.updateDashboard(currentInfoLine)
-            webView.loadHTMLString(xml.description, baseURL: nil)
+            DispatchQueue.global(qos: .userInitiated).async {
+               // Do long running task here
+                let xml = SportDashboard.updateDashboard(self.currentInfoLine)
+               // Bounce back to the main thread to update the UI
+               DispatchQueue.main.async {
+                   self.webView.loadHTMLString(xml.description, baseURL: nil)
+               }
+            }
         } else if (currentDashboard == 3){
-            let xml = ADVDashboard.updateDashboard(currentInfoLine)
-            webView.loadHTMLString(xml.description, baseURL: nil)
+            DispatchQueue.global(qos: .userInitiated).async {
+               // Do long running task here
+                let xml = ADVDashboard.updateDashboard(self.currentInfoLine)
+               // Bounce back to the main thread to update the UI
+               DispatchQueue.main.async {
+                   self.webView.loadHTMLString(xml.description, baseURL: nil)
+               }
+            }
         }
     }
 
