@@ -212,6 +212,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        NSLog("IN MainCollectionViewController viewWillAppear")
         super.viewWillAppear(animated)
         referenceAttitude = nil
         if isTimerRunning == false {
@@ -225,11 +226,13 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     }
     
     override func viewDidLayoutSubviews() {
+        NSLog("IN MainCollectionViewController viewDidLayoutSubviews")
         super.viewDidLayoutSubviews()
         updateCollectionViewLayout(with: self.view.frame.size)
     }
 
     override func viewDidLoad() {
+        NSLog("IN MainCollectionViewController viewDidLoad()")
         super.viewDidLoad()
         
         collectionView.delegate = self
@@ -527,11 +530,13 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        NSLog("IN MainCollectionViewController viewWillTransition")
         super.viewWillTransition(to: size, with: coordinator)
         referenceAttitude = nil
     }
     
     override func viewWillDisappear(_ animated: Bool) {
+        NSLog("IN MainCollectionViewController viewWillDisappear")
         super.viewWillDisappear(animated)
         
         timer.invalidate()
@@ -543,6 +548,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     }
     
     private func updateCollectionViewLayout(with size: CGSize) {
+        NSLog("IN MainCollectionViewController updateCollectionViewLayout")
         if (collectionView != nil){
             if let layout = collectionView!.collectionViewLayout as? UICollectionViewFlowLayout {
                 var cellCount = UserDefaults.standard.integer(forKey: "GRIDCOUNT");
@@ -939,7 +945,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     
     @objc func pauseScan() {
         // Scanning uses up battery on phone, so pause the scan process for the designated interval.
-        print("PAUSING SCAN...")
+        NSLog("PAUSING SCAN...")
         disconnectButton.isEnabled = true
         self.centralManager?.stopScan()
         Timer.scheduledTimer(timeInterval: timerPauseInterval, target: self, selector: #selector(self.resumeScan), userInfo: nil, repeats: false)
@@ -950,7 +956,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         let lastPeripherals = centralManager.retrieveConnectedPeripherals(withServices: [CBUUID(string: Device.WunderLINQServiceUUID)])
         
         if lastPeripherals.count > 0{
-            print("FOUND WunderLINQ")
+            NSLog("FOUND WunderLINQ")
             let device = lastPeripherals.last!;
             wunderLINQ = device;
             bleData.setPeripheral(peripheral: device)
@@ -958,7 +964,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         } else {
             if keepScanning {
                 // Start scanning again...
-                print("RESUMING SCAN!")
+                NSLog("RESUMING SCAN!")
                 disconnectButton.isEnabled = false
                 centralManager.scanForPeripherals(withServices: [CBUUID(string: Device.WunderLINQAdvertisingUUID)], options: nil)
                 Timer.scheduledTimer(timeInterval: timerScanInterval, target: self, selector: #selector(self.pauseScan), userInfo: nil, repeats: false)
@@ -1260,6 +1266,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     
     // MARK: - Updating UI
     func updateMessageDisplay() {
+        NSLog("IN MainCollectionViewController updateMessageDisplay()")
         // Update Buttons
         if (faults.getallActiveDesc().isEmpty){
             faultsBtn.tintColor = UIColor.clear
@@ -3227,6 +3234,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         }
         
         if showAlert {
+            NSLog("IN centralManagerDidUpdateState         if showAlert ")
             // Display Alert
             let alertController = UIAlertController(title: NSLocalizedString("bt_alert_title", comment: ""), message: message, preferredStyle: .alert)
             let defaultAction = UIAlertAction(title: NSLocalizedString("alert_message_exit_ok", comment: ""), style: .default, handler: nil)
@@ -3445,6 +3453,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     }
     
     @objc func defaultsChanged(notification:NSNotification){
+        NSLog("IN maincollectionviewcontroller defaultsChanged")
         if let defaults = notification.object as? UserDefaults {
             if defaults.integer(forKey: "darkmode_lastSet") != defaults.integer(forKey: "darkmode_preference"){
                 UserDefaults.standard.set(defaults.integer(forKey: "darkmode_preference"), forKey: "darkmode_lastSet")
@@ -3495,6 +3504,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     }
     
     private func clearNotifications(){
+        NSLog("IN maincollectionviewcontroller clearNotifications")
         let center = UNUserNotificationCenter.current()
         center.removeAllDeliveredNotifications() // To remove all delivered notifications
         center.removeAllPendingNotificationRequests()
@@ -3930,6 +3940,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             isTimerRunning = false
             seconds = 10
             // Hide the navigation bar on the this view controller
+            NSLog("IN maincollectionviewcontroller updateTimer")
             DispatchQueue.main.async(){
                 self.navigationController?.setNavigationBarHidden(true, animated: true)
                 if (self.collectionView != nil){

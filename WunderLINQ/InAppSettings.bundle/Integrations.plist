@@ -29,6 +29,7 @@
 				<string>11</string>
 				<string>12</string>
 				<string>13</string>
+				<string>14</string>
 			</array>
 			<key>Titles</key>
 			<array>
@@ -46,6 +47,7 @@
 				<string>nav_app_yahoojapan</string>
 				<string>nav_app_copilot</string>
 				<string>nav_app_yandex</string>
+				<string>nav_app_cartograph</string>
 			</array>
 		</dict>
 		<dict>

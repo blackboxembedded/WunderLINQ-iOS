@@ -74,6 +74,7 @@
 		<string>shortcuts</string>
 		<string>copilot</string>
 		<string>yandexnavi</string>
+		<string>cartograph</string>
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
