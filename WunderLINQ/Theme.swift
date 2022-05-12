@@ -17,7 +17,6 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import UIKit
-import GoogleMaps
 
 enum Theme: Int {
     case `default`, dark
@@ -94,16 +93,7 @@ enum Theme: Int {
         UIButton.appearance(whenContainedInInstancesOf: [TripViewController.self]).tintColor = UIColor.black
         
         UIImageView.appearance(whenContainedInInstancesOf: [GeoDataViewController.self]).tintColor = UIColor.white
-        
-        if #available(iOS 13.0, *) { // For compatibility with earlier iOS.
-            let appearance = UINavigationBarAppearance()
-            appearance.configureWithOpaqueBackground()
-            appearance.backgroundColor = UIColor.white
-            UINavigationBar.appearance().standardAppearance = appearance
-            UINavigationBar.appearance().scrollEdgeAppearance = appearance
-        }else{
-            UINavigationBar.appearance().backgroundColor = backgroundColor
-        }
+
         UINavigationBar.appearance().backItem?.backBarButtonItem?.tintColor = mainColor
         UINavigationBar.appearance().barStyle = .default
         UINavigationBar.appearance().barTintColor = backgroundColor
@@ -115,7 +105,7 @@ enum Theme: Int {
         
         UIButton.appearance().tintColor = mainColor
         UIBarButtonItem.appearance().tintColor = mainColor
-
+        UINavigationBar.appearance().backgroundColor = backgroundColor
     }
 }
 

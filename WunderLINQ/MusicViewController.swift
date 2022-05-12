@@ -226,12 +226,29 @@ class MusicViewController: UIViewController, SPTAppRemotePlayerStateDelegate {
     @objc func updateTimer() {
         if seconds < 1 {
             timer.invalidate()
-            //Send alert to indicate "time's up!"
             isTimerRunning = false
             seconds = 10
             // Hide the navigation bar on the this view controller
             DispatchQueue.main.async(){
                 self.navigationController?.setNavigationBarHidden(true, animated: true)
+                if #available(iOS 13.0, *) {
+                    switch(UserDefaults.standard.integer(forKey: "darkmode_preference")){
+                    case 0:
+                        //OFF
+                        self.navigationController?.setStatusBar(backgroundColor: .white)
+                    case 1:
+                        //On
+                        self.navigationController?.setStatusBar(backgroundColor: .black)
+                    default:
+                        //Default
+                        if self.traitCollection.userInterfaceStyle == .light {
+                            self.navigationController?.setStatusBar(backgroundColor: .white)
+                        } else {
+                            self.navigationController?.setStatusBar(backgroundColor: .black)
+                        }
+                     }
+                }
+                self.navigationController?.navigationBar.setNeedsLayout()
             }
         } else {
             seconds -= 1

@@ -65,16 +65,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) ->
     Bool {
-            
             //Read and populate defaults
             registerDefaultsFromSettingsBundle()
             
-            // Override point for customization after application launch.
             // Keep screen unlocked
             application.isIdleTimerDisabled = true
             GMSServices.provideAPIKey(Secrets.google_maps_api_key)
             
-            // Override point for customization after application launch.
+            // Customize Application Look
             switch(UserDefaults.standard.integer(forKey: "darkmode_preference")){
             case 0:
                 //OFF
@@ -97,6 +95,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                     Theme.default.apply()
                 }
              }
+        
+            if #available(iOS 13, *) {
+                let appearance = UINavigationBarAppearance()
+                appearance.configureWithOpaqueBackground()
+                UINavigationBar.appearance().standardAppearance = appearance
+                UINavigationBar.appearance().scrollEdgeAppearance = appearance
+            }
             
             //Hack to enable Virtual Keyboard
             let setHardwareLayout = NSSelectorFromString("setHardwareLayout:")
@@ -105,6 +110,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             .filter({ $0.responds(to: setHardwareLayout) })
             .forEach { $0.perform(setHardwareLayout, with: nil) }
         
+            //Lock app orientation
             switch(UserDefaults.standard.integer(forKey: "orientation_preference")){
             case 0:
                 AppUtility.lockOrientation(.all)
@@ -131,13 +137,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                  let viewController = storyboard.instantiateViewController(withIdentifier: "firstRunVC")
                  self.window?.rootViewController = viewController
                  self.window?.makeKeyAndVisible()
-            }
-        
-            if #available(iOS 15, *) {
-                let appearance = UINavigationBarAppearance()
-                appearance.configureWithOpaqueBackground()
-                UINavigationBar.appearance().standardAppearance = appearance
-                UINavigationBar.appearance().scrollEdgeAppearance = appearance
             }
 
             return true

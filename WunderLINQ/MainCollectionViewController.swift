@@ -3936,13 +3936,14 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     @objc func updateTimer() {
         if seconds < 1 {
             timer.invalidate()
-            //Send alert to indicate "time's up!"
             isTimerRunning = false
             seconds = 10
             // Hide the navigation bar on the this view controller
             NSLog("IN maincollectionviewcontroller updateTimer")
             DispatchQueue.main.async(){
                 self.navigationController?.setNavigationBarHidden(true, animated: true)
+                self.navigationController?.setStatusBar(backgroundColor: .black)
+                self.navigationController?.navigationBar.setNeedsLayout()
                 if (self.collectionView != nil){
                     self.collectionView!.reloadData()
                 }
@@ -4034,30 +4035,6 @@ extension MainCollectionViewController: UITableViewDataSource {
         let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
         cell.textLabel?.text = self.popoverMenuList[(indexPath as NSIndexPath).row]
         return cell
-    }
-}
-
-extension UINavigationController {
-    open override var preferredStatusBarStyle: UIStatusBarStyle {
-        switch(UserDefaults.standard.integer(forKey: "darkmode_preference")){
-        case 0:
-            //OFF
-            return .default
-        case 1:
-            //On
-            return .lightContent
-        default:
-            //Default
-            if #available(iOS 13.0, *) {
-                if traitCollection.userInterfaceStyle == .light {
-                    return .default
-                } else {
-                    return .lightContent
-                }
-            } else {
-                return .default
-            }
-        }
     }
 }
 
