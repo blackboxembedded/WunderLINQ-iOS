@@ -6,10 +6,10 @@
 "task_title_selfie" = "セルフィーを撮る";
 "task_title_start_record" = "ビデオ撮影開始";
 "task_title_start_trip" = "トリップログスタート";
-"task_title_waypoint" = "地点登録";
+"task_title_waypoint" = "地点登録（Waypoint）";
 "task_title_waypoint_nav" = "登録地へのナビゲーション";
 "task_title_settings" = "設定";
-"task_title_empty" = "Empty";
+"task_title_empty" = "空にする";
 "pref_task_one" = "1番目";
 "pref_task_two" = "2番目";
 "pref_task_three" = "3番目";
@@ -20,8 +20,8 @@
 "pref_task_eight" = "8番目";
 "pref_task_nine" = "9番目";
 "pref_task_ten" = "10番目";
-"task_title_weathermap" = "ウェザーマップ";
+"task_title_weathermap" = "お天気マップ";
 "task_title_actioncam_stop_video" = "アクションカメラ録画停止";
 "task_title_actioncam_start_video" = "アクションカメラ録画開始";
-"task_title_roadbook" = "Roadbook";
+"task_title_roadbook" = "ロードブック（コマ図）";
 "task_title_systemvolume" = "Volume";
