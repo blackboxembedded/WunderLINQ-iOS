@@ -139,11 +139,11 @@
 "task_title_stop_record" = "動画撮影終了";
 "task_title_start_trip" = "トリップログスタート";
 "task_title_stop_trip" = "トリップログ終了";
-"task_title_waypoint" = "地点登録";
+"task_title_waypoint" = "地点登録（Waypoint）";
 "task_title_settings" = "設定";
 "task_title_actioncam_start_video" = "アクションカメラ録画開始";
 "task_title_actioncam_stop_video" = "アクションカメラ録画停止";
-"task_title_weathermap" = "ウェザーマップ";
+"task_title_weathermap" = "お天気マップ";
 "toast_actioncam_notconnected" = "アクションカメラが接続されていません";
 "toast_actioncam_notset" = "アクションカメラをAPPセッティングで設定してください";
 "toast_waypoint_saved" = "ウェイポイント記録完了";
@@ -154,7 +154,7 @@
 "latitude_header" = "緯度";
 "longitude_header" = "経度";
 "altitude_header" = "標高";
-"gpsspeed_header" = "GPS スピード";
+"gpsspeed_header" = "GPS 速度";
 "gear_header" = "ギア";
 "enginetemp_header" = "エンジン温度";
 "ambienttemp_header" = "外気温度";
@@ -171,13 +171,13 @@
 "tripone_header" = "トリップ１";
 "triptwo_header" = "トリップ２";
 "tripauto_header" = "オートトリップ";
-"speed_header" = "スピード";
+"speed_header" = "速度";
 "avgspeed_header" = "平均速度";
-"cconsumption_header" = "瞬間燃費";
+"cconsumption_header" = "現在の燃費";
 "fueleconomyone_header" = "燃費１";
 "fueleconomytwo_header" = "燃費２";
 "fuelrange_header" = "走行可能距離";
-"leanangle_header" = "バンク角";
+"leanangle_header" = "バンク角測定アプリ";
 "gforce_header" = "加速度";
 "bearing_header" = "進行方向";
 // ContactsTableViewController
@@ -233,3 +233,6 @@
 "barometric_header" = "気圧計";
 // FirstRunViewController
 "firstrun_start" = "WunderLINQは沢山の便利機能を使用するために「許可」が必要です。このあとその許可がなぜ必要かという説明が続きますこの許可のプロセスは今回1回のみです。あとから許可の変更をする場合は設定から行えます。詳しくはツアラテックジャパンのWunderLINQページでも確認できます。";
+"rpm_header" = "回転数";
+"leanangle_bike_header" = "バンク角";
+"rearwheel_speed_header" = "後輪速度";
