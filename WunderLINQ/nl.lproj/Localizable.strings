@@ -229,3 +229,20 @@
 "toast_waypoint_error" = "Breedtegraad & Lengtegraad Verplicht";
 "hwsave_alert_btn_ok" = "Doorgaan";
 "addwaypoint_view_search_hint" = "Voer Adres In";
+"negative_notification_alert_body" = "Doordat de app geen toegang heeft tot je notificaties, kan de app geen waarschuwingen verzenden over jouw voertuig.";
+// FirstRunViewController
+"firstrun_start" = "De WunderLINQ app heeft een flink aantal rechten nodig om alle coole functionaliteiten mogelijk te maken. We gaan nu een aantal keer vragen om deze rechten aan te zetten.\nDeze vraag zullen we maar 1 keer per functionaliteit stellen. Hierna kan je deze rechten altijd nog aanpassen via de instellingen in je apparaat.";
+"contacts_alert_body" = "De WunderLINQ app heeft toegang nodig tot je contacten om deze te kunnen bellen.";
+"camera_alert_body" = "De WunderLINQ app heeft toegang nodig tot je camera om foto's en video's te kunnen maken.";
+"call_alert_body" = "De WunderLINQ app heeft toegang nodig tot bellen om telefoongesprekken mogelijk te maken.";
+"record_audio_alert_body" = "De WunderLINQ app heeft toegang nodig tot je microfoon om het geluid van je video's op te nemen.";
+"write_photo_alert_body" = "De WunderLINQ app heeft toegang nodig tot je foto verzameling om foto's op te slaan.";
+"read_media_alert_body" = "De WunderLINQ app heeft toegang nodig tot je Mediaverzameling om muziek te kunnen afspelen.";
+"location_alert_body" = "De WunderLINQ app heeft toegang nodig tot je locatie om historische locatiegegevens over je reizen op te slaan.\nMet deze locatiegegevens hebben we toegang tot data zoals: Hoogte, snelheid en richting.";
+"notification_alert_body" = "De WunderLINQ app heeft toegang nodig tot je notificaties om je notificaties te sturen van waarschuwingen over je voertuig.";
+"firstrun_end" = "Bedankt voor de aanschaf van WunderLINQ! Ride Safe.";
+"negative_media_alert_body" = "Door geen toegang tot je mediaverzameling, dan de app geen muziek afspelen.";
+"negative_contacts_alert_body" = "Door geen toegang tot je contacten, kan de app niet laten zien wie je aan het bellen bent.";
+"bt_not_authorized" = "De app heeft geen toestemming op BLE te gebruiken.";
+"bt_resetting" = "De BLE manager is bezig met resetten; wacht op een status update.";
+"bt_unknown" = "De status van de BLE manager is niet bekend.";
