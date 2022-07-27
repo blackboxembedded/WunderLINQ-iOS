@@ -74,6 +74,9 @@ enum NavigationAppPreference: Int, CaseIterable {
     /// Universal app link accessible with `cartograph://`
     case cartograph
     
+    /// Universal app link accessible with `om://`
+    case organicmaps
+    
     var isAvailable: Bool {
         UIApplication.shared.canOpenURL(URL(string: self.urlScheme)!)
     }
@@ -124,6 +127,9 @@ enum NavigationAppPreference: Int, CaseIterable {
             
         case .cartograph:
             return "cartograph://"
+            
+        case .organicmaps:
+            return "om://"
 
         }
     }
@@ -188,6 +194,9 @@ enum NavigationAppPreference: Int, CaseIterable {
             
         case .cartograph:
             back_link = "&back_url=wunderlinq://"
+            
+        case .organicmaps:
+            back_link = "?back_url=wunderlinq://"
         }
         
         
@@ -361,6 +370,17 @@ extension NavAppHelper {
             if let uRL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
                 if (UIApplication.shared.canOpenURL(uRL)) {
                     UIApplication.shared.open(uRL, options: [:], completionHandler: nil)
+                }
+            }
+        case .organicmaps:
+            let urlString = "\(navApp.urlScheme)route?sll=\(currentLatitude),\(currentLongitude)&saddr=\(NSLocalizedString("trip_view_waypoint_start_label", comment: ""))&dll=\(destLatitude),\(destLongitude)&daddr=\(destLabel ?? ""))&type=vehicle&backurl=wunderlinq://"
+            if let mapsMeURL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
+                if (UIApplication.shared.canOpenURL(mapsMeURL)) {
+                    if #available(iOS 10, *) {
+                        UIApplication.shared.open(mapsMeURL, options: [:], completionHandler: nil)
+                    } else {
+                        UIApplication.shared.openURL(mapsMeURL as URL)
+                    }
                 }
             }
         }
@@ -540,6 +560,18 @@ extension NavAppHelper {
             if let uRL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
                 if (UIApplication.shared.canOpenURL(uRL)) {
                     UIApplication.shared.open(uRL, options: [:], completionHandler: nil)
+                }
+            }
+        case .organicmaps:
+            //Organic Maps
+            let urlString = "\(navApp.urlScheme)map?ll=\(destLatitude),\(destLongitude)&n=\(destLabel ?? "")&backurl=wunderlinq://"
+            if let mapsMeURL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
+                if (UIApplication.shared.canOpenURL(mapsMeURL)) {
+                    if #available(iOS 10, *) {
+                        UIApplication.shared.open(mapsMeURL, options: [:], completionHandler: nil)
+                    } else {
+                        UIApplication.shared.openURL(mapsMeURL as URL)
+                    }
                 }
             }
         }

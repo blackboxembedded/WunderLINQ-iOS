@@ -30,6 +30,7 @@
 				<string>12</string>
 				<string>13</string>
 				<string>14</string>
+				<string>15</string>
 			</array>
 			<key>Titles</key>
 			<array>
@@ -48,6 +49,7 @@
 				<string>nav_app_copilot</string>
 				<string>nav_app_yandex</string>
 				<string>nav_app_cartograph</string>
+				<string>nav_app_organicmaps</string>
 			</array>
 		</dict>
 		<dict>

@@ -75,6 +75,7 @@
 		<string>copilot</string>
 		<string>yandexnavi</string>
 		<string>cartograph</string>
+		<string>om</string>
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
