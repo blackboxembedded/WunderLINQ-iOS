@@ -10,8 +10,8 @@
 "NSLocationAlwaysAndWhenInUseUsageDescription" = "WunderLINQはトリップログとウェイポイントを記録するためにロケーションにアクセスする必要があります.";
 "NSLocationAlwaysUsageDescription" = "WunderLINQはトリップログとウェイポイントを記録するためにロケーションにアクセスする必要があります.";
 "NSLocationWhenInUseUsageDescription" = "WunderLINQはトリップログとウェイポイントを記録するためにロケーションにアクセスする必要があります.";
-"NSAppleMusicUsageDescription" = "WunderLINQはミュージック再生のためにメディアライブラリーへのアクセスが必要です.";
-"NSBluetoothPeripheralUsageDescription" = "WunderLINQはワンダーリンクハードウェアとの通信のためブルートゥースにアクセスする必要があります.";
-"NSMicrophoneUsageDescription" = "WunderLINQは動画撮影時の音声録音のためマイクへのアクセスが必要です";
-"NSPhotoLibraryAddUsageDescription" = "WunderLINQは写真保存のためフォトライブラリーへのアクセスが必要です.";
-"NSPhotoLibraryUsageDescription" = "WunderLINQは写真保存のためフォトライブラリーへのアクセスが必要です.";
+"NSAppleMusicUsageDescription" = "WunderLINQはミュージックを再生する為にあなたのメディアライブラリーへのアクセスが必要です。";
+"NSBluetoothPeripheralUsageDescription" = "WunderLINQはワンダーリンク本体へBluetoothで接続をする為、Bluetoothへのアクセスする必要があります.";
+"NSMicrophoneUsageDescription" = "WunderLINQは動画撮影時の音声録音の為、マイクへのアクセスが必要です。";
+"NSPhotoLibraryAddUsageDescription" = "WunderLINQは写真保存の為、あなたのフォトライブラリーへのアクセスが必要です。";
+"NSPhotoLibraryUsageDescription" = "WunderLINQは写真保存の為、あなたのフォトライブラリーへのアクセスが必要です。";

@@ -1,26 +1,26 @@
 "longitude_header" = "Lengtegraad";
-"frontpressure_header" = "Voorwiel Bandenspanning";
-"rearpressure_header" = "Achterwiel Bandenspanning";
+"frontpressure_header" = "Bandenspanning Voorwiel";
+"rearpressure_header" = "Bandenspanning Achterwiel";
 "tripone_header" = "Trip 1";
 "avgspeed_header" = "Gemiddelde Snelheid";
 "cconsumption_header" = "Huidig Verbruik";
 "fueleconomytwo_header" = "Gem. Verbruik 2";
 "fault_ASCSLF" = "ASC zelf-diagnose niet compleet";
 // CompassViewController
-"compass_title" = "Compas";
+"compass_title" = "Kompas";
 "fault_TIREFCF" = "Voorwiel bandenspanning gevaarlijk";
 "north" = "N";
-"fault_LAMPREAR" = "Achter licht";
-"fault_LAMPLIC" = "Kenteken plaat verlichting";
-"toast_address_not_set" = "Geen Huis Adres in instellingen gevonden";
-"fault_LAMPADDD" = "Extra Dim/groot licht";
-"fault_GENWARNFSYLW" = "Algemeen waarschuwings lamp knippert geel";
-"task_title_favnumber" = "Bel Favoriet Nummer";
-"fault_GENWARNSHYLW" = "Algemeen waarschuwings lamp brandt geel";
+"fault_LAMPREAR" = "Achterlicht";
+"fault_LAMPLIC" = "Kentekenplaatverlichting";
+"toast_address_not_set" = "Geen Huisadres in de instellingen gevonden";
+"fault_LAMPADDD" = "Extra Dim- of grootlicht";
+"fault_GENWARNFSYLW" = "Algemene waarschuwingslamp knippert geel";
+"task_title_favnumber" = "Bel Favoriet Telefoonnummer";
+"fault_GENWARNSHYLW" = "Algemene waarschuwingslamp brandt geel";
 "task_title_photo" = "Maak Foto";
-"fault_GENWARNFSRED" = "Algemeen waarschuwingslamp knippert rood";
-"task_title_stop_trip" = "Stop Route Opslag";
-"fault_GENWARNSHRED" = "Algemeen waarschuwingslamp brandt rood";
+"fault_GENWARNFSRED" = "Algemene waarschuwingslamp knippert rood";
+"task_title_stop_trip" = "Stop Reis Log";
+"fault_GENWARNSHRED" = "Algemene waarschuwingslamp brandt rood";
 "toast_photo_taken" = "Foto Gemaakt!";
 "ambientlight_header" = "Omgevingslicht";
 "fuelrange_header" = "Bereik";
@@ -28,7 +28,7 @@
 "gpsspeed_header" = "GPS Snelheid";
 // Product
 "product" = "WunderLINQ";
-"disclaimer_alert_body" = ". Probeer geen route-informatie in te voeren of pas de WunderLINQ tijdens het rijden aan. Het niet volledig opletten van de werking van uw voertuig kan de dood, ernstig letsel of schade aan eigendommen tot gevolg hebben. U neemt de volledige verantwoordelijkheid en het risico op zich voor het gebruik van dit apparaat.";
+"disclaimer_alert_body" = "Probeer geen route-informatie in te voeren of pas de WunderLINQ tijdens het rijden niet aan. Het niet volledig opletten van de werking van uw voertuig kan de dood, ernstig letsel of schade aan eigendommen tot gevolg hebben. U neemt de volledige verantwoordelijkheid en het risico op zich voor het gebruik van dit apparaat.";
 "negative_write_alert_body" = "Door geen wijziging toestemming, kan deze app geen bestanden opslaan.";
 "alert_message_exit_ok" = "OK";
 "negative_alert_btn_cancel" = "Annuleren";
@@ -43,12 +43,12 @@
 "seconds" = "seconden";
 "delete_bt" = "Verwijderen";
 "waypoint_view_bt_nav" = "Navigeer";
-"east" = "E";
+"east" = "O";
 "task_title_start_record" = "Start Opname";
 "home" = "Thuis";
-"toast_phone_not_set" = "Geen Favoriet Nummer in instellingen gevonden";
+"toast_phone_not_set" = "Geen Favoriet telefoonnummer in instellingen gevonden";
 "task_title_stop_record" = "Stop Opname";
-"fault_ICEWARN" = "Vorst waarschuwing";
+"fault_ICEWARN" = "Vorstwaarschuwing";
 // Fault Description
 "fault_ABSSLF" = "ABS zelf-diagnose niet compleet";
 "fault_LAMPAFL1" = "Koplamp 1";
@@ -56,28 +56,28 @@
 "fault_OILLOW" = "Motorolieniveau te laag";
 "trip_view_tv_distance" = "Afstand";
 "north_west" = "NW";
-"south" = "S";
+"south" = "Z";
 "gear_header" = "Versnelling";
 "shifts_header" = "Aantal keer geschakeld";
 "task_title_settings" = "Instellingen";
 // LocationService
 "time_header" = "Tijd";
-"task_title_start_trip" = "Start Route Oslag";
-"task_title_waypoint" = "Route Punt Opslaan";
+"task_title_start_trip" = "Start Reis Log";
+"task_title_waypoint" = "Routepunt Opslaan";
 // ContactsTableViewController
 "contactlist_title" = "Contacten";
 "fault_ABSDAC" = "ABS gedeactiveerd";
 "trip2_label" = "Dagteller 2";
 "waypoint_view_tv_lon_label" = "Lengtegraad";
-"south_east" = "SE";
+"south_east" = "SO";
 "task_title_selfie" = "Maak Selfie";
 "rearbrakes_header" = "Achterrem";
 "fault_ASCERR" = "ASC storing";
 "enginetemp_header" = "Motortemperatuur";
 "trip_view_tv_shifts" = "Aantal keer geschakeld";
 // WaypointsNavTableViewController
-"waypoints_nav_title" = "Waypoints";
-"fault_LAMPFLI" = "Richtingaanwijzer links voor";
+"waypoints_nav_title" = "Viapunten";
+"fault_LAMPFLI" = "Richtingaanwijzer linksvoor";
 "task_title_gohome" = "Naar Huis";
 "voltage_header" = "Voltage";
 "fault_TIREFWF" = "Voorwiel bandenspanning te laag";
@@ -91,7 +91,7 @@
 "fault_ABSERR" = "ABS storing";
 "waypoint_view_tv_lat_label" = "Breedtegraad";
 "fault_LAMPAFL2" = "Koplamp 2";
-"south_west" = "SW";
+"south_west" = "ZW";
 "frontbrakes_header" = "Voorrem";
 "fault_TIRERWF" = "Achterwiel bandenspanning te laag";
 "task_title_callcontact" = "Bel Contact";
@@ -99,14 +99,14 @@
 "quicktask_title" = "Stop Taak";
 "west" = "W";
 "fault_LAMPFRI" = "Richtingaanwijzer rechtsvoor";
-"fault_LAMPRRI" = "Richtingaanwijzer rechts achter";
+"fault_LAMPRRI" = "Richtingaanwijzer rechtsachter";
 "fault_ASCINT" = "ASC onderbreking";
 // TripsTableViewController
 "trips_title" = "Opgeslagen routes";
 "fault_LAMPDAY" = "Dagrijverlichting";
 "fault_LAMPFPK2" = "Parkeerlicht 2";
 "speed_header" = "Snelheidsmeter";
-"fault_LAMPADDB" = "Extra rem licht";
+"fault_LAMPADDB" = "Extra remlicht";
 "task_title_navigation" = "Navigatie";
 "waypoint_view_bt_share" = "Delen";
 // MusicViewController
@@ -116,18 +116,18 @@
 "fault_LAMPLOW" = "Dim licht";
 "alert_title_fuel" = "Laag brandstofniveau";
 "ambienttemp_header" = "Omgevingstemperatuur";
-"task_title_waypoint_nav" = "Navigeer naar Route Punt";
+"task_title_waypoint_nav" = "Navigeer naar Routepunt";
 "fault_LAMPHI" = "Groot licht";
 "vin_header" = "VIN";
-"fault_LAMPRLI" = "Richtingaanwijzer links achter";
-"fault_LAMPBRK" = "Rem Licht";
+"fault_LAMPRLI" = "Richtingaanwijzer linksachter";
+"fault_LAMPBRK" = "Remlicht";
 "fault_LAMPFPK1" = "Parkeerlicht 1";
 "latitude_header" = "Breedtegraad";
 "fault_LAMPFL1" = "Koplamp 1";
 "fueleconomyone_header" = "Gem. Verbruik 1";
 "altitude_header" = "Hoogte";
 "close_label" = "Sluiten";
-"north_east" = "NE";
+"north_east" = "NO";
 "triptwo_header" = "Trip 2";
 // TripViewController
 "trip_view_title" = "Reis/route";
@@ -184,7 +184,7 @@
 "toast_actioncam_notconnected" = "ActionCam niet verbonden";
 "alert_title_photopreview" = "Foto Voorbeeld";
 "delete_trip_alert_title" = "Waarschuwing!";
-"delete_trip_alert_body" = "Verwijder Trip Log?";
+"delete_trip_alert_body" = "Verwijder Reis Log?";
 "share_gpx" = "Deel GPX";
 "delete_waypoint_alert_body" = "Verwijder Routepunt?";
 "task_title_actioncam_start_video" = "Start ActionCam Opname";
@@ -194,9 +194,9 @@
 //HWSettingsViewController
 "customize_btn_label" = "Aanpassen";
 "wwtype_label" = "Wiel Type";
-"rearwheel_speed_header" = "Achterwiel Snelheid";
+"rearwheel_speed_header" = "Snelheid achterwiel";
 "sunrisesunset_header" = "Zonsopgang/Zonsondergang";
-"leanangle_header" = "Hellingshoeks Device";
+"leanangle_header" = "Hellingshoek";
 "gforce_header" = "g-kracht";
 "bearing_header" = "Richting";
 "barometric_header" = "Barometer";
@@ -229,3 +229,43 @@
 "toast_waypoint_error" = "Breedtegraad & Lengtegraad Verplicht";
 "hwsave_alert_btn_ok" = "Doorgaan";
 "addwaypoint_view_search_hint" = "Voer Adres In";
+"negative_notification_alert_body" = "Doordat de app geen toegang heeft tot je notificaties, kan de app geen waarschuwingen verzenden over jouw voertuig.";
+// FirstRunViewController
+"firstrun_start" = "De WunderLINQ app heeft een flink aantal rechten nodig om alle coole functionaliteiten mogelijk te maken. We gaan nu een aantal keer vragen om deze rechten aan te zetten.\nDeze vraag zullen we maar 1 keer per functionaliteit stellen. Hierna kan je deze rechten altijd nog aanpassen via de instellingen in je apparaat.";
+"contacts_alert_body" = "De WunderLINQ app heeft toegang nodig tot je contacten om deze te kunnen bellen.";
+"camera_alert_body" = "De WunderLINQ app heeft toegang nodig tot je camera om foto's en video's te kunnen maken.";
+"call_alert_body" = "De WunderLINQ app heeft toegang nodig tot bellen om telefoongesprekken mogelijk te maken.";
+"record_audio_alert_body" = "De WunderLINQ app heeft toegang nodig tot je microfoon om het geluid van je video's op te nemen.";
+"write_photo_alert_body" = "De WunderLINQ app heeft toegang nodig tot je foto verzameling om foto's op te slaan.";
+"read_media_alert_body" = "De WunderLINQ app heeft toegang nodig tot je Mediaverzameling om muziek te kunnen afspelen.";
+"location_alert_body" = "De WunderLINQ app heeft toegang nodig tot je locatie om historische locatiegegevens over je reizen op te slaan.\nMet deze locatiegegevens hebben we toegang tot data zoals: Hoogte, snelheid en richting.";
+"notification_alert_body" = "De WunderLINQ app heeft toegang nodig tot je notificaties om je notificaties te sturen van waarschuwingen over je voertuig.";
+"firstrun_end" = "Bedankt voor de aanschaf van WunderLINQ! Ride Safe.";
+"negative_media_alert_body" = "Door geen toegang tot je mediaverzameling, dan de app geen muziek afspelen.";
+"negative_contacts_alert_body" = "Door geen toegang tot je contacten, kan de app niet laten zien wie je aan het bellen bent.";
+"bt_not_authorized" = "De app heeft geen toestemming op BLE te gebruiken.";
+"bt_resetting" = "De BLE manager is bezig met resetten; wacht op een status update.";
+"bt_unknown" = "De status van de BLE manager is niet bekend.";
+"keymode_default_label" = "Standaard";
+"geocode_error" = "Probleem met het opvragen van de geocode";
+"fault_LAMPRFOG" = "Mistlamp achter";
+//BikeInfoViewController
+"bike_info_title" = "Informatie Motorfiets";
+"dash_engine_label" = "Motor";
+"dash_range_label" = "Actieradius";
+"dash_rdcf_label" = "V";
+"dash_rdcr_label" = "A";
+"dash_odometer_label" = "Kilometerteller";
+"dash_avgspeed_label" = "Gem.";
+"dash_cconsumption_label" = "Verbruik";
+"next_service_label" = "Volgend onderhoud";
+"next_service_date_label" = "Volgende onderhoudsbeurt";
+"geodata_label" = "Reizen & Viapunten";
+"trip_logs_label" = "Reis Logs";
+"bt_alert_title" = "Central Manager State";
+"toast_waypoint_saved" = "Routepunt opgeslagen";
+"keymode_custom_label" = "Aangepast";
+"gpx_import_alert_title" = "GPX importeren";
+"gpx_import_alert_body" = "Gebruik viapunten uit GPX bestand?";
+"dash_ambient_label" = "Lucht";
+"dash_altitude_label" = "Hoogte";

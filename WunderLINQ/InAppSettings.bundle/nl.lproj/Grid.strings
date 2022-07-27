@@ -1,6 +1,6 @@
 "gear_header" = "Versnelling";
 "ambienttemp_header" = "Omgevingstemperatuur";
-"frontpressure_header" = "Voorwiel Bandenspanning";
+"frontpressure_header" = "Bandenspanning Voorwiel";
 "odometer_header" = "Kilometerteller";
 "voltage_header" = "Voltage";
 "throttle_header" = "Gashendelpositie";
@@ -15,7 +15,7 @@
 "fueleconomyone_header" = "Gem. Verbruik 1";
 "gpsspeed_header" = "GPS Snelheid";
 "enginetemp_header" = "Motortemperatuur";
-"rearpressure_header" = "Achterwiel Bandenspanning";
+"rearpressure_header" = "Bandenspanning Achterwiel";
 "rearbrakes_header" = "Achterrem";
 "speed_header" = "Snelheidsmeter";
 "fueleconomytwo_header" = "Gem. Verbruik 2";
@@ -26,7 +26,7 @@
 "bearing_header" = "Richting";
 "gforce_header" = "g-kracht";
 "leanangle_bike_header" = "Hellingshoek";
-"leanangle_header" = "Hellingshoeks Device";
+"leanangle_header" = "Hellingshoek";
 "pref_grid_eight" = "Achtste";
 "pref_grid_eleven" = "Elfde";
 "pref_grid_fifteen" = "Vijftiende";
@@ -43,6 +43,6 @@
 "pref_grid_three" = "Derde";
 "pref_grid_twelve" = "Twaalfde";
 "pref_grid_two" = "Tweede";
-"rearwheel_speed_header" = "Achterwiel Snelheid";
+"rearwheel_speed_header" = "Snelheid achterwiel";
 "rpm_header" = "RPM";
 "sunrisesunset_header" = "Zonsopgang/Zonsondergang";

@@ -32,7 +32,7 @@
 "negative_contacts_alert_body" = "Since contact access has not been granted, this app will not be able to display contacts to call.";
 "negative_camera_alert_body" = "Since camera access has not been granted, this app will not be able to take photos or videos.";
 "negative_microphone_alert_body" = "Since microphone access has not been granted, this app will not be able to record videos.";
-"negative_notification_alert_body" = "Since notifcations were not allowed, this app will not be able to send notifcations for faults";
+"negative_notification_alert_body" = "Since notifcations were not allowed, this app will not be able to send notifcations for faults.";
 "alert_message_exit_ok" = "OK";
 "negative_alert_btn_ok" = "Open Settings";
 "negative_alert_btn_cancel" = "Cancel";
@@ -374,13 +374,13 @@
 "keyboard_hid_0x2B_label" = "Keyboard Tab";
 "keyboard_hid_0x2C_label" = "Keyboard Spacebar";
 "keyboard_hid_0x2D_label" = "Keyboard -";
-"keyboard_hid_0x2E_label" = "Keyboard \=";
+"keyboard_hid_0x2E_label" = "Keyboard =";
 "keyboard_hid_0x2F_label" = "Keyboard [";
 "keyboard_hid_0x30_label" = "Keyboard ]";
-"keyboard_hid_0x31_label" = "Keyboard \\";
+"keyboard_hid_0x31_label" = "Keyboard \"";
 "keyboard_hid_0x32_label" = "Keyboard Non-US # and ~";
-"keyboard_hid_0x33_label" = "Keyboard \; and :";
-"keyboard_hid_0x34_label" = "Keyboard \' and \"";
+"keyboard_hid_0x33_label" = "Keyboard ; and :";
+"keyboard_hid_0x34_label" = "Keyboard ' and \"";
 "keyboard_hid_0x35_label" = "Keyboard Grave Accent and Tilde";
 "keyboard_hid_0x36_label" = "Keyboard,";
 "keyboard_hid_0x37_label" = "Keyboard .";
@@ -428,7 +428,7 @@
 "keyboard_hid_0x61_label" = "Keypad 9 and PageUp";
 "keyboard_hid_0x62_label" = "Keypad 0 and Insert";
 "keyboard_hid_0x63_label" = "Keypad . and Delete";
-"keyboard_hid_0x64_label" = "Keyboard Non-US \\ and |";
+"keyboard_hid_0x64_label" = "Keyboard Non-US \ and |";
 "keyboard_hid_0x65_label" = "Keyboard Application";
 "keyboard_hid_0x66_label" = "Keyboard Power";
 "keyboard_hid_0x67_label" = "Keypad =";
