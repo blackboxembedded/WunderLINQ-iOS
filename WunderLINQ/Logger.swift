@@ -384,7 +384,6 @@ class Logger {
     }
     
     class func logDBG(entry: String) {
-        print("Debug Log ENtry")
         let fileName = "dbg"
         // Get the documents folder url
         let documentDirectory = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)

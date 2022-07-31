@@ -169,7 +169,7 @@ enum NavigationAppPreference: Int, CaseIterable {
             back_link = ""
 
         case .mapsMe:
-            back_link = "?back_url=wunderlinq://"
+            back_link = "?backurl=wunderlinq://"
 
         case .osmAnd:
             back_link = ""
@@ -196,7 +196,7 @@ enum NavigationAppPreference: Int, CaseIterable {
             back_link = "&back_url=wunderlinq://"
             
         case .organicmaps:
-            back_link = "?back_url=wunderlinq://"
+            back_link = "?backurl=wunderlinq://"
         }
         
         
@@ -373,6 +373,7 @@ extension NavAppHelper {
                 }
             }
         case .organicmaps:
+            //Organic Maps
             let urlString = "\(navApp.urlScheme)route?sll=\(currentLatitude),\(currentLongitude)&saddr=\(NSLocalizedString("trip_view_waypoint_start_label", comment: ""))&dll=\(destLatitude),\(destLongitude)&daddr=\(destLabel ?? ""))&type=vehicle&backurl=wunderlinq://"
             if let mapsMeURL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
                 if (UIApplication.shared.canOpenURL(mapsMeURL)) {
