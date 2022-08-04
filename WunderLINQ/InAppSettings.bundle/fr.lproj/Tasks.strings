@@ -25,3 +25,8 @@
 "task_title_actioncam_start_video" = "Démarrer l'enregistrement ActionCam";
 "task_title_roadbook" = "Roadbook";
 "task_title_systemvolume" = "Volume";
+"pref_task_eleven" = "Onzième";
+"pref_task_twelve" = "Douzième";
+"pref_task_fifteen" = "Quinzième";
+"pref_task_thirteen" = "Treizième";
+"pref_task_fourteen" = "Quatorzième";

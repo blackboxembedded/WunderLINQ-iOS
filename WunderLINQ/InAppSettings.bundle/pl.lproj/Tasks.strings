@@ -1,6 +1,3 @@
-
-
-
 "task_title_navigation" = "Nawigacja";
 "task_title_gohome" = "Prowadź na chatę";
 "task_title_favnumber" = "Zadzwoń na ulubiony numer";
@@ -21,6 +18,11 @@
 "pref_task_eight" = "Ósmy";
 "pref_task_nine" = "Dziewiąty";
 "pref_task_ten" = "Dziesiąty";
+"pref_task_fourteen" = "Czternasty";
+"pref_task_eleven" = "Jedenasty";
+"pref_task_twelve" = "Dwunasty";
+"pref_task_thirteen" = "Trzynasty";
+"pref_task_fifteen" = "Piętnasty";
 "task_title_waypoint_nav" = "Kieruj do punktu przelotowego";
 "task_title_settings" = "Ustawienia";
 "task_title_actioncam_start_video" = "Uruchom nagrywanie kamery";

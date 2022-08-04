@@ -37,7 +37,6 @@
 		7E2EC06424991CE200B0A59B /* NavigationControllerWithTraitOverride.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2EC06324991CE200B0A59B /* NavigationControllerWithTraitOverride.swift */; };
 		7E35A59322DC265800E4AE40 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E35A59222DC265800E4AE40 /* Utility.swift */; };
 		7E4669F72518647C00E7E291 /* NavAppHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4669F62518647C00E7E291 /* NavAppHelper.swift */; };
-		7E46AA192419D1540047E87D /* CircularCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E46AA182419D1540047E87D /* CircularCollectionViewLayout.swift */; };
 		7E4D76E321DDAEC100825175 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7E4D76E521DDAEC100825175 /* InfoPlist.strings */; };
 		7E5777D9282D9CB300706328 /* UINavigationController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5777D8282D9CB300706328 /* UINavigationController+Extensions.swift */; };
 		7E5A767820DDEE7200B48CC6 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5A767720DDEE7200B48CC6 /* UIViewController+Extensions.swift */; };
@@ -56,6 +55,7 @@
 		7E755C1E260AA80700B29507 /* SportDashboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E755C1D260AA80700B29507 /* SportDashboard.swift */; };
 		7E75E2DB26D2E6210077CA5A /* VolumeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E75E2DA26D2E6210077CA5A /* VolumeViewController.swift */; };
 		7E7C53CD21F3BA9200C98010 /* ContactsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7C53CC21F3BA9200C98010 /* ContactsTableViewCell.swift */; };
+		7E7DE00928986B1B0009663C /* ZoomAndSnapFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7DE00828986B1B0009663C /* ZoomAndSnapFlowLayout.swift */; };
 		7E80BD3B211CF80600B8CA0D /* LocalisableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E80BD3A211CF80600B8CA0D /* LocalisableLabel.swift */; };
 		7E80BD3D211CFF7300B8CA0D /* LocalisableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E80BD3C211CFF7300B8CA0D /* LocalisableButton.swift */; };
 		7E80BD42211D419C00B8CA0D /* WaypointsNavTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E80BD41211D419C00B8CA0D /* WaypointsNavTableViewController.swift */; };
@@ -154,7 +154,6 @@
 		7E31915E219A1BB40031A2E3 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = WunderLINQ/es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7E35A59222DC265800E4AE40 /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		7E4669F62518647C00E7E291 /* NavAppHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavAppHelper.swift; sourceTree = "<group>"; };
-		7E46AA182419D1540047E87D /* CircularCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularCollectionViewLayout.swift; sourceTree = "<group>"; };
 		7E4D76E421DDAEC100825175 /* sl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = sl; path = sl.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		7E52E9B021A38D89008082FE /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		7E52E9B121A38D89008082FE /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = WunderLINQ/cs.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -195,6 +194,7 @@
 		7E78DB2F23006FD7009742DF /* cs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		7E78DB3023006FD9009742DF /* el */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = el; path = el.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		7E7C53CC21F3BA9200C98010 /* ContactsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsTableViewCell.swift; sourceTree = "<group>"; };
+		7E7DE00828986B1B0009663C /* ZoomAndSnapFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomAndSnapFlowLayout.swift; sourceTree = "<group>"; };
 		7E80BD3A211CF80600B8CA0D /* LocalisableLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalisableLabel.swift; sourceTree = "<group>"; };
 		7E80BD3C211CFF7300B8CA0D /* LocalisableButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalisableButton.swift; sourceTree = "<group>"; };
 		7E80BD3F211D2CB100B8CA0D /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
@@ -430,7 +430,7 @@
 				7EAF646922FE261D00B11550 /* WeatherMapViewController.swift */,
 				7E75E2DA26D2E6210077CA5A /* VolumeViewController.swift */,
 				7EA4788D1F5BA136000CEDDC /* Tasks.swift */,
-				7E46AA182419D1540047E87D /* CircularCollectionViewLayout.swift */,
+				7E7DE00828986B1B0009663C /* ZoomAndSnapFlowLayout.swift */,
 				7EA4BCC621B8C9150084F6EA /* TasksCollectionViewController.swift */,
 				7EA4BCC821B8CB270084F6EA /* TaskCollectionViewCell.swift */,
 				7EC8C9BC1F827977000CEDDC /* ContactsTableViewContoller.swift */,
@@ -702,7 +702,7 @@
 				7E4669F72518647C00E7E291 /* NavAppHelper.swift in Sources */,
 				7E6E0A6824FC022200149387 /* ColorPickerViewController.swift in Sources */,
 				7E8AD3D926141BA10089F590 /* ADVDashboard.swift in Sources */,
-				7E46AA192419D1540047E87D /* CircularCollectionViewLayout.swift in Sources */,
+				7E7DE00928986B1B0009663C /* ZoomAndSnapFlowLayout.swift in Sources */,
 				7EA4BCC721B8C9150084F6EA /* TasksCollectionViewController.swift in Sources */,
 				7E62BB6F21FE3DEB00FDB10E /* MainCollectionViewCell.swift in Sources */,
 				7E25396321CD94A30008D34E /* BLE.swift in Sources */,

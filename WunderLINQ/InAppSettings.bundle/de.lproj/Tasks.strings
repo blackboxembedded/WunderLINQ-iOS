@@ -25,3 +25,8 @@
 "task_title_actioncam_start_video" = "ActionCam Aufnahmestart";
 "task_title_roadbook" = "Roadbook";
 "task_title_systemvolume" = "Volume";
+"pref_task_eleven" = "Elfter";
+"pref_task_twelve" = "Zwölfter";
+"pref_task_thirteen" = "Dreizehnter";
+"pref_task_fourteen" = "Vierzehnter";
+"pref_task_fifteen" = "Fünfzehnter";

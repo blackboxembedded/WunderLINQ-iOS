@@ -26,7 +26,7 @@ import Photos
 
 class TasksCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, AVCaptureVideoDataOutputSampleBufferDelegate, AVCaptureFileOutputRecordingDelegate, CLLocationManagerDelegate {
 
-    var taskLabel: UILabel!
+    let flowLayout = ZoomAndSnapFlowLayout()
     
     var tasks:[Tasks] = [Tasks]()
     
@@ -102,6 +102,26 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
         let taskRow10 = UserDefaults.standard.integer(forKey: "task_ten_preference")
         if (taskRow10 < emptyTask){
             mapping.append(taskRow10)
+        }
+        let taskRow11 = UserDefaults.standard.integer(forKey: "task_eleven_preference")
+        if (taskRow11 < emptyTask){
+            mapping.append(taskRow11)
+        }
+        let taskRow12 = UserDefaults.standard.integer(forKey: "task_twelve_preference")
+        if (taskRow12 < emptyTask){
+            mapping.append(taskRow12)
+        }
+        let taskRow13 = UserDefaults.standard.integer(forKey: "task_thirteen_preference")
+        if (taskRow13 < emptyTask){
+            mapping.append(taskRow13)
+        }
+        let taskRow14 = UserDefaults.standard.integer(forKey: "task_fourteen_preference")
+        if (taskRow14 < emptyTask){
+            mapping.append(taskRow14)
+        }
+        let taskRow15 = UserDefaults.standard.integer(forKey: "task_fifteen_preference")
+        if (taskRow15 < emptyTask){
+            mapping.append(taskRow15)
         }
     }
     private func loadTasks() {
@@ -743,46 +763,30 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
     }
     
     @objc func upRow() {
-        if (itemRow == 0){
-            let nextRow = mapping.count - 1
-            itemRow = nextRow
-        } else if (itemRow < mapping.count ){
+        if (itemRow < mapping.count && itemRow >= 1){
             let nextRow = itemRow - 1
             itemRow = nextRow
+            self.setOffset(itemRow: itemRow)
         }
-
-        self.setOffset(itemRow: itemRow)
     }
     
     @objc func downRow() {
-        
-        if (itemRow == (mapping.count - 1)){
-            let nextRow = 0
-            itemRow = nextRow
-        } else if (itemRow < mapping.count ){
+        if (itemRow < (mapping.count - 1)){
             let nextRow = itemRow + 1
             itemRow = nextRow
+            self.setOffset(itemRow: itemRow)
         }
-        
-        self.setOffset(itemRow: itemRow)
     }
     
     private func setOffset(itemRow: Int){
-        print("collectionView.contentSize.height: \(collectionView.contentSize.height)")
-        print("collectionView.contentSize.width: \(collectionView.contentSize.width)")
-        print("collectionView.frame.height: \(collectionView.frame.height)")
-        print("collectionView.frame.width: \(collectionView.frame.width)")
-        var offset = ((collectionView.contentSize.width - collectionView.frame.height) / CGFloat(mapping.count))
-        if (collectionView.frame.height > collectionView.frame.width){
-            offset = ((collectionView.contentSize.width - collectionView.frame.height) / CGFloat(mapping.count))
-        } else {
-            offset = ((collectionView.contentSize.width - collectionView.frame.width) / CGFloat(mapping.count))
-        }
-        print("Offset: \(offset)")
-        let calculatedOffset: CGFloat = (offset + 6.0) * CGFloat(itemRow)
         //Scroll to the offset calculated
         UIView.animate(withDuration: 0.5, animations: {
-            self.collectionView.setContentOffset(CGPoint(x: calculatedOffset, y: 0.0), animated: true)
+            let itemIndex = IndexPath(item: itemRow, section: 0)
+            if UIDevice.current.orientation.isLandscape {
+                self.collectionView.scrollToItem(at: itemIndex, at: .centeredHorizontally, animated: true)
+            } else {
+                self.collectionView.scrollToItem(at: itemIndex, at: .centeredVertically, animated: true)
+            }
             self.view.layoutIfNeeded()
         })
         self.collectionView!.reloadData()
@@ -798,7 +802,6 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
     }
     
     @objc func leftScreen() {
-        print("Task: leftScreen()")
         let secondViewController = self.storyboard!.instantiateViewController(withIdentifier: "MusicViewController") as! MusicViewController
         if let viewControllers = self.navigationController?.viewControllers
         {
@@ -815,7 +818,6 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
     }
     
     @objc func rightScreen() {
-        print("Task: leftScreen()")
         navigationController?.popToRootViewController(animated: true)
     }
     
@@ -829,7 +831,6 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
     
     @objc func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
         if gesture.direction == UISwipeGestureRecognizer.Direction.right {
-            print("Task: swipe right")
             let secondViewController = self.storyboard!.instantiateViewController(withIdentifier: "MusicViewController") as! MusicViewController
             if let viewControllers = self.navigationController?.viewControllers
             {
@@ -845,7 +846,6 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
             }
         }
         else if gesture.direction == UISwipeGestureRecognizer.Direction.left {
-            print("Task: swipe left")
             navigationController?.popToRootViewController(animated: true)
         }
     }
@@ -913,16 +913,11 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
         self.navigationItem.leftBarButtonItems = [backButton]
         self.navigationItem.rightBarButtonItems = [forwardButton]
         
-        let imageView : UIImageView = {
-            let iv = UIImageView()
-            iv.image = UIImage(named:"wheel")
-            iv.contentMode = .scaleAspectFill
-            return iv
-        }()
-        self.collectionView?.backgroundView = imageView
+        self.collectionView.collectionViewLayout = flowLayout
+        self.collectionView.contentInsetAdjustmentBehavior = .always
         let touchRecognizer = UITapGestureRecognizer(target: self, action:  #selector(onTouch))
-        self.collectionView.backgroundView!.isUserInteractionEnabled = true
-        self.collectionView.backgroundView!.addGestureRecognizer(touchRecognizer)
+        self.collectionView.isUserInteractionEnabled = true
+        self.collectionView.addGestureRecognizer(touchRecognizer)
         
         let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))
         swipeLeft.direction = .left
@@ -931,17 +926,6 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))
         swipeRight.direction = .right
         self.collectionView.addGestureRecognizer(swipeRight)
-        
-        self.taskLabel = UILabel(frame: .zero)
-        self.taskLabel.textColor = UIColor(named: "imageTint")
-        self.taskLabel.font = UIFont.boldSystemFont(ofSize: 50)
-        self.taskLabel.numberOfLines = 1
-        self.taskLabel.baselineAdjustment = .alignCenters
-        self.taskLabel.adjustsFontSizeToFitWidth = true
-        self.taskLabel.textAlignment = NSTextAlignment.center
-        self.taskLabel.translatesAutoresizingMaskIntoConstraints = false
-        self.view.addSubview(self.taskLabel)
-        self.view.bringSubviewToFront(self.taskLabel)
         
         if UserDefaults.standard.bool(forKey: "display_brightness_preference") {
             UIScreen.main.brightness = CGFloat(1.0)
@@ -1310,7 +1294,6 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
     }
     
     override var preferredStatusBarStyle : UIStatusBarStyle {
-        
         switch(UserDefaults.standard.integer(forKey: "darkmode_preference")){
         case 0:
             //OFF
@@ -1334,29 +1317,18 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
     
     private func setupScreenOrientation() {
         self.collectionView.transform = CGAffineTransform.identity
-        self.taskLabel.removeFromSuperview()
-        self.view.addSubview(self.taskLabel)
-        self.view.bringSubviewToFront(self.taskLabel)
         if !UIDevice.current.orientation.isLandscape {
-            var ninty = CGAffineTransform.identity
-            ninty = ninty.rotated(by: CGFloat.pi + (.pi / 2))
-            self.collectionView.transform = ninty
-            self.collectionView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
-            NSLayoutConstraint.activate([
-                self.taskLabel.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
-                self.taskLabel.leadingAnchor.constraint(equalTo: self.view.centerXAnchor),
-                self.taskLabel.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)
-            ])
+            print("Adjust for portrait")
+            if let layout = self.collectionView.collectionViewLayout as? ZoomAndSnapFlowLayout {
+                layout.scrollDirection = .vertical
+            }
         } else {
-            self.collectionView.transform = CGAffineTransform.identity
-            self.collectionView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
-            NSLayoutConstraint.activate([
-                self.taskLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-                self.taskLabel.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
-                self.taskLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
-                self.taskLabel.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)
-            ])
+            print("Adjust for landscape")
+            if let layout = self.collectionView.collectionViewLayout as? ZoomAndSnapFlowLayout {
+                layout.scrollDirection = .horizontal
+            }
         }
+        collectionView.collectionViewLayout.invalidateLayout()
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -1391,6 +1363,11 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
             self.navigationController?.setNavigationBarHidden(false, animated: animated)
         }
     }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        //collectionView.collectionViewLayout.invalidateLayout()
+    }
 
     // MARK: UICollectionViewDataSource
 
@@ -1410,10 +1387,9 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
         
         // Configure the cell
         let tasks = self.tasks[mapping[indexPath.row]]
-        cell.displayContent(icon: tasks.icon!)
+        cell.displayContent(icon: tasks.icon!,label: tasks.label)
         if (itemRow == indexPath.row){
             cell.highlightEffect()
-            taskLabel.text = tasks.label
         } else {
             cell.removeHighlight()
         }
@@ -1422,7 +1398,6 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         itemRow = indexPath.row
-        //self.collectionView!.scrollToItem(at: IndexPath(row: itemRow, section: 0), at: .centeredVertically, animated: true)
         DispatchQueue.main.async(){
             self.navigationController?.setNavigationBarHidden(false, animated: true)
         }
@@ -1430,29 +1405,6 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
             runTimer()
         }
         execute_task(taskID: mapping[indexPath.row])
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize
-    {
-        if ( collectionView.bounds.width > collectionView.bounds.height){
-            let cellSize = CGSize(width: (collectionView.bounds.width - (3 * 10))/3, height: 80)
-            return cellSize
-        } else {
-            let cellSize = CGSize(width: (collectionView.bounds.width - (3 * 10))/2, height: 80)
-            return cellSize
-        }
-        
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat
-    {
-        return 10
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets
-    {
-        let sectionInset = UIEdgeInsets.init(top: 0, left: 0, bottom: 0, right: 0)
-        return sectionInset
     }
     
     func saveWaypoint(){
@@ -1602,9 +1554,7 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
     }
     
     //MARK:- Setup Camera
-    
     func setupSession() -> Bool {
-        
         videoCaptureSession.sessionPreset = AVCaptureSession.Preset(rawValue: convertFromAVCaptureSessionPreset(AVCaptureSession.Preset.high))
         
         // Setup Camera

@@ -8,6 +8,11 @@
 "pref_task_ten" = "Tenth";
 "pref_task_three" = "Third";
 "pref_task_two" = "Second";
+"pref_task_eleven" = "Eleventh";
+"pref_task_twelve" = "Twelth";
+"pref_task_thirteen" = "Thirteenth";
+"pref_task_fourteen" = "Fourteenth";
+"pref_task_fifteen" = "Fifteenth";
 "task_title_actioncam_start_video" = "Start ActionCam Recording";
 "task_title_actioncam_stop_video" = "Stop ActionCam Recording";
 "task_title_callcontact" = "Call Contact";

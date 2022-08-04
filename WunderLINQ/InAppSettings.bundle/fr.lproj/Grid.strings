@@ -10,6 +10,8 @@
 "pref_grid_ten" = "Dixième";
 "pref_grid_eleven" = "Onzième";
 "pref_grid_twelve" = "Douzième";
+"pref_grid_fifteen" = "Quinzième";
+"pref_grid_thirteen" = "Treizième";
 "pref_grid_fourteen" = "Quatorzième";
 "altitude_header" = "Altitude (m)";
 "gear_header" = "Vitesse";
@@ -40,8 +42,6 @@
 "gpsspeed_header" = "Vitesse GPS";
 "sunrisesunset_header" = "Lever/Coucher du soleil";
 "barometric_header" = "Baromètre";
-"pref_grid_fifteen" = "Quinzième";
-"pref_grid_thirteen" = "Treizième";
 "leanangle_bike_header" = "Lean Angle";
 "rearwheel_speed_header" = "Rear Wheel Speed";
 "rpm_header" = "RPM";

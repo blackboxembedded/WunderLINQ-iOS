@@ -20,6 +20,11 @@
 "pref_task_eight" = "8番目";
 "pref_task_nine" = "9番目";
 "pref_task_ten" = "10番目";
+"pref_task_eleven" = "11番目";
+"pref_task_twelve" = "12番目";
+"pref_task_thirteen" = "13番目";
+"pref_task_fourteen" = "14番目";
+"pref_task_fifteen" = "15番目";
 "task_title_weathermap" = "お天気マップ";
 "task_title_actioncam_stop_video" = "アクションカメラ録画の停止";
 "task_title_actioncam_start_video" = "アクションカメラ録画の開始";

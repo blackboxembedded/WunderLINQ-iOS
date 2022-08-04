@@ -20,24 +20,22 @@ import UIKit
 
 class TaskCollectionViewCell: UICollectionViewCell {
     
+
     @IBOutlet weak var uiView: UIView!
     @IBOutlet weak var taskImage: UIImageView!
+    @IBOutlet weak var taskLabel: UILabel!
     public var icon: UIImageView!
-    public var label: UILabel!
+    public var label: String!
     
-    func displayContent(icon: UIImage) {
+    func displayContent(icon: UIImage, label: String) {
         taskImage.image = icon
         taskImage.tintColor = UIColor(named: "imageTint")
-        
-        taskImage.transform = CGAffineTransform.identity
-        if UIDevice.current.orientation.isPortrait {
-            taskImage.transform = taskImage.transform.rotated(by: CGFloat(.pi / 2.0))
-        }
+        taskLabel.text = label
     }
     
     func highlightEffect(){
         
-        uiView.layer.cornerRadius = (uiView.frame.size.height / 2.0)
+        uiView.layer.cornerRadius = 2.0
         uiView.clipsToBounds = true
         uiView.layer.masksToBounds = false
         uiView.layer.borderWidth = 0
@@ -50,8 +48,8 @@ class TaskCollectionViewCell: UICollectionViewCell {
         }
         
         uiView.backgroundColor = highlightColor
-
         taskImage.tintColor = UIColor.white
+        taskLabel.textColor = UIColor.white
     }
     
     func removeHighlight(){
@@ -59,25 +57,22 @@ class TaskCollectionViewCell: UICollectionViewCell {
         
         if #available(iOS 13.0, *) {
             taskImage.tintColor = UIColor(named: "imageTint")
+            taskLabel.textColor = UIColor(named: "imageTint")
         } else {
             switch(UserDefaults.standard.integer(forKey: "darkmode_preference")){
             case 0:
                 //OFF
                 taskImage.tintColor = UIColor.black
+                taskLabel.textColor = UIColor.black
             case 1:
                 //On
                 taskImage.tintColor = UIColor.white
+                taskLabel.textColor = UIColor.white
             default:
                 //Default
                 taskImage.tintColor = UIColor.black
+                taskLabel.textColor = UIColor.black
             }
         }
-    }
-    
-    override func apply(_ layoutAttributes: UICollectionViewLayoutAttributes) {
-        super.apply(layoutAttributes)
-        let circularlayoutAttributes = layoutAttributes as! CircularCollectionViewLayoutAttributes
-        self.layer.anchorPoint = circularlayoutAttributes.anchorPoint
-        self.center.y += (circularlayoutAttributes.anchorPoint.y - 0.5) * self.bounds.height
     }
 }
