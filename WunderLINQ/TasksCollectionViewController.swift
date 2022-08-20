@@ -782,7 +782,7 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
         //Scroll to the offset calculated
         UIView.animate(withDuration: 0.5, animations: {
             let itemIndex = IndexPath(item: itemRow, section: 0)
-            if UIDevice.current.orientation.isLandscape {
+            if UIApplication.shared.statusBarOrientation.isLandscape {
                 self.collectionView.scrollToItem(at: itemIndex, at: .centeredHorizontally, animated: true)
             } else {
                 self.collectionView.scrollToItem(at: itemIndex, at: .centeredVertically, animated: true)
@@ -1319,7 +1319,7 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
     
     private func setupScreenOrientation() {
         self.collectionView.transform = CGAffineTransform.identity
-        if !UIDevice.current.orientation.isLandscape {
+        if !UIApplication.shared.statusBarOrientation.isLandscape {
             print("Adjust for portrait")
             if let layout = self.collectionView.collectionViewLayout as? ZoomAndSnapFlowLayout {
                 layout.scrollDirection = .vertical

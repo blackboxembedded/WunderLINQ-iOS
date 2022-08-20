@@ -51,7 +51,7 @@ class ZoomAndSnapFlowLayout: UICollectionViewFlowLayout {
         let visibleRect = CGRect(origin: collectionView.contentOffset, size: collectionView.frame.size)
         let visibleAttributes = rectAttributes.filter { $0.frame.intersects(visibleRect) }
 
-        if UIDevice.current.orientation.isLandscape {
+        if UIApplication.shared.statusBarOrientation.isLandscape {
             // Keep the spacing between cells the same.
             // Each cell shifts the next cell by half of it's enlarged size.
             // Calculated separately for each direction.
