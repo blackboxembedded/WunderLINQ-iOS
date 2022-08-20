@@ -405,28 +405,27 @@ class MusicViewController: UIViewController, SPTAppRemotePlayerStateDelegate {
     
     @objc func appleMusicTimerFired(_:AnyObject) {
         if let currentTrack = MPMusicPlayerController.systemMusicPlayer.nowPlayingItem {
+            // Update UI
             // Get Current Track Info
             var trackName = ""
             if currentTrack.title != nil {
                 trackName = currentTrack.title!
             }
+            songLabel.text = trackName
             var trackArtist = ""
             if currentTrack.artist != nil {
                 trackArtist = currentTrack.artist!
             }
+            artistLabel.text = trackArtist
             var trackAlbum = ""
             if currentTrack.albumTitle != nil {
                 trackAlbum = currentTrack.albumTitle!
             }
-            let albumImage = currentTrack.artwork?.image(at: imageAlbum.bounds.size)
-            appleMusicTrackElapsed = appleMusicPlayer.currentPlaybackTime
-            
-            // Update UI
-            imageAlbum.image = albumImage
-            artistLabel.text = trackArtist
-            songLabel.text = trackName
             albumLabel.text = trackAlbum
-            
+            if let albumImage: MPMediaItemArtwork = currentTrack.value(forProperty: MPMediaItemPropertyArtwork) as? MPMediaItemArtwork{
+                imageAlbum.image = albumImage.image(at: imageAlbum.bounds.size)
+            }
+            appleMusicTrackElapsed = appleMusicPlayer.currentPlaybackTime
         }
     }
     
