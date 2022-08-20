@@ -168,6 +168,7 @@ class DashViewController: UIViewController, UIWebViewDelegate {
         webView.isOpaque = false
         webView.backgroundColor = .clear
         webView.isUserInteractionEnabled = false
+        webView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         dashView.addSubview(webView)
         
         updateDashboard()
@@ -188,7 +189,27 @@ class DashViewController: UIViewController, UIWebViewDelegate {
         webView.backgroundColor = .clear
     }
     
+    private func setupScreenOrientation() {
+        if !UIApplication.shared.statusBarOrientation.isLandscape {
+            print("Adjust for portrait")
+            let offset = (dashView.frame.size.height / 2.0) - (dashView.frame.size.width / 2.0)
+            let translate = CGAffineTransform(translationX: 0.0, y: offset)
+            
+            webView.transform = translate
+            webView.frame.size.width = dashView.frame.size.width
+            webView.frame.size.height = dashView.frame.size.height
+        }
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        coordinator.animate(alongsideTransition: nil) { _ in
+            self.setupScreenOrientation()
+        }
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
+        setupScreenOrientation()
         //Read last used dashboard
         let lastSelection = UserDefaults.standard.string(forKey: "lastDashboard")
         if lastSelection != nil {
