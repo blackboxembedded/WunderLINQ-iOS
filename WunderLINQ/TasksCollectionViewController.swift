@@ -914,8 +914,10 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
         self.navigationItem.rightBarButtonItems = [forwardButton]
         
         self.collectionView.collectionViewLayout = flowLayout
+        self.collectionView.allowsMultipleSelection = true
         self.collectionView.contentInsetAdjustmentBehavior = .always
         let touchRecognizer = UITapGestureRecognizer(target: self, action:  #selector(onTouch))
+        touchRecognizer.cancelsTouchesInView = false
         self.collectionView.isUserInteractionEnabled = true
         self.collectionView.addGestureRecognizer(touchRecognizer)
         
