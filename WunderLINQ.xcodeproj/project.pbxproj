@@ -38,14 +38,12 @@
 		7E4669F72518647C00E7E291 /* NavAppHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4669F62518647C00E7E291 /* NavAppHelper.swift */; };
 		7E4D76E321DDAEC100825175 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7E4D76E521DDAEC100825175 /* InfoPlist.strings */; };
 		7E5777D9282D9CB300706328 /* UINavigationController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5777D8282D9CB300706328 /* UINavigationController+Extensions.swift */; };
-		7E5A767820DDEE7200B48CC6 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5A767720DDEE7200B48CC6 /* UIViewController+Extensions.swift */; };
 		7E5A767A20DDFEF700B48CC6 /* Waypoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5A767920DDFEF700B48CC6 /* Waypoint.swift */; };
 		7E5E0F78212289140048B9A2 /* AppUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5E0F77212289140048B9A2 /* AppUtility.swift */; };
 		7E620A0D26278E4900F6E23B /* AppSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E620A0C26278E4900F6E23B /* AppSettingsViewController.swift */; };
 		7E62BB6D21FE3DBF00FDB10E /* MainCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E62BB6C21FE3DBF00FDB10E /* MainCollectionViewController.swift */; };
 		7E62BB6F21FE3DEB00FDB10E /* MainCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E62BB6E21FE3DEB00FDB10E /* MainCollectionViewCell.swift */; };
 		7E62BB7121FE443200FDB10E /* ColumnFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E62BB7021FE443200FDB10E /* ColumnFlowLayout.swift */; };
-		7E6987DB20F82F1A00B4781D /* MotorcycleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6987DA20F82F1A00B4781D /* MotorcycleData.swift */; };
 		7E6987DD20F8F83500B4781D /* Faults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6987DC20F8F83500B4781D /* Faults.swift */; };
 		7E6E0A6824FC022200149387 /* ColorPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6E0A6724FC022200149387 /* ColorPickerViewController.swift */; };
 		7E755C12260A787100B29507 /* sport-dashboard.svg in Resources */ = {isa = PBXBuildFile; fileRef = 7E755C10260A787100B29507 /* sport-dashboard.svg */; };
@@ -58,10 +56,13 @@
 		7E80BD3B211CF80600B8CA0D /* LocalisableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E80BD3A211CF80600B8CA0D /* LocalisableLabel.swift */; };
 		7E80BD3D211CFF7300B8CA0D /* LocalisableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E80BD3C211CFF7300B8CA0D /* LocalisableButton.swift */; };
 		7E80BD42211D419C00B8CA0D /* WaypointsNavTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E80BD41211D419C00B8CA0D /* WaypointsNavTableViewController.swift */; };
-		7E80BD44211D5A0600B8CA0D /* UIView+ignoresInvertColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E80BD43211D5A0600B8CA0D /* UIView+ignoresInvertColors.swift */; };
 		7E8AD3D926141BA10089F590 /* ADVDashboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8AD3D826141BA10089F590 /* ADVDashboard.swift */; };
 		7E8AD3DD26141E150089F590 /* adv-dashboard.svg in Resources */ = {isa = PBXBuildFile; fileRef = 7E8AD3DC26141E150089F590 /* adv-dashboard.svg */; };
 		7E916DDC230CF10D00011E5F /* NSLocalizedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E916DDB230CF10D00011E5F /* NSLocalizedString.swift */; };
+		7E9346B328E0A67F009E13C0 /* UserDefauts+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9346B028E0A67F009E13C0 /* UserDefauts+Extensions.swift */; };
+		7E9346B428E0A67F009E13C0 /* UIView+ignoresInvertColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9346B128E0A67F009E13C0 /* UIView+ignoresInvertColors.swift */; };
+		7E9346B528E0A67F009E13C0 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9346B228E0A67F009E13C0 /* UIViewController+Extensions.swift */; };
+		7E9346B728E0A6B2009E13C0 /* MotorcycleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9346B628E0A6B2009E13C0 /* MotorcycleData.swift */; };
 		7E9516C2238A367000ED25F2 /* SpotifyiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E9516C1238A367000ED25F2 /* SpotifyiOS.framework */; };
 		7E96D79221E78B7B00C6AB5F /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E96D79121E78B7B00C6AB5F /* Security.framework */; };
 		7E9DDA9B278DE8A2006C6D12 /* WLQ.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9DDA9A278DE8A2006C6D12 /* WLQ.swift */; };
@@ -74,7 +75,6 @@
 		7EA478711F40F273000CEDDC /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA478701F40F273000CEDDC /* Device.swift */; };
 		7EA478751F412B73000CEDDC /* LocationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA478741F412B73000CEDDC /* LocationDelegate.swift */; };
 		7EA478771F412BAC000CEDDC /* CLLocation+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA478761F412BAC000CEDDC /* CLLocation+Extension.swift */; };
-		7EA478791F412BE9000CEDDC /* UserDefauts+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA478781F412BE9000CEDDC /* UserDefauts+Extensions.swift */; };
 		7EA478811F44F57C000CEDDC /* MusicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA478801F44F57C000CEDDC /* MusicViewController.swift */; };
 		7EA478831F4A7260000CEDDC /* InAppSettings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7EA478821F4A7260000CEDDC /* InAppSettings.bundle */; };
 		7EA478871F4BC775000CEDDC /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA478861F4BC775000CEDDC /* Logger.swift */; };
@@ -164,7 +164,6 @@
 		7E586D3E22B68E6E00FB2E4C /* hu */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hu; path = hu.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		7E586D3F22B68E6E00FB2E4C /* hu */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hu; path = WunderLINQ/hu.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7E586D4022B68E6E00FB2E4C /* hu */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = hu; path = hu.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		7E5A767720DDEE7200B48CC6 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		7E5A767920DDFEF700B48CC6 /* Waypoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Waypoint.swift; sourceTree = "<group>"; };
 		7E5D59F824FBFA3E005E5017 /* InAppSettingsKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = InAppSettingsKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E5E0F77212289140048B9A2 /* AppUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUtility.swift; sourceTree = "<group>"; };
@@ -172,7 +171,6 @@
 		7E62BB6C21FE3DBF00FDB10E /* MainCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCollectionViewController.swift; sourceTree = "<group>"; };
 		7E62BB6E21FE3DEB00FDB10E /* MainCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCollectionViewCell.swift; sourceTree = "<group>"; };
 		7E62BB7021FE443200FDB10E /* ColumnFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColumnFlowLayout.swift; sourceTree = "<group>"; };
-		7E6987DA20F82F1A00B4781D /* MotorcycleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotorcycleData.swift; sourceTree = "<group>"; };
 		7E6987DC20F8F83500B4781D /* Faults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Faults.swift; sourceTree = "<group>"; };
 		7E6DA9032648BE08001073E2 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = WunderLINQ/fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7E6DA9072648BE33001073E2 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -203,12 +201,15 @@
 		7E80BD3F211D2CB100B8CA0D /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		7E80BD40211D2CB100B8CA0D /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = WunderLINQ/de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7E80BD41211D419C00B8CA0D /* WaypointsNavTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaypointsNavTableViewController.swift; sourceTree = "<group>"; };
-		7E80BD43211D5A0600B8CA0D /* UIView+ignoresInvertColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+ignoresInvertColors.swift"; sourceTree = "<group>"; };
 		7E8A1E5721DC326600207464 /* sl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sl; path = sl.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		7E8A1E5821DC326600207464 /* sl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sl; path = WunderLINQ/sl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7E8AD3D826141BA10089F590 /* ADVDashboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ADVDashboard.swift; sourceTree = "<group>"; };
 		7E8AD3DC26141E150089F590 /* adv-dashboard.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "adv-dashboard.svg"; sourceTree = "<group>"; };
 		7E916DDB230CF10D00011E5F /* NSLocalizedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSLocalizedString.swift; sourceTree = "<group>"; };
+		7E9346B028E0A67F009E13C0 /* UserDefauts+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserDefauts+Extensions.swift"; sourceTree = "<group>"; };
+		7E9346B128E0A67F009E13C0 /* UIView+ignoresInvertColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+ignoresInvertColors.swift"; sourceTree = "<group>"; };
+		7E9346B228E0A67F009E13C0 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
+		7E9346B628E0A6B2009E13C0 /* MotorcycleData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MotorcycleData.swift; sourceTree = "<group>"; };
 		7E93549F23008B2B00FCF0C5 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		7E9516C1238A367000ED25F2 /* SpotifyiOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SpotifyiOS.framework; sourceTree = "<group>"; };
 		7E9516C4238A3CDF00ED25F2 /* WunderLINQ-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WunderLINQ-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -227,7 +228,6 @@
 		7EA478701F40F273000CEDDC /* Device.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		7EA478741F412B73000CEDDC /* LocationDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationDelegate.swift; sourceTree = "<group>"; };
 		7EA478761F412BAC000CEDDC /* CLLocation+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CLLocation+Extension.swift"; sourceTree = "<group>"; };
-		7EA478781F412BE9000CEDDC /* UserDefauts+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserDefauts+Extensions.swift"; sourceTree = "<group>"; };
 		7EA478801F44F57C000CEDDC /* MusicViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicViewController.swift; sourceTree = "<group>"; };
 		7EA478821F4A7260000CEDDC /* InAppSettings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = InAppSettings.bundle; sourceTree = "<group>"; };
 		7EA478861F4BC775000CEDDC /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
@@ -411,11 +411,7 @@
 				7EA478861F4BC775000CEDDC /* Logger.swift */,
 				7EBFD48F210E108100FC9665 /* segueFromLeft.swift */,
 				7EA478741F412B73000CEDDC /* LocationDelegate.swift */,
-				7E5A767720DDEE7200B48CC6 /* UIViewController+Extensions.swift */,
-				7E80BD43211D5A0600B8CA0D /* UIView+ignoresInvertColors.swift */,
 				7E5777D8282D9CB300706328 /* UINavigationController+Extensions.swift */,
-				7EA478781F412BE9000CEDDC /* UserDefauts+Extensions.swift */,
-				7E6987DA20F82F1A00B4781D /* MotorcycleData.swift */,
 				7E62BB6C21FE3DBF00FDB10E /* MainCollectionViewController.swift */,
 				7E62BB6E21FE3DEB00FDB10E /* MainCollectionViewCell.swift */,
 				7E62BB7021FE443200FDB10E /* ColumnFlowLayout.swift */,
@@ -511,7 +507,7 @@
 		7EB80AB92790FFAC00D3A051 /* WLQ */ = {
 			isa = PBXGroup;
 			children = (
-				7E6987DA20F82F1A00B4781D /* MotorcycleData.swift */,
+				7E9346B628E0A6B2009E13C0 /* MotorcycleData.swift */,
 				7E6987DC20F8F83500B4781D /* Faults.swift */,
 				7E9DDA9A278DE8A2006C6D12 /* WLQ.swift */,
 				7E9DDA9E278DFFD4006C6D12 /* WLQ_N.swift */,
@@ -523,9 +519,9 @@
 		B98CA75B252E6C5200530075 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				7E5A767720DDEE7200B48CC6 /* UIViewController+Extensions.swift */,
-				7E80BD43211D5A0600B8CA0D /* UIView+ignoresInvertColors.swift */,
-				7EA478781F412BE9000CEDDC /* UserDefauts+Extensions.swift */,
+				7E9346B128E0A67F009E13C0 /* UIView+ignoresInvertColors.swift */,
+				7E9346B228E0A67F009E13C0 /* UIViewController+Extensions.swift */,
+				7E9346B028E0A67F009E13C0 /* UserDefauts+Extensions.swift */,
 				B98CA75C252E6C6B00530075 /* UIStoryboard+extensions.swift */,
 				B98CA761252E6F5500530075 /* String+Localizable.swift */,
 				7EBFD48D210ADD0000FC9665 /* String+Extensions.swift */,
@@ -734,7 +730,6 @@
 				7E80BD3B211CF80600B8CA0D /* LocalisableLabel.swift in Sources */,
 				7EC934F22186208A00FD4806 /* AlertViewController.swift in Sources */,
 				7EAE9415211E9B3200E24CE9 /* Double+Extensions.swift in Sources */,
-				7EA478791F412BE9000CEDDC /* UserDefauts+Extensions.swift in Sources */,
 				7EA4784E1F40B154000CEDDC /* AppDelegate.swift in Sources */,
 				7E62BB6D21FE3DBF00FDB10E /* MainCollectionViewController.swift in Sources */,
 				7E7C53CD21F3BA9200C98010 /* ContactsTableViewCell.swift in Sources */,
@@ -744,7 +739,6 @@
 				7E8AD3D926141BA10089F590 /* ADVDashboard.swift in Sources */,
 				7E7DE00928986B1B0009663C /* ZoomAndSnapFlowLayout.swift in Sources */,
 				7E9DDAA1278E2403006C6D12 /* WLQ_C.swift in Sources */,
-				7E46AA192419D1540047E87D /* CircularCollectionViewLayout.swift in Sources */,
 				7EA4BCC721B8C9150084F6EA /* TasksCollectionViewController.swift in Sources */,
 				7E62BB6F21FE3DEB00FDB10E /* MainCollectionViewCell.swift in Sources */,
 				7E25396321CD94A30008D34E /* BLE.swift in Sources */,
@@ -753,12 +747,13 @@
 				7EC8C9BD1F827977000CEDDC /* ContactsTableViewContoller.swift in Sources */,
 				7EA478871F4BC775000CEDDC /* Logger.swift in Sources */,
 				7EB8B99E245CA7A6007232D2 /* Secrets.swift in Sources */,
+				7E9346B728E0A6B2009E13C0 /* MotorcycleData.swift in Sources */,
 				7E068BF8210645290076EAAD /* TripViewController.swift in Sources */,
 				7E5A767A20DDFEF700B48CC6 /* Waypoint.swift in Sources */,
+				7E9346B428E0A67F009E13C0 /* UIView+ignoresInvertColors.swift in Sources */,
 				7E80BD42211D419C00B8CA0D /* WaypointsNavTableViewController.swift in Sources */,
 				7E755C18260AA78900B29507 /* StandardDashboard.swift in Sources */,
 				7EC8C9BF1F830C5B000CEDDC /* PhoneContacts.swift in Sources */,
-				7E80BD44211D5A0600B8CA0D /* UIView+ignoresInvertColors.swift in Sources */,
 				7EA4BCC921B8CB270084F6EA /* TaskCollectionViewCell.swift in Sources */,
 				7E916DDC230CF10D00011E5F /* NSLocalizedString.swift in Sources */,
 				7EBC8A9E23B19C0B001FE70B /* AddWaypointViewController.swift in Sources */,
@@ -767,9 +762,8 @@
 				7E75E2DB26D2E6210077CA5A /* VolumeViewController.swift in Sources */,
 				B98CA75D252E6C6B00530075 /* UIStoryboard+extensions.swift in Sources */,
 				7EBFE1F3214C7D6500F2185A /* ScenicAPI.swift in Sources */,
-				7E5A767820DDEE7200B48CC6 /* UIViewController+Extensions.swift in Sources */,
 				7EBFD48E210ADD0000FC9665 /* String+Extensions.swift in Sources */,
-				7E6987DB20F82F1A00B4781D /* MotorcycleData.swift in Sources */,
+				7E9346B528E0A67F009E13C0 /* UIViewController+Extensions.swift in Sources */,
 				7E068BCB2102ACF30076EAAD /* Popover.swift in Sources */,
 				7EAF646A22FE261D00B11550 /* WeatherMapViewController.swift in Sources */,
 				7EA478811F44F57C000CEDDC /* MusicViewController.swift in Sources */,
@@ -779,6 +773,7 @@
 				7EAF646822FE17D000B11550 /* BikeInfoViewController.swift in Sources */,
 				7E35A59322DC265800E4AE40 /* Utility.swift in Sources */,
 				7EAE9417211EA30900E24CE9 /* Theme.swift in Sources */,
+				7E9346B328E0A67F009E13C0 /* UserDefauts+Extensions.swift in Sources */,
 				7E755C1E260AA80700B29507 /* SportDashboard.swift in Sources */,
 				7E5777D9282D9CB300706328 /* UINavigationController+Extensions.swift in Sources */,
 				7E9DDA9F278DFFD4006C6D12 /* WLQ_N.swift in Sources */,
