@@ -25,7 +25,7 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
     @IBOutlet weak var logoImageView: UIImageView!
     @IBOutlet weak var versionLabel: UILabel!
     @IBOutlet weak var creditsTextView: UITextView!
-    
+
     let wlqData = WLQ.shared
     
     @IBAction func corpNameBtnPressed(_ sender: Any) {

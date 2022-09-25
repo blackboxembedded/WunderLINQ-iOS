@@ -58,6 +58,7 @@ class MotorcycleData {
     var leanAngleMaxL: Double?
     var leanAngleMaxR: Double?
     var rearSpeed: Double?
+    var prevBrake: Int? = 0
     
     func setLocation(location: CLLocation?){
         self.location = location
@@ -176,6 +177,13 @@ class MotorcycleData {
     }
     func getfrontBrake() -> Int{
         return self.frontBrake!
+    }
+    
+    func setPrevBrake(prevBrake: Int?){
+        self.prevBrake = prevBrake
+    }
+    func getPrevBrake() -> Int{
+        return self.prevBrake!
     }
     
     func setrearBrake(rearBrake: Int?){

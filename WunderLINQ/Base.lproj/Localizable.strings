@@ -81,6 +81,10 @@
 "full_toggle_left_long_label" = "Wheel Left Long Press";
 "full_signal_cancel_label" = "Signal Cancel";
 "full_signal_cancel_long_label" = "Signal Cancel Long Press";
+"full_menu_up_label" = "Menu Up";
+"full_menu_up_long_label" = "Menu Up Long Press";
+"full_menu_down_label" = "Menu Down";
+"full_menu_down_long_label" = "Menu Down Long Press";
 "full_long_press_label" = "Long Press";
 "rtk_page_label" = "Page";
 "rtk_page_double_label" = "Page Double Press";
