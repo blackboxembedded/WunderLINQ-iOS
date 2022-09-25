@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		482C618362EA74729FE53E2A /* Pods_WunderLINQ.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA150AA674E4880933A5281B /* Pods_WunderLINQ.framework */; };
+		7E01EDCD28E0D6C500F8A63C /* UINavigationController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E01EDCC28E0D6C500F8A63C /* UINavigationController+Extensions.swift */; };
 		7E068BC320FD8A100076EAAD /* FaultsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E068BC220FD8A100076EAAD /* FaultsTableViewController.swift */; };
 		7E068BC7210190CB0076EAAD /* TripsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E068BC6210190CB0076EAAD /* TripsTableViewController.swift */; };
 		7E068BC9210190F00076EAAD /* WaypointsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E068BC8210190F00076EAAD /* WaypointsTableViewController.swift */; };
@@ -37,7 +38,6 @@
 		7E35A59322DC265800E4AE40 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E35A59222DC265800E4AE40 /* Utility.swift */; };
 		7E4669F72518647C00E7E291 /* NavAppHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4669F62518647C00E7E291 /* NavAppHelper.swift */; };
 		7E4D76E321DDAEC100825175 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7E4D76E521DDAEC100825175 /* InfoPlist.strings */; };
-		7E5777D9282D9CB300706328 /* UINavigationController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5777D8282D9CB300706328 /* UINavigationController+Extensions.swift */; };
 		7E5A767A20DDFEF700B48CC6 /* Waypoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5A767920DDFEF700B48CC6 /* Waypoint.swift */; };
 		7E5E0F78212289140048B9A2 /* AppUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5E0F77212289140048B9A2 /* AppUtility.swift */; };
 		7E620A0D26278E4900F6E23B /* AppSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E620A0C26278E4900F6E23B /* AppSettingsViewController.swift */; };
@@ -125,6 +125,7 @@
 /* Begin PBXFileReference section */
 		4E2D3628243A0841E630E538 /* Pods-WunderLINQ.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WunderLINQ.debug.xcconfig"; path = "Target Support Files/Pods-WunderLINQ/Pods-WunderLINQ.debug.xcconfig"; sourceTree = "<group>"; };
 		5B6A75C94A76FEE610EF7F86 /* Pods-WunderLINQ.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WunderLINQ.release.xcconfig"; path = "Target Support Files/Pods-WunderLINQ/Pods-WunderLINQ.release.xcconfig"; sourceTree = "<group>"; };
+		7E01EDCC28E0D6C500F8A63C /* UINavigationController+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Extensions.swift"; sourceTree = "<group>"; };
 		7E068BC220FD8A100076EAAD /* FaultsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaultsTableViewController.swift; sourceTree = "<group>"; };
 		7E068BC6210190CB0076EAAD /* TripsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripsTableViewController.swift; sourceTree = "<group>"; };
 		7E068BC8210190F00076EAAD /* WaypointsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaypointsTableViewController.swift; sourceTree = "<group>"; };
@@ -160,7 +161,6 @@
 		7E4D76E421DDAEC100825175 /* sl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = sl; path = sl.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		7E52E9B021A38D89008082FE /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		7E52E9B121A38D89008082FE /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = WunderLINQ/cs.lproj/Localizable.strings; sourceTree = "<group>"; };
-		7E5777D8282D9CB300706328 /* UINavigationController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Extensions.swift"; sourceTree = "<group>"; };
 		7E586D3E22B68E6E00FB2E4C /* hu */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hu; path = hu.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		7E586D3F22B68E6E00FB2E4C /* hu */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hu; path = WunderLINQ/hu.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7E586D4022B68E6E00FB2E4C /* hu */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = hu; path = hu.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -411,7 +411,6 @@
 				7EA478861F4BC775000CEDDC /* Logger.swift */,
 				7EBFD48F210E108100FC9665 /* segueFromLeft.swift */,
 				7EA478741F412B73000CEDDC /* LocationDelegate.swift */,
-				7E5777D8282D9CB300706328 /* UINavigationController+Extensions.swift */,
 				7E62BB6C21FE3DBF00FDB10E /* MainCollectionViewController.swift */,
 				7E62BB6E21FE3DEB00FDB10E /* MainCollectionViewCell.swift */,
 				7E62BB7021FE443200FDB10E /* ColumnFlowLayout.swift */,
@@ -519,6 +518,7 @@
 		B98CA75B252E6C5200530075 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				7E01EDCC28E0D6C500F8A63C /* UINavigationController+Extensions.swift */,
 				7E9346B128E0A67F009E13C0 /* UIView+ignoresInvertColors.swift */,
 				7E9346B228E0A67F009E13C0 /* UIViewController+Extensions.swift */,
 				7E9346B028E0A67F009E13C0 /* UserDefauts+Extensions.swift */,
@@ -758,6 +758,7 @@
 				7E916DDC230CF10D00011E5F /* NSLocalizedString.swift in Sources */,
 				7EBC8A9E23B19C0B001FE70B /* AddWaypointViewController.swift in Sources */,
 				7EF07768258E653E009A6BAA /* HWSettingsTableViewCell.swift in Sources */,
+				7E01EDCD28E0D6C500F8A63C /* UINavigationController+Extensions.swift in Sources */,
 				7E62BB7121FE443200FDB10E /* ColumnFlowLayout.swift in Sources */,
 				7E75E2DB26D2E6210077CA5A /* VolumeViewController.swift in Sources */,
 				B98CA75D252E6C6B00530075 /* UIStoryboard+extensions.swift in Sources */,
@@ -775,7 +776,6 @@
 				7EAE9417211EA30900E24CE9 /* Theme.swift in Sources */,
 				7E9346B328E0A67F009E13C0 /* UserDefauts+Extensions.swift in Sources */,
 				7E755C1E260AA80700B29507 /* SportDashboard.swift in Sources */,
-				7E5777D9282D9CB300706328 /* UINavigationController+Extensions.swift in Sources */,
 				7E9DDA9F278DFFD4006C6D12 /* WLQ_N.swift in Sources */,
 				7EB80AB52790E47F00D3A051 /* LINbus.swift in Sources */,
 				7EF0776C258FBDEF009A6BAA /* KeyboardHID.swift in Sources */,
