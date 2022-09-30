@@ -19,7 +19,6 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 import Foundation
 
 enum Device {
-    
     static let WunderLINQAdvertisingUUID = "7340"
     static let DeviceInformationServiceUUID = "0000180A-0000-1000-8000-00805F9B34FB"
     static let FWRevisionCharacteristicUUID = "00002A26-0000-1000-8000-00805F9B34FB"
@@ -29,5 +28,4 @@ enum Device {
     static let UUID_WUNDERLINQ_CANMESSAGE_CHARACTERISTIC = "00000013-0010-0080-0000-805f9b34fb00"
     static let CommandCharacteristicUUID = "00000004-0000-1000-8000-00805F9B34FB"
     static let restoreIdentifier = "com.blackboxembedded.wunderlinq"
-    
 }
