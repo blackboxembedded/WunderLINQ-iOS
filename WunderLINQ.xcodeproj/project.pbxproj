@@ -423,7 +423,6 @@
 				7EBFE1F2214C7D6500F2185A /* ScenicAPI.swift */,
 				7EA4784D1F40B154000CEDDC /* AppDelegate.swift */,
 				7EFA9907240DFDE700E65078 /* FirstRunViewController.swift */,
-				7EA478801F44F57C000CEDDC /* MusicViewController.swift */,
 				7EA478861F4BC775000CEDDC /* Logger.swift */,
 				7EA478741F412B73000CEDDC /* LocationDelegate.swift */,
 				7E62BB6C21FE3DBF00FDB10E /* MainCollectionViewController.swift */,
@@ -443,10 +442,10 @@
 				7E068BCC2102ADD20076EAAD /* WaypointViewController.swift */,
 				7EBC8A9D23B19C0B001FE70B /* AddWaypointViewController.swift */,
 				7EC934F12186208A00FD4806 /* AlertViewController.swift */,
+				7EA478801F44F57C000CEDDC /* MusicViewController.swift */,
 				7EAE9416211EA30900E24CE9 /* Theme.swift */,
-				7E2EC06324991CE200B0A59B /* NavigationControllerWithTraitOverride.swift */,
-				7E6E0A6724FC022200149387 /* ColorPickerViewController.swift */,
 				7EB5ED7C251FE8FA00B61160 /* DashViewController.swift */,
+				7E6E0A6724FC022200149387 /* ColorPickerViewController.swift */,
 				7E620A0C26278E4900F6E23B /* AppSettingsViewController.swift */,
 				7EB8B99D245CA7A6007232D2 /* Secrets.swift */,
 				7E068BD62102C6DB0076EAAD /* GoogleMaps.bundle */,
@@ -536,6 +535,7 @@
 		B98CA75B252E6C5200530075 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				7E2EC06324991CE200B0A59B /* NavigationControllerWithTraitOverride.swift */,
 				7E5E0F77212289140048B9A2 /* AppUtility.swift */,
 				7E80BD3C211CFF7300B8CA0D /* LocalisableButton.swift */,
 				7E80BD3A211CF80600B8CA0D /* LocalisableLabel.swift */,
