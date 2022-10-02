@@ -28,7 +28,6 @@ class SportDashboard {
         var distanceUnit = "km"
         var heightUnit = "m"
         var distanceTimeUnit = "KMH"
-        var pressureUnit = "psi"
 
         
         let url = Bundle.main.url(forResource: "sport-dashboard", withExtension: "svg")!

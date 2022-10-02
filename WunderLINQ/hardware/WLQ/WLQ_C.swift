@@ -177,7 +177,7 @@ class WLQ_C: WLQ {
         self.keyMode = bytes[self.keyMode_INDEX]
         let usbBytes: [UInt8] = [self.flashConfig![self.USBVinThresholdHigh_INDEX], self.flashConfig![self.USBVinThresholdLow_INDEX]]
         self.USBVinThreshold = usbBytes.withUnsafeBytes { $0.load(as: UInt16.self) }
-        let CANSpeed: [UInt8] = [self.flashConfig![self.CANCF1_INDEX], self.flashConfig![self.CANCF2_INDEX], self.flashConfig![self.CANCF3_INDEX]]
+        //let CANSpeed: [UInt8] = [self.flashConfig![self.CANCF1_INDEX], self.flashConfig![self.CANCF2_INDEX], self.flashConfig![self.CANCF3_INDEX]]
         self.sensitivity = self.flashConfig![self.Sensitivity_INDEX]
         self.wheelRightPressKeyType = self.flashConfig![self.wheelRightPressKeyType_INDEX]
         self.wheelRightPressKeyModifier = self.flashConfig![self.wheelRightPressKeyModifier_INDEX]
