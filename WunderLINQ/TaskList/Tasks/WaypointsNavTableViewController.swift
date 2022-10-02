@@ -21,7 +21,7 @@ import MapKit
 import UIKit
 import SQLite3
 
-class WaypointsNavTableViewController: UITableViewController, CLLocationManagerDelegate {
+class WaypointsNavTableViewController: UITableViewController {
     
     var db: OpaquePointer?
     var waypoints = [Waypoint]()
@@ -315,18 +315,6 @@ class WaypointsNavTableViewController: UITableViewController, CLLocationManagerD
         locationManager = CLLocationManager()
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        
-        // Check for Location Services
-        if CLLocationManager.locationServicesEnabled() {
-            locationManager.requestWhenInUseAuthorization()
-            locationManager.startUpdatingLocation()
-        }
-    }
-    
-    // MARK - CLLocationManagerDelegate
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        do { currentLocation = locations.last }
     }
 
     override func didReceiveMemoryWarning() {
@@ -438,4 +426,24 @@ class WaypointsNavTableViewController: UITableViewController, CLLocationManagerD
 // Helper function inserted by Swift 4.2 migrator.
 fileprivate func convertToUIApplicationOpenExternalURLOptionsKeyDictionary(_ input: [String: Any]) -> [UIApplication.OpenExternalURLOptionsKey: Any] {
 	return Dictionary(uniqueKeysWithValues: input.map { key, value in (UIApplication.OpenExternalURLOptionsKey(rawValue: key), value)})
+}
+
+extension WaypointsNavTableViewController: CLLocationManagerDelegate {
+    public func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        switch status {
+        case .notDetermined:
+            manager.requestWhenInUseAuthorization()
+        case .restricted, .denied:
+            print("Location permission denied")
+            self.showToast(message: NSLocalizedString("negative_location_alert_body", comment: ""))
+        case .authorizedAlways, .authorizedWhenInUse:
+            locationManager.startUpdatingLocation()
+        @unknown default:
+            print("Fatal Error")
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        do { currentLocation = locations.last }
+    }
 }

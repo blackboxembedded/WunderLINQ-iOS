@@ -20,7 +20,6 @@ import Foundation
 import UIKit
 
 extension UIViewController {
-    
     func showToast(message : String) {
         let toastLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width - 20, height: 70))
         toastLabel.center = self.view.center
@@ -58,4 +57,3 @@ extension UIViewController {
         })
     }
 }
-

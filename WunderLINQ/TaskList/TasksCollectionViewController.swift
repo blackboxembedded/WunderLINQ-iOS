@@ -24,7 +24,7 @@ import AVFoundation
 import SQLite3
 import Photos
 
-class TasksCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, AVCaptureVideoDataOutputSampleBufferDelegate, AVCaptureFileOutputRecordingDelegate, CLLocationManagerDelegate {
+class TasksCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, AVCaptureVideoDataOutputSampleBufferDelegate, AVCaptureFileOutputRecordingDelegate {
 
     let flowLayout = ZoomAndSnapFlowLayout()
     
@@ -956,10 +956,12 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         
         // Check for Location Services
+        /*
         if CLLocationManager.locationServicesEnabled() {
             locationManager.requestWhenInUseAuthorization()
             locationManager.startUpdatingLocation()
         }
+         */
         
         // ActionCam Status Check
         let actionCamType = UserDefaults.standard.integer(forKey: "actioncam_preference")
@@ -1287,12 +1289,6 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
         default:
             break
         }
-    }
-    
-    // MARK - CLLocationManagerDelegate
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        do { currentLocation = locations.last }
     }
     
     override var preferredStatusBarStyle : UIStatusBarStyle {
@@ -1780,4 +1776,24 @@ fileprivate func convertFromAVMediaType(_ input: AVMediaType) -> String {
 // Helper function inserted by Swift 4.2 migrator.
 fileprivate func convertFromAVCaptureSessionPreset(_ input: AVCaptureSession.Preset) -> String {
 	return input.rawValue
+}
+
+extension TasksCollectionViewController: CLLocationManagerDelegate {
+    public func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        switch status {
+        case .notDetermined:
+            manager.requestWhenInUseAuthorization()
+        case .restricted, .denied:
+            print("Location permission denied")
+            self.showToast(message: NSLocalizedString("negative_location_alert_body", comment: ""))
+        case .authorizedAlways, .authorizedWhenInUse:
+            locationManager.startUpdatingLocation()
+        @unknown default:
+            print("Fatal Error")
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        do { currentLocation = locations.last }
+    }
 }

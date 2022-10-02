@@ -22,7 +22,7 @@ import GoogleMaps
 import MapKit
 import CoreGPX
 
-class WaypointViewController: UIViewController, UITextFieldDelegate, CLLocationManagerDelegate {
+class WaypointViewController: UIViewController, UITextFieldDelegate {
     
     var db: OpaquePointer?
     
@@ -217,18 +217,6 @@ class WaypointViewController: UIViewController, UITextFieldDelegate, CLLocationM
         locationManager = CLLocationManager()
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        
-        // Check for Location Services
-        if CLLocationManager.locationServicesEnabled() {
-            locationManager.requestWhenInUseAuthorization()
-            locationManager.startUpdatingLocation()
-        }
-    }
-    
-    // MARK - CLLocationManagerDelegate
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        do { currentLocation = locations.last }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -425,4 +413,24 @@ extension WaypointViewController: UITableViewDataSource {
 // Helper function inserted by Swift 4.2 migrator.
 fileprivate func convertToUIApplicationOpenExternalURLOptionsKeyDictionary(_ input: [String: Any]) -> [UIApplication.OpenExternalURLOptionsKey: Any] {
 	return Dictionary(uniqueKeysWithValues: input.map { key, value in (UIApplication.OpenExternalURLOptionsKey(rawValue: key), value)})
+}
+
+extension WaypointViewController: CLLocationManagerDelegate {
+    public func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        switch status {
+        case .notDetermined:
+            manager.requestWhenInUseAuthorization()
+        case .restricted, .denied:
+            print("Location permission denied")
+            self.showToast(message: NSLocalizedString("negative_location_alert_body", comment: ""))
+        case .authorizedAlways, .authorizedWhenInUse:
+            locationManager.startUpdatingLocation()
+        @unknown default:
+            print("Fatal Error")
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        do { currentLocation = locations.last }
+    }
 }
