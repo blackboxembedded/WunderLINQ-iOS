@@ -1274,7 +1274,6 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     
     // MARK: - Updating UI
     func updateMessageDisplay() {
-        NSLog("IN MainCollectionViewController updateMessageDisplay()")
         // Update Buttons
         if (faults.getallActiveDesc().isEmpty){
             faultsBtn.tintColor = UIColor.clear
@@ -2186,7 +2185,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                 }
                 
             }
-            if (UIApplication.shared.applicationState == .active) {
+            if self.viewIfLoaded?.window != nil {
                 updateMessageDisplay()
             }
         }
