@@ -2224,10 +2224,10 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     
     @objc func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
         if gesture.direction == UISwipeGestureRecognizer.Direction.right {
-            rightScreen()
+            leftScreen()
         }
         else if gesture.direction == UISwipeGestureRecognizer.Direction.left {
-            leftScreen()
+            rightScreen()
         }
         else if gesture.direction == UISwipeGestureRecognizer.Direction.up {
             //UP

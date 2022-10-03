@@ -28,6 +28,7 @@ class MainCollectionViewCell: UICollectionViewCell {
     public var icon: UIImageView!
     
     func setLabel(label: String) {
+        headerLabel.adjustsFontSizeToFitWidth = true
         headerLabel.text = label
     }
     
