@@ -74,6 +74,9 @@ class WLQ {
     func RESET_CLUSTER_TRIP2_CMD() -> [UInt8]{
         return [0x57, 0x57, 0x44, 0x52, 0x54, 0x02]
     }
+    func GET_STATUS_CMD() -> [UInt8]{
+        return [0x57, 0x52, 0x53, 0x0D, 0x0A]
+    }
     func CMD_EOM() -> [UInt8]{
         return [0x0D, 0x0A]
     }
@@ -82,6 +85,12 @@ class WLQ {
         fatalError("This method must be overridden")
     }
     func getConfig() -> [UInt8]{
+        fatalError("This method must be overridden")
+    }
+    func setStatus(bytes: [UInt8]) {
+        fatalError("This method must be overridden")
+    }
+    func getStatus() -> [UInt8]{
         fatalError("This method must be overridden")
     }
     func getTempConfig() -> [UInt8]{

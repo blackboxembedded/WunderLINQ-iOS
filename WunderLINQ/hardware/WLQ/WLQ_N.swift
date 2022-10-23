@@ -1054,4 +1054,12 @@ class WLQ_N: WLQ {
         }
         return "Unknown"
     }
+    
+    //Not used for Navigator
+    override func setStatus(bytes: [UInt8]) {
+        
+    }
+    override func getStatus() -> [UInt8]{
+        return [0x00]
+    }
 }

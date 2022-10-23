@@ -19,7 +19,7 @@ import Foundation
 class WLQ_C: WLQ {
     
     var hardwareVersion:String?
-    let hardwareVersion1:String = "2PCB7.0 11/19/21";
+    let hardwareVersion1:String = "2PCB7.0 11/19/21"
     
     var wunderLINQConfig:[UInt8]?
     var flashConfig:[UInt8]?
@@ -99,6 +99,95 @@ class WLQ_C: WLQ {
     let menuDownLongPressKeyType_INDEX:Int = 33
     let menuDownLongPressKeyModifier_INDEX:Int = 34
     let menuDownLongPressKey_INDEX:Int = 35
+    
+    // Status message
+    let MODE_INDEX:Int = 0
+    //let MODE_INDEX = 1
+    let TRIGGER_BIT_BYTE_INDEX:Int = 2
+    let TRIGGER_BIT_POS_INDEX:Int = 3
+    let TRIGGER_BIT_HOLD_CNT_LOW_INDEX:Int = 4
+    let TRIGGER_BIT_HOLD_CNT_HIGH_INDEX:Int = 5
+    let TRIGGER_BIT_MAX_CNT_LOW_INDEX:Int = 6
+    let TRIGGER_BIT_MAX_CNT_HIGH_INDEX:Int = 7
+    let TRIGGER_BIT_MIN_CNT_LOW_INDEX:Int = 8
+    let TRIGGER_BIT_MIN_CNT_HIGH_INDEX:Int = 9
+    let TRIGGER_BIT_MAX_VAL_INDEX:Int = 10
+    let TRIGGER_BIT_MIN_VAL_INDEX:Int = 11
+
+    let WW_R_BIT_BYTE_INDEX:Int = 12
+    let WW_R_BIT_POS_INDEX:Int = 13
+    let WW_R_BIT_HOLD_CNT_LOW_INDEX:Int = 14
+    let WW_R_BIT_HOLD_CNT_HIGH_INDEX:Int = 15
+    let WW_R_BIT_MAX_CNT_LOW_INDEX:Int = 16
+    let WW_R_BIT_MAX_CNT_HIGH_INDEX:Int = 17
+    let WW_R_BIT_MIN_CNT_LOW_INDEX:Int = 18
+    let WW_R_BIT_MIN_CNT_HIGH_INDEX:Int = 19
+    let WW_R_BIT_MAX_VAL_INDEX:Int = 20
+    let WW_R_BIT_MIN_VAL_INDEX:Int = 21
+
+    let WW_L_BIT_BYTE_INDEX:Int = 22
+    let WW_L_BIT_POS_INDEX:Int = 23
+    let WW_L_BIT_HOLD_CNT_LOW_INDEX:Int = 24
+    let WW_L_BIT_HOLD_CNT_HIGH_INDEX:Int = 25
+    let WW_L_BIT_MAX_CNT_LOW_INDEX:Int = 26
+    let WW_L_BIT_MAX_CNT_HIGH_INDEX:Int = 27
+    let WW_L_BIT_MIN_CNT_LOW_INDEX:Int = 28
+    let WW_L_BIT_MIN_CNT_HIGH_INDEX:Int = 29
+    let WW_L_BIT_MAX_VAL_INDEX:Int = 30
+    let WW_L_BIT_MIN_VAL_INDEX:Int = 31
+
+    let WW_SCROLL_BYTE_INDEX:Int = 32
+    let WW_SCROLL_LENGTH_INDEX:Int = 33
+    let WW_SCROLL_VAL_CURRENT_INDEX:Int = 34
+    let WW_SCROLL_VAL_OLD_INDEX:Int = 35
+    let WW_SCROLL_INC_VAL_INDEX:Int = 36
+    let WW_SCROLL_DEC_VAL_INDEX:Int = 37
+
+    let WLQ_SCHEDULE_SLOT_INDEX:Int = 38
+    let OEM_SCHEDULE_SLOT_INDEX:Int = 39
+    let ACC_SCHEDULE_SLOT_INDEX:Int = 40
+
+    let PIXEL_OB_INTENSITY_INDEX:Int = 41
+    let PIXEL_OB_B_INDEX:Int = 42
+    let PIXEL_OB_G_INDEX:Int = 43
+    let PIXEL_OB_R_INDEX:Int = 44
+    let PIXEL_REMOTE_INTENSITY_INDEX:Int = 45
+    let PIXEL_REMOTE_B_INDEX:Int = 46
+    let PIXEL_REMOTE_G_INDEX:Int = 47
+    let PIXEL_REMOTE_R_INDEX:Int = 48
+
+    let ACTIVE_CHAN_INDEX:Int = 49
+    let LIN_ACC_CHANNEL_CNT_INDEX:Int = 50
+
+    let LIN_ACC_CHANNEL1_CONFIG_BYTE_INDEX:Int = 51
+    let LIN_ACC_CHANNEL1_VAL_BYTE_INDEX:Int = 52
+    let LIN_ACC_CHANNEL1_CONFIG_STATE_INDEX:Int = 53
+    let LIN_ACC_CHANNEL1_VAL_RAW_INDEX:Int = 54
+    let LIN_ACC_CHANNEL1_VAL_OFFSET_INDEX:Int = 55
+    let LIN_ACC_CHANNEL1_VAL_SCALE_INDEX:Int = 56
+    let LIN_ACC_CHANNEL1_PIXEL_INTENSITY_INDEX:Int = 57
+    let LIN_ACC_CHANNEL1_PIXEL_B_INDEX:Int = 58
+    let LIN_ACC_CHANNEL1_PIXEL_G_INDEX:Int = 59
+    let LIN_ACC_CHANNEL1_PIXEL_R_INDEX:Int = 60
+
+    let LIN_ACC_CHANNEL2_CONFIG_BYTE_INDEX:Int = 61
+    let LIN_ACC_CHANNEL2_VAL_BYTE_INDEX:Int = 62
+    let LIN_ACC_CHANNEL2_CONFIG_STATE_INDEX:Int = 63
+    let LIN_ACC_CHANNEL2_VAL_RAW_INDEX:Int = 64
+    let LIN_ACC_CHANNEL2_VAL_OFFSET_INDEX:Int = 65
+    let LIN_ACC_CHANNEL2_VAL_SCALE_INDEX:Int = 66
+    let LIN_ACC_CHANNEL2_PIXEL_INTENSITY_INDEX:Int = 67
+    let LIN_ACC_CHANNEL2_PIXEL_B_INDEX:Int = 68
+    let LIN_ACC_CHANNEL2_PIXEL_G_INDEX:Int = 69
+    let LIN_ACC_CHANNEL2_PIXEL_R_INDEX:Int = 70
+    
+    var wunderLINQStatus:[UInt8]?
+    var channel1PixelColor:UInt8?
+    var channel2PixelColor:UInt8?
+    var channel1PixelIntensity:UInt8?
+    var channel2PixelIntensity:UInt8?
+    var channe1ValueRaw:UInt8?
+    var channel2ValueRaw:UInt8?
 
     var keyMode:UInt8?
     var sensitivity:UInt8?
@@ -220,6 +309,28 @@ class WLQ_C: WLQ {
     
     override func getConfig() -> [UInt8]{
         return flashConfig!
+    }
+    
+    override func setStatus(bytes: [UInt8]) {
+        self.wunderLINQStatus = Array(bytes[3..<(3+71)])//Fix
+        self.channel1PixelColor = 0x00 << 24 | self.wunderLINQStatus![LIN_ACC_CHANNEL1_PIXEL_R_INDEX] << 16 | self.wunderLINQStatus![LIN_ACC_CHANNEL1_PIXEL_G_INDEX] << 8 | self.wunderLINQStatus![LIN_ACC_CHANNEL1_PIXEL_B_INDEX]
+        self.channel2PixelColor = 0x00 << 24 | self.wunderLINQStatus![LIN_ACC_CHANNEL2_PIXEL_R_INDEX] << 16 | self.wunderLINQStatus![LIN_ACC_CHANNEL2_PIXEL_G_INDEX] << 8 | self.wunderLINQStatus![LIN_ACC_CHANNEL2_PIXEL_B_INDEX]
+        self.channel1PixelIntensity = self.wunderLINQStatus![LIN_ACC_CHANNEL1_PIXEL_INTENSITY_INDEX]
+        self.channel2PixelIntensity = self.wunderLINQStatus![LIN_ACC_CHANNEL2_PIXEL_INTENSITY_INDEX]
+        self.channe1ValueRaw = self.wunderLINQStatus![LIN_ACC_CHANNEL1_VAL_RAW_INDEX]
+        self.channel2ValueRaw = self.wunderLINQStatus![LIN_ACC_CHANNEL2_VAL_RAW_INDEX]
+    }
+    
+    override func getStatus() -> [UInt8]{
+        var messageHexString = ""
+        for i in 0 ..< wunderLINQStatus!.count {
+            messageHexString += String(format: "%02X", wunderLINQStatus![i])
+            if i < wunderLINQStatus!.count - 1 {
+                messageHexString += ","
+            }
+        }
+        print("flashConfig: \(messageHexString)")
+        return wunderLINQStatus!
     }
     
     override func gethardwareType() -> Int{

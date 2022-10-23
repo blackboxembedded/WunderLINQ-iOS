@@ -102,6 +102,7 @@
 		7EC8C9BF1F830C5B000CEDDC /* PhoneContacts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC8C9BE1F830C5B000CEDDC /* PhoneContacts.swift */; };
 		7EC934F22186208A00FD4806 /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC934F12186208A00FD4806 /* AlertViewController.swift */; };
 		7ED2013620D0D0030066BCE6 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7ED2013520D0D0030066BCE6 /* Default-568h@2x.png */; };
+		7EE583622905A88700AF6A87 /* AccessoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE583612905A88600AF6A87 /* AccessoryViewController.swift */; };
 		7EF0775B258D796F009A6BAA /* HWSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF0775A258D796F009A6BAA /* HWSettingsViewController.swift */; };
 		7EF07768258E653E009A6BAA /* HWSettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF07767258E653E009A6BAA /* HWSettingsTableViewCell.swift */; };
 		7EF0776C258FBDEF009A6BAA /* KeyboardHID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF0776B258FBDEF009A6BAA /* KeyboardHID.swift */; };
@@ -261,6 +262,7 @@
 		7EE02FE422A6BCCA0061330B /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		7EE02FE522A6BCCA0061330B /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = WunderLINQ/ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7EE02FE622A6BCCA0061330B /* ja */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		7EE583612905A88600AF6A87 /* AccessoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessoryViewController.swift; sourceTree = "<group>"; };
 		7EF0775A258D796F009A6BAA /* HWSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HWSettingsViewController.swift; sourceTree = "<group>"; };
 		7EF07767258E653E009A6BAA /* HWSettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HWSettingsTableViewCell.swift; sourceTree = "<group>"; };
 		7EF0776B258FBDEF009A6BAA /* KeyboardHID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardHID.swift; sourceTree = "<group>"; };
@@ -427,6 +429,8 @@
 				7EA478741F412B73000CEDDC /* LocationDelegate.swift */,
 				7E62BB6C21FE3DBF00FDB10E /* MainCollectionViewController.swift */,
 				7E62BB6E21FE3DEB00FDB10E /* MainCollectionViewCell.swift */,
+				7EB5ED7C251FE8FA00B61160 /* DashViewController.swift */,
+				7EE583612905A88600AF6A87 /* AccessoryViewController.swift */,
 				7E62BB7021FE443200FDB10E /* ColumnFlowLayout.swift */,
 				7E068BC220FD8A100076EAAD /* FaultsTableViewController.swift */,
 				7EAF646722FE17D000B11550 /* BikeInfoViewController.swift */,
@@ -444,7 +448,6 @@
 				7EC934F12186208A00FD4806 /* AlertViewController.swift */,
 				7EA478801F44F57C000CEDDC /* MusicViewController.swift */,
 				7EAE9416211EA30900E24CE9 /* Theme.swift */,
-				7EB5ED7C251FE8FA00B61160 /* DashViewController.swift */,
 				7E6E0A6724FC022200149387 /* ColorPickerViewController.swift */,
 				7E620A0C26278E4900F6E23B /* AppSettingsViewController.swift */,
 				7EB8B99D245CA7A6007232D2 /* Secrets.swift */,
@@ -756,6 +759,7 @@
 				7EAE9415211E9B3200E24CE9 /* Double+Extensions.swift in Sources */,
 				7EA4784E1F40B154000CEDDC /* AppDelegate.swift in Sources */,
 				7E62BB6D21FE3DBF00FDB10E /* MainCollectionViewController.swift in Sources */,
+				7EE583622905A88700AF6A87 /* AccessoryViewController.swift in Sources */,
 				7E7C53CD21F3BA9200C98010 /* ContactsTableViewCell.swift in Sources */,
 				7E068BC7210190CB0076EAAD /* TripsTableViewController.swift in Sources */,
 				7E4669F72518647C00E7E291 /* NavAppHelper.swift in Sources */,

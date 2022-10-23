@@ -66,7 +66,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     
     var lastMessage = [UInt8]()
     
-    //let wlqData = WLQ_OLD.shared
+
     var wlqData: WLQ!
     let bleData = BLE.shared
     let motorcycleData = MotorcycleData.shared
@@ -75,6 +75,8 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     
     let motionManager = CMMotionManager()
     var referenceAttitude: CMAttitude?
+    
+    private let notificationCenter = NotificationCenter.default
     
     var menuSelected = 0
     fileprivate var popoverMenuList = [NSLocalizedString("bike_info_label", comment: ""),NSLocalizedString("geodata_label", comment: ""),NSLocalizedString("appsettings_label", comment: ""), NSLocalizedString("about_label", comment: ""), NSLocalizedString("close_label", comment: "")]
@@ -1820,18 +1822,25 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             }
         }
         //print("Command Response Received: \(messageHexString)")
+        
         switch (dataArray[0]){
         case 0x57:
             switch (dataArray[1]){
             case 0x52:
                 switch (dataArray[2]){
+                case 0x53:
+                    print("Received WRS command response")
+                    print("Status Response Received: \(messageHexString)")
+                    wlqData.setStatus(bytes: dataArray)
+                    notificationCenter.post(name: Notification.Name("StatusUpdate"), object: nil)
+                    break
                 case 0x56:
                     print("Received WRV command response")
-                    wlqData.setfirmwareVersion(firmwareVersion: "\(dataArray[3]).\(dataArray[4])");
+                    wlqData.setfirmwareVersion(firmwareVersion: "\(dataArray[3]).\(dataArray[4])")
                     break
                 case 0x57:
                     print("Received WRW command response")
-                    print("Command Response Received: \(messageHexString)")
+                    //print("Command Response Received: \(messageHexString)")
                     wlqData.parseConfig(bytes: dataArray)
                     popoverMenuList = [NSLocalizedString("bike_info_label", comment: ""), NSLocalizedString("geodata_label", comment: ""),NSLocalizedString("appsettings_label", comment: ""), NSLocalizedString("hwsettings_label", comment: ""), NSLocalizedString("about_label", comment: ""), NSLocalizedString("close_label", comment: "")]
                     break
@@ -2061,6 +2070,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                 } else if characteristic.uuid == CBUUID(string: Device.CommandCharacteristicUUID) {
                     print("COMMAND INTERFACE FOUND")
                     commandCharacteristic = characteristic
+                    wunderLINQ?.setNotifyValue(true, for: characteristic)
                     bleData.setcmdCharacteristic(cmdCharacteristic: characteristic)
                     if(wlqData != nil){
                         print("Sending Command")
@@ -2261,7 +2271,8 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     }
     
     @objc func leftScreen() {
-        performSegue(withIdentifier: "motorcycleToTaskGrid", sender: [])
+        //performSegue(withIdentifier: "motorcycleToTaskGrid", sender: [])
+        performSegue(withIdentifier: "motorcycleToAccessory", sender: [])
     }
     
     @objc func rightScreen() {

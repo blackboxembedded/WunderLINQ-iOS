@@ -62,6 +62,10 @@
 "close_label" = "Close";
 "hwsettings_label" = "HW Settings";
 "select_bt" = "Select";
+//AccessoryViewController
+"accessory_title" = "Accessory Status";
+"default_accessory_one_name" = "Channel One";
+"default_accessory_two_name" = "Channel Two";
 //HWSettingsViewController
 "customize_btn_label" = "Customize";
 "default_btn_label" = "Default Mode";
