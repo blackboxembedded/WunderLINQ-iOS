@@ -1814,6 +1814,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         var dataArray = [UInt8](repeating: 0, count: dataLength)
         (data as NSData).getBytes(&dataArray, length: dataLength * MemoryLayout<Int16>.size)
         
+        /*
         var messageHexString = ""
         for i in 0 ..< dataLength {
             messageHexString += String(format: "%02X", dataArray[i])
@@ -1821,7 +1822,8 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                 messageHexString += ","
             }
         }
-        //print("Command Response Received: \(messageHexString)")
+        print("Command Response Received: \(messageHexString)")
+        */
         
         switch (dataArray[0]){
         case 0x57:
@@ -1830,9 +1832,10 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                 switch (dataArray[2]){
                 case 0x53:
                     print("Received WRS command response")
-                    print("Status Response Received: \(messageHexString)")
-                    wlqData.setStatus(bytes: dataArray)
-                    notificationCenter.post(name: Notification.Name("StatusUpdate"), object: nil)
+                    if (wlqData != nil){
+                        wlqData.setStatus(bytes: dataArray)
+                        notificationCenter.post(name: Notification.Name("StatusUpdate"), object: nil)
+                    }
                     break
                 case 0x56:
                     print("Received WRV command response")
@@ -1840,7 +1843,6 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                     break
                 case 0x57:
                     print("Received WRW command response")
-                    //print("Command Response Received: \(messageHexString)")
                     wlqData.parseConfig(bytes: dataArray)
                     popoverMenuList = [NSLocalizedString("bike_info_label", comment: ""), NSLocalizedString("geodata_label", comment: ""),NSLocalizedString("appsettings_label", comment: ""), NSLocalizedString("hwsettings_label", comment: ""), NSLocalizedString("about_label", comment: ""), NSLocalizedString("close_label", comment: "")]
                     break
@@ -2068,12 +2070,13 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                     messageCharacteristic = characteristic
                     wunderLINQ?.setNotifyValue(true, for: characteristic)
                 } else if characteristic.uuid == CBUUID(string: Device.CommandCharacteristicUUID) {
+                    // Enable the message notifications
                     print("COMMAND INTERFACE FOUND")
                     commandCharacteristic = characteristic
                     wunderLINQ?.setNotifyValue(true, for: characteristic)
                     bleData.setcmdCharacteristic(cmdCharacteristic: characteristic)
                     if(wlqData != nil){
-                        print("Sending Command")
+                        print("REQUESTING CONFIG")
                         let writeData =  Data(_: wlqData.GET_CONFIG_CMD())
                         peripheral.writeValue(writeData, for: commandCharacteristic!, type: CBCharacteristicWriteType.withResponse)
                         peripheral.readValue(for: commandCharacteristic!)
@@ -2082,7 +2085,6 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                 peripheral.discoverDescriptors(for: characteristic)
             }
             if(numServicesChecked == numServices){
-                print("Done Checking")
                 if (hwRevCharacteristic != nil){
                     peripheral.readValue(for: hwRevCharacteristic!)
                 }
@@ -2271,8 +2273,11 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     }
     
     @objc func leftScreen() {
-        //performSegue(withIdentifier: "motorcycleToTaskGrid", sender: [])
-        performSegue(withIdentifier: "motorcycleToAccessory", sender: [])
+        if (wlqData.getStatus() == nil){
+            performSegue(withIdentifier: "motorcycleToTaskGrid", sender: [])
+        } else {
+            performSegue(withIdentifier: "motorcycleToAccessory", sender: [])
+        }
     }
     
     @objc func rightScreen() {

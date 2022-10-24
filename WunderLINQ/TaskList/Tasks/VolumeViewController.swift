@@ -162,6 +162,7 @@ class VolumeViewController: UIViewController {
             highlightColor = UIColor(named: "accent")
         }
         progressBar.progressTintColor = highlightColor
+        progressBar.transform = progressBar.transform.scaledBy(x: 1, y: 15)
         
         let volumeView = MPVolumeView(frame: CGRect(x: -CGFloat.greatestFiniteMagnitude, y:0, width:0, height:0))
         view.addSubview(volumeView)

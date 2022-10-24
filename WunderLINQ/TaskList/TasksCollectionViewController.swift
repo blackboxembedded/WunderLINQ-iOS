@@ -59,6 +59,7 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
     let scenic = ScenicAPI()
     
     let motorcycleData = MotorcycleData.shared
+    let wlqData = WLQ.shared
     
     let emptyTask = 15
     
@@ -802,17 +803,33 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
     }
     
     @objc func leftScreen() {
-        let secondViewController = self.storyboard!.instantiateViewController(withIdentifier: "MusicViewController") as! MusicViewController
-        if let viewControllers = self.navigationController?.viewControllers
-        {
-            if viewControllers.contains(where: {
-                return $0 is MusicViewController
-            })
+        if (wlqData.getStatus() == nil){
+            let secondViewController = self.storyboard!.instantiateViewController(withIdentifier: "MusicViewController") as! MusicViewController
+            if let viewControllers = self.navigationController?.viewControllers
             {
-                 _ = navigationController?.popViewController(animated: true)
-                
-            } else {
-                self.navigationController!.pushViewController(secondViewController, animated: true)
+                if viewControllers.contains(where: {
+                    return $0 is MusicViewController
+                })
+                {
+                    _ = navigationController?.popViewController(animated: true)
+                    
+                } else {
+                    self.navigationController!.pushViewController(secondViewController, animated: true)
+                }
+            }
+        } else {
+            let secondViewController = self.storyboard!.instantiateViewController(withIdentifier: "AccessoryViewController") as! AccessoryViewController
+            if let viewControllers = self.navigationController?.viewControllers
+            {
+                if viewControllers.contains(where: {
+                    return $0 is AccessoryViewController
+                })
+                {
+                    _ = navigationController?.popViewController(animated: true)
+                    
+                } else {
+                    self.navigationController!.pushViewController(secondViewController, animated: true)
+                }
             }
         }
     }
@@ -831,22 +848,10 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
     
     @objc func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
         if gesture.direction == UISwipeGestureRecognizer.Direction.right {
-            let secondViewController = self.storyboard!.instantiateViewController(withIdentifier: "MusicViewController") as! MusicViewController
-            if let viewControllers = self.navigationController?.viewControllers
-            {
-                if viewControllers.contains(where: {
-                    return $0 is MusicViewController
-                })
-                {
-                     _ = navigationController?.popViewController(animated: true)
-                    
-                } else {
-                    self.navigationController!.pushViewController(secondViewController, animated: true)
-                }
-            }
+            leftScreen()
         }
         else if gesture.direction == UISwipeGestureRecognizer.Direction.left {
-            navigationController?.popToRootViewController(animated: true)
+            rightScreen()
         }
     }
 

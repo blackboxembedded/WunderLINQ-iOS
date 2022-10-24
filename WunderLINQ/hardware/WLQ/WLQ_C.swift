@@ -245,7 +245,7 @@ class WLQ_C: WLQ {
 
         self.flashConfig = Array(bytes[6..<(6+configFlashSize)])
         self.tempConfig = self.flashConfig
-        
+        /*
         var messageHexString = ""
         for i in 0 ..< flashConfig!.count {
             messageHexString += String(format: "%02X", flashConfig![i])
@@ -262,7 +262,7 @@ class WLQ_C: WLQ {
             }
         }
         print("tempConfig: \(tmessageHexString)")
-        
+        */
         self.keyMode = bytes[self.keyMode_INDEX]
         let usbBytes: [UInt8] = [self.flashConfig![self.USBVinThresholdHigh_INDEX], self.flashConfig![self.USBVinThresholdLow_INDEX]]
         self.USBVinThreshold = usbBytes.withUnsafeBytes { $0.load(as: UInt16.self) }
@@ -321,16 +321,8 @@ class WLQ_C: WLQ {
         self.channel2ValueRaw = self.wunderLINQStatus![LIN_ACC_CHANNEL2_VAL_RAW_INDEX]
     }
     
-    override func getStatus() -> [UInt8]{
-        var messageHexString = ""
-        for i in 0 ..< wunderLINQStatus!.count {
-            messageHexString += String(format: "%02X", wunderLINQStatus![i])
-            if i < wunderLINQStatus!.count - 1 {
-                messageHexString += ","
-            }
-        }
-        print("flashConfig: \(messageHexString)")
-        return wunderLINQStatus!
+    override func getStatus() -> [UInt8]?{
+        return self.wunderLINQStatus
     }
     
     override func gethardwareType() -> Int{

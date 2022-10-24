@@ -90,7 +90,7 @@ class WLQ {
     func setStatus(bytes: [UInt8]) {
         fatalError("This method must be overridden")
     }
-    func getStatus() -> [UInt8]{
+    func getStatus() -> [UInt8]?{
         fatalError("This method must be overridden")
     }
     func getTempConfig() -> [UInt8]{

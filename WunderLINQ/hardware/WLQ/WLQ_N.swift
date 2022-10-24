@@ -265,7 +265,7 @@ class WLQ_N: WLQ {
         if (self.firmwareVersion!.toDouble()! >= 2.0) { // FW >=2.0
             self.flashConfig = Array(bytes[26..<(26+configFlashSize)])
             self.tempConfig = self.flashConfig
-            
+            /*
             var messageHexString = ""
             for i in 0 ..< flashConfig!.count {
                 messageHexString += String(format: "%02X", flashConfig![i])
@@ -282,7 +282,7 @@ class WLQ_N: WLQ {
                 }
             }
             print("tempConfig: \(tmessageHexString)")
-            
+            */
             self.keyMode = bytes[self.keyMode_INDEX]
             let usbBytes: [UInt8] = [self.flashConfig![self.USBVinThresholdHigh_INDEX], self.flashConfig![self.USBVinThresholdLow_INDEX]]
             self.USBVinThreshold = usbBytes.withUnsafeBytes { $0.load(as: UInt16.self) }
