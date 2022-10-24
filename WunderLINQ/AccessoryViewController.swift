@@ -244,13 +244,6 @@ class AccessoryViewController: UIViewController {
         let touchRecognizer = UITapGestureRecognizer(target: self, action:  #selector(VolumeViewController.onTouch))
         self.view.addGestureRecognizer(touchRecognizer)
         
-        var highlightColor: UIColor?
-        if let colorData = UserDefaults.standard.data(forKey: "highlight_color_preference"){
-            highlightColor = NSKeyedUnarchiver.unarchiveObject(with: colorData) as? UIColor
-        } else {
-            highlightColor = UIColor(named: "accent")
-        }
-        
         notificationCenter.addObserver(self, selector:#selector(self.updateScreen), name: NSNotification.Name("StatusUpdate"), object: nil)
         
         updateScreen()
@@ -267,12 +260,56 @@ class AccessoryViewController: UIViewController {
     }
     
     @objc func updateScreen(){
-        print("channelOne: \(wlqData.getStatus()[WLQ_C().LIN_ACC_CHANNEL1_VAL_RAW_INDEX])")
-        print("channelTwo: \(wlqData.getStatus()[WLQ_C().LIN_ACC_CHANNEL2_VAL_RAW_INDEX])")
-        print("channelOneProgress: \(Float(wlqData.getStatus()[WLQ_C().LIN_ACC_CHANNEL1_VAL_RAW_INDEX]) / 254.0)")
-        print("channelTwoProgress: \(Float(wlqData.getStatus()[WLQ_C().LIN_ACC_CHANNEL2_VAL_RAW_INDEX]) / 254.0)")
-        channelOneProgress.progress = (Float(wlqData.getStatus()[WLQ_C().LIN_ACC_CHANNEL1_VAL_RAW_INDEX]) / 254.0)
-        channelTwoProgress.progress = (Float(wlqData.getStatus()[WLQ_C().LIN_ACC_CHANNEL2_VAL_RAW_INDEX]) / 254.0)
+        var highlightColor: UIColor?
+        if let colorData = UserDefaults.standard.data(forKey: "highlight_color_preference"){
+            highlightColor = NSKeyedUnarchiver.unarchiveObject(with: colorData) as? UIColor
+        } else {
+            highlightColor = UIColor(named: "accent")
+        }
+        let channelActive = wlqData.getStatus()[WLQ_C().ACTIVE_CHAN_INDEX]
+        let channel1State = wlqData.getStatus()[WLQ_C().LIN_ACC_CHANNEL1_CONFIG_STATE_INDEX]
+        let channel2State = wlqData.getStatus()[WLQ_C().LIN_ACC_CHANNEL2_CONFIG_STATE_INDEX]
+        
+        
+        channelOneProgress.progressTintColor = UIColor(red: CGFloat(wlqData.getStatus()[WLQ_C().LIN_ACC_CHANNEL1_PIXEL_R_INDEX]), green: CGFloat(wlqData.getStatus()[WLQ_C().LIN_ACC_CHANNEL1_PIXEL_G_INDEX]), blue: CGFloat(wlqData.getStatus()[WLQ_C().LIN_ACC_CHANNEL1_PIXEL_B_INDEX]), alpha: 1)
+        channelTwoProgress.progressTintColor = UIColor(red: CGFloat(wlqData.getStatus()[WLQ_C().LIN_ACC_CHANNEL2_PIXEL_R_INDEX]), green: CGFloat(wlqData.getStatus()[WLQ_C().LIN_ACC_CHANNEL2_PIXEL_G_INDEX]), blue: CGFloat(wlqData.getStatus()[WLQ_C().LIN_ACC_CHANNEL2_PIXEL_B_INDEX]), alpha: 1)
+        
+        switch (channelActive) {
+        case 1:
+            channelOneView.layer.borderWidth = 15
+            channelOneView.layer.borderColor = highlightColor as! CGColor
+            channelTwoView.layer.borderWidth = 0
+            channelTwoView.layer.borderColor = nil
+            channelOneProgress.progressTintColor = UIColor(red: CGFloat(wlqData.getStatus()[WLQ_C().LIN_ACC_CHANNEL1_PIXEL_R_INDEX]), green: CGFloat(wlqData.getStatus()[WLQ_C().LIN_ACC_CHANNEL1_PIXEL_G_INDEX]), blue: CGFloat(wlqData.getStatus()[WLQ_C().LIN_ACC_CHANNEL1_PIXEL_B_INDEX]), alpha: 1)
+            channelTwoProgress.progressTintColor = UIColor(named: "backgrounds")
+            break
+        case 2:
+            channelOneView.layer.borderWidth = 0
+            channelOneView.layer.borderColor = nil
+            channelTwoView.layer.borderWidth = 15
+            channelTwoView.layer.borderColor = highlightColor as! CGColor
+            channelOneProgress.progressTintColor = UIColor(named: "backgrounds")
+            channelTwoProgress.progressTintColor = UIColor(red: CGFloat(wlqData.getStatus()[WLQ_C().LIN_ACC_CHANNEL2_PIXEL_R_INDEX]), green: CGFloat(wlqData.getStatus()[WLQ_C().LIN_ACC_CHANNEL2_PIXEL_G_INDEX]), blue: CGFloat(wlqData.getStatus()[WLQ_C().LIN_ACC_CHANNEL2_PIXEL_B_INDEX]), alpha: 1)
+            break
+        default:
+            channelOneView.layer.borderWidth = 0
+            channelOneView.layer.borderColor = nil
+            channelTwoView.layer.borderWidth = 0
+            channelTwoView.layer.borderColor = nil
+            channelOneProgress.progressTintColor = UIColor(named: "backgrounds")
+            channelTwoProgress.progressTintColor = UIColor(named: "backgrounds")
+            break
+        }
+        if (channel1State == 128) {
+            channelOneProgress.progress = (Float(wlqData.getStatus()[WLQ_C().LIN_ACC_CHANNEL1_VAL_RAW_INDEX]) / 254.0)
+        } else {
+            channelOneProgress.progress = 0
+        }
+        if (channel2State == 128) {
+            channelTwoProgress.progress = (Float(wlqData.getStatus()[WLQ_C().LIN_ACC_CHANNEL2_VAL_RAW_INDEX]) / 254.0)
+        } else {
+            channelTwoProgress.progress = 0
+        }
     }
     
 }

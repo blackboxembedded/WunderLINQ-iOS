@@ -312,7 +312,7 @@ class WLQ_C: WLQ {
     }
     
     override func setStatus(bytes: [UInt8]) {
-        self.wunderLINQStatus = Array(bytes[3..<(3+71)])//Fix
+        self.wunderLINQStatus = Array(bytes[3..<(3+71)])
         self.channel1PixelColor = 0x00 << 24 | self.wunderLINQStatus![LIN_ACC_CHANNEL1_PIXEL_R_INDEX] << 16 | self.wunderLINQStatus![LIN_ACC_CHANNEL1_PIXEL_G_INDEX] << 8 | self.wunderLINQStatus![LIN_ACC_CHANNEL1_PIXEL_B_INDEX]
         self.channel2PixelColor = 0x00 << 24 | self.wunderLINQStatus![LIN_ACC_CHANNEL2_PIXEL_R_INDEX] << 16 | self.wunderLINQStatus![LIN_ACC_CHANNEL2_PIXEL_G_INDEX] << 8 | self.wunderLINQStatus![LIN_ACC_CHANNEL2_PIXEL_B_INDEX]
         self.channel1PixelIntensity = self.wunderLINQStatus![LIN_ACC_CHANNEL1_PIXEL_INTENSITY_INDEX]
