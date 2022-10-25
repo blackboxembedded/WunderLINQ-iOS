@@ -257,7 +257,6 @@ class AccessoryViewController: UIViewController, UITextFieldDelegate {
         let forwardButtonHeight = forwardButton.customView?.heightAnchor.constraint(equalToConstant: 30)
         forwardButtonHeight?.isActive = true
 
-        
         self.navigationItem.title = NSLocalizedString("accessory_title", comment: "")
         self.navigationItem.leftBarButtonItems = [backButton]
         self.navigationItem.rightBarButtonItems = [forwardButton]
@@ -269,14 +268,6 @@ class AccessoryViewController: UIViewController, UITextFieldDelegate {
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))
         swipeRight.direction = .right
         self.view.addGestureRecognizer(swipeRight)
-        
-        let swipeUp = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))
-        swipeUp.direction = .up
-        self.view.addGestureRecognizer(swipeUp)
-        
-        let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))
-        swipeDown.direction = .down
-        self.view.addGestureRecognizer(swipeDown)
         
         let longPressOneRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(longPressOne(longPressGestureRecognizer:)))
         self.channelOneView.addGestureRecognizer(longPressOneRecognizer)
