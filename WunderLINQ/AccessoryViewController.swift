@@ -19,13 +19,14 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 import UIKit
 import CoreBluetooth
 
-class AccessoryViewController: UIViewController {
+class AccessoryViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var channelOneView: UIView!
     @IBOutlet weak var channelTwoView: UIView!
     
-    
     @IBOutlet weak var channelOneLabel: UILabel!
     @IBOutlet weak var channelTwoLabel: UILabel!
+    @IBOutlet weak var channelOneTextField: UITextField!
+    @IBOutlet weak var channelTwoTextField: UITextField!
     
     @IBOutlet weak var channelOneProgress: UIProgressView!
     @IBOutlet weak var channelTwoProgress: UIProgressView!
@@ -87,10 +88,23 @@ class AccessoryViewController: UIViewController {
         }
     }
     
-    @objc func longPress(longPressGestureRecognizer: UILongPressGestureRecognizer) {
-        
+    @objc func longPressOne(longPressGestureRecognizer: UILongPressGestureRecognizer) {
+        print("longPressOne")
         if longPressGestureRecognizer.state == UIGestureRecognizer.State.began {
-            enter()
+            channelOneLabel.isHidden = true
+            channelTwoLabel.isHidden = false
+            channelOneTextField.isHidden = false
+            channelTwoTextField.isHidden = true
+        }
+    }
+    
+    @objc func longPressTwo(longPressGestureRecognizer: UILongPressGestureRecognizer) {
+        print("longPressTwo")
+        if longPressGestureRecognizer.state == UIGestureRecognizer.State.began {
+            channelOneLabel.isHidden = false
+            channelTwoLabel.isHidden = true
+            channelOneTextField.isHidden = true
+            channelTwoTextField.isHidden = false
         }
     }
     
@@ -138,6 +152,30 @@ class AccessoryViewController: UIViewController {
     
     @objc func rightScreen() {
         navigationController?.popToRootViewController(animated: true)
+    }
+
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if (textField == channelOneTextField){
+            print("textFieldDidEndEditing: channelOneTextField")
+            let channelOneName = channelOneTextField.text
+            UserDefaults.standard.set(channelOneName, forKey: "ACC_CHAN_1")
+            channelOneLabel.text = channelOneName
+            channelOneTextField.text = channelOneName
+            channelOneLabel.isHidden = false
+            channelTwoLabel.isHidden = false
+            channelOneTextField.isHidden = true
+            channelTwoTextField.isHidden = true
+        } else  if (textField == channelTwoTextField){
+            print("textFieldDidEndEditing: channelTwoTextField")
+            let channelTwoName = channelTwoTextField.text
+            UserDefaults.standard.set(channelTwoName, forKey: "ACC_CHAN_2")
+            channelTwoLabel.text = channelTwoName
+            channelTwoTextField.text = channelTwoName
+            channelOneLabel.isHidden = false
+            channelTwoLabel.isHidden = false
+            channelOneTextField.isHidden = true
+            channelTwoTextField.isHidden = true
+        }
     }
     
     override var preferredStatusBarStyle : UIStatusBarStyle {
@@ -257,22 +295,27 @@ class AccessoryViewController: UIViewController {
         swipeDown.direction = .down
         self.view.addGestureRecognizer(swipeDown)
         
-        let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(VolumeViewController.longPress(longPressGestureRecognizer:)))
-        self.view.addGestureRecognizer(longPressRecognizer)
+        let longPressOneRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(longPressOne(longPressGestureRecognizer:)))
+        //self.view.addGestureRecognizer(longPressRecognizer)
+        self.channelOneView.addGestureRecognizer(longPressOneRecognizer)
+        let longPressTwoRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(longPressTwo(longPressGestureRecognizer:)))
+        self.channelTwoView.addGestureRecognizer(longPressTwoRecognizer)
         
-        let touchRecognizer = UITapGestureRecognizer(target: self, action:  #selector(VolumeViewController.onTouch))
+        let touchRecognizer = UITapGestureRecognizer(target: self, action:  #selector(onTouch))
         self.view.addGestureRecognizer(touchRecognizer)
+        
+        self.channelOneTextField.delegate = self
+        self.channelTwoTextField.delegate = self
+        
+        self.channelOneProgress.transform = self.channelOneProgress.transform.scaledBy(x: 1, y: 15)
+        self.channelTwoProgress.transform = self.channelTwoProgress.transform.scaledBy(x: 1, y: 15)
         
         peripheral = bleData.getPeripheral()
         commandCharacteristic = bleData.getcmdCharacteristic()
         
         notificationCenter.addObserver(self, selector:#selector(self.updateScreen), name: NSNotification.Name("StatusUpdate"), object: nil)
         
-        channelOneProgress.transform = channelOneProgress.transform.scaledBy(x: 1, y: 15)
-        channelTwoProgress.transform = channelTwoProgress.transform.scaledBy(x: 1, y: 15)
-        
         updateScreen()
-        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -286,6 +329,22 @@ class AccessoryViewController: UIViewController {
     
     @objc func updateScreen(){
         if (wlqData.getStatus() != nil){
+            let channelOneName = UserDefaults.standard.string(forKey: "ACC_CHAN_1")
+            if channelOneName != nil {
+                channelOneLabel.text = channelOneName
+                channelOneTextField.text = channelOneName
+            } else {
+                channelOneLabel.text = NSLocalizedString("default_accessory_one_name", comment: "")
+                channelOneTextField.text = NSLocalizedString("default_accessory_one_name", comment: "")
+            }
+            let channelTwoName = UserDefaults.standard.string(forKey: "ACC_CHAN_2")
+            if channelTwoName != nil {
+                channelTwoLabel.text = channelTwoName
+                channelTwoTextField.text = channelTwoName
+            } else {
+                channelTwoLabel.text = NSLocalizedString("default_accessory_one_name", comment: "")
+                channelTwoTextField.text = NSLocalizedString("default_accessory_one_name", comment: "")
+            }
             var highlightColor: UIColor?
             if let colorData = UserDefaults.standard.data(forKey: "highlight_color_preference"){
                 highlightColor = NSKeyedUnarchiver.unarchiveObject(with: colorData) as? UIColor
