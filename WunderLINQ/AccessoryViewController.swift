@@ -80,12 +80,6 @@ class AccessoryViewController: UIViewController, UITextFieldDelegate {
         else if gesture.direction == UISwipeGestureRecognizer.Direction.left {
             leftScreen()
         }
-        else if gesture.direction == UISwipeGestureRecognizer.Direction.up {
-            up()
-        }
-        else if gesture.direction == UISwipeGestureRecognizer.Direction.down {
-            down()
-        }
     }
     
     @objc func longPressOne(longPressGestureRecognizer: UILongPressGestureRecognizer) {
@@ -111,26 +105,10 @@ class AccessoryViewController: UIViewController, UITextFieldDelegate {
     override var keyCommands: [UIKeyCommand]? {
         
         let commands = [
-            UIKeyCommand(input: "\u{d}", modifierFlags:[], action: #selector(enter), discoverabilityTitle: "Enter"),
-            UIKeyCommand(input: UIKeyCommand.inputUpArrow, modifierFlags:[], action: #selector(up), discoverabilityTitle: "Up"),
-            UIKeyCommand(input: UIKeyCommand.inputDownArrow, modifierFlags:[], action: #selector(down), discoverabilityTitle: "Down"),
             UIKeyCommand(input: UIKeyCommand.inputLeftArrow, modifierFlags:[], action: #selector(leftScreen), discoverabilityTitle: "Left"),
             UIKeyCommand(input: UIKeyCommand.inputRightArrow, modifierFlags:[], action: #selector(rightScreen), discoverabilityTitle: "Right")
         ]
         return commands
-    }
-    
-    
-    @objc func enter() {
-
-    }
-    
-    @objc func up() {
-        
-    }
-    
-    @objc func down() {
-        
     }
     
     @objc func leftScreen() {
@@ -176,6 +154,11 @@ class AccessoryViewController: UIViewController, UITextFieldDelegate {
             channelOneTextField.isHidden = true
             channelTwoTextField.isHidden = true
         }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
     
     override var preferredStatusBarStyle : UIStatusBarStyle {
@@ -296,7 +279,6 @@ class AccessoryViewController: UIViewController, UITextFieldDelegate {
         self.view.addGestureRecognizer(swipeDown)
         
         let longPressOneRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(longPressOne(longPressGestureRecognizer:)))
-        //self.view.addGestureRecognizer(longPressRecognizer)
         self.channelOneView.addGestureRecognizer(longPressOneRecognizer)
         let longPressTwoRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(longPressTwo(longPressGestureRecognizer:)))
         self.channelTwoView.addGestureRecognizer(longPressTwoRecognizer)
@@ -328,23 +310,23 @@ class AccessoryViewController: UIViewController, UITextFieldDelegate {
     }
     
     @objc func updateScreen(){
+        let channelOneName = UserDefaults.standard.string(forKey: "ACC_CHAN_1")
+        if channelOneName != nil {
+            channelOneLabel.text = channelOneName
+            channelOneTextField.text = channelOneName
+        } else {
+            channelOneLabel.text = NSLocalizedString("default_accessory_one_name", comment: "")
+            channelOneTextField.text = NSLocalizedString("default_accessory_one_name", comment: "")
+        }
+        let channelTwoName = UserDefaults.standard.string(forKey: "ACC_CHAN_2")
+        if channelTwoName != nil {
+            channelTwoLabel.text = channelTwoName
+            channelTwoTextField.text = channelTwoName
+        } else {
+            channelTwoLabel.text = NSLocalizedString("default_accessory_two_name", comment: "")
+            channelTwoTextField.text = NSLocalizedString("default_accessory_two_name", comment: "")
+        }
         if (wlqData.getStatus() != nil){
-            let channelOneName = UserDefaults.standard.string(forKey: "ACC_CHAN_1")
-            if channelOneName != nil {
-                channelOneLabel.text = channelOneName
-                channelOneTextField.text = channelOneName
-            } else {
-                channelOneLabel.text = NSLocalizedString("default_accessory_one_name", comment: "")
-                channelOneTextField.text = NSLocalizedString("default_accessory_one_name", comment: "")
-            }
-            let channelTwoName = UserDefaults.standard.string(forKey: "ACC_CHAN_2")
-            if channelTwoName != nil {
-                channelTwoLabel.text = channelTwoName
-                channelTwoTextField.text = channelTwoName
-            } else {
-                channelTwoLabel.text = NSLocalizedString("default_accessory_one_name", comment: "")
-                channelTwoTextField.text = NSLocalizedString("default_accessory_one_name", comment: "")
-            }
             var highlightColor: UIColor?
             if let colorData = UserDefaults.standard.data(forKey: "highlight_color_preference"){
                 highlightColor = NSKeyedUnarchiver.unarchiveObject(with: colorData) as? UIColor
