@@ -83,7 +83,6 @@ class AccessoryViewController: UIViewController, UITextFieldDelegate {
     }
     
     @objc func longPressOne(longPressGestureRecognizer: UILongPressGestureRecognizer) {
-        print("longPressOne")
         if longPressGestureRecognizer.state == UIGestureRecognizer.State.began {
             channelOneLabel.isHidden = true
             channelTwoLabel.isHidden = false
@@ -93,7 +92,6 @@ class AccessoryViewController: UIViewController, UITextFieldDelegate {
     }
     
     @objc func longPressTwo(longPressGestureRecognizer: UILongPressGestureRecognizer) {
-        print("longPressTwo")
         if longPressGestureRecognizer.state == UIGestureRecognizer.State.began {
             channelOneLabel.isHidden = false
             channelTwoLabel.isHidden = true
@@ -125,7 +123,7 @@ class AccessoryViewController: UIViewController, UITextFieldDelegate {
                 self.navigationController!.pushViewController(secondViewController, animated: true)
             }
         }
-        performSegue(withIdentifier: "accessoryToTasks", sender: [])
+        //performSegue(withIdentifier: "accessoryToTasks", sender: [])
     }
     
     @objc func rightScreen() {
@@ -134,7 +132,6 @@ class AccessoryViewController: UIViewController, UITextFieldDelegate {
 
     func textFieldDidEndEditing(_ textField: UITextField) {
         if (textField == channelOneTextField){
-            print("textFieldDidEndEditing: channelOneTextField")
             let channelOneName = channelOneTextField.text
             UserDefaults.standard.set(channelOneName, forKey: "ACC_CHAN_1")
             channelOneLabel.text = channelOneName
@@ -144,7 +141,6 @@ class AccessoryViewController: UIViewController, UITextFieldDelegate {
             channelOneTextField.isHidden = true
             channelTwoTextField.isHidden = true
         } else  if (textField == channelTwoTextField){
-            print("textFieldDidEndEditing: channelTwoTextField")
             let channelTwoName = channelTwoTextField.text
             UserDefaults.standard.set(channelTwoName, forKey: "ACC_CHAN_2")
             channelTwoLabel.text = channelTwoName
@@ -293,6 +289,13 @@ class AccessoryViewController: UIViewController, UITextFieldDelegate {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        timer.invalidate()
+        refreshTimer.invalidate()
+        seconds = 0
+        // Show the navigation bar on other view controllers
+        DispatchQueue.main.async(){
+            self.navigationController?.setNavigationBarHidden(false, animated: animated)
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -317,6 +320,9 @@ class AccessoryViewController: UIViewController, UITextFieldDelegate {
             channelTwoLabel.text = NSLocalizedString("default_accessory_two_name", comment: "")
             channelTwoTextField.text = NSLocalizedString("default_accessory_two_name", comment: "")
         }
+        if (wlqData == nil){
+            print("wlqData == nil")
+        }
         if (wlqData.getStatus() != nil){
             var highlightColor: UIColor?
             if let colorData = UserDefaults.standard.data(forKey: "highlight_color_preference"){
@@ -333,15 +339,15 @@ class AccessoryViewController: UIViewController, UITextFieldDelegate {
                 channelOneView.layer.borderColor = highlightColor?.cgColor
                 channelTwoView.layer.borderWidth = 0
                 channelTwoView.layer.borderColor = nil
-                channelOneProgress.progressTintColor = UIColor(red: CGFloat(wlqData.getStatus()![WLQ_C().LIN_ACC_CHANNEL1_PIXEL_R_INDEX])/255.0, green: CGFloat(wlqData.getStatus()![WLQ_C().LIN_ACC_CHANNEL1_PIXEL_G_INDEX])/255.0, blue: CGFloat(wlqData.getStatus()![WLQ_C().LIN_ACC_CHANNEL1_PIXEL_B_INDEX]), alpha: 1)
-                channelTwoProgress.progressTintColor = UIColor(named: "backgrounds")
+                channelOneProgress.progressTintColor = UIColor(red: CGFloat(wlqData.getStatus()![WLQ_C().LIN_ACC_CHANNEL1_PIXEL_R_INDEX])/255.0, green: CGFloat(wlqData.getStatus()![WLQ_C().LIN_ACC_CHANNEL1_PIXEL_G_INDEX])/255.0, blue: CGFloat(wlqData.getStatus()![WLQ_C().LIN_ACC_CHANNEL1_PIXEL_B_INDEX])/255.0, alpha: 1)
+                channelTwoProgress.progressTintColor = UIColor(named: "imageTint")
                 break
             case 2:
                 channelOneView.layer.borderWidth = 0
                 channelOneView.layer.borderColor = nil
                 channelTwoView.layer.borderWidth = 10
                 channelTwoView.layer.borderColor = highlightColor?.cgColor
-                channelOneProgress.progressTintColor = UIColor(named: "backgrounds")
+                channelOneProgress.progressTintColor = UIColor(named: "imageTint")
                 channelTwoProgress.progressTintColor = UIColor(red: CGFloat(wlqData.getStatus()![WLQ_C().LIN_ACC_CHANNEL2_PIXEL_R_INDEX])/255.0, green: CGFloat(wlqData.getStatus()![WLQ_C().LIN_ACC_CHANNEL2_PIXEL_G_INDEX])/255.0, blue: CGFloat(wlqData.getStatus()![WLQ_C().LIN_ACC_CHANNEL2_PIXEL_B_INDEX])/255.0, alpha: 1)
                 break
             default:
@@ -349,8 +355,8 @@ class AccessoryViewController: UIViewController, UITextFieldDelegate {
                 channelOneView.layer.borderColor = nil
                 channelTwoView.layer.borderWidth = 0
                 channelTwoView.layer.borderColor = nil
-                channelOneProgress.progressTintColor = UIColor(named: "backgrounds")
-                channelTwoProgress.progressTintColor = UIColor(named: "backgrounds")
+                channelOneProgress.progressTintColor = UIColor(named: "imageTint")
+                channelTwoProgress.progressTintColor = UIColor(named: "imageTint")
                 break
             }
             if (channel1State == 128) {
@@ -364,11 +370,9 @@ class AccessoryViewController: UIViewController, UITextFieldDelegate {
                 channelTwoProgress.progress = 0
             }
         } else {
-            /*
-            let writeData =  Data(_: wlqData.GET_STATUS_CMD())
-            peripheral!.writeValue(writeData, for: commandCharacteristic!, type: CBCharacteristicWriteType.withResponse)
-            peripheral!.readValue(for: commandCharacteristic!)
-             */
+            print("wlqData.getStatus() == nil")
+            //let writeData =  Data(_: wlqData.GET_STATUS_CMD())
+            //peripheral!.writeValue(writeData, for: commandCharacteristic!, type: CBCharacteristicWriteType.withResponse)
         }
     }
     
