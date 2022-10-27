@@ -182,10 +182,12 @@ class WLQ_C: WLQ {
     let LIN_ACC_CHANNEL2_PIXEL_R_INDEX:Int = 70
     
     var wunderLINQStatus:[UInt8]?
-    var channel1PixelColor:UInt16?
-    var channel2PixelColor:UInt16?
+    var channel1PixelColor:UIColor?
+    var channel2PixelColor:UIColor?
     var channelActive:UInt8?
-    var channe1ValueRaw:UInt8?
+    var channel1State:UInt8?
+    var channel2State:UInt8?
+    var channel1ValueRaw:UInt8?
     var channel2ValueRaw:UInt8?
 
     var keyMode:UInt8?
@@ -312,48 +314,54 @@ class WLQ_C: WLQ {
     }
     
     override func setStatus(bytes: [UInt8]) {
-        print("setStatus()")
-        wunderLINQStatus = Array(bytes[3..<(3+71)])
-        self.channel1PixelColor = 0x00 << 24 | self.wunderLINQStatus![LIN_ACC_CHANNEL1_PIXEL_R_INDEX] << 16 | self.wunderLINQStatus![LIN_ACC_CHANNEL1_PIXEL_G_INDEX] << 8 | self.wunderLINQStatus![LIN_ACC_CHANNEL1_PIXEL_B_INDEX]
-        self.channel2PixelColor = 0x00 << 24 | self.wunderLINQStatus![LIN_ACC_CHANNEL2_PIXEL_R_INDEX] << 16 | self.wunderLINQStatus![LIN_ACC_CHANNEL2_PIXEL_G_INDEX] << 8 | self.wunderLINQStatus![LIN_ACC_CHANNEL2_PIXEL_B_INDEX]
+        self.wunderLINQStatus = Array(bytes[3..<(3+71)])
+        self.channel1PixelColor = UIColor(red: CGFloat(wunderLINQStatus![LIN_ACC_CHANNEL1_PIXEL_R_INDEX])/255.0, green: CGFloat(wunderLINQStatus![LIN_ACC_CHANNEL1_PIXEL_G_INDEX])/255.0, blue: CGFloat(wunderLINQStatus![LIN_ACC_CHANNEL1_PIXEL_B_INDEX])/255.0, alpha: 1)
+        self.channel2PixelColor = UIColor(red: CGFloat(wunderLINQStatus![LIN_ACC_CHANNEL2_PIXEL_R_INDEX])/255.0, green: CGFloat(wunderLINQStatus![LIN_ACC_CHANNEL2_PIXEL_G_INDEX])/255.0, blue: CGFloat(wunderLINQStatus![LIN_ACC_CHANNEL2_PIXEL_B_INDEX])/255.0, alpha: 1)
         self.channelActive = self.wunderLINQStatus![ACTIVE_CHAN_INDEX]
         self.channel1ValueRaw = self.wunderLINQStatus![LIN_ACC_CHANNEL1_VAL_RAW_INDEX]
         self.channel2ValueRaw = self.wunderLINQStatus![LIN_ACC_CHANNEL2_VAL_RAW_INDEX]
+        self.channel1State = self.wunderLINQStatus![LIN_ACC_CHANNEL1_CONFIG_STATE_INDEX]
+        self.channel2State = self.wunderLINQStatus![LIN_ACC_CHANNEL2_CONFIG_STATE_INDEX]
     }
     
     override func getStatus() -> [UInt8]?{
         return wunderLINQStatus
     }
     
-    override func getAccChannelPixelColor(positon: Int) -> UInt16{
+    override func getAccChannelPixelColor(positon: Int) -> UIColor{
         switch(positon){
         case 1:
             return channel1PixelColor!
-            break
         case 2:
             return channel2PixelColor!
-            break
         default:
-            return 0xFFFFFF
-            break
+            return UIColor.clear
         }
     }
     
     override func getAccActive() -> UInt8{
-        return channelActive
+        return channelActive!
+    }
+    
+    override func getAccChannelState(positon: Int) -> UInt8{
+        switch(positon){
+        case 1:
+            return channel1State!
+        case 2:
+            return channel2State!
+        default:
+            return 0x00
+        }
     }
     
     override func getAccChannelValue(positon: Int) -> UInt8{
         switch(positon){
         case 1:
             return channel1ValueRaw!
-            break
         case 2:
-            return channe2ValueRaw!
-            break
+            return channel2ValueRaw!
         default:
             return 0x00
-            break
         }
     }
     

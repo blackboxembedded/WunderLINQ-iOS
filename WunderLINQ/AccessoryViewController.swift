@@ -304,10 +304,6 @@ class AccessoryViewController: UIViewController, UITextFieldDelegate {
     }
     
     @objc func updateScreen(){
-        
-        print(MotorcycleData.shared.getLocation())
-        print(WLQ_C.shared.gethardwareVersion())
-        
         let channelOneName = UserDefaults.standard.string(forKey: "ACC_CHAN_1")
         if channelOneName != nil {
             channelOneLabel.text = channelOneName
@@ -332,16 +328,16 @@ class AccessoryViewController: UIViewController, UITextFieldDelegate {
             } else {
                 highlightColor = UIColor(named: "accent")
             }
-            let channelActive = wlqData.getStatus()![WLQ_C().ACTIVE_CHAN_INDEX]
-            let channel1State = wlqData.getStatus()![WLQ_C().LIN_ACC_CHANNEL1_CONFIG_STATE_INDEX]
-            let channel2State = wlqData.getStatus()![WLQ_C().LIN_ACC_CHANNEL2_CONFIG_STATE_INDEX]
+            let channelActive = wlqData.getAccActive()
+            let channel1State = wlqData.getAccChannelState(positon: 1)
+            let channel2State = wlqData.getAccChannelState(positon: 2)
             switch (channelActive) {
             case 1:
                 channelOneView.layer.borderWidth = 10
                 channelOneView.layer.borderColor = highlightColor?.cgColor
                 channelTwoView.layer.borderWidth = 0
                 channelTwoView.layer.borderColor = nil
-                channelOneProgress.progressTintColor = UIColor(red: CGFloat(wlqData.getStatus()![WLQ_C().LIN_ACC_CHANNEL1_PIXEL_R_INDEX])/255.0, green: CGFloat(wlqData.getStatus()![WLQ_C().LIN_ACC_CHANNEL1_PIXEL_G_INDEX])/255.0, blue: CGFloat(wlqData.getStatus()![WLQ_C().LIN_ACC_CHANNEL1_PIXEL_B_INDEX])/255.0, alpha: 1)
+                channelOneProgress.progressTintColor = wlqData.getAccChannelPixelColor(positon: 1)
                 channelTwoProgress.progressTintColor = UIColor(named: "imageTint")
                 break
             case 2:
@@ -350,7 +346,7 @@ class AccessoryViewController: UIViewController, UITextFieldDelegate {
                 channelTwoView.layer.borderWidth = 10
                 channelTwoView.layer.borderColor = highlightColor?.cgColor
                 channelOneProgress.progressTintColor = UIColor(named: "imageTint")
-                channelTwoProgress.progressTintColor = UIColor(red: CGFloat(wlqData.getStatus()![WLQ_C().LIN_ACC_CHANNEL2_PIXEL_R_INDEX])/255.0, green: CGFloat(wlqData.getStatus()![WLQ_C().LIN_ACC_CHANNEL2_PIXEL_G_INDEX])/255.0, blue: CGFloat(wlqData.getStatus()![WLQ_C().LIN_ACC_CHANNEL2_PIXEL_B_INDEX])/255.0, alpha: 1)
+                channelTwoProgress.progressTintColor = wlqData.getAccChannelPixelColor(positon: 2)
                 break
             default:
                 channelOneView.layer.borderWidth = 0
@@ -362,20 +358,21 @@ class AccessoryViewController: UIViewController, UITextFieldDelegate {
                 break
             }
             if (channel1State == 128) {
-                channelOneProgress.progress = (Float(wlqData.getStatus()![WLQ_C().LIN_ACC_CHANNEL1_VAL_RAW_INDEX]) / 254.0)
+                let channel1State = wlqData.getAccChannelValue(positon: 1)
+                let channel2State = wlqData.getAccChannelValue(positon: 2)
+                channelOneProgress.progress = (Float(wlqData.getAccChannelValue(positon: 1)) / 254.0)
             } else {
                 channelOneProgress.progress = 0
             }
             if (channel2State == 128) {
-                channelTwoProgress.progress = (Float(wlqData.getStatus()![WLQ_C().LIN_ACC_CHANNEL2_VAL_RAW_INDEX]) / 254.0)
+                channelTwoProgress.progress = (Float(wlqData.getAccChannelValue(positon: 2)) / 254.0)
             } else {
                 channelTwoProgress.progress = 0
             }
         } else {
             print("wlqData.getStatus() == nil")
-            //let writeData =  Data(_: wlqData.GET_STATUS_CMD())
-            //peripheral!.writeValue(writeData, for: commandCharacteristic!, type: CBCharacteristicWriteType.withResponse)
+            let writeData =  Data(_: wlqData.GET_STATUS_CMD())
+            peripheral!.writeValue(writeData, for: commandCharacteristic!, type: CBCharacteristicWriteType.withResponse)
         }
     }
-    
 }
