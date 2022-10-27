@@ -46,21 +46,18 @@ class HWSettingsActionViewController: UIViewController, UIPickerViewDataSource, 
     
 
     @IBAction func savePressed(_ sender: Any) {
-        if(actionID == WLQ_N().USB){ // USB
-            if ((self.typePicker.selectedRow(inComponent: 0) == 0) && (WLQ_N().USBVinThreshold != 0x0000)){
-                wlqData.setTempConfigByte(index: WLQ_N().USBVinThresholdHigh_INDEX, value: 0x00)
-                wlqData.setTempConfigByte(index: WLQ_N().USBVinThresholdLow_INDEX, value: 0x00)
-            } else if ((self.typePicker.selectedRow(inComponent: 0) == 1) && (WLQ_N().USBVinThreshold != 0x02BC)){
-                wlqData.setTempConfigByte(index: WLQ_N().USBVinThresholdHigh_INDEX, value: 0x02)
-                wlqData.setTempConfigByte(index: WLQ_N().USBVinThresholdLow_INDEX, value: 0xBC)
-            } else if ((self.typePicker.selectedRow(inComponent: 0) == 2) && (WLQ_N().USBVinThreshold != 0xFFFF)){
-                wlqData.setTempConfigByte(index: WLQ_N().USBVinThresholdHigh_INDEX, value: 0xFF)
-                wlqData.setTempConfigByte(index: WLQ_N().USBVinThresholdLow_INDEX, value: 0xFF)
+        if(actionID == WLQ_N_DEFINES.USB){ // USB
+            if ((self.typePicker.selectedRow(inComponent: 0) == 0) && (wlqData.getVINThreshold() != 0x0000)){
+                wlqData.setVINThreshold(value: [0x00,0x00])
+            } else if ((self.typePicker.selectedRow(inComponent: 0) == 1) && (wlqData.getVINThreshold() != 0x02BC)){
+                wlqData.setVINThreshold(value: [0x02,0xBC])
+            } else if ((self.typePicker.selectedRow(inComponent: 0) == 2) && (wlqData.getVINThreshold() != 0xFFFF)){
+                wlqData.setVINThreshold(value: [0xFF,0xFF])
             }
-        } else if(actionID == WLQ_N().RTKDoublePressSensitivity){ // RTK Sensititvity
-            wlqData.setTempConfigByte(index: WLQ_N().RTKSensitivity_INDEX, value: (UInt8)(self.typePicker.selectedRow(inComponent: 0) + 1))
-        } else if(actionID == WLQ_N().fullLongPressSensitivity){ // Full Sensititvity
-            wlqData.setTempConfigByte(index: WLQ_N().fullSensitivity_INDEX, value: (UInt8)(self.typePicker.selectedRow(inComponent: 0) + 1))
+        } else if(actionID == WLQ_N_DEFINES.RTKDoublePressSensitivity){ // RTK Sensititvity
+            wlqData.setDoublePressSensitivity(value: (UInt8)(self.typePicker.selectedRow(inComponent: 0) + 1))
+        } else if(actionID == WLQ_N_DEFINES.fullLongPressSensitivity){ // Full Sensititvity
+            wlqData.setLongPressSensitivity(value: (UInt8)(self.typePicker.selectedRow(inComponent: 0) + 1))
         } else {    //  Key
             let keyType:UInt8 = (UInt8)(self.typePicker.selectedRow(inComponent: 0))
             var key:UInt8 = 0x00
@@ -135,22 +132,22 @@ class HWSettingsActionViewController: UIViewController, UIPickerViewDataSource, 
         keyPicker.delegate = self
         keyPicker.dataSource = self
         
-        if(actionID == WLQ_N().USB){ // USB
-            if (WLQ_N().USBVinThreshold == 0x0000){
+        if(actionID == WLQ_N_DEFINES.USB){ // USB
+            if (wlqData.getVINThreshold() == 0x0000){
                 typePicker.selectRow(0, inComponent: 0, animated: true)
-            } else if (WLQ_N().USBVinThreshold == 0xFFFF){
+            } else if (wlqData.getVINThreshold() == 0xFFFF){
                 typePicker.selectRow(2, inComponent: 0, animated: true)
             } else {
                 typePicker.selectRow(1, inComponent: 0, animated: true)
             }
             keyPicker.isHidden = true
             modifierMultiPicker.isHidden = true
-        } else if(actionID == WLQ_N().RTKDoublePressSensitivity){ // RTK Sensititvity
-            typePicker.selectRow((Int)(WLQ_N().RTKSensitivity!) - 1, inComponent: 0, animated: true)
+        } else if(actionID == WLQ_N_DEFINES.RTKDoublePressSensitivity){ // RTK Sensititvity
+            typePicker.selectRow((Int)(wlqData.getDoublePressSensitivity()) - 1, inComponent: 0, animated: true)
             keyPicker.isHidden = true
             modifierMultiPicker.isHidden = true
-        } else if(actionID == WLQ_N().fullLongPressSensitivity){ // Full Sensititvity
-            typePicker.selectRow((Int)(WLQ_N().fullSensitivity!) - 1, inComponent: 0, animated: true)
+        } else if(actionID == WLQ_N_DEFINES.fullLongPressSensitivity){ // Full Sensititvity
+            typePicker.selectRow((Int)(wlqData.getLongPressSensitivity()) - 1, inComponent: 0, animated: true)
             keyPicker.isHidden = true
             modifierMultiPicker.isHidden = true
         } else {                // Key Action
@@ -217,14 +214,14 @@ class HWSettingsActionViewController: UIViewController, UIPickerViewDataSource, 
 
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         if pickerView == typePicker {
-            if(actionID == WLQ_N().USB){ // USB
+            if(actionID == WLQ_N_DEFINES.USB){ // USB
                 return usbPickerData.count
-            } else if(actionID == WLQ_N().RTKDoublePressSensitivity){ // RTK Sensititvity
+            } else if(actionID == WLQ_N_DEFINES.RTKDoublePressSensitivity){ // RTK Sensititvity
                 return 20
-            } else if(actionID == WLQ_N().fullLongPressSensitivity){ // Full Sensititvity
+            } else if(actionID == WLQ_N_DEFINES.fullLongPressSensitivity){ // Full Sensititvity
                 return 30
             } else {
-                if (wlqData.gethardwareVersion() == WLQ_N().hardwareVersion1){
+                if (wlqData.gethardwareVersion() == WLQ_N_DEFINES.hardwareVersion1){
                     return modePickerDataHW1.count
                 } else {
                     return modePickerData.count
@@ -244,14 +241,14 @@ class HWSettingsActionViewController: UIViewController, UIPickerViewDataSource, 
 
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         if (pickerView == typePicker) {
-            if(actionID == WLQ_N().USB){ // USB
+            if(actionID == WLQ_N_DEFINES.USB){ // USB
                 return usbPickerData[row]
-            } else if(actionID == WLQ_N().RTKDoublePressSensitivity){ // RTK Sensititvity
+            } else if(actionID == WLQ_N_DEFINES.RTKDoublePressSensitivity){ // RTK Sensititvity
                 return "\(row + 1)"
-            } else if(actionID == WLQ_N().fullLongPressSensitivity){ // Full Sensititvity
+            } else if(actionID == WLQ_N_DEFINES.fullLongPressSensitivity){ // Full Sensititvity
                 return "\(row + 1)"
             } else {
-                if (wlqData.gethardwareVersion() == WLQ_N().hardwareVersion1){
+                if (wlqData.gethardwareVersion() == WLQ_N_DEFINES.hardwareVersion1){
                     return modePickerDataHW1[row]
                 } else {
                     return modePickerData[row]
@@ -272,24 +269,24 @@ class HWSettingsActionViewController: UIViewController, UIPickerViewDataSource, 
 
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if pickerView == typePicker {
-            if (actionID == WLQ_N().USB){ // USB
-                if (WLQ_N().USBVinThreshold == 0x0000 && row == 0){
+            if (actionID == WLQ_N_DEFINES.USB){ // USB
+                if (wlqData.getVINThreshold() == 0x0000 && row == 0){
                     saveButton.isHidden = true
-                } else if (WLQ_N().USBVinThreshold == 0xFFFF && row == 2){
+                } else if (wlqData.getVINThreshold() == 0xFFFF && row == 2){
                     saveButton.isHidden = true
-                } else if (WLQ_N().USBVinThreshold != 0x0000 && WLQ_N().USBVinThreshold != 0xFFFF && row == 1){
+                } else if (wlqData.getVINThreshold() != 0x0000 && wlqData.getVINThreshold() != 0xFFFF && row == 1){
                     saveButton.isHidden = true
                 } else {
                     saveButton.isHidden = false
                 }
-            } else if (actionID == WLQ_N().RTKDoublePressSensitivity){ // RTK Sensititvity
-                if (WLQ_N().RTKSensitivity! != typePicker.selectedRow(inComponent: 0) + 1){
+            } else if (actionID == WLQ_N_DEFINES.RTKDoublePressSensitivity){ // RTK Sensititvity
+                if (wlqData.getDoublePressSensitivity() != typePicker.selectedRow(inComponent: 0) + 1){
                     saveButton.isHidden = false
                 } else {
                     saveButton.isHidden = true
                 }
-            } else if (actionID == WLQ_N().fullLongPressSensitivity){ // Full Sensititvity
-                if (WLQ_N().fullSensitivity! != typePicker.selectedRow(inComponent: 0) + 1){
+            } else if (actionID == WLQ_N_DEFINES.fullLongPressSensitivity){ // Full Sensititvity
+                if (wlqData.getLongPressSensitivity() != typePicker.selectedRow(inComponent: 0) + 1){
                     saveButton.isHidden = false
                 } else {
                     saveButton.isHidden = true

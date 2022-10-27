@@ -21,9 +21,9 @@ class WLQ_N: WLQ {
     
     var firmwareVersion:String?
     var hardwareVersion:String?
-    let hardwareVersion1:String = "2PCB1.9 10/18";
-    let hardwareVersion2:String = "1PCB2.0 12/19";
-    let hardwareVersion2_1:String = "2PCB2.2 081920";
+    let hardwareVersion1:String = "2PCB1.9 10/18"
+    let hardwareVersion2:String = "1PCB2.0 12/19"
+    let hardwareVersion2_1:String = "2PCB2.2 081920"
     
     var wunderLINQConfig:[UInt8]?
     var flashConfig:[UInt8]?
@@ -351,9 +351,21 @@ class WLQ_N: WLQ {
         }
     }
     
+    override func getDefaultConfig() -> [UInt8]{
+        switch (gethardwareVersion()){
+        case self.hardwareVersion2:
+            return defaultConfig2
+        case self.hardwareVersion2_1:
+            return defaultConfig2HW1
+        default:
+            return [0x00]
+        }
+    }
+    
     override func getTempConfig() -> [UInt8]{
         return tempConfig!
     }
+    
     override func setTempConfigByte(index: Int, value: UInt8){
         tempConfig![index] = value
     }
@@ -373,8 +385,30 @@ class WLQ_N: WLQ {
     override func getActionName(action: Int?) -> String{
         return actionNames[action!]!
     }
+    
     override func setActionName(action: Int?, key: String){
         actionNames[action!] = key
+    }
+    
+    override func getVINThreshold() -> UInt16{
+        return USBVinThreshold!
+    }
+    override  func setVINThreshold(value: [UInt8]){
+        setTempConfigByte(index: USBVinThresholdHigh_INDEX, value: value[0])
+        setTempConfigByte(index: USBVinThresholdLow_INDEX, value: value[1])
+    }
+    
+    override func getDoublePressSensitivity() -> UInt8{
+        return RTKSensitivity!
+    }
+    override func setDoublePressSensitivity(value: UInt8){
+        setTempConfigByte(index: RTKSensitivity_INDEX, value: value)
+    }
+    override func getLongPressSensitivity() -> UInt8{
+        return fullSensitivity!
+    }
+    override func setLongPressSensitivity(value: UInt8){
+        setTempConfigByte(index: fullSensitivity_INDEX, value: value)
     }
     
     override func getActionKeyType(action: Int?) -> UInt8{
@@ -1062,4 +1096,33 @@ class WLQ_N: WLQ {
     override func getStatus() -> [UInt8]{
         return [0x00]
     }
+}
+
+enum WLQ_N_DEFINES {
+    static let hardwareVersion1:String = "2PCB1.9 10/18"
+    
+    static let OldSensitivity:Int = 0
+    static let USB:Int = 1
+    static let RTKDoublePressSensitivity:Int = 2
+    static let fullLongPressSensitivity:Int = 3
+    static let RTKPage:Int = 4
+    static let RTKPageDoublePress:Int = 5
+    static let RTKZoomPlus:Int = 6
+    static let RTKZoomPlusDoublePress:Int = 7
+    static let RTKZoomMinus:Int = 8
+    static let RTKZoomMinusDoublePress:Int = 9
+    static let RTKSpeak:Int = 10
+    static let RTKSpeakDoublePress:Int = 11
+    static let RTKMute:Int = 12
+    static let RTKMuteDoublePress:Int = 13
+    static let RTKDisplayOff:Int = 14
+    static let RTKDisplayOffDoublePress:Int = 15
+    static let fullScrollUp:Int = 16
+    static let fullScrollDown:Int = 17
+    static let fullToggleRight:Int = 18
+    static let fullToggleRightLongPress:Int = 19
+    static let fullToggleLeft:Int = 20
+    static let fullToggleLeftLongPress:Int = 21
+    static let fullSignalCancel:Int = 22
+    static let fullSignalCancelLongPress:Int = 23
 }

@@ -80,23 +80,52 @@ class WLQ {
     func CMD_EOM() -> [UInt8]{
         return [0x0D, 0x0A]
     }
-    
+    func gethardwareType() -> Int{
+        fatalError("This method must be overridden")
+    }
+    func setfirmwareVersion(firmwareVersion: String?){
+        fatalError("This method must be overridden")
+    }
+    func getfirmwareVersion() -> String{
+        fatalError("This method must be overridden")
+    }
+    func sethardwareVersion(hardwareVersion: String?){
+        fatalError("This method must be overridden")
+    }
+    func gethardwareVersion() -> String{
+        fatalError("This method must be overridden")
+    }
+    func getDefaultConfig() -> [UInt8]{
+        fatalError("This method must be overridden")
+    }
     func parseConfig(bytes: [UInt8]) {
         fatalError("This method must be overridden")
     }
     func getConfig() -> [UInt8]{
         fatalError("This method must be overridden")
     }
-    func setStatus(bytes: [UInt8]) {
-        fatalError("This method must be overridden")
-    }
-    func getStatus() -> [UInt8]?{
-        fatalError("This method must be overridden")
-    }
     func getTempConfig() -> [UInt8]{
         fatalError("This method must be overridden")
     }
     func setTempConfigByte(index: Int, value: UInt8){
+        fatalError("This method must be overridden")
+    }
+    func getVINThreshold() -> UInt16{
+        fatalError("This method must be overridden")
+    }
+    func setVINThreshold(value: [UInt8]){
+        fatalError("This method must be overridden")
+    }
+    func getDoublePressSensitivity() -> UInt8{
+        fatalError("This method must be overridden")
+    }
+    func setDoublePressSensitivity(value: UInt8){
+        fatalError("This method must be overridden")
+    }
+    func getLongPressSensitivity() -> UInt8{
+        fatalError("This method must be overridden")
+    }
+    func setLongPressSensitivity(value: UInt8){
         fatalError("This method must be overridden")
     }
     func getKeyMode() -> UInt8{
@@ -123,36 +152,21 @@ class WLQ {
     func getActionKeyModifiers(action: Int) -> UInt8{
         fatalError("This method must be overridden")
     }
-    
-    func gethardwareType() -> Int{
+    func setStatus(bytes: [UInt8]) {
         fatalError("This method must be overridden")
     }
-    
-    func setfirmwareVersion(firmwareVersion: String?){
+    func getStatus() -> [UInt8]?{
         fatalError("This method must be overridden")
     }
-    func getfirmwareVersion() -> String{
-        fatalError("This method must be overridden")
-    }
-    func sethardwareVersion(hardwareVersion: String?){
-        fatalError("This method must be overridden")
-    }
-    func gethardwareVersion() -> String{
-        fatalError("This method must be overridden")
-    }
-    
     func getAccActive() -> UInt8{
         fatalError("This method must be overridden")
     }
-    
     func getAccChannelState(positon: Int) -> UInt8{
         fatalError("This method must be overridden")
     }
-    
     func getAccChannelValue(positon: Int) -> UInt8{
         fatalError("This method must be overridden")
     }
-    
     func getAccChannelPixelColor(positon: Int) -> UIColor{
         fatalError("This method must be overridden")
     }

@@ -302,9 +302,14 @@ class WLQ_C: WLQ {
         self.menuDownLongPressKey = self.flashConfig![self.menuDownLongPressKey_INDEX]
     }
     
+    override func getDefaultConfig() -> [UInt8]{
+        return defaultConfig
+    }
+    
     override func getTempConfig() -> [UInt8]{
         return tempConfig!
     }
+    
     override func setTempConfigByte(index: Int, value: UInt8){
         tempConfig![index] = value
     }
@@ -367,6 +372,13 @@ class WLQ_C: WLQ {
     
     override func gethardwareType() -> Int{
         return 2
+    }
+    
+    override func getLongPressSensitivity() -> UInt8{
+        return sensitivity!
+    }
+    override func setLongPressSensitivity(value: UInt8){
+        setTempConfigByte(index: Sensitivity_INDEX, value: value)
     }
     
     override func getKeyMode() -> UInt8{
@@ -743,3 +755,17 @@ class WLQ_C: WLQ {
         }
         return "Unknown"
     }}
+
+enum WLQ_C_DEFINES {
+    static let longPressSensitivity:Int = 25
+    static let wheelScrollUp:Int = 26
+    static let wheelScrollDown:Int = 27
+    static let wheelToggleRight:Int = 28
+    static let wheelToggleRightLongPress:Int = 29
+    static let wheelToggleLeft:Int = 30
+    static let wheelToggleLeftLongPress:Int = 31
+    static let menuUp:Int = 32
+    static let menuUpLongPress:Int = 33
+    static let menuDown:Int = 34
+    static let menuDownLongPress:Int = 35
+}
