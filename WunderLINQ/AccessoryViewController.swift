@@ -321,7 +321,6 @@ class AccessoryViewController: UIViewController, UITextFieldDelegate {
             channelTwoTextField.text = NSLocalizedString("default_accessory_two_name", comment: "")
         }
         if (wlqData.getStatus() != nil){
-            print("wlqData.getStatus() != nil")
             var highlightColor: UIColor?
             if let colorData = UserDefaults.standard.data(forKey: "highlight_color_preference"){
                 highlightColor = NSKeyedUnarchiver.unarchiveObject(with: colorData) as? UIColor
@@ -337,40 +336,37 @@ class AccessoryViewController: UIViewController, UITextFieldDelegate {
                 channelOneView.layer.borderColor = highlightColor?.cgColor
                 channelTwoView.layer.borderWidth = 0
                 channelTwoView.layer.borderColor = nil
-                channelOneProgress.progressTintColor = wlqData.getAccChannelPixelColor(positon: 1)
-                channelTwoProgress.progressTintColor = UIColor(named: "imageTint")
+                channelOneProgress.tintColor = wlqData.getAccChannelPixelColor(positon: 1)
+                channelTwoProgress.tintColor = UIColor(named: "imageTint")
                 break
             case 2:
                 channelOneView.layer.borderWidth = 0
                 channelOneView.layer.borderColor = nil
                 channelTwoView.layer.borderWidth = 10
                 channelTwoView.layer.borderColor = highlightColor?.cgColor
-                channelOneProgress.progressTintColor = UIColor(named: "imageTint")
-                channelTwoProgress.progressTintColor = wlqData.getAccChannelPixelColor(positon: 2)
+                channelOneProgress.tintColor = UIColor(named: "imageTint")
+                channelTwoProgress.tintColor = wlqData.getAccChannelPixelColor(positon: 2)
                 break
             default:
                 channelOneView.layer.borderWidth = 0
                 channelOneView.layer.borderColor = nil
                 channelTwoView.layer.borderWidth = 0
                 channelTwoView.layer.borderColor = nil
-                channelOneProgress.progressTintColor = UIColor(named: "imageTint")
-                channelTwoProgress.progressTintColor = UIColor(named: "imageTint")
+                channelOneProgress.tintColor = UIColor(named: "imageTint")
+                channelTwoProgress.tintColor = UIColor(named: "imageTint")
                 break
             }
             if (channel1State == 128) {
-                let channel1State = wlqData.getAccChannelValue(positon: 1)
-                let channel2State = wlqData.getAccChannelValue(positon: 2)
-                channelOneProgress.progress = (Float(wlqData.getAccChannelValue(positon: 1)) / 254.0)
+                channelOneProgress.setProgress((Float(wlqData.getAccChannelValue(positon: 1)) / 254.0), animated: true)
             } else {
-                channelOneProgress.progress = 0
+                channelOneProgress.setProgress(0, animated: true)
             }
             if (channel2State == 128) {
-                channelTwoProgress.progress = (Float(wlqData.getAccChannelValue(positon: 2)) / 254.0)
+                channelTwoProgress.setProgress((Float(wlqData.getAccChannelValue(positon: 2)) / 254.0), animated: true)
             } else {
-                channelTwoProgress.progress = 0
+                channelTwoProgress.setProgress(0, animated: true)
             }
         } else {
-            print("wlqData.getStatus() == nil")
             let writeData =  Data(_: wlqData.GET_STATUS_CMD())
             peripheral!.writeValue(writeData, for: commandCharacteristic!, type: CBCharacteristicWriteType.withResponse)
         }

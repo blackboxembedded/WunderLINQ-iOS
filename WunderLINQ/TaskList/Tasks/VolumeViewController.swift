@@ -87,12 +87,12 @@ class VolumeViewController: UIViewController {
     
     @objc func up() {
         systemVolume = systemVolume + 0.1
-        progressBar.progress = systemVolume
+        progressBar.setProgress(systemVolume, animated: true)
     }
     
     @objc func down() {
         systemVolume = systemVolume - 0.1
-        progressBar.progress = systemVolume
+        progressBar.setProgress(systemVolume, animated: true)
     }
     
     @objc func leftScreen() {
@@ -102,12 +102,11 @@ class VolumeViewController: UIViewController {
     @objc func right() {
         if (systemVolume == 0.0){
             systemVolume = preMuteVolume
-            progressBar.progress = systemVolume
         } else {
             preMuteVolume = systemVolume;
             systemVolume = 0.0
-            progressBar.progress = systemVolume
         }
+        progressBar.setProgress(systemVolume, animated: true)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -174,7 +173,7 @@ class VolumeViewController: UIViewController {
             } else {
                 self.image.image = UIImage(named: "Speaker")?.withRenderingMode(.alwaysTemplate)
             }
-            self.progressBar.progress = self.systemVolume
+            self.progressBar.setProgress(self.systemVolume, animated: true)
         }
         
     }
