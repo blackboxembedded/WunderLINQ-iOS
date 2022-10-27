@@ -182,10 +182,9 @@ class WLQ_C: WLQ {
     let LIN_ACC_CHANNEL2_PIXEL_R_INDEX:Int = 70
     
     var wunderLINQStatus:[UInt8]?
-    var channel1PixelColor:UInt8?
-    var channel2PixelColor:UInt8?
-    var channel1PixelIntensity:UInt8?
-    var channel2PixelIntensity:UInt8?
+    var channel1PixelColor:UInt16?
+    var channel2PixelColor:UInt16?
+    var channelActive:UInt8?
     var channe1ValueRaw:UInt8?
     var channel2ValueRaw:UInt8?
 
@@ -224,6 +223,7 @@ class WLQ_C: WLQ {
 
     required override init() {
         super.init()
+        print("WLQ_C: init()")
         WLQ.shared = self
         actionNames = [longPressSensitivity: NSLocalizedString("sensitivity_label", comment: ""),
                               wheelScrollUp: NSLocalizedString("full_scroll_up_label", comment: ""),
@@ -316,14 +316,45 @@ class WLQ_C: WLQ {
         wunderLINQStatus = Array(bytes[3..<(3+71)])
         self.channel1PixelColor = 0x00 << 24 | self.wunderLINQStatus![LIN_ACC_CHANNEL1_PIXEL_R_INDEX] << 16 | self.wunderLINQStatus![LIN_ACC_CHANNEL1_PIXEL_G_INDEX] << 8 | self.wunderLINQStatus![LIN_ACC_CHANNEL1_PIXEL_B_INDEX]
         self.channel2PixelColor = 0x00 << 24 | self.wunderLINQStatus![LIN_ACC_CHANNEL2_PIXEL_R_INDEX] << 16 | self.wunderLINQStatus![LIN_ACC_CHANNEL2_PIXEL_G_INDEX] << 8 | self.wunderLINQStatus![LIN_ACC_CHANNEL2_PIXEL_B_INDEX]
-        self.channel1PixelIntensity = self.wunderLINQStatus![LIN_ACC_CHANNEL1_PIXEL_INTENSITY_INDEX]
-        self.channel2PixelIntensity = self.wunderLINQStatus![LIN_ACC_CHANNEL2_PIXEL_INTENSITY_INDEX]
-        self.channe1ValueRaw = self.wunderLINQStatus![LIN_ACC_CHANNEL1_VAL_RAW_INDEX]
+        self.channelActive = self.wunderLINQStatus![ACTIVE_CHAN_INDEX]
+        self.channel1ValueRaw = self.wunderLINQStatus![LIN_ACC_CHANNEL1_VAL_RAW_INDEX]
         self.channel2ValueRaw = self.wunderLINQStatus![LIN_ACC_CHANNEL2_VAL_RAW_INDEX]
     }
     
     override func getStatus() -> [UInt8]?{
         return wunderLINQStatus
+    }
+    
+    override func getAccChannelPixelColor(positon: Int) -> UInt16{
+        switch(positon){
+        case 1:
+            return channel1PixelColor!
+            break
+        case 2:
+            return channel2PixelColor!
+            break
+        default:
+            return 0xFFFFFF
+            break
+        }
+    }
+    
+    override func getAccActive() -> UInt8{
+        return channelActive
+    }
+    
+    override func getAccChannelValue(positon: Int) -> UInt8{
+        switch(positon){
+        case 1:
+            return channel1ValueRaw!
+            break
+        case 2:
+            return channe2ValueRaw!
+            break
+        default:
+            return 0x00
+            break
+        }
     }
     
     override func gethardwareType() -> Int{

@@ -1833,7 +1833,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                 case 0x53:
                     print("Received WRS command response")
                     if (wlqData != nil){
-                        wlqData.setStatus(bytes: dataArray)
+                        WLQ.shared.setStatus(bytes: dataArray)
                         notificationCenter.post(name: Notification.Name("StatusUpdate"), object: nil)
                     }
                     break

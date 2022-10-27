@@ -140,4 +140,16 @@ class WLQ {
     func gethardwareVersion() -> String{
         fatalError("This method must be overridden")
     }
+    
+    func getAccActive() -> UInt8{
+        fatalError("This method must be overridden")
+    }
+    
+    func getAccChannelValue(positon: Int) -> UInt8{
+        fatalError("This method must be overridden")
+    }
+    
+    func getAccChannelPixelColor(positon: Int) -> UInt16{
+        fatalError("This method must be overridden")
+    }
 }

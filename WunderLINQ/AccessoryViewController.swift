@@ -304,6 +304,10 @@ class AccessoryViewController: UIViewController, UITextFieldDelegate {
     }
     
     @objc func updateScreen(){
+        
+        print(MotorcycleData.shared.getLocation())
+        print(WLQ_C.shared.gethardwareVersion())
+        
         let channelOneName = UserDefaults.standard.string(forKey: "ACC_CHAN_1")
         if channelOneName != nil {
             channelOneLabel.text = channelOneName
@@ -320,10 +324,8 @@ class AccessoryViewController: UIViewController, UITextFieldDelegate {
             channelTwoLabel.text = NSLocalizedString("default_accessory_two_name", comment: "")
             channelTwoTextField.text = NSLocalizedString("default_accessory_two_name", comment: "")
         }
-        if (wlqData == nil){
-            print("wlqData == nil")
-        }
         if (wlqData.getStatus() != nil){
+            print("wlqData.getStatus() != nil")
             var highlightColor: UIColor?
             if let colorData = UserDefaults.standard.data(forKey: "highlight_color_preference"){
                 highlightColor = NSKeyedUnarchiver.unarchiveObject(with: colorData) as? UIColor
