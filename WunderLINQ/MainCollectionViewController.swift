@@ -2444,7 +2444,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         let message = "\n\n\n\n\n\n\n\n\n\n";
 
         let width:CGFloat = 300
-        let highth:CGFloat = 150
+        let heigth:CGFloat = 200
         
         let alertStyle = UIAlertController.Style.alert
         let alert = UIAlertController(title: title, message: message, preferredStyle: alertStyle);
@@ -2453,7 +2453,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         // height constraint
         let constraintHeight = NSLayoutConstraint(
            item: alert.view!, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute:
-           NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: highth)
+           NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: heigth)
         alert.view.addConstraint(constraintHeight)
 
         // width constraint
@@ -2463,7 +2463,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         alert.view.addConstraint(constraintWidth)
         
         //Create a frame (placeholder/wrapper) for the picker and then create the picker
-        let pickerFrame = CGRect(x: 16, y: 0, width: width - (16 * 2), height: highth - 50)
+        let pickerFrame = CGRect(x: 16, y: 0, width: width - (16 * 2), height: heigth - 50)
         let picker: UIPickerView = UIPickerView(frame: pickerFrame)
         
         //set the pickers datasource and delegate
