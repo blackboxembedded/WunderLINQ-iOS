@@ -266,10 +266,10 @@ class MusicViewController: UIViewController, SPTAppRemotePlayerStateDelegate {
     
     @objc func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
         if gesture.direction == UISwipeGestureRecognizer.Direction.right {
-            rightScreen()
+            leftScreen()
         }
         else if gesture.direction == UISwipeGestureRecognizer.Direction.left {
-            leftScreen()
+            rightScreen()
         }
     }
     
