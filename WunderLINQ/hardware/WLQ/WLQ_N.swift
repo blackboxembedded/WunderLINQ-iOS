@@ -1093,8 +1093,8 @@ class WLQ_N: WLQ {
     override func setStatus(bytes: [UInt8]) {
         
     }
-    override func getStatus() -> [UInt8]{
-        return [0x00]
+    override func getStatus() -> [UInt8]?{
+        return nil
     }
 }
 
