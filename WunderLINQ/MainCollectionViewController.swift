@@ -2273,11 +2273,13 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     }
     
     @objc func leftScreen() {
-        if (wlqData.getStatus() == nil){
-            performSegue(withIdentifier: "motorcycleToTaskGrid", sender: [])
-        } else {
-            performSegue(withIdentifier: "motorcycleToAccessory", sender: [])
+        var identifier = "motorcycleToTaskGrid"
+        if (wlqData != nil){
+            if (wlqData.getStatus() != nil){
+                identifier = "motorcycleToAccessory"
+            }
         }
+        performSegue(withIdentifier: identifier, sender: [])
     }
     
     @objc func rightScreen() {
