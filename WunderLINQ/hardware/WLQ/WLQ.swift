@@ -21,6 +21,8 @@ class WLQ {
     
     static var shared = WLQ()
     
+    static var initialized = false
+    
     init(){}
     
     func TYPE_NAVIGATOR() -> Int{

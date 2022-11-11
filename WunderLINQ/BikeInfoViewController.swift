@@ -132,14 +132,16 @@ class BikeInfoViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
                 nextServiceLabel.text = "\(motorcycleData.getNextService())(km)"
             }
         }
-        if (wlqData.gethardwareType() == wlqData.TYPE_NAVIGATOR()){
-            if (wlqData.getfirmwareVersion() != "Unknown"){
-                let firmwareVersion: Double = wlqData.getfirmwareVersion().toDouble() ?? 0.0
-                if (firmwareVersion >= 1.8){
-                    clusterResetHeaderLabel.isHidden = false
-                    clusterResetLabel.isHidden = false
-                    clusterResetTypePicker.isHidden = false
-                    clusterResetButton.isHidden = false
+        if (WLQ.initialized){
+            if (wlqData.gethardwareType() == wlqData.TYPE_NAVIGATOR()){
+                if (wlqData.getfirmwareVersion() != "Unknown"){
+                    let firmwareVersion: Double = wlqData.getfirmwareVersion().toDouble() ?? 0.0
+                    if (firmwareVersion >= 1.8){
+                        clusterResetHeaderLabel.isHidden = false
+                        clusterResetLabel.isHidden = false
+                        clusterResetTypePicker.isHidden = false
+                        clusterResetButton.isHidden = false
+                    }
                 }
             }
         }

@@ -803,38 +803,41 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
     }
     
     @objc func leftScreen() {
-        if (wlqData.getStatus() == nil){
-            let secondViewController = self.storyboard!.instantiateViewController(withIdentifier: "MusicViewController") as! MusicViewController
-            if let viewControllers = self.navigationController?.viewControllers
+        let secondViewController = self.storyboard!.instantiateViewController(withIdentifier: "MusicViewController") as! MusicViewController
+        if let viewControllers = self.navigationController?.viewControllers
+        {
+            if viewControllers.contains(where: {
+                return $0 is MusicViewController
+            })
             {
-                if viewControllers.contains(where: {
-                    return $0 is MusicViewController
-                })
-                {
-                    _ = navigationController?.popViewController(animated: true)
-                    
-                } else {
-                    self.navigationController!.pushViewController(secondViewController, animated: true)
-                }
-            }
-        } else {
-            let secondViewController = self.storyboard!.instantiateViewController(withIdentifier: "AccessoryViewController") as! AccessoryViewController
-            if let viewControllers = self.navigationController?.viewControllers
-            {
-                if viewControllers.contains(where: {
-                    return $0 is AccessoryViewController
-                })
-                {
-                    _ = navigationController?.popViewController(animated: true)
-                    
-                } else {
-                    self.navigationController!.pushViewController(secondViewController, animated: true)
-                }
+                _ = navigationController?.popViewController(animated: true)
+                
+            } else {
+                self.navigationController!.pushViewController(secondViewController, animated: true)
             }
         }
     }
     
     @objc func rightScreen() {
+        if (WLQ.initialized){
+            if (wlqData.getStatus() != nil){
+                let secondViewController = self.storyboard!.instantiateViewController(withIdentifier: "AccessoryViewController") as! AccessoryViewController
+                if let viewControllers = self.navigationController?.viewControllers
+                {
+                    if viewControllers.contains(where: {
+                        return $0 is AccessoryViewController
+                    })
+                    {
+                        _ = navigationController?.popViewController(animated: true)
+                        return
+                        
+                    } else {
+                        self.navigationController!.pushViewController(secondViewController, animated: true)
+                        return
+                    }
+                }
+            }
+        }
         navigationController?.popToRootViewController(animated: true)
     }
     

@@ -250,6 +250,7 @@ class WLQ_C: WLQ {
         super.init()
         print("WLQ_C: init()")
         WLQ.shared = self
+        WLQ.initialized = true
         actionNames = [longPressSensitivity: NSLocalizedString("sensitivity_label", comment: ""),
                               wheelScrollUp: NSLocalizedString("full_scroll_up_label", comment: ""),
                             wheelScrollDown: NSLocalizedString("full_scroll_down_label", comment: ""),

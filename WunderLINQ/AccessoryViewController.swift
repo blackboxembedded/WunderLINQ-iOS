@@ -123,7 +123,6 @@ class AccessoryViewController: UIViewController, UITextFieldDelegate {
                 self.navigationController!.pushViewController(secondViewController, animated: true)
             }
         }
-        //performSegue(withIdentifier: "accessoryToTasks", sender: [])
     }
     
     @objc func rightScreen() {

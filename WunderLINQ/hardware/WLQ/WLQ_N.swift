@@ -231,6 +231,7 @@ class WLQ_N: WLQ {
     required override init() {
         super.init()
         WLQ.shared = self
+        WLQ.initialized = true
         actionNames = [OldSensitivity: NSLocalizedString("sensitivity_label", comment: ""),
                        USB: NSLocalizedString("usb_threshold_label", comment: ""),
                        RTKDoublePressSensitivity: NSLocalizedString("double_press_label", comment: ""),
