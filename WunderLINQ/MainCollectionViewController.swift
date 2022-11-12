@@ -1839,12 +1839,16 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                     break
                 case 0x56:
                     print("Received WRV command response")
-                    wlqData.setfirmwareVersion(firmwareVersion: "\(dataArray[3]).\(dataArray[4])")
+                    if (wlqData != nil){
+                        wlqData.setfirmwareVersion(firmwareVersion: "\(dataArray[3]).\(dataArray[4])")
+                    }
                     break
                 case 0x57:
                     print("Received WRW command response")
-                    wlqData.parseConfig(bytes: dataArray)
-                    popoverMenuList = [NSLocalizedString("bike_info_label", comment: ""), NSLocalizedString("geodata_label", comment: ""),NSLocalizedString("appsettings_label", comment: ""), NSLocalizedString("hwsettings_label", comment: ""), NSLocalizedString("about_label", comment: ""), NSLocalizedString("close_label", comment: "")]
+                    if (wlqData != nil){
+                        wlqData.parseConfig(bytes: dataArray)
+                        popoverMenuList = [NSLocalizedString("bike_info_label", comment: ""), NSLocalizedString("geodata_label", comment: ""),NSLocalizedString("appsettings_label", comment: ""), NSLocalizedString("hwsettings_label", comment: ""), NSLocalizedString("about_label", comment: ""), NSLocalizedString("close_label", comment: "")]
+                    }
                     break
                 default:
                     break;

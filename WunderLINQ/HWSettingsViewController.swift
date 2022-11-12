@@ -285,41 +285,50 @@ class HWSettingsViewController: UIViewController, UITableViewDelegate, UITableVi
                 } else {
                     configButton.isHidden = true
                 }
-                actionTableLabels = [NSLocalizedString("long_press_label", comment: ""),
-                                     NSLocalizedString("full_scroll_up_label", comment: ""),
+                actionTableLabels = [NSLocalizedString("full_scroll_up_label", comment: ""),
                                      NSLocalizedString("full_scroll_down_label", comment: ""),
                                      NSLocalizedString("full_toggle_right_label", comment: ""),
                                      NSLocalizedString("full_toggle_right_long_label", comment: ""),
                                      NSLocalizedString("full_toggle_left_label", comment: ""),
                                      NSLocalizedString("full_toggle_left_long_label", comment: ""),
-                                     NSLocalizedString("full_menu_up_label", comment: ""),
-                                     NSLocalizedString("full_menu_up_long_label", comment: ""),
-                                     NSLocalizedString("full_menu_down_label", comment: ""),
-                                     NSLocalizedString("full_menu_down_long_label", comment: "")]
+                                     NSLocalizedString("full_rocker1_up_label", comment: ""),
+                                     NSLocalizedString("full_rocker1_up_long_label", comment: ""),
+                                     NSLocalizedString("full_rocker1_down_label", comment: ""),
+                                     NSLocalizedString("full_rocker1_down_long_label", comment: ""),
+                                     NSLocalizedString("full_rocker2_up_label", comment: ""),
+                                     NSLocalizedString("full_rocker2_up_long_label", comment: ""),
+                                     NSLocalizedString("full_rocker2_down_label", comment: ""),
+                                     NSLocalizedString("full_rocker2_down_long_label", comment: "")]
                                                   
-                actionTableMappingLabels = [wlqData.getActionValue(action: WLQ_C_DEFINES.longPressSensitivity),
-                                            wlqData.getActionValue(action: WLQ_C_DEFINES.wheelScrollUp),
+                actionTableMappingLabels = [wlqData.getActionValue(action: WLQ_C_DEFINES.wheelScrollUp),
                                             wlqData.getActionValue(action: WLQ_C_DEFINES.wheelScrollDown),
                                             wlqData.getActionValue(action: WLQ_C_DEFINES.wheelToggleRight),
                                             wlqData.getActionValue(action: WLQ_C_DEFINES.wheelToggleRightLongPress),
                                             wlqData.getActionValue(action: WLQ_C_DEFINES.wheelToggleLeft),
                                             wlqData.getActionValue(action: WLQ_C_DEFINES.wheelToggleLeftLongPress),
-                                            wlqData.getActionValue(action: WLQ_C_DEFINES.menuUp),
-                                            wlqData.getActionValue(action: WLQ_C_DEFINES.menuUpLongPress),
-                                            wlqData.getActionValue(action: WLQ_C_DEFINES.menuDown),
-                                            wlqData.getActionValue(action: WLQ_C_DEFINES.menuDownLongPress)]
+                                            wlqData.getActionValue(action: WLQ_C_DEFINES.rocker1Up),
+                                            wlqData.getActionValue(action: WLQ_C_DEFINES.rocker1UpLongPress),
+                                            wlqData.getActionValue(action: WLQ_C_DEFINES.rocker1Down),
+                                            wlqData.getActionValue(action: WLQ_C_DEFINES.rocker1DownLongPress),
+                                            wlqData.getActionValue(action: WLQ_C_DEFINES.rocker2Up),
+                                            wlqData.getActionValue(action: WLQ_C_DEFINES.rocker2UpLongPress),
+                                            wlqData.getActionValue(action: WLQ_C_DEFINES.rocker2Down),
+                                            wlqData.getActionValue(action: WLQ_C_DEFINES.rocker2DownLongPress)]
                 
-                actionID = [WLQ_C_DEFINES.longPressSensitivity,
-                            WLQ_C_DEFINES.wheelScrollUp,
+                actionID = [WLQ_C_DEFINES.wheelScrollUp,
                             WLQ_C_DEFINES.wheelScrollDown,
                             WLQ_C_DEFINES.wheelToggleRight,
                             WLQ_C_DEFINES.wheelToggleRightLongPress,
                             WLQ_C_DEFINES.wheelToggleLeft,
                             WLQ_C_DEFINES.wheelToggleLeftLongPress,
-                            WLQ_C_DEFINES.menuUp,
-                            WLQ_C_DEFINES.menuUpLongPress,
-                            WLQ_C_DEFINES.menuDown,
-                            WLQ_C_DEFINES.menuDownLongPress]
+                            WLQ_C_DEFINES.rocker1Up,
+                            WLQ_C_DEFINES.rocker1UpLongPress,
+                            WLQ_C_DEFINES.rocker1Down,
+                            WLQ_C_DEFINES.rocker1DownLongPress,
+                            WLQ_C_DEFINES.rocker2Up,
+                            WLQ_C_DEFINES.rocker2UpLongPress,
+                            WLQ_C_DEFINES.rocker2Down,
+                            WLQ_C_DEFINES.rocker2DownLongPress]
             } else {
                 configButton.setTitle(NSLocalizedString("config_reset_label", comment: ""), for: .normal)
                 modeLabel.isHidden = true
@@ -348,7 +357,7 @@ class HWSettingsViewController: UIViewController, UITableViewDelegate, UITableVi
             if (wlqData.gethardwareType() == wlqData.TYPE_NAVIGATOR()){
                 if (self.wlqData.getfirmwareVersion() != "Unknown"){
                     if (self.wlqData.getfirmwareVersion().toDouble()! >= 2.0) {
-                        var command = self.wlqData.WRITE_CONFIG_CMD() + wlqData.getDefaultConfig() + self.wlqData.CMD_EOM()
+                        let command = self.wlqData.WRITE_CONFIG_CMD() + wlqData.getDefaultConfig() + self.wlqData.CMD_EOM()
                         let writeData =  Data(_: command)
                         self.peripheral?.writeValue(writeData, for: self.characteristic!, type: CBCharacteristicWriteType.withResponse)
                     }
