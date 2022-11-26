@@ -899,6 +899,12 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         bleData.setcmdCharacteristic(cmdCharacteristic: nil)
     }
     
+    @objc func launchAccPage(){
+        if self.viewIfLoaded?.window != nil {
+            let secondViewController = self.storyboard!.instantiateViewController(withIdentifier: "AccessoryViewController") as! AccessoryViewController
+            self.navigationController!.pushViewController(secondViewController, animated: true)
+        }
+    }
     
     // MARK: - Bluetooth scanning
     
@@ -1814,7 +1820,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         var dataArray = [UInt8](repeating: 0, count: dataLength)
         (data as NSData).getBytes(&dataArray, length: dataLength * MemoryLayout<Int16>.size)
         
-        /*
+        
         var messageHexString = ""
         for i in 0 ..< dataLength {
             messageHexString += String(format: "%02X", dataArray[i])
@@ -1822,8 +1828,8 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                 messageHexString += ","
             }
         }
-        print("Command Response Received: \(messageHexString)")
-        */
+        //print("Command Response Received: \(messageHexString)")
+        
         
         switch (dataArray[0]){
         case 0x57:
@@ -1834,7 +1840,9 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                     print("Received WRS command response")
                     if (wlqData != nil){
                         WLQ.shared.setStatus(bytes: dataArray)
+                        //print("Command Response Received: \(messageHexString)")
                         notificationCenter.post(name: Notification.Name("StatusUpdate"), object: nil)
+                        launchAccPage()
                     }
                     break
                 case 0x56:

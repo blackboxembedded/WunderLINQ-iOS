@@ -21,10 +21,6 @@ import MediaPlayer
 import StoreKit
 
 class MusicViewController: UIViewController, SPTAppRemotePlayerStateDelegate {
-
-    var timer = Timer()
-    var seconds = 10
-    var isTimerRunning = false
     
     @IBOutlet weak var imageAlbum: UIImageView!
     @IBOutlet weak var artistLabel: UILabel!
@@ -33,6 +29,12 @@ class MusicViewController: UIViewController, SPTAppRemotePlayerStateDelegate {
     @IBOutlet weak var lastButton: UIButton!
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var nextButton: UIButton!
+    
+    private let notificationCenter = NotificationCenter.default
+    
+    var timer = Timer()
+    var seconds = 10
+    var isTimerRunning = false
     
     let playImage = UIImage(named: "playback_play")
     let pauseImage = UIImage(named: "playback_pause")
@@ -163,6 +165,7 @@ class MusicViewController: UIViewController, SPTAppRemotePlayerStateDelegate {
         default:
             break
         }
+        notificationCenter.addObserver(self, selector:#selector(self.launchAccPage), name: NSNotification.Name("StatusUpdate"), object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -397,6 +400,12 @@ class MusicViewController: UIViewController, SPTAppRemotePlayerStateDelegate {
         }
     }
     
+    @objc func launchAccPage(){
+        if self.viewIfLoaded?.window != nil {
+            let secondViewController = self.storyboard!.instantiateViewController(withIdentifier: "AccessoryViewController") as! AccessoryViewController
+            self.navigationController!.pushViewController(secondViewController, animated: true)
+        }
+    }
     
     // MARK: - Apple Music
     let appleMusicPlayer = MPMusicPlayerController.systemMusicPlayer

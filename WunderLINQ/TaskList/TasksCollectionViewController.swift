@@ -26,6 +26,8 @@ import Photos
 
 class TasksCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, AVCaptureVideoDataOutputSampleBufferDelegate, AVCaptureFileOutputRecordingDelegate {
 
+    private let notificationCenter = NotificationCenter.default
+    
     let flowLayout = ZoomAndSnapFlowLayout()
     
     var tasks:[Tasks] = [Tasks]()
@@ -1297,6 +1299,7 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
         default:
             break
         }
+        notificationCenter.addObserver(self, selector:#selector(self.launchAccPage), name: NSNotification.Name("StatusUpdate"), object: nil)
     }
     
     override var preferredStatusBarStyle : UIStatusBarStyle {
@@ -1767,6 +1770,13 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
             }
         } else {
             seconds -= 1
+        }
+    }
+    
+    @objc func launchAccPage(){
+        if self.viewIfLoaded?.window != nil {
+            let secondViewController = self.storyboard!.instantiateViewController(withIdentifier: "AccessoryViewController") as! AccessoryViewController
+            self.navigationController!.pushViewController(secondViewController, animated: true)
         }
     }
 }

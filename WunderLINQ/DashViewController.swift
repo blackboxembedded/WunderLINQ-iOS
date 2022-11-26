@@ -23,6 +23,8 @@ class DashViewController: UIViewController, UIWebViewDelegate {
     
     @IBOutlet weak var dashView: UIView!
     
+    private let notificationCenter = NotificationCenter.default
+    
     let motorcycleData = MotorcycleData.shared
     let faults = Faults.shared
     
@@ -174,6 +176,8 @@ class DashViewController: UIViewController, UIWebViewDelegate {
         updateDashboard()
 
         scheduledTimerWithTimeInterval()
+        
+        notificationCenter.addObserver(self, selector:#selector(self.launchAccPage), name: NSNotification.Name("StatusUpdate"), object: nil)
     }
     
     func webViewDidStartLoad(_ webView: UIWebView){
@@ -386,4 +390,10 @@ class DashViewController: UIViewController, UIWebViewDelegate {
         }
     }
 
+    @objc func launchAccPage(){
+        if self.viewIfLoaded?.window != nil {
+            let secondViewController = self.storyboard!.instantiateViewController(withIdentifier: "AccessoryViewController") as! AccessoryViewController
+            self.navigationController!.pushViewController(secondViewController, animated: true)
+        }
+    }
 }
