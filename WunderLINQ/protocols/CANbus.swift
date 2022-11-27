@@ -69,7 +69,6 @@ class CANbus {
             case 0xF:
                 gear = "-"
             default:
-                print("Unknown Gear Value")
                 gear = "-"
             }
             if (motorcycleData.gear != gear && gear != "-") {

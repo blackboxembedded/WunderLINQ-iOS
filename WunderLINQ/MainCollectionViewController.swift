@@ -1820,7 +1820,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         var dataArray = [UInt8](repeating: 0, count: dataLength)
         (data as NSData).getBytes(&dataArray, length: dataLength * MemoryLayout<Int16>.size)
         
-        
+        /*
         var messageHexString = ""
         for i in 0 ..< dataLength {
             messageHexString += String(format: "%02X", dataArray[i])
@@ -1828,7 +1828,8 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                 messageHexString += ","
             }
         }
-        //print("Command Response Received: \(messageHexString)")
+        print("Command Response Received: \(messageHexString)")
+         */
         
         
         switch (dataArray[0]){
@@ -1899,7 +1900,6 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         }
         
         if showAlert {
-            NSLog("IN centralManagerDidUpdateState         if showAlert ")
             // Display Alert
             let alertController = UIAlertController(title: NSLocalizedString("bt_alert_title", comment: ""), message: message, preferredStyle: .alert)
             let defaultAction = UIAlertAction(title: NSLocalizedString("alert_message_exit_ok", comment: ""), style: .default, handler: nil)
