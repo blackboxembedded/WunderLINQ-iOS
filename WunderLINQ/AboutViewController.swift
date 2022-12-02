@@ -50,10 +50,13 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
                 return formatter
             }
             let today = dateFormatter.string(from: Date())
-
+            var firmwareVersion = "Unknown"
+            if (WLQ.initialized){
+                firmwareVersion = wlqData.getfirmwareVersion()
+            }
             let mailComposer = MFMailComposeViewController()
             mailComposer.setSubject("WunderLINQ iOS Debug Logs \(today)")
-            mailComposer.setMessageBody("App Version: \(getAppInfo())\nFirmware Version: \(wlqData.getfirmwareVersion())\niOS Version: \(getOSInfo())\nDevice: \(UIDevice.current.modelName)\n\(NSLocalizedString("sendlogs_body", comment: ""))", isHTML: false)
+            mailComposer.setMessageBody("App Version: \(getAppInfo())\nFirmware Version: \(firmwareVersion)\niOS Version: \(getOSInfo())\nDevice: \(UIDevice.current.modelName)\n\(NSLocalizedString("sendlogs_body", comment: ""))", isHTML: false)
             mailComposer.setToRecipients(["support@blackboxembedded.com"])
             // Get the documents folder url
             let documentDirectory = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
