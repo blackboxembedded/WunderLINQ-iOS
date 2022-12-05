@@ -43,6 +43,9 @@ class WaypointsNavTableViewController: UITableViewController {
             UIKeyCommand(input: UIKeyCommand.inputDownArrow, modifierFlags:[], action: #selector(downRow), discoverabilityTitle: "Go down"),
             UIKeyCommand(input: UIKeyCommand.inputLeftArrow, modifierFlags:[], action: #selector(leftScreen), discoverabilityTitle: "Go left")
         ]
+        if #available(iOS 15, *) {
+            commands.forEach { $0.wantsPriorityOverSystemBehavior = true }
+        }
         return commands
     }
     

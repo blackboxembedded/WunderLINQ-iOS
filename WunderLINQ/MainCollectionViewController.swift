@@ -2281,6 +2281,9 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             UIKeyCommand(input: UIKeyCommand.inputUpArrow, modifierFlags:[], action: #selector(upScreen), discoverabilityTitle: "Increase Cell Count"),
             UIKeyCommand(input: UIKeyCommand.inputDownArrow, modifierFlags:[], action: #selector(downScreen), discoverabilityTitle: "Decrease Cell Count")
         ]
+        if #available(iOS 15, *) {
+            commands.forEach { $0.wantsPriorityOverSystemBehavior = true }
+        }
         return commands
     }
     

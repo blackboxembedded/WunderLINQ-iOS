@@ -77,6 +77,9 @@ class VolumeViewController: UIViewController {
             UIKeyCommand(input: UIKeyCommand.inputLeftArrow, modifierFlags:[], action: #selector(leftScreen), discoverabilityTitle: "Left"),
             UIKeyCommand(input: UIKeyCommand.inputRightArrow, modifierFlags:[], action: #selector(right), discoverabilityTitle: "Right")
         ]
+        if #available(iOS 15, *) {
+            commands.forEach { $0.wantsPriorityOverSystemBehavior = true }
+        }
         return commands
     }
     

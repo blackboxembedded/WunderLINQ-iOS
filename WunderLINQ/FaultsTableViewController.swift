@@ -23,12 +23,12 @@ class FaultsTableViewController: UITableViewController {
     let faults = Faults.shared
 
     @objc func leftScreen() {
-        performSegue(withIdentifier: "faultsToMotorcycle", sender: [])
+        navigationController?.popToRootViewController(animated: true)
     }
     
     @objc func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
         if gesture.direction == UISwipeGestureRecognizer.Direction.right {
-            performSegue(withIdentifier: "faultsToMotorcycle", sender: [])
+            leftScreen()
         }
     }
     

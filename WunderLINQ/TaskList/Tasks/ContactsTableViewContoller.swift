@@ -117,6 +117,9 @@ class ContactsTableViewController: UITableViewController {
             UIKeyCommand(input: UIKeyCommand.inputLeftArrow, modifierFlags:[], action: #selector(leftScreen), discoverabilityTitle: "Go left"),
             UIKeyCommand(input: UIKeyCommand.inputRightArrow, modifierFlags:[], action: #selector(rightScreen), discoverabilityTitle: "Go right")
         ]
+        if #available(iOS 15, *) {
+            commands.forEach { $0.wantsPriorityOverSystemBehavior = true }
+        }
         return commands
     }
     

@@ -35,6 +35,9 @@ class AlertViewController: UIViewController {
             UIKeyCommand(input: UIKeyCommand.inputLeftArrow, modifierFlags:[], action: #selector(left), discoverabilityTitle: "Close"),
             UIKeyCommand(input: UIKeyCommand.inputLeftArrow, modifierFlags:[], action: #selector(right), discoverabilityTitle: "Ok")
         ]
+        if #available(iOS 15, *) {
+            commands.forEach { $0.wantsPriorityOverSystemBehavior = true }
+        }
         return commands
     }
     

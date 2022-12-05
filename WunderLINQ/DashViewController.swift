@@ -288,6 +288,9 @@ class DashViewController: UIViewController, UIWebViewDelegate {
             UIKeyCommand(input: UIKeyCommand.inputUpArrow, modifierFlags:[], action: #selector(nextInfo), discoverabilityTitle: "Next Info"),
             UIKeyCommand(input: UIKeyCommand.inputDownArrow, modifierFlags:[], action: #selector(previousInfo), discoverabilityTitle: "Previous Info")
         ]
+        if #available(iOS 15, *) {
+            commands.forEach { $0.wantsPriorityOverSystemBehavior = true }
+        }
         return commands
     }
     
