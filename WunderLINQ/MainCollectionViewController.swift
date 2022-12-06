@@ -2178,7 +2178,9 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                 UIScreen.main.brightness = CGFloat(UserDefaults.standard.float(forKey: "systemBrightness"))
             }
             if (self.collectionView != nil){
-                self.collectionView!.reloadData()
+                DispatchQueue.main.async {
+                    self.collectionView!.reloadData()
+                }
             }
         }
     }
@@ -2376,9 +2378,10 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             }
         }
         UserDefaults.standard.set(nextCellCount, forKey: "GRIDCOUNT")
-        
-        self.collectionView!.collectionViewLayout.invalidateLayout()
-        self.collectionView!.reloadData()
+        DispatchQueue.main.async {
+            self.collectionView!.collectionViewLayout.invalidateLayout()
+            self.collectionView!.reloadData()
+        }
     }
     
     @objc func downScreen() {
@@ -2452,8 +2455,10 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             }
         }
         UserDefaults.standard.set(nextCellCount, forKey: "GRIDCOUNT")
-        self.collectionView!.collectionViewLayout.invalidateLayout()
-        self.collectionView!.reloadData()
+        DispatchQueue.main.async {
+            self.collectionView!.collectionViewLayout.invalidateLayout()
+            self.collectionView!.reloadData()
+        }
     }
     
     func showPickerInActionSheet(cell: Int) {
