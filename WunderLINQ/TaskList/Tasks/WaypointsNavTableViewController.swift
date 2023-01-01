@@ -33,8 +33,6 @@ class WaypointsNavTableViewController: UITableViewController {
     
     var firstRun = true;
     
-    let scenic = ScenicAPI()
-    
     override var keyCommands: [UIKeyCommand]? {
         
         let commands = [

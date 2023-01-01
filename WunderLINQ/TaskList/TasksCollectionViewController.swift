@@ -63,7 +63,7 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
     let motorcycleData = MotorcycleData.shared
     let wlqData = WLQ.shared
     
-    let emptyTask = 15
+    let emptyTask = 16
     
     private func loadRows() {
         let taskRow1 = UserDefaults.standard.integer(forKey: "task_one_preference")
@@ -202,7 +202,11 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
         guard let task14 = Tasks(label: NSLocalizedString("task_title_systemvolume", comment: ""), icon: UIImage(named: "Speaker")?.withRenderingMode(.alwaysTemplate)) else {
             fatalError("Unable to instantiate Settings Task")
         }
-        self.tasks = [task0, task1, task2, task3, task4, task5, task6, task7, task8, task9, task10, task11, task12, task13, task14]
+        // OpenGoPro Task
+        guard let task15 = Tasks(label: NSLocalizedString("task_title_gopro", comment: ""), icon: UIImage(named: "Action-Camera")?.withRenderingMode(.alwaysTemplate)) else {
+            fatalError("Unable to instantiate Settings Task")
+        }
+        self.tasks = [task0, task1, task2, task3, task4, task5, task6, task7, task8, task9, task10, task11, task12, task13, task14, task15]
     }
     
     private func execute_task(taskID:Int) {
@@ -742,6 +746,18 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
         case 14:
             //System Volume
             performSegue(withIdentifier: "taskGridToVolume", sender: self)
+            break
+        case 15:
+            let wlqGoProURL = "wunderlinqgp://"
+            if let uRL = URL(string: wlqGoProURL.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
+                if (UIApplication.shared.canOpenURL(uRL)) {
+                    if #available(iOS 10, *) {
+                        UIApplication.shared.open(uRL, options: [:], completionHandler: nil)
+                    } else {
+                        UIApplication.shared.openURL(uRL as URL)
+                    }
+                }
+            }
             break
         default:
             print("Unknown Task")

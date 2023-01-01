@@ -221,6 +221,7 @@
 "task_title_weathermap" = "Weather Map";
 "task_title_roadbook" = "Roadbook";
 "task_title_systemvolume" = "Volume";
+"task_title_gopro" = "GoPro Control";
 "toast_actioncam_notconnected" = "ActionCam Not Connected";
 "toast_actioncam_notset" = "Set ActionCam type in the app settings";
 "toast_waypoint_saved" = "Waypoint Saved";

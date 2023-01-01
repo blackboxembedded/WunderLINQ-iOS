@@ -9,6 +9,7 @@
 "task_title_waypoint" = "Ulož místo";
 "task_title_waypoint_nav" = "Naviguj na uložené místo";
 "task_title_settings" = "Nastavení";
+"task_title_gopro" = "GoPro Control";
 "task_title_empty" = "Prázdná";
 "pref_task_one" = "První";
 "pref_task_two" = "Druhá";
