@@ -33,7 +33,6 @@
 				<integer>13</integer>
 				<integer>14</integer>
 				<integer>15</integer>
-				<integer>16</integer>
 			</array>
 			<key>Titles</key>
 			<array>
@@ -48,11 +47,10 @@
 				<string>task_title_waypoint</string>
 				<string>task_title_waypoint_nav</string>
 				<string>task_title_settings</string>
-				<string>task_title_actioncam_start_video</string>
+				<string>task_title_gopro</string>
 				<string>task_title_weathermap</string>
 				<string>task_title_roadbook</string>
 				<string>task_title_systemvolume</string>
-				<string>task_title_gopro</string>
 				<string>task_title_empty</string>
 			</array>
 		</dict>
@@ -83,7 +81,6 @@
 				<integer>13</integer>
 				<integer>14</integer>
 				<integer>15</integer>
-				<integer>16</integer>
 			</array>
 			<key>Titles</key>
 			<array>
@@ -98,11 +95,10 @@
 				<string>task_title_waypoint</string>
 				<string>task_title_waypoint_nav</string>
 				<string>task_title_settings</string>
-				<string>task_title_actioncam_start_video</string>
+				<string>task_title_gopro</string>
 				<string>task_title_weathermap</string>
 				<string>task_title_roadbook</string>
 				<string>task_title_systemvolume</string>
-				<string>task_title_gopro</string>
 				<string>task_title_empty</string>
 			</array>
 		</dict>
@@ -133,7 +129,6 @@
 				<integer>13</integer>
 				<integer>14</integer>
 				<integer>15</integer>
-				<integer>16</integer>
 			</array>
 			<key>Titles</key>
 			<array>
@@ -148,11 +143,10 @@
 				<string>task_title_waypoint</string>
 				<string>task_title_waypoint_nav</string>
 				<string>task_title_settings</string>
-				<string>task_title_actioncam_start_video</string>
+				<string>task_title_gopro</string>
 				<string>task_title_weathermap</string>
 				<string>task_title_roadbook</string>
 				<string>task_title_systemvolume</string>
-				<string>task_title_gopro</string>
 				<string>task_title_empty</string>
 			</array>
 		</dict>
@@ -183,7 +177,6 @@
 				<integer>13</integer>
 				<integer>14</integer>
 				<integer>15</integer>
-				<integer>16</integer>
 			</array>
 			<key>Titles</key>
 			<array>
@@ -198,11 +191,10 @@
 				<string>task_title_waypoint</string>
 				<string>task_title_waypoint_nav</string>
 				<string>task_title_settings</string>
-				<string>task_title_actioncam_start_video</string>
+				<string>task_title_gopro</string>
 				<string>task_title_weathermap</string>
 				<string>task_title_roadbook</string>
 				<string>task_title_systemvolume</string>
-				<string>task_title_gopro</string>
 				<string>task_title_empty</string>
 			</array>
 		</dict>
@@ -233,7 +225,6 @@
 				<integer>13</integer>
 				<integer>14</integer>
 				<integer>15</integer>
-				<integer>16</integer>
 			</array>
 			<key>Titles</key>
 			<array>
@@ -248,11 +239,10 @@
 				<string>task_title_waypoint</string>
 				<string>task_title_waypoint_nav</string>
 				<string>task_title_settings</string>
-				<string>task_title_actioncam_start_video</string>
+				<string>task_title_gopro</string>
 				<string>task_title_weathermap</string>
 				<string>task_title_roadbook</string>
 				<string>task_title_systemvolume</string>
-				<string>task_title_gopro</string>
 				<string>task_title_empty</string>
 			</array>
 		</dict>
@@ -283,7 +273,6 @@
 				<integer>13</integer>
 				<integer>14</integer>
 				<integer>15</integer>
-				<integer>16</integer>
 			</array>
 			<key>Titles</key>
 			<array>
@@ -298,11 +287,10 @@
 				<string>task_title_waypoint</string>
 				<string>task_title_waypoint_nav</string>
 				<string>task_title_settings</string>
-				<string>task_title_actioncam_start_video</string>
+				<string>task_title_gopro</string>
 				<string>task_title_weathermap</string>
 				<string>task_title_roadbook</string>
 				<string>task_title_systemvolume</string>
-				<string>task_title_gopro</string>
 				<string>task_title_empty</string>
 			</array>
 		</dict>
@@ -333,7 +321,6 @@
 				<integer>13</integer>
 				<integer>14</integer>
 				<integer>15</integer>
-				<integer>16</integer>
 			</array>
 			<key>Titles</key>
 			<array>
@@ -348,11 +335,10 @@
 				<string>task_title_waypoint</string>
 				<string>task_title_waypoint_nav</string>
 				<string>task_title_settings</string>
-				<string>task_title_actioncam_start_video</string>
+				<string>task_title_gopro</string>
 				<string>task_title_weathermap</string>
 				<string>task_title_roadbook</string>
 				<string>task_title_systemvolume</string>
-				<string>task_title_gopro</string>
 				<string>task_title_empty</string>
 			</array>
 		</dict>
@@ -383,7 +369,6 @@
 				<integer>13</integer>
 				<integer>14</integer>
 				<integer>15</integer>
-				<integer>16</integer>
 			</array>
 			<key>Titles</key>
 			<array>
@@ -398,11 +383,10 @@
 				<string>task_title_waypoint</string>
 				<string>task_title_waypoint_nav</string>
 				<string>task_title_settings</string>
-				<string>task_title_actioncam_start_video</string>
+				<string>task_title_gopro</string>
 				<string>task_title_weathermap</string>
 				<string>task_title_roadbook</string>
 				<string>task_title_systemvolume</string>
-				<string>task_title_gopro</string>
 				<string>task_title_empty</string>
 			</array>
 		</dict>
@@ -433,7 +417,6 @@
 				<integer>13</integer>
 				<integer>14</integer>
 				<integer>15</integer>
-				<integer>16</integer>
 			</array>
 			<key>Titles</key>
 			<array>
@@ -448,11 +431,10 @@
 				<string>task_title_waypoint</string>
 				<string>task_title_waypoint_nav</string>
 				<string>task_title_settings</string>
-				<string>task_title_actioncam_start_video</string>
+				<string>task_title_gopro</string>
 				<string>task_title_weathermap</string>
 				<string>task_title_roadbook</string>
 				<string>task_title_systemvolume</string>
-				<string>task_title_gopro</string>
 				<string>task_title_empty</string>
 			</array>
 		</dict>
@@ -483,7 +465,6 @@
 				<integer>13</integer>
 				<integer>14</integer>
 				<integer>15</integer>
-				<integer>16</integer>
 			</array>
 			<key>Titles</key>
 			<array>
@@ -498,11 +479,10 @@
 				<string>task_title_waypoint</string>
 				<string>task_title_waypoint_nav</string>
 				<string>task_title_settings</string>
-				<string>task_title_actioncam_start_video</string>
+				<string>task_title_gopro</string>
 				<string>task_title_weathermap</string>
 				<string>task_title_roadbook</string>
 				<string>task_title_systemvolume</string>
-				<string>task_title_gopro</string>
 				<string>task_title_empty</string>
 			</array>
 		</dict>
@@ -533,7 +513,6 @@
 				<integer>13</integer>
 				<integer>14</integer>
 				<integer>15</integer>
-				<integer>16</integer>
 			</array>
 			<key>Titles</key>
 			<array>
@@ -548,11 +527,10 @@
 				<string>task_title_waypoint</string>
 				<string>task_title_waypoint_nav</string>
 				<string>task_title_settings</string>
-				<string>task_title_actioncam_start_video</string>
+				<string>task_title_gopro</string>
 				<string>task_title_weathermap</string>
 				<string>task_title_roadbook</string>
 				<string>task_title_systemvolume</string>
-				<string>task_title_gopro</string>
 				<string>task_title_empty</string>
 			</array>
 		</dict>
@@ -583,7 +561,6 @@
 				<integer>13</integer>
 				<integer>14</integer>
 				<integer>15</integer>
-				<integer>16</integer>
 			</array>
 			<key>Titles</key>
 			<array>
@@ -598,11 +575,10 @@
 				<string>task_title_waypoint</string>
 				<string>task_title_waypoint_nav</string>
 				<string>task_title_settings</string>
-				<string>task_title_actioncam_start_video</string>
+				<string>task_title_gopro</string>
 				<string>task_title_weathermap</string>
 				<string>task_title_roadbook</string>
 				<string>task_title_systemvolume</string>
-				<string>task_title_gopro</string>
 				<string>task_title_empty</string>
 			</array>
 		</dict>
@@ -633,7 +609,6 @@
 				<integer>13</integer>
 				<integer>14</integer>
 				<integer>15</integer>
-				<integer>16</integer>
 			</array>
 			<key>Titles</key>
 			<array>
@@ -648,11 +623,10 @@
 				<string>task_title_waypoint</string>
 				<string>task_title_waypoint_nav</string>
 				<string>task_title_settings</string>
-				<string>task_title_actioncam_start_video</string>
+				<string>task_title_gopro</string>
 				<string>task_title_weathermap</string>
 				<string>task_title_roadbook</string>
 				<string>task_title_systemvolume</string>
-				<string>task_title_gopro</string>
 				<string>task_title_empty</string>
 			</array>
 		</dict>
@@ -683,7 +657,6 @@
 				<integer>13</integer>
 				<integer>14</integer>
 				<integer>15</integer>
-				<integer>16</integer>
 			</array>
 			<key>Titles</key>
 			<array>
@@ -698,11 +671,10 @@
 				<string>task_title_waypoint</string>
 				<string>task_title_waypoint_nav</string>
 				<string>task_title_settings</string>
-				<string>task_title_actioncam_start_video</string>
+				<string>task_title_gopro</string>
 				<string>task_title_weathermap</string>
 				<string>task_title_roadbook</string>
 				<string>task_title_systemvolume</string>
-				<string>task_title_gopro</string>
 				<string>task_title_empty</string>
 			</array>
 		</dict>
@@ -733,7 +705,6 @@
 				<integer>13</integer>
 				<integer>14</integer>
 				<integer>15</integer>
-				<integer>16</integer>
 			</array>
 			<key>Titles</key>
 			<array>
@@ -748,11 +719,10 @@
 				<string>task_title_waypoint</string>
 				<string>task_title_waypoint_nav</string>
 				<string>task_title_settings</string>
-				<string>task_title_actioncam_start_video</string>
+				<string>task_title_gopro</string>
 				<string>task_title_weathermap</string>
 				<string>task_title_roadbook</string>
 				<string>task_title_systemvolume</string>
-				<string>task_title_gopro</string>
 				<string>task_title_empty</string>
 			</array>
 		</dict>
