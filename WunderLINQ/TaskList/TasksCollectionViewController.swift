@@ -326,9 +326,18 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
                     } else {
                         UIApplication.shared.openURL(uRL as URL)
                     }
+                } else {
+                    let alert = UIAlertController(title: NSLocalizedString("nogpremote_alert_title", comment: ""), message: NSLocalizedString("nogpremote_alert_body", comment: ""), preferredStyle: UIAlertController.Style.alert)
+                    alert.addAction(UIAlertAction(title: NSLocalizedString("alert_message_exit_ok", comment: ""), style: UIAlertAction.Style.default, handler: { action in
+                        if let url = URL(string: "itms-apps://itunes.apple.com/app/id1661727055") {
+                            UIApplication.shared.open(url)
+                        }
+                    }))
+                    alert.addAction(UIAlertAction(title: NSLocalizedString("negative_alert_btn_cancel", comment: ""), style: UIAlertAction.Style.cancel, handler: { action in }))
+                    self.present(alert, animated: true, completion: nil)
+                    
                 }
             }
-            break
             break
         case 12:
             //Weather Map
