@@ -683,12 +683,14 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TaskCollectionViewCell", for: indexPath) as! TaskCollectionViewCell
         
         // Configure the cell
-        let tasks = self.tasks[mapping[indexPath.row]]
-        cell.displayContent(icon: tasks.icon!,label: tasks.label)
-        if (itemRow == indexPath.row){
-            cell.highlightEffect()
-        } else {
-            cell.removeHighlight()
+        if (indexPath.row < self.tasks.count ){
+            let tasks = self.tasks[mapping[indexPath.row]]
+            cell.displayContent(icon: tasks.icon!,label: tasks.label)
+            if (itemRow == indexPath.row){
+                cell.highlightEffect()
+            } else {
+                cell.removeHighlight()
+            }
         }
         return cell
     }
