@@ -1059,7 +1059,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0.13;
+				MARKETING_VERSION = 2.0.14;
 				PRODUCT_BUNDLE_IDENTIFIER = com.blackboxembedded.wunderlinq;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1089,7 +1089,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0.13;
+				MARKETING_VERSION = 2.0.14;
 				PRODUCT_BUNDLE_IDENTIFIER = com.blackboxembedded.wunderlinq;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
