@@ -61,7 +61,7 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
     let motorcycleData = MotorcycleData.shared
     let wlqData = WLQ.shared
     
-    let emptyTask = 15
+    let emptyTask = 16
     
     private func loadRows() {
         let taskRow1 = UserDefaults.standard.integer(forKey: "task_one_preference")
@@ -196,8 +196,12 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
         guard let task14 = Tasks(label: NSLocalizedString("task_title_systemvolume", comment: ""), icon: UIImage(named: "Speaker")?.withRenderingMode(.alwaysTemplate)) else {
             fatalError("Unable to instantiate Settings Task")
         }
+        // System Volume Task
+        guard let task15 = Tasks(label: NSLocalizedString("task_title_insta360", comment: ""), icon: UIImage(named: "Spherical-Camera")?.withRenderingMode(.alwaysTemplate)) else {
+            fatalError("Unable to instantiate Settings Task")
+        }
         
-        self.tasks = [task0, task1, task2, task3, task4, task5, task6, task7, task8, task9, task10, task11, task12, task13, task14]
+        self.tasks = [task0, task1, task2, task3, task4, task5, task6, task7, task8, task9, task10, task11, task12, task13, task14, task15]
     }
     
     private func execute_task(taskID:Int) {
@@ -361,6 +365,29 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
         case 14:
             //System Volume
             performSegue(withIdentifier: "taskGridToVolume", sender: self)
+            break
+        case 15:
+            //Insta360 Remote
+            let wlqInsta360URL = "wunderlinqi360://"
+            if let uRL = URL(string: wlqInsta360URL.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
+                if (UIApplication.shared.canOpenURL(uRL)) {
+                    if #available(iOS 10, *) {
+                        UIApplication.shared.open(uRL, options: [:], completionHandler: nil)
+                    } else {
+                        UIApplication.shared.openURL(uRL as URL)
+                    }
+                } else {
+                    let alert = UIAlertController(title: NSLocalizedString("no360remote_alert_title", comment: ""), message: NSLocalizedString("no360remote_alert_body", comment: ""), preferredStyle: UIAlertController.Style.alert)
+                    alert.addAction(UIAlertAction(title: NSLocalizedString("alert_message_exit_ok", comment: ""), style: UIAlertAction.Style.default, handler: { action in
+                        if let url = URL(string: "itms-apps://itunes.apple.com/app/id1661727055") {
+                            UIApplication.shared.open(url)
+                        }
+                    }))
+                    alert.addAction(UIAlertAction(title: NSLocalizedString("negative_alert_btn_cancel", comment: ""), style: UIAlertAction.Style.cancel, handler: { action in }))
+                    self.present(alert, animated: true, completion: nil)
+                    
+                }
+            }
             break
         default:
             print("Unknown Task")
@@ -663,19 +690,14 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        //collectionView.collectionViewLayout.invalidateLayout()
     }
 
     // MARK: UICollectionViewDataSource
-
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
-
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
         return mapping.count
     }
 

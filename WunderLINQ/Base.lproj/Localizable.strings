@@ -222,6 +222,7 @@
 "task_title_roadbook" = "Roadbook";
 "task_title_systemvolume" = "Volume";
 "task_title_gopro" = "GoPro Control";
+"task_title_insta360" = "Insta360 Control";
 "toast_actioncam_notconnected" = "ActionCam Not Connected";
 "toast_actioncam_notset" = "Set ActionCam type in the app settings";
 "toast_waypoint_saved" = "Waypoint Saved";
@@ -229,6 +230,8 @@
 "toast_photo_taken" = "Photo Taken!";
 "nogpremote_alert_title" = "WunderLINQ GoPro Remote Not Found";
 "nogpremote_alert_body" = "GoPro Control is provided by a seperate free app called WunderLINQ GoPro Remote.  Click OK to install.";
+"no360remote_alert_title" = "WunderLINQ Insta360 Remote Not Found";
+"no360remote_alert_body" = "Insta360 Control is provided by a seperate free app called WunderLINQ Insta360 Remote.  Click OK to install.";
 // LocationService
 "time_header" = "Time";
 "latitude_header" = "Latitude";
