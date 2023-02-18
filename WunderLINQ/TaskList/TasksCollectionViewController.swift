@@ -61,7 +61,7 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
     let motorcycleData = MotorcycleData.shared
     let wlqData = WLQ.shared
     
-    let emptyTask = 16
+    let emptyTask = 15
     
     private func loadRows() {
         let taskRow1 = UserDefaults.standard.integer(forKey: "task_one_preference")
