@@ -379,7 +379,7 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
                 } else {
                     let alert = UIAlertController(title: NSLocalizedString("no360remote_alert_title", comment: ""), message: NSLocalizedString("no360remote_alert_body", comment: ""), preferredStyle: UIAlertController.Style.alert)
                     alert.addAction(UIAlertAction(title: NSLocalizedString("alert_message_exit_ok", comment: ""), style: UIAlertAction.Style.default, handler: { action in
-                        if let url = URL(string: "itms-apps://itunes.apple.com/app/id1661727055") {
+                        if let url = URL(string: "itms-apps://itunes.apple.com/app/id1671376660") {
                             UIApplication.shared.open(url)
                         }
                     }))
