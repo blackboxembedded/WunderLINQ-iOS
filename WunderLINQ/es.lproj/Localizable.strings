@@ -45,7 +45,7 @@
 "gear_label" = "Marcha";
 "settings_label" = "Ajustes";
 "geodata_label" = "Viajes (Trips) & Puntos de paso (Waypoints)";
-"appsettings_label" = "Ajustes de aplicación";
+"appsettings_label" = "Ajustes de la aplicación";
 "about_label" = "Acerca de";
 "close_label" = "Cerrar";
 "hwsettings_label" = "Ajustes del Hardware";
