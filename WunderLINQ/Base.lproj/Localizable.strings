@@ -62,6 +62,7 @@
 "close_label" = "Close";
 "hwsettings_label" = "HW Settings";
 "select_bt" = "Select";
+"toast_wlq_not_connected" = "WunderLINQ Not Connected";
 //AccessoryViewController
 "accessory_title" = "Accessory Status";
 "default_accessory_one_name" = "Channel One";

@@ -21,6 +21,7 @@ import SQLite3
 import GoogleMaps
 import MapKit
 import CoreGPX
+import Popovers
 
 class WaypointViewController: UIViewController, UITextFieldDelegate {
     
@@ -38,18 +39,20 @@ class WaypointViewController: UIViewController, UITextFieldDelegate {
     private var locationManager: CLLocationManager!
     private var currentLocation: CLLocation?
     
-    fileprivate var popoverMenuList = [NSLocalizedString("waypoint_view_bt_open", comment: ""),NSLocalizedString("waypoint_view_bt_nav", comment: ""),NSLocalizedString("waypoint_view_bt_share", comment: ""), NSLocalizedString("share_gpx", comment: ""), NSLocalizedString("waypoint_view_bt_delete", comment: "")]
-    fileprivate var popover: Popover!
-    fileprivate var popoverOptions: [PopoverOption] = [
-        .type(.auto),
-        .color(UIColor(named: "backgrounds")!),
-        .blackOverlayColor(UIColor(white: 0.0, alpha: 0.6))
-    ]
-    
     let scenic = ScenicAPI()
     
     var menuBtn: UIButton!
     var menuButton: UIBarButtonItem!
+    
+    lazy var menu = Templates.UIKitMenu(sourceView: menuBtn!) {
+        Templates.MenuButton(title: NSLocalizedString("waypoint_view_bt_open", comment: ""), systemImage: nil) { self.open() }
+        Templates.MenuButton(title: NSLocalizedString("waypoint_view_bt_nav", comment: ""), systemImage: nil) { self.navigate() }
+        Templates.MenuButton(title: NSLocalizedString("waypoint_view_bt_share", comment: ""), systemImage: nil) { self.share() }
+        Templates.MenuButton(title: NSLocalizedString("share_gpx", comment: ""), systemImage: nil) { self.exportGPX() }
+        Templates.MenuButton(title: NSLocalizedString("waypoint_view_bt_delete", comment: ""), systemImage: nil) { self.delete() }
+    } fadeLabel: { [weak self] fade in
+        //self?.label.alpha = fade ? 0.5 : 1
+    }
     
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var longLabel: UILabel!
@@ -59,7 +62,6 @@ class WaypointViewController: UIViewController, UITextFieldDelegate {
     
     @objc func leftScreen() {
         _ = navigationController?.popViewController(animated: true)
-        //performSegue(withIdentifier: "waypointToWaypoints", sender: [])
     }
     
     @objc func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
@@ -74,29 +76,6 @@ class WaypointViewController: UIViewController, UITextFieldDelegate {
                 self.viewDidLoad()
             }
         }
-    }
-    
-    @objc func menuButtonTapped() {
-        popUpMenu()
-    }
-    
-    func popUpMenu() {
-        var menuHeight:CGFloat = 46
-        menuHeight = CGFloat(46 * popoverMenuList.count)
-        let tableView = UITableView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width / 2, height: menuHeight))
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.isScrollEnabled = false
-        self.popover = Popover(options: self.popoverOptions)
-        self.popover.willShowHandler = {
-        }
-        self.popover.didShowHandler = {
-        }
-        self.popover.willDismissHandler = {
-        }
-        self.popover.didDismissHandler = {
-        }
-        self.popover.show(tableView, fromView: self.menuBtn)
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
@@ -164,7 +143,6 @@ class WaypointViewController: UIViewController, UITextFieldDelegate {
         if #available(iOS 13.0, *) {
             menuBtn.tintColor = UIColor(named: "imageTint")
         }
-        menuBtn.addTarget(self, action: #selector(menuButtonTapped), for: .touchUpInside)
         let menuButton = UIBarButtonItem(customView: menuBtn)
         let menuButtonWidth = menuButton.customView?.widthAnchor.constraint(equalToConstant: 30)
         menuButtonWidth?.isActive = true
@@ -176,6 +154,8 @@ class WaypointViewController: UIViewController, UITextFieldDelegate {
         
         self.labelLabel.delegate = self
         labelLabel.placeholder = NSLocalizedString("waypoint_view_label_hint", comment: "")
+        
+        _ = menu /// Create the menu.
         
         let databaseURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
             .appendingPathComponent("waypoints.sqlite")
@@ -367,46 +347,6 @@ class WaypointViewController: UIViewController, UITextFieldDelegate {
         alert.addAction(UIAlertAction(title: NSLocalizedString("cancel_bt", comment: ""), style: UIAlertAction.Style.cancel, handler: { action in
         }))
         self.present(alert, animated: true, completion: nil)
-    }
-}
-
-extension WaypointViewController: UITableViewDelegate {
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        switch(indexPath.row) {
-        case 0:
-            // Open
-            open()
-        case 1:
-            //Navigate
-            navigate()
-        case 2:
-            //Share
-            share()
-        case 3:
-            //Share GPX
-            exportGPX()
-        case 4:
-            //Delete
-            delete()
-        default:
-            print("Unknown option")
-        }
-        self.popover.dismiss()
-    }
-    
-}
-
-extension WaypointViewController: UITableViewDataSource {
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        return popoverMenuList.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
-        cell.textLabel?.text = self.popoverMenuList[(indexPath as NSIndexPath).row]
-        return cell
     }
 }
 

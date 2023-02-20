@@ -12,7 +12,6 @@
 		7E068BC320FD8A100076EAAD /* FaultsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E068BC220FD8A100076EAAD /* FaultsTableViewController.swift */; };
 		7E068BC7210190CB0076EAAD /* TripsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E068BC6210190CB0076EAAD /* TripsTableViewController.swift */; };
 		7E068BC9210190F00076EAAD /* WaypointsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E068BC8210190F00076EAAD /* WaypointsTableViewController.swift */; };
-		7E068BCB2102ACF30076EAAD /* Popover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E068BCA2102ACF30076EAAD /* Popover.swift */; };
 		7E068BCD2102ADD20076EAAD /* WaypointViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E068BCC2102ADD20076EAAD /* WaypointViewController.swift */; };
 		7E068BD12102C6290076EAAD /* GoogleMapsCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E068BCE2102C6270076EAAD /* GoogleMapsCore.framework */; };
 		7E068BD22102C6290076EAAD /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E068BCF2102C6280076EAAD /* GoogleMaps.framework */; };
@@ -131,7 +130,6 @@
 		7E068BC220FD8A100076EAAD /* FaultsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaultsTableViewController.swift; sourceTree = "<group>"; };
 		7E068BC6210190CB0076EAAD /* TripsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripsTableViewController.swift; sourceTree = "<group>"; };
 		7E068BC8210190F00076EAAD /* WaypointsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaypointsTableViewController.swift; sourceTree = "<group>"; };
-		7E068BCA2102ACF30076EAAD /* Popover.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Popover.swift; sourceTree = "<group>"; };
 		7E068BCC2102ADD20076EAAD /* WaypointViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaypointViewController.swift; sourceTree = "<group>"; };
 		7E068BCE2102C6270076EAAD /* GoogleMapsCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMapsCore.framework; sourceTree = "<group>"; };
 		7E068BCF2102C6280076EAAD /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
@@ -566,7 +564,6 @@
 			children = (
 				7EB5EE112523C57100B61160 /* XML.swift */,
 				7EF9B59F22FCB14D009D8D17 /* Solar.swift */,
-				7E068BCA2102ACF30076EAAD /* Popover.swift */,
 			);
 			path = External;
 			sourceTree = "<group>";
@@ -797,7 +794,6 @@
 				7EBFE1F3214C7D6500F2185A /* ScenicAPI.swift in Sources */,
 				7EBFD48E210ADD0000FC9665 /* String+Extensions.swift in Sources */,
 				7E9346B528E0A67F009E13C0 /* UIViewController+Extensions.swift in Sources */,
-				7E068BCB2102ACF30076EAAD /* Popover.swift in Sources */,
 				7EAF646A22FE261D00B11550 /* WeatherMapViewController.swift in Sources */,
 				7EA478811F44F57C000CEDDC /* MusicViewController.swift in Sources */,
 				7EF07772258FF762009A6BAA /* HWSettingsActionViewController.swift in Sources */,
@@ -1054,7 +1050,7 @@
 					"$(PROJECT_DIR)/WunderLINQ",
 				);
 				INFOPLIST_FILE = WunderLINQ/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1084,7 +1080,7 @@
 					"$(PROJECT_DIR)/WunderLINQ",
 				);
 				INFOPLIST_FILE = WunderLINQ/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

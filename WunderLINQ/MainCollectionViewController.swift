@@ -26,7 +26,8 @@ import Photos
 import UIKit
 import UserNotifications
 import CommonCrypto
-import InAppSettingsKit 
+import InAppSettingsKit
+import Popovers
 
 private let reuseIdentifier = "MainCollectionViewCell"
 
@@ -78,14 +79,16 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     
     private let notificationCenter = NotificationCenter.default
     
-    var menuSelected = 0
-    fileprivate var popoverMenuList = [NSLocalizedString("bike_info_label", comment: ""),NSLocalizedString("geodata_label", comment: ""),NSLocalizedString("appsettings_label", comment: ""), NSLocalizedString("about_label", comment: ""), NSLocalizedString("close_label", comment: "")]
-    fileprivate var popover: Popover!
-    fileprivate var popoverOptions: [PopoverOption] = [
-        .type(.auto),
-        .color(UIColor(named: "backgrounds")!),
-        .blackOverlayColor(UIColor(white: 0.0, alpha: 0.6))
-    ]
+    lazy var menu = Templates.UIKitMenu(sourceView: menuBtn!) {
+        Templates.MenuButton(title: NSLocalizedString("bike_info_label", comment: ""), systemImage: nil) { self.openBikeInfo() }
+        Templates.MenuButton(title: NSLocalizedString("geodata_label", comment: ""), systemImage: nil) { self.openGeoData() }
+        Templates.MenuButton(title: NSLocalizedString("appsettings_label", comment: ""), systemImage: nil) { self.openAppSettings() }
+        Templates.MenuButton(title: NSLocalizedString("hwsettings_label", comment: ""), systemImage: nil) { self.openHWSettings() }
+        Templates.MenuButton(title: NSLocalizedString("about_label", comment: ""), systemImage: nil) { self.openAbout() }
+        Templates.MenuButton(title: NSLocalizedString("close_label", comment: ""), systemImage: nil) { exit(0)}
+    } fadeLabel: { [weak self] fade in
+        //self?.label.alpha = fade ? 0.5 : 1
+    }
     
     var seconds = 10
     var timer = Timer()
@@ -363,7 +366,6 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         if #available(iOS 13.0, *) {
             menuBtn.tintColor = UIColor(named: "imageTint")
         }
-        menuBtn.addTarget(self, action: #selector(menuButtonTapped), for: .touchUpInside)
         let menuButton = UIBarButtonItem(customView: menuBtn)
         let menuButtonWidth = menuButton.customView?.widthAnchor.constraint(equalToConstant: 30)
         menuButtonWidth?.isActive = true
@@ -385,6 +387,8 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         self.navigationItem.title = NSLocalizedString("main_title", comment: "")
         self.navigationItem.leftBarButtonItems = [backButton, disconnectButton, faultsButton]
         self.navigationItem.rightBarButtonItems = [forwardButton, menuButton]
+        
+        _ = menu /// Create the menu.
         
         let dateFormat = "yyyyMMdd"
         var dateFormatter: DateFormatter {
@@ -847,30 +851,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     @objc func faultsButtonTapped() {
         performSegue(withIdentifier: "motorcycleToFaults", sender: [])
     }
-    
-    func popUpMenu() {
-        var menuHeight:CGFloat = 46
-        menuHeight = CGFloat(46 * popoverMenuList.count)
-        let tableView = UITableView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width / 2, height: menuHeight))
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.isScrollEnabled = false
-        self.popover = Popover(options: self.popoverOptions)
-        self.popover.willShowHandler = {
-        }
-        self.popover.didShowHandler = {
-        }
-        self.popover.willDismissHandler = {
-        }
-        self.popover.didDismissHandler = {
-        }
-        self.popover.show(tableView, fromView: self.menuBtn)
-    }
-    
-    @objc func menuButtonTapped() {
-        popUpMenu()
-    }
-    
+
     @objc func btButtonTapped(_ sender: UIBarButtonItem) {
         // if we don't have a WunderLINQ, start scanning for one...
         print("btButtonTapped()")
@@ -1856,7 +1837,6 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                     print("Received WRW command response")
                     if (wlqData != nil){
                         wlqData.parseConfig(bytes: dataArray)
-                        popoverMenuList = [NSLocalizedString("bike_info_label", comment: ""), NSLocalizedString("geodata_label", comment: ""),NSLocalizedString("appsettings_label", comment: ""), NSLocalizedString("hwsettings_label", comment: ""), NSLocalizedString("about_label", comment: ""), NSLocalizedString("close_label", comment: "")]
                     }
                     break
                 default:
@@ -1994,7 +1974,6 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             print("DISCONNECTION DETAILS: \(error!.localizedDescription)")
         }
         wunderLINQ = nil
-        popoverMenuList = [NSLocalizedString("bike_info_label", comment: ""),NSLocalizedString("geodata_label", comment: ""),NSLocalizedString("appsettings_label", comment: ""), NSLocalizedString("about_label", comment: ""), NSLocalizedString("close_label", comment: "")]
         
         // Start trying to reconnect
         keepScanning = true
@@ -2717,56 +2696,40 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             }
         }
     }
-}
-
-extension MainCollectionViewController: UITableViewDelegate {
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        switch(indexPath.row) {
-        case 0:
-            //Bike Info
-            performSegue(withIdentifier: "motorcycleToBikeInfo", sender: self)
-        case 1:
-            //Geo Data
-            performSegue(withIdentifier: "motorcycleToGeoData", sender: self)
-        case 2:
-            //App Settings
-            performSegue(withIdentifier: "motorcycleToSettings", sender: self)
-        case 3:
-            if (popoverMenuList.count == 6){
-                //HW Settings
+    func openBikeInfo(){
+        //Bike Info
+        performSegue(withIdentifier: "motorcycleToBikeInfo", sender: self)
+    }
+    
+    func openGeoData(){
+        //Geo Data
+        performSegue(withIdentifier: "motorcycleToGeoData", sender: self)
+    }
+    
+    func openAppSettings(){
+        //Geo Data
+        performSegue(withIdentifier: "motorcycleToSettings", sender: self)
+    }
+    
+    func openHWSettings(){
+        //HW Settings
+        if (wunderLINQ != nil){
+            if (wlqData != nil){
                 performSegue(withIdentifier: "motorcycleToHWSettings", sender: self)
             } else {
-                //About
-                performSegue(withIdentifier: "motorcycleToAbout", sender: self)   
+                //No status
+                self.showToast(message: NSLocalizedString("toast_wlq_not_connected", comment: ""))
             }
-        case 4:
-            if (popoverMenuList.count == 6){
-                //About
-                performSegue(withIdentifier: "motorcycleToAbout", sender: self)
-            } else {
-                exit(0)
-            }
-        case 5:
-            exit(0)
-        default:
-            print("Unknown option")
+        } else {
+            //Not Connected
+            self.showToast(message: NSLocalizedString("toast_wlq_not_connected", comment: ""))
         }
-        self.popover.dismiss()
     }
     
-}
-
-extension MainCollectionViewController: UITableViewDataSource {
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        return popoverMenuList.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
-        cell.textLabel?.text = self.popoverMenuList[(indexPath as NSIndexPath).row]
-        return cell
+    func openAbout(){
+        //About
+        performSegue(withIdentifier: "motorcycleToAbout", sender: self)
     }
 }
 

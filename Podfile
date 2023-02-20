@@ -8,4 +8,5 @@ target 'WunderLINQ' do
   pod 'ChromaColorPicker', '~> 2.0.2'
   pod 'CoreGPX'
   pod 'UIMultiPicker'
+  pod 'Popovers'
 end

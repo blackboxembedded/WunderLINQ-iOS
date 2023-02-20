@@ -1,0 +1,6 @@
+framework module Popovers {
+  umbrella header "Popovers-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -19,6 +19,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 import UIKit
 import GoogleMaps
 import CoreGPX
+import Popovers
 
 class TripViewController: UIViewController {
     @IBOutlet weak var mapView: GMSMapView!
@@ -38,13 +39,13 @@ class TripViewController: UIViewController {
     var menuBtn: UIButton!
     var menuButton: UIBarButtonItem!
     
-    fileprivate var popoverMenuList = [NSLocalizedString("waypoint_view_bt_share", comment: ""), NSLocalizedString("share_gpx", comment: ""), NSLocalizedString("waypoint_view_bt_delete", comment: "")]
-    fileprivate var popover: Popover!
-    fileprivate var popoverOptions: [PopoverOption] = [
-        .type(.auto),
-        .color(UIColor(named: "backgrounds")!),
-        .blackOverlayColor(UIColor(white: 0.0, alpha: 0.6))
-    ]
+    lazy var menu = Templates.UIKitMenu(sourceView: menuBtn!) {
+        Templates.MenuButton(title: NSLocalizedString("waypoint_view_bt_share", comment: ""), systemImage: nil) { self.share() }
+        Templates.MenuButton(title: NSLocalizedString("share_gpx", comment: ""), systemImage: nil) { self.exportGPX() }
+        Templates.MenuButton(title: NSLocalizedString("waypoint_view_bt_delete", comment: ""), systemImage: nil) { self.delete() }
+    } fadeLabel: { [weak self] fade in
+        //self?.label.alpha = fade ? 0.5 : 1
+    }
     
     @objc func leftScreen() {
         _ = navigationController?.popViewController(animated: true)
@@ -63,29 +64,6 @@ class TripViewController: UIViewController {
                 self.viewDidLoad()
             }
         }
-    }
-    
-    @objc func menuButtonTapped() {
-        popUpMenu()
-    }
-    
-    func popUpMenu() {
-        var menuHeight:CGFloat = 46
-        menuHeight = CGFloat(46 * popoverMenuList.count)
-        let tableView = UITableView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width / 2, height: menuHeight))
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.isScrollEnabled = false
-        self.popover = Popover(options: self.popoverOptions)
-        self.popover.willShowHandler = {
-        }
-        self.popover.didShowHandler = {
-        }
-        self.popover.willDismissHandler = {
-        }
-        self.popover.didDismissHandler = {
-        }
-        self.popover.show(tableView, fromView: self.menuBtn)
     }
     
     func share(){
@@ -194,7 +172,6 @@ class TripViewController: UIViewController {
         if #available(iOS 13.0, *) {
             menuBtn.tintColor = UIColor(named: "imageTint")
         }
-        menuBtn.addTarget(self, action: #selector(menuButtonTapped), for: .touchUpInside)
         let menuButton = UIBarButtonItem(customView: menuBtn)
         let menuButtonWidth = menuButton.customView?.widthAnchor.constraint(equalToConstant: 30)
         menuButtonWidth?.isActive = true
@@ -203,6 +180,8 @@ class TripViewController: UIViewController {
         self.navigationItem.title = NSLocalizedString("trip_view_title", comment: "")
         self.navigationItem.leftBarButtonItems = [backButton]
         self.navigationItem.rightBarButtonItems = [menuButton]
+        
+        _ = menu /// Create the menu.
         
         updateFileList()
         indexOfFileName = csvFileNames!.firstIndex(of: fileName!)
@@ -507,39 +486,5 @@ class TripViewController: UIViewController {
         } catch {
             print(error.localizedDescription)
         }
-    }
-}
-
-extension TripViewController: UITableViewDelegate {
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        switch(indexPath.row) {
-        case 0:
-            //Share
-            share()
-        case 1:
-            //Share GPX
-            exportGPX()
-        case 2:
-            //Delete
-            delete()
-        default:
-            print("Unknown option")
-        }
-        self.popover.dismiss()
-    }
-    
-}
-
-extension TripViewController: UITableViewDataSource {
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        return popoverMenuList.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
-        cell.textLabel?.text = self.popoverMenuList[(indexPath as NSIndexPath).row]
-        return cell
     }
 }
