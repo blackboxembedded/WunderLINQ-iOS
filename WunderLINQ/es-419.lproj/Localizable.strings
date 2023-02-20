@@ -131,3 +131,5 @@
 "fault_GENWARNSHRED" = "Luz de advertencia general encendida en rojo";
 "fault_OILLOW" = "Nivel de aceite muy bajo";
 "wwMode2" = "RT/K1600";
+"btn_sendlogs_title" = "Enviar registros";
+"sendlogs_body" = "Por favor describa su problema a continuación:\n";
