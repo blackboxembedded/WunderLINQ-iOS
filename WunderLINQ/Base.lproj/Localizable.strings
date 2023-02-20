@@ -129,6 +129,7 @@
 //AboutViewController
 "about_title" = "About";
 "version_label" = "Version:";
+"btn_documentation_title" = "Documentation";
 "btn_sendlogs_title" = "Send Logs";
 "sendlogs_body" = "Please describe your problem below:\n";
 "credits_label" = "Credits";

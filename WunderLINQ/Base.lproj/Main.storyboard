@@ -1151,20 +1151,20 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="hwActionCell" id="ORR-ga-rGW" customClass="HWSettingsTableViewCell" customModule="WunderLINQ" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="50" width="430" height="42.666667938232422"/>
+                                        <rect key="frame" x="0.0" y="50" width="430" height="43.333332061767578"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ORR-ga-rGW" id="u8h-mc-bnW">
-                                            <rect key="frame" x="0.0" y="0.0" width="430" height="42.666667938232422"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="430" height="43.333332061767578"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="32s-bB-EZK">
-                                                    <rect key="frame" x="20" y="11.000000000000002" width="195" height="20.666666666666671"/>
+                                                    <rect key="frame" x="20" y="10.999999999999998" width="195" height="21.333333333333329"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rs5-hB-OEc">
-                                                    <rect key="frame" x="215" y="11.000000000000002" width="195" height="20.666666666666671"/>
+                                                    <rect key="frame" x="215" y="10.999999999999998" width="195" height="21.333333333333329"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -1556,7 +1556,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Credits" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bpB-n7-PMj" customClass="LocalisableLabel" customModule="WunderLINQ" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="220" width="430" height="24"/>
+                                <rect key="frame" x="0.0" y="266" width="430" height="24"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -1565,7 +1565,7 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jAM-2k-3CY">
-                                <rect key="frame" x="0.0" y="249" width="430" height="614"/>
+                                <rect key="frame" x="0.0" y="295" width="430" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <string key="text">Support and Patience
 
@@ -1699,7 +1699,7 @@ Icons from fontawesome.com
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mYb-5h-qZC" customClass="LocalisableButton" customModule="WunderLINQ" customModuleProvider="target">
-                                <rect key="frame" x="16" y="174" width="398" height="30"/>
+                                <rect key="frame" x="16" y="220" width="398" height="30"/>
                                 <color key="backgroundColor" name="imageTint"/>
                                 <state key="normal" title="Send Logs">
                                     <color key="titleColor" name="backgrounds"/>
@@ -1711,10 +1711,24 @@ Icons from fontawesome.com
                                     <action selector="sendLogsBtnPressed:" destination="BZZ-xV-I8u" eventType="touchUpInside" id="c4Q-7M-0R5"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fb9-gw-fEc" customClass="LocalisableButton" customModule="WunderLINQ" customModuleProvider="target">
+                                <rect key="frame" x="16" y="174" width="398" height="30"/>
+                                <color key="backgroundColor" name="imageTint"/>
+                                <state key="normal" title="Documentation">
+                                    <color key="titleColor" name="backgrounds"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="localisedKey" value="btn_documentation_title"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="documentationBtnPressed:" destination="BZZ-xV-I8u" eventType="touchUpInside" id="E0z-3H-CRd"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="XEV-0z-jeW"/>
                         <color key="backgroundColor" name="backgrounds"/>
                         <constraints>
+                            <constraint firstItem="XEV-0z-jeW" firstAttribute="trailing" secondItem="fb9-gw-fEc" secondAttribute="trailing" constant="16" id="0Ep-Id-bfV"/>
                             <constraint firstItem="Y9o-7f-NQI" firstAttribute="leading" secondItem="XEV-0z-jeW" secondAttribute="leading" id="3Bj-5r-VTi"/>
                             <constraint firstItem="XEV-0z-jeW" firstAttribute="trailing" secondItem="bpB-n7-PMj" secondAttribute="trailing" id="3Fz-qN-Dof"/>
                             <constraint firstItem="XEV-0z-jeW" firstAttribute="trailing" secondItem="fPj-pQ-RK7" secondAttribute="trailing" id="5FX-v2-KJD"/>
@@ -1726,8 +1740,10 @@ Icons from fontawesome.com
                             <constraint firstItem="iK0-Eq-bFT" firstAttribute="leading" secondItem="XEV-0z-jeW" secondAttribute="leading" constant="16" id="LsA-BS-QqZ"/>
                             <constraint firstItem="fPj-pQ-RK7" firstAttribute="top" secondItem="iK0-Eq-bFT" secondAttribute="bottom" constant="25" id="Nsl-Ge-18B"/>
                             <constraint firstItem="jAM-2k-3CY" firstAttribute="leading" secondItem="XEV-0z-jeW" secondAttribute="leading" id="QDl-f0-S36"/>
+                            <constraint firstItem="fb9-gw-fEc" firstAttribute="leading" secondItem="XEV-0z-jeW" secondAttribute="leading" constant="16" id="V6t-hQ-3AP"/>
                             <constraint firstItem="mYb-5h-qZC" firstAttribute="leading" secondItem="XEV-0z-jeW" secondAttribute="leading" constant="16" id="c57-Rw-9Le"/>
-                            <constraint firstItem="mYb-5h-qZC" firstAttribute="top" secondItem="Y9o-7f-NQI" secondAttribute="bottom" constant="16" id="kJh-Xs-g9T"/>
+                            <constraint firstItem="mYb-5h-qZC" firstAttribute="top" secondItem="fb9-gw-fEc" secondAttribute="bottom" constant="16" id="eiF-gs-hbc"/>
+                            <constraint firstItem="fb9-gw-fEc" firstAttribute="top" secondItem="Y9o-7f-NQI" secondAttribute="bottom" constant="16" id="hJn-ug-Iqi"/>
                             <constraint firstItem="fPj-pQ-RK7" firstAttribute="leading" secondItem="XEV-0z-jeW" secondAttribute="leading" id="kd6-t9-voY"/>
                             <constraint firstItem="XEV-0z-jeW" firstAttribute="trailing" secondItem="Y9o-7f-NQI" secondAttribute="trailing" id="o6N-Mo-8io"/>
                             <constraint firstItem="XEV-0z-jeW" firstAttribute="trailing" secondItem="jAM-2k-3CY" secondAttribute="trailing" id="pVf-uj-0rN"/>

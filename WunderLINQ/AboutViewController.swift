@@ -40,6 +40,18 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
         }
     }
     
+    @IBAction func documentationBtnPressed(_ sender: Any) {
+        guard let url = URL(string: "https://blackboxembedded.github.io/WunderLINQ-Documentation/") else {
+            return //be safe
+        }
+        
+        if #available(iOS 10.0, *) {
+            UIApplication.shared.open(url, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
+        } else {
+            UIApplication.shared.openURL(url)
+        }
+    }
+    
     @IBAction func sendLogsBtnPressed(_ sender: Any) {
         if MFMailComposeViewController.canSendMail() {
             var dateFormatter: DateFormatter {
