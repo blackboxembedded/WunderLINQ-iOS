@@ -46,7 +46,7 @@
 "settings_label" = "設定";
 "bike_info_label" = "バイク情報";
 "geodata_label" = "トリップログとウェイポイント";
-"appsettings_label" = "アプリ設定";
+"appsettings_label" = "APP設定";
 "about_label" = "ワンダーリンクについて";
 "close_label" = "閉じる";
 "hwsettings_label" = "ハードウェア設定";
@@ -64,7 +64,7 @@
 "hwsave_alert_btn_ok" = "続ける";
 "hwsave_alert_btn_cancel" = "キャンセル";
 //AboutViewController
-"about_title" = "およそ";
+"about_title" = "アバウト";
 "version_label" = "バージョン：";
 "btn_sendlogs_title" = "ログの送信";
 "sendlogs_body" = "以下に問題点を記述して下さい:\n";
