@@ -83,7 +83,7 @@
 "fault_TIREFWF" = "Voorwiel bandenspanning te laag";
 "vin_label" = "VIN";
 "trip1_label" = "Dagteller 1";
-"sendlogs_body" = "Beschrijf uw probleem hieronder:\n";
+"sendlogs_body" = "Beschrijf uw problem hieronder:\n";
 "alert_btn_close" = "Sluiten";
 "trip_view_tv_engine" = "Motortemperatuur (Min/Gem/Max)";
 "waypoint_view_bt_open" = "Open in kaart App";
