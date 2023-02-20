@@ -63,7 +63,7 @@
 "hwsave_alert_btn_ok" = "Folytat";
 "hwsave_alert_btn_cancel" = "Elvet";
 //AboutViewController
-"about_title" = "Rólunk";
+"about_title" = "Információk";
 "version_label" = "Verzió:";
 "btn_sendlogs_title" = "Elküldöttek";
 "sendlogs_body" = "Kérlek írd le a problémát:\n";
