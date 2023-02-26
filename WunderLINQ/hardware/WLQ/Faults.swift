@@ -359,6 +359,15 @@ class Faults {
         return self.oilLowActive
     }
     
+    var serviceActive: Bool = false
+    var serviceDesc: String = NSLocalizedString("fault_SERVICE", comment: "")
+    func setserviceActive(active: Bool?){
+        self.serviceActive = active!
+    }
+    func getserviceActive() -> Bool{
+        return self.serviceActive
+    }
+    
     var fuelStationAlertSent: Bool = false
     func setFuelStationAlertSent(active: Bool?){
         self.fuelStationAlertSent = active!
@@ -480,6 +489,9 @@ class Faults {
         }
         if(oilLowActive){
             allActiveDesc.append(oilLowDesc);
+        }
+        if(serviceActive){
+            allActiveDesc.append(serviceDesc);
         }
         
         return allActiveDesc

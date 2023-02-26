@@ -1239,15 +1239,25 @@ class LINbus {
                 let month = ((lastMessage[2] >> 4) & 0x0F)
                 let day = lastMessage[3]
                 let calendar = Calendar(identifier: .gregorian)
-                // calendar.timeZone = TimeZone(secondsFromGMT: 0)!
                 let components = DateComponents(year: Int(year), month: Int(month), day: Int(day))
                 let nextServiceDate = calendar.date(from: components)
                 motorcycleData.setNextServiceDate(nextServiceDate: nextServiceDate)
+                let currentDate = Date()
+                if calendar.compare(nextServiceDate!, to: currentDate, toGranularity: .day) == .orderedDescending {
+                    faults.setserviceActive(active: false)
+                } else {
+                    faults.setserviceActive(active: true)
+                }
             }
             //Next Service
             if (lastMessage[4] != 0xFF){
                 let nextService = UInt16(lastMessage[4]) * 100
                 motorcycleData.setNextService(nextService: Int(nextService))
+                if (motorcycleData.odometer != nil){
+                    if(motorcycleData.odometer! <= Double(nextService)){
+                        faults.setserviceActive(active: true)
+                    }
+                }
             }
         case 0x0C:
             // Trip 1 & Trip 2

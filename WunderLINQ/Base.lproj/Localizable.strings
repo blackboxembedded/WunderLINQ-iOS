@@ -312,6 +312,7 @@
 "fault_GENWARNFSRED" = "The general warning light flashes red";
 "fault_GENWARNSHRED" = "The general warning light shows red";
 "fault_OILLOW" = "Engine oil level too low";
+"fault_SERVICE" = "Service Due";
 //BikeInfoViewController
 "bike_info_title" = "Bike Info";
 "vin_label" = "VIN";
