@@ -91,3 +91,4 @@
 "timef_12h" = "12h";
 "timef_24h" = "24h";
 "ui_title" = "User Interface";
+"pref_hide_navbar_name" = "Hide NavBar when not in use.";

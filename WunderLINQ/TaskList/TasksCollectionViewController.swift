@@ -1048,8 +1048,10 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
     }
     
     func runTimer() {
-        timer = Timer.scheduledTimer(timeInterval: 1, target: self,   selector: (#selector(updateTimer)), userInfo: nil, repeats: true)
-        isTimerRunning = true
+        if UserDefaults.standard.bool(forKey: "hide_navbar_preference") {
+            timer = Timer.scheduledTimer(timeInterval: 1, target: self,   selector: (#selector(updateTimer)), userInfo: nil, repeats: true)
+            isTimerRunning = true
+        }
     }
     
     @objc func updateTimer() {
