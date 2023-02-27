@@ -54,29 +54,13 @@ class TripsTableViewController: UITableViewController {
         self.navigationItem.title = NSLocalizedString("trips_title", comment: "")
         self.navigationItem.leftBarButtonItems = [backButton]
         
-        // Get the document directory url
-        let documentsUrl =  FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-        
-        do {
-            // Get the directory contents urls (including subfolders urls)
-            let directoryContents = try FileManager.default.contentsOfDirectory(at: documentsUrl, includingPropertiesForKeys: nil, options: [])
-            print(directoryContents)
-            
-            // if you want to filter the directory contents you can do like this:
-            let csvFiles = directoryContents.filter{ $0.pathExtension == "csv" }
-            csvFileNames = csvFiles.map{ $0.deletingPathExtension().lastPathComponent }
-            csvFileNames = csvFileNames?.sorted(by: {$0 > $1})
-            
-            
-        } catch {
-            print(error.localizedDescription)
-        }
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        readTrips()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        readTrips()
+        tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -117,6 +101,26 @@ class TripsTableViewController: UITableViewController {
         if (segue.identifier == "tripsToTrip") {
             let vc = segue.destination as! TripViewController
             vc.fileName = fileName
+        }
+    }
+    
+    func readTrips() {
+        // Get the document directory url
+        let documentsUrl =  FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        
+        do {
+            // Get the directory contents urls (including subfolders urls)
+            let directoryContents = try FileManager.default.contentsOfDirectory(at: documentsUrl, includingPropertiesForKeys: nil, options: [])
+            print(directoryContents)
+            
+            // if you want to filter the directory contents you can do like this:
+            let csvFiles = directoryContents.filter{ $0.pathExtension == "csv" }
+            csvFileNames = csvFiles.map{ $0.deletingPathExtension().lastPathComponent }
+            csvFileNames = csvFileNames?.sorted(by: {$0 > $1})
+            
+            
+        } catch {
+            print(error.localizedDescription)
         }
     }
 }

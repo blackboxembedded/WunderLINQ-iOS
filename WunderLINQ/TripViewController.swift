@@ -188,6 +188,9 @@ class TripViewController: UIViewController, UITextFieldDelegate {
         self.labelLabel.delegate = self
         labelLabel.placeholder = NSLocalizedString("trip_view_label_hint", comment: "")
         
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+
         updateFileList()
         indexOfFileName = csvFileNames!.firstIndex(of: fileName!)
         labelLabel.text = fileName
@@ -383,12 +386,7 @@ class TripViewController: UIViewController, UITextFieldDelegate {
             if (maxLean != nil){
                 leanLabel.text = "\(maxLean!.rounded(toPlaces: 2))"
             }
-            /*
-            let bounds = GMSCoordinateBounds(path: path)
-            let camera = mapView.camera(for: bounds, insets: UIEdgeInsets())!
-            mapView.camera = camera
-            mapView.mapType = .hybrid
-            */
+
             mapView.clear()
             if path.count() > 0 {
                 let bounds = GMSCoordinateBounds(path: path)
@@ -513,13 +511,14 @@ class TripViewController: UIViewController, UITextFieldDelegate {
         let fileManager = FileManager.default
         if (fileName != nil){
             do {
-                let oldURL = try fileManager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent(fileName!)
+                let oldURL = try fileManager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent(fileName! + ".csv")
                 let newURL = try fileManager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent((labelLabel.text ?? "empty") + ".csv")
                 
                 try fileManager.moveItem(at: oldURL, to: newURL)
-                print("File renamed successfully")
+                    print("File renamed successfully")
+                    "\(self.getDocumentsDirectory())/\(fileName!).csv"
             } catch {
-                print("Error renaming file: \(error)")
+                    print("Error renaming file: \(error)")
             }
         }
     }
@@ -528,4 +527,17 @@ class TripViewController: UIViewController, UITextFieldDelegate {
         self.view.endEditing(true)
         return false
     }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        guard let userInfo = notification.userInfo else { return }
+        guard let keyboardSize = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue.size else { return }
+        
+        let contentInsets = UIEdgeInsets(top: 0, left: 0, bottom: keyboardSize.height, right: 0)
+        view.frame.origin.y -= contentInsets.bottom
+    }
+
+    @objc func keyboardWillHide(notification: NSNotification) {
+        view.frame.origin.y = 0
+    }
+
 }
