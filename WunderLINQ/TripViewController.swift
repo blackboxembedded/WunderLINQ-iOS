@@ -21,16 +21,18 @@ import GoogleMaps
 import CoreGPX
 import Popovers
 
-class TripViewController: UIViewController {
+class TripViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var mapView: GMSMapView!
-    @IBOutlet weak var dateLabel: UILabel!
-    @IBOutlet weak var distanceLabel: UILabel!
-    @IBOutlet weak var durationLabel: UILabel!
-    @IBOutlet weak var speedLabel: UILabel!
+    @IBOutlet weak var labelLabel: UITextField!
     @IBOutlet weak var gearShiftsLabel: UILabel!
     @IBOutlet weak var brakesLabel: UILabel!
     @IBOutlet weak var ambientTempLabel: UILabel!
     @IBOutlet weak var engineTempLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var distanceLabel: UILabel!
+    @IBOutlet weak var durationLabel: UILabel!
+    @IBOutlet weak var speedLabel: UILabel!
+    @IBOutlet weak var leanLabel: UILabel!
     
     var fileName: String?
     var csvFileNames : [String]?
@@ -183,9 +185,12 @@ class TripViewController: UIViewController {
         
         _ = menu /// Create the menu.
         
+        self.labelLabel.delegate = self
+        labelLabel.placeholder = NSLocalizedString("trip_view_label_hint", comment: "")
+        
         updateFileList()
         indexOfFileName = csvFileNames!.firstIndex(of: fileName!)
-
+        labelLabel.text = fileName
         let rawData = readDataFromCSV(fileName: "\(fileName!)", fileType: "csv")
         if (rawData != nil){
             let data = cleanRows(file: rawData!)
@@ -194,6 +199,7 @@ class TripViewController: UIViewController {
             let path = GMSMutablePath()
             var speeds : [Double] = []
             var maxSpeed: Double = 0
+            var maxLean : Double?
             var ambientTemps : [Double] = []
             var minAmbientTemp : Double?
             var maxAmbientTemp : Double?
@@ -275,6 +281,15 @@ class TripViewController: UIViewController {
                     if !(row[15] == ""){
                         if (endShiftCnt < row[15].toInt()!){
                             endShiftCnt = row[15].toInt()!
+                        }
+                    }
+                    if !(row[32] == ""){
+                        if (maxLean ?? 0.0 < row[32].toDouble()!){
+                            maxLean = row[32].toDouble()!
+                        }
+                    } else if !(row[27] == ""){
+                        if (maxLean ?? 0.0 < row[27].toDouble()!){
+                            maxLean = row[27].toDouble()!
                         }
                     }
                 }
@@ -363,6 +378,10 @@ class TripViewController: UIViewController {
             // Calculate Duration
             if ((startTime != nil) && (endTime != nil)){
                 durationLabel.text = Utility.calculateDuration(start: startTime!,end: endTime!)
+            }
+            
+            if (maxLean != nil){
+                leanLabel.text = "\(maxLean!.rounded(toPlaces: 2))"
             }
             /*
             let bounds = GMSCoordinateBounds(path: path)
@@ -486,5 +505,27 @@ class TripViewController: UIViewController {
         } catch {
             print(error.localizedDescription)
         }
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        //Update filename
+        //labelLabel.text
+        let fileManager = FileManager.default
+        if (fileName != nil){
+            do {
+                let oldURL = try fileManager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent(fileName!)
+                let newURL = try fileManager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent((labelLabel.text ?? "empty") + ".csv")
+                
+                try fileManager.moveItem(at: oldURL, to: newURL)
+                print("File renamed successfully")
+            } catch {
+                print("Error renaming file: \(error)")
+            }
+        }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
     }
 }

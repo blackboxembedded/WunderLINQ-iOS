@@ -146,11 +146,13 @@
 "trips_title" = "Recorded Trips";
 // TripViewController
 "trip_view_title" = "Trip";
+"trip_view_label_hint" = "Trip Label";
 "trip_view_waypoint_start_label" = "Start";
 "trip_view_waypoint_end_label" = "End";
 "trip_view_tv_distance" = "Distance";
 "trip_view_tv_duration" = "Duration";
 "trip_view_tv_speed" = "Speed (Avg/Max)";
+"trip_view_tv_lean" = "Lean (Max)";
 "trip_view_tv_shifts" = "Gear Shifts";
 "trip_view_tv_brakes" = "Brakes (Front/Rear)";
 "trip_view_tv_ambient" = "Ambient Temp (Min/Avg/Max)";
