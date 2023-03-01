@@ -129,6 +129,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             let documentsDirectory = paths[0]
             let fileName = "wunderlinq.log"
             let logFilePath = (documentsDirectory as NSString).appendingPathComponent(fileName)
+        
+            let fileManager = FileManager.default
+
+            do {
+                let attributes = try fileManager.attributesOfItem(atPath: logFilePath)
+                let fileSize = attributes[FileAttributeKey.size] as! UInt64
+
+                if fileSize > 20 * 1024 * 1024 {
+                    try fileManager.removeItem(atPath: logFilePath)
+                    print("File deleted successfully")
+                } else {
+                    print("File is not over 20MB")
+                }
+            } catch {
+                print("Error: \(error)")
+            }
             freopen(logFilePath.cString(using: String.Encoding.ascii)!, "a+", stderr)
             
             if !UserDefaults.standard.bool(forKey: "firstRun") {

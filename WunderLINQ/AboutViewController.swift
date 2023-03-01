@@ -67,20 +67,13 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
                 firmwareVersion = wlqData.getfirmwareVersion()
             }
             let mailComposer = MFMailComposeViewController()
-            mailComposer.setSubject("WunderLINQ iOS Debug Logs \(today)")
+            mailComposer.setSubject("WunderLINQ iOS Support: \(today)")
             mailComposer.setMessageBody("App Version: \(getAppInfo())\nFirmware Version: \(firmwareVersion)\niOS Version: \(getOSInfo())\nDevice: \(UIDevice.current.modelName)\n\(NSLocalizedString("sendlogs_body", comment: ""))", isHTML: false)
             mailComposer.setToRecipients(["support@blackboxembedded.com"])
             // Get the documents folder url
             let documentDirectory = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
             // Destination url for the log file to be saved
-            let fileURL = documentDirectory.appendingPathComponent("dbg")
             let logURL = documentDirectory.appendingPathComponent("wunderlinq.log")
-            do {
-                let attachmentData = try Data(contentsOf: fileURL)
-                mailComposer.addAttachmentData(attachmentData, mimeType: "text/csv", fileName: "dbg")
-            } catch let error {
-                print("We have encountered error \(error.localizedDescription)")
-            }
             do {
                 let logAttachmentData = try Data(contentsOf: logURL)
                 mailComposer.addAttachmentData(logAttachmentData, mimeType: "text/log", fileName: "wunderlinq.log")

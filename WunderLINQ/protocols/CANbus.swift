@@ -22,7 +22,8 @@ class CANbus {
             for i in 0 ..< dataArray.count {
                 messageHexString += String(format: "%02X", dataArray[i])
             }
-            Logger.logDBG(entry: messageHexString)
+            let formattedEntry = "DEBUG," + Date().toString() + "," + messageHexString
+            NSLog(formattedEntry)
         }
         
         let msgID:UInt16 = ((UInt16(data[0]) & 0xFF)<<3) + ((UInt16(data[1]) & 0xFF)>>5)

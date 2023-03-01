@@ -383,22 +383,6 @@ class Logger {
 
     }
     
-    class func logDBG(entry: String) {
-        let fileName = "dbg"
-        // Get the documents folder url
-        let documentDirectory = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
-        // Destination url for the log file to be saved
-        let fileURL = documentDirectory.appendingPathComponent("\(fileName)")
-        let formattedEntry = Date().toString() + "," + entry
-        do {
-            // Write to log
-            try formattedEntry.appendLineToURL(fileURL: fileURL as URL)
-            
-        } catch {
-            print("error writing to url:", fileURL, error)
-        }
-    }
-    
     private class func sourceFileName(filePath: String) -> String {
         let components = filePath.components(separatedBy: "/")
         return components.isEmpty ? "" : components.last!
