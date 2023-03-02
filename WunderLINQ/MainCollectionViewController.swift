@@ -223,7 +223,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        NSLog("IN MainCollectionViewController viewWillAppear")
+        NSLog("MainCollectionViewController: viewWillAppear")
         super.viewWillAppear(animated)
         referenceAttitude = nil
         if isTimerRunning == false {
@@ -239,13 +239,13 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     }
     
     override func viewDidLayoutSubviews() {
-        NSLog("IN MainCollectionViewController viewDidLayoutSubviews")
+        NSLog("MainCollectionViewController: viewDidLayoutSubviews")
         super.viewDidLayoutSubviews()
         updateCollectionViewLayout(with: self.view.frame.size)
     }
 
     override func viewDidLoad() {
-        NSLog("IN MainCollectionViewController viewDidLoad()")
+        NSLog("MainCollectionViewController: viewDidLoad()")
         super.viewDidLoad()
         
         collectionView.delegate = self
@@ -490,7 +490,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         
         if motionManager.isDeviceMotionAvailable {
             //do something interesting
-            print("Motion Device Available")
+            NSLog("MainCollectionViewController: Motion Device Available")
         }
         motionManager.startDeviceMotionUpdates()
         motionManager.deviceMotionUpdateInterval = 1.0 / 50.0
@@ -526,7 +526,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             }
             
             let degrees = abs(Int(fixedHeading))
-            //print("degrees: \(degrees) fixedHeading: \(fixedHeading)) newHeading: \(newHeading) angle(degrees): \(angle.radiansToDegrees) ")
+            //NSLog("MainCollectionViewController: degrees: \(degrees) fixedHeading: \(fixedHeading)) newHeading: \(newHeading) angle(degrees): \(angle.radiansToDegrees) ")
             if (!UserDefaults.standard.bool(forKey: "bearing_override_preference")){
                 self.motorcycleData.setbearing(bearing: degrees)
             }
@@ -544,13 +544,13 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        NSLog("IN MainCollectionViewController viewWillTransition")
+        NSLog("MainCollectionViewController: viewWillTransition")
         super.viewWillTransition(to: size, with: coordinator)
         referenceAttitude = nil
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        NSLog("IN MainCollectionViewController viewWillDisappear")
+        NSLog("MainCollectionViewController: viewWillDisappear")
         super.viewWillDisappear(animated)
         
         timer.invalidate()
@@ -562,7 +562,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     }
     
     private func updateCollectionViewLayout(with size: CGSize) {
-        NSLog("IN MainCollectionViewController updateCollectionViewLayout")
+        NSLog("MainCollectionViewController: updateCollectionViewLayout")
         if (collectionView != nil){
             if let layout = collectionView!.collectionViewLayout as? UICollectionViewFlowLayout {
                 var cellCount = UserDefaults.standard.integer(forKey: "GRIDCOUNT");
@@ -800,21 +800,21 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         var cellCount = UserDefaults.standard.integer(forKey: "GRIDCOUNT")
         switch (cellCount){
         case 1:
-            print("cellCount:1")
+            NSLog("MainCollectionViewController: cellCount:1")
         case 2:
-            print("cellCount:2")
+            NSLog("MainCollectionViewController: cellCount:2")
         case 4:
-            print("cellCount:4")
+            NSLog("MainCollectionViewController: cellCount:4")
         case 8:
-            print("cellCount:8")
+            NSLog("MainCollectionViewController: cellCount:8")
         case 10:
-            print("cellCount:10")
+            NSLog("MainCollectionViewController: cellCount:10")
         case 12:
-            print("cellCount:12")
+            NSLog("MainCollectionViewController: cellCount:12")
         case 15:
-            print("cellCount:15")
+            NSLog("MainCollectionViewController: cellCount:15")
         default:
-            print("cellCount:default(15)")
+            NSLog("MainCollectionViewController: cellCount:default(15)")
             cellCount = 15
             UserDefaults.standard.set(15, forKey: "GRIDCOUNT")
         }
@@ -854,7 +854,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
 
     @objc func btButtonTapped(_ sender: UIBarButtonItem) {
         // if we don't have a WunderLINQ, start scanning for one...
-        print("btButtonTapped()")
+        NSLog("MainCollectionViewController: btButtonTapped()")
         keepScanning = true
         resumeScan()
     }
@@ -891,7 +891,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     
     @objc func pauseScan() {
         // Scanning uses up battery on phone, so pause the scan process for the designated interval.
-        NSLog("PAUSING SCAN...")
+        NSLog("MainCollectionViewController: PAUSING SCAN...")
         disconnectButton.isEnabled = true
         self.centralManager?.stopScan()
         Timer.scheduledTimer(timeInterval: timerPauseInterval, target: self, selector: #selector(self.resumeScan), userInfo: nil, repeats: false)
@@ -902,7 +902,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         let lastPeripherals = centralManager.retrieveConnectedPeripherals(withServices: [CBUUID(string: Device.WunderLINQServiceUUID)])
         
         if lastPeripherals.count > 0{
-            NSLog("FOUND WunderLINQ")
+            NSLog("MainCollectionViewController: FOUND WunderLINQ")
             let device = lastPeripherals.last!;
             wunderLINQ = device;
             bleData.setPeripheral(peripheral: device)
@@ -910,7 +910,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         } else {
             if keepScanning {
                 // Start scanning again...
-                NSLog("RESUMING SCAN!")
+                NSLog("MainCollectionViewController: RESUMING SCAN!")
                 disconnectButton.isEnabled = false
                 centralManager.scanForPeripherals(withServices: [CBUUID(string: Device.WunderLINQAdvertisingUUID)], options: nil)
                 Timer.scheduledTimer(timeInterval: timerScanInterval, target: self, selector: #selector(self.pauseScan), userInfo: nil, repeats: false)
@@ -954,7 +954,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         case 15:
             cellDataPoint = UserDefaults.standard.integer(forKey: "grid_fifteen_preference")
         default:
-            print("Unknown cell")
+            NSLog("MainCollectionViewController: Unknown cell")
         }
         return cellDataPoint
     }
@@ -979,7 +979,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         case 3:
             pressureUnit = "psi"
         default:
-            print("Unknown pressure unit setting")
+            NSLog("MainCollectionViewController: Unknown pressure unit setting")
         }
         if UserDefaults.standard.integer(forKey: "temperature_unit_preference") == 1 {
             temperatureUnit = "F"
@@ -999,7 +999,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         case 3:
             consumptionUnit = "km/L"
         default:
-            print("Unknown consumption unit setting")
+            NSLog("MainCollectionViewController: Unknown consumption unit setting")
         }
         
         switch (cellDataPoint){
@@ -1100,7 +1100,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             //Rear Wheel Speed
             label = NSLocalizedString("rearwheel_speed_header", comment: "")
         default:
-            print("Unknown : \(cellDataPoint)")
+            NSLog("MainCollectionViewController: Unknown : \(cellDataPoint)")
         }
         
         return label
@@ -1204,7 +1204,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             //Lean Angle Bike
             icon = (UIImage(named: "Angle")?.withRenderingMode(.alwaysTemplate))!
         default:
-            print("Unknown : \(cellDataPoint)")
+            NSLog("MainCollectionViewController: Unknown : \(cellDataPoint)")
         }
         
         return icon
@@ -1787,7 +1787,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                 value = NSLocalizedString("blank_field", comment: "")
             }
         default:
-            print("Unknown : \(dataPoint)")
+            NSLog("MainCollectionViewController: Unknown : \(dataPoint)")
         }
         if let cell = self.collectionView.cellForItem(at: IndexPath(row: cellNumber - 1, section: 0) as IndexPath) as? MainCollectionViewCell{
             cell.setLabel(label: label)
@@ -1809,7 +1809,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                 messageHexString += ","
             }
         }
-        print("Command Response Received: \(messageHexString)")
+        NSLog("MainCollectionViewController: Command Response Received: \(messageHexString)")
          */
         
         
@@ -1819,22 +1819,22 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             case 0x52:
                 switch (dataArray[2]){
                 case 0x53:
-                    print("Received WRS command response")
+                    NSLog("MainCollectionViewController: Received WRS command response")
                     if (wlqData != nil){
                         WLQ.shared.setStatus(bytes: dataArray)
-                        //print("Command Response Received: \(messageHexString)")
+                        //NSLog("MainCollectionViewController: Command Response Received: \(messageHexString)")
                         notificationCenter.post(name: Notification.Name("StatusUpdate"), object: nil)
                         launchAccPage()
                     }
                     break
                 case 0x56:
-                    print("Received WRV command response")
+                    NSLog("MainCollectionViewController: Received WRV command response")
                     if (wlqData != nil){
                         wlqData.setfirmwareVersion(firmwareVersion: "\(dataArray[3]).\(dataArray[4])")
                     }
                     break
                 case 0x57:
-                    print("Received WRW command response")
+                    NSLog("MainCollectionViewController: Received WRW command response")
                     if (wlqData != nil){
                         wlqData.parseConfig(bytes: dataArray)
                     }
@@ -1907,7 +1907,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         // Retrieve the peripheral name from the advertisement data using the "kCBAdvDataLocalName" key
         if let peripheralName = advertisementData[CBAdvertisementDataLocalNameKey] as? String {
             if peripheralName.contains(deviceName) {
-                print("WunderLINQ FOUND! ADDING NOW!!!")
+                NSLog("MainCollectionViewController: WunderLINQ FOUND! ADDING NOW!!!")
                 // to save power, stop scanning for other devices
                 keepScanning = false
                 disconnectButton.isEnabled = true
@@ -1929,10 +1929,10 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
      You typically implement this method to set the peripheral’s delegate and to discover its services.
      */
     func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
-        print("SUCCESSFULLY CONNECTED TO WunderLINQ!")
+        NSLog("MainCollectionViewController: SUCCESSFULLY CONNECTED TO WunderLINQ!")
         disconnectBtn.tintColor = UIColor.blue
         
-        print("Peripheral info: \(peripheral)")
+        NSLog("MainCollectionViewController: Peripheral info: \(peripheral)")
         peripheral.delegate = self
         
         // Now that we've successfully connected to the WunderLINQ, let's discover the services.
@@ -1951,7 +1951,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
      in which case you may attempt to connect to the peripheral again.
      */
     func centralManager(_ central: CBCentralManager, didFailToConnect peripheral: CBPeripheral, error: Error?) {
-        print("CONNECTION TO WunderLINQ FAILED!")
+        NSLog("MainCollectionViewController: CONNECTION TO WunderLINQ FAILED!")
         disconnectBtn.tintColor = UIColor.red
     }
     
@@ -1966,12 +1966,12 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
      Note that when a peripheral is disconnected, all of its services, characteristics, and characteristic descriptors are invalidated.
      */
     func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
-        print("DISCONNECTED FROM WunderLINQ!")
+        NSLog("MainCollectionViewController: DISCONNECTED FROM WunderLINQ!")
         disconnectBtn.tintColor = UIColor.red
         //motorcycleData.clear()
         updateMessageDisplay()
         if error != nil {
-            print("DISCONNECTION DETAILS: \(error!.localizedDescription)")
+            NSLog("MainCollectionViewController: DISCONNECTION DETAILS: \(error!.localizedDescription)")
         }
         wunderLINQ = nil
         
@@ -2005,14 +2005,14 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     // When the specified services are discovered, the peripheral calls the peripheral:didDiscoverServices: method of its delegate object.
     func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
         if error != nil {
-            print("ERROR DISCOVERING SERVICES: \(error?.localizedDescription ?? "Unknown Error")")
+            NSLog("MainCollectionViewController: ERROR DISCOVERING SERVICES: \(error?.localizedDescription ?? "Unknown Error")")
             return
         }
         
         // Core Bluetooth creates an array of CBService objects —- one for each service that is discovered on the peripheral.
         if let services = peripheral.services {
             for service in services {
-                print("DISCOVERED SERVICE: \(service)")
+                NSLog("MainCollectionViewController: DISCOVERED SERVICE: \(service)")
                 // discover the characteristic.
                 if (service.uuid == CBUUID(string: Device.DeviceInformationServiceUUID)) {
                     numServices = numServices + 1
@@ -2037,37 +2037,37 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
      */
     func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService, error: Error?) {
         if error != nil {
-            print("ERROR DISCOVERING CHARACTERISTICS: \(error?.localizedDescription ?? "Unknown Error")")
+            NSLog("MainCollectionViewController: ERROR DISCOVERING CHARACTERISTICS: \(error?.localizedDescription ?? "Unknown Error")")
             return
         }
         numServicesChecked = numServicesChecked + 1;
-        print("numServicesChecked: \(numServicesChecked)")
+        NSLog("MainCollectionViewController: numServicesChecked: \(numServicesChecked)")
         if let characteristics = service.characteristics {
             for characteristic in characteristics {
-                print("DISCOVERED CHAR: \(characteristic)")
+                NSLog("MainCollectionViewController: DISCOVERED CHAR: \(characteristic)")
                 // Message Data Characteristic
                 if characteristic.uuid == CBUUID(string: Device.HWRevisionCharacteristicUUID) {
                     hwRevCharacteristic = characteristic
                 } else if characteristic.uuid == CBUUID(string: Device.UUID_WUNDERLINQ_LINMESSAGE_CHARACTERISTIC) {
-                    print("Navigator FOUND")
+                    NSLog("MainCollectionViewController: Navigator FOUND")
                     wlqData = WLQ_N()
                     // Enable the message notifications
                     messageCharacteristic = characteristic
                     wunderLINQ?.setNotifyValue(true, for: characteristic)
                 } else if characteristic.uuid == CBUUID(string: Device.UUID_WUNDERLINQ_CANMESSAGE_CHARACTERISTIC) {
-                    print("Commander FOUND")
+                    NSLog("MainCollectionViewController: Commander FOUND")
                     // Enable the message notifications
                     wlqData = WLQ_C()
                     messageCharacteristic = characteristic
                     wunderLINQ?.setNotifyValue(true, for: characteristic)
                 } else if characteristic.uuid == CBUUID(string: Device.CommandCharacteristicUUID) {
                     // Enable the message notifications
-                    print("COMMAND INTERFACE FOUND")
+                    NSLog("MainCollectionViewController: COMMAND INTERFACE FOUND")
                     commandCharacteristic = characteristic
                     wunderLINQ?.setNotifyValue(true, for: characteristic)
                     bleData.setcmdCharacteristic(cmdCharacteristic: characteristic)
                     if(wlqData != nil){
-                        print("REQUESTING CONFIG")
+                        NSLog("MainCollectionViewController: REQUESTING CONFIG")
                         let writeData =  Data(_: wlqData.GET_CONFIG_CMD())
                         peripheral.writeValue(writeData, for: commandCharacteristic!, type: CBCharacteristicWriteType.withResponse)
                         peripheral.readValue(for: commandCharacteristic!)
@@ -2098,7 +2098,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
      */
     func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?) {
         if error != nil {
-            print("ERROR ON UPDATING VALUE FOR CHARACTERISTIC: \(characteristic) - \(error?.localizedDescription ?? "Unknown Error")")
+            NSLog("MainCollectionViewController: ERROR ON UPDATING VALUE FOR CHARACTERISTIC: \(characteristic) - \(error?.localizedDescription ?? "Unknown Error")")
             return
         }
         
@@ -2106,7 +2106,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         if let dataBytes = characteristic.value {
             if characteristic.uuid == CBUUID(string: Device.HWRevisionCharacteristicUUID) {
                 if let versionString = String(bytes: dataBytes, encoding: .utf8) {
-                    print("HW Version: \(versionString)")
+                    NSLog("MainCollectionViewController: HW Version: \(versionString)")
                     hardwareVersion = versionString
                     if (wlqData != nil){
                         wlqData.sethardwareVersion(hardwareVersion: versionString)
@@ -2144,7 +2144,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     }
     
     @objc func defaultsChanged(notification:NSNotification){
-        NSLog("IN maincollectionviewcontroller defaultsChanged")
+        NSLog("MainCollectionViewController: defaultsChanged")
         if let defaults = notification.object as? UserDefaults {
             if defaults.integer(forKey: "darkmode_lastSet") != defaults.integer(forKey: "darkmode_preference"){
                 UserDefaults.standard.set(defaults.integer(forKey: "darkmode_preference"), forKey: "darkmode_lastSet")
@@ -2197,7 +2197,6 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     }
     
     private func clearNotifications(){
-        NSLog("IN maincollectionviewcontroller clearNotifications")
         let center = UNUserNotificationCenter.current()
         center.removeAllDeliveredNotifications() // To remove all delivered notifications
         center.removeAllPendingNotificationRequests()
@@ -2320,7 +2319,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                 rowCount = 1
                 nextCellCount = 1
             default:
-                print("Unknown Cell Count")
+                NSLog("MainCollectionViewController: Unknown Cell Count")
             }
         } else {
             switch (cellCount){
@@ -2353,7 +2352,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                 rowCount = 1
                 nextCellCount = 1
             default:
-                print("Unknown Cell Count")
+                NSLog("MainCollectionViewController: Unknown Cell Count")
             }
         }
         UserDefaults.standard.set(nextCellCount, forKey: "GRIDCOUNT")
@@ -2397,7 +2396,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                 rowCount = 3
                 nextCellCount = 12
             default:
-                print("Unknown Cell Count")
+                NSLog("MainCollectionViewController: Unknown Cell Count")
             }
         } else {
             switch (cellCount){
@@ -2430,7 +2429,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                 rowCount = 4
                 nextCellCount = 12
             default:
-                print("Unknown Cell Count")
+                NSLog("MainCollectionViewController: Unknown Cell Count")
             }
         }
         UserDefaults.standard.set(nextCellCount, forKey: "GRIDCOUNT")
@@ -2583,7 +2582,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         case 14:
             UserDefaults.standard.set(selectedDataPoint, forKey: "grid_fifteen_preference")
         default:
-            print("Unknown Cell")
+            NSLog("MainCollectionViewController: Unknown Cell")
         }
         let _ = UserDefaults.standard.synchronize()
     }
@@ -2647,7 +2646,6 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             isTimerRunning = false
             seconds = 10
             // Hide the navigation bar on the this view controller
-            NSLog("IN maincollectionviewcontroller updateTimer")
             DispatchQueue.main.async(){
                 self.navigationController?.setNavigationBarHidden(true, animated: true)
                 self.navigationController?.setStatusBar(backgroundColor: .black)

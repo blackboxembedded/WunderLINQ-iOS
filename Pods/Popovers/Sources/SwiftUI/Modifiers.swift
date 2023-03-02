@@ -74,7 +74,7 @@ struct PopoverModifier: ViewModifier {
 
                     /// Make sure there is a window first.
                     guard let window = window else {
-                        print("[Popovers] - No window was found when presenting popover. Please file a bug report (https://github.com/aheze/Popovers/issues).")
+                        NSLog("[Popovers] - No window was found when presenting popover. Please file a bug report (https://github.com/aheze/Popovers/issues).")
                         return
                     }
 
@@ -200,7 +200,7 @@ struct MultiPopoverModifier: ViewModifier {
 
                     /// Make sure there is a window first.
                     guard let window = window else {
-                        print("[Popovers] - No window was found when presenting popover. Please file a bug report (https://github.com/aheze/Popovers/issues).")
+                        NSLog("[Popovers] - No window was found when presenting popover. Please file a bug report (https://github.com/aheze/Popovers/issues).")
                         return
                     }
 

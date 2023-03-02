@@ -205,7 +205,6 @@ class HWSettingsActionViewController: UIViewController, UIPickerViewDataSource, 
     
     @objc func selected(_ sender: UIMultiPicker) {
         saveButton.isHidden = false
-        print(sender.selectedIndexes)
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {

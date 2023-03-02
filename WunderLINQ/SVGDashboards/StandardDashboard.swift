@@ -58,7 +58,7 @@ class StandardDashboard {
                 speedValue = Utility.kmToMiles(speedValue!)
             }
         default:
-            print("Unknown speed unit setting")
+            NSLog("StandardDashboard: Unknown speed unit setting")
         }
         if (speedValue != nil){
             if (speedValue! < 10){
@@ -590,7 +590,7 @@ class StandardDashboard {
             }
             break
         default:
-            print("Unknown or default RPM Setting for standard dashboard")
+            NSLog("StandardDashboard: Unknown or default RPM Setting for standard dashboard")
             break
         }
 

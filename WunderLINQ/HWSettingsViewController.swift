@@ -162,7 +162,7 @@ class HWSettingsViewController: UIViewController, UITableViewDelegate, UITableVi
                             configButton.isHidden = false
                             configButton.tag = 2
                         } else if (!wlqData.getConfig().elementsEqual(wlqData.getTempConfig())){
-                            print("!!!Change detected!!!")
+                            NSLog("HWSettingsViewController: !!!Change detected!!!")
                             configButton.setTitle(NSLocalizedString("config_write_label", comment: ""), for: .normal)
                             configButton.isHidden = false
                             configButton.tag = 1
@@ -274,7 +274,7 @@ class HWSettingsViewController: UIViewController, UITableViewDelegate, UITableVi
                     configButton.isHidden = false
                     configButton.tag = 2
                 } else if (!wlqData.getConfig().elementsEqual(wlqData.getTempConfig())){
-                    print("!!!Change detected!!!")
+                    NSLog("HWSettingsViewController: !!!Change detected!!!")
                     configButton.setTitle(NSLocalizedString("config_write_label", comment: ""), for: .normal)
                     configButton.isHidden = false
                     configButton.tag = 1
@@ -346,7 +346,7 @@ class HWSettingsViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func resetHWConfig(){
-        print("resetHWConfig()")
+        NSLog("HWSettingsViewController: resetHWConfig()")
         let alertController = UIAlertController(
             title: NSLocalizedString("hwsave_alert_title", comment: ""),
             message: NSLocalizedString("hwreset_alert_body", comment: ""),
@@ -375,7 +375,7 @@ class HWSettingsViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func applyHWConfig(){
-        print("applyHWConfig()")
+        NSLog("HWSettingsViewController: applyHWConfig()")
         let alertController = UIAlertController(
             title: NSLocalizedString("hwsave_alert_title", comment: ""),
             message: NSLocalizedString("hwsave_alert_body", comment: ""),
@@ -404,7 +404,7 @@ class HWSettingsViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func setHWMode(){
-        print("Set WLQ Mode")
+        NSLog("HWSettingsViewController: Set WLQ Mode")
         let alertController = UIAlertController(
             title: NSLocalizedString("hwsave_alert_title", comment: ""),
             message: NSLocalizedString("hwsave_alert_body", comment: ""),

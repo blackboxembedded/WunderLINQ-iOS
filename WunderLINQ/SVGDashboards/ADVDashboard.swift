@@ -56,7 +56,7 @@ class ADVDashboard {
                 speedValue = Utility.kmToMiles(speedValue!)
             }
         default:
-            print("Unknown speed unit setting")
+            NSLog("ADVDashboard: Unknown speed unit setting")
         }
         if (speedValue != nil){
             if (speedValue! < 10){

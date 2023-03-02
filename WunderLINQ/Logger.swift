@@ -41,7 +41,7 @@ class Logger {
             let fileURL = documentDirectory.appendingPathComponent("\(fileName)")
             let fileManager = FileManager.default
             if (!fileManager.fileExists(atPath: fileURL.path)) {
-                print("FILE NOT AVAILABLE")
+                NSLog("Logger: FILE NOT AVAILABLE")
                 //Add Header
                 let dateHeader = NSLocalizedString("time_header", comment: "")
                 let latitudeHeader = NSLocalizedString("latitude_header", comment: "")
@@ -96,7 +96,7 @@ class Logger {
                 case 3:
                     pressureUnit = "psi"
                 default:
-                    print("Unknown pressure unit setting")
+                    NSLog("Logger: Unknown pressure unit setting")
                 }
                 if UserDefaults.standard.integer(forKey: "temperature_unit_preference") == 1 {
                     temperatureUnit = "F"
@@ -117,7 +117,7 @@ class Logger {
                 case 3:
                     consumptionUnit = "km/L"
                 default:
-                    print("Unknown consumption unit setting")
+                    NSLog("Logger: Unknown consumption unit setting")
                 }
                 
                 let header = "\(dateHeader),\(latitudeHeader),\(longitudeHeader),\(altitudeHeader) (\(altitudeUnit)),\(gpsSpeedHeader) (\(speedUnit)),\(gearHeader),\(engineTemperatureHeader) (\(temperatureUnit)),\(ambientTemperatureHeader) (\(temperatureUnit)),\(frontPressureHeader) (\(pressureUnit)),\(rearPressureHeader) (\(pressureUnit)),\(odometerHeader) (\(distanceUnit)),\(voltageHeader) (V),\(throttlePositionHeader) (%),\(frontBrakesHeader),\(rearBrakesHeader),\(shiftsHeader),\(vinHeader),\(ambientLightHeader),\(tripOneHeader) (\(distanceUnit)),\(tripTwoHeader) (\(distanceUnit)),\(tripAutoHeader) (\(distanceUnit)),\(speedHeader) (\(speedUnit)),\(averageSpeedHeader) (\(speedUnit)),\(currentConsumptionHeader) (\(consumptionUnit)),\(fuelEconomyOneHeader) (\(consumptionUnit)),\(fuelEconomyTwoHeader) (\(consumptionUnit)),\(fuelRangeHeader) (\(distanceUnit)),\(leanAngleHeader),\(gForceHeader),\(bearingHeader),\(barometricPressureHeader) (kPa),\(rpmHeader),\(leanAngleBikeHeader),\(rearSpeedHeader) (\(speedUnit)) "
@@ -127,7 +127,7 @@ class Logger {
                     try formattedEntry.appendLineToURL(fileURL: fileURL as URL)
                     
                 } catch {
-                    print("error writing to url:", fileURL, error)
+                    NSLog("Logger: error writing to url:\(fileURL), ERROR: \(error)")
                 }
             }
             
@@ -377,7 +377,7 @@ class Logger {
                 try formattedEntry.appendLineToURL(fileURL: fileURL as URL)
                 
             } catch {
-                print("error writing to url:", fileURL, error)
+                NSLog("Logger: error writing to url:\(fileURL), ERROR: \(error)")
             }
         }
 

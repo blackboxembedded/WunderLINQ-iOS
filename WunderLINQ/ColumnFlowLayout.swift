@@ -31,7 +31,7 @@ class ColumnFlowLayout: UICollectionViewFlowLayout {
     }
     
     required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError("ColumnFlowLayout: init(coder:) has not been implemented")
     }
     
     override func prepare() {

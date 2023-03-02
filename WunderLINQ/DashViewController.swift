@@ -195,7 +195,6 @@ class DashViewController: UIViewController, UIWebViewDelegate {
     
     private func setupScreenOrientation() {
         if !UIApplication.shared.statusBarOrientation.isLandscape {
-            print("Adjust for portrait")
             let offset = (dashView.frame.size.height / 2.0) - (dashView.frame.size.width / 2.0)
             let translate = CGAffineTransform(translationX: 0.0, y: offset)
             

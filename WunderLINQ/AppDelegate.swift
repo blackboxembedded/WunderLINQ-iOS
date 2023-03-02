@@ -138,12 +138,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
                 if fileSize > 20 * 1024 * 1024 {
                     try fileManager.removeItem(atPath: logFilePath)
-                    print("File deleted successfully")
+                    NSLog("AppDelegate: File deleted successfully")
                 } else {
-                    print("File is not over 20MB")
+                    NSLog("AppDelegate: File is not over 20MB")
                 }
             } catch {
-                print("Error: \(error)")
+                NSLog("AppDelegate: Error: \(error)")
             }
             freopen(logFilePath.cString(using: String.Encoding.ascii)!, "a+", stderr)
             
@@ -168,7 +168,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
-        print("applicationWillResignActive")
+        NSLog("AppDelegate: applicationWillResignActive")
         if UserDefaults.standard.bool(forKey: "firstRun") {
             musicViewController.spotifyAppRemoteDisconnect()
             spotifyAppRemote.disconnect()
@@ -178,7 +178,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
         if UserDefaults.standard.bool(forKey: "firstRun") {
-            print("starting spotifyConnect()")
+            NSLog("AppDelegate: starting spotifyConnect()")
             self.spotifyConnect();
         }
     }
@@ -192,12 +192,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         
         // Determine who sent the URL.
         let sendingAppID = options[.sourceApplication]
-        print("source application:  \(sendingAppID ?? "Unknown")")
-        print("URL: " + url.absoluteString)
-        print("Scheme: \(url.scheme ?? "wunderlinq")")
+        NSLog("AppDelegate: source application:  \(sendingAppID ?? "Unknown")")
+        NSLog("AppDelegate: URL: " + url.absoluteString)
+        NSLog("AppDelegate: Scheme: \(url.scheme ?? "wunderlinq")")
         if (url.scheme == "file"){
             //Check if GPX file and import
-            print("File URL sent")
+            NSLog("AppDelegate: File URL sent")
             let rootViewController = self.window!.rootViewController as! UINavigationController
 
             let addWaypointViewController = UIStoryboard.main.instantiateViewController(withIdentifier: "addWaypoint") as! AddWaypointViewController
@@ -211,7 +211,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                 spotifyAppRemote.connectionParameters.accessToken = access_token
                 self.spotifyAccessToken = access_token
             } else if let error_description = parameters?[SPTAppRemoteErrorDescriptionKey] {
-                print("AppDelegate Spotify Error: " + error_description)
+                NSLog("AppDelegate: AppDelegate Spotify Error: " + error_description)
                 musicViewController.showError(error_description)
             }
         }
@@ -282,25 +282,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     }
     
     func spotifyConnect() {
-        print("spotifyConnect()")
+        NSLog("AppDelegate: spotifyConnect()")
         musicViewController.spotifyAppRemoteConnecting()
         spotifyAppRemote.connect()
     }
     
     // MARK: Spotify AppRemoteDelegate
     func appRemoteDidEstablishConnection(_ appRemote: SPTAppRemote) {
-        print("appRemoteDidEstablishConnection")
+        NSLog("AppDelegate: appRemoteDidEstablishConnection")
         self.spotifyAppRemote = appRemote
         musicViewController.spotifyAppRemoteConnected()
     }
     
     func appRemote(_ appRemote: SPTAppRemote, didFailConnectionAttemptWithError error: Error?) {
-        print("didFailConnectionAttemptWithError: " + error.debugDescription)
+        NSLog("AppDelegate: didFailConnectionAttemptWithError: " + error.debugDescription)
         musicViewController.spotifyAppRemoteDisconnect()
     }
     
     func appRemote(_ appRemote: SPTAppRemote, didDisconnectWithError error: Error?) {
-        print("didDisconnectWithError")
+        NSLog("AppDelegate: didDisconnectWithError")
         musicViewController.spotifyAppRemoteDisconnect()
     }
 }

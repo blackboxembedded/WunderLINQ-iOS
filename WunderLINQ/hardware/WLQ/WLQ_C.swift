@@ -296,7 +296,7 @@ class WLQ_C: WLQ {
 
     required override init() {
         super.init()
-        print("WLQ_C: init()")
+        NSLog("WLQ_C: init()")
         WLQ.shared = self
         WLQ.initialized = true
         actionNames = [longPressSensitivity: NSLocalizedString("sensitivity_label", comment: ""),
@@ -331,7 +331,7 @@ class WLQ_C: WLQ {
                 messageHexString += ","
             }
         }
-        print("flashConfig: \(messageHexString)")
+        NSLog("WLQ_C: flashConfig: \(messageHexString)")
         var tmessageHexString = ""
         for i in 0 ..< tempConfig!.count {
             tmessageHexString += String(format: "%02X", tempConfig![i])
@@ -339,7 +339,7 @@ class WLQ_C: WLQ {
                 tmessageHexString += ","
             }
         }
-        print("tempConfig: \(tmessageHexString)")
+        NSLog("WLQ_C: tempConfig: \(tmessageHexString)")
         */
         self.keyMode = bytes[self.keyMode_INDEX]
 
@@ -572,7 +572,7 @@ class WLQ_C: WLQ {
                 self.tempConfig![self.rocker2DownLongPressKeyModifier_INDEX] = key[1]
                 self.tempConfig![self.rocker2DownLongPressKey_INDEX] = key[2]
             default:
-                print("Invalid acitonID")
+                NSLog("WLQ_C: Invalid acitonID")
             }
         }
     }

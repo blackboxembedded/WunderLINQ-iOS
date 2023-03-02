@@ -230,6 +230,7 @@ class WLQ_N: WLQ {
 
     required override init() {
         super.init()
+        NSLog("WLQ_N: init()")
         WLQ.shared = self
         WLQ.initialized = true
         actionNames = [OldSensitivity: NSLocalizedString("sensitivity_label", comment: ""),
@@ -274,7 +275,7 @@ class WLQ_N: WLQ {
                     messageHexString += ","
                 }
             }
-            print("flashConfig: \(messageHexString)")
+            NSLog("WLQ_N: flashConfig: \(messageHexString)")
             var tmessageHexString = ""
             for i in 0 ..< tempConfig!.count {
                 tmessageHexString += String(format: "%02X", tempConfig![i])
@@ -282,7 +283,7 @@ class WLQ_N: WLQ {
                     tmessageHexString += ","
                 }
             }
-            print("tempConfig: \(tmessageHexString)")
+            NSLog("WLQ_N: tempConfig: \(tmessageHexString)")
             */
             self.keyMode = bytes[self.keyMode_INDEX]
             let usbBytes: [UInt8] = [self.flashConfig![self.USBVinThresholdHigh_INDEX], self.flashConfig![self.USBVinThresholdLow_INDEX]]
@@ -543,7 +544,7 @@ class WLQ_N: WLQ {
                 self.tempConfig![self.fullSignalLongPressKeyModifier_INDEX] = key[1]
                 self.tempConfig![self.fullSignalLongPressKey_INDEX] = key[2]
             default:
-                print("Invalid acitonID")
+                NSLog("WLQ_N: Invalid acitonID")
             }
         }
     }

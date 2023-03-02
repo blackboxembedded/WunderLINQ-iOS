@@ -47,10 +47,10 @@ class FirstRunViewController: UIViewController {
                 if granted {
                     // Authorized
                     //Nothing to do
-                    print("Allowed to access contacts")
+                    NSLog("FirstRunViewController: Allowed to access contacts")
                 } else {
                     // Not allowed
-                    print("Not Allowed to access contacts")
+                    NSLog("FirstRunViewController: Not Allowed to access contacts")
                 }
             }
             step = step + 1
@@ -63,11 +63,11 @@ class FirstRunViewController: UIViewController {
                 if granted == true {
                     // Authorized
                     //Nothing to do
-                    print("Allowed to access to Camera")
+                    NSLog("FirstRunViewController: Allowed to access to Camera")
                 } else {
                     // Not allowed
                     // Prompt with warning and button to settings
-                    print("Not Allowed to access Camera")
+                    NSLog("FirstRunViewController: Not Allowed to access Camera")
                 }
             })
             step = step + 1
@@ -80,11 +80,11 @@ class FirstRunViewController: UIViewController {
                 if granted == true {
                     // Authorized
                     //Nothing to do
-                    print("Allowed to access to Microphone")
+                    NSLog("FirstRunViewController: Allowed to access to Microphone")
                 } else {
                     // Not allowed
                     // Prompt with warning and button to settings
-                    print("Not Allowed to access to Microphone")
+                    NSLog("FirstRunViewController: Not Allowed to access to Microphone")
                 }
             })
             step = step + 1
@@ -97,9 +97,9 @@ class FirstRunViewController: UIViewController {
                 if status == .authorized{
                     // Authorized
                     //Nothing to do
-                    print("Allowed to access the Photo Library")
+                    NSLog("FirstRunViewController: Allowed to access the Photo Library")
                 } else {
-                    print("Not Allowed to access the Photo Library")
+                    NSLog("FirstRunViewController: Not Allowed to access the Photo Library")
                 }
             })
             step = step + 1
@@ -112,9 +112,9 @@ class FirstRunViewController: UIViewController {
                 if status == .authorized{
                     // Authorized
                     //Nothing to do
-                    print("Allowed to access the Media Library")
+                    NSLog("FirstRunViewController: Allowed to access the Media Library")
                 } else {
-                    print("Not Allowed to access the Media Library")
+                    NSLog("FirstRunViewController: Not Allowed to access the Media Library")
                 }
             }
             step = step + 1
@@ -124,9 +124,9 @@ class FirstRunViewController: UIViewController {
             messageTextField.text = NSLocalizedString("notification_alert_body", comment: "")
 
             if CLLocationManager.authorizationStatus() == .authorizedAlways {
-                print("Allowed Always Location Access")
+                NSLog("FirstRunViewController: Allowed Always Location Access")
             } else {
-                print("Not Allowed Location Access")
+                NSLog("FirstRunViewController: Not Allowed Location Access")
                 locationManager.requestAlwaysAuthorization()
             }
             step = step + 1
@@ -137,19 +137,19 @@ class FirstRunViewController: UIViewController {
             
             UNUserNotificationCenter.current().getNotificationSettings { (settings) in
                 if (settings.authorizationStatus == .authorized){
-                    print("Allowed to use Notifications")
+                    NSLog("FirstRunViewController: Allowed to use Notifications")
                 } else {
                     if #available(iOS 10.0, *) {
                         let center  = UNUserNotificationCenter.current()
 
                         center.requestAuthorization(options: [.sound, .alert, .badge]) { (granted, error) in
                             if error == nil{
-                                print("Allowed to use Notifications")
+                                NSLog("FirstRunViewController: Allowed to use Notifications")
                             }
                         }
 
                     }
-                    print("Not Allowed to use Notifications")
+                    NSLog("FirstRunViewController: Not Allowed to use Notifications")
                 }
             }
             step = step + 1

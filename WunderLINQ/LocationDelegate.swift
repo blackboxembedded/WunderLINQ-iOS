@@ -44,6 +44,6 @@ class LocationDelegate: NSObject, CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print("⚠️ Error while updating location " + error.localizedDescription)
+        NSLog("LocationDelegate: ⚠️ Error while updating location " + error.localizedDescription)
     }
 }

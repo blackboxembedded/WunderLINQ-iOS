@@ -30,7 +30,6 @@ class WaypointsTableViewController: UITableViewController {
     }
     
     @objc func addScreen() {
-        print("addScreen()")
         performSegue(withIdentifier: "waypointsToAddWaypoint", sender: [])
     }
     
@@ -79,13 +78,13 @@ class WaypointsTableViewController: UITableViewController {
             .appendingPathComponent("waypoints.sqlite")
         //opening the database
         if sqlite3_open(databaseURL.path, &db) != SQLITE_OK {
-            print("error opening database")
+            NSLog("WaypointsTableViewController: error opening database")
         }
         
         //creating table
         if sqlite3_exec(db, "CREATE TABLE IF NOT EXISTS records (id INTEGER PRIMARY KEY AUTOINCREMENT, date TEXT, latitude TEXT, longitude TEXT, label TEXT)", nil, nil, nil) != SQLITE_OK {
             let errmsg = String(cString: sqlite3_errmsg(db)!)
-            print("error creating table: \(errmsg)")
+            NSLog("WaypointsTableViewController: error creating table: \(errmsg)")
         }
         
         readWaypoints()
@@ -156,7 +155,7 @@ class WaypointsTableViewController: UITableViewController {
         //preparing the query
         if sqlite3_prepare(db, queryString, -1, &stmt, nil) != SQLITE_OK{
             let errmsg = String(cString: sqlite3_errmsg(db)!)
-            print("error preparing insert: \(errmsg)")
+            NSLog("WaypointsTableViewController: error preparing insert: \(errmsg)")
             return
         }
         

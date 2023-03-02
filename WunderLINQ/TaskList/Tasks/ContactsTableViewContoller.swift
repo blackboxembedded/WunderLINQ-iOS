@@ -36,18 +36,18 @@ class ContactsTableViewController: UITableViewController {
             self.retrieveContactsWithStore(store: store)
         case .denied:
             // Not allowed
-            print("Not Allowed to access contacts")
+            NSLog("ContactsTableViewController: Not Allowed to access contacts")
         case .restricted, .notDetermined:
             store.requestAccess(for: .contacts) { granted, error in
                 if granted {
                     self.retrieveContactsWithStore(store: store)
                 } else {
                     // Not allowed
-                    print("Not Allowed to access contacts")
+                    NSLog("ContactsTableViewController: Not Allowed to access contacts")
                 }
             }
         default:
-            print("Unknown status to access contacts")
+            NSLog("ContactsTableViewController: Unknown status to access contacts")
         }
     }
     
@@ -102,7 +102,7 @@ class ContactsTableViewController: UITableViewController {
             }
         }
         catch{
-            print("Handle the error please")
+            NSLog("ContactsTableViewController: Handle the error please")
         }
         self.tableView.reloadData()
     }
@@ -128,7 +128,7 @@ class ContactsTableViewController: UITableViewController {
     }
     
     @objc func upRow() {
-        print("upRow(): \(itemRow)")
+        NSLog("ContactsTableViewController: upRow(): \(itemRow)")
         if (itemRow == 0){
             let nextRow = phoneContacts.count - 1
             itemRow = nextRow
@@ -145,7 +145,7 @@ class ContactsTableViewController: UITableViewController {
     }
     
     @objc func downRow() {
-        print("downRow(): \(itemRow)")
+        NSLog("ContactsTableViewController: downRow(): \(itemRow)")
         if (itemRow == (phoneContacts.count - 1)){
             let nextRow = 0
             itemRow = nextRow

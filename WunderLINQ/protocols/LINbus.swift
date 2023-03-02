@@ -22,19 +22,19 @@ class LINbus {
             for i in 0 ..< dataArray.count {
                 messageHexString += String(format: "%02X", dataArray[i])
             }
-            let formattedEntry = "DEBUG," + Date().toString() + "," + messageHexString
+            let formattedEntry = "DEBUG: " + Date().toString() + "," + messageHexString
             NSLog(formattedEntry)
         }
         
         let lastMessage = dataArray
         switch lastMessage[0] {
         case 0x00:
-            //print("Message ID: 0")
+            //NSLog("Message ID: 0")
             let bytes: [UInt8] = [lastMessage[1],lastMessage[2],lastMessage[3],lastMessage[4],lastMessage[5],lastMessage[6],lastMessage[7]]
             let vin = String(bytes: bytes, encoding: .utf8)
             motorcycleData.setVIN(vin: vin)
         case 0x01:
-            //print("Message ID: 1")
+            //NSLog("Message ID: 1")
             // Rear Wheel Speed
             if ((lastMessage[3] != 0xFF) && (lastMessage[4] != 0xFF)){
                 let rearSpeed = Double(lastMessage[3] | ((lastMessage[4] & 0x0F) << 8))  * 0.14
@@ -52,7 +52,7 @@ class LINbus {
             let ambientLightValue = lastMessage[6] & 0x0F
             motorcycleData.setambientLight(ambientLight: Double(ambientLightValue))
         case 0x05:
-            //print("Message ID: 5")
+            //NSLog("Message ID: 5")
             //Lean Angle
             if ((lastMessage[1] != 0xFF) && ((lastMessage[2] & 0x0F) != 0xF)){
                 let leanAngleBike:Double = Double(UInt32((UInt32((lastMessage[2] & 0x0F)) << 8 | UInt32(lastMessage[1]))))
@@ -194,7 +194,7 @@ class LINbus {
                         frontPressure = Utility.barToPsi(frontPressure)
                         rearPressure = Utility.barToPsi(rearPressure)
                     default:
-                        print("Unknown pressure unit setting")
+                        NSLog("Unknown pressure unit setting")
                     }
                     if frontPressure <= UserDefaults.standard.double(forKey: "tpm_threshold_preference"){
                         faults.setFrontTirePressureCriticalActive(active: true)
@@ -325,7 +325,7 @@ class LINbus {
             }
             
         case 0x06:
-            //print("Message ID: 6")
+            //NSLog("Message ID: 6")
             //RPM
             if ((lastMessage[1] != 0xFF) && (lastMessage[2] != 0xFF)){
                 let rpm = ((Double(lastMessage[1]) + (Double(lastMessage[2] & 0x0F) * 255)) * 5)
@@ -703,7 +703,7 @@ class LINbus {
                 
             }
         case 0x08:
-            //print("Message ID: 8")
+            //NSLog("Message ID: 8")
             // Ambient Temperature
             if (lastMessage[1] != 0xFF){
                 let ambientTemp:Double = Double(lastMessage[1]) * 0.50 - 40
@@ -1273,7 +1273,7 @@ class LINbus {
             
         default:
             _ = 0
-            //print("Unknown Message ID")
+            //NSLog("Unknown Message ID")
         }
     }
 }

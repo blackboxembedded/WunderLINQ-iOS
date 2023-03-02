@@ -101,7 +101,7 @@ class AlertViewController: UIViewController {
                 }
             }
         default:
-            print("Unknown Alert ID")
+            NSLog("AlertViewController: Unknown Alert ID")
         }
     }
     
@@ -166,7 +166,7 @@ class AlertViewController: UIViewController {
                 }
             }
         default:
-            print("Unknown Alert ID")
+            NSLog("AlertViewController: Unknown Alert ID")
         }
     }
     
@@ -199,17 +199,6 @@ class AlertViewController: UIViewController {
                 self.navigationController?.isNavigationBarHidden = false
             }
         }
-        /*
-        if UserDefaults.standard.bool(forKey: "nightmode_preference") {
-            Theme.dark.apply()
-            self.navigationController?.isNavigationBarHidden = true
-            self.navigationController?.isNavigationBarHidden = false
-        } else {
-            Theme.default.apply()
-            self.navigationController?.isNavigationBarHidden = true
-            self.navigationController?.isNavigationBarHidden = false
-        }
-         */
         
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))
         swipeRight.direction = .right
@@ -234,7 +223,7 @@ class AlertViewController: UIViewController {
             backgroundImage.contentMode =  UIView.ContentMode.scaleAspectFill
             self.view.insertSubview(backgroundImage, at: 0)
         default:
-            print("Unknown Alert ID")
+            NSLog("AlertViewController: Unknown Alert ID")
         }
         
         //Dismiss ViewController after 10secs
@@ -249,17 +238,6 @@ class AlertViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
 

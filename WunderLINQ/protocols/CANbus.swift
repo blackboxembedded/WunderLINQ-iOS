@@ -22,7 +22,7 @@ class CANbus {
             for i in 0 ..< dataArray.count {
                 messageHexString += String(format: "%02X", dataArray[i])
             }
-            let formattedEntry = "DEBUG," + Date().toString() + "," + messageHexString
+            let formattedEntry = "DEBUG: " + Date().toString() + "," + messageHexString
             NSLog(formattedEntry)
         }
         

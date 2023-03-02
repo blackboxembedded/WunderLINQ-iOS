@@ -297,13 +297,13 @@ class WaypointsNavTableViewController: UITableViewController {
             .appendingPathComponent("waypoints.sqlite")
         //opening the database
         if sqlite3_open(databaseURL.path, &db) != SQLITE_OK {
-            print("error opening database")
+            NSLog("WaypointsNavTableViewController: error opening database")
         }
         
         //creating table
         if sqlite3_exec(db, "CREATE TABLE IF NOT EXISTS records (id INTEGER PRIMARY KEY AUTOINCREMENT, date TEXT, latitude TEXT, longitude TEXT, label TEXT)", nil, nil, nil) != SQLITE_OK {
             let errmsg = String(cString: sqlite3_errmsg(db)!)
-            print("error creating table: \(errmsg)")
+            NSLog("WaypointsNavTableViewController: error creating table: \(errmsg)")
         }
         
         readWaypoints()
@@ -395,7 +395,7 @@ class WaypointsNavTableViewController: UITableViewController {
         //preparing the query
         if sqlite3_prepare(db, queryString, -1, &stmt, nil) != SQLITE_OK{
             let errmsg = String(cString: sqlite3_errmsg(db)!)
-            print("error preparing insert: \(errmsg)")
+            NSLog("WaypointsNavTableViewController: error preparing insert: \(errmsg)")
             return
         }
         
@@ -435,12 +435,12 @@ extension WaypointsNavTableViewController: CLLocationManagerDelegate {
         case .notDetermined:
             manager.requestWhenInUseAuthorization()
         case .restricted, .denied:
-            print("Location permission denied")
+            NSLog("WaypointsNavTableViewController: Location permission denied")
             self.showToast(message: NSLocalizedString("negative_location_alert_body", comment: ""))
         case .authorizedAlways, .authorizedWhenInUse:
             locationManager.startUpdatingLocation()
         @unknown default:
-            print("Fatal Error")
+            NSLog("WaypointsNavTableViewController: Fatal Error")
         }
     }
     

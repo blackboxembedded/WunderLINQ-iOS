@@ -78,13 +78,13 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
                 let logAttachmentData = try Data(contentsOf: logURL)
                 mailComposer.addAttachmentData(logAttachmentData, mimeType: "text/log", fileName: "wunderlinq.log")
             } catch let error {
-                print("We have encountered error \(error.localizedDescription)")
+                NSLog("AboutViewController: We have encountered error \(error.localizedDescription)")
             }
             mailComposer.mailComposeDelegate = self
             self.present(mailComposer, animated: true, completion: nil)
             
         } else {
-            print("Email is not configured in settings app or we are not able to send an email")
+            NSLog("AboutViewController: Email is not configured in settings app or we are not able to send an email")
         }
     }
     
@@ -164,19 +164,19 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
         var shouldDelete = true
         switch result {
         case .cancelled:
-            print("User cancelled")
+            NSLog("AboutViewController: User cancelled")
             shouldDelete = false
             break
         case .saved:
-            print("Mail is saved by user")
+            NSLog("AboutViewController: Mail is saved by user")
             shouldDelete = true
             break
         case .sent:
-            print("Mail is sent successfully")
+            NSLog("AboutViewController: Mail is sent successfully")
             shouldDelete = true
             break
         case .failed:
-            print("Sending mail is failed")
+            NSLog("AboutViewController: Sending mail is failed")
             shouldDelete = false
             break
         default:
@@ -190,7 +190,7 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
             do {
                 try FileManager.default.removeItem(at: fileURL)
             } catch _ as NSError {
-                //print("Error: \(error.domain)")
+                //NSLog("AboutViewController: Error: \(error.domain)")
             }
         }
         controller.dismiss(animated: true)

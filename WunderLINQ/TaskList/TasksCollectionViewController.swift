@@ -41,7 +41,7 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
     var captureSession: AVCaptureSession?
     var cameraImage: UIImage?
     
-    let videoCaptureSession = AVCaptureSession()
+    var videoCaptureSession = AVCaptureSession()
     let movieOutput = AVCaptureMovieFileOutput()
     var activeInput: AVCaptureDeviceInput!
     var outputURL: URL!
@@ -65,63 +65,63 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
     
     private func loadRows() {
         let taskRow1 = UserDefaults.standard.integer(forKey: "task_one_preference")
-        if (taskRow1 < emptyTask){
+        if (taskRow1 != emptyTask){
             mapping.append(taskRow1)
         }
         let taskRow2 = UserDefaults.standard.integer(forKey: "task_two_preference")
-        if (taskRow2 < emptyTask){
+        if (taskRow2 != emptyTask){
             mapping.append(taskRow2)
         }
         let taskRow3 = UserDefaults.standard.integer(forKey: "task_three_preference")
-        if (taskRow3 < emptyTask){
+        if (taskRow3 != emptyTask){
             mapping.append(taskRow3)
         }
         let taskRow4 = UserDefaults.standard.integer(forKey: "task_four_preference")
-        if (taskRow4 < emptyTask){
+        if (taskRow4 != emptyTask){
             mapping.append(taskRow4)
         }
         let taskRow5 = UserDefaults.standard.integer(forKey: "task_five_preference")
-        if (taskRow5 < emptyTask){
+        if (taskRow5 != emptyTask){
             mapping.append(taskRow5)
         }
         let taskRow6 = UserDefaults.standard.integer(forKey: "task_six_preference")
-        if (taskRow6 < emptyTask){
+        if (taskRow6 != emptyTask){
             mapping.append(taskRow6)
         }
         let taskRow7 = UserDefaults.standard.integer(forKey: "task_seven_preference")
-        if (taskRow7 < emptyTask){
+        if (taskRow7 != emptyTask){
             mapping.append(taskRow7)
         }
         let taskRow8 = UserDefaults.standard.integer(forKey: "task_eight_preference")
-        if (taskRow8 < emptyTask){
+        if (taskRow8 != emptyTask){
             mapping.append(taskRow8)
         }
         let taskRow9 = UserDefaults.standard.integer(forKey: "task_nine_preference")
-        if (taskRow9 < emptyTask){
+        if (taskRow9 != emptyTask){
             mapping.append(taskRow9)
         }
         let taskRow10 = UserDefaults.standard.integer(forKey: "task_ten_preference")
-        if (taskRow10 < emptyTask){
+        if (taskRow10 != emptyTask){
             mapping.append(taskRow10)
         }
         let taskRow11 = UserDefaults.standard.integer(forKey: "task_eleven_preference")
-        if (taskRow11 < emptyTask){
+        if (taskRow11 != emptyTask){
             mapping.append(taskRow11)
         }
         let taskRow12 = UserDefaults.standard.integer(forKey: "task_twelve_preference")
-        if (taskRow12 < emptyTask){
+        if (taskRow12 != emptyTask){
             mapping.append(taskRow12)
         }
         let taskRow13 = UserDefaults.standard.integer(forKey: "task_thirteen_preference")
-        if (taskRow13 < emptyTask){
+        if (taskRow13 != emptyTask){
             mapping.append(taskRow13)
         }
         let taskRow14 = UserDefaults.standard.integer(forKey: "task_fourteen_preference")
-        if (taskRow14 < emptyTask){
+        if (taskRow14 != emptyTask){
             mapping.append(taskRow14)
         }
         let taskRow15 = UserDefaults.standard.integer(forKey: "task_fifteen_preference")
-        if (taskRow15 < emptyTask){
+        if (taskRow15 != emptyTask){
             mapping.append(taskRow15)
         }
     }
@@ -196,12 +196,23 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
         guard let task14 = Tasks(label: NSLocalizedString("task_title_systemvolume", comment: ""), icon: UIImage(named: "Speaker")?.withRenderingMode(.alwaysTemplate)) else {
             fatalError("Unable to instantiate Settings Task")
         }
-        // System Volume Task
+        // Insta360 Remote Task
         guard let task15 = Tasks(label: NSLocalizedString("task_title_insta360", comment: ""), icon: UIImage(named: "Spherical-Camera")?.withRenderingMode(.alwaysTemplate)) else {
             fatalError("Unable to instantiate Settings Task")
         }
-        
-        self.tasks = [task0, task1, task2, task3, task4, task5, task6, task7, task8, task9, task10, task11, task12, task13, task14, task15]
+        //Empty
+        guard let task16 = Tasks(label: NSLocalizedString("task_title_empty", comment: ""), icon: UIImage(named: "Cog")?.withRenderingMode(.alwaysTemplate)) else {
+            fatalError("Unable to instantiate Settings Task")
+        }
+        // Front Camera Recording Task
+        var frontRecLabel = NSLocalizedString("task_title_front_start_record", comment: "")
+        if isRecording{
+            frontRecLabel = NSLocalizedString("task_title_stop_record", comment: "")
+        }
+        guard let task17 = Tasks(label: frontRecLabel, icon: UIImage(named: "VideoCamera")?.withRenderingMode(.alwaysTemplate)) else {
+            fatalError("Unable to instantiate Video Recording Task")
+        }
+        self.tasks = [task0, task1, task2, task3, task4, task5, task6, task7, task8, task9, task10, task11, task12, task13, task14, task15, task16, task17]
     }
     
     private func execute_task(taskID:Int) {
@@ -276,20 +287,17 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
             setupTimer()
             break
         case 6:
-            //Video Recording
+            //Rear Video Recording
             if movieOutput.isRecording {
-                movieOutput.stopRecording()
+                stopRecording()
                 isRecording = false
             } else {
-                if setupSession() {
-                    startSession()
-                }
-                if (self.videoCaptureSession.isRunning) {
-                    startCapture()
+                videoCaptureSession = AVCaptureSession()
+                if setupSession(position: .back) {
+                    startSession(orientation: currentVideoOrientation())
                     isRecording = true
                 }
             }
-            //loadTasks()
             break
         case 7:
             //Trip Log
@@ -302,7 +310,6 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
                 let today = Date().toString()
                 UserDefaults.standard.set(today, forKey: "loggingStatus")
             }
-            //loadTasks()
             break
         case 8:
             //Save Waypoint
@@ -389,8 +396,21 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
                 }
             }
             break
+        case 17:
+            //Front Video Recording
+            if movieOutput.isRecording {
+                stopRecording()
+                isRecording = false
+            } else {
+                videoCaptureSession = AVCaptureSession()
+                if setupSession(position: .front) {
+                    startSession(orientation: currentVideoOrientation())
+                    isRecording = true
+                }
+            }
+            break
         default:
-            print("Unknown Task")
+            NSLog("TasksCollectionViewController: Unknown Task")
         }
         loadTasks()
         self.collectionView!.reloadData()
@@ -601,13 +621,13 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
             .appendingPathComponent("waypoints.sqlite")
         //opening the database
         if sqlite3_open(databaseURL.path, &db) != SQLITE_OK {
-            print("error opening database")
+            NSLog("TasksCollectionViewController: error opening database")
         }
         
         //creating table
         if sqlite3_exec(db, "CREATE TABLE IF NOT EXISTS records (id INTEGER PRIMARY KEY AUTOINCREMENT, date TEXT, latitude TEXT, longitude TEXT, label TEXT)", nil, nil, nil) != SQLITE_OK {
             let errmsg = String(cString: sqlite3_errmsg(db)!)
-            print("error creating table: \(errmsg)")
+            NSLog("TasksCollectionViewController: error creating table: \(errmsg)")
         }
         
         locationManager = CLLocationManager()
@@ -641,13 +661,24 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
     
     private func setupScreenOrientation() {
         self.collectionView.transform = CGAffineTransform.identity
-        if !UIApplication.shared.statusBarOrientation.isLandscape {
-            print("Adjust for portrait")
+        switch (currentVideoOrientation()){
+        case .portrait:
             if let layout = self.collectionView.collectionViewLayout as? ZoomAndSnapFlowLayout {
                 layout.scrollDirection = .vertical
             }
-        } else {
-            print("Adjust for landscape")
+        case .portraitUpsideDown:
+            if let layout = self.collectionView.collectionViewLayout as? ZoomAndSnapFlowLayout {
+                layout.scrollDirection = .vertical
+            }
+        case .landscapeLeft:
+            if let layout = self.collectionView.collectionViewLayout as? ZoomAndSnapFlowLayout {
+                layout.scrollDirection = .horizontal
+            }
+        case .landscapeRight:
+            if let layout = self.collectionView.collectionViewLayout as? ZoomAndSnapFlowLayout {
+                layout.scrollDirection = .horizontal
+            }
+        default:
             if let layout = self.collectionView.collectionViewLayout as? ZoomAndSnapFlowLayout {
                 layout.scrollDirection = .horizontal
             }
@@ -657,7 +688,7 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
-        print("viewWillTransition")
+        NSLog("TasksCollectionViewController: viewWillTransition")
         self.loadTasks()
         coordinator.animate(alongsideTransition: nil) { _ in
             self.setupScreenOrientation()
@@ -668,7 +699,7 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print("viewWillAppear")
+        NSLog("TasksCollectionViewController: viewWillAppear")
         if isTimerRunning == false {
             runTimer()
         }
@@ -686,6 +717,7 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
         DispatchQueue.main.async(){
             self.navigationController?.setNavigationBarHidden(false, animated: animated)
         }
+        notificationCenter.removeObserver(self, name: NSNotification.Name("StatusUpdate"), object: nil)
     }
     
     override func viewWillLayoutSubviews() {
@@ -703,7 +735,6 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TaskCollectionViewCell", for: indexPath) as! TaskCollectionViewCell
-        
         // Configure the cell
         if (indexPath.row < self.tasks.count ){
             let tasks = self.tasks[mapping[indexPath.row]]
@@ -736,7 +767,7 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
             .appendingPathComponent("waypoints.sqlite")
         //opening the database
         if sqlite3_open(databaseURL.path, &db) != SQLITE_OK {
-            print("error opening database")
+            NSLog("TasksCollectionViewController: error opening database")
         }
         //creating a statement
         var stmt: OpaquePointer?
@@ -747,7 +778,7 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
         //preparing the query
         if sqlite3_prepare(db, queryString, -1, &stmt, nil) != SQLITE_OK{
             let errmsg = String(cString: sqlite3_errmsg(db)!)
-            print("error preparing insert: \(errmsg)")
+            NSLog("TasksCollectionViewController: error preparing insert: \(errmsg)")
             return
         }
         
@@ -756,29 +787,29 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
         
         if sqlite3_bind_text(stmt, 1, date.utf8String, -1, nil) != SQLITE_OK{
             let errmsg = String(cString: sqlite3_errmsg(db)!)
-            print("failure binding name: \(errmsg)")
+            NSLog("TasksCollectionViewController: failure binding name: \(errmsg)")
             return
         }
         if sqlite3_bind_double(stmt, 2, (currentLocation.coordinate.latitude)) != SQLITE_OK{
             let errmsg = String(cString: sqlite3_errmsg(db)!)
-            print("failure binding name: \(errmsg)")
+            NSLog("TasksCollectionViewController: failure binding name: \(errmsg)")
             return
         }
         if sqlite3_bind_double(stmt, 3, (currentLocation.coordinate.longitude)) != SQLITE_OK{
             let errmsg = String(cString: sqlite3_errmsg(db)!)
-            print("failure binding name: \(errmsg)")
+            NSLog("TasksCollectionViewController: failure binding name: \(errmsg)")
             return
         }
         if sqlite3_bind_text(stmt, 4, label, -1, nil) != SQLITE_OK{
             let errmsg = String(cString: sqlite3_errmsg(db)!)
-            print("failure binding name: \(errmsg)")
+            NSLog("TasksCollectionViewController: failure binding name: \(errmsg)")
             return
         }
         
         //executing the query to insert values
         if sqlite3_step(stmt) != SQLITE_DONE {
             let errmsg = String(cString: sqlite3_errmsg(db)!)
-            print("failure inserting wapoint: \(errmsg)")
+            NSLog("TasksCollectionViewController: failure inserting wapoint: \(errmsg)")
             return
         }
         self.showToast(message: NSLocalizedString("toast_waypoint_saved", comment: ""))
@@ -827,8 +858,6 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
         let colorSpace = CGColorSpaceCreateDeviceRGB()
         let newContext = CGContext(data: baseAddress, width: width, height: height, bitsPerComponent: 8, bytesPerRow: bytesPerRow, space: colorSpace, bitmapInfo:
             CGBitmapInfo.byteOrder32Little.rawValue | CGImageAlphaInfo.premultipliedFirst.rawValue)
-        // update the video orientation to the device one
-        //newContext.videoOrientation = AVCaptureVideoOrientation(rawValue: UIDevice.currentDevice().orientation.rawValue)!
         
         let newImage = newContext!.makeImage()
         cameraImage = UIImage(cgImage: newImage!)
@@ -843,11 +872,10 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
     @objc func snapshot() {
         captureSession?.stopRunning()
         if ( cameraImage == nil ){
-            print("No Image")
+            NSLog("TasksCollectionViewController: No Image")
         } else {
             addAsset(image: cameraImage!, location: currentLocation)
         }
-        //captureSession?.stopRunning()
     }
     
     //MARK: - Add image to Library
@@ -861,9 +889,9 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
             }
         }, completionHandler: { success, error in
             if !success {
-                print("Picture not Saved, error")
+                NSLog("TasksCollectionViewController: Picture not Saved, error")
             } else {
-                print("Picture Saved")
+                NSLog("TasksCollectionViewController: Picture Saved")
                 if (UserDefaults.standard.bool(forKey: "photo_preview_enable_preference")){
                     DispatchQueue.main.async(){
                         [unowned self] in
@@ -875,21 +903,24 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
     }
     
     //MARK:- Setup Camera
-    func setupSession() -> Bool {
+    func setupSession(position: AVCaptureDevice.Position) -> Bool {
         videoCaptureSession.sessionPreset = AVCaptureSession.Preset(rawValue: convertFromAVCaptureSessionPreset(AVCaptureSession.Preset.high))
-        
+        NSLog("TasksCollectionViewController: setupSession: \(position)")
         // Setup Camera
-        let camera = AVCaptureDevice.default(for: AVMediaType(rawValue: convertFromAVMediaType(AVMediaType.video)))
-        
-        do {
-            let input = try AVCaptureDeviceInput(device: camera!)
-            if videoCaptureSession.canAddInput(input) {
-                videoCaptureSession.addInput(input)
-                activeInput = input
+        if let camera = AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: position) {
+            do {
+                let input = try AVCaptureDeviceInput(device: camera)
+                if videoCaptureSession.canAddInput(input) {
+                    videoCaptureSession.addInput(input)
+                    activeInput = input
+                }
+            } catch {
+                NSLog("TasksCollectionViewController: Error setting device video input: \(error)")
+                return false
             }
-        } catch {
-            print("Error setting device video input: \(error)")
-            return false
+        }
+        else {
+            NSLog("TasksCollectionViewController: Front camera not available")
         }
         
         // Setup Microphone
@@ -901,7 +932,7 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
                 videoCaptureSession.addInput(micInput)
             }
         } catch {
-            print("Error setting device audio input: \(error)")
+            NSLog("TasksCollectionViewController: Error setting device audio input: \(error)")
             return false
         }
         
@@ -909,23 +940,24 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
         if videoCaptureSession.canAddOutput(movieOutput) {
             videoCaptureSession.addOutput(movieOutput)
         }
+        
         return true
     }
     
-    func setupCaptureMode(_ mode: Int) {
-        // Video Mode
-    }
-    
     //MARK:- Camera Session
-    func startSession() {
+    func startSession(orientation: AVCaptureVideoOrientation) {
+        NSLog("TasksCollectionViewController: startSession()")
         if !videoCaptureSession.isRunning {
-            videoQueue().async {
+            videoQueue().async { [self] in
                 self.videoCaptureSession.startRunning()
+                self.startCapture(orientation: orientation)
+                isRecording = true
             }
         }
     }
     
     func stopSession() {
+        NSLog("TasksCollectionViewController: stopSession()")
         if videoCaptureSession.isRunning {
             videoQueue().async {
                 self.videoCaptureSession.stopRunning()
@@ -934,19 +966,25 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
     }
     
     func videoQueue() -> DispatchQueue {
-        return DispatchQueue.main
+        return DispatchQueue.global(qos: .userInitiated)
     }
     
     func currentVideoOrientation() -> AVCaptureVideoOrientation {
+        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else {
+            return AVCaptureVideoOrientation.landscapeRight
+        }
+
+        let interfaceOrientation = windowScene.interfaceOrientation
         var orientation: AVCaptureVideoOrientation
-        
-        switch UIDevice.current.orientation {
+        switch interfaceOrientation {
         case .portrait:
             orientation = AVCaptureVideoOrientation.portrait
-        case .landscapeRight:
-            orientation = AVCaptureVideoOrientation.landscapeLeft
         case .portraitUpsideDown:
             orientation = AVCaptureVideoOrientation.portraitUpsideDown
+        case .landscapeLeft:
+            orientation = AVCaptureVideoOrientation.landscapeLeft
+        case .landscapeRight:
+            orientation = AVCaptureVideoOrientation.landscapeRight
         default:
             orientation = AVCaptureVideoOrientation.landscapeRight
         }
@@ -954,13 +992,13 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
         return orientation
     }
     
-    func startCapture() {
-        startRecording()
+    func startCapture(orientation: AVCaptureVideoOrientation) {
+        NSLog("TasksCollectionViewController: startCapture()")
+        startRecording(orientation: orientation)
     }
     
     func tempURL() -> URL? {
         let directory = NSTemporaryDirectory() as NSString
-        
         if directory != "" {
             let path = directory.appendingPathComponent(NSUUID().uuidString + ".mp4")
             return URL(fileURLWithPath: path)
@@ -968,11 +1006,12 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
         return nil
     }
     
-    func startRecording() {
+    func startRecording(orientation: AVCaptureVideoOrientation) {
+        NSLog("TasksCollectionViewController: startRecording()")
         if movieOutput.isRecording == false {
             let connection = movieOutput.connection(with: AVMediaType(rawValue: convertFromAVMediaType(AVMediaType.video)))
             if (connection?.isVideoOrientationSupported)! {
-                connection?.videoOrientation = currentVideoOrientation()
+                connection?.videoOrientation = orientation
             }
             
             if (connection?.isVideoStabilizationSupported)! {
@@ -986,14 +1025,13 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
                     device.isSmoothAutoFocusEnabled = false
                     device.unlockForConfiguration()
                 } catch {
-                    print("Error setting configuration: \(error)")
+                    NSLog("TasksCollectionViewController: Error setting configuration: \(error)")
                 }
                 
             }
             
             outputURL = tempURL()
             movieOutput.startRecording(to: outputURL, recordingDelegate: self)
-            
         }
         else {
             stopRecording()
@@ -1002,8 +1040,11 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
     }
     
     func stopRecording() {
+        NSLog("TasksCollectionViewController: stopRecording()")
         if movieOutput.isRecording == true {
-            movieOutput.stopRecording()
+            videoQueue().async {
+                self.movieOutput.stopRecording()
+            }
         }
     }
     
@@ -1013,7 +1054,7 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
     
     func fileOutput(_ captureOutput: AVCaptureFileOutput, didFinishRecordingTo outputFileURL: URL, from connections: [AVCaptureConnection], error: Error?) {
         if (error != nil) {
-            print("Error recording movie: \(error!.localizedDescription)")
+            NSLog("TasksCollectionViewController: Error recording movie: \(error!.localizedDescription)")
         } else {
             let fileURL = outputURL as URL
             PHPhotoLibrary.shared().performChanges({
@@ -1022,7 +1063,9 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
                 if saved {
                     // the alert view
                     let alert = UIAlertController(title: "", message: "Video Saved", preferredStyle: .alert)
-                    self.present(alert, animated: false, completion: nil)
+                    DispatchQueue.main.sync {
+                        self.present(alert, animated: false, completion: nil)
+                    }
                     
                     // change to desired number of seconds (in this case 2 seconds)
                     let when = DispatchTime.now() + 3
@@ -1031,11 +1074,12 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
                         alert.dismiss(animated: false, completion: nil)
                     }
                 } else {
-                    print("In capture didfinish, didn't save")
+                    NSLog("TasksCollectionViewController: In capture didfinish, didn't save")
                 }
             }
             
         }
+        stopSession()
         outputURL = nil
     }
     
@@ -1116,12 +1160,12 @@ extension TasksCollectionViewController: CLLocationManagerDelegate {
         case .notDetermined:
             manager.requestWhenInUseAuthorization()
         case .restricted, .denied:
-            print("Location permission denied")
+            NSLog("TasksCollectionViewController: Location permission denied")
             self.showToast(message: NSLocalizedString("negative_location_alert_body", comment: ""))
         case .authorizedAlways, .authorizedWhenInUse:
             locationManager.startUpdatingLocation()
         @unknown default:
-            print("Fatal Error")
+            NSLog("TasksCollectionViewController: Fatal Error")
         }
     }
     

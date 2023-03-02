@@ -85,7 +85,7 @@ class WaypointViewController: UIViewController, UITextFieldDelegate {
         
         //opening the database
         if sqlite3_open(databaseURL.path, &db) != SQLITE_OK {
-            print("error opening database")
+            NSLog("WaypointViewController: error opening database")
         }
         
         //creating a statement
@@ -97,14 +97,14 @@ class WaypointViewController: UIViewController, UITextFieldDelegate {
         //preparing the query
         if sqlite3_prepare(db, queryString, -1, &stmt, nil) != SQLITE_OK{
             let errmsg = String(cString: sqlite3_errmsg(db)!)
-            print("error preparing insert: \(errmsg)")
+            NSLog("WaypointViewController: error preparing insert: \(errmsg)")
             return
         }
 
         //executing the query to insert values
         if sqlite3_step(stmt) != SQLITE_DONE {
             let errmsg = String(cString: sqlite3_errmsg(db)!)
-            print("failure inserting waypoint: \(errmsg)")
+            NSLog("WaypointViewController: failure inserting waypoint: \(errmsg)")
             return
         }
     }
@@ -164,13 +164,13 @@ class WaypointViewController: UIViewController, UITextFieldDelegate {
             .appendingPathComponent("waypoints.sqlite")
         //opening the database
         if sqlite3_open(databaseURL.path, &db) != SQLITE_OK {
-            print("error opening database")
+            NSLog("WaypointViewController: error opening database")
         }
         
         //creating table
         if sqlite3_exec(db, "CREATE TABLE IF NOT EXISTS records (id INTEGER PRIMARY KEY AUTOINCREMENT, date TEXT, latitude TEXT, longitude TEXT, label TEXT)", nil, nil, nil) != SQLITE_OK {
             let errmsg = String(cString: sqlite3_errmsg(db)!)
-            print("error creating table: \(errmsg)")
+            NSLog("WaypointViewController: error creating table: \(errmsg)")
         }
         readWaypoints()
         readWaypoint()
@@ -189,7 +189,7 @@ class WaypointViewController: UIViewController, UITextFieldDelegate {
             marker.snippet = label
             marker.map = mapView
         } else {
-            print("Invalid Value")
+            NSLog("WaypointViewController: Invalid Value")
         }
         
         dateLabel.text = date
@@ -224,7 +224,7 @@ class WaypointViewController: UIViewController, UITextFieldDelegate {
         //preparing the query
         if sqlite3_prepare(db, queryString, -1, &stmt, nil) != SQLITE_OK{
             let errmsg = String(cString: sqlite3_errmsg(db)!)
-            print("error preparing insert: \(errmsg)")
+            NSLog("WaypointViewController: error preparing insert: \(errmsg)")
             return
         }
         
@@ -256,7 +256,7 @@ class WaypointViewController: UIViewController, UITextFieldDelegate {
         //preparing the query
         if sqlite3_prepare(db, queryString, -1, &stmt, nil) != SQLITE_OK{
             let errmsg = String(cString: sqlite3_errmsg(db)!)
-            print("error preparing insert: \(errmsg)")
+            NSLog("WaypointViewController: error preparing insert: \(errmsg)")
             return
         }
         
@@ -334,14 +334,14 @@ class WaypointViewController: UIViewController, UITextFieldDelegate {
             //preparing the query
             if sqlite3_prepare(self.db, queryString, -1, &stmt, nil) != SQLITE_OK{
                 let errmsg = String(cString: sqlite3_errmsg(self.db)!)
-                print("error preparing insert: \(errmsg)")
+                NSLog("WaypointViewController: error preparing insert: \(errmsg)")
                 return
             }
             
             //executing the query to delete row
             if sqlite3_step(stmt) != SQLITE_DONE {
                 let errmsg = String(cString: sqlite3_errmsg(self.db)!)
-                print("failure inserting wapoint: \(errmsg)")
+                NSLog("WaypointViewController: failure inserting wapoint: \(errmsg)")
                 return
             }
             
@@ -376,12 +376,12 @@ extension WaypointViewController: CLLocationManagerDelegate {
         case .notDetermined:
             manager.requestWhenInUseAuthorization()
         case .restricted, .denied:
-            print("Location permission denied")
+            NSLog("WaypointViewController: Location permission denied")
             self.showToast(message: NSLocalizedString("negative_location_alert_body", comment: ""))
         case .authorizedAlways, .authorizedWhenInUse:
             locationManager.startUpdatingLocation()
         @unknown default:
-            print("Fatal Error")
+            NSLog("WaypointViewController: Fatal Error")
         }
     }
     

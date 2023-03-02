@@ -215,6 +215,7 @@
 "task_title_photo" = "Take Photo";
 "task_title_selfie" = "Take Selfie";
 "task_title_start_record" = "Start Video Recording";
+"task_title_front_start_record" = "Start Selfie Recording";
 "task_title_stop_record" = "Stop Video Recording";
 "task_title_start_trip" = "Start Trip Log";
 "task_title_stop_trip" = "Stop Trip Log";

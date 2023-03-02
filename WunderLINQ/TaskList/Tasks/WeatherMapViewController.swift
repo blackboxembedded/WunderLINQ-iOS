@@ -132,7 +132,7 @@ class WeatherMapViewController: UIViewController {
             
             startRefreshTimer()
         } else {
-            print("Invalid Value")
+            NSLog("WeatherMapViewController: Invalid Value")
         }
         
     }
@@ -152,7 +152,7 @@ class WeatherMapViewController: UIViewController {
     }
     
     @objc func refreshMap(){
-        print("refreshMap()")
+        NSLog("WeatherMapViewController: refreshMap()")
         if let lat = motorcycleData.location?.coordinate.latitude, let lon = motorcycleData.location?.coordinate.longitude{
             mapView.clear()
             let camera: GMSCameraPosition = GMSCameraPosition.camera(withLatitude: lat, longitude: lon, zoom: 10.0)
@@ -169,7 +169,7 @@ class WeatherMapViewController: UIViewController {
             marker.position = CLLocationCoordinate2D(latitude: lat, longitude: lon)
             marker.map = mapView
         } else {
-            print("Invalid Value")
+            NSLog("WeatherMapViewController: Invalid Value")
         }
     }
 }

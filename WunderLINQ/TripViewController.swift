@@ -135,7 +135,7 @@ class TripViewController: UIViewController, UITextFieldDelegate {
             do {
                 try fileManager.removeItem(atPath: filename)
             } catch {
-                print("Could not delete file: \(error)")
+                NSLog("TripViewController: Could not delete file: \(error)")
             }
             self.performSegue(withIdentifier: "tripToTrips", sender: [])
         }))
@@ -451,7 +451,7 @@ class TripViewController: UIViewController, UITextFieldDelegate {
 
     func readDataFromCSV(fileName:String, fileType: String)-> String!{
         if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
-            print("\(fileName).\(fileType)")
+            NSLog("TripViewController: \(fileName).\(fileType)")
             let fileURL = dir.appendingPathComponent("\(fileName).\(fileType)")
             
             //reading
@@ -515,10 +515,10 @@ class TripViewController: UIViewController, UITextFieldDelegate {
                 let newURL = try fileManager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent((labelLabel.text ?? "empty") + ".csv")
                 
                 try fileManager.moveItem(at: oldURL, to: newURL)
-                    print("File renamed successfully")
+                    NSLog("TripViewController: File renamed successfully")
                     "\(self.getDocumentsDirectory())/\(fileName!).csv"
             } catch {
-                    print("Error renaming file: \(error)")
+                    NSLog("TripViewController: Error renaming file: \(error)")
             }
         }
     }
