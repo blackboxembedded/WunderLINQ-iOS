@@ -133,3 +133,4 @@
 "wwMode2" = "RT/K1600";
 "btn_sendlogs_title" = "Enviar registros";
 "sendlogs_body" = "Por favor describa su problema a continuación:\n";
+"close_label" = "Cerrar";
