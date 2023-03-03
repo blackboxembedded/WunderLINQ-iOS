@@ -161,37 +161,21 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
     
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         UserDefaults.standard.set(false, forKey: "debug_logging_preference")
-        var shouldDelete = true
         switch result {
         case .cancelled:
             NSLog("AboutViewController: User cancelled")
-            shouldDelete = false
             break
         case .saved:
             NSLog("AboutViewController: Mail is saved by user")
-            shouldDelete = true
             break
         case .sent:
             NSLog("AboutViewController: Mail is sent successfully")
-            shouldDelete = true
             break
         case .failed:
             NSLog("AboutViewController: Sending mail is failed")
-            shouldDelete = false
             break
         default:
             break
-        }
-        if (shouldDelete){
-            // Get the documents folder url
-            let documentDirectory = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
-            // Destination url for the log file to be saved
-            let fileURL = documentDirectory.appendingPathComponent("dbg")
-            do {
-                try FileManager.default.removeItem(at: fileURL)
-            } catch _ as NSError {
-                //NSLog("AboutViewController: Error: \(error.domain)")
-            }
         }
         controller.dismiss(animated: true)
     }

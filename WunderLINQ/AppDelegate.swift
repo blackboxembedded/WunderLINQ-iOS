@@ -65,77 +65,78 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) ->
     Bool {
-            //Read and populate defaults
-            registerDefaultsFromSettingsBundle()
-            
-            // Keep screen unlocked
-            application.isIdleTimerDisabled = true
-            GMSServices.provideAPIKey(Secrets.google_maps_api_key)
-            
-            // Customize Application Look
-            switch(UserDefaults.standard.integer(forKey: "darkmode_preference")){
-            case 0:
-                //OFF
-                if #available(iOS 13.0, *) {
-                    window?.overrideUserInterfaceStyle = .light
-                } else {
-                    Theme.default.apply()
-                }
-            case 1:
-                //On
-                if #available(iOS 13.0, *) {
-                    window?.overrideUserInterfaceStyle = .dark
-                } else {
-                    Theme.dark.apply()
-                }
-            default:
-                //Default
-                if #available(iOS 13.0, *) {
-                } else {
-                    Theme.default.apply()
-                }
-             }
+        //Read and populate defaults
+        registerDefaultsFromSettingsBundle()
         
-            if #available(iOS 13, *) {
-                let appearance = UINavigationBarAppearance()
-                appearance.configureWithOpaqueBackground()
-                UINavigationBar.appearance().standardAppearance = appearance
-                UINavigationBar.appearance().scrollEdgeAppearance = appearance
-            }
-            
-            //Hack to enable Virtual Keyboard
-            let setHardwareLayout = NSSelectorFromString("setHardwareLayout:")
-            UITextInputMode.activeInputModes
-            // Filter `UIKeyboardInputMode`s.
-            .filter({ $0.responds(to: setHardwareLayout) })
-            .forEach { $0.perform(setHardwareLayout, with: nil) }
+        // Keep screen unlocked
+        application.isIdleTimerDisabled = true
+        GMSServices.provideAPIKey(Secrets.google_maps_api_key)
         
-            //Lock app orientation
-            switch(UserDefaults.standard.integer(forKey: "orientation_preference")){
-            case 0:
-                AppUtility.lockOrientation(.all)
-            case 1:
-                AppUtility.lockOrientation(.landscape)
-            case 2:
-                AppUtility.lockOrientation(.portrait)
-            default:
-                AppUtility.lockOrientation(.all)
+        // Customize Application Look
+        switch(UserDefaults.standard.integer(forKey: "darkmode_preference")){
+        case 0:
+            //OFF
+            if #available(iOS 13.0, *) {
+                window?.overrideUserInterfaceStyle = .light
+            } else {
+                Theme.default.apply()
             }
-            
-            UserDefaults.standard.set(UIScreen.main.brightness, forKey: "systemBrightness")
-            
-            // Create and write to log file
+        case 1:
+            //On
+            if #available(iOS 13.0, *) {
+                window?.overrideUserInterfaceStyle = .dark
+            } else {
+                Theme.dark.apply()
+            }
+        default:
+            //Default
+            if #available(iOS 13.0, *) {
+            } else {
+                Theme.default.apply()
+            }
+         }
+    
+        if #available(iOS 13, *) {
+            let appearance = UINavigationBarAppearance()
+            appearance.configureWithOpaqueBackground()
+            UINavigationBar.appearance().standardAppearance = appearance
+            UINavigationBar.appearance().scrollEdgeAppearance = appearance
+        }
+        
+        //Hack to enable Virtual Keyboard
+        let setHardwareLayout = NSSelectorFromString("setHardwareLayout:")
+        UITextInputMode.activeInputModes
+        // Filter `UIKeyboardInputMode`s.
+        .filter({ $0.responds(to: setHardwareLayout) })
+        .forEach { $0.perform(setHardwareLayout, with: nil) }
+    
+        //Lock app orientation
+        switch(UserDefaults.standard.integer(forKey: "orientation_preference")){
+        case 0:
+            AppUtility.lockOrientation(.all)
+        case 1:
+            AppUtility.lockOrientation(.landscape)
+        case 2:
+            AppUtility.lockOrientation(.portrait)
+        default:
+            AppUtility.lockOrientation(.all)
+        }
+        
+        UserDefaults.standard.set(UIScreen.main.brightness, forKey: "systemBrightness")
+        
+        // Create and write to log file
+        if UserDefaults.standard.bool(forKey: "debug_logging_preference") {
             let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
             let documentsDirectory = paths[0]
             let fileName = "wunderlinq.log"
             let logFilePath = (documentsDirectory as NSString).appendingPathComponent(fileName)
-        
+            
             let fileManager = FileManager.default
-
+            
             do {
                 let attributes = try fileManager.attributesOfItem(atPath: logFilePath)
                 let fileSize = attributes[FileAttributeKey.size] as! UInt64
-
+                
                 if fileSize > 20 * 1024 * 1024 {
                     try fileManager.removeItem(atPath: logFilePath)
                     NSLog("AppDelegate: File deleted successfully")
@@ -146,16 +147,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                 NSLog("AppDelegate: Error: \(error)")
             }
             freopen(logFilePath.cString(using: String.Encoding.ascii)!, "a+", stderr)
-            
-            if !UserDefaults.standard.bool(forKey: "firstRun") {
+        }
+        
+        if !UserDefaults.standard.bool(forKey: "firstRun") {
 
-                 let storyboard = UIStoryboard.main
-                 let viewController = storyboard.instantiateViewController(withIdentifier: "firstRunVC")
-                 self.window?.rootViewController = viewController
-                 self.window?.makeKeyAndVisible()
-            }
+             let storyboard = UIStoryboard.main
+             let viewController = storyboard.instantiateViewController(withIdentifier: "firstRunVC")
+             self.window?.rootViewController = viewController
+             self.window?.makeKeyAndVisible()
+        }
 
-            return true
+        return true
     }
     
     // set orientations you want to be allowed in this property by default
