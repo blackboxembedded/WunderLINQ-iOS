@@ -320,6 +320,7 @@ class WLQ_C: WLQ {
         
         self.wunderLINQConfig = bytes
         self.firmwareVersion = "\(bytes[self.firmwareVersionMajor_INDEX]).\(bytes[self.firmwareVersionMinor_INDEX])"
+        UserDefaults.standard.set("\(bytes[self.firmwareVersionMajor_INDEX]).\(bytes[self.firmwareVersionMinor_INDEX])", forKey: "firmwareVersion")
 
         self.flashConfig = Array(bytes[6..<(6+configFlashSize)])
         self.tempConfig = self.flashConfig

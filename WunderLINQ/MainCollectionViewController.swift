@@ -1813,7 +1813,6 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         NSLog("MainCollectionViewController: Command Response Received: \(messageHexString)")
          */
         
-        
         switch (dataArray[0]){
         case 0x57:
             switch (dataArray[1]){
@@ -1831,6 +1830,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                 case 0x56:
                     NSLog("MainCollectionViewController: Received WRV command response")
                     if (wlqData != nil){
+                        UserDefaults.standard.set("\(dataArray[3]).\(dataArray[4])", forKey: "firmwareVersion")
                         wlqData.setfirmwareVersion(firmwareVersion: "\(dataArray[3]).\(dataArray[4])")
                     }
                     break

@@ -263,6 +263,7 @@ class WLQ_N: WLQ {
         
         self.wunderLINQConfig = bytes
         self.firmwareVersion = "\(bytes[self.firmwareVersionMajor_INDEX]).\(bytes[self.firmwareVersionMinor_INDEX])"
+        UserDefaults.standard.set("\(bytes[self.firmwareVersionMajor_INDEX]).\(bytes[self.firmwareVersionMinor_INDEX])", forKey: "firmwareVersion")
 
         if (self.firmwareVersion!.toDouble()! >= 2.0) { // FW >=2.0
             self.flashConfig = Array(bytes[26..<(26+configFlashSize)])

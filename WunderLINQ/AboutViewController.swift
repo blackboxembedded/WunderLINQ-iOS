@@ -62,10 +62,7 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
                 return formatter
             }
             let today = dateFormatter.string(from: Date())
-            var firmwareVersion = "Unknown"
-            if (WLQ.initialized){
-                firmwareVersion = wlqData.getfirmwareVersion()
-            }
+            let firmwareVersion = String(UserDefaults.standard.string(forKey: "firmwareVersion") ?? "Unknown")
             let mailComposer = MFMailComposeViewController()
             mailComposer.setSubject("WunderLINQ iOS Support: \(today)")
             mailComposer.setMessageBody("App Version: \(getAppInfo())\nFirmware Version: \(firmwareVersion)\niOS Version: \(getOSInfo())\nDevice: \(UIDevice.current.modelName)\n\(NSLocalizedString("sendlogs_body", comment: ""))", isHTML: false)
