@@ -126,6 +126,7 @@ class WeatherMapViewController: UIViewController {
         startTime = CACurrentMediaTime()
         Timer.scheduledTimer(withTimeInterval: animationDuration, repeats: false) { [weak self] timer in
             self?.stopAnimating()
+            self!.startAnimating()
         }
     }
 
@@ -146,7 +147,6 @@ class WeatherMapViewController: UIViewController {
         displayLink?.invalidate()
         displayLink = nil
         startTime = nil
-        startAnimating()
     }
     
     private func calculateDateForProgress(_ progress: Double) -> Date {
