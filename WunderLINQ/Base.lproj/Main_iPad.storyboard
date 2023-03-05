@@ -215,19 +215,9 @@
             <point key="canvasLocation" x="7141" y="677"/>
         </scene>
         <!--Waypoint-->
-        <scene sceneID="yzE-gA-8cs">
-            <objects>
-                <viewControllerPlaceholder referencedIdentifier="Waypoint" id="bQq-Is-I0o" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="QIs-EC-BCE"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Iyt-6V-aFM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="8944" y="-2077"/>
-        </scene>
-        <!--Waypoint-->
         <scene sceneID="olz-rS-p04">
             <objects>
-                <viewController storyboardIdentifier="Waypoint" title="Waypoint" id="Plb-k4-fYa" customClass="WaypointViewController" customModule="WunderLINQ" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Waypoint" id="Plb-k4-fYa" customClass="WaypointViewController" customModule="WunderLINQ" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dZ9-R2-QyW">
                         <rect key="frame" x="0.0" y="0.0" width="1133" height="670"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -370,7 +360,6 @@
                         <outlet property="longLabel" destination="tEo-Bc-Q4M" id="bJS-jj-ASv"/>
                         <outlet property="mapView" destination="AF1-SP-JZP" id="Gxh-QO-CQE"/>
                         <segue destination="zo6-HF-7UD" kind="custom" identifier="waypointToWaypoints" customClass="SegueFromLeft" customModule="WunderLINQ" customModuleProvider="target" id="gIM-fx-mWk"/>
-                        <segue destination="bQq-Is-I0o" kind="show" identifier="waypointToWaypoint" id="A7X-Kc-YlS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SXT-T2-9wl" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1139,20 +1128,20 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="hwActionCell" id="ORR-ga-rGW" customClass="HWSettingsTableViewCell" customModule="WunderLINQ" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="50" width="704" height="43.5"/>
+                                        <rect key="frame" x="0.0" y="50" width="704" height="43"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ORR-ga-rGW" id="u8h-mc-bnW">
-                                            <rect key="frame" x="0.0" y="0.0" width="704" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="704" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="32s-bB-EZK">
-                                                    <rect key="frame" x="16" y="11" width="336" height="21.5"/>
+                                                    <rect key="frame" x="16" y="11" width="336" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rs5-hB-OEc">
-                                                    <rect key="frame" x="352" y="11" width="336" height="21.5"/>
+                                                    <rect key="frame" x="352" y="11" width="336" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -1555,7 +1544,7 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jAM-2k-3CY">
                                 <rect key="frame" x="0.0" y="295" width="704" height="409"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <string key="text">Support and Patience
+                                <mutableString key="text">Support and Patience
 
 Amy and Yaeko
 
@@ -1671,7 +1660,7 @@ Darryl Payne
 
 Icons from fontawesome.com
 
-</string>
+</mutableString>
                                 <color key="textColor" name="imageTint"/>
                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="10"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -1937,19 +1926,9 @@ Icons from fontawesome.com
             <point key="canvasLocation" x="7140" y="3668"/>
         </scene>
         <!--Trip-->
-        <scene sceneID="fG5-18-k5P">
-            <objects>
-                <viewControllerPlaceholder referencedIdentifier="Trip" id="n94-Bi-5yZ" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="JqT-V7-ol4"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Kn7-3e-HVA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="8958" y="-1311"/>
-        </scene>
-        <!--Trip-->
         <scene sceneID="Dq9-Ds-zIF">
             <objects>
-                <viewController storyboardIdentifier="Trip" title="Trip" id="mYA-Xe-W7Q" customClass="TripViewController" customModule="WunderLINQ" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Trip" id="mYA-Xe-W7Q" customClass="TripViewController" customModule="WunderLINQ" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6Ds-aL-SNb">
                         <rect key="frame" x="0.0" y="0.0" width="1133" height="670"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2200,7 +2179,6 @@ Icons from fontawesome.com
                         <outlet property="mapView" destination="eoN-Uk-I42" id="CUz-15-VHs"/>
                         <outlet property="speedLabel" destination="bLH-7y-ppF" id="7fa-O4-yIW"/>
                         <segue destination="1rx-Mx-oc0" kind="custom" identifier="tripToTrips" customClass="SegueFromLeft" customModule="WunderLINQ" customModuleProvider="target" id="qQx-7G-0NR"/>
-                        <segue destination="n94-Bi-5yZ" kind="show" identifier="tripToTrip" id="P5n-6V-q9v"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ASv-QO-u7O" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2404,7 +2382,7 @@ Icons from fontawesome.com
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="gIM-fx-mWk"/>
+        <segue reference="U8S-hb-Idp"/>
         <segue reference="end-im-meh"/>
         <segue reference="qQx-7G-0NR"/>
         <segue reference="1ij-RL-89b"/>

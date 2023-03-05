@@ -61,27 +61,20 @@ class WaypointViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var mapView: GMSMapView!
     
     @objc func leftScreen() {
-        performSegue(withIdentifier: "waypointToWaypoints", sender: self)
+        _ = navigationController?.popViewController(animated: true)
     }
     
     @objc func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
         if gesture.direction == UISwipeGestureRecognizer.Direction.right {
             if (indexOfWaypoint != 0){
                 record = waypoints[indexOfWaypoint! - 1].id
-                performSegue(withIdentifier: "waypointToWaypoint", sender: self)
+                self.viewDidLoad()
             }
         } else if gesture.direction == UISwipeGestureRecognizer.Direction.left {
             if (indexOfWaypoint != (waypoints.count - 1)){
                 record = waypoints[indexOfWaypoint! + 1].id
-                performSegue(withIdentifier: "waypointToWaypoint", sender: self)
+                self.viewDidLoad()
             }
-        }
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if (segue.identifier == "waypointToWaypoint") {
-            let vc = segue.destination as! WaypointViewController
-            vc.record = record
         }
     }
     
