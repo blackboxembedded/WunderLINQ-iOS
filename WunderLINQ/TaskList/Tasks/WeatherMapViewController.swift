@@ -28,19 +28,13 @@ class WeatherMapViewController: UIViewController {
     var currentZoom = 10
     
     let marker = GMSMarker()
-    
-    var refreshTimer = Timer()
 
     @IBOutlet weak var mapView: GMSMapView!
     
-    // Implement GMSTileURLConstructor
-    // Returns a Tile based on the x,y, and zoom coordinates
-    let urls: GMSTileURLConstructor = {(x, y, zoom) in
-        var unixtime: CLong = CLong(Date().timeIntervalSince1970)
-        var timestamp = unixtime - ( unixtime % (10*60))
-        let url = "https://tilecache.rainviewer.com/v2/radar/\(timestamp)/256/\(zoom)/\(x)/\(y)/4/1_1.png"
-        return URL(string: url)
-    }
+    var displayLink: CADisplayLink?
+    var startTime: CFTimeInterval?
+    let animationDuration = 30.0 // 30 seconds
+    var lastTimestamp: Int?
     
     override var keyCommands: [UIKeyCommand]? {
         
@@ -58,7 +52,7 @@ class WeatherMapViewController: UIViewController {
     
     @objc func centerMap() {
         if let lat = motorcycleData.location?.coordinate.latitude, let lon = motorcycleData.location?.coordinate.longitude{
-            let camera: GMSCameraPosition = GMSCameraPosition.camera(withLatitude: lat, longitude: lon, zoom: 10.0)
+            let camera: GMSCameraPosition = GMSCameraPosition.camera(withLatitude: lat, longitude: lon, zoom: Float(currentZoom))
             mapView.camera = camera
             mapView?.animate(to: camera)
         }
@@ -96,9 +90,6 @@ class WeatherMapViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Do any additional setup after loading the view.
-        
         let backBtn = UIButton()
         backBtn.setImage(UIImage(named: "Left")?.withRenderingMode(.alwaysTemplate), for: .normal)
         if #available(iOS 13.0, *) {
@@ -115,30 +106,12 @@ class WeatherMapViewController: UIViewController {
         
         mapView.clear()
         
-        if let lat = motorcycleData.location?.coordinate.latitude, let lon = motorcycleData.location?.coordinate.longitude{
-            let camera: GMSCameraPosition = GMSCameraPosition.camera(withLatitude: lat, longitude: lon, zoom: 10.0)
-            mapView.camera = camera
-            mapView.mapType = .normal
-            // Create the GMSTileLayer
-            let layer = GMSURLTileLayer(urlConstructor: urls)
-            
-            // Display on the map at a specific zIndex
-            layer.zIndex = 100
-            //layer.opacity = 0.5
-            layer.map = mapView
-            // Creates a marker in the center of the map.
-            marker.position = CLLocationCoordinate2D(latitude: lat, longitude: lon)
-            marker.map = mapView
-            
-            startRefreshTimer()
-        } else {
-            NSLog("WeatherMapViewController: Invalid Value")
-        }
-        
+        startAnimating()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        stopAnimating()
     }
     
     override func didReceiveMemoryWarning() {
@@ -146,30 +119,83 @@ class WeatherMapViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func startRefreshTimer(){
-        // Scheduling timer to Call the function "updateCounting" with the interval of 1 seconds
-        refreshTimer = Timer.scheduledTimer(timeInterval: 60, target: self, selector: #selector(self.refreshMap), userInfo: nil, repeats: true)
+    func startAnimating() {
+        NSLog("WeatherMapViewController: startAnimating()")
+        displayLink = CADisplayLink(target: self, selector: #selector(updateAnimation))
+        displayLink?.add(to: .current, forMode: .default)
+        startTime = CACurrentMediaTime()
+        Timer.scheduledTimer(withTimeInterval: animationDuration, repeats: false) { [weak self] timer in
+            self?.stopAnimating()
+        }
+    }
+
+    @objc func updateAnimation() {
+        guard let startTime = startTime else { return }
+        let elapsed = CACurrentMediaTime() - startTime
+        let progress = elapsed / animationDuration
+        var unixtime: CLong = CLong(calculateDateForProgress(progress).timeIntervalSince1970)
+        var timestamp = unixtime - ( unixtime % (10*60))
+        if (lastTimestamp != timestamp){
+            lastTimestamp = timestamp
+            configureMap(timestamp: timestamp)
+        }
+    }
+
+    func stopAnimating() {
+        NSLog("WeatherMapViewController: stopAnimating()")
+        displayLink?.invalidate()
+        displayLink = nil
+        startTime = nil
+        startAnimating()
     }
     
-    @objc func refreshMap(){
-        NSLog("WeatherMapViewController: refreshMap()")
+    private func calculateDateForProgress(_ progress: Double) -> Date {
+        var cal = Calendar.current
+        cal.timeZone = TimeZone.current
+        let now = Date()
+
+        // Calculate the timestamp for two hour ago
+        let twoHourAgo = cal.date(byAdding: .hour, value: -2, to: now)!
+
+        // Calculate the timestamp for the current frame
+        let timeRange: TimeInterval = 60 * 60 * 2 // 2 hours in seconds
+        let frameTime = timeRange * Double(progress)
+        let frameDate = Date(timeInterval: frameTime, since: twoHourAgo)
+
+        // Round down to the nearest 15-minute interval
+        let minute = cal.component(.minute, from: frameDate)
+        let roundedMinute = minute / 15 * 15
+        var components = cal.dateComponents([.year, .month, .day, .hour, .minute, .second], from: frameDate)
+        components.nanosecond = 0
+        let roundedDate = cal.date(from: components)!
+
+        // Set the minute component to the rounded value
+        components.minute = roundedMinute
+
+        return cal.date(from: components)!
+    }
+
+    private func configureMap(timestamp: Int) {
         if let lat = motorcycleData.location?.coordinate.latitude, let lon = motorcycleData.location?.coordinate.longitude{
+            let url: GMSTileURLConstructor = {(x, y, zoom) in
+                let urltemplate = "https://tilecache.rainviewer.com/v2/radar/\(timestamp)/256/\(zoom)/\(x)/\(y)/4/1_1.png"
+                return URL(string: urltemplate)
+            }
             mapView.clear()
-            let camera: GMSCameraPosition = GMSCameraPosition.camera(withLatitude: lat, longitude: lon, zoom: 10.0)
+            let camera: GMSCameraPosition = GMSCameraPosition.camera(withLatitude: lat, longitude: lon, zoom: Float(currentZoom))
             mapView.camera = camera
             mapView.mapType = .normal
             // Create the GMSTileLayer
-            let layer = GMSURLTileLayer(urlConstructor: urls)
-            
+            let layer = GMSURLTileLayer(urlConstructor: url)
             // Display on the map at a specific zIndex
             layer.zIndex = 100
-            //layer.opacity = 0.5
             layer.map = mapView
             // Creates a marker in the center of the map.
             marker.position = CLLocationCoordinate2D(latitude: lat, longitude: lon)
             marker.map = mapView
         } else {
-            NSLog("WeatherMapViewController: Invalid Value")
+            NSLog("WeatherMapViewController: Invalid Location")
         }
     }
+    
 }
