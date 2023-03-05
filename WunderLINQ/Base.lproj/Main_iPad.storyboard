@@ -1128,20 +1128,20 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="hwActionCell" id="ORR-ga-rGW" customClass="HWSettingsTableViewCell" customModule="WunderLINQ" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="50" width="704" height="43"/>
+                                        <rect key="frame" x="0.0" y="50" width="704" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ORR-ga-rGW" id="u8h-mc-bnW">
-                                            <rect key="frame" x="0.0" y="0.0" width="704" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="704" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="32s-bB-EZK">
-                                                    <rect key="frame" x="16" y="11" width="336" height="21"/>
+                                                    <rect key="frame" x="16" y="11" width="336" height="21.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rs5-hB-OEc">
-                                                    <rect key="frame" x="352" y="11" width="336" height="21"/>
+                                                    <rect key="frame" x="352" y="11" width="336" height="21.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -1544,7 +1544,7 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jAM-2k-3CY">
                                 <rect key="frame" x="0.0" y="295" width="704" height="409"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <mutableString key="text">Support and Patience
+                                <string key="text">Support and Patience
 
 Amy and Yaeko
 
@@ -1660,7 +1660,7 @@ Darryl Payne
 
 Icons from fontawesome.com
 
-</mutableString>
+</string>
                                 <color key="textColor" name="imageTint"/>
                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="10"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -1934,14 +1934,14 @@ Icons from fontawesome.com
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eoN-Uk-I42" customClass="GMSMapView">
-                                <rect key="frame" x="0.0" y="0.0" width="1133" height="434"/>
+                                <rect key="frame" x="0.0" y="0.0" width="1133" height="382"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="ignoresInvertColors" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rXB-ew-aZu" customClass="LocalisableLabel" customModule="WunderLINQ" customModuleProvider="target">
-                                <rect key="frame" x="16" y="442" width="546.5" height="18"/>
+                                <rect key="frame" x="16" y="416" width="546.5" height="18"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="18" id="4l3-JV-5tT"/>
                                 </constraints>
@@ -1953,7 +1953,7 @@ Icons from fontawesome.com
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Distance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w4h-nK-exC" customClass="LocalisableLabel" customModule="WunderLINQ" customModuleProvider="target">
-                                <rect key="frame" x="16" y="468" width="546.5" height="18"/>
+                                <rect key="frame" x="16" y="442" width="546.5" height="18"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="18" id="mbH-tx-0dW"/>
                                 </constraints>
@@ -1965,7 +1965,7 @@ Icons from fontawesome.com
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Duration" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x1d-vH-HuA" customClass="LocalisableLabel" customModule="WunderLINQ" customModuleProvider="target">
-                                <rect key="frame" x="16" y="494" width="546.5" height="18"/>
+                                <rect key="frame" x="16" y="468" width="546.5" height="18"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="18" id="gkD-bK-qLA"/>
                                 </constraints>
@@ -1977,7 +1977,7 @@ Icons from fontawesome.com
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Speed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="btU-DP-vjf" customClass="LocalisableLabel" customModule="WunderLINQ" customModuleProvider="target">
-                                <rect key="frame" x="16" y="520" width="546.5" height="18"/>
+                                <rect key="frame" x="16" y="494" width="546.5" height="18"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="18" id="IVx-o1-yp8"/>
                                 </constraints>
@@ -2025,7 +2025,7 @@ Icons from fontawesome.com
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QyA-Qw-lKe">
-                                <rect key="frame" x="570.5" y="442" width="546.5" height="18"/>
+                                <rect key="frame" x="570.5" y="416" width="546.5" height="18"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="18" id="Fu0-XN-Puy"/>
                                 </constraints>
@@ -2034,7 +2034,7 @@ Icons from fontawesome.com
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1tD-2z-WFW">
-                                <rect key="frame" x="570.5" y="468" width="546.5" height="18"/>
+                                <rect key="frame" x="570.5" y="442" width="546.5" height="18"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="18" id="02c-Gw-Ibb"/>
                                 </constraints>
@@ -2043,7 +2043,7 @@ Icons from fontawesome.com
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xwo-hG-jpT">
-                                <rect key="frame" x="570.5" y="494" width="546.5" height="18"/>
+                                <rect key="frame" x="570.5" y="468" width="546.5" height="18"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="18" id="2bw-O5-qM0"/>
                                 </constraints>
@@ -2052,7 +2052,7 @@ Icons from fontawesome.com
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bLH-7y-ppF">
-                                <rect key="frame" x="570.5" y="520" width="546.5" height="18"/>
+                                <rect key="frame" x="570.5" y="494" width="546.5" height="18"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="18" id="mqX-MP-ieR"/>
                                 </constraints>
@@ -2108,21 +2108,67 @@ Icons from fontawesome.com
                                     <userDefinedRuntimeAttribute type="string" keyPath="localisedKey" value="trip_view_tv_shifts"/>
                                 </userDefinedRuntimeAttributes>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vaf-CM-mxj" customClass="LocalisableLabel" customModule="WunderLINQ" customModuleProvider="target">
+                                <rect key="frame" x="16" y="390" width="546.5" height="18"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="18" id="dO5-y2-fch"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="12"/>
+                                <color key="textColor" name="imageTint"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="localisedKey" value="waypoint_view_tv_label_label"/>
+                                </userDefinedRuntimeAttributes>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vaC-d2-P7u">
+                                <rect key="frame" x="570.5" y="390" width="546.5" height="18"/>
+                                <color key="textColor" name="imageTint"/>
+                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="13"/>
+                                <textInputTraits key="textInputTraits" spellCheckingType="yes" returnKeyType="done"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lean" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MpJ-X7-XPP" customClass="LocalisableLabel" customModule="WunderLINQ" customModuleProvider="target">
+                                <rect key="frame" x="16" y="520" width="546.5" height="18"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="18" id="PMg-ne-W9A"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="12"/>
+                                <color key="textColor" name="imageTint"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="localisedKey" value="trip_view_tv_lean"/>
+                                </userDefinedRuntimeAttributes>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LFV-f2-lhW">
+                                <rect key="frame" x="570.5" y="520" width="546.5" height="18"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="18" id="9ih-jq-R41"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="12"/>
+                                <color key="textColor" name="imageTint"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Ebu-49-RUF"/>
                         <color key="backgroundColor" name="backgrounds"/>
                         <constraints>
+                            <constraint firstItem="Ebu-49-RUF" firstAttribute="trailing" secondItem="vaC-d2-P7u" secondAttribute="trailing" constant="16" id="0et-O2-hev"/>
                             <constraint firstItem="xwo-hG-jpT" firstAttribute="leading" secondItem="x1d-vH-HuA" secondAttribute="trailing" constant="8" id="0q2-rF-iYp"/>
+                            <constraint firstItem="btU-DP-vjf" firstAttribute="top" secondItem="x1d-vH-HuA" secondAttribute="bottom" constant="8" id="15Y-NL-gIj"/>
+                            <constraint firstItem="1tD-2z-WFW" firstAttribute="top" secondItem="QyA-Qw-lKe" secondAttribute="bottom" constant="8" id="1jn-Sz-yED"/>
                             <constraint firstItem="Ebu-49-RUF" firstAttribute="trailing" secondItem="eoN-Uk-I42" secondAttribute="trailing" id="21V-2z-8RY"/>
                             <constraint firstItem="w4h-nK-exC" firstAttribute="top" secondItem="rXB-ew-aZu" secondAttribute="bottom" constant="8" id="2A1-hG-SfT"/>
                             <constraint firstItem="x1d-vH-HuA" firstAttribute="top" secondItem="w4h-nK-exC" secondAttribute="bottom" constant="8" id="3Na-c1-fXj"/>
                             <constraint firstItem="Ebu-49-RUF" firstAttribute="trailing" secondItem="rP8-SI-D3M" secondAttribute="trailing" constant="16" id="4GL-5E-K5j"/>
-                            <constraint firstItem="rXB-ew-aZu" firstAttribute="top" secondItem="eoN-Uk-I42" secondAttribute="bottom" constant="8" id="4SK-7N-6o1"/>
+                            <constraint firstItem="LFV-f2-lhW" firstAttribute="leading" secondItem="MpJ-X7-XPP" secondAttribute="trailing" constant="8" id="4Gf-4w-5QD"/>
                             <constraint firstItem="xX6-X5-NcR" firstAttribute="leading" secondItem="Ebu-49-RUF" secondAttribute="leading" constant="16" id="609-PA-HI5"/>
                             <constraint firstItem="Ebu-49-RUF" firstAttribute="trailing" secondItem="4cL-38-zpa" secondAttribute="trailing" constant="16" id="6l8-wH-TSc"/>
                             <constraint firstItem="QyA-Qw-lKe" firstAttribute="width" secondItem="rXB-ew-aZu" secondAttribute="width" id="6mF-Od-wuz"/>
                             <constraint firstItem="Ebu-49-RUF" firstAttribute="bottom" secondItem="S3O-0j-Cx7" secondAttribute="bottom" constant="8" id="ARR-Rn-u2L"/>
+                            <constraint firstItem="4cL-38-zpa" firstAttribute="top" secondItem="LFV-f2-lhW" secondAttribute="bottom" constant="8" id="BSj-nO-3Sd"/>
+                            <constraint firstItem="vaC-d2-P7u" firstAttribute="width" secondItem="Vaf-CM-mxj" secondAttribute="width" id="EBw-pA-hNC"/>
                             <constraint firstItem="4cL-38-zpa" firstAttribute="leading" secondItem="DWL-yK-icr" secondAttribute="trailing" constant="8" id="Ehs-lE-A5i"/>
+                            <constraint firstItem="QyA-Qw-lKe" firstAttribute="top" secondItem="vaC-d2-P7u" secondAttribute="bottom" constant="8" id="F3q-tS-8r5"/>
+                            <constraint firstItem="vaC-d2-P7u" firstAttribute="leading" secondItem="Vaf-CM-mxj" secondAttribute="trailing" constant="8" id="FiT-Cw-e36"/>
                             <constraint firstItem="Ebu-49-RUF" firstAttribute="trailing" secondItem="S3O-0j-Cx7" secondAttribute="trailing" constant="16" id="FtE-6v-WMZ"/>
                             <constraint firstItem="btU-DP-vjf" firstAttribute="leading" secondItem="Ebu-49-RUF" secondAttribute="leading" constant="16" id="Fuc-3K-uk3"/>
                             <constraint firstItem="s0y-qf-aoG" firstAttribute="top" secondItem="xX6-X5-NcR" secondAttribute="bottom" constant="8" id="HxF-5C-peD"/>
@@ -2130,40 +2176,48 @@ Icons from fontawesome.com
                             <constraint firstItem="eoN-Uk-I42" firstAttribute="top" secondItem="Ebu-49-RUF" secondAttribute="top" id="IdX-pi-SP9"/>
                             <constraint firstItem="rP8-SI-D3M" firstAttribute="width" secondItem="s0y-qf-aoG" secondAttribute="width" id="Ivt-Nd-rLH"/>
                             <constraint firstItem="1tD-2z-WFW" firstAttribute="leading" secondItem="w4h-nK-exC" secondAttribute="trailing" constant="8" id="LTr-2W-cxo"/>
+                            <constraint firstItem="rXB-ew-aZu" firstAttribute="top" secondItem="Vaf-CM-mxj" secondAttribute="bottom" constant="8" id="Lft-bs-hBD"/>
+                            <constraint firstItem="Ebu-49-RUF" firstAttribute="trailing" secondItem="LFV-f2-lhW" secondAttribute="trailing" constant="16" id="LvP-el-LR4"/>
                             <constraint firstItem="OeP-Rl-JEv" firstAttribute="top" secondItem="s0y-qf-aoG" secondAttribute="bottom" constant="8" id="Mga-AI-MkB"/>
                             <constraint firstItem="xX6-X5-NcR" firstAttribute="top" secondItem="DWL-yK-icr" secondAttribute="bottom" constant="8" id="Nc6-IG-kQJ"/>
                             <constraint firstItem="S0R-bS-23A" firstAttribute="top" secondItem="4cL-38-zpa" secondAttribute="bottom" constant="8" id="PAD-2O-It4"/>
                             <constraint firstItem="x1d-vH-HuA" firstAttribute="leading" secondItem="Ebu-49-RUF" secondAttribute="leading" constant="16" id="PTe-rv-dFE"/>
+                            <constraint firstItem="MpJ-X7-XPP" firstAttribute="leading" secondItem="Ebu-49-RUF" secondAttribute="leading" constant="16" id="PkI-Po-vVn"/>
                             <constraint firstItem="w4h-nK-exC" firstAttribute="leading" secondItem="Ebu-49-RUF" secondAttribute="leading" constant="16" id="QcA-ty-iqe"/>
-                            <constraint firstItem="bLH-7y-ppF" firstAttribute="top" secondItem="xwo-hG-jpT" secondAttribute="bottom" constant="8" id="Ukx-ek-Q2j"/>
+                            <constraint firstItem="MpJ-X7-XPP" firstAttribute="top" secondItem="btU-DP-vjf" secondAttribute="bottom" constant="8" id="Qxr-wy-81c"/>
                             <constraint firstItem="Ebu-49-RUF" firstAttribute="trailing" secondItem="1tD-2z-WFW" secondAttribute="trailing" constant="16" id="Wc2-5Z-aw7"/>
                             <constraint firstItem="Ebu-49-RUF" firstAttribute="trailing" secondItem="bLH-7y-ppF" secondAttribute="trailing" constant="16" id="Xy7-hd-O3C"/>
-                            <constraint firstItem="1tD-2z-WFW" firstAttribute="top" secondItem="QyA-Qw-lKe" secondAttribute="bottom" constant="8" id="YAI-0v-uCB"/>
                             <constraint firstItem="rXB-ew-aZu" firstAttribute="leading" secondItem="Ebu-49-RUF" secondAttribute="leading" constant="16" id="ZJB-Yi-nUw"/>
                             <constraint firstItem="rP8-SI-D3M" firstAttribute="top" secondItem="S0R-bS-23A" secondAttribute="bottom" constant="8" id="b6P-Pu-OL5"/>
                             <constraint firstItem="bLH-7y-ppF" firstAttribute="leading" secondItem="btU-DP-vjf" secondAttribute="trailing" constant="8" id="bEC-gy-ZUI"/>
                             <constraint firstItem="S3O-0j-Cx7" firstAttribute="width" secondItem="OeP-Rl-JEv" secondAttribute="width" id="cWa-q9-HHU"/>
                             <constraint firstItem="S0R-bS-23A" firstAttribute="leading" secondItem="xX6-X5-NcR" secondAttribute="trailing" constant="8" id="cvc-pd-ZIV"/>
-                            <constraint firstItem="4cL-38-zpa" firstAttribute="top" secondItem="bLH-7y-ppF" secondAttribute="bottom" constant="8" id="d1V-1N-BPV"/>
+                            <constraint firstItem="xwo-hG-jpT" firstAttribute="top" secondItem="1tD-2z-WFW" secondAttribute="bottom" constant="8" id="eA8-a6-XmM"/>
+                            <constraint firstItem="DWL-yK-icr" firstAttribute="top" secondItem="MpJ-X7-XPP" secondAttribute="bottom" constant="8" id="eH2-Xd-8DB"/>
+                            <constraint firstItem="Vaf-CM-mxj" firstAttribute="top" secondItem="eoN-Uk-I42" secondAttribute="bottom" constant="8" id="eJu-LE-3A1"/>
                             <constraint firstItem="DWL-yK-icr" firstAttribute="leading" secondItem="Ebu-49-RUF" secondAttribute="leading" constant="16" id="eiI-I3-xKe"/>
+                            <constraint firstItem="LFV-f2-lhW" firstAttribute="top" secondItem="bLH-7y-ppF" secondAttribute="bottom" constant="8" id="fkG-h7-v5T"/>
                             <constraint firstItem="1tD-2z-WFW" firstAttribute="width" secondItem="w4h-nK-exC" secondAttribute="width" id="fvJ-OS-EEt"/>
                             <constraint firstItem="S3O-0j-Cx7" firstAttribute="leading" secondItem="OeP-Rl-JEv" secondAttribute="trailing" constant="8" id="gPl-HJ-1hv"/>
+                            <constraint firstItem="vaC-d2-P7u" firstAttribute="height" secondItem="Vaf-CM-mxj" secondAttribute="height" id="gaK-Je-TEd"/>
+                            <constraint firstItem="vaC-d2-P7u" firstAttribute="top" secondItem="eoN-Uk-I42" secondAttribute="bottom" constant="8" id="gfh-jj-ijd"/>
                             <constraint firstItem="QyA-Qw-lKe" firstAttribute="leading" secondItem="rXB-ew-aZu" secondAttribute="trailing" constant="8" id="hre-cO-Fua"/>
+                            <constraint firstItem="Vaf-CM-mxj" firstAttribute="leading" secondItem="Ebu-49-RUF" secondAttribute="leading" constant="16" id="hz4-pr-QZC"/>
                             <constraint firstItem="Ebu-49-RUF" firstAttribute="bottom" secondItem="OeP-Rl-JEv" secondAttribute="bottom" constant="8" id="idi-PB-rcR"/>
                             <constraint firstItem="4cL-38-zpa" firstAttribute="width" secondItem="DWL-yK-icr" secondAttribute="width" id="izA-R7-fgM"/>
-                            <constraint firstItem="btU-DP-vjf" firstAttribute="top" secondItem="x1d-vH-HuA" secondAttribute="bottom" constant="8" id="l1T-gq-ccc"/>
+                            <constraint firstItem="LFV-f2-lhW" firstAttribute="width" secondItem="MpJ-X7-XPP" secondAttribute="width" id="jZf-ry-Ljd"/>
                             <constraint firstItem="s0y-qf-aoG" firstAttribute="leading" secondItem="Ebu-49-RUF" secondAttribute="leading" constant="16" id="lGj-9f-hmG"/>
                             <constraint firstItem="S0R-bS-23A" firstAttribute="width" secondItem="xX6-X5-NcR" secondAttribute="width" id="mga-6A-Bs0"/>
                             <constraint firstItem="OeP-Rl-JEv" firstAttribute="leading" secondItem="Ebu-49-RUF" secondAttribute="leading" constant="16" id="mxE-jW-Epf"/>
-                            <constraint firstItem="xwo-hG-jpT" firstAttribute="top" secondItem="1tD-2z-WFW" secondAttribute="bottom" constant="8" id="piC-NM-hzM"/>
                             <constraint firstItem="Ebu-49-RUF" firstAttribute="trailing" secondItem="QyA-Qw-lKe" secondAttribute="trailing" constant="16" id="tH9-uj-7RJ"/>
-                            <constraint firstItem="DWL-yK-icr" firstAttribute="top" secondItem="btU-DP-vjf" secondAttribute="bottom" constant="8" id="tpc-mT-1P9"/>
                             <constraint firstItem="eoN-Uk-I42" firstAttribute="leading" secondItem="Ebu-49-RUF" secondAttribute="leading" id="upV-3O-JMn"/>
                             <constraint firstItem="bLH-7y-ppF" firstAttribute="width" secondItem="btU-DP-vjf" secondAttribute="width" id="wnW-0K-h0h"/>
                             <constraint firstItem="Ebu-49-RUF" firstAttribute="trailing" secondItem="xwo-hG-jpT" secondAttribute="trailing" constant="16" id="x0c-q7-Jjj"/>
                             <constraint firstItem="xwo-hG-jpT" firstAttribute="width" secondItem="x1d-vH-HuA" secondAttribute="width" id="yTm-N3-1Fh"/>
                             <constraint firstItem="rP8-SI-D3M" firstAttribute="leading" secondItem="s0y-qf-aoG" secondAttribute="trailing" constant="8" id="yf8-cd-NZl"/>
+                            <constraint firstItem="LFV-f2-lhW" firstAttribute="width" secondItem="MpJ-X7-XPP" secondAttribute="width" id="z6T-AO-lht"/>
                             <constraint firstItem="Ebu-49-RUF" firstAttribute="trailing" secondItem="S0R-bS-23A" secondAttribute="trailing" constant="16" id="zQJ-Wi-7oh"/>
+                            <constraint firstItem="bLH-7y-ppF" firstAttribute="top" secondItem="xwo-hG-jpT" secondAttribute="bottom" constant="8" id="znt-3H-nGM"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="CDr-cP-Ape"/>
@@ -2176,6 +2230,8 @@ Icons from fontawesome.com
                         <outlet property="durationLabel" destination="xwo-hG-jpT" id="9tJ-qA-bNv"/>
                         <outlet property="engineTempLabel" destination="S3O-0j-Cx7" id="2By-QS-jXa"/>
                         <outlet property="gearShiftsLabel" destination="4cL-38-zpa" id="TY1-GG-Ech"/>
+                        <outlet property="labelLabel" destination="vaC-d2-P7u" id="jYF-h8-n9I"/>
+                        <outlet property="leanLabel" destination="LFV-f2-lhW" id="Vxc-sp-QJt"/>
                         <outlet property="mapView" destination="eoN-Uk-I42" id="CUz-15-VHs"/>
                         <outlet property="speedLabel" destination="bLH-7y-ppF" id="7fa-O4-yIW"/>
                         <segue destination="1rx-Mx-oc0" kind="custom" identifier="tripToTrips" customClass="SegueFromLeft" customModule="WunderLINQ" customModuleProvider="target" id="qQx-7G-0NR"/>
@@ -2183,7 +2239,7 @@ Icons from fontawesome.com
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ASv-QO-u7O" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="8908" y="-913"/>
+            <point key="canvasLocation" x="8907.5904677846429" y="-913.70967741935488"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="rkf-pU-wS1">
