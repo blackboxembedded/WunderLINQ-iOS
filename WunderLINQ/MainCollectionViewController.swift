@@ -147,6 +147,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     let locationManager: CLLocationManager = {
         $0.requestAlwaysAuthorization()
         $0.desiredAccuracy = kCLLocationAccuracyBestForNavigation
+        $0.distanceFilter = 0
         $0.activityType = .automotiveNavigation
         $0.allowsBackgroundLocationUpdates = true
         $0.pausesLocationUpdatesAutomatically = false
