@@ -194,7 +194,7 @@ class DashViewController: UIViewController, UIWebViewDelegate {
     }
     
     private func setupScreenOrientation() {
-        if !UIApplication.shared.statusBarOrientation.isLandscape {
+        if !UIDevice.current.orientation.isLandscape {
             let offset = (dashView.frame.size.height / 2.0) - (dashView.frame.size.width / 2.0)
             let translate = CGAffineTransform(translationX: 0.0, y: offset)
             
@@ -280,12 +280,12 @@ class DashViewController: UIViewController, UIWebViewDelegate {
     
     override var keyCommands: [UIKeyCommand]? {
         let commands = [
-            UIKeyCommand(input: "\u{d}", modifierFlags:[], action: #selector(nextDashboard), discoverabilityTitle: "Next Dashboard"),
-            UIKeyCommand(input: UIKeyCommand.inputEscape, modifierFlags:[], action: #selector(prevDashboard), discoverabilityTitle: "Previous Dashboard"),
-            UIKeyCommand(input: UIKeyCommand.inputLeftArrow, modifierFlags:[], action: #selector(leftScreen), discoverabilityTitle: "Go left"),
-            UIKeyCommand(input: UIKeyCommand.inputRightArrow, modifierFlags:[], action: #selector(rightScreen), discoverabilityTitle: "Go right"),
-            UIKeyCommand(input: UIKeyCommand.inputUpArrow, modifierFlags:[], action: #selector(nextInfo), discoverabilityTitle: "Next Info"),
-            UIKeyCommand(input: UIKeyCommand.inputDownArrow, modifierFlags:[], action: #selector(previousInfo), discoverabilityTitle: "Previous Info")
+            UIKeyCommand(input: "\u{d}", modifierFlags:[], action: #selector(nextDashboard)),
+            UIKeyCommand(input: UIKeyCommand.inputEscape, modifierFlags:[], action: #selector(prevDashboard)),
+            UIKeyCommand(input: UIKeyCommand.inputLeftArrow, modifierFlags:[], action: #selector(leftScreen)),
+            UIKeyCommand(input: UIKeyCommand.inputRightArrow, modifierFlags:[], action: #selector(rightScreen)),
+            UIKeyCommand(input: UIKeyCommand.inputUpArrow, modifierFlags:[], action: #selector(nextInfo)),
+            UIKeyCommand(input: UIKeyCommand.inputDownArrow, modifierFlags:[], action: #selector(previousInfo))
         ]
         if #available(iOS 15, *) {
             commands.forEach { $0.wantsPriorityOverSystemBehavior = true }

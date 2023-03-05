@@ -35,7 +35,7 @@ class WaypointsTableViewController: UITableViewController {
     
     @objc func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
         if gesture.direction == UISwipeGestureRecognizer.Direction.right {
-            _ = navigationController?.popViewController(animated: true)
+            leftScreen()
         }
     }
 
@@ -88,12 +88,6 @@ class WaypointsTableViewController: UITableViewController {
         }
         
         readWaypoints()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
     
     override func viewWillAppear(_ animated: Bool) {

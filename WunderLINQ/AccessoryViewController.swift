@@ -105,8 +105,8 @@ class AccessoryViewController: UIViewController, UITextFieldDelegate {
     override var keyCommands: [UIKeyCommand]? {
         
         let commands = [
-            UIKeyCommand(input: UIKeyCommand.inputLeftArrow, modifierFlags:[], action: #selector(leftScreen), discoverabilityTitle: "Left"),
-            UIKeyCommand(input: UIKeyCommand.inputRightArrow, modifierFlags:[], action: #selector(rightScreen), discoverabilityTitle: "Right")
+            UIKeyCommand(input: UIKeyCommand.inputLeftArrow, modifierFlags:[], action: #selector(leftScreen)),
+            UIKeyCommand(input: UIKeyCommand.inputRightArrow, modifierFlags:[], action: #selector(rightScreen))
         ]
         if #available(iOS 15, *) {
             commands.forEach { $0.wantsPriorityOverSystemBehavior = true }
@@ -327,7 +327,7 @@ class AccessoryViewController: UIViewController, UITextFieldDelegate {
         if (wlqData.getStatus() != nil){
             var highlightColor: UIColor?
             if let colorData = UserDefaults.standard.data(forKey: "highlight_color_preference"){
-                highlightColor = NSKeyedUnarchiver.unarchiveObject(with: colorData) as? UIColor
+                highlightColor = try? NSKeyedUnarchiver.unarchivedObject(ofClass: UIColor.self, from: colorData)
             } else {
                 highlightColor = UIColor(named: "accent")
             }

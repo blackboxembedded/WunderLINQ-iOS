@@ -71,11 +71,11 @@ class VolumeViewController: UIViewController {
     override var keyCommands: [UIKeyCommand]? {
         
         let commands = [
-            UIKeyCommand(input: "\u{d}", modifierFlags:[], action: #selector(enter), discoverabilityTitle: "Enter"),
-            UIKeyCommand(input: UIKeyCommand.inputUpArrow, modifierFlags:[], action: #selector(up), discoverabilityTitle: "Up"),
-            UIKeyCommand(input: UIKeyCommand.inputDownArrow, modifierFlags:[], action: #selector(down), discoverabilityTitle: "Down"),
-            UIKeyCommand(input: UIKeyCommand.inputLeftArrow, modifierFlags:[], action: #selector(leftScreen), discoverabilityTitle: "Left"),
-            UIKeyCommand(input: UIKeyCommand.inputRightArrow, modifierFlags:[], action: #selector(right), discoverabilityTitle: "Right")
+            UIKeyCommand(input: "\u{d}", modifierFlags:[], action: #selector(enter)),
+            UIKeyCommand(input: UIKeyCommand.inputUpArrow, modifierFlags:[], action: #selector(up)),
+            UIKeyCommand(input: UIKeyCommand.inputDownArrow, modifierFlags:[], action: #selector(down)),
+            UIKeyCommand(input: UIKeyCommand.inputLeftArrow, modifierFlags:[], action: #selector(leftScreen)),
+            UIKeyCommand(input: UIKeyCommand.inputRightArrow, modifierFlags:[], action: #selector(right))
         ]
         if #available(iOS 15, *) {
             commands.forEach { $0.wantsPriorityOverSystemBehavior = true }
@@ -158,8 +158,8 @@ class VolumeViewController: UIViewController {
         self.view.addGestureRecognizer(touchRecognizer)
         
         var highlightColor: UIColor?
-        if let colorData = UserDefaults.standard.data(forKey: "highlight_color_preference"){
-            highlightColor = NSKeyedUnarchiver.unarchiveObject(with: colorData) as? UIColor
+        if let colorData = UserDefaults.standard.data(forKey: "highlightColor") {
+            highlightColor = try? NSKeyedUnarchiver.unarchivedObject(ofClass: UIColor.self, from: colorData)
         } else {
             highlightColor = UIColor(named: "accent")
         }

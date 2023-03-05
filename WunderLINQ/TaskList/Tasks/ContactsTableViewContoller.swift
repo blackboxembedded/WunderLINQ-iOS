@@ -111,11 +111,11 @@ class ContactsTableViewController: UITableViewController {
     override var keyCommands: [UIKeyCommand]? {
         
         let commands = [
-            UIKeyCommand(input: "\u{d}", modifierFlags:[], action: #selector(selectItem), discoverabilityTitle: "Select item"),
-            UIKeyCommand(input: UIKeyCommand.inputUpArrow, modifierFlags:[], action: #selector(upRow), discoverabilityTitle: "Go up"),
-            UIKeyCommand(input: UIKeyCommand.inputDownArrow, modifierFlags:[], action: #selector(downRow), discoverabilityTitle: "Go down"),
-            UIKeyCommand(input: UIKeyCommand.inputLeftArrow, modifierFlags:[], action: #selector(leftScreen), discoverabilityTitle: "Go left"),
-            UIKeyCommand(input: UIKeyCommand.inputRightArrow, modifierFlags:[], action: #selector(rightScreen), discoverabilityTitle: "Go right")
+            UIKeyCommand(input: "\u{d}", modifierFlags:[], action: #selector(selectItem)),
+            UIKeyCommand(input: UIKeyCommand.inputUpArrow, modifierFlags:[], action: #selector(upRow)),
+            UIKeyCommand(input: UIKeyCommand.inputDownArrow, modifierFlags:[], action: #selector(downRow)),
+            UIKeyCommand(input: UIKeyCommand.inputLeftArrow, modifierFlags:[], action: #selector(leftScreen)),
+            UIKeyCommand(input: UIKeyCommand.inputRightArrow, modifierFlags:[], action: #selector(rightScreen))
         ]
         if #available(iOS 15, *) {
             commands.forEach { $0.wantsPriorityOverSystemBehavior = true }
@@ -162,7 +162,6 @@ class ContactsTableViewController: UITableViewController {
     }
     @objc func leftScreen() {
         _ = navigationController?.popViewController(animated: true)
-        //performSegue(withIdentifier: "contactsToTaskGrid", sender: [])
     }    
     @objc func rightScreen() {
         
@@ -170,8 +169,7 @@ class ContactsTableViewController: UITableViewController {
     
     @objc func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
         if gesture.direction == UISwipeGestureRecognizer.Direction.right {
-            _ = navigationController?.popViewController(animated: true)
-            //performSegue(withIdentifier: "contactsToTaskGrid", sender: [])
+            leftScreen()
         }
     }
     
@@ -229,9 +227,6 @@ class ContactsTableViewController: UITableViewController {
         }
         
         self.getContacts()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
     }
     
     override func didReceiveMemoryWarning() {
@@ -278,13 +273,6 @@ class ContactsTableViewController: UITableViewController {
                     cell.removeHighlight(color: UIColor.white)
                 }
             }
-            /*
-            if UserDefaults.standard.bool(forKey: "nightmode_preference") {
-                cell.removeHighlight(color: UIColor.black)
-            } else {
-                cell.removeHighlight(color: UIColor.white)
-            }
-             */
         }
         if #available(iOS 13.0, *) {
             cell.contactImage.tintColor = UIColor(named: "imageTint")
@@ -301,13 +289,6 @@ class ContactsTableViewController: UITableViewController {
                 cell.contactImage.tintColor = UIColor.black
             }
         }
-        /*
-        if UserDefaults.standard.bool(forKey: "nightmode_preference") {
-            cell.contactImage.tintColor = UIColor.white
-        } else {
-            cell.contactImage.tintColor = UIColor.black
-        }
-         */
         
         return cell
     }

@@ -40,10 +40,10 @@ class WeatherMapViewController: UIViewController {
     override var keyCommands: [UIKeyCommand]? {
         
         let commands = [
-            UIKeyCommand(input: "\u{d}", modifierFlags:[], action: #selector(centerMap), discoverabilityTitle: "Select item"),
-            UIKeyCommand(input: UIKeyCommand.inputUpArrow, modifierFlags:[], action: #selector(zoomIn), discoverabilityTitle: "Go up"),
-            UIKeyCommand(input: UIKeyCommand.inputDownArrow, modifierFlags:[], action: #selector(zoomOut), discoverabilityTitle: "Go down"),
-            UIKeyCommand(input: UIKeyCommand.inputLeftArrow, modifierFlags:[], action: #selector(leftScreen), discoverabilityTitle: "Go left")
+            UIKeyCommand(input: "\u{d}", modifierFlags:[], action: #selector(centerMap)),
+            UIKeyCommand(input: UIKeyCommand.inputUpArrow, modifierFlags:[], action: #selector(zoomIn)),
+            UIKeyCommand(input: UIKeyCommand.inputDownArrow, modifierFlags:[], action: #selector(zoomOut)),
+            UIKeyCommand(input: UIKeyCommand.inputLeftArrow, modifierFlags:[], action: #selector(leftScreen))
         ]
         if #available(iOS 15, *) {
             commands.forEach { $0.wantsPriorityOverSystemBehavior = true }
@@ -134,8 +134,8 @@ class WeatherMapViewController: UIViewController {
         guard let startTime = startTime else { return }
         let elapsed = CACurrentMediaTime() - startTime
         let progress = elapsed / animationDuration
-        var unixtime: CLong = CLong(calculateDateForProgress(progress).timeIntervalSince1970)
-        var timestamp = unixtime - ( unixtime % (10*60))
+        let unixtime: CLong = CLong(calculateDateForProgress(progress).timeIntervalSince1970)
+        let timestamp = unixtime - ( unixtime % (10*60))
         if (lastTimestamp != timestamp){
             lastTimestamp = timestamp
             configureMap(timestamp: timestamp)
@@ -176,8 +176,6 @@ class WeatherMapViewController: UIViewController {
         let roundedMinute = minute / 15 * 15
         var components = cal.dateComponents([.year, .month, .day, .hour, .minute, .second], from: frameDate)
         components.nanosecond = 0
-        let roundedDate = cal.date(from: components)!
-
         // Set the minute component to the rounded value
         components.minute = roundedMinute
 

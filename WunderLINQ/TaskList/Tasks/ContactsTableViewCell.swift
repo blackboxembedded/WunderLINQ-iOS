@@ -32,7 +32,7 @@ class ContactsTableViewCell: UITableViewCell {
     func highlightEffect(){
         var highlightColor: UIColor?
         if let colorData = UserDefaults.standard.data(forKey: "highlight_color_preference"){
-            highlightColor = NSKeyedUnarchiver.unarchiveObject(with: colorData) as? UIColor
+            highlightColor = try? NSKeyedUnarchiver.unarchivedObject(ofClass: UIColor.self, from: colorData)
         } else {
             highlightColor = UIColor(named: "accent")
         }

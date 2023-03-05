@@ -173,15 +173,6 @@ class MusicViewController: UIViewController, SPTAppRemotePlayerStateDelegate {
         if isTimerRunning == false {
             runTimer()
         }
-        /* TESTING: Read playlists
-         
-        let myPlaylistsQuery = MPMediaQuery.playlists()
-        let playlists = myPlaylistsQuery.collections
-
-        for playlist in playlists! {
-            print(playlist.value(forProperty: MPMediaPlaylistPropertyName) ?? "No name")
-        }
-         */
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -280,11 +271,11 @@ class MusicViewController: UIViewController, SPTAppRemotePlayerStateDelegate {
     
     override var keyCommands: [UIKeyCommand]? {
         let commands = [
-            UIKeyCommand(input: "\u{d}", modifierFlags:[], action: #selector(playPause), discoverabilityTitle: "Play/Pause"),
-            UIKeyCommand(input: UIKeyCommand.inputLeftArrow, modifierFlags:[], action: #selector(leftScreen), discoverabilityTitle: "Go left"),
-            UIKeyCommand(input: UIKeyCommand.inputRightArrow, modifierFlags:[], action: #selector(rightScreen), discoverabilityTitle: "Go right"),
-            UIKeyCommand(input: UIKeyCommand.inputUpArrow, modifierFlags:[], action: #selector(nextSong), discoverabilityTitle: "Next Song"),
-            UIKeyCommand(input: UIKeyCommand.inputDownArrow, modifierFlags:[], action: #selector(previousSong), discoverabilityTitle: "Previous Song")
+            UIKeyCommand(input: "\u{d}", modifierFlags:[], action: #selector(playPause)),
+            UIKeyCommand(input: UIKeyCommand.inputLeftArrow, modifierFlags:[], action: #selector(leftScreen)),
+            UIKeyCommand(input: UIKeyCommand.inputRightArrow, modifierFlags:[], action: #selector(rightScreen)),
+            UIKeyCommand(input: UIKeyCommand.inputUpArrow, modifierFlags:[], action: #selector(nextSong)),
+            UIKeyCommand(input: UIKeyCommand.inputDownArrow, modifierFlags:[], action: #selector(previousSong))
         ]
         if #available(iOS 15, *) {
             commands.forEach { $0.wantsPriorityOverSystemBehavior = true }

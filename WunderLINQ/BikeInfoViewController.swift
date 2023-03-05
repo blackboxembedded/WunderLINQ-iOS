@@ -47,8 +47,7 @@ class BikeInfoViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     
     @objc func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
         if gesture.direction == UISwipeGestureRecognizer.Direction.right {
-            navigationController?.popViewController(animated: true)
-            dismiss(animated: true, completion: nil)
+            leftScreen()
         }
     }
     

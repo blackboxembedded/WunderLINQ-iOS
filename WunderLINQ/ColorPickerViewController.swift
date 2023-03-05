@@ -48,7 +48,7 @@ class ColorPickerViewController: UIViewController
         
         var highlightColor: UIColor?
         if let colorData = UserDefaults.standard.data(forKey: "highlight_color_preference"){
-            highlightColor = NSKeyedUnarchiver.unarchiveObject(with: colorData) as? UIColor
+            highlightColor = try? NSKeyedUnarchiver.unarchivedObject(ofClass: UIColor.self, from: colorData)
         } else {
             highlightColor = UIColor(named: "accent")
         }
@@ -90,8 +90,8 @@ class ColorPickerViewController: UIViewController
 
 extension ColorPickerViewController: ChromaColorPickerDelegate {
     func colorPickerHandleDidChange(_ colorPicker: ChromaColorPicker, handle: ChromaColorHandle, to color: UIColor) {
-        var colorData: NSData?
-        colorData = NSKeyedArchiver.archivedData(withRootObject: color) as NSData?
+        var colorData: Data?
+        colorData = try? NSKeyedArchiver.archivedData(withRootObject: color, requiringSecureCoding: false)
         UserDefaults.standard.set(colorData as NSData?, forKey: "highlight_color_preference")
     }
 }

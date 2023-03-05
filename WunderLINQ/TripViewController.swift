@@ -517,16 +517,14 @@ class TripViewController: UIViewController, UITextFieldDelegate {
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         //Update filename
-        //labelLabel.text
         let fileManager = FileManager.default
         if (fileName != nil){
             do {
                 let oldURL = try fileManager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent(fileName! + ".csv")
                 let newURL = try fileManager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent((labelLabel.text ?? "empty") + ".csv")
                 
-                try fileManager.moveItem(at: oldURL, to: newURL)
+            try fileManager.moveItem(at: oldURL, to: newURL)
                     NSLog("TripViewController: File renamed successfully")
-                    "\(self.getDocumentsDirectory())/\(fileName!).csv"
             } catch {
                     NSLog("TripViewController: Error renaming file: \(error)")
             }

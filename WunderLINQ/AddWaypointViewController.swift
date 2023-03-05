@@ -47,10 +47,7 @@ class AddWaypointViewController: UIViewController, UITextFieldDelegate, GMSMapVi
     
     @objc func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
         if gesture.direction == UISwipeGestureRecognizer.Direction.right {
-            
-        }
-        else if gesture.direction == UISwipeGestureRecognizer.Direction.left {
-            
+            leftScreen()
         }
     }
     
@@ -109,13 +106,11 @@ class AddWaypointViewController: UIViewController, UITextFieldDelegate, GMSMapVi
     // Move the text field in a pretty animation!
     func moveTextField(_ textField: UITextField, moveDistance: Int, up: Bool) {
         let moveDuration = 0.3
-        let movement: CGFloat = CGFloat(up ? moveDistance : -moveDistance)
-
-        UIView.beginAnimations("animateTextField", context: nil)
-        UIView.setAnimationBeginsFromCurrentState(true)
-        UIView.setAnimationDuration(moveDuration)
-        self.view.frame = self.view.frame.offsetBy(dx: 0, dy: movement)
-        UIView.commitAnimations()
+        let movement: CGFloat = CGFloat(up ? -moveDistance : moveDistance)
+        
+        UIView.animate(withDuration: moveDuration) {
+            self.view.frame = self.view.frame.offsetBy(dx: 0, dy: movement)
+        }
     }
     
     override func viewDidLoad() {

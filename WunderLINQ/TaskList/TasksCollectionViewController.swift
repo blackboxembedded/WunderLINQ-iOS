@@ -418,11 +418,11 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
     
     override var keyCommands: [UIKeyCommand]? {
         let commands = [
-            UIKeyCommand(input: "\u{d}", modifierFlags:[], action: #selector(selectItem), discoverabilityTitle: "Select item"),
-            UIKeyCommand(input: UIKeyCommand.inputUpArrow, modifierFlags:[], action: #selector(upRow), discoverabilityTitle: "Go up"),
-            UIKeyCommand(input: UIKeyCommand.inputDownArrow, modifierFlags:[], action: #selector(downRow), discoverabilityTitle: "Go down"),
-            UIKeyCommand(input: UIKeyCommand.inputLeftArrow, modifierFlags:[], action: #selector(leftScreen), discoverabilityTitle: "Go left"),
-            UIKeyCommand(input: UIKeyCommand.inputRightArrow, modifierFlags:[], action: #selector(rightScreen), discoverabilityTitle: "Go right")
+            UIKeyCommand(input: "\u{d}", modifierFlags:[], action: #selector(selectItem)),
+            UIKeyCommand(input: UIKeyCommand.inputUpArrow, modifierFlags:[], action: #selector(upRow)),
+            UIKeyCommand(input: UIKeyCommand.inputDownArrow, modifierFlags:[], action: #selector(downRow)),
+            UIKeyCommand(input: UIKeyCommand.inputLeftArrow, modifierFlags:[], action: #selector(leftScreen)),
+            UIKeyCommand(input: UIKeyCommand.inputRightArrow, modifierFlags:[], action: #selector(rightScreen))
         ]
         if #available(iOS 15, *) {
             commands.forEach { $0.wantsPriorityOverSystemBehavior = true }
@@ -454,7 +454,7 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
         //Scroll to the offset calculated
         UIView.animate(withDuration: 0.5, animations: {
             let itemIndex = IndexPath(item: itemRow, section: 0)
-            if UIApplication.shared.statusBarOrientation.isLandscape {
+            if UIDevice.current.orientation.isLandscape {
                 self.collectionView.scrollToItem(at: itemIndex, at: .centeredHorizontally, animated: true)
             } else {
                 self.collectionView.scrollToItem(at: itemIndex, at: .centeredVertically, animated: true)

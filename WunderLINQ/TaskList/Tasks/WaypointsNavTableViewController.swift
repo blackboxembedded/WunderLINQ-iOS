@@ -36,10 +36,10 @@ class WaypointsNavTableViewController: UITableViewController {
     override var keyCommands: [UIKeyCommand]? {
         
         let commands = [
-            UIKeyCommand(input: "\u{d}", modifierFlags:[], action: #selector(selectItem), discoverabilityTitle: "Select item"),
-            UIKeyCommand(input: UIKeyCommand.inputUpArrow, modifierFlags:[], action: #selector(upRow), discoverabilityTitle: "Go up"),
-            UIKeyCommand(input: UIKeyCommand.inputDownArrow, modifierFlags:[], action: #selector(downRow), discoverabilityTitle: "Go down"),
-            UIKeyCommand(input: UIKeyCommand.inputLeftArrow, modifierFlags:[], action: #selector(leftScreen), discoverabilityTitle: "Go left")
+            UIKeyCommand(input: "\u{d}", modifierFlags:[], action: #selector(selectItem)),
+            UIKeyCommand(input: UIKeyCommand.inputUpArrow, modifierFlags:[], action: #selector(upRow)),
+            UIKeyCommand(input: UIKeyCommand.inputDownArrow, modifierFlags:[], action: #selector(downRow)),
+            UIKeyCommand(input: UIKeyCommand.inputLeftArrow, modifierFlags:[], action: #selector(leftScreen))
         ]
         if #available(iOS 15, *) {
             commands.forEach { $0.wantsPriorityOverSystemBehavior = true }
@@ -230,7 +230,7 @@ class WaypointsNavTableViewController: UITableViewController {
         super.viewDidLoad()
         
         if let colorData = UserDefaults.standard.data(forKey: "highlight_color_preference"){
-            highlightColor = NSKeyedUnarchiver.unarchiveObject(with: colorData) as? UIColor
+            highlightColor = try? NSKeyedUnarchiver.unarchivedObject(ofClass: UIColor.self, from: colorData)
         } else {
             highlightColor = UIColor(named: "accent")
         }

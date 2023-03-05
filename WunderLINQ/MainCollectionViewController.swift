@@ -165,14 +165,18 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         }()
         
         let adjAngle: CGFloat = {
-            switch UIApplication.shared.statusBarOrientation {
+            switch UIApplication.shared.windows.first?.windowScene?.interfaceOrientation {
             case .landscapeLeft:
                 return 90
             case .landscapeRight:
                 return -90
-            case .portrait, .unknown: return 0
-            case .portraitUpsideDown: return isFaceDown ? 180 : -180
-            default:
+            case .portrait, .unknown:
+                return 0
+            case .portraitUpsideDown:
+                return isFaceDown ? 180 : -180
+            case .none:
+                return 0
+            @unknown default:
                 return 0
             }
         }()
@@ -2257,10 +2261,10 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     override var keyCommands: [UIKeyCommand]? {
         
         let commands = [
-            UIKeyCommand(input: UIKeyCommand.inputLeftArrow, modifierFlags:[], action: #selector(leftScreen), discoverabilityTitle: "Go left"),
-            UIKeyCommand(input: UIKeyCommand.inputRightArrow, modifierFlags:[], action: #selector(rightScreen), discoverabilityTitle: "Go right"),
-            UIKeyCommand(input: UIKeyCommand.inputUpArrow, modifierFlags:[], action: #selector(upScreen), discoverabilityTitle: "Increase Cell Count"),
-            UIKeyCommand(input: UIKeyCommand.inputDownArrow, modifierFlags:[], action: #selector(downScreen), discoverabilityTitle: "Decrease Cell Count")
+            UIKeyCommand(input: UIKeyCommand.inputLeftArrow, modifierFlags:[], action: #selector(leftScreen)),
+            UIKeyCommand(input: UIKeyCommand.inputRightArrow, modifierFlags:[], action: #selector(rightScreen)),
+            UIKeyCommand(input: UIKeyCommand.inputUpArrow, modifierFlags:[], action: #selector(upScreen)),
+            UIKeyCommand(input: UIKeyCommand.inputDownArrow, modifierFlags:[], action: #selector(downScreen))
         ]
         if #available(iOS 15, *) {
             commands.forEach { $0.wantsPriorityOverSystemBehavior = true }
@@ -2449,7 +2453,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         
         let alertStyle = UIAlertController.Style.alert
         let alert = UIAlertController(title: title, message: message, preferredStyle: alertStyle);
-        alert.isModalInPopover = true;
+        alert.isModalInPresentation = true;
 
         // height constraint
         let constraintHeight = NSLayoutConstraint(

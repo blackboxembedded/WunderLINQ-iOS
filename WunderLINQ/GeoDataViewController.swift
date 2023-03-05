@@ -29,7 +29,7 @@ class GeoDataViewController: UIViewController {
     
     @objc func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
         if gesture.direction == UISwipeGestureRecognizer.Direction.right {
-            _ = navigationController?.popViewController(animated: true)
+            leftScreen()
         }
     }
     
