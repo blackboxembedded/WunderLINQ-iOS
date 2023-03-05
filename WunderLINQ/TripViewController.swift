@@ -50,21 +50,28 @@ class TripViewController: UIViewController, UITextFieldDelegate {
     }
     
     @objc func leftScreen() {
-        _ = navigationController?.popViewController(animated: true)
+        performSegue(withIdentifier: "tripToTrips", sender: self)
     }
     
     @objc func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
         if gesture.direction == UISwipeGestureRecognizer.Direction.right {
             if (indexOfFileName != 0){
                 fileName = csvFileNames![indexOfFileName! - 1]
-                self.viewDidLoad()
+                performSegue(withIdentifier: "tripToTrip", sender: self)
             }
         }
         else if gesture.direction == UISwipeGestureRecognizer.Direction.left {
             if (indexOfFileName != (csvFileNames!.count - 1)){
                 fileName = csvFileNames![indexOfFileName! + 1]
-                self.viewDidLoad()
+                performSegue(withIdentifier: "tripToTrip", sender: self)
             }
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "tripToTrip") {
+            let vc = segue.destination as! TripViewController
+            vc.fileName = fileName
         }
     }
     

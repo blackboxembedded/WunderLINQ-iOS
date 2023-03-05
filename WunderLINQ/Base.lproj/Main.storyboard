@@ -217,7 +217,7 @@
         <!--Waypoint-->
         <scene sceneID="olz-rS-p04">
             <objects>
-                <viewController title="Waypoint" id="Plb-k4-fYa" customClass="WaypointViewController" customModule="WunderLINQ" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Waypoint" title="Waypoint" id="Plb-k4-fYa" customClass="WaypointViewController" customModule="WunderLINQ" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dZ9-R2-QyW">
                         <rect key="frame" x="0.0" y="0.0" width="430" height="829"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -360,6 +360,7 @@
                         <outlet property="longLabel" destination="tEo-Bc-Q4M" id="bJS-jj-ASv"/>
                         <outlet property="mapView" destination="AF1-SP-JZP" id="Gxh-QO-CQE"/>
                         <segue destination="zo6-HF-7UD" kind="custom" identifier="waypointToWaypoints" customClass="SegueFromLeft" customModule="WunderLINQ" customModuleProvider="target" id="gIM-fx-mWk"/>
+                        <segue destination="xLu-3x-WOy" kind="show" identifier="waypointToWaypoint" id="BkE-bQ-gDh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SXT-T2-9wl" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1151,20 +1152,20 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="hwActionCell" id="ORR-ga-rGW" customClass="HWSettingsTableViewCell" customModule="WunderLINQ" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="50" width="430" height="42.666667938232422"/>
+                                        <rect key="frame" x="0.0" y="50" width="430" height="43"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ORR-ga-rGW" id="u8h-mc-bnW">
-                                            <rect key="frame" x="0.0" y="0.0" width="430" height="42.666667938232422"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="430" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="32s-bB-EZK">
-                                                    <rect key="frame" x="20" y="11.000000000000002" width="195" height="20.666666666666671"/>
+                                                    <rect key="frame" x="20" y="11" width="195" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rs5-hB-OEc">
-                                                    <rect key="frame" x="215" y="11.000000000000002" width="195" height="20.666666666666671"/>
+                                                    <rect key="frame" x="215" y="11" width="195" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -1949,9 +1950,19 @@ Icons from fontawesome.com
             <point key="canvasLocation" x="7140" y="3668"/>
         </scene>
         <!--Trip-->
+        <scene sceneID="9Fa-h1-q1h">
+            <objects>
+                <viewControllerPlaceholder referencedIdentifier="Trip" id="XEp-eG-4v9" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="CaL-eJ-7Um"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="av3-0y-w4h" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="8863" y="-1296"/>
+        </scene>
+        <!--Trip-->
         <scene sceneID="Dq9-Ds-zIF">
             <objects>
-                <viewController title="Trip" id="mYA-Xe-W7Q" customClass="TripViewController" customModule="WunderLINQ" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Trip" title="Trip" id="mYA-Xe-W7Q" customClass="TripViewController" customModule="WunderLINQ" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6Ds-aL-SNb">
                         <rect key="frame" x="0.0" y="0.0" width="430" height="829"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2256,6 +2267,7 @@ Icons from fontawesome.com
                         <outlet property="mapView" destination="eoN-Uk-I42" id="CUz-15-VHs"/>
                         <outlet property="speedLabel" destination="xwo-hG-jpT" id="EvS-VD-Y2A"/>
                         <segue destination="1rx-Mx-oc0" kind="custom" identifier="tripToTrips" customClass="SegueFromLeft" customModule="WunderLINQ" customModuleProvider="target" id="qQx-7G-0NR"/>
+                        <segue destination="XEp-eG-4v9" kind="show" identifier="tripToTrip" id="CxV-oI-gqr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ASv-QO-u7O" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2456,6 +2468,16 @@ Icons from fontawesome.com
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bGb-WK-7Ij" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="8908" y="-2414"/>
+        </scene>
+        <!--Waypoint-->
+        <scene sceneID="1og-5h-epf">
+            <objects>
+                <viewControllerPlaceholder referencedIdentifier="Waypoint" id="xLu-3x-WOy" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="U09-4n-Jpj"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Hcz-FI-7We" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="8998" y="-2081"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
