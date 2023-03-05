@@ -135,10 +135,7 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
             UIScreen.main.brightness = CGFloat(UserDefaults.standard.float(forKey: "systemBrightness"))
         }
         
-        if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
-            let versionLabelString = NSLocalizedString("version_label", comment: "")
-            self.versionLabel.text = "\(versionLabelString) \(version)"
-        }
+        self.versionLabel.text = NSLocalizedString("version_label", comment: "") + " " + NSLocalizedString("app_ver_label", comment: "") + " " + getAppInfo() + " " + NSLocalizedString("fw_ver_label", comment: "") + " " + String(UserDefaults.standard.string(forKey: "firmwareVersion") ?? "Unknown")
         
         logoImageView.isUserInteractionEnabled = true
         let singleTap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(logoTap))
