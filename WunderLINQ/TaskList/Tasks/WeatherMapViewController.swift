@@ -34,6 +34,7 @@ class WeatherMapViewController: UIViewController {
     var displayLink: CADisplayLink?
     var startTime: CFTimeInterval?
     let animationDuration = 30.0 // 30 seconds
+    var restartTimer: Timer?
     var lastTimestamp: Int?
     
     override var keyCommands: [UIKeyCommand]? {
@@ -124,9 +125,8 @@ class WeatherMapViewController: UIViewController {
         displayLink = CADisplayLink(target: self, selector: #selector(updateAnimation))
         displayLink?.add(to: .current, forMode: .default)
         startTime = CACurrentMediaTime()
-        Timer.scheduledTimer(withTimeInterval: animationDuration, repeats: false) { [weak self] timer in
-            self?.stopAnimating()
-            self!.startAnimating()
+        restartTimer = Timer.scheduledTimer(withTimeInterval: animationDuration, repeats: false) { [weak self] timer in
+            self?.restartAnimating()
         }
     }
 
@@ -141,9 +141,18 @@ class WeatherMapViewController: UIViewController {
             configureMap(timestamp: timestamp)
         }
     }
+    
+    func restartAnimating() {
+        NSLog("WeatherMapViewController: restartAnimating()")
+        displayLink?.invalidate()
+        displayLink = nil
+        startTime = nil
+        startAnimating()
+    }
 
     func stopAnimating() {
         NSLog("WeatherMapViewController: stopAnimating()")
+        restartTimer?.invalidate()
         displayLink?.invalidate()
         displayLink = nil
         startTime = nil
