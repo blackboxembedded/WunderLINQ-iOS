@@ -200,6 +200,8 @@ class TripViewController: UIViewController, UITextFieldDelegate {
             let csvRows = csv(data: data)
             
             let path = GMSMutablePath()
+            var lastLocation : CLLocation?
+            var totalDistance : Double = 0
             var speeds : [Double] = []
             var maxSpeed: Double = 0
             var maxLean : Double?
@@ -230,6 +232,12 @@ class TripViewController: UIViewController, UITextFieldDelegate {
                     if !(row[1].contains("No Fix") || row[2].contains("No Fix") || row[4].contains("No Fix")){
                         if let lat = row[1].toDouble(),let lon = row[2].toDouble() {
                             path.add(CLLocationCoordinate2D(latitude: lat, longitude: lon))
+                            let location = CLLocation(latitude: lat, longitude: lon)
+                            if (lastLocation == nil){
+                                lastLocation = location
+                            } else {
+                                totalDistance += lastLocation!.distance(from: location)
+                            }
                         }
                         
                         if let speed = row[4].toDouble() {
@@ -375,6 +383,8 @@ class TripViewController: UIViewController, UITextFieldDelegate {
                 if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
                     distance = Utility.kmToMiles(distance.rounded(toPlaces: 1))
                 }
+            } else if (totalDistance > 0) {
+                distance = totalDistance / 1000
             }
             distanceLabel.text = "\(distance.rounded(toPlaces: 1)) \(distanceUnit)"
             
