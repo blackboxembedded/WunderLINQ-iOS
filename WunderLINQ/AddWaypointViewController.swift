@@ -94,25 +94,6 @@ class AddWaypointViewController: UIViewController, UITextFieldDelegate, GMSMapVi
         }
     }
     
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        moveTextField(textField, moveDistance: -250, up: true)
-    }
-
-    // Finish Editing The Text Field
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        moveTextField(textField, moveDistance: -250, up: false)
-    }
-
-    // Move the text field in a pretty animation!
-    func moveTextField(_ textField: UITextField, moveDistance: Int, up: Bool) {
-        let moveDuration = 0.3
-        let movement: CGFloat = CGFloat(up ? -moveDistance : moveDistance)
-        
-        UIView.animate(withDuration: moveDuration) {
-            self.view.frame = self.view.frame.offsetBy(dx: 0, dy: movement)
-        }
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         AppUtility.lockOrientation(.portrait)
@@ -184,6 +165,9 @@ class AddWaypointViewController: UIViewController, UITextFieldDelegate, GMSMapVi
             self.present(alert, animated: true, completion: nil)
             
         }
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -303,5 +287,17 @@ class AddWaypointViewController: UIViewController, UITextFieldDelegate, GMSMapVi
             NSLog("AddWaypointViewController: failure inserting wapoint: \(errmsg)")
             return
         }
+    }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        guard let userInfo = notification.userInfo else { return }
+        guard let keyboardSize = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue.size else { return }
+        
+        let contentInsets = UIEdgeInsets(top: 0, left: 0, bottom: keyboardSize.height, right: 0)
+        view.frame.origin.y -= contentInsets.bottom
+    }
+
+    @objc func keyboardWillHide(notification: NSNotification) {
+        view.frame.origin.y = 0
     }
 }
