@@ -31,6 +31,7 @@ class WaypointViewController: UIViewController, UITextFieldDelegate {
     var date: String?
     var latitude: String? = ""
     var longitude: String? = ""
+    var elevation: String? = ""
     var label: String? = ""
     var waypoints = [Waypoint]()
     var waypoint: Waypoint?
@@ -54,6 +55,7 @@ class WaypointViewController: UIViewController, UITextFieldDelegate {
         //self?.label.alpha = fade ? 0.5 : 1
     }
     
+    @IBOutlet weak var elevationLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var longLabel: UILabel!
     @IBOutlet weak var latLabel: UILabel!
@@ -160,18 +162,31 @@ class WaypointViewController: UIViewController, UITextFieldDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         
+        // Waypoint Database
         let databaseURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
             .appendingPathComponent("waypoints.sqlite")
-        //opening the database
+        // Opening the database
         if sqlite3_open(databaseURL.path, &db) != SQLITE_OK {
             NSLog("WaypointViewController: error opening database")
         }
-        
-        //creating table
-        if sqlite3_exec(db, "CREATE TABLE IF NOT EXISTS records (id INTEGER PRIMARY KEY AUTOINCREMENT, date TEXT, latitude TEXT, longitude TEXT, label TEXT)", nil, nil, nil) != SQLITE_OK {
+        // Creating table
+        if sqlite3_exec(db, "CREATE TABLE IF NOT EXISTS records (id INTEGER PRIMARY KEY AUTOINCREMENT, date TEXT, latitude TEXT, longitude TEXT, elevation TEXT, label TEXT)", nil, nil, nil) != SQLITE_OK {
             let errmsg = String(cString: sqlite3_errmsg(db)!)
             NSLog("WaypointViewController: error creating table: \(errmsg)")
         }
+        // Update table if needed
+        let updateStatementString = "ALTER TABLE records ADD COLUMN elevation TEXT"
+        var updateStatement: OpaquePointer?
+        if sqlite3_prepare_v2(db, updateStatementString, -1, &updateStatement, nil) == SQLITE_OK {
+            if sqlite3_step(updateStatement) == SQLITE_DONE {
+                NSLog("WaypointViewController: Table updated successfully")
+            } else {
+                NSLog("WaypointViewController: Error updating table")
+            }
+        } else {
+            NSLog("WaypointViewController: Error preparing update statement")
+        }
+        
         readWaypoints()
         readWaypoint()
         
@@ -196,6 +211,14 @@ class WaypointViewController: UIViewController, UITextFieldDelegate {
         latLabel.text = latitude
         longLabel.text = longitude
         labelLabel.text = label
+        if (elevation != ""){
+            var heightUnit = "m"
+            if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
+                heightUnit = "ft"
+                elevation = "\(Utility.mtoFeet((elevation?.toDouble())!))"
+            }
+            elevationLabel.text = "\(Int(round(elevation!.toDouble()!)))\(heightUnit)"
+        }
         
         locationManager = CLLocationManager()
         locationManager.delegate = self
@@ -216,7 +239,7 @@ class WaypointViewController: UIViewController, UITextFieldDelegate {
 
     func readWaypoint(){
         //this is our select query
-        let queryString = "SELECT * FROM records WHERE id = \(record ?? 0)"
+        let queryString = "SELECT id, date, latitude, longitude, elevation, label FROM records WHERE id = \(record ?? 0)"
         
         //statement pointer
         var stmt:OpaquePointer?
@@ -234,11 +257,14 @@ class WaypointViewController: UIViewController, UITextFieldDelegate {
             date = String(cString: sqlite3_column_text(stmt, 1))
             latitude = String(cString: sqlite3_column_text(stmt, 2))
             longitude = String(cString: sqlite3_column_text(stmt, 3))
-            label = ""
             if ( sqlite3_column_text(stmt, 4) != nil ){
-                label = String(cString: sqlite3_column_text(stmt, 4))
+                elevation = String(cString: sqlite3_column_text(stmt, 4))
             }
-            waypoint = Waypoint(id: Int(id), date: String(describing: date), latitude: String(describing: latitude), longitude: String(describing: longitude), label: String(describing: label))
+            label = ""
+            if ( sqlite3_column_text(stmt, 5) != nil ){
+                label = String(cString: sqlite3_column_text(stmt, 5))
+            }
+            waypoint = Waypoint(id: Int(id), date: String(describing: date), latitude: String(describing: latitude), longitude: String(describing: longitude), elevation: String(describing: elevation), label: String(describing: label))
         }
     }
     
@@ -248,7 +274,7 @@ class WaypointViewController: UIViewController, UITextFieldDelegate {
         waypoints.removeAll()
         
         //this is our select query
-        let queryString = "SELECT id,date,latitude,longitude,label FROM records ORDER BY id DESC"
+        let queryString = "SELECT id, date, latitude, longitude, elevation, label FROM records ORDER BY id DESC"
         
         //statement pointer
         var stmt:OpaquePointer?
@@ -266,12 +292,17 @@ class WaypointViewController: UIViewController, UITextFieldDelegate {
             let date = String(cString: sqlite3_column_text(stmt, 1))
             let latitude = String(cString: sqlite3_column_text(stmt, 2))
             let longitude = String(cString: sqlite3_column_text(stmt, 3))
-            var label = ""
+            var elevation = ""
             if ( sqlite3_column_text(stmt, 4) != nil ){
-                label = String(cString: sqlite3_column_text(stmt, 4))
+                print("elevation: \(elevation)")
+                elevation = String(cString: sqlite3_column_text(stmt, 4))
+            }
+            var label = ""
+            if ( sqlite3_column_text(stmt, 5) != nil ){
+                label = String(cString: sqlite3_column_text(stmt, 5))
             }
             //adding values to list
-            waypoints.append(Waypoint(id: Int(id), date: String(describing: date), latitude: String(describing: latitude), longitude: String(describing: longitude), label: String(describing: label)))
+            waypoints.append(Waypoint(id: Int(id), date: String(describing: date), latitude: String(describing: latitude), longitude: String(describing: longitude), elevation: String(describing: elevation), label: String(describing: label)))
         }
     }
     
@@ -307,6 +338,9 @@ class WaypointViewController: UIViewController, UITextFieldDelegate {
             let root = GPXRoot(creator: "WunderLINQ")
             let singleWaypoint = GPXWaypoint(latitude: (lat), longitude: (lon))
             singleWaypoint.comment = label
+            if (elevation != ""){
+                singleWaypoint.elevation = elevation?.toDouble()
+            }
             var fileName = "Waypoint"
             if (label != ""){
                 fileName = label!

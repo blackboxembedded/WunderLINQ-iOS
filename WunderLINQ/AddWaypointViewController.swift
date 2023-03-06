@@ -235,18 +235,29 @@ class AddWaypointViewController: UIViewController, UITextFieldDelegate, GMSMapVi
         if sqlite3_open(databaseURL.path, &db) != SQLITE_OK {
             NSLog("AddWaypointViewController: error opening database")
         }
-        
         //creating table
-        if sqlite3_exec(db, "CREATE TABLE IF NOT EXISTS records (id INTEGER PRIMARY KEY AUTOINCREMENT, date TEXT, latitude TEXT, longitude TEXT, label TEXT)", nil, nil, nil) != SQLITE_OK {
+        if sqlite3_exec(db, "CREATE TABLE IF NOT EXISTS records (id INTEGER PRIMARY KEY AUTOINCREMENT, date TEXT, latitude TEXT, longitude TEXT, elevation TEXT, label TEXT)", nil, nil, nil) != SQLITE_OK {
             let errmsg = String(cString: sqlite3_errmsg(db)!)
             NSLog("AddWaypointViewController: error creating table: \(errmsg)")
+        }
+        //update table if needed
+        let updateStatementString = "ALTER TABLE records ADD COLUMN elevation TEXT"
+        var updateStatement: OpaquePointer?
+        if sqlite3_prepare_v2(db, updateStatementString, -1, &updateStatement, nil) == SQLITE_OK {
+            if sqlite3_step(updateStatement) == SQLITE_DONE {
+                NSLog("AddWaypointViewController: Table updated successfully")
+            } else {
+                NSLog("AddWaypointViewController: Error updating table")
+            }
+        } else {
+            NSLog("AddWaypointViewController: Error preparing update statement")
         }
         
         //creating a statement
         var stmt: OpaquePointer?
 
         //the insert query
-        let queryString = "INSERT INTO records (date, latitude, longitude, label) VALUES (?,?,?,?)"
+        let queryString = "INSERT INTO records (date, latitude, longitude, elevation, label) VALUES (?,?,?,?,?)"
         
         //preparing the query
         if sqlite3_prepare(db, queryString, -1, &stmt, nil) != SQLITE_OK{
@@ -275,7 +286,12 @@ class AddWaypointViewController: UIViewController, UITextFieldDelegate, GMSMapVi
             NSLog("AddWaypointViewController: failure binding name: \(errmsg)")
             return
         }
-        if sqlite3_bind_text(stmt, 4, label, -1, nil) != SQLITE_OK{
+        if sqlite3_bind_text(stmt, 4, nil, -1, nil) != SQLITE_OK{
+            let errmsg = String(cString: sqlite3_errmsg(db)!)
+            NSLog("AddWaypointViewController: failure binding name: \(errmsg)")
+            return
+        }
+        if sqlite3_bind_text(stmt, 5, label, -1, nil) != SQLITE_OK{
             let errmsg = String(cString: sqlite3_errmsg(db)!)
             NSLog("AddWaypointViewController: failure binding name: \(errmsg)")
             return

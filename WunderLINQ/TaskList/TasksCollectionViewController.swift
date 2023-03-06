@@ -617,17 +617,29 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
         loadTasks();
         loadRows();
         
+        // Waypoint Database
         let databaseURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
             .appendingPathComponent("waypoints.sqlite")
-        //opening the database
+        // Opening the database
         if sqlite3_open(databaseURL.path, &db) != SQLITE_OK {
             NSLog("TasksCollectionViewController: error opening database")
         }
-        
-        //creating table
-        if sqlite3_exec(db, "CREATE TABLE IF NOT EXISTS records (id INTEGER PRIMARY KEY AUTOINCREMENT, date TEXT, latitude TEXT, longitude TEXT, label TEXT)", nil, nil, nil) != SQLITE_OK {
+        // Creating table
+        if sqlite3_exec(db, "CREATE TABLE IF NOT EXISTS records (id INTEGER PRIMARY KEY AUTOINCREMENT, date TEXT, latitude TEXT, longitude TEXT, elevation TEXT, label TEXT)", nil, nil, nil) != SQLITE_OK {
             let errmsg = String(cString: sqlite3_errmsg(db)!)
             NSLog("TasksCollectionViewController: error creating table: \(errmsg)")
+        }
+        // Update table if needed
+        let updateStatementString = "ALTER TABLE records ADD COLUMN elevation TEXT"
+        var updateStatement: OpaquePointer?
+        if sqlite3_prepare_v2(db, updateStatementString, -1, &updateStatement, nil) == SQLITE_OK {
+            if sqlite3_step(updateStatement) == SQLITE_DONE {
+                NSLog("TasksCollectionViewController: Table updated successfully")
+            } else {
+                NSLog("TasksCollectionViewController: Error updating table")
+            }
+        } else {
+            NSLog("TasksCollectionViewController: Error preparing update statement")
         }
         
         locationManager = CLLocationManager()
@@ -762,18 +774,19 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
     func saveWaypoint(){
         // Waypoint stuff below
         let currentLocation = motorcycleData.getLocation()
-        
+        // Waypoint Database
         let databaseURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
             .appendingPathComponent("waypoints.sqlite")
-        //opening the database
+        // Opening the database
         if sqlite3_open(databaseURL.path, &db) != SQLITE_OK {
             NSLog("TasksCollectionViewController: error opening database")
         }
-        //creating a statement
+        
+        // Creating a statement
         var stmt: OpaquePointer?
         
         //the insert query
-        let queryString = "INSERT INTO records (date, latitude, longitude, label) VALUES (?,?,?,?)"
+        let queryString = "INSERT INTO records (date, latitude, longitude, elevation, label) VALUES (?,?,?,?,?)"
         
         //preparing the query
         if sqlite3_prepare(db, queryString, -1, &stmt, nil) != SQLITE_OK{
@@ -800,7 +813,12 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
             NSLog("TasksCollectionViewController: failure binding name: \(errmsg)")
             return
         }
-        if sqlite3_bind_text(stmt, 4, label, -1, nil) != SQLITE_OK{
+        if sqlite3_bind_double(stmt, 4, (currentLocation.altitude)) != SQLITE_OK{
+            let errmsg = String(cString: sqlite3_errmsg(db)!)
+            NSLog("TasksCollectionViewController: failure binding name: \(errmsg)")
+            return
+        }
+        if sqlite3_bind_text(stmt, 5, label, -1, nil) != SQLITE_OK{
             let errmsg = String(cString: sqlite3_errmsg(db)!)
             NSLog("TasksCollectionViewController: failure binding name: \(errmsg)")
             return

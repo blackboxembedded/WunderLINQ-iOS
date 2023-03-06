@@ -173,6 +173,7 @@
 "waypoint_view_tv_date_label" = "Date Recorded";
 "waypoint_view_tv_lat_label" = "Latitude";
 "waypoint_view_tv_lon_label" = "Longitude";
+"waypoint_view_tv_elevation_label" = "Elevation";
 "waypoint_view_tv_label_label" = "Label";
 "waypoint_view_bt_open" = "Open in Map App";
 "waypoint_view_bt_nav" = "Navigate";
