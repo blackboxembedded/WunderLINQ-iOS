@@ -16,7 +16,7 @@
 "record_audio_alert_body" = "The WunderLINQ app needs access to your microphone to record video audio.";
 "write_photo_alert_body" = "The WunderLINQ app needs access to write photos to your Photo Library.";
 "read_media_alert_body" = "The WunderLINQ app needs access to your Media Library to control music playback.";
-"location_alert_body" = "The WunderLINQ app needs access to your location to allow background track recording and data logging.\nLocation permission is also used for data points such as altitude, GPS speed, and bearing.";
+"location_alert_body" = "The WunderLINQ app needs access to your location to allow background track recording and data logging.\nLocation permission is also used for data points such as elevation, GPS speed, and bearing.";
 "notification_alert_body" = "The WunderLINQ app needs notification access to notify you of faults.";
 "firstrun_end" = "Thank you for purchasing the WunderLINQ!  Ride Safe.";
 // MyMotorcycleViewController
@@ -243,7 +243,7 @@
 "time_header" = "Time";
 "latitude_header" = "Latitude";
 "longitude_header" = "Longitude";
-"altitude_header" = "Altitude";
+"altitude_header" = "Elevation";
 "gpsspeed_header" = "GPS Speed";
 "gear_header" = "Gear";
 "enginetemp_header" = "Engine Temperature";
@@ -343,7 +343,7 @@
 "dash_cconsumption_label" = "CONS";
 "dash_fueleconomyone_label" = "Econo1";
 "dash_fueleconomytwo_label" = "Econo2";
-"dash_altitude_label" = "ALT";
+"dash_altitude_label" = "ELEV";
 //VolumeViewController
 "systemvolume_title" = "System Volume";
 //Keyboard HID

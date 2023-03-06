@@ -39,7 +39,7 @@
 "bearing_header" = "Bearing";
 "time_header" = "Time";
 "barometric_header" = "Barometer";
-"altitude_header" = "Altitude";
+"altitude_header" = "Elevation";
 "gpsspeed_header" = "GPS Speed";
 "sunrisesunset_header" = "Sunrise/Sunset";
 "rpm_header" = "RPM";
