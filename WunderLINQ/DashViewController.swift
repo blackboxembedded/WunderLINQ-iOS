@@ -161,7 +161,6 @@ class DashViewController: UIViewController, UIWebViewDelegate {
         if (dashView.frame.size.width > dashView.frame.size.height){
             screenSize = CGSize(width: dashView.frame.size.width, height: dashView.frame.size.height)
         }
-        
         webView = UIWebView(frame: CGRect(x: 0, y: 0, width: screenSize.width, height: screenSize.height))
         webView.delegate = self
         webView.scalesPageToFit = true
@@ -194,13 +193,19 @@ class DashViewController: UIViewController, UIWebViewDelegate {
     }
     
     private func setupScreenOrientation() {
-        if !UIDevice.current.orientation.isLandscape {
-            let offset = (dashView.frame.size.height / 2.0) - (dashView.frame.size.width / 2.0)
-            let translate = CGAffineTransform(translationX: 0.0, y: offset)
-            
-            webView.transform = translate
-            webView.frame.size.width = dashView.frame.size.width
-            webView.frame.size.height = dashView.frame.size.height
+        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
+            let interfaceOrientation = windowScene.interfaceOrientation
+            if (interfaceOrientation.isPortrait){
+                let offset = (dashView.frame.size.height / 2.0) - (dashView.frame.size.width / 2.0)
+                let translate = CGAffineTransform(translationX: 0.0, y: offset)
+                webView.transform = translate
+                webView.frame.size.width = dashView.frame.size.width
+                webView.frame.size.height = dashView.frame.size.height
+            } else {
+                webView.transform = CGAffineTransform.identity
+                webView.frame.size.width = dashView.frame.size.width
+                webView.frame.size.height = dashView.frame.size.height
+            }
         }
     }
     
