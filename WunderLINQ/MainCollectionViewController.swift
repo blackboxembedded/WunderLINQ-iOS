@@ -72,6 +72,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     let bleData = BLE.shared
     let motorcycleData = MotorcycleData.shared
     let faults = Faults.shared
+    var lastNotification: [Bool]?
     var prevBrakeValue = 0
     
     let motionManager = CMMotionManager()
@@ -146,8 +147,15 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
 
     let locationManager: CLLocationManager = {
         $0.requestAlwaysAuthorization()
-        $0.desiredAccuracy = kCLLocationAccuracyBestForNavigation
-        $0.distanceFilter = 0
+        /*
+        if #available(iOS 14.0, *) {
+            $0.desiredAccuracy = kCLLocationAccuracyReduced
+        } else {
+            // Fallback on earlier versions
+            $0.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+        }*/
+        $0.desiredAccuracy = kCLLocationAccuracyHundredMeters
+        $0.distanceFilter = 10
         $0.activityType = .automotiveNavigation
         $0.allowsBackgroundLocationUpdates = true
         $0.pausesLocationUpdatesAutomatically = false
@@ -257,7 +265,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         collectionView.dataSource = self
         
         registerSettingsBundle()
-        NotificationCenter.default.addObserver(self, selector: #selector(self.defaultsChanged), name: UserDefaults.didChangeNotification, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(self.defaultsChanged), name: UserDefaults.didChangeNotification, object: nil)
         
         switch(UserDefaults.standard.integer(forKey: "darkmode_preference")){
         case 0:
@@ -2181,23 +2189,26 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     }
     
     private func updateNotification(){
-        var alertBody: String = ""
-        if(faults.getFrontTirePressureCriticalActive()){
-            alertBody += NSLocalizedString("fault_TIREFCF", comment: "") + "\n"
-        }
-        if(faults.getRearTirePressureCriticalActive()){
-            alertBody += NSLocalizedString("fault_TIRERCF", comment: "") + "\n"
-        }
-        if(faults.getGeneralFlashingRedActive()){
-            alertBody += NSLocalizedString("fault_GENWARNFSRED", comment: "") + "\n"
-        }
-        if(faults.getGeneralShowsRedActive()){
-            alertBody += NSLocalizedString("fault_GENWARNSHRED", comment: "") + "\n"
-        }
-        if(alertBody != ""){
-            sendAlert(message: alertBody)
-        } else {
-            clearNotifications()
+        if (lastNotification != faults.getallCriticalFaults()){
+            lastNotification = faults.getallCriticalFaults()
+            var alertBody: String = ""
+            if(faults.getFrontTirePressureCriticalActive()){
+                alertBody += NSLocalizedString("fault_TIREFCF", comment: "") + "\n"
+            }
+            if(faults.getRearTirePressureCriticalActive()){
+                alertBody += NSLocalizedString("fault_TIRERCF", comment: "") + "\n"
+            }
+            if(faults.getGeneralFlashingRedActive()){
+                alertBody += NSLocalizedString("fault_GENWARNFSRED", comment: "") + "\n"
+            }
+            if(faults.getGeneralShowsRedActive()){
+                alertBody += NSLocalizedString("fault_GENWARNSHRED", comment: "") + "\n"
+            }
+            if(alertBody != ""){
+                sendAlert(message: alertBody)
+            } else {
+                clearNotifications()
+            }
         }
     }
     
@@ -2208,27 +2219,61 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     }
     
     private func sendAlert(message:String){
-        //creating the notification content
-        let content = UNMutableNotificationContent()
         
-        //adding title, subtitle, body and badge
-        content.title = NSLocalizedString("fault_title", comment: "")
-        //content.subtitle = "Sub Title"
-        content.body = message
-        //content.badge = 1
-        content.sound = UNNotificationSound.default
+        let notificationCenter = UNUserNotificationCenter.current()
         
-        //getting the notification trigger
-        //it will be called after 1 second
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
+        // Create a unique identifier for your notification
+        let notificationIdentifier = "FaultNotification"
+        // Get the notification request with the identifier
+        notificationCenter.getPendingNotificationRequests { requests in
+            let requestToUpdate = requests.first { request in
+                return request.identifier == notificationIdentifier
+            }
+            
+            if let requestToUpdate = requestToUpdate {
+                // Create a new notification content with the updated message
+                let updatedNotificationContent = UNMutableNotificationContent()
+                updatedNotificationContent.title = NSLocalizedString("fault_title", comment: "")
+                updatedNotificationContent.body = message
+                
+                // Create a new notification request with the same identifier and the updated content
+                let updatedNotificationRequest = UNNotificationRequest(identifier: notificationIdentifier,
+                                                                        content: updatedNotificationContent,
+                                                                        trigger: requestToUpdate.trigger)
+                
+                // Update the notification with the new request
+                notificationCenter.add(updatedNotificationRequest) { error in
+                    if let error = error {
+                        NSLog("MainCollectionViewController: Error updating notification: \(error)")
+                    }
+                }
+            } else {
+                NSLog("MainCollectionViewController: Notification not found with identifier: \(notificationIdentifier)")
+                //creating the notification content
+                let content = UNMutableNotificationContent()
+                
+                //adding title, subtitle, body and badge
+                content.title = NSLocalizedString("fault_title", comment: "")
+                //content.subtitle = "Sub Title"
+                content.body = message
+                //content.badge = 1
+                content.sound = UNNotificationSound.default
+                
+                //getting the notification trigger
+                //it will be called after 1 second
+                let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
+                
+                //getting the notification request
+                let request = UNNotificationRequest(identifier: notificationIdentifier, content: content, trigger: trigger)
+                
+                UNUserNotificationCenter.current().delegate = self
+                
+                //adding the notification to notification center
+                UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+            }
+        }
         
-        //getting the notification request
-        let request = UNNotificationRequest(identifier: "FaultNotification", content: content, trigger: trigger)
         
-        UNUserNotificationCenter.current().delegate = self
-        
-        //adding the notification to notification center
-        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
     }
     
     @objc func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {

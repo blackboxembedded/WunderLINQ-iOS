@@ -33,9 +33,6 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
     var tasks:[Tasks] = [Tasks]()
     
     var mapping = [Int]()
-
-    private var locationManager: CLLocationManager!
-    private var currentLocation: CLLocation?
     
     var device: AVCaptureDevice?
     var captureSession: AVCaptureSession?
@@ -234,9 +231,7 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
                                                         let lon = placemark?.location?.coordinate.longitude
                                                         let destLatitude: CLLocationDegrees = lat!
                                                         let destLongitude: CLLocationDegrees = lon!
-                                                        if let current = self.currentLocation {
-                                                            NavAppHelper.navigateTo(destLatitude: destLatitude, destLongitude: destLongitude, destLabel: NSLocalizedString("home", comment: ""), currentLatitude: current.coordinate.latitude, currentLongitude: current.coordinate.longitude)
-                                                        }
+                                                        NavAppHelper.navigateTo(destLatitude: destLatitude, destLongitude: destLongitude, destLabel: NSLocalizedString("home", comment: ""), currentLatitude: self.motorcycleData.getLocation().coordinate.latitude, currentLongitude: self.motorcycleData.getLocation().coordinate.longitude)
                                                     }
                                                     else {
                                                         // An error occurred during geocoding.
@@ -642,10 +637,6 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
             NSLog("TasksCollectionViewController: Error preparing update statement")
         }
         
-        locationManager = CLLocationManager()
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        
         notificationCenter.addObserver(self, selector:#selector(self.launchAccPage), name: NSNotification.Name("StatusUpdate"), object: nil)
     }
     
@@ -892,7 +883,7 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
         if ( cameraImage == nil ){
             NSLog("TasksCollectionViewController: No Image")
         } else {
-            addAsset(image: cameraImage!, location: currentLocation)
+            addAsset(image: cameraImage!, location: motorcycleData.getLocation())
         }
     }
     
@@ -1170,24 +1161,4 @@ fileprivate func convertFromAVMediaType(_ input: AVMediaType) -> String {
 // Helper function inserted by Swift 4.2 migrator.
 fileprivate func convertFromAVCaptureSessionPreset(_ input: AVCaptureSession.Preset) -> String {
 	return input.rawValue
-}
-
-extension TasksCollectionViewController: CLLocationManagerDelegate {
-    public func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        switch status {
-        case .notDetermined:
-            manager.requestWhenInUseAuthorization()
-        case .restricted, .denied:
-            NSLog("TasksCollectionViewController: Location permission denied")
-            self.showToast(message: NSLocalizedString("negative_location_alert_body", comment: ""))
-        case .authorizedAlways, .authorizedWhenInUse:
-            locationManager.startUpdatingLocation()
-        @unknown default:
-            NSLog("TasksCollectionViewController: Fatal Error")
-        }
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        do { currentLocation = locations.last }
-    }
 }
