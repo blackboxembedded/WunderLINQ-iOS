@@ -51,7 +51,7 @@ class ZoomAndSnapFlowLayout: UICollectionViewFlowLayout {
         let visibleRect = CGRect(origin: collectionView.contentOffset, size: collectionView.frame.size)
         let visibleAttributes = rectAttributes.filter { $0.frame.intersects(visibleRect) }
 
-        if UIDevice.current.orientation.isLandscape {
+        if UIApplication.shared.statusBarOrientation.isLandscape {
             // Keep the spacing between cells the same.
             // Each cell shifts the next cell by half of it's enlarged size.
             // Calculated separately for each direction.
@@ -119,7 +119,7 @@ class ZoomAndSnapFlowLayout: UICollectionViewFlowLayout {
     override func targetContentOffset(forProposedContentOffset proposedContentOffset: CGPoint, withScrollingVelocity velocity: CGPoint) -> CGPoint {
         guard let collectionView = collectionView else { return .zero }
 
-        if UIDevice.current.orientation.isLandscape {
+        if UIApplication.shared.statusBarOrientation.isLandscape {
             // Add some snapping behaviour so that the zoomed cell is always centered
             let targetRect = CGRect(x: proposedContentOffset.x, y: 0, width: collectionView.frame.width, height: collectionView.frame.height)
             guard let rectAttributes = super.layoutAttributesForElements(in: targetRect) else { return .zero }

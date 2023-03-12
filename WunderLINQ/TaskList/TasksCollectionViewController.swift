@@ -449,7 +449,7 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
         //Scroll to the offset calculated
         UIView.animate(withDuration: 0.5, animations: {
             let itemIndex = IndexPath(item: itemRow, section: 0)
-            if UIDevice.current.orientation.isLandscape {
+            if UIApplication.shared.statusBarOrientation.isLandscape {
                 self.collectionView.scrollToItem(at: itemIndex, at: .centeredHorizontally, animated: true)
             } else {
                 self.collectionView.scrollToItem(at: itemIndex, at: .centeredVertically, animated: true)
@@ -851,7 +851,7 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
         captureSession?.sessionPreset = AVCaptureSession.Preset(rawValue: convertFromAVCaptureSessionPreset(AVCaptureSession.Preset.photo))
         //Testing line below
         let connection = output.connection(with: AVMediaType.video)
-        connection?.videoOrientation = AVCaptureVideoOrientation(rawValue: UIDevice.current.orientation.rawValue)!
+        connection?.videoOrientation = AVCaptureVideoOrientation(rawValue: UIApplication.shared.statusBarOrientation.rawValue)!
         
         captureSession?.startRunning()
     }
