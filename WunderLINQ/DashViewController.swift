@@ -64,7 +64,7 @@ class DashViewController: UIViewController, UIWebViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        NSLog("DashViewController: viewDidLoad()")
         if isTimerRunning == false {
             runTimer()
         }
@@ -212,6 +212,8 @@ class DashViewController: UIViewController, UIWebViewDelegate {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        NSLog("DashViewController: viewWillAppear()")
         setupScreenOrientation()
         //Read last used dashboard
         let lastSelection = UserDefaults.standard.string(forKey: "lastDashboard")
@@ -224,6 +226,7 @@ class DashViewController: UIViewController, UIWebViewDelegate {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        NSLog("DashViewController: viewWillDisappear()")
         timer.invalidate()
         refreshTimer.invalidate()
         seconds = 0

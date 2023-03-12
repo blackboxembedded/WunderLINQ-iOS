@@ -122,6 +122,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             AppUtility.lockOrientation(.all)
         }
         
+        // Get and store system brightness so we can reset.
         UserDefaults.standard.set(UIScreen.main.brightness, forKey: "systemBrightness")
         
         // Create and write to log file
