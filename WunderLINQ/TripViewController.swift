@@ -388,7 +388,7 @@ class TripViewController: UIViewController, UITextFieldDelegate {
             
             // Calculate Duration
             if ((startTime != nil) && (endTime != nil)){
-                durationLabel.text = Utility.calculateDuration(start: startTime!,end: endTime!)
+                durationLabel.text = Utility.calculateDuration(dateFormat: "yyyyMMdd-HH:mm:ss", start: startTime!,end: endTime!)
             }
             
             if (maxLean != nil){
