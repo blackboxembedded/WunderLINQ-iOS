@@ -45,8 +45,6 @@ class TripViewController: UIViewController, UITextFieldDelegate {
         Templates.MenuButton(title: NSLocalizedString("waypoint_view_bt_share", comment: ""), systemImage: nil) { self.share() }
         Templates.MenuButton(title: NSLocalizedString("share_gpx", comment: ""), systemImage: nil) { self.exportGPX() }
         Templates.MenuButton(title: NSLocalizedString("waypoint_view_bt_delete", comment: ""), systemImage: nil) { self.delete() }
-    } fadeLabel: { [weak self] fade in
-        //self?.label.alpha = fade ? 0.5 : 1
     }
     
     @objc func leftScreen() {
@@ -390,7 +388,7 @@ class TripViewController: UIViewController, UITextFieldDelegate {
             
             // Calculate Duration
             if ((startTime != nil) && (endTime != nil)){
-                durationLabel.text = Utility.calculateDuration(start: startTime!,end: endTime!)
+                durationLabel.text = Utility.calculateDuration(dateFormat: "yyyyMMdd-HH:mm:ss", start: startTime!,end: endTime!)
             }
             
             if (maxLean != nil){

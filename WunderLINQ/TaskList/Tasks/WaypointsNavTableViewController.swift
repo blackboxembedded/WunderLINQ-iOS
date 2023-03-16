@@ -26,12 +26,12 @@ class WaypointsNavTableViewController: UITableViewController {
     var db: OpaquePointer?
     var waypoints = [Waypoint]()
     var itemRow = 0
-    
-    private var locationManager: CLLocationManager!
-    private var currentLocation: CLLocation?
+
     private var highlightColor: UIColor?
     
     var firstRun = true;
+    
+    let motorcycleData = MotorcycleData.shared
     
     override var keyCommands: [UIKeyCommand]? {
         
@@ -318,10 +318,6 @@ class WaypointsNavTableViewController: UITableViewController {
 
         
         readWaypoints()
-
-        locationManager = CLLocationManager()
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
     }
 
     override func didReceiveMemoryWarning() {
@@ -428,8 +424,8 @@ class WaypointsNavTableViewController: UITableViewController {
         let latitude = waypoints[id].latitude
         let longitude = waypoints[id].longitude
         let label = waypoints[id].label
-        if let lat = latitude?.toDouble(), let lon = longitude?.toDouble(), let current = currentLocation {
-            NavAppHelper.navigateTo(destLatitude: lat, destLongitude: lon, destLabel: label, currentLatitude: current.coordinate.latitude, currentLongitude: current.coordinate.longitude)
+        if let lat = latitude?.toDouble(), let lon = longitude?.toDouble() {
+            NavAppHelper.navigateTo(destLatitude: lat, destLongitude: lon, destLabel: label, currentLatitude: motorcycleData.getLocation().coordinate.latitude, currentLongitude: motorcycleData.getLocation().coordinate.longitude)
         }
     }
 }
@@ -437,24 +433,4 @@ class WaypointsNavTableViewController: UITableViewController {
 // Helper function inserted by Swift 4.2 migrator.
 fileprivate func convertToUIApplicationOpenExternalURLOptionsKeyDictionary(_ input: [String: Any]) -> [UIApplication.OpenExternalURLOptionsKey: Any] {
 	return Dictionary(uniqueKeysWithValues: input.map { key, value in (UIApplication.OpenExternalURLOptionsKey(rawValue: key), value)})
-}
-
-extension WaypointsNavTableViewController: CLLocationManagerDelegate {
-    public func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        switch status {
-        case .notDetermined:
-            manager.requestWhenInUseAuthorization()
-        case .restricted, .denied:
-            NSLog("WaypointsNavTableViewController: Location permission denied")
-            self.showToast(message: NSLocalizedString("negative_location_alert_body", comment: ""))
-        case .authorizedAlways, .authorizedWhenInUse:
-            locationManager.startUpdatingLocation()
-        @unknown default:
-            NSLog("WaypointsNavTableViewController: Fatal Error")
-        }
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        do { currentLocation = locations.last }
-    }
 }

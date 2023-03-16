@@ -496,5 +496,10 @@ class Faults {
         
         return allActiveDesc
     }
+    
+    func getallCriticalFaults() ->[Bool]{
+        let criticalFaults: [Bool] = [self.frontTirePressureCriticalActive, self.rearTirePressureCriticalActive, self.generalFlashingRedActive, self.generalShowsRedActive]
+        return criticalFaults
+    }
 
 }

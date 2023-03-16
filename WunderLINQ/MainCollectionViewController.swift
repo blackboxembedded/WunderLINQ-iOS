@@ -72,6 +72,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     let bleData = BLE.shared
     let motorcycleData = MotorcycleData.shared
     let faults = Faults.shared
+    var lastNotification: [Bool]?
     var prevBrakeValue = 0
     
     let motionManager = CMMotionManager()
@@ -86,14 +87,12 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         Templates.MenuButton(title: NSLocalizedString("hwsettings_label", comment: ""), systemImage: nil) { self.openHWSettings() }
         Templates.MenuButton(title: NSLocalizedString("about_label", comment: ""), systemImage: nil) { self.openAbout() }
         Templates.MenuButton(title: NSLocalizedString("close_label", comment: ""), systemImage: nil) { exit(0)}
-    } fadeLabel: { [weak self] fade in
-        //self?.label.alpha = fade ? 0.5 : 1
     }
     
-    var seconds = 10
-    var timer = Timer()
+    var navBarTimeout = 10
+    var navBarTimer = Timer()
     var timeTimer = Timer()
-    var isTimerRunning = false
+    var sensorUpdateTimer = Timer()
     
     let inset: CGFloat = 5
     let minimumLineSpacing: CGFloat = 5
@@ -146,15 +145,31 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
 
     let locationManager: CLLocationManager = {
         $0.requestAlwaysAuthorization()
-        $0.desiredAccuracy = kCLLocationAccuracyBestForNavigation
-        $0.distanceFilter = 0
-        $0.activityType = .automotiveNavigation
+        /*
+        if #available(iOS 14.0, *) {
+            $0.desiredAccuracy = kCLLocationAccuracyReduced
+        } else {
+            // Fallback on earlier versions
+            $0.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+        }*/
+        //$0.desiredAccuracy = kCLLocationAccuracyBestForNavigation
+        //$0.distanceFilter = 10
+        //$0.activityType = .automotiveNavigation
         $0.allowsBackgroundLocationUpdates = true
         $0.pausesLocationUpdatesAutomatically = false
-        $0.startUpdatingLocation()
+        //$0.startUpdatingLocation()
         $0.startUpdatingHeading()
         return $0
     }(CLLocationManager())
+    
+    func getQuickLocationUpdate() {
+        // Request location authorization
+        self.locationManager.requestWhenInUseAuthorization()
+        
+        // Request a location update
+        self.locationManager.requestLocation()
+        // Note: requestLocation may timeout and produce an error if authorization has not yet been granted by the user
+    }
     
     private func orientationAdjustment() -> CGFloat {
         let isFaceDown: Bool = {
@@ -231,7 +246,18 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         NSLog("MainCollectionViewController: viewWillAppear")
         super.viewWillAppear(animated)
         referenceAttitude = nil
-        if isTimerRunning == false {
+        
+        if UserDefaults.standard.integer(forKey: "darkmode_lastSet") != UserDefaults.standard.integer(forKey: "darkmode_preference"){
+            UserDefaults.standard.set(UserDefaults.standard.integer(forKey: "darkmode_preference"), forKey: "darkmode_lastSet")
+            // quit app
+            exit(0)
+        }
+        if UserDefaults.standard.bool(forKey: "display_brightness_preference") {
+            UIScreen.main.brightness = CGFloat(1.0)
+        } else {
+            UIScreen.main.brightness = CGFloat(UserDefaults.standard.float(forKey: "systemBrightness"))
+        }
+        if !navBarTimer.isValid {
             runTimer()
         }
         if (wlqData != nil){
@@ -257,7 +283,6 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         collectionView.dataSource = self
         
         registerSettingsBundle()
-        NotificationCenter.default.addObserver(self, selector: #selector(self.defaultsChanged), name: UserDefaults.didChangeNotification, object: nil)
         
         switch(UserDefaults.standard.integer(forKey: "darkmode_preference")){
         case 0:
@@ -493,6 +518,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             // Fallback on earlier versions
         }
         
+        // Sensor Setup
         if motionManager.isDeviceMotionAvailable {
             //do something interesting
             NSLog("MainCollectionViewController: Motion Device Available")
@@ -504,7 +530,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         
         locationManager.delegate = locationDelegate
         
-        locationDelegate.locationCallback = { location in
+        locationDelegate.locationCallback = { [self] location in
             self.latestLocation = location
         }
         
@@ -531,13 +557,10 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             }
             
             let degrees = abs(Int(fixedHeading))
-            //NSLog("MainCollectionViewController: degrees: \(degrees) fixedHeading: \(fixedHeading)) newHeading: \(newHeading) angle(degrees): \(angle.radiansToDegrees) ")
             if (!UserDefaults.standard.bool(forKey: "bearing_override_preference")){
                 self.motorcycleData.setbearing(bearing: degrees)
             }
         }
-        
-        updateTimeTimer()
         
         if CMAltimeter.isRelativeAltitudeAvailable() {
             altimeter.startRelativeAltitudeUpdates(to: OperationQueue.main) { (data, error) in
@@ -545,7 +568,14 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                 self.motorcycleData.setBarometricPressure(barometricPressure: pressure)
             }
         }
+        
+        // Scheduling timer to Call the function "updateTime" with the interval of 1 seconds
+        timeTimer = Timer.scheduledTimer(timeInterval: 0.25, target: self, selector: #selector(self.updatePhoneSensorData), userInfo: nil, repeats: true)
+        
         updateMessageDisplay()
+        
+        // Scheduling timer to Call the function "updateTime" with the interval of 1 seconds
+        timeTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.updateTime), userInfo: nil, repeats: true)
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -558,8 +588,8 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         NSLog("MainCollectionViewController: viewWillDisappear")
         super.viewWillDisappear(animated)
         
-        timer.invalidate()
-        seconds = 0
+        navBarTimer.invalidate()
+        navBarTimeout = 0
         // Show the navigation bar on other view controllers
         DispatchQueue.main.async(){
             self.navigationController?.setNavigationBarHidden(false, animated: animated)
@@ -2125,10 +2155,10 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                 parseCommandResponse(dataBytes)
             }
             
-            updatePhoneSensorData()
             if (UserDefaults.standard.bool(forKey: "notification_preference")){
                 updateNotification()
             }
+            
             if UserDefaults.standard.bool(forKey: "fuel_routing_enable_preference") && faults.getFuelFaultActive(){
                 if !faults.getFuelStationAlertSent(){
                     faults.setFuelStationAlertSent(active:true)
@@ -2147,28 +2177,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             }
         }
     }
-    
-    @objc func defaultsChanged(notification:NSNotification){
-        NSLog("MainCollectionViewController: defaultsChanged")
-        if let defaults = notification.object as? UserDefaults {
-            if defaults.integer(forKey: "darkmode_lastSet") != defaults.integer(forKey: "darkmode_preference"){
-                UserDefaults.standard.set(defaults.integer(forKey: "darkmode_preference"), forKey: "darkmode_lastSet")
-                // quit app
-                exit(0)
-            }
-            if UserDefaults.standard.bool(forKey: "display_brightness_preference") {
-                UIScreen.main.brightness = CGFloat(1.0)
-            } else {
-                UIScreen.main.brightness = CGFloat(UserDefaults.standard.float(forKey: "systemBrightness"))
-            }
-            if (self.collectionView != nil){
-                DispatchQueue.main.async {
-                    self.collectionView!.reloadData()
-                }
-            }
-        }
-    }
-    
+
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         
         //displaying the ios local notification when app is in foreground
@@ -2181,23 +2190,26 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     }
     
     private func updateNotification(){
-        var alertBody: String = ""
-        if(faults.getFrontTirePressureCriticalActive()){
-            alertBody += NSLocalizedString("fault_TIREFCF", comment: "") + "\n"
-        }
-        if(faults.getRearTirePressureCriticalActive()){
-            alertBody += NSLocalizedString("fault_TIRERCF", comment: "") + "\n"
-        }
-        if(faults.getGeneralFlashingRedActive()){
-            alertBody += NSLocalizedString("fault_GENWARNFSRED", comment: "") + "\n"
-        }
-        if(faults.getGeneralShowsRedActive()){
-            alertBody += NSLocalizedString("fault_GENWARNSHRED", comment: "") + "\n"
-        }
-        if(alertBody != ""){
-            sendAlert(message: alertBody)
-        } else {
-            clearNotifications()
+        if (lastNotification != faults.getallCriticalFaults()){
+            lastNotification = faults.getallCriticalFaults()
+            var alertBody: String = ""
+            if(faults.getFrontTirePressureCriticalActive()){
+                alertBody += NSLocalizedString("fault_TIREFCF", comment: "") + "\n"
+            }
+            if(faults.getRearTirePressureCriticalActive()){
+                alertBody += NSLocalizedString("fault_TIRERCF", comment: "") + "\n"
+            }
+            if(faults.getGeneralFlashingRedActive()){
+                alertBody += NSLocalizedString("fault_GENWARNFSRED", comment: "") + "\n"
+            }
+            if(faults.getGeneralShowsRedActive()){
+                alertBody += NSLocalizedString("fault_GENWARNSHRED", comment: "") + "\n"
+            }
+            if(alertBody != ""){
+                sendAlert(message: alertBody)
+            } else {
+                clearNotifications()
+            }
         }
     }
     
@@ -2208,27 +2220,61 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     }
     
     private func sendAlert(message:String){
-        //creating the notification content
-        let content = UNMutableNotificationContent()
         
-        //adding title, subtitle, body and badge
-        content.title = NSLocalizedString("fault_title", comment: "")
-        //content.subtitle = "Sub Title"
-        content.body = message
-        //content.badge = 1
-        content.sound = UNNotificationSound.default
+        let notificationCenter = UNUserNotificationCenter.current()
         
-        //getting the notification trigger
-        //it will be called after 1 second
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
+        // Create a unique identifier for your notification
+        let notificationIdentifier = "FaultNotification"
+        // Get the notification request with the identifier
+        notificationCenter.getPendingNotificationRequests { requests in
+            let requestToUpdate = requests.first { request in
+                return request.identifier == notificationIdentifier
+            }
+            
+            if let requestToUpdate = requestToUpdate {
+                // Create a new notification content with the updated message
+                let updatedNotificationContent = UNMutableNotificationContent()
+                updatedNotificationContent.title = NSLocalizedString("fault_title", comment: "")
+                updatedNotificationContent.body = message
+                
+                // Create a new notification request with the same identifier and the updated content
+                let updatedNotificationRequest = UNNotificationRequest(identifier: notificationIdentifier,
+                                                                        content: updatedNotificationContent,
+                                                                        trigger: requestToUpdate.trigger)
+                
+                // Update the notification with the new request
+                notificationCenter.add(updatedNotificationRequest) { error in
+                    if let error = error {
+                        NSLog("MainCollectionViewController: Error updating notification: \(error)")
+                    }
+                }
+            } else {
+                NSLog("MainCollectionViewController: Notification not found with identifier: \(notificationIdentifier)")
+                //creating the notification content
+                let content = UNMutableNotificationContent()
+                
+                //adding title, subtitle, body and badge
+                content.title = NSLocalizedString("fault_title", comment: "")
+                //content.subtitle = "Sub Title"
+                content.body = message
+                //content.badge = 1
+                content.sound = UNNotificationSound.default
+                
+                //getting the notification trigger
+                //it will be called after 1 second
+                let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
+                
+                //getting the notification request
+                let request = UNNotificationRequest(identifier: notificationIdentifier, content: content, trigger: trigger)
+                
+                UNUserNotificationCenter.current().delegate = self
+                
+                //adding the notification to notification center
+                UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+            }
+        }
         
-        //getting the notification request
-        let request = UNNotificationRequest(identifier: "FaultNotification", content: content, trigger: trigger)
         
-        UNUserNotificationCenter.current().delegate = self
-        
-        //adding the notification to notification center
-        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
     }
     
     @objc func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
@@ -2592,7 +2638,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         let _ = UserDefaults.standard.synchronize()
     }
     
-    func updatePhoneSensorData() {
+    @objc func updatePhoneSensorData() {
         let data = motionManager.deviceMotion
         if (data != nil){
             let attitude = data!.attitude
@@ -2627,29 +2673,37 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             //g force
             motorcycleData.setgForce(gForce: sqrt (pow(data!.userAcceleration.x,2) + pow(data!.userAcceleration.y,2) + pow(data!.userAcceleration.z,2)))
         }
+        
+        // Request Location Update
+        getQuickLocationUpdate()
+        
+        // Log if enabled
+        let loggingStatus = UserDefaults.standard.string(forKey: "loggingStatus")
+        if loggingStatus != nil {
+            //Log
+            Logger.log()
+        }
     }
 
     @objc func onTouch() {
         DispatchQueue.main.async(){
             self.navigationController?.setNavigationBarHidden(false, animated: true)
         }
-        if isTimerRunning == false {
+        if !navBarTimer.isValid {
             runTimer()
         }
     }
     
     func runTimer() {
         if UserDefaults.standard.bool(forKey: "hide_navbar_preference") {
-            timer = Timer.scheduledTimer(timeInterval: 1, target: self,   selector: (#selector(updateTimer)), userInfo: nil, repeats: true)
-            isTimerRunning = true
+            navBarTimer = Timer.scheduledTimer(timeInterval: 1, target: self,   selector: (#selector(updateTimer)), userInfo: nil, repeats: true)
         }
     }
     
     @objc func updateTimer() {
-        if seconds < 1 {
-            timer.invalidate()
-            isTimerRunning = false
-            seconds = 10
+        if navBarTimeout < 1 {
+            navBarTimer.invalidate()
+            navBarTimeout = 10
             // Hide the navigation bar on the this view controller
             DispatchQueue.main.async(){
                 self.navigationController?.setNavigationBarHidden(true, animated: true)
@@ -2660,15 +2714,10 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                 }
             }
         } else {
-            seconds -= 1
+            navBarTimeout -= 1
         }
     }
-    
-    func updateTimeTimer(){
-        // Scheduling timer to Call the function "updateCounting" with the interval of 1 seconds
-        timeTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.updateTime), userInfo: nil, repeats: true)
-    }
-    
+
     @objc func updateTime(){
         if (wlqData != nil){
             if (wlqData.gethardwareType() == wlqData.TYPE_NAVIGATOR()){

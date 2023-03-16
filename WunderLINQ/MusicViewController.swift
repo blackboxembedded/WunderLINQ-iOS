@@ -63,7 +63,7 @@ class MusicViewController: UIViewController, SPTAppRemotePlayerStateDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        NSLog("MusicViewController: viewDidLoad()")
         switch(UserDefaults.standard.integer(forKey: "darkmode_preference")){
         case 0:
             //OFF
@@ -170,6 +170,7 @@ class MusicViewController: UIViewController, SPTAppRemotePlayerStateDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        NSLog("MusicViewController: viewWillAppear")
         if isTimerRunning == false {
             runTimer()
         }
@@ -177,22 +178,13 @@ class MusicViewController: UIViewController, SPTAppRemotePlayerStateDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-        let musicApp = UserDefaults.standard.integer(forKey: "musicplayer_preference")
-        switch (musicApp){
-        case 0: // Apple Music
-            // Do nothing
-            break
-        case 1: // Spotify
-            spotifyGetPlayerState()
-            break
-        default:
-            break
-        }
+        NSLog("MusicViewController: viewDidAppear")
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        NSLog("MusicViewController: viewWillDisappear")
+        spotifyUnsubscribeFromPlayerState()
         timer.invalidate()
         seconds = 0
         // Show the navigation bar on other view controllers
