@@ -186,6 +186,7 @@ class MusicViewController: UIViewController, SPTAppRemotePlayerStateDelegate {
         NSLog("MusicViewController: viewWillDisappear")
         spotifyUnsubscribeFromPlayerState()
         timer.invalidate()
+        appleMusicTimer.invalidate()
         seconds = 0
         // Show the navigation bar on other view controllers
         DispatchQueue.main.async(){
