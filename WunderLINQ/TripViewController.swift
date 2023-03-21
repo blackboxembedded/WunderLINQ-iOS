@@ -216,12 +216,18 @@ class TripViewController: UIViewController, UITextFieldDelegate {
             var endShiftCnt : Int = 0
             var endFrontBrakeCnt : Int = 0
             var endRearBrakeCnt : Int = 0
+            var dateFormat = "yyyyMMdd-HH:mm:ss"
             
             var lineNumber = 0
             for row in csvRows{
                 lineNumber = lineNumber + 1
                 if (lineNumber == 2) {
                     startTime = row[0]
+                    //Check date format
+                    if let fourthFromEnd = row[0].suffix(4).dropLast(3).last, fourthFromEnd == "." {
+                        print("New format")
+                        dateFormat = "yyyyMMdd-HH:mm:ss.SSS"
+                    }
                 } else if ((lineNumber > 2) && (lineNumber < csvRows.count)){
                     endTime = row[0]
                 }
@@ -388,7 +394,7 @@ class TripViewController: UIViewController, UITextFieldDelegate {
             
             // Calculate Duration
             if ((startTime != nil) && (endTime != nil)){
-                durationLabel.text = Utility.calculateDuration(dateFormat: "yyyyMMdd-HH:mm:ss", start: startTime!,end: endTime!)
+                durationLabel.text = Utility.calculateDuration(dateFormat: dateFormat, start: startTime!,end: endTime!)
             }
             
             if (maxLean != nil){
