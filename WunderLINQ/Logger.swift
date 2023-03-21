@@ -131,24 +131,33 @@ class Logger {
                 }
             }
             
-            let currentLocation = motorcycleData.getLocation()
-            let currentSpeed = currentLocation.speed * 3.6
-            let latitude:String = "\(currentLocation.coordinate.latitude)"
-            let longitude:String = "\(currentLocation.coordinate.longitude)"
+            // GPS Derived Data
+            var latitude:String = "No Fix"
+            var longitude:String = "No Fix"
+            var altitude:String = "No Fix"
+            var gpsSpeed:String = "No Fix"
             
-            var altitude:String = "\(currentLocation.altitude)"
-            if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
-                altitude = "\(Utility.mtoFeet(currentLocation.altitude))"
-            }
-            var gpsSpeed:String = "0"
-            if currentSpeed >= 0{
-                gpsSpeed = "\(currentSpeed)"
-                let gpsSpeedValue:Double = currentSpeed
-                gpsSpeed = "\(gpsSpeedValue)"
+            if motorcycleData.location != nil {
+                let currentLocation = motorcycleData.location!
+                latitude = "\(currentLocation.coordinate.latitude)"
+                longitude = "\(currentLocation.coordinate.longitude)"
+                
+                altitude = "\(currentLocation.altitude)"
                 if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
-                    gpsSpeed = "\(Utility.kmToMiles(gpsSpeedValue))"
+                    altitude = "\(Utility.mtoFeet(currentLocation.altitude))"
+                }
+                
+                let currentSpeed = currentLocation.speed * 3.6
+                if currentSpeed >= 0{
+                    gpsSpeed = "\(currentSpeed)"
+                    let gpsSpeedValue:Double = currentSpeed
+                    gpsSpeed = "\(gpsSpeedValue)"
+                    if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
+                        gpsSpeed = "\(Utility.kmToMiles(gpsSpeedValue))"
+                    }
                 }
             }
+            
             var gear: String = ""
             if motorcycleData.gear != nil {
                 gear = motorcycleData.gear!
