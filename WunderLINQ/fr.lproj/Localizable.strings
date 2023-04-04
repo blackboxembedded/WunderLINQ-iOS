@@ -239,7 +239,7 @@
 "read_media_alert_body" = "WunderLINQ doit avoir accès à votre bibliothèque multimédia pour contrôler la lecture de musique.";
 "write_photo_alert_body" = "WunderLINQ requiert l'accès pour enregistrer des photos dans votre photothèque.";
 "record_audio_alert_body" = "WinderLINQ requiert l'accès à votre microphone pour enregistrer l'audio dans les vidéos.";
-"call_alert_body" = "WunderLINQ requiert l'accès à votre téléphone pour lancer des appels.";
+"call_alert_body" = "WunderLINQ requiert l'accès à votre téléphone pour passer des appels.";
 "camera_alert_body" = "WunderLINQ requiert l'accès à votre caméra pour prendre des photos et des enregistrements vidéo.";
 "contacts_alert_body" = "WunderLINQ doit avoir accès à vos contacts pour les listes d'appel.";
 // FirstRunViewController
