@@ -8,6 +8,15 @@ to control your mobile device and other connected devices like GoPros from your 
 If your motorcycle also has the On Board Computer Pro option the WunderLINQ can also receive and 
 decode performance and fault data.
 
+<a href="https://itunes.apple.com/us/app/wunderlinq/id1410462734?ls=1&mt=8" target="_blank">
+<img src="https://blackboxembedded.github.io/WunderLINQ-Documentation/en/images-localized/badge_store_appstore.png" alt="Get it on AppStore" height="60"/></a>
+
+<p>
+<a href="https://weblate.blackboxembedded.com/engage/wunderlinq/">
+<img src="https://weblate.blackboxembedded.com/widgets/wunderlinq/-/wunderlinq-ios/svg-badge.svg" alt="Translation status" />
+</a>
+</p>
+
 ## Build Instructions
 1. Clone the project and open the workspace in Xcode
 
