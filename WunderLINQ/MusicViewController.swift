@@ -145,13 +145,9 @@ class MusicViewController: UIViewController, SPTAppRemotePlayerStateDelegate {
         switch (musicApp){
         case 0: // Apple Music
             appleMusicPlayer.prepareToPlay()
-            
-            self.appleMusicTimer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(MusicViewController.appleMusicTimerFired(_:)), userInfo: nil, repeats: true)
-            self.appleMusicTimer.tolerance = 0.1
-            
             appleMusicPlayer.beginGeneratingPlaybackNotifications()
             
-            NotificationCenter.default.addObserver(self, selector:#selector(MusicViewController.appleUpdateNowPlayingInfo), name: NSNotification.Name.MPMusicPlayerControllerNowPlayingItemDidChange, object: nil)
+            NotificationCenter.default.addObserver(self, selector:#selector(MusicViewController.appleMusicUpdateNowPlayingInfo), name: NSNotification.Name.MPMusicPlayerControllerNowPlayingItemDidChange, object: nil)
             
             if (appleMusicPlayer.playbackState == MPMusicPlaybackState.playing) {
                 updatePlayPauseButtonState(false)
@@ -179,6 +175,7 @@ class MusicViewController: UIViewController, SPTAppRemotePlayerStateDelegate {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         NSLog("MusicViewController: viewDidAppear")
+        appleMusicUpdateNowPlayingInfo()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -186,7 +183,6 @@ class MusicViewController: UIViewController, SPTAppRemotePlayerStateDelegate {
         NSLog("MusicViewController: viewWillDisappear")
         spotifyUnsubscribeFromPlayerState()
         timer.invalidate()
-        appleMusicTimer.invalidate()
         seconds = 0
         // Show the navigation bar on other view controllers
         DispatchQueue.main.async(){
@@ -401,7 +397,8 @@ class MusicViewController: UIViewController, SPTAppRemotePlayerStateDelegate {
     var appleMusicTimer = Timer()
     var appleMusicTrackElapsed: TimeInterval!
     
-    @objc func appleMusicTimerFired(_:AnyObject) {
+    @objc func appleMusicUpdateNowPlayingInfo(){
+        NSLog("MusicViewController: appleMusicUpdateNowPlayingInfo")
         if let currentTrack = MPMusicPlayerController.systemMusicPlayer.nowPlayingItem {
             // Update UI
             // Get Current Track Info
@@ -425,11 +422,11 @@ class MusicViewController: UIViewController, SPTAppRemotePlayerStateDelegate {
             }
             appleMusicTrackElapsed = appleMusicPlayer.currentPlaybackTime
         }
-    }
-    
-    @objc func appleUpdateNowPlayingInfo(){
-        self.timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(MusicViewController.appleMusicTimerFired(_:)), userInfo: nil, repeats: true)
-        self.timer.tolerance = 0.1
+        if (appleMusicPlayer.playbackState == MPMusicPlaybackState.playing) {
+            updatePlayPauseButtonState(false)
+        } else {
+            updatePlayPauseButtonState(true)
+        }
     }
     
     // MARK: - Spotify
