@@ -29,7 +29,7 @@
 "gear_label" = "Vitesse";
 "geodata_label" = "Trajets & Destinations";
 "appsettings_label" = "Réglages";
-"sensitivity_label" = "Sensibilité de la molette";
+"sensitivity_label" = "Sensibilité";
 "trip_view_waypoint_start_label" = "Début";
 "trip_view_tv_engine" = "Température moteur (Min/Moy/Max)";
 "delete_bt" = "Effacer";
@@ -246,3 +246,66 @@
 "firstrun_start" = "WunderLINQ nécessite de nombreuses autorisations pour activer toutes les fonctionnalités intéressantes de l'application. Sur les prochains écrans, nous expliquerons la nécessité de chaque demande d'autorisation.\nCes écrans ne vous seront présentés qu'une seule fois. Si vous souhaitez activer certaines autorisations par la suite, vous devrez accéder aux paramètres Android et les activer.";
 "addwaypoint_view_tv_search_label" = "Emplacement ou adresse";
 "waypoint_view_label_hint" = "Libellé d'emplacement";
+"usbcontrol_engine_label" = "Moteur activé";
+"dash_avgspeed_label" = "MOY";
+"dash_altitude_label" = "ELEV";
+"waypoint_view_tv_elevation_label" = "Élévation";
+"share_gpx" = "Partager GPX";
+"cancel" = "Annuler";
+"gpx_import_alert_title" = "Importation GPX";
+"gpx_import_alert_body" = "Importer des waypoints depuis GPX ?";
+"task_title_systemvolume" = "Volume";
+"task_title_gopro" = "Contrôle GoPro";
+"rpm_header" = "RPM";
+"leanangle_bike_header" = "Angle d'inclinaison";
+"rearwheel_speed_header" = "Vitesse de la roue arrière";
+"fault_SERVICE" = "Service rendu";
+//VolumeViewController
+"systemvolume_title" = "Volume du système";
+//DashViewController
+"dash_title" = "Tableau de bord";
+"dash_ambient_label" = "Air";
+"dash_engine_label" = "Eng";
+"dash_range_label" = "Gamme";
+"dash_rdcf_label" = "F";
+"no360remote_alert_title" = "Télécommande WunderLINQ Insta360 introuvable";
+"task_title_insta360" = "Contrôle Insta360";
+//AccessoryViewController
+"accessory_title" = "État des accessoires";
+"default_accessory_one_name" = "Première chaîne";
+"default_btn_label" = "Mode par défaut";
+"keymode_label" = "Mode clé";
+"keymode_default_label" = "Défaut";
+"full_toggle_right_long_label" = "Appuyez longuement sur la roue vers la droite";
+"full_toggle_left_label" = "Appuyer roue vers la gauche";
+"full_toggle_left_long_label" = "Appuyer longuement la roue vers la droite";
+"full_signal_cancel_label" = "Annulation du signal";
+"usbcontrol_on_label" = "Toujours activé";
+"hwreset_alert_body" = "Les paramètres personnalisés WunderLINQ actuels seront réinitialisés aux paramètres d'usine par défaut.";
+//HWSettingsViewController
+"customize_btn_label" = "Personnaliser";
+"dash_fueleconomyone_label" = "Écono 1";
+"dash_cconsumption_label" = "CONS";
+"task_title_front_start_record" = "Démarrer l'enregistrement de selfie";
+"nogpremote_alert_title" = "Télécommande GoPro WunderLINQ introuvable";
+"trip_view_label_hint" = "Libellé du voyage";
+"default_accessory_two_name" = "Deuxième chaîne";
+"corrupt_config_label" = "Configuration corrompue ! Réinitialisation nécessaire";
+//HWCustomizeViewController
+"usb_threshold_label" = "Contrôle des ports USB";
+"full_toggle_right_label" = "Appuyer roue vers la droite";
+"fw_ver_label" = "Firmware :";
+"app_ver_label" = "Application :";
+"dash_odometer_label" = "Odomètre";
+"dash_trip1_label" = "Trip 1";
+"dash_trip2_label" = "Trip 2";
+"dash_tripauto_label" = "Trip A";
+"dash_fueleconomytwo_label" = "Écono 2";
+"dash_rdcr_label" = "R";
+"keymode_custom_title" = "Personnalisation des clés";
+"long_press_label" = "Sensibilité à une longue pression";
+"double_press_label" = "Sensibilité à la double pression";
+"full_scroll_up_label" = "Faire défiler vers le haut";
+"full_scroll_down_label" = "Faire défiler vers le bas";
+"btn_documentation_title" = "Documentation";
+"usbcontrol_off_label" = "Toujours désactivé";
