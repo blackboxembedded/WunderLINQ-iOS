@@ -42,6 +42,6 @@
 "gpsspeed_header" = "Vitesse GPS";
 "sunrisesunset_header" = "Lever/Coucher du soleil";
 "barometric_header" = "Baromètre";
-"leanangle_bike_header" = "Lean Angle";
-"rearwheel_speed_header" = "Rear Wheel Speed";
+"leanangle_bike_header" = "Angle d'inclinaison";
+"rearwheel_speed_header" = "Vitesse de la roue arrière";
 "rpm_header" = "RPM";
