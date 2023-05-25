@@ -1,10 +1,20 @@
-//
-//  LINbus.swift
-//  WunderLINQ
-//
-//  Created by Keith Conger on 1/13/22.
-//  Copyright © 2022 Black Box Embedded, LLC. All rights reserved.
-//
+/*
+WunderLINQ Client Application
+Copyright (C) 2020  Keith Conger, Black Box Embedded, LLC
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <https://www.gnu.org/licenses/>.
+*/
 
 import Foundation
 
@@ -29,12 +39,11 @@ class LINbus {
         let lastMessage = dataArray
         switch lastMessage[0] {
         case 0x00:
-            //NSLog("Message ID: 0")
+            // VIN
             let bytes: [UInt8] = [lastMessage[1],lastMessage[2],lastMessage[3],lastMessage[4],lastMessage[5],lastMessage[6],lastMessage[7]]
             let vin = String(bytes: bytes, encoding: .utf8)
             motorcycleData.setVIN(vin: vin)
         case 0x01:
-            //NSLog("Message ID: 1")
             // Rear Wheel Speed
             if ((lastMessage[3] != 0xFF) && (lastMessage[4] != 0xFF)){
                 let rearSpeed = Double(lastMessage[3] | ((lastMessage[4] & 0x0F) << 8))  * 0.14
@@ -52,8 +61,7 @@ class LINbus {
             let ambientLightValue = lastMessage[6] & 0x0F
             motorcycleData.setambientLight(ambientLight: Double(ambientLightValue))
         case 0x05:
-            //NSLog("Message ID: 5")
-            //Lean Angle
+            // Lean Angle
             if ((lastMessage[1] != 0xFF) && ((lastMessage[2] & 0x0F) != 0xF)){
                 let leanAngleBike:Double = Double(UInt32((UInt32((lastMessage[2] & 0x0F)) << 8 | UInt32(lastMessage[1]))))
                 var leanAngleBikeFixed:Double = 0
@@ -65,7 +73,7 @@ class LINbus {
                 leanAngleBikeFixed = (leanAngleBikeFixed * 0.045)
                 motorcycleData.setleanAngleBike(leanAngleBike: leanAngleBikeFixed)
                 
-                //Store Max L and R lean angle
+                // Store Max L and R lean angle
                 if(leanAngleBikeFixed > 0){
                     if (motorcycleData.leanAngleMaxR != nil) {
                         if (leanAngleBikeFixed > motorcycleData.leanAngleMaxR!) {

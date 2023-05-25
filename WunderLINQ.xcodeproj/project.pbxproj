@@ -110,6 +110,7 @@
 		7EFA9908240DFDE700E65078 /* FirstRunViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EFA9907240DFDE700E65078 /* FirstRunViewController.swift */; };
 		B98CA75D252E6C6B00530075 /* UIStoryboard+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98CA75C252E6C6B00530075 /* UIStoryboard+extensions.swift */; };
 		B98CA762252E6F5500530075 /* String+Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98CA761252E6F5500530075 /* String+Localizable.swift */; };
+		D83D6A5E2A119A06008828EC /* CANbusTriumph.swift in Sources */ = {isa = PBXBuildFile; fileRef = D83D6A5D2A119A06008828EC /* CANbusTriumph.swift */; };
 		D8585C53293EBD550025D0AB /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8585C51293EBD540025D0AB /* Main_iPad.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -270,6 +271,7 @@
 		7EFA9907240DFDE700E65078 /* FirstRunViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstRunViewController.swift; sourceTree = "<group>"; };
 		B98CA75C252E6C6B00530075 /* UIStoryboard+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+extensions.swift"; sourceTree = "<group>"; };
 		B98CA761252E6F5500530075 /* String+Localizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Localizable.swift"; sourceTree = "<group>"; };
+		D83D6A5D2A119A06008828EC /* CANbusTriumph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CANbusTriumph.swift; sourceTree = "<group>"; };
 		D8585C52293EBD540025D0AB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
 		DA150AA674E4880933A5281B /* Pods_WunderLINQ.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WunderLINQ.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -495,6 +497,7 @@
 				7EB80AB62790E49400D3A051 /* CANbus.swift */,
 				7EB80AB42790E47F00D3A051 /* LINbus.swift */,
 				7EF0776B258FBDEF009A6BAA /* KeyboardHID.swift */,
+				D83D6A5D2A119A06008828EC /* CANbusTriumph.swift */,
 			);
 			path = protocols;
 			sourceTree = "<group>";
@@ -760,6 +763,7 @@
 				7EAE9415211E9B3200E24CE9 /* Double+Extensions.swift in Sources */,
 				7EA4784E1F40B154000CEDDC /* AppDelegate.swift in Sources */,
 				7E62BB6D21FE3DBF00FDB10E /* MainCollectionViewController.swift in Sources */,
+				D83D6A5E2A119A06008828EC /* CANbusTriumph.swift in Sources */,
 				7EE583622905A88700AF6A87 /* AccessoryViewController.swift in Sources */,
 				7E7C53CD21F3BA9200C98010 /* ContactsTableViewCell.swift in Sources */,
 				7E068BC7210190CB0076EAAD /* TripsTableViewController.swift in Sources */,
