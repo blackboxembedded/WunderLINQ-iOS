@@ -105,10 +105,12 @@ class ADVDashboard {
             var engineTemp:Double = motorcycleData.engineTemperature!
             if (engineTemp >= 104.0){
                 let style = xml?[0]["dashboard"]?["values"]?["engineTemp"]?.attributes["style"]
-                let regex = try! NSRegularExpression(pattern: "fill:([^<]*);", options: NSRegularExpression.Options.caseInsensitive)
-                let range = NSMakeRange(0, style!.count)
-                let modString = regex.stringByReplacingMatches(in: style!, options: [], range: range, withTemplate: "fill:#e20505;")
-                xml?[0]["dashboard"]?["values"]?["engineTemp"]?.attributes["style"] = modString
+                if (style != nil) {
+                    let regex = try! NSRegularExpression(pattern: "fill:([^<]*);", options: NSRegularExpression.Options.caseInsensitive)
+                    let range = NSMakeRange(0, style!.count)
+                    let modString = regex.stringByReplacingMatches(in: style!, options: [], range: range, withTemplate: "fill:#e20505;")
+                    xml?[0]["dashboard"]?["values"]?["engineTemp"]?.attributes["style"] = modString
+                }
             }
             if (UserDefaults.standard.integer(forKey: "temperature_unit_preference") == 1 ){
                 temperatureUnit = "F"
