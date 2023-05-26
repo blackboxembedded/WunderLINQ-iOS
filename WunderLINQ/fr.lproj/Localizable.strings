@@ -309,3 +309,4 @@
 "full_scroll_down_label" = "Faire défiler vers le bas";
 "btn_documentation_title" = "Documentation";
 "usbcontrol_off_label" = "Toujours désactivé";
+"full_signal_cancel_long_label" = "Annulation du signal Appui long";
