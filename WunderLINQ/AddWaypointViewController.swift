@@ -158,6 +158,7 @@ class AddWaypointViewController: UIViewController, UITextFieldDelegate, GMSMapVi
                                  long: waypoint.longitude!,
                                  label: waypoint.comment ?? "",
                                  date: waypoint.time ?? Date())
+                    self.showToast(message: NSLocalizedString("toast_gpx_saved", comment: ""))
                 }
             }))
             alert.addAction(UIAlertAction(title: NSLocalizedString("negative_alert_btn_cancel", comment: ""), style: UIAlertAction.Style.cancel, handler: { action in

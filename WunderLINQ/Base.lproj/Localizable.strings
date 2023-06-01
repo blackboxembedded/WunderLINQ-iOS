@@ -234,6 +234,7 @@
 "toast_actioncam_notconnected" = "ActionCam Not Connected";
 "toast_actioncam_notset" = "Set ActionCam type in the app settings";
 "toast_waypoint_saved" = "Waypoint Saved";
+"toast_gpx_saved" = "GPX Imported";
 "task_title_waypoint_nav" = "Navigate to Waypoint";
 "toast_photo_taken" = "Photo Taken!";
 "nogpremote_alert_title" = "WunderLINQ GoPro Remote Not Found";
