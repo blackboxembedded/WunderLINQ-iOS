@@ -2310,7 +2310,9 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             UIKeyCommand(input: UIKeyCommand.inputLeftArrow, modifierFlags:[], action: #selector(leftScreen)),
             UIKeyCommand(input: UIKeyCommand.inputRightArrow, modifierFlags:[], action: #selector(rightScreen)),
             UIKeyCommand(input: UIKeyCommand.inputUpArrow, modifierFlags:[], action: #selector(upScreen)),
-            UIKeyCommand(input: UIKeyCommand.inputDownArrow, modifierFlags:[], action: #selector(downScreen))
+            UIKeyCommand(input: "+", modifierFlags:[], action: #selector(upScreen)),
+            UIKeyCommand(input: UIKeyCommand.inputDownArrow, modifierFlags:[], action: #selector(downScreen)),
+            UIKeyCommand(input: "-", modifierFlags:[], action: #selector(downScreen))
         ]
         if #available(iOS 15, *) {
             commands.forEach { $0.wantsPriorityOverSystemBehavior = true }

@@ -293,7 +293,9 @@ class DashViewController: UIViewController, UIWebViewDelegate {
             UIKeyCommand(input: UIKeyCommand.inputLeftArrow, modifierFlags:[], action: #selector(leftScreen)),
             UIKeyCommand(input: UIKeyCommand.inputRightArrow, modifierFlags:[], action: #selector(rightScreen)),
             UIKeyCommand(input: UIKeyCommand.inputUpArrow, modifierFlags:[], action: #selector(nextInfo)),
-            UIKeyCommand(input: UIKeyCommand.inputDownArrow, modifierFlags:[], action: #selector(previousInfo))
+            UIKeyCommand(input: "+", modifierFlags:[], action: #selector(nextInfo)),
+            UIKeyCommand(input: UIKeyCommand.inputDownArrow, modifierFlags:[], action: #selector(previousInfo)),
+            UIKeyCommand(input: "-", modifierFlags:[], action: #selector(previousInfo))
         ]
         if #available(iOS 15, *) {
             commands.forEach { $0.wantsPriorityOverSystemBehavior = true }

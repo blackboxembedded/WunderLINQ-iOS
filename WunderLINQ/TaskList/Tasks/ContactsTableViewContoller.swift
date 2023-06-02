@@ -113,7 +113,9 @@ class ContactsTableViewController: UITableViewController {
         let commands = [
             UIKeyCommand(input: "\u{d}", modifierFlags:[], action: #selector(selectItem)),
             UIKeyCommand(input: UIKeyCommand.inputUpArrow, modifierFlags:[], action: #selector(upRow)),
+            UIKeyCommand(input: "+", modifierFlags:[], action: #selector(upRow)),
             UIKeyCommand(input: UIKeyCommand.inputDownArrow, modifierFlags:[], action: #selector(downRow)),
+            UIKeyCommand(input: "-", modifierFlags:[], action: #selector(downRow)),
             UIKeyCommand(input: UIKeyCommand.inputLeftArrow, modifierFlags:[], action: #selector(leftScreen)),
             UIKeyCommand(input: UIKeyCommand.inputRightArrow, modifierFlags:[], action: #selector(rightScreen))
         ]

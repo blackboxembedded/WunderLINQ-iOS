@@ -33,7 +33,7 @@ class AlertViewController: UIViewController {
         
         let commands = [
             UIKeyCommand(input: UIKeyCommand.inputLeftArrow, modifierFlags:[], action: #selector(left)),
-            UIKeyCommand(input: UIKeyCommand.inputLeftArrow, modifierFlags:[], action: #selector(right))
+            UIKeyCommand(input: UIKeyCommand.inputRightArrow, modifierFlags:[], action: #selector(right))
         ]
         if #available(iOS 15, *) {
             commands.forEach { $0.wantsPriorityOverSystemBehavior = true }

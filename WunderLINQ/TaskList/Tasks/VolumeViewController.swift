@@ -73,7 +73,9 @@ class VolumeViewController: UIViewController {
         let commands = [
             UIKeyCommand(input: "\u{d}", modifierFlags:[], action: #selector(enter)),
             UIKeyCommand(input: UIKeyCommand.inputUpArrow, modifierFlags:[], action: #selector(up)),
+            UIKeyCommand(input: "+", modifierFlags:[], action: #selector(up)),
             UIKeyCommand(input: UIKeyCommand.inputDownArrow, modifierFlags:[], action: #selector(down)),
+            UIKeyCommand(input: "-", modifierFlags:[], action: #selector(down)),
             UIKeyCommand(input: UIKeyCommand.inputLeftArrow, modifierFlags:[], action: #selector(leftScreen)),
             UIKeyCommand(input: UIKeyCommand.inputRightArrow, modifierFlags:[], action: #selector(right))
         ]

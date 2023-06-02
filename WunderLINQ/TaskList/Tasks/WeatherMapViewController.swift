@@ -42,7 +42,9 @@ class WeatherMapViewController: UIViewController {
         let commands = [
             UIKeyCommand(input: "\u{d}", modifierFlags:[], action: #selector(centerMap)),
             UIKeyCommand(input: UIKeyCommand.inputUpArrow, modifierFlags:[], action: #selector(zoomIn)),
+            UIKeyCommand(input: "+", modifierFlags:[], action: #selector(zoomIn)),
             UIKeyCommand(input: UIKeyCommand.inputDownArrow, modifierFlags:[], action: #selector(zoomOut)),
+            UIKeyCommand(input: "-", modifierFlags:[], action: #selector(zoomOut)),
             UIKeyCommand(input: UIKeyCommand.inputLeftArrow, modifierFlags:[], action: #selector(leftScreen))
         ]
         if #available(iOS 15, *) {
