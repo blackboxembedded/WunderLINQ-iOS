@@ -77,6 +77,9 @@ enum NavigationAppPreference: Int, CaseIterable {
     /// Universal app link accessible with `om://`
     case organicmaps
     
+    /// Universal app link accessible with `guru://`
+    case gurumaps
+    
     var isAvailable: Bool {
         UIApplication.shared.canOpenURL(URL(string: self.urlScheme)!)
     }
@@ -130,6 +133,9 @@ enum NavigationAppPreference: Int, CaseIterable {
             
         case .organicmaps:
             return "om://"
+            
+        case .gurumaps:
+            return "guru://"
 
         }
     }
@@ -197,6 +203,9 @@ enum NavigationAppPreference: Int, CaseIterable {
             
         case .organicmaps:
             back_link = "?backurl=wunderlinq://"
+            
+        case .gurumaps:
+            back_link = ""
         }
         
         
@@ -375,12 +384,24 @@ extension NavAppHelper {
         case .organicmaps:
             //Organic Maps
             let urlString = "\(navApp.urlScheme)route?sll=\(currentLatitude),\(currentLongitude)&saddr=\(NSLocalizedString("trip_view_waypoint_start_label", comment: ""))&dll=\(destLatitude),\(destLongitude)&daddr=\(destLabel ?? ""))&type=vehicle&backurl=wunderlinq://"
-            if let mapsMeURL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
-                if (UIApplication.shared.canOpenURL(mapsMeURL)) {
+            if let mapsURL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
+                if (UIApplication.shared.canOpenURL(mapsURL)) {
                     if #available(iOS 10, *) {
-                        UIApplication.shared.open(mapsMeURL, options: [:], completionHandler: nil)
+                        UIApplication.shared.open(mapsURL, options: [:], completionHandler: nil)
                     } else {
-                        UIApplication.shared.openURL(mapsMeURL as URL)
+                        UIApplication.shared.openURL(mapsURL as URL)
+                    }
+                }
+            }
+        case .gurumaps:
+            //Guru Maps
+            let urlString = "\(navApp.urlScheme)nav?finish=\(destLatitude),\(destLongitude)&mode=motorcycle&start_navigation=true"
+            if let mapsURL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
+                if (UIApplication.shared.canOpenURL(mapsURL)) {
+                    if #available(iOS 10, *) {
+                        UIApplication.shared.open(mapsURL, options: [:], completionHandler: nil)
+                    } else {
+                        UIApplication.shared.openURL(mapsURL as URL)
                     }
                 }
             }
@@ -566,12 +587,24 @@ extension NavAppHelper {
         case .organicmaps:
             //Organic Maps
             let urlString = "\(navApp.urlScheme)map?ll=\(destLatitude),\(destLongitude)&n=\(destLabel ?? "")&backurl=wunderlinq://"
-            if let mapsMeURL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
-                if (UIApplication.shared.canOpenURL(mapsMeURL)) {
+            if let mapsURL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
+                if (UIApplication.shared.canOpenURL(mapsURL)) {
                     if #available(iOS 10, *) {
-                        UIApplication.shared.open(mapsMeURL, options: [:], completionHandler: nil)
+                        UIApplication.shared.open(mapsURL, options: [:], completionHandler: nil)
                     } else {
-                        UIApplication.shared.openURL(mapsMeURL as URL)
+                        UIApplication.shared.openURL(mapsURL as URL)
+                    }
+                }
+            }
+        case .gurumaps:
+            //Guru Maps
+            let urlString = "geo://\(destLatitude),\(destLongitude)"
+            if let mapsURL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
+                if (UIApplication.shared.canOpenURL(mapsURL)) {
+                    if #available(iOS 10, *) {
+                        UIApplication.shared.open(mapsURL, options: [:], completionHandler: nil)
+                    } else {
+                        UIApplication.shared.openURL(mapsURL as URL)
                     }
                 }
             }
