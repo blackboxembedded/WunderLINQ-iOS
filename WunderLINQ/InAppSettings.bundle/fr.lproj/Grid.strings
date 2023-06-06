@@ -17,8 +17,8 @@
 "gear_header" = "Vitesse";
 "enginetemp_header" = "Températeur moteur";
 "ambienttemp_header" = "Température ambiante";
-"frontpressure_header" = "Pression pneu avant";
-"rearpressure_header" = "Pression pneu arrière";
+"frontpressure_header" = "Pres. pneu avant";
+"rearpressure_header" = "Pres. pneu arrière";
 "odometer_header" = "Odomètre";
 "voltage_header" = "Voltage";
 "throttle_header" = "Poignée des gaz";
