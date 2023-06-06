@@ -22,7 +22,7 @@
 "fault_LAMPFLI" = "Clignotant avant gauche";
 "fault_LAMPFRI" = "Clignotant avant droite";
 "fault_ICEWARN" = "Avertissement de glace";
-"rearpressure_header" = "Pression pneu arrière";
+"rearpressure_header" = "Pres. pneu arrière";
 "fueleconomyone_header" = "Consommation 1";
 "altitude_header" = "Altitude (m)";
 "task_title_settings" = "Réglages";
@@ -94,7 +94,7 @@
 "north_east" = "NE";
 "fault_LAMPLOW" = "Feux de croisement";
 "vin_label" = "VIN";
-"frontpressure_header" = "Pression pneu avant";
+"frontpressure_header" = "Pres. pneu avant";
 "task_title_favnumber" = "Numéro favori";
 "task_title_photo" = "Caméra";
 "ambient_temp_label" = "Temp ambiante";
