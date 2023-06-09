@@ -1262,11 +1262,6 @@ class LINbus {
             if (lastMessage[4] != 0xFF){
                 let nextService = UInt16(lastMessage[4]) * 100
                 motorcycleData.setNextService(nextService: Int(nextService))
-                if (motorcycleData.odometer != nil){
-                    if(motorcycleData.odometer! <= Double(nextService)){
-                        faults.setserviceActive(active: true)
-                    }
-                }
             }
         case 0x0C:
             // Trip 1 & Trip 2
