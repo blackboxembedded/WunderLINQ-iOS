@@ -314,7 +314,7 @@
 		87D337E6A35D934BE179793B960AD9A7 /* InAppSettingsKit-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "InAppSettingsKit-dummy.m"; sourceTree = "<group>"; };
 		8834F8A27DC7D4C31239C37BC6D08C88 /* IASKSettingsReader.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IASKSettingsReader.h; path = Sources/InAppSettingsKit/include/IASKSettingsReader.h; sourceTree = "<group>"; };
 		88A4C9751888DE5C4052A9F62AFE95BE /* CoreGPX-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "CoreGPX-Info.plist"; sourceTree = "<group>"; };
-		8958A4B9C310BCF9D82B158E2AFAAD3B /* UIMultiPicker */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = UIMultiPicker; path = UIMultiPicker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8958A4B9C310BCF9D82B158E2AFAAD3B /* UIMultiPicker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UIMultiPicker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		89B1066183318DFD567322AEEB59002A /* hr.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; name = hr.lproj; path = Sources/InAppSettingsKit/Resources/hr.lproj; sourceTree = "<group>"; };
 		8AC9F1BF987833C9AB831B7904FC6291 /* IASKMultipleValueSelection.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IASKMultipleValueSelection.h; path = Sources/InAppSettingsKit/include/IASKMultipleValueSelection.h; sourceTree = "<group>"; };
 		8C8D9FE64941611D7FD8CDF568CAF385 /* CoreGPX-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "CoreGPX-dummy.m"; sourceTree = "<group>"; };
@@ -781,7 +781,7 @@
 				325E862631E06444E4504511C87F1E9C /* InAppSettingsKit.bundle */,
 				C2FDAE1536FF09CC2163C2DD3B704156 /* Pods-WunderLINQ */,
 				19D355B137AADBEAE940E34A09FBDD01 /* Popovers */,
-				8958A4B9C310BCF9D82B158E2AFAAD3B /* UIMultiPicker */,
+				8958A4B9C310BCF9D82B158E2AFAAD3B /* UIMultiPicker.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -976,7 +976,7 @@
 			);
 			name = UIMultiPicker;
 			productName = UIMultiPicker;
-			productReference = 8958A4B9C310BCF9D82B158E2AFAAD3B /* UIMultiPicker */;
+			productReference = 8958A4B9C310BCF9D82B158E2AFAAD3B /* UIMultiPicker.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		FAF21BE37EB65063DA9127CAC1CE75D9 /* Pods-WunderLINQ */ = {
@@ -1424,7 +1424,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/UIMultiPicker/UIMultiPicker-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/UIMultiPicker/UIMultiPicker-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1885,7 +1885,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/UIMultiPicker/UIMultiPicker-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/UIMultiPicker/UIMultiPicker-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
