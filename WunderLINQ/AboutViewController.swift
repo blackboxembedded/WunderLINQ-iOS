@@ -154,7 +154,6 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
     }
     
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
-        UserDefaults.standard.set(false, forKey: "debug_logging_preference")
         switch result {
         case .cancelled:
             NSLog("AboutViewController: User cancelled")
