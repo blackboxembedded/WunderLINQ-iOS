@@ -28,8 +28,8 @@
 "task_title_weathermap" = "お天気マップ";
 "task_title_actioncam_stop_video" = "アクションカメラ録画の停止";
 "task_title_actioncam_start_video" = "アクションカメラ録画の開始";
-"task_title_roadbook" = "ロードブック（コマ図）";
+"task_title_roadbook" = "コマ図";
 "task_title_systemvolume" = "Volume";
-"task_title_gopro" = "GoPro Control";
-"task_title_insta360" = "Insta360 Control";
-"task_title_front_start_record" = "Start Selfie Recording";
+"task_title_gopro" = "GOPRO操作";
+"task_title_insta360" = "インスタ360コントロール";
+"task_title_front_start_record" = "セルフィービデオ撮影開始";
