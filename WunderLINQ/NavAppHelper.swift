@@ -205,7 +205,7 @@ enum NavigationAppPreference: Int, CaseIterable {
             back_link = "?backurl=wunderlinq://"
             
         case .gurumaps:
-            back_link = ""
+            back_link = "?back_url=wunderlinq://"
         }
         
         
@@ -395,7 +395,7 @@ extension NavAppHelper {
             }
         case .gurumaps:
             //Guru Maps
-            let urlString = "\(navApp.urlScheme)nav?finish=\(destLatitude),\(destLongitude)&mode=motorcycle&start_navigation=true"
+            let urlString = "\(navApp.urlScheme)nav?finish=\(destLatitude),\(destLongitude)&mode=motorcycle&start_navigation=true&back_url=wunderlinq://"
             if let mapsURL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
                 if (UIApplication.shared.canOpenURL(mapsURL)) {
                     if #available(iOS 10, *) {
@@ -598,7 +598,7 @@ extension NavAppHelper {
             }
         case .gurumaps:
             //Guru Maps
-            let urlString = "geo://\(destLatitude),\(destLongitude)"
+            let urlString = "\(navApp.urlScheme)show?place=\(destLatitude),\(destLongitude)&back_url=wunderlinq://"
             if let mapsURL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
                 if (UIApplication.shared.canOpenURL(mapsURL)) {
                     if #available(iOS 10, *) {
