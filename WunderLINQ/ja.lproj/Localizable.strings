@@ -34,7 +34,7 @@
 "bt_alert_title" = "セントラルマネージャーステート";
 "trip_logs_label" = "トリップログ";
 "waypoints_label" = "ウェイポイント";
-"blank_field" = "インフィニティ（無限大)";
+"blank_field" = "無限大";
 "rdc_front_label" = "前輪";
 "rdc_rear_label" = "後輪";
 "engine_temp_label" = "エンジン温度";
@@ -47,13 +47,13 @@
 "bike_info_label" = "バイク情報";
 "geodata_label" = "トリップログとウェイポイント";
 "appsettings_label" = "APP設定";
-"about_label" = "およそ";
+"about_label" = "・・・について";
 "close_label" = "閉じる";
 "hwsettings_label" = "ハードウェア設定";
 "select_bt" = "選択";
 //HWSettingsViewController
 "fw_config_title" = "ワンダーリンク設定";
-"wwtype_label" = "タイヤタイプ";
+"wwtype_label" = "マルチコントローラータイプ";
 "wwMode1" = "フル";
 "wwMode2" = "RT/K1600";
 "wwMode3" = "カスタム";
@@ -502,7 +502,7 @@
 "notification_alert_body" = "ワンダーリンクアプリは障害を通知するための通知アクセスが必要です。";
 "firstrun_end" = "ワンダーリンクのご購入をありがとうございます！運転に気をつけてください。";
 "consumer_hid_0x03_label" = "プログラマブル ボタン";
-"task_title_roadbook" = "Roadbook";
+"task_title_roadbook" = "コマ図";
 "keyboard_hid_modifier_0x02_label" = "キーボード 左「Shift」";
 "keyboard_hid_modifier_0x04_label" = "キーボード 左「Alt」";
 "keyboard_hid_0x1B_label" = "キーボード「x」";
@@ -614,3 +614,20 @@
 "consumer_hid_0xF0_label" = "速度選択";
 "consumer_hid_0xF3_label" = "ロングプレイ";
 "consumer_hid_0xC9_label" = "カウンター表示";
+"toast_wlq_not_connected" = "ワンダーリンクは接続していません";
+"app_ver_label" = "APP:";
+"toast_gpx_saved" = "GPXデータロード完了";
+"task_title_gopro" = "GOPRO操作";
+"nogpremote_alert_title" = "WUNDERLINQのGOPROコントロールがありません";
+"waypoint_view_tv_elevation_label" = "標高";
+"nogpremote_alert_body" = "GOPRO コントロールは別の無料APPです。クリックしてインストール";
+"task_title_insta360" = "インスタ360コントロール";
+"no360remote_alert_title" = "WUNDERLINQのインスタ360リモートが見つかりません";
+"task_title_front_start_record" = "セルフィービデオ撮影開始";
+"no360remote_alert_body" = "インスタ360リモートは別の無料APPです。クリックしてインストール";
+"fault_SERVICE" = "点検期限";
+//AccessoryViewController
+"accessory_title" = "アクセサリーステイタス";
+"default_accessory_one_name" = "チャンネル1";
+"default_accessory_two_name" = "チャンネル2";
+"btn_documentation_title" = "ドキュメント";
