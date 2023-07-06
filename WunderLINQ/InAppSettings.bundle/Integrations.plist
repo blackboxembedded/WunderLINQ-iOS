@@ -32,6 +32,7 @@
 				<string>14</string>
 				<string>15</string>
 				<string>16</string>
+				<string>17</string>
 			</array>
 			<key>Titles</key>
 			<array>
@@ -52,6 +53,7 @@
 				<string>nav_app_cartograph</string>
 				<string>nav_app_organicmaps</string>
 				<string>nav_app_gurumaps</string>
+				<string>nav_app_myrouteapp</string>
 			</array>
 		</dict>
 		<dict>

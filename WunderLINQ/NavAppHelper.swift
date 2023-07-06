@@ -80,6 +80,9 @@ enum NavigationAppPreference: Int, CaseIterable {
     /// Universal app link accessible with `guru://`
     case gurumaps
     
+    /// Universal app link accessible with `myrouteapp://`
+    case myrouteapp
+    
     var isAvailable: Bool {
         UIApplication.shared.canOpenURL(URL(string: self.urlScheme)!)
     }
@@ -136,6 +139,9 @@ enum NavigationAppPreference: Int, CaseIterable {
             
         case .gurumaps:
             return "guru://"
+            
+        case .myrouteapp:
+            return "mra-mobile://x-callback-url/"
 
         }
     }
@@ -206,6 +212,9 @@ enum NavigationAppPreference: Int, CaseIterable {
             
         case .gurumaps:
             back_link = "?back_url=wunderlinq://"
+            
+        case .myrouteapp:
+            back_link = "?x-success=wunderlinq://&x-source=WunderLINQ"
         }
         
         
@@ -396,6 +405,18 @@ extension NavAppHelper {
         case .gurumaps:
             //Guru Maps
             let urlString = "\(navApp.urlScheme)nav?finish=\(destLatitude),\(destLongitude)&mode=motorcycle&start_navigation=true&back_url=wunderlinq://"
+            if let mapsURL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
+                if (UIApplication.shared.canOpenURL(mapsURL)) {
+                    if #available(iOS 10, *) {
+                        UIApplication.shared.open(mapsURL, options: [:], completionHandler: nil)
+                    } else {
+                        UIApplication.shared.openURL(mapsURL as URL)
+                    }
+                }
+            }
+        case .myrouteapp:
+            //Myroute-app
+            let urlString = "\(navApp.urlScheme)route?x-success=wunderlinq://&x-source=WunderLINQ&geo=\(destLatitude),\(destLongitude)"
             if let mapsURL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
                 if (UIApplication.shared.canOpenURL(mapsURL)) {
                     if #available(iOS 10, *) {
@@ -599,6 +620,18 @@ extension NavAppHelper {
         case .gurumaps:
             //Guru Maps
             let urlString = "\(navApp.urlScheme)show?place=\(destLatitude),\(destLongitude)&back_url=wunderlinq://"
+            if let mapsURL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
+                if (UIApplication.shared.canOpenURL(mapsURL)) {
+                    if #available(iOS 10, *) {
+                        UIApplication.shared.open(mapsURL, options: [:], completionHandler: nil)
+                    } else {
+                        UIApplication.shared.openURL(mapsURL as URL)
+                    }
+                }
+            }
+        case .myrouteapp:
+            //Myroute-app
+            let urlString = "\(navApp.urlScheme)view?x-success=wunderlinq://&x-source=WunderLINQ&geo=\(destLatitude),\(destLongitude)"
             if let mapsURL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
                 if (UIApplication.shared.canOpenURL(mapsURL)) {
                     if #available(iOS 10, *) {
