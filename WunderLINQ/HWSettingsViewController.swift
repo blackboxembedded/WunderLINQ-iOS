@@ -29,7 +29,6 @@ class HWSettingsViewController: UIViewController, UITableViewDelegate, UITableVi
     var characteristic: CBCharacteristic?
     
     @IBOutlet weak var firmwareVersionLabel: UILabel!
-    @IBOutlet weak var modeLabel: UILabel!
     @IBOutlet weak var actionsTableView: UITableView!
     @IBOutlet weak var configButton: LocalisableButton!
     
@@ -48,8 +47,6 @@ class HWSettingsViewController: UIViewController, UITableViewDelegate, UITableVi
                 self.resetHWConfig()
             } else if (self.configButton.tag == 1){
                 self.applyHWConfig()
-            } else if (self.configButton.tag == 2){
-                self.setHWMode()
             }
         }
     }
@@ -137,43 +134,26 @@ class HWSettingsViewController: UIViewController, UITableViewDelegate, UITableVi
                 selectedActionID = self.actionID[indexPath.row]
                 performSegue(withIdentifier: "hwSettingsToSettingsAction", sender: [])
             }
+        } else {
+            if (self.actionID[indexPath.row] == WLQ_N_DEFINES.KEYMODE || self.actionID[indexPath.row] == WLQ_C_DEFINES.KEYMODE){
+                selectedActionID = self.actionID[indexPath.row]
+                performSegue(withIdentifier: "hwSettingsToSettingsAction", sender: [])
+            }
         }
     }
     
     func updateDisplay(){
+        menuBtn.isHidden = true
+        configButton.isHidden = true
         if (wlqData.getfirmwareVersion() != "Unknown"){
             firmwareVersionLabel.text = NSLocalizedString("fw_version_label", comment: "") + " " + wlqData.getfirmwareVersion()
         }
         if (wlqData.gethardwareType() == wlqData.TYPE_NAVIGATOR()){
             if (wlqData.getfirmwareVersion() != "Unknown"){
                 if (wlqData.getfirmwareVersion().toDouble()! >= 2.0) {      // FW >2.0
-                    if (wlqData.getKeyMode() == wlqData.KEYMODE_DEFAULT() || wlqData.getKeyMode() == wlqData.KEYMODE_CUSTOM()) {
-                        if (wlqData.getKeyMode() == wlqData.KEYMODE_DEFAULT()) { // Default Config
-                            modeLabel.text = "\(NSLocalizedString("mode_label", comment: "")) \(NSLocalizedString("keymode_default_label", comment: ""))"
-                            menuBtn.isHidden = true
-                        } else if (wlqData.getKeyMode() == wlqData.KEYMODE_CUSTOM()) { // Custom Config
-                            modeLabel.text = "\(NSLocalizedString("mode_label", comment: "")) \(NSLocalizedString("keymode_custom_label", comment: ""))"
-                            menuBtn.isHidden = false
-                        }
-                        modeLabel.isHidden = false
-                        
-                        if (wlqData.getKeyMode() == wlqData.KEYMODE_DEFAULT()){
-                            configButton.setTitle(NSLocalizedString("customize_btn_label", comment: ""), for: .normal)
-                            configButton.isHidden = false
-                            configButton.tag = 2
-                        } else if (!wlqData.getConfig().elementsEqual(wlqData.getTempConfig())){
-                            NSLog("HWSettingsViewController: !!!Change detected!!!")
-                            configButton.setTitle(NSLocalizedString("config_write_label", comment: ""), for: .normal)
-                            configButton.isHidden = false
-                            configButton.tag = 1
-                        } else if (wlqData.getKeyMode() == wlqData.KEYMODE_CUSTOM()){
-                            configButton.setTitle(NSLocalizedString("default_btn_label", comment: ""), for: .normal)
-                            configButton.isHidden = false
-                            configButton.tag = 2
-                        } else {
-                            configButton.isHidden = true
-                        }
-                        actionTableLabels = [NSLocalizedString("usb_threshold_label", comment: ""),       //USB
+                    if (wlqData.getKeyMode() == wlqData.KEYMODE_DEFAULT() || wlqData.getKeyMode() == wlqData.KEYMODE_CUSTOM() || wlqData.getKeyMode() == wlqData.KEYMODE_MEDIA() || wlqData.getKeyMode() == wlqData.KEYMODE_DMD2()) {
+                        actionTableLabels = [NSLocalizedString("keymode_label", comment: ""),       //KEYMODE
+                                             NSLocalizedString("usb_threshold_label", comment: ""),       //USB
                                              NSLocalizedString("wwMode1", comment: ""),       //Full
                                              NSLocalizedString("long_press_label", comment: ""),
                                              NSLocalizedString("full_scroll_up_label", comment: ""),
@@ -199,7 +179,8 @@ class HWSettingsViewController: UIViewController, UITableViewDelegate, UITableVi
                                              NSLocalizedString("rtk_display_label", comment: ""),
                                              NSLocalizedString("rtk_display_double_label", comment: "")]
                                                           
-                        actionTableMappingLabels = [wlqData.getActionValue(action: WLQ_N_DEFINES.USB),   //USB
+                        actionTableMappingLabels = [wlqData.getActionValue(action: WLQ_N_DEFINES.KEYMODE),   //KEYMODE
+                                                    wlqData.getActionValue(action: WLQ_N_DEFINES.USB),   //USB
                                                     "",       //Full
                                                     wlqData.getActionValue(action: WLQ_N_DEFINES.fullLongPressSensitivity),
                                                     wlqData.getActionValue(action: WLQ_N_DEFINES.fullScrollUp),
@@ -225,7 +206,8 @@ class HWSettingsViewController: UIViewController, UITableViewDelegate, UITableVi
                                                     wlqData.getActionValue(action: WLQ_N_DEFINES.RTKDisplayOff),
                                                     wlqData.getActionValue(action: WLQ_N_DEFINES.RTKDisplayOffDoublePress)]
                         
-                        actionID = [WLQ_N_DEFINES.USB,    //USB
+                        actionID = [WLQ_N_DEFINES.KEYMODE,    //KEYMODE
+                                    WLQ_N_DEFINES.USB,    //USB
                                     -1,       //Full
                                     WLQ_N_DEFINES.fullLongPressSensitivity,
                                     WLQ_N_DEFINES.fullScrollUp,
@@ -250,42 +232,28 @@ class HWSettingsViewController: UIViewController, UITableViewDelegate, UITableVi
                                     WLQ_N_DEFINES.RTKMuteDoublePress,
                                     WLQ_N_DEFINES.RTKDisplayOff,
                                     WLQ_N_DEFINES.RTKDisplayOffDoublePress]
+                        
+                        if (wlqData.getKeyMode() == wlqData.KEYMODE_CUSTOM()){
+                            if (!wlqData.getConfig().elementsEqual(wlqData.getTempConfig())){
+                                NSLog("HWSettingsViewController: !!!Change detected!!!")
+                                configButton.setTitle(NSLocalizedString("config_write_label", comment: ""), for: .normal)
+                                configButton.isHidden = false
+                                configButton.tag = 1
+                            }
+                        }
                     } else {
                         configButton.setTitle(NSLocalizedString("config_reset_label", comment: ""), for: .normal)
-                        modeLabel.isHidden = true
                         configButton.isHidden = false
                         configButton.tag = 0
                     }
                 }
             }
         } else if (wlqData.gethardwareType() == wlqData.TYPE_COMNMANDER()){
-            if (wlqData.getKeyMode() == wlqData.KEYMODE_DEFAULT() || wlqData.getKeyMode() == wlqData.KEYMODE_CUSTOM()) {
-                if (wlqData.getKeyMode() == wlqData.KEYMODE_DEFAULT()) { // Default Config
-                    modeLabel.text = "\(NSLocalizedString("mode_label", comment: "")) \(NSLocalizedString("keymode_default_label", comment: ""))"
-                    menuBtn.isHidden = true
-                } else if (wlqData.getKeyMode() == wlqData.KEYMODE_CUSTOM()) { // Custom Config
-                    modeLabel.text = "\(NSLocalizedString("mode_label", comment: "")) \(NSLocalizedString("keymode_custom_label", comment: ""))"
-                    menuBtn.isHidden = false
-                }
-                modeLabel.isHidden = false
-                
-                if (wlqData.getKeyMode() == wlqData.KEYMODE_DEFAULT()){
-                    configButton.setTitle(NSLocalizedString("customize_btn_label", comment: ""), for: .normal)
-                    configButton.isHidden = false
-                    configButton.tag = 2
-                } else if (!wlqData.getConfig().elementsEqual(wlqData.getTempConfig())){
-                    NSLog("HWSettingsViewController: !!!Change detected!!!")
-                    configButton.setTitle(NSLocalizedString("config_write_label", comment: ""), for: .normal)
-                    configButton.isHidden = false
-                    configButton.tag = 1
-                } else if (wlqData.getKeyMode() == wlqData.KEYMODE_CUSTOM()){
-                    configButton.setTitle(NSLocalizedString("default_btn_label", comment: ""), for: .normal)
-                    configButton.isHidden = false
-                    configButton.tag = 2
-                } else {
-                    configButton.isHidden = true
-                }
-                actionTableLabels = [NSLocalizedString("full_scroll_up_label", comment: ""),
+            if (wlqData.getKeyMode() == wlqData.KEYMODE_DEFAULT() || wlqData.getKeyMode() == wlqData.KEYMODE_CUSTOM()
+                || wlqData.getKeyMode() == wlqData.KEYMODE_MEDIA()) {
+
+                actionTableLabels = [NSLocalizedString("keymode_label", comment: ""),       //KEYMODE
+                                     NSLocalizedString("full_scroll_up_label", comment: ""),
                                      NSLocalizedString("full_scroll_down_label", comment: ""),
                                      NSLocalizedString("full_toggle_right_label", comment: ""),
                                      NSLocalizedString("full_toggle_right_long_label", comment: ""),
@@ -300,7 +268,8 @@ class HWSettingsViewController: UIViewController, UITableViewDelegate, UITableVi
                                      NSLocalizedString("full_rocker2_down_label", comment: ""),
                                      NSLocalizedString("full_rocker2_down_long_label", comment: "")]
                                                   
-                actionTableMappingLabels = [wlqData.getActionValue(action: WLQ_C_DEFINES.wheelScrollUp),
+                actionTableMappingLabels = [wlqData.getActionValue(action: WLQ_C_DEFINES.KEYMODE),
+                                            wlqData.getActionValue(action: WLQ_C_DEFINES.wheelScrollUp),
                                             wlqData.getActionValue(action: WLQ_C_DEFINES.wheelScrollDown),
                                             wlqData.getActionValue(action: WLQ_C_DEFINES.wheelToggleRight),
                                             wlqData.getActionValue(action: WLQ_C_DEFINES.wheelToggleRightLongPress),
@@ -315,7 +284,8 @@ class HWSettingsViewController: UIViewController, UITableViewDelegate, UITableVi
                                             wlqData.getActionValue(action: WLQ_C_DEFINES.rocker2Down),
                                             wlqData.getActionValue(action: WLQ_C_DEFINES.rocker2DownLongPress)]
                 
-                actionID = [WLQ_C_DEFINES.wheelScrollUp,
+                actionID = [WLQ_C_DEFINES.KEYMODE,
+                            WLQ_C_DEFINES.wheelScrollUp,
                             WLQ_C_DEFINES.wheelScrollDown,
                             WLQ_C_DEFINES.wheelToggleRight,
                             WLQ_C_DEFINES.wheelToggleRightLongPress,
@@ -329,9 +299,17 @@ class HWSettingsViewController: UIViewController, UITableViewDelegate, UITableVi
                             WLQ_C_DEFINES.rocker2UpLongPress,
                             WLQ_C_DEFINES.rocker2Down,
                             WLQ_C_DEFINES.rocker2DownLongPress]
+                
+                if (wlqData.getKeyMode() == wlqData.KEYMODE_CUSTOM()){
+                    if (!wlqData.getConfig().elementsEqual(wlqData.getTempConfig())){
+                        NSLog("HWSettingsViewController: !!!Change detected!!!")
+                        configButton.setTitle(NSLocalizedString("config_write_label", comment: ""), for: .normal)
+                        configButton.isHidden = false
+                        configButton.tag = 1
+                    }
+                }
             } else {
                 configButton.setTitle(NSLocalizedString("config_reset_label", comment: ""), for: .normal)
-                modeLabel.isHidden = true
                 configButton.isHidden = false
                 configButton.tag = 0
             }
@@ -393,43 +371,6 @@ class HWSettingsViewController: UIViewController, UITableViewDelegate, UITableVi
                 }
             } else if (self.wlqData.gethardwareType() == self.wlqData.TYPE_COMNMANDER()){
                 let command = self.wlqData.WRITE_CONFIG_CMD() + self.wlqData.getTempConfig() + self.wlqData.CMD_EOM()
-                let writeData =  Data(_: command)
-                self.peripheral?.writeValue(writeData, for: self.characteristic!, type: CBCharacteristicWriteType.withResponse)
-            }
-            self.navigationController?.popViewController(animated: true)
-            self.dismiss(animated: true, completion: nil)
-        }
-        alertController.addAction(openAction)
-        self.present(alertController, animated: true, completion: nil)
-    }
-    
-    func setHWMode(){
-        NSLog("HWSettingsViewController: Set WLQ Mode")
-        let alertController = UIAlertController(
-            title: NSLocalizedString("hwsave_alert_title", comment: ""),
-            message: NSLocalizedString("hwsave_alert_body", comment: ""),
-            preferredStyle: .alert)
-        let cancelAction = UIAlertAction(title: NSLocalizedString("hwsave_alert_btn_cancel", comment: ""), style: .cancel, handler: nil)
-        alertController.addAction(cancelAction)
-        let openAction = UIAlertAction(title: NSLocalizedString("hwsave_alert_btn_ok", comment: ""), style: .default) { (action) in
-            if (self.wlqData.gethardwareType() == self.wlqData.TYPE_NAVIGATOR()){
-                if (self.wlqData.getfirmwareVersion() != "Unknown"){
-                    if (self.wlqData.getfirmwareVersion().toDouble()! >= 2.0) {
-                        var value:[UInt8] = [self.wlqData.KEYMODE_CUSTOM()]
-                        if (self.wlqData.getKeyMode() == self.wlqData.KEYMODE_CUSTOM()){
-                            value = [self.wlqData.KEYMODE_DEFAULT()]
-                        }
-                        let command = self.wlqData.WRITE_MODE_CMD() + value + self.wlqData.CMD_EOM()
-                        let writeData =  Data(_: command)
-                        self.peripheral?.writeValue(writeData, for: self.characteristic!, type: CBCharacteristicWriteType.withResponse)
-                    }
-                }
-            } else if (self.wlqData.gethardwareType() == self.wlqData.TYPE_COMNMANDER()){
-                var value:[UInt8] = [self.wlqData.KEYMODE_CUSTOM()]
-                if (self.wlqData.getKeyMode() == self.wlqData.KEYMODE_CUSTOM()){
-                    value = [self.wlqData.KEYMODE_DEFAULT()]
-                }
-                let command = self.wlqData.WRITE_MODE_CMD() + value + self.wlqData.CMD_EOM()
                 let writeData =  Data(_: command)
                 self.peripheral?.writeValue(writeData, for: self.characteristic!, type: CBCharacteristicWriteType.withResponse)
             }

@@ -34,8 +34,14 @@ class WLQ {
     func KEYMODE_DEFAULT() -> UInt8{
         return 0x00
     }
-    func KEYMODE_CUSTOM () -> UInt8{
+    func KEYMODE_CUSTOM() -> UInt8{
         return 0x01
+    }
+    func KEYMODE_MEDIA() -> UInt8{
+        return 0x02
+    }
+    func KEYMODE_DMD2() -> UInt8{
+        return 0x03
     }
     func KEYBOARD_HID() -> UInt8{
         return 0x01

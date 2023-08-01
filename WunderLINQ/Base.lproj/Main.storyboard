@@ -3,7 +3,7 @@
     <device id="retina6_72" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -1170,31 +1170,25 @@
                                     <action selector="configPressed:" destination="dmI-P5-Pbu" eventType="touchUpInside" id="eW6-8x-hhS"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mode: ?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YwJ-Rh-mK3">
-                                <rect key="frame" x="0.0" y="25.666666666666671" width="430" height="26"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="y6X-E9-mPs">
-                                <rect key="frame" x="0.0" y="51.666666666666686" width="430" height="816.33333333333326"/>
+                                <rect key="frame" x="0.0" y="41.666666666666686" width="430" height="826.33333333333326"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="hwActionCell" id="ORR-ga-rGW" customClass="HWSettingsTableViewCell" customModule="WunderLINQ" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="50" width="430" height="43.333332061767578"/>
+                                        <rect key="frame" x="0.0" y="50" width="430" height="43.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ORR-ga-rGW" id="u8h-mc-bnW">
-                                            <rect key="frame" x="0.0" y="0.0" width="430" height="43.333332061767578"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="430" height="43.666667938232422"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="32s-bB-EZK">
-                                                    <rect key="frame" x="20" y="10.999999999999998" width="195" height="21.333333333333329"/>
+                                                    <rect key="frame" x="20" y="11.000000000000002" width="195" height="21.666666666666671"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rs5-hB-OEc">
-                                                    <rect key="frame" x="215" y="10.999999999999998" width="195" height="21.333333333333329"/>
+                                                    <rect key="frame" x="215" y="11.000000000000002" width="195" height="21.666666666666671"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -1231,17 +1225,14 @@
                         <constraints>
                             <constraint firstItem="XOn-y4-h7t" firstAttribute="leading" secondItem="re3-P7-yg7" secondAttribute="leading" constant="16" id="1Xz-vk-gnV"/>
                             <constraint firstItem="XOn-y4-h7t" firstAttribute="top" secondItem="y6X-E9-mPs" secondAttribute="bottom" id="FBj-Y9-1jP"/>
+                            <constraint firstItem="y6X-E9-mPs" firstAttribute="top" secondItem="63r-Cj-J96" secondAttribute="bottom" constant="16" id="GwJ-e4-gCe"/>
                             <constraint firstItem="re3-P7-yg7" firstAttribute="trailing" secondItem="XOn-y4-h7t" secondAttribute="trailing" constant="16" id="NFL-rf-xqk"/>
                             <constraint firstItem="re3-P7-yg7" firstAttribute="bottom" secondItem="XOn-y4-h7t" secondAttribute="bottom" constant="12" id="Nkp-b4-fV6"/>
                             <constraint firstItem="re3-P7-yg7" firstAttribute="trailing" secondItem="63r-Cj-J96" secondAttribute="trailing" id="QdF-wU-r5u"/>
                             <constraint firstItem="re3-P7-yg7" firstAttribute="trailing" secondItem="y6X-E9-mPs" secondAttribute="trailing" id="Snz-uE-nwE"/>
                             <constraint firstItem="63r-Cj-J96" firstAttribute="top" secondItem="re3-P7-yg7" secondAttribute="top" id="Vuc-5E-h0q"/>
-                            <constraint firstItem="YwJ-Rh-mK3" firstAttribute="leading" secondItem="re3-P7-yg7" secondAttribute="leading" id="WHJ-Eg-leV"/>
                             <constraint firstItem="63r-Cj-J96" firstAttribute="leading" secondItem="re3-P7-yg7" secondAttribute="leading" id="XtT-jX-JAs"/>
-                            <constraint firstItem="YwJ-Rh-mK3" firstAttribute="top" secondItem="63r-Cj-J96" secondAttribute="bottom" id="ZjI-kc-3Y6"/>
                             <constraint firstItem="y6X-E9-mPs" firstAttribute="leading" secondItem="re3-P7-yg7" secondAttribute="leading" id="bSp-OU-kpd"/>
-                            <constraint firstItem="re3-P7-yg7" firstAttribute="trailing" secondItem="YwJ-Rh-mK3" secondAttribute="trailing" id="fVM-tO-Cos"/>
-                            <constraint firstItem="y6X-E9-mPs" firstAttribute="top" secondItem="YwJ-Rh-mK3" secondAttribute="bottom" id="lZ3-tf-SQg"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="6qb-lI-lp0"/>
@@ -1249,7 +1240,6 @@
                         <outlet property="actionsTableView" destination="y6X-E9-mPs" id="ZUJ-2I-g5o"/>
                         <outlet property="configButton" destination="XOn-y4-h7t" id="WmX-y9-h8G"/>
                         <outlet property="firmwareVersionLabel" destination="63r-Cj-J96" id="xyF-Cn-3tZ"/>
-                        <outlet property="modeLabel" destination="YwJ-Rh-mK3" id="NN5-CA-Nui"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="hwSettingsToMotorcycle" id="8G0-KU-AL0"/>
                         <segue destination="bVV-3d-otX" kind="show" identifier="hwSettingsToSettingsAction" id="zp0-BX-IhN"/>
                     </connections>
@@ -1597,7 +1587,7 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jAM-2k-3CY">
                                 <rect key="frame" x="0.0" y="295" width="430" height="627"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <mutableString key="text">Support and Patience
+                                <string key="text">Support and Patience
 
 Amy and Yaeko
 
@@ -1713,7 +1703,7 @@ Darryl Payne
 
 Icons from fontawesome.com
 
-</mutableString>
+</string>
                                 <color key="textColor" name="imageTint"/>
                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="10"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -2496,7 +2486,7 @@ Icons from fontawesome.com
         <segue reference="RhK-1Y-fo7"/>
         <segue reference="d0K-ne-9up"/>
         <segue reference="43A-bp-xAE"/>
-        <segue reference="nxI-Kn-oh9"/>
+        <segue reference="8G0-KU-AL0"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
     <resources>

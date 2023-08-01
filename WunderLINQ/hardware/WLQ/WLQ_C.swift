@@ -46,6 +46,7 @@ class WLQ_C: WLQ {
         0x02, 0x00, 0xB5, 0x02, 0x00, 0xB0,     // Rocker2 Up
         0x02, 0x00, 0xB6, 0x02, 0x00, 0xB7]     // Rocker2 Down
 
+    let KEYMODE:Int = 100
     let longPressSensitivity:Int = 25
     let wheelScrollUp:Int = 26
     let wheelScrollDown:Int = 27
@@ -732,6 +733,19 @@ class WLQ_C: WLQ {
         var returnString = NSLocalizedString("hid_0x00_label", comment: "")
         let keyboardHID = KeyboardHID.shared
         switch (action){
+        case KEYMODE:
+            switch (keyMode){
+            case 0:
+                returnString = NSLocalizedString("keymode_default_label", comment: "")
+            case 1:
+                returnString = NSLocalizedString("keymode_custom_label", comment: "")
+            case 2:
+                returnString = NSLocalizedString("keymode_media_label", comment: "")
+            case 3:
+                returnString = NSLocalizedString("keymode_dmd2_label", comment: "")
+            default:
+                returnString = ""
+            }
         case longPressSensitivity:
             returnString = "\(sensitivity!)"
         case wheelScrollUp:
@@ -967,6 +981,7 @@ class WLQ_C: WLQ {
     }}
 
 enum WLQ_C_DEFINES {
+    static let KEYMODE:Int = 100
     static let longPressSensitivity:Int = 25
     static let wheelScrollUp:Int = 26
     static let wheelScrollDown:Int = 27

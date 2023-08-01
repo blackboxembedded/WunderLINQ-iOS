@@ -72,9 +72,11 @@
 "default_btn_label" = "Default Mode";
 "corrupt_config_label" = "Corrupt Config! Reset Needed";
 "mode_label" = "Mode:";
-"keymode_label" = "Key Mode";
+"keymode_label" = "Mode";
 "keymode_default_label" = "Default";
 "keymode_custom_label" = "Custom";
+"keymode_media_label" = "Media";
+"keymode_dmd2_label" = "DMD2";
 "keymode_custom_title" = "Key Customization";
 "long_press_label" = "Long Press Sensitivity";
 "double_press_label" = "Double Press Sensitivity";

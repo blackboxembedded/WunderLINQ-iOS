@@ -70,6 +70,7 @@ class WLQ_N: WLQ {
     let UNDEFINED:UInt8 = 0x00
 
     let OldSensitivity:Int = 0
+    let KEYMODE:Int = 100
     let USB:Int = 1
     let RTKDoublePressSensitivity:Int = 2
     let fullLongPressSensitivity:Int = 3
@@ -234,6 +235,7 @@ class WLQ_N: WLQ {
         WLQ.shared = self
         WLQ.initialized = true
         actionNames = [OldSensitivity: NSLocalizedString("sensitivity_label", comment: ""),
+                       KEYMODE: NSLocalizedString("keymode_label", comment: ""),
                        USB: NSLocalizedString("usb_threshold_label", comment: ""),
                        RTKDoublePressSensitivity: NSLocalizedString("double_press_label", comment: ""),
                        fullLongPressSensitivity: NSLocalizedString("long_press_label", comment: ""),
@@ -764,6 +766,19 @@ class WLQ_N: WLQ {
         var returnString = NSLocalizedString("hid_0x00_label", comment: "")
         let keyboardHID = KeyboardHID.shared
         switch (action){
+        case KEYMODE:
+            switch (keyMode){
+            case 0:
+                returnString = NSLocalizedString("keymode_default_label", comment: "")
+            case 1:
+                returnString = NSLocalizedString("keymode_custom_label", comment: "")
+            case 2:
+                returnString = NSLocalizedString("keymode_media_label", comment: "")
+            case 3:
+                returnString = NSLocalizedString("keymode_dmd2_label", comment: "")
+            default:
+                returnString = ""
+            }
         case USB:
             if (USBVinThreshold == 0x0000){
                 returnString = NSLocalizedString("usbcontrol_on_label", comment: "")
@@ -1105,6 +1120,7 @@ enum WLQ_N_DEFINES {
     static let hardwareVersion1:String = "2PCB1.9 10/18"
     
     static let OldSensitivity:Int = 0
+    static let KEYMODE:Int = 100
     static let USB:Int = 1
     static let RTKDoublePressSensitivity:Int = 2
     static let fullLongPressSensitivity:Int = 3

@@ -18,6 +18,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 import UIKit
 import UIMultiPicker
+import CoreBluetooth
 
 class HWSettingsActionViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     
@@ -30,6 +31,7 @@ class HWSettingsActionViewController: UIViewController, UIPickerViewDataSource, 
     
     let keyboardHID = KeyboardHID.shared
     let wlqData = WLQ.shared
+    let bleData = BLE.shared
 
     var actionID: Int?
     
@@ -40,13 +42,22 @@ class HWSettingsActionViewController: UIViewController, UIPickerViewDataSource, 
     var modePickerDataHW1 = [NSLocalizedString("hid_0x00_label", comment: ""),
                           NSLocalizedString("hid_keyboard_label", comment: "")]
     
+    var keymodesPickerData = [NSLocalizedString("keymode_default_label", comment: ""),
+                          NSLocalizedString("keymode_custom_label", comment: ""),
+                          NSLocalizedString("keymode_media_label", comment: ""),
+                          NSLocalizedString("keymode_dmd2_label", comment: "")]
+    
     var usbPickerData = [NSLocalizedString("usbcontrol_on_label", comment: ""),
                           NSLocalizedString("usbcontrol_engine_label", comment: ""),
                           NSLocalizedString("usbcontrol_off_label", comment: "")]
     
 
     @IBAction func savePressed(_ sender: Any) {
-        if(actionID == WLQ_N_DEFINES.USB){ // USB
+        if(actionID == WLQ_N_DEFINES.KEYMODE || actionID == WLQ_C_DEFINES.KEYMODE){ // USB
+            if (wlqData.getKeyMode() != self.typePicker.selectedRow(inComponent: 0)){
+                setHWMode(mode: UInt8(self.typePicker.selectedRow(inComponent: 0)))
+            }
+        } else if(actionID == WLQ_N_DEFINES.USB){ // USB
             if ((self.typePicker.selectedRow(inComponent: 0) == 0) && (wlqData.getVINThreshold() != 0x0000)){
                 wlqData.setVINThreshold(value: [0x00,0x00])
             } else if ((self.typePicker.selectedRow(inComponent: 0) == 1) && (wlqData.getVINThreshold() != 0x02BC)){
@@ -132,7 +143,11 @@ class HWSettingsActionViewController: UIViewController, UIPickerViewDataSource, 
         keyPicker.delegate = self
         keyPicker.dataSource = self
         
-        if(actionID == WLQ_N_DEFINES.USB){ // USB
+        if(actionID == WLQ_N_DEFINES.KEYMODE || actionID == WLQ_C_DEFINES.KEYMODE){ // KEYMODE
+            typePicker.selectRow(Int(wlqData.getKeyMode()), inComponent: 0, animated: true)
+            keyPicker.isHidden = true
+            modifierMultiPicker.isHidden = true
+        } else if(actionID == WLQ_N_DEFINES.USB){ // USB
             if (wlqData.getVINThreshold() == 0x0000){
                 typePicker.selectRow(0, inComponent: 0, animated: true)
             } else if (wlqData.getVINThreshold() == 0xFFFF){
@@ -213,7 +228,9 @@ class HWSettingsActionViewController: UIViewController, UIPickerViewDataSource, 
 
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         if pickerView == typePicker {
-            if(actionID == WLQ_N_DEFINES.USB){ // USB
+            if(actionID == WLQ_N_DEFINES.KEYMODE || actionID == WLQ_C_DEFINES.KEYMODE){ // KEYMODE
+                return keymodesPickerData.count
+            } else if(actionID == WLQ_N_DEFINES.USB){ // USB
                 return usbPickerData.count
             } else if(actionID == WLQ_N_DEFINES.RTKDoublePressSensitivity){ // RTK Sensititvity
                 return 20
@@ -240,7 +257,9 @@ class HWSettingsActionViewController: UIViewController, UIPickerViewDataSource, 
 
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         if (pickerView == typePicker) {
-            if(actionID == WLQ_N_DEFINES.USB){ // USB
+            if(actionID == WLQ_N_DEFINES.KEYMODE || actionID == WLQ_C_DEFINES.KEYMODE){ // KEYMODE
+                return keymodesPickerData[row]
+            } else if(actionID == WLQ_N_DEFINES.USB){ // USB
                 return usbPickerData[row]
             } else if(actionID == WLQ_N_DEFINES.RTKDoublePressSensitivity){ // RTK Sensititvity
                 return "\(row + 1)"
@@ -268,7 +287,13 @@ class HWSettingsActionViewController: UIViewController, UIPickerViewDataSource, 
 
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if pickerView == typePicker {
-            if (actionID == WLQ_N_DEFINES.USB){ // USB
+            if (actionID == WLQ_N_DEFINES.KEYMODE || actionID == WLQ_C_DEFINES.KEYMODE){ // KEYMODE
+                if (wlqData.getKeyMode() != row) {
+                    saveButton.isHidden = false
+                } else {
+                    saveButton.isHidden = true
+                }
+            } else if (actionID == WLQ_N_DEFINES.USB){ // USB
                 if (wlqData.getVINThreshold() == 0x0000 && row == 0){
                     saveButton.isHidden = true
                 } else if (wlqData.getVINThreshold() == 0xFFFF && row == 2){
@@ -312,5 +337,27 @@ class HWSettingsActionViewController: UIViewController, UIPickerViewDataSource, 
 
     func isSet(value: UInt8, bit: UInt8) -> Bool{
        return ( (value & bit) == bit )
+    }
+    
+    func setHWMode(mode: UInt8){
+        NSLog("HWSettingsActionViewController: Set WLQ Mode")
+        var value:[UInt8] = [mode]
+        let alertController = UIAlertController(
+            title: NSLocalizedString("hwsave_alert_title", comment: ""),
+            message: NSLocalizedString("hwsave_alert_body", comment: ""),
+            preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: NSLocalizedString("hwsave_alert_btn_cancel", comment: ""), style: .cancel, handler: nil)
+        alertController.addAction(cancelAction)
+        let openAction = UIAlertAction(title: NSLocalizedString("hwsave_alert_btn_ok", comment: ""), style: .default) { (action) in
+            let command = self.wlqData.WRITE_MODE_CMD() + value + self.wlqData.CMD_EOM()
+            let writeData =  Data(_: command)
+            if (self.bleData.getPeripheral() != nil && self.bleData.getcmdCharacteristic() != nil){
+                self.bleData.getPeripheral().writeValue(writeData, for: self.bleData.getcmdCharacteristic(), type: CBCharacteristicWriteType.withResponse)
+            }
+            self.navigationController?.popViewController(animated: true)
+            self.dismiss(animated: true, completion: nil)
+        }
+        alertController.addAction(openAction)
+        self.present(alertController, animated: true, completion: nil)
     }
 }
