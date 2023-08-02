@@ -234,6 +234,7 @@ class HWSettingsViewController: UIViewController, UITableViewDelegate, UITableVi
                                     WLQ_N_DEFINES.RTKDisplayOffDoublePress]
                         
                         if (wlqData.getKeyMode() == wlqData.KEYMODE_CUSTOM()){
+                            menuBtn.isHidden = false
                             if (!wlqData.getConfig().elementsEqual(wlqData.getTempConfig())){
                                 NSLog("HWSettingsViewController: !!!Change detected!!!")
                                 configButton.setTitle(NSLocalizedString("config_write_label", comment: ""), for: .normal)
@@ -301,6 +302,7 @@ class HWSettingsViewController: UIViewController, UITableViewDelegate, UITableVi
                             WLQ_C_DEFINES.rocker2DownLongPress]
                 
                 if (wlqData.getKeyMode() == wlqData.KEYMODE_CUSTOM()){
+                    menuBtn.isHidden = true
                     if (!wlqData.getConfig().elementsEqual(wlqData.getTempConfig())){
                         NSLog("HWSettingsViewController: !!!Change detected!!!")
                         configButton.setTitle(NSLocalizedString("config_write_label", comment: ""), for: .normal)
