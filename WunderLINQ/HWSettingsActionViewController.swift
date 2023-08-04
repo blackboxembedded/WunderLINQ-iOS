@@ -66,9 +66,9 @@ class HWSettingsActionViewController: UIViewController, UIPickerViewDataSource, 
                 wlqData.setVINThreshold(value: [0xFF,0xFF])
             }
         } else if(actionID == WLQ_N_DEFINES.RTKDoublePressSensitivity){ // RTK Sensititvity
-            wlqData.setDoublePressSensitivity(value: (UInt8)(self.typePicker.selectedRow(inComponent: 0) + 1))
+            wlqData.setDoublePressSensitivity(value: (UInt8)((self.typePicker.selectedRow(inComponent: 0) + 1) / 50))
         } else if(actionID == WLQ_N_DEFINES.fullLongPressSensitivity){ // Full Sensititvity
-            wlqData.setLongPressSensitivity(value: (UInt8)(self.typePicker.selectedRow(inComponent: 0) + 1))
+            wlqData.setLongPressSensitivity(value: (UInt8)((self.typePicker.selectedRow(inComponent: 0) + 1) / 50))
         } else {    //  Key
             let keyType:UInt8 = (UInt8)(self.typePicker.selectedRow(inComponent: 0))
             var key:UInt8 = 0x00
@@ -262,9 +262,9 @@ class HWSettingsActionViewController: UIViewController, UIPickerViewDataSource, 
             } else if(actionID == WLQ_N_DEFINES.USB){ // USB
                 return usbPickerData[row]
             } else if(actionID == WLQ_N_DEFINES.RTKDoublePressSensitivity){ // RTK Sensititvity
-                return "\(row + 1)"
+                return "\((row + 1) * 50)"
             } else if(actionID == WLQ_N_DEFINES.fullLongPressSensitivity){ // Full Sensititvity
-                return "\(row + 1)"
+                return "\((row + 1) * 50)"
             } else {
                 if (wlqData.gethardwareVersion() == WLQ_N_DEFINES.hardwareVersion1){
                     return modePickerDataHW1[row]
