@@ -354,7 +354,7 @@ class HWSettingsActionViewController: UIViewController, UIPickerViewDataSource, 
             if (self.bleData.getPeripheral() != nil && self.bleData.getcmdCharacteristic() != nil){
                 self.bleData.getPeripheral().writeValue(writeData, for: self.bleData.getcmdCharacteristic(), type: CBCharacteristicWriteType.withResponse)
             }
-            self.navigationController?.popViewController(animated: true)
+            self.navigationController?.popToRootViewController(animated: true)
             self.dismiss(animated: true, completion: nil)
         }
         alertController.addAction(openAction)
