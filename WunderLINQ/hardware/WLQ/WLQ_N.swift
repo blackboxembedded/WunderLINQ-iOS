@@ -788,9 +788,9 @@ class WLQ_N: WLQ {
                 returnString = NSLocalizedString("usbcontrol_engine_label", comment: "")
             }
         case RTKDoublePressSensitivity:
-            returnString = "\(RTKSensitivity!)"
+            returnString = "\(Int(RTKSensitivity!) * 50)ms"
         case fullLongPressSensitivity:
-            returnString = "\(fullSensitivity!)"
+            returnString = "\(Int(fullSensitivity!) * 50)ms"
         case fullScrollUp:
             if(fullScrollUpKeyType == KEYBOARD_HID){
                 if let index = keyboardHID.keyboardCodes.firstIndex(where: { $0.0 == fullScrollUpKey! }) {
