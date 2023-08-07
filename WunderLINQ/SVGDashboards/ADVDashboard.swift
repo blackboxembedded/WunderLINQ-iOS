@@ -128,45 +128,38 @@ class ADVDashboard {
             case 1://Trip1
                 if motorcycleData.tripOne != nil {
                     var trip1:Double = motorcycleData.tripOne!
+                    dataValue = "\(Int(round(trip1)))"
                     if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
                         trip1 = Utility.kmToMiles(trip1)
                         distanceUnit = "mi"
                     }
-                    dataValue = "\(Int(round(trip1)))"
                     dataUnit = distanceUnit
+                    dataLabel = "\(NSLocalizedString("dash_trip1_label", comment: "")): "
                 }
-                dataLabel = "\(NSLocalizedString("dash_trip1_label", comment: "")): "
                 break
             case 2://Trip2
                 if motorcycleData.tripTwo != nil {
                     var trip2:Double = motorcycleData.tripTwo!
+                    dataValue = "\(Int(round(trip2)))"
                     if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
                         trip2 = Utility.kmToMiles(trip2)
                         distanceUnit = "mi"
                     }
-                    dataValue = "\(Int(round(trip2)))\(distanceUnit)"
                     dataUnit = distanceUnit
+                    dataLabel = "\(NSLocalizedString("dash_trip2_label", comment: "")): "
                 }
-                dataLabel = "\(NSLocalizedString("dash_trip2_label", comment: "")): "
                 break
             case 3://Range
                 if motorcycleData.fuelRange != nil {
                     var fuelRange:Double = motorcycleData.fuelRange!
+                    dataValue = "\(Int(round(fuelRange)))"
                     if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
                         fuelRange = Utility.kmToMiles(fuelRange)
                         distanceUnit = "mi"
                     }
-                    dataValue = "\(Int(round(fuelRange)))\(distanceUnit)"
                     dataUnit = distanceUnit
-                    if(faults.getFuelFaultActive()){
-                        let style = xml?[0]["dashboard"]?["values"]?["dataValue"]?.attributes["style"]
-                        let regex = try! NSRegularExpression(pattern: "fill:([^<]*);", options: NSRegularExpression.Options.caseInsensitive)
-                        let range = NSMakeRange(0, style!.count)
-                        let modString = regex.stringByReplacingMatches(in: style!, options: [], range: range, withTemplate: "fill:#e20505;")
-                        xml?[0]["dashboard"]?["values"]?["dataValue"]?.attributes["style"] = modString
-                    }
+                    dataLabel = "\(NSLocalizedString("dash_range_label", comment: "")): "
                 }
-                dataLabel = "\(NSLocalizedString("dash_range_label", comment: "")): "
                 break
             case 4://Altitude
                 if motorcycleData.location != nil {
