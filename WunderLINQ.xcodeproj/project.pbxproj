@@ -112,6 +112,7 @@
 		B98CA762252E6F5500530075 /* String+Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98CA761252E6F5500530075 /* String+Localizable.swift */; };
 		D83D6A5E2A119A06008828EC /* CANbusTriumph.swift in Sources */ = {isa = PBXBuildFile; fileRef = D83D6A5D2A119A06008828EC /* CANbusTriumph.swift */; };
 		D8585C53293EBD550025D0AB /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8585C51293EBD540025D0AB /* Main_iPad.storyboard */; };
+		D87629122A7EDEB90021E7A7 /* standard-dashboard-portrait.svg in Resources */ = {isa = PBXBuildFile; fileRef = D87629112A7EDEB90021E7A7 /* standard-dashboard-portrait.svg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -273,6 +274,7 @@
 		B98CA761252E6F5500530075 /* String+Localizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Localizable.swift"; sourceTree = "<group>"; };
 		D83D6A5D2A119A06008828EC /* CANbusTriumph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CANbusTriumph.swift; sourceTree = "<group>"; };
 		D8585C52293EBD540025D0AB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
+		D87629112A7EDEB90021E7A7 /* standard-dashboard-portrait.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "standard-dashboard-portrait.svg"; sourceTree = "<group>"; };
 		DA150AA674E4880933A5281B /* Pods_WunderLINQ.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WunderLINQ.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -484,6 +486,7 @@
 		7EB5EDE9252169B800B61160 /* svg */ = {
 			isa = PBXGroup;
 			children = (
+				D87629112A7EDEB90021E7A7 /* standard-dashboard-portrait.svg */,
 				7E8AD3DC26141E150089F590 /* adv-dashboard.svg */,
 				7E755C10260A787100B29507 /* sport-dashboard.svg */,
 				7E755C11260A787100B29507 /* standard-dashboard.svg */,
@@ -685,6 +688,7 @@
 				7E755C12260A787100B29507 /* sport-dashboard.svg in Resources */,
 				7EA478831F4A7260000CEDDC /* InAppSettings.bundle in Resources */,
 				7EA4788A1F537ED5000CEDDC /* Localizable.strings in Resources */,
+				D87629122A7EDEB90021E7A7 /* standard-dashboard-portrait.svg in Resources */,
 				7EA478581F40B154000CEDDC /* LaunchScreen.storyboard in Resources */,
 				7EA478551F40B154000CEDDC /* Assets.xcassets in Resources */,
 				7EB5EDE4252136F800B61160 /* Main.storyboard in Resources */,
@@ -1049,7 +1053,7 @@
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 3J48UMN5W2;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1061,7 +1065,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0.15;
+				MARKETING_VERSION = 2.0.16;
 				PRODUCT_BUNDLE_IDENTIFIER = com.blackboxembedded.wunderlinq;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1079,7 +1083,7 @@
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 3J48UMN5W2;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1091,7 +1095,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0.15;
+				MARKETING_VERSION = 2.0.16;
 				PRODUCT_BUNDLE_IDENTIFIER = com.blackboxembedded.wunderlinq;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
