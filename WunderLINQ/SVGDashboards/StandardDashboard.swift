@@ -31,6 +31,7 @@ class StandardDashboard {
         var pressureUnit = "psi"
 
         
+        //let url = Bundle.main.url(forResource: "standard-dashboard-portrait", withExtension: "svg")!
         let url = Bundle.main.url(forResource: "standard-dashboard", withExtension: "svg")!
         let xml = XML(contentsOf: url)
 

@@ -196,9 +196,11 @@ class DashViewController: UIViewController, UIWebViewDelegate {
         if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
             let interfaceOrientation = windowScene.interfaceOrientation
             if (interfaceOrientation.isPortrait){
+                // Remove next 3 lines for portrait dashboards
                 let offset = (dashView.frame.size.height / 2.0) - (dashView.frame.size.width / 2.0)
                 let translate = CGAffineTransform(translationX: 0.0, y: offset)
                 webView.transform = translate
+                // End
                 webView.frame.size.width = dashView.frame.size.width
                 webView.frame.size.height = dashView.frame.size.height
             } else {

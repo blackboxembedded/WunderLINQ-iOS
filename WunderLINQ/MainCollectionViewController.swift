@@ -424,7 +424,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         var dateFormatter: DateFormatter {
             let formatter = DateFormatter()
             formatter.dateFormat = dateFormat
-            formatter.locale = Locale.current
+            formatter.locale = Locale(identifier: "en_US")
             formatter.timeZone = TimeZone.current
             return formatter
         }
