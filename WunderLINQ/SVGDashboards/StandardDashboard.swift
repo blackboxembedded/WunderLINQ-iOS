@@ -136,7 +136,7 @@ class StandardDashboard {
                     }
                     dataValue = "\(Int(round(trip1)))\(distanceUnit)"
                 }
-                dataLabel = "\(NSLocalizedString("dash_trip1_label", comment: "")): "
+                dataLabel = "dash_trip1_label".localized(forLanguageCode: "Base")
                 break
             case 2://Trip2
                 if motorcycleData.tripTwo != nil {
@@ -147,7 +147,7 @@ class StandardDashboard {
                     }
                     dataValue = "\(Int(round(trip2)))\(distanceUnit)"
                 }
-                dataLabel = "\(NSLocalizedString("dash_trip2_label", comment: "")): "
+                dataLabel = "dash_trip2_label".localized(forLanguageCode: "Base")
                 break
             case 3://Range
                 if motorcycleData.fuelRange != nil {
@@ -165,7 +165,7 @@ class StandardDashboard {
                         xml?[0]["dashboard"]?["values"]?["dataValue"]?.attributes["style"] = modString
                     }
                 }
-                dataLabel = "\(NSLocalizedString("dash_range_label", comment: "")): "
+                dataLabel = "dash_range_label".localized(forLanguageCode: "Base")
                 break
             case 4://Altitude
                 if motorcycleData.location != nil {
@@ -176,7 +176,7 @@ class StandardDashboard {
                     }
                     dataValue = "\(Int(round(altitude)))\(heightUnit)"
                 }
-                dataLabel = "\(NSLocalizedString("dash_altitude_label", comment: "")): "
+                dataLabel = "dash_altitude_label".localized(forLanguageCode: "Base")
                 break
             default:
                 break

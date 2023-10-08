@@ -18,6 +18,20 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 import Foundation
 extension String {
+    func localized(forLanguageCode lanCode: String) -> String {
+        guard
+            let bundlePath = Bundle.main.path(forResource: lanCode, ofType: "lproj"),
+            let bundle = Bundle(path: bundlePath)
+        else { return "" }
+        
+        return NSLocalizedString(
+            self,
+            bundle: bundle,
+            value: " ",
+            comment: ""
+        )
+    }
+    
     func toDouble() -> Double? {
         let formatter = NumberFormatter()
         formatter.locale = Locale(identifier: "en_US")
