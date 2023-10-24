@@ -45,3 +45,4 @@
 "rearwheel_speed_header" = "Snelheid achterwiel";
 "rpm_header" = "RPM";
 "sunrisesunset_header" = "Zonsopgang/Zonsondergang";
+"local_battery_header" = "Device Battery";

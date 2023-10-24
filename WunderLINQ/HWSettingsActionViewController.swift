@@ -117,8 +117,7 @@ class HWSettingsActionViewController: UIViewController, UIPickerViewDataSource, 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        AppUtility.lockOrientation(.portrait)
-        
+
         let backBtn = UIButton()
         backBtn.setImage(UIImage(named: "Left")?.withRenderingMode(.alwaysTemplate), for: .normal)
         if #available(iOS 13.0, *) {

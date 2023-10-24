@@ -45,3 +45,4 @@
 "voltage_header" = "Napięcie";
 "avgspeed_header" = "Średnia prędkość";
 "gpsspeed_header" = "Prędkość GPS";
+"local_battery_header" = "Device Battery";

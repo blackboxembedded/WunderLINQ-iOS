@@ -45,3 +45,4 @@
 "leanangle_bike_header" = "Lean Angle";
 "rearwheel_speed_header" = "Rear Wheel Speed";
 "rpm_header" = "RPM";
+"local_battery_header" = "Device Battery";

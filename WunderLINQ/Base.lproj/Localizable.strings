@@ -279,6 +279,7 @@
 "rpm_header" = "RPM";
 "leanangle_bike_header" = "Lean Angle";
 "rearwheel_speed_header" = "Rear Wheel Speed";
+"local_battery_header" = "Device Battery";
 // ContactsTableViewController
 "contactlist_title" = "Contacts";
 // WaypointsNavTableViewController

@@ -45,3 +45,4 @@
 "leanangle_bike_header" = "Angle d'inclinaison";
 "rearwheel_speed_header" = "Vitesse de la roue arrière";
 "rpm_header" = "RPM";
+"local_battery_header" = "Device Battery";

@@ -59,6 +59,7 @@ class MotorcycleData {
     var leanAngleMaxR: Double?
     var rearSpeed: Double?
     var prevBrake: Int? = 0
+    var localBattery: Int?
     
     func setLocation(location: CLLocation?){
         self.location = location
@@ -326,6 +327,13 @@ class MotorcycleData {
         return self.rearSpeed!
     }
     
+    func setLocalBattery(localBattery: Int?){
+        self.localBattery = localBattery
+    }
+    func getLocalBattery() -> Int{
+        return self.localBattery!
+    }
+    
     func clear(){
         self.frontTirePressure = nil
         self.rearTirePressure = nil
@@ -358,5 +366,6 @@ class MotorcycleData {
         self.leanAngleMaxL = nil
         self.leanAngleMaxR = nil
         self.rearSpeed = nil
+        self.localBattery = nil
     }
 }
