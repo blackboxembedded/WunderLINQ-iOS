@@ -45,3 +45,4 @@
 "leanangle_bike_header" = "Dőlésszög";
 "rearwheel_speed_header" = "Hátsó kerék sebessége";
 "rpm_header" = "Fordulatszám";
+"local_battery_header" = "Device Battery";

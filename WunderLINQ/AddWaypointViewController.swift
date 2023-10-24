@@ -96,9 +96,7 @@ class AddWaypointViewController: UIViewController, UITextFieldDelegate, GMSMapVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        AppUtility.lockOrientation(.portrait)
-        
-        // Do any additional setup after loading the view.
+
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))
         swipeRight.direction = .right
         self.view.addGestureRecognizer(swipeRight)

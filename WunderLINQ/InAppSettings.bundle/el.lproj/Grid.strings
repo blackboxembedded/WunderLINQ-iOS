@@ -45,3 +45,4 @@
 "leanangle_bike_header" = "Γωνία πλαγιάσματος";
 "rearwheel_speed_header" = "Ταχύτητα πίσω τροχού";
 "rpm_header" = "Σ.Α.Λ.";
+"local_battery_header" = "Device Battery";

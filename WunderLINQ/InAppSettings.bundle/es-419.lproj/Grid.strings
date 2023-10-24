@@ -49,3 +49,4 @@
 "tripone_header" = "Trip 1";
 "triptwo_header" = "Trip 2";
 "voltage_header" = "Voltage";
+"local_battery_header" = "Device Battery";

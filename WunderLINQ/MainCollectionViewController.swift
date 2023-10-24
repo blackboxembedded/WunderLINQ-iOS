@@ -132,7 +132,8 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                          NSLocalizedString("sunrisesunset_header", comment: ""),
                          NSLocalizedString("rpm_header", comment: ""),
                          NSLocalizedString("leanangle_bike_header", comment: ""),
-                         NSLocalizedString("rearwheel_speed_header", comment: "")
+                         NSLocalizedString("rearwheel_speed_header", comment: ""),
+                         NSLocalizedString("local_battery_header", comment: "")
     ]
     
     let locationDelegate = LocationDelegate()
@@ -1134,6 +1135,9 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         case 31:
             //Rear Wheel Speed
             label = NSLocalizedString("rearwheel_speed_header", comment: "")
+        case 32:
+            //Device Battery
+            label = NSLocalizedString("local_battery_header", comment: "")
         default:
             NSLog("MainCollectionViewController: Unknown : \(cellDataPoint)")
         }
@@ -1238,6 +1242,12 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         case 30:
             //Lean Angle Bike
             icon = (UIImage(named: "Angle")?.withRenderingMode(.alwaysTemplate))!
+        case 31:
+            //Rear Wheel Speed
+            icon = (UIImage(named: "Tachometer")?.withRenderingMode(.alwaysTemplate))!
+        case 32:
+            //Device Battery
+            icon = (UIImage(named: "Battery-Empty")?.withRenderingMode(.alwaysTemplate))!
         default:
             NSLog("MainCollectionViewController: Unknown : \(cellDataPoint)")
         }
@@ -1442,6 +1452,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                 var ambientTemp:Double = motorcycleData.ambientTemperature!
                 if(ambientTemp <= 0){
                     icon = (UIImage(named: "Snowflake")?.withRenderingMode(.alwaysTemplate))!
+                    icon = icon.imageWithColor(color1: UIColor.blue)
                 }
                 if UserDefaults.standard.integer(forKey: "temperature_unit_preference") == 1 {
                     ambientTemp = Utility.celciusToFahrenheit(ambientTemp)
@@ -1817,6 +1828,28 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                 value = "\(Int(speedValue))"
                 if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
                     value = "\(Int(round(Utility.kmToMiles(speedValue))))"
+                }
+            } else {
+                value = NSLocalizedString("blank_field", comment: "")
+            }
+        case 32:
+            // Device Battery
+            icon = (UIImage(named: "Battery-Empty")?.withRenderingMode(.alwaysTemplate))!
+            if motorcycleData.localBattery != nil {
+                let batteryPct = motorcycleData.localBattery!
+                value = "\(Int(batteryPct))"
+                
+                if(batteryPct > 95){
+                    icon = (UIImage(named: "Battery-Full")?.withRenderingMode(.alwaysTemplate))!
+                } else if(batteryPct > 75 && batteryPct < 95){
+                    icon = (UIImage(named: "Battery-Three-Quarters")?.withRenderingMode(.alwaysTemplate))!
+                } else if(batteryPct > 50 && batteryPct < 75){
+                    icon = (UIImage(named: "Battery-Half")?.withRenderingMode(.alwaysTemplate))!
+                } else if(batteryPct > 25 && batteryPct < 50){
+                    icon = (UIImage(named: "Battery-Quarter")?.withRenderingMode(.alwaysTemplate))!
+                } else if(batteryPct > 0 && batteryPct < 25){
+                    icon = (UIImage(named: "Battery-Empty")?.withRenderingMode(.alwaysTemplate))!
+                    icon = icon.imageWithColor(color1: UIColor.red)
                 }
             } else {
                 value = NSLocalizedString("blank_field", comment: "")
@@ -2737,15 +2770,18 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     }
 
     @objc func updateTime(){
+        // get the current date and time
+        let currentDateTime = Date()
+        // get the date time String from the date object
+        motorcycleData.setTime(time: currentDateTime)
+        // get battery
+        motorcycleData.setLocalBattery(localBattery: getBatteryPercentage())
+        
+        updateMessageDisplay()
+        
         if (wlqData != nil){
             if (wlqData.gethardwareType() == wlqData.TYPE_NAVIGATOR()){
-                // get the current date and time
-                let currentDateTime = Date()
-                // get the date time String from the date object
-                motorcycleData.setTime(time: currentDateTime)
-                updateMessageDisplay()
-                
-                //Update CLuster Clock
+                //Update Cluster Clock
                 let calendar = Calendar.current
                 let yearInt = calendar.component(.year, from: currentDateTime)
                 let monthInt = calendar.component(.month, from: currentDateTime)
@@ -2764,10 +2800,19 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                 if (self.commandCharacteristic != nil){
                     self.wunderLINQ?.writeValue(writeData, for: self.commandCharacteristic!, type: CBCharacteristicWriteType.withResponse)
                 }
-            } else {
-                timeTimer.invalidate()
             }
         }
+    }
+    
+    func getBatteryPercentage() -> Int? {
+        UIDevice.current.isBatteryMonitoringEnabled = true
+        let batteryLevel = UIDevice.current.batteryLevel
+        
+        if batteryLevel < 0 {
+            return nil // Battery level is indeterminate or battery monitoring is disabled
+        }
+        
+        return Int(batteryLevel * 100)
     }
     
     func openBikeInfo(){
