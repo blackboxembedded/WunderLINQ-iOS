@@ -59,6 +59,8 @@ enum NavigationAppPreference: Int, CaseIterable {
 
     case myrouteapp
     
+    case calimoto
+    
     var isAvailable: Bool {
         UIApplication.shared.canOpenURL(URL(string: self.urlScheme)!)
     }
@@ -118,6 +120,9 @@ enum NavigationAppPreference: Int, CaseIterable {
             
         case .myrouteapp:
             return "mra-mobile://x-callback-url/"
+            
+        case .calimoto:
+            return "calimoto://"
 
         }
     }
@@ -191,6 +196,9 @@ enum NavigationAppPreference: Int, CaseIterable {
             
         case .myrouteapp:
             back_link = "?x-success=wunderlinq://&x-source=WunderLINQ"
+            
+        case .calimoto:
+            back_link = ""
         }
         
         
@@ -425,6 +433,10 @@ extension NavAppHelper {
                     }
                 }
             }
+        case .calimoto:
+            //Calimoto
+            // Not Supported
+            supported = false
         }
         return supported
     }
@@ -563,6 +575,10 @@ extension NavAppHelper {
             }
         case .myrouteapp:
             //Myroute-app
+            // Not Supported
+            supported = false
+        case .calimoto:
+            //Calimoto
             // Not Supported
             supported = false
         }
@@ -777,6 +793,10 @@ extension NavAppHelper {
                     }
                 }
             }
+        case .calimoto:
+            //Calimoto
+            // Not Supported
+            supported = false
         }
         return supported
     }

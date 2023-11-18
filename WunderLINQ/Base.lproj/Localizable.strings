@@ -38,6 +38,7 @@
 "nav_app_organicmaps" = "Organic Maps";
 "nav_app_gurumaps" = "Guru Maps";
 "nav_app_myrouteapp" = "MyRoute-app";
+"nav_app_calimoto" = "Calimoto";
 // MyMotorcycleViewController
 "main_title" = "Motorcycle";
 "disclaimer_alert_title" = "WARNING!";
