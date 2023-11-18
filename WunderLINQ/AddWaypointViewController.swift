@@ -270,6 +270,8 @@ class AddWaypointViewController: UIViewController, UITextFieldDelegate, GMSMapVi
             timestamp = (date?.toString())! as NSString
         }
         
+        var wptLabel = label as NSString
+        
         if sqlite3_bind_text(stmt, 1, timestamp.utf8String, -1, nil) != SQLITE_OK{
             let errmsg = String(cString: sqlite3_errmsg(db)!)
             NSLog("AddWaypointViewController: failure binding name: \(errmsg)")
@@ -290,12 +292,12 @@ class AddWaypointViewController: UIViewController, UITextFieldDelegate, GMSMapVi
             NSLog("AddWaypointViewController: failure binding name: \(errmsg)")
             return
         }
-        if sqlite3_bind_text(stmt, 5, label, -1, nil) != SQLITE_OK{
+        if sqlite3_bind_text(stmt, 5, wptLabel.utf8String, -1, nil) != SQLITE_OK{
             let errmsg = String(cString: sqlite3_errmsg(db)!)
             NSLog("AddWaypointViewController: failure binding name: \(errmsg)")
             return
         }
-        
+
         //executing the query to insert values
         if sqlite3_step(stmt) != SQLITE_DONE {
             let errmsg = String(cString: sqlite3_errmsg(db)!)
