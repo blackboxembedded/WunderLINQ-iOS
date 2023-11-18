@@ -209,7 +209,11 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
         guard let task17 = Tasks(label: frontRecLabel, icon: UIImage(named: "VideoCamera")?.withRenderingMode(.alwaysTemplate)) else {
             fatalError("Unable to instantiate Video Recording Task")
         }
-        self.tasks = [task0, task1, task2, task3, task4, task5, task6, task7, task8, task9, task10, task11, task12, task13, task14, task15, task16, task17]
+        // Fuel Task
+        guard let task18 = Tasks(label: NSLocalizedString("task_title_fuel", comment: ""), icon: UIImage(named: "Gas-pump")?.withRenderingMode(.alwaysTemplate)) else {
+            fatalError("Unable to instantiate Settings Task")
+        }
+        self.tasks = [task0, task1, task2, task3, task4, task5, task6, task7, task8, task9, task10, task11, task12, task13, task14, task15, task16, task17, task18]
     }
     
     private func execute_task(taskID:Int) {
@@ -231,7 +235,10 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
                                                         let lon = placemark?.location?.coordinate.longitude
                                                         let destLatitude: CLLocationDegrees = lat!
                                                         let destLongitude: CLLocationDegrees = lon!
-                                                        NavAppHelper.navigateTo(destLatitude: destLatitude, destLongitude: destLongitude, destLabel: NSLocalizedString("home", comment: ""), currentLatitude: self.motorcycleData.getLocation().coordinate.latitude, currentLongitude: self.motorcycleData.getLocation().coordinate.longitude)
+                                                        if (!NavAppHelper.navigateTo(destLatitude: destLatitude, destLongitude: destLongitude, destLabel: NSLocalizedString("home", comment: ""), currentLatitude: self.motorcycleData.getLocation().coordinate.latitude, currentLongitude: self.motorcycleData.getLocation().coordinate.longitude)){
+                                                            self.showToast(message: NSLocalizedString("nav_app_feature_not_supported", comment: ""))
+                                                        }
+                                                        
                                                     }
                                                     else {
                                                         // An error occurred during geocoding.
@@ -402,6 +409,12 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
                     startSession(orientation: currentVideoOrientation())
                     isRecording = true
                 }
+            }
+            break
+        case 18:
+            //Fuel
+            if (!NavAppHelper.navigateToFuel(currentLatitude: motorcycleData.getLocation().coordinate.latitude, currentLongitude: motorcycleData.getLocation().coordinate.longitude)){
+                self.showToast(message: NSLocalizedString("nav_app_feature_not_supported", comment: ""))
             }
             break
         default:

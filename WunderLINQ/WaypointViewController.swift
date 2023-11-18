@@ -298,13 +298,17 @@ class WaypointViewController: UIViewController, UITextFieldDelegate {
     
     func open(){
         if let lat = latitude?.toDouble(), let lon = longitude?.toDouble(){
-            NavAppHelper.viewWaypoint(destLatitude: lat, destLongitude: lon, destLabel: label)
+            if (!NavAppHelper.viewWaypoint(destLatitude: lat, destLongitude: lon, destLabel: label)){
+                self.showToast(message: NSLocalizedString("nav_app_feature_not_supported", comment: ""))
+            }
         }
     }
     
     func navigate(){
         if let lat = latitude?.toDouble(), let lon = longitude?.toDouble() {
-            NavAppHelper.navigateTo(destLatitude: lat, destLongitude: lon, destLabel: label, currentLatitude: motorcycleData.getLocation().coordinate.latitude, currentLongitude: motorcycleData.getLocation().coordinate.longitude)
+            if (!NavAppHelper.navigateTo(destLatitude: lat, destLongitude: lon, destLabel: label, currentLatitude: motorcycleData.getLocation().coordinate.latitude, currentLongitude: motorcycleData.getLocation().coordinate.longitude)){
+                self.showToast(message: NSLocalizedString("nav_app_feature_not_supported", comment: ""))
+            }
         }
     }
     
