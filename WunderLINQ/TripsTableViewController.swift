@@ -90,13 +90,37 @@ class TripsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         // Create a variable that you want to send based on the destination view controller
         // You can get a reference to the data by using indexPath shown below
         fileName = csvFileNames?[indexPath.row]
         performSegue(withIdentifier: "tripsToTrip", sender: self)
     }
 
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if (editingStyle == .delete) {
+            let alert = UIAlertController(title: NSLocalizedString("delete_trip_alert_title", comment: ""), message: NSLocalizedString("delete_trip_alert_body", comment: ""), preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: NSLocalizedString("delete_bt", comment: ""), style: UIAlertAction.Style.default, handler: { action in
+                let fileManager = FileManager.default
+                let fileName = "\(self.getDocumentsDirectory())/\(self.csvFileNames?[indexPath.row] ?? "file").csv"
+                do {
+                    try fileManager.removeItem(atPath: fileName)
+                } catch {
+                    NSLog("TripsTableViewController: Could not delete file: \(error)")
+                }
+                self.readTrips()
+                self.tableView.reloadData()
+            }))
+            alert.addAction(UIAlertAction(title: NSLocalizedString("cancel_bt", comment: ""), style: UIAlertAction.Style.cancel, handler: { action in
+                // close
+            }))
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "tripsToTrip") {
             let vc = segue.destination as! TripViewController
@@ -104,14 +128,18 @@ class TripsTableViewController: UITableViewController {
         }
     }
     
+    func getDocumentsDirectory() -> String {
+        let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
+        let documentsDirectory = paths[0]
+        return documentsDirectory
+    }
+    
     func readTrips() {
         // Get the document directory url
         let documentsUrl =  FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-        
         do {
             // Get the directory contents urls (including subfolders urls)
             let directoryContents = try FileManager.default.contentsOfDirectory(at: documentsUrl, includingPropertiesForKeys: nil, options: [])
-            print(directoryContents)
             
             // if you want to filter the directory contents you can do like this:
             let csvFiles = directoryContents.filter{ $0.pathExtension == "csv" }
@@ -120,7 +148,7 @@ class TripsTableViewController: UITableViewController {
             
             
         } catch {
-            print(error.localizedDescription)
+            print("TripsTableViewController: readTrips(): \(error.localizedDescription)")
         }
     }
 }

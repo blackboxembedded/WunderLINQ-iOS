@@ -146,6 +146,41 @@ class WaypointsTableViewController: UITableViewController {
         record = waypoints[indexPath.row].id
         performSegue(withIdentifier: "waypointsToWaypoint", sender: self)
     }
+    
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if (editingStyle == .delete) {
+            record = waypoints[indexPath.row].id
+            let alert = UIAlertController(title: NSLocalizedString("delete_waypoint_alert_title", comment: ""), message: NSLocalizedString("delete_waypoint_alert_body", comment: ""), preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: NSLocalizedString("delete_bt", comment: ""), style: UIAlertAction.Style.default, handler: { action in
+                let queryString = "DELETE FROM records WHERE id = \(self.record)"
+                //statement pointer
+                var stmt:OpaquePointer?
+                //preparing the query
+                if sqlite3_prepare(self.db, queryString, -1, &stmt, nil) != SQLITE_OK{
+                    let errmsg = String(cString: sqlite3_errmsg(self.db)!)
+                    NSLog("WaypointsTableViewController: error preparing insert: \(errmsg)")
+                    return
+                }
+                
+                //executing the query to delete row
+                if sqlite3_step(stmt) != SQLITE_DONE {
+                    let errmsg = String(cString: sqlite3_errmsg(self.db)!)
+                    NSLog("WaypointsTableViewController: failure inserting wapoint: \(errmsg)")
+                    return
+                }
+                
+                self.readWaypoints()
+                self.tableView.reloadData()
+            }))
+            alert.addAction(UIAlertAction(title: NSLocalizedString("cancel_bt", comment: ""), style: UIAlertAction.Style.cancel, handler: { action in
+            }))
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
 
     func readWaypoints(){
         
