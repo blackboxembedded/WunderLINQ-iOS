@@ -24,12 +24,16 @@ import Photos
 import UIKit
 import UserNotifications
 
-class FirstRunViewController: UIViewController {
+class FirstRunViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
     var step:Int = 0
     
     let locationManager = CLLocationManager()
     
+    var pickerData: [String] = [NSLocalizedString("nav_app_apple", comment: "Apple"),NSLocalizedString("nav_app_google", comment: "Google"),NSLocalizedString("nav_app_scenic", comment: ""),NSLocalizedString("nav_app_sygic", comment: ""),NSLocalizedString("nav_app_waze", comment: ""),NSLocalizedString("nav_app_mapsme", comment: ""),NSLocalizedString("nav_app_osmand", comment: ""),NSLocalizedString("nav_app_here", comment: ""),NSLocalizedString("nav_app_tomtomgo", comment: ""),NSLocalizedString("nav_app_inroute", comment: ""),NSLocalizedString("nav_app_mapout", comment: ""),NSLocalizedString("nav_app_yahoojapan", comment: ""),NSLocalizedString("nav_app_copilot", comment: ""),NSLocalizedString("nav_app_yandex", comment: ""),NSLocalizedString("nav_app_cartograph", comment: ""),NSLocalizedString("nav_app_organicmaps", comment: ""),NSLocalizedString("nav_app_gurumaps", comment: ""),NSLocalizedString("nav_app_myrouteapp", comment: "")]
+    var selectedNavApp = 0
+    
+    @IBOutlet weak var selectPicker: UIPickerView!
     @IBOutlet weak var nextButton: LocalisableButton!
     @IBOutlet weak var messageTextField: LocalisableLabel!
     
@@ -133,7 +137,8 @@ class FirstRunViewController: UIViewController {
             break
         case 7:
             // Notification Permissions
-            messageTextField.text = NSLocalizedString("firstrun_end", comment: "")
+            messageTextField.text = NSLocalizedString("firstrun_navapp_body", comment: "")
+            selectPicker.isHidden = false
             
             UNUserNotificationCenter.current().getNotificationSettings { (settings) in
                 if (settings.authorizationStatus == .authorized){
@@ -155,6 +160,13 @@ class FirstRunViewController: UIViewController {
             step = step + 1
             break
         case 8:
+            // Preferred Navigation App
+            UserDefaults.standard.set(selectedNavApp, forKey: "nav_app_preference")
+            selectPicker.isHidden = true
+            messageTextField.text = NSLocalizedString("firstrun_end", comment: "")
+            step = step + 1
+            break
+        case 9:
             UserDefaults.standard.set(true, forKey: "firstRun")
             
             let story = UIStoryboard(name: "Main", bundle:nil)
@@ -171,11 +183,29 @@ class FirstRunViewController: UIViewController {
         }
     }
     
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return pickerData.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return pickerData[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        selectedNavApp = row
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        messageTextField.text = NSLocalizedString("firstrun_start", comment: "")
+        self.selectPicker.delegate = self
+        self.selectPicker.dataSource = self
         
+        messageTextField.text = NSLocalizedString("firstrun_start", comment: "")
     }
     
 }

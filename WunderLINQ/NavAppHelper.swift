@@ -22,65 +22,41 @@ import UIKit
 
 /// All descriptions are accessible with option + click
 enum NavigationAppPreference: Int, CaseIterable {
-    /// Universal app link accessible with `maps://`
+
     case appleMaps = 0
 
-    /// Universal app link accessible with `googlemaps://`, or x-callback `comgooglemaps-x-callback://`
     case googleMaps
 
-    /// Integration guide: https://github.com/guidove/Scenic-Integration/blob/master/README.md
-    /// https://scenicapp.space/api/openScenic.php is a deeplink with app-site-association
     case scenic
 
-    /// https://www.sygic.com/developers/professional-navigation-sdk/ios/custom-url
     case sygic
 
-    /// Universal app link accessible with `waze://`
     case waze
 
-    /// https://github.com/mapsme/api-ios
     case mapsMe
 
-    /// Universal app link accessible with `osmandmaps://?lat=45.6313&lon=34.9955&z=8&title=New+York`
     case osmAnd
 
-    /// https://developer.here.com/documentation/mobility-on-demand-toolkit/dev_guide/topics/navigation.html
-    /// Universal app link accessible with `here-route://mylocation/37.870090,-122.268150,Downtown%20Berkeley?ref=WunderLINQ&m=d`
     case hereWeGo
 
-    /// https://discussions.tomtom.com/en/discussion/1118783/url-schemes-for-go-navigation-ios/
-    /// Universal app link accessible with `tomtomgo://x-callback-url/navigate?destination=52.371183,4.892504`
     case tomTomGo
 
-    /// http://carobapps.com/products/inroute/url-scheme/
     case inRoute
 
-    /// Universal app link accessible with `mapout://`
-    /// `mapout://longitude=-0.209659096912497345&latitude=51.52214776018867&zoom=8.6681337356567383&rotation=0`
     case mapout
-    
-    /// Universal app link accessible with `yjcarnavi://`
-    /// https://note.com/yahoo_carnavi/n/n1d6b819a816c
+
     case yahooJapan
 
-    /// Universal app link accessible with `copilot://`
-    /// https://developer.trimblemaps.com/copilot-navigation/v10-19/feature-guide/advanced-features/url-launch/
     case copilot
-    
-    /// Universal app link accessible with `yandexnavi://`
-    /// https://yandex-ru.translate.goog/dev/yandex-apps-launch/navigator/doc/concepts/navigator-url-params.html?_x_tr_sl=ru&_x_tr_tl=en&_x_tr_hl=tr&_x_tr_pto=wapp#navigator-url-params__point
+
     case yandex
 
-    /// Universal app link accessible with `cartograph://`
     case cartograph
-    
-    /// Universal app link accessible with `om://`
+
     case organicmaps
-    
-    /// Universal app link accessible with `guru://`
+
     case gurumaps
-    
-    /// Universal app link accessible with `myrouteapp://`
+
     case myrouteapp
     
     var isAvailable: Bool {
@@ -543,7 +519,7 @@ extension NavAppHelper {
             // Not Supported
             supported = false
         case .copilot:
-            //CoPilot has no view waypoint using
+            //CoPilot
             // Not Supported
             supported = false
         case .yandex:

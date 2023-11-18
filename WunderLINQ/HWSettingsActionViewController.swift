@@ -340,7 +340,7 @@ class HWSettingsActionViewController: UIViewController, UIPickerViewDataSource, 
     
     func setHWMode(mode: UInt8){
         NSLog("HWSettingsActionViewController: Set WLQ Mode")
-        var value:[UInt8] = [mode]
+        let value:[UInt8] = [mode]
         let alertController = UIAlertController(
             title: NSLocalizedString("hwsave_alert_title", comment: ""),
             message: NSLocalizedString("hwsave_alert_body", comment: ""),

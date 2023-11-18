@@ -19,6 +19,25 @@
 "location_alert_body" = "The WunderLINQ app needs access to your location to allow background track recording and data logging.\nLocation permission is also used for data points such as elevation, GPS speed, and bearing.";
 "notification_alert_body" = "The WunderLINQ app needs notification access to notify you of faults.";
 "firstrun_end" = "Thank you for purchasing the WunderLINQ!  Ride Safe.";
+"firstrun_navapp_body" = "Select your preferred Navigation App. Level of WunderLINQ support varies, for more details see the following page: https://blackboxembedded.com/pages/integrations";
+"nav_app_apple" = "Apple Maps";
+"nav_app_google" = "Google Maps";
+"nav_app_scenic" = "Scenic";
+"nav_app_sygic" = "Sygic";
+"nav_app_waze" = "Waze";
+"nav_app_mapsme" = "Maps.me";
+"nav_app_osmand" = "OsmAnd";
+"nav_app_here" = "HERE WeGo";
+"nav_app_tomtomgo" = "TomTom GO";
+"nav_app_inroute" = "inRoute";
+"nav_app_mapout" = "MapOut";
+"nav_app_yahoojapan" = "Yahoo Japan";
+"nav_app_copilot" = "CoPilot";
+"nav_app_yandex" = "Yandex.Navigator";
+"nav_app_cartograph" = "Cartograph Maps";
+"nav_app_organicmaps" = "Organic Maps";
+"nav_app_gurumaps" = "Guru Maps";
+"nav_app_myrouteapp" = "MyRoute-app";
 // MyMotorcycleViewController
 "main_title" = "Motorcycle";
 "disclaimer_alert_title" = "WARNING!";
