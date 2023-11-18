@@ -55,7 +55,7 @@ class AlertViewController: UIViewController {
         case 1:
             //Navigation
             if (!NavAppHelper.navigateToFuel(currentLatitude: motorcycleData.getLocation().coordinate.latitude, currentLongitude: motorcycleData.getLocation().coordinate.longitude)){
-                self.showToast(message: NSLocalizedString("nav_app_feature_not_supported", comment: ""))
+                alertLabel.text = NSLocalizedString("nav_app_feature_not_supported", comment: "")
             }
         default:
             NSLog("AlertViewController: Unknown Alert ID")
@@ -75,7 +75,7 @@ class AlertViewController: UIViewController {
         case 1:
             //Navigation
             if (!NavAppHelper.navigateToFuel(currentLatitude: motorcycleData.getLocation().coordinate.latitude, currentLongitude: motorcycleData.getLocation().coordinate.longitude)){
-                self.showToast(message: NSLocalizedString("nav_app_feature_not_supported", comment: ""))
+                alertLabel.text = NSLocalizedString("nav_app_feature_not_supported", comment: "")
             }
         default:
             NSLog("AlertViewController: Unknown Alert ID")
