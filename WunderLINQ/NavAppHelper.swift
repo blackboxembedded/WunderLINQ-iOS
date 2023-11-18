@@ -499,17 +499,8 @@ extension NavAppHelper {
         case .osmAnd:
             //OsmAnd
             // TODO - Not working
-            supported = true
-            let urlString = "\(navApp.urlScheme)navigate_search?start_lat=\(currentLatitude)&start_lon=\(currentLongitude)&dest_search_query=fuel station&search_lat=\(currentLatitude)&search_lon=\(currentLongitude)&profile=motorcycle&force=true&show_search_results=true"
-            if let mapsMeURL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
-                if (UIApplication.shared.canOpenURL(mapsMeURL)) {
-                    if #available(iOS 10, *) {
-                        UIApplication.shared.open(mapsMeURL, options: [:], completionHandler: nil)
-                    } else {
-                        UIApplication.shared.openURL(mapsMeURL as URL)
-                    }
-                }
-            }
+            supported = false
+            //let urlString = "\(navApp.urlScheme)navigate_search?start_lat=\(currentLatitude)&start_lon=\(currentLongitude)&dest_search_query=fuel station&search_lat=\(currentLatitude)&search_lon=\(currentLongitude)&profile=motorcycle&force=true&show_search_results=true"
         case .hereWeGo:
             // HERE WeGo
             // Not Supported
