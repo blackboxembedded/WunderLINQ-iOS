@@ -48,6 +48,9 @@ jobs:
           # Create Secrets.swift
           echo -n "$SECRETS_SWIFT_BASE64" | base64 --decode -o $GITHUB_WORKSPACE/WunderLINQ/Secrets.swift
 
+      - name: check Secrets.swift
+        run: ls -l $GITHUB_WORKSPACE/WunderLINQ/Secrets.swift
+        
       - name: build archive
         run: |
           xcodebuild -workspace WunderLINQ.xcworkspace -scheme "WunderLINQ" \
