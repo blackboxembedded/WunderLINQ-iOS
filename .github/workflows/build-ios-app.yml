@@ -50,7 +50,7 @@ jobs:
 
       - name: build archive
         run: |
-          xcodebuild -scheme "WunderLINQ" \
+          xcodebuild -workspace WunderLINQ.xcworkspace -scheme "WunderLINQ" \
           -archivePath $RUNNER_TEMP/WunderLINQ.xcarchive \
           -sdk iphoneos \
           -configuration Debug \
