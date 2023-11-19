@@ -148,14 +148,14 @@
                                 <rect key="frame" x="16" y="84" width="398" height="247"/>
                             </imageView>
                             <pickerView hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zka-pm-X8v">
-                                <rect key="frame" x="0.0" y="604" width="430" height="216"/>
+                                <rect key="frame" x="0.0" y="620" width="430" height="216"/>
                             </pickerView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="8Cr-GI-CzD"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="YD2-nw-Fpx" firstAttribute="top" secondItem="8Cr-GI-CzD" secondAttribute="top" constant="25" id="0oW-9H-5Lz"/>
-                            <constraint firstItem="A5I-Ms-I7Z" firstAttribute="top" secondItem="zka-pm-X8v" secondAttribute="bottom" constant="16" id="1Wt-90-uJu"/>
+                            <constraint firstItem="A5I-Ms-I7Z" firstAttribute="top" secondItem="zka-pm-X8v" secondAttribute="bottom" id="1Wt-90-uJu"/>
                             <constraint firstItem="YD2-nw-Fpx" firstAttribute="leading" secondItem="8Cr-GI-CzD" secondAttribute="leading" constant="16" id="47f-sI-1eL"/>
                             <constraint firstItem="8Cr-GI-CzD" firstAttribute="bottom" secondItem="A5I-Ms-I7Z" secondAttribute="bottom" constant="16" id="4cS-Qo-vcQ"/>
                             <constraint firstItem="zka-pm-X8v" firstAttribute="leading" secondItem="8Cr-GI-CzD" secondAttribute="leading" id="Dtb-W4-bQP"/>
