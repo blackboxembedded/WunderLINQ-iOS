@@ -45,7 +45,8 @@ jobs:
           cp $PP_PATH ~/Library/MobileDevice/Provisioning\ Profiles
 
       - name: Create Secrets.swift
-        env: SECRETS_SWIFT_BASE64: ${{ secrets.SECRETS_SWIFT }}
+        env: 
+          SECRETS_SWIFT_BASE64: ${{ secrets.SECRETS_SWIFT }}
         run: echo -n "$SECRETS_SWIFT_BASE64" | base64 --decode -o $GITHUB_WORKSPACE/WunderLINQ/Secrets.swift
         
       - name: build archive
