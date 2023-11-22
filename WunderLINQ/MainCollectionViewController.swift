@@ -2366,8 +2366,10 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     @objc func rightScreen() {
         if UserDefaults.standard.bool(forKey: "display_dashboard_preference") {
             performSegue(withIdentifier: "motorcycleToDash", sender: [])
-        } else {
+        } else if UserDefaults.standard.bool(forKey: "display_music_preference"){
             performSegue(withIdentifier: "motorcycleToMusic", sender: [])
+        } else {
+            performSegue(withIdentifier: "motorcycleToTaskGrid", sender: [])
         }
     }
     

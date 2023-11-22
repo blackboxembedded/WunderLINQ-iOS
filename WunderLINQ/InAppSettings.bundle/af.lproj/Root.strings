@@ -51,7 +51,6 @@
 "pref_debuglogging_name" = "Enable Debug Logging";
 "pref_debuglogging_summary" = "Only enable if needed by Support, may impact performance if left running.  Please disable when finished.";
 "pref_displayBrightness_name" = "Max Display Brightness";
-"pref_display_dashboard_name" = "Enable Dashboard Screen";
 "pref_distance_name" = "Distance Unit";
 "pref_fuel_routing_enable_title" = "Enable Fuel Station Routing";
 "pref_fuel_routing_footer" = "Prompt to route to nearest fuel station when low fuel fault is present";
@@ -92,3 +91,4 @@
 "timef_24h" = "24h";
 "ui_title" = "User Interface";
 "pref_hide_navbar_name" = "Hide NavBar when not in use.";
+"pref_main_settings_title" = "Main Screen Customization";

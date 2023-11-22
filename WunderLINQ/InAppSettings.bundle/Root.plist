@@ -60,6 +60,14 @@
 			<key>Type</key>
 			<string>PSChildPaneSpecifier</string>
 			<key>Title</key>
+			<string>pref_main_settings_title</string>
+			<key>File</key>
+			<string>Screens</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSChildPaneSpecifier</string>
+			<key>Title</key>
 			<string>pref_grid_settings_title</string>
 			<key>File</key>
 			<string>Grid</string>
@@ -72,16 +80,6 @@
 			<key>File</key>
 			<string>Tasks</string>
 		</dict>
-        <dict>
-            <key>Type</key>
-            <string>PSToggleSwitchSpecifier</string>
-            <key>Title</key>
-            <string>pref_display_dashboard_name</string>
-            <key>Key</key>
-            <string>display_dashboard_preference</string>
-            <key>DefaultValue</key>
-            <false/>
-        </dict>
         <dict>
             <key>Type</key>
             <string>PSMultiValueSpecifier</string>

@@ -3,7 +3,6 @@
 "pref_homePhone_name" = "Favorite Phone Number";
 "ui_title" = "User Interface";
 "pref_highlightColor_title" = "Highlight Color";
-"pref_display_dashboard_name" = "Enable Dashboard Screen";
 "pref_rpmmax_name" = "Max RPM";
 "rpmmax_10k" = "10000";
 "rpmmax_12k" = "12000";
@@ -67,4 +66,4 @@
 "pref_bearing_override_name" = "GPS Bearing";
 "pref_bearing_override_summary" = "Use GPS Bearing instead of magnetic compass.";
 "pref_hide_navbar_name" = "Hide NavBar when not in use.";
-
+"pref_main_settings_title" = "Main Screen Customization";

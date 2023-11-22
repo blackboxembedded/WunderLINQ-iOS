@@ -484,18 +484,12 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
     }
     
     @objc func leftScreen() {
-        let secondViewController = self.storyboard!.instantiateViewController(withIdentifier: "MusicViewController") as! MusicViewController
-        if let viewControllers = self.navigationController?.viewControllers
-        {
-            if viewControllers.contains(where: {
-                return $0 is MusicViewController
-            })
-            {
-                _ = navigationController?.popViewController(animated: true)
-                
-            } else {
-                self.navigationController!.pushViewController(secondViewController, animated: true)
-            }
+        if UserDefaults.standard.bool(forKey: "display_music_preference"){
+            performSegue(withIdentifier: "tasksToMusic", sender: [])
+        } else if UserDefaults.standard.bool(forKey: "display_dashboard_preference"){
+            performSegue(withIdentifier: "tasksToDash", sender: [])
+        } else {
+            navigationController?.popToRootViewController(animated: true)
         }
     }
     

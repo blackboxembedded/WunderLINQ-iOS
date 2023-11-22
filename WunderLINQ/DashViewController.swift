@@ -310,7 +310,12 @@ class DashViewController: UIViewController, UIWebViewDelegate {
     }
     
     @objc func rightScreen() {
-        performSegue(withIdentifier: "dashToMusic", sender: [])
+        if UserDefaults.standard.bool(forKey: "display_music_preference"){
+            performSegue(withIdentifier: "dashToMusic", sender: [])
+        } else {
+            performSegue(withIdentifier: "dashToTasks", sender: [])
+        }
+        
     }
     
     @objc func nextInfo() {

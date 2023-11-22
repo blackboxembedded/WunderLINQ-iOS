@@ -238,6 +238,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         }
         UserDefaults.standard.register(defaults: defaultsToRegister)
         
+        //Screen Settings
+        let screenSettingsUrl = Bundle.main.url(forResource: "InAppSettings", withExtension: "bundle")!.appendingPathComponent("Screens.plist")
+        let screenSettingsPlist = NSDictionary(contentsOf:screenSettingsUrl)!
+        let screenPreferences = screenSettingsPlist["PreferenceSpecifiers"] as! [NSDictionary]
+        
+        var screenDefaultsToRegister = Dictionary<String, Any>()
+        
+        for preference in screenPreferences {
+            guard let key = preference["Key"] as? String else {
+                continue
+            }
+            screenDefaultsToRegister[key] = preference["DefaultValue"]
+        }
+        UserDefaults.standard.register(defaults: screenDefaultsToRegister)
+        
         //Grid Settings
         let gridSettingsUrl = Bundle.main.url(forResource: "InAppSettings", withExtension: "bundle")!.appendingPathComponent("Grid.plist")
         let gridSettingsPlist = NSDictionary(contentsOf:gridSettingsUrl)!

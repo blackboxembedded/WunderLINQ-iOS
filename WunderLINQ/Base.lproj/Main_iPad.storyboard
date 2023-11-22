@@ -911,6 +911,7 @@
                     <connections>
                         <outlet property="dashView" destination="Diz-f5-e5x" id="JQU-Ze-A5u"/>
                         <segue destination="p6n-wZ-mMa" kind="show" identifier="dashToMusic" id="43A-bp-xAE"/>
+                        <segue destination="OIf-TM-fnx" kind="show" identifier="dashToTasks" id="Tgf-OP-wou"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MVU-eP-YNk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -2464,7 +2465,7 @@ Icons from fontawesome.com
         <segue reference="gIM-fx-mWk"/>
         <segue reference="end-im-meh"/>
         <segue reference="qQx-7G-0NR"/>
-        <segue reference="1ij-RL-89b"/>
+        <segue reference="Tgf-OP-wou"/>
         <segue reference="RhK-1Y-fo7"/>
         <segue reference="d0K-ne-9up"/>
         <segue reference="43A-bp-xAE"/>
