@@ -102,7 +102,7 @@ class ContactsTableViewController: UITableViewController {
             }
         }
         catch{
-            NSLog("ContactsTableViewController: Handle the error please")
+            NSLog("ContactsTableViewController: Error enumerating contacts")
         }
         self.tableView.reloadData()
     }
@@ -130,7 +130,6 @@ class ContactsTableViewController: UITableViewController {
     }
     
     @objc func upRow() {
-        NSLog("ContactsTableViewController: upRow(): \(itemRow)")
         if (itemRow == 0){
             let nextRow = phoneContacts.count - 1
             itemRow = nextRow
@@ -147,7 +146,6 @@ class ContactsTableViewController: UITableViewController {
     }
     
     @objc func downRow() {
-        NSLog("ContactsTableViewController: downRow(): \(itemRow)")
         if (itemRow == (phoneContacts.count - 1)){
             let nextRow = 0
             itemRow = nextRow
@@ -162,16 +160,24 @@ class ContactsTableViewController: UITableViewController {
         }
         self.tableView.reloadData()
     }
+    
     @objc func leftScreen() {
         _ = navigationController?.popViewController(animated: true)
-    }    
+    }
+    
     @objc func rightScreen() {
-        
+        if let lastVisibleIndexPath = tableView.indexPathsForVisibleRows?.last {
+            itemRow = lastVisibleIndexPath.row
+            tableView.scrollToRow(at: lastVisibleIndexPath, at: .middle, animated: true)
+            self.tableView.reloadData()
+        }
     }
     
     @objc func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
         if gesture.direction == UISwipeGestureRecognizer.Direction.right {
             leftScreen()
+        } else if gesture.direction == UISwipeGestureRecognizer.Direction.left {
+            rightScreen()
         }
     }
     
@@ -207,6 +213,9 @@ class ContactsTableViewController: UITableViewController {
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))
         swipeRight.direction = .right
         self.view.addGestureRecognizer(swipeRight)
+        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))
+        swipeLeft.direction = .left
+        self.view.addGestureRecognizer(swipeLeft)
         
         let backBtn = UIButton()
         backBtn.setImage(UIImage(named: "Left")?.withRenderingMode(.alwaysTemplate), for: .normal)
