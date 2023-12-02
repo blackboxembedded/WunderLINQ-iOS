@@ -57,6 +57,8 @@ class AlertViewController: UIViewController {
             if (!NavAppHelper.navigateToFuel(currentLatitude: motorcycleData.getLocation().coordinate.latitude, currentLongitude: motorcycleData.getLocation().coordinate.longitude)){
                 alertLabel.text = NSLocalizedString("nav_app_feature_not_supported", comment: "")
             }
+        case 3:
+            exit(0)
         default:
             NSLog("AlertViewController: Unknown Alert ID")
         }
@@ -77,6 +79,8 @@ class AlertViewController: UIViewController {
             if (!NavAppHelper.navigateToFuel(currentLatitude: motorcycleData.getLocation().coordinate.latitude, currentLongitude: motorcycleData.getLocation().coordinate.longitude)){
                 alertLabel.text = NSLocalizedString("nav_app_feature_not_supported", comment: "")
             }
+        case 3:
+            exit(0)
         default:
             NSLog("AlertViewController: Unknown Alert ID")
         }
@@ -134,6 +138,9 @@ class AlertViewController: UIViewController {
             backgroundImage.image = PHOTO
             backgroundImage.contentMode =  UIView.ContentMode.scaleAspectFill
             self.view.insertSubview(backgroundImage, at: 0)
+        case 3:
+            self.navigationItem.title = NSLocalizedString("alert_title_ignition", comment: "")
+            alertLabel.text = NSLocalizedString("alert_label_ignition", comment: "")
         default:
             NSLog("AlertViewController: Unknown Alert ID")
         }

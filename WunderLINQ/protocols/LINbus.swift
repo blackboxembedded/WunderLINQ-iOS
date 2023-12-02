@@ -44,6 +44,28 @@ class LINbus {
             let vin = String(bytes: bytes, encoding: .utf8)
             motorcycleData.setVIN(vin: vin)
         case 0x01:
+            // Ignition
+            let ignitionValue = (lastMessage[2] >> 4) & 0x0F // the highest 4 bits.
+            switch (ignitionValue) {
+            case 0x0: 
+                motorcycleData.setIgnitionStatus(ignitionStatus: false)
+            case 0x1:
+                motorcycleData.setIgnitionStatus(ignitionStatus: false)
+            case 0x2:
+                motorcycleData.setIgnitionStatus(ignitionStatus: false)
+            case 0x3:
+                motorcycleData.setIgnitionStatus(ignitionStatus: false)
+            case 0x4:
+                motorcycleData.setIgnitionStatus(ignitionStatus: true)
+            case 0x5:
+                motorcycleData.setIgnitionStatus(ignitionStatus: true)
+            case 0x6:
+                motorcycleData.setIgnitionStatus(ignitionStatus: true)
+            case 0x7:
+                motorcycleData.setIgnitionStatus(ignitionStatus: true)
+            default:
+                break
+            }
             // Rear Wheel Speed
             if ((lastMessage[3] != 0xFF) && (lastMessage[4] != 0xFF)){
                 let rearSpeed = Double(lastMessage[3] | ((lastMessage[4] & 0x0F) << 8))  * 0.14

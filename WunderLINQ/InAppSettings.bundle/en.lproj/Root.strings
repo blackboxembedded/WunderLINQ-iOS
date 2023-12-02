@@ -67,3 +67,6 @@
 "pref_bearing_override_summary" = "Use GPS Bearing instead of magnetic compass.";
 "pref_hide_navbar_name" = "Hide NavBar when not in use.";
 "pref_main_settings_title" = "Main Screen Customization";
+"pref_ignitionAlert_name" = "Ignition";
+"pref_ignitionAlert_summary" = "Prompt to close app when ignition is shutoff";
+"pref_ignitionAlert_enable_title" = "Enable app close on ignition shutoff";

@@ -384,6 +384,24 @@
 			<key>Type</key>
 			<string>PSGroupSpecifier</string>
 			<key>Title</key>
+			<string>pref_ignitionAlert_name</string>
+			<key>FooterText</key>
+			<string>pref_ignitionAlert_summary</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSToggleSwitchSpecifier</string>
+			<key>Title</key>
+			<string>pref_ignitionAlert_enable_title</string>
+			<key>Key</key>
+			<string>ignition_enable_preference</string>
+			<key>DefaultValue</key>
+			<false/>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+			<key>Title</key>
 			<string>advanced_settings_title</string>
 		</dict>
         <dict>

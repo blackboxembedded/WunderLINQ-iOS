@@ -2203,7 +2203,21 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                         }
                     }
                 }
-                
+            }
+            if motorcycleData.ignitionStatus != nil {
+                if UserDefaults.standard.bool(forKey: "ignition_enable_preference") && !motorcycleData.getIgnitionStatus(){
+                    if !faults.getIgnitionAlertSent(){
+                        faults.setIgnitionAlertSent(active:true)
+                        if let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AlertViewControllerID") as? AlertViewController {
+                            viewController.ID = 3
+                            if let navigator = navigationController {
+                                navigator.pushViewController(viewController, animated: true)
+                            }
+                        }
+                    }
+                } else {
+                    faults.setIgnitionAlertSent(active:false)
+                }
             }
             if self.viewIfLoaded?.window != nil {
                 updateMessageDisplay()

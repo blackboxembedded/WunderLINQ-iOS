@@ -161,6 +161,8 @@
 // AlertViewController
 "alert_label_fuel" = "Route to the nearest fuel station?";
 "alert_title_fuel" = "Low Fuel";
+"alert_title_ignition" = "Ignition Off";
+"alert_label_ignition" = "Shutdown WunderLINQ App?";
 "alert_title_photopreview" = "Photo Preview";
 "alert_btn_close" = "Close";
 "alert_btn_ok" = "OK";

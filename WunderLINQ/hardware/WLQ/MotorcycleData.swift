@@ -22,6 +22,7 @@ import Foundation
 class MotorcycleData {
     static let shared = MotorcycleData()
     var location: CLLocation?
+    var ignitionStatus: Bool?
     var vin: String?
     var nextService: Int?
     var nextServiceDate: Date?
@@ -66,6 +67,13 @@ class MotorcycleData {
     }
     func getLocation() -> CLLocation {
         return self.location!
+    }
+    
+    func setIgnitionStatus(ignitionStatus: Bool?){
+        self.ignitionStatus = ignitionStatus
+    }
+    func getIgnitionStatus() -> Bool{
+        return self.ignitionStatus!
     }
     
     func setVIN(vin: String?){
