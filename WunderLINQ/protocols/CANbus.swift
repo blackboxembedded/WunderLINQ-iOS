@@ -36,7 +36,7 @@ class CANbus {
             NSLog(formattedEntry)
         }
         
-        let msgID:UInt16 = ((UInt16(data[0]) & 0xFF)<<3) + ((UInt16(data[1]) & 0xFF)>>5)
+        let msgID:UInt16 = ((UInt16(data[0]) & 0xFF)<<8) + (UInt16(data[1]) & 0xFF)
         switch (msgID){
         case 268:
             //RPM
