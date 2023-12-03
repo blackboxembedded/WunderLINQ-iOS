@@ -309,8 +309,10 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
                 UserDefaults.standard.set(nil, forKey: "loggingStatus")
             } else {
                 //Start Logging
-                let today = Date().toString()
-                UserDefaults.standard.set(today, forKey: "loggingStatus")
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "yyyyMMdd-HH-mm-ss"
+                let dateString = dateFormatter.string(from: Date())
+                UserDefaults.standard.set(dateString, forKey: "loggingStatus")
             }
             break
         case 8:
