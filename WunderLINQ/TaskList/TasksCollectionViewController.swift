@@ -448,7 +448,7 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
     }
     
     @objc func upRow() {
-        SoundManager().playSoundEffect("directional.mp3")
+        SoundManager().playSoundEffect("directional")
         if (itemRow < mapping.count && itemRow >= 1){
             let nextRow = itemRow - 1
             itemRow = nextRow
@@ -457,7 +457,7 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
     }
     
     @objc func downRow() {
-        SoundManager().playSoundEffect("directional.mp3")
+        SoundManager().playSoundEffect("directional")
         if (itemRow < (mapping.count - 1)){
             let nextRow = itemRow + 1
             itemRow = nextRow
