@@ -306,10 +306,12 @@ class DashViewController: UIViewController, UIWebViewDelegate {
     }
     
     @objc func leftScreen() {
+        SoundManager().playSoundEffect("directional")
         navigationController?.popToRootViewController(animated: true)
     }
     
     @objc func rightScreen() {
+        SoundManager().playSoundEffect("directional")
         if UserDefaults.standard.bool(forKey: "display_music_preference"){
             performSegue(withIdentifier: "dashToMusic", sender: [])
         } else {
@@ -319,6 +321,7 @@ class DashViewController: UIViewController, UIWebViewDelegate {
     }
     
     @objc func nextInfo() {
+        SoundManager().playSoundEffect("directional")
         if (currentInfoLine == numInfoLine){
             currentInfoLine = 1
         } else {
@@ -328,6 +331,7 @@ class DashViewController: UIViewController, UIWebViewDelegate {
     }
     
     @objc func previousInfo() {
+        SoundManager().playSoundEffect("directional")
         if (currentInfoLine == 1){
             currentInfoLine = numInfoLine
         } else {
@@ -337,6 +341,7 @@ class DashViewController: UIViewController, UIWebViewDelegate {
     }
     
     @objc func nextDashboard() {
+        SoundManager().playSoundEffect("enter")
         if (currentDashboard == numDashboard){
             currentDashboard = 1
         } else {
@@ -346,6 +351,7 @@ class DashViewController: UIViewController, UIWebViewDelegate {
     }
     
     @objc func prevDashboard() {
+        SoundManager().playSoundEffect("enter")
         if (currentDashboard == 1){
             currentDashboard = numDashboard
         } else {

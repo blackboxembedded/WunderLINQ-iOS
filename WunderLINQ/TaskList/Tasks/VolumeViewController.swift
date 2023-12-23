@@ -42,10 +42,6 @@ class VolumeViewController: UIViewController {
         }
     }
     
-    @objc func onTouch() {
-
-    }
-    
     @objc func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
         if gesture.direction == UISwipeGestureRecognizer.Direction.right {
             right()
@@ -61,17 +57,9 @@ class VolumeViewController: UIViewController {
         }
     }
     
-    @objc func longPress(longPressGestureRecognizer: UILongPressGestureRecognizer) {
-        
-        if longPressGestureRecognizer.state == UIGestureRecognizer.State.began {
-            enter()
-        }
-    }
-    
     override var keyCommands: [UIKeyCommand]? {
         
         let commands = [
-            UIKeyCommand(input: "\u{d}", modifierFlags:[], action: #selector(enter)),
             UIKeyCommand(input: UIKeyCommand.inputUpArrow, modifierFlags:[], action: #selector(up)),
             UIKeyCommand(input: "+", modifierFlags:[], action: #selector(up)),
             UIKeyCommand(input: UIKeyCommand.inputDownArrow, modifierFlags:[], action: #selector(down)),
@@ -85,26 +73,25 @@ class VolumeViewController: UIViewController {
         return commands
     }
     
-    
-    @objc func enter() {
-
-    }
-    
     @objc func up() {
+        SoundManager().playSoundEffect("directional")
         systemVolume = systemVolume + 0.1
         progressBar.setProgress(systemVolume, animated: true)
     }
     
     @objc func down() {
+        SoundManager().playSoundEffect("directional")
         systemVolume = systemVolume - 0.1
         progressBar.setProgress(systemVolume, animated: true)
     }
     
     @objc func leftScreen() {
+        SoundManager().playSoundEffect("directional")
         _ = navigationController?.popViewController(animated: true)
     }
     
     @objc func right() {
+        SoundManager().playSoundEffect("directional")
         if (systemVolume == 0.0){
             systemVolume = preMuteVolume
         } else {
@@ -152,12 +139,6 @@ class VolumeViewController: UIViewController {
         let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))
         swipeDown.direction = .down
         self.view.addGestureRecognizer(swipeDown)
-        
-        let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(VolumeViewController.longPress(longPressGestureRecognizer:)))
-        self.view.addGestureRecognizer(longPressRecognizer)
-        
-        let touchRecognizer = UITapGestureRecognizer(target: self, action:  #selector(VolumeViewController.onTouch))
-        self.view.addGestureRecognizer(touchRecognizer)
         
         var highlightColor: UIColor?
         if let colorData = UserDefaults.standard.data(forKey: "highlightColor") {

@@ -54,6 +54,7 @@ class WeatherMapViewController: UIViewController {
     }
     
     @objc func centerMap() {
+        SoundManager().playSoundEffect("enter")
         if let lat = motorcycleData.location?.coordinate.latitude, let lon = motorcycleData.location?.coordinate.longitude{
             let camera: GMSCameraPosition = GMSCameraPosition.camera(withLatitude: lat, longitude: lon, zoom: Float(currentZoom))
             mapView.camera = camera
@@ -62,6 +63,7 @@ class WeatherMapViewController: UIViewController {
     }
     
     @objc func zoomIn() {
+        SoundManager().playSoundEffect("directional")
         if (currentZoom < 16){
             currentZoom = currentZoom + 1
             if let lat = motorcycleData.location?.coordinate.latitude, let lon = motorcycleData.location?.coordinate.longitude{
@@ -73,6 +75,7 @@ class WeatherMapViewController: UIViewController {
     }
     
     @objc func zoomOut() {
+        SoundManager().playSoundEffect("directional")
         if (currentZoom > 3){
             currentZoom = currentZoom - 1
             if let lat = motorcycleData.location?.coordinate.latitude, let lon = motorcycleData.location?.coordinate.longitude{
@@ -84,6 +87,7 @@ class WeatherMapViewController: UIViewController {
     }
     
     @objc func leftScreen() {
+        SoundManager().playSoundEffect("directional")
         _ = navigationController?.popViewController(animated: true)
     }
     

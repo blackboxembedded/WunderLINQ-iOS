@@ -2368,6 +2368,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     }
     
     @objc func leftScreen() {
+        SoundManager().playSoundEffect("directional")
         var identifier = "motorcycleToTaskGrid"
         if (wlqData != nil){
             if (wlqData.getStatus() != nil){
@@ -2378,6 +2379,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     }
     
     @objc func rightScreen() {
+        SoundManager().playSoundEffect("directional")
         if UserDefaults.standard.bool(forKey: "display_dashboard_preference") {
             performSegue(withIdentifier: "motorcycleToDash", sender: [])
         } else if UserDefaults.standard.bool(forKey: "display_music_preference"){
@@ -2388,6 +2390,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     }
     
     @objc func upScreen() {
+        SoundManager().playSoundEffect("directional")
         let cellCount = UserDefaults.standard.integer(forKey: "GRIDCOUNT")
         var nextCellCount = 1
         if ( collectionView!.bounds.width > collectionView!.bounds.height){
@@ -2465,6 +2468,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     }
     
     @objc func downScreen() {
+        SoundManager().playSoundEffect("directional")
         let cellCount = UserDefaults.standard.integer(forKey: "GRIDCOUNT")
         var nextCellCount = 1
         if ( collectionView!.bounds.width > collectionView!.bounds.height){

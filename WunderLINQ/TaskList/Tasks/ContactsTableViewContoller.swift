@@ -126,10 +126,12 @@ class ContactsTableViewController: UITableViewController {
     }
     
     @objc func selectItem() {
+        SoundManager().playSoundEffect("enter")
         call_contact(contactID: itemRow)
     }
     
     @objc func upRow() {
+        SoundManager().playSoundEffect("directional")
         if (itemRow == 0){
             let nextRow = phoneContacts.count - 1
             itemRow = nextRow
@@ -146,6 +148,7 @@ class ContactsTableViewController: UITableViewController {
     }
     
     @objc func downRow() {
+        SoundManager().playSoundEffect("directional")
         if (itemRow == (phoneContacts.count - 1)){
             let nextRow = 0
             itemRow = nextRow
@@ -162,10 +165,12 @@ class ContactsTableViewController: UITableViewController {
     }
     
     @objc func leftScreen() {
+        SoundManager().playSoundEffect("directional")
         _ = navigationController?.popViewController(animated: true)
     }
     
     @objc func rightScreen() {
+        SoundManager().playSoundEffect("directional")
         if let lastVisibleIndexPath = tableView.indexPathsForVisibleRows?.last {
             itemRow = lastVisibleIndexPath.row
             tableView.scrollToRow(at: lastVisibleIndexPath, at: .middle, animated: true)

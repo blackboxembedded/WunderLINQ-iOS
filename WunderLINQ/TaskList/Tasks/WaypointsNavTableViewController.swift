@@ -50,10 +50,12 @@ class WaypointsNavTableViewController: UITableViewController {
     }
     
     @objc func selectItem() {
+        SoundManager().playSoundEffect("enter")
         navigateToWaypoint(id: itemRow)
     }
     
     @objc func upRow() {
+        SoundManager().playSoundEffect("directional")
         firstRun = false
         if (itemRow == 0){
             let nextRow = waypoints.count - 1
@@ -120,6 +122,7 @@ class WaypointsNavTableViewController: UITableViewController {
         }
     }
     @objc func downRow() {
+        SoundManager().playSoundEffect("directional")
         if firstRun{
             firstRun = false
             if #available(iOS 13.0, *) {
@@ -217,6 +220,7 @@ class WaypointsNavTableViewController: UITableViewController {
     }
     
     @objc func leftScreen() {
+        SoundManager().playSoundEffect("directional")
         _ = navigationController?.popViewController(animated: true)
     }
     

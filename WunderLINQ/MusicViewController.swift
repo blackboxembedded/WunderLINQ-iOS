@@ -275,6 +275,7 @@ class MusicViewController: UIViewController, SPTAppRemotePlayerStateDelegate {
     }
     
     @objc func leftScreen() {
+        SoundManager().playSoundEffect("directional")
         if UserDefaults.standard.bool(forKey: "display_dashboard_preference") {
             performSegue(withIdentifier: "musicToDash", sender: [])
         } else {
@@ -283,10 +284,12 @@ class MusicViewController: UIViewController, SPTAppRemotePlayerStateDelegate {
     }
     
     @objc func rightScreen() {
+        SoundManager().playSoundEffect("directional")
         performSegue(withIdentifier: "musicToTasks", sender: [])
     }
     
     @objc func playPause() {
+        SoundManager().playSoundEffect("enter")
         let musicApp = UserDefaults.standard.integer(forKey: "musicplayer_preference")
         switch (musicApp){
         case 0: // Apple Music
@@ -335,6 +338,7 @@ class MusicViewController: UIViewController, SPTAppRemotePlayerStateDelegate {
     }
     
     @objc func previousSong() {
+        SoundManager().playSoundEffect("directional")
         let musicApp = UserDefaults.standard.integer(forKey: "musicplayer_preference")
         switch (musicApp){
         case 0: // Apple Music
@@ -359,6 +363,7 @@ class MusicViewController: UIViewController, SPTAppRemotePlayerStateDelegate {
     }
     
     @objc func nextSong() {
+        SoundManager().playSoundEffect("directional")
         let musicApp = UserDefaults.standard.integer(forKey: "musicplayer_preference")
         switch (musicApp){
         case 0: // Apple Music

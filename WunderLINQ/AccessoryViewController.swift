@@ -115,6 +115,7 @@ class AccessoryViewController: UIViewController, UITextFieldDelegate {
     }
     
     @objc func leftScreen() {
+        SoundManager().playSoundEffect("directional")
         let secondViewController = self.storyboard!.instantiateViewController(withIdentifier: "TasksCollectionViewController") as! TasksCollectionViewController
         if let viewControllers = self.navigationController?.viewControllers
         {
@@ -131,6 +132,7 @@ class AccessoryViewController: UIViewController, UITextFieldDelegate {
     }
     
     @objc func rightScreen() {
+        SoundManager().playSoundEffect("directional")
         navigationController?.popToRootViewController(animated: true)
     }
 

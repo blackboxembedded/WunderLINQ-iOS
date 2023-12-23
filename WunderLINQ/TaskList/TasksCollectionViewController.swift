@@ -443,10 +443,12 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
     }
     
     @objc func selectItem() {
+        SoundManager().playSoundEffect("enter")
         execute_task(taskID: mapping[itemRow])
     }
     
     @objc func upRow() {
+        SoundManager().playSoundEffect("directional.mp3")
         if (itemRow < mapping.count && itemRow >= 1){
             let nextRow = itemRow - 1
             itemRow = nextRow
@@ -455,6 +457,7 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
     }
     
     @objc func downRow() {
+        SoundManager().playSoundEffect("directional.mp3")
         if (itemRow < (mapping.count - 1)){
             let nextRow = itemRow + 1
             itemRow = nextRow
@@ -486,6 +489,7 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
     }
     
     @objc func leftScreen() {
+        SoundManager().playSoundEffect("directional")
         if UserDefaults.standard.bool(forKey: "display_music_preference"){
             performSegue(withIdentifier: "tasksToMusic", sender: [])
         } else if UserDefaults.standard.bool(forKey: "display_dashboard_preference"){
@@ -496,6 +500,7 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
     }
     
     @objc func rightScreen() {
+        SoundManager().playSoundEffect("directional")
         if (WLQ.initialized){
             if (wlqData.getStatus() != nil){
                 let secondViewController = self.storyboard!.instantiateViewController(withIdentifier: "AccessoryViewController") as! AccessoryViewController
