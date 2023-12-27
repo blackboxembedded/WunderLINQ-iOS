@@ -66,9 +66,9 @@ class HWSettingsActionViewController: UIViewController, UIPickerViewDataSource, 
                 wlqData.setVINThreshold(value: [0xFF,0xFF])
             }
         } else if(actionID == WLQ_N_DEFINES.RTKDoublePressSensitivity){ // RTK Sensititvity
-            wlqData.setDoublePressSensitivity(value: (UInt8)((self.typePicker.selectedRow(inComponent: 0) + 1) / 50))
+            wlqData.setDoublePressSensitivity(value: (UInt8)(self.typePicker.selectedRow(inComponent: 0) + 1))
         } else if(actionID == WLQ_N_DEFINES.fullLongPressSensitivity){ // Full Sensititvity
-            wlqData.setLongPressSensitivity(value: (UInt8)((self.typePicker.selectedRow(inComponent: 0) + 1) / 50))
+            wlqData.setLongPressSensitivity(value: (UInt8)(self.typePicker.selectedRow(inComponent: 0) + 1))
         } else {    //  Key
             let keyType:UInt8 = (UInt8)(self.typePicker.selectedRow(inComponent: 0))
             var key:UInt8 = 0x00
