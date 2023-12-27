@@ -23,6 +23,10 @@ import SQLite3
 
 class WaypointsNavTableViewController: UITableViewController {
     
+    var backButton: UIBarButtonItem!
+    var faultsBtn: UIButton!
+    var faultsButton: UIBarButtonItem!
+    
     var db: OpaquePointer?
     var waypoints = [Waypoint]()
     var itemRow = 0
@@ -32,6 +36,7 @@ class WaypointsNavTableViewController: UITableViewController {
     var firstRun = true;
     
     let motorcycleData = MotorcycleData.shared
+    let faults = Faults.shared
     
     override var keyCommands: [UIKeyCommand]? {
         
@@ -283,13 +288,34 @@ class WaypointsNavTableViewController: UITableViewController {
             backBtn.tintColor = UIColor(named: "imageTint")
         }
         backBtn.addTarget(self, action: #selector(leftScreen), for: .touchUpInside)
-        let backButton = UIBarButtonItem(customView: backBtn)
+        backButton = UIBarButtonItem(customView: backBtn)
         let backButtonWidth = backButton.customView?.widthAnchor.constraint(equalToConstant: 30)
         backButtonWidth?.isActive = true
         let backButtonHeight = backButton.customView?.heightAnchor.constraint(equalToConstant: 30)
         backButtonHeight?.isActive = true
+        faultsBtn = UIButton(type: .custom)
+        let faultsImage = UIImage(named: "Alert")?.withRenderingMode(.alwaysTemplate)
+        faultsBtn.setImage(faultsImage, for: .normal)
+        faultsBtn.tintColor = UIColor.clear
+        if #available(iOS 11.0, *) {
+            faultsBtn.accessibilityIgnoresInvertColors = true
+        }
+        faultsBtn.addTarget(self, action: #selector(self.faultsButtonTapped), for: .touchUpInside)
+        faultsButton = UIBarButtonItem(customView: faultsBtn)
+        let faultsButtonWidth = faultsButton.customView?.widthAnchor.constraint(equalToConstant: 30)
+        faultsButtonWidth?.isActive = true
+        let faultsButtonHeight = faultsButton.customView?.heightAnchor.constraint(equalToConstant: 30)
+        faultsButtonHeight?.isActive = true
+        // Update Buttons
+        if (faults.getallActiveDesc().isEmpty){
+            faultsBtn.tintColor = UIColor.clear
+            faultsButton.isEnabled = false
+        } else {
+            faultsBtn.tintColor = UIColor.red
+            faultsButton.isEnabled = true
+        }
         self.navigationItem.title = NSLocalizedString("waypoints_nav_title", comment: "")
-        self.navigationItem.leftBarButtonItems = [backButton]
+        self.navigationItem.leftBarButtonItems = [backButton, faultsButton]
         
         if UserDefaults.standard.bool(forKey: "display_brightness_preference") {
             UIScreen.main.brightness = CGFloat(1.0)
@@ -435,6 +461,11 @@ class WaypointsNavTableViewController: UITableViewController {
                 self.showToast(message: NSLocalizedString("nav_app_feature_not_supported", comment: ""))
             }
         }
+    }
+    
+    @objc func faultsButtonTapped() {
+        let viewController = self.storyboard?.instantiateViewController(withIdentifier: "FaultsTableViewController") as! FaultsTableViewController
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
 }
 

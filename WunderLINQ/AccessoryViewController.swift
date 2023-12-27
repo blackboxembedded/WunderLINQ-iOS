@@ -20,6 +20,11 @@ import UIKit
 import CoreBluetooth
 
 class AccessoryViewController: UIViewController, UITextFieldDelegate {
+    
+    var backButton: UIBarButtonItem!
+    var faultsBtn: UIButton!
+    var faultsButton: UIBarButtonItem!
+    
     @IBOutlet weak var channelOneView: UIView!
     @IBOutlet weak var channelTwoView: UIView!
     
@@ -36,6 +41,7 @@ class AccessoryViewController: UIViewController, UITextFieldDelegate {
 
     let bleData = BLE.shared
     let wlqData = WLQ.shared
+    let faults = Faults.shared
     
     var peripheral: CBPeripheral?
     var commandCharacteristic: CBCharacteristic?
@@ -241,7 +247,7 @@ class AccessoryViewController: UIViewController, UITextFieldDelegate {
             backBtn.tintColor = UIColor(named: "imageTint")
         }
         backBtn.addTarget(self, action: #selector(leftScreen), for: .touchUpInside)
-        let backButton = UIBarButtonItem(customView: backBtn)
+        backButton = UIBarButtonItem(customView: backBtn)
         let backButtonWidth = backButton.customView?.widthAnchor.constraint(equalToConstant: 30)
         backButtonWidth?.isActive = true
         let backButtonHeight = backButton.customView?.heightAnchor.constraint(equalToConstant: 30)
@@ -258,9 +264,29 @@ class AccessoryViewController: UIViewController, UITextFieldDelegate {
         forwardButtonWidth?.isActive = true
         let forwardButtonHeight = forwardButton.customView?.heightAnchor.constraint(equalToConstant: 30)
         forwardButtonHeight?.isActive = true
-
+        faultsBtn = UIButton(type: .custom)
+        let faultsImage = UIImage(named: "Alert")?.withRenderingMode(.alwaysTemplate)
+        faultsBtn.setImage(faultsImage, for: .normal)
+        faultsBtn.tintColor = UIColor.clear
+        if #available(iOS 11.0, *) {
+            faultsBtn.accessibilityIgnoresInvertColors = true
+        }
+        faultsBtn.addTarget(self, action: #selector(self.faultsButtonTapped), for: .touchUpInside)
+        faultsButton = UIBarButtonItem(customView: faultsBtn)
+        let faultsButtonWidth = faultsButton.customView?.widthAnchor.constraint(equalToConstant: 30)
+        faultsButtonWidth?.isActive = true
+        let faultsButtonHeight = faultsButton.customView?.heightAnchor.constraint(equalToConstant: 30)
+        faultsButtonHeight?.isActive = true
+        // Update Buttons
+        if (faults.getallActiveDesc().isEmpty){
+            faultsBtn.tintColor = UIColor.clear
+            faultsButton.isEnabled = false
+        } else {
+            faultsBtn.tintColor = UIColor.red
+            faultsButton.isEnabled = true
+        }
         self.navigationItem.title = NSLocalizedString("accessory_title", comment: "")
-        self.navigationItem.leftBarButtonItems = [backButton]
+        self.navigationItem.leftBarButtonItems = [backButton, faultsButton]
         self.navigationItem.rightBarButtonItems = [forwardButton]
         
         let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))
@@ -376,5 +402,10 @@ class AccessoryViewController: UIViewController, UITextFieldDelegate {
             let writeData =  Data(_: wlqData.GET_STATUS_CMD())
             peripheral!.writeValue(writeData, for: commandCharacteristic!, type: CBCharacteristicWriteType.withResponse)
         }
+    }
+    
+    @objc func faultsButtonTapped() {
+        let viewController = self.storyboard?.instantiateViewController(withIdentifier: "FaultsTableViewController") as! FaultsTableViewController
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
 }

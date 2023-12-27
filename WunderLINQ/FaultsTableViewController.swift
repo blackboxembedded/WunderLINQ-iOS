@@ -23,7 +23,7 @@ class FaultsTableViewController: UITableViewController {
     let faults = Faults.shared
 
     @objc func leftScreen() {
-        navigationController?.popToRootViewController(animated: true)
+        self.navigationController?.popViewController(animated: true)
     }
     
     @objc func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {

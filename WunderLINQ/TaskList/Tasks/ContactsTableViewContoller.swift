@@ -21,13 +21,17 @@ import UIKit
 import Contacts
 
 class ContactsTableViewController: UITableViewController {
-    //MARK: Properties
+    
+    var backButton: UIBarButtonItem!
+    var faultsBtn: UIButton!
+    var faultsButton: UIBarButtonItem!
     
     var phoneContacts = [PhoneContacts]()
     var firstRun = true
     var itemRow = 0
     
-    //MARK: Private Methods
+    let faults = Faults.shared
+
     func getContacts() {
         let store = CNContactStore()
         
@@ -228,13 +232,34 @@ class ContactsTableViewController: UITableViewController {
             backBtn.tintColor = UIColor(named: "imageTint")
         }
         backBtn.addTarget(self, action: #selector(leftScreen), for: .touchUpInside)
-        let backButton = UIBarButtonItem(customView: backBtn)
+        backButton = UIBarButtonItem(customView: backBtn)
         let backButtonWidth = backButton.customView?.widthAnchor.constraint(equalToConstant: 30)
         backButtonWidth?.isActive = true
         let backButtonHeight = backButton.customView?.heightAnchor.constraint(equalToConstant: 30)
         backButtonHeight?.isActive = true
+        faultsBtn = UIButton(type: .custom)
+        let faultsImage = UIImage(named: "Alert")?.withRenderingMode(.alwaysTemplate)
+        faultsBtn.setImage(faultsImage, for: .normal)
+        faultsBtn.tintColor = UIColor.clear
+        if #available(iOS 11.0, *) {
+            faultsBtn.accessibilityIgnoresInvertColors = true
+        }
+        faultsBtn.addTarget(self, action: #selector(self.faultsButtonTapped), for: .touchUpInside)
+        faultsButton = UIBarButtonItem(customView: faultsBtn)
+        let faultsButtonWidth = faultsButton.customView?.widthAnchor.constraint(equalToConstant: 30)
+        faultsButtonWidth?.isActive = true
+        let faultsButtonHeight = faultsButton.customView?.heightAnchor.constraint(equalToConstant: 30)
+        faultsButtonHeight?.isActive = true
+        // Update Buttons
+        if (faults.getallActiveDesc().isEmpty){
+            faultsBtn.tintColor = UIColor.clear
+            faultsButton.isEnabled = false
+        } else {
+            faultsBtn.tintColor = UIColor.red
+            faultsButton.isEnabled = true
+        }
         self.navigationItem.title = NSLocalizedString("contactlist_title", comment: "")
-        self.navigationItem.leftBarButtonItems = [backButton]
+        self.navigationItem.leftBarButtonItems = [backButton, faultsButton]
         
         if UserDefaults.standard.bool(forKey: "display_brightness_preference") {
             UIScreen.main.brightness = CGFloat(1.0)
@@ -313,6 +338,10 @@ class ContactsTableViewController: UITableViewController {
         call_contact(contactID: indexPath.row)
     }
     
+    @objc func faultsButtonTapped() {
+        let viewController = self.storyboard?.instantiateViewController(withIdentifier: "FaultsTableViewController") as! FaultsTableViewController
+        self.navigationController?.pushViewController(viewController, animated: true)
+    }
 }
 
 extension String {
