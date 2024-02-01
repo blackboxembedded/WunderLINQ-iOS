@@ -3,7 +3,7 @@
 "ambienttemp_header" = "Temperatura Ambiente";
 "avgspeed_header" = "Average Speed";
 "barometric_header" = "Barometer";
-"bearing_header" = "Rodamiento";
+"bearing_header" = "Rumbo";
 "cconsumption_header" = "Consumo Actual";
 "enginetemp_header" = "Temperatura Del Motor";
 "frontbrakes_header" = "Frenos Delanteros";
