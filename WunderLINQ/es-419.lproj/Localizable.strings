@@ -137,7 +137,7 @@
 "config_write_label" = "Guardar configuración";
 "hwsave_alert_title" = "Advertencia!";
 "credits_label" = "Créditos";
-"camera_alert_body" = "La aplicación WunderLINQ necesita acceso a su cámara para tomar fotos y grabar vídeo.";
+"camera_alert_body" = "La app WunderLINQ necesita acceso a su cámara para tomar fotos y grabar vídeo.";
 "negative_microphone_alert_body" = "Como no se ha concedido acceso al micrófono, esta aplicación no podrá grabar vídeos.";
 "fw_config_title" = "Configuración de WunderLINQ";
 "config_reset_label" = "Restablecer configuración";
@@ -163,9 +163,9 @@
 "fault_SERVICE" = "Vencimiento del Servicio";
 //WeatherMapViewController
 "weathermap_title" = "Mapa Meteorológico";
-"call_alert_body" = "La aplicación WunderLINQ necesita acceso al teléfono para iniciar llamadas.";
-"contacts_alert_body" = "La aplicación WunderLINQ necesita acceder a sus contactos para incluirlos en la lista de marcación.";
-"record_audio_alert_body" = "La aplicación WunderLINQ necesita acceso a su micrófono para grabar audio de vídeo.";
+"call_alert_body" = "La app WunderLINQ necesita acceso al teléfono para iniciar llamadas.";
+"contacts_alert_body" = "La app WunderLINQ necesita acceder a sus contactos para incluirlos en la lista de marcación.";
+"record_audio_alert_body" = "La app WunderLINQ necesita acceso a su micrófono para grabar audio de vídeo.";
 "next_service_label" = "Próximo Servicio";
 "reset_header" = "Restablecimiento de los datos del cluster";
 //VolumeViewController
@@ -236,8 +236,8 @@
 "hwsave_alert_btn_cancel" = "Cancelar";
 "local_battery_header" = "Batería Del Dispositivo";
 "wwMode1" = "Full";
-"firstrun_navapp_body" = "Seleccione su aplicación de navegación preferida. El nivel de compatibilidad con WunderLINQ varía. Para obtener más información, consulte la siguiente página: https://blackboxembedded.com/pages/integrations";
-"negative_location_alert_body" = "Dado que no se ha concedido acceso a la ubicación, esta aplicación no podrá guardar waypoints ni registrar tu ubicación.";
+"firstrun_navapp_body" = "Seleccione su App de navegación preferida. El nivel de compatibilidad con WunderLINQ varía. Para obtener más información, consulte la siguiente página: https://blackboxembedded.com/pages/integrations";
+"negative_location_alert_body" = "Dado que no se ha concedido acceso a la ubicación, esta app no podrá guardar puntos de referencia ni registrar tu ubicación.";
 "bike_info_label" = "Información de la Motocicleta";
 "geodata_label" = "Viajes y Puntos de Ruta";
 "appsettings_label" = "Ajustes de la App";
@@ -417,7 +417,7 @@
 "keyboard_hid_0x9C_label" = "Tecla Limpiar";
 "consumer_hid_0x44_label" = "Menú Izquierdo";
 "dash_odometer_label" = "Odo";
-"dash_trip1_label" = "Viaje1";
+"dash_trip1_label" = "Trip1";
 "dash_rdcf_label" = "F";
 "dash_rdcr_label" = "R";
 "keyboard_hid_modifier_0x02_label" = "Tecla Mayúscula izquierda";
@@ -514,8 +514,8 @@
 "corrupt_config_label" = "Configuración Corrupta! Es Necesario Reiniciar";
 //DashViewController
 "dash_title" = "Dashboard";
-"dash_trip2_label" = "Viaje2";
-"dash_tripauto_label" = "ViajeA";
+"dash_trip2_label" = "Trip2";
+"dash_tripauto_label" = "TripA";
 "dash_avgspeed_label" = "PROMEDIO";
 "dash_cconsumption_label" = "CONS";
 "dash_fueleconomyone_label" = "Eco1";
@@ -609,3 +609,17 @@
 "consumer_hid_0xE3_label" = "Bajo";
 "consumer_hid_0xE4_label" = "Agudos";
 "consumer_hid_0xF4_label" = "Reproducción extendida";
+"location_alert_body" = "La app WunderLINQ necesita acceder a su ubicación para permitir la grabación de la ruta en segundo plano y el registro de datos. \nEl permiso de ubicación también se utiliza para registrar datos como la elevación, la velocidad mediante GPS y el rumbo.";
+// FirstRunViewController
+"firstrun_start" = "WunderLINQ requiere una gran cantidad de permisos para habilitar todas las funciones interesantes que ofrece la aplicación. En las siguientes pantallas le explicaremos la necesidad de cada solicitud de permiso.\nSólo se le presentarán estas pantallas esta vez. Si necesita habilitar ciertos permisos después, tendrá que ir a los Ajustes de Android y habilitarlos.";
+"write_photo_alert_body" = "La app WunderLINQ necesita acceso para grabar fotos en su biblioteca de fotos.";
+"read_media_alert_body" = "La app WunderLINQ necesita acceder a su biblioteca multimedia para controlar la reproducción de música.";
+"notification_alert_body" = "La app WunderLINQ necesita acceso a notificaciones para avisarle de los fallos.";
+"negative_write_alert_body" = "Como no se ha concedido acceso a la libreria de fotos, esta app no podrá guardar fotos.";
+"nav_app_apple" = "Apple Maps";
+"nav_app_scenic" = "Scenic";
+"nav_app_inroute" = "inRoute";
+"nav_app_mapout" = "MapOut";
+"nav_app_yahoojapan" = "Yahoo Japan";
+"nav_app_copilot" = "CoPilot";
+"negative_media_alert_body" = "Dado que no se ha concedido acceso a la librería multimedia, esta app no podrá reproducir música.";
