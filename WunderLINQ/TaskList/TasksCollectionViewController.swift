@@ -1188,7 +1188,8 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
     }
     
     @objc func faultsButtonTapped() {
-        performSegue(withIdentifier: "motorcycleToFaults", sender: [])
+        let viewController = self.storyboard?.instantiateViewController(withIdentifier: "FaultsTableViewController") as! FaultsTableViewController
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
 }
 
