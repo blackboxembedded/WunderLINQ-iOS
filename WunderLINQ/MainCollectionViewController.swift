@@ -565,8 +565,10 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         
         if CMAltimeter.isRelativeAltitudeAvailable() {
             altimeter.startRelativeAltitudeUpdates(to: OperationQueue.main) { (data, error) in
-                let pressure:Double = (data?.pressure as? Double)! * 10.0
-                self.motorcycleData.setBarometricPressure(barometricPressure: pressure)
+                if data?.pressure != nil {
+                    let pressure:Double = (data?.pressure as? Double)! * 10.0
+                    self.motorcycleData.setBarometricPressure(barometricPressure: pressure)
+                }
             }
         }
         

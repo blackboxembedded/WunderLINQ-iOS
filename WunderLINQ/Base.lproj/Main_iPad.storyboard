@@ -16,11 +16,11 @@
             <objects>
                 <viewController storyboardIdentifier="Main" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="MainCollectionViewController" customModule="WunderLINQ" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="LeD-DA-8o8">
-                        <rect key="frame" x="0.0" y="0.0" width="1133" height="744"/>
+                        <rect key="frame" x="0.0" y="0.0" width="704" height="704"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" restorationIdentifier="MainCollectionVC" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="DFb-XX-n1q">
-                                <rect key="frame" x="0.0" y="0.0" width="1133" height="724"/>
+                                <rect key="frame" x="0.0" y="0.0" width="704" height="704"/>
                                 <color key="backgroundColor" systemColor="labelColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="iyU-Dx-uZ6">
                                     <size key="itemSize" width="66" height="70"/>
@@ -630,7 +630,7 @@
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LK8-Wv-Jeq">
-                                            <rect key="frame" x="68" y="11" width="620" height="38"/>
+                                            <rect key="frame" x="68" y="11" width="616" height="38"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -1123,6 +1123,7 @@
                         <segue destination="mgN-4w-lQo" kind="show" identifier="taskGridToWeatherMap" id="okP-uG-49O"/>
                         <segue destination="1bi-3i-8Fd" kind="show" identifier="taskGridToVolume" id="PQC-gk-MLT"/>
                         <segue destination="ulb-bo-koX" kind="show" identifier="taskGridToAccessory" id="ijL-dp-2NP"/>
+                        <segue destination="IAt-8c-fIu" kind="show" identifier="tasksToDash" customClass="SegueFromLeft" customModule="WunderLINQ" customModuleProvider="target" id="yuX-tI-kXh"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y78-9d-MHp" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2466,10 +2467,10 @@ Icons from fontawesome.com
         <segue reference="end-im-meh"/>
         <segue reference="qQx-7G-0NR"/>
         <segue reference="Tgf-OP-wou"/>
-        <segue reference="RhK-1Y-fo7"/>
-        <segue reference="d0K-ne-9up"/>
-        <segue reference="43A-bp-xAE"/>
-        <segue reference="L6G-Ek-OoN"/>
+        <segue reference="ijL-dp-2NP"/>
+        <segue reference="yuX-tI-kXh"/>
+        <segue reference="EVI-4B-2VB"/>
+        <segue reference="P25-cb-auh"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
     <resources>

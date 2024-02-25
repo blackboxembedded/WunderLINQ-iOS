@@ -306,8 +306,10 @@ class WaypointViewController: UIViewController, UITextFieldDelegate {
     
     func navigate(){
         if let lat = latitude?.toDouble(), let lon = longitude?.toDouble() {
-            if (!NavAppHelper.navigateTo(destLatitude: lat, destLongitude: lon, destLabel: label, currentLatitude: motorcycleData.getLocation().coordinate.latitude, currentLongitude: motorcycleData.getLocation().coordinate.longitude)){
-                self.showToast(message: NSLocalizedString("nav_app_feature_not_supported", comment: ""))
+            if let currentLocation = motorcycleData.getLocation() {
+                if (!NavAppHelper.navigateTo(destLatitude: lat, destLongitude: lon, destLabel: label, currentLatitude: currentLocation.coordinate.latitude, currentLongitude: currentLocation.coordinate.longitude)){
+                    self.showToast(message: NSLocalizedString("nav_app_feature_not_supported", comment: ""))
+                }
             }
         }
     }

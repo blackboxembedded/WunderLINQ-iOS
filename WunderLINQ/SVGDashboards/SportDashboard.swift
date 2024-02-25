@@ -51,10 +51,11 @@ class SportDashboard {
                 }
             }
         case 2:
-            let currentLocation = motorcycleData.getLocation()
-            speedValue = currentLocation.speed * 3.6
-            if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
-                speedValue = Utility.kmToMiles(speedValue!)
+            if let currentLocation = motorcycleData.getLocation() {
+                speedValue = currentLocation.speed * 3.6
+                if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
+                    speedValue = Utility.kmToMiles(speedValue!)
+                }
             }
         default:
             NSLog("SportDashboard: Unknown speed unit setting")

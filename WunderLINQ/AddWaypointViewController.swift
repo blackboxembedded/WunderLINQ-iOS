@@ -126,15 +126,16 @@ class AddWaypointViewController: UIViewController, UITextFieldDelegate, GMSMapVi
         labelField.placeholder = NSLocalizedString("waypoint_view_label_hint", comment: "")
     
         mapView.delegate = self
-        let camera: GMSCameraPosition = GMSCameraPosition.camera(withLatitude:  motorcycleData.getLocation().coordinate.latitude, longitude: motorcycleData.getLocation().coordinate.longitude, zoom: 15.0)
-        mapView.camera = camera
         mapView.mapType = .hybrid
         // Creates a marker in the center of the map.
-        if(motorcycleData.location != nil){
-            latitudeField.text = "\(motorcycleData.getLocation().coordinate.latitude)"
-            longitudeField.text = "\(motorcycleData.getLocation().coordinate.longitude)"
+        if let currentLocation = motorcycleData.getLocation() {
+            let camera: GMSCameraPosition = GMSCameraPosition.camera(withLatitude:  currentLocation.coordinate.latitude, longitude: currentLocation.coordinate.longitude, zoom: 15.0)
+            mapView.camera = camera
+            
+            latitudeField.text = "\(currentLocation.coordinate.latitude)"
+            longitudeField.text = "\(currentLocation.coordinate.longitude)"
             let marker = GMSMarker()
-            marker.position = CLLocationCoordinate2D(latitude: motorcycleData.getLocation().coordinate.latitude, longitude: motorcycleData.getLocation().coordinate.longitude)
+            marker.position = CLLocationCoordinate2D(latitude: currentLocation.coordinate.latitude, longitude: currentLocation.coordinate.longitude)
             marker.map = mapView
         }
         if (importFile != nil){

@@ -54,8 +54,10 @@ class AlertViewController: UIViewController {
         switch (ID){
         case 1:
             //Navigation
-            if (!NavAppHelper.navigateToFuel(currentLatitude: motorcycleData.getLocation().coordinate.latitude, currentLongitude: motorcycleData.getLocation().coordinate.longitude)){
-                alertLabel.text = NSLocalizedString("nav_app_feature_not_supported", comment: "")
+            if let currentLocation = motorcycleData.getLocation() {
+                if (!NavAppHelper.navigateToFuel(currentLatitude: currentLocation.coordinate.latitude, currentLongitude: currentLocation.coordinate.longitude)){
+                    alertLabel.text = NSLocalizedString("nav_app_feature_not_supported", comment: "")
+                }
             }
         case 3:
             exit(0)
@@ -76,8 +78,10 @@ class AlertViewController: UIViewController {
         switch (ID){
         case 1:
             //Navigation
-            if (!NavAppHelper.navigateToFuel(currentLatitude: motorcycleData.getLocation().coordinate.latitude, currentLongitude: motorcycleData.getLocation().coordinate.longitude)){
-                alertLabel.text = NSLocalizedString("nav_app_feature_not_supported", comment: "")
+            if let currentLocation = motorcycleData.getLocation() {
+                if (!NavAppHelper.navigateToFuel(currentLatitude: currentLocation.coordinate.latitude, currentLongitude: currentLocation.coordinate.longitude)){
+                    alertLabel.text = NSLocalizedString("nav_app_feature_not_supported", comment: "")
+                }
             }
         case 3:
             exit(0)

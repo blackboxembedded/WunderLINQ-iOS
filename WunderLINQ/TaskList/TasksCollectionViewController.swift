@@ -238,8 +238,10 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
                                                         let lon = placemark?.location?.coordinate.longitude
                                                         let destLatitude: CLLocationDegrees = lat!
                                                         let destLongitude: CLLocationDegrees = lon!
-                                                        if (!NavAppHelper.navigateTo(destLatitude: destLatitude, destLongitude: destLongitude, destLabel: NSLocalizedString("home", comment: ""), currentLatitude: self.motorcycleData.getLocation().coordinate.latitude, currentLongitude: self.motorcycleData.getLocation().coordinate.longitude)){
-                                                            self.showToast(message: NSLocalizedString("nav_app_feature_not_supported", comment: ""))
+                                                        if let currentLocation = self.motorcycleData.getLocation() {
+                                                            if (!NavAppHelper.navigateTo(destLatitude: destLatitude, destLongitude: destLongitude, destLabel: NSLocalizedString("home", comment: ""), currentLatitude: currentLocation.coordinate.latitude, currentLongitude: currentLocation.coordinate.longitude)){
+                                                                self.showToast(message: NSLocalizedString("nav_app_feature_not_supported", comment: ""))
+                                                            }
                                                         }
                                                         
                                                     }
@@ -418,8 +420,10 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
             break
         case 18:
             //Fuel
-            if (!NavAppHelper.navigateToFuel(currentLatitude: motorcycleData.getLocation().coordinate.latitude, currentLongitude: motorcycleData.getLocation().coordinate.longitude)){
-                self.showToast(message: NSLocalizedString("nav_app_feature_not_supported", comment: ""))
+            if let currentLocation = motorcycleData.getLocation() {
+                if (!NavAppHelper.navigateToFuel(currentLatitude: currentLocation.coordinate.latitude, currentLongitude: currentLocation.coordinate.longitude)){
+                    self.showToast(message: NSLocalizedString("nav_app_feature_not_supported", comment: ""))
+                }
             }
             break
         default:
@@ -804,64 +808,65 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
     
     func saveWaypoint(){
         // Waypoint stuff below
-        let currentLocation = motorcycleData.getLocation()
-        // Waypoint Database
-        let databaseURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
-            .appendingPathComponent("waypoints.sqlite")
-        // Opening the database
-        if sqlite3_open(databaseURL.path, &db) != SQLITE_OK {
-            NSLog("TasksCollectionViewController: error opening database")
+        if let currentLocation = motorcycleData.getLocation() {
+            // Waypoint Database
+            let databaseURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+                .appendingPathComponent("waypoints.sqlite")
+            // Opening the database
+            if sqlite3_open(databaseURL.path, &db) != SQLITE_OK {
+                NSLog("TasksCollectionViewController: error opening database")
+            }
+            
+            // Creating a statement
+            var stmt: OpaquePointer?
+            
+            //the insert query
+            let queryString = "INSERT INTO records (date, latitude, longitude, elevation, label) VALUES (?,?,?,?,?)"
+            
+            //preparing the query
+            if sqlite3_prepare(db, queryString, -1, &stmt, nil) != SQLITE_OK{
+                let errmsg = String(cString: sqlite3_errmsg(db)!)
+                NSLog("TasksCollectionViewController: error preparing insert: \(errmsg)")
+                return
+            }
+            
+            let date = Date().toString() as NSString
+            let label : String = ""
+            
+            if sqlite3_bind_text(stmt, 1, date.utf8String, -1, nil) != SQLITE_OK{
+                let errmsg = String(cString: sqlite3_errmsg(db)!)
+                NSLog("TasksCollectionViewController: failure binding name: \(errmsg)")
+                return
+            }
+            if sqlite3_bind_double(stmt, 2, (currentLocation.coordinate.latitude)) != SQLITE_OK{
+                let errmsg = String(cString: sqlite3_errmsg(db)!)
+                NSLog("TasksCollectionViewController: failure binding name: \(errmsg)")
+                return
+            }
+            if sqlite3_bind_double(stmt, 3, (currentLocation.coordinate.longitude)) != SQLITE_OK{
+                let errmsg = String(cString: sqlite3_errmsg(db)!)
+                NSLog("TasksCollectionViewController: failure binding name: \(errmsg)")
+                return
+            }
+            if sqlite3_bind_double(stmt, 4, (currentLocation.altitude)) != SQLITE_OK{
+                let errmsg = String(cString: sqlite3_errmsg(db)!)
+                NSLog("TasksCollectionViewController: failure binding name: \(errmsg)")
+                return
+            }
+            if sqlite3_bind_text(stmt, 5, label, -1, nil) != SQLITE_OK{
+                let errmsg = String(cString: sqlite3_errmsg(db)!)
+                NSLog("TasksCollectionViewController: failure binding name: \(errmsg)")
+                return
+            }
+            
+            //executing the query to insert values
+            if sqlite3_step(stmt) != SQLITE_DONE {
+                let errmsg = String(cString: sqlite3_errmsg(db)!)
+                NSLog("TasksCollectionViewController: failure inserting wapoint: \(errmsg)")
+                return
+            }
+            self.showToast(message: NSLocalizedString("toast_waypoint_saved", comment: ""))
         }
-        
-        // Creating a statement
-        var stmt: OpaquePointer?
-        
-        //the insert query
-        let queryString = "INSERT INTO records (date, latitude, longitude, elevation, label) VALUES (?,?,?,?,?)"
-        
-        //preparing the query
-        if sqlite3_prepare(db, queryString, -1, &stmt, nil) != SQLITE_OK{
-            let errmsg = String(cString: sqlite3_errmsg(db)!)
-            NSLog("TasksCollectionViewController: error preparing insert: \(errmsg)")
-            return
-        }
-        
-        let date = Date().toString() as NSString
-        let label : String = ""
-        
-        if sqlite3_bind_text(stmt, 1, date.utf8String, -1, nil) != SQLITE_OK{
-            let errmsg = String(cString: sqlite3_errmsg(db)!)
-            NSLog("TasksCollectionViewController: failure binding name: \(errmsg)")
-            return
-        }
-        if sqlite3_bind_double(stmt, 2, (currentLocation.coordinate.latitude)) != SQLITE_OK{
-            let errmsg = String(cString: sqlite3_errmsg(db)!)
-            NSLog("TasksCollectionViewController: failure binding name: \(errmsg)")
-            return
-        }
-        if sqlite3_bind_double(stmt, 3, (currentLocation.coordinate.longitude)) != SQLITE_OK{
-            let errmsg = String(cString: sqlite3_errmsg(db)!)
-            NSLog("TasksCollectionViewController: failure binding name: \(errmsg)")
-            return
-        }
-        if sqlite3_bind_double(stmt, 4, (currentLocation.altitude)) != SQLITE_OK{
-            let errmsg = String(cString: sqlite3_errmsg(db)!)
-            NSLog("TasksCollectionViewController: failure binding name: \(errmsg)")
-            return
-        }
-        if sqlite3_bind_text(stmt, 5, label, -1, nil) != SQLITE_OK{
-            let errmsg = String(cString: sqlite3_errmsg(db)!)
-            NSLog("TasksCollectionViewController: failure binding name: \(errmsg)")
-            return
-        }
-        
-        //executing the query to insert values
-        if sqlite3_step(stmt) != SQLITE_DONE {
-            let errmsg = String(cString: sqlite3_errmsg(db)!)
-            NSLog("TasksCollectionViewController: failure inserting wapoint: \(errmsg)")
-            return
-        }
-        self.showToast(message: NSLocalizedString("toast_waypoint_saved", comment: ""))
     }
     
     func setupCamera(position: AVCaptureDevice.Position) {

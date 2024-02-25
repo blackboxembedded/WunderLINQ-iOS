@@ -16,11 +16,11 @@
             <objects>
                 <viewController storyboardIdentifier="Main" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="MainCollectionViewController" customModule="WunderLINQ" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="LeD-DA-8o8">
-                        <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
+                        <rect key="frame" x="0.0" y="0.0" width="430" height="922"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" restorationIdentifier="MainCollectionVC" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="DFb-XX-n1q">
-                                <rect key="frame" x="0.0" y="0.0" width="430" height="898"/>
+                                <rect key="frame" x="0.0" y="0.0" width="430" height="922"/>
                                 <color key="backgroundColor" systemColor="labelColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="iyU-Dx-uZ6">
                                     <size key="itemSize" width="66" height="70"/>
@@ -1207,6 +1207,7 @@
                         <segue destination="mgN-4w-lQo" kind="show" identifier="taskGridToWeatherMap" id="okP-uG-49O"/>
                         <segue destination="1bi-3i-8Fd" kind="show" identifier="taskGridToVolume" id="PQC-gk-MLT"/>
                         <segue destination="ulb-bo-koX" kind="show" identifier="taskGridToAccessory" id="ijL-dp-2NP"/>
+                        <segue destination="IAt-8c-fIu" kind="show" identifier="tasksToDash" customClass="SegueFromLeft" customModule="WunderLINQ" customModuleProvider="target" id="u2a-fo-ZYh"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y78-9d-MHp" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1240,20 +1241,20 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="hwActionCell" id="ORR-ga-rGW" customClass="HWSettingsTableViewCell" customModule="WunderLINQ" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="50" width="430" height="42.666667938232422"/>
+                                        <rect key="frame" x="0.0" y="50" width="430" height="43.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ORR-ga-rGW" id="u8h-mc-bnW">
-                                            <rect key="frame" x="0.0" y="0.0" width="430" height="42.666667938232422"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="430" height="43.666667938232422"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="32s-bB-EZK">
-                                                    <rect key="frame" x="20" y="11.000000000000002" width="195" height="20.666666666666671"/>
+                                                    <rect key="frame" x="20" y="11.000000000000002" width="195" height="21.666666666666671"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rs5-hB-OEc">
-                                                    <rect key="frame" x="215" y="11.000000000000002" width="195" height="20.666666666666671"/>
+                                                    <rect key="frame" x="215" y="11.000000000000002" width="195" height="21.666666666666671"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -2763,10 +2764,10 @@ Icons from fontawesome.com
         <segue reference="end-im-meh"/>
         <segue reference="qQx-7G-0NR"/>
         <segue reference="biE-CF-cr8"/>
-        <segue reference="RhK-1Y-fo7"/>
-        <segue reference="1bf-BN-ttT"/>
-        <segue reference="43A-bp-xAE"/>
-        <segue reference="L6G-Ek-OoN"/>
+        <segue reference="ijL-dp-2NP"/>
+        <segue reference="u2a-fo-ZYh"/>
+        <segue reference="EVI-4B-2VB"/>
+        <segue reference="P25-cb-auh"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
     <resources>
