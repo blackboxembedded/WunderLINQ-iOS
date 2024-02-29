@@ -5,9 +5,9 @@
 "task_title_photo" = "Tomar Fotografía";
 "task_title_selfie" = "Tomar Selfie";
 "task_title_start_record" = "Iniciar grabación de vídeo";
-"task_title_start_trip" = "Iniciar Bitácora de Viaje";
-"task_title_waypoint" = "Guardar Punto de Referencia";
-"task_title_waypoint_nav" = "Navegar a Punto de Referencia";
+"task_title_start_trip" = "Iniciar Bitácora de Trip";
+"task_title_waypoint" = "Guardar Waypoint";
+"task_title_waypoint_nav" = "Navegar a Waypoint";
 "pref_task_eight" = "Eighth";
 "pref_task_five" = "Fifth";
 "pref_task_four" = "Fourth";
