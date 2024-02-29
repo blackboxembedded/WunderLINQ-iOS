@@ -25,13 +25,13 @@
 "trip_logs_label" = "Registro de Viajes";
 "waypoints_label" = "Waypoints";
 "blank_field" = "∞";
-"rdc_front_label" = "Neumático delantero";
-"rdc_rear_label" = "Neumático trasero";
-"engine_temp_label" = "Temperatura del motor";
-"ambient_temp_label" = "Temperatura ambiente";
+"rdc_front_label" = "Rueda Del";
+"rdc_rear_label" = "Rueda Tra";
+"engine_temp_label" = "Temp. Motor";
+"ambient_temp_label" = "Temp. Ambiente";
 "odometer_label" = "Odómetro";
-"trip1_label" = "Viaje 1";
-"trip2_label" = "Viaje 2";
+"trip1_label" = "Trip 1";
+"trip2_label" = "Trip 2";
 "gear_label" = "Marcha";
 // AlertViewController
 "alert_label_fuel" = "Ruta Hasta la Gasolinera Más Cercana?";
@@ -41,22 +41,22 @@
 // FaultsTableViewController
 "fault_title" = "Fallas Activas";
 // TripsTableViewController
-"trips_title" = "Viajes Grabados";
+"trips_title" = "Trips Grabados";
 // TripViewController
-"trip_view_title" = "Viaje";
+"trip_view_title" = "Trip";
 "trip_view_waypoint_start_label" = "Inicio";
 "trip_view_waypoint_end_label" = "Fin";
 "trip_view_tv_distance" = "Distancia";
 "trip_view_tv_duration" = "Duración";
 "trip_view_tv_speed" = "Veloc (Prom/Máx)";
 "trip_view_tv_shifts" = "Cambios de Marcha";
-"trip_view_tv_brakes" = "Frenos (Del/Tras)";
-"trip_view_tv_ambient" = "Temp ambiente(Min/Prom/Máx)";
-"trip_view_tv_engine" = "Temp Motor(Min/Prom/Máx)";
+"trip_view_tv_brakes" = "Frenos (Del/Tra)";
+"trip_view_tv_ambient" = "Temp. Ambiente (Min/Prom/Máx)";
+"trip_view_tv_engine" = "Temp. Motor (Min/Prom/Máx)";
 // WaypointsTableViewController
-"waypoint_title" = "Puntos de Ruta Guardados";
+"waypoint_title" = "Waypoints Guardados";
 // WaypointViewController
-"waypoint_view_title" = "Punto de Ruta Guardado";
+"waypoint_view_title" = "Waypoint Guardado";
 "waypoint_view_tv_date_label" = "Fecha de Grabación";
 "waypoint_view_tv_lat_label" = "Latitud";
 "waypoint_view_tv_lon_label" = "Longitud";
@@ -82,16 +82,16 @@
 "task_title_selfie" = "Tomar Selfie";
 "task_title_start_record" = "Iniciar grabación de vídeo";
 "task_title_stop_record" = "Detener la grabación de vídeo";
-"task_title_start_trip" = "Iniciar Bitácora de Viaje";
-"task_title_stop_trip" = "Detener Bitácora de Viaje";
-"task_title_waypoint" = "Guardar Punto de Referencia";
-"toast_waypoint_saved" = "Punto de referencia guardado";
-"task_title_waypoint_nav" = "Navegar a Punto de Referencia";
+"task_title_start_trip" = "Iniciar Bitácora de Trip";
+"task_title_stop_trip" = "Detener Bitácora de Trip";
+"task_title_waypoint" = "Guardar Waypoint";
+"toast_waypoint_saved" = "Waypoint Guardado";
+"task_title_waypoint_nav" = "Navegar a Waypoint";
 "toast_photo_taken" = "Fotografía Tomada!";
 // ContactsTableViewController
 "contactlist_title" = "Contactos";
 // WaypointsNavTableViewController
-"waypoints_nav_title" = "Puntos de referencia";
+"waypoints_nav_title" = "Waypoints";
 // Fault Description
 "fault_ABSSLF" = "Autodiagnóstico del ABS no completado";
 "fault_ABSERR" = "Error del ABS";
@@ -101,10 +101,10 @@
 "fault_ASCERR" = "Error del ASC";
 "fault_ASCDAC" = "ASC desactivado";
 "fault_FUELF" = "Combustible Bajo";
-"fault_TIREFWF" = "Advertencia de Presión de Neumático Delantero";
-"fault_TIRERWF" = "Advertencia de Presión de Neumático Trasero";
-"fault_TIREFCF" = "Presión Crítica en Neumático Delantero";
-"fault_TIRERCF" = "Presión Crítica en Neumático Trasero";
+"fault_TIREFWF" = "Advertencia de Presión Rueda Delantera";
+"fault_TIRERWF" = "Advertencia de Presión Rueda Trasera";
+"fault_TIREFCF" = "Presión Crítica en Rueda Delantera";
+"fault_TIRERCF" = "Presión Crítica en Rueda Trasera";
 "fault_LAMPAFL1" = "Faro delantero adicional 1";
 "fault_LAMPAFL2" = "Faro delantero adicional 2";
 "fault_LAMPDAY" = "Luz de circulación diurna";
@@ -144,8 +144,8 @@
 //AboutViewController
 "about_title" = "Acerca de";
 "version_label" = "Versión:";
-"frontpressure_header" = "Presión De Neumático Delantero";
-"trip_view_label_hint" = "Etiqueta de Viaje";
+"frontpressure_header" = "Presión Rueda Delantera";
+"trip_view_label_hint" = "Etiqueta de Trip";
 "task_title_gopro" = "Control GoPro";
 "toast_actioncam_notconnected" = "Cámara De Acción No Conectada";
 "voltage_header" = "Voltaje";
@@ -156,7 +156,7 @@
 "latitude_header" = "Latitud";
 "fuelrange_header" = "Rango De Combustible";
 //BikeInfoViewController
-"bike_info_title" = "Información de la Motocicleta";
+"bike_info_title" = "Info. Motocicleta";
 "next_service_date_label" = "Fecha del Próximo Servicio";
 "reset_label" = "Item";
 "reset_btn_label" = "Reiniciar";
@@ -175,16 +175,16 @@
 "default_accessory_one_name" = "Canal Uno";
 "default_accessory_two_name" = "Canal Dos";
 "toast_waypoint_error" = "Latitud y Longitud Requeridas";
-"delete_trip_alert_body" = "Borrar Registro de Viaje?";
+"delete_trip_alert_body" = "Borrar Registro de Trip?";
 "delete_trip_alert_title" = "Advertencia!";
 "alert_title_ignition" = "Apagado";
 "alert_label_ignition" = "Apagar WunderLINQ App?";
 // AddWaypointViewController
-"addwaypoint_view_title" = "Agregar Punto de Ruta";
+"addwaypoint_view_title" = "Agregar Waypoint";
 "addwaypoint_view_tv_search_label" = "Colocar pin o dirección de búsqueda";
-"waypoint_view_label_hint" = "Etiqueta del Punto de Ruta";
+"waypoint_view_label_hint" = "Etiqueta de Waypoint";
 "delete_waypoint_alert_title" = "Advertencia!";
-"delete_waypoint_alert_body" = "Eliminar Punto de Referencia?";
+"delete_waypoint_alert_body" = "Eliminar Waypoint?";
 "trip_view_tv_lean" = "Inclinación (Max)";
 "addwaypoint_view_search_hint" = "Tipo de Dirección";
 "task_title_fuel" = "Combustible";
@@ -192,12 +192,12 @@
 "toast_actioncam_notset" = "Configure El Tipo De Cámara De acción en los ajustes de la aplicación";
 "nogpremote_alert_title" = "WunderLINQ GoPro Remote No Encontrado";
 // LocationService
-"time_header" = "Tiempo";
+"time_header" = "Hora";
 "altitude_header" = "Elevación";
 "gpsspeed_header" = "Velocidad GPS";
 "gear_header" = "Marcha";
 "throttle_header" = "Posición Del Acelerador";
-"tripauto_header" = "Viaje Auto";
+"tripauto_header" = "Auto Trip";
 "leanangle_header" = "Ángulo De Inclinación Móvil";
 "rpm_header" = "RPM";
 "leanangle_bike_header" = "Ángulo De Inclinación";
@@ -221,25 +221,25 @@
 "btn_documentation_title" = "Documentación";
 "delete_bt" = "Borrar";
 "cancel_bt" = "Cancelar";
-"rearpressure_header" = "Presión De Neumático Trasero";
-"frontbrakes_header" = "Frenos Delanteros";
-"rearbrakes_header" = "Frenos Traseros";
+"rearpressure_header" = "Presión Rueda Trasera";
+"frontbrakes_header" = "Freno Del.";
+"rearbrakes_header" = "Freno Tra.";
 "shifts_header" = "Cambios";
 "ambientlight_header" = "Luz Ambiente";
-"tripone_header" = "Viaje 1";
-"triptwo_header" = "Viaje 2";
+"tripone_header" = "Trip 1";
+"triptwo_header" = "Trip 2";
 "rearwheel_speed_header" = "Velocidad De Rueda Trasera";
 "enginetemp_header" = "Temperatura Del Motor";
-"ambienttemp_header" = "Temperatura Ambiente";
+"ambienttemp_header" = "Temp. Ambiente";
 "vin_label" = "VIN";
 "hwsave_alert_btn_ok" = "Continuar";
 "hwsave_alert_btn_cancel" = "Cancelar";
 "local_battery_header" = "Batería Del Dispositivo";
 "wwMode1" = "Full";
 "firstrun_navapp_body" = "Seleccione su App de navegación preferida. El nivel de compatibilidad con WunderLINQ varía. Para obtener más información, consulte la siguiente página: https://blackboxembedded.com/pages/integrations";
-"negative_location_alert_body" = "Dado que no se ha concedido acceso a la ubicación, esta app no podrá guardar puntos de referencia ni registrar tu ubicación.";
-"bike_info_label" = "Información de la Motocicleta";
-"geodata_label" = "Viajes y Puntos de Ruta";
+"negative_location_alert_body" = "Dado que no se ha concedido acceso a la ubicación, esta app no podrá guardar waypoints ni registrar tu ubicación.";
+"bike_info_label" = "Info. Motocicleta";
+"geodata_label" = "Trips & Waypoints";
 "appsettings_label" = "Ajustes de la App";
 "hwsettings_label" = "Ajustes del Dispositivo";
 "fw_version_label" = "Versión del Firmware";
@@ -306,7 +306,7 @@
 // NavAppHelper
 "nav_app_feature_not_supported" = "Función no compatible con la App de Navegación seleccionada";
 "gpx_import_alert_title" = "Importar GPX";
-"gpx_import_alert_body" = "Importar puntos de referencia desde GPX?";
+"gpx_import_alert_body" = "Importar waypoints desde GPX?";
 "keyboard_hid_modifier_0x80_label" = "Tecla Meta Derecha";
 "keyboard_hid_0x05_label" = "Tecla b";
 "keyboard_hid_0x21_label" = "Tecla 4";
