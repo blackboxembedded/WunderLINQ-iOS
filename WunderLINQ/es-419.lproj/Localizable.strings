@@ -241,7 +241,7 @@
 "bike_info_label" = "Info. Motocicleta";
 "geodata_label" = "Trips & Waypoints";
 "appsettings_label" = "Ajustes de la App";
-"hwsettings_label" = "Ajustes del Dispositivo";
+"hwsettings_label" = "Configuraciones del Dispositivo";
 "fw_version_label" = "Versión del Firmware";
 "wwtype_label" = "Tipo de Rueda";
 "rtk_zoomp_label" = "Zoom+";
