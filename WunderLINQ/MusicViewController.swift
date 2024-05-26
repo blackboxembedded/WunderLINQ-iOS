@@ -353,7 +353,7 @@ class MusicViewController: UIViewController, SPTAppRemotePlayerStateDelegate {
         switch (musicApp){
         case 0: // Apple Music
             if appleMusicTrackElapsed != nil {
-                if Int(appleMusicTrackElapsed) < 3 {
+                if appleMusicTrackElapsed < 3.0 {
                     appleMusicPlayer.skipToPreviousItem()
                 } else {
                     appleMusicPlayer.skipToBeginning()

@@ -325,7 +325,7 @@ class WLQ_C: WLQ {
 
         self.flashConfig = Array(bytes[6..<(6+configFlashSize)])
         self.tempConfig = self.flashConfig
-        /*
+        
         var messageHexString = ""
         for i in 0 ..< flashConfig!.count {
             messageHexString += String(format: "%02X", flashConfig![i])
@@ -334,15 +334,7 @@ class WLQ_C: WLQ {
             }
         }
         NSLog("WLQ_C: flashConfig: \(messageHexString)")
-        var tmessageHexString = ""
-        for i in 0 ..< tempConfig!.count {
-            tmessageHexString += String(format: "%02X", tempConfig![i])
-            if i < tempConfig!.count - 1 {
-                tmessageHexString += ","
-            }
-        }
-        NSLog("WLQ_C: tempConfig: \(tmessageHexString)")
-        */
+        
         self.keyMode = bytes[self.keyMode_INDEX]
 
         self.wheelRightPressKeyType = self.flashConfig![self.wheelRightPressKeyType_INDEX]
@@ -958,9 +950,9 @@ class WLQ_C: WLQ {
         }
         return modifiers
     }
-    
-    //Old
+
     override func setfirmwareVersion(firmwareVersion: String?){
+        NSLog("WLQ_C: Firmware Version: \(firmwareVersion ?? "?")")
         self.firmwareVersion = firmwareVersion
     }
     override func getfirmwareVersion() -> String{
@@ -971,6 +963,7 @@ class WLQ_C: WLQ {
     }
 
     override func sethardwareVersion(hardwareVersion: String?){
+        NSLog("WLQ_C: HW Version: \(hardwareVersion ?? "?")")
         self.hardwareVersion = hardwareVersion
     }
     override func gethardwareVersion() -> String{
