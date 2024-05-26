@@ -1870,8 +1870,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         let dataLength = data.count / MemoryLayout<UInt8>.size
         var dataArray = [UInt8](repeating: 0, count: dataLength)
         (data as NSData).getBytes(&dataArray, length: dataLength * MemoryLayout<Int16>.size)
-        
-        /*
+
         var messageHexString = ""
         for i in 0 ..< dataLength {
             messageHexString += String(format: "%02X", dataArray[i])
@@ -1880,7 +1879,6 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             }
         }
         NSLog("MainCollectionViewController: Command Response Received: \(messageHexString)")
-         */
         
         switch (dataArray[0]){
         case 0x57:
@@ -1891,7 +1889,6 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                     NSLog("MainCollectionViewController: Received WRS command response")
                     if (wlqData != nil){
                         WLQ.shared.setStatus(bytes: dataArray)
-                        //NSLog("MainCollectionViewController: Command Response Received: \(messageHexString)")
                         notificationCenter.post(name: Notification.Name("StatusUpdate"), object: nil)
                         launchAccPage()
                     }

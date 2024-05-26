@@ -270,7 +270,7 @@ class WLQ_N: WLQ {
         if (self.firmwareVersion!.toDouble()! >= 2.0) { // FW >=2.0
             self.flashConfig = Array(bytes[26..<(26+configFlashSize)])
             self.tempConfig = self.flashConfig
-            /*
+            
             var messageHexString = ""
             for i in 0 ..< flashConfig!.count {
                 messageHexString += String(format: "%02X", flashConfig![i])
@@ -279,15 +279,7 @@ class WLQ_N: WLQ {
                 }
             }
             NSLog("WLQ_N: flashConfig: \(messageHexString)")
-            var tmessageHexString = ""
-            for i in 0 ..< tempConfig!.count {
-                tmessageHexString += String(format: "%02X", tempConfig![i])
-                if i < tempConfig!.count - 1 {
-                    tmessageHexString += ","
-                }
-            }
-            NSLog("WLQ_N: tempConfig: \(tmessageHexString)")
-            */
+
             self.keyMode = bytes[self.keyMode_INDEX]
             let usbBytes: [UInt8] = [self.flashConfig![self.USBVinThresholdHigh_INDEX], self.flashConfig![self.USBVinThresholdLow_INDEX]]
             self.USBVinThreshold = usbBytes.withUnsafeBytes { $0.load(as: UInt16.self) }
@@ -1085,9 +1077,9 @@ class WLQ_N: WLQ {
         }
         return modifiers
     }
-    
-    //Old
+
     override func setfirmwareVersion(firmwareVersion: String?){
+        NSLog("WLQ_N: Firmware Version: \(firmwareVersion ?? "?")")
         self.firmwareVersion = firmwareVersion
     }
     override func getfirmwareVersion() -> String{
@@ -1098,6 +1090,7 @@ class WLQ_N: WLQ {
     }
 
     override func sethardwareVersion(hardwareVersion: String?){
+        NSLog("WLQ_N: HW Version: \(hardwareVersion ?? "?")")
         self.hardwareVersion = hardwareVersion
     }
     override func gethardwareVersion() -> String{
