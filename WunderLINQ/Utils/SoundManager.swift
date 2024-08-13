@@ -22,22 +22,20 @@ var player: AVAudioPlayer?
 
 class SoundManager {
     func playSoundEffect(_ sound: String) {
-        if let url = Bundle.main.url(forResource: sound, withExtension: "mp3") {
+        if let path = Bundle.main.path(forResource: "wav/\(sound)", ofType: "wav") {
+            let url = URL(fileURLWithPath: path)
             do {
                 try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default, options: [.mixWithOthers])
                 try AVAudioSession.sharedInstance().setActive(true)
-
-                /* The following line is required for the player to work on iOS 11. Change the file type accordingly*/
-                player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.mp3.rawValue)
-
-                guard let player = player else { return }
-
-                player.play()
+                
+                player = try AVAudioPlayer(contentsOf: url)
+                player?.prepareToPlay()
+                player?.play()
             } catch {
-                print("SoundManager, Error loading sound file: \(error.localizedDescription)")
+                NSLog("Error: Could not load file")
             }
         } else {
-            print("SoundManager, Sound file not found")
+            NSLog("Error: File not found")
         }
     }
 }
