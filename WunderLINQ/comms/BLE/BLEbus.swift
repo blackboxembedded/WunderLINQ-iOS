@@ -22,11 +22,7 @@ class BLEbus {
     class func parseMessage(_ data:[UInt8]) {
         let motorcycleData = MotorcycleData.shared
         let faults = Faults.shared
-        /*
-        let dataLength = data.count / MemoryLayout<UInt8>.size
-        var dataArray = [UInt8](repeating: 0, count: dataLength)
-        (data as NSData).getBytes(&dataArray, length: dataLength * MemoryLayout<Int16>.size)
-        */
+
         // Log raw messages
         if UserDefaults.standard.bool(forKey: "debug_logging_preference") {
             var messageHexString = ""
@@ -126,7 +122,7 @@ class BLEbus {
             }
             
             // Brakes
-            if(((lastMessage[2] >> 4) & 0x0F) != 0xF){
+            if (((lastMessage[2] >> 4) & 0x0F) != 0xF){
                 let brakes = (lastMessage[2] >> 4) & 0x0F // the highest 4 bits.
                 if(motorcycleData.getPrevBrake() == 0){
                     motorcycleData.setPrevBrake(prevBrake: Int(brakes))
@@ -380,7 +376,6 @@ class BLEbus {
             }
             
         case 0x06:
-            //NSLog("Message ID: 6")
             //RPM
             if ((lastMessage[1] != 0xFF) && (lastMessage[2] != 0xFF)){
                 let rpm = ((Double(lastMessage[1]) + (Double(lastMessage[2] & 0x0F) * 255)) * 5)
@@ -557,7 +552,7 @@ class BLEbus {
             }
             
             // Fuel Fault
-            if(((lastMessage[5] >> 4) & 0x0F) != 0xF){
+            if (((lastMessage[5] >> 4) & 0x0F) != 0xF){
                 let fuelValue = (lastMessage[5] >> 4) & 0x0F // the highest 4 bits.
                 switch (fuelValue){
                 case 0x2:
@@ -579,7 +574,7 @@ class BLEbus {
             }
             
             // General Fault
-            if((lastMessage[5] & 0x0F) != 0xF){
+            if ((lastMessage[5] & 0x0F) != 0xF){
                 let generalFault = lastMessage[5] & 0x0F // the lowest 4 bits
                 switch (generalFault){
                 case 0x1:
@@ -1335,8 +1330,7 @@ class BLEbus {
             }
             
         default:
-            _ = 0
-            //NSLog("Unknown Message ID")
+            break
         }
     }
 }

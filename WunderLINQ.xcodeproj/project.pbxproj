@@ -110,10 +110,9 @@
 		B98CA75D252E6C6B00530075 /* UIStoryboard+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98CA75C252E6C6B00530075 /* UIStoryboard+extensions.swift */; };
 		B98CA762252E6F5500530075 /* String+Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98CA761252E6F5500530075 /* String+Localizable.swift */; };
 		D80365FE2B377FCD00F48637 /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D80365FD2B377FCD00F48637 /* SoundManager.swift */; };
-		D80366182B3791CD00F48637 /* directional.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D80366162B3791CD00F48637 /* directional.mp3 */; };
-		D80366192B3791CD00F48637 /* enter.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D80366172B3791CD00F48637 /* enter.mp3 */; };
 		D8585C53293EBD550025D0AB /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8585C51293EBD540025D0AB /* Main_iPad.storyboard */; };
 		D87629122A7EDEB90021E7A7 /* standard-dashboard-portrait.svg in Resources */ = {isa = PBXBuildFile; fileRef = D87629112A7EDEB90021E7A7 /* standard-dashboard-portrait.svg */; };
+		D880B6022C6BFED900B4252B /* wav in Resources */ = {isa = PBXBuildFile; fileRef = D880B6012C6BFED900B4252B /* wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -273,10 +272,9 @@
 		B98CA75C252E6C6B00530075 /* UIStoryboard+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+extensions.swift"; sourceTree = "<group>"; };
 		B98CA761252E6F5500530075 /* String+Localizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Localizable.swift"; sourceTree = "<group>"; };
 		D80365FD2B377FCD00F48637 /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
-		D80366162B3791CD00F48637 /* directional.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = directional.mp3; sourceTree = "<group>"; };
-		D80366172B3791CD00F48637 /* enter.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = enter.mp3; sourceTree = "<group>"; };
 		D8585C52293EBD540025D0AB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
 		D87629112A7EDEB90021E7A7 /* standard-dashboard-portrait.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "standard-dashboard-portrait.svg"; sourceTree = "<group>"; };
+		D880B6012C6BFED900B4252B /* wav */ = {isa = PBXFileReference; lastKnownFileType = folder; path = wav; sourceTree = "<group>"; };
 		DA150AA674E4880933A5281B /* Pods_WunderLINQ.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WunderLINQ.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -419,7 +417,7 @@
 				7E755C16260A997100B29507 /* SVGDashboards */,
 				B98CA760252E6DD400530075 /* External */,
 				7EB5EDE9252169B800B61160 /* svg */,
-				D80365FF2B37811700F48637 /* mp3 */,
+				D880B6012C6BFED900B4252B /* wav */,
 				7EB5EDD525211B6100B61160 /* fonts */,
 				B98CA75B252E6C5200530075 /* Utils */,
 				7E9516C1238A367000ED25F2 /* SpotifyiOS.framework */,
@@ -568,15 +566,6 @@
 			path = External;
 			sourceTree = "<group>";
 		};
-		D80365FF2B37811700F48637 /* mp3 */ = {
-			isa = PBXGroup;
-			children = (
-				D80366162B3791CD00F48637 /* directional.mp3 */,
-				D80366172B3791CD00F48637 /* enter.mp3 */,
-			);
-			path = mp3;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -686,12 +675,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D80366182B3791CD00F48637 /* directional.mp3 in Resources */,
 				7E068BF62102D1A90076EAAD /* GoogleMaps.bundle in Resources */,
 				7E4D76E321DDAEC100825175 /* InfoPlist.strings in Resources */,
 				7E755C12260A787100B29507 /* sport-dashboard.svg in Resources */,
 				7EA478831F4A7260000CEDDC /* InAppSettings.bundle in Resources */,
-				D80366192B3791CD00F48637 /* enter.mp3 in Resources */,
 				7EA4788A1F537ED5000CEDDC /* Localizable.strings in Resources */,
 				D87629122A7EDEB90021E7A7 /* standard-dashboard-portrait.svg in Resources */,
 				7EA478581F40B154000CEDDC /* LaunchScreen.storyboard in Resources */,
@@ -701,6 +688,7 @@
 				7E755C13260A787100B29507 /* standard-dashboard.svg in Resources */,
 				7EB5EDD725211BCF00B61160 /* agencyfb.ttf in Resources */,
 				D8585C53293EBD550025D0AB /* Main_iPad.storyboard in Resources */,
+				D880B6022C6BFED900B4252B /* wav in Resources */,
 				7E8AD3DD26141E150089F590 /* adv-dashboard.svg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
