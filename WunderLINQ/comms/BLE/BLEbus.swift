@@ -19,24 +19,25 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 import Foundation
 
 class BLEbus {
-    class func parseMessage(_ data:Data) {
+    class func parseMessage(_ data:[UInt8]) {
         let motorcycleData = MotorcycleData.shared
         let faults = Faults.shared
+        /*
         let dataLength = data.count / MemoryLayout<UInt8>.size
         var dataArray = [UInt8](repeating: 0, count: dataLength)
         (data as NSData).getBytes(&dataArray, length: dataLength * MemoryLayout<Int16>.size)
-
+        */
         // Log raw messages
         if UserDefaults.standard.bool(forKey: "debug_logging_preference") {
             var messageHexString = ""
-            for i in 0 ..< dataArray.count {
-                messageHexString += String(format: "%02X", dataArray[i])
+            for i in 0 ..< data.count {
+                messageHexString += String(format: "%02X", data[i])
             }
             let formattedEntry = "DEBUG: " + Date().toString() + "," + messageHexString
             NSLog(formattedEntry)
         }
         
-        let lastMessage = dataArray
+        let lastMessage = data
         switch lastMessage[0] {
         case 0x00:
             // VIN
@@ -88,6 +89,9 @@ class BLEbus {
                 let ambientLightValue = lastMessage[6] & 0x0F
                 motorcycleData.setambientLight(ambientLight: Double(ambientLightValue))
             }
+        case 0x04:
+            // Control
+            break
         case 0x05:
             // Lean Angle
             if ((lastMessage[1] != 0xFF) && ((lastMessage[2] & 0x0F) != 0xF)){

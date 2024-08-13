@@ -74,7 +74,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     let faults = Faults.shared
     var lastNotification: [Bool]?
     var prevBrakeValue = 0
-    
+    var lastControlMessage = 0
     let motionManager = CMMotionManager()
     var referenceAttitude: CMAttitude?
     
@@ -2187,7 +2187,22 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                     }
                 }
             } else if characteristic.uuid == CBUUID(string: Device.WunderLINQPerformanceCharacteristicUUID) {
-                BLEbus.parseMessage(dataBytes)
+                let dataLength = dataBytes.count / MemoryLayout<UInt8>.size
+                var dataArray = [UInt8](repeating: 0, count: dataLength)
+                (dataBytes as NSData).getBytes(&dataArray, length: dataLength * MemoryLayout<Int16>.size)
+                if (dataArray[0] == 0x04){
+                    if (!motorcycleData.getHasFocus()){
+                        NSLog("Focus Gained");
+                    }
+                    motorcycleData.setHasFocus(hasFocus: true)
+                    lastControlMessage = Int(Date().timeIntervalSince1970 * 1000)
+                } else {
+                    if (motorcycleData.getHasFocus() && ( Int(Date().timeIntervalSince1970 * 1000) - lastControlMessage > 100)){
+                        NSLog("Focus Gone")
+                        motorcycleData.setHasFocus(hasFocus: false)
+                    }
+                    BLEbus.parseMessage(dataArray)
+                }
             } else if characteristic.uuid == CBUUID(string: Device.WunderLINQNCommandCharacteristicUUID) {
                 parseCommandResponse(dataBytes)
             } else if characteristic.uuid == CBUUID(string: Device.WunderLINQCCommandCharacteristicUUID) {

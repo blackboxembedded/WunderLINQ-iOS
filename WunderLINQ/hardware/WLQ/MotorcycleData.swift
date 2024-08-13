@@ -21,6 +21,7 @@ import Foundation
 
 class MotorcycleData {
     static let shared = MotorcycleData()
+    var hasFocus: Bool? = false
     var location: CLLocation?
     var ignitionStatus: Bool?
     var vin: String?
@@ -61,6 +62,13 @@ class MotorcycleData {
     var rearSpeed: Double?
     var prevBrake: Int? = 0
     var localBattery: Int?
+    
+    func setHasFocus(hasFocus: Bool?){
+        self.hasFocus = hasFocus
+    }
+    func getHasFocus() -> Bool{
+        return self.hasFocus!
+    }
     
     func setLocation(location: CLLocation?){
         self.location = location
