@@ -18,7 +18,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 import Foundation
 
-class LINbus {
+class BLEbus {
     class func parseMessage(_ data:Data) {
         let motorcycleData = MotorcycleData.shared
         let faults = Faults.shared
@@ -40,31 +40,35 @@ class LINbus {
         switch lastMessage[0] {
         case 0x00:
             // VIN
-            let bytes: [UInt8] = [lastMessage[1],lastMessage[2],lastMessage[3],lastMessage[4],lastMessage[5],lastMessage[6],lastMessage[7]]
-            let vin = String(bytes: bytes, encoding: .utf8)
-            motorcycleData.setVIN(vin: vin)
+            if (lastMessage[1] != 0xFF && lastMessage[2] != 0xFF && lastMessage[3] != 0xFF && lastMessage[4] != 0xFF && lastMessage[5] != 0xFF && lastMessage[6] != 0xFF && lastMessage[7] != 0xFF){
+                let bytes: [UInt8] = [lastMessage[1],lastMessage[2],lastMessage[3],lastMessage[4],lastMessage[5],lastMessage[6],lastMessage[7]]
+                let vin = String(bytes: bytes, encoding: .utf8)
+                motorcycleData.setVIN(vin: vin)
+            }
         case 0x01:
             // Ignition
-            let ignitionValue = (lastMessage[2] >> 4) & 0x0F // the highest 4 bits.
-            switch (ignitionValue) {
-            case 0x0: 
-                motorcycleData.setIgnitionStatus(ignitionStatus: false)
-            case 0x1:
-                motorcycleData.setIgnitionStatus(ignitionStatus: false)
-            case 0x2:
-                motorcycleData.setIgnitionStatus(ignitionStatus: false)
-            case 0x3:
-                motorcycleData.setIgnitionStatus(ignitionStatus: false)
-            case 0x4:
-                motorcycleData.setIgnitionStatus(ignitionStatus: true)
-            case 0x5:
-                motorcycleData.setIgnitionStatus(ignitionStatus: true)
-            case 0x6:
-                motorcycleData.setIgnitionStatus(ignitionStatus: true)
-            case 0x7:
-                motorcycleData.setIgnitionStatus(ignitionStatus: true)
-            default:
-                break
+            if (((lastMessage[2] >> 4) & 0x0F) != 0xF) {
+                let ignitionValue = (lastMessage[2] >> 4) & 0x0F // the highest 4 bits.
+                switch (ignitionValue) {
+                case 0x0:
+                    motorcycleData.setIgnitionStatus(ignitionStatus: false)
+                case 0x1:
+                    motorcycleData.setIgnitionStatus(ignitionStatus: false)
+                case 0x2:
+                    motorcycleData.setIgnitionStatus(ignitionStatus: false)
+                case 0x3:
+                    motorcycleData.setIgnitionStatus(ignitionStatus: false)
+                case 0x4:
+                    motorcycleData.setIgnitionStatus(ignitionStatus: true)
+                case 0x5:
+                    motorcycleData.setIgnitionStatus(ignitionStatus: true)
+                case 0x6:
+                    motorcycleData.setIgnitionStatus(ignitionStatus: true)
+                case 0x7:
+                    motorcycleData.setIgnitionStatus(ignitionStatus: true)
+                default:
+                    break
+                }
             }
             // Rear Wheel Speed
             if ((lastMessage[3] != 0xFF) && (lastMessage[4] != 0xFF)){
@@ -80,8 +84,10 @@ class LINbus {
                 motorcycleData.setfuelRange(fuelRange: fuelRange)
             }
             // Ambient Light
-            let ambientLightValue = lastMessage[6] & 0x0F
-            motorcycleData.setambientLight(ambientLight: Double(ambientLightValue))
+            if ((lastMessage[6] & 0x0F) != 0xF){
+                let ambientLightValue = lastMessage[6] & 0x0F
+                motorcycleData.setambientLight(ambientLight: Double(ambientLightValue))
+            }
         case 0x05:
             // Lean Angle
             if ((lastMessage[1] != 0xFF) && ((lastMessage[2] & 0x0F) != 0xF)){
@@ -116,113 +122,111 @@ class LINbus {
             }
             
             // Brakes
-            let brakes = (lastMessage[2] >> 4) & 0x0F // the highest 4 bits.
-            if(motorcycleData.getPrevBrake() == 0){
-                motorcycleData.setPrevBrake(prevBrake: Int(brakes))
-            }
-            if (motorcycleData.getPrevBrake() != brakes) {
-                motorcycleData.setPrevBrake(prevBrake: Int(brakes))
-                switch (brakes) {
-                case 0x6:
-                    //Front
-                    motorcycleData.setfrontBrake(frontBrake: motorcycleData.frontBrake! + 1)
-                    
-                case 0x9:
-                    //Back
-                    motorcycleData.setrearBrake(rearBrake: motorcycleData.rearBrake! + 1)
-                    
-                case 0xA:
-                    //Both
-                    motorcycleData.setfrontBrake(frontBrake: motorcycleData.frontBrake! + 1)
-                    motorcycleData.setrearBrake(rearBrake: motorcycleData.rearBrake! + 1)
-                    
-                default:
-                    break
+            if(((lastMessage[2] >> 4) & 0x0F) != 0xF){
+                let brakes = (lastMessage[2] >> 4) & 0x0F // the highest 4 bits.
+                if(motorcycleData.getPrevBrake() == 0){
+                    motorcycleData.setPrevBrake(prevBrake: Int(brakes))
+                }
+                if (motorcycleData.getPrevBrake() != brakes) {
+                    motorcycleData.setPrevBrake(prevBrake: Int(brakes))
+                    switch (brakes) {
+                    case 0x6:
+                        //Front
+                        motorcycleData.setfrontBrake(frontBrake: motorcycleData.frontBrake! + 1)
+                        
+                    case 0x9:
+                        //Back
+                        motorcycleData.setrearBrake(rearBrake: motorcycleData.rearBrake! + 1)
+                        
+                    case 0xA:
+                        //Both
+                        motorcycleData.setfrontBrake(frontBrake: motorcycleData.frontBrake! + 1)
+                        motorcycleData.setrearBrake(rearBrake: motorcycleData.rearBrake! + 1)
+                        
+                    default:
+                        break
+                    }
                 }
             }
             // ABS Fault
-            let absValue = lastMessage[3] & 0x0F // the lowest 4 bits
-            switch (absValue){
-            case 0x2:
-                faults.setAbsSelfDiagActive(active: false)
-                faults.setAbsSelfDiagActive(active: false)
-                faults.setAbsDeactivatedActive(active: false)
-                faults.setAbsErrorActive(active: true)
-                
-            case 0x3:
-                faults.setAbsSelfDiagActive(active: true)
-                faults.setAbsDeactivatedActive(active: false)
-                faults.setAbsErrorActive(active: false)
-                break;
-            case 0x5:
-                faults.setAbsSelfDiagActive(active: false)
-                faults.setAbsDeactivatedActive(active: false)
-                faults.setAbsErrorActive(active: true)
-                
-            case 0x6:
-                faults.setAbsSelfDiagActive(active: false)
-                faults.setAbsDeactivatedActive(active: false)
-                faults.setAbsErrorActive(active: true)
-                
-            case 0x7:
-                faults.setAbsSelfDiagActive(active: false)
-                faults.setAbsDeactivatedActive(active: false)
-                faults.setAbsErrorActive(active: true)
-                
-            case 0x8:
-                faults.setAbsSelfDiagActive(active: false)
-                faults.setAbsDeactivatedActive(active: true)
-                faults.setAbsErrorActive(active: false)
-                
-            case 0xA:
-                faults.setAbsSelfDiagActive(active: false)
-                faults.setAbsDeactivatedActive(active: false)
-                faults.setAbsErrorActive(active: true)
-                
-            case 0xB:
-                faults.setAbsSelfDiagActive(active: true)
-                faults.setAbsDeactivatedActive(active: false)
-                faults.setAbsErrorActive(active: false)
-                
-            case 0xD:
-                faults.setAbsSelfDiagActive(active: false)
-                faults.setAbsDeactivatedActive(active: false)
-                faults.setAbsErrorActive(active: true)
-                
-            case 0xE:
-                faults.setAbsSelfDiagActive(active: false)
-                faults.setAbsDeactivatedActive(active: false)
-                faults.setAbsErrorActive(active: true)
-                
-            case 0xF:
-                faults.setAbsSelfDiagActive(active: false)
-                faults.setAbsDeactivatedActive(active: false)
-                faults.setAbsErrorActive(active: false)
-                
-            default:
-                faults.setAbsSelfDiagActive(active: false)
-                faults.setAbsDeactivatedActive(active: false)
-                faults.setAbsErrorActive(active: false)
-                break;
+            if ((lastMessage[3] & 0x0F) != 0xF){
+                let absValue = lastMessage[3] & 0x0F // the lowest 4 bits
+                switch (absValue){
+                case 0x2:
+                    faults.setAbsSelfDiagActive(active: false)
+                    faults.setAbsSelfDiagActive(active: false)
+                    faults.setAbsDeactivatedActive(active: false)
+                    faults.setAbsErrorActive(active: true)
+                    
+                case 0x3:
+                    faults.setAbsSelfDiagActive(active: true)
+                    faults.setAbsDeactivatedActive(active: false)
+                    faults.setAbsErrorActive(active: false)
+                    break;
+                case 0x5:
+                    faults.setAbsSelfDiagActive(active: false)
+                    faults.setAbsDeactivatedActive(active: false)
+                    faults.setAbsErrorActive(active: true)
+                    
+                case 0x6:
+                    faults.setAbsSelfDiagActive(active: false)
+                    faults.setAbsDeactivatedActive(active: false)
+                    faults.setAbsErrorActive(active: true)
+                    
+                case 0x7:
+                    faults.setAbsSelfDiagActive(active: false)
+                    faults.setAbsDeactivatedActive(active: false)
+                    faults.setAbsErrorActive(active: true)
+                    
+                case 0x8:
+                    faults.setAbsSelfDiagActive(active: false)
+                    faults.setAbsDeactivatedActive(active: true)
+                    faults.setAbsErrorActive(active: false)
+                    
+                case 0xA:
+                    faults.setAbsSelfDiagActive(active: false)
+                    faults.setAbsDeactivatedActive(active: false)
+                    faults.setAbsErrorActive(active: true)
+                    
+                case 0xB:
+                    faults.setAbsSelfDiagActive(active: true)
+                    faults.setAbsDeactivatedActive(active: false)
+                    faults.setAbsErrorActive(active: false)
+                    
+                case 0xD:
+                    faults.setAbsSelfDiagActive(active: false)
+                    faults.setAbsDeactivatedActive(active: false)
+                    faults.setAbsErrorActive(active: true)
+                    
+                case 0xE:
+                    faults.setAbsSelfDiagActive(active: false)
+                    faults.setAbsDeactivatedActive(active: false)
+                    faults.setAbsErrorActive(active: true)
+                    
+                case 0xF:
+                    faults.setAbsSelfDiagActive(active: false)
+                    faults.setAbsDeactivatedActive(active: false)
+                    faults.setAbsErrorActive(active: false)
+                    
+                default:
+                    faults.setAbsSelfDiagActive(active: false)
+                    faults.setAbsDeactivatedActive(active: false)
+                    faults.setAbsErrorActive(active: false)
+                    break;
+                }
             }
-            
             // Tire Pressure
-            if ((lastMessage[4] != 0xFF) && (lastMessage[5] != 0xFF)){
+            if (lastMessage[4] != 0xFF){
                 var frontPressure:Double = Double(lastMessage[4]) / 50
-                var rearPressure:Double = Double(lastMessage[5]) / 50
                 motorcycleData.setfrontTirePressure(frontTirePressure: frontPressure)
-                motorcycleData.setrearTirePressure(rearTirePressure: rearPressure)
                 if UserDefaults.standard.bool(forKey: "custom_tpm_preference"){
                     switch UserDefaults.standard.integer(forKey: "pressure_unit_preference"){
                     case 1:
                         frontPressure = Utility.barTokPa(frontPressure)
-                        rearPressure = Utility.barTokPa(rearPressure)
                     case 2:
                         frontPressure = Utility.barTokgf(frontPressure)
-                        rearPressure = Utility.barTokgf(rearPressure)
                     case 3:
                         frontPressure = Utility.barToPsi(frontPressure)
-                        rearPressure = Utility.barToPsi(rearPressure)
                     default:
                         NSLog("Unknown pressure unit setting")
                     }
@@ -237,6 +241,22 @@ class LINbus {
                             faults.frontTirePressureCriticalNotificationActive = false
                         }
                     }
+                }
+            }
+            if (lastMessage[5] != 0xFF){
+                var rearPressure:Double = Double(lastMessage[5]) / 50
+                motorcycleData.setrearTirePressure(rearTirePressure: rearPressure)
+                if UserDefaults.standard.bool(forKey: "custom_tpm_preference"){
+                    switch UserDefaults.standard.integer(forKey: "pressure_unit_preference"){
+                    case 1:
+                        rearPressure = Utility.barTokPa(rearPressure)
+                    case 2:
+                        rearPressure = Utility.barTokgf(rearPressure)
+                    case 3:
+                        rearPressure = Utility.barToPsi(rearPressure)
+                    default:
+                        NSLog("Unknown pressure unit setting")
+                    }
                     if rearPressure <= UserDefaults.standard.double(forKey: "tpm_threshold_preference"){
                         faults.setRearTirePressureCriticalActive(active: true)
                         if (UserDefaults.standard.bool(forKey: "notification_preference")){
@@ -250,105 +270,106 @@ class LINbus {
                     }
                 }
             }
-            
             // Tire Pressure Faults
-            if !UserDefaults.standard.bool(forKey: "custom_tpm_preference"){
-                switch (lastMessage[6]) {
-                case 0xC9:
-                    faults.setFrontTirePressureWarningActive(active: true)
-                    faults.setRearTirePressureWarningActive(active: false)
-                    faults.setFrontTirePressureCriticalActive(active: false)
-                    faults.setRearTirePressureCriticalActive(active: false)
-                    if (UserDefaults.standard.bool(forKey: "notification_preference")){
-                        if(faults.frontTirePressureCriticalNotificationActive) {
-                            faults.frontTirePressureCriticalNotificationActive = false
+            if (lastMessage[6] != 0xFF){
+                if !UserDefaults.standard.bool(forKey: "custom_tpm_preference"){
+                    switch (lastMessage[6]) {
+                    case 0xC9:
+                        faults.setFrontTirePressureWarningActive(active: true)
+                        faults.setRearTirePressureWarningActive(active: false)
+                        faults.setFrontTirePressureCriticalActive(active: false)
+                        faults.setRearTirePressureCriticalActive(active: false)
+                        if (UserDefaults.standard.bool(forKey: "notification_preference")){
+                            if(faults.frontTirePressureCriticalNotificationActive) {
+                                faults.frontTirePressureCriticalNotificationActive = false
+                            }
+                            if(faults.rearTirePressureCriticalNotificationActive) {
+                                faults.rearTirePressureCriticalNotificationActive = false
+                            }
                         }
-                        if(faults.rearTirePressureCriticalNotificationActive) {
-                            faults.rearTirePressureCriticalNotificationActive = false
+                        
+                    case 0xCA:
+                        faults.setFrontTirePressureWarningActive(active: false)
+                        faults.setRearTirePressureWarningActive(active: true)
+                        faults.setFrontTirePressureCriticalActive(active: false)
+                        faults.setRearTirePressureCriticalActive(active: false)
+                        if (UserDefaults.standard.bool(forKey: "notification_preference")){
+                            if(faults.frontTirePressureCriticalNotificationActive) {
+                                faults.frontTirePressureCriticalNotificationActive = false
+                            }
+                            if(faults.rearTirePressureCriticalNotificationActive) {
+                                faults.rearTirePressureCriticalNotificationActive = false
+                            }
                         }
-                    }
-                    
-                case 0xCA:
-                    faults.setFrontTirePressureWarningActive(active: false)
-                    faults.setRearTirePressureWarningActive(active: true)
-                    faults.setFrontTirePressureCriticalActive(active: false)
-                    faults.setRearTirePressureCriticalActive(active: false)
-                    if (UserDefaults.standard.bool(forKey: "notification_preference")){
-                        if(faults.frontTirePressureCriticalNotificationActive) {
-                            faults.frontTirePressureCriticalNotificationActive = false
+                        
+                    case 0xCB:
+                        faults.setFrontTirePressureWarningActive(active: true)
+                        faults.setRearTirePressureWarningActive(active: true)
+                        faults.setFrontTirePressureCriticalActive(active: false)
+                        faults.setRearTirePressureCriticalActive(active: false)
+                        if (UserDefaults.standard.bool(forKey: "notification_preference")){
+                            if(faults.frontTirePressureCriticalNotificationActive) {
+                                faults.frontTirePressureCriticalNotificationActive = false
+                            }
+                            if(faults.rearTirePressureCriticalNotificationActive) {
+                                faults.rearTirePressureCriticalNotificationActive = false
+                            }
                         }
-                        if(faults.rearTirePressureCriticalNotificationActive) {
-                            faults.rearTirePressureCriticalNotificationActive = false
+                        
+                    case 0xD1:
+                        faults.setFrontTirePressureWarningActive(active: false)
+                        faults.setRearTirePressureWarningActive(active: false)
+                        faults.setFrontTirePressureCriticalActive(active: true)
+                        faults.setRearTirePressureCriticalActive(active: false)
+                        if (UserDefaults.standard.bool(forKey: "notification_preference")){
+                            if(!faults.frontTirePressureCriticalNotificationActive) {
+                                faults.frontTirePressureCriticalNotificationActive = true
+                            }
+                            if(faults.rearTirePressureCriticalNotificationActive) {
+                                faults.rearTirePressureCriticalNotificationActive = false
+                            }
                         }
-                    }
-                    
-                case 0xCB:
-                    faults.setFrontTirePressureWarningActive(active: true)
-                    faults.setRearTirePressureWarningActive(active: true)
-                    faults.setFrontTirePressureCriticalActive(active: false)
-                    faults.setRearTirePressureCriticalActive(active: false)
-                    if (UserDefaults.standard.bool(forKey: "notification_preference")){
-                        if(faults.frontTirePressureCriticalNotificationActive) {
-                            faults.frontTirePressureCriticalNotificationActive = false
+                        
+                    case 0xD2:
+                        faults.setFrontTirePressureWarningActive(active: false)
+                        faults.setRearTirePressureWarningActive(active: false)
+                        faults.setFrontTirePressureCriticalActive(active: false)
+                        faults.setRearTirePressureCriticalActive(active: true)
+                        if (UserDefaults.standard.bool(forKey: "notification_preference")){
+                            if(faults.frontTirePressureCriticalNotificationActive) {
+                                faults.frontTirePressureCriticalNotificationActive = false
+                            }
+                            if(!faults.rearTirePressureCriticalNotificationActive) {
+                                faults.rearTirePressureCriticalNotificationActive = true
+                            }
                         }
-                        if(faults.rearTirePressureCriticalNotificationActive) {
-                            faults.rearTirePressureCriticalNotificationActive = false
+                        
+                    case 0xD3:
+                        faults.setFrontTirePressureWarningActive(active: false)
+                        faults.setRearTirePressureWarningActive(active: false)
+                        faults.setFrontTirePressureCriticalActive(active: true)
+                        faults.setRearTirePressureCriticalActive(active: true)
+                        if (UserDefaults.standard.bool(forKey: "notification_preference")){
+                            if(!faults.frontTirePressureCriticalNotificationActive) {
+                                faults.frontTirePressureCriticalNotificationActive = true
+                            }
+                            if(!faults.rearTirePressureCriticalNotificationActive) {
+                                faults.rearTirePressureCriticalNotificationActive = true
+                            }
                         }
-                    }
-                    
-                case 0xD1:
-                    faults.setFrontTirePressureWarningActive(active: false)
-                    faults.setRearTirePressureWarningActive(active: false)
-                    faults.setFrontTirePressureCriticalActive(active: true)
-                    faults.setRearTirePressureCriticalActive(active: false)
-                    if (UserDefaults.standard.bool(forKey: "notification_preference")){
-                        if(!faults.frontTirePressureCriticalNotificationActive) {
-                            faults.frontTirePressureCriticalNotificationActive = true
-                        }
-                        if(faults.rearTirePressureCriticalNotificationActive) {
-                            faults.rearTirePressureCriticalNotificationActive = false
-                        }
-                    }
-                    
-                case 0xD2:
-                    faults.setFrontTirePressureWarningActive(active: false)
-                    faults.setRearTirePressureWarningActive(active: false)
-                    faults.setFrontTirePressureCriticalActive(active: false)
-                    faults.setRearTirePressureCriticalActive(active: true)
-                    if (UserDefaults.standard.bool(forKey: "notification_preference")){
-                        if(faults.frontTirePressureCriticalNotificationActive) {
-                            faults.frontTirePressureCriticalNotificationActive = false
-                        }
-                        if(!faults.rearTirePressureCriticalNotificationActive) {
-                            faults.rearTirePressureCriticalNotificationActive = true
-                        }
-                    }
-                    
-                case 0xD3:
-                    faults.setFrontTirePressureWarningActive(active: false)
-                    faults.setRearTirePressureWarningActive(active: false)
-                    faults.setFrontTirePressureCriticalActive(active: true)
-                    faults.setRearTirePressureCriticalActive(active: true)
-                    if (UserDefaults.standard.bool(forKey: "notification_preference")){
-                        if(!faults.frontTirePressureCriticalNotificationActive) {
-                            faults.frontTirePressureCriticalNotificationActive = true
-                        }
-                        if(!faults.rearTirePressureCriticalNotificationActive) {
-                            faults.rearTirePressureCriticalNotificationActive = true
-                        }
-                    }
-                    
-                default:
-                    faults.setFrontTirePressureWarningActive(active: false)
-                    faults.setRearTirePressureWarningActive(active: false)
-                    faults.setFrontTirePressureCriticalActive(active: false)
-                    faults.setRearTirePressureCriticalActive(active: false)
-                    if (UserDefaults.standard.bool(forKey: "notification_preference")){
-                        if(faults.frontTirePressureCriticalNotificationActive) {
-                            faults.frontTirePressureCriticalNotificationActive = false
-                        }
-                        if(faults.rearTirePressureCriticalNotificationActive) {
-                            faults.rearTirePressureCriticalNotificationActive = false
+                        
+                    default:
+                        faults.setFrontTirePressureWarningActive(active: false)
+                        faults.setRearTirePressureWarningActive(active: false)
+                        faults.setFrontTirePressureCriticalActive(active: false)
+                        faults.setRearTirePressureCriticalActive(active: false)
+                        if (UserDefaults.standard.bool(forKey: "notification_preference")){
+                            if(faults.frontTirePressureCriticalNotificationActive) {
+                                faults.frontTirePressureCriticalNotificationActive = false
+                            }
+                            if(faults.rearTirePressureCriticalNotificationActive) {
+                                faults.rearTirePressureCriticalNotificationActive = false
+                            }
                         }
                     }
                 }
@@ -363,31 +384,31 @@ class LINbus {
             }
             
             // Gear
-            var gear = "-"
-            switch (lastMessage[2] >> 4) & 0x0F {
-            case 0x1:
-                gear = "1"
-            case 0x2:
-                gear = "N"
-            case 0x4:
-                gear = "2"
-            case 0x7:
-                gear = "3"
-            case 0x8:
-                gear = "4"
-            case 0xB:
-                gear = "5"
-            case 0xD:
-                gear = "6"
-            case 0xF:
-                gear = "-"
-            default:
-                gear = "-"
+            if ((((lastMessage[2] >> 4) & 0x0F)) != 0xF){
+                var gear = "-"
+                switch (lastMessage[2] >> 4) & 0x0F {
+                case 0x1:
+                    gear = "1"
+                case 0x2:
+                    gear = "N"
+                case 0x4:
+                    gear = "2"
+                case 0x7:
+                    gear = "3"
+                case 0x8:
+                    gear = "4"
+                case 0xB:
+                    gear = "5"
+                case 0xD:
+                    gear = "6"
+                default:
+                    gear = "-"
+                }
+                if (motorcycleData.gear != gear && gear != "-") {
+                    motorcycleData.setshifts(shifts: motorcycleData.shifts! + 1)
+                }
+                motorcycleData.setgear(gear: gear)
             }
-            if (motorcycleData.gear != gear && gear != "-") {
-                motorcycleData.setshifts(shifts: motorcycleData.shifts! + 1)
-            }
-            motorcycleData.setgear(gear: gear)
             
             // Throttle Position
             if (lastMessage[3] != 0xFF){
@@ -404,106 +425,109 @@ class LINbus {
             }
             
             // ASC Fault
-            let ascValue = (lastMessage[5]  >> 4) & 0x0F // the highest 4 bits.
-            switch (ascValue){
-            case 0x1:
-                faults.setAscSelfDiagActive(active: false)
-                faults.setAscInterventionActive(active: true)
-                faults.setAscDeactivatedActive(active: false)
-                faults.setAscErrorActive(active: false)
-                
-            case 0x2:
-                faults.setAscSelfDiagActive(active: false)
-                faults.setAscInterventionActive(active: false)
-                faults.setAscDeactivatedActive(active: false)
-                faults.setAscErrorActive(active: true)
-                
-            case 0x3:
-                faults.setAscSelfDiagActive(active: true)
-                faults.setAscInterventionActive(active: false)
-                faults.setAscDeactivatedActive(active: false)
-                faults.setAscErrorActive(active: false)
-                
-            case 0x5:
-                faults.setAscSelfDiagActive(active: false)
-                faults.setAscInterventionActive(active: false)
-                faults.setAscDeactivatedActive(active: false)
-                faults.setAscErrorActive(active: true)
-                
-            case 0x6:
-                faults.setAscSelfDiagActive(active: false)
-                faults.setAscInterventionActive(active: false)
-                faults.setAscDeactivatedActive(active: false)
-                faults.setAscErrorActive(active: true)
-                
-            case 0x7:
-                faults.setAscSelfDiagActive(active: false)
-                faults.setAscInterventionActive(active: false)
-                faults.setAscDeactivatedActive(active: false)
-                faults.setAscErrorActive(active: true)
-                
-            case 0x8:
-                faults.setAscSelfDiagActive(active: false)
-                faults.setAscInterventionActive(active: false)
-                faults.setAscDeactivatedActive(active: true)
-                faults.setAscErrorActive(active: false)
-                break;
-            case 0x9:
-                faults.setAscSelfDiagActive(active: false)
-                faults.setAscInterventionActive(active: true)
-                faults.setAscDeactivatedActive(active: false)
-                faults.setAscErrorActive(active: false)
-                
-            case 0xA:
-                faults.setAscSelfDiagActive(active: false)
-                faults.setAscInterventionActive(active: false)
-                faults.setAscDeactivatedActive(active: false)
-                faults.setAscErrorActive(active: true)
-                
-            case 0xB:
-                faults.setAscSelfDiagActive(active: true)
-                faults.setAscInterventionActive(active: false)
-                faults.setAscDeactivatedActive(active: false)
-                faults.setAscErrorActive(active: false)
-                
-            case 0xD:
-                faults.setAscSelfDiagActive(active: false)
-                faults.setAscInterventionActive(active: false)
-                faults.setAscDeactivatedActive(active: false)
-                faults.setAscErrorActive(active: true)
-                break;
-            case 0xE:
-                faults.setAscSelfDiagActive(active: false)
-                faults.setAscInterventionActive(active: false)
-                faults.setAscDeactivatedActive(active: false)
-                faults.setAscErrorActive(active: true)
-                
-            default:
-                faults.setAscSelfDiagActive(active: false)
-                faults.setAscInterventionActive(active: false)
-                faults.setAscDeactivatedActive(active: false)
-                faults.setAscErrorActive(active: false)
-                
+            if (((lastMessage[5]  >> 4) & 0x0F) != 0xF){
+                let ascValue = (lastMessage[5]  >> 4) & 0x0F // the highest 4 bits.
+                switch (ascValue){
+                case 0x1:
+                    faults.setAscSelfDiagActive(active: false)
+                    faults.setAscInterventionActive(active: true)
+                    faults.setAscDeactivatedActive(active: false)
+                    faults.setAscErrorActive(active: false)
+                    
+                case 0x2:
+                    faults.setAscSelfDiagActive(active: false)
+                    faults.setAscInterventionActive(active: false)
+                    faults.setAscDeactivatedActive(active: false)
+                    faults.setAscErrorActive(active: true)
+                    
+                case 0x3:
+                    faults.setAscSelfDiagActive(active: true)
+                    faults.setAscInterventionActive(active: false)
+                    faults.setAscDeactivatedActive(active: false)
+                    faults.setAscErrorActive(active: false)
+                    
+                case 0x5:
+                    faults.setAscSelfDiagActive(active: false)
+                    faults.setAscInterventionActive(active: false)
+                    faults.setAscDeactivatedActive(active: false)
+                    faults.setAscErrorActive(active: true)
+                    
+                case 0x6:
+                    faults.setAscSelfDiagActive(active: false)
+                    faults.setAscInterventionActive(active: false)
+                    faults.setAscDeactivatedActive(active: false)
+                    faults.setAscErrorActive(active: true)
+                    
+                case 0x7:
+                    faults.setAscSelfDiagActive(active: false)
+                    faults.setAscInterventionActive(active: false)
+                    faults.setAscDeactivatedActive(active: false)
+                    faults.setAscErrorActive(active: true)
+                    
+                case 0x8:
+                    faults.setAscSelfDiagActive(active: false)
+                    faults.setAscInterventionActive(active: false)
+                    faults.setAscDeactivatedActive(active: true)
+                    faults.setAscErrorActive(active: false)
+                    break;
+                case 0x9:
+                    faults.setAscSelfDiagActive(active: false)
+                    faults.setAscInterventionActive(active: true)
+                    faults.setAscDeactivatedActive(active: false)
+                    faults.setAscErrorActive(active: false)
+                    
+                case 0xA:
+                    faults.setAscSelfDiagActive(active: false)
+                    faults.setAscInterventionActive(active: false)
+                    faults.setAscDeactivatedActive(active: false)
+                    faults.setAscErrorActive(active: true)
+                    
+                case 0xB:
+                    faults.setAscSelfDiagActive(active: true)
+                    faults.setAscInterventionActive(active: false)
+                    faults.setAscDeactivatedActive(active: false)
+                    faults.setAscErrorActive(active: false)
+                    
+                case 0xD:
+                    faults.setAscSelfDiagActive(active: false)
+                    faults.setAscInterventionActive(active: false)
+                    faults.setAscDeactivatedActive(active: false)
+                    faults.setAscErrorActive(active: true)
+                    break;
+                case 0xE:
+                    faults.setAscSelfDiagActive(active: false)
+                    faults.setAscInterventionActive(active: false)
+                    faults.setAscDeactivatedActive(active: false)
+                    faults.setAscErrorActive(active: true)
+                    
+                default:
+                    faults.setAscSelfDiagActive(active: false)
+                    faults.setAscInterventionActive(active: false)
+                    faults.setAscDeactivatedActive(active: false)
+                    faults.setAscErrorActive(active: false)
+                    
+                }
             }
-            
             //Oil Fault
-            let oilValue = lastMessage[5] & 0x0F // the lowest 4 bits
-            switch (oilValue){
-            case 0x2:
-                faults.setOilLowActive(active: true)
-                
-            case 0x6:
-                faults.setOilLowActive(active: true)
-                
-            case 0xA:
-                faults.setOilLowActive(active: true)
-                
-            case 0xE:
-                faults.setOilLowActive(active: true)
-                
-            default:
-                faults.setOilLowActive(active: false)
-                
+            if((lastMessage[5] & 0x0F) != 0xF){
+                let oilValue = lastMessage[5] & 0x0F // the lowest 4 bits
+                switch (oilValue){
+                case 0x2:
+                    faults.setOilLowActive(active: true)
+                    
+                case 0x6:
+                    faults.setOilLowActive(active: true)
+                    
+                case 0xA:
+                    faults.setOilLowActive(active: true)
+                    
+                case 0xE:
+                    faults.setOilLowActive(active: true)
+                    
+                default:
+                    faults.setOilLowActive(active: false)
+                    
+                }
             }
             
         case 0x07:
@@ -529,211 +553,214 @@ class LINbus {
             }
             
             // Fuel Fault
-            let fuelValue = (lastMessage[5] >> 4) & 0x0F // the highest 4 bits.
-            switch (fuelValue){
-            case 0x2:
-                faults.setFuelFaultActive(active: true)
-                
-            case 0x6:
-                faults.setFuelFaultActive(active: true)
-                
-            case 0xA:
-                faults.setFuelFaultActive(active: true)
-                
-            case 0xE:
-                faults.setFuelFaultActive(active: true)
-                
-            default:
-                faults.setFuelFaultActive(active: false)
-                
+            if(((lastMessage[5] >> 4) & 0x0F) != 0xF){
+                let fuelValue = (lastMessage[5] >> 4) & 0x0F // the highest 4 bits.
+                switch (fuelValue){
+                case 0x2:
+                    faults.setFuelFaultActive(active: true)
+                    
+                case 0x6:
+                    faults.setFuelFaultActive(active: true)
+                    
+                case 0xA:
+                    faults.setFuelFaultActive(active: true)
+                    
+                case 0xE:
+                    faults.setFuelFaultActive(active: true)
+                    
+                default:
+                    faults.setFuelFaultActive(active: false)
+                    
+                }
             }
             
             // General Fault
-            let generalFault = lastMessage[5] & 0x0F // the lowest 4 bits
-            switch (generalFault){
-            case 0x1:
-                faults.setGeneralFlashingYellowActive(active: true)
-                faults.setGeneralShowsYellowActive(active: false)
-                faults.setGeneralFlashingRedActive(active: false)
-                faults.setGeneralShowsRedActive(active: false)
-                if (UserDefaults.standard.bool(forKey: "notification_preference")){
-                    if(faults.generalFlashingRedNotificationActive) {
-                        faults.generalFlashingRedNotificationActive = false
+            if((lastMessage[5] & 0x0F) != 0xF){
+                let generalFault = lastMessage[5] & 0x0F // the lowest 4 bits
+                switch (generalFault){
+                case 0x1:
+                    faults.setGeneralFlashingYellowActive(active: true)
+                    faults.setGeneralShowsYellowActive(active: false)
+                    faults.setGeneralFlashingRedActive(active: false)
+                    faults.setGeneralShowsRedActive(active: false)
+                    if (UserDefaults.standard.bool(forKey: "notification_preference")){
+                        if(faults.generalFlashingRedNotificationActive) {
+                            faults.generalFlashingRedNotificationActive = false
+                        }
+                        if(faults.generalShowsRedNotificationActive) {
+                            faults.generalShowsRedNotificationActive = false
+                        }
                     }
-                    if(faults.generalShowsRedNotificationActive) {
-                        faults.generalShowsRedNotificationActive = false
+                    
+                case 0x2:
+                    faults.setGeneralFlashingYellowActive(active: false)
+                    faults.setGeneralShowsYellowActive(active: true)
+                    faults.setGeneralFlashingRedActive(active: false)
+                    faults.setGeneralShowsRedActive(active: false)
+                    if (UserDefaults.standard.bool(forKey: "notification_preference")){
+                        if(faults.generalFlashingRedNotificationActive) {
+                            faults.generalFlashingRedNotificationActive = false
+                        }
+                        if(faults.generalShowsRedNotificationActive) {
+                            faults.generalShowsRedNotificationActive = false
+                        }
                     }
+                    
+                case 0x4:
+                    faults.setGeneralFlashingYellowActive(active: false)
+                    faults.setGeneralShowsYellowActive(active: false)
+                    faults.setGeneralFlashingRedActive(active: true)
+                    faults.setGeneralShowsRedActive(active: false)
+                    if (UserDefaults.standard.bool(forKey: "notification_preference")){
+                        if(!faults.generalFlashingRedNotificationActive) {
+                            faults.generalFlashingRedNotificationActive = true
+                        }
+                        if(faults.generalShowsRedNotificationActive) {
+                            faults.generalShowsRedNotificationActive = false
+                        }
+                    }
+                    
+                case 0x5:
+                    faults.setGeneralFlashingYellowActive(active: true)
+                    faults.setGeneralShowsYellowActive(active: false)
+                    faults.setGeneralFlashingRedActive(active: true)
+                    faults.setGeneralShowsRedActive(active: false)
+                    if (UserDefaults.standard.bool(forKey: "notification_preference")){
+                        if(!faults.generalFlashingRedNotificationActive) {
+                            faults.generalFlashingRedNotificationActive = true
+                        }
+                        if(faults.generalShowsRedNotificationActive) {
+                            faults.generalShowsRedNotificationActive = false
+                        }
+                    }
+                    
+                case 0x6:
+                    faults.setGeneralFlashingYellowActive(active: false)
+                    faults.setGeneralShowsYellowActive(active: true)
+                    faults.setGeneralFlashingRedActive(active: true)
+                    faults.setGeneralShowsRedActive(active: false)
+                    if (UserDefaults.standard.bool(forKey: "notification_preference")){
+                        if(!faults.generalFlashingRedNotificationActive) {
+                            faults.generalFlashingRedNotificationActive = true
+                        }
+                        if(faults.generalShowsRedNotificationActive) {
+                            faults.generalShowsRedNotificationActive = false
+                        }
+                    }
+                    
+                case 0x7:
+                    faults.setGeneralFlashingYellowActive(active: false)
+                    faults.setGeneralShowsYellowActive(active: false)
+                    faults.setGeneralFlashingRedActive(active: true)
+                    faults.setGeneralShowsRedActive(active: false)
+                    if (UserDefaults.standard.bool(forKey: "notification_preference")){
+                        if(!faults.generalFlashingRedNotificationActive) {
+                            faults.generalFlashingRedNotificationActive = true
+                        }
+                        if(faults.generalShowsRedNotificationActive) {
+                            faults.generalShowsRedNotificationActive = false
+                        }
+                    }
+                    
+                case 0x8:
+                    faults.setGeneralFlashingYellowActive(active: false)
+                    faults.setGeneralShowsYellowActive(active: false)
+                    faults.setGeneralFlashingRedActive(active: false)
+                    faults.setGeneralShowsRedActive(active: true)
+                    if (UserDefaults.standard.bool(forKey: "notification_preference")){
+                        if(faults.generalFlashingRedNotificationActive) {
+                            faults.generalFlashingRedNotificationActive = false
+                        }
+                        if(!faults.generalShowsRedNotificationActive) {
+                            faults.generalShowsRedNotificationActive = true
+                        }
+                    }
+                    
+                case 0x9:
+                    faults.setGeneralFlashingYellowActive(active: false)
+                    faults.setGeneralShowsYellowActive(active: false)
+                    faults.setGeneralFlashingRedActive(active: true)
+                    faults.setGeneralShowsRedActive(active: true)
+                    if (UserDefaults.standard.bool(forKey: "notification_preference")){
+                        if(!faults.generalFlashingRedNotificationActive && !faults.generalShowsRedNotificationActive) {
+                            faults.generalFlashingRedNotificationActive = true
+                            faults.generalShowsRedNotificationActive = true
+                        }
+                    }
+                    
+                case 0xA:
+                    faults.setGeneralFlashingYellowActive(active: false)
+                    faults.setGeneralShowsYellowActive(active: true)
+                    faults.setGeneralFlashingRedActive(active: false)
+                    faults.setGeneralShowsRedActive(active: true)
+                    if (UserDefaults.standard.bool(forKey: "notification_preference")){
+                        if(faults.generalFlashingRedNotificationActive) {
+                            faults.generalFlashingRedNotificationActive = false
+                        }
+                        if(!faults.generalShowsRedNotificationActive) {
+                            faults.generalShowsRedNotificationActive = true
+                        }
+                    }
+                    
+                case 0xB:
+                    faults.setGeneralFlashingYellowActive(active: false)
+                    faults.setGeneralShowsYellowActive(active: false)
+                    faults.setGeneralFlashingRedActive(active: false)
+                    faults.setGeneralShowsRedActive(active: true)
+                    if (UserDefaults.standard.bool(forKey: "notification_preference")){
+                        if(faults.generalFlashingRedNotificationActive) {
+                            faults.generalFlashingRedNotificationActive = false
+                        }
+                        if(!faults.generalShowsRedNotificationActive) {
+                            faults.generalShowsRedNotificationActive = true
+                        }
+                    }
+                    
+                case 0xD:
+                    faults.setGeneralFlashingYellowActive(active: true)
+                    faults.setGeneralShowsYellowActive(active: false)
+                    faults.setGeneralFlashingRedActive(active: false)
+                    faults.setGeneralShowsRedActive(active: false)
+                    if (UserDefaults.standard.bool(forKey: "notification_preference")){
+                        if(faults.generalFlashingRedNotificationActive) {
+                            faults.generalFlashingRedNotificationActive = false
+                        }
+                        if(faults.generalShowsRedNotificationActive) {
+                            faults.generalShowsRedNotificationActive = false
+                        }
+                    }
+                    
+                case 0xE:
+                    faults.setGeneralFlashingYellowActive(active: false)
+                    faults.setGeneralShowsYellowActive(active: true)
+                    faults.setGeneralFlashingRedActive(active: false)
+                    faults.setGeneralShowsRedActive(active: false)
+                    if (UserDefaults.standard.bool(forKey: "notification_preference")){
+                        if(faults.generalFlashingRedNotificationActive) {
+                            faults.generalFlashingRedNotificationActive = false
+                        }
+                        if(faults.generalShowsRedNotificationActive) {
+                            faults.generalShowsRedNotificationActive = false
+                        }
+                    }
+                    
+                default:
+                    faults.setGeneralFlashingYellowActive(active: false)
+                    faults.setGeneralShowsYellowActive(active: false)
+                    faults.setGeneralFlashingRedActive(active: false)
+                    faults.setGeneralShowsRedActive(active: false)
+                    if (UserDefaults.standard.bool(forKey: "notification_preference")){
+                        if(faults.generalFlashingRedNotificationActive) {
+                            faults.generalFlashingRedNotificationActive = false
+                        }
+                        if(faults.generalShowsRedNotificationActive) {
+                            faults.generalShowsRedNotificationActive = false
+                        }
+                    }
+                    
                 }
-                
-            case 0x2:
-                faults.setGeneralFlashingYellowActive(active: false)
-                faults.setGeneralShowsYellowActive(active: true)
-                faults.setGeneralFlashingRedActive(active: false)
-                faults.setGeneralShowsRedActive(active: false)
-                if (UserDefaults.standard.bool(forKey: "notification_preference")){
-                    if(faults.generalFlashingRedNotificationActive) {
-                        faults.generalFlashingRedNotificationActive = false
-                    }
-                    if(faults.generalShowsRedNotificationActive) {
-                        faults.generalShowsRedNotificationActive = false
-                    }
-                }
-                
-            case 0x4:
-                faults.setGeneralFlashingYellowActive(active: false)
-                faults.setGeneralShowsYellowActive(active: false)
-                faults.setGeneralFlashingRedActive(active: true)
-                faults.setGeneralShowsRedActive(active: false)
-                if (UserDefaults.standard.bool(forKey: "notification_preference")){
-                    if(!faults.generalFlashingRedNotificationActive) {
-                        faults.generalFlashingRedNotificationActive = true
-                    }
-                    if(faults.generalShowsRedNotificationActive) {
-                        faults.generalShowsRedNotificationActive = false
-                    }
-                }
-                
-            case 0x5:
-                faults.setGeneralFlashingYellowActive(active: true)
-                faults.setGeneralShowsYellowActive(active: false)
-                faults.setGeneralFlashingRedActive(active: true)
-                faults.setGeneralShowsRedActive(active: false)
-                if (UserDefaults.standard.bool(forKey: "notification_preference")){
-                    if(!faults.generalFlashingRedNotificationActive) {
-                        faults.generalFlashingRedNotificationActive = true
-                    }
-                    if(faults.generalShowsRedNotificationActive) {
-                        faults.generalShowsRedNotificationActive = false
-                    }
-                }
-                
-            case 0x6:
-                faults.setGeneralFlashingYellowActive(active: false)
-                faults.setGeneralShowsYellowActive(active: true)
-                faults.setGeneralFlashingRedActive(active: true)
-                faults.setGeneralShowsRedActive(active: false)
-                if (UserDefaults.standard.bool(forKey: "notification_preference")){
-                    if(!faults.generalFlashingRedNotificationActive) {
-                        faults.generalFlashingRedNotificationActive = true
-                    }
-                    if(faults.generalShowsRedNotificationActive) {
-                        faults.generalShowsRedNotificationActive = false
-                    }
-                }
-                
-            case 0x7:
-                faults.setGeneralFlashingYellowActive(active: false)
-                faults.setGeneralShowsYellowActive(active: false)
-                faults.setGeneralFlashingRedActive(active: true)
-                faults.setGeneralShowsRedActive(active: false)
-                if (UserDefaults.standard.bool(forKey: "notification_preference")){
-                    if(!faults.generalFlashingRedNotificationActive) {
-                        faults.generalFlashingRedNotificationActive = true
-                    }
-                    if(faults.generalShowsRedNotificationActive) {
-                        faults.generalShowsRedNotificationActive = false
-                    }
-                }
-                
-            case 0x8:
-                faults.setGeneralFlashingYellowActive(active: false)
-                faults.setGeneralShowsYellowActive(active: false)
-                faults.setGeneralFlashingRedActive(active: false)
-                faults.setGeneralShowsRedActive(active: true)
-                if (UserDefaults.standard.bool(forKey: "notification_preference")){
-                    if(faults.generalFlashingRedNotificationActive) {
-                        faults.generalFlashingRedNotificationActive = false
-                    }
-                    if(!faults.generalShowsRedNotificationActive) {
-                        faults.generalShowsRedNotificationActive = true
-                    }
-                }
-                
-            case 0x9:
-                faults.setGeneralFlashingYellowActive(active: false)
-                faults.setGeneralShowsYellowActive(active: false)
-                faults.setGeneralFlashingRedActive(active: true)
-                faults.setGeneralShowsRedActive(active: true)
-                if (UserDefaults.standard.bool(forKey: "notification_preference")){
-                    if(!faults.generalFlashingRedNotificationActive && !faults.generalShowsRedNotificationActive) {
-                        faults.generalFlashingRedNotificationActive = true
-                        faults.generalShowsRedNotificationActive = true
-                    }
-                }
-                
-            case 0xA:
-                faults.setGeneralFlashingYellowActive(active: false)
-                faults.setGeneralShowsYellowActive(active: true)
-                faults.setGeneralFlashingRedActive(active: false)
-                faults.setGeneralShowsRedActive(active: true)
-                if (UserDefaults.standard.bool(forKey: "notification_preference")){
-                    if(faults.generalFlashingRedNotificationActive) {
-                        faults.generalFlashingRedNotificationActive = false
-                    }
-                    if(!faults.generalShowsRedNotificationActive) {
-                        faults.generalShowsRedNotificationActive = true
-                    }
-                }
-                
-            case 0xB:
-                faults.setGeneralFlashingYellowActive(active: false)
-                faults.setGeneralShowsYellowActive(active: false)
-                faults.setGeneralFlashingRedActive(active: false)
-                faults.setGeneralShowsRedActive(active: true)
-                if (UserDefaults.standard.bool(forKey: "notification_preference")){
-                    if(faults.generalFlashingRedNotificationActive) {
-                        faults.generalFlashingRedNotificationActive = false
-                    }
-                    if(!faults.generalShowsRedNotificationActive) {
-                        faults.generalShowsRedNotificationActive = true
-                    }
-                }
-                
-            case 0xD:
-                faults.setGeneralFlashingYellowActive(active: true)
-                faults.setGeneralShowsYellowActive(active: false)
-                faults.setGeneralFlashingRedActive(active: false)
-                faults.setGeneralShowsRedActive(active: false)
-                if (UserDefaults.standard.bool(forKey: "notification_preference")){
-                    if(faults.generalFlashingRedNotificationActive) {
-                        faults.generalFlashingRedNotificationActive = false
-                    }
-                    if(faults.generalShowsRedNotificationActive) {
-                        faults.generalShowsRedNotificationActive = false
-                    }
-                }
-                
-            case 0xE:
-                faults.setGeneralFlashingYellowActive(active: false)
-                faults.setGeneralShowsYellowActive(active: true)
-                faults.setGeneralFlashingRedActive(active: false)
-                faults.setGeneralShowsRedActive(active: false)
-                if (UserDefaults.standard.bool(forKey: "notification_preference")){
-                    if(faults.generalFlashingRedNotificationActive) {
-                        faults.generalFlashingRedNotificationActive = false
-                    }
-                    if(faults.generalShowsRedNotificationActive) {
-                        faults.generalShowsRedNotificationActive = false
-                    }
-                }
-                
-            default:
-                faults.setGeneralFlashingYellowActive(active: false)
-                faults.setGeneralShowsYellowActive(active: false)
-                faults.setGeneralFlashingRedActive(active: false)
-                faults.setGeneralShowsRedActive(active: false)
-                if (UserDefaults.standard.bool(forKey: "notification_preference")){
-                    if(faults.generalFlashingRedNotificationActive) {
-                        faults.generalFlashingRedNotificationActive = false
-                    }
-                    if(faults.generalShowsRedNotificationActive) {
-                        faults.generalShowsRedNotificationActive = false
-                    }
-                }
-                
             }
         case 0x08:
-            //NSLog("Message ID: 8")
             // Ambient Temperature
             if (lastMessage[1] != 0xFF){
                 let ambientTemp:Double = Double(lastMessage[1]) * 0.50 - 40
@@ -746,7 +773,7 @@ class LINbus {
             }
         active:
             // LAMP Faults
-            if (lastMessage[3] != 0xFF) {
+            if (((lastMessage[3]  >> 4) & 0x0F) != 0xF) {
                 // LAMPF 1
                 let lampfOneValue = (lastMessage[3]  >> 4) & 0x0F // the highest 4 bits.
                 switch (lampfOneValue) {
@@ -797,7 +824,7 @@ class LINbus {
                 }
             }
             // LAMPF 2
-            if (lastMessage[4] != 0xFF) {
+            if (((lastMessage[4] >> 4) & 0x0F) != 0xF) {
                 let lampfTwoHighValue = (lastMessage[4] >> 4) & 0x0F // the highest 4 bits.
                 switch (lampfTwoHighValue) {
                 case 0x1:
@@ -876,6 +903,9 @@ class LINbus {
                     faults.setFrontRightSignalActive(active: false)
                     
                 }
+            }
+        
+            if((data[4] & 0x0F) != 0xF){
                 let lampfTwoLowValue = data[4] & 0x0F // the lowest 4 bits
                 switch (lampfTwoLowValue) {
                 case 0x1:
@@ -978,7 +1008,7 @@ class LINbus {
             }
             
             // LAMPF 3
-            if (lastMessage[5] != 0xFF) {
+            if (((lastMessage[5] >> 4) & 0x0F) != 0xF ) {
                 let lampfThreeHighValue = (lastMessage[5] >> 4) & 0x0F // the highest 4 bits.
                 switch (lampfThreeHighValue) {
                 case 0x1:
@@ -1009,6 +1039,8 @@ class LINbus {
                     faults.setRearRightSignalActive(active: false)
                     
                 }
+            }
+            if ((lastMessage[5] & 0x0F) != 0xF){
                 let lampfThreeLowValue = lastMessage[5] & 0x0F // the lowest 4 bits
                 switch (lampfThreeLowValue) {
                 case 0x1:
@@ -1105,7 +1137,7 @@ class LINbus {
             }
             
             // LAMPF 4
-            if (lastMessage[6] != 0xFF) {
+            if (((lastMessage[6] >> 4) & 0x0F) != 0xF) {
                 let lampfFourHighValue = (lastMessage[6] >> 4) & 0x0F // the highest 4 bits.
                 switch (lampfFourHighValue) {
                 case 0x1:
@@ -1132,6 +1164,8 @@ class LINbus {
                     faults.setRearFogLightActive(active: false)
                     
                 }
+            }
+            if((lastMessage[6] & 0x0F) != 0xF){
                 let lampfFourLowValue = lastMessage[6] & 0x0F // the lowest 4 bits
                 switch (lampfFourLowValue) {
                 case 0x1:

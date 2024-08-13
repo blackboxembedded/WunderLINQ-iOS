@@ -89,8 +89,7 @@
 		7EB5EDD725211BCF00B61160 /* agencyfb.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7EB5EDD625211BCF00B61160 /* agencyfb.ttf */; };
 		7EB5EDE4252136F800B61160 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7EB5EDE2252136F800B61160 /* Main.storyboard */; };
 		7EB5EE122523C57100B61160 /* XML.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB5EE112523C57100B61160 /* XML.swift */; };
-		7EB80AB52790E47F00D3A051 /* LINbus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB80AB42790E47F00D3A051 /* LINbus.swift */; };
-		7EB80AB72790E49400D3A051 /* CANbus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB80AB62790E49400D3A051 /* CANbus.swift */; };
+		7EB80AB52790E47F00D3A051 /* BLEbus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB80AB42790E47F00D3A051 /* BLEbus.swift */; };
 		7EB8B99E245CA7A6007232D2 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB8B99D245CA7A6007232D2 /* Secrets.swift */; };
 		7EBC8A9E23B19C0B001FE70B /* AddWaypointViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBC8A9D23B19C0B001FE70B /* AddWaypointViewController.swift */; };
 		7EBFD48E210ADD0000FC9665 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBFD48D210ADD0000FC9665 /* String+Extensions.swift */; };
@@ -248,8 +247,7 @@
 		7EB5EDD625211BCF00B61160 /* agencyfb.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = agencyfb.ttf; sourceTree = "<group>"; };
 		7EB5EDE3252136F800B61160 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7EB5EE112523C57100B61160 /* XML.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XML.swift; sourceTree = "<group>"; };
-		7EB80AB42790E47F00D3A051 /* LINbus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LINbus.swift; sourceTree = "<group>"; };
-		7EB80AB62790E49400D3A051 /* CANbus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CANbus.swift; sourceTree = "<group>"; };
+		7EB80AB42790E47F00D3A051 /* BLEbus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLEbus.swift; sourceTree = "<group>"; };
 		7EB8B99D245CA7A6007232D2 /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
 		7EBC8A9D23B19C0B001FE70B /* AddWaypointViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWaypointViewController.swift; sourceTree = "<group>"; };
 		7EBFD48D210ADD0000FC9665 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
@@ -418,7 +416,6 @@
 				7E00516528EA150B00BC3CC1 /* TaskList */,
 				7EBC4E2328E133B800B1998B /* comms */,
 				7EB80AB82790FF8800D3A051 /* hardware */,
-				7EB80AB32790E45E00D3A051 /* protocols */,
 				7E755C16260A997100B29507 /* SVGDashboards */,
 				B98CA760252E6DD400530075 /* External */,
 				7EB5EDE9252169B800B61160 /* svg */,
@@ -499,16 +496,6 @@
 			path = svg;
 			sourceTree = "<group>";
 		};
-		7EB80AB32790E45E00D3A051 /* protocols */ = {
-			isa = PBXGroup;
-			children = (
-				7EB80AB62790E49400D3A051 /* CANbus.swift */,
-				7EB80AB42790E47F00D3A051 /* LINbus.swift */,
-				7EF0776B258FBDEF009A6BAA /* KeyboardHID.swift */,
-			);
-			path = protocols;
-			sourceTree = "<group>";
-		};
 		7EB80AB82790FF8800D3A051 /* hardware */ = {
 			isa = PBXGroup;
 			children = (
@@ -540,7 +527,9 @@
 		7EBC4E2428E133DC00B1998B /* BLE */ = {
 			isa = PBXGroup;
 			children = (
+				7EB80AB42790E47F00D3A051 /* BLEbus.swift */,
 				7EA478701F40F273000CEDDC /* Device.swift */,
+				7EF0776B258FBDEF009A6BAA /* KeyboardHID.swift */,
 				7E25396221CD94A30008D34E /* BLE.swift */,
 			);
 			path = BLE;
@@ -829,11 +818,10 @@
 				7E9346B328E0A67F009E13C0 /* UserDefauts+Extensions.swift in Sources */,
 				7E755C1E260AA80700B29507 /* SportDashboard.swift in Sources */,
 				7E9DDA9F278DFFD4006C6D12 /* WLQ_N.swift in Sources */,
-				7EB80AB52790E47F00D3A051 /* LINbus.swift in Sources */,
+				7EB80AB52790E47F00D3A051 /* BLEbus.swift in Sources */,
 				7EF0776C258FBDEF009A6BAA /* KeyboardHID.swift in Sources */,
 				7EC63202219BCE05002E68FF /* AboutViewController.swift in Sources */,
 				7EB5ED7D251FE8FA00B61160 /* DashViewController.swift in Sources */,
-				7EB80AB72790E49400D3A051 /* CANbus.swift in Sources */,
 				7E068BC320FD8A100076EAAD /* FaultsTableViewController.swift in Sources */,
 				7E2EC06424991CE200B0A59B /* NavigationControllerWithTraitOverride.swift in Sources */,
 				7E9DDA9B278DE8A2006C6D12 /* WLQ.swift in Sources */,

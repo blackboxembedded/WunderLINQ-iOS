@@ -2115,19 +2115,26 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                 // Message Data Characteristic
                 if characteristic.uuid == CBUUID(string: Device.HWRevisionCharacteristicUUID) {
                     hwRevCharacteristic = characteristic
-                } else if characteristic.uuid == CBUUID(string: Device.UUID_WUNDERLINQ_LINMESSAGE_CHARACTERISTIC) {
+                } else if characteristic.uuid == CBUUID(string: Device.WunderLINQPerformanceCharacteristicUUID) {
                     NSLog("MainCollectionViewController: Navigator FOUND")
+                    // Enable the message notifications
+                    messageCharacteristic = characteristic
+                    wunderLINQ?.setNotifyValue(true, for: characteristic)
+                } else if characteristic.uuid == CBUUID(string: Device.WunderLINQNCommandCharacteristicUUID) {
                     wlqData = WLQ_N()
                     // Enable the message notifications
-                    messageCharacteristic = characteristic
+                    NSLog("MainCollectionViewController: COMMAND INTERFACE FOUND")
+                    commandCharacteristic = characteristic
                     wunderLINQ?.setNotifyValue(true, for: characteristic)
-                } else if characteristic.uuid == CBUUID(string: Device.UUID_WUNDERLINQ_CANMESSAGE_CHARACTERISTIC) {
-                    NSLog("MainCollectionViewController: Commander FOUND")
-                    // Enable the message notifications
+                    bleData.setcmdCharacteristic(cmdCharacteristic: characteristic)
+                    if(wlqData != nil){
+                        NSLog("MainCollectionViewController: REQUESTING CONFIG")
+                        let writeData =  Data(_: wlqData.GET_CONFIG_CMD())
+                        peripheral.writeValue(writeData, for: commandCharacteristic!, type: CBCharacteristicWriteType.withResponse)
+                        peripheral.readValue(for: commandCharacteristic!)
+                    }
+                } else if characteristic.uuid == CBUUID(string: Device.WunderLINQCCommandCharacteristicUUID) {
                     wlqData = WLQ_C()
-                    messageCharacteristic = characteristic
-                    wunderLINQ?.setNotifyValue(true, for: characteristic)
-                } else if characteristic.uuid == CBUUID(string: Device.CommandCharacteristicUUID) {
                     // Enable the message notifications
                     NSLog("MainCollectionViewController: COMMAND INTERFACE FOUND")
                     commandCharacteristic = characteristic
@@ -2179,11 +2186,13 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                         wlqData.sethardwareVersion(hardwareVersion: versionString)
                     }
                 }
-            } else if characteristic.uuid == CBUUID(string: Device.UUID_WUNDERLINQ_LINMESSAGE_CHARACTERISTIC) {
-                LINbus.parseMessage(dataBytes)
-            } else if characteristic.uuid == CBUUID(string: Device.UUID_WUNDERLINQ_CANMESSAGE_CHARACTERISTIC) {
-                CANbus.parseMessage(dataBytes)
-            } else if characteristic.uuid == CBUUID(string: Device.CommandCharacteristicUUID) {
+            } else if characteristic.uuid == CBUUID(string: Device.WunderLINQPerformanceCharacteristicUUID) {
+                BLEbus.parseMessage(dataBytes)
+            } else if characteristic.uuid == CBUUID(string: Device.WunderLINQNCommandCharacteristicUUID) {
+                parseCommandResponse(dataBytes)
+            } else if characteristic.uuid == CBUUID(string: Device.WunderLINQCCommandCharacteristicUUID) {
+                parseCommandResponse(dataBytes)
+            } else if characteristic.uuid == CBUUID(string: Device.WunderLINQXCommandCharacteristicUUID) {
                 parseCommandResponse(dataBytes)
             }
             
