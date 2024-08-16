@@ -61,6 +61,8 @@ enum NavigationAppPreference: Int, CaseIterable {
     
     case calimoto
     
+    case kurviger
+    
     var isAvailable: Bool {
         UIApplication.shared.canOpenURL(URL(string: self.urlScheme)!)
     }
@@ -123,6 +125,9 @@ enum NavigationAppPreference: Int, CaseIterable {
             
         case .calimoto:
             return "calimoto://"
+            
+        case .kurviger:
+            return "https://kurviger.de/en"
 
         }
     }
@@ -199,8 +204,10 @@ enum NavigationAppPreference: Int, CaseIterable {
             
         case .calimoto:
             back_link = ""
+            
+        case .kurviger:
+            back_link = ""
         }
-        
         
         let url = URL(string: "\(urlScheme)\(back_link)")!
         open(url: url)
@@ -437,7 +444,23 @@ extension NavAppHelper {
             //Calimoto
             // Not Supported
             supported = false
+        case .kurviger:
+            //Kurviger
+            supported = true
+            //navUrl = "https://kurviger.de/en?point=" + start.getLatitude() + "," + start.getLongitude() + "&padr.0=" +  MyApplication.getContext().getString(R.string.trip_view_waypoint_start_label) + "&point=" + end.getLatitude() + "," + end.getLongitude() + "&padr.1=" + MyApplication.getContext().getString(R.string.trip_view_waypoint_end_label);
+            let urlString = "\(navApp.urlScheme)?point=\(currentLatitude),\(currentLongitude)&padr.0=\(NSLocalizedString("trip_view_waypoint_start_label", comment: ""))&point=\(destLatitude),\(destLongitude)&padr.1=\(destLabel ?? "")"
+            print("URL: \(urlString)")
+            if let mapsURL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
+                if (UIApplication.shared.canOpenURL(mapsURL)) {
+                    if #available(iOS 10, *) {
+                        UIApplication.shared.open(mapsURL, options: [:], completionHandler: nil)
+                    } else {
+                        UIApplication.shared.openURL(mapsURL as URL)
+                    }
+                }
+            }
         }
+        
         return supported
     }
     
@@ -570,6 +593,10 @@ extension NavAppHelper {
             supported = false
         case .calimoto:
             //Calimoto
+            // Not Supported
+            supported = false
+        case .kurviger:
+            //Kurviger
             // Not Supported
             supported = false
         }
@@ -788,6 +815,20 @@ extension NavAppHelper {
             //Calimoto
             // Not Supported
             supported = false
+        case .kurviger:
+            //Kurviger
+            supported = true
+
+            let urlString = "\(navApp.urlScheme)?point=\(destLatitude),\(destLongitude)&padr.0=\(destLabel ?? "")"
+            if let mapsURL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
+                if (UIApplication.shared.canOpenURL(mapsURL)) {
+                    if #available(iOS 10, *) {
+                        UIApplication.shared.open(mapsURL, options: [:], completionHandler: nil)
+                    } else {
+                        UIApplication.shared.openURL(mapsURL as URL)
+                    }
+                }
+            }
         }
         return supported
     }
