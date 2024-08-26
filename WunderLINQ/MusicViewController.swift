@@ -171,6 +171,7 @@ class MusicViewController: UIViewController, SPTAppRemotePlayerStateDelegate {
         let musicApp = UserDefaults.standard.integer(forKey: "musicplayer_preference")
         switch (musicApp){
         case 0: // Apple Music
+            artistLabel.text = NSLocalizedString("music_apple", comment: "")
             appleMusicPlayer.prepareToPlay()
             appleMusicPlayer.beginGeneratingPlaybackNotifications()
             
@@ -183,11 +184,14 @@ class MusicViewController: UIViewController, SPTAppRemotePlayerStateDelegate {
             }
             break
         case 1: // Spotify
+            artistLabel.text = NSLocalizedString("music_spotify", comment: "")
             spotifyGetPlayerState()
             break
         default:
             break
         }
+        songLabel.text = NSLocalizedString("start_warning_pt1", comment: "")
+        albumLabel.text = NSLocalizedString("start_warning_pt2", comment: "")
         notificationCenter.addObserver(self, selector:#selector(self.launchAccPage), name: NSNotification.Name("StatusUpdate"), object: nil)
     }
     
@@ -202,7 +206,18 @@ class MusicViewController: UIViewController, SPTAppRemotePlayerStateDelegate {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         NSLog("MusicViewController: viewDidAppear")
-        appleMusicUpdateNowPlayingInfo()
+        let musicApp = UserDefaults.standard.integer(forKey: "musicplayer_preference")
+        switch (musicApp){
+        case 0: // Apple Music
+            appleMusicUpdateNowPlayingInfo()
+            break
+        case 1: // Spotify
+            spotifyGetPlayerState()
+            break
+        default:
+            break
+        }
+        NotificationCenter.default.addObserver(self, selector:#selector(MusicViewController.refresh), name: UIApplication.willEnterForegroundNotification, object: UIApplication.shared)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -215,6 +230,7 @@ class MusicViewController: UIViewController, SPTAppRemotePlayerStateDelegate {
         DispatchQueue.main.async(){
             self.navigationController?.setNavigationBarHidden(false, animated: animated)
         }
+        NotificationCenter.default.removeObserver(self)
     }
 
     override func didReceiveMemoryWarning() {
@@ -391,6 +407,23 @@ class MusicViewController: UIViewController, SPTAppRemotePlayerStateDelegate {
         nextSong()
     }
     
+    @objc func refresh(){
+        NSLog("MusicViewController: refresh")
+        let musicApp = UserDefaults.standard.integer(forKey: "musicplayer_preference")
+        switch (musicApp){
+        case 0: // Apple Music
+            appleMusicUpdateNowPlayingInfo()
+            break
+        case 1: // Spotify
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                self.spotifyGetPlayerState()
+            }
+            break
+        default:
+            break
+        }
+    }
+    
     private func enableInterface(_ enabled: Bool = true) {
         if (self.viewIfLoaded?.window != nil ) {
             nextButton.isEnabled = enabled
@@ -540,12 +573,13 @@ class MusicViewController: UIViewController, SPTAppRemotePlayerStateDelegate {
     }
     
     private func spotifyUpdateViewWithPlayerState(_ playerState: SPTAppRemotePlayerState) {
+        NSLog("MusicViewController: Spotify: spotifyUpdateViewWithPlayerState")
         if (self.viewIfLoaded?.window != nil ) {
             updatePlayPauseButtonState(playerState.isPaused)
-                songLabel.text = playerState.track.name
-                artistLabel.text = playerState.track.artist.name
-                albumLabel.text = playerState.track.album.name
-                spotifyFetchAlbumArtForTrack(playerState.track) { (image) -> Void in
+            songLabel.text = playerState.track.name
+            artistLabel.text = playerState.track.artist.name
+            albumLabel.text = playerState.track.album.name
+            spotifyFetchAlbumArtForTrack(playerState.track) { (image) -> Void in
                     self.imageAlbum.image = image
             }
             spotifyUpdateViewWithRestrictions(playerState.playbackRestrictions)

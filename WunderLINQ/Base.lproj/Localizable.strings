@@ -231,6 +231,10 @@
 "east" = "E";
 // MusicViewController
 "music_title" = "Music";
+"music_apple" = "Apple Music";
+"music_spotify" = "Spotify";
+"start_warning_pt1" = "Launch app and playlist before";
+"start_warning_pt2" = "starting your ride.";
 // TasksTableViewController
 "quicktask_title" = "Quick Tasks";
 "task_title_navigation" = "Navigation";
