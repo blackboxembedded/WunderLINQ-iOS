@@ -1923,7 +1923,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     
     // Invoked when the central manager’s state is updated.
     func centralManagerDidUpdateState(_ central: CBCentralManager) {
-        var showAlert = true
+        var showAlert = false
         var message = ""
         
         switch central.state {
@@ -1938,14 +1938,12 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         case .unknown:
             message = NSLocalizedString("bt_unknown", comment: "")
         case .poweredOn:
-            showAlert = false
             message = NSLocalizedString("bt_ready", comment: "")
-            print(message)
             resumeScan()
         default:
             message = NSLocalizedString("bt_unknown", comment: "")
         }
-        
+        NSLog(message)
         if showAlert {
             // Display Alert
             let alertController = UIAlertController(title: NSLocalizedString("bt_alert_title", comment: ""), message: message, preferredStyle: .alert)
@@ -2007,6 +2005,11 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         //          If there was a subset of services we were interested in, we could pass the UUIDs here.
         //          Doing so saves battery life and saves time.
         peripheral.discoverServices([CBUUID(string: Device.WunderLINQServiceUUID)])
+        
+        // Send notification to open the app if a WunderLINQ connection is made in the background.
+        if UIApplication.shared.applicationState == .background {
+            sendConnectionNotification(for: peripheral)
+        }
     }
     
     
@@ -2839,6 +2842,16 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         }
         
         return Int(batteryLevel * 100)
+    }
+    
+    func sendConnectionNotification(for peripheral: CBPeripheral) {
+        let content = UNMutableNotificationContent()
+        content.title = NSLocalizedString("toast_wlq_connected", comment: "")
+        content.body = NSLocalizedString("toast_wlq_connected_body", comment: "")
+        content.sound = .default
+
+        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: nil)
+        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
     }
     
     func openBikeInfo(){
