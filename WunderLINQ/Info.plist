@@ -109,6 +109,8 @@
 	<string>$(PRODUCT_NAME) needs access to save photos taken to your photo library.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>$(PRODUCT_NAME) needs access to save photos taken to your photo library.</string>
+    <key>NSMotionUsageDescription</key>
+    <string>$(PRODUCT_NAME) needs access to the barometric pressure sensor data.</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>agencyfb.ttf</string>

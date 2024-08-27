@@ -17,6 +17,7 @@
 "write_photo_alert_body" = "The WunderLINQ app needs access to write photos to your Photo Library.";
 "read_media_alert_body" = "The WunderLINQ app needs access to your Media Library to control music playback.";
 "location_alert_body" = "The WunderLINQ app needs access to your location to allow background track recording and data logging.\nLocation permission is also used for data points such as elevation, GPS speed, and bearing.";
+"fitness_alert_body" = "The WunderLINQ app needs access to your Motion & Fitness data for barometric pressure.";
 "notification_alert_body" = "The WunderLINQ app needs notification access to notify you of faults.";
 "firstrun_end" = "Thank you for purchasing the WunderLINQ!  Ride Safe.";
 "firstrun_navapp_body" = "Select your preferred Navigation App. Level of WunderLINQ support varies, for more details see the following page: https://blackboxembedded.com/pages/integrations";

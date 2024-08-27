@@ -23,6 +23,7 @@ import MediaPlayer
 import Photos
 import UIKit
 import UserNotifications
+import CoreMotion
 
 class FirstRunViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
@@ -125,7 +126,7 @@ class FirstRunViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
             break
         case 6:
             //Location
-            messageTextField.text = NSLocalizedString("notification_alert_body", comment: "")
+            messageTextField.text = NSLocalizedString("fitness_alert_body", comment: "")
 
             if CLLocationManager.authorizationStatus() == .authorizedAlways {
                 NSLog("FirstRunViewController: Allowed Always Location Access")
@@ -136,6 +137,27 @@ class FirstRunViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
             step = step + 1
             break
         case 7:
+            //Fitness
+            messageTextField.text = NSLocalizedString("notification_alert_body", comment: "")
+
+            let status = CMAltimeter.authorizationStatus()
+            switch status {
+            case .notDetermined:
+                // trigger a authorization popup
+                let recorder = CMSensorRecorder()
+                DispatchQueue.global().async {
+                   recorder.recordAccelerometer(forDuration: 0.1)
+                }
+            case .restricted:
+                print("restricted")
+            case .denied:
+                print("denied")
+            default:
+                print("authorized")
+            }
+            step = step + 1
+            break
+        case 8:
             // Notification Permissions
             messageTextField.text = NSLocalizedString("firstrun_navapp_body", comment: "")
             selectPicker.isHidden = false
@@ -159,14 +181,14 @@ class FirstRunViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
             }
             step = step + 1
             break
-        case 8:
+        case 9:
             // Preferred Navigation App
             UserDefaults.standard.set(selectedNavApp, forKey: "nav_app_preference")
             selectPicker.isHidden = true
             messageTextField.text = NSLocalizedString("firstrun_end", comment: "")
             step = step + 1
             break
-        case 9:
+        case 10:
             UserDefaults.standard.set(true, forKey: "firstRun")
             
             let story = UIStoryboard(name: "Main", bundle:nil)
