@@ -1018,7 +1018,6 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     }
     
     func setCell(_ cellNumber: Int){
-        
         let label = MotorcycleData.getLabel(dataPoint: getCellDataPoint(cell: cellNumber))
         var value:String = MotorcycleData.getValue(dataPoint: getCellDataPoint(cell: cellNumber))
         var icon: UIImage = MotorcycleData.getIcon(dataPoint: getCellDataPoint(cell: cellNumber))
@@ -1035,14 +1034,16 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         var dataArray = [UInt8](repeating: 0, count: dataLength)
         (data as NSData).getBytes(&dataArray, length: dataLength * MemoryLayout<Int16>.size)
 
-        var messageHexString = ""
-        for i in 0 ..< dataLength {
-            messageHexString += String(format: "%02X", dataArray[i])
-            if i < dataLength - 1 {
-                messageHexString += ","
+        if UserDefaults.standard.bool(forKey: "debug_logging_preference") {
+            var messageHexString = ""
+            for i in 0 ..< dataLength {
+                messageHexString += String(format: "%02X", dataArray[i])
+                if i < dataLength - 1 {
+                    messageHexString += ","
+                }
             }
+            NSLog("MainCollectionViewController: Command Response Received: \(messageHexString)")
         }
-        NSLog("MainCollectionViewController: Command Response Received: \(messageHexString)")
         
         switch (dataArray[0]){
         case 0x57:
