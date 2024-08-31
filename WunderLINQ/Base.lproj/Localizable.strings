@@ -383,6 +383,9 @@
 "dash_altitude_label" = "ELEV";
 //VolumeViewController
 "systemvolume_title" = "System Volume";
+//CarPlay
+"carplay_ios14_warning_text" = "iOS 14 Required";
+"carplay_ios14_warning_detail" = "CarPlay Support Requires iOS 14+";
 //Keyboard HID
 "hid_0x00_label" = "Not Set";
 "hid_keyboard_label" = "Standard";

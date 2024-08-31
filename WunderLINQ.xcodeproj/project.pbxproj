@@ -110,6 +110,9 @@
 		B98CA75D252E6C6B00530075 /* UIStoryboard+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98CA75C252E6C6B00530075 /* UIStoryboard+extensions.swift */; };
 		B98CA762252E6F5500530075 /* String+Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98CA761252E6F5500530075 /* String+Localizable.swift */; };
 		D80365FE2B377FCD00F48637 /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D80365FD2B377FCD00F48637 /* SoundManager.swift */; };
+		D81CBFAE2C8119580029C5AB /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = D81CBFAD2C8119580029C5AB /* Entitlements.plist */; };
+		D826545A2C82768000049F9E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82654582C82768000049F9E /* SceneDelegate.swift */; };
+		D826545B2C82768000049F9E /* CarPlaySceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82654592C82768000049F9E /* CarPlaySceneDelegate.swift */; };
 		D8585C53293EBD550025D0AB /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8585C51293EBD540025D0AB /* Main_iPad.storyboard */; };
 		D87629122A7EDEB90021E7A7 /* standard-dashboard-portrait.svg in Resources */ = {isa = PBXBuildFile; fileRef = D87629112A7EDEB90021E7A7 /* standard-dashboard-portrait.svg */; };
 		D880B6022C6BFED900B4252B /* wav in Resources */ = {isa = PBXBuildFile; fileRef = D880B6012C6BFED900B4252B /* wav */; };
@@ -272,6 +275,9 @@
 		B98CA75C252E6C6B00530075 /* UIStoryboard+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+extensions.swift"; sourceTree = "<group>"; };
 		B98CA761252E6F5500530075 /* String+Localizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Localizable.swift"; sourceTree = "<group>"; };
 		D80365FD2B377FCD00F48637 /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
+		D81CBFAD2C8119580029C5AB /* Entitlements.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
+		D82654582C82768000049F9E /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		D82654592C82768000049F9E /* CarPlaySceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarPlaySceneDelegate.swift; sourceTree = "<group>"; };
 		D8585C52293EBD540025D0AB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
 		D87629112A7EDEB90021E7A7 /* standard-dashboard-portrait.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "standard-dashboard-portrait.svg"; sourceTree = "<group>"; };
 		D880B6012C6BFED900B4252B /* wav */ = {isa = PBXFileReference; lastKnownFileType = folder; path = wav; sourceTree = "<group>"; };
@@ -411,6 +417,7 @@
 		7EA4784C1F40B154000CEDDC /* WunderLINQ */ = {
 			isa = PBXGroup;
 			children = (
+				D82654572C82758F00049F9E /* CarPlay */,
 				7E00516528EA150B00BC3CC1 /* TaskList */,
 				7EBC4E2328E133B800B1998B /* comms */,
 				7EB80AB82790FF8800D3A051 /* hardware */,
@@ -462,6 +469,7 @@
 				7EA478561F40B154000CEDDC /* LaunchScreen.storyboard */,
 				7E4D76E521DDAEC100825175 /* InfoPlist.strings */,
 				7EA478591F40B154000CEDDC /* Info.plist */,
+				D81CBFAD2C8119580029C5AB /* Entitlements.plist */,
 			);
 			path = WunderLINQ;
 			sourceTree = "<group>";
@@ -566,6 +574,15 @@
 			path = External;
 			sourceTree = "<group>";
 		};
+		D82654572C82758F00049F9E /* CarPlay */ = {
+			isa = PBXGroup;
+			children = (
+				D82654592C82768000049F9E /* CarPlaySceneDelegate.swift */,
+				D82654582C82768000049F9E /* SceneDelegate.swift */,
+			);
+			path = CarPlay;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -623,7 +640,6 @@
 					7EA478491F40B154000CEDDC = {
 						CreatedOnToolsVersion = 8.3.3;
 						LastSwiftMigration = 1020;
-						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -632,9 +648,7 @@
 					};
 					7EA4785D1F40B154000CEDDC = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = L5697YQ5RS;
 						LastSwiftMigration = 1020;
-						ProvisioningStyle = Automatic;
 						TestTargetID = 7EA478491F40B154000CEDDC;
 					};
 				};
@@ -683,6 +697,7 @@
 				D87629122A7EDEB90021E7A7 /* standard-dashboard-portrait.svg in Resources */,
 				7EA478581F40B154000CEDDC /* LaunchScreen.storyboard in Resources */,
 				7EA478551F40B154000CEDDC /* Assets.xcassets in Resources */,
+				D81CBFAE2C8119580029C5AB /* Entitlements.plist in Resources */,
 				7EB5EDE4252136F800B61160 /* Main.storyboard in Resources */,
 				7ED2013620D0D0030066BCE6 /* Default-568h@2x.png in Resources */,
 				7E755C13260A787100B29507 /* standard-dashboard.svg in Resources */,
@@ -750,6 +765,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7EA478711F40F273000CEDDC /* Device.swift in Sources */,
+				D826545B2C82768000049F9E /* CarPlaySceneDelegate.swift in Sources */,
 				7E80BD3D211CFF7300B8CA0D /* LocalisableButton.swift in Sources */,
 				7E5E0F78212289140048B9A2 /* AppUtility.swift in Sources */,
 				7EA478771F412BAC000CEDDC /* CLLocation+Extension.swift in Sources */,
@@ -796,6 +812,7 @@
 				7EBFD48E210ADD0000FC9665 /* String+Extensions.swift in Sources */,
 				7E9346B528E0A67F009E13C0 /* UIViewController+Extensions.swift in Sources */,
 				7EAF646A22FE261D00B11550 /* WeatherMapViewController.swift in Sources */,
+				D826545A2C82768000049F9E /* SceneDelegate.swift in Sources */,
 				7EA478811F44F57C000CEDDC /* MusicViewController.swift in Sources */,
 				7EF07772258FF762009A6BAA /* HWSettingsActionViewController.swift in Sources */,
 				7E620A0D26278E4900F6E23B /* AppSettingsViewController.swift in Sources */,
@@ -950,6 +967,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_ENTITLEMENTS = WunderLINQ/Entitlements.plist;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -1012,6 +1030,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_ENTITLEMENTS = WunderLINQ/Entitlements.plist;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -1043,7 +1062,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ANALYZER_LOCALIZABILITY_EMPTY_CONTEXT = YES;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = 3J48UMN5W2;
@@ -1073,7 +1092,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ANALYZER_LOCALIZABILITY_EMPTY_CONTEXT = YES;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = 3J48UMN5W2;
@@ -1101,7 +1120,9 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = L5697YQ5RS;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = WunderLINQTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1110,6 +1131,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.blackboxembedded.WunderLINQTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WunderLINQ.app/WunderLINQ";
 			};
@@ -1120,7 +1142,9 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = L5697YQ5RS;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = WunderLINQTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1129,6 +1153,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.blackboxembedded.WunderLINQTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WunderLINQ.app/WunderLINQ";
 			};
