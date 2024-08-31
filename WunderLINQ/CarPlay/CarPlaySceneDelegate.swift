@@ -35,7 +35,6 @@ class CarPlaySceneDelegate: UIResponder, CPTemplateApplicationSceneDelegate, CPL
     }
     
     @objc func updateGridTemplate() {
-        NSLog("updateGridTemplate()")
         if #available(iOS 14.0, *) {
             let dataPoint1 = UserDefaults.standard.integer(forKey: "grid_one_preference")
             let gridButton1 = CPGridButton(titleVariants: [MotorcycleData.getValue(dataPoint: dataPoint1)],
@@ -94,7 +93,7 @@ class CarPlaySceneDelegate: UIResponder, CPTemplateApplicationSceneDelegate, CPL
                                                  completion: nil)
             }
             
-            let gridTemplate = CPGridTemplate(title: "WunderLINQ", gridButtons: [gridButton1,gridButton2,gridButton3,gridButton4,gridButton5,gridButton6,gridButton7,gridButton8])
+            let gridTemplate = CPGridTemplate(title: NSLocalizedString("product", comment: ""), gridButtons: [gridButton1,gridButton2,gridButton3,gridButton4,gridButton5,gridButton6,gridButton7,gridButton8])
             interfaceController?.setRootTemplate(gridTemplate,
                                                 animated: true,
                                                 completion: nil)
@@ -121,7 +120,7 @@ class CarPlaySceneDelegate: UIResponder, CPTemplateApplicationSceneDelegate, CPL
         }
         
         let section = CPListSection(items: [item])
-        let listTemplate = CPListTemplate(title: "WunderLINQ", sections: [section])
+        let listTemplate = CPListTemplate(title: NSLocalizedString("product", comment: ""), sections: [section])
         
         if #available(iOS 14.0, *) {
             // Do nothing, handler is already set
