@@ -35,65 +35,42 @@ class CarPlaySceneDelegate: UIResponder, CPTemplateApplicationSceneDelegate, CPL
     }
     
     @objc func updateGridTemplate() {
+        
         if #available(iOS 14.0, *) {
             let dataPoint1 = UserDefaults.standard.integer(forKey: "grid_one_preference")
-            let gridButton1 = CPGridButton(titleVariants: [MotorcycleData.getValue(dataPoint: dataPoint1)],
+            let gridButton1 = CPGridButton(titleVariants: [padString(MotorcycleData.getValue(dataPoint: dataPoint1))],
                                            image: MotorcycleData.getIcon(dataPoint: dataPoint1)) { button in
-                self.interfaceController?.pushTemplate(self.listTemplate(),
-                                                 animated: true,
-                                                 completion: nil)
             }
             let dataPoint2 = UserDefaults.standard.integer(forKey: "grid_two_preference")
-            let gridButton2 = CPGridButton(titleVariants: [MotorcycleData.getValue(dataPoint: dataPoint2)],
+            let gridButton2 = CPGridButton(titleVariants: [padString(MotorcycleData.getValue(dataPoint: dataPoint2))],
                                            image: MotorcycleData.getIcon(dataPoint: dataPoint2)) { button in
-                self.interfaceController?.pushTemplate(self.listTemplate(),
-                                                 animated: true,
-                                                 completion: nil)
             }
             let dataPoint3 = UserDefaults.standard.integer(forKey: "grid_three_preference")
-            let gridButton3 = CPGridButton(titleVariants: [MotorcycleData.getValue(dataPoint: dataPoint3)],
+            let gridButton3 = CPGridButton(titleVariants: [padString(MotorcycleData.getValue(dataPoint: dataPoint3))],
                                            image: MotorcycleData.getIcon(dataPoint: dataPoint3)) { button in
-                self.interfaceController?.pushTemplate(self.listTemplate(),
-                                                 animated: true,
-                                                 completion: nil)
             }
             let dataPoint4 = UserDefaults.standard.integer(forKey: "grid_four_preference")
-            let gridButton4 = CPGridButton(titleVariants: [MotorcycleData.getValue(dataPoint: dataPoint4)],
+            let gridButton4 = CPGridButton(titleVariants: [padString(MotorcycleData.getValue(dataPoint: dataPoint4))],
                                            image: MotorcycleData.getIcon(dataPoint: dataPoint4)) { button in
-                self.interfaceController?.pushTemplate(self.listTemplate(),
-                                                 animated: true,
-                                                 completion: nil)
             }
             let dataPoint5 = UserDefaults.standard.integer(forKey: "grid_five_preference")
-            let gridButton5 = CPGridButton(titleVariants: [MotorcycleData.getValue(dataPoint: dataPoint5)],
+            let gridButton5 = CPGridButton(titleVariants: [padString(MotorcycleData.getValue(dataPoint: dataPoint5))],
                                            image: MotorcycleData.getIcon(dataPoint: dataPoint5)) { button in
-                self.interfaceController?.pushTemplate(self.listTemplate(),
-                                                 animated: true,
-                                                 completion: nil)
             }
             let dataPoint6 = UserDefaults.standard.integer(forKey: "grid_six_preference")
-            let gridButton6 = CPGridButton(titleVariants: [MotorcycleData.getValue(dataPoint: dataPoint6)],
+            let gridButton6 = CPGridButton(titleVariants: [padString(MotorcycleData.getValue(dataPoint: dataPoint6))],
                                            image: MotorcycleData.getIcon(dataPoint: dataPoint6)) { button in
-                self.interfaceController?.pushTemplate(self.listTemplate(),
-                                                 animated: true,
-                                                 completion: nil)
             }
             let dataPoint7 = UserDefaults.standard.integer(forKey: "grid_seven_preference")
-            let gridButton7 = CPGridButton(titleVariants: [MotorcycleData.getValue(dataPoint: dataPoint7)],
+            let gridButton7 = CPGridButton(titleVariants: [padString(MotorcycleData.getValue(dataPoint: dataPoint7))],
                                            image: MotorcycleData.getIcon(dataPoint: dataPoint7)) { button in
-                self.interfaceController?.pushTemplate(self.listTemplate(),
-                                                 animated: true,
-                                                 completion: nil)
             }
             let dataPoint8 = UserDefaults.standard.integer(forKey: "grid_eight_preference")
-            let gridButton8 = CPGridButton(titleVariants: [MotorcycleData.getValue(dataPoint: dataPoint8)],
+            let gridButton8 = CPGridButton(titleVariants: [padString(MotorcycleData.getValue(dataPoint: dataPoint8))],
                                            image: MotorcycleData.getIcon(dataPoint: dataPoint8)) { button in
-                self.interfaceController?.pushTemplate(self.listTemplate(),
-                                                 animated: true,
-                                                 completion: nil)
             }
-            
             let gridTemplate = CPGridTemplate(title: NSLocalizedString("product", comment: ""), gridButtons: [gridButton1,gridButton2,gridButton3,gridButton4,gridButton5,gridButton6,gridButton7,gridButton8])
+            
             interfaceController?.setRootTemplate(gridTemplate,
                                                 animated: true,
                                                 completion: nil)
@@ -110,7 +87,7 @@ class CarPlaySceneDelegate: UIResponder, CPTemplateApplicationSceneDelegate, CPL
     }
 
     func listTemplate() -> CPListTemplate {
-        let item = CPListItem(text: "iOS 14 Required", detailText: "CarPlay Support Requires iOS 14")
+        let item = CPListItem(text: NSLocalizedString("carplay_ios14_warning_text", comment: ""), detailText: NSLocalizedString("carplay_ios14_warning_detail", comment: ""))
         
         if #available(iOS 14.0, *) {
             item.handler = { item, completion in
@@ -141,5 +118,24 @@ class CarPlaySceneDelegate: UIResponder, CPTemplateApplicationSceneDelegate, CPL
         NSLog("Item selected")
         completionHandler()
     }
-}
+    
+    func padString(_ input: String) -> String {
+        let minimumLength = 10
+        
+        // If the string is already of sufficient length, return it as is
+        if input.count >= minimumLength {
+            return input
+        }
+        
+        // Calculate the number of spaces needed
+        let totalPadding = minimumLength - input.count
+        let leadingPadding = totalPadding / 2
+        let trailingPadding = totalPadding - leadingPadding
+        
+        // Create the padded string
+        let paddedString = String(repeating: " ", count: leadingPadding) + input + String(repeating: " ", count: trailingPadding)
+        
+        return paddedString
+    }
 
+}
