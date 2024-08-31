@@ -384,42 +384,41 @@ class MotorcycleData {
         self.rearSpeed = nil
         self.localBattery = nil
     }
-    /*
-    public static final int DATA_GEAR = 0;
-        public static final int DATA_ENGINE_TEMP = 1;
-        public static final int DATA_AIR_TEMP = 2;
-        public static final int DATA_FRONT_RDC = 3;
-        public static final int DATA_REAR_RDC = 4;
-        public static final int DATA_ODOMETER = 5;
-        public static final int DATA_VOLTAGE = 6;
-        public static final int DATA_THROTTLE = 7;
-        public static final int DATA_FRONT_BRAKE = 8;
-        public static final int DATA_REAR_BRAKE = 9;
-        public static final int DATA_AMBIENT_LIGHT = 10;
-        public static final int DATA_TRIP_ONE = 11;
-        public static final int DATA_TRIP_TWO = 12;
-        public static final int DATA_TRIP_AUTO = 13;
-        public static final int DATA_SPEED = 14;
-        public static final int DATA_AVG_SPEED = 15;
-        public static final int DATA_CURRENT_CONSUMPTION = 16;
-        public static final int DATA_ECONOMY_ONE = 17;
-        public static final int DATA_ECONOMY_TWO = 18;
-        public static final int DATA_RANGE = 19;
-        public static final int DATA_SHIFTS = 20;
-        public static final int DATA_LEAN_DEVICE = 21;
-        public static final int DATA_GFORCE_DEVICE = 22;
-        public static final int DATA_BEARING_DEVICE = 23;
-        public static final int DATA_TIME_DEVICE = 24;
-        public static final int DATA_BAROMETRIC_DEVICE = 25;
-        public static final int DATA_SPEED_DEVICE = 26;
-        public static final int DATA_ALTITUDE_DEVICE = 27;
-        public static final int DATA_SUN_DEVICE = 28;
-        public static final int DATA_RPM = 29;
-        public static final int DATA_LEAN = 30;
-        public static final int DATA_REAR_SPEED = 31;
-        public static final int DATA_CELL_SIGNAL= 32;
-        public static final int DATA_BATTERY_DEVICE = 33;
-    */
+    
+    public let DATA_GEAR = 0
+    public let DATA_ENGINE_TEMP = 1
+    public let DATA_AIR_TEMP = 2
+    public let DATA_FRONT_RDC = 3
+    public let DATA_REAR_RDC = 4
+    public let DATA_ODOMETER = 5
+    public let DATA_VOLTAGE = 6
+    public let DATA_THROTTLE = 7
+    public let DATA_FRONT_BRAKE = 8
+    public let DATA_REAR_BRAKE = 9
+    public let DATA_AMBIENT_LIGHT = 10
+    public let DATA_TRIP_ONE = 11
+    public let DATA_TRIP_TWO = 12
+    public let DATA_TRIP_AUTO = 13
+    public let DATA_SPEED = 14
+    public let DATA_AVG_SPEED = 15
+    public let DATA_CURRENT_CONSUMPTION = 16
+    public let DATA_ECONOMY_ONE = 17
+    public let DATA_ECONOMY_TWO = 18
+    public let DATA_RANGE = 19
+    public let DATA_SHIFTS = 20
+    public let DATA_LEAN_DEVICE = 21
+    public let DATA_GFORCE_DEVICE = 22
+    public let DATA_BEARING_DEVICE = 23
+    public let DATA_TIME_DEVICE = 24
+    public let DATA_BAROMETRIC_DEVICE = 25
+    public let DATA_SPEED_DEVICE = 26
+    public let DATA_ALTITUDE_DEVICE = 27
+    public let DATA_SUN_DEVICE = 28
+    public let DATA_RPM = 29
+    public let DATA_LEAN = 30
+    public let DATA_REAR_SPEED = 31
+    public let DATA_BATTERY_DEVICE = 32
+    
     class func getLabel(dataPoint: Int) -> String {
         var label:String = ""
         var temperatureUnit = "C"
@@ -463,103 +462,103 @@ class MotorcycleData {
         }
         
         switch (dataPoint){
-        case 0:
+        case MotorcycleData.shared.DATA_GEAR:
             // Gear
             label = NSLocalizedString("gear_header", comment: "")
-        case 1:
+        case MotorcycleData.shared.DATA_ENGINE_TEMP:
             // Engine Temperature
             label = NSLocalizedString("enginetemp_header", comment: "") + " (" + temperatureUnit + ")"
-        case 2:
+        case MotorcycleData.shared.DATA_AIR_TEMP:
             // Ambient Temperature
             label = NSLocalizedString("ambienttemp_header", comment: "") + " (" + temperatureUnit + ")"
-        case 3:
+        case MotorcycleData.shared.DATA_FRONT_RDC:
             // Front Tire Pressure
             label = NSLocalizedString("frontpressure_header", comment: "") + " (" + pressureUnit + ")"
-        case 4:
+        case MotorcycleData.shared.DATA_REAR_RDC:
             // Rear Tire Pressure
             label = NSLocalizedString("rearpressure_header", comment: "") + " (" + pressureUnit + ")"
-        case 5:
+        case MotorcycleData.shared.DATA_ODOMETER:
             // Odometer
             label = NSLocalizedString("odometer_header", comment: "") + " (" + distanceUnit + ")"
-        case 6:
+        case MotorcycleData.shared.DATA_VOLTAGE:
             // Voltage
             label = NSLocalizedString("voltage_header", comment: "") + " (V)"
-        case 7:
+        case MotorcycleData.shared.DATA_THROTTLE:
             // Trottle
             label = NSLocalizedString("throttle_header", comment: "") + " (%)"
-        case 8:
+        case MotorcycleData.shared.DATA_FRONT_BRAKE:
             // Front Brakes
             label = NSLocalizedString("frontbrakes_header", comment: "")
-        case 9:
+        case MotorcycleData.shared.DATA_REAR_BRAKE:
             // Rear Brakes
             label = NSLocalizedString("rearbrakes_header", comment: "")
-        case 10:
+        case MotorcycleData.shared.DATA_AMBIENT_LIGHT:
             // Ambient Light
             label = NSLocalizedString("ambientlight_header", comment: "")
-        case 11:
+        case MotorcycleData.shared.DATA_TRIP_ONE:
             // Trip 1
             label = NSLocalizedString("tripone_header", comment: "") + " (" + distanceUnit + ")"
-        case 12:
+        case MotorcycleData.shared.DATA_TRIP_TWO:
             // Trip 2
             label = NSLocalizedString("triptwo_header", comment: "") + " (" + distanceUnit + ")"
-        case 13:
+        case MotorcycleData.shared.DATA_TRIP_AUTO:
             // Trip Auto
             label = NSLocalizedString("tripauto_header", comment: "") + " (" + distanceUnit + ")"
-        case 14:
+        case MotorcycleData.shared.DATA_SPEED:
             // Speed
             label = NSLocalizedString("speed_header", comment: "") + " (" + distanceTimeUnit + ")"
-        case 15:
+        case MotorcycleData.shared.DATA_AVG_SPEED:
             //Average Speed
             label = NSLocalizedString("avgspeed_header", comment: "") + " (" + distanceTimeUnit + ")"
-        case 16:
+        case MotorcycleData.shared.DATA_CURRENT_CONSUMPTION:
             //Current Consumption
             label = NSLocalizedString("cconsumption_header", comment: "") + " (" + consumptionUnit + ")"
-        case 17:
+        case MotorcycleData.shared.DATA_ECONOMY_ONE:
             //Fuel Economy One
             label = NSLocalizedString("fueleconomyone_header", comment: "") + " (" + consumptionUnit + ")"
-        case 18:
+        case MotorcycleData.shared.DATA_ECONOMY_TWO:
             //Fuel Economy Two
             label = NSLocalizedString("fueleconomytwo_header", comment: "") + " (" + consumptionUnit + ")"
-        case 19:
+        case MotorcycleData.shared.DATA_RANGE:
             //Fuel Range
             label = NSLocalizedString("fuelrange_header", comment: "") + " (" + distanceUnit + ")"
-        case 20:
+        case MotorcycleData.shared.DATA_SHIFTS:
             //Shifts
             label = NSLocalizedString("shifts_header", comment: "")
-        case 21:
+        case MotorcycleData.shared.DATA_LEAN_DEVICE:
             //Lean Angle
             label = NSLocalizedString("leanangle_header", comment: "")
-        case 22:
+        case MotorcycleData.shared.DATA_GFORCE_DEVICE:
             //g-force
             label = NSLocalizedString("gforce_header", comment: "")
-        case 23:
+        case MotorcycleData.shared.DATA_BEARING_DEVICE:
             //bearing
             label = NSLocalizedString("bearing_header", comment: "")
-        case 24:
+        case MotorcycleData.shared.DATA_TIME_DEVICE:
             //time
             label = NSLocalizedString("time_header", comment: "")
-        case 25:
+        case MotorcycleData.shared.DATA_BAROMETRIC_DEVICE:
             //barometric pressure
             label = NSLocalizedString("barometric_header", comment: "") + " (mBar)"
-        case 26:
+        case MotorcycleData.shared.DATA_SPEED_DEVICE:
             //GPS Speed
             label = NSLocalizedString("gpsspeed_header", comment: "") + " (" + distanceTimeUnit + ")"
-        case 27:
+        case MotorcycleData.shared.DATA_ALTITUDE_DEVICE:
             //altitude
             label = NSLocalizedString("altitude_header", comment: "") + " (" + heightUnit + ")"
-        case 28:
+        case MotorcycleData.shared.DATA_SUN_DEVICE:
             //Sunrise/Sunset
             label = NSLocalizedString("sunrisesunset_header", comment: "")
-        case 29:
+        case MotorcycleData.shared.DATA_RPM:
             //RPM
             label = NSLocalizedString("rpm_header", comment: "")
-        case 30:
+        case MotorcycleData.shared.DATA_LEAN:
             //Lean Angle
             label = NSLocalizedString("leanangle_bike_header", comment: "")
-        case 31:
+        case MotorcycleData.shared.DATA_REAR_SPEED:
             //Rear Wheel Speed
             label = NSLocalizedString("rearwheel_speed_header", comment: "")
-        case 32:
+        case MotorcycleData.shared.DATA_BATTERY_DEVICE:
             //Device Battery
             label = NSLocalizedString("local_battery_header", comment: "")
         default:
@@ -572,10 +571,10 @@ class MotorcycleData {
     class func getIcon(dataPoint: Int) -> UIImage {
         var icon:UIImage = (UIImage(named: "Cog")?.withRenderingMode(.alwaysTemplate))!
         switch (dataPoint){
-        case 0:
+        case MotorcycleData.shared.DATA_GEAR:
             // Gear
             icon = (UIImage(named: "Cog")?.withRenderingMode(.alwaysTemplate))!
-        case 1:
+        case MotorcycleData.shared.DATA_ENGINE_TEMP:
             // Engine Temperature
             icon = (UIImage(named: "Engine-Temp")?.withRenderingMode(.alwaysTemplate))!
             if (MotorcycleData.shared.engineTemperature != nil) {
@@ -584,7 +583,7 @@ class MotorcycleData {
                     icon = icon.imageWithColor(color1: UIColor.red)
                 }
             }
-        case 2:
+        case MotorcycleData.shared.DATA_AIR_TEMP:
             // Ambient Temperature
             icon = (UIImage(named: "Thermometer")?.withRenderingMode(.alwaysTemplate))!
             if (MotorcycleData.shared.ambientTemperature != nil) {
@@ -594,7 +593,7 @@ class MotorcycleData {
                     icon = icon.imageWithColor(color1: UIColor.blue)
                 }
             }
-        case 3:
+        case MotorcycleData.shared.DATA_FRONT_RDC:
             // Front Tire Pressure
             icon = (UIImage(named: "Tire")?.withRenderingMode(.alwaysTemplate))!
             if(Faults.shared.getFrontTirePressureCriticalActive()){
@@ -604,7 +603,7 @@ class MotorcycleData {
                 icon = (UIImage(named: "Tire-Alert")?.withRenderingMode(.alwaysTemplate))!
                 icon = icon.imageWithColor(color1: UIColor.yellow)
             }
-        case 4:
+        case MotorcycleData.shared.DATA_REAR_RDC:
             // Rear Tire Pressure
             icon = (UIImage(named: "Tire")?.withRenderingMode(.alwaysTemplate))!
             if(Faults.shared.getRearTirePressureCriticalActive()){
@@ -614,76 +613,76 @@ class MotorcycleData {
                 icon = (UIImage(named: "Tire-Alert")?.withRenderingMode(.alwaysTemplate))!
                 icon = icon.imageWithColor(color1: UIColor.yellow)
             }
-        case 5:
+        case MotorcycleData.shared.DATA_ODOMETER:
             // Odometer
             icon = (UIImage(named: "Odometer")?.withRenderingMode(.alwaysTemplate))!
-        case 6:
+        case MotorcycleData.shared.DATA_VOLTAGE:
             // Voltage
             icon = (UIImage(named: "Battery")?.withRenderingMode(.alwaysTemplate))!
-        case 7:
+        case MotorcycleData.shared.DATA_THROTTLE:
             // Trottle
             icon = (UIImage(named: "Signature")?.withRenderingMode(.alwaysTemplate))!
-        case 8:
+        case MotorcycleData.shared.DATA_FRONT_BRAKE:
             // Front Brakes
             icon = (UIImage(named: "Brakes")?.withRenderingMode(.alwaysTemplate))!
-        case 9:
+        case MotorcycleData.shared.DATA_REAR_BRAKE:
             // Rear Brakes
             icon = (UIImage(named: "Brakes")?.withRenderingMode(.alwaysTemplate))!
-        case 10:
+        case MotorcycleData.shared.DATA_AMBIENT_LIGHT:
             // Ambient Light
             icon = (UIImage(named: "Light-bulb")?.withRenderingMode(.alwaysTemplate))!
-        case 11:
+        case MotorcycleData.shared.DATA_TRIP_ONE:
             // Trip 1
             icon = (UIImage(named: "Suitcase")?.withRenderingMode(.alwaysTemplate))!
-        case 12:
+        case MotorcycleData.shared.DATA_TRIP_TWO:
             // Trip 2
             icon = (UIImage(named: "Suitcase")?.withRenderingMode(.alwaysTemplate))!
-        case 13:
+        case MotorcycleData.shared.DATA_TRIP_AUTO:
             // Trip Auto
             icon = (UIImage(named: "Suitcase")?.withRenderingMode(.alwaysTemplate))!
-        case 14:
+        case MotorcycleData.shared.DATA_SPEED:
             // Speed
             icon = (UIImage(named: "Tachometer")?.withRenderingMode(.alwaysTemplate))!
-        case 15:
+        case MotorcycleData.shared.DATA_AVG_SPEED:
             //Average Speed
             icon = (UIImage(named: "Tachometer")?.withRenderingMode(.alwaysTemplate))!
-        case 16:
+        case MotorcycleData.shared.DATA_CURRENT_CONSUMPTION:
             //Current Consumption
             icon = (UIImage(named: "Gas-pump")?.withRenderingMode(.alwaysTemplate))!
-        case 17:
+        case MotorcycleData.shared.DATA_ECONOMY_ONE:
             //Fuel Economy One
             icon = (UIImage(named: "Gas-pump")?.withRenderingMode(.alwaysTemplate))!
-        case 18:
+        case MotorcycleData.shared.DATA_ECONOMY_TWO:
             //Fuel Economy Two
             icon = (UIImage(named: "Gas-pump")?.withRenderingMode(.alwaysTemplate))!
-        case 19:
+        case MotorcycleData.shared.DATA_RANGE:
             //Fuel Range
             icon = (UIImage(named: "Gas-pump")?.withRenderingMode(.alwaysTemplate))!
-        case 20:
+        case MotorcycleData.shared.DATA_SHIFTS:
             //Shifts
             icon = (UIImage(named: "Arrows-alt")?.withRenderingMode(.alwaysTemplate))!
-        case 21:
-            //Lean Angle
+        case MotorcycleData.shared.DATA_LEAN_DEVICE:
+            //Lean Angle Device
             icon = (UIImage(named: "Angle")?.withRenderingMode(.alwaysTemplate))!
-        case 22:
+        case MotorcycleData.shared.DATA_GFORCE_DEVICE:
             //g-force
             icon = (UIImage(named: "Accelerometer")?.withRenderingMode(.alwaysTemplate))!
-        case 23:
+        case MotorcycleData.shared.DATA_BEARING_DEVICE:
             //bearing
             icon = (UIImage(named: "Compass")?.withRenderingMode(.alwaysTemplate))!
-        case 24:
+        case MotorcycleData.shared.DATA_TIME_DEVICE:
             //time
             icon = (UIImage(named: "Clock")?.withRenderingMode(.alwaysTemplate))!
-        case 25:
+        case MotorcycleData.shared.DATA_BAROMETRIC_DEVICE:
             //barometric pressure
             icon = (UIImage(named: "Barometer")?.withRenderingMode(.alwaysTemplate))!
-        case 26:
+        case MotorcycleData.shared.DATA_SPEED_DEVICE:
             //GPS Speed
             icon = (UIImage(named: "Tachometer")?.withRenderingMode(.alwaysTemplate))!
-        case 27:
+        case MotorcycleData.shared.DATA_ALTITUDE_DEVICE:
             //altitude
             icon = (UIImage(named: "Mountain")?.withRenderingMode(.alwaysTemplate))!
-        case 28:
+        case MotorcycleData.shared.DATA_SUN_DEVICE:
             //Sunrise/Sunset
             icon = (UIImage(named: "Sun")?.withRenderingMode(.alwaysTemplate))!
             if (MotorcycleData.shared.location != nil) {
@@ -695,16 +694,16 @@ class MotorcycleData {
                     icon = (UIImage(named: "Moon")?.withRenderingMode(.alwaysTemplate))!
                 }
             }
-        case 29:
+        case MotorcycleData.shared.DATA_RPM:
             //RPM
             icon = (UIImage(named: "Tachometer")?.withRenderingMode(.alwaysTemplate))!
-        case 30:
+        case MotorcycleData.shared.DATA_LEAN:
             //Lean Angle Bike
             icon = (UIImage(named: "Angle")?.withRenderingMode(.alwaysTemplate))!
-        case 31:
+        case MotorcycleData.shared.DATA_REAR_SPEED:
             //Rear Wheel Speed
             icon = (UIImage(named: "Tachometer")?.withRenderingMode(.alwaysTemplate))!
-        case 32:
+        case MotorcycleData.shared.DATA_BATTERY_DEVICE:
             //Device Battery
             icon = (UIImage(named: "Battery-Empty")?.withRenderingMode(.alwaysTemplate))!
             if (MotorcycleData.shared.localBattery != nil) {
@@ -732,14 +731,14 @@ class MotorcycleData {
     class func getValue(dataPoint: Int) -> String {
         var value:String =  NSLocalizedString("blank_field", comment: "")
         switch (dataPoint){
-        case 0:
+        case MotorcycleData.shared.DATA_GEAR:
             // Gear
             if MotorcycleData.shared.gear != nil {
                 value = MotorcycleData.shared.getgear()
             } else {
                 value = NSLocalizedString("blank_field", comment: "")
             }
-        case 1:
+        case MotorcycleData.shared.DATA_ENGINE_TEMP:
             // Engine Temperature
             if MotorcycleData.shared.engineTemperature != nil {
                 var engineTemp:Double = MotorcycleData.shared.engineTemperature!
@@ -750,7 +749,7 @@ class MotorcycleData {
             } else {
                 value = NSLocalizedString("blank_field", comment: "")
             }
-        case 2:
+        case MotorcycleData.shared.DATA_AIR_TEMP:
             // Ambient Temperature
             if MotorcycleData.shared.ambientTemperature != nil {
                 var ambientTemp:Double = MotorcycleData.shared.ambientTemperature!
@@ -761,7 +760,7 @@ class MotorcycleData {
             } else {
                 value = NSLocalizedString("blank_field", comment: "")
             }
-        case 3:
+        case MotorcycleData.shared.DATA_FRONT_RDC:
             // Front Tire Pressure
             if MotorcycleData.shared.frontTirePressure != nil {
                 var frontPressure:Double = MotorcycleData.shared.frontTirePressure!
@@ -779,7 +778,7 @@ class MotorcycleData {
             } else {
                 value = NSLocalizedString("blank_field", comment: "")
             }
-        case 4:
+        case MotorcycleData.shared.DATA_REAR_RDC:
             // Rear Tire Pressure
             if MotorcycleData.shared.rearTirePressure != nil {
                 var rearPressure:Double = MotorcycleData.shared.rearTirePressure!
@@ -797,7 +796,7 @@ class MotorcycleData {
             } else {
                 value = NSLocalizedString("blank_field", comment: "")
             }
-        case 5:
+        case MotorcycleData.shared.DATA_ODOMETER:
             // Odometer
             if MotorcycleData.shared.odometer != nil {
                 var odometer:Double = MotorcycleData.shared.odometer!
@@ -808,42 +807,42 @@ class MotorcycleData {
             } else {
                 value = NSLocalizedString("blank_field", comment: "")
             }
-        case 6:
+        case MotorcycleData.shared.DATA_VOLTAGE:
             // Voltage
             if MotorcycleData.shared.voltage != nil {
                 value = "\(MotorcycleData.shared.voltage!)"
             } else {
                 value = NSLocalizedString("blank_field", comment: "")
             }
-        case 7:
+        case MotorcycleData.shared.DATA_THROTTLE:
             // Trottle
             if MotorcycleData.shared.throttlePosition != nil {
                 value = "\(Int(round(MotorcycleData.shared.throttlePosition!)))"
             } else {
                 value = NSLocalizedString("blank_field", comment: "")
             }
-        case 8:
+        case MotorcycleData.shared.DATA_FRONT_BRAKE:
             // Front Brakes
             if ((MotorcycleData.shared.frontBrake != nil) && MotorcycleData.shared.frontBrake != 0) {
                 value = "\(MotorcycleData.shared.frontBrake!)"
             } else {
                 value = NSLocalizedString("blank_field", comment: "")
             }
-        case 9:
+        case MotorcycleData.shared.DATA_REAR_BRAKE:
             // Rear Brakes
             if ((MotorcycleData.shared.rearBrake != nil) && MotorcycleData.shared.rearBrake != 0)  {
                 value = "\(MotorcycleData.shared.rearBrake!)"
             } else {
                 value = NSLocalizedString("blank_field", comment: "")
             }
-        case 10:
+        case MotorcycleData.shared.DATA_AMBIENT_LIGHT:
             // Ambient Light
             if MotorcycleData.shared.ambientLight != nil {
                 value = "\(MotorcycleData.shared.ambientLight!)"
             } else {
                 value = NSLocalizedString("blank_field", comment: "")
             }
-        case 11:
+        case MotorcycleData.shared.DATA_TRIP_ONE:
             // Trip 1
             if MotorcycleData.shared.tripOne != nil {
                 var tripOne:Double = MotorcycleData.shared.tripOne!
@@ -854,7 +853,7 @@ class MotorcycleData {
             } else {
                 value = NSLocalizedString("blank_field", comment: "")
             }
-        case 12:
+        case MotorcycleData.shared.DATA_TRIP_TWO:
             // Trip 2
             if MotorcycleData.shared.tripTwo != nil {
                 var tripTwo:Double = MotorcycleData.shared.gettripTwo()
@@ -865,7 +864,7 @@ class MotorcycleData {
             } else {
                 value = NSLocalizedString("blank_field", comment: "")
             }
-        case 13:
+        case MotorcycleData.shared.DATA_TRIP_AUTO:
             // Trip Auto
             if MotorcycleData.shared.tripAuto != nil {
                 var tripAuto:Double = MotorcycleData.shared.gettripAuto()
@@ -876,7 +875,7 @@ class MotorcycleData {
             } else {
                 value = NSLocalizedString("blank_field", comment: "")
             }
-        case 14:
+        case MotorcycleData.shared.DATA_SPEED:
             // Speed
             if MotorcycleData.shared.speed != nil {
                 let speedValue = MotorcycleData.shared.speed!
@@ -887,7 +886,7 @@ class MotorcycleData {
             } else {
                 value = NSLocalizedString("blank_field", comment: "")
             }
-        case 15:
+        case MotorcycleData.shared.DATA_AVG_SPEED:
             //Average Speed
             if MotorcycleData.shared.averageSpeed != nil {
                 let avgSpeedValue:Double = MotorcycleData.shared.averageSpeed!
@@ -898,7 +897,7 @@ class MotorcycleData {
             } else {
                 value = NSLocalizedString("blank_field", comment: "")
             }
-        case 16:
+        case MotorcycleData.shared.DATA_CURRENT_CONSUMPTION:
             //Current Consumption
             if MotorcycleData.shared.currentConsumption != nil {
                 let currentConsumptionValue:Double = MotorcycleData.shared.currentConsumption!
@@ -916,7 +915,7 @@ class MotorcycleData {
             } else {
                 value = NSLocalizedString("blank_field", comment: "")
             }
-        case 17:
+        case MotorcycleData.shared.DATA_ECONOMY_ONE:
             //Fuel Economy One
             if MotorcycleData.shared.fuelEconomyOne != nil {
                 let fuelEconomyOneValue:Double = MotorcycleData.shared.fuelEconomyOne!
@@ -934,7 +933,7 @@ class MotorcycleData {
             } else {
                 value = NSLocalizedString("blank_field", comment: "")
             }
-        case 18:
+        case MotorcycleData.shared.DATA_ECONOMY_TWO:
             //Fuel Economy Two
             if MotorcycleData.shared.fuelEconomyTwo != nil {
                 let fuelEconomyTwoValue:Double = MotorcycleData.shared.fuelEconomyTwo!
@@ -952,7 +951,7 @@ class MotorcycleData {
             } else {
                 value = NSLocalizedString("blank_field", comment: "")
             }
-        case 19:
+        case MotorcycleData.shared.DATA_RANGE:
             //Fuel Range
             if MotorcycleData.shared.fuelRange != nil {
                 let fuelRangeValue:Double = MotorcycleData.shared.fuelRange!
@@ -963,24 +962,24 @@ class MotorcycleData {
             } else {
                 value = NSLocalizedString("blank_field", comment: "")
             }
-        case 20:
+        case MotorcycleData.shared.DATA_SHIFTS:
             //Shifts
             if MotorcycleData.shared.shifts != nil {
                 value = "\(MotorcycleData.shared.shifts!)"
             } else {
                 value = NSLocalizedString("blank_field", comment: "")
             }
-        case 21:
+        case MotorcycleData.shared.DATA_LEAN_DEVICE:
             //Lean Angle
             if MotorcycleData.shared.leanAngle != nil {
                 value = "\(Int(round(MotorcycleData.shared.leanAngle!)))"
             }
-        case 22:
+        case MotorcycleData.shared.DATA_GFORCE_DEVICE:
             //g-force
             if MotorcycleData.shared.gForce != nil {
                 value = "\(MotorcycleData.shared.gForce!.rounded(toPlaces: 1))"
             }
-        case 23:
+        case MotorcycleData.shared.DATA_BEARING_DEVICE:
             //Bearing
             if MotorcycleData.shared.bearing != nil {
                 value = "\(MotorcycleData.shared.bearing!)"
@@ -1009,7 +1008,7 @@ class MotorcycleData {
                     value = cardinal
                 }
             }
-        case 24:
+        case MotorcycleData.shared.DATA_TIME_DEVICE:
             //Time
             if MotorcycleData.shared.time != nil {
                 let formatter = DateFormatter()
@@ -1019,12 +1018,12 @@ class MotorcycleData {
                 }
                 value = ("\(formatter.string(from: MotorcycleData.shared.time!))")
             }
-        case 25:
+        case MotorcycleData.shared.DATA_BAROMETRIC_DEVICE:
             //Barometric Pressure
             if MotorcycleData.shared.barometricPressure != nil {
                 value = "\(Int(round(MotorcycleData.shared.barometricPressure!)))"
             }
-        case 26:
+        case MotorcycleData.shared.DATA_SPEED_DEVICE:
             //GPS speed
             if MotorcycleData.shared.location != nil {
                 var gpsSpeed:String = "0"
@@ -1038,7 +1037,7 @@ class MotorcycleData {
                     value = gpsSpeed
                 }
             }
-        case 27:
+        case MotorcycleData.shared.DATA_ALTITUDE_DEVICE:
             //Altitude
             if MotorcycleData.shared.location != nil {
                 var altitude:String = "\(Int(round(MotorcycleData.shared.location!.altitude)))"
@@ -1047,7 +1046,7 @@ class MotorcycleData {
                 }
                 value = altitude
             }
-        case 28:
+        case MotorcycleData.shared.DATA_SUN_DEVICE:
             //Sunrise/Sunset
             if MotorcycleData.shared.location != nil {
                 let today = Date()
@@ -1062,19 +1061,19 @@ class MotorcycleData {
                 }
                 value = ("\(formatter.string(from: sunrise!))/\(formatter.string(from: sunset!))")
             }
-        case 29:
+        case MotorcycleData.shared.DATA_RPM:
             //RPM
             if ((MotorcycleData.shared.rpm != nil) && MotorcycleData.shared.rpm != 0) {
                 value = "\(MotorcycleData.shared.rpm!)"
             } else {
                 value = NSLocalizedString("blank_field", comment: "")
             }
-        case 30:
+        case MotorcycleData.shared.DATA_LEAN:
             //Lean Angle Bike
             if MotorcycleData.shared.leanAngleBike != nil {
                 value = "\(Int(round(MotorcycleData.shared.leanAngleBike!)))"
             }
-        case 31:
+        case MotorcycleData.shared.DATA_REAR_SPEED:
             // Rear Wheel Speed
             if MotorcycleData.shared.rearSpeed != nil {
                 let speedValue = MotorcycleData.shared.rearSpeed!
@@ -1085,7 +1084,7 @@ class MotorcycleData {
             } else {
                 value = NSLocalizedString("blank_field", comment: "")
             }
-        case 32:
+        case MotorcycleData.shared.DATA_BATTERY_DEVICE:
             // Device Battery
             if MotorcycleData.shared.localBattery != nil {
                 let batteryPct = MotorcycleData.shared.localBattery!
