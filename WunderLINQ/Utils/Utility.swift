@@ -94,4 +94,24 @@ class Utility {
         
         return "\(difference.hour!) \(NSLocalizedString("hours", comment: "")), \(difference.minute!) \(NSLocalizedString("minutes", comment: "")), \(difference.second!) \(NSLocalizedString("seconds", comment: ""))"
     }
+    
+    // Pads a string equally in the beginning and end for a given length
+    class func padString(_ input: String, length: Int) -> String {
+        let minimumLength = length
+        
+        // If the string is already of sufficient length, return it as is
+        if input.count >= minimumLength {
+            return input
+        }
+        
+        // Calculate the number of spaces needed
+        let totalPadding = minimumLength - input.count
+        let leadingPadding = totalPadding / 2
+        let trailingPadding = totalPadding - leadingPadding
+        
+        // Create the padded string
+        let paddedString = String(repeating: " ", count: leadingPadding) + input + String(repeating: " ", count: trailingPadding)
+        
+        return paddedString
+    }
 }
