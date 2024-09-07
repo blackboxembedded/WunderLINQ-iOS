@@ -175,7 +175,6 @@ class CarPlaySceneDelegate: UIResponder, CPTemplateApplicationSceneDelegate {
             interfaceController!.setRootTemplate(tabBarTemplate!,
                                                 animated: true,
                                                 completion: nil)
-            
         }
     }
     
