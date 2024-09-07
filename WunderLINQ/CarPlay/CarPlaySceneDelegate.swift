@@ -19,7 +19,6 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 import UIKit
 import CarPlay
 
-@available(iOS 14.0, *)
 class CarPlaySceneDelegate: UIResponder, CPTemplateApplicationSceneDelegate {
     var interfaceController: CPInterfaceController?
     var tabBarTemplate: CPTabBarTemplate?
@@ -70,7 +69,7 @@ class CarPlaySceneDelegate: UIResponder, CPTemplateApplicationSceneDelegate {
     
     func faultListTemplate() -> CPListTemplate {
         var faultItems = [CPListItem]()
-        for (index, item) in Faults.shared.getallActiveDesc().enumerated() {
+        for item in Faults.shared.getallActiveDesc() {
             faultItems.append(CPListItem(text: item, detailText: ""))
         }
         let section = CPListSection(items: faultItems)
@@ -82,7 +81,7 @@ class CarPlaySceneDelegate: UIResponder, CPTemplateApplicationSceneDelegate {
     
     func updateFaults() {
         var faultItems = [CPListItem]()
-        for (index, item) in Faults.shared.getallActiveDesc().enumerated() {
+        for item in Faults.shared.getallActiveDesc() {
             faultItems.append(CPListItem(text: item, detailText: ""))
         }
         let section = CPListSection(items: faultItems)
