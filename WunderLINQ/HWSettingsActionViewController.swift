@@ -53,7 +53,7 @@ class HWSettingsActionViewController: UIViewController, UIPickerViewDataSource, 
     
 
     @IBAction func savePressed(_ sender: Any) {
-        if(actionID == WLQ_N_DEFINES.KEYMODE || actionID == WLQ_C_DEFINES.KEYMODE){ // USB
+        if(actionID == WLQ_N_DEFINES.KEYMODE || actionID == WLQ_X_DEFINES.KEYMODE || actionID == WLQ_C_DEFINES.KEYMODE){ // Mode
             if (wlqData.getKeyMode() != self.typePicker.selectedRow(inComponent: 0)){
                 setHWMode(mode: UInt8(self.typePicker.selectedRow(inComponent: 0)))
             }
@@ -65,9 +65,9 @@ class HWSettingsActionViewController: UIViewController, UIPickerViewDataSource, 
             } else if ((self.typePicker.selectedRow(inComponent: 0) == 2) && (wlqData.getVINThreshold() != 0xFFFF)){
                 wlqData.setVINThreshold(value: [0xFF,0xFF])
             }
-        } else if(actionID == WLQ_N_DEFINES.RTKDoublePressSensitivity){ // RTK Sensititvity
+        } else if(actionID == WLQ_N_DEFINES.RTKDoublePressSensitivity || actionID == WLQ_X_DEFINES.RTKDoublePressSensitivity){ // RTK Sensititvity
             wlqData.setDoublePressSensitivity(value: (UInt8)(self.typePicker.selectedRow(inComponent: 0) + 1))
-        } else if(actionID == WLQ_N_DEFINES.fullLongPressSensitivity){ // Full Sensititvity
+        } else if(actionID == WLQ_N_DEFINES.fullLongPressSensitivity || actionID == WLQ_X_DEFINES.fullLongPressSensitivity){ // Full Sensititvity
             wlqData.setLongPressSensitivity(value: (UInt8)(self.typePicker.selectedRow(inComponent: 0) + 1))
         } else {    //  Key
             let keyType:UInt8 = (UInt8)(self.typePicker.selectedRow(inComponent: 0))
@@ -142,7 +142,7 @@ class HWSettingsActionViewController: UIViewController, UIPickerViewDataSource, 
         keyPicker.delegate = self
         keyPicker.dataSource = self
         
-        if(actionID == WLQ_N_DEFINES.KEYMODE || actionID == WLQ_C_DEFINES.KEYMODE){ // KEYMODE
+        if(actionID == WLQ_N_DEFINES.KEYMODE || actionID == WLQ_X_DEFINES.KEYMODE || actionID == WLQ_C_DEFINES.KEYMODE){ // KEYMODE
             typePicker.selectRow(Int(wlqData.getKeyMode()), inComponent: 0, animated: true)
             keyPicker.isHidden = true
             modifierMultiPicker.isHidden = true
@@ -156,11 +156,11 @@ class HWSettingsActionViewController: UIViewController, UIPickerViewDataSource, 
             }
             keyPicker.isHidden = true
             modifierMultiPicker.isHidden = true
-        } else if(actionID == WLQ_N_DEFINES.RTKDoublePressSensitivity){ // RTK Sensititvity
+        } else if(actionID == WLQ_N_DEFINES.RTKDoublePressSensitivity || actionID == WLQ_X_DEFINES.RTKDoublePressSensitivity){ // RTK Sensititvity
             typePicker.selectRow((Int)(wlqData.getDoublePressSensitivity()) - 1, inComponent: 0, animated: true)
             keyPicker.isHidden = true
             modifierMultiPicker.isHidden = true
-        } else if(actionID == WLQ_N_DEFINES.fullLongPressSensitivity){ // Full Sensititvity
+        } else if(actionID == WLQ_N_DEFINES.fullLongPressSensitivity || actionID == WLQ_X_DEFINES.fullLongPressSensitivity){ // Full Sensititvity
             typePicker.selectRow((Int)(wlqData.getLongPressSensitivity()) - 1, inComponent: 0, animated: true)
             keyPicker.isHidden = true
             modifierMultiPicker.isHidden = true
@@ -227,13 +227,13 @@ class HWSettingsActionViewController: UIViewController, UIPickerViewDataSource, 
 
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         if pickerView == typePicker {
-            if(actionID == WLQ_N_DEFINES.KEYMODE || actionID == WLQ_C_DEFINES.KEYMODE){ // KEYMODE
+            if(actionID == WLQ_N_DEFINES.KEYMODE || actionID == WLQ_X_DEFINES.KEYMODE || actionID == WLQ_C_DEFINES.KEYMODE){ // KEYMODE
                 return keymodesPickerData.count
             } else if(actionID == WLQ_N_DEFINES.USB){ // USB
                 return usbPickerData.count
-            } else if(actionID == WLQ_N_DEFINES.RTKDoublePressSensitivity){ // RTK Sensititvity
+            } else if(actionID == WLQ_N_DEFINES.RTKDoublePressSensitivity || actionID == WLQ_X_DEFINES.RTKDoublePressSensitivity){ // RTK Sensititvity
                 return 20
-            } else if(actionID == WLQ_N_DEFINES.fullLongPressSensitivity){ // Full Sensititvity
+            } else if(actionID == WLQ_N_DEFINES.fullLongPressSensitivity || actionID == WLQ_X_DEFINES.fullLongPressSensitivity){ // Full Sensititvity
                 return 30
             } else {
                 if (wlqData.gethardwareVersion() == WLQ_N_DEFINES.hardwareVersion1){
@@ -256,13 +256,13 @@ class HWSettingsActionViewController: UIViewController, UIPickerViewDataSource, 
 
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         if (pickerView == typePicker) {
-            if(actionID == WLQ_N_DEFINES.KEYMODE || actionID == WLQ_C_DEFINES.KEYMODE){ // KEYMODE
+            if(actionID == WLQ_N_DEFINES.KEYMODE || actionID == WLQ_X_DEFINES.KEYMODE || actionID == WLQ_C_DEFINES.KEYMODE){ // KEYMODE
                 return keymodesPickerData[row]
             } else if(actionID == WLQ_N_DEFINES.USB){ // USB
                 return usbPickerData[row]
-            } else if(actionID == WLQ_N_DEFINES.RTKDoublePressSensitivity){ // RTK Sensititvity
+            } else if(actionID == WLQ_N_DEFINES.RTKDoublePressSensitivity || actionID == WLQ_X_DEFINES.RTKDoublePressSensitivity){ // RTK Sensititvity
                 return "\((row + 1) * 50)"
-            } else if(actionID == WLQ_N_DEFINES.fullLongPressSensitivity){ // Full Sensititvity
+            } else if(actionID == WLQ_N_DEFINES.fullLongPressSensitivity || actionID == WLQ_X_DEFINES.fullLongPressSensitivity){ // Full Sensititvity
                 return "\((row + 1) * 50)"
             } else {
                 if (wlqData.gethardwareVersion() == WLQ_N_DEFINES.hardwareVersion1){
@@ -286,7 +286,7 @@ class HWSettingsActionViewController: UIViewController, UIPickerViewDataSource, 
 
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if pickerView == typePicker {
-            if (actionID == WLQ_N_DEFINES.KEYMODE || actionID == WLQ_C_DEFINES.KEYMODE){ // KEYMODE
+            if (actionID == WLQ_N_DEFINES.KEYMODE || actionID == WLQ_X_DEFINES.KEYMODE || actionID == WLQ_C_DEFINES.KEYMODE){ // KEYMODE
                 if (wlqData.getKeyMode() != row) {
                     saveButton.isHidden = false
                 } else {
@@ -302,13 +302,13 @@ class HWSettingsActionViewController: UIViewController, UIPickerViewDataSource, 
                 } else {
                     saveButton.isHidden = false
                 }
-            } else if (actionID == WLQ_N_DEFINES.RTKDoublePressSensitivity){ // RTK Sensititvity
+            } else if (actionID == WLQ_N_DEFINES.RTKDoublePressSensitivity || actionID == WLQ_X_DEFINES.RTKDoublePressSensitivity){ // RTK Sensititvity
                 if (wlqData.getDoublePressSensitivity() != typePicker.selectedRow(inComponent: 0) + 1){
                     saveButton.isHidden = false
                 } else {
                     saveButton.isHidden = true
                 }
-            } else if (actionID == WLQ_N_DEFINES.fullLongPressSensitivity){ // Full Sensititvity
+            } else if (actionID == WLQ_N_DEFINES.fullLongPressSensitivity || actionID == WLQ_X_DEFINES.fullLongPressSensitivity){ // Full Sensititvity
                 if (wlqData.getLongPressSensitivity() != typePicker.selectedRow(inComponent: 0) + 1){
                     saveButton.isHidden = false
                 } else {

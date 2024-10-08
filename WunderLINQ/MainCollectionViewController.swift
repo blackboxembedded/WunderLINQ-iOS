@@ -1301,6 +1301,19 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                         peripheral.writeValue(writeData, for: commandCharacteristic!, type: CBCharacteristicWriteType.withResponse)
                         peripheral.readValue(for: commandCharacteristic!)
                     }
+                } else if characteristic.uuid == CBUUID(string: Device.WunderLINQXCommandCharacteristicUUID) {
+                    wlqData = WLQ_X()
+                    // Enable the message notifications
+                    NSLog("MainCollectionViewController: COMMAND INTERFACE FOUND")
+                    commandCharacteristic = characteristic
+                    wunderLINQ?.setNotifyValue(true, for: characteristic)
+                    bleData.setcmdCharacteristic(cmdCharacteristic: characteristic)
+                    if(wlqData != nil){
+                        NSLog("MainCollectionViewController: REQUESTING CONFIG")
+                        let writeData =  Data(_: wlqData.GET_CONFIG_CMD())
+                        peripheral.writeValue(writeData, for: commandCharacteristic!, type: CBCharacteristicWriteType.withResponse)
+                        peripheral.readValue(for: commandCharacteristic!)
+                    }
                 } else if characteristic.uuid == CBUUID(string: Device.WunderLINQCCommandCharacteristicUUID) {
                     wlqData = WLQ_C()
                     // Enable the message notifications
@@ -1376,6 +1389,8 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             } else if characteristic.uuid == CBUUID(string: Device.WunderLINQCCommandCharacteristicUUID) {
                 parseCommandResponse(dataBytes)
             } else if characteristic.uuid == CBUUID(string: Device.WunderLINQXCommandCharacteristicUUID) {
+                parseCommandResponse(dataBytes)
+            } else if characteristic.uuid == CBUUID(string: Device.WunderLINQUCommandCharacteristicUUID) {
                 parseCommandResponse(dataBytes)
             }
             
@@ -1974,7 +1989,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         updateMessageDisplay()
         
         if (wlqData != nil){
-            if (wlqData.gethardwareType() == wlqData.TYPE_NAVIGATOR()){
+            if (wlqData.gethardwareType() == wlqData.TYPE_N() || wlqData.gethardwareType() == wlqData.TYPE_X()){
                 //Update Cluster Clock
                 let calendar = Calendar.current
                 let yearInt = calendar.component(.year, from: currentDateTime)

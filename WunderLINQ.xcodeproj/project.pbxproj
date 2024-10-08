@@ -112,6 +112,7 @@
 		D81CBFAE2C8119580029C5AB /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = D81CBFAD2C8119580029C5AB /* Entitlements.plist */; };
 		D826545A2C82768000049F9E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82654582C82768000049F9E /* SceneDelegate.swift */; };
 		D826545B2C82768000049F9E /* CarPlaySceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82654592C82768000049F9E /* CarPlaySceneDelegate.swift */; };
+		D834BC3F2CB4C154002884B7 /* WLQ_X.swift in Sources */ = {isa = PBXBuildFile; fileRef = D834BC3E2CB4C154002884B7 /* WLQ_X.swift */; };
 		D8585C53293EBD550025D0AB /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8585C51293EBD540025D0AB /* Main_iPad.storyboard */; };
 		D87629122A7EDEB90021E7A7 /* standard-dashboard-portrait.svg in Resources */ = {isa = PBXBuildFile; fileRef = D87629112A7EDEB90021E7A7 /* standard-dashboard-portrait.svg */; };
 		D880B6022C6BFED900B4252B /* wav in Resources */ = {isa = PBXBuildFile; fileRef = D880B6012C6BFED900B4252B /* wav */; };
@@ -293,6 +294,7 @@
 		D81CBFAD2C8119580029C5AB /* Entitlements.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
 		D82654582C82768000049F9E /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		D82654592C82768000049F9E /* CarPlaySceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarPlaySceneDelegate.swift; sourceTree = "<group>"; };
+		D834BC3E2CB4C154002884B7 /* WLQ_X.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WLQ_X.swift; sourceTree = "<group>"; };
 		D8585C52293EBD540025D0AB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
 		D87629112A7EDEB90021E7A7 /* standard-dashboard-portrait.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "standard-dashboard-portrait.svg"; sourceTree = "<group>"; };
 		D880B6012C6BFED900B4252B /* wav */ = {isa = PBXFileReference; lastKnownFileType = folder; path = wav; sourceTree = "<group>"; };
@@ -535,6 +537,7 @@
 				7E9DDA9A278DE8A2006C6D12 /* WLQ.swift */,
 				7E9DDA9E278DFFD4006C6D12 /* WLQ_N.swift */,
 				7E9DDAA0278E2403006C6D12 /* WLQ_C.swift */,
+				D834BC3E2CB4C154002884B7 /* WLQ_X.swift */,
 			);
 			path = WLQ;
 			sourceTree = "<group>";
@@ -826,6 +829,7 @@
 				7EBC8A9E23B19C0B001FE70B /* AddWaypointViewController.swift in Sources */,
 				7EF07768258E653E009A6BAA /* HWSettingsTableViewCell.swift in Sources */,
 				7E01EDCD28E0D6C500F8A63C /* UINavigationController+Extensions.swift in Sources */,
+				D834BC3F2CB4C154002884B7 /* WLQ_X.swift in Sources */,
 				7E62BB7121FE443200FDB10E /* ColumnFlowLayout.swift in Sources */,
 				7E75E2DB26D2E6210077CA5A /* VolumeViewController.swift in Sources */,
 				B98CA75D252E6C6B00530075 /* UIStoryboard+extensions.swift in Sources */,

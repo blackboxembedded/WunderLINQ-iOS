@@ -25,11 +25,14 @@ class WLQ {
     
     init(){}
     
-    func TYPE_NAVIGATOR() -> Int{
+    func TYPE_N() -> Int{
         return 1
     }
-    func TYPE_COMNMANDER() -> Int{
+    func TYPE_X() -> Int{
         return 2
+    }
+    func TYPE_C() -> Int{
+        return 3
     }
     func KEYMODE_DEFAULT() -> UInt8{
         return 0x00
