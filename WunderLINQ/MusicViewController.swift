@@ -19,6 +19,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 import UIKit
 import MediaPlayer
 import StoreKit
+import SpotifyiOS
 
 class MusicViewController: UIViewController, SPTAppRemotePlayerStateDelegate {
     
@@ -330,11 +331,13 @@ class MusicViewController: UIViewController, SPTAppRemotePlayerStateDelegate {
             }
             break
         case 1: // Spotify
-            if !(spotifyAppRemote.isConnected) {
-                if (!spotifyAppRemote.authorizeAndPlayURI(spotifyPlayURI)) {
-                    // The Spotify app is not installed, present the user with an App Store page
-                    NSLog("MusicViewController: Spotify Not Installed")
-                    showError("Spotify Not Installed")
+            if spotifyAppRemote.isConnected == false {
+                spotifyAppRemote.authorizeAndPlayURI(spotifyPlayURI) { success in
+                    if !success {
+                        // The Spotify app is not installed, present the user with an App Store page
+                        NSLog("MusicViewController: Spotify Not Installed")
+                        self.showError("Spotify Not Installed")
+                    }
                 }
             } else if spotifyPlayerState == nil || spotifyPlayerState!.isPaused {
                 if (spotifyPlayerState == nil){
@@ -508,6 +511,7 @@ class MusicViewController: UIViewController, SPTAppRemotePlayerStateDelegate {
             self.spotifyPlayerState = playerState
             self.spotifyUpdateViewWithPlayerState(playerState)
             self.spotifySubscribeToPlayerState()
+            NSLog("MusicViewController: spotifyGetSpotifyPlayerState() - end")
         }
     }
     
