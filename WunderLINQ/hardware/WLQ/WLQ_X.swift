@@ -75,8 +75,8 @@ class WLQ_X: WLQ {
     
     var actionNames: [Int: String] = [:]
 
-    let firmwareVersionMajor_INDEX:Int = 9
-    let firmwareVersionMinor_INDEX:Int = 10
+    let firmwareVersionMajor_INDEX:Int = 3
+    let firmwareVersionMinor_INDEX:Int = 4
     let keyMode_INDEX:Int = 25
     let RTKSensitivity_INDEX:Int = 0
     let RTKPagePressKeyType_INDEX:Int = 1
@@ -340,7 +340,7 @@ class WLQ_X: WLQ {
     }
     
     override func gethardwareType() -> Int{
-        return 1
+        return 2
     }
     
     override func getKeyMode() -> UInt8{
