@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 54;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -62,7 +62,6 @@
 		7E9346B428E0A67F009E13C0 /* UIView+ignoresInvertColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9346B128E0A67F009E13C0 /* UIView+ignoresInvertColors.swift */; };
 		7E9346B528E0A67F009E13C0 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9346B228E0A67F009E13C0 /* UIViewController+Extensions.swift */; };
 		7E9346B728E0A6B2009E13C0 /* MotorcycleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9346B628E0A6B2009E13C0 /* MotorcycleData.swift */; };
-		7E9516C2238A367000ED25F2 /* SpotifyiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E9516C1238A367000ED25F2 /* SpotifyiOS.framework */; };
 		7E96D79221E78B7B00C6AB5F /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E96D79121E78B7B00C6AB5F /* Security.framework */; };
 		7E9DDA9B278DE8A2006C6D12 /* WLQ.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9DDA9A278DE8A2006C6D12 /* WLQ.swift */; };
 		7E9DDA9F278DFFD4006C6D12 /* WLQ_N.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9DDA9E278DFFD4006C6D12 /* WLQ_N.swift */; };
@@ -113,9 +112,12 @@
 		D81CBFAE2C8119580029C5AB /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = D81CBFAD2C8119580029C5AB /* Entitlements.plist */; };
 		D826545A2C82768000049F9E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82654582C82768000049F9E /* SceneDelegate.swift */; };
 		D826545B2C82768000049F9E /* CarPlaySceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82654592C82768000049F9E /* CarPlaySceneDelegate.swift */; };
+		D834BC3F2CB4C154002884B7 /* WLQ_X.swift in Sources */ = {isa = PBXBuildFile; fileRef = D834BC3E2CB4C154002884B7 /* WLQ_X.swift */; };
 		D8585C53293EBD550025D0AB /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8585C51293EBD540025D0AB /* Main_iPad.storyboard */; };
 		D87629122A7EDEB90021E7A7 /* standard-dashboard-portrait.svg in Resources */ = {isa = PBXBuildFile; fileRef = D87629112A7EDEB90021E7A7 /* standard-dashboard-portrait.svg */; };
 		D880B6022C6BFED900B4252B /* wav in Resources */ = {isa = PBXBuildFile; fileRef = D880B6012C6BFED900B4252B /* wav */; };
+		D88FC37B2CA4EF6D00F18A7E /* SpotifyiOS.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = D88FC37A2CA4EF6D00F18A7E /* SpotifyiOS.xcframework */; };
+		D88FC37C2CA4EF6D00F18A7E /* SpotifyiOS.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D88FC37A2CA4EF6D00F18A7E /* SpotifyiOS.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -127,6 +129,20 @@
 			remoteInfo = WunderLINQ;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		D88FC37D2CA4EF6D00F18A7E /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				D88FC37C2CA4EF6D00F18A7E /* SpotifyiOS.xcframework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		4E2D3628243A0841E630E538 /* Pods-WunderLINQ.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WunderLINQ.debug.xcconfig"; path = "Target Support Files/Pods-WunderLINQ/Pods-WunderLINQ.debug.xcconfig"; sourceTree = "<group>"; };
@@ -278,9 +294,11 @@
 		D81CBFAD2C8119580029C5AB /* Entitlements.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
 		D82654582C82768000049F9E /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		D82654592C82768000049F9E /* CarPlaySceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarPlaySceneDelegate.swift; sourceTree = "<group>"; };
+		D834BC3E2CB4C154002884B7 /* WLQ_X.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WLQ_X.swift; sourceTree = "<group>"; };
 		D8585C52293EBD540025D0AB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
 		D87629112A7EDEB90021E7A7 /* standard-dashboard-portrait.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "standard-dashboard-portrait.svg"; sourceTree = "<group>"; };
 		D880B6012C6BFED900B4252B /* wav */ = {isa = PBXFileReference; lastKnownFileType = folder; path = wav; sourceTree = "<group>"; };
+		D88FC37A2CA4EF6D00F18A7E /* SpotifyiOS.xcframework */ = {isa = PBXFileReference; expectedSignature = "AppleDeveloperProgram:2FNC3A47ZF:Spotify"; lastKnownFileType = wrapper.xcframework; name = SpotifyiOS.xcframework; path = "../ios-sdk-2.1.7/SpotifyiOS.xcframework"; sourceTree = "<group>"; };
 		DA150AA674E4880933A5281B /* Pods_WunderLINQ.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WunderLINQ.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -290,10 +308,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				7E96D79221E78B7B00C6AB5F /* Security.framework in Frameworks */,
+				D88FC37B2CA4EF6D00F18A7E /* SpotifyiOS.xcframework in Frameworks */,
 				7E068BE82102C8820076EAAD /* CoreGraphics.framework in Frameworks */,
 				7E068BE92102C8820076EAAD /* libz.tbd in Frameworks */,
 				7E068BEB2102C8820076EAAD /* CoreLocation.framework in Frameworks */,
-				7E9516C2238A367000ED25F2 /* SpotifyiOS.framework in Frameworks */,
 				7E068BEC2102C8820076EAAD /* UIKit.framework in Frameworks */,
 				7E068BEE2102C8820076EAAD /* CoreImage.framework in Frameworks */,
 				7E068BEF2102C8820076EAAD /* ImageIO.framework in Frameworks */,
@@ -358,6 +376,7 @@
 		7E068BD72102C7DE0076EAAD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D88FC37A2CA4EF6D00F18A7E /* SpotifyiOS.xcframework */,
 				7EB5ED8B251FED8300B61160 /* libCocoaLumberjack.a */,
 				7E5D59F824FBFA3E005E5017 /* InAppSettingsKit.framework */,
 				7E96D79121E78B7B00C6AB5F /* Security.framework */,
@@ -518,6 +537,7 @@
 				7E9DDA9A278DE8A2006C6D12 /* WLQ.swift */,
 				7E9DDA9E278DFFD4006C6D12 /* WLQ_N.swift */,
 				7E9DDAA0278E2403006C6D12 /* WLQ_C.swift */,
+				D834BC3E2CB4C154002884B7 /* WLQ_X.swift */,
 			);
 			path = WLQ;
 			sourceTree = "<group>";
@@ -595,6 +615,7 @@
 				7EA478471F40B154000CEDDC /* Frameworks */,
 				7EA478481F40B154000CEDDC /* Resources */,
 				8E985EC67182A309FD22AF54 /* [CP] Embed Pods Frameworks */,
+				D88FC37D2CA4EF6D00F18A7E /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -674,6 +695,9 @@
 				nl,
 			);
 			mainGroup = 7EA478411F40B154000CEDDC;
+			packageReferences = (
+				D88FC3792CA4EF2C00F18A7E /* XCRemoteSwiftPackageReference "ios-sdk" */,
+			);
 			productRefGroup = 7EA4784B1F40B154000CEDDC /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -805,6 +829,7 @@
 				7EBC8A9E23B19C0B001FE70B /* AddWaypointViewController.swift in Sources */,
 				7EF07768258E653E009A6BAA /* HWSettingsTableViewCell.swift in Sources */,
 				7E01EDCD28E0D6C500F8A63C /* UINavigationController+Extensions.swift in Sources */,
+				D834BC3F2CB4C154002884B7 /* WLQ_X.swift in Sources */,
 				7E62BB7121FE443200FDB10E /* ColumnFlowLayout.swift in Sources */,
 				7E75E2DB26D2E6210077CA5A /* VolumeViewController.swift in Sources */,
 				B98CA75D252E6C6B00530075 /* UIStoryboard+extensions.swift in Sources */,
@@ -1190,6 +1215,17 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		D88FC3792CA4EF2C00F18A7E /* XCRemoteSwiftPackageReference "ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/spotify/ios-sdk";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
 	};
 	rootObject = 7EA478421F40B154000CEDDC /* Project object */;
 }

@@ -450,7 +450,7 @@ class WLQ_C: WLQ {
     }
     
     override func gethardwareType() -> Int{
-        return 2
+        return 3
     }
     
     override func getLongPressSensitivity() -> UInt8{

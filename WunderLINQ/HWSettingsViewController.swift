@@ -147,7 +147,7 @@ class HWSettingsViewController: UIViewController, UITableViewDelegate, UITableVi
         if (wlqData.getfirmwareVersion() != "Unknown"){
             firmwareVersionLabel.text = NSLocalizedString("fw_version_label", comment: "") + " " + wlqData.getfirmwareVersion()
         }
-        if (wlqData.gethardwareType() == wlqData.TYPE_NAVIGATOR()){
+        if (wlqData.gethardwareType() == wlqData.TYPE_N()){
             if (wlqData.getfirmwareVersion() != "Unknown"){
                 if (wlqData.getfirmwareVersion().toDouble()! >= 2.0) {      // FW >2.0
                     if (wlqData.getKeyMode() == wlqData.KEYMODE_DEFAULT() || wlqData.getKeyMode() == wlqData.KEYMODE_CUSTOM() || wlqData.getKeyMode() == wlqData.KEYMODE_MEDIA() || wlqData.getKeyMode() == wlqData.KEYMODE_DMD2()) {
@@ -248,7 +248,98 @@ class HWSettingsViewController: UIViewController, UITableViewDelegate, UITableVi
                     }
                 }
             }
-        } else if (wlqData.gethardwareType() == wlqData.TYPE_COMNMANDER()){
+        } else if (wlqData.gethardwareType() == wlqData.TYPE_X()){
+            if (wlqData.getKeyMode() == wlqData.KEYMODE_DEFAULT() || wlqData.getKeyMode() == wlqData.KEYMODE_CUSTOM()
+                || wlqData.getKeyMode() == wlqData.KEYMODE_MEDIA()) {
+                actionTableLabels = [NSLocalizedString("keymode_label", comment: ""),       //KEYMODE
+                                     NSLocalizedString("wwMode1", comment: ""),       //Full
+                                     NSLocalizedString("long_press_label", comment: ""),
+                                     NSLocalizedString("full_scroll_up_label", comment: ""),
+                                     NSLocalizedString("full_scroll_down_label", comment: ""),
+                                     NSLocalizedString("full_toggle_right_label", comment: ""),
+                                     NSLocalizedString("full_toggle_right_long_label", comment: ""),
+                                     NSLocalizedString("full_toggle_left_label", comment: ""),
+                                     NSLocalizedString("full_toggle_left_long_label", comment: ""),
+                                     NSLocalizedString("full_signal_cancel_label", comment: ""),
+                                     NSLocalizedString("full_signal_cancel_long_label", comment: ""),
+                                     NSLocalizedString("wwMode2", comment: ""),       //RT/K1600
+                                     NSLocalizedString("double_press_label", comment: ""),
+                                     NSLocalizedString("rtk_page_label", comment: ""),
+                                     NSLocalizedString("rtk_page_double_label", comment: ""),
+                                     NSLocalizedString("rtk_zoomp_label", comment: ""),
+                                     NSLocalizedString("rtk_zoomp_double_label", comment: ""),
+                                     NSLocalizedString("rtk_zoomm_label", comment: ""),
+                                     NSLocalizedString("rtk_zoomm_double_label", comment: ""),
+                                     NSLocalizedString("rtk_speak_label", comment: ""),
+                                     NSLocalizedString("rtk_speak_double_label", comment: ""),
+                                     NSLocalizedString("rtk_mute_label", comment: ""),
+                                     NSLocalizedString("rtk_mute_double_label", comment: ""),
+                                     NSLocalizedString("rtk_display_label", comment: ""),
+                                     NSLocalizedString("rtk_display_double_label", comment: "")]
+                                                  
+                actionTableMappingLabels = [wlqData.getActionValue(action: WLQ_X_DEFINES.KEYMODE),   //KEYMODE
+                                            "",       //Full
+                                            wlqData.getActionValue(action: WLQ_X_DEFINES.fullLongPressSensitivity),
+                                            wlqData.getActionValue(action: WLQ_X_DEFINES.fullScrollUp),
+                                            wlqData.getActionValue(action: WLQ_X_DEFINES.fullScrollDown),
+                                            wlqData.getActionValue(action: WLQ_X_DEFINES.fullToggleRight),
+                                            wlqData.getActionValue(action: WLQ_X_DEFINES.fullToggleRightLongPress),
+                                            wlqData.getActionValue(action: WLQ_X_DEFINES.fullToggleLeft),
+                                            wlqData.getActionValue(action: WLQ_X_DEFINES.fullToggleLeftLongPress),
+                                            wlqData.getActionValue(action: WLQ_X_DEFINES.fullSignalCancel),
+                                            wlqData.getActionValue(action: WLQ_X_DEFINES.fullSignalCancelLongPress),
+                                            "",       //RT/K1600
+                                            wlqData.getActionValue(action: WLQ_X_DEFINES.RTKDoublePressSensitivity),
+                                            wlqData.getActionValue(action: WLQ_X_DEFINES.RTKPage),
+                                            wlqData.getActionValue(action: WLQ_X_DEFINES.RTKPageDoublePress),
+                                            wlqData.getActionValue(action: WLQ_X_DEFINES.RTKZoomPlus),
+                                            wlqData.getActionValue(action: WLQ_X_DEFINES.RTKZoomPlusDoublePress),
+                                            wlqData.getActionValue(action: WLQ_X_DEFINES.RTKZoomMinus),
+                                            wlqData.getActionValue(action: WLQ_X_DEFINES.RTKZoomMinusDoublePress),
+                                            wlqData.getActionValue(action: WLQ_X_DEFINES.RTKSpeak),
+                                            wlqData.getActionValue(action: WLQ_X_DEFINES.RTKSpeakDoublePress),
+                                            wlqData.getActionValue(action: WLQ_X_DEFINES.RTKMute),
+                                            wlqData.getActionValue(action: WLQ_X_DEFINES.RTKMuteDoublePress),
+                                            wlqData.getActionValue(action: WLQ_X_DEFINES.RTKDisplayOff),
+                                            wlqData.getActionValue(action: WLQ_X_DEFINES.RTKDisplayOffDoublePress)]
+                
+                actionID = [WLQ_X_DEFINES.KEYMODE,    //KEYMODE
+                            -1,       //Full
+                            WLQ_X_DEFINES.fullLongPressSensitivity,
+                            WLQ_X_DEFINES.fullScrollUp,
+                            WLQ_X_DEFINES.fullScrollDown,
+                            WLQ_X_DEFINES.fullToggleRight,
+                            WLQ_X_DEFINES.fullToggleRightLongPress,
+                            WLQ_X_DEFINES.fullToggleLeft,
+                            WLQ_X_DEFINES.fullToggleLeftLongPress,
+                            WLQ_X_DEFINES.fullSignalCancel,
+                            WLQ_X_DEFINES.fullSignalCancelLongPress,
+                            -1,       //RT/K1600
+                            WLQ_X_DEFINES.RTKDoublePressSensitivity,
+                            WLQ_X_DEFINES.RTKPage,
+                            WLQ_X_DEFINES.RTKPageDoublePress,
+                            WLQ_X_DEFINES.RTKZoomPlus,
+                            WLQ_X_DEFINES.RTKZoomPlusDoublePress,
+                            WLQ_X_DEFINES.RTKZoomMinus,
+                            WLQ_X_DEFINES.RTKZoomMinusDoublePress,
+                            WLQ_X_DEFINES.RTKSpeak,
+                            WLQ_X_DEFINES.RTKSpeakDoublePress,
+                            WLQ_X_DEFINES.RTKMute,
+                            WLQ_X_DEFINES.RTKMuteDoublePress,
+                            WLQ_X_DEFINES.RTKDisplayOff,
+                            WLQ_X_DEFINES.RTKDisplayOffDoublePress]
+                
+                if (wlqData.getKeyMode() == wlqData.KEYMODE_CUSTOM()){
+                    menuBtn.isHidden = false
+                    if (!wlqData.getConfig().elementsEqual(wlqData.getTempConfig())){
+                        NSLog("HWSettingsViewController: !!!Change detected!!!")
+                        configButton.setTitle(NSLocalizedString("config_write_label", comment: ""), for: .normal)
+                        configButton.isHidden = false
+                        configButton.tag = 1
+                    }
+                }
+            }
+        } else if (wlqData.gethardwareType() == wlqData.TYPE_C()){
             if (wlqData.getKeyMode() == wlqData.KEYMODE_DEFAULT() || wlqData.getKeyMode() == wlqData.KEYMODE_CUSTOM()
                 || wlqData.getKeyMode() == wlqData.KEYMODE_MEDIA()) {
 
@@ -333,19 +424,9 @@ class HWSettingsViewController: UIViewController, UITableViewDelegate, UITableVi
         let cancelAction = UIAlertAction(title: NSLocalizedString("hwsave_alert_btn_cancel", comment: ""), style: .cancel, handler: nil)
         alertController.addAction(cancelAction)
         let openAction = UIAlertAction(title: NSLocalizedString("hwsave_alert_btn_ok", comment: ""), style: .default) { [self] (action) in
-            if (wlqData.gethardwareType() == wlqData.TYPE_NAVIGATOR()){
-                if (self.wlqData.getfirmwareVersion() != "Unknown"){
-                    if (self.wlqData.getfirmwareVersion().toDouble()! >= 2.0) {
-                        let command = self.wlqData.WRITE_CONFIG_CMD() + wlqData.getDefaultConfig() + self.wlqData.CMD_EOM()
-                        let writeData =  Data(_: command)
-                        self.peripheral?.writeValue(writeData, for: self.characteristic!, type: CBCharacteristicWriteType.withResponse)
-                    }
-                }
-            } else if (wlqData.gethardwareType() == wlqData.TYPE_COMNMANDER()){
-                let command = self.wlqData.WRITE_CONFIG_CMD() + wlqData.getDefaultConfig() + self.wlqData.CMD_EOM()
-                let writeData =  Data(_: command)
-                self.peripheral?.writeValue(writeData, for: self.characteristic!, type: CBCharacteristicWriteType.withResponse)
-            }
+            let command = self.wlqData.WRITE_CONFIG_CMD() + wlqData.getDefaultConfig() + self.wlqData.CMD_EOM()
+            let writeData =  Data(_: command)
+            self.peripheral?.writeValue(writeData, for: self.characteristic!, type: CBCharacteristicWriteType.withResponse)
             self.navigationController?.popViewController(animated: true)
             self.dismiss(animated: true, completion: nil)
         }
@@ -362,19 +443,9 @@ class HWSettingsViewController: UIViewController, UITableViewDelegate, UITableVi
         let cancelAction = UIAlertAction(title: NSLocalizedString("hwsave_alert_btn_cancel", comment: ""), style: .cancel, handler: nil)
         alertController.addAction(cancelAction)
         let openAction = UIAlertAction(title: NSLocalizedString("hwsave_alert_btn_ok", comment: ""), style: .default) { (action) in
-            if (self.wlqData.gethardwareType() == self.wlqData.TYPE_NAVIGATOR()){
-                if (self.wlqData.getfirmwareVersion() != "Unknown"){
-                    if (self.wlqData.getfirmwareVersion().toDouble()! >= 2.0) {
-                        let command = self.wlqData.WRITE_CONFIG_CMD() + self.wlqData.getTempConfig() + self.wlqData.CMD_EOM()
-                        let writeData =  Data(_: command)
-                        self.peripheral?.writeValue(writeData, for: self.characteristic!, type: CBCharacteristicWriteType.withResponse)
-                    }
-                }
-            } else if (self.wlqData.gethardwareType() == self.wlqData.TYPE_COMNMANDER()){
-                let command = self.wlqData.WRITE_CONFIG_CMD() + self.wlqData.getTempConfig() + self.wlqData.CMD_EOM()
-                let writeData =  Data(_: command)
-                self.peripheral?.writeValue(writeData, for: self.characteristic!, type: CBCharacteristicWriteType.withResponse)
-            }
+            let command = self.wlqData.WRITE_CONFIG_CMD() + self.wlqData.getTempConfig() + self.wlqData.CMD_EOM()
+            let writeData =  Data(_: command)
+            self.peripheral?.writeValue(writeData, for: self.characteristic!, type: CBCharacteristicWriteType.withResponse)
             self.navigationController?.popViewController(animated: true)
             self.dismiss(animated: true, completion: nil)
         }
