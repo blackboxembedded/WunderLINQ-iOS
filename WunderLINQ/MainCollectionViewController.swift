@@ -1979,7 +1979,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
 
         let today = dateFormatter.string(from: Date())
         let launchedLast = UserDefaults.standard.string(forKey: "launchedLast")
-
+        
         if launchedLast?.contains(today) == true {
             // Already launched today, no alert needed
             return
@@ -2033,6 +2033,17 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             } else {
                 // Dismiss the alert and stop the timer when time is up
                 self.dismiss(animated: true) {
+                    let dateFormat = "yyyyMMdd"
+                    let dateFormatter: DateFormatter = {
+                        let formatter = DateFormatter()
+                        formatter.dateFormat = dateFormat
+                        formatter.locale = Locale(identifier: "en_US")
+                        formatter.timeZone = TimeZone.current
+                        return formatter
+                    }()
+
+                    let today = dateFormatter.string(from: Date())
+                    UserDefaults.standard.set(today, forKey: "launchedLast")
                     self.invalidateTimer()
                     self.navigationController?.popViewController(animated: true)
                 }
