@@ -18,7 +18,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 import Foundation
 
-class BLEbus {
+class BLEBus {
     class func parseMessage(_ data:[UInt8]) {
         let motorcycleData = MotorcycleData.shared
         let faults = Faults.shared

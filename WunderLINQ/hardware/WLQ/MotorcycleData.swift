@@ -385,6 +385,15 @@ class MotorcycleData {
         self.localBattery = nil
     }
     
+    private let CRITICAL_ENGINE_TEMP_C = 104.0 //219F hot engine
+    private let CRITICAL_ENGINE_TEMP_LOW_C = 55.0 //130F cold engine
+    private let CRITICAL_AIR_TEMP_HIGH_C = 37.5 //99.5F hot human
+    private let CRITICAL_AIR_TEMP_LOW_C = 4.0 //39F cold human watch for frost
+    private let CRITICAL_BATTERY_VOLTAGE_HIGH = 15.0
+    private let CRITICAL_BATTERY_VOLTAGE_LOW = 12.0
+    private let RANGE_CRITICAL = 5.0
+    private let RANGE_LOW = 50.0
+    
     public let DATA_GEAR = 0
     public let DATA_ENGINE_TEMP = 1
     public let DATA_AIR_TEMP = 2
@@ -579,8 +588,10 @@ class MotorcycleData {
             icon = (UIImage(named: "Engine-Temp")?.withRenderingMode(.alwaysTemplate))!
             if (MotorcycleData.shared.engineTemperature != nil) {
                 var engineTemp:Double = MotorcycleData.shared.engineTemperature!
-                if (engineTemp >= 104.0){
+                if (engineTemp >= MotorcycleData.shared.CRITICAL_ENGINE_TEMP_C){
                     icon = icon.imageWithColor(color1: UIColor.red)
+                } else if (engineTemp <= MotorcycleData.shared.CRITICAL_ENGINE_TEMP_LOW_C){
+                    icon = icon.imageWithColor(color1: UIColor.blue)
                 }
             }
         case MotorcycleData.shared.DATA_AIR_TEMP:
@@ -588,9 +599,11 @@ class MotorcycleData {
             icon = (UIImage(named: "Thermometer")?.withRenderingMode(.alwaysTemplate))!
             if (MotorcycleData.shared.ambientTemperature != nil) {
                 var ambientTemp:Double = MotorcycleData.shared.ambientTemperature!
-                if(ambientTemp <= 0){
+                if(ambientTemp <= MotorcycleData.shared.CRITICAL_AIR_TEMP_LOW_C){
                     icon = (UIImage(named: "Snowflake")?.withRenderingMode(.alwaysTemplate))!
                     icon = icon.imageWithColor(color1: UIColor.blue)
+                } else if (ambientTemp >= MotorcycleData.shared.CRITICAL_ENGINE_TEMP_LOW_C){
+                    icon = icon.imageWithColor(color1: UIColor.red)
                 }
             }
         case MotorcycleData.shared.DATA_FRONT_RDC:
@@ -619,6 +632,14 @@ class MotorcycleData {
         case MotorcycleData.shared.DATA_VOLTAGE:
             // Voltage
             icon = (UIImage(named: "Battery")?.withRenderingMode(.alwaysTemplate))!
+            if (MotorcycleData.shared.voltage != nil) {
+                var voltage:Double = MotorcycleData.shared.voltage!
+                if (voltage >= MotorcycleData.shared.CRITICAL_BATTERY_VOLTAGE_HIGH){
+                    icon = icon.imageWithColor(color1: UIColor.red)
+                } else if (voltage < MotorcycleData.shared.CRITICAL_BATTERY_VOLTAGE_LOW){
+                    icon = icon.imageWithColor(color1: UIColor.yellow)
+                }
+            }
         case MotorcycleData.shared.DATA_THROTTLE:
             // Trottle
             icon = (UIImage(named: "Signature")?.withRenderingMode(.alwaysTemplate))!

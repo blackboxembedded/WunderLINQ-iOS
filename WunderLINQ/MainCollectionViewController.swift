@@ -1382,7 +1382,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                         NSLog("Focus Gone")
                         motorcycleData.setHasFocus(hasFocus: false)
                     }
-                    BLEbus.parseMessage(dataArray)
+                    BLEBus.parseMessage(dataArray)
                 }
             } else if characteristic.uuid == CBUUID(string: Device.WunderLINQNCommandCharacteristicUUID) {
                 parseCommandResponse(dataBytes)
