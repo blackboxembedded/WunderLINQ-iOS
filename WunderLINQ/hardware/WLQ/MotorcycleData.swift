@@ -560,7 +560,7 @@ class MotorcycleData {
             label = NSLocalizedString("sunrisesunset_header", comment: "")
         case MotorcycleData.shared.DATA_RPM:
             //RPM
-            label = NSLocalizedString("rpm_header", comment: "")
+            label = NSLocalizedString("rpm_header", comment: "") + " (x1000)"
         case MotorcycleData.shared.DATA_LEAN:
             //Lean Angle
             label = NSLocalizedString("leanangle_bike_header", comment: "")
@@ -1085,7 +1085,8 @@ class MotorcycleData {
         case MotorcycleData.shared.DATA_RPM:
             //RPM
             if ((MotorcycleData.shared.rpm != nil) && MotorcycleData.shared.rpm != 0) {
-                value = "\(MotorcycleData.shared.rpm!)"
+                let rpmValue:Double = Double(MotorcycleData.shared.rpm!) / 1000.0
+                value = "\(rpmValue.rounded(toPlaces: 1))"
             } else {
                 value = NSLocalizedString("blank_field", comment: "")
             }
