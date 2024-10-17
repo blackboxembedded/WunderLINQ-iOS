@@ -577,6 +577,170 @@ class MotorcycleData {
         return label
     }
     
+    class func getLabelColor(dataPoint: Int) -> UIColor? {
+        var labelColor:UIColor?
+        if let window = UIApplication.shared.windows.first {
+            if (window.traitCollection.userInterfaceStyle == .dark) {
+                labelColor = UIColor.white
+            } else {
+                labelColor = UIColor.black
+            }
+        }
+        switch (dataPoint){
+        case MotorcycleData.shared.DATA_GEAR:
+            // Gear
+            if (MotorcycleData.shared.gear != nil) {
+                let gear:String = MotorcycleData.shared.gear!
+                if gear == "N" {
+                    labelColor = UIColor.green
+                } else if "123456".contains(gear) {
+                    labelColor = UIColor.yellow
+                }
+                
+            }
+        case MotorcycleData.shared.DATA_ENGINE_TEMP:
+            // Engine Temperature
+            if (MotorcycleData.shared.engineTemperature != nil) {
+                let engineTemp:Double = MotorcycleData.shared.engineTemperature!
+                if (engineTemp >= MotorcycleData.shared.CRITICAL_ENGINE_TEMP_C){
+                    labelColor = UIColor.red
+                } else if (engineTemp <= MotorcycleData.shared.CRITICAL_ENGINE_TEMP_LOW_C){
+                    labelColor = UIColor.blue
+                }
+            }
+        case MotorcycleData.shared.DATA_AIR_TEMP:
+            // Ambient Temperature
+            if (MotorcycleData.shared.ambientTemperature != nil) {
+                let ambientTemp:Double = MotorcycleData.shared.ambientTemperature!
+                if(ambientTemp <= MotorcycleData.shared.CRITICAL_AIR_TEMP_LOW_C){
+                    labelColor = UIColor.blue
+                } else if (ambientTemp >= MotorcycleData.shared.CRITICAL_ENGINE_TEMP_LOW_C){
+                    labelColor = UIColor.red
+                }
+            }
+        case MotorcycleData.shared.DATA_FRONT_RDC:
+            // Front Tire Pressure
+            if(Faults.shared.getFrontTirePressureCriticalActive()){
+                labelColor = UIColor.red
+            } else if(Faults.shared.getRearTirePressureWarningActive()){
+                labelColor = UIColor.yellow
+            }
+        case MotorcycleData.shared.DATA_REAR_RDC:
+            // Rear Tire Pressure
+            if(Faults.shared.getRearTirePressureCriticalActive()){
+                labelColor = UIColor.red
+            } else if(Faults.shared.getRearTirePressureWarningActive()){
+                labelColor = UIColor.yellow
+            }
+        case MotorcycleData.shared.DATA_ODOMETER:
+            // Odometer
+            break
+        case MotorcycleData.shared.DATA_VOLTAGE:
+            // Voltage
+            if (MotorcycleData.shared.voltage != nil) {
+                let voltage:Double = MotorcycleData.shared.voltage!
+                if (voltage >= MotorcycleData.shared.CRITICAL_BATTERY_VOLTAGE_HIGH){
+                    labelColor = UIColor.red
+                } else if (voltage < MotorcycleData.shared.CRITICAL_BATTERY_VOLTAGE_LOW){
+                    labelColor = UIColor.yellow
+                }
+            }
+        case MotorcycleData.shared.DATA_THROTTLE:
+            // Trottle
+            break
+        case MotorcycleData.shared.DATA_FRONT_BRAKE:
+            // Front Brakes
+            break
+        case MotorcycleData.shared.DATA_REAR_BRAKE:
+            // Rear Brakes
+            break
+        case MotorcycleData.shared.DATA_AMBIENT_LIGHT:
+            // Ambient Light
+            break
+        case MotorcycleData.shared.DATA_TRIP_ONE:
+            // Trip 1
+            break
+        case MotorcycleData.shared.DATA_TRIP_TWO:
+            // Trip 2
+            break
+        case MotorcycleData.shared.DATA_TRIP_AUTO:
+            // Trip Auto
+            break
+        case MotorcycleData.shared.DATA_SPEED:
+            // Speed
+            break
+        case MotorcycleData.shared.DATA_AVG_SPEED:
+            //Average Speed
+            break
+        case MotorcycleData.shared.DATA_CURRENT_CONSUMPTION:
+            //Current Consumption
+            break
+        case MotorcycleData.shared.DATA_ECONOMY_ONE:
+            //Fuel Economy One
+            break
+        case MotorcycleData.shared.DATA_ECONOMY_TWO:
+            //Fuel Economy Two
+            break
+        case MotorcycleData.shared.DATA_RANGE:
+            //Fuel Range
+            if (MotorcycleData.shared.fuelRange != nil) {
+                let range:Double = MotorcycleData.shared.fuelRange!
+                if (range < MotorcycleData.shared.RANGE_CRITICAL){
+                    labelColor = UIColor.red
+                } else if (range < MotorcycleData.shared.RANGE_LOW){
+                    labelColor = UIColor.yellow
+                }
+            }
+        case MotorcycleData.shared.DATA_SHIFTS:
+            //Shifts
+            break
+        case MotorcycleData.shared.DATA_LEAN_DEVICE:
+            //Lean Angle Device
+            break
+        case MotorcycleData.shared.DATA_GFORCE_DEVICE:
+            //g-force
+            break
+        case MotorcycleData.shared.DATA_BEARING_DEVICE:
+            //bearing
+            break
+        case MotorcycleData.shared.DATA_TIME_DEVICE:
+            //time
+            break
+        case MotorcycleData.shared.DATA_BAROMETRIC_DEVICE:
+            //barometric pressure
+            break
+        case MotorcycleData.shared.DATA_SPEED_DEVICE:
+            //GPS Speed
+            break
+        case MotorcycleData.shared.DATA_ALTITUDE_DEVICE:
+            //altitude
+            break
+        case MotorcycleData.shared.DATA_SUN_DEVICE:
+            //Sunrise/Sunset
+            break
+        case MotorcycleData.shared.DATA_RPM:
+            //RPM
+            break
+        case MotorcycleData.shared.DATA_LEAN:
+            //Lean Angle Bike
+            break
+        case MotorcycleData.shared.DATA_REAR_SPEED:
+            //Rear Wheel Speed
+            break
+        case MotorcycleData.shared.DATA_BATTERY_DEVICE:
+            //Device Battery
+            if (MotorcycleData.shared.localBattery != nil) {
+                let batteryPct = MotorcycleData.shared.localBattery!
+                if(batteryPct > 0 && batteryPct < 25){
+                    labelColor = UIColor.red
+                }
+            }
+        default:
+            NSLog("MotorcycleData: Unknown : \(dataPoint)")
+        }
+        return labelColor
+    }
+    
     class func getIcon(dataPoint: Int) -> UIImage {
         var icon:UIImage = (UIImage(named: "Cog")?.withRenderingMode(.alwaysTemplate))!
         switch (dataPoint){

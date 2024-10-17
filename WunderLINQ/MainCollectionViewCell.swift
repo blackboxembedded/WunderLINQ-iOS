@@ -40,6 +40,10 @@ class MainCollectionViewCell: UICollectionViewCell {
         iconImageView.image = icon
     }
     
+    func setLabelColor(labelColor: UIColor){
+        valueLabel.textColor = labelColor
+    }
+    
     func setColors(backgroundColor: UIColor, textColor: UIColor){
         headerLabel.textColor = textColor
         valueLabel.textColor = textColor

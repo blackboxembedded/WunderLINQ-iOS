@@ -805,6 +805,9 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         cell.setLabel(label: label)
         let icon = MotorcycleData.getIcon(dataPoint: getCellDataPoint(cell: indexPath.row + 1))
         cell.setIcon(icon: icon)
+        if let labelColor = MotorcycleData.getLabelColor(dataPoint: getCellDataPoint(cell: indexPath.row + 1)){
+            cell.setLabelColor(labelColor: labelColor)
+        }
         return cell
     }
     
@@ -941,13 +944,16 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     
     func setCell(_ cellNumber: Int){
         let label = MotorcycleData.getLabel(dataPoint: getCellDataPoint(cell: cellNumber))
-        var value:String = MotorcycleData.getValue(dataPoint: getCellDataPoint(cell: cellNumber))
-        var icon: UIImage = MotorcycleData.getIcon(dataPoint: getCellDataPoint(cell: cellNumber))
+        let value:String = MotorcycleData.getValue(dataPoint: getCellDataPoint(cell: cellNumber))
+        let icon: UIImage = MotorcycleData.getIcon(dataPoint: getCellDataPoint(cell: cellNumber))
         
         if let cell = self.collectionView.cellForItem(at: IndexPath(row: cellNumber - 1, section: 0) as IndexPath) as? MainCollectionViewCell{
             cell.setLabel(label: label)
             cell.setValue(value: value)
             cell.setIcon(icon: icon)
+            if let labelColor = MotorcycleData.getLabelColor(dataPoint: getCellDataPoint(cell: cellNumber)){
+                cell.setLabelColor(labelColor: labelColor)
+            }
         }
     }
     
@@ -1990,6 +1996,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         //About
         performSegue(withIdentifier: "motorcycleToAbout", sender: self)
     }
+
 }
 
 extension UIImage {
