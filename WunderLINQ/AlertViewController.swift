@@ -31,6 +31,9 @@ class AlertViewController: UIViewController {
     
     let motorcycleData = MotorcycleData.shared
 
+    var countdownTimer: Timer?
+    var remainingSeconds = 10
+    
     override var keyCommands: [UIKeyCommand]? {
         
         let commands = [
@@ -128,16 +131,29 @@ class AlertViewController: UIViewController {
         }
         
         //Dismiss ViewController after 10secs
-        DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
-            //Close
-            self.navigationController?.popViewController(animated: true)
-            self.dismiss(animated: true, completion: nil)
-        }
+        startCountdown(button: closeButton)
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func startCountdown(button: UIButton) {
+        // Schedule the timer to fire every 1 second
+        countdownTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] timer in
+            guard let self = self else { return }
+
+            if self.remainingSeconds > 0 {
+                button.setTitle("\(NSLocalizedString("alert_btn_close", comment: "")) (\(self.remainingSeconds))", for: .normal)
+                self.remainingSeconds -= 1
+            } else {
+                // Invalidate the timer and dismiss the view when countdown is over
+                timer.invalidate()
+                self.navigationController?.popViewController(animated: true)
+                self.dismiss(animated: true, completion: nil)
+            }
+        }
     }
 
 }
