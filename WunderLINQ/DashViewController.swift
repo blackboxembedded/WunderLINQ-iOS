@@ -53,14 +53,10 @@ class DashViewController: UIViewController, UIWebViewDelegate {
             return .lightContent
         default:
             //Default
-            if #available(iOS 13.0, *) {
-                if traitCollection.userInterfaceStyle == .light {
-                    return .darkContent
-                } else {
-                    return .lightContent
-                }
+            if traitCollection.userInterfaceStyle == .light {
+                return .darkContent
             } else {
-                return .default
+                return .lightContent
             }
         }
     }
@@ -75,34 +71,17 @@ class DashViewController: UIViewController, UIWebViewDelegate {
         switch(UserDefaults.standard.integer(forKey: "darkmode_preference")){
         case 0:
             //OFF
-            if #available(iOS 13.0, *) {
-                overrideUserInterfaceStyle = .light
-                self.navigationController?.isNavigationBarHidden = true
-                self.navigationController?.isNavigationBarHidden = false
-            } else {
-                Theme.default.apply()
-                self.navigationController?.isNavigationBarHidden = true
-                self.navigationController?.isNavigationBarHidden = false
-            }
+            overrideUserInterfaceStyle = .light
+            self.navigationController?.isNavigationBarHidden = true
+            self.navigationController?.isNavigationBarHidden = false
         case 1:
             //On
-            if #available(iOS 13.0, *) {
-                overrideUserInterfaceStyle = .dark
-                self.navigationController?.isNavigationBarHidden = true
-                self.navigationController?.isNavigationBarHidden = false
-            } else {
-                Theme.dark.apply()
-                self.navigationController?.isNavigationBarHidden = true
-                self.navigationController?.isNavigationBarHidden = false
-            }
+            overrideUserInterfaceStyle = .dark
+            self.navigationController?.isNavigationBarHidden = true
+            self.navigationController?.isNavigationBarHidden = false
         default:
             //Default
-            if #available(iOS 13.0, *) {
-            } else {
-                Theme.default.apply()
-                self.navigationController?.isNavigationBarHidden = true
-                self.navigationController?.isNavigationBarHidden = false
-            }
+            break
         }
         
         let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))
@@ -129,9 +108,7 @@ class DashViewController: UIViewController, UIWebViewDelegate {
         
         let backBtn = UIButton()
         backBtn.setImage(UIImage(named: "Left")?.withRenderingMode(.alwaysTemplate), for: .normal)
-        if #available(iOS 13.0, *) {
-            backBtn.tintColor = UIColor(named: "imageTint")
-        }
+        backBtn.tintColor = UIColor(named: "imageTint")
         backBtn.addTarget(self, action: #selector(leftScreen), for: .touchUpInside)
         backButton = UIBarButtonItem(customView: backBtn)
         let backButtonWidth = backButton.customView?.widthAnchor.constraint(equalToConstant: 30)
@@ -141,9 +118,7 @@ class DashViewController: UIViewController, UIWebViewDelegate {
         
         let forwardBtn = UIButton()
         forwardBtn.setImage(UIImage(named: "Right")?.withRenderingMode(.alwaysTemplate), for: .normal)
-        if #available(iOS 13.0, *) {
-            forwardBtn.tintColor = UIColor(named: "imageTint")
-        }
+        forwardBtn.tintColor = UIColor(named: "imageTint")
         forwardBtn.addTarget(self, action: #selector(rightScreen), for: .touchUpInside)
         let forwardButton = UIBarButtonItem(customView: forwardBtn)
         let forwardButtonWidth = forwardButton.customView?.widthAnchor.constraint(equalToConstant: 30)
@@ -154,9 +129,7 @@ class DashViewController: UIViewController, UIWebViewDelegate {
         let faultsImage = UIImage(named: "Alert")?.withRenderingMode(.alwaysTemplate)
         faultsBtn.setImage(faultsImage, for: .normal)
         faultsBtn.tintColor = UIColor.clear
-        if #available(iOS 11.0, *) {
-            faultsBtn.accessibilityIgnoresInvertColors = true
-        }
+        faultsBtn.accessibilityIgnoresInvertColors = true
         faultsBtn.addTarget(self, action: #selector(self.faultsButtonTapped), for: .touchUpInside)
         faultsButton = UIBarButtonItem(customView: faultsBtn)
         let faultsButtonWidth = faultsButton.customView?.widthAnchor.constraint(equalToConstant: 30)

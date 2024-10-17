@@ -197,28 +197,6 @@ class ContactsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if #available(iOS 13.0, *) {
-            
-        } else {
-            switch(UserDefaults.standard.integer(forKey: "darkmode_preference")){
-            case 0:
-                //OFF
-                Theme.default.apply()
-                self.navigationController?.isNavigationBarHidden = true
-                self.navigationController?.isNavigationBarHidden = false
-            case 1:
-                //On
-                Theme.dark.apply()
-                self.navigationController?.isNavigationBarHidden = true
-                self.navigationController?.isNavigationBarHidden = false
-            default:
-                //Default
-                Theme.default.apply()
-                self.navigationController?.isNavigationBarHidden = true
-                self.navigationController?.isNavigationBarHidden = false
-            }
-        }
-        
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))
         swipeRight.direction = .right
         self.view.addGestureRecognizer(swipeRight)
@@ -228,9 +206,7 @@ class ContactsTableViewController: UITableViewController {
         
         let backBtn = UIButton()
         backBtn.setImage(UIImage(named: "Left")?.withRenderingMode(.alwaysTemplate), for: .normal)
-        if #available(iOS 13.0, *) {
-            backBtn.tintColor = UIColor(named: "imageTint")
-        }
+        backBtn.tintColor = UIColor(named: "imageTint")
         backBtn.addTarget(self, action: #selector(leftScreen), for: .touchUpInside)
         backButton = UIBarButtonItem(customView: backBtn)
         let backButtonWidth = backButton.customView?.widthAnchor.constraint(equalToConstant: 30)
@@ -241,9 +217,7 @@ class ContactsTableViewController: UITableViewController {
         let faultsImage = UIImage(named: "Alert")?.withRenderingMode(.alwaysTemplate)
         faultsBtn.setImage(faultsImage, for: .normal)
         faultsBtn.tintColor = UIColor.clear
-        if #available(iOS 11.0, *) {
-            faultsBtn.accessibilityIgnoresInvertColors = true
-        }
+        faultsBtn.accessibilityIgnoresInvertColors = true
         faultsBtn.addTarget(self, action: #selector(self.faultsButtonTapped), for: .touchUpInside)
         faultsButton = UIBarButtonItem(customView: faultsBtn)
         let faultsButtonWidth = faultsButton.customView?.widthAnchor.constraint(equalToConstant: 30)
@@ -299,37 +273,9 @@ class ContactsTableViewController: UITableViewController {
         if (itemRow == indexPath.row){
             cell.highlightEffect()
         } else {
-            if #available(iOS 13.0, *) {
-                cell.removeHighlight(color: UIColor(named: "backgrounds")!)
-            } else {
-                switch(UserDefaults.standard.integer(forKey: "darkmode_preference")){
-                case 0:
-                    //OFF
-                    cell.removeHighlight(color: UIColor.white)
-                case 1:
-                    //On
-                    cell.removeHighlight(color: UIColor.black)
-                default:
-                    //Default
-                    cell.removeHighlight(color: UIColor.white)
-                }
-            }
+            cell.removeHighlight(color: UIColor(named: "backgrounds")!)
         }
-        if #available(iOS 13.0, *) {
-            cell.contactImage.tintColor = UIColor(named: "imageTint")
-        } else {
-            switch(UserDefaults.standard.integer(forKey: "darkmode_preference")){
-            case 0:
-                //OFF
-                cell.contactImage.tintColor = UIColor.black
-            case 1:
-                //On
-                cell.contactImage.tintColor = UIColor.white
-            default:
-                //Default
-                cell.contactImage.tintColor = UIColor.black
-            }
-        }
+        cell.contactImage.tintColor = UIColor(named: "imageTint")
         
         return cell
     }
@@ -367,11 +313,7 @@ extension String {
     func makeAColl() {
         if isValid(regex: .phone) {
             if let url = URL(string: "tel://\(self.onlyDigits())"), UIApplication.shared.canOpenURL(url) {
-                if #available(iOS 10, *) {
-                    UIApplication.shared.open(url)
-                } else {
-                    UIApplication.shared.openURL(url)
-                }
+                UIApplication.shared.open(url)
             }
         }
     }

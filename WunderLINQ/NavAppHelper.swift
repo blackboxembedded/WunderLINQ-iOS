@@ -257,11 +257,7 @@ extension NavAppHelper {
             supported = true
             if let googleMapsURL = URL(string: "\(navApp.urlScheme)?daddr=\(destLatitude),\(destLongitude)&directionsmode=driving&x-success=wunderlinq://?resume=true&x-source=WunderLINQ") {
                 if (UIApplication.shared.canOpenURL(googleMapsURL)) {
-                    if #available(iOS 10, *) {
-                        UIApplication.shared.open(googleMapsURL, options: [:], completionHandler: nil)
-                    } else {
-                        UIApplication.shared.openURL(googleMapsURL as URL)
-                    }
+                    UIApplication.shared.open(googleMapsURL, options: [:], completionHandler: nil)
                 }
             }
         case .scenic:
@@ -276,11 +272,7 @@ extension NavAppHelper {
             
             if let sygicURL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
                 if (UIApplication.shared.canOpenURL(sygicURL)) {
-                    if #available(iOS 10, *) {
-                        UIApplication.shared.open(sygicURL, options: [:], completionHandler: nil)
-                    } else {
-                        UIApplication.shared.openURL(sygicURL as URL)
-                    }
+                    UIApplication.shared.open(sygicURL, options: [:], completionHandler: nil)
                 }
             }
         case .waze:
@@ -288,11 +280,7 @@ extension NavAppHelper {
             supported = true
             if let wazeURL = URL(string: "\(navApp.urlScheme)?ll=\(destLatitude),\(destLongitude)&navigate=yes") {
                 if (UIApplication.shared.canOpenURL(wazeURL)) {
-                    if #available(iOS 10, *) {
-                        UIApplication.shared.open(wazeURL, options: [:], completionHandler: nil)
-                    } else {
-                        UIApplication.shared.openURL(wazeURL as URL)
-                    }
+                    UIApplication.shared.open(wazeURL, options: [:], completionHandler: nil)
                 }
             }
         case .mapsMe:
@@ -301,11 +289,7 @@ extension NavAppHelper {
             let urlString = "\(navApp.urlScheme)route?sll=\(currentLatitude),\(currentLongitude)&saddr=\(NSLocalizedString("trip_view_waypoint_start_label", comment: ""))&dll=\(destLatitude),\(destLongitude)&daddr=\(destLabel ?? ""))&type=vehicle&backurl=wunderlinq://"
             if let mapsMeURL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
                 if (UIApplication.shared.canOpenURL(mapsMeURL)) {
-                    if #available(iOS 10, *) {
-                        UIApplication.shared.open(mapsMeURL, options: [:], completionHandler: nil)
-                    } else {
-                        UIApplication.shared.openURL(mapsMeURL as URL)
-                    }
+                    UIApplication.shared.open(mapsMeURL, options: [:], completionHandler: nil)
                 }
             }
         case .osmAnd:
@@ -314,11 +298,7 @@ extension NavAppHelper {
             let urlString = "\(navApp.urlScheme)navigate?lat=\(destLatitude)&lon=\(destLongitude)&z=8&title=\(destLabel ?? "")"
             if let mapsMeURL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
                 if (UIApplication.shared.canOpenURL(mapsMeURL)) {
-                    if #available(iOS 10, *) {
-                        UIApplication.shared.open(mapsMeURL, options: [:], completionHandler: nil)
-                    } else {
-                        UIApplication.shared.openURL(mapsMeURL as URL)
-                    }
+                    UIApplication.shared.open(mapsMeURL, options: [:], completionHandler: nil)
                 }
             }
         case .hereWeGo:
@@ -327,11 +307,7 @@ extension NavAppHelper {
             let urlString = "\(navApp.urlScheme)mylocation/\(destLatitude),\(destLongitude),\(destLabel ?? "")?ref=WunderLINQ&m=d"
             if let hereURL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
                 if (UIApplication.shared.canOpenURL(hereURL)) {
-                    if #available(iOS 10, *) {
-                        UIApplication.shared.open(hereURL, options: [:], completionHandler: nil)
-                    } else {
-                        UIApplication.shared.openURL(hereURL as URL)
-                    }
+                    UIApplication.shared.open(hereURL, options: [:], completionHandler: nil)
                 }
             }
         case .tomTomGo:
@@ -340,11 +316,7 @@ extension NavAppHelper {
             let urlString = "\(navApp.urlScheme)x-callback-url/navigate?destination=\(destLatitude),\(destLongitude)"
             if let uRL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
                 if (UIApplication.shared.canOpenURL(uRL)) {
-                    if #available(iOS 10, *) {
-                        UIApplication.shared.open(uRL, options: [:], completionHandler: nil)
-                    } else {
-                        UIApplication.shared.openURL(uRL as URL)
-                    }
+                    UIApplication.shared.open(uRL, options: [:], completionHandler: nil)
                 }
             }
         case .inRoute:
@@ -407,11 +379,7 @@ extension NavAppHelper {
             let urlString = "\(navApp.urlScheme)route?sll=\(currentLatitude),\(currentLongitude)&saddr=\(NSLocalizedString("trip_view_waypoint_start_label", comment: ""))&dll=\(destLatitude),\(destLongitude)&daddr=\(destLabel ?? ""))&type=vehicle&backurl=wunderlinq://"
             if let mapsURL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
                 if (UIApplication.shared.canOpenURL(mapsURL)) {
-                    if #available(iOS 10, *) {
-                        UIApplication.shared.open(mapsURL, options: [:], completionHandler: nil)
-                    } else {
-                        UIApplication.shared.openURL(mapsURL as URL)
-                    }
+                    UIApplication.shared.open(mapsURL, options: [:], completionHandler: nil)
                 }
             }
         case .gurumaps:
@@ -420,11 +388,7 @@ extension NavAppHelper {
             let urlString = "\(navApp.urlScheme)nav?finish=\(destLatitude),\(destLongitude)&mode=motorcycle&start_navigation=true&back_url=wunderlinq://"
             if let mapsURL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
                 if (UIApplication.shared.canOpenURL(mapsURL)) {
-                    if #available(iOS 10, *) {
-                        UIApplication.shared.open(mapsURL, options: [:], completionHandler: nil)
-                    } else {
-                        UIApplication.shared.openURL(mapsURL as URL)
-                    }
+                    UIApplication.shared.open(mapsURL, options: [:], completionHandler: nil)
                 }
             }
         case .myrouteapp:
@@ -433,11 +397,7 @@ extension NavAppHelper {
             let urlString = "\(navApp.urlScheme)route?x-success=wunderlinq://&x-source=WunderLINQ&geo=\(destLatitude),\(destLongitude)"
             if let mapsURL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
                 if (UIApplication.shared.canOpenURL(mapsURL)) {
-                    if #available(iOS 10, *) {
-                        UIApplication.shared.open(mapsURL, options: [:], completionHandler: nil)
-                    } else {
-                        UIApplication.shared.openURL(mapsURL as URL)
-                    }
+                    UIApplication.shared.open(mapsURL, options: [:], completionHandler: nil)
                 }
             }
         case .calimoto:
@@ -452,11 +412,7 @@ extension NavAppHelper {
             print("URL: \(urlString)")
             if let mapsURL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
                 if (UIApplication.shared.canOpenURL(mapsURL)) {
-                    if #available(iOS 10, *) {
-                        UIApplication.shared.open(mapsURL, options: [:], completionHandler: nil)
-                    } else {
-                        UIApplication.shared.openURL(mapsURL as URL)
-                    }
+                    UIApplication.shared.open(mapsURL, options: [:], completionHandler: nil)
                 }
             }
         }
@@ -475,11 +431,7 @@ extension NavAppHelper {
             supported = true
             if let appleURL = URL(string: "http://maps.apple.com/?q=fuel+station&sll=\(currentLatitude),\(currentLongitude)&z=10&t=s") {
                 if (UIApplication.shared.canOpenURL(appleURL)) {
-                    if #available(iOS 10, *) {
-                        UIApplication.shared.open(appleURL, options: [:], completionHandler: nil)
-                    } else {
-                        UIApplication.shared.openURL(appleURL as URL)
-                    }
+                    UIApplication.shared.open(appleURL, options: [:], completionHandler: nil)
                 }
             }
         case .googleMaps:
@@ -488,11 +440,7 @@ extension NavAppHelper {
             let urlString = "\(navApp.urlScheme)?q=fuel+station&directionsmode=driving&x-success=wunderlinq://?resume=true&x-source=WunderLINQ"
             if let googleMapsURL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
                 if (UIApplication.shared.canOpenURL(googleMapsURL)) {
-                    if #available(iOS 10, *) {
-                        UIApplication.shared.open(googleMapsURL, options: [:], completionHandler: nil)
-                    } else {
-                        UIApplication.shared.openURL(googleMapsURL as URL)
-                    }
+                    UIApplication.shared.open(googleMapsURL, options: [:], completionHandler: nil)
                 }
             }
         case .scenic:
@@ -508,11 +456,7 @@ extension NavAppHelper {
             supported = true
             if let wazeURL = URL(string: "https://waze.com/ul?q=fuel&navigate=yes") {
                 if (UIApplication.shared.canOpenURL(wazeURL)) {
-                    if #available(iOS 10, *) {
-                        UIApplication.shared.open(wazeURL, options: [:], completionHandler: nil)
-                    } else {
-                        UIApplication.shared.openURL(wazeURL as URL)
-                    }
+                    UIApplication.shared.open(wazeURL, options: [:], completionHandler: nil)
                 }
             }
         case .mapsMe:
@@ -567,11 +511,7 @@ extension NavAppHelper {
             let urlString = "\(navApp.urlScheme)search?cll=\(currentLatitude),\(currentLongitude)&query=fuel station&backurl=wunderlinq://"
             if let mapsURL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
                 if (UIApplication.shared.canOpenURL(mapsURL)) {
-                    if #available(iOS 10, *) {
-                        UIApplication.shared.open(mapsURL, options: [:], completionHandler: nil)
-                    } else {
-                        UIApplication.shared.openURL(mapsURL as URL)
-                    }
+                    UIApplication.shared.open(mapsURL, options: [:], completionHandler: nil)
                 }
             }
         case .gurumaps:
@@ -580,11 +520,7 @@ extension NavAppHelper {
             let urlString = "\(navApp.urlScheme)search?q=fuel&coord=\(currentLatitude),\(currentLongitude)&mode=motorcycle&back_url=wunderlinq://"
             if let mapsURL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
                 if (UIApplication.shared.canOpenURL(mapsURL)) {
-                    if #available(iOS 10, *) {
-                        UIApplication.shared.open(mapsURL, options: [:], completionHandler: nil)
-                    } else {
-                        UIApplication.shared.openURL(mapsURL as URL)
-                    }
+                    UIApplication.shared.open(mapsURL, options: [:], completionHandler: nil)
                 }
             }
         case .myrouteapp:
@@ -629,11 +565,7 @@ extension NavAppHelper {
             let urlString = "\(navApp.urlScheme)?q=\(destLatitude),\(destLongitude)&x-success=wunderlinq://?resume=true&x-source=WunderLINQ"
             if let googleMapsURL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
                 if (UIApplication.shared.canOpenURL(googleMapsURL)) {
-                    if #available(iOS 10, *) {
-                        UIApplication.shared.open(googleMapsURL, options: [:], completionHandler: nil)
-                    } else {
-                        UIApplication.shared.openURL(googleMapsURL as URL)
-                    }
+                    UIApplication.shared.open(googleMapsURL, options: [:], completionHandler: nil)
                 }
             }
         case .scenic:
@@ -649,11 +581,7 @@ extension NavAppHelper {
             let urlString = "\(navApp.urlScheme)coordinate|\(destLongitude)|\(destLatitude)|show"
             if let sygicURL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
                 if (UIApplication.shared.canOpenURL(sygicURL)) {
-                    if #available(iOS 10, *) {
-                        UIApplication.shared.open(sygicURL, options: [:], completionHandler: nil)
-                    } else {
-                        UIApplication.shared.openURL(sygicURL as URL)
-                    }
+                    UIApplication.shared.open(sygicURL, options: [:], completionHandler: nil)
                 }
             }
         case .waze:
@@ -661,11 +589,7 @@ extension NavAppHelper {
             supported = true
             if let wazeURL = URL(string: "https://waze.com/ul?ll=\(destLatitude),\(destLongitude)&z=10") {
                 if (UIApplication.shared.canOpenURL(wazeURL)) {
-                    if #available(iOS 10, *) {
-                        UIApplication.shared.open(wazeURL, options: [:], completionHandler: nil)
-                    } else {
-                        UIApplication.shared.openURL(wazeURL as URL)
-                    }
+                    UIApplication.shared.open(wazeURL, options: [:], completionHandler: nil)
                 }
             }
         case .mapsMe:
@@ -674,11 +598,7 @@ extension NavAppHelper {
             let urlString = "\(navApp.urlScheme)map?ll=\(destLatitude),\(destLongitude)&n=\(destLabel ?? "")&backurl=wunderlinq://"
             if let mapsMeURL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
                 if (UIApplication.shared.canOpenURL(mapsMeURL)) {
-                    if #available(iOS 10, *) {
-                        UIApplication.shared.open(mapsMeURL, options: [:], completionHandler: nil)
-                    } else {
-                        UIApplication.shared.openURL(mapsMeURL as URL)
-                    }
+                    UIApplication.shared.open(mapsMeURL, options: [:], completionHandler: nil)
                 }
             }
         case .osmAnd:
@@ -687,11 +607,7 @@ extension NavAppHelper {
             let urlString = "\(navApp.urlScheme)lat=\(destLatitude)&lon=\(destLongitude)&z=8&title=\(destLabel ?? "")"
             if let mapsMeURL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
                 if (UIApplication.shared.canOpenURL(mapsMeURL)) {
-                    if #available(iOS 10, *) {
-                        UIApplication.shared.open(mapsMeURL, options: [:], completionHandler: nil)
-                    } else {
-                        UIApplication.shared.openURL(mapsMeURL as URL)
-                    }
+                    UIApplication.shared.open(mapsMeURL, options: [:], completionHandler: nil)
                 }
             }
         case .hereWeGo:
@@ -700,11 +616,7 @@ extension NavAppHelper {
             let urlString = "\(navApp.urlScheme)\(destLatitude),\(destLongitude),\(destLabel ?? "")?ref=WunderLINQ"
             if let hereURL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
                 if (UIApplication.shared.canOpenURL(hereURL)) {
-                    if #available(iOS 10, *) {
-                        UIApplication.shared.open(hereURL, options: [:], completionHandler: nil)
-                    } else {
-                        UIApplication.shared.openURL(hereURL as URL)
-                    }
+                    UIApplication.shared.open(hereURL, options: [:], completionHandler: nil)
                 }
             }
         case .tomTomGo:
@@ -713,11 +625,7 @@ extension NavAppHelper {
             let urlString = "\(navApp.urlScheme)x-callback-url/navigate?destination=\(destLatitude),\(destLongitude)"
             if let uRL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
                 if (UIApplication.shared.canOpenURL(uRL)) {
-                    if #available(iOS 10, *) {
-                        UIApplication.shared.open(uRL, options: [:], completionHandler: nil)
-                    } else {
-                        UIApplication.shared.openURL(uRL as URL)
-                    }
+                    UIApplication.shared.open(uRL, options: [:], completionHandler: nil)
                 }
             }
         case .inRoute:
@@ -726,11 +634,7 @@ extension NavAppHelper {
             let urlString = "\(navApp.urlScheme)view?geo=\(destLatitude),\(destLongitude)&back_url=wunderlinq://"
             if let uRL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
                 if (UIApplication.shared.canOpenURL(uRL)) {
-                    if #available(iOS 10, *) {
-                        UIApplication.shared.open(uRL, options: [:], completionHandler: nil)
-                    } else {
-                        UIApplication.shared.openURL(uRL as URL)
-                    }
+                    UIApplication.shared.open(uRL, options: [:], completionHandler: nil)
                 }
             }
         case .mapout:
@@ -778,11 +682,7 @@ extension NavAppHelper {
             let urlString = "\(navApp.urlScheme)map?ll=\(destLatitude),\(destLongitude)&n=\(destLabel ?? "")&backurl=wunderlinq://"
             if let mapsURL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
                 if (UIApplication.shared.canOpenURL(mapsURL)) {
-                    if #available(iOS 10, *) {
-                        UIApplication.shared.open(mapsURL, options: [:], completionHandler: nil)
-                    } else {
-                        UIApplication.shared.openURL(mapsURL as URL)
-                    }
+                    UIApplication.shared.open(mapsURL, options: [:], completionHandler: nil)
                 }
             }
         case .gurumaps:
@@ -791,11 +691,7 @@ extension NavAppHelper {
             let urlString = "\(navApp.urlScheme)show?place=\(destLatitude),\(destLongitude)&back_url=wunderlinq://"
             if let mapsURL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
                 if (UIApplication.shared.canOpenURL(mapsURL)) {
-                    if #available(iOS 10, *) {
-                        UIApplication.shared.open(mapsURL, options: [:], completionHandler: nil)
-                    } else {
-                        UIApplication.shared.openURL(mapsURL as URL)
-                    }
+                    UIApplication.shared.open(mapsURL, options: [:], completionHandler: nil)
                 }
             }
         case .myrouteapp:
@@ -804,11 +700,7 @@ extension NavAppHelper {
             let urlString = "\(navApp.urlScheme)view?x-success=wunderlinq://&x-source=WunderLINQ&geo=\(destLatitude),\(destLongitude)"
             if let mapsURL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
                 if (UIApplication.shared.canOpenURL(mapsURL)) {
-                    if #available(iOS 10, *) {
-                        UIApplication.shared.open(mapsURL, options: [:], completionHandler: nil)
-                    } else {
-                        UIApplication.shared.openURL(mapsURL as URL)
-                    }
+                    UIApplication.shared.open(mapsURL, options: [:], completionHandler: nil)
                 }
             }
         case .calimoto:
@@ -822,11 +714,7 @@ extension NavAppHelper {
             let urlString = "\(navApp.urlScheme)?point=\(destLatitude),\(destLongitude)&padr.0=\(destLabel ?? "")"
             if let mapsURL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
                 if (UIApplication.shared.canOpenURL(mapsURL)) {
-                    if #available(iOS 10, *) {
-                        UIApplication.shared.open(mapsURL, options: [:], completionHandler: nil)
-                    } else {
-                        UIApplication.shared.openURL(mapsURL as URL)
-                    }
+                    UIApplication.shared.open(mapsURL, options: [:], completionHandler: nil)
                 }
             }
         }

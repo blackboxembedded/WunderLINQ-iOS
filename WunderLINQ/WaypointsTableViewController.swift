@@ -48,9 +48,7 @@ class WaypointsTableViewController: UITableViewController {
         
         let backBtn = UIButton()
         backBtn.setImage(UIImage(named: "Left")?.withRenderingMode(.alwaysTemplate), for: .normal)
-        if #available(iOS 13.0, *) {
-            backBtn.tintColor = UIColor(named: "imageTint")
-        }
+        backBtn.tintColor = UIColor(named: "imageTint")
         backBtn.addTarget(self, action: #selector(leftScreen), for: .touchUpInside)
         let backButton = UIBarButtonItem(customView: backBtn)
         let backButtonWidth = backButton.customView?.widthAnchor.constraint(equalToConstant: 30)
@@ -60,9 +58,7 @@ class WaypointsTableViewController: UITableViewController {
         
         let addBtn = UIButton()
         addBtn.setImage(UIImage(named: "Plus")?.withRenderingMode(.alwaysTemplate), for: .normal)
-        if #available(iOS 13.0, *) {
-            addBtn.tintColor = UIColor(named: "imageTint")
-        }
+        addBtn.tintColor = UIColor(named: "imageTint")
         addBtn.addTarget(self, action: #selector(addScreen), for: .touchUpInside)
         let addButton = UIBarButtonItem(customView: addBtn)
         let addButtonWidth = addButton.customView?.widthAnchor.constraint(equalToConstant: 30)

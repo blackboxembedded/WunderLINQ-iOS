@@ -64,29 +64,9 @@ class WaypointsNavTableViewController: UITableViewController {
         firstRun = false
         if (itemRow == 0){
             let nextRow = waypoints.count - 1
-            if #available(iOS 13.0, *) {
-                self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.contentView.backgroundColor = UIColor(named: "backgrounds")!
-                self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.textLabel?.backgroundColor = UIColor(named: "backgrounds")!
-                self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.textLabel?.textColor = UIColor(named: "imageTint")!
-            } else {
-                switch(UserDefaults.standard.integer(forKey: "darkmode_preference")){
-                case 0:
-                    //OFF
-                    self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.contentView.backgroundColor = UIColor.white
-                    self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.textLabel?.backgroundColor = UIColor.white
-                    self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.textLabel?.textColor = UIColor.black
-                case 1:
-                    //On
-                    self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.contentView.backgroundColor = UIColor.black
-                    self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.textLabel?.backgroundColor = UIColor.black
-                    self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.textLabel?.textColor = UIColor.white
-                default:
-                    //Default
-                    self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.contentView.backgroundColor = UIColor.white
-                    self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.textLabel?.backgroundColor = UIColor.white
-                    self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.textLabel?.textColor = UIColor.black
-                }
-            }
+            self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.contentView.backgroundColor = UIColor(named: "backgrounds")!
+            self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.textLabel?.backgroundColor = UIColor(named: "backgrounds")!
+            self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.textLabel?.textColor = UIColor(named: "imageTint")!
             tableView.reloadData()
             self.tableView.cellForRow(at: IndexPath(row: nextRow, section: 0) as IndexPath)?.contentView.backgroundColor = highlightColor
             self.tableView.cellForRow(at: IndexPath(row: nextRow, section: 0) as IndexPath)?.textLabel?.backgroundColor = highlightColor
@@ -95,29 +75,9 @@ class WaypointsNavTableViewController: UITableViewController {
             itemRow = nextRow
         } else if (itemRow < waypoints.count ){
             let nextRow = itemRow - 1
-            if #available(iOS 13.0, *) {
-                self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.contentView.backgroundColor = UIColor(named: "backgrounds")!
-                self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.textLabel?.backgroundColor = UIColor(named: "backgrounds")!
-                self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.textLabel?.textColor = UIColor(named: "imageTint")!
-            } else {
-                switch(UserDefaults.standard.integer(forKey: "darkmode_preference")){
-                case 0:
-                    //OFF
-                    self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.contentView.backgroundColor = UIColor.white
-                    self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.textLabel?.backgroundColor = UIColor.white
-                    self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.textLabel?.textColor = UIColor.black
-                case 1:
-                    //On
-                    self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.contentView.backgroundColor = UIColor.black
-                    self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.textLabel?.backgroundColor = UIColor.black
-                    self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.textLabel?.textColor = UIColor.white
-                default:
-                    //Default
-                    self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.contentView.backgroundColor = UIColor.white
-                    self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.textLabel?.backgroundColor = UIColor.white
-                    self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.textLabel?.textColor = UIColor.black
-                }
-            }
+            self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.contentView.backgroundColor = UIColor(named: "backgrounds")!
+            self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.textLabel?.backgroundColor = UIColor(named: "backgrounds")!
+            self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.textLabel?.textColor = UIColor(named: "imageTint")!
             tableView.reloadData()
             self.tableView.cellForRow(at: IndexPath(row: nextRow, section: 0) as IndexPath)?.contentView.backgroundColor = highlightColor
             self.tableView.cellForRow(at: IndexPath(row: nextRow, section: 0) as IndexPath)?.textLabel?.backgroundColor = highlightColor
@@ -130,29 +90,9 @@ class WaypointsNavTableViewController: UITableViewController {
         SoundManager().playSoundEffect("directional")
         if firstRun{
             firstRun = false
-            if #available(iOS 13.0, *) {
-                self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.contentView.backgroundColor = UIColor(named: "backgrounds")!
-                self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.textLabel?.backgroundColor = UIColor(named: "backgrounds")!
-                self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.textLabel?.textColor = UIColor(named: "imageTint")!
-            } else {
-                switch(UserDefaults.standard.integer(forKey: "darkmode_preference")){
-                case 0:
-                    //OFF
-                    self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.contentView.backgroundColor = UIColor.white
-                    self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.textLabel?.backgroundColor = UIColor.white
-                    self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.textLabel?.textColor = UIColor.black
-                case 1:
-                    //On
-                    self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.contentView.backgroundColor = UIColor.black
-                    self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.textLabel?.backgroundColor = UIColor.black
-                    self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.textLabel?.textColor = UIColor.white
-                default:
-                    //Default
-                    self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.contentView.backgroundColor = UIColor.white
-                    self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.textLabel?.backgroundColor = UIColor.white
-                    self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.textLabel?.textColor = UIColor.black
-                }
-            }
+            self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.contentView.backgroundColor = UIColor(named: "backgrounds")!
+            self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.textLabel?.backgroundColor = UIColor(named: "backgrounds")!
+            self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.textLabel?.textColor = UIColor(named: "imageTint")!
             self.tableView.cellForRow(at: IndexPath(row: 0, section: 0) as IndexPath)?.contentView.backgroundColor = highlightColor
             self.tableView.cellForRow(at: IndexPath(row: 0, section: 0) as IndexPath)?.textLabel?.backgroundColor = highlightColor
             self.tableView.cellForRow(at: IndexPath(row: 0, section: 0) as IndexPath)?.textLabel?.textColor = UIColor.white
@@ -160,29 +100,9 @@ class WaypointsNavTableViewController: UITableViewController {
         } else {
             if (itemRow == (waypoints.count - 1)){
                 let nextRow = 0
-                if #available(iOS 13.0, *) {
-                    self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.contentView.backgroundColor = UIColor(named: "backgrounds")!
-                    self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.textLabel?.backgroundColor = UIColor(named: "backgrounds")!
-                    self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.textLabel?.textColor = UIColor(named: "imageTint")!
-                } else {
-                    switch(UserDefaults.standard.integer(forKey: "darkmode_preference")){
-                    case 0:
-                        //OFF
-                        self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.contentView.backgroundColor = UIColor.white
-                        self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.textLabel?.backgroundColor = UIColor.white
-                        self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.textLabel?.textColor = UIColor.black
-                    case 1:
-                        //On
-                        self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.contentView.backgroundColor = UIColor.black
-                        self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.textLabel?.backgroundColor = UIColor.black
-                        self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.textLabel?.textColor = UIColor.white
-                    default:
-                        //Default
-                        self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.contentView.backgroundColor = UIColor.white
-                        self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.textLabel?.backgroundColor = UIColor.white
-                        self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.textLabel?.textColor = UIColor.black
-                    }
-                }
+                self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.contentView.backgroundColor = UIColor(named: "backgrounds")!
+                self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.textLabel?.backgroundColor = UIColor(named: "backgrounds")!
+                self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.textLabel?.textColor = UIColor(named: "imageTint")!
                 tableView.reloadData()
                 self.tableView.cellForRow(at: IndexPath(row: nextRow, section: 0) as IndexPath)?.contentView.backgroundColor = highlightColor
                 self.tableView.cellForRow(at: IndexPath(row: nextRow, section: 0) as IndexPath)?.textLabel?.backgroundColor = highlightColor
@@ -191,29 +111,9 @@ class WaypointsNavTableViewController: UITableViewController {
                 itemRow = nextRow
             } else if (itemRow < waypoints.count ){
                 let nextRow = itemRow + 1
-                if #available(iOS 13.0, *) {
-                    self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.contentView.backgroundColor = UIColor(named: "backgrounds")!
-                    self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.textLabel?.backgroundColor = UIColor(named: "backgrounds")!
-                    self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.textLabel?.textColor = UIColor(named: "imageTint")!
-                } else {
-                    switch(UserDefaults.standard.integer(forKey: "darkmode_preference")){
-                    case 0:
-                        //OFF
-                        self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.contentView.backgroundColor = UIColor.white
-                        self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.textLabel?.backgroundColor = UIColor.white
-                        self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.textLabel?.textColor = UIColor.black
-                    case 1:
-                        //On
-                        self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.contentView.backgroundColor = UIColor.black
-                        self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.textLabel?.backgroundColor = UIColor.black
-                        self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.textLabel?.textColor = UIColor.white
-                    default:
-                        //Default
-                        self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.contentView.backgroundColor = UIColor.white
-                        self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.textLabel?.backgroundColor = UIColor.white
-                        self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.textLabel?.textColor = UIColor.black
-                    }
-                }
+                self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.contentView.backgroundColor = UIColor(named: "backgrounds")!
+                self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.textLabel?.backgroundColor = UIColor(named: "backgrounds")!
+                self.tableView.cellForRow(at: IndexPath(row: itemRow, section: 0) as IndexPath)?.textLabel?.textColor = UIColor(named: "imageTint")!
                 tableView.reloadData()
                 self.tableView.cellForRow(at: IndexPath(row: nextRow, section: 0) as IndexPath)?.contentView.backgroundColor = highlightColor
                 self.tableView.cellForRow(at: IndexPath(row: nextRow, section: 0) as IndexPath)?.textLabel?.backgroundColor = highlightColor
@@ -247,35 +147,17 @@ class WaypointsNavTableViewController: UITableViewController {
         switch(UserDefaults.standard.integer(forKey: "darkmode_preference")){
         case 0:
             //OFF
-            if #available(iOS 13.0, *) {
-                overrideUserInterfaceStyle = .light
-                self.navigationController?.isNavigationBarHidden = true
-                self.navigationController?.isNavigationBarHidden = false
-            } else {
-                Theme.default.apply()
-                self.navigationController?.isNavigationBarHidden = true
-                self.navigationController?.isNavigationBarHidden = false
-            }
+            overrideUserInterfaceStyle = .light
+            self.navigationController?.isNavigationBarHidden = true
+            self.navigationController?.isNavigationBarHidden = false
         case 1:
             //On
-            if #available(iOS 13.0, *) {
-                overrideUserInterfaceStyle = .dark
-                self.navigationController?.isNavigationBarHidden = true
-                self.navigationController?.isNavigationBarHidden = false
-            } else {
-                Theme.dark.apply()
-                self.navigationController?.isNavigationBarHidden = true
-                self.navigationController?.isNavigationBarHidden = false
-            }
+            overrideUserInterfaceStyle = .dark
+            self.navigationController?.isNavigationBarHidden = true
+            self.navigationController?.isNavigationBarHidden = false
         default:
             //Default
-            //Default
-            if #available(iOS 13.0, *) {
-            } else {
-                Theme.default.apply()
-                self.navigationController?.isNavigationBarHidden = true
-                self.navigationController?.isNavigationBarHidden = false
-            }
+            break
         }
 
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))
@@ -284,9 +166,7 @@ class WaypointsNavTableViewController: UITableViewController {
         
         let backBtn = UIButton()
         backBtn.setImage(UIImage(named: "Left")?.withRenderingMode(.alwaysTemplate), for: .normal)
-        if #available(iOS 13.0, *) {
-            backBtn.tintColor = UIColor(named: "imageTint")
-        }
+        backBtn.tintColor = UIColor(named: "imageTint")
         backBtn.addTarget(self, action: #selector(leftScreen), for: .touchUpInside)
         backButton = UIBarButtonItem(customView: backBtn)
         let backButtonWidth = backButton.customView?.widthAnchor.constraint(equalToConstant: 30)
@@ -297,9 +177,7 @@ class WaypointsNavTableViewController: UITableViewController {
         let faultsImage = UIImage(named: "Alert")?.withRenderingMode(.alwaysTemplate)
         faultsBtn.setImage(faultsImage, for: .normal)
         faultsBtn.tintColor = UIColor.clear
-        if #available(iOS 11.0, *) {
-            faultsBtn.accessibilityIgnoresInvertColors = true
-        }
+        faultsBtn.accessibilityIgnoresInvertColors = true
         faultsBtn.addTarget(self, action: #selector(self.faultsButtonTapped), for: .touchUpInside)
         faultsButton = UIBarButtonItem(customView: faultsBtn)
         let faultsButtonWidth = faultsButton.customView?.widthAnchor.constraint(equalToConstant: 30)
@@ -380,29 +258,9 @@ class WaypointsNavTableViewController: UITableViewController {
         
         cell.textLabel?.text = wpt
         // Configure the cell...
-        if #available(iOS 13.0, *) {
-            cell.contentView.backgroundColor = UIColor(named: "backgrounds")!
-            cell.textLabel?.backgroundColor = UIColor(named: "backgrounds")!
-            cell.textLabel?.textColor = UIColor(named: "imageTint")!
-        } else {
-            switch(UserDefaults.standard.integer(forKey: "darkmode_preference")){
-            case 0:
-                //OFF
-                cell.contentView.backgroundColor = UIColor.white
-                cell.backgroundColor = UIColor.white
-                cell.textLabel?.textColor = UIColor.black
-            case 1:
-                //On
-                cell.contentView.backgroundColor = UIColor.black
-                cell.textLabel?.backgroundColor = UIColor.black
-                cell.textLabel?.textColor = UIColor.white
-            default:
-                //Default
-                cell.contentView.backgroundColor = UIColor.white
-                cell.textLabel?.backgroundColor = UIColor.white
-                cell.textLabel?.textColor = UIColor.black
-            }
-        }
+        cell.contentView.backgroundColor = UIColor(named: "backgrounds")!
+        cell.textLabel?.backgroundColor = UIColor(named: "backgrounds")!
+        cell.textLabel?.textColor = UIColor(named: "imageTint")!
 
         return cell
     }

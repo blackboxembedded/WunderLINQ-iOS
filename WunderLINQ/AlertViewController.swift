@@ -98,28 +98,6 @@ class AlertViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if #available(iOS 13.0, *) {
-            
-        } else {
-            switch(UserDefaults.standard.integer(forKey: "darkmode_preference")){
-            case 0:
-                //OFF
-                Theme.default.apply()
-                self.navigationController?.isNavigationBarHidden = true
-                self.navigationController?.isNavigationBarHidden = false
-            case 1:
-                //On
-                Theme.dark.apply()
-                self.navigationController?.isNavigationBarHidden = true
-                self.navigationController?.isNavigationBarHidden = false
-            default:
-                //Default
-                Theme.default.apply()
-                self.navigationController?.isNavigationBarHidden = true
-                self.navigationController?.isNavigationBarHidden = false
-            }
-        }
-        
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))
         swipeRight.direction = .right
         self.view.addGestureRecognizer(swipeRight)

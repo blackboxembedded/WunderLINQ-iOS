@@ -64,9 +64,7 @@ class HWSettingsViewController: UIViewController, UITableViewDelegate, UITableVi
 
         let backBtn = UIButton()
         backBtn.setImage(UIImage(named: "Left")?.withRenderingMode(.alwaysTemplate), for: .normal)
-        if #available(iOS 13.0, *) {
-            backBtn.tintColor = UIColor(named: "imageTint")
-        }
+        backBtn.tintColor = UIColor(named: "imageTint")
         backBtn.addTarget(self, action: #selector(leftScreen), for: .touchUpInside)
         let backButton = UIBarButtonItem(customView: backBtn)
         let backButtonWidth = backButton.customView?.widthAnchor.constraint(equalToConstant: 30)
@@ -75,9 +73,7 @@ class HWSettingsViewController: UIViewController, UITableViewDelegate, UITableVi
         backButtonHeight?.isActive = true
         menuBtn = UIButton()
         menuBtn.setImage(UIImage(named: "Reset")?.withRenderingMode(.alwaysTemplate), for: .normal)
-        if #available(iOS 13.0, *) {
-            menuBtn.tintColor = UIColor(named: "imageTint")
-        }
+        menuBtn.tintColor = UIColor(named: "imageTint")
         menuBtn.addTarget(self, action: #selector(menuButtonTapped), for: .touchUpInside)
         let menuButton = UIBarButtonItem(customView: menuBtn)
         let menuButtonWidth = menuButton.customView?.widthAnchor.constraint(equalToConstant: 30)

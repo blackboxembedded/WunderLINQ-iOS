@@ -146,13 +146,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
 
     let locationManager: CLLocationManager = {
         $0.requestAlwaysAuthorization()
-        /*
-        if #available(iOS 14.0, *) {
-            $0.desiredAccuracy = kCLLocationAccuracyReduced
-        } else {
-            // Fallback on earlier versions
-            $0.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-        }*/
+        //$0.desiredAccuracy = kCLLocationAccuracyReduced
         //$0.desiredAccuracy = kCLLocationAccuracyBestForNavigation
         //$0.distanceFilter = 10
         //$0.activityType = .automotiveNavigation
@@ -217,27 +211,19 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             }
         default:
             //Default
-            if #available(iOS 13.0, *) {
-                if traitCollection.userInterfaceStyle == .light {
-                    //OFF
-                    if(self.navigationController?.isToolbarHidden ?? false){
-                        return .lightContent
-                    } else {
-                        return .darkContent
-                    }
-                } else {
-                    //On
-                    if(self.navigationController?.isToolbarHidden ?? false){
-                        return .darkContent
-                    } else {
-                        return .lightContent
-                    }
-                }
-            } else {
+            if traitCollection.userInterfaceStyle == .light {
+                //OFF
                 if(self.navigationController?.isToolbarHidden ?? false){
                     return .lightContent
                 } else {
-                    return .default
+                    return .darkContent
+                }
+            } else {
+                //On
+                if(self.navigationController?.isToolbarHidden ?? false){
+                    return .darkContent
+                } else {
+                    return .lightContent
                 }
             }
         }
@@ -288,35 +274,17 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         switch(UserDefaults.standard.integer(forKey: "darkmode_preference")){
         case 0:
             //OFF
-            if #available(iOS 13.0, *) {
-                overrideUserInterfaceStyle = .light
-                self.navigationController?.isNavigationBarHidden = true
-                self.navigationController?.isNavigationBarHidden = false
-            } else {
-                Theme.default.apply()
-                self.navigationController?.isNavigationBarHidden = true
-                self.navigationController?.isNavigationBarHidden = false
-            }
+            overrideUserInterfaceStyle = .light
+            self.navigationController?.isNavigationBarHidden = true
+            self.navigationController?.isNavigationBarHidden = false
         case 1:
             //On
-            if #available(iOS 13.0, *) {
-                overrideUserInterfaceStyle = .dark
-                self.navigationController?.isNavigationBarHidden = true
-                self.navigationController?.isNavigationBarHidden = false
-            } else {
-                Theme.dark.apply()
-                self.navigationController?.isNavigationBarHidden = true
-                self.navigationController?.isNavigationBarHidden = false
-            }
+            overrideUserInterfaceStyle = .dark
+            self.navigationController?.isNavigationBarHidden = true
+            self.navigationController?.isNavigationBarHidden = false
         default:
             //Default
-            //Default
-            if #available(iOS 13.0, *) {
-            } else {
-                Theme.default.apply()
-                self.navigationController?.isNavigationBarHidden = true
-                self.navigationController?.isNavigationBarHidden = false
-            }
+            break
         }
         
         if UserDefaults.standard.bool(forKey: "display_brightness_preference") {
@@ -353,9 +321,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         // Setup Buttons
         backBtn = UIButton()
         backBtn.setImage(UIImage(named: "Left")?.withRenderingMode(.alwaysTemplate), for: .normal)
-        if #available(iOS 13.0, *) {
-            backBtn.tintColor = UIColor(named: "imageTint")
-        }
+        backBtn.tintColor = UIColor(named: "imageTint")
         backBtn.addTarget(self, action: #selector(leftScreen), for: .touchUpInside)
         backButton = UIBarButtonItem(customView: backBtn)
         let backButtonWidth = backButton.customView?.widthAnchor.constraint(equalToConstant: 30)
@@ -367,9 +333,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         let disconnectImage = UIImage(named: "Bluetooth")?.withRenderingMode(.alwaysTemplate)
         disconnectBtn.setImage(disconnectImage, for: .normal)
         disconnectBtn.tintColor = UIColor.red
-        if #available(iOS 11.0, *) {
-            disconnectBtn.accessibilityIgnoresInvertColors = true
-        }
+        disconnectBtn.accessibilityIgnoresInvertColors = true
         disconnectBtn.addTarget(self, action: #selector(btButtonTapped), for: .touchUpInside)
         disconnectButton = UIBarButtonItem(customView: disconnectBtn)
         let disconnectButtonWidth = disconnectButton.customView?.widthAnchor.constraint(equalToConstant: 30)
@@ -381,9 +345,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         let faultsImage = UIImage(named: "Alert")?.withRenderingMode(.alwaysTemplate)
         faultsBtn.setImage(faultsImage, for: .normal)
         faultsBtn.tintColor = UIColor.clear
-        if #available(iOS 11.0, *) {
-            faultsBtn.accessibilityIgnoresInvertColors = true
-        }
+        faultsBtn.accessibilityIgnoresInvertColors = true
         faultsBtn.addTarget(self, action: #selector(self.faultsButtonTapped), for: .touchUpInside)
         faultsButton = UIBarButtonItem(customView: faultsBtn)
         let faultsButtonWidth = faultsButton.customView?.widthAnchor.constraint(equalToConstant: 30)
@@ -394,9 +356,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         
         menuBtn = UIButton()
         menuBtn.setImage(UIImage(named: "Menu")?.withRenderingMode(.alwaysTemplate), for: .normal)
-        if #available(iOS 13.0, *) {
-            menuBtn.tintColor = UIColor(named: "imageTint")
-        }
+        menuBtn.tintColor = UIColor(named: "imageTint")
         let menuButton = UIBarButtonItem(customView: menuBtn)
         let menuButtonWidth = menuButton.customView?.widthAnchor.constraint(equalToConstant: 30)
         menuButtonWidth?.isActive = true
@@ -405,9 +365,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         
         let forwardBtn = UIButton()
         forwardBtn.setImage(UIImage(named: "Right")?.withRenderingMode(.alwaysTemplate), for: .normal)
-        if #available(iOS 13.0, *) {
-            forwardBtn.tintColor = UIColor(named: "imageTint")
-        }
+        forwardBtn.tintColor = UIColor(named: "imageTint")
         forwardBtn.addTarget(self, action: #selector(rightScreen), for: .touchUpInside)
         let forwardButton = UIBarButtonItem(customView: forwardBtn)
         let forwardButtonWidth = forwardButton.customView?.widthAnchor.constraint(equalToConstant: 30)
@@ -513,11 +471,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                 UserDefaults.standard.set(15, forKey: "GRIDCOUNT")
             }
         }
-        if #available(iOS 11.0, *) {
-            collectionView?.contentInsetAdjustmentBehavior = .always
-        } else {
-            // Fallback on earlier versions
-        }
+        collectionView?.contentInsetAdjustmentBehavior = .always
         
         // Sensor Setup
         if motionManager.isDeviceMotionAvailable {
@@ -667,14 +621,8 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                         }
                 }
 
-                if #available(iOS 11.0, *) {
-                    widthMarginsAndInsets = inset * 2 + collectionView!.safeAreaInsets.left + collectionView!.safeAreaInsets.right + minimumInteritemSpacing * CGFloat(cellsPerRow - 1)
-                    heightMarginsAndInsets = inset * 2 + collectionView!.safeAreaInsets.top + collectionView!.safeAreaInsets.bottom + minimumInteritemSpacing * CGFloat(rowCount - 1)
-                } else {
-                    // Fallback on earlier versions
-                    widthMarginsAndInsets = inset * 2 + collectionView!.layoutMargins.left + collectionView!.layoutMargins.right + minimumInteritemSpacing * CGFloat(cellsPerRow - 1)
-                    heightMarginsAndInsets = inset * 2 + (collectionView?.layoutMargins.top)! + collectionView!.layoutMargins.bottom + minimumInteritemSpacing * CGFloat(rowCount - 1)
-                }
+                widthMarginsAndInsets = inset * 2 + collectionView!.safeAreaInsets.left + collectionView!.safeAreaInsets.right + minimumInteritemSpacing * CGFloat(cellsPerRow - 1)
+                heightMarginsAndInsets = inset * 2 + collectionView!.safeAreaInsets.top + collectionView!.safeAreaInsets.bottom + minimumInteritemSpacing * CGFloat(rowCount - 1)
 
                 if ( size.width > size.height){
                     switch (cellCount){
@@ -758,16 +706,8 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     {
         var height:CGFloat
         var width:CGFloat
-        var widthMarginsAndInsets:CGFloat
-        var heightMarginsAndInsets:CGFloat
-        if #available(iOS 11.0, *) {
-            widthMarginsAndInsets = inset * 2 + self.view.safeAreaInsets.left + self.view.safeAreaInsets.right + minimumInteritemSpacing * CGFloat(cellsPerRow - 1)
-            heightMarginsAndInsets = inset * 2 + self.view.safeAreaInsets.top + self.view.safeAreaInsets.bottom + minimumInteritemSpacing * CGFloat(rowCount - 1)
-        } else {
-            // Fallback on earlier versions
-            widthMarginsAndInsets = inset * 2 + collectionView.layoutMargins.left + collectionView.layoutMargins.right + minimumInteritemSpacing * CGFloat(cellsPerRow - 1)
-            heightMarginsAndInsets = inset * 2 + collectionView.layoutMargins.top + collectionView.layoutMargins.bottom + minimumInteritemSpacing * CGFloat(rowCount - 1)
-        }
+        var widthMarginsAndInsets:CGFloat = inset * 2 + self.view.safeAreaInsets.left + self.view.safeAreaInsets.right + minimumInteritemSpacing * CGFloat(cellsPerRow - 1)
+        var heightMarginsAndInsets:CGFloat = inset * 2 + self.view.safeAreaInsets.top + self.view.safeAreaInsets.bottom + minimumInteritemSpacing * CGFloat(rowCount - 1)
 
         var cellCount = UserDefaults.standard.integer(forKey: "GRIDCOUNT");
         if ( mainUIView.bounds.width > mainUIView.bounds.height){
@@ -861,28 +801,10 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! MainCollectionViewCell
-
-        if #available(iOS 13.0, *) {
-            //Nothing to do
-        } else {
-            switch(UserDefaults.standard.integer(forKey: "darkmode_preference")){
-            case 0:
-                //OFF
-                cell.setColors(backgroundColor: .white, textColor: .black)
-            case 1:
-                //On
-                cell.setColors(backgroundColor: .black, textColor: .white)
-            default:
-                //Default
-                cell.setColors(backgroundColor: .white, textColor: .black)
-            }
-        }
-
         let label = MotorcycleData.getLabel(dataPoint: getCellDataPoint(cell: indexPath.row + 1))
         cell.setLabel(label: label)
         let icon = MotorcycleData.getIcon(dataPoint: getCellDataPoint(cell: indexPath.row + 1))
         cell.setIcon(icon: icon)
-    
         return cell
     }
     

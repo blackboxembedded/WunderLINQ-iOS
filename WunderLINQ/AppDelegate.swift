@@ -76,32 +76,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         switch(UserDefaults.standard.integer(forKey: "darkmode_preference")){
         case 0:
             //OFF
-            if #available(iOS 13.0, *) {
-                window?.overrideUserInterfaceStyle = .light
-            } else {
-                Theme.default.apply()
-            }
+            window?.overrideUserInterfaceStyle = .light
         case 1:
             //On
-            if #available(iOS 13.0, *) {
-                window?.overrideUserInterfaceStyle = .dark
-            } else {
-                Theme.dark.apply()
-            }
+            window?.overrideUserInterfaceStyle = .dark
         default:
             //Default
-            if #available(iOS 13.0, *) {
-            } else {
-                Theme.default.apply()
-            }
+            break
          }
     
-        if #available(iOS 13, *) {
-            let appearance = UINavigationBarAppearance()
-            appearance.configureWithOpaqueBackground()
-            UINavigationBar.appearance().standardAppearance = appearance
-            UINavigationBar.appearance().scrollEdgeAppearance = appearance
-        }
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        UINavigationBar.appearance().standardAppearance = appearance
+        UINavigationBar.appearance().scrollEdgeAppearance = appearance
         
         //Hack to enable Virtual Keyboard
         let setHardwareLayout = NSSelectorFromString("setHardwareLayout:")

@@ -38,16 +38,9 @@ class ColumnFlowLayout: UICollectionViewFlowLayout {
         super.prepare()
         
         guard let collectionView = collectionView else { return }
-        if #available(iOS 11.0, *) {
-            let marginsAndInsets = sectionInset.left + sectionInset.right + collectionView.safeAreaInsets.left + collectionView.safeAreaInsets.right + minimumInteritemSpacing * CGFloat(cellsPerRow - 1)
-            let itemWidth = ((collectionView.bounds.size.width - marginsAndInsets) / CGFloat(cellsPerRow)).rounded(.down)
-            itemSize = CGSize(width: itemWidth, height: itemWidth)
-        } else {
-            // Fallback on earlier versions
-            let marginsAndInsets = sectionInset.left + sectionInset.right + collectionView.layoutMargins.left + collectionView.layoutMargins.right + minimumInteritemSpacing * CGFloat(cellsPerRow - 1)
-            let itemWidth = ((collectionView.bounds.size.width - marginsAndInsets) / CGFloat(cellsPerRow)).rounded(.down)
-            itemSize = CGSize(width: itemWidth, height: itemWidth)
-        }
+        let marginsAndInsets = sectionInset.left + sectionInset.right + collectionView.safeAreaInsets.left + collectionView.safeAreaInsets.right + minimumInteritemSpacing * CGFloat(cellsPerRow - 1)
+        let itemWidth = ((collectionView.bounds.size.width - marginsAndInsets) / CGFloat(cellsPerRow)).rounded(.down)
+        itemSize = CGSize(width: itemWidth, height: itemWidth)
     }
     
     override func invalidationContext(forBoundsChange newBounds: CGRect) -> UICollectionViewLayoutInvalidationContext {

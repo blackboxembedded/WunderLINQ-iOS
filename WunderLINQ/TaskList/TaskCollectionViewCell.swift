@@ -54,25 +54,7 @@ class TaskCollectionViewCell: UICollectionViewCell {
     
     func removeHighlight(){
         uiView.backgroundColor = UIColor.clear
-        
-        if #available(iOS 13.0, *) {
-            taskImage.tintColor = UIColor(named: "imageTint")
-            taskLabel.textColor = UIColor(named: "imageTint")
-        } else {
-            switch(UserDefaults.standard.integer(forKey: "darkmode_preference")){
-            case 0:
-                //OFF
-                taskImage.tintColor = UIColor.black
-                taskLabel.textColor = UIColor.black
-            case 1:
-                //On
-                taskImage.tintColor = UIColor.white
-                taskLabel.textColor = UIColor.white
-            default:
-                //Default
-                taskImage.tintColor = UIColor.black
-                taskLabel.textColor = UIColor.black
-            }
-        }
+        taskImage.tintColor = UIColor(named: "imageTint")
+        taskLabel.textColor = UIColor(named: "imageTint")
     }
 }

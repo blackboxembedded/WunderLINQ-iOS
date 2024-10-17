@@ -263,11 +263,7 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
                 if phoneNumber != "" {
                     if let phoneCallURL = URL(string: "telprompt:\(phoneNumber)") {
                         if (UIApplication.shared.canOpenURL(phoneCallURL)) {
-                            if #available(iOS 10, *) {
-                                UIApplication.shared.open(phoneCallURL, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
-                            } else {
-                                UIApplication.shared.openURL(phoneCallURL as URL)
-                            }
+                            UIApplication.shared.open(phoneCallURL, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
                         }
                     }
                 } else {
@@ -341,11 +337,7 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
             let wlqGoProURL = "wunderlinqgp://"
             if let uRL = URL(string: wlqGoProURL.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
                 if (UIApplication.shared.canOpenURL(uRL)) {
-                    if #available(iOS 10, *) {
-                        UIApplication.shared.open(uRL, options: [:], completionHandler: nil)
-                    } else {
-                        UIApplication.shared.openURL(uRL as URL)
-                    }
+                    UIApplication.shared.open(uRL, options: [:], completionHandler: nil)
                 } else {
                     let alert = UIAlertController(title: NSLocalizedString("nogpremote_alert_title", comment: ""), message: NSLocalizedString("nogpremote_alert_body", comment: ""), preferredStyle: UIAlertController.Style.alert)
                     alert.addAction(UIAlertAction(title: NSLocalizedString("alert_message_exit_ok", comment: ""), style: UIAlertAction.Style.default, handler: { action in
@@ -387,11 +379,7 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
             let wlqInsta360URL = "wunderlinqi360://"
             if let uRL = URL(string: wlqInsta360URL.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
                 if (UIApplication.shared.canOpenURL(uRL)) {
-                    if #available(iOS 10, *) {
-                        UIApplication.shared.open(uRL, options: [:], completionHandler: nil)
-                    } else {
-                        UIApplication.shared.openURL(uRL as URL)
-                    }
+                    UIApplication.shared.open(uRL, options: [:], completionHandler: nil)
                 } else {
                     let alert = UIAlertController(title: NSLocalizedString("no360remote_alert_title", comment: ""), message: NSLocalizedString("no360remote_alert_body", comment: ""), preferredStyle: UIAlertController.Style.alert)
                     alert.addAction(UIAlertAction(title: NSLocalizedString("alert_message_exit_ok", comment: ""), style: UIAlertAction.Style.default, handler: { action in
@@ -553,41 +541,22 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
         switch(UserDefaults.standard.integer(forKey: "darkmode_preference")){
         case 0:
             //OFF
-            if #available(iOS 13.0, *) {
-                overrideUserInterfaceStyle = .light
-                self.navigationController?.isNavigationBarHidden = true
-                self.navigationController?.isNavigationBarHidden = false
-            } else {
-                Theme.default.apply()
-                self.navigationController?.isNavigationBarHidden = true
-                self.navigationController?.isNavigationBarHidden = false
-            }
+            overrideUserInterfaceStyle = .light
+            self.navigationController?.isNavigationBarHidden = true
+            self.navigationController?.isNavigationBarHidden = false
         case 1:
             //On
-            if #available(iOS 13.0, *) {
-                overrideUserInterfaceStyle = .dark
-                self.navigationController?.isNavigationBarHidden = true
-                self.navigationController?.isNavigationBarHidden = false
-            } else {
-                Theme.dark.apply()
-                self.navigationController?.isNavigationBarHidden = true
-                self.navigationController?.isNavigationBarHidden = false
-            }
+            overrideUserInterfaceStyle = .dark
+            self.navigationController?.isNavigationBarHidden = true
+            self.navigationController?.isNavigationBarHidden = false
         default:
             //Default
-            if #available(iOS 13.0, *) {
-            } else {
-                Theme.default.apply()
-                self.navigationController?.isNavigationBarHidden = true
-                self.navigationController?.isNavigationBarHidden = false
-            }
+            break
         }
         
         let backBtn = UIButton()
         backBtn.setImage(UIImage(named: "Left")?.withRenderingMode(.alwaysTemplate), for: .normal)
-        if #available(iOS 13.0, *) {
-            backBtn.tintColor = UIColor(named: "imageTint")
-        }
+        backBtn.tintColor = UIColor(named: "imageTint")
         backBtn.addTarget(self, action: #selector(leftScreen), for: .touchUpInside)
         let backButton = UIBarButtonItem(customView: backBtn)
         let backButtonWidth = backButton.customView?.widthAnchor.constraint(equalToConstant: 30)
@@ -597,9 +566,7 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
         
         let forwardBtn = UIButton()
         forwardBtn.setImage(UIImage(named: "Right")?.withRenderingMode(.alwaysTemplate), for: .normal)
-        if #available(iOS 13.0, *) {
-            forwardBtn.tintColor = UIColor(named: "imageTint")
-        }
+        forwardBtn.tintColor = UIColor(named: "imageTint")
         forwardBtn.addTarget(self, action: #selector(rightScreen), for: .touchUpInside)
         let forwardButton = UIBarButtonItem(customView: forwardBtn)
         let forwardButtonWidth = forwardButton.customView?.widthAnchor.constraint(equalToConstant: 30)
@@ -610,9 +577,7 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
         let faultsImage = UIImage(named: "Alert")?.withRenderingMode(.alwaysTemplate)
         faultsBtn.setImage(faultsImage, for: .normal)
         faultsBtn.tintColor = UIColor.clear
-        if #available(iOS 11.0, *) {
-            faultsBtn.accessibilityIgnoresInvertColors = true
-        }
+        faultsBtn.accessibilityIgnoresInvertColors = true
         faultsBtn.addTarget(self, action: #selector(self.faultsButtonTapped), for: .touchUpInside)
         faultsButton = UIBarButtonItem(customView: faultsBtn)
         let faultsButtonWidth = faultsButton.customView?.widthAnchor.constraint(equalToConstant: 30)
@@ -694,14 +659,10 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
             return .lightContent
         default:
             //Default
-            if #available(iOS 13.0, *) {
-                if traitCollection.userInterfaceStyle == .light {
-                    return .darkContent
-                } else {
-                    return .lightContent
-                }
+            if traitCollection.userInterfaceStyle == .light {
+                return .darkContent
             } else {
-                return .default
+                return .lightContent
             }
         }
     }

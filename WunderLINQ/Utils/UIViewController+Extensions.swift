@@ -24,25 +24,8 @@ extension UIViewController {
         let toastLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width - 20, height: 70))
         toastLabel.center = self.view.center
         toastLabel.numberOfLines = 0
-        if #available(iOS 13.0, *) {
-            toastLabel.backgroundColor = UIColor(named: "imageTint")
-            toastLabel.textColor = UIColor(named: "backgrounds")
-        } else {
-            switch(UserDefaults.standard.integer(forKey: "darkmode_preference")){
-            case 0:
-                //OFF
-                toastLabel.backgroundColor = UIColor.black
-                toastLabel.textColor = UIColor.white
-            case 1:
-                //On
-                toastLabel.backgroundColor = UIColor.white
-                toastLabel.textColor = UIColor.black
-            default:
-                //Default
-                toastLabel.backgroundColor = UIColor.black
-                toastLabel.textColor = UIColor.white
-            }
-        }
+        toastLabel.backgroundColor = UIColor(named: "imageTint")
+        toastLabel.textColor = UIColor(named: "backgrounds")
         toastLabel.textAlignment = .center;
         toastLabel.font = UIFont.boldSystemFont(ofSize: 20)
         toastLabel.text = message

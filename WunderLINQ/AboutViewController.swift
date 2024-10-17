@@ -32,24 +32,14 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
         guard let url = URL(string: "https://www.blackboxembedded.com") else {
             return //be safe
         }
-        
-        if #available(iOS 10.0, *) {
-            UIApplication.shared.open(url, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
-        } else {
-            UIApplication.shared.openURL(url)
-        }
+        UIApplication.shared.open(url, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
     }
     
     @IBAction func documentationBtnPressed(_ sender: Any) {
         guard let url = URL(string: "https://blackboxembedded.github.io/WunderLINQ-Documentation/") else {
             return //be safe
         }
-        
-        if #available(iOS 10.0, *) {
-            UIApplication.shared.open(url, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
-        } else {
-            UIApplication.shared.openURL(url)
-        }
+        UIApplication.shared.open(url, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
     }
     
     @IBAction func sendLogsBtnPressed(_ sender: Any) {
@@ -91,13 +81,10 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
     }
     
     @objc func logoTap() {
-        let url = URL(string: "http://www.wunderlinq.com")!
-
-        if #available(iOS 10.0, *) {
-            UIApplication.shared.open(url, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
-        } else {
-            UIApplication.shared.openURL(url)
+        guard let url = URL(string: "http://www.wunderlinq.com") else {
+            return //be safe
         }
+        UIApplication.shared.open(url, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
     }
     
     @objc func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
@@ -116,9 +103,7 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
         
         let backBtn = UIButton()
         backBtn.setImage(UIImage(named: "Left")?.withRenderingMode(.alwaysTemplate), for: .normal)
-        if #available(iOS 13.0, *) {
-            backBtn.tintColor = UIColor(named: "imageTint")
-        }
+        backBtn.tintColor = UIColor(named: "imageTint")
         backBtn.addTarget(self, action: #selector(leftScreen), for: .touchUpInside)
         let backButton = UIBarButtonItem(customView: backBtn)
         let backButtonWidth = backButton.customView?.widthAnchor.constraint(equalToConstant: 30)

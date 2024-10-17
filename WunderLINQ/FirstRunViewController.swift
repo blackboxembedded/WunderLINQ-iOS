@@ -166,17 +166,12 @@ class FirstRunViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
                 if (settings.authorizationStatus == .authorized){
                     NSLog("FirstRunViewController: Allowed to use Notifications")
                 } else {
-                    if #available(iOS 10.0, *) {
-                        let center  = UNUserNotificationCenter.current()
-
-                        center.requestAuthorization(options: [.sound, .alert, .badge]) { (granted, error) in
-                            if error == nil{
-                                NSLog("FirstRunViewController: Allowed to use Notifications")
-                            }
+                    let center  = UNUserNotificationCenter.current()
+                    center.requestAuthorization(options: [.sound, .alert, .badge]) { (granted, error) in
+                        if error == nil{
+                            NSLog("FirstRunViewController: Allowed to use Notifications")
                         }
-
                     }
-                    NSLog("FirstRunViewController: Not Allowed to use Notifications")
                 }
             }
             step = step + 1
