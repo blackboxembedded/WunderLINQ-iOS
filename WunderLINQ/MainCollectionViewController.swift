@@ -66,7 +66,6 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     var keepScanning = false
     
     var lastMessage = [UInt8]()
-    
 
     var wlqData: WLQ!
     let bleData = BLE.shared
@@ -93,6 +92,9 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     var navBarTimer = Timer()
     var timeTimer = Timer()
     var sensorUpdateTimer = Timer()
+    var countdownTimer: Timer?
+    var remainingSeconds = 10 // Countdown duration
+    var okAction: UIAlertAction?
     
     let inset: CGFloat = 5
     let minimumLineSpacing: CGFloat = 5
@@ -379,40 +381,6 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         
         _ = menu /// Create the menu.
         
-        let dateFormat = "yyyyMMdd"
-        var dateFormatter: DateFormatter {
-            let formatter = DateFormatter()
-            formatter.dateFormat = dateFormat
-            formatter.locale = Locale(identifier: "en_US")
-            formatter.timeZone = TimeZone.current
-            return formatter
-        }
-        let today = dateFormatter.string(from: Date())
-        let launchedLast = UserDefaults.standard.string(forKey: "launchedLast")
-        if launchedLast != nil {
-            if (launchedLast!.contains(today)) {
-            } else {
-                let alert = UIAlertController(title: NSLocalizedString("disclaimer_alert_title", comment: ""), message: NSLocalizedString("disclaimer_alert_body", comment: ""), preferredStyle: UIAlertController.Style.alert)
-                alert.addAction(UIAlertAction(title: NSLocalizedString("disclaimer_ok", comment: ""), style: UIAlertAction.Style.default, handler: { action in
-                    UserDefaults.standard.set(today, forKey: "launchedLast")
-                }))
-                alert.addAction(UIAlertAction(title: NSLocalizedString("disclaimer_quit", comment: ""), style: UIAlertAction.Style.cancel, handler: { action in
-                    // quit app
-                    exit(0)
-                }))
-                self.present(alert, animated: true, completion: nil)
-            }
-        } else {
-            let alert = UIAlertController(title: NSLocalizedString("disclaimer_alert_title", comment: ""), message: NSLocalizedString("disclaimer_alert_body", comment: ""), preferredStyle: UIAlertController.Style.alert)
-            alert.addAction(UIAlertAction(title: NSLocalizedString("disclaimer_ok", comment: ""), style: UIAlertAction.Style.default, handler: { action in
-                UserDefaults.standard.set(today, forKey: "launchedLast")
-            }))
-            alert.addAction(UIAlertAction(title: NSLocalizedString("disclaimer_quit", comment: ""), style: UIAlertAction.Style.cancel, handler: { action in
-                // quit app
-                exit(0)
-            }))
-            self.present(alert, animated: true, completion: nil)
-        }
         let cellCount = UserDefaults.standard.integer(forKey: "GRIDCOUNT")
         if ( self.view.bounds.width > self.view.bounds.height){
             switch (cellCount){
@@ -533,6 +501,8 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         
         // Scheduling timer to Call the function "updateTime" with the interval of 1 seconds
         timeTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.updateTime), userInfo: nil, repeats: true)
+        
+        showDisclaimerAlert()
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -1995,6 +1965,84 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     func openAbout(){
         //About
         performSegue(withIdentifier: "motorcycleToAbout", sender: self)
+    }
+    
+    func showDisclaimerAlert() {
+        let dateFormat = "yyyyMMdd"
+        let dateFormatter: DateFormatter = {
+            let formatter = DateFormatter()
+            formatter.dateFormat = dateFormat
+            formatter.locale = Locale(identifier: "en_US")
+            formatter.timeZone = TimeZone.current
+            return formatter
+        }()
+
+        let today = dateFormatter.string(from: Date())
+        let launchedLast = UserDefaults.standard.string(forKey: "launchedLast")
+
+        if launchedLast?.contains(today) == true {
+            // Already launched today, no alert needed
+            return
+        }
+
+        // Create the alert controller
+        let alert = UIAlertController(
+            title: NSLocalizedString("disclaimer_alert_title", comment: ""),
+            message: NSLocalizedString("disclaimer_alert_body", comment: ""),
+            preferredStyle: .alert
+        )
+
+        // OK action with a placeholder title that will be updated
+        okAction = UIAlertAction(
+            title: "\(NSLocalizedString("disclaimer_ok", comment: "")) (\(remainingSeconds))",
+            style: .default,
+            handler: { action in
+                UserDefaults.standard.set(today, forKey: "launchedLast")
+                self.invalidateTimer()
+            }
+        )
+
+        // Add the actions to the alert
+        if let okAction = okAction {
+            alert.addAction(okAction)
+        }
+        alert.addAction(UIAlertAction(
+            title: NSLocalizedString("disclaimer_quit", comment: ""),
+            style: .cancel,
+            handler: { action in
+                self.invalidateTimer()
+                exit(0)
+            }
+        ))
+
+        // Present the alert and start the countdown
+        self.present(alert, animated: true) {
+            self.startCountdown()
+        }
+    }
+
+    func startCountdown() {
+        // Schedule the timer to fire every 1 second
+        countdownTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] timer in
+            guard let self = self else { return }
+
+            if self.remainingSeconds > 0 {
+                self.remainingSeconds -= 1
+                // Update the OK button's title with the remaining time
+                self.okAction?.setValue("\(NSLocalizedString("disclaimer_ok", comment: "")) (\(self.remainingSeconds))", forKey: "title")
+            } else {
+                // Dismiss the alert and stop the timer when time is up
+                self.dismiss(animated: true) {
+                    self.invalidateTimer()
+                    self.navigationController?.popViewController(animated: true)
+                }
+            }
+        }
+    }
+
+    func invalidateTimer() {
+        countdownTimer?.invalidate()
+        countdownTimer = nil
     }
 
 }
