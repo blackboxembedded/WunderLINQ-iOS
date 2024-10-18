@@ -118,6 +118,8 @@
 		D880B6022C6BFED900B4252B /* wav in Resources */ = {isa = PBXBuildFile; fileRef = D880B6012C6BFED900B4252B /* wav */; };
 		D88FC37B2CA4EF6D00F18A7E /* SpotifyiOS.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = D88FC37A2CA4EF6D00F18A7E /* SpotifyiOS.xcframework */; };
 		D88FC37C2CA4EF6D00F18A7E /* SpotifyiOS.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D88FC37A2CA4EF6D00F18A7E /* SpotifyiOS.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D8FA72F92CC1B65300C41674 /* sport-dashboard-portrait.svg in Resources */ = {isa = PBXBuildFile; fileRef = D8FA72F82CC1B65300C41674 /* sport-dashboard-portrait.svg */; };
+		D8FA72FA2CC1B65300C41674 /* adv-dashboard-portrait.svg in Resources */ = {isa = PBXBuildFile; fileRef = D8FA72F72CC1B65300C41674 /* adv-dashboard-portrait.svg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -299,6 +301,8 @@
 		D87629112A7EDEB90021E7A7 /* standard-dashboard-portrait.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "standard-dashboard-portrait.svg"; sourceTree = "<group>"; };
 		D880B6012C6BFED900B4252B /* wav */ = {isa = PBXFileReference; lastKnownFileType = folder; path = wav; sourceTree = "<group>"; };
 		D88FC37A2CA4EF6D00F18A7E /* SpotifyiOS.xcframework */ = {isa = PBXFileReference; expectedSignature = "AppleDeveloperProgram:2FNC3A47ZF:Spotify"; lastKnownFileType = wrapper.xcframework; name = SpotifyiOS.xcframework; path = "../ios-sdk-2.1.7/SpotifyiOS.xcframework"; sourceTree = "<group>"; };
+		D8FA72F72CC1B65300C41674 /* adv-dashboard-portrait.svg */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "adv-dashboard-portrait.svg"; sourceTree = "<group>"; };
+		D8FA72F82CC1B65300C41674 /* sport-dashboard-portrait.svg */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "sport-dashboard-portrait.svg"; sourceTree = "<group>"; };
 		DA150AA674E4880933A5281B /* Pods_WunderLINQ.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WunderLINQ.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -513,6 +517,8 @@
 		7EB5EDE9252169B800B61160 /* svg */ = {
 			isa = PBXGroup;
 			children = (
+				D8FA72F72CC1B65300C41674 /* adv-dashboard-portrait.svg */,
+				D8FA72F82CC1B65300C41674 /* sport-dashboard-portrait.svg */,
 				D87629112A7EDEB90021E7A7 /* standard-dashboard-portrait.svg */,
 				7E8AD3DC26141E150089F590 /* adv-dashboard.svg */,
 				7E755C10260A787100B29507 /* sport-dashboard.svg */,
@@ -721,6 +727,8 @@
 				D87629122A7EDEB90021E7A7 /* standard-dashboard-portrait.svg in Resources */,
 				7EA478581F40B154000CEDDC /* LaunchScreen.storyboard in Resources */,
 				7EA478551F40B154000CEDDC /* Assets.xcassets in Resources */,
+				D8FA72F92CC1B65300C41674 /* sport-dashboard-portrait.svg in Resources */,
+				D8FA72FA2CC1B65300C41674 /* adv-dashboard-portrait.svg in Resources */,
 				D81CBFAE2C8119580029C5AB /* Entitlements.plist in Resources */,
 				7EB5EDE4252136F800B61160 /* Main.storyboard in Resources */,
 				7ED2013620D0D0030066BCE6 /* Default-568h@2x.png in Resources */,
