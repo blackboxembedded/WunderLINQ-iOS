@@ -23,80 +23,28 @@ import Photos
 import UIKit
 import GoogleMaps
 import UserNotifications
+import os.log
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate, SPTAppRemoteDelegate {
-
-    private let spotifyRedirectUri = URL(string:"wunderlinq://music")!
-    private let spotifyClientIdentifier = Secrets.spotify_app_id
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
     
-    static private let kAccessTokenKey = "access-token-key"
-
-    var spotifyAccessToken = UserDefaults.standard.string(forKey: kAccessTokenKey) {
-        didSet {
-            let defaults = UserDefaults.standard
-            defaults.set(spotifyAccessToken, forKey: AppDelegate.kAccessTokenKey)
-            defaults.synchronize()
-        }
-    }
-    
-    var musicViewController: MusicViewController {
-        get {
-            let controller = UIStoryboard.main.instantiateViewController(withIdentifier: "MusicViewController") as! MusicViewController
-            return controller
-        }
-    }
-    
-    lazy var spotifyAppRemote: SPTAppRemote = {
-        let configuration = SPTConfiguration(clientID: self.spotifyClientIdentifier, redirectURL: self.spotifyRedirectUri)
-        let appRemote = SPTAppRemote(configuration: configuration, logLevel: .debug)
-        appRemote.connectionParameters.accessToken = self.spotifyAccessToken
-        appRemote.delegate = self
-        return appRemote
-    }()
+    var orientationLock = UIInterfaceOrientationMask.all
     
     class var sharedInstance: AppDelegate {
         get {
             return UIApplication.shared.delegate as! AppDelegate
         }
     }
-    
-    var window: UIWindow?
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) ->
-    Bool {
-        //Read and populate defaults
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        os_log("AppDelegate: didFinishLaunchingWithOptions")
         registerDefaultsFromSettingsBundle()
-        
-        // Keep screen unlocked
         application.isIdleTimerDisabled = true
         GMSServices.provideAPIKey(Secrets.google_maps_api_key)
-        
-        // Customize Application Look
-        switch(UserDefaults.standard.integer(forKey: "darkmode_preference")){
-        case 0:
-            //OFF
-            window?.overrideUserInterfaceStyle = .light
-        case 1:
-            //On
-            window?.overrideUserInterfaceStyle = .dark
-        default:
-            //Default
-            break
-         }
-    
-        let appearance = UINavigationBarAppearance()
-        appearance.configureWithOpaqueBackground()
-        UINavigationBar.appearance().standardAppearance = appearance
-        UINavigationBar.appearance().scrollEdgeAppearance = appearance
-        
-        //Hack to enable Virtual Keyboard
-        let setHardwareLayout = NSSelectorFromString("setHardwareLayout:")
-        UITextInputMode.activeInputModes
-        // Filter `UIKeyboardInputMode`s.
-        .filter({ $0.responds(to: setHardwareLayout) })
-        .forEach { $0.perform(setHardwareLayout, with: nil) }
-    
+
+        // Customize UI
+        configureAppearance()
+        configureKeyboardHack()
         //Lock app orientation
         switch(UserDefaults.standard.integer(forKey: "orientation_preference")){
         case 0:
@@ -108,105 +56,58 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         default:
             AppUtility.lockOrientation(.all)
         }
-        
-        // Get and store system brightness so we can reset.
-        UserDefaults.standard.set(UIScreen.main.brightness, forKey: "systemBrightness")
-        
-        // Create and write to log file
-        if UserDefaults.standard.bool(forKey: "debug_logging_preference") {
-            let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
-            let documentsDirectory = paths[0]
-            let fileName = "wunderlinq.log"
-            let logFilePath = (documentsDirectory as NSString).appendingPathComponent(fileName)
-            
-            let fileManager = FileManager.default
-            
-            do {
-                let attributes = try fileManager.attributesOfItem(atPath: logFilePath)
-                let fileSize = attributes[FileAttributeKey.size] as! UInt64
-                
-                if fileSize > 20 * 1024 * 1024 {
-                    try fileManager.removeItem(atPath: logFilePath)
-                    NSLog("AppDelegate: File deleted successfully")
-                } else {
-                    NSLog("AppDelegate: File is not over 20MB")
-                }
-            } catch {
-                NSLog("AppDelegate: Error: \(error)")
-            }
-            freopen(logFilePath.cString(using: String.Encoding.ascii)!, "a+", stderr)
-        }
-        
-        if !UserDefaults.standard.bool(forKey: "firstRun") {
 
-             let storyboard = UIStoryboard.main
-             let viewController = storyboard.instantiateViewController(withIdentifier: "firstRunVC")
-             self.window?.rootViewController = viewController
-             self.window?.makeKeyAndVisible()
-        }
+        // Setup system brightness
+        UserDefaults.standard.set(UIScreen.main.brightness, forKey: "systemBrightness")
+
+        // Setup logging if enabled
+        setupDebugLogging()
 
         return true
     }
-    
-    // set orientations you want to be allowed in this property by default
-    var orientationLock = UIInterfaceOrientationMask.all
-    
+
     func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
-        return self.orientationLock
+        return orientationLock
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
-        // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-        // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
-        NSLog("AppDelegate: applicationWillResignActive")
-        if UserDefaults.standard.bool(forKey: "firstRun") {
-            musicViewController.spotifyAppRemoteDisconnect()
-            spotifyAppRemote.disconnect()
-        }
+        os_log("AppDelegate: applicationWillResignActive")
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
-        // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-        if UserDefaults.standard.bool(forKey: "firstRun") {
-            NSLog("AppDelegate: starting spotifyConnect()")
-            self.spotifyConnect();
-        }
+        os_log("AppDelegate: applicationDidBecomeActive")
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
-        // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+        os_log("AppDelegate: applicationWillTerminate")
         UIScreen.main.brightness = CGFloat(UserDefaults.standard.float(forKey: "systemBrightness"))
     }
-    
-    func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:] ) -> Bool {
-        
-        // Determine who sent the URL.
-        let sendingAppID = options[.sourceApplication]
-        NSLog("AppDelegate: source application:  \(sendingAppID ?? "Unknown")")
-        NSLog("AppDelegate: URL: " + url.absoluteString)
-        NSLog("AppDelegate: Scheme: \(url.scheme ?? "wunderlinq")")
-        if (url.scheme == "file"){
-            //Check if GPX file and import
-            NSLog("AppDelegate: File URL sent")
-            let rootViewController = self.window!.rootViewController as! UINavigationController
 
-            let addWaypointViewController = UIStoryboard.main.instantiateViewController(withIdentifier: "addWaypoint") as! AddWaypointViewController
-            addWaypointViewController.importFile = url
-            rootViewController.pushViewController(addWaypointViewController, animated: true)
-            
-        } else {
-            let parameters = spotifyAppRemote.authorizationParameters(from: url);
+    // MARK: Helper Functions
+    private func configureAppearance() {
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        UINavigationBar.appearance().standardAppearance = appearance
+        UINavigationBar.appearance().scrollEdgeAppearance = appearance
+    }
 
-            if let access_token = parameters?[SPTAppRemoteAccessTokenKey] {
-                spotifyAppRemote.connectionParameters.accessToken = access_token
-                self.spotifyAccessToken = access_token
-            } else if let error_description = parameters?[SPTAppRemoteErrorDescriptionKey] {
-                NSLog("AppDelegate: AppDelegate Spotify Error: " + error_description)
-                musicViewController.showError(error_description)
-            }
+    private func configureKeyboardHack() {
+        let setHardwareLayout = NSSelectorFromString("setHardwareLayout:")
+        UITextInputMode.activeInputModes
+            .filter { $0.responds(to: setHardwareLayout) }
+            .forEach { $0.perform(setHardwareLayout, with: nil) }
+    }
+
+    private func setupDebugLogging() {
+        guard UserDefaults.standard.bool(forKey: "debug_logging_preference") else { return }
+        let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
+        let logFilePath = (paths[0] as NSString).appendingPathComponent("wunderlinq.log")
+
+        if let attributes = try? FileManager.default.attributesOfItem(atPath: logFilePath),
+           let fileSize = attributes[FileAttributeKey.size] as? UInt64, fileSize > 20 * 1024 * 1024 {
+            try? FileManager.default.removeItem(atPath: logFilePath)
         }
-        
-        return true
+        freopen(logFilePath.cString(using: .ascii)!, "a+", stderr)
     }
     
     func registerDefaultsFromSettingsBundle() {
@@ -285,28 +186,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         }
         UserDefaults.standard.register(defaults: integrationsDefaultsToRegister)
     }
-    
-    func spotifyConnect() {
-        NSLog("AppDelegate: spotifyConnect()")
-        musicViewController.spotifyAppRemoteConnecting()
-        spotifyAppRemote.connect()
-    }
-    
-    // MARK: Spotify AppRemoteDelegate
-    func appRemoteDidEstablishConnection(_ appRemote: SPTAppRemote) {
-        NSLog("AppDelegate: appRemoteDidEstablishConnection")
-        self.spotifyAppRemote = appRemote
-        musicViewController.spotifyAppRemoteConnected()
-    }
-    
-    func appRemote(_ appRemote: SPTAppRemote, didFailConnectionAttemptWithError error: Error?) {
-        NSLog("AppDelegate: didFailConnectionAttemptWithError: " + error.debugDescription)
-        musicViewController.spotifyAppRemoteDisconnect()
-    }
-    
-    func appRemote(_ appRemote: SPTAppRemote, didDisconnectWithError error: Error?) {
-        NSLog("AppDelegate: didDisconnectWithError")
-        musicViewController.spotifyAppRemoteDisconnect()
-    }
 }
-

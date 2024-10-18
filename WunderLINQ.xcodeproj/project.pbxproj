@@ -459,6 +459,7 @@
 				7E4669F62518647C00E7E291 /* NavAppHelper.swift */,
 				7EBFE1F2214C7D6500F2185A /* ScenicAPI.swift */,
 				7EA4784D1F40B154000CEDDC /* AppDelegate.swift */,
+				D82654582C82768000049F9E /* SceneDelegate.swift */,
 				7EFA9907240DFDE700E65078 /* FirstRunViewController.swift */,
 				7EA478861F4BC775000CEDDC /* Logger.swift */,
 				7EA478741F412B73000CEDDC /* LocationDelegate.swift */,
@@ -604,7 +605,6 @@
 			isa = PBXGroup;
 			children = (
 				D82654592C82768000049F9E /* CarPlaySceneDelegate.swift */,
-				D82654582C82768000049F9E /* SceneDelegate.swift */,
 			);
 			path = CarPlay;
 			sourceTree = "<group>";
