@@ -579,13 +579,24 @@ class MotorcycleData {
     
     class func getLabelColor(dataPoint: Int) -> UIColor? {
         var labelColor:UIColor?
-        if let window = UIApplication.shared.windows.first {
-            if (window.traitCollection.userInterfaceStyle == .dark) {
-                labelColor = UIColor.white
-            } else {
-                labelColor = UIColor.black
+        switch(UserDefaults.standard.integer(forKey: "darkmode_preference")){
+        case 0:
+            //OFF
+            labelColor = UIColor.black
+        case 1:
+            //On
+            labelColor = UIColor.white
+        default:
+            //Default
+            if let window = UIApplication.shared.windows.first {
+                if (window.traitCollection.userInterfaceStyle == .dark) {
+                    labelColor = UIColor.white
+                } else {
+                    labelColor = UIColor.black
+                }
             }
         }
+        
         switch (dataPoint){
         case MotorcycleData.shared.DATA_GEAR:
             // Gear
