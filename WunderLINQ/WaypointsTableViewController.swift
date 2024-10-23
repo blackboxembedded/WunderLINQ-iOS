@@ -18,6 +18,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 import UIKit
 import SQLite3
+import os.log
 
 class WaypointsTableViewController: UITableViewController {
     
@@ -75,24 +76,24 @@ class WaypointsTableViewController: UITableViewController {
             .appendingPathComponent("waypoints.sqlite")
         // Opening the database
         if sqlite3_open(databaseURL.path, &db) != SQLITE_OK {
-            NSLog("WaypointsTableViewController: error opening database")
+            os_log("WaypointsTableViewController: error opening database")
         }
         // Creating table
         if sqlite3_exec(db, "CREATE TABLE IF NOT EXISTS records (id INTEGER PRIMARY KEY AUTOINCREMENT, date TEXT, latitude TEXT, longitude TEXT, elevation TEXT, label TEXT)", nil, nil, nil) != SQLITE_OK {
             let errmsg = String(cString: sqlite3_errmsg(db)!)
-            NSLog("WaypointsTableViewController: error creating table: \(errmsg)")
+            os_log("WaypointsTableViewController: error creating table: \(errmsg)")
         }
         // Update table if needed
         let updateStatementString = "ALTER TABLE records ADD COLUMN elevation TEXT"
         var updateStatement: OpaquePointer?
         if sqlite3_prepare_v2(db, updateStatementString, -1, &updateStatement, nil) == SQLITE_OK {
             if sqlite3_step(updateStatement) == SQLITE_DONE {
-                NSLog("WaypointsTableViewController: Table updated successfully")
+                os_log("WaypointsTableViewController: Table updated successfully")
             } else {
-                NSLog("WaypointsTableViewController: Error updating table")
+                os_log("WaypointsTableViewController: Error updating table")
             }
         } else {
-            NSLog("WaypointsTableViewController: Error preparing update statement")
+            os_log("WaypointsTableViewController: Error preparing update statement")
         }
         
         readWaypoints()
@@ -158,14 +159,14 @@ class WaypointsTableViewController: UITableViewController {
                 //preparing the query
                 if sqlite3_prepare(self.db, queryString, -1, &stmt, nil) != SQLITE_OK{
                     let errmsg = String(cString: sqlite3_errmsg(self.db)!)
-                    NSLog("WaypointsTableViewController: error preparing insert: \(errmsg)")
+                    os_log("WaypointsTableViewController: error preparing insert: \(errmsg)")
                     return
                 }
                 
                 //executing the query to delete row
                 if sqlite3_step(stmt) != SQLITE_DONE {
                     let errmsg = String(cString: sqlite3_errmsg(self.db)!)
-                    NSLog("WaypointsTableViewController: failure inserting wapoint: \(errmsg)")
+                    os_log("WaypointsTableViewController: failure inserting wapoint: \(errmsg)")
                     return
                 }
                 
@@ -192,7 +193,7 @@ class WaypointsTableViewController: UITableViewController {
         //preparing the query
         if sqlite3_prepare(db, queryString, -1, &stmt, nil) != SQLITE_OK{
             let errmsg = String(cString: sqlite3_errmsg(db)!)
-            NSLog("WaypointsTableViewController: error preparing insert: \(errmsg)")
+            os_log("WaypointsTableViewController: error preparing insert: \(errmsg)")
             return
         }
         

@@ -17,6 +17,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import Foundation
+import os.log
 
 class BLEBus {
     class func parseMessage(_ data:[UInt8]) {
@@ -30,7 +31,7 @@ class BLEBus {
                 messageHexString += String(format: "%02X", data[i])
             }
             let formattedEntry = "DEBUG: " + Date().toString() + "," + messageHexString
-            NSLog(formattedEntry)
+            os_log(StaticString("%{PUBLIC}@"), formattedEntry)
         }
         
         let lastMessage = data
@@ -228,7 +229,7 @@ class BLEBus {
                     case 3:
                         frontPressure = Utility.barToPsi(frontPressure)
                     default:
-                        NSLog("Unknown pressure unit setting")
+                        os_log("Unknown pressure unit setting")
                     }
                     if frontPressure <= UserDefaults.standard.double(forKey: "tpm_threshold_preference"){
                         faults.setFrontTirePressureCriticalActive(active: true)
@@ -255,7 +256,7 @@ class BLEBus {
                     case 3:
                         rearPressure = Utility.barToPsi(rearPressure)
                     default:
-                        NSLog("Unknown pressure unit setting")
+                        os_log("Unknown pressure unit setting")
                     }
                     if rearPressure <= UserDefaults.standard.double(forKey: "tpm_threshold_preference"){
                         faults.setRearTirePressureCriticalActive(active: true)

@@ -20,6 +20,7 @@ import CoreLocation
 import MapKit
 import UIKit
 import SQLite3
+import os.log
 
 class WaypointsNavTableViewController: UITableViewController {
     
@@ -206,24 +207,24 @@ class WaypointsNavTableViewController: UITableViewController {
             .appendingPathComponent("waypoints.sqlite")
         // Opening the database
         if sqlite3_open(databaseURL.path, &db) != SQLITE_OK {
-            NSLog("WaypointsNavTableViewController: error opening database")
+            os_log("WaypointsNavTableViewController: error opening database")
         }
         // Creating table
         if sqlite3_exec(db, "CREATE TABLE IF NOT EXISTS records (id INTEGER PRIMARY KEY AUTOINCREMENT, date TEXT, latitude TEXT, longitude TEXT, elevation TEXT, label TEXT)", nil, nil, nil) != SQLITE_OK {
             let errmsg = String(cString: sqlite3_errmsg(db)!)
-            NSLog("WaypointsNavTableViewController: error creating table: \(errmsg)")
+            os_log("WaypointsNavTableViewController: error creating table: \(errmsg)")
         }
         // Update table if needed
         let updateStatementString = "ALTER TABLE records ADD COLUMN elevation TEXT"
         var updateStatement: OpaquePointer?
         if sqlite3_prepare_v2(db, updateStatementString, -1, &updateStatement, nil) == SQLITE_OK {
             if sqlite3_step(updateStatement) == SQLITE_DONE {
-                NSLog("WaypointsNavTableViewController: Table updated successfully")
+                os_log("WaypointsNavTableViewController: Table updated successfully")
             } else {
-                NSLog("WaypointsNavTableViewController: Error updating table")
+                os_log("WaypointsNavTableViewController: Error updating table")
             }
         } else {
-            NSLog("WaypointsNavTableViewController: Error preparing update statement")
+            os_log("WaypointsNavTableViewController: Error preparing update statement")
         }
 
         
@@ -287,7 +288,7 @@ class WaypointsNavTableViewController: UITableViewController {
         //preparing the query
         if sqlite3_prepare(db, queryString, -1, &stmt, nil) != SQLITE_OK{
             let errmsg = String(cString: sqlite3_errmsg(db)!)
-            NSLog("WaypointsNavTableViewController: error preparing insert: \(errmsg)")
+            os_log("WaypointsNavTableViewController: error preparing insert: \(errmsg)")
             return
         }
         

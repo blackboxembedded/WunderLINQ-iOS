@@ -17,6 +17,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import AVFoundation
+import os.log
 
 var player: AVAudioPlayer?
 
@@ -32,10 +33,10 @@ class SoundManager {
                 player?.prepareToPlay()
                 player?.play()
             } catch {
-                NSLog("Error: Could not load file")
+                os_log("Error: Could not load file")
             }
         } else {
-            NSLog("Error: File not found")
+            os_log("Error: File not found")
         }
     }
 }

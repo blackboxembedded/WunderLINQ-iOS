@@ -16,6 +16,8 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 import Foundation
+import os.log
+
 class WLQ_C: WLQ {
     
     var hardwareVersion:String?
@@ -297,7 +299,7 @@ class WLQ_C: WLQ {
 
     required override init() {
         super.init()
-        NSLog("WLQ_C: init()")
+        os_log("WLQ_C: init()")
         WLQ.shared = self
         WLQ.initialized = true
         actionNames = [longPressSensitivity: NSLocalizedString("sensitivity_label", comment: ""),
@@ -333,7 +335,7 @@ class WLQ_C: WLQ {
                 messageHexString += ","
             }
         }
-        NSLog("WLQ_C: flashConfig: \(messageHexString)")
+        os_log("WLQ_C: flashConfig: \(messageHexString)")
         
         self.keyMode = bytes[self.keyMode_INDEX]
 
@@ -566,7 +568,7 @@ class WLQ_C: WLQ {
                 self.tempConfig![self.rocker2DownLongPressKeyModifier_INDEX] = key[1]
                 self.tempConfig![self.rocker2DownLongPressKey_INDEX] = key[2]
             default:
-                NSLog("WLQ_C: Invalid acitonID")
+                os_log("WLQ_C: Invalid acitonID")
             }
         }
     }
@@ -952,7 +954,7 @@ class WLQ_C: WLQ {
     }
 
     override func setfirmwareVersion(firmwareVersion: String?){
-        NSLog("WLQ_C: Firmware Version: \(firmwareVersion ?? "?")")
+        os_log("WLQ_C: Firmware Version: \(firmwareVersion ?? "?")")
         self.firmwareVersion = firmwareVersion
     }
     override func getfirmwareVersion() -> String{
@@ -963,7 +965,7 @@ class WLQ_C: WLQ {
     }
 
     override func sethardwareVersion(hardwareVersion: String?){
-        NSLog("WLQ_C: HW Version: \(hardwareVersion ?? "?")")
+        os_log("WLQ_C: HW Version: \(hardwareVersion ?? "?")")
         self.hardwareVersion = hardwareVersion
     }
     override func gethardwareVersion() -> String{

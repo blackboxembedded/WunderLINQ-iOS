@@ -18,6 +18,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 import MapKit
 import UIKit
+import os.log
 
 class AlertViewController: UIViewController {
     
@@ -65,7 +66,7 @@ class AlertViewController: UIViewController {
         case 3:
             exit(0)
         default:
-            NSLog("AlertViewController: Unknown Alert ID")
+            os_log("AlertViewController: Unknown Alert ID")
         }
     }
     
@@ -89,7 +90,7 @@ class AlertViewController: UIViewController {
         case 3:
             exit(0)
         default:
-            NSLog("AlertViewController: Unknown Alert ID")
+            os_log("AlertViewController: Unknown Alert ID")
         }
     }
     
@@ -127,7 +128,7 @@ class AlertViewController: UIViewController {
             self.navigationItem.title = NSLocalizedString("alert_title_ignition", comment: "")
             alertLabel.text = NSLocalizedString("alert_label_ignition", comment: "")
         default:
-            NSLog("AlertViewController: Unknown Alert ID")
+            os_log("AlertViewController: Unknown Alert ID")
         }
         
         //Dismiss ViewController after 10secs

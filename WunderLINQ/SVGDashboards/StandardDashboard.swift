@@ -17,6 +17,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import Foundation
+import os.log
 
 class StandardDashboard {
     
@@ -61,7 +62,7 @@ class StandardDashboard {
                 }
             }
         default:
-            NSLog("StandardDashboard: Unknown speed unit setting")
+            os_log("StandardDashboard: Unknown speed unit setting")
         }
         if (speedValue != nil){
             if (speedValue! < 10){
@@ -593,7 +594,7 @@ class StandardDashboard {
             }
             break
         default:
-            NSLog("StandardDashboard: Unknown or default RPM Setting for standard dashboard")
+            os_log("StandardDashboard: Unknown or default RPM Setting for standard dashboard")
             break
         }
 

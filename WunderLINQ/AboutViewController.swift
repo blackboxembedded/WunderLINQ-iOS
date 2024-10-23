@@ -19,6 +19,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 import UIKit
 import MessageUI
 import MobileCoreServices
+import os.log
 
 class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate {
     
@@ -65,13 +66,13 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
                 let logAttachmentData = try Data(contentsOf: logURL)
                 mailComposer.addAttachmentData(logAttachmentData, mimeType: "text/log", fileName: "wunderlinq.log")
             } catch let error {
-                NSLog("AboutViewController: We have encountered error \(error.localizedDescription)")
+                os_log("AboutViewController: We have encountered error \(error.localizedDescription)")
             }
             mailComposer.mailComposeDelegate = self
             self.present(mailComposer, animated: true, completion: nil)
             
         } else {
-            NSLog("AboutViewController: Email is not configured in settings app or we are not able to send an email")
+            os_log("AboutViewController: Email is not configured in settings app or we are not able to send an email")
         }
     }
     
@@ -140,16 +141,16 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         switch result {
         case .cancelled:
-            NSLog("AboutViewController: User cancelled")
+            os_log("AboutViewController: User cancelled")
             break
         case .saved:
-            NSLog("AboutViewController: Mail is saved by user")
+            os_log("AboutViewController: Mail is saved by user")
             break
         case .sent:
-            NSLog("AboutViewController: Mail is sent successfully")
+            os_log("AboutViewController: Mail is sent successfully")
             break
         case .failed:
-            NSLog("AboutViewController: Sending mail is failed")
+            os_log("AboutViewController: Sending mail is failed")
             break
         default:
             break

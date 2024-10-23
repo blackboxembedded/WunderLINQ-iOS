@@ -18,6 +18,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 import Foundation
 import CoreLocation
+import os.log
 
 class LocationDelegate: NSObject, CLLocationManagerDelegate {
     var locationCallback: ((CLLocation) -> ())? = nil
@@ -39,6 +40,6 @@ class LocationDelegate: NSObject, CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        NSLog("LocationDelegate: ⚠️ Error while updating location " + error.localizedDescription)
+        os_log(StaticString("LocationDelegate: ⚠️ Error while updating location: %{PUBLIC}@"), error.localizedDescription)
     }
 }

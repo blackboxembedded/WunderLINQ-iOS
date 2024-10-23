@@ -19,6 +19,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 import Foundation
 import MapKit
 import UIKit
+import os.log
 
 /// All descriptions are accessible with option + click
 enum NavigationAppPreference: Int, CaseIterable {
@@ -409,7 +410,6 @@ extension NavAppHelper {
             supported = true
             //navUrl = "https://kurviger.de/en?point=" + start.getLatitude() + "," + start.getLongitude() + "&padr.0=" +  MyApplication.getContext().getString(R.string.trip_view_waypoint_start_label) + "&point=" + end.getLatitude() + "," + end.getLongitude() + "&padr.1=" + MyApplication.getContext().getString(R.string.trip_view_waypoint_end_label);
             let urlString = "\(navApp.urlScheme)?point=\(currentLatitude),\(currentLongitude)&padr.0=\(NSLocalizedString("trip_view_waypoint_start_label", comment: ""))&point=\(destLatitude),\(destLongitude)&padr.1=\(destLabel ?? "")"
-            print("URL: \(urlString)")
             if let mapsURL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
                 if (UIApplication.shared.canOpenURL(mapsURL)) {
                     UIApplication.shared.open(mapsURL, options: [:], completionHandler: nil)

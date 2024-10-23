@@ -19,6 +19,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 import UIKit
 import UIMultiPicker
 import CoreBluetooth
+import os.log
 
 class HWSettingsActionViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     
@@ -337,7 +338,7 @@ class HWSettingsActionViewController: UIViewController, UIPickerViewDataSource, 
     }
     
     func setHWMode(mode: UInt8){
-        NSLog("HWSettingsActionViewController: Set WLQ Mode")
+        os_log("HWSettingsActionViewController: Set WLQ Mode")
         let value:[UInt8] = [mode]
         let alertController = UIAlertController(
             title: NSLocalizedString("hwsave_alert_title", comment: ""),

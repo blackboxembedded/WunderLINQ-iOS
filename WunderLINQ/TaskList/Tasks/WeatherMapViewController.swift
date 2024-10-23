@@ -20,6 +20,7 @@ import UIKit
 import SQLite3
 import GoogleMaps
 import MapKit
+import os.log
 
 class WeatherMapViewController: UIViewController {
     
@@ -125,7 +126,7 @@ class WeatherMapViewController: UIViewController {
     }
     
     func startAnimating() {
-        NSLog("WeatherMapViewController: startAnimating()")
+        os_log("WeatherMapViewController: startAnimating()")
         displayLink = CADisplayLink(target: self, selector: #selector(updateAnimation))
         displayLink?.add(to: .current, forMode: .default)
         startTime = CACurrentMediaTime()
@@ -147,7 +148,7 @@ class WeatherMapViewController: UIViewController {
     }
     
     func restartAnimating() {
-        NSLog("WeatherMapViewController: restartAnimating()")
+        os_log("WeatherMapViewController: restartAnimating()")
         displayLink?.invalidate()
         displayLink = nil
         startTime = nil
@@ -155,7 +156,7 @@ class WeatherMapViewController: UIViewController {
     }
 
     func stopAnimating() {
-        NSLog("WeatherMapViewController: stopAnimating()")
+        os_log("WeatherMapViewController: stopAnimating()")
         restartTimer?.invalidate()
         displayLink?.invalidate()
         displayLink = nil
@@ -205,7 +206,7 @@ class WeatherMapViewController: UIViewController {
             marker.position = CLLocationCoordinate2D(latitude: lat, longitude: lon)
             marker.map = mapView
         } else {
-            NSLog("WeatherMapViewController: Invalid Location")
+            os_log("WeatherMapViewController: Invalid Location")
         }
     }
     

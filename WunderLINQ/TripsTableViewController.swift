@@ -17,6 +17,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import UIKit
+import os.log
 
 class TripsTableViewController: UITableViewController {
     
@@ -107,7 +108,7 @@ class TripsTableViewController: UITableViewController {
                 do {
                     try fileManager.removeItem(atPath: fileName)
                 } catch {
-                    NSLog("TripsTableViewController: Could not delete file: \(error)")
+                    os_log("TripsTableViewController: Could not delete file: \(error)")
                 }
                 self.readTrips()
                 self.tableView.reloadData()
@@ -146,7 +147,7 @@ class TripsTableViewController: UITableViewController {
             
             
         } catch {
-            print("TripsTableViewController: readTrips(): \(error.localizedDescription)")
+            os_log("TripsTableViewController: readTrips(): \(error.localizedDescription)")
         }
     }
 }
