@@ -118,6 +118,8 @@
 		D880B6022C6BFED900B4252B /* wav in Resources */ = {isa = PBXBuildFile; fileRef = D880B6012C6BFED900B4252B /* wav */; };
 		D88FC37B2CA4EF6D00F18A7E /* SpotifyiOS.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = D88FC37A2CA4EF6D00F18A7E /* SpotifyiOS.xcframework */; };
 		D88FC37C2CA4EF6D00F18A7E /* SpotifyiOS.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D88FC37A2CA4EF6D00F18A7E /* SpotifyiOS.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D8FA72F92CC1B65300C41674 /* sport-dashboard-portrait.svg in Resources */ = {isa = PBXBuildFile; fileRef = D8FA72F82CC1B65300C41674 /* sport-dashboard-portrait.svg */; };
+		D8FA72FA2CC1B65300C41674 /* adv-dashboard-portrait.svg in Resources */ = {isa = PBXBuildFile; fileRef = D8FA72F72CC1B65300C41674 /* adv-dashboard-portrait.svg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -232,7 +234,6 @@
 		7E9346B228E0A67F009E13C0 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		7E9346B628E0A6B2009E13C0 /* MotorcycleData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MotorcycleData.swift; sourceTree = "<group>"; };
 		7E93549F23008B2B00FCF0C5 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		7E9516C1238A367000ED25F2 /* SpotifyiOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SpotifyiOS.framework; sourceTree = "<group>"; };
 		7E9516C4238A3CDF00ED25F2 /* WunderLINQ-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WunderLINQ-Bridging-Header.h"; sourceTree = "<group>"; };
 		7E96D79121E78B7B00C6AB5F /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		7E9DDA9A278DE8A2006C6D12 /* WLQ.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WLQ.swift; sourceTree = "<group>"; };
@@ -299,6 +300,8 @@
 		D87629112A7EDEB90021E7A7 /* standard-dashboard-portrait.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "standard-dashboard-portrait.svg"; sourceTree = "<group>"; };
 		D880B6012C6BFED900B4252B /* wav */ = {isa = PBXFileReference; lastKnownFileType = folder; path = wav; sourceTree = "<group>"; };
 		D88FC37A2CA4EF6D00F18A7E /* SpotifyiOS.xcframework */ = {isa = PBXFileReference; expectedSignature = "AppleDeveloperProgram:2FNC3A47ZF:Spotify"; lastKnownFileType = wrapper.xcframework; name = SpotifyiOS.xcframework; path = "../ios-sdk-2.1.7/SpotifyiOS.xcframework"; sourceTree = "<group>"; };
+		D8FA72F72CC1B65300C41674 /* adv-dashboard-portrait.svg */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "adv-dashboard-portrait.svg"; sourceTree = "<group>"; };
+		D8FA72F82CC1B65300C41674 /* sport-dashboard-portrait.svg */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "sport-dashboard-portrait.svg"; sourceTree = "<group>"; };
 		DA150AA674E4880933A5281B /* Pods_WunderLINQ.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WunderLINQ.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -446,7 +449,6 @@
 				D880B6012C6BFED900B4252B /* wav */,
 				7EB5EDD525211B6100B61160 /* fonts */,
 				B98CA75B252E6C5200530075 /* Utils */,
-				7E9516C1238A367000ED25F2 /* SpotifyiOS.framework */,
 				7E068BCF2102C6280076EAAD /* GoogleMaps.framework */,
 				7E068BD02102C6290076EAAD /* GoogleMapsBase.framework */,
 				7E068BCE2102C6270076EAAD /* GoogleMapsCore.framework */,
@@ -455,6 +457,7 @@
 				7E4669F62518647C00E7E291 /* NavAppHelper.swift */,
 				7EBFE1F2214C7D6500F2185A /* ScenicAPI.swift */,
 				7EA4784D1F40B154000CEDDC /* AppDelegate.swift */,
+				D82654582C82768000049F9E /* SceneDelegate.swift */,
 				7EFA9907240DFDE700E65078 /* FirstRunViewController.swift */,
 				7EA478861F4BC775000CEDDC /* Logger.swift */,
 				7EA478741F412B73000CEDDC /* LocationDelegate.swift */,
@@ -513,6 +516,8 @@
 		7EB5EDE9252169B800B61160 /* svg */ = {
 			isa = PBXGroup;
 			children = (
+				D8FA72F72CC1B65300C41674 /* adv-dashboard-portrait.svg */,
+				D8FA72F82CC1B65300C41674 /* sport-dashboard-portrait.svg */,
 				D87629112A7EDEB90021E7A7 /* standard-dashboard-portrait.svg */,
 				7E8AD3DC26141E150089F590 /* adv-dashboard.svg */,
 				7E755C10260A787100B29507 /* sport-dashboard.svg */,
@@ -598,7 +603,6 @@
 			isa = PBXGroup;
 			children = (
 				D82654592C82768000049F9E /* CarPlaySceneDelegate.swift */,
-				D82654582C82768000049F9E /* SceneDelegate.swift */,
 			);
 			path = CarPlay;
 			sourceTree = "<group>";
@@ -721,6 +725,8 @@
 				D87629122A7EDEB90021E7A7 /* standard-dashboard-portrait.svg in Resources */,
 				7EA478581F40B154000CEDDC /* LaunchScreen.storyboard in Resources */,
 				7EA478551F40B154000CEDDC /* Assets.xcassets in Resources */,
+				D8FA72F92CC1B65300C41674 /* sport-dashboard-portrait.svg in Resources */,
+				D8FA72FA2CC1B65300C41674 /* adv-dashboard-portrait.svg in Resources */,
 				D81CBFAE2C8119580029C5AB /* Entitlements.plist in Resources */,
 				7EB5EDE4252136F800B61160 /* Main.storyboard in Resources */,
 				7ED2013620D0D0030066BCE6 /* Default-568h@2x.png in Resources */,

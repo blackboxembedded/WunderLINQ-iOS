@@ -1,0 +1,1998 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xml:space="preserve"
+   viewBox="0 0 1080 1920"
+   height="1920"
+   width="1080"
+   y="0px"
+   x="0px"
+   id="sport-dashboard"
+   version="1.1"
+   sodipodi:docname="sport-dashboard-portrait.svg"
+   inkscape:version="1.3.2 (091e20e, 2023-11-25, custom)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"><sodipodi:namedview
+   id="namedview314"
+   pagecolor="#ffffff"
+   bordercolor="#000000"
+   borderopacity="0.25"
+   inkscape:showpageshadow="2"
+   inkscape:pageopacity="0.0"
+   inkscape:pagecheckerboard="true"
+   inkscape:deskcolor="#d1d1d1"
+   showgrid="false"
+   inkscape:zoom="0.64"
+   inkscape:cx="507.03125"
+   inkscape:cy="1222.6562"
+   inkscape:window-width="1500"
+   inkscape:window-height="921"
+   inkscape:window-x="-7"
+   inkscape:window-y="-7"
+   inkscape:window-maximized="1"
+   inkscape:current-layer="g9" />
+
+    <metadata
+   id="metadata2490">
+</metadata>
+    <defs
+   id="defs2488"><clipPath
+     clipPathUnits="userSpaceOnUse"
+     id="needleClipPath">
+<path
+   id="use2741"
+   style="fill:none"
+   inkscape:label="needleMask"
+   d="m 540,1040.1992 a 500,500 0 0 0 -500,500 h 140 a 360,360 0 0 1 180,-311.7676 360,360 0 0 1 360,0 360,360 0 0 1 180,311.7676 h 140 a 500,500 0 0 0 -500,-500 z" />
+</clipPath><clipPath
+     clipPathUnits="userSpaceOnUse"
+     id="needleMaxClip">
+<path
+   id="path1"
+   style="fill:none"
+   inkscape:label="needleMask"
+   d="m 541.93673,1059.0823 c -132.5918,-2.0881 -247.19648,54.6151 -340.96467,148.3833 -93.76819,93.7682 -133.582616,200.1254 -133.582616,332.7336 h 82.482166 c 5.5e-4,-128.6151 40.99964,-207.454 134.46812,-302.5033 101.47151,-103.1877 361.87129,-128.3095 487.85669,-15.6723 98.91719,88.4369 157.93142,189.5605 157.93197,318.1756 l 84.74121,-0.2183 c 0,-132.6082 -43.09678,-252.0882 -142.30844,-340.0768 -103.31967,-91.6319 -201.73255,-138.792 -330.62443,-140.8218 z"
+   sodipodi:nodetypes="ssccssccss" />
+</clipPath><linearGradient
+     inkscape:collect="always"
+     xlink:href="#linearGradient1554"
+     id="linearGradient1556"
+     x1="65"
+     y1="1300"
+     x2="1015"
+     y2="1300"
+     gradientUnits="userSpaceOnUse" /><linearGradient
+     inkscape:collect="always"
+     id="linearGradient1554"><stop
+       style="stop-color:white"
+       offset="0"
+       id="stop1550" /><stop
+       style="stop-color:aqua"
+       offset="0.25"
+       id="stop1976" /><stop
+       style="stop-color:aqua"
+       offset="0.5"
+       id="stop1696" /><stop
+       style="stop-color:aqua"
+       offset="0.75"
+       id="stop1905" /><stop
+       style="stop-color:white"
+       offset="1"
+       id="stop1552" /></linearGradient><clipPath
+     clipPathUnits="userSpaceOnUse"
+     id="needleTickClip">
+<use
+   x="0"
+   y="0"
+   xlink:href="#needleMask"
+   id="use2741-9" />
+</clipPath><linearGradient
+     inkscape:collect="always"
+     xlink:href="#linearGradient1554"
+     id="linearGradient9"
+     gradientUnits="userSpaceOnUse"
+     x1="65"
+     y1="1300"
+     x2="1015"
+     y2="1300" /></defs>
+
+    <style
+   id="style833"
+   type="text/css">
+    .st0{fill:#FFFFFF;}
+    .st1{fill:#E6E6E6;}
+    .st2{font-family:'Agency FB';}
+    .st3{font-size:57.9964px;}
+    .st4{font-size:58px;}
+    .st5{font-family:'Agency FB';}
+    .st6{font-size:70.086px;}
+    .st7{fill:none;stroke:#FFFFFF;stroke-width:3;stroke-miterlimit:10;}
+    .st8{fill:#00FFFF;}
+    .st9{font-family:'Agency FB';}
+    .st10{font-size:51.8355px;}
+    .st11{fill:none;stroke:#00FFFF;stroke-width:3;stroke-miterlimit:10;}
+    .st12{font-size:39.0412px;}
+    .st13{opacity:0.42;fill:#999999;stroke:#F2F2F2;stroke-width:3;stroke-miterlimit:10;}
+    .st14{fill:#03AE1E}
+    .st15{font-family:'Agency FB';}
+    .st16{font-size:208.6746px;}
+    .st17{font-family:'Agency FB';}
+    .st18{font-size:78.4849px;}
+    .st19{font-size:45.758px;}
+    .st20{font-family:'Agency FB';}
+    .st21{font-size:125.7355px;}
+    .st22{font-size:81.3368px;}
+    .st23{font-size:76.2271px;}
+    .st24{font-size:63.7281px;}
+    .st25{fill:none;stroke:#FFFFFF;stroke-width:9;stroke-miterlimit:10;}
+    .st26{fill:none;stroke:#FFFFFF;stroke-width:9;stroke-linecap:round;stroke-miterlimit:10;}
+    .st27{fill:#08F6FB;}
+    .st28{fill:#FF0000;}
+    .st29{opacity:0.32;fill:#FFFFFF;}
+    .st30{fill:#8F7676;}
+    .st31{fill:none;stroke:#FFD42A;stroke-width:5;stroke-miterlimit:10;}
+    .st32{fill:#FFD42A;}
+    .st33{fill:none;stroke:#FF0000;stroke-width:9;stroke-linecap:round;stroke-miterlimit:10;}
+    .st34{fill:#FCC914;}
+</style>
+
+    <rect
+   id="background"
+   style="display:inline"
+   height="1080"
+   width="1920"
+   x="0"
+   y="-1080"
+   inkscape:label="background"
+   transform="rotate(90)"
+   sodipodi:insensitive="true" /><g
+   id="dashboard"
+   inkscape:label="dashboard">
+
+    
+
+        <polygon
+   id="divider"
+   points="959.5,262.5 1193.6,262.7 1427.8,263.2 1661.9,264 1778.9,264.7 1837.5,265 1896,265.5 1837.5,266 1778.9,266.3 1661.9,267 1427.8,267.8 1193.6,268.3 959.5,268.5 725.4,268.3 491.3,267.8 257.1,267 140.1,266.3 81.5,266 23,265.5 81.5,265 140.1,264.7 257.1,264 491.3,263.2 725.4,262.7 "
+   class="st8"
+   transform="matrix(0.55205553,0,0,1,10.302719,-87.369635)" /><polygon
+   id="polygon836"
+   points="1427.8,263.2 1661.9,264 1778.9,264.7 1837.5,265 1896,265.5 1837.5,266 1778.9,266.3 1661.9,267 1427.8,267.8 1193.6,268.3 959.5,268.5 725.4,268.3 491.3,267.8 257.1,267 140.1,266.3 81.5,266 23,265.5 81.5,265 140.1,264.7 257.1,264 491.3,263.2 725.4,262.7 959.5,262.5 1193.6,262.7 "
+   class="st8"
+   transform="matrix(0.55205553,0,0,1,10.302719,1503.052)"
+   inkscape:label="dividerBottom" /><g
+   id="gearDisplay"
+   transform="matrix(0.82282777,0,0,1.0014634,-909.37003,548.50314)">
+        <rect
+   id="gearBox"
+   height="212.01135"
+   width="191.01633"
+   class="st13"
+   y="51.941837"
+   x="1665.9419" />
+<text
+   id="gear"
+   class="st34 st15 st16"
+   transform="scale(1.1410755,0.87636621)"
+   x="1543.5631"
+   y="268.06198"
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:229.879px;font-family:'Agency FB';-inkscape-font-specification:'Agency FB, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-anchor:middle;fill:#fcc914;stroke-width:1.13941"><tspan
+     sodipodi:role="line"
+     id="tspan4"
+     x="1543.5631"
+     y="268.06198"
+     style="stroke-width:1.13941">6</tspan></text></g>
+
+        
+        <g
+   id="g7"
+   inkscape:label="Value Labels"
+   style="display:inline"><g
+     id="values">
+        
+
+            
+
+            
+
+            <text
+   id="dataValue"
+   class="st0 st17 st23"
+   x="251.05695"
+   y="1898.1995"
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:128px;font-family:'Agency FB';-inkscape-font-specification:'Agency FB, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:start;text-anchor:start;fill:#ffffff"><tspan
+     sodipodi:role="line"
+     id="tspan7"
+     x="251.05695"
+     y="1898.1995">---</tspan></text>
+
+            
+
+            
+
+            
+    </g><g
+     id="labels">
+        <text
+   id="dataLabel"
+   class="st0 st17 st23"
+   x="249.62491"
+   y="1898.2"
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:85.3333px;font-family:'Agency FB';-inkscape-font-specification:'Agency FB, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:end;text-anchor:end;fill:#ffffff"><tspan
+     sodipodi:role="line"
+     id="tspan6"
+     x="249.62491"
+     y="1898.2">Range:</tspan></text>
+            
+            
+    </g><text
+     id="clock"
+     class="st0 st17 st18"
+     x="1072.7078"
+     y="1898.1996"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:128px;font-family:'Agency FB';-inkscape-font-specification:'Agency FB, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:end;text-anchor:end;fill:#ffffff"><tspan
+       sodipodi:role="line"
+       id="tspan5"
+       x="1072.7078"
+       y="1898.1996">00:00</tspan></text><g
+     id="g3"
+     inkscape:label="speedo"><text
+       id="speed"
+       class="st0 st20 st21"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:192px;font-family:'Agency FB';-inkscape-font-specification:'Agency FB, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:end;text-anchor:end;fill:#ffffff"
+       x="250.3125"
+       y="158.71875"><tspan
+         sodipodi:role="line"
+         id="tspan3"
+         x="250.3125"
+         y="158.71875">00</tspan></text><text
+       id="speedUnit"
+       class="st0 st20 st22"
+       x="246.0063"
+       y="158.71831"
+       style="font-size:85.3333px">MPH</text></g></g>
+        <!-- Status Icons -->
+    
+
+            
+        <!-- Lean Angle Dial -->
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+
+
+        
+
+        <!-- RPM Dial -->
+        
+
+        
+
+        
+
+        
+
+        <g
+   id="g9"
+   inkscape:label="gauges"><g
+     id="inclinometer"
+     inkscape:label="inclinometer"
+     style="display:inline"
+     transform="translate(-0.612,-56.729275)">
+
+<g
+   id="g15"
+   inkscape:label="inclinometerGauge"
+   style="display:inline"><polygon
+     id="angleBottom"
+     points="725.4,262.7 959.5,262.5 1193.6,262.7 1427.8,263.2 1661.9,264 1778.9,264.7 1837.5,265 1896,265.5 1837.5,266 1778.9,266.3 1661.9,267 1427.8,267.8 1193.6,268.3 959.5,268.5 725.4,268.3 491.3,267.8 257.1,267 140.1,266.3 81.5,266 23,265.5 81.5,265 140.1,264.7 257.1,264 491.3,263.2 "
+     class="st8"
+     transform="matrix(0.53240563,0,0,1,29.156798,1272.755)"
+     inkscape:label="angleBottom"
+     style="font-variation-settings:normal;fill:url(#linearGradient9);stroke-width:1.37;-inkscape-stroke:none;stop-color:#000000;stop-opacity:1" /><path
+     id="angleDivider"
+     d="m 381.9,959.9 c 26.4,-1 52.7,-1.6 79.1,-1.9 13.2,-0.2 26.4,-0.3 39.5,-0.4 l 39.5,-0.1 39.5,0.1 c 13.2,0.1 26.4,0.2 39.5,0.4 26.4,0.4 52.7,0.9 79.1,2 -26.4,1 -52.7,1.6 -79.1,2 -13.2,0.2 -26.4,0.3 -39.5,0.4 l -39.5,0.1 -39.5,-0.1 c -13.2,-0.1 -26.4,-0.2 -39.5,-0.4 -26.4,-0.6 -52.7,-1.1 -79.1,-2.1 z"
+     class="st8"
+     style="display:none;fill:#00ffff" /><path
+     id="path967"
+     style="fill:url(#linearGradient1556);fill-rule:evenodd"
+     d="m 540,1060 a 475,475 0 0 0 -238,70 475,475 0 0 0 -237,410 h 85 a 390,390 0 0 1 195,-340 390,390 0 0 1 390,0 390,390 0 0 1 195,340 h 85 A 475,475 0 0 0 777,1130 475,475 0 0 0 540,1060 Z"
+     inkscape:label="angleDial" /></g>
+
+
+
+
+
+
+
+
+
+<g
+   id="g14"
+   inkscape:label="ValueGroup"
+   style="display:inline"><text
+     id="max"
+     class="st8 st9 st12"
+     transform="scale(1.0336344,0.96746007)"
+     x="496.58829"
+     y="1673.2841"
+     style="font-size:39.0412px;font-family:'Agency FB';fill:#00ffff;stroke-width:1.03363"
+     inkscape:label="maxLabel">MAX</text><g
+     id="g13"
+     inkscape:label="Max"><path
+       id="angleUnit"
+       class="st7"
+       d="m 620.42214,1341.4559 c -2.45245,0.055 -4.87771,1.0673 -6.56628,2.8598 -1.76004,1.8354 -2.64985,4.4876 -2.26566,7.0129 0.35089,2.5883 1.99929,4.9247 4.25159,6.2279 2.63535,1.5564 6.05022,1.7089 8.8031,0.3585 2.41864,-1.1087 4.27393,-3.3799 4.84166,-5.9859 0.79369,-3.3364 -0.77201,-7.0016 -3.62327,-8.8671 -1.58447,-1.0853 -3.52278,-1.6513 -5.44114,-1.6061 z"
+       style="fill:none;stroke:#ffffff;stroke-width:3;stroke-miterlimit:10" /><text
+       id="angle"
+       class="st0 st5 st6"
+       transform="scale(1.0336344,0.96746007)"
+       x="587.52527"
+       y="1480.9417"
+       style="font-size:128px;font-family:'Agency FB';-inkscape-font-specification:'Agency FB, Normal';text-align:end;text-anchor:end;fill:#ffffff;stroke-width:1.03363">00</text></g><g
+     id="g12"
+     inkscape:label="MaxR"><ellipse
+       id="angleMaxRUnit"
+       ry="4.9000001"
+       rx="5.3000002"
+       cy="1563.6293"
+       cx="1023.0712"
+       class="st11"
+       style="fill:none;stroke:#00ffff;stroke-width:3;stroke-miterlimit:10" /><text
+       id="angleMaxR"
+       class="st8 st9 st10"
+       transform="scale(1.0336344,0.96746007)"
+       x="986.29156"
+       y="1675.3018"
+       style="font-size:85.3333px;font-family:'Agency FB';-inkscape-font-specification:'Agency FB, Normal';text-align:end;text-anchor:end;fill:#00ffff;stroke-width:1.03363">00</text></g><g
+     id="g11"
+     inkscape:label="MaxL"><ellipse
+       id="angleMaxLUnit"
+       ry="4.9000001"
+       rx="5.3000002"
+       cy="1563.6293"
+       cx="158.91246"
+       class="st11"
+       style="display:inline;fill:none;stroke:#00ffff;stroke-width:3;stroke-miterlimit:10" /><text
+       id="angleMaxL"
+       class="st8 st9 st10"
+       transform="scale(1.0336344,0.96746007)"
+       x="149.8152"
+       y="1675.3018"
+       style="font-size:85.3333px;font-family:'Agency FB';-inkscape-font-specification:'Agency FB, Normal';text-align:end;text-anchor:end;fill:#00ffff;stroke-width:1.03363">00</text></g></g>
+
+<g
+   id="needle"
+   clip-path="url(#needleTickClip)"
+   inkscape:label="needle"
+   style="display:inline">
+
+      <animateTransform
+   attributeType="xml"
+   attributeName="transform"
+   type="rotate"
+   from="0 540 1540"
+   to="180 540 1540"
+   dur="1.5s"
+   additive="sum"
+   repeatCount="indefinite" />
+<path
+   id="needleTick"
+   style="opacity:0.97;fill:#f2c217;stroke-width:5.30717"
+   d="m 540.612,1104.7293 v -68 h 17.9 l 0.1,68 -9,43.1049 z"
+   class="st0"
+   inkscape:label="needleTick"
+   sodipodi:nodetypes="cccccc" />
+</g><g
+   inkscape:label="needleClip"
+   id="needleClip"
+   style="display:inline">
+
+		 
+		 
+		 <path
+   id="needleMask"
+   style="display:inline;fill:none"
+   inkscape:label="needleMask"
+   d="m 540,1040.1992 a 500,500 0 0 0 -500,500 h 140 a 360,360 0 0 1 180,-311.7676 360,360 0 0 1 360,0 360,360 0 0 1 180,311.7676 h 140 a 500,500 0 0 0 -500,-500 z" /><path
+   id="needleMaxMask"
+   style="display:inline;fill:none"
+   inkscape:label="needleMaxMask"
+   d="m 540,1040.1992 a 500,500 0 0 0 -500,500 h 140 a 360,360 0 0 1 180,-311.7676 360,360 0 0 1 360,0 360,360 0 0 1 180,311.7676 h 140 a 500,500 0 0 0 -500,-500 z" /><g
+   id="needleMaxL"
+   clip-path="url(#needleMaxClip)"
+   inkscape:label="needleMaxL"
+   style="display:inline">
+
+      <animateTransform
+   attributeType="xml"
+   attributeName="transform"
+   type="rotate"
+   from="0 540 1540"
+   to="180 540 1540"
+   dur="1.5s"
+   additive="sum"
+   repeatCount="indefinite" />
+<path
+   id="needleTickMaxL"
+   style="opacity:0.97;fill:#f21719;fill-opacity:1;stroke-width:0;stroke-dasharray:none"
+   d="m 550.09091,1540 h -0.79547 c -0.45454,0 -0.79545,-10 -0.79545,-30 l 0.11363,-480 c 0,-10 0.34091,-20 0.79545,-20 h 0.79547 c 0.45454,0 0.79545,10 0.79545,20 l -0.11363,480 c 0,10 -0.34091,30 -0.79545,30 z"
+   class="st0"
+   inkscape:label="needleTickMaxL" />
+</g><g
+   id="needleMaxR"
+   clip-path="url(#needleMaxClip)"
+   inkscape:label="needleMaxR"
+   style="display:inline">
+
+      <animateTransform
+   attributeType="xml"
+   attributeName="transform"
+   type="rotate"
+   from="0 540 1540"
+   to="180 540 1540"
+   dur="1.5s"
+   additive="sum"
+   repeatCount="indefinite" />
+<path
+   id="needleTickMaxR"
+   style="opacity:0.97;fill:#f21719;fill-opacity:1;stroke-width:0;stroke-dasharray:none"
+   d="m 550.09091,1540 h -0.79547 c -0.45454,0 -0.79545,-10 -0.79545,-30 l 0.11363,-480 c 0,-10 0.34091,-20 0.79545,-20 h 0.79547 c 0.45454,0 0.79545,10 0.79545,20 l -0.11363,480 c 0,10 -0.34091,30 -0.79545,30 z"
+   class="st0"
+   inkscape:label="needleTickMaxR" />
+</g>
+</g></g><g
+     id="g1"
+     inkscape:label="tachometer"><g
+       id="rpmTicks"
+       transform="matrix(0.91189994,0,0,0.91189994,-341.71606,-45.924012)">
+        <polygon
+   id="rpmTick1"
+   style="display:none"
+   points="477.1,938.8 477.3,944.3 405.7,948.5 405.5,942.9 "
+   class="st27" />
+
+            <polygon
+   id="rpmTick2"
+   style="display:none"
+   points="476.6,925.8 476.6,931.3 404.8,933.6 404.8,928 "
+   class="st27" />
+
+            <polygon
+   id="rpmTick3"
+   style="display:none"
+   points="476.5,912.8 476.3,918.3 404.3,918.6 404.5,913.1 "
+   class="st27" />
+
+            <polygon
+   id="rpmTick4"
+   style="display:none"
+   points="476.8,899.8 476.5,905.3 404.3,903.7 404.6,898.2 "
+   class="st27" />
+
+            <polygon
+   id="rpmTick5"
+   style="display:none"
+   points="477.5,886.8 477,892.3 404.8,888.7 405.2,883.2 "
+   class="st27" />
+
+            <polygon
+   id="rpmTick6"
+   style="display:none"
+   points="478.5,873.8 477.9,879.3 405.7,873.8 406.3,868.3 "
+   class="st27" />
+
+            <polygon
+   id="rpmTick7"
+   style="display:none"
+   points="480,860.8 479.2,866.3 407,858.9 407.8,853.4 "
+   class="st27" />
+
+            <polygon
+   id="rpmTick8"
+   style="display:none"
+   points="481.8,847.9 480.9,853.4 408.8,844 409.8,838.5 "
+   class="st27" />
+
+            <polygon
+   id="rpmTick9"
+   style="display:none"
+   points="484.1,835 482.9,840.5 411.1,829.2 412.2,823.7 "
+   class="st27" />
+
+            <polygon
+   id="rpmTick10"
+   style="display:none"
+   points="486.7,822.2 485.4,827.6 413.7,814.4 415,809 "
+   class="st27" />
+
+            <polygon
+   id="rpmTick11"
+   style="display:none"
+   points="418.3,794.3 489.7,809.5 488.3,814.8 416.9,799.7 "
+   class="st27" />
+
+            <polygon
+   id="rpmTick12"
+   style="display:none"
+   points="422.1,779.7 493.1,796.8 491.5,802.1 420.4,785 "
+   class="st27" />
+
+            <polygon
+   id="rpmTick13"
+   style="display:none"
+   points="496.9,784.2 495.1,789.5 424.5,770.5 426.2,765.2 "
+   class="st27" />
+
+            <polygon
+   id="rpmTick14"
+   style="display:none"
+   points="501.1,771.7 499.1,777 428.9,756 430.9,750.8 "
+   class="st27" />
+
+            <polygon
+   id="rpmTick15"
+   style="display:none"
+   points="505.6,759.3 503.5,764.5 433.8,741.7 435.9,736.5 "
+   class="st27" />
+
+            <polygon
+   id="rpmTick16"
+   style="display:none"
+   points="510.6,747.1 508.3,752.2 439.2,727.5 441.4,722.4 "
+   class="st27" />
+
+            <polygon
+   id="rpmTick17"
+   style="display:none"
+   points="515.9,735 513.4,740 444.9,713.4 447.4,708.4 "
+   class="st27" />
+
+            <polygon
+   id="rpmTick18"
+   style="display:none"
+   points="521.5,723 518.9,728 451.1,699.5 453.7,694.5 "
+   class="st27" />
+
+            <polygon
+   id="rpmTick19"
+   style="display:none"
+   points="527.6,711.1 524.8,716.1 457.8,685.8 460.5,680.8 "
+   class="st27" />
+
+            <polygon
+   id="rpmTick20"
+   style="display:none"
+   points="534,699.5 531.1,704.3 464.8,672.2 467.7,667.3 "
+   class="st27" />
+
+            <polygon
+   id="rpmTick21"
+   style="display:none"
+   points="540.7,688 537.7,692.8 472.3,658.8 475.3,654 "
+   class="st27" />
+
+            <polygon
+   id="rpmTick22"
+   style="display:none"
+   points="547.8,676.7 544.6,681.4 480.2,645.6 483.4,640.9 "
+   class="st27" />
+
+            <polygon
+   id="rpmTick23"
+   style="display:none"
+   points="555.3,665.5 551.9,670.1 488.5,632.7 491.8,628 "
+   class="st27" />
+
+            <polygon
+   id="rpmTick24"
+   style="display:none"
+   points="563.1,654.6 559.6,659.1 497.2,619.9 500.6,615.4 "
+   class="st27" />
+
+            <polygon
+   id="rpmTick25"
+   style="display:none"
+   points="571.2,643.9 567.6,648.3 506.2,607.4 509.8,602.9 "
+   class="st27" />
+
+            <polygon
+   id="rpmTick26"
+   style="display:none"
+   points="579.7,633.4 575.9,637.7 515.7,595.1 519.5,590.7 "
+   class="st27" />
+
+            <polygon
+   id="rpmTick27"
+   style="display:none"
+   points="588.5,623.1 584.6,627.3 525.6,583.1 529.4,578.8 "
+   class="st27" />
+
+            <polygon
+   id="rpmTick28"
+   style="display:none"
+   points="597.6,613.1 593.6,617.2 535.8,571.3 539.8,567.2 "
+   class="st27" />
+
+            <polygon
+   id="rpmTick29"
+   style="display:none"
+   points="607,603.3 602.9,607.3 546.4,559.8 550.5,555.8 "
+   class="st27" />
+
+            <polygon
+   id="rpmTick30"
+   style="display:none"
+   points="616.7,593.7 612.5,597.7 557.3,548.6 561.6,544.7 "
+   class="st27" />
+
+            <polygon
+   id="rpmTick31"
+   style="display:none"
+   points="626.8,584.5 622.4,588.3 568.6,537.7 573,533.9 "
+   class="st27" />
+
+            <polygon
+   id="rpmTick32"
+   style="display:none"
+   points="637.1,575.5 632.6,579.2 580.3,527.1 584.8,523.4 "
+   class="st27" />
+
+            <polygon
+   id="rpmTick33"
+   style="display:none"
+   points="647.7,566.8 643,570.3 592.3,516.9 596.9,513.3 "
+   class="st27" />
+
+            <polygon
+   id="rpmTick34"
+   style="display:none"
+   points="658.5,558.3 653.8,561.8 604.6,506.9 609.3,503.4 "
+   class="st27" />
+
+            <polygon
+   id="rpmTick35"
+   style="display:none"
+   points="669.7,550.2 664.8,553.5 617.2,497.3 622,494 "
+   class="st27" />
+
+            <polygon
+   id="rpmTick36"
+   style="display:none"
+   points="681.1,542.4 676.1,545.5 630.1,488 635.1,484.8 "
+   class="st27" />
+
+            <polygon
+   id="rpmTick37"
+   style="display:none"
+   points="692.7,534.9 687.6,537.9 643.3,479.1 648.4,476 "
+   class="st27" />
+
+            <polygon
+   id="rpmTick38"
+   style="display:none"
+   points="704.6,527.7 699.4,530.5 656.8,470.5 662,467.6 "
+   class="st27" />
+
+            <polygon
+   id="rpmTick39"
+   style="display:none"
+   points="716.7,520.8 711.4,523.5 670.6,462.3 675.8,459.5 "
+   class="st27" />
+
+            <polygon
+   id="rpmTick40"
+   style="display:none"
+   points="689.9,451.9 729,514.2 723.6,516.8 684.6,454.5 "
+   class="st27" />
+
+            <polygon
+   id="rpmTick41"
+   style="display:none"
+   points="704.3,444.6 741.5,508 736.1,510.5 698.9,447.1 "
+   class="st27" />
+
+            <polygon
+   id="rpmTick42"
+   style="display:none"
+   points="718.9,437.7 754.2,502.2 748.7,504.5 713.4,440 "
+   class="st27" />
+
+            <polygon
+   id="rpmTick43"
+   style="display:none"
+   points="767.1,496.6 761.5,498.8 728.1,433.4 733.7,431.2 "
+   class="st27" />
+
+            <polygon
+   id="rpmTick44"
+   style="display:none"
+   points="748.7,425.1 780.2,491.5 774.5,493.5 743,427.1 "
+   class="st27" />
+
+            <polygon
+   id="rpmTick45"
+   style="display:none"
+   points="763.9,419.4 793.4,486.7 787.7,488.5 758.2,421.3 "
+   class="st27" />
+
+            <polygon
+   id="rpmTick46"
+   style="display:none"
+   points="806.8,482.2 801.1,483.9 773.5,415.9 779.3,414.2 "
+   class="st27" />
+
+            <polygon
+   id="rpmTick47"
+   style="display:none"
+   points="820.3,478.1 814.5,479.7 789,410.9 794.9,409.3 "
+   class="st27" />
+
+            <polygon
+   id="rpmTick48"
+   style="display:none"
+   points="834,474.4 828.1,475.8 804.7,406.3 810.6,404.9 "
+   class="st27" />
+
+            <polygon
+   id="rpmTick49"
+   style="display:none"
+   points="826.4,401 847.8,471.1 841.9,472.3 820.5,402.2 "
+   class="st27" />
+
+            <polygon
+   id="rpmTick50"
+   style="display:none"
+   points="842.4,397.4 861.7,468.2 855.7,469.2 836.4,398.5 "
+   class="st27" />
+
+            <polygon
+   id="rpmTick51"
+   style="display:none"
+   points="875.7,465.6 869.7,466.5 852.5,395.2 858.5,394.3 "
+   class="st27" />
+
+            <polygon
+   id="rpmTick52"
+   style="display:none"
+   points="889.7,463.4 883.7,464.1 868.7,392.4 874.7,391.7 "
+   class="st27" />
+
+            <polygon
+   id="rpmTick53"
+   style="display:none"
+   points="903.9,461.6 897.8,462.2 884.9,390.1 891,389.5 "
+   class="st27" />
+
+            <polygon
+   id="rpmTick54"
+   style="display:none"
+   points="907.4,387.7 918,460.2 912,460.6 901.3,388.1 "
+   class="st27" />
+
+            <polygon
+   id="rpmTick55"
+   style="display:none"
+   points="923.8,386.4 932.3,459.2 926.2,459.4 917.7,386.7 "
+   class="st27" />
+
+            <polygon
+   id="rpmTick56"
+   style="display:none"
+   points="946.6,458.6 940.5,458.6 934.1,385.7 940.2,385.6 "
+   class="st27" />
+
+            <polygon
+   id="rpmTick57"
+   style="display:none"
+   points="960.8,458.3 954.8,458.2 950.6,385.1 956.7,385.2 "
+   class="st27" />
+
+            <polygon
+   id="rpmTick58"
+   style="display:none"
+   points="975.1,458.5 969.1,458.2 967.1,385 973.2,385.3 "
+   class="st27" />
+
+            <polygon
+   id="rpmTick59"
+   style="display:none"
+   points="989.4,459 983.4,458.6 983.6,385.3 989.7,385.8 "
+   class="st27" />
+
+            <polygon
+   id="rpmTick60"
+   style="display:none"
+   points="1003.7,460 997.7,459.4 1000.1,386.2 1006.2,386.8 "
+   class="st27" />
+
+            <polygon
+   id="rpmTick61"
+   style="display:none"
+   points="1022.6,388.2 1018,461.3 1011.9,460.6 1016.6,387.4 "
+   class="st27" />
+
+            <polygon
+   id="rpmTick62"
+   style="display:none"
+   points="1039.1,390.1 1032.2,463.1 1026.2,462.1 1033,389.1 "
+   class="st27" />
+
+            <polygon
+   id="rpmTick63"
+   style="display:none"
+   points="1046.3,465.2 1040.3,464.1 1049.4,391.3 1055.4,392.4 "
+   class="st27" />
+
+            <polygon
+   id="rpmTick64"
+   style="display:none"
+   points="1060.4,467.7 1054.5,466.4 1065.7,393.9 1071.7,395.2 "
+   class="st27" />
+
+            <polygon
+   id="rpmTick65"
+   style="display:none"
+   points="1074.4,470.6 1068.5,469.1 1081.9,397 1087.9,398.4 "
+   class="st27" />
+
+            <polygon
+   id="rpmTick66"
+   style="display:none"
+   points="1088.3,473.8 1082.5,472.3 1098.1,400.5 1104,402.1 "
+   class="st27" />
+
+            <polygon
+   id="rpmTick67"
+   style="display:none"
+   points="1102.1,477.5 1096.3,475.7 1114.1,404.5 1119.9,406.2 "
+   class="st27" />
+
+            <polygon
+   id="rpmTick68"
+   style="display:none"
+   points="1115.8,481.5 1110.1,479.6 1130,408.8 1135.8,410.8 "
+   class="st27" />
+
+            <polygon
+   id="rpmTick69"
+   style="display:none"
+   points="1129.4,485.9 1123.7,483.9 1145.7,413.7 1151.5,415.8 "
+   class="st27" />
+
+            <polygon
+   id="rpmTick70"
+   style="display:none"
+   points="1142.8,490.7 1137.2,488.5 1161.3,418.9 1167,421.2 "
+   class="st27" />
+
+            <polygon
+   id="rpmTick71"
+   style="display:none"
+   points="1156.1,495.8 1150.6,493.5 1176.8,424.6 1182.4,427 "
+   class="st27" />
+
+            <polygon
+   id="rpmTick72"
+   style="display:none"
+   points="1169.2,501.3 1163.7,498.8 1192,430.7 1197.5,433.3 "
+   class="st27" />
+
+            <polygon
+   id="rpmTick73"
+   style="display:none"
+   points="1182.2,507.2 1176.8,504.5 1207.1,437.3 1212.5,440 "
+   class="st27" />
+
+            <polygon
+   id="rpmTick74"
+   style="display:none"
+   points="1194.9,513.4 1189.6,510.6 1221.9,444.2 1227.3,447 "
+   class="st27" />
+
+            <polygon
+   id="rpmTick75"
+   style="display:none"
+   points="1207.5,519.9 1202.3,517 1236.6,451.5 1241.8,454.5 "
+   class="st27" />
+
+            <polygon
+   id="rpmTick76"
+   style="display:none"
+   points="1219.9,526.8 1214.7,523.7 1251,459.3 1256.1,462.4 "
+   class="st27" />
+
+            <polygon
+   id="rpmTick77"
+   style="display:none"
+   points="1232,534.1 1226.9,530.8 1265.1,467.4 1270.2,470.7 "
+   class="st27" />
+
+            <polygon
+   id="rpmTick78"
+   style="display:none"
+   points="1243.9,541.6 1239,538.2 1279,475.9 1284,479.3 "
+   class="st27" />
+
+            <polygon
+   id="rpmTick79"
+   style="display:none"
+   points="1255.6,549.5 1250.7,546 1292.6,484.8 1297.5,488.3 "
+   class="st27" />
+
+            <polygon
+   id="rpmTick80"
+   style="display:none"
+   points="1267,557.7 1262.3,554 1306,494 1310.7,497.7 "
+   class="st27" />
+
+            <polygon
+   id="rpmTick81"
+   style="display:none"
+   points="1323.6,507.4 1278.2,566.1 1273.5,562.4 1319,503.6 "
+   class="st27" />
+
+            <polygon
+   id="rpmTick82"
+   style="display:none"
+   points="1336.2,517.5 1289,574.9 1284.6,571 1331.7,513.6 "
+   class="st27" />
+
+            <polygon
+   id="rpmTick83"
+   style="display:none"
+   points="1299.7,584 1295.3,580 1344.2,523.9 1348.5,527.9 "
+   class="st27" />
+
+            <polygon
+   id="rpmTick84"
+   style="display:none"
+   points="1310,593.3 1305.8,589.2 1356.3,534.5 1360.5,538.7 "
+   class="st27" />
+
+            <polygon
+   id="rpmTick85"
+   style="display:none"
+   points="1320,603 1315.9,598.7 1368,545.5 1372.2,549.7 "
+   class="st27" />
+
+            <polygon
+   id="rpmTick86"
+   style="display:none"
+   points="1329.8,612.8 1325.8,608.5 1379.4,556.7 1383.4,561.1 "
+   class="st27" />
+
+            <polygon
+   id="rpmTick87"
+   style="display:none"
+   points="1339.2,623 1335.4,618.5 1390.5,568.3 1394.4,572.7 "
+   class="st27" />
+
+            <polygon
+   id="rpmTick88"
+   style="display:none"
+   points="1348.3,633.4 1344.6,628.8 1401.2,580.1 1404.9,584.7 "
+   class="st27" />
+
+            <polygon
+   id="rpmTick89"
+   style="display:none"
+   points="1357.1,644 1353.5,639.4 1411.5,592.2 1415.1,596.9 "
+   class="st27" />
+
+            <polygon
+   id="rpmTick90"
+   style="display:none"
+   points="1365.6,654.9 1362.1,650.1 1421.5,604.6 1424.9,609.4 "
+   class="st27" />
+
+            <polygon
+   id="rpmTick91"
+   style="display:none"
+   points="1373.7,665.9 1370.4,661.1 1431,617.3 1434.3,622.1 "
+   class="st27" />
+
+            <polygon
+   id="rpmTick92"
+   style="display:none"
+   points="1381.4,677.2 1378.3,672.3 1440.2,630.1 1443.3,635.1 "
+   class="st27" />
+
+            <polygon
+   id="rpmTick93"
+   style="display:none"
+   points="1388.8,688.7 1385.9,683.7 1448.9,643.3 1451.9,648.3 "
+   class="st27" />
+
+            <polygon
+   id="rpmTick94"
+   style="display:none"
+   points="1395.9,700.3 1393.1,695.3 1457.3,656.6 1460.1,661.7 "
+   class="st27" />
+
+            <polygon
+   id="rpmTick95"
+   style="display:none"
+   points="1402.6,712.2 1399.9,707 1465.2,670.2 1467.8,675.3 "
+   class="st27" />
+
+            <polygon
+   id="rpmTick96"
+   style="display:none"
+   points="1475.2,689.1 1408.9,724.2 1406.4,719 1472.7,683.9 "
+   class="st27" />
+
+            <polygon
+   id="rpmTick97"
+   style="display:none"
+   points="1482.1,703.1 1414.9,736.3 1412.5,731.1 1479.8,697.8 "
+   class="st27" />
+
+            <polygon
+   id="rpmTick98"
+   style="display:none"
+   points="1420.5,748.6 1418.3,743.3 1486.4,712 1488.6,717.3 "
+   class="st27" />
+
+            <polygon
+   id="rpmTick99"
+   style="display:none"
+   points="1425.6,761.1 1423.6,755.7 1492.6,726.2 1494.6,731.6 "
+   class="st27" />
+
+            <polygon
+   id="rpmTick100"
+   style="display:none"
+   points="1430.5,773.6 1428.6,768.2 1498.3,740.6 1500.2,746.1 "
+   class="st27" />
+
+            <polygon
+   id="rpmTick101"
+   style="display:none"
+   points="1434.9,786.3 1433.2,780.9 1503.7,755.2 1505.3,760.7 "
+   class="st27" />
+
+            <polygon
+   id="rpmTick102"
+   style="display:none"
+   points="1438.9,799.1 1437.4,793.6 1508.5,769.9 1510,775.4 "
+   class="st27" />
+
+            <polygon
+   id="rpmTick103"
+   style="display:inline"
+   points="1442.6,812 1441.2,806.5 1512.9,784.6 1514.2,790.2 "
+   class="st28" />
+
+            <polygon
+   id="rpmTick104"
+   style="display:inline"
+   points="1445.8,824.9 1444.6,819.4 1516.9,799.5 1518,805.1 "
+   class="st28" />
+
+            <polygon
+   id="rpmTick105"
+   style="display:inline"
+   points="1521.3,820.1 1448.6,837.9 1447.6,832.4 1520.4,814.5 "
+   class="st28" />
+
+            <polygon
+   id="rpmTick106"
+   style="display:inline"
+   points="1524.2,835.1 1451.1,851 1450.3,845.4 1523.4,829.5 "
+   class="st28" />
+
+            <polygon
+   id="rpmTick107"
+   style="display:inline"
+   points="1526.6,850.2 1453.1,864.1 1452.5,858.5 1526,844.6 "
+   class="st28" />
+
+            <polygon
+   id="rpmTick108"
+   style="display:inline"
+   points="1454.8,877.3 1454.3,871.7 1528.1,859.8 1528.5,865.4 "
+   class="st28" />
+
+            <polygon
+   id="rpmTick109"
+   style="display:inline"
+   points="1456,890.5 1455.7,884.9 1529.7,874.9 1530,880.6 "
+   class="st28" />
+
+            <polygon
+   id="rpmTick110"
+   style="display:inline"
+   points="1531,895.8 1456.9,903.7 1456.7,898.1 1530.9,890.1 "
+   class="st28" />
+
+            <polygon
+   id="rpmTick111"
+   style="display:inline"
+   points="1457.3,916.9 1457.3,911.3 1531.6,905.3 1531.6,911 "
+   class="st28" />
+
+            <polygon
+   id="rpmTick112"
+   style="display:inline"
+   points="1457.4,930.1 1457.6,924.5 1531.9,920.5 1531.6,926.1 "
+   class="st28" />
+
+            <polygon
+   id="rpmTick113"
+   style="display:inline"
+   points="1457,943.3 1457.4,937.7 1531.7,935.7 1531.3,941.3 "
+   class="st28" />
+    </g><g
+       id="rpmNeedles"
+       transform="matrix(0.91189994,0,0,0.91189994,-341.71606,-45.924012)">
+        <path
+   id="rpmNeedle0"
+   style="display:none"
+   d="m 507,931.1 1,13.8 c 0.1,1.2 -0.8,2.2 -2,2.2 l -141.4,1.3 c -1.2,0 -2.2,-1 -2.3,-2.1 l -1.1,-13.8 c -0.1,-1.2 0.8,-2.2 2,-2.2 l 141.5,-1.4 c 1.2,0 2.2,1 2.3,2.2 z"
+   class="st0" />
+
+            <path
+   id="rpmNeedle1"
+   style="display:none"
+   d="m 507.1,910.1 0.4,13.9 c 0,1.2 -0.9,2.1 -2.1,2.1 L 363.7,921 c -1.2,0 -2.2,-1.1 -2.2,-2.3 l -0.4,-13.8 c 0,-1.2 0.9,-2.1 2.1,-2.1 l 141.7,5.1 c 1.1,0 2.1,1 2.2,2.2 z"
+   class="st0" />
+
+            <path
+   id="rpmNeedle2"
+   style="display:none"
+   d="m 508.2,889.2 -0.3,13.9 c 0,1.2 -1,2.1 -2.2,2 L 364.2,893.5 c -1.2,-0.1 -2.1,-1.2 -2.1,-2.4 l 0.3,-13.9 c 0,-1.2 1,-2.1 2.2,-2 l 141.6,11.5 c 1.1,0.2 2,1.3 2,2.5 z"
+   class="st0" />
+
+            <path
+   id="rpmNeedle3"
+   style="display:none"
+   d="m 510.4,868.3 -1,13.8 c -0.1,1.2 -1.1,2.1 -2.3,1.9 l -141,-18 c -1.2,-0.2 -2.1,-1.2 -2,-2.4 l 1,-13.8 c 0.1,-1.2 1.1,-2.1 2.3,-1.9 l 141.1,18 c 1.1,0.1 2,1.2 1.9,2.4 z"
+   class="st0" />
+
+            <path
+   id="rpmNeedle4"
+   style="display:none"
+   d="m 513.6,847.6 -1.7,13.8 c -0.2,1.2 -1.2,2 -2.4,1.8 L 369.2,838.8 c -1.2,-0.2 -2,-1.3 -1.9,-2.5 l 1.7,-13.8 c 0.1,-1.2 1.2,-2 2.4,-1.8 L 511.8,845 c 1.2,0.2 2,1.4 1.8,2.6 z"
+   class="st0" />
+
+            <path
+   id="rpmNeedle5"
+   style="display:none"
+   d="m 517.9,827 -2.4,13.7 c -0.2,1.2 -1.3,1.9 -2.5,1.7 L 373.8,811.6 c -1.2,-0.3 -2,-1.4 -1.8,-2.6 l 2.4,-13.7 c 0.2,-1.2 1.3,-1.9 2.5,-1.7 l 139.3,30.8 c 1.2,0.2 1.9,1.4 1.7,2.6 z"
+   class="st0" />
+
+            <path
+   id="rpmNeedle6"
+   style="display:none"
+   d="m 523.3,806.6 -3.1,13.6 c -0.3,1.2 -1.4,1.9 -2.6,1.6 L 379.9,784.6 c -1.2,-0.3 -1.9,-1.5 -1.6,-2.7 l 3.1,-13.6 c 0.3,-1.2 1.4,-1.9 2.6,-1.6 l 137.8,37.2 c 1,0.3 1.7,1.5 1.5,2.7 z"
+   class="st0" />
+
+            <path
+   id="rpmNeedle7"
+   style="display:none"
+   d="m 529.6,786.4 -3.8,13.4 c -0.3,1.2 -1.5,1.8 -2.7,1.4 l -136,-43.5 c -1.1,-0.4 -1.8,-1.6 -1.5,-2.8 l 3.7,-13.5 c 0.3,-1.2 1.5,-1.8 2.7,-1.5 l 136.1,43.5 c 1.2,0.6 1.9,1.9 1.5,3 z"
+   class="st0" />
+
+            <path
+   id="rpmNeedle8"
+   style="display:none"
+   d="m 537,766.6 -4.5,13.2 c -0.4,1.1 -1.6,1.7 -2.8,1.3 L 395.8,731.4 c -1.1,-0.4 -1.7,-1.7 -1.4,-2.8 l 4.4,-13.3 c 0.4,-1.2 1.6,-1.7 2.7,-1.3 l 134,49.7 c 1.3,0.5 1.9,1.8 1.5,2.9 z"
+   class="st0" />
+
+            <path
+   id="rpmNeedle9"
+   style="display:none"
+   d="m 545.4,747.1 -5.2,13 c -0.4,1.1 -1.7,1.7 -2.8,1.2 L 405.8,705.5 c -1.1,-0.5 -1.7,-1.8 -1.2,-2.9 l 5.1,-13.1 c 0.4,-1.1 1.7,-1.7 2.8,-1.2 l 131.7,55.8 c 1.1,0.6 1.6,1.9 1.2,3 z"
+   class="st0" />
+
+            <path
+   id="rpmNeedle10"
+   style="display:none"
+   d="m 554.8,728 -5.8,12.8 c -0.5,1.1 -1.8,1.6 -2.9,1.1 L 417.2,680.1 c -1.1,-0.5 -1.6,-1.8 -1.1,-3 l 5.8,-12.8 c 0.5,-1.1 1.8,-1.6 2.9,-1.1 l 129,61.9 c 1,0.5 1.5,1.8 1,2.9 z"
+   class="st0" />
+
+            <path
+   id="rpmNeedle11"
+   style="display:none"
+   d="m 565.1,709.4 -6.5,12.5 c -0.6,1.1 -1.9,1.5 -2.9,0.9 L 429.8,655.1 c -1.1,-0.6 -1.5,-1.9 -0.9,-3 l 6.4,-12.6 c 0.6,-1.1 1.9,-1.5 2.9,-0.9 l 126,67.8 c 1.1,0.6 1.5,1.9 0.9,3 z"
+   class="st0" />
+
+            <path
+   id="rpmNeedle12"
+   style="display:none"
+   d="m 576.4,691.2 -7.1,12.2 c -0.6,1.1 -2,1.4 -3,0.8 L 443.7,630.7 c -1,-0.6 -1.4,-2 -0.8,-3.1 l 7.1,-12.3 c 0.6,-1.1 1.9,-1.4 3,-0.8 L 575.7,688 c 1,0.8 1.3,2.2 0.7,3.2 z"
+   class="st0" />
+
+            <path
+   id="rpmNeedle13"
+   style="display:none"
+   d="m 588.6,673.6 -7.7,11.9 c -0.7,1 -2,1.3 -3,0.7 l -119,-79.1 c -1,-0.7 -1.3,-2 -0.6,-3.1 l 7.7,-11.9 c 0.7,-1 2,-1.3 3,-0.7 l 119,79.1 c 1,0.7 1.3,2.1 0.6,3.1 z"
+   class="st0" />
+
+            <path
+   id="rpmNeedle14"
+   style="display:none"
+   d="m 601.7,656.6 -8.3,11.5 c -0.7,1 -2.1,1.2 -3.1,0.5 L 475.2,584.1 c -1,-0.7 -1.2,-2.1 -0.5,-3.1 l 8.3,-11.6 c 0.7,-1 2.1,-1.2 3.1,-0.5 l 115.2,84.6 c 0.9,0.7 1.1,2.1 0.4,3.1 z"
+   class="st0" />
+
+            <path
+   id="rpmNeedle15"
+   style="display:none"
+   d="m 615.7,640.1 -8.9,11.1 c -0.8,1 -2.2,1.1 -3.1,0.4 L 492.8,561.8 c -0.9,-0.8 -1.1,-2.2 -0.3,-3.1 l 8.9,-11.2 c 0.8,-1 2.2,-1.1 3.1,-0.4 l 111,89.9 c 0.8,0.7 0.9,2.1 0.2,3.1 z"
+   class="st0" />
+
+            <path
+   id="rpmNeedle16"
+   style="display:none"
+   d="M 630.5,624.3 621,635 c -0.8,0.9 -2.2,1 -3.1,0.2 L 511.4,540.4 c -0.9,-0.8 -1,-2.2 -0.1,-3.1 l 9.4,-10.8 c 0.8,-0.9 2.2,-1 3.1,-0.2 l 106.5,94.9 c 0.9,0.8 1,2.2 0.2,3.1 z"
+   class="st0" />
+
+            <path
+   id="rpmNeedle17"
+   style="display:none"
+   d="m 646.1,609.2 -10,10.3 c -0.9,0.9 -2.3,0.9 -3.1,0.1 L 531.2,519.9 c -0.9,-0.8 -0.9,-2.3 0,-3.2 l 10,-10.3 c 0.9,-0.9 2.3,-0.9 3.1,-0.1 l 101.8,99.8 c 0.9,0.8 0.8,2.2 0,3.1 z"
+   class="st0" />
+
+            <path
+   id="rpmNeedle18"
+   style="display:none"
+   d="m 662.5,594.8 -10.5,9.8 c -0.9,0.9 -2.3,0.8 -3.1,-0.1 L 552,500.2 c -0.8,-0.9 -0.7,-2.3 0.2,-3.1 l 10.5,-9.9 c 0.9,-0.9 2.3,-0.8 3.1,0 l 96.8,104.5 c 0.9,0.9 0.8,2.3 -0.1,3.1 z"
+   class="st0" />
+
+            <path
+   id="rpmNeedle19"
+   style="display:none"
+   d="m 679.6,581.2 -11,9.3 c -1,0.8 -2.4,0.7 -3.1,-0.2 L 573.9,481.5 c -0.8,-0.9 -0.6,-2.3 0.3,-3.1 l 11,-9.4 c 1,-0.8 2.4,-0.7 3.1,0.2 l 91.6,108.9 c 0.8,0.9 0.6,2.3 -0.3,3.1 z"
+   class="st0" />
+
+            <path
+   id="rpmNeedle20"
+   style="display:none"
+   d="m 697.4,568.4 -11.5,8.8 c -1,0.8 -2.4,0.6 -3.1,-0.3 L 596.6,464 c -0.7,-1 -0.5,-2.4 0.5,-3.1 l 11.5,-8.9 c 1,-0.8 2.4,-0.6 3.1,0.3 l 86.2,113.1 c 0.7,0.9 0.5,2.3 -0.5,3 z"
+   class="st0" />
+
+            <path
+   id="rpmNeedle21"
+   style="display:none"
+   d="m 715.8,556.4 -12,8.3 c -1,0.7 -2.4,0.5 -3.1,-0.5 L 620.2,447.3 c -0.7,-1 -0.4,-2.4 0.6,-3.1 l 12,-8.3 c 1,-0.7 2.4,-0.5 3.1,0.5 l 80.5,117 c 0.7,0.9 0.4,2.3 -0.6,3 z"
+   class="st0" />
+
+            <path
+   id="rpmNeedle22"
+   style="display:none"
+   d="m 734.9,545.3 -12.4,7.7 c -1.1,0.7 -2.5,0.4 -3.1,-0.6 L 644.8,431.9 c -0.6,-1 -0.3,-2.4 0.8,-3.1 L 658,421 c 1.1,-0.7 2.5,-0.4 3.1,0.6 l 74.6,120.6 c 0.6,1.1 0.2,2.4 -0.8,3.1 z"
+   class="st0" />
+
+            <path
+   id="rpmNeedle23"
+   style="display:none"
+   d="m 754.5,535.1 -12.8,7.1 c -1.1,0.6 -2.5,0.3 -3.1,-0.8 L 670,417.5 c -0.6,-1 -0.2,-2.4 1,-3 l 12.8,-7.2 c 1.1,-0.6 2.5,-0.3 3.1,0.8 l 68.6,124 c 0.5,1 0.1,2.4 -1,3 z"
+   class="st0" />
+
+            <path
+   id="rpmNeedle24"
+   style="display:none"
+   d="m 774.6,525.7 -13.1,6.5 c -1.1,0.6 -2.5,0.2 -3,-0.9 l -62.3,-127 c -0.5,-1.1 0,-2.4 1.1,-3 l 13.2,-6.6 c 1.1,-0.6 2.5,-0.2 3,0.9 l 62.3,127.1 c 0.5,1.2 0,2.5 -1.2,3 z"
+   class="st0" />
+
+            <path
+   id="rpmNeedle25"
+   style="display:none"
+   d="m 795.2,517.4 -13.5,5.9 c -1.2,0.5 -2.5,0 -3,-1 L 722.8,392.5 c -0.5,-1.1 0.1,-2.4 1.3,-2.9 l 13.5,-6 c 1.2,-0.5 2.5,0 3,1.1 l 55.9,129.9 c 0.5,0.9 -0.1,2.2 -1.3,2.8 z"
+   class="st0" />
+
+            <path
+   id="rpmNeedle26"
+   style="display:none"
+   d="m 816.3,509.9 -13.8,5.3 c -1.2,0.5 -2.5,-0.1 -2.9,-1.2 L 750.2,381.7 c -0.4,-1.1 0.2,-2.4 1.4,-2.9 l 13.8,-5.4 c 1.2,-0.5 2.5,0.1 2.9,1.2 L 817.6,507 c 0.5,1.2 -0.1,2.5 -1.3,2.9 z"
+   class="st0" />
+
+            <path
+   id="rpmNeedle27"
+   style="display:none"
+   d="m 837.7,503.5 -14,4.6 c -1.2,0.4 -2.5,-0.2 -2.9,-1.3 L 778.1,372.3 c -0.4,-1.1 0.3,-2.4 1.6,-2.8 l 14.1,-4.7 c 1.2,-0.4 2.5,0.2 2.9,1.3 l 42.7,134.6 c 0.2,1.1 -0.5,2.4 -1.7,2.8 z"
+   class="st0" />
+
+            <path
+   id="rpmNeedle28"
+   style="display:none"
+   d="m 859.4,498 -14.3,4 c -1.2,0.3 -2.5,-0.3 -2.8,-1.4 L 806.4,364.2 c -0.3,-1.2 0.5,-2.4 1.7,-2.7 l 14.3,-4.1 c 1.2,-0.4 2.5,0.3 2.8,1.5 l 35.9,136.5 c 0.3,1.1 -0.5,2.3 -1.7,2.6 z"
+   class="st0" />
+
+            <path
+   id="rpmNeedle29"
+   style="display:none"
+   d="m 881.4,493.6 -14.5,3.3 c -1.3,0.3 -2.5,-0.4 -2.7,-1.6 l -29,-138 c -0.2,-1.2 0.6,-2.4 1.8,-2.6 l 14.5,-3.4 c 1.3,-0.3 2.5,0.4 2.7,1.6 l 29,138.1 c 0.3,1.1 -0.6,2.3 -1.8,2.6 z"
+   class="st0" />
+
+            <path
+   id="rpmNeedle30"
+   style="display:none"
+   d="m 903.6,490.1 -14.6,2.7 c -1.3,0.2 -2.4,-0.5 -2.6,-1.7 L 864.3,351.9 c -0.2,-1.2 0.7,-2.3 2,-2.6 l 14.7,-2.7 c 1.3,-0.2 2.5,0.5 2.6,1.7 l 22,139.3 c 0.2,1.2 -0.7,2.3 -2,2.5 z"
+   class="st0" />
+
+            <path
+   id="rpmNeedle31"
+   style="display:none"
+   d="m 926,487.7 -14.7,2 c -1.3,0.2 -2.4,-0.6 -2.5,-1.8 l -15,-140.1 c -0.1,-1.2 0.8,-2.3 2.1,-2.5 l 14.8,-2 c 1.3,-0.2 2.4,0.6 2.6,1.8 l 14.9,140.2 c 0,1.2 -0.9,2.3 -2.2,2.4 z"
+   class="st0" />
+
+            <path
+   id="rpmNeedle32"
+   style="display:none"
+   d="m 948.5,486.4 -14.8,1.3 c -1.3,0.1 -2.4,-0.8 -2.5,-1.9 L 923.3,345 c -0.1,-1.2 0.9,-2.3 2.2,-2.4 l 14.9,-1.3 c 1.3,-0.1 2.4,0.8 2.5,2 l 7.8,140.8 c 0.1,1.1 -0.9,2.2 -2.2,2.3 z"
+   class="st0" />
+
+            <path
+   id="rpmNeedle33"
+   style="display:none"
+   d="m 971,486.1 -14.9,0.6 c -1.3,0.1 -2.3,-0.9 -2.4,-2 l -0.8,-141 c 0,-1.2 1,-2.2 2.3,-2.3 l 15,-0.6 c 1.3,-0.1 2.4,0.9 2.4,2.1 l 0.7,141 c 0.1,1.1 -1,2.1 -2.3,2.2 z"
+   class="st0" />
+
+            <path
+   id="rpmNeedle34"
+   style="display:none"
+   d="m 993.6,486.8 -14.9,-0.1 c -1.3,0 -2.3,-1 -2.2,-2.2 l 6.3,-140.9 c 0.1,-1.2 1.2,-2.2 2.5,-2.2 l 15,0.1 c 1.3,0 2.3,1 2.3,2.2 l -6.6,141 c 0,1.1 -1.1,2.1 -2.4,2.1 z"
+   class="st0" />
+
+            <path
+   id="rpmNeedle35"
+   style="display:none"
+   d="m 1016.1,488.6 -14.9,-0.8 c -1.3,-0.1 -2.3,-1.1 -2.1,-2.3 l 13.4,-140.4 c 0.1,-1.2 1.3,-2.1 2.6,-2 l 15,0.8 c 1.3,0.1 2.3,1.1 2.1,2.3 l -13.5,140.5 c -0.2,1 -1.3,1.9 -2.6,1.9 z"
+   class="st0" />
+
+            <path
+   id="rpmNeedle36"
+   style="display:none"
+   d="m 1038.5,491.4 -14.9,-1.5 c -1.3,-0.1 -2.2,-1.2 -2,-2.4 l 20.5,-139.7 c 0.2,-1.2 1.4,-2 2.7,-1.9 l 14.9,1.4 c 1.3,0.1 2.2,1.2 2,2.4 l -20.6,139.7 c -0.2,1.2 -1.3,2.1 -2.6,2 z"
+   class="st0" />
+
+            <path
+   id="rpmNeedle37"
+   style="display:none"
+   d="m 1060.7,495.2 -14.8,-2.1 c -1.3,-0.2 -2.1,-1.3 -1.9,-2.4 l 27.6,-138.6 c 0.2,-1.2 1.5,-2 2.8,-1.8 l 14.8,2.1 c 1.3,0.2 2.1,1.3 1.9,2.5 l -27.7,138.6 c -0.2,1.1 -1.4,1.9 -2.7,1.7 z"
+   class="st0" />
+
+            <path
+   id="rpmNeedle38"
+   style="display:none"
+   d="m 1082.7,500 -14.6,-2.8 c -1.3,-0.2 -2.1,-1.4 -1.8,-2.5 l 34.6,-137.1 c 0.3,-1.2 1.6,-1.9 2.8,-1.7 l 14.7,2.8 c 1.3,0.2 2.1,1.4 1.8,2.6 l -34.7,137.1 c -0.2,1.2 -1.5,1.9 -2.8,1.6 z"
+   class="st0" />
+
+            <path
+   id="rpmNeedle39"
+   style="display:none"
+   d="m 1104.5,505.9 -14.5,-3.5 c -1.3,-0.3 -2,-1.5 -1.6,-2.6 l 41.5,-135.4 c 0.4,-1.1 1.7,-1.8 2.9,-1.5 l 14.6,3.5 c 1.3,0.3 2,1.5 1.7,2.6 l -41.6,135.4 c -0.5,1.1 -1.8,1.8 -3,1.5 z"
+   class="st0" />
+
+            <path
+   id="rpmNeedle40"
+   style="display:none"
+   d="m 1125.9,512.8 -14.3,-4.2 c -1.2,-0.4 -1.9,-1.6 -1.5,-2.7 l 48.3,-133.3 c 0.4,-1.1 1.8,-1.8 3,-1.4 l 14.4,4.2 c 1.2,0.4 1.9,1.6 1.5,2.7 l -48.4,133.3 c -0.4,1.1 -1.8,1.7 -3,1.4 z"
+   class="st0" />
+
+            <path
+   id="rpmNeedle41"
+   style="display:none"
+   d="m 1147,520.6 -14.1,-4.8 c -1.2,-0.4 -1.8,-1.6 -1.4,-2.7 l 55,-130.9 c 0.5,-1.1 1.8,-1.7 3.1,-1.2 l 14.1,4.8 c 1.2,0.4 1.8,1.7 1.4,2.8 L 1150,519.4 c -0.5,1.1 -1.8,1.6 -3,1.2 z"
+   class="st0" />
+
+            <path
+   id="rpmNeedle42"
+   style="display:none"
+   d="m 1167.6,529.4 -13.8,-5.5 c -1.2,-0.5 -1.8,-1.7 -1.2,-2.8 l 61.5,-128.2 c 0.5,-1.1 1.9,-1.6 3.1,-1.1 l 13.9,5.5 c 1.2,0.5 1.8,1.7 1.2,2.8 l -61.6,128.1 c -0.5,1.2 -1.9,1.7 -3.1,1.2 z"
+   class="st0" />
+
+            <path
+   id="rpmNeedle43"
+   style="display:none"
+   d="m 1187.8,539.2 -13.5,-6.1 c -1.2,-0.5 -1.7,-1.8 -1.1,-2.9 l 68,-125.2 c 0.6,-1.1 2,-1.5 3.2,-1 l 13.6,6.1 c 1.2,0.5 1.7,1.8 1.1,2.9 l -68,125.1 c -0.8,1.2 -2.2,1.6 -3.3,1.1 z"
+   class="st0" />
+
+            <path
+   id="rpmNeedle44"
+   style="display:none"
+   d="m 1207.4,549.8 -13.2,-6.7 c -1.1,-0.6 -1.6,-1.9 -0.9,-2.9 l 74.2,-121.8 c 0.6,-1 2.1,-1.4 3.2,-0.8 l 13.3,6.7 c 1.2,0.6 1.6,1.9 0.9,2.9 L 1210.6,549 c -0.6,1.1 -2.1,1.4 -3.2,0.8 z"
+   class="st0" />
+
+            <path
+   id="rpmNeedle45"
+   style="display:none"
+   d="m 1226.5,561.4 -12.8,-7.3 c -1.1,-0.6 -1.5,-2 -0.8,-2.9 L 1293.2,433 c 0.7,-1 2.1,-1.3 3.3,-0.7 l 12.9,7.3 c 1.1,0.6 1.5,2 0.8,3 l -80.3,118.2 c -0.9,0.9 -2.3,1.2 -3.4,0.6 z"
+   class="st0" />
+
+            <path
+   id="rpmNeedle46"
+   style="display:none"
+   d="m 1244.9,573.8 -12.4,-7.9 c -1.1,-0.7 -1.4,-2 -0.6,-3 L 1318,448.6 c 0.7,-1 2.2,-1.2 3.3,-0.5 l 12.5,7.9 c 1.1,0.7 1.4,2 0.6,3 l -86.2,114.3 c -0.7,1 -2.2,1.2 -3.3,0.5 z"
+   class="st0" />
+
+            <path
+   id="rpmNeedle47"
+   style="display:none"
+   d="m 1262.7,587 -12,-8.4 c -1,-0.7 -1.3,-2.1 -0.5,-3 L 1342,465.4 c 0.8,-0.9 2.3,-1.1 3.3,-0.4 l 12.1,8.5 c 1,0.7 1.3,2.1 0.5,3 L 1266,586.7 c -0.8,0.9 -2.2,1.1 -3.3,0.3 z"
+   class="st0" />
+
+            <path
+   id="rpmNeedle48"
+   style="display:none"
+   d="m 1279.8,601.1 -11.6,-9 c -1,-0.8 -1.2,-2.1 -0.3,-3 l 97.2,-105.8 c 0.8,-0.9 2.3,-1 3.3,-0.2 l 11.6,9 c 1,0.8 1.2,2.1 0.3,3 L 1283,600.8 c -0.7,1 -2.2,1.1 -3.2,0.3 z"
+   class="st0" />
+
+            <path
+   id="rpmNeedle49"
+   style="display:none"
+   d="m 1296.2,615.9 -11.1,-9.5 c -1,-0.8 -1,-2.2 -0.2,-3 l 102.4,-101.1 c 0.9,-0.9 2.4,-0.9 3.3,0 l 11.1,9.6 c 1,0.8 1,2.2 0.2,3.1 l -102.4,101 c -0.9,0.7 -2.3,0.7 -3.3,-0.1 z"
+   class="st0" />
+
+            <path
+   id="rpmNeedle50"
+   style="display:none"
+   d="m 1311.8,631.4 -10.6,-10 c -0.9,-0.9 -0.9,-2.2 0,-3 l 107.3,-96.2 c 0.9,-0.8 2.4,-0.8 3.3,0.1 l 10.6,10.1 c 0.9,0.9 0.9,2.2 0,3.1 L 1315,631.6 c -0.8,0.7 -2.3,0.7 -3.2,-0.2 z"
+   class="st0" />
+
+            <path
+   id="rpmNeedle51"
+   style="display:none"
+   d="m 1326.6,647.7 -10.1,-10.5 c -0.9,-0.9 -0.8,-2.3 0.1,-3 l 112,-91.1 c 0.9,-0.8 2.4,-0.7 3.3,0.3 l 10.1,10.5 c 0.9,0.9 0.8,2.3 -0.1,3.1 l -112,91 c -1,0.7 -2.5,0.6 -3.3,-0.3 z"
+   class="st0" />
+
+            <path
+   id="rpmNeedle52"
+   style="display:none"
+   d="m 1340.5,664.5 -9.5,-10.9 c -0.8,-0.9 -0.7,-2.3 0.3,-3 l 116.4,-85.8 c 1,-0.7 2.5,-0.5 3.3,0.4 l 9.5,11 c 0.8,1 0.7,2.3 -0.3,3 l -116.4,85.7 c -1,0.8 -2.5,0.6 -3.3,-0.4 z"
+   class="st0" />
+
+            <path
+   id="rpmNeedle53"
+   style="display:none"
+   d="m 1353.5,682 -9,-11.3 c -0.8,-1 -0.6,-2.3 0.4,-3 l 120.5,-80.3 c 1,-0.7 2.5,-0.4 3.3,0.6 l 9,11.4 c 0.8,1 0.6,2.3 -0.4,3 l -120.5,80.2 c -1.1,0.6 -2.5,0.4 -3.3,-0.6 z"
+   class="st0" />
+
+            <path
+   id="rpmNeedle54"
+   style="display:none"
+   d="m 1365.6,700.1 -8.4,-11.7 c -0.7,-1 -0.5,-2.3 0.6,-3 l 124.3,-74.6 c 1.1,-0.6 2.5,-0.3 3.2,0.7 l 8.4,11.8 c 0.7,1 0.5,2.4 -0.6,3 l -124.3,74.5 c -1,0.6 -2.4,0.3 -3.2,-0.7 z"
+   class="st0" />
+
+            <path
+   id="rpmNeedle55"
+   style="display:none"
+   d="m 1376.8,718.6 -7.8,-12.1 c -0.7,-1 -0.3,-2.4 0.7,-2.9 l 127.9,-68.8 c 1.1,-0.6 2.5,-0.2 3.2,0.9 l 7.7,12.1 c 0.7,1.1 0.3,2.4 -0.7,3 L 1380,719.5 c -1.1,0.5 -2.5,0.2 -3.2,-0.9 z"
+   class="st0" />
+
+            <path
+   id="rpmNeedle56"
+   style="display:none"
+   d="m 1387,737.7 -7.1,-12.4 c -0.6,-1.1 -0.2,-2.4 0.9,-2.9 l 131.1,-62.8 c 1.1,-0.5 2.5,-0.1 3.1,1 l 7.1,12.5 c 0.6,1.1 0.2,2.4 -0.9,2.9 l -131,62.7 c -1.1,0.5 -2.5,0 -3.2,-1 z"
+   class="st0" />
+
+            <path
+   id="rpmNeedle57"
+   style="display:none"
+   d="m 1396.3,757.1 -6.5,-12.7 c -0.6,-1.1 -0.1,-2.4 1,-2.9 l 133.9,-56.6 c 1.1,-0.5 2.5,0 3.1,1.1 l 6.4,12.8 c 0.6,1.1 0.1,2.4 -1,2.9 l -133.9,56.5 c -1.1,0.5 -2.5,0 -3,-1.1 z"
+   class="st0" />
+
+            <path
+   id="rpmNeedle58"
+   style="display:none"
+   d="m 1404.5,777 -5.8,-13 c -0.5,-1.1 0,-2.4 1.2,-2.8 l 136.5,-50.4 c 1.2,-0.4 2.5,0.1 3,1.3 l 5.8,13 c 0.5,1.1 0,2.4 -1.2,2.8 l -136.5,50.3 c -1.2,0.5 -2.5,-0.1 -3,-1.2 z"
+   class="st0" />
+
+            <path
+   id="rpmNeedle59"
+   style="display:none"
+   d="m 1411.7,797.2 -5.1,-13.2 c -0.4,-1.1 0.1,-2.4 1.3,-2.7 l 138.7,-44 c 1.2,-0.4 2.5,0.3 2.9,1.4 l 5.1,13.3 c 0.4,1.2 -0.1,2.4 -1.3,2.8 l -138.7,44 c -1.1,0.2 -2.5,-0.5 -2.9,-1.6 z"
+   class="st0" />
+
+            <path
+   id="rpmNeedle60"
+   style="display:none"
+   d="m 1417.9,817.7 -4.5,-13.4 c -0.4,-1.2 0.3,-2.4 1.4,-2.7 L 1555.4,764 c 1.2,-0.3 2.5,0.4 2.8,1.5 l 4.4,13.5 c 0.4,1.2 -0.3,2.4 -1.5,2.7 l -140.6,37.5 c -1,0.3 -2.3,-0.4 -2.6,-1.5 z"
+   class="st0" />
+
+            <path
+   id="rpmNeedle61"
+   style="display:none"
+   d="m 1423,838.4 -3.8,-13.6 c -0.3,-1.2 0.4,-2.4 1.6,-2.6 L 1563,791.1 c 1.2,-0.3 2.4,0.5 2.8,1.7 l 3.7,13.6 c 0.3,1.2 -0.4,2.4 -1.6,2.6 l -142.1,31 c -1.3,0.3 -2.5,-0.4 -2.8,-1.6 z"
+   class="st0" />
+
+            <path
+   id="rpmNeedle62"
+   style="display:none"
+   d="m 1427,859.3 -3.1,-13.7 c -0.3,-1.2 0.5,-2.3 1.7,-2.5 L 1569,818.6 c 1.2,-0.2 2.4,0.6 2.7,1.8 l 3,13.8 c 0.3,1.2 -0.5,2.3 -1.7,2.5 l -143.3,24.5 c -1.2,0.1 -2.4,-0.7 -2.7,-1.9 z"
+   class="st0" />
+
+            <path
+   id="rpmNeedle63"
+   style="display:none"
+   d="m 1430,880.3 -2.4,-13.8 c -0.2,-1.2 0.6,-2.3 1.8,-2.5 l 144.3,-18 c 1.2,-0.2 2.4,0.7 2.6,1.9 l 2.3,13.9 c 0.2,1.2 -0.6,2.3 -1.8,2.5 l -144.2,17.9 c -1.3,0.2 -2.4,-0.7 -2.6,-1.9 z"
+   class="st0" />
+
+            <path
+   id="rpmNeedle64"
+   style="display:none"
+   d="m 1431.9,901.5 -1.7,-13.9 c -0.1,-1.2 0.7,-2.3 1.9,-2.4 l 144.8,-11.3 c 1.2,-0.1 2.3,0.8 2.5,2 l 1.6,14 c 0.1,1.2 -0.7,2.3 -2,2.4 l -144.8,11.3 c -1.1,0 -2.2,-0.9 -2.3,-2.1 z"
+   class="st0" />
+
+            <path
+   id="rpmNeedle65"
+   style="display:none"
+   d="m 1432.7,922.6 -1,-14 c -0.1,-1.2 0.8,-2.2 2.1,-2.3 l 145,-4.7 c 1.2,0 2.3,0.9 2.4,2.1 l 0.9,14 c 0.1,1.2 -0.9,2.2 -2.1,2.3 l -145,4.7 c -1.2,0.1 -2.2,-0.9 -2.3,-2.1 z"
+   class="st0" />
+
+            <path
+   id="rpmNeedle66"
+   style="display:none"
+   d="m 1432.4,943.8 -0.2,-14 c 0,-1.2 1,-2.2 2.2,-2.2 l 144.9,1.9 c 1.2,0 2.2,1 2.2,2.2 l 0.2,14 c 0,1.2 -1,2.2 -2.2,2.2 L 1434.7,946 c -1.2,0 -2.2,-1 -2.3,-2.2 z"
+   class="st0" />
+</g><g
+       id="rpmDialArc"
+       transform="matrix(0.91189994,0,0,0.91189994,-341.71606,-45.924012)">
+    <path
+   id="path1247"
+   d="m 913.1,481.3 c 17.5,-1.8 35.2,-2.7 52.8,-2.7"
+   class="st25" />
+
+            <path
+   id="path1249"
+   d="m 700.3,554.9 c 3.9,-1.2 6.1,-3.5 8.4,-5.7 58.6,-35.2 119,-55.7 185.5,-65.5"
+   class="st26" />
+
+            <path
+   id="path1251"
+   d="m 542,725.8 c 12.8,-24.5 28,-47.8 45.5,-69.8 17.5,-22 37.2,-42.5 58.9,-61.1 12.3,-10.6 25.3,-20.6 38.7,-30"
+   class="st26" />
+
+            <path
+   id="path1253"
+   d="m 495.3,941.1 c -3.8,-67.6 8.2,-136.3 38.6,-198.8"
+   class="st26" />
+
+            <path
+   id="path1255"
+   d="M 1108.9,499.1 C 1062.1,485.4 1014.1,478.6 966,478.6"
+   class="st26" />
+
+            <path
+   id="path1257"
+   d="m 1307.4,614.5 c -50.9,-48.4 -112.7,-88 -180.9,-109.8"
+   class="st26" />
+
+            <path
+   id="path1259"
+   d="m 1418,790 c -16.8,-51.7 -43.1,-98.5 -80.1,-142.5 -5.5,-6.6 -11,-13.3 -17,-19.6"
+   class="st26" />
+
+            <path
+   id="path1261"
+   d="m 1436.7,941.1 c 3.7,-45.7 -0.6,-90.7 -13.7,-134.9"
+   class="st33" />
+
+</g><g
+       id="RPMdialLGTicks"
+       transform="matrix(0.91189994,0,0,0.91189994,-341.71606,-45.924012)">
+            <rect
+   id="RPMdialLGTick1"
+   height="10.3"
+   width="63"
+   class="st0"
+   transform="matrix(0.9975,-0.07035885,0.07035885,0.9975,-64.3811,40.7384)"
+   y="929.09998"
+   x="514.59998" />
+
+            <polygon
+   id="RPMdialLGTick2"
+   points="533.6,794.8 537,784.9 597.1,800.9 593.7,810.9 "
+   class="st0" />
+
+            <polygon
+   id="RPMdialLGTick3"
+   points="609.1,662.9 616.3,654.7 665.8,689 658.6,697.2 "
+   class="st0" />
+
+            <polygon
+   id="RPMdialLGTick4"
+   points="731.8,563.1 741.7,557.7 774,605.8 764.1,611.2 "
+   class="st0" />
+
+            <polygon
+   id="RPMdialLGTick5"
+   points="885.4,508.7 896.7,506.7 907.6,562.3 896.3,564.2 "
+   class="st0" />
+
+            <polygon
+   id="RPMdialLGTick6"
+   points="1037.7,562.4 1049.7,506.8 1061,508.6 1049,564.3 "
+   class="st0" />
+
+            <polygon
+   id="RPMdialLGTick7"
+   points="1169.7,606.1 1203,557.6 1212.8,562.9 1179.5,611.4 "
+   class="st0" />
+
+            <polygon
+   id="RPMdialLGTick8"
+   points="1275,689.4 1325.2,654.5 1332.2,662.6 1282,697.5 "
+   class="st0" />
+
+            <polygon
+   id="RPMdialLGTick9"
+   points="1339.7,801.4 1400.2,784.7 1403.4,794.6 1342.9,811.3 "
+   class="st0" />
+
+            <polygon
+   id="RPMdialLGTick10"
+   points="1354.3,937.7 1355.2,927.4 1418.1,931.1 1417.1,941.4 "
+   class="st28" />
+</g><g
+       id="RPMdialSMTicks"
+       transform="matrix(0.91189994,0,0,0.91189994,-341.71606,-45.924012)">
+
+            <path
+   id="path891"
+   d="m 528.2,851.2 0.6,-3.4 47,6 c -0.2,1.1 -0.4,2.3 -0.6,3.4 z"
+   class="st0" />
+
+            <path
+   id="path897"
+   d="m 534.4,822.4 0.9,-3.4 46.2,9.1 c -0.3,1.1 -0.6,2.3 -0.9,3.4 z"
+   class="st0" />
+
+            <path
+   id="path903"
+   d="m 524.3,880.2 0.3,-3.5 47.5,2.9 c -0.1,1.2 -0.2,2.3 -0.3,3.5 z"
+   class="st0" />
+
+            <path
+   id="path909"
+   d="m 522.8,909.3 v -3.5 l 47.8,-0.2 c 0,1.1 0,2.3 0,3.5 z"
+   class="st0" />
+
+            <path
+   id="path915"
+   d="m 582.1,714.1 1.9,-3 41.2,20.7 c -0.6,1 -1.3,2 -1.9,3 z"
+   class="st0" />
+
+            <path
+   id="path921"
+   d="m 599.2,689.1 2.2,-2.9 39.3,23.3 c -0.7,1 -1.4,1.9 -2.2,2.9 z"
+   class="st0" />
+
+            <path
+   id="path927"
+   d="m 567,740.1 1.7,-3.1 43,18 c -0.6,1 -1.1,2.1 -1.7,3.2 z"
+   class="st0" />
+
+            <path
+   id="path933"
+   d="m 554,767 1.4,-3.2 44.5,15.1 c -0.5,1.1 -1,2.2 -1.4,3.3 z"
+   class="st0" />
+
+            <path
+   id="path939"
+   d="m 686.7,602.5 3,-2.2 30.1,32.7 c -1,0.7 -2,1.5 -3,2.2 z"
+   class="st0" />
+
+            <path
+   id="path945"
+   d="m 712.5,584.5 3.2,-2 27.3,34.5 c -1.1,0.7 -2.1,1.4 -3.2,2 z"
+   class="st0" />
+
+            <path
+   id="path951"
+   d="m 662.3,622.1 2.8,-2.4 32.8,30.7 c -0.9,0.8 -1.9,1.6 -2.8,2.4 z"
+   class="st0" />
+
+            <path
+   id="path957"
+   d="m 639.5,643.3 2.6,-2.6 35.3,28.5 c -0.9,0.9 -1.7,1.7 -2.6,2.6 z"
+   class="st0" />
+
+            <path
+   id="path963"
+   d="m 828.1,531.3 3.7,-1.1 14.9,40.3 c -1.2,0.4 -2.4,0.8 -3.7,1.1 z"
+   class="st0" />
+
+            <path
+   id="path969"
+   d="m 859.3,522.6 3.7,-0.9 11.6,41.2 c -1.2,0.3 -2.5,0.6 -3.7,0.9 z"
+   class="st0" />
+
+            <path
+   id="path975"
+   d="m 797.7,541.9 3.6,-1.4 18.3,39.3 c -1.2,0.5 -2.4,0.9 -3.5,1.4 z"
+   class="st0" />
+
+            <path
+   id="path981"
+   d="m 768.2,554.4 3.4,-1.6 21.5,38.1 c -1.2,0.5 -2.3,1.1 -3.4,1.6 z"
+   class="st0" />
+
+            <path
+   id="path987"
+   d="m 985.7,552.3 2.1,-42.7 3.9,0.1 -2.2,42.7 c -1.2,0 -2.5,-0.1 -3.8,-0.1 z"
+   class="st0" />
+
+            <path
+   id="path993"
+   d="m 1014.6,553.9 5.6,-42.4 3.8,0.4 -5.6,42.4 c -1.2,-0.1 -2.5,-0.3 -3.8,-0.4 z"
+   class="st0" />
+
+            <path
+   id="path999"
+   d="m 956.7,552.6 -1.3,-42.8 3.9,-0.1 1.3,42.8 c -1.3,0 -2.6,0.1 -3.9,0.1 z"
+   class="st0" />
+
+            <path
+   id="path1005"
+   d="m 927.8,554.8 -4.8,-42.7 3.8,-0.4 4.8,42.7 c -1.3,0.1 -2.6,0.3 -3.8,0.4 z"
+   class="st0" />
+
+            <path
+   id="path1011"
+   d="m 1125.8,579.9 19,-39.4 3.5,1.3 -19,39.4 c -1.1,-0.4 -2.3,-0.9 -3.5,-1.3 z"
+   class="st0" />
+
+            <path
+   id="path1017"
+   d="m 1152.1,590.7 22,-38 3.4,1.6 -22.1,38 c -1.1,-0.6 -2.2,-1.1 -3.3,-1.6 z"
+   class="st0" />
+
+            <path
+   id="path1023"
+   d="m 1098.8,570.9 15.8,-40.6 3.6,1.1 -15.8,40.6 c -1.2,-0.4 -2.4,-0.7 -3.6,-1.1 z"
+   class="st0" />
+
+            <path
+   id="path1029"
+   d="m 1071,563.7 12.5,-41.6 3.7,0.9 -12.5,41.6 c -1.2,-0.3 -2.4,-0.6 -3.7,-0.9 z"
+   class="st0" />
+
+            <path
+   id="path1035"
+   d="m 1245,650.7 33.3,-31 2.8,2.4 -33.3,31 c -0.9,-0.8 -1.9,-1.6 -2.8,-2.4 z"
+   class="st0" />
+
+            <path
+   id="path1041"
+   d="m 1265.1,669.3 35.6,-28.7 2.6,2.6 -35.6,28.7 c -0.9,-0.9 -1.8,-1.8 -2.6,-2.6 z"
+   class="st0" />
+
+            <path
+   id="path1047"
+   d="m 1223.5,633.6 30.8,-33.1 3,2.2 -30.8,33.1 c -1.1,-0.7 -2.1,-1.5 -3,-2.2 z"
+   class="st0" />
+
+            <path
+   id="path1053"
+   d="m 1200.5,617.9 28.1,-35.1 3.1,2 -28.1,35.1 c -1,-0.6 -2,-1.3 -3.1,-2 z"
+   class="st0" />
+
+            <path
+   id="path1059"
+   d="m 1327.5,755.5 43.2,-18.4 1.6,3.1 -43.2,18.4 c -0.5,-1 -1,-2.1 -1.6,-3.1 z"
+   class="st0" />
+
+            <path
+   id="path1065"
+   d="m 1338.8,779.3 44.5,-15.5 1.4,3.2 -44.5,15.5 c -0.5,-1 -0.9,-2.1 -1.4,-3.2 z"
+   class="st0" />
+
+            <path
+   id="path1071"
+   d="m 1314.3,732.5 41.8,-21.2 1.9,3 -41.8,21.2 c -0.6,-1 -1.2,-2 -1.9,-3 z"
+   class="st0" />
+
+            <path
+   id="path1077"
+   d="m 1299.3,710.4 40.1,-24 2.1,2.9 -40.1,24 c -0.7,-1 -1.4,-1.9 -2.1,-2.9 z"
+   class="st0" />
+
+            <path
+   id="path1083"
+   d="m 1362.8,883.8 c -0.1,-1.1 -0.2,-2.3 -0.3,-3.4 l 47.5,-3.5 0.3,3.5 z"
+   class="st28" />
+
+            <path
+   id="path1089"
+   d="m 1363.5,909.8 c 0,-1.1 0,-2.3 0,-3.5 L 1411,906 v 3.5 z"
+   class="st28" />
+
+            <path
+   id="path1095"
+   d="m 1360,857.9 c -0.2,-1.1 -0.4,-2.3 -0.6,-3.4 l 47.2,-6.6 0.5,3.4 z"
+   class="st28" />
+
+            <path
+   id="path1101"
+   d="m 1354.2,828.9 46.8,-9.7 0.8,3.4 -46.8,9.7 c -0.2,-1.1 -0.5,-2.2 -0.8,-3.4 z"
+   class="st28" />
+</g><g
+       id="rpmDialDigits"
+       transform="matrix(0.91189994,0,0,0.91189994,-347.32561,-45.924012)">
+        <path
+   style="display:none;fill:#00ff03;fill-opacity:1;fill-rule:evenodd;stroke:#6878ff;stroke-width:0.646215;stroke-opacity:1;paint-order:stroke fill markers"
+   id="path11"
+   sodipodi:type="arc"
+   sodipodi:cx="-972.22284"
+   sodipodi:cy="-945.68945"
+   sodipodi:rx="362.22955"
+   sodipodi:ry="362.68149"
+   sodipodi:start="0"
+   sodipodi:end="3.1415927"
+   sodipodi:arc-type="chord"
+   d="m -609.99329,-945.68945 a 362.22955,362.68149 0 0 1 -181.11478,314.09138 362.22955,362.68149 0 0 1 -362.22953,-10e-6 362.22955,362.68149 0 0 1 -181.1148,-314.09137 z"
+   sodipodi:open="true"
+   transform="scale(-1)"
+   inkscape:label="DigitAlignDial" /><text
+   id="rpmDialDigit0"
+   class="st0 st2 st3"
+   transform="scale(1.0336344,0.96746009)"
+   x="577.13318"
+   y="1000.4017"
+   style="stroke-width:1.03363">0</text>
+
+            <text
+   id="rpmDialDigit1"
+   class="st0 st2 st3"
+   transform="scale(1.0336344,0.96746009)"
+   x="599.67242"
+   y="872.18518"
+   style="stroke-width:1.03363">2</text>
+
+            <text
+   id="rpmDialDigit2"
+   class="st0 st2 st3"
+   transform="scale(1.0336344,0.96746009)"
+   x="660.74573"
+   y="759.43341"
+   style="stroke-width:1.03363">4</text>
+
+            <text
+   id="rpmDialDigit3"
+   class="st0 st2 st4"
+   transform="scale(1.0336344,0.96746009)"
+   x="752.52936"
+   y="675.74744"
+   style="stroke-width:1.03363">8</text>
+
+            <text
+   id="rpmDialDigit4"
+   class="st0 st2 st3"
+   transform="scale(1.0336344,0.96746009)"
+   x="867.17584"
+   y="631.21698"
+   style="stroke-width:1.03363">9</text>
+
+            <text
+   id="rpmDialDigit5"
+   class="st0 st2 st3"
+   transform="scale(1.0336344,0.96746009)"
+   x="982.99982"
+   y="631.21698"
+   style="stroke-width:1.03363">10</text>
+
+            <text
+   id="rpmDialDigit6"
+   class="st0 st2 st3"
+   transform="scale(1.0336344,0.96746009)"
+   x="1104.4364"
+   y="675.74609"
+   style="stroke-width:1.03363">11</text>
+
+            <text
+   id="rpmDialDigit7"
+   class="st0 st2 st3"
+   transform="scale(1.0336344,0.96746009)"
+   x="1191.4349"
+   y="759.43353"
+   style="stroke-width:1.03363">12</text>
+
+            <text
+   id="rpmDialDigit8"
+   class="st0 st2 st3"
+   transform="scale(1.0336344,0.96746009)"
+   x="1251.6593"
+   y="872.18524"
+   style="stroke-width:1.03363">13</text>
+
+            <text
+   id="rpmDialDigit9"
+   class="st28 st2 st3"
+   transform="scale(1.0336344,0.96746009)"
+   x="1273.1302"
+   y="1000.4017"
+   style="stroke-width:1.03363">15</text>
+    </g></g></g><g
+   id="icons"
+   transform="translate(-1121.6436,-537.40795)"
+   style="display:inline">
+                
+                <path
+   id="iconBox"
+   d="M 1726.75,673.02222 V 572.51169 c 0,-4.85819 3.8866,-8.74474 8.7447,-8.74474 h 435.2938 c 4.8581,0 8.7447,3.88655 8.7447,8.74474 v 100.51053 c 0,4.85817 -3.8866,8.74473 -8.7447,8.74473 h -435.2938 c -4.7501,0 -8.7447,-3.88656 -8.7447,-8.74473 z"
+   class="st29"
+   style="stroke-width:1.07959" /><g
+   id="iconBT"
+   style="display:inline"
+   transform="matrix(0.99999813,0,0,1,554.01667,-420.99215)">
+    <path
+   id="iconBTppath"
+   d="m 1587.2107,1029.6316 -5.961,5.961 -0.042,-11.9497 6.0027,5.9887 m -6.0027,30.5415 5.9888,-5.9888 -5.961,-5.961 z m 23.1492,-18.2721 c 0,28.5683 -9.9905,35.099 -25.7198,35.099 -15.7292,0 -27.6373,-6.5307 -27.6373,-35.099 0,-28.5683 11.5885,-36.0439 27.3178,-36.0439 15.7292,0 26.0393,7.4895 26.0393,36.0439 z m -22.0237,0 11.0327,-12.311 -17.3827,-18.6612 v 24.5805 l -10.2548,-10.2546 -3.7517,3.7378 12.8808,12.9224 -12.8808,12.9224 3.7378,3.7378 10.2546,-10.2546 0.3196,23.6217 17.7023,-17.7162 z"
+   class="st0" />
+    </g><g
+   id="iconTrip"
+   style="display:inline"
+   transform="translate(329.32182,-276.56356)">
+    <path
+   id="path2349"
+   d="m 1757.7,918 c -6.4,-16 -12.8,-32 -19.2,-48 -0.7,-1.8 -1.8,-2.5 -3.7,-2.5 -4.4,0 -8.9,0 -13.3,0 -0.3,0 -0.6,0 -1.2,0 1,0.6 1.2,1.4 1.2,2.2 0.2,2.6 0.4,5.2 0.6,7.9 0.1,1.2 -0.4,1.7 -1.6,1.7 -2.4,0 -4.8,0 -7.1,0 -1.2,0 -1.7,-0.5 -1.6,-1.7 0.2,-2.6 0.4,-5.3 0.6,-7.9 0.1,-0.8 0.2,-1.5 1.2,-2.1 -5.1,0 -9.9,0 -14.6,0 -1.7,0 -2.9,0.8 -3.5,2.4 -6.4,16.1 -12.8,32.1 -19.2,48.2 -0.8,1.9 -1.2,4 -0.9,6.1 0.2,1.5 0.9,2.1 2.4,2.1 10.2,0 20.3,0 30.5,0 0.3,0 0.5,0 1.1,0 -1,-0.5 -1,-1.2 -1,-2 0.3,-3.7 0.6,-7.4 0.9,-11.1 0.1,-1 0.7,-1.6 1.8,-1.6 4,0 8.1,0 12.1,0 1.1,0 1.7,0.5 1.8,1.7 0.3,3.7 0.6,7.3 0.9,11 0.1,0.8 0.1,1.5 -0.9,2.1 0.5,0 0.8,0 1,0 10.2,0 20.3,0 30.5,0 1.5,0 2.2,-0.5 2.4,-2.1 0.1,-2.4 -0.4,-4.4 -1.2,-6.4 z m -35.4,-15.2 c -1.8,0 -3.6,0 -5.4,0 -1.8,0 -3.6,0 -5.4,0 -1.2,0 -1.7,-0.5 -1.6,-1.6 0.4,-4.8 0.7,-9.5 1.1,-14.3 0.1,-1.2 0.6,-1.7 1.8,-1.7 2.7,0 5.4,0 8,0 1.2,0 1.7,0.5 1.8,1.6 0.3,3.4 0.5,6.7 0.8,10.1 0.1,1.4 0.2,2.8 0.3,4.3 0.2,1.1 -0.2,1.6 -1.4,1.6 z"
+   class="st0" />
+
+</g>
+                
+
+                
+
+                <g
+   id="iconVideo"
+   style="display:inline"
+   transform="translate(233.74315,-170.31356)">
+    <path
+   id="path2365"
+   d="m 1747.9,771.4 c -3.7,0 -7.4,0 -11,0 -0.5,0 -0.9,-0.1 -1.2,-0.5 -2.1,-2.2 -4.3,-4.4 -6.4,-6.5 -1.2,-1.2 -2.6,-2 -4.3,-2 -5,0 -10,0 -15,0 -1.6,0 -3,0.6 -4.1,1.8 -2.2,2.2 -4.4,4.4 -6.6,6.7 -0.4,0.4 -0.8,0.6 -1.4,0.6 -3.7,0 -7.4,0 -11,0 -3.8,0 -6.3,2.4 -6.3,6.3 0,11.7 0,23.3 0,35 0,3.8 2.5,6.3 6.3,6.3 10.1,0 20.3,0 30.4,0 10.2,0 20.4,0 30.6,0 3.6,0 6.2,-2.6 6.2,-6.2 0,-11.7 0,-23.5 0,-35.2 -0.1,-3.8 -2.6,-6.3 -6.2,-6.3 z m -30.6,38.6 c -9,0 -16.3,-7.3 -16.3,-16.3 0,-9 7.3,-16.4 16.2,-16.4 9,0 16.4,7.3 16.4,16.4 0,8.9 -7.3,16.2 -16.3,16.3 z m 29.7,-29.2 c -1.4,0 -2.5,-1.1 -2.5,-2.5 0,-1.4 1.2,-2.6 2.5,-2.5 1.3,0 2.4,1.2 2.4,2.5 0,1.4 -1.1,2.5 -2.4,2.5 z"
+   class="st0" />
+
+                    <path
+   id="path2367"
+   d="m 1717.3,781.3 c 6.8,0 12.3,5.5 12.3,12.4 0,6.8 -5.6,12.4 -12.4,12.4 -6.8,0 -12.3,-5.6 -12.3,-12.4 0.1,-6.9 5.6,-12.5 12.4,-12.4 z"
+   class="st0" />
+    </g><g
+   id="iconFault"
+   style="display:inline"
+   transform="translate(143.46408,-62.618523)">
+    <path
+   id="path2357"
+   d="m 1717.7,716 c -11.3,0 -22.5,0 -33.8,0 -0.3,0 -0.7,0 -1,-0.1 -0.9,-0.2 -1.4,-0.8 -1.5,-1.7 0,-0.6 0.1,-1.1 0.4,-1.7 0.8,-1.6 1.7,-3.1 2.6,-4.6 9,-15.8 18,-31.6 27,-47.5 1.8,-3.2 3.6,-6.3 5.4,-9.5 0.3,-0.5 0.8,-0.8 1.4,-0.8 0.6,0 1,0.2 1.3,0.8 4.9,8.7 9.7,17.5 14.6,26.2 6.1,11 12.2,21.9 18.4,32.9 0.4,0.6 0.7,1.3 1.1,1.9 0.3,0.6 0.5,1.2 0.5,1.8 0,1.2 -0.9,2.2 -2.2,2.2 -7,0 -14,0 -21,0 -4.4,0.1 -8.8,0.1 -13.2,0.1 z"
+   class="st31" />
+
+                    <path
+   id="path2359"
+   d="m 1723.2,674.2 c -0.1,1.5 -0.2,3.2 -0.4,4.9 -0.1,1.2 -0.2,2.3 -0.3,3.5 -0.2,2.1 -0.3,4.1 -0.5,6.2 -0.1,1.2 -0.2,2.3 -0.3,3.5 -0.1,0.8 -0.1,1.6 -0.2,2.4 -0.1,1.5 -1.3,2.9 -2.9,3.2 -2,0.4 -3.9,-0.8 -4.3,-2.8 -0.1,-0.3 -0.1,-0.6 -0.1,-0.9 -0.2,-2.3 -0.4,-4.7 -0.6,-7 -0.2,-2.6 -0.5,-5.2 -0.7,-7.8 -0.1,-1.7 -0.3,-3.4 -0.4,-5.1 0,0 0,-0.1 0,-0.1 -0.2,-0.9 0.2,-1.7 0.8,-2.3 1,-0.9 2.2,-1.5 3.5,-1.7 1.5,-0.3 2.9,0.1 4.2,0.9 0.5,0.3 0.9,0.6 1.2,1 0.8,0.5 1,1 1,2.1 z"
+   class="st32" />
+
+                    <path
+   id="path2361"
+   d="m 1718.1,710.8 c -2.8,0 -5.1,-2.3 -5.1,-5.1 0,-2.8 2.3,-5.1 5.2,-5.1 2.8,0 5.1,2.3 5.1,5.1 -0.1,2.8 -2.4,5.1 -5.2,5.1 z"
+   class="st32" />
+
+</g><g
+   id="iconFuel"
+   style="display:inline"
+   transform="translate(54.16046,41.186441)">
+    <path
+   id="path2353"
+   d="m 1753.2,561.7 c -2.9,-2.8 -5.7,-5.7 -8.6,-8.5 -0.9,-0.9 -2,-0.9 -2.9,-0.1 -1,0.9 -1.1,2 -0.2,3 0.7,0.8 1.5,1.6 2.3,2.3 0.6,0.6 0.8,1.1 0.6,2 -1.1,3.8 0.5,7.4 4.1,9.2 1,0.5 1.3,1.1 1.3,2.2 0,8.4 0,16.8 0,25.2 0,0.6 0,1.2 -0.2,1.8 -0.4,1.5 -1.5,2.2 -3,2.1 -1.5,-0.1 -2.4,-1 -2.6,-2.5 -0.1,-0.7 0,-1.3 0,-2 -0.1,-4.6 -2.6,-7.8 -7.2,-8.6 -1.4,-0.2 -1.3,-0.9 -1.3,-1.8 0,-10.3 0,-20.6 0,-31 0,-6.2 -3.8,-10 -10,-10 -7.1,0 -14.1,0 -21.2,0 -1,0 -1.9,0 -2.9,0.2 -4.6,1.2 -7.2,4.8 -7.2,9.9 0,17.2 0,34.5 0,51.7 0,1.1 -0.2,1.7 -1.4,1.9 -1.7,0.3 -2.7,1.5 -3.3,3 -0.4,1.1 -0.5,1.8 1.2,1.8 8.1,-0.1 16.3,0 24.4,0 8.1,0 16.2,0 24.3,0 1.8,0 2,-0.2 1.3,-1.9 -0.8,-1.8 -2.2,-2.9 -4.1,-3 -1,-0.1 -1.3,-0.4 -1.2,-1.4 0,-4.6 0.1,-9.1 0,-13.7 0,-1.7 0.7,-1.5 1.7,-1 2.1,1 2.4,2.9 2.4,5 0,4.4 3,7.6 7.1,7.7 4.2,0 7.3,-3.2 7.3,-7.7 0,-11.2 0,-22.5 0,-33.7 0.1,-0.8 -0.1,-1.5 -0.7,-2.1 z m -26.3,9.7 c -4,-0.1 -8,0 -11.9,0 -4,0 -8.1,0 -12.1,0 -1,0 -1.3,-0.3 -1.3,-1.3 0,-5 0,-10.1 0,-15.1 0,-2 0.7,-2.7 2.7,-2.7 7.1,0 14.2,0 21.3,0 1.8,0 2.6,0.8 2.6,2.6 0,5 0,10.1 0,15.1 0.1,1.1 -0.1,1.4 -1.3,1.4 z"
+   class="st28" />
+
+</g>
+    </g>
+
+        
+
+        
+    </g>
+
+</svg>
