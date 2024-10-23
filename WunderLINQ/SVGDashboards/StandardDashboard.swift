@@ -17,7 +17,6 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import Foundation
-import os.log
 
 class StandardDashboard {
     
@@ -62,33 +61,33 @@ class StandardDashboard {
                 }
             }
         default:
-            os_log("StandardDashboard: Unknown speed unit setting")
+            NSLog("StandardDashboard: Unknown speed unit setting")
         }
         if (speedValue != nil){
             if (speedValue! < 10){
-                xml?[0]["dashboard"]?["g3"]?["speed"]?.text = "\(String(format: "%02d",Int(round(speedValue!))))"
+                xml?[0]["dashboard"]?["values"]?["speed"]?.text = "\(String(format: "%02d",Int(round(speedValue!))))"
             } else {
-                xml?[0]["dashboard"]?["g3"]?["speed"]?.text = "\(Int(round(speedValue!)))"
+                xml?[0]["dashboard"]?["values"]?["speed"]?.text = "\(Int(round(speedValue!)))"
             }
         }
         if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
             distanceTimeUnit = "MPH"
         }
-        xml?[0]["dashboard"]?["g3"]?["speedUnit"]?.text = distanceTimeUnit
+        xml?[0]["dashboard"]?["labels"]?["speedLabel"]?.text = distanceTimeUnit
         
         //Gear
         var gearValue = "-"
         if motorcycleData.gear != nil {
             gearValue = motorcycleData.getgear()
             if gearValue == "N"{
-                let style = xml?[0]["dashboard"]?["g1"]?["gear"]?.attributes["style"]
+                let style = xml?[0]["dashboard"]?["values"]?["gear"]?.attributes["style"]
                 let regex = try! NSRegularExpression(pattern: "fill:([^<]*);", options: NSRegularExpression.Options.caseInsensitive)
                 let range = NSMakeRange(0, style!.count)
                 let modString = regex.stringByReplacingMatches(in: style!, options: [], range: range, withTemplate: "fill:#03ae1e;")
-                xml?[0]["dashboard"]?["g1"]?["gear"]?.attributes["style"] = modString
+                xml?[0]["dashboard"]?["values"]?["gear"]?.attributes["style"] = modString
             }
         }
-        xml?[0]["dashboard"]?["g1"]?["gear"]?.text = gearValue
+        xml?[0]["dashboard"]?["values"]?["gear"]?.text = gearValue
         
         // Ambient Temperature
         var ambientTempValue = "-"
@@ -103,18 +102,18 @@ class StandardDashboard {
             }
             ambientTempValue = "\(Int(round(ambientTemp)))\(temperatureUnit)"
         }
-        xml?[0]["dashboard"]?["g4"]?["values"]?["ambientTemp"]?.text = ambientTempValue
+        xml?[0]["dashboard"]?["values"]?["ambientTemp"]?.text = ambientTempValue
         
         // Engine Temperature
         var engineTempValue = "-"
         if motorcycleData.engineTemperature != nil {
             var engineTemp:Double = motorcycleData.engineTemperature!
             if (engineTemp >= 104.0){
-                let style = xml?[0]["dashboard"]?["g4"]?["values"]?["engineTemp"]?.attributes["style"]
+                let style = xml?[0]["dashboard"]?["values"]?["engineTemp"]?.attributes["style"]
                 let regex = try! NSRegularExpression(pattern: "fill:([^<]*);", options: NSRegularExpression.Options.caseInsensitive)
                 let range = NSMakeRange(0, style!.count)
                 let modString = regex.stringByReplacingMatches(in: style!, options: [], range: range, withTemplate: "fill:#e20505;")
-                xml?[0]["dashboard"]?["values"]?["g4"]?["engineTemp"]?.attributes["style"] = modString
+                xml?[0]["dashboard"]?["values"]?["engineTemp"]?.attributes["style"] = modString
             }
             if (UserDefaults.standard.integer(forKey: "temperature_unit_preference") == 1 ){
                 temperatureUnit = "F"
@@ -122,7 +121,7 @@ class StandardDashboard {
             }
             engineTempValue = "\(Int(round(engineTemp)))\(temperatureUnit)"
         }
-        xml?[0]["dashboard"]?["g4"]?["values"]?["engineTemp"]?.text = engineTempValue
+        xml?[0]["dashboard"]?["values"]?["engineTemp"]?.text = engineTempValue
         
         //Info Line
         var dataLabel = ""
@@ -159,11 +158,11 @@ class StandardDashboard {
                     }
                     dataValue = "\(Int(round(fuelRange)))\(distanceUnit)"
                     if(faults.getFuelFaultActive()){
-                        let style = xml?[0]["dashboard"]?["g4"]?["values"]?["dataValue"]?.attributes["style"]
+                        let style = xml?[0]["dashboard"]?["values"]?["dataValue"]?.attributes["style"]
                         let regex = try! NSRegularExpression(pattern: "fill:([^<]*);", options: NSRegularExpression.Options.caseInsensitive)
                         let range = NSMakeRange(0, style!.count)
                         let modString = regex.stringByReplacingMatches(in: style!, options: [], range: range, withTemplate: "fill:#e20505;")
-                        xml?[0]["dashboard"]?["g4"]?["values"]?["dataValue"]?.attributes["style"] = modString
+                        xml?[0]["dashboard"]?["values"]?["dataValue"]?.attributes["style"] = modString
                     }
                 }
                 dataLabel = "dash_range_label".localized(forLanguageCode: "Base")
@@ -182,8 +181,8 @@ class StandardDashboard {
             default:
                 break
         }
-        xml?[0]["dashboard"]?["g4"]?["values"]?["dataValue"]?.text = dataValue
-        xml?[0]["dashboard"]?["g4"]?["labels"]?["dataLabel"]?.text = dataLabel
+        xml?[0]["dashboard"]?["values"]?["dataValue"]?.text = dataValue
+        xml?[0]["dashboard"]?["labels"]?["dataLabel"]?.text = dataLabel
         
         //Time
         var timeValue = ":"
@@ -195,7 +194,7 @@ class StandardDashboard {
             }
             timeValue = ("\(formatter.string(from: motorcycleData.time!))")
         }
-        xml?[0]["dashboard"]?["g4"]?["clock"]?.text = timeValue
+        xml?[0]["dashboard"]?["values"]?["clock"]?.text = timeValue
         
         // Front Tire Pressure
         var rdcFValue = "-"
@@ -217,20 +216,20 @@ class StandardDashboard {
             }
             rdcFValue = "\(frontPressure.rounded(toPlaces: 1))\(pressureUnit)"
         }
-        xml?[0]["dashboard"]?["g4"]?["values"]?["rdcF"]?.text = rdcFValue
+        xml?[0]["dashboard"]?["values"]?["rdcF"]?.text = rdcFValue
         
         if(faults.getFrontTirePressureCriticalActive()){
-            let style = xml?[0]["dashboard"]?["g4"]?["values"]?["rdcF"]?.attributes["style"]
+            let style = xml?[0]["dashboard"]?["values"]?["rdcF"]?.attributes["style"]
             let regex = try! NSRegularExpression(pattern: "fill:([^<]*);", options: NSRegularExpression.Options.caseInsensitive)
             let range = NSMakeRange(0, style!.count)
             let modString = regex.stringByReplacingMatches(in: style!, options: [], range: range, withTemplate: "fill:#e20505;")
-            xml?[0]["dashboard"]?["g4"]?["values"]?["rdcF"]?.attributes["style"] = modString
+            xml?[0]["dashboard"]?["values"]?["rdcF"]?.attributes["style"] = modString
         } else if(faults.getRearTirePressureWarningActive()){
-            let style = xml?[0]["dashboard"]?["g4"]?["values"]?["rdcF"]?.attributes["style"]
+            let style = xml?[0]["dashboard"]?["values"]?["rdcF"]?.attributes["style"]
             let regex = try! NSRegularExpression(pattern: "fill:([^<]*);", options: NSRegularExpression.Options.caseInsensitive)
             let range = NSMakeRange(0, style!.count)
             let modString = regex.stringByReplacingMatches(in: style!, options: [], range: range, withTemplate: "fill:#fcc914;")
-            xml?[0]["dashboard"]?["g4"]?["values"]?["rdcF"]?.attributes["style"] = modString
+            xml?[0]["dashboard"]?["values"]?["rdcF"]?.attributes["style"] = modString
         }
         
         // Rear Tire Pressure
@@ -253,20 +252,20 @@ class StandardDashboard {
             }
             rdcRValue = "\(rearPressure.rounded(toPlaces: 1))\(pressureUnit)"
         }
-        xml?[0]["dashboard"]?["g4"]?["values"]?["rdcR"]?.text = rdcRValue
+        xml?[0]["dashboard"]?["values"]?["rdcR"]?.text = rdcRValue
         
         if(faults.getRearTirePressureCriticalActive()){
-            let style = xml?[0]["dashboard"]?["g4"]?["values"]?["rdcR"]?.attributes["style"]
+            let style = xml?[0]["dashboard"]?["values"]?["rdcR"]?.attributes["style"]
             let regex = try! NSRegularExpression(pattern: "fill:([^<]*);", options: NSRegularExpression.Options.caseInsensitive)
             let range = NSMakeRange(0, style!.count)
             let modString = regex.stringByReplacingMatches(in: style!, options: [], range: range, withTemplate: "fill:#e20505;")
-            xml?[0]["dashboard"]?["g4"]?["values"]?["rdcR"]?.attributes["style"] = modString
+            xml?[0]["dashboard"]?["values"]?["rdcR"]?.attributes["style"] = modString
         } else if(faults.getRearTirePressureWarningActive()){
-            let style = xml?[0]["dashboard"]?["g4"]?["values"]?["rdcR"]?.attributes["style"]
+            let style = xml?[0]["dashboard"]?["values"]?["rdcR"]?.attributes["style"]
             let regex = try! NSRegularExpression(pattern: "fill:([^<]*);", options: NSRegularExpression.Options.caseInsensitive)
             let range = NSMakeRange(0, style!.count)
             let modString = regex.stringByReplacingMatches(in: style!, options: [], range: range, withTemplate: "fill:#fcc914;")
-            xml?[0]["dashboard"]?["g4"]?["values"]?["rdcR"]?.attributes["style"] = modString
+            xml?[0]["dashboard"]?["values"]?["rdcR"]?.attributes["style"] = modString
         }
         
         //Trip Logging
@@ -274,7 +273,7 @@ class StandardDashboard {
         //Camera
         //xml![0][5][1].attributes["style"] = "display:inline"
         
-        //Fault icon
+        // Fault icon
         if(!faults.getallActiveDesc().isEmpty){
             xml?[0]["dashboard"]?["icons"]?["iconFault"]?.attributes["style"] = "display:inline"
         }
@@ -290,94 +289,94 @@ class StandardDashboard {
             //10000
             if (motorcycleData.rpm != nil){
                 if (motorcycleData.getRPM() >= 333) {
-                    xml?[0]["dashboard"]?["g2"]?["rpmTiles"]?[1].attributes["style"] = "display:inline"
+                    xml?[0]["dashboard"]?["rpmTiles"]?[1].attributes["style"] = "display:inline"
                 }
                 if (motorcycleData.getRPM() >= 666) {
-                    xml?[0]["dashboard"]?["g2"]?["rpmTiles"]?[2].attributes["style"] = "display:inline"
+                    xml?[0]["dashboard"]?["rpmTiles"]?[2].attributes["style"] = "display:inline"
                 }
                 if (motorcycleData.getRPM() >= 1000) {
-                    xml?[0]["dashboard"]?["g2"]?["rpmTiles"]?[3].attributes["style"] = "display:inline"
+                    xml?[0]["dashboard"]?["rpmTiles"]?[3].attributes["style"] = "display:inline"
                 }
                 if (motorcycleData.getRPM() >= 1333) {
-                    xml?[0]["dashboard"]?["g2"]?["rpmTiles"]?[4].attributes["style"] = "display:inline"
+                    xml?[0]["dashboard"]?["rpmTiles"]?[4].attributes["style"] = "display:inline"
                 }
                 if (motorcycleData.getRPM() >= 1666) {
-                    xml?[0]["dashboard"]?["g2"]?["rpmTiles"]?[5].attributes["style"] = "display:inline"
+                    xml?[0]["dashboard"]?["rpmTiles"]?[5].attributes["style"] = "display:inline"
                 }
                 if (motorcycleData.getRPM() >= 2000) {
-                    xml?[0]["dashboard"]?["g2"]?["rpmTiles"]?[6].attributes["style"] = "display:inline"
+                    xml?[0]["dashboard"]?["rpmTiles"]?[6].attributes["style"] = "display:inline"
                 }
                 if (motorcycleData.getRPM() >= 2333) {
-                    xml?[0]["dashboard"]?["g2"]?["rpmTiles"]?[7].attributes["style"] = "display:inline"
+                    xml?[0]["dashboard"]?["rpmTiles"]?[7].attributes["style"] = "display:inline"
                 }
                 if (motorcycleData.getRPM() >= 2666) {
-                    xml?[0]["dashboard"]?["g2"]?["rpmTiles"]?[8].attributes["style"] = "display:inline"
+                    xml?[0]["dashboard"]?["rpmTiles"]?[8].attributes["style"] = "display:inline"
                 }
                 if (motorcycleData.getRPM() >= 3000) {
-                    xml?[0]["dashboard"]?["g2"]?["rpmTiles"]?[9].attributes["style"] = "display:inline"
+                    xml?[0]["dashboard"]?["rpmTiles"]?[9].attributes["style"] = "display:inline"
                 }
                 if (motorcycleData.getRPM() >= 3333) {
-                    xml?[0]["dashboard"]?["g2"]?["rpmTiles"]?[10].attributes["style"] = "display:inline"
+                    xml?[0]["dashboard"]?["rpmTiles"]?[10].attributes["style"] = "display:inline"
                 }
                 if (motorcycleData.getRPM() >= 3666) {
-                    xml?[0]["dashboard"]?["g2"]?["rpmTiles"]?[11].attributes["style"] = "display:inline"
+                    xml?[0]["dashboard"]?["rpmTiles"]?[11].attributes["style"] = "display:inline"
                 }
                 if (motorcycleData.getRPM() >= 4000) {
-                    xml?[0]["dashboard"]?["g2"]?["rpmTiles"]?[12].attributes["style"] = "display:inline"
+                    xml?[0]["dashboard"]?["rpmTiles"]?[12].attributes["style"] = "display:inline"
                 }
                 if (motorcycleData.getRPM() >= 4333) {
-                    xml?[0]["dashboard"]?["g2"]?["rpmTiles"]?[13].attributes["style"] = "display:inline"
+                    xml?[0]["dashboard"]?["rpmTiles"]?[13].attributes["style"] = "display:inline"
                 }
                 if (motorcycleData.getRPM() >= 4666) {
-                    xml?[0]["dashboard"]?["g2"]?["rpmTiles"]?[14].attributes["style"] = "display:inline"
+                    xml?[0]["dashboard"]?["rpmTiles"]?[14].attributes["style"] = "display:inline"
                 }
                 if (motorcycleData.getRPM() >= 5000) {
-                    xml?[0]["dashboard"]?["g2"]?["rpmTiles"]?[15].attributes["style"] = "display:inline"
+                    xml?[0]["dashboard"]?["rpmTiles"]?[15].attributes["style"] = "display:inline"
                 }
                 if (motorcycleData.getRPM() >= 5333) {
-                    xml?[0]["dashboard"]?["g2"]?["rpmTiles"]?[16].attributes["style"] = "display:inline"
+                    xml?[0]["dashboard"]?["rpmTiles"]?[16].attributes["style"] = "display:inline"
                 }
                 if (motorcycleData.getRPM() >= 5666) {
-                    xml?[0]["dashboard"]?["g2"]?["rpmTiles"]?[17].attributes["style"] = "display:inline"
+                    xml?[0]["dashboard"]?["rpmTiles"]?[17].attributes["style"] = "display:inline"
                 }
                 if (motorcycleData.getRPM() >= 6000) {
-                    xml?[0]["dashboard"]?["g2"]?["rpmTiles"]?[18].attributes["style"] = "display:inline"
+                    xml?[0]["dashboard"]?["rpmTiles"]?[18].attributes["style"] = "display:inline"
                 }
                 if (motorcycleData.getRPM() >= 6333) {
-                    xml?[0]["dashboard"]?["g2"]?["rpmTiles"]?[19].attributes["style"] = "display:inline"
+                    xml?[0]["dashboard"]?["rpmTiles"]?[19].attributes["style"] = "display:inline"
                 }
                 if (motorcycleData.getRPM() >= 6666) {
-                    xml?[0]["dashboard"]?["g2"]?["rpmTiles"]?[20].attributes["style"] = "display:inline"
+                    xml?[0]["dashboard"]?["rpmTiles"]?[20].attributes["style"] = "display:inline"
                 }
                 if (motorcycleData.getRPM() >= 7000) {
-                    xml?[0]["dashboard"]?["g2"]?["rpmTiles"]?[21].attributes["style"] = "display:inline"
+                    xml?[0]["dashboard"]?["rpmTiles"]?[21].attributes["style"] = "display:inline"
                 }
                 if (motorcycleData.getRPM() >= 7333) {
-                    xml?[0]["dashboard"]?["g2"]?["rpmTiles"]?[22].attributes["style"] = "display:inline"
+                    xml?[0]["dashboard"]?["rpmTiles"]?[22].attributes["style"] = "display:inline"
                 }
                 if (motorcycleData.getRPM() >= 7666) {
-                    xml?[0]["dashboard"]?["g2"]?["rpmTiles"]?[23].attributes["style"] = "display:inline"
+                    xml?[0]["dashboard"]?["rpmTiles"]?[23].attributes["style"] = "display:inline"
                 }
                 if (motorcycleData.getRPM() >= 8000) {
-                    xml?[0]["dashboard"]?["g2"]?["rpmTiles"]?[24].attributes["style"] = "display:inline"
+                    xml?[0]["dashboard"]?["rpmTiles"]?[24].attributes["style"] = "display:inline"
                 }
                 if (motorcycleData.getRPM() >= 8333) {
-                    xml?[0]["dashboard"]?["g2"]?["rpmTiles"]?[25].attributes["style"] = "display:inline"
+                    xml?[0]["dashboard"]?["rpmTiles"]?[25].attributes["style"] = "display:inline"
                 }
                 if (motorcycleData.getRPM() >= 8666) {
-                    xml?[0]["dashboard"]?["g2"]?["rpmTiles"]?[26].attributes["style"] = "display:inline"
+                    xml?[0]["dashboard"]?["rpmTiles"]?[26].attributes["style"] = "display:inline"
                 }
                 if (motorcycleData.getRPM() >= 9000) {
-                    xml?[0]["dashboard"]?["g2"]?["rpmTiles"]?[27].attributes["style"] = "display:inline"
+                    xml?[0]["dashboard"]?["rpmTiles"]?[27].attributes["style"] = "display:inline"
                 }
                 if (motorcycleData.getRPM() >= 9333) {
-                    xml?[0]["dashboard"]?["g2"]?["rpmTiles"]?[28].attributes["style"] = "display:inline"
+                    xml?[0]["dashboard"]?["rpmTiles"]?[28].attributes["style"] = "display:inline"
                 }
                 if (motorcycleData.getRPM() >= 9666) {
-                    xml?[0]["dashboard"]?["g2"]?["rpmTiles"]?[29].attributes["style"] = "display:inline"
+                    xml?[0]["dashboard"]?["rpmTiles"]?[29].attributes["style"] = "display:inline"
                 }
                 if (motorcycleData.getRPM() >= 10000) {
-                    xml?[0]["dashboard"]?["g2"]?["rpmTiles"]?[30].attributes["style"] = "display:inline"
+                    xml?[0]["dashboard"]?["rpmTiles"]?[30].attributes["style"] = "display:inline"
                 }
             }
             break
@@ -396,94 +395,94 @@ class StandardDashboard {
             
             if (motorcycleData.rpm != nil){
                 if (motorcycleData.getRPM() >= 666) {
-                    xml?[0]["dashboard"]?["g2"]?["rpmTiles"]?[1].attributes["style"] = "display:inline"
+                    xml?[0]["dashboard"]?["rpmTiles"]?[1].attributes["style"] = "display:inline"
                 }
                 if (motorcycleData.getRPM() >= 1333) {
-                    xml?[0]["dashboard"]?["g2"]?["rpmTiles"]?[2].attributes["style"] = "display:inline"
+                    xml?[0]["dashboard"]?["rpmTiles"]?[2].attributes["style"] = "display:inline"
                 }
                 if (motorcycleData.getRPM() >= 2000) {
-                    xml?[0]["dashboard"]?["g2"]?["rpmTiles"]?[3].attributes["style"] = "display:inline"
+                    xml?[0]["dashboard"]?["rpmTiles"]?[3].attributes["style"] = "display:inline"
                 }
                 if (motorcycleData.getRPM() >= 2666) {
-                    xml?[0]["dashboard"]?["g2"]?["rpmTiles"]?[4].attributes["style"] = "display:inline"
+                    xml?[0]["dashboard"]?["rpmTiles"]?[4].attributes["style"] = "display:inline"
                 }
                 if (motorcycleData.getRPM() >= 3333) {
-                    xml?[0]["dashboard"]?["g2"]?["rpmTiles"]?[5].attributes["style"] = "display:inline"
+                    xml?[0]["dashboard"]?["rpmTiles"]?[5].attributes["style"] = "display:inline"
                 }
                 if (motorcycleData.getRPM() >= 4000) {
-                    xml?[0]["dashboard"]?["g2"]?["rpmTiles"]?[6].attributes["style"] = "display:inline"
+                    xml?[0]["dashboard"]?["rpmTiles"]?[6].attributes["style"] = "display:inline"
                 }
                 if (motorcycleData.getRPM() >= 4333) {
-                    xml?[0]["dashboard"]?["g2"]?["rpmTiles"]?[7].attributes["style"] = "display:inline"
+                    xml?[0]["dashboard"]?["rpmTiles"]?[7].attributes["style"] = "display:inline"
                 }
                 if (motorcycleData.getRPM() >= 4666) {
-                    xml?[0]["dashboard"]?["g2"]?["rpmTiles"]?[8].attributes["style"] = "display:inline"
+                    xml?[0]["dashboard"]?["rpmTiles"]?[8].attributes["style"] = "display:inline"
                 }
                 if (motorcycleData.getRPM() >= 5000) {
-                    xml?[0]["dashboard"]?["g2"]?["rpmTiles"]?[9].attributes["style"] = "display:inline"
+                    xml?[0]["dashboard"]?["rpmTiles"]?[9].attributes["style"] = "display:inline"
                 }
                 if (motorcycleData.getRPM() >= 5333) {
-                    xml?[0]["dashboard"]?["g2"]?["rpmTiles"]?[10].attributes["style"] = "display:inline"
+                    xml?[0]["dashboard"]?["rpmTiles"]?[10].attributes["style"] = "display:inline"
                 }
                 if (motorcycleData.getRPM() >= 5666) {
-                    xml?[0]["dashboard"]?["g2"]?["rpmTiles"]?[11].attributes["style"] = "display:inline"
+                    xml?[0]["dashboard"]?["rpmTiles"]?[11].attributes["style"] = "display:inline"
                 }
                 if (motorcycleData.getRPM() >= 6000) {
-                    xml?[0]["dashboard"]?["g2"]?["rpmTiles"]?[12].attributes["style"] = "display:inline"
+                    xml?[0]["dashboard"]?["rpmTiles"]?[12].attributes["style"] = "display:inline"
                 }
                 if (motorcycleData.getRPM() >= 6333) {
-                    xml?[0]["dashboard"]?["g2"]?["rpmTiles"]?[13].attributes["style"] = "display:inline"
+                    xml?[0]["dashboard"]?["rpmTiles"]?[13].attributes["style"] = "display:inline"
                 }
                 if (motorcycleData.getRPM() >= 6666) {
-                    xml?[0]["dashboard"]?["g2"]?["rpmTiles"]?[14].attributes["style"] = "display:inline"
+                    xml?[0]["dashboard"]?["rpmTiles"]?[14].attributes["style"] = "display:inline"
                 }
                 if (motorcycleData.getRPM() >= 7000) {
-                    xml?[0]["dashboard"]?["g2"]?["rpmTiles"]?[15].attributes["style"] = "display:inline"
+                    xml?[0]["dashboard"]?["rpmTiles"]?[15].attributes["style"] = "display:inline"
                 }
                 if (motorcycleData.getRPM() >= 7333) {
-                    xml?[0]["dashboard"]?["g2"]?["rpmTiles"]?[16].attributes["style"] = "display:inline"
+                    xml?[0]["dashboard"]?["rpmTiles"]?[16].attributes["style"] = "display:inline"
                 }
                 if (motorcycleData.getRPM() >= 7666) {
-                    xml?[0]["dashboard"]?["g2"]?["rpmTiles"]?[17].attributes["style"] = "display:inline"
+                    xml?[0]["dashboard"]?["rpmTiles"]?[17].attributes["style"] = "display:inline"
                 }
                 if (motorcycleData.getRPM() >= 8000) {
-                    xml?[0]["dashboard"]?["g2"]?["rpmTiles"]?[18].attributes["style"] = "display:inline"
+                    xml?[0]["dashboard"]?["rpmTiles"]?[18].attributes["style"] = "display:inline"
                 }
                 if (motorcycleData.getRPM() >= 8333) {
-                    xml?[0]["dashboard"]?["g2"]?["rpmTiles"]?[19].attributes["style"] = "display:inline"
+                    xml?[0]["dashboard"]?["rpmTiles"]?[19].attributes["style"] = "display:inline"
                 }
                 if (motorcycleData.getRPM() >= 8666) {
-                    xml?[0]["dashboard"]?["g2"]?["rpmTiles"]?[20].attributes["style"] = "display:inline"
+                    xml?[0]["dashboard"]?["rpmTiles"]?[20].attributes["style"] = "display:inline"
                 }
                 if (motorcycleData.getRPM() >= 9000) {
-                    xml?[0]["dashboard"]?["g2"]?["rpmTiles"]?[21].attributes["style"] = "display:inline"
+                    xml?[0]["dashboard"]?["rpmTiles"]?[21].attributes["style"] = "display:inline"
                 }
                 if (motorcycleData.getRPM() >= 9333) {
-                    xml?[0]["dashboard"]?["g2"]?["rpmTiles"]?[22].attributes["style"] = "display:inline"
+                    xml?[0]["dashboard"]?["rpmTiles"]?[22].attributes["style"] = "display:inline"
                 }
                 if (motorcycleData.getRPM() >= 9666) {
-                    xml?[0]["dashboard"]?["g2"]?["rpmTiles"]?[23].attributes["style"] = "display:inline"
+                    xml?[0]["dashboard"]?["rpmTiles"]?[23].attributes["style"] = "display:inline"
                 }
                 if (motorcycleData.getRPM() >= 10000) {
-                    xml?[0]["dashboard"]?["g2"]?["rpmTiles"]?[24].attributes["style"] = "display:inline"
+                    xml?[0]["dashboard"]?["rpmTiles"]?[24].attributes["style"] = "display:inline"
                 }
                 if (motorcycleData.getRPM() >= 10333) {
-                    xml?[0]["dashboard"]?["g2"]?["rpmTiles"]?[25].attributes["style"] = "display:inline"
+                    xml?[0]["dashboard"]?["rpmTiles"]?[25].attributes["style"] = "display:inline"
                 }
                 if (motorcycleData.getRPM() >= 10666) {
-                    xml?[0]["dashboard"]?["g2"]?["rpmTiles"]?[26].attributes["style"] = "display:inline"
+                    xml?[0]["dashboard"]?["rpmTiles"]?[26].attributes["style"] = "display:inline"
                 }
                 if (motorcycleData.getRPM() >= 11000) {
-                    xml?[0]["dashboard"]?["g2"]?["rpmTiles"]?[27].attributes["style"] = "display:inline"
+                    xml?[0]["dashboard"]?["rpmTiles"]?[27].attributes["style"] = "display:inline"
                 }
                 if (motorcycleData.getRPM() >= 11333) {
-                    xml?[0]["dashboard"]?["g2"]?["rpmTiles"]?[28].attributes["style"] = "display:inline"
+                    xml?[0]["dashboard"]?["rpmTiles"]?[28].attributes["style"] = "display:inline"
                 }
                 if (motorcycleData.getRPM() >= 11666) {
-                    xml?[0]["dashboard"]?["g2"]?["rpmTiles"]?[29].attributes["style"] = "display:inline"
+                    xml?[0]["dashboard"]?["rpmTiles"]?[29].attributes["style"] = "display:inline"
                 }
                 if (motorcycleData.getRPM() >= 12000) {
-                    xml?[0]["dashboard"]?["g2"]?["rpmTiles"]?[30].attributes["style"] = "display:inline"
+                    xml?[0]["dashboard"]?["rpmTiles"]?[30].attributes["style"] = "display:inline"
                 }
             }
             break
@@ -502,99 +501,99 @@ class StandardDashboard {
             
             if (motorcycleData.rpm != nil){
                 if (motorcycleData.getRPM() >= 666) {
-                    xml?[0]["dashboard"]?["g2"]?["rpmTiles"]?[1].attributes["style"] = "display:inline"
+                    xml?[0]["dashboard"]?["rpmTiles"]?[1].attributes["style"] = "display:inline"
                 }
                 if (motorcycleData.getRPM() >= 1333) {
-                    xml?[0]["dashboard"]?["g2"]?["rpmTiles"]?[2].attributes["style"] = "display:inline"
+                    xml?[0]["dashboard"]?["rpmTiles"]?[2].attributes["style"] = "display:inline"
                 }
                 if (motorcycleData.getRPM() >= 2000) {
-                    xml?[0]["dashboard"]?["g2"]?["rpmTiles"]?[3].attributes["style"] = "display:inline"
+                    xml?[0]["dashboard"]?["rpmTiles"]?[3].attributes["style"] = "display:inline"
                 }
                 if (motorcycleData.getRPM() >= 2666) {
-                    xml?[0]["dashboard"]?["g2"]?["rpmTiles"]?[4].attributes["style"] = "display:inline"
+                    xml?[0]["dashboard"]?["rpmTiles"]?[4].attributes["style"] = "display:inline"
                 }
                 if (motorcycleData.getRPM() >= 3333) {
-                    xml?[0]["dashboard"]?["g2"]?["rpmTiles"]?[5].attributes["style"] = "display:inline"
+                    xml?[0]["dashboard"]?["rpmTiles"]?[5].attributes["style"] = "display:inline"
                 }
                 if (motorcycleData.getRPM() >= 4000) {
-                    xml?[0]["dashboard"]?["g2"]?["rpmTiles"]?[6].attributes["style"] = "display:inline"
+                    xml?[0]["dashboard"]?["rpmTiles"]?[6].attributes["style"] = "display:inline"
                 }
                 if (motorcycleData.getRPM() >= 4666) {
-                    xml?[0]["dashboard"]?["g2"]?["rpmTiles"]?[7].attributes["style"] = "display:inline"
+                    xml?[0]["dashboard"]?["rpmTiles"]?[7].attributes["style"] = "display:inline"
                 }
                 if (motorcycleData.getRPM() >= 5333) {
-                    xml?[0]["dashboard"]?["g2"]?["rpmTiles"]?[8].attributes["style"] = "display:inline"
+                    xml?[0]["dashboard"]?["rpmTiles"]?[8].attributes["style"] = "display:inline"
                 }
                 if (motorcycleData.getRPM() >= 6000) {
-                    xml?[0]["dashboard"]?["g2"]?["rpmTiles"]?[9].attributes["style"] = "display:inline"
+                    xml?[0]["dashboard"]?["rpmTiles"]?[9].attributes["style"] = "display:inline"
                 }
                 if (motorcycleData.getRPM() >= 6666) {
-                    xml?[0]["dashboard"]?["g2"]?["rpmTiles"]?[10].attributes["style"] = "display:inline"
+                    xml?[0]["dashboard"]?["rpmTiles"]?[10].attributes["style"] = "display:inline"
                 }
                 if (motorcycleData.getRPM() >= 7333) {
-                    xml?[0]["dashboard"]?["g2"]?["rpmTiles"]?[11].attributes["style"] = "display:inline"
+                    xml?[0]["dashboard"]?["rpmTiles"]?[11].attributes["style"] = "display:inline"
                 }
                 if (motorcycleData.getRPM() >= 8000) {
-                    xml?[0]["dashboard"]?["g2"]?["rpmTiles"]?[12].attributes["style"] = "display:inline"
+                    xml?[0]["dashboard"]?["rpmTiles"]?[12].attributes["style"] = "display:inline"
                 }
                 if (motorcycleData.getRPM() >= 8333) {
-                    xml?[0]["dashboard"]?["g2"]?["rpmTiles"]?[3].attributes["style"] = "display:inline"
+                    xml?[0]["dashboard"]?["rpmTiles"]?[3].attributes["style"] = "display:inline"
                 }
                 if (motorcycleData.getRPM() >= 8666) {
-                    xml?[0]["dashboard"]?["g2"]?["rpmTiles"]?[14].attributes["style"] = "display:inline"
+                    xml?[0]["dashboard"]?["rpmTiles"]?[14].attributes["style"] = "display:inline"
                 }
                 if (motorcycleData.getRPM() >= 9000) {
-                    xml?[0]["dashboard"]?["g2"]?["rpmTiles"]?[15].attributes["style"] = "display:inline"
+                    xml?[0]["dashboard"]?["rpmTiles"]?[15].attributes["style"] = "display:inline"
                 }
                 if (motorcycleData.getRPM() >= 9333) {
-                    xml?[0]["dashboard"]?["g2"]?["rpmTiles"]?[16].attributes["style"] = "display:inline"
+                    xml?[0]["dashboard"]?["rpmTiles"]?[16].attributes["style"] = "display:inline"
                 }
                 if (motorcycleData.getRPM() >= 9666) {
-                    xml?[0]["dashboard"]?["g2"]?["rpmTiles"]?[17].attributes["style"] = "display:inline"
+                    xml?[0]["dashboard"]?["rpmTiles"]?[17].attributes["style"] = "display:inline"
                 }
                 if (motorcycleData.getRPM() >= 10000) {
-                    xml?[0]["dashboard"]?["g2"]?["rpmTiles"]?[18].attributes["style"] = "display:inline"
+                    xml?[0]["dashboard"]?["rpmTiles"]?[18].attributes["style"] = "display:inline"
                 }
                 if (motorcycleData.getRPM() >= 10333) {
-                    xml?[0]["dashboard"]?["g2"]?["rpmTiles"]?[19].attributes["style"] = "display:inline"
+                    xml?[0]["dashboard"]?["rpmTiles"]?[19].attributes["style"] = "display:inline"
                 }
                 if (motorcycleData.getRPM() >= 10666) {
-                    xml?[0]["dashboard"]?["g2"]?["rpmTiles"]?[20].attributes["style"] = "display:inline"
+                    xml?[0]["dashboard"]?["rpmTiles"]?[20].attributes["style"] = "display:inline"
                 }
                 if (motorcycleData.getRPM() >= 11000) {
-                    xml?[0]["dashboard"]?["g2"]?["rpmTiles"]?[21].attributes["style"] = "display:inline"
+                    xml?[0]["dashboard"]?["rpmTiles"]?[21].attributes["style"] = "display:inline"
                 }
                 if (motorcycleData.getRPM() >= 11333) {
-                    xml?[0]["dashboard"]?["g2"]?["rpmTiles"]?[22].attributes["style"] = "display:inline"
+                    xml?[0]["dashboard"]?["rpmTiles"]?[22].attributes["style"] = "display:inline"
                 }
                 if (motorcycleData.getRPM() >= 11666) {
-                    xml?[0]["dashboard"]?["g2"]?["rpmTiles"]?[23].attributes["style"] = "display:inline"
+                    xml?[0]["dashboard"]?["rpmTiles"]?[23].attributes["style"] = "display:inline"
                 }
                 if (motorcycleData.getRPM() >= 12000) {
-                    xml?[0]["dashboard"]?["g2"]?["rpmTiles"]?[24].attributes["style"] = "display:inline"
+                    xml?[0]["dashboard"]?["rpmTiles"]?[24].attributes["style"] = "display:inline"
                 }
                 if (motorcycleData.getRPM() >= 12333) {
-                    xml?[0]["dashboard"]?["g2"]?["rpmTiles"]?[25].attributes["style"] = "display:inline"
+                    xml?[0]["dashboard"]?["rpmTiles"]?[25].attributes["style"] = "display:inline"
                 }
                 if (motorcycleData.getRPM() >= 12666) {
-                    xml?[0]["dashboard"]?["g2"]?["rpmTiles"]?[26].attributes["style"] = "display:inline"
+                    xml?[0]["dashboard"]?["rpmTiles"]?[26].attributes["style"] = "display:inline"
                 }
                 if (motorcycleData.getRPM() >= 13000) {
-                    xml?[0]["dashboard"]?["g2"]?["rpmTiles"]?[27].attributes["style"] = "display:inline"
+                    xml?[0]["dashboard"]?["rpmTiles"]?[27].attributes["style"] = "display:inline"
                 }
                 if (motorcycleData.getRPM() >= 13666) {
-                    xml?[0]["dashboard"]?["g2"]?["rpmTiles"]?[28].attributes["style"] = "display:inline"
+                    xml?[0]["dashboard"]?["rpmTiles"]?[28].attributes["style"] = "display:inline"
                 }
                 if (motorcycleData.getRPM() >= 14333) {
-                    xml?[0]["dashboard"]?["g2"]?["rpmTiles"]?[29].attributes["style"] = "display:inline"
+                    xml?[0]["dashboard"]?["rpmTiles"]?[29].attributes["style"] = "display:inline"
                 }
                 if (motorcycleData.getRPM() >= 15000) {
-                    xml?[0]["dashboard"]?["g2"]?["rpmTiles"]?[30].attributes["style"] = "display:inline"
+                    xml?[0]["dashboard"]?["rpmTiles"]?[30].attributes["style"] = "display:inline"
                 }
             }
             break
         default:
-            os_log("StandardDashboard: Unknown or default RPM Setting for standard dashboard")
+            NSLog("StandardDashboard: Unknown or default RPM Setting for standard dashboard")
             break
         }
 
