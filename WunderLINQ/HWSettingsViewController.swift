@@ -18,6 +18,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 import UIKit
 import CoreBluetooth
+import os.log
 
 class HWSettingsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource  {
     
@@ -231,7 +232,7 @@ class HWSettingsViewController: UIViewController, UITableViewDelegate, UITableVi
                         if (wlqData.getKeyMode() == wlqData.KEYMODE_CUSTOM()){
                             menuBtn.isHidden = false
                             if (!wlqData.getConfig().elementsEqual(wlqData.getTempConfig())){
-                                NSLog("HWSettingsViewController: !!!Change detected!!!")
+                                os_log("HWSettingsViewController: !!!Change detected!!!")
                                 configButton.setTitle(NSLocalizedString("config_write_label", comment: ""), for: .normal)
                                 configButton.isHidden = false
                                 configButton.tag = 1
@@ -328,7 +329,7 @@ class HWSettingsViewController: UIViewController, UITableViewDelegate, UITableVi
                 if (wlqData.getKeyMode() == wlqData.KEYMODE_CUSTOM()){
                     menuBtn.isHidden = false
                     if (!wlqData.getConfig().elementsEqual(wlqData.getTempConfig())){
-                        NSLog("HWSettingsViewController: !!!Change detected!!!")
+                        os_log("HWSettingsViewController: !!!Change detected!!!")
                         configButton.setTitle(NSLocalizedString("config_write_label", comment: ""), for: .normal)
                         configButton.isHidden = false
                         configButton.tag = 1
@@ -390,7 +391,7 @@ class HWSettingsViewController: UIViewController, UITableViewDelegate, UITableVi
                 if (wlqData.getKeyMode() == wlqData.KEYMODE_CUSTOM()){
                     menuBtn.isHidden = true
                     if (!wlqData.getConfig().elementsEqual(wlqData.getTempConfig())){
-                        NSLog("HWSettingsViewController: !!!Change detected!!!")
+                        os_log("HWSettingsViewController: !!!Change detected!!!")
                         configButton.setTitle(NSLocalizedString("config_write_label", comment: ""), for: .normal)
                         configButton.isHidden = false
                         configButton.tag = 1
@@ -412,7 +413,7 @@ class HWSettingsViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func resetHWConfig(){
-        NSLog("HWSettingsViewController: resetHWConfig()")
+        os_log("HWSettingsViewController: resetHWConfig()")
         let alertController = UIAlertController(
             title: NSLocalizedString("hwsave_alert_title", comment: ""),
             message: NSLocalizedString("hwreset_alert_body", comment: ""),
@@ -431,7 +432,7 @@ class HWSettingsViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func applyHWConfig(){
-        NSLog("HWSettingsViewController: applyHWConfig()")
+        os_log("HWSettingsViewController: applyHWConfig()")
         let alertController = UIAlertController(
             title: NSLocalizedString("hwsave_alert_title", comment: ""),
             message: NSLocalizedString("hwsave_alert_body", comment: ""),

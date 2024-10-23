@@ -24,6 +24,7 @@ import Photos
 import UIKit
 import UserNotifications
 import CoreMotion
+import os.log
 
 class FirstRunViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
@@ -52,10 +53,10 @@ class FirstRunViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
                 if granted {
                     // Authorized
                     //Nothing to do
-                    NSLog("FirstRunViewController: Allowed to access contacts")
+                    os_log("FirstRunViewController: Allowed to access contacts")
                 } else {
                     // Not allowed
-                    NSLog("FirstRunViewController: Not Allowed to access contacts")
+                    os_log("FirstRunViewController: Not Allowed to access contacts")
                 }
             }
             step = step + 1
@@ -68,11 +69,11 @@ class FirstRunViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
                 if granted == true {
                     // Authorized
                     //Nothing to do
-                    NSLog("FirstRunViewController: Allowed to access to Camera")
+                    os_log("FirstRunViewController: Allowed to access to Camera")
                 } else {
                     // Not allowed
                     // Prompt with warning and button to settings
-                    NSLog("FirstRunViewController: Not Allowed to access Camera")
+                    os_log("FirstRunViewController: Not Allowed to access Camera")
                 }
             })
             step = step + 1
@@ -85,11 +86,11 @@ class FirstRunViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
                 if granted == true {
                     // Authorized
                     //Nothing to do
-                    NSLog("FirstRunViewController: Allowed to access to Microphone")
+                    os_log("FirstRunViewController: Allowed to access to Microphone")
                 } else {
                     // Not allowed
                     // Prompt with warning and button to settings
-                    NSLog("FirstRunViewController: Not Allowed to access to Microphone")
+                    os_log("FirstRunViewController: Not Allowed to access to Microphone")
                 }
             })
             step = step + 1
@@ -102,9 +103,9 @@ class FirstRunViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
                 if status == .authorized{
                     // Authorized
                     //Nothing to do
-                    NSLog("FirstRunViewController: Allowed to access the Photo Library")
+                    os_log("FirstRunViewController: Allowed to access the Photo Library")
                 } else {
-                    NSLog("FirstRunViewController: Not Allowed to access the Photo Library")
+                    os_log("FirstRunViewController: Not Allowed to access the Photo Library")
                 }
             })
             step = step + 1
@@ -117,9 +118,9 @@ class FirstRunViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
                 if status == .authorized{
                     // Authorized
                     //Nothing to do
-                    NSLog("FirstRunViewController: Allowed to access the Media Library")
+                    os_log("FirstRunViewController: Allowed to access the Media Library")
                 } else {
-                    NSLog("FirstRunViewController: Not Allowed to access the Media Library")
+                    os_log("FirstRunViewController: Not Allowed to access the Media Library")
                 }
             }
             step = step + 1
@@ -129,9 +130,9 @@ class FirstRunViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
             messageTextField.text = NSLocalizedString("fitness_alert_body", comment: "")
 
             if CLLocationManager.authorizationStatus() == .authorizedAlways {
-                NSLog("FirstRunViewController: Allowed Always Location Access")
+                os_log("FirstRunViewController: Allowed Always Location Access")
             } else {
-                NSLog("FirstRunViewController: Not Allowed Location Access")
+                os_log("FirstRunViewController: Not Allowed Location Access")
                 locationManager.requestAlwaysAuthorization()
             }
             step = step + 1
@@ -149,11 +150,11 @@ class FirstRunViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
                    recorder.recordAccelerometer(forDuration: 0.1)
                 }
             case .restricted:
-                print("restricted")
+                os_log("restricted")
             case .denied:
-                print("denied")
+                os_log("denied")
             default:
-                print("authorized")
+                os_log("authorized")
             }
             step = step + 1
             break
@@ -164,12 +165,12 @@ class FirstRunViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
             
             UNUserNotificationCenter.current().getNotificationSettings { (settings) in
                 if (settings.authorizationStatus == .authorized){
-                    NSLog("FirstRunViewController: Allowed to use Notifications")
+                    os_log("FirstRunViewController: Allowed to use Notifications")
                 } else {
                     let center  = UNUserNotificationCenter.current()
                     center.requestAuthorization(options: [.sound, .alert, .badge]) { (granted, error) in
                         if error == nil{
-                            NSLog("FirstRunViewController: Allowed to use Notifications")
+                            os_log("FirstRunViewController: Allowed to use Notifications")
                         }
                     }
                 }

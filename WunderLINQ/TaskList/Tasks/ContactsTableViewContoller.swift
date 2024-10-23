@@ -19,6 +19,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 import Foundation
 import UIKit
 import Contacts
+import os.log
 
 class ContactsTableViewController: UITableViewController {
     
@@ -40,18 +41,18 @@ class ContactsTableViewController: UITableViewController {
             self.retrieveContactsWithStore(store: store)
         case .denied:
             // Not allowed
-            NSLog("ContactsTableViewController: Not Allowed to access contacts")
+            os_log("ContactsTableViewController: Not Allowed to access contacts")
         case .restricted, .notDetermined:
             store.requestAccess(for: .contacts) { granted, error in
                 if granted {
                     self.retrieveContactsWithStore(store: store)
                 } else {
                     // Not allowed
-                    NSLog("ContactsTableViewController: Not Allowed to access contacts")
+                    os_log("ContactsTableViewController: Not Allowed to access contacts")
                 }
             }
         default:
-            NSLog("ContactsTableViewController: Unknown status to access contacts")
+            os_log("ContactsTableViewController: Unknown status to access contacts")
         }
     }
     
@@ -106,7 +107,7 @@ class ContactsTableViewController: UITableViewController {
             }
         }
         catch{
-            NSLog("ContactsTableViewController: Error enumerating contacts")
+            os_log("ContactsTableViewController: Error enumerating contacts")
         }
         self.tableView.reloadData()
     }

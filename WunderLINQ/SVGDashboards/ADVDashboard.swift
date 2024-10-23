@@ -17,6 +17,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import Foundation
+import os.log
 
 class ADVDashboard {
     
@@ -57,7 +58,7 @@ class ADVDashboard {
                 }
             }
         default:
-            NSLog("ADVDashboard: Unknown speed unit setting")
+            os_log("ADVDashboard: Unknown speed unit setting")
         }
         if (speedValue != nil){
             if (speedValue! < 10){

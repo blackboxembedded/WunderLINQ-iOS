@@ -17,6 +17,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import Foundation
+import os.log
 
 class Logger {
 
@@ -50,7 +51,7 @@ class Logger {
                     let fileURL = documentDirectory.appendingPathComponent("\(fileName)")
                     let fileManager = FileManager.default
                     if (!fileManager.fileExists(atPath: fileURL.path)) {
-                        NSLog("Logger: FILE NOT AVAILABLE")
+                        os_log("Logger: FILE NOT AVAILABLE")
                         initializeFile(fileURL: fileURL)
                     }
                     
@@ -313,10 +314,10 @@ class Logger {
                         try formattedEntry.appendLineToURL(fileURL: fileURL as URL)
                         
                     } catch {
-                        NSLog("Logger: error writing to url:\(fileURL), ERROR: \(error)")
+                        os_log("Logger: error writing to url:\(fileURL), ERROR: \(error)")
                     }
                 } else {
-                    NSLog("Logger: New Day")
+                    os_log("Logger: New Day")
                     let fileName = "WunderLINQ-TripLog-" + loggingStatus! + ".csv"
                     // Get the documents folder url
                     let documentDirectory = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
@@ -324,7 +325,7 @@ class Logger {
                     let fileURL = documentDirectory.appendingPathComponent("\(fileName)")
                     let fileManager = FileManager.default
                     if (!fileManager.fileExists(atPath: fileURL.path)) {
-                        NSLog("Logger: FILE NOT AVAILABLE")
+                        os_log("Logger: FILE NOT AVAILABLE")
                         initializeFile(fileURL: fileURL)
                     }
                 }
@@ -391,7 +392,7 @@ class Logger {
         case 3:
             pressureUnit = "psi"
         default:
-            NSLog("Logger: Unknown pressure unit setting")
+            os_log("Logger: Unknown pressure unit setting")
         }
         if UserDefaults.standard.integer(forKey: "temperature_unit_preference") == 1 {
             temperatureUnit = "F"
@@ -412,7 +413,7 @@ class Logger {
         case 3:
             consumptionUnit = "km/L"
         default:
-            NSLog("Logger: Unknown consumption unit setting")
+            os_log("Logger: Unknown consumption unit setting")
         }
         
         let header = "\(dateHeader) (\(dateFormat)),\(latitudeHeader),\(longitudeHeader),\(altitudeHeader) (\(altitudeUnit)),\(gpsSpeedHeader) (\(speedUnit)),\(gearHeader),\(engineTemperatureHeader) (\(temperatureUnit)),\(ambientTemperatureHeader) (\(temperatureUnit)),\(frontPressureHeader) (\(pressureUnit)),\(rearPressureHeader) (\(pressureUnit)),\(odometerHeader) (\(distanceUnit)),\(voltageHeader) (V),\(throttlePositionHeader) (%),\(frontBrakesHeader),\(rearBrakesHeader),\(shiftsHeader),\(vinHeader),\(ambientLightHeader),\(tripOneHeader) (\(distanceUnit)),\(tripTwoHeader) (\(distanceUnit)),\(tripAutoHeader) (\(distanceUnit)),\(speedHeader) (\(speedUnit)),\(averageSpeedHeader) (\(speedUnit)),\(currentConsumptionHeader) (\(consumptionUnit)),\(fuelEconomyOneHeader) (\(consumptionUnit)),\(fuelEconomyTwoHeader) (\(consumptionUnit)),\(fuelRangeHeader) (\(distanceUnit)),\(leanAngleHeader),\(gForceHeader),\(bearingHeader),\(barometricPressureHeader) (kPa),\(rpmHeader),\(leanAngleBikeHeader),\(rearSpeedHeader) (\(speedUnit)),\(deviceBatteryHeader) (%)"
@@ -421,7 +422,7 @@ class Logger {
             try header.appendLineToURL(fileURL: fileURL as URL)
             
         } catch {
-            NSLog("Logger: error writing to url:\(fileURL), ERROR: \(error)")
+            os_log("Logger: error writing to url:\(fileURL), ERROR: \(error)")
         }
     }
     

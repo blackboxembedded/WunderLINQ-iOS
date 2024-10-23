@@ -20,6 +20,7 @@ import CoreBluetooth
 import UIKit
 import MessageUI
 import MobileCoreServices
+import os.log
 
 class BikeInfoViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource  {
     
@@ -53,7 +54,7 @@ class BikeInfoViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     
     @IBAction func resetPressed(_ sender: Any) {
         if (self.peripheral != nil && self.characteristic != nil){
-            NSLog("BikeInfoViewController: Resetting Cluster Data Point")
+            os_log("BikeInfoViewController: Resetting Cluster Data Point")
             switch (clusterResetTypePicker.selectedRow(inComponent: 0)){
             case 0: // Reset Cluster Average Speed
                 let writeData =  Data(_: wlqData.RESET_CLUSTER_SPEED_CMD())

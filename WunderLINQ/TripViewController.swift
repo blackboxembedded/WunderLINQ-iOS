@@ -20,6 +20,7 @@ import UIKit
 import GoogleMaps
 import CoreGPX
 import Popovers
+import os.log
 
 class TripViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var mapView: GMSMapView!
@@ -120,7 +121,7 @@ class TripViewController: UIViewController, UITextFieldDelegate {
             let vc = UIActivityViewController(activityItems: [fileURL], applicationActivities: [])
             self.present(vc, animated: true)
         } catch {
-            print(error)
+            os_log(StaticString("TripViewController: exportGPX: %{PUBLIC}@"), error.localizedDescription)
         }
     }
     
@@ -133,7 +134,7 @@ class TripViewController: UIViewController, UITextFieldDelegate {
             do {
                 try fileManager.removeItem(atPath: filename)
             } catch {
-                NSLog("TripViewController: Could not delete file: \(error)")
+                os_log("TripViewController: Could not delete file: \(error)")
             }
             self.performSegue(withIdentifier: "tripToTrips", sender: [])
         }))
@@ -218,7 +219,6 @@ class TripViewController: UIViewController, UITextFieldDelegate {
                     startTime = row[0]
                     //Check date format
                     if let fourthFromEnd = row[0].suffix(4).dropLast(3).last, fourthFromEnd == "." {
-                        print("New format")
                         dateFormat = "yyyyMMdd-HH:mm:ss.SSS"
                     }
                 } else if ((lineNumber > 2) && (lineNumber < csvRows.count)){
@@ -458,14 +458,13 @@ class TripViewController: UIViewController, UITextFieldDelegate {
 
     func readDataFromCSV(fileName:String, fileType: String)-> String!{
         if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
-            NSLog("TripViewController: \(fileName).\(fileType)")
+            os_log("TripViewController: \(fileName).\(fileType)")
             let fileURL = dir.appendingPathComponent("\(fileName).\(fileType)")
             
             //reading
             do {
                 var contents = try String(contentsOf: fileURL, encoding: .utf8)
                 contents = cleanRows(file: contents)
-                //print(contents)
                 return contents
             }
             catch {
@@ -499,7 +498,6 @@ class TripViewController: UIViewController, UITextFieldDelegate {
         do {
             // Get the directory contents urls (including subfolders urls)
             let directoryContents = try FileManager.default.contentsOfDirectory(at: documentsUrl, includingPropertiesForKeys: nil, options: [])
-            print(directoryContents)
             
             // if you want to filter the directory contents you can do like this:
             let csvFiles = directoryContents.filter{ $0.pathExtension == "csv" }
@@ -508,7 +506,7 @@ class TripViewController: UIViewController, UITextFieldDelegate {
             
             
         } catch {
-            print(error.localizedDescription)
+            os_log(StaticString("TripViewController: updateFileList: %{PUBLIC}@"), error.localizedDescription)
         }
     }
     
@@ -521,9 +519,9 @@ class TripViewController: UIViewController, UITextFieldDelegate {
                 let newURL = try fileManager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent((labelLabel.text ?? "empty") + ".csv")
                 
             try fileManager.moveItem(at: oldURL, to: newURL)
-                    NSLog("TripViewController: File renamed successfully")
+                    os_log("TripViewController: File renamed successfully")
             } catch {
-                    NSLog("TripViewController: Error renaming file: \(error)")
+                    os_log("TripViewController: Error renaming file: \(error)")
             }
         }
     }

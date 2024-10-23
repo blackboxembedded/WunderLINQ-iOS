@@ -18,6 +18,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 import UIKit
 import WebKit
+import os.log
 
 class DashViewController: UIViewController, UIWebViewDelegate {
     
@@ -63,7 +64,7 @@ class DashViewController: UIViewController, UIWebViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        NSLog("DashViewController: viewDidLoad()")
+        os_log("DashViewController: viewDidLoad()")
         if isTimerRunning == false {
             runTimer()
         }
@@ -217,7 +218,7 @@ class DashViewController: UIViewController, UIWebViewDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        NSLog("DashViewController: viewWillAppear()")
+        os_log("DashViewController: viewWillAppear()")
         setupScreenOrientation()
         //Read last used dashboard
         let lastSelection = UserDefaults.standard.string(forKey: "lastDashboard")
@@ -230,7 +231,7 @@ class DashViewController: UIViewController, UIWebViewDelegate {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        NSLog("DashViewController: viewWillDisappear()")
+        os_log("DashViewController: viewWillDisappear()")
         timer.invalidate()
         refreshTimer.invalidate()
         seconds = 0

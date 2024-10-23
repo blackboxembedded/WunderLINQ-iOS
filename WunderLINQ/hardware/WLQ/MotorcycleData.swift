@@ -18,6 +18,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 import CoreLocation
 import Foundation
+import os.log
 
 class MotorcycleData {
     static let shared = MotorcycleData()
@@ -447,7 +448,7 @@ class MotorcycleData {
         case 3:
             pressureUnit = "psi"
         default:
-            NSLog("MainCollectionViewController: Unknown pressure unit setting")
+            os_log("MainCollectionViewController: Unknown pressure unit setting")
         }
         if UserDefaults.standard.integer(forKey: "temperature_unit_preference") == 1 {
             temperatureUnit = "F"
@@ -467,7 +468,7 @@ class MotorcycleData {
         case 3:
             consumptionUnit = "km/L"
         default:
-            NSLog("MainCollectionViewController: Unknown consumption unit setting")
+            os_log("MainCollectionViewController: Unknown consumption unit setting")
         }
         
         switch (dataPoint){
@@ -571,7 +572,7 @@ class MotorcycleData {
             //Device Battery
             label = NSLocalizedString("local_battery_header", comment: "")
         default:
-            NSLog("MotorcycleData: Unknown : \(dataPoint)")
+            os_log("MotorcycleData: Unknown : \(dataPoint)")
         }
         
         return label
@@ -747,7 +748,7 @@ class MotorcycleData {
                 }
             }
         default:
-            NSLog("MotorcycleData: Unknown : \(dataPoint)")
+            os_log("MotorcycleData: Unknown : \(dataPoint)")
         }
         return labelColor
     }
@@ -918,7 +919,7 @@ class MotorcycleData {
                 }
             }
         default:
-            NSLog("MotorcycleData: Unknown : \(dataPoint)")
+            os_log("MotorcycleData: Unknown : \(dataPoint)")
         }
         
         return icon
@@ -1290,7 +1291,7 @@ class MotorcycleData {
                 value = NSLocalizedString("blank_field", comment: "")
             }
         default:
-            NSLog("MotorcycleData: Unknown : \(dataPoint)")
+            os_log("MotorcycleData: Unknown : \(dataPoint)")
         }
         
         return value

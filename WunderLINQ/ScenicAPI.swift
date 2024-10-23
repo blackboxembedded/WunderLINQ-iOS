@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import CoreLocation
+import os.log
 
 class ScenicAPI {
 
@@ -204,7 +205,7 @@ class ScenicAPI {
         var request = URLRequest(url: URL(string: urlString)!)
         request.httpMethod = "POST"
         let data = params.data(using: .utf8)
-        NSLog("JsonData")
+        os_log("JsonData")
         //request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
         request.httpBody = data
         
@@ -225,17 +226,17 @@ class ScenicAPI {
                                     compHandler(false, gpxurl)
                                     return
                                 } else {
-                                    NSLog("Results key not found in dictionary")
+                                    os_log("Results key not found in dictionary")
                                 }
                             }
                             else {
-                                NSLog("Could not serialize JSON")
+                                os_log("Could not serialize JSON")
                             }
                         } else {
-                            NSLog("JSON Error")
+                            os_log("JSON Error")
                         }
                     } catch let error as NSError {
-                        NSLog("Error parsing results: \(error.localizedDescription)")
+                        os_log("Error parsing results: \(error.localizedDescription)")
                     }
                 }
             }
@@ -257,7 +258,7 @@ class ScenicAPI {
                     presentFromController(selectedVC, animated: animated, completion: completion)
                 }
                 else {
-                    NSLog("Presenting")
+                    os_log("Presenting")
                     controller.present(controller, animated: animated, completion: completion);
                 }
             }

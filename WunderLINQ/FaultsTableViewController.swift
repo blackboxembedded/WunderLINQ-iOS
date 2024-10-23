@@ -17,6 +17,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import UIKit
+import os.log
 
 class FaultsTableViewController: UITableViewController {
     
@@ -83,7 +84,7 @@ class FaultsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        NSLog("row: \(indexPath.row)")
+        os_log("row: \(indexPath.row)")
     }
 
 }

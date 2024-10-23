@@ -17,6 +17,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import Foundation
+import os.log
 
 class SportDashboard {
     
@@ -58,7 +59,7 @@ class SportDashboard {
                 }
             }
         default:
-            NSLog("SportDashboard: Unknown speed unit setting")
+            os_log("SportDashboard: Unknown speed unit setting")
         }
         if (speedValue != nil){
             if (speedValue! < 10){
@@ -1910,7 +1911,7 @@ class SportDashboard {
             break
         default:
             //15000
-            NSLog("SportDashboard: Unknown or default RPM Setting for sport dashboard")
+            os_log("SportDashboard: Unknown or default RPM Setting for sport dashboard")
             break
         }
         

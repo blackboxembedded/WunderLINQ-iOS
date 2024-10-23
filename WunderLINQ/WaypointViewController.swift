@@ -22,6 +22,7 @@ import GoogleMaps
 import MapKit
 import CoreGPX
 import Popovers
+import os.log
 
 class WaypointViewController: UIViewController, UITextFieldDelegate {
     
@@ -84,7 +85,7 @@ class WaypointViewController: UIViewController, UITextFieldDelegate {
         
         //opening the database
         if sqlite3_open(databaseURL.path, &db) != SQLITE_OK {
-            NSLog("WaypointViewController: error opening database")
+            os_log("WaypointViewController: error opening database")
         }
         
         //creating a statement
@@ -96,14 +97,14 @@ class WaypointViewController: UIViewController, UITextFieldDelegate {
         //preparing the query
         if sqlite3_prepare(db, queryString, -1, &stmt, nil) != SQLITE_OK{
             let errmsg = String(cString: sqlite3_errmsg(db)!)
-            NSLog("WaypointViewController: error preparing insert: \(errmsg)")
+            os_log("WaypointViewController: error preparing insert: \(errmsg)")
             return
         }
 
         //executing the query to insert values
         if sqlite3_step(stmt) != SQLITE_DONE {
             let errmsg = String(cString: sqlite3_errmsg(db)!)
-            NSLog("WaypointViewController: failure inserting waypoint: \(errmsg)")
+            os_log("WaypointViewController: failure inserting waypoint: \(errmsg)")
             return
         }
     }
@@ -157,24 +158,24 @@ class WaypointViewController: UIViewController, UITextFieldDelegate {
             .appendingPathComponent("waypoints.sqlite")
         // Opening the database
         if sqlite3_open(databaseURL.path, &db) != SQLITE_OK {
-            NSLog("WaypointViewController: error opening database")
+            os_log("WaypointViewController: error opening database")
         }
         // Creating table
         if sqlite3_exec(db, "CREATE TABLE IF NOT EXISTS records (id INTEGER PRIMARY KEY AUTOINCREMENT, date TEXT, latitude TEXT, longitude TEXT, elevation TEXT, label TEXT)", nil, nil, nil) != SQLITE_OK {
             let errmsg = String(cString: sqlite3_errmsg(db)!)
-            NSLog("WaypointViewController: error creating table: \(errmsg)")
+            os_log("WaypointViewController: error creating table: \(errmsg)")
         }
         // Update table if needed
         let updateStatementString = "ALTER TABLE records ADD COLUMN elevation TEXT"
         var updateStatement: OpaquePointer?
         if sqlite3_prepare_v2(db, updateStatementString, -1, &updateStatement, nil) == SQLITE_OK {
             if sqlite3_step(updateStatement) == SQLITE_DONE {
-                NSLog("WaypointViewController: Table updated successfully")
+                os_log("WaypointViewController: Table updated successfully")
             } else {
-                NSLog("WaypointViewController: Error updating table")
+                os_log("WaypointViewController: Error updating table")
             }
         } else {
-            NSLog("WaypointViewController: Error preparing update statement")
+            os_log("WaypointViewController: Error preparing update statement")
         }
         
         readWaypoints()
@@ -194,7 +195,7 @@ class WaypointViewController: UIViewController, UITextFieldDelegate {
             marker.snippet = label
             marker.map = mapView
         } else {
-            NSLog("WaypointViewController: Invalid Value")
+            os_log("WaypointViewController: Invalid Value")
         }
         
         dateLabel.text = date
@@ -233,7 +234,7 @@ class WaypointViewController: UIViewController, UITextFieldDelegate {
         //preparing the query
         if sqlite3_prepare(db, queryString, -1, &stmt, nil) != SQLITE_OK{
             let errmsg = String(cString: sqlite3_errmsg(db)!)
-            NSLog("WaypointViewController: error preparing insert: \(errmsg)")
+            os_log("WaypointViewController: error preparing insert: \(errmsg)")
             return
         }
         
@@ -268,7 +269,7 @@ class WaypointViewController: UIViewController, UITextFieldDelegate {
         //preparing the query
         if sqlite3_prepare(db, queryString, -1, &stmt, nil) != SQLITE_OK{
             let errmsg = String(cString: sqlite3_errmsg(db)!)
-            NSLog("WaypointViewController: error preparing insert: \(errmsg)")
+            os_log("WaypointViewController: error preparing insert: \(errmsg)")
             return
         }
         
@@ -280,7 +281,6 @@ class WaypointViewController: UIViewController, UITextFieldDelegate {
             let longitude = String(cString: sqlite3_column_text(stmt, 3))
             var elevation = ""
             if ( sqlite3_column_text(stmt, 4) != nil ){
-                print("elevation: \(elevation)")
                 elevation = String(cString: sqlite3_column_text(stmt, 4))
             }
             var label = ""
@@ -345,7 +345,7 @@ class WaypointViewController: UIViewController, UITextFieldDelegate {
                 let vc = UIActivityViewController(activityItems: [fileURL], applicationActivities: [])
                 self.present(vc, animated: true)
             } catch {
-                print(error)
+                os_log(StaticString("WaypointViewController: exportGPX: %{PUBLIC}@"), error.localizedDescription)
             }
         }
     }
@@ -360,14 +360,14 @@ class WaypointViewController: UIViewController, UITextFieldDelegate {
             //preparing the query
             if sqlite3_prepare(self.db, queryString, -1, &stmt, nil) != SQLITE_OK{
                 let errmsg = String(cString: sqlite3_errmsg(self.db)!)
-                NSLog("WaypointViewController: error preparing insert: \(errmsg)")
+                os_log("WaypointViewController: error preparing insert: \(errmsg)")
                 return
             }
             
             //executing the query to delete row
             if sqlite3_step(stmt) != SQLITE_DONE {
                 let errmsg = String(cString: sqlite3_errmsg(self.db)!)
-                NSLog("WaypointViewController: failure inserting wapoint: \(errmsg)")
+                os_log("WaypointViewController: failure inserting wapoint: \(errmsg)")
                 return
             }
             
