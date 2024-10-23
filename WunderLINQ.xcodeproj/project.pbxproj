@@ -234,7 +234,6 @@
 		7E9346B228E0A67F009E13C0 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		7E9346B628E0A6B2009E13C0 /* MotorcycleData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MotorcycleData.swift; sourceTree = "<group>"; };
 		7E93549F23008B2B00FCF0C5 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		7E9516C1238A367000ED25F2 /* SpotifyiOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SpotifyiOS.framework; sourceTree = "<group>"; };
 		7E9516C4238A3CDF00ED25F2 /* WunderLINQ-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WunderLINQ-Bridging-Header.h"; sourceTree = "<group>"; };
 		7E96D79121E78B7B00C6AB5F /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		7E9DDA9A278DE8A2006C6D12 /* WLQ.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WLQ.swift; sourceTree = "<group>"; };
@@ -450,7 +449,6 @@
 				D880B6012C6BFED900B4252B /* wav */,
 				7EB5EDD525211B6100B61160 /* fonts */,
 				B98CA75B252E6C5200530075 /* Utils */,
-				7E9516C1238A367000ED25F2 /* SpotifyiOS.framework */,
 				7E068BCF2102C6280076EAAD /* GoogleMaps.framework */,
 				7E068BD02102C6290076EAAD /* GoogleMapsBase.framework */,
 				7E068BCE2102C6270076EAAD /* GoogleMapsCore.framework */,

@@ -19,7 +19,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 import UIKit
 import os.log
 
-class SceneDelegate: UIResponder, UIWindowSceneDelegate, SPTAppRemoteDelegate {
+class SceneDelegate: UIResponder, UIWindowSceneDelegate, SPTAppRemoteDelegate, SPTAppRemotePlayerStateDelegate {
 
     var window: UIWindow?
     
@@ -70,15 +70,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, SPTAppRemoteDelegate {
     }
     
     func sceneWillEnterForeground(_ scene: UIScene) {
-        NSLog("SceneDelegate: sceneWillEnterForeground")
+        os_log("SceneDelegate: sceneWillEnterForeground")
     }
 
     func sceneDidBecomeActive(_ scene: UIScene) {
-        NSLog("SceneDelegate: sceneDidBecomeActive")
+        os_log("SceneDelegate: sceneDidBecomeActive")
         spotifyConnect()
     }
     
     func sceneWillResignActive(_ scene: UIScene) {
+        os_log("SceneDelegate: sceneWillResignActive")
         musicViewController.spotifyAppRemoteDisconnect()
         spotifyAppRemote.disconnect()
     }
@@ -100,6 +101,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, SPTAppRemoteDelegate {
 
     func appRemote(_ appRemote: SPTAppRemote, didDisconnectWithError error: Error?) {
         musicViewController.spotifyAppRemoteDisconnect()
+    }
+    
+    func playerStateDidChange(_ playerState: SPTAppRemotePlayerState) {
+        musicViewController.spotifyAppRemotePlayerStateDidChange()
     }
     
     var musicViewController: MusicViewController {

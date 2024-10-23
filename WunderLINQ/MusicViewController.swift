@@ -43,6 +43,8 @@ class MusicViewController: UIViewController {
     var seconds = 10
     var isTimerRunning = false
     
+    var refreshTimer: Timer?
+    
     let playImage = UIImage(named: "playback_play")
     let pauseImage = UIImage(named: "playback_pause")
     
@@ -160,6 +162,7 @@ class MusicViewController: UIViewController {
         case 1: // Spotify
             artistLabel.text = NSLocalizedString("music_spotify", comment: "")
             spotifyGetPlayerState()
+            startRefreshTimer()
             break
         default:
             break
@@ -180,17 +183,7 @@ class MusicViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         NSLog("MusicViewController: viewDidAppear")
-        let musicApp = UserDefaults.standard.integer(forKey: "musicplayer_preference")
-        switch (musicApp){
-        case 0: // Apple Music
-            appleMusicUpdateNowPlayingInfo()
-            break
-        case 1: // Spotify
-            spotifyGetPlayerState()
-            break
-        default:
-            break
-        }
+        refresh()
         NotificationCenter.default.addObserver(self, selector:#selector(MusicViewController.refresh), name: UIApplication.willEnterForegroundNotification, object: UIApplication.shared)
     }
     
@@ -580,17 +573,44 @@ class MusicViewController: UIViewController {
         self.spotifySubscribedToPlayerState = false
         enableInterface(false)
     }
+    
+    func spotifyAppRemotePlayerStateDidChange() {
+        NSLog("MusicViewController: spotifyAppRemotePlayerStateDidChange()")
+        spotifyGetPlayerState()
+    }
 
     @objc func faultsButtonTapped() {
         let viewController = self.storyboard?.instantiateViewController(withIdentifier: "FaultsTableViewController") as! FaultsTableViewController
         self.navigationController?.pushViewController(viewController, animated: true)
+    }
+    
+    // Start the timer to call refresh() every 1 second
+    func startRefreshTimer() {
+        refreshTimer = Timer.scheduledTimer(
+            timeInterval: 1.0,
+            target: self,
+            selector: #selector(refresh),
+            userInfo: nil,
+            repeats: true
+        )
+    }
+
+    // Invalidate the timer to stop refreshing
+    func stopRefreshTimer() {
+        refreshTimer?.invalidate()
+        refreshTimer = nil
+    }
+    
+    // Ensure the timer is invalidated when the view is deallocated
+    deinit {
+        stopRefreshTimer()
     }
 }
 
 // MARK: - SPTAppRemotePlayerStateDelegate
 extension MusicViewController: SPTAppRemotePlayerStateDelegate {
     func playerStateDidChange(_ playerState: SPTAppRemotePlayerState) {
-        NSLog("MusicViewController: Spotify: playerStateDidChange")
+        NSLog("MusicViewController: Spotify playerStateDidChange")
         self.spotifyPlayerState = playerState
         spotifyUpdateViewWithPlayerState(playerState)
     }
@@ -598,6 +618,7 @@ extension MusicViewController: SPTAppRemotePlayerStateDelegate {
 // MARK: - SPTAppRemoteUserAPIDelegate
 extension MusicViewController: SPTAppRemoteUserAPIDelegate {
     func userAPI(_ userAPI: SPTAppRemoteUserAPI, didReceive capabilities: SPTAppRemoteUserCapabilities) {
+        NSLog("MusicViewController: Spotify userAPI")
         //updateViewWithCapabilities(capabilities)
     }
 }
