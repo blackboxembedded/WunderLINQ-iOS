@@ -191,6 +191,7 @@ class MusicViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         os_log("MusicViewController: viewWillDisappear")
+        stopRefreshTimer()
         spotifyUnsubscribeFromPlayerState()
         timer.invalidate()
         seconds = 0
