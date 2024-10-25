@@ -1000,7 +1000,7 @@ class MotorcycleData {
                 if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
                     odometer = Double(Utils.kmToMiles(Double(odometer)))
                 }
-                value = "\(Utils.toZeroDecimalString(odometer))"
+                value = "\(Utils.toZeroDecimalString(odometer, wrapGrouping: true))"
             } else {
                 value = NSLocalizedString("blank_field", comment: "")
             }
