@@ -223,11 +223,11 @@ class BLEBus {
                 if UserDefaults.standard.bool(forKey: "custom_tpm_preference"){
                     switch UserDefaults.standard.integer(forKey: "pressure_unit_preference"){
                     case 1:
-                        frontPressure = Utility.barTokPa(frontPressure)
+                        frontPressure = Utils.barTokPa(frontPressure)
                     case 2:
-                        frontPressure = Utility.barTokgf(frontPressure)
+                        frontPressure = Utils.barTokgf(frontPressure)
                     case 3:
-                        frontPressure = Utility.barToPsi(frontPressure)
+                        frontPressure = Utils.barToPsi(frontPressure)
                     default:
                         os_log("Unknown pressure unit setting")
                     }
@@ -250,11 +250,11 @@ class BLEBus {
                 if UserDefaults.standard.bool(forKey: "custom_tpm_preference"){
                     switch UserDefaults.standard.integer(forKey: "pressure_unit_preference"){
                     case 1:
-                        rearPressure = Utility.barTokPa(rearPressure)
+                        rearPressure = Utils.barTokPa(rearPressure)
                     case 2:
-                        rearPressure = Utility.barTokgf(rearPressure)
+                        rearPressure = Utils.barTokgf(rearPressure)
                     case 3:
-                        rearPressure = Utility.barToPsi(rearPressure)
+                        rearPressure = Utils.barToPsi(rearPressure)
                     default:
                         os_log("Unknown pressure unit setting")
                     }

@@ -325,10 +325,10 @@ class TripViewController: UIViewController, UITextFieldDelegate {
                 }
                 avgSpeed = avgSpeed / Double((speeds.count))
                 if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
-                    avgSpeed = Utility.kmToMiles(avgSpeed)
-                    maxSpeed = Utility.kmToMiles(maxSpeed)
+                    avgSpeed = Utils.kmToMiles(avgSpeed)
+                    maxSpeed = Utils.kmToMiles(maxSpeed)
                 }
-                speedLabel.text = "\(avgSpeed.rounded(toPlaces: 1))/\(maxSpeed.rounded(toPlaces: 1)) (\(speedUnit))"
+                speedLabel.text = "\(Utils.toOneDecimalString(avgSpeed))/\(Utils.toOneDecimalString(maxSpeed)) (\(speedUnit))"
             }
             
             gearShiftsLabel.text = "\(endShiftCnt)"
@@ -343,16 +343,16 @@ class TripViewController: UIViewController, UITextFieldDelegate {
                 avgEngineTemp = avgEngineTemp / Double((ambientTemps.count))
                 if UserDefaults.standard.integer(forKey: "temperature_unit_preference") == 1 {
                     // F
-                    minEngineTemp = Utility.celciusToFahrenheit(minEngineTemp!)
-                    avgEngineTemp = Utility.celciusToFahrenheit(avgEngineTemp)
-                    maxEngineTemp = Utility.celciusToFahrenheit(maxEngineTemp!)
+                    minEngineTemp = Utils.celciusToFahrenheit(minEngineTemp!)
+                    avgEngineTemp = Utils.celciusToFahrenheit(avgEngineTemp)
+                    maxEngineTemp = Utils.celciusToFahrenheit(maxEngineTemp!)
                 }
             }
             if(minEngineTemp == nil || maxEngineTemp == nil){
                 minEngineTemp = 0.0
                 maxEngineTemp = 0.0
             }
-            engineTempLabel.text = "\(minEngineTemp!.rounded(toPlaces: 1))/\(avgEngineTemp.rounded(toPlaces: 1))/\(maxEngineTemp!.rounded(toPlaces: 1)) (\(temperatureUnit))"
+            engineTempLabel.text = "\(Utils.toOneDecimalString(minEngineTemp!))/\(Utils.toOneDecimalString(avgEngineTemp))/\(Utils.toOneDecimalString(maxEngineTemp!)) (\(temperatureUnit))"
             
             var avgAmbientTemp: Double = 0
             if ((ambientTemps.count) > 0) {
@@ -362,36 +362,36 @@ class TripViewController: UIViewController, UITextFieldDelegate {
                 avgAmbientTemp = avgAmbientTemp / Double(ambientTemps.count)
                 if UserDefaults.standard.integer(forKey: "temperature_unit_preference") == 1 {
                     // F
-                    minAmbientTemp = Utility.celciusToFahrenheit(minAmbientTemp!)
-                    avgAmbientTemp = Utility.celciusToFahrenheit(avgAmbientTemp)
-                    maxAmbientTemp = Utility.celciusToFahrenheit(maxAmbientTemp!)
+                    minAmbientTemp = Utils.celciusToFahrenheit(minAmbientTemp!)
+                    avgAmbientTemp = Utils.celciusToFahrenheit(avgAmbientTemp)
+                    maxAmbientTemp = Utils.celciusToFahrenheit(maxAmbientTemp!)
                 }
             }
             if(minAmbientTemp == nil || maxAmbientTemp == nil){
                 minAmbientTemp = 0.0
                 maxAmbientTemp = 0.0
             }
-            ambientTempLabel.text = "\(minAmbientTemp!.rounded(toPlaces: 1))/\(avgAmbientTemp.rounded(toPlaces: 1))/\(maxAmbientTemp!.rounded(toPlaces: 1)) (\(temperatureUnit))"
+            ambientTempLabel.text = "\(Utils.toOneDecimalString(minAmbientTemp!))/\(Utils.toOneDecimalString(avgAmbientTemp))/\(Utils.toOneDecimalString(maxAmbientTemp!)) (\(temperatureUnit))"
             
             // Calculate Distance
             var distance: Double = 0
             if (endOdometer != nil && startOdometer != nil) {
                 distance = endOdometer! - startOdometer!
                 if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
-                    distance = Utility.kmToMiles(distance.rounded(toPlaces: 1))
+                    distance = Utils.kmToMiles(distance.rounded(toPlaces: 1))
                 }
             } else if (totalDistance > 0) {
                 distance = totalDistance / 1000
             }
-            distanceLabel.text = "\(distance.rounded(toPlaces: 1)) \(distanceUnit)"
+            distanceLabel.text = "\(Utils.toOneDecimalString(distance)) \(distanceUnit)"
             
             // Calculate Duration
             if ((startTime != nil) && (endTime != nil)){
-                durationLabel.text = Utility.calculateDuration(dateFormat: dateFormat, start: startTime!,end: endTime!)
+                durationLabel.text = Utils.calculateDuration(dateFormat: dateFormat, start: startTime!,end: endTime!)
             }
             
             if (maxLean != nil){
-                leanLabel.text = "\(maxLean!.rounded(toPlaces: 2))"
+                leanLabel.text = "\(Utils.toOneDecimalString(maxLean!))"
             }
 
             mapView.clear()

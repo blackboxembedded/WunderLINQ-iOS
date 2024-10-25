@@ -42,14 +42,14 @@ class StandardDashboard {
             if motorcycleData.speed != nil {
                 speedValue = motorcycleData.speed!
                 if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
-                    speedValue = Utility.kmToMiles(speedValue!)
+                    speedValue = Utils.kmToMiles(speedValue!)
                 }
             }
         case 1:
             if motorcycleData.rearSpeed != nil {
                 speedValue = motorcycleData.rearSpeed!
                 if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
-                    speedValue = Utility.kmToMiles(speedValue!)
+                    speedValue = Utils.kmToMiles(speedValue!)
                 }
             }
         case 2:
@@ -57,18 +57,14 @@ class StandardDashboard {
                 let currentLocation = motorcycleData.location
                 speedValue = currentLocation!.speed * 3.6
                 if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
-                    speedValue = Utility.kmToMiles(speedValue!)
+                    speedValue = Utils.kmToMiles(speedValue!)
                 }
             }
         default:
             NSLog("StandardDashboard: Unknown speed unit setting")
         }
         if (speedValue != nil){
-            if (speedValue! < 10){
-                xml?[0]["dashboard"]?["values"]?["speed"]?.text = "\(String(format: "%02d",Int(round(speedValue!))))"
-            } else {
-                xml?[0]["dashboard"]?["values"]?["speed"]?.text = "\(Int(round(speedValue!)))"
-            }
+            xml?[0]["dashboard"]?["values"]?["speed"]?.text = "\(Utils.toZeroDecimalString(speedValue!))"
         }
         if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
             distanceTimeUnit = "MPH"
@@ -98,9 +94,9 @@ class StandardDashboard {
             }
             if UserDefaults.standard.integer(forKey: "temperature_unit_preference") == 1 {
                 temperatureUnit = "F"
-                ambientTemp = Utility.celciusToFahrenheit(ambientTemp)
+                ambientTemp = Utils.celciusToFahrenheit(ambientTemp)
             }
-            ambientTempValue = "\(Int(round(ambientTemp)))\(temperatureUnit)"
+            ambientTempValue = "\(Utils.toZeroDecimalString(ambientTemp))\(temperatureUnit)"
         }
         xml?[0]["dashboard"]?["values"]?["ambientTemp"]?.text = ambientTempValue
         
@@ -117,9 +113,9 @@ class StandardDashboard {
             }
             if (UserDefaults.standard.integer(forKey: "temperature_unit_preference") == 1 ){
                 temperatureUnit = "F"
-                engineTemp = Utility.celciusToFahrenheit(engineTemp)
+                engineTemp = Utils.celciusToFahrenheit(engineTemp)
             }
-            engineTempValue = "\(Int(round(engineTemp)))\(temperatureUnit)"
+            engineTempValue = "\(Utils.toZeroDecimalString(engineTemp))\(temperatureUnit)"
         }
         xml?[0]["dashboard"]?["values"]?["engineTemp"]?.text = engineTempValue
         
@@ -132,9 +128,9 @@ class StandardDashboard {
                     var trip1:Double = motorcycleData.tripOne!
                     if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
                         distanceUnit = "mls"
-                        trip1 = Utility.kmToMiles(trip1)
+                        trip1 = Utils.kmToMiles(trip1)
                     }
-                    dataValue = "\(Int(round(trip1)))\(distanceUnit)"
+                    dataValue = "\(Utils.toOneDecimalString(trip1))\(distanceUnit)"
                 }
                 dataLabel = "dash_trip1_label".localized(forLanguageCode: "Base")
                 break
@@ -143,9 +139,9 @@ class StandardDashboard {
                     var trip2:Double = motorcycleData.tripTwo!
                     if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
                         distanceUnit = "mls"
-                        trip2 = Utility.kmToMiles(trip2)
+                        trip2 = Utils.kmToMiles(trip2)
                     }
-                    dataValue = "\(Int(round(trip2)))\(distanceUnit)"
+                    dataValue = "\(Utils.toOneDecimalString(trip2))\(distanceUnit)"
                 }
                 dataLabel = "dash_trip2_label".localized(forLanguageCode: "Base")
                 break
@@ -154,9 +150,9 @@ class StandardDashboard {
                     var fuelRange:Double = motorcycleData.fuelRange!
                     if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
                         distanceUnit = "mls"
-                        fuelRange = Utility.kmToMiles(fuelRange)
+                        fuelRange = Utils.kmToMiles(fuelRange)
                     }
-                    dataValue = "\(Int(round(fuelRange)))\(distanceUnit)"
+                    dataValue = "\(Utils.toZeroDecimalString(fuelRange))\(distanceUnit)"
                     if(faults.getFuelFaultActive()){
                         let style = xml?[0]["dashboard"]?["values"]?["dataValue"]?.attributes["style"]
                         let regex = try! NSRegularExpression(pattern: "fill:([^<]*);", options: NSRegularExpression.Options.caseInsensitive)
@@ -171,10 +167,10 @@ class StandardDashboard {
                 if motorcycleData.location != nil {
                     var altitude = motorcycleData.location!.altitude
                     if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
-                        altitude = Utility.mtoFeet(motorcycleData.location!.altitude)
+                        altitude = Utils.mtoFeet(motorcycleData.location!.altitude)
                         heightUnit = "ft"
                     }
-                    dataValue = "\(Int(round(altitude)))\(heightUnit)"
+                    dataValue = "\(Utils.toZeroDecimalString(altitude))\(heightUnit)"
                 }
                 dataLabel = "dash_altitude_label".localized(forLanguageCode: "Base")
                 break
@@ -203,18 +199,18 @@ class StandardDashboard {
             switch UserDefaults.standard.integer(forKey: "pressure_unit_preference"){
             case 1:
                 pressureUnit = "kPa"
-                frontPressure = Utility.barTokPa(frontPressure)
+                frontPressure = Utils.barTokPa(frontPressure)
             case 2:
                 pressureUnit = "kgf"
-                frontPressure = Utility.barTokgf(frontPressure)
+                frontPressure = Utils.barTokgf(frontPressure)
             case 3:
                 pressureUnit = "psi"
-                frontPressure = Utility.barToPsi(frontPressure)
+                frontPressure = Utils.barToPsi(frontPressure)
             default:
                 pressureUnit = "bar"
                 break
             }
-            rdcFValue = "\(frontPressure.rounded(toPlaces: 1))\(pressureUnit)"
+            rdcFValue = "\(Utils.toOneDecimalString(frontPressure))\(pressureUnit)"
         }
         xml?[0]["dashboard"]?["values"]?["rdcF"]?.text = rdcFValue
         
@@ -239,18 +235,18 @@ class StandardDashboard {
             switch UserDefaults.standard.integer(forKey: "pressure_unit_preference"){
             case 1:
                 pressureUnit = "kPa"
-                rearPressure = Utility.barTokPa(rearPressure)
+                rearPressure = Utils.barTokPa(rearPressure)
             case 2:
                 pressureUnit = "kgf"
-                rearPressure = Utility.barTokgf(rearPressure)
+                rearPressure = Utils.barTokgf(rearPressure)
             case 3:
                 pressureUnit = "psi"
-                rearPressure = Utility.barToPsi(rearPressure)
+                rearPressure = Utils.barToPsi(rearPressure)
             default:
                 pressureUnit = "bar"
                 break
             }
-            rdcRValue = "\(rearPressure.rounded(toPlaces: 1))\(pressureUnit)"
+            rdcRValue = "\(Utils.toOneDecimalString(rearPressure))\(pressureUnit)"
         }
         xml?[0]["dashboard"]?["values"]?["rdcR"]?.text = rdcRValue
         
