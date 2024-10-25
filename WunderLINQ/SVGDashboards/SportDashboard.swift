@@ -41,32 +41,28 @@ class SportDashboard {
             if motorcycleData.speed != nil {
                 speedValue = motorcycleData.speed!
                 if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
-                    speedValue = Utility.kmToMiles(speedValue!)
+                    speedValue = Utils.kmToMiles(speedValue!)
                 }
             }
         case 1:
             if motorcycleData.rearSpeed != nil {
                 speedValue = motorcycleData.rearSpeed!
                 if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
-                    speedValue = Utility.kmToMiles(speedValue!)
+                    speedValue = Utils.kmToMiles(speedValue!)
                 }
             }
         case 2:
             if let currentLocation = motorcycleData.getLocation() {
                 speedValue = currentLocation.speed * 3.6
                 if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
-                    speedValue = Utility.kmToMiles(speedValue!)
+                    speedValue = Utils.kmToMiles(speedValue!)
                 }
             }
         default:
             os_log("SportDashboard: Unknown speed unit setting")
         }
         if (speedValue != nil){
-            if (speedValue! < 10){
-                xml?[0]["dashboard"]?["values"]?["speed"]?.text = "\(String(format: "%02d",Int(round(speedValue!))))"
-            } else {
-                xml?[0]["dashboard"]?["values"]?["speed"]?.text = "\(Int(round(speedValue!)))"
-            }
+            xml?[0]["dashboard"]?["values"]?["speed"]?.text = "\(Utils.toZeroDecimalString(speedValue!))"
         }
         if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
             distanceTimeUnit = "MPH"
@@ -96,9 +92,9 @@ class SportDashboard {
             }
             if UserDefaults.standard.integer(forKey: "temperature_unit_preference") == 1 {
                 temperatureUnit = "F"
-                ambientTemp = Utility.celciusToFahrenheit(ambientTemp)
+                ambientTemp = Utils.celciusToFahrenheit(ambientTemp)
             }
-            ambientTempValue = "\(Int(round(ambientTemp)))\(temperatureUnit)"
+            ambientTempValue = "\(Utils.toZeroDecimalString(ambientTemp))\(temperatureUnit)"
         }
         xml?[0]["dashboard"]?["values"]?["ambientTemp"]?.text = ambientTempValue
         
@@ -115,9 +111,9 @@ class SportDashboard {
             }
             if (UserDefaults.standard.integer(forKey: "temperature_unit_preference") == 1 ){
                 temperatureUnit = "F"
-                engineTemp = Utility.celciusToFahrenheit(engineTemp)
+                engineTemp = Utils.celciusToFahrenheit(engineTemp)
             }
-            engineTempValue = "\(Int(round(engineTemp)))\(temperatureUnit)"
+            engineTempValue = "\(Utils.toZeroDecimalString(engineTemp))\(temperatureUnit)"
         }
         xml?[0]["dashboard"]?["values"]?["engineTemp"]?.text = engineTempValue
         
@@ -129,11 +125,11 @@ class SportDashboard {
             case 1://Trip1
                 if motorcycleData.tripOne != nil {
                     var trip1:Double = motorcycleData.tripOne!
-                    dataValue = "\(Int(round(trip1)))"
                     if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
-                        trip1 = Utility.kmToMiles(trip1)
+                        trip1 = Utils.kmToMiles(trip1)
                         distanceUnit = "mi"
                     }
+                    dataValue = "\(Utils.toOneDecimalString(trip1))"
                     dataUnit = distanceUnit
                     dataLabel = "dash_trip1_label".localized(forLanguageCode: "Base")
                 }
@@ -141,11 +137,11 @@ class SportDashboard {
             case 2://Trip2
                 if motorcycleData.tripTwo != nil {
                     var trip2:Double = motorcycleData.tripTwo!
-                    dataValue = "\(Int(round(trip2)))"
                     if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
-                        trip2 = Utility.kmToMiles(trip2)
+                        trip2 = Utils.kmToMiles(trip2)
                         distanceUnit = "mi"
                     }
+                    dataValue = "\(Utils.toOneDecimalString(trip2))"
                     dataUnit = distanceUnit
                     dataLabel = "dash_trip2_label".localized(forLanguageCode: "Base")
                 }
@@ -153,22 +149,23 @@ class SportDashboard {
             case 3://Range
                 if motorcycleData.fuelRange != nil {
                     var fuelRange:Double = motorcycleData.fuelRange!
-                    dataValue = "\(Int(round(fuelRange)))"
                     if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
-                        fuelRange = Utility.kmToMiles(fuelRange)
+                        fuelRange = Utils.kmToMiles(fuelRange)
                         distanceUnit = "mi"
                     }
+                    dataValue = "\(Utils.toZeroDecimalString(fuelRange))"
                     dataUnit = distanceUnit
                     dataLabel = "dash_range_label".localized(forLanguageCode: "Base")
                 }
                 break
             case 4://Altitude
                 if motorcycleData.location != nil {
-                    dataValue = "\(Int(round(motorcycleData.location!.altitude)))"
+                    var altitude:Double = motorcycleData.location!.altitude
                     if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
-                        dataValue = "\(Int(round(Utility.mtoFeet(motorcycleData.location!.altitude))))"
+                        altitude = Utils.mtoFeet(motorcycleData.location!.altitude)
                         heightUnit = "ft"
                     }
+                    dataValue = "\(Utils.toZeroDecimalString(altitude))"
                     dataUnit = heightUnit
                     dataLabel = "dash_altitude_label".localized(forLanguageCode: "Base")
                 }
@@ -209,21 +206,21 @@ class SportDashboard {
         
         //Lean Angle
         if (motorcycleData.leanAngleBike != nil) {
-            xml?[0]["dashboard"]?["values"]?["angle"]?.text = "\(String(format: "%02d",abs(Int(motorcycleData.getleanAngleBike().rounded()))))"
+            xml?[0]["dashboard"]?["values"]?["angle"]?.text = "\(Utils.toZeroDecimalString(abs(motorcycleData.getleanAngleBike())))"
         } else if (motorcycleData.leanAngle != nil) {
-            xml?[0]["dashboard"]?["values"]?["angle"]?.text = "\(String(format: "%02d",abs(Int(motorcycleData.getleanAngle().rounded()))))"
+            xml?[0]["dashboard"]?["values"]?["angle"]?.text = "\(Utils.toZeroDecimalString(abs(motorcycleData.getleanAngle())))"
         }
         //Left Max Angle
         if (motorcycleData.leanAngleBikeMaxL != nil) {
-            xml?[0]["dashboard"]?["values"]?["angleMaxL"]?.text = "\(String(format: "%02d",abs(Int(motorcycleData.getleanAngleBikeMaxL().rounded()))))"
+            xml?[0]["dashboard"]?["values"]?["angleMaxL"]?.text = "\(Utils.toZeroDecimalString(abs(motorcycleData.getleanAngleBikeMaxL())))"
         } else if (motorcycleData.leanAngleMaxL != nil) {
-            xml?[0]["dashboard"]?["values"]?["angleMaxL"]?.text = "\(String(format: "%02d",abs(Int(motorcycleData.getleanAngleMaxL().rounded()))))"
+            xml?[0]["dashboard"]?["values"]?["angleMaxL"]?.text = "\(Utils.toZeroDecimalString(abs(motorcycleData.getleanAngleMaxL())))"
         }
         //Right Max Angle
         if (motorcycleData.leanAngleBikeMaxR != nil) {
-            xml?[0]["dashboard"]?["values"]?["angleMaxR"]?.text = "\(String(format: "%02d",abs(Int(motorcycleData.getleanAngleBikeMaxR().rounded()))))"
+            xml?[0]["dashboard"]?["values"]?["angleMaxR"]?.text = "\(Utils.toZeroDecimalString(abs(motorcycleData.getleanAngleBikeMaxR())))"
         } else if (motorcycleData.leanAngleMaxR != nil) {
-            xml?[0]["dashboard"]?["values"]?["angleMaxR"]?.text = "\(String(format: "%02d",abs(Int(motorcycleData.getleanAngleMaxR().rounded()))))"
+            xml?[0]["dashboard"]?["values"]?["angleMaxR"]?.text = "\(Utils.toZeroDecimalString(abs(motorcycleData.getleanAngleMaxR())))"
         }
         
         //Lean Angle Gauge

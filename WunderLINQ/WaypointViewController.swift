@@ -206,9 +206,9 @@ class WaypointViewController: UIViewController, UITextFieldDelegate {
             var heightUnit = "m"
             if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
                 heightUnit = "ft"
-                elevation = "\(Utility.mtoFeet((elevation?.toDouble())!))"
+                elevation = "\(Utils.mtoFeet((elevation?.toDouble())!))"
             }
-            elevationLabel.text = "\(Int(round(elevation!.toDouble()!)))\(heightUnit)"
+            elevationLabel.text = "\(Utils.toZeroDecimalString(elevation!.toDouble()!))\(heightUnit)"
         }
     }
     

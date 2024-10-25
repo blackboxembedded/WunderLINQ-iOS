@@ -125,7 +125,7 @@ class BikeInfoViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         }
         if (motorcycleData.nextService != nil){
             if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
-                nextServiceLabel.text = "\(Int(round(Utility.kmToMiles(Double(motorcycleData.getNextService())))))(mi)"
+                nextServiceLabel.text = "\(Utils.toZeroDecimalString(Utils.kmToMiles(Double(motorcycleData.getNextService()))))(mi)"
             } else {
                 nextServiceLabel.text = "\(motorcycleData.getNextService())(km)"
             }

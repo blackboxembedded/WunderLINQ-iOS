@@ -1805,10 +1805,10 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             } else {
                 referenceAttitude = attitude
             }
-            let leanAngle = Utility.degrees(radians: attitude.yaw)
+            let leanAngle = Utils.degrees(radians: attitude.yaw)
             //Filter out impossible values, max sport bike lean is +/-60
             if ((leanAngle >= -60.0) && (leanAngle <= 60.0)) {
-                motorcycleData.setleanAngle(leanAngle: Utility.degrees(radians: attitude.yaw))
+                motorcycleData.setleanAngle(leanAngle: Utils.degrees(radians: attitude.yaw))
                 //Store Max L and R lean angle
                 if (leanAngle < 0) {
                     if (motorcycleData.leanAngleMaxR != nil) {

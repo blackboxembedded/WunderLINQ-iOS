@@ -68,7 +68,7 @@ class Logger {
                         
                         altitude = "\(currentLocation.altitude)"
                         if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
-                            altitude = "\(Utility.mtoFeet(currentLocation.altitude))"
+                            altitude = "\(Utils.mtoFeet(currentLocation.altitude))"
                         }
                         
                         let currentSpeed = currentLocation.speed * 3.6
@@ -77,7 +77,7 @@ class Logger {
                             let gpsSpeedValue:Double = currentSpeed
                             gpsSpeed = "\(gpsSpeedValue)"
                             if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
-                                gpsSpeed = "\(Utility.kmToMiles(gpsSpeedValue))"
+                                gpsSpeed = "\(Utils.kmToMiles(gpsSpeedValue))"
                             }
                         }
                     }
@@ -91,7 +91,7 @@ class Logger {
                         let engineTempValue:Double = motorcycleData.engineTemperature!
                         engineTemp = "\(motorcycleData.engineTemperature!)"
                         if UserDefaults.standard.integer(forKey: "temperature_unit_preference") == 1 {
-                            engineTemp = "\(Utility.celciusToFahrenheit(engineTempValue))"
+                            engineTemp = "\(Utils.celciusToFahrenheit(engineTempValue))"
                         }
                     }
                     var ambientTemp:String = ""
@@ -99,7 +99,7 @@ class Logger {
                         let ambientTempValue:Double = motorcycleData.ambientTemperature!
                         ambientTemp = "\(motorcycleData.ambientTemperature!)"
                         if UserDefaults.standard.integer(forKey: "temperature_unit_preference") == 1 {
-                            ambientTemp = "\(Utility.celciusToFahrenheit(ambientTempValue))"
+                            ambientTemp = "\(Utils.celciusToFahrenheit(ambientTempValue))"
                         }
                     }
                     var frontTirePressure:String = ""
@@ -107,11 +107,11 @@ class Logger {
                         let frontPressureValue:Double = motorcycleData.frontTirePressure!
                         switch UserDefaults.standard.integer(forKey: "pressure_unit_preference"){
                         case 1:
-                            frontTirePressure = "\(Utility.barTokPa(frontPressureValue))"
+                            frontTirePressure = "\(Utils.barTokPa(frontPressureValue))"
                         case 2:
-                            frontTirePressure = "\(Utility.barTokgf(frontPressureValue))"
+                            frontTirePressure = "\(Utils.barTokgf(frontPressureValue))"
                         case 3:
-                            frontTirePressure = "\(Utility.barToPsi(frontPressureValue))"
+                            frontTirePressure = "\(Utils.barToPsi(frontPressureValue))"
                         default:
                             frontTirePressure = "\(frontPressureValue)"
                         }
@@ -121,11 +121,11 @@ class Logger {
                         let rearPressureValue:Double = motorcycleData.rearTirePressure!
                         switch UserDefaults.standard.integer(forKey: "pressure_unit_preference"){
                         case 1:
-                            rearTirePressure = "\(Utility.barTokPa(rearPressureValue))"
+                            rearTirePressure = "\(Utils.barTokPa(rearPressureValue))"
                         case 2:
-                            rearTirePressure = "\(Utility.barTokgf(rearPressureValue))"
+                            rearTirePressure = "\(Utils.barTokgf(rearPressureValue))"
                         case 3:
-                            rearTirePressure = "\(Utility.barToPsi(rearPressureValue))"
+                            rearTirePressure = "\(Utils.barToPsi(rearPressureValue))"
                         default:
                             rearTirePressure = "\(rearPressureValue)"
                         }
@@ -135,7 +135,7 @@ class Logger {
                         let odometerValue:Double = motorcycleData.odometer!
                         odometer = "\(odometerValue)"
                         if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
-                            odometer = "\(Utility.kmToMiles(odometerValue))"
+                            odometer = "\(Utils.kmToMiles(odometerValue))"
                         }
                         
                     }
@@ -168,7 +168,7 @@ class Logger {
                         let tripOneValue:Double = motorcycleData.tripOne!
                         tripOne = "\(tripOneValue)"
                         if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
-                            tripOne = "\(Utility.kmToMiles(tripOneValue))"
+                            tripOne = "\(Utils.kmToMiles(tripOneValue))"
                         }
                     }
                     var tripTwo:String = ""
@@ -176,7 +176,7 @@ class Logger {
                         let tripTwoValue:Double = motorcycleData.tripTwo!
                         tripTwo = "\(tripTwoValue)"
                         if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
-                            tripTwo = "\(Utility.kmToMiles(tripTwoValue))"
+                            tripTwo = "\(Utils.kmToMiles(tripTwoValue))"
                         }
                     }
                     var tripAuto:String = ""
@@ -184,7 +184,7 @@ class Logger {
                         let tripAutoValue:Double = motorcycleData.tripAuto!
                         tripAuto = "\(tripAutoValue)"
                         if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
-                            tripAuto = "\(Utility.kmToMiles(tripAutoValue))"
+                            tripAuto = "\(Utils.kmToMiles(tripAutoValue))"
                         }
                     }
                     var ambientLight:String = ""
@@ -196,7 +196,7 @@ class Logger {
                         let speedValue:Double = motorcycleData.speed!
                         speed = "\(speedValue)"
                         if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
-                            speed = "\(Utility.kmToMiles(speedValue))"
+                            speed = "\(Utils.kmToMiles(speedValue))"
                         }
                     }
                     var avgSpeed:String = ""
@@ -204,7 +204,7 @@ class Logger {
                         let avgSpeedValue:Double = motorcycleData.averageSpeed!
                         avgSpeed = "\(avgSpeedValue)"
                         if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
-                            avgSpeed = "\(Utility.kmToMiles(avgSpeedValue))"
+                            avgSpeed = "\(Utils.kmToMiles(avgSpeedValue))"
                         }
                     }
                     var currentConsumption:String = ""
@@ -213,11 +213,11 @@ class Logger {
                         currentConsumption = "\(currentConsumptionValue)"
                         switch UserDefaults.standard.integer(forKey: "consumption_unit_preference"){
                         case 1:
-                            currentConsumption = "\(Utility.l100ToMpg(currentConsumptionValue))"
+                            currentConsumption = "\(Utils.l100ToMpg(currentConsumptionValue))"
                         case 2:
-                            currentConsumption = "\(Utility.l100ToMpgi(currentConsumptionValue))"
+                            currentConsumption = "\(Utils.l100ToMpgi(currentConsumptionValue))"
                         case 3:
-                            currentConsumption = "\(Utility.l100Tokml(currentConsumptionValue))"
+                            currentConsumption = "\(Utils.l100Tokml(currentConsumptionValue))"
                         default:
                             currentConsumption = "\(currentConsumptionValue)"
                         }
@@ -228,11 +228,11 @@ class Logger {
                         fuelEconomyOne = "\(fuelEconomyOneValue)"
                         switch UserDefaults.standard.integer(forKey: "consumption_unit_preference"){
                         case 1:
-                            fuelEconomyOne = "\(Utility.l100ToMpg(fuelEconomyOneValue))"
+                            fuelEconomyOne = "\(Utils.l100ToMpg(fuelEconomyOneValue))"
                         case 2:
-                            fuelEconomyOne = "\(Utility.l100ToMpgi(fuelEconomyOneValue))"
+                            fuelEconomyOne = "\(Utils.l100ToMpgi(fuelEconomyOneValue))"
                         case 3:
-                            fuelEconomyOne = "\(Utility.l100Tokml(fuelEconomyOneValue))"
+                            fuelEconomyOne = "\(Utils.l100Tokml(fuelEconomyOneValue))"
                         default:
                             fuelEconomyOne = "\(fuelEconomyOneValue)"
                         }
@@ -243,15 +243,15 @@ class Logger {
                         let fuelEconomyTwoValue:Double = motorcycleData.fuelEconomyTwo!
                         fuelEconomyTwo = "\(fuelEconomyTwoValue)"
                         if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
-                            fuelEconomyTwo = "\(Utility.l100ToMpg(fuelEconomyTwoValue))"
+                            fuelEconomyTwo = "\(Utils.l100ToMpg(fuelEconomyTwoValue))"
                         }
                         switch UserDefaults.standard.integer(forKey: "consumption_unit_preference"){
                         case 1:
-                            fuelEconomyTwo = "\(Utility.l100ToMpg(fuelEconomyTwoValue))"
+                            fuelEconomyTwo = "\(Utils.l100ToMpg(fuelEconomyTwoValue))"
                         case 2:
-                            fuelEconomyTwo = "\(Utility.l100ToMpgi(fuelEconomyTwoValue))"
+                            fuelEconomyTwo = "\(Utils.l100ToMpgi(fuelEconomyTwoValue))"
                         case 3:
-                            fuelEconomyTwo = "\(Utility.l100Tokml(fuelEconomyTwoValue))"
+                            fuelEconomyTwo = "\(Utils.l100Tokml(fuelEconomyTwoValue))"
                         default:
                             fuelEconomyTwo = "\(fuelEconomyTwoValue)"
                         }
@@ -261,7 +261,7 @@ class Logger {
                         let fuelRangeValue:Double = motorcycleData.fuelRange!
                         fuelRange = "\(fuelRangeValue)"
                         if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
-                            fuelRange = "\(Utility.kmToMiles(fuelRangeValue))"
+                            fuelRange = "\(Utils.kmToMiles(fuelRangeValue))"
                         }
                     }
                     var leanAngle:String = ""
@@ -299,7 +299,7 @@ class Logger {
                         let speedValue:Double = motorcycleData.rearSpeed!
                         rearSpeed = "\(speedValue)"
                         if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
-                            rearSpeed = "\(Utility.kmToMiles(speedValue))"
+                            rearSpeed = "\(Utils.kmToMiles(speedValue))"
                         }
                     }
                     var deviceBattery:String = ""

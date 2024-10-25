@@ -940,9 +940,9 @@ class MotorcycleData {
             if MotorcycleData.shared.engineTemperature != nil {
                 var engineTemp:Double = MotorcycleData.shared.engineTemperature!
                 if (UserDefaults.standard.integer(forKey: "temperature_unit_preference") == 1 ){
-                    engineTemp = Utility.celciusToFahrenheit(engineTemp)
+                    engineTemp = Utils.celciusToFahrenheit(engineTemp)
                 }
-                value = "\(engineTemp.rounded(toPlaces: 1))"
+                value = "\(Utils.toZeroDecimalString(engineTemp))"
             } else {
                 value = NSLocalizedString("blank_field", comment: "")
             }
@@ -951,9 +951,9 @@ class MotorcycleData {
             if MotorcycleData.shared.ambientTemperature != nil {
                 var ambientTemp:Double = MotorcycleData.shared.ambientTemperature!
                 if UserDefaults.standard.integer(forKey: "temperature_unit_preference") == 1 {
-                    ambientTemp = Utility.celciusToFahrenheit(ambientTemp)
+                    ambientTemp = Utils.celciusToFahrenheit(ambientTemp)
                 }
-                value = "\(ambientTemp.rounded(toPlaces: 1))"
+                value = "\(Utils.toZeroDecimalString(ambientTemp))"
             } else {
                 value = NSLocalizedString("blank_field", comment: "")
             }
@@ -963,15 +963,15 @@ class MotorcycleData {
                 var frontPressure:Double = MotorcycleData.shared.frontTirePressure!
                 switch UserDefaults.standard.integer(forKey: "pressure_unit_preference"){
                 case 1:
-                    frontPressure = Utility.barTokPa(frontPressure)
+                    frontPressure = Utils.barTokPa(frontPressure)
                 case 2:
-                    frontPressure = Utility.barTokgf(frontPressure)
+                    frontPressure = Utils.barTokgf(frontPressure)
                 case 3:
-                    frontPressure = Utility.barToPsi(frontPressure)
+                    frontPressure = Utils.barToPsi(frontPressure)
                 default:
                     break
                 }
-                value = "\(frontPressure.rounded(toPlaces: 1))"
+                value = "\(Utils.toOneDecimalString(frontPressure))"
             } else {
                 value = NSLocalizedString("blank_field", comment: "")
             }
@@ -981,15 +981,15 @@ class MotorcycleData {
                 var rearPressure:Double = MotorcycleData.shared.rearTirePressure!
                 switch UserDefaults.standard.integer(forKey: "pressure_unit_preference"){
                 case 1:
-                    rearPressure = Utility.barTokPa(rearPressure)
+                    rearPressure = Utils.barTokPa(rearPressure)
                 case 2:
-                    rearPressure = Utility.barTokgf(rearPressure)
+                    rearPressure = Utils.barTokgf(rearPressure)
                 case 3:
-                    rearPressure = Utility.barToPsi(rearPressure)
+                    rearPressure = Utils.barToPsi(rearPressure)
                 default:
                     break
                 }
-                value = "\(rearPressure.rounded(toPlaces: 1))"
+                value = "\(Utils.toOneDecimalString(rearPressure))"
             } else {
                 value = NSLocalizedString("blank_field", comment: "")
             }
@@ -998,23 +998,25 @@ class MotorcycleData {
             if MotorcycleData.shared.odometer != nil {
                 var odometer:Double = MotorcycleData.shared.odometer!
                 if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
-                    odometer = Double(Utility.kmToMiles(Double(odometer)))
+                    odometer = Double(Utils.kmToMiles(Double(odometer)))
                 }
-                value = "\(Int(odometer))"
+                value = "\(Utils.toZeroDecimalString(odometer))"
             } else {
                 value = NSLocalizedString("blank_field", comment: "")
             }
         case MotorcycleData.shared.DATA_VOLTAGE:
             // Voltage
             if MotorcycleData.shared.voltage != nil {
-                value = "\(MotorcycleData.shared.voltage!)"
+                let voltage:Double = MotorcycleData.shared.voltage!
+                value = "\(Utils.toOneDecimalString(voltage))"
             } else {
                 value = NSLocalizedString("blank_field", comment: "")
             }
         case MotorcycleData.shared.DATA_THROTTLE:
             // Trottle
             if MotorcycleData.shared.throttlePosition != nil {
-                value = "\(Int(round(MotorcycleData.shared.throttlePosition!)))"
+                let throttlePosition:Double = MotorcycleData.shared.throttlePosition!
+                value = "\(Utils.toZeroDecimalString(throttlePosition))"
             } else {
                 value = NSLocalizedString("blank_field", comment: "")
             }
@@ -1044,9 +1046,9 @@ class MotorcycleData {
             if MotorcycleData.shared.tripOne != nil {
                 var tripOne:Double = MotorcycleData.shared.tripOne!
                 if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
-                    tripOne = Double(Utility.kmToMiles(Double(tripOne)))
+                    tripOne = Double(Utils.kmToMiles(Double(tripOne)))
                 }
-                value = "\(tripOne.rounded(toPlaces: 1))"
+                value = "\(Utils.toOneDecimalString(tripOne))"
             } else {
                 value = NSLocalizedString("blank_field", comment: "")
             }
@@ -1055,9 +1057,9 @@ class MotorcycleData {
             if MotorcycleData.shared.tripTwo != nil {
                 var tripTwo:Double = MotorcycleData.shared.gettripTwo()
                 if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
-                    tripTwo = Double(Utility.kmToMiles(Double(tripTwo)))
+                    tripTwo = Double(Utils.kmToMiles(Double(tripTwo)))
                 }
-                value = "\(tripTwo.rounded(toPlaces: 1))"
+                value = "\(Utils.toOneDecimalString(tripTwo))"
             } else {
                 value = NSLocalizedString("blank_field", comment: "")
             }
@@ -1066,96 +1068,96 @@ class MotorcycleData {
             if MotorcycleData.shared.tripAuto != nil {
                 var tripAuto:Double = MotorcycleData.shared.gettripAuto()
                 if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
-                    tripAuto = Double(Utility.kmToMiles(Double(tripAuto)))
+                    tripAuto = Double(Utils.kmToMiles(Double(tripAuto)))
                 }
-                value = "\(tripAuto.rounded(toPlaces: 1))"
+                value = "\(Utils.toOneDecimalString(tripAuto))"
             } else {
                 value = NSLocalizedString("blank_field", comment: "")
             }
         case MotorcycleData.shared.DATA_SPEED:
             // Speed
             if MotorcycleData.shared.speed != nil {
-                let speedValue = MotorcycleData.shared.speed!
-                value = "\(Int(speedValue))"
+                var speedValue = MotorcycleData.shared.speed!
                 if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
-                    value = "\(Int(round(Utility.kmToMiles(speedValue))))"
+                    speedValue = Utils.kmToMiles(speedValue)
                 }
+                value = "\(Utils.toZeroDecimalString(speedValue))"
             } else {
                 value = NSLocalizedString("blank_field", comment: "")
             }
         case MotorcycleData.shared.DATA_AVG_SPEED:
             //Average Speed
             if MotorcycleData.shared.averageSpeed != nil {
-                let avgSpeedValue:Double = MotorcycleData.shared.averageSpeed!
-                value = "\(Int(avgSpeedValue))"
+                var avgSpeedValue:Double = MotorcycleData.shared.averageSpeed!
                 if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
-                    value = "\(Int(round(Utility.kmToMiles(avgSpeedValue))))"
+                    avgSpeedValue = Utils.kmToMiles(avgSpeedValue)
                 }
+                value = "\(Int(avgSpeedValue))"
             } else {
                 value = NSLocalizedString("blank_field", comment: "")
             }
         case MotorcycleData.shared.DATA_CURRENT_CONSUMPTION:
             //Current Consumption
             if MotorcycleData.shared.currentConsumption != nil {
-                let currentConsumptionValue:Double = MotorcycleData.shared.currentConsumption!
-                value = "\(currentConsumptionValue.rounded(toPlaces: 1))"
+                var currentConsumptionValue:Double = MotorcycleData.shared.currentConsumption!
                 switch UserDefaults.standard.integer(forKey: "consumption_unit_preference"){
                 case 1:
-                    value = "\(Utility.l100ToMpg(currentConsumptionValue).rounded(toPlaces: 1))"
+                    currentConsumptionValue = Utils.l100ToMpg(currentConsumptionValue)
                 case 2:
-                    value = "\(Utility.l100ToMpgi(currentConsumptionValue).rounded(toPlaces: 1))"
+                    currentConsumptionValue = Utils.l100ToMpgi(currentConsumptionValue)
                 case 3:
-                    value = "\(Utility.l100Tokml(currentConsumptionValue).rounded(toPlaces: 1))"
+                    currentConsumptionValue = Utils.l100Tokml(currentConsumptionValue)
                 default:
-                    value = "\(currentConsumptionValue.rounded(toPlaces: 1))"
+                    break
                 }
+                value = "\(Utils.toOneDecimalString(currentConsumptionValue))"
             } else {
                 value = NSLocalizedString("blank_field", comment: "")
             }
         case MotorcycleData.shared.DATA_ECONOMY_ONE:
             //Fuel Economy One
             if MotorcycleData.shared.fuelEconomyOne != nil {
-                let fuelEconomyOneValue:Double = MotorcycleData.shared.fuelEconomyOne!
-                value = "\(fuelEconomyOneValue.rounded(toPlaces: 1))"
+                var fuelEconomyOneValue:Double = MotorcycleData.shared.fuelEconomyOne!
                 switch UserDefaults.standard.integer(forKey: "consumption_unit_preference"){
                 case 1:
-                    value = "\(Utility.l100ToMpg(fuelEconomyOneValue).rounded(toPlaces: 1))"
+                    fuelEconomyOneValue = Utils.l100ToMpg(fuelEconomyOneValue)
                 case 2:
-                    value = "\(Utility.l100ToMpgi(fuelEconomyOneValue).rounded(toPlaces: 1))"
+                    fuelEconomyOneValue = Utils.l100ToMpgi(fuelEconomyOneValue)
                 case 3:
-                    value = "\(Utility.l100Tokml(fuelEconomyOneValue).rounded(toPlaces: 1))"
+                    fuelEconomyOneValue = Utils.l100Tokml(fuelEconomyOneValue)
                 default:
-                    value = "\(fuelEconomyOneValue.rounded(toPlaces: 1))"
+                    break
                 }
+                value = "\(Utils.toOneDecimalString(fuelEconomyOneValue))"
             } else {
                 value = NSLocalizedString("blank_field", comment: "")
             }
         case MotorcycleData.shared.DATA_ECONOMY_TWO:
             //Fuel Economy Two
             if MotorcycleData.shared.fuelEconomyTwo != nil {
-                let fuelEconomyTwoValue:Double = MotorcycleData.shared.fuelEconomyTwo!
-                value = "\(fuelEconomyTwoValue.rounded(toPlaces: 1))"
+                var fuelEconomyTwoValue:Double = MotorcycleData.shared.fuelEconomyTwo!
                 switch UserDefaults.standard.integer(forKey: "consumption_unit_preference"){
                 case 1:
-                    value = "\(Utility.l100ToMpg(fuelEconomyTwoValue).rounded(toPlaces: 1))"
+                    fuelEconomyTwoValue = Utils.l100ToMpg(fuelEconomyTwoValue)
                 case 2:
-                    value = "\(Utility.l100ToMpgi(fuelEconomyTwoValue).rounded(toPlaces: 1))"
+                    fuelEconomyTwoValue = Utils.l100ToMpgi(fuelEconomyTwoValue)
                 case 3:
-                    value = "\(Utility.l100Tokml(fuelEconomyTwoValue).rounded(toPlaces: 1))"
+                    fuelEconomyTwoValue = Utils.l100Tokml(fuelEconomyTwoValue)
                 default:
-                    value = "\(fuelEconomyTwoValue.rounded(toPlaces: 1))"
+                    break
                 }
+                value = "\(Utils.toOneDecimalString(fuelEconomyTwoValue))"
             } else {
                 value = NSLocalizedString("blank_field", comment: "")
             }
         case MotorcycleData.shared.DATA_RANGE:
             //Fuel Range
             if MotorcycleData.shared.fuelRange != nil {
-                let fuelRangeValue:Double = MotorcycleData.shared.fuelRange!
-                value = "\(Int(fuelRangeValue))"
+                var fuelRangeValue:Double = MotorcycleData.shared.fuelRange!
                 if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
-                    value = "\(Int(round(Utility.kmToMiles(fuelRangeValue))))"
+                    fuelRangeValue = Utils.kmToMiles(fuelRangeValue)
                 }
+                value = "\(Utils.toZeroDecimalString(fuelRangeValue))"
             } else {
                 value = NSLocalizedString("blank_field", comment: "")
             }
@@ -1169,7 +1171,7 @@ class MotorcycleData {
         case MotorcycleData.shared.DATA_LEAN_DEVICE:
             //Lean Angle
             if MotorcycleData.shared.leanAngle != nil {
-                value = "\(Int(round(MotorcycleData.shared.leanAngle!)))"
+                value = "\(Utils.toZeroDecimalString(MotorcycleData.shared.leanAngle!))"
             }
         case MotorcycleData.shared.DATA_GFORCE_DEVICE:
             //g-force
@@ -1218,7 +1220,7 @@ class MotorcycleData {
         case MotorcycleData.shared.DATA_BAROMETRIC_DEVICE:
             //Barometric Pressure
             if MotorcycleData.shared.barometricPressure != nil {
-                value = "\(Int(round(MotorcycleData.shared.barometricPressure!)))"
+                value = "\(Utils.toZeroDecimalString(MotorcycleData.shared.barometricPressure!))"
             }
         case MotorcycleData.shared.DATA_SPEED_DEVICE:
             //GPS speed
@@ -1229,7 +1231,7 @@ class MotorcycleData {
                     let gpsSpeedValue:Double = MotorcycleData.shared.location!.speed * 3.6
                     gpsSpeed = "\(Int(round(gpsSpeedValue)))"
                     if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
-                        gpsSpeed = "\(Int(round(Utility.kmToMiles(gpsSpeedValue))))"
+                        gpsSpeed = "\(Int(round(Utils.kmToMiles(gpsSpeedValue))))"
                     }
                     value = gpsSpeed
                 }
@@ -1237,11 +1239,11 @@ class MotorcycleData {
         case MotorcycleData.shared.DATA_ALTITUDE_DEVICE:
             //Altitude
             if MotorcycleData.shared.location != nil {
-                var altitude:String = "\(Int(round(MotorcycleData.shared.location!.altitude)))"
+                var altitude:Double = MotorcycleData.shared.location!.altitude
                 if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
-                    altitude = "\(Int(round(Utility.mtoFeet(MotorcycleData.shared.location!.altitude))))"
+                    altitude = Utils.mtoFeet(MotorcycleData.shared.location!.altitude)
                 }
-                value = altitude
+                value = Utils.toZeroDecimalString(altitude)
             }
         case MotorcycleData.shared.DATA_SUN_DEVICE:
             //Sunrise/Sunset
@@ -1269,16 +1271,16 @@ class MotorcycleData {
         case MotorcycleData.shared.DATA_LEAN:
             //Lean Angle Bike
             if MotorcycleData.shared.leanAngleBike != nil {
-                value = "\(Int(round(MotorcycleData.shared.leanAngleBike!)))"
+                value = "\(Utils.toZeroDecimalString(MotorcycleData.shared.leanAngleBike!))"
             }
         case MotorcycleData.shared.DATA_REAR_SPEED:
             // Rear Wheel Speed
             if MotorcycleData.shared.rearSpeed != nil {
-                let speedValue = MotorcycleData.shared.rearSpeed!
-                value = "\(Int(speedValue))"
+                var speedValue = MotorcycleData.shared.rearSpeed!
                 if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
-                    value = "\(Int(round(Utility.kmToMiles(speedValue))))"
+                    speedValue = Utils.kmToMiles(speedValue)
                 }
+                value = "\(Utils.toZeroDecimalString(speedValue))"
             } else {
                 value = NSLocalizedString("blank_field", comment: "")
             }

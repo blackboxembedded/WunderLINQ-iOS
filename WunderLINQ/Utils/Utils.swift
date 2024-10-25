@@ -18,7 +18,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 import Foundation
 
-class Utility {
+class Utils {
 
     private static func convert<T: Dimension>(value: Double, from: T, to: T) -> Double {
         let measurement = Measurement(value: value, unit: from)
@@ -114,4 +114,60 @@ class Utility {
         
         return paddedString
     }
+    
+    // Format to 1 decimal place
+    class func getLocalizedOneDigitFormat() -> NumberFormatter {
+        let oneDigit = NumberFormatter()
+        oneDigit.locale = Locale.current
+        oneDigit.minimumFractionDigits = 1
+        oneDigit.maximumFractionDigits = 1
+        return oneDigit
+    }
+
+    // Format to 0 decimal place
+    class func getLocalizedZeroDecimalFormat() -> NumberFormatter {
+        let zeroDecimal = NumberFormatter()
+        zeroDecimal.locale = Locale.current
+        zeroDecimal.maximumFractionDigits = 0
+        return zeroDecimal
+    }
+
+    // Convert to 1 decimal string
+    class func toOneDecimalString(_ num: Double) -> String {
+        let decimalFormat = getLocalizedOneDigitFormat()
+        let roundedValue = (num * 100).rounded() / 100
+        return decimalFormat.string(from: NSNumber(value: roundedValue)) ?? "\(roundedValue)"
+    }
+
+    // Convert to 0 decimal string with overload
+    class func toZeroDecimalString(_ num: Double) -> String {
+        return toZeroDecimalString(num, wrapGrouping: false)
+    }
+
+    // Convert to 0 decimal string with optional grouping
+    class func toZeroDecimalString(_ num: Double, wrapGrouping: Bool) -> String {
+        let decimalFormat = getLocalizedOneDigitFormat()
+        var value: String
+        
+        if (num > 0 && num < 10) || (num < 0 && num > -10) {
+            let roundedValue = (num * 100).rounded() / 100
+            value = decimalFormat.string(from: NSNumber(value: roundedValue)) ?? "\(roundedValue)"
+        } else if (num > 0 && num < 10000) || (num < 0 && num > -10000) {
+            decimalFormat.maximumFractionDigits = 0
+            let roundedValue = (num * 10).rounded() / 10
+            value = decimalFormat.string(from: NSNumber(value: roundedValue)) ?? "\(roundedValue)"
+        } else {
+            decimalFormat.maximumFractionDigits = 0
+            let roundedValue = (num * 10).rounded() / 10
+            value = decimalFormat.string(from: NSNumber(value: roundedValue)) ?? "\(roundedValue)"
+            
+            if wrapGrouping, decimalFormat.usesGroupingSeparator {
+                let groupChar = decimalFormat.groupingSeparator ?? ""
+                value = value.replacingOccurrences(of: groupChar, with: "\n" + groupChar)
+            }
+        }
+        
+        return value
+    }
+
 }

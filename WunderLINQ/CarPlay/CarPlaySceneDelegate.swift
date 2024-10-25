@@ -90,35 +90,35 @@ class CarPlaySceneDelegate: UIResponder, CPTemplateApplicationSceneDelegate {
     
     func dataGridTemplate() -> CPGridTemplate {
         let dataPoint1 = UserDefaults.standard.integer(forKey: "grid_one_preference")
-        let gridButton1 = CPGridButton(titleVariants: [Utility.padString(MotorcycleData.getValue(dataPoint: dataPoint1), length: buttonLabelLength)],
+        let gridButton1 = CPGridButton(titleVariants: [Utils.padString(MotorcycleData.getValue(dataPoint: dataPoint1), length: buttonLabelLength)],
                                        image: MotorcycleData.getIcon(dataPoint: dataPoint1)) { button in
         }
         let dataPoint2 = UserDefaults.standard.integer(forKey: "grid_two_preference")
-        let gridButton2 = CPGridButton(titleVariants: [Utility.padString(MotorcycleData.getValue(dataPoint: dataPoint2), length: buttonLabelLength)],
+        let gridButton2 = CPGridButton(titleVariants: [Utils.padString(MotorcycleData.getValue(dataPoint: dataPoint2), length: buttonLabelLength)],
                                        image: MotorcycleData.getIcon(dataPoint: dataPoint2)) { button in
         }
         let dataPoint3 = UserDefaults.standard.integer(forKey: "grid_three_preference")
-        let gridButton3 = CPGridButton(titleVariants: [Utility.padString(MotorcycleData.getValue(dataPoint: dataPoint3), length: buttonLabelLength)],
+        let gridButton3 = CPGridButton(titleVariants: [Utils.padString(MotorcycleData.getValue(dataPoint: dataPoint3), length: buttonLabelLength)],
                                        image: MotorcycleData.getIcon(dataPoint: dataPoint3)) { button in
         }
         let dataPoint4 = UserDefaults.standard.integer(forKey: "grid_four_preference")
-        let gridButton4 = CPGridButton(titleVariants: [Utility.padString(MotorcycleData.getValue(dataPoint: dataPoint4), length: buttonLabelLength)],
+        let gridButton4 = CPGridButton(titleVariants: [Utils.padString(MotorcycleData.getValue(dataPoint: dataPoint4), length: buttonLabelLength)],
                                        image: MotorcycleData.getIcon(dataPoint: dataPoint4)) { button in
         }
         let dataPoint5 = UserDefaults.standard.integer(forKey: "grid_five_preference")
-        let gridButton5 = CPGridButton(titleVariants: [Utility.padString(MotorcycleData.getValue(dataPoint: dataPoint5), length: buttonLabelLength)],
+        let gridButton5 = CPGridButton(titleVariants: [Utils.padString(MotorcycleData.getValue(dataPoint: dataPoint5), length: buttonLabelLength)],
                                        image: MotorcycleData.getIcon(dataPoint: dataPoint5)) { button in
         }
         let dataPoint6 = UserDefaults.standard.integer(forKey: "grid_six_preference")
-        let gridButton6 = CPGridButton(titleVariants: [Utility.padString(MotorcycleData.getValue(dataPoint: dataPoint6), length: buttonLabelLength)],
+        let gridButton6 = CPGridButton(titleVariants: [Utils.padString(MotorcycleData.getValue(dataPoint: dataPoint6), length: buttonLabelLength)],
                                        image: MotorcycleData.getIcon(dataPoint: dataPoint6)) { button in
         }
         let dataPoint7 = UserDefaults.standard.integer(forKey: "grid_seven_preference")
-        let gridButton7 = CPGridButton(titleVariants: [Utility.padString(MotorcycleData.getValue(dataPoint: dataPoint7), length: buttonLabelLength)],
+        let gridButton7 = CPGridButton(titleVariants: [Utils.padString(MotorcycleData.getValue(dataPoint: dataPoint7), length: buttonLabelLength)],
                                        image: MotorcycleData.getIcon(dataPoint: dataPoint7)) { button in
         }
         let dataPoint8 = UserDefaults.standard.integer(forKey: "grid_eight_preference")
-        let gridButton8 = CPGridButton(titleVariants: [Utility.padString(MotorcycleData.getValue(dataPoint: dataPoint8), length: buttonLabelLength)],
+        let gridButton8 = CPGridButton(titleVariants: [Utils.padString(MotorcycleData.getValue(dataPoint: dataPoint8), length: buttonLabelLength)],
                                        image: MotorcycleData.getIcon(dataPoint: dataPoint8)) { button in
         }
         let gridTemplate = CPGridTemplate(title: NSLocalizedString("main_title", comment: ""), gridButtons: [gridButton1,gridButton2,gridButton3,gridButton4,gridButton5,gridButton6,gridButton7,gridButton8])
@@ -130,35 +130,35 @@ class CarPlaySceneDelegate: UIResponder, CPTemplateApplicationSceneDelegate {
     func updateGrid(){
         if #available(iOS 15.0, *) {
             let dataPoint1 = UserDefaults.standard.integer(forKey: "grid_one_preference")
-            let gridButton1 = CPGridButton(titleVariants: [Utility.padString(MotorcycleData.getValue(dataPoint: dataPoint1), length: buttonLabelLength)],
+            let gridButton1 = CPGridButton(titleVariants: [Utils.padString(MotorcycleData.getValue(dataPoint: dataPoint1), length: buttonLabelLength)],
                                            image: MotorcycleData.getIcon(dataPoint: dataPoint1)) { button in
             }
             let dataPoint2 = UserDefaults.standard.integer(forKey: "grid_two_preference")
-            let gridButton2 = CPGridButton(titleVariants: [Utility.padString(MotorcycleData.getValue(dataPoint: dataPoint2), length: buttonLabelLength)],
+            let gridButton2 = CPGridButton(titleVariants: [Utils.padString(MotorcycleData.getValue(dataPoint: dataPoint2), length: buttonLabelLength)],
                                            image: MotorcycleData.getIcon(dataPoint: dataPoint2)) { button in
             }
             let dataPoint3 = UserDefaults.standard.integer(forKey: "grid_three_preference")
-            let gridButton3 = CPGridButton(titleVariants: [Utility.padString(MotorcycleData.getValue(dataPoint: dataPoint3), length: buttonLabelLength)],
+            let gridButton3 = CPGridButton(titleVariants: [Utils.padString(MotorcycleData.getValue(dataPoint: dataPoint3), length: buttonLabelLength)],
                                            image: MotorcycleData.getIcon(dataPoint: dataPoint3)) { button in
             }
             let dataPoint4 = UserDefaults.standard.integer(forKey: "grid_four_preference")
-            let gridButton4 = CPGridButton(titleVariants: [Utility.padString(MotorcycleData.getValue(dataPoint: dataPoint4), length: buttonLabelLength)],
+            let gridButton4 = CPGridButton(titleVariants: [Utils.padString(MotorcycleData.getValue(dataPoint: dataPoint4), length: buttonLabelLength)],
                                            image: MotorcycleData.getIcon(dataPoint: dataPoint4)) { button in
             }
             let dataPoint5 = UserDefaults.standard.integer(forKey: "grid_five_preference")
-            let gridButton5 = CPGridButton(titleVariants: [Utility.padString(MotorcycleData.getValue(dataPoint: dataPoint5), length: buttonLabelLength)],
+            let gridButton5 = CPGridButton(titleVariants: [Utils.padString(MotorcycleData.getValue(dataPoint: dataPoint5), length: buttonLabelLength)],
                                            image: MotorcycleData.getIcon(dataPoint: dataPoint5)) { button in
             }
             let dataPoint6 = UserDefaults.standard.integer(forKey: "grid_six_preference")
-            let gridButton6 = CPGridButton(titleVariants: [Utility.padString(MotorcycleData.getValue(dataPoint: dataPoint6), length: buttonLabelLength)],
+            let gridButton6 = CPGridButton(titleVariants: [Utils.padString(MotorcycleData.getValue(dataPoint: dataPoint6), length: buttonLabelLength)],
                                            image: MotorcycleData.getIcon(dataPoint: dataPoint6)) { button in
             }
             let dataPoint7 = UserDefaults.standard.integer(forKey: "grid_seven_preference")
-            let gridButton7 = CPGridButton(titleVariants: [Utility.padString(MotorcycleData.getValue(dataPoint: dataPoint7), length: buttonLabelLength)],
+            let gridButton7 = CPGridButton(titleVariants: [Utils.padString(MotorcycleData.getValue(dataPoint: dataPoint7), length: buttonLabelLength)],
                                            image: MotorcycleData.getIcon(dataPoint: dataPoint7)) { button in
             }
             let dataPoint8 = UserDefaults.standard.integer(forKey: "grid_eight_preference")
-            let gridButton8 = CPGridButton(titleVariants: [Utility.padString(MotorcycleData.getValue(dataPoint: dataPoint8), length: buttonLabelLength)],
+            let gridButton8 = CPGridButton(titleVariants: [Utils.padString(MotorcycleData.getValue(dataPoint: dataPoint8), length: buttonLabelLength)],
                                            image: MotorcycleData.getIcon(dataPoint: dataPoint8)) { button in
             }
             gridTemplate?.updateGridButtons([gridButton1,gridButton2,gridButton3,gridButton4,gridButton5,gridButton6,gridButton7,gridButton8])
