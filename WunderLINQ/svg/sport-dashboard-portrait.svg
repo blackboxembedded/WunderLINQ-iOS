@@ -179,7 +179,7 @@
    transform="scale(1.1410755,0.87636621)"
    x="1543.5631"
    y="268.06198"
-   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:229.879px;font-family:'Agency FB';-inkscape-font-specification:'Agency FB, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-anchor:middle;fill:#fcc914;stroke-width:1.13941">6</text></g>
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:229.879px;font-family:'Agency FB';-inkscape-font-specification:'Agency FB, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-anchor:middle;fill:#fcc914;stroke-width:1.13941">-</text></g>
 
         
         <g
@@ -227,7 +227,7 @@
        class="st0 st20 st21"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:192px;font-family:'Agency FB';-inkscape-font-specification:'Agency FB, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:end;text-anchor:end;fill:#ffffff"
        x="250.3125"
-       y="158.71875">00</text><text
+       y="158.71875">---</text><text
        id="speedUnit"
        class="st0 st20 st22"
        x="246.0063"
