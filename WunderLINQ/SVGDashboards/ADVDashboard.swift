@@ -20,8 +20,10 @@ import Foundation
 import os.log
 
 class ADVDashboard {
-    
-    class func updateDashboard(_ infoLine: Int) -> XML{
+
+    // Main function to update the dashboard
+    class func updateDashboard(_ infoLine: Int, _ isPortrait: Bool, _ height: CGFloat, _ width: CGFloat) -> XMLNode? {
+        
         let motorcycleData = MotorcycleData.shared
         let faults = Faults.shared
         
@@ -29,9 +31,24 @@ class ADVDashboard {
         var distanceUnit = "km"
         var heightUnit = "m"
         var distanceTimeUnit = "KMH"
+
+        var dashboardSVG = "adv-dashboard"
+        if isPortrait {
+            dashboardSVG = dashboardSVG + "-portrait"
+        }
+        // Load the XML file from the project bundle
+        guard let url = Bundle.main.url(forResource: dashboardSVG, withExtension: "svg"),
+              let xml = XML(contentsOf: url) else {
+            os_log("Error: Unable to load or parse the XML file.")
+            return nil
+        }
         
-        let url = Bundle.main.url(forResource: "adv-dashboard", withExtension: "svg")!
-        let xml = XML(contentsOf: url)
+        if let svgTag = findElement(byID: "adv-dashboard", in: xml) {
+            svgTag.attributes["height"] = "\(height)"
+            svgTag.attributes["width"] = "\(width)"
+        } else {
+            os_log("svgTag not found.")
+        }
 
         //Speed
         var speedValue:Double?
@@ -51,165 +68,212 @@ class ADVDashboard {
                 }
             }
         case 2:
-            if let currentLocation = motorcycleData.getLocation() {
-                speedValue = currentLocation.speed * 3.6
+            if motorcycleData.location != nil {
+                let currentLocation = motorcycleData.location
+                speedValue = currentLocation!.speed * 3.6
                 if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
                     speedValue = Utils.kmToMiles(speedValue!)
                 }
             }
         default:
-            os_log("ADVDashboard: Unknown speed unit setting")
+            os_log("StandardDashboard: Unknown speed unit setting")
         }
         if (speedValue != nil){
-            xml?[0]["dashboard"]?["values"]?["speed"]?.text = "\(Utils.toZeroDecimalString(speedValue!))"
+            if let speedTag = findElement(byID: "speed", in: xml) {
+                speedTag.text = "\(Utils.toZeroDecimalString(speedValue!))"
+            } else {
+                os_log("speedTag not found.")
+            }
         }
+        
         if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
             distanceTimeUnit = "MPH"
         }
-        xml?[0]["dashboard"]?["labels"]?["speedUnit"]?.text = distanceTimeUnit
+        if let speedUnitTag = findElement(byID: "speedUnit", in: xml) {
+            speedUnitTag.text = distanceTimeUnit
+        } else {
+            os_log("speedUnitTag not found.")
+        }
         
         //Gear
         var gearValue = "-"
         if motorcycleData.gear != nil {
-            gearValue = motorcycleData.getgear()
-            if gearValue == "N"{
-                let style = xml?[0]["dashboard"]?["values"]?["gear"]?.attributes["class"]
-                let regex = try! NSRegularExpression(pattern: "st34", options: NSRegularExpression.Options.caseInsensitive)
-                let range = NSMakeRange(0, style!.count)
-                let modString = regex.stringByReplacingMatches(in: style!, options: [], range: range, withTemplate: "st14")
-                xml?[0]["dashboard"]?["values"]?["gear"]?.attributes["class"] = modString
+            if let gearTag = findElement(byID: "gear", in: xml) {
+                gearValue = motorcycleData.getgear()
+                if gearValue == "N"{
+                    let style = gearTag.attributes["style"]
+                    let regex = try! NSRegularExpression(pattern: "fill:([^<]*);", options: NSRegularExpression.Options.caseInsensitive)
+                    let range = NSMakeRange(0, style!.count)
+                    let modString = regex.stringByReplacingMatches(in: style!, options: [], range: range, withTemplate: "fill:#03ae1e;")
+                    gearTag.attributes["style"] = modString
+                }
+                gearTag.text = gearValue
+            } else {
+                os_log("gearTag not found.")
             }
         }
-        xml?[0]["dashboard"]?["values"]?["gear"]?.text = gearValue
         
         // Ambient Temperature
         var ambientTempValue = "-"
         if motorcycleData.ambientTemperature != nil {
-            var ambientTemp:Double = motorcycleData.ambientTemperature!
-            if(ambientTemp <= 0){
-                //Freezing
-            }
-            if UserDefaults.standard.integer(forKey: "temperature_unit_preference") == 1 {
-                temperatureUnit = "F"
-                ambientTemp = Utils.celciusToFahrenheit(ambientTemp)
-            }
-            ambientTempValue = "\(Utils.toZeroDecimalString(ambientTemp))\(temperatureUnit)"
-        }
-        xml?[0]["dashboard"]?["values"]?["ambientTemp"]?.text = ambientTempValue
-        
-        // Engine Temperature
-        var engineTempValue = "-"
-        if motorcycleData.engineTemperature != nil {
-            var engineTemp:Double = motorcycleData.engineTemperature!
-            if (engineTemp >= 104.0){
-                let style = xml?[0]["dashboard"]?["values"]?["engineTemp"]?.attributes["style"]
-                if (style != nil) {
-                    let regex = try! NSRegularExpression(pattern: "fill:([^<]*);", options: NSRegularExpression.Options.caseInsensitive)
-                    let range = NSMakeRange(0, style!.count)
-                    let modString = regex.stringByReplacingMatches(in: style!, options: [], range: range, withTemplate: "fill:#e20505;")
-                    xml?[0]["dashboard"]?["values"]?["engineTemp"]?.attributes["style"] = modString
+            if let ambientTempTag = findElement(byID: "ambientTemp", in: xml) {
+                var ambientTemp:Double = motorcycleData.ambientTemperature!
+                if(ambientTemp <= 0){
+                    //Freezing
                 }
+                if UserDefaults.standard.integer(forKey: "temperature_unit_preference") == 1 {
+                    temperatureUnit = "F"
+                    ambientTemp = Utils.celciusToFahrenheit(ambientTemp)
+                }
+                ambientTempValue = "\(Utils.toZeroDecimalString(ambientTemp))\(temperatureUnit)"
+                ambientTempTag.text = ambientTempValue
+            } else {
+                os_log("ambientTempTag not found.")
             }
-            if (UserDefaults.standard.integer(forKey: "temperature_unit_preference") == 1 ){
-                temperatureUnit = "F"
-                engineTemp = Utils.celciusToFahrenheit(engineTemp)
-            }
-            engineTempValue = "\(Utils.toZeroDecimalString(engineTemp))\(temperatureUnit)"
         }
-        xml?[0]["dashboard"]?["values"]?["engineTemp"]?.text = engineTempValue
         
         //Info Line
         var dataLabel = ""
         var dataValue = ""
-        var dataUnit = ""
         switch (infoLine){
             case 1://Trip1
                 if motorcycleData.tripOne != nil {
                     var trip1:Double = motorcycleData.tripOne!
                     if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
+                        distanceUnit = "mls"
                         trip1 = Utils.kmToMiles(trip1)
-                        distanceUnit = "mi"
                     }
-                    dataValue = "\(Utils.toOneDecimalString(trip1))"
-                    dataUnit = distanceUnit
-                    dataLabel = "dash_trip1_label".localized(forLanguageCode: "Base")
+                    dataValue = "\(Utils.toOneDecimalString(trip1))\(distanceUnit)"
                 }
+                dataLabel = "dash_trip1_label".localized(forLanguageCode: "Base")
                 break
             case 2://Trip2
                 if motorcycleData.tripTwo != nil {
                     var trip2:Double = motorcycleData.tripTwo!
                     if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
+                        distanceUnit = "mls"
                         trip2 = Utils.kmToMiles(trip2)
-                        distanceUnit = "mi"
                     }
-                    dataValue = "\(Utils.toOneDecimalString(trip2))"
-                    dataUnit = distanceUnit
-                    dataLabel = "dash_trip2_label".localized(forLanguageCode: "Base")
+                    dataValue = "\(Utils.toOneDecimalString(trip2))\(distanceUnit)"
                 }
+                dataLabel = "dash_trip2_label".localized(forLanguageCode: "Base")
                 break
             case 3://Range
                 if motorcycleData.fuelRange != nil {
                     var fuelRange:Double = motorcycleData.fuelRange!
                     if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
+                        distanceUnit = "mls"
                         fuelRange = Utils.kmToMiles(fuelRange)
-                        distanceUnit = "mi"
                     }
-                    dataValue = "\(Utils.toZeroDecimalString(fuelRange))"
-                    dataUnit = distanceUnit
-                    dataLabel = "dash_range_label".localized(forLanguageCode: "Base")
+                    dataValue = "\(Utils.toZeroDecimalString(fuelRange))\(distanceUnit)"
+                    if(faults.getFuelFaultActive()){
+                        if let dataValueTag = findElement(byID: "dataValue", in: xml) {
+                            let style = dataValueTag.attributes["style"]
+                            let regex = try! NSRegularExpression(pattern: "fill:([^<]*);", options: NSRegularExpression.Options.caseInsensitive)
+                            let range = NSMakeRange(0, style!.count)
+                            let modString = regex.stringByReplacingMatches(in: style!, options: [], range: range, withTemplate: "fill:#e20505;")
+                            dataValueTag.attributes["style"] = modString
+                        } else {
+                            os_log("dataValueTag not found.")
+                        }
+                    }
                 }
+                dataLabel = "dash_range_label".localized(forLanguageCode: "Base")
                 break
             case 4://Altitude
                 if motorcycleData.location != nil {
-                    var altitude:Double = motorcycleData.location!.altitude
+                    var altitude = motorcycleData.location!.altitude
                     if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
                         altitude = Utils.mtoFeet(motorcycleData.location!.altitude)
                         heightUnit = "ft"
                     }
-                    dataValue = "\(Utils.toZeroDecimalString(altitude))"
-                    dataUnit = heightUnit
-                    dataLabel = "dash_altitude_label".localized(forLanguageCode: "Base")
+                    dataValue = "\(Utils.toZeroDecimalString(altitude))\(heightUnit)"
                 }
+                dataLabel = "dash_altitude_label".localized(forLanguageCode: "Base")
                 break
             default:
                 break
         }
-        xml?[0]["dashboard"]?["values"]?["dataValue"]?.text = dataValue
-        xml?[0]["dashboard"]?["labels"]?["dataLabel"]?.text = dataLabel
-        xml?[0]["dashboard"]?["labels"]?["dataUnit"]?.text = dataUnit
+        if let dataValueTag = findElement(byID: "dataValue", in: xml) {
+            dataValueTag.text = dataValue
+        }
+        if let dataLabelTag = findElement(byID: "dataLabel", in: xml) {
+            dataLabelTag.text = dataLabel
+        }
         
         //Time
         var timeValue = ":"
         if motorcycleData.time != nil {
-            let formatter = DateFormatter()
-            formatter.dateFormat = "h:mm"
-            if UserDefaults.standard.integer(forKey: "time_format_preference") > 0 {
-                formatter.dateFormat = "HH:mm"
+            if let clockTag = findElement(byID: "clock", in: xml) {
+                let formatter = DateFormatter()
+                formatter.dateFormat = "h:mm"
+                if UserDefaults.standard.integer(forKey: "time_format_preference") > 0 {
+                    formatter.dateFormat = "HH:mm"
+                }
+                timeValue = ("\(formatter.string(from: motorcycleData.time!))")
+                clockTag.text = timeValue
+            } else {
+                os_log("clockTag not found.")
             }
-            timeValue = ("\(formatter.string(from: motorcycleData.time!))")
         }
-        xml?[0]["dashboard"]?["values"]?["clock"]?.text = timeValue
-        
-        //Trip Logging
-        //xml?[0]["dashboard"]?["icons"]?["iconTrip"]?.attributes["style"] = "display:inline"
-        //Camera
-        //xml?[0]["dashboard"]?["icons"]?["iconVideo"]?.attributes["style"] = "display:inline"
         
         // Fault icon
         if(!faults.getallActiveDesc().isEmpty){
-            xml?[0]["dashboard"]?["icons"]?["iconFault"]?.attributes["style"] = "display:inline"
+            if let iconFaultTag = findElement(byID: "iconFault", in: xml) {
+                iconFaultTag.attributes["style"] = "display:inline"
+            } else {
+                os_log("iconFaultTag not found.")
+            }
         }
         
         //Fuel Icon
         if(faults.getFuelFaultActive()){
-            xml?[0]["dashboard"]?["icons"]?["iconFuel"]?.attributes["style"] = "display:inline"
-        }
-    
-        //Compass
-        if motorcycleData.bearing != nil {
-            xml?[0]["dashboard"]?["compass"]?.attributes["transform"] = "translate(200,340) scale(3.0) rotate(\(motorcycleData.getbearing()),250,246)"
+            if let iconFuelTag = findElement(byID: "iconFuel", in: xml) {
+                iconFuelTag.attributes["style"] = "display:inline"
+            } else {
+                os_log("iconFuelTag not found.")
+            }
         }
         
-        return xml!
+        //Compass
+        var centerRadius = ",960,1080)"
+        var bearing = "0"
+        if let txtCardinalLeftTag = findElement(byID: "txtCardinalLeft", in: xml) {
+            txtCardinalLeftTag.text = "W"
+        }
+        if let txtCardinalRightTag = findElement(byID: "txtCardinalRight", in: xml) {
+            txtCardinalRightTag.text = "E"
+        }
+        if let compassTag = findElement(byID: "compass", in: xml) {
+            if motorcycleData.bearing != nil {
+                bearing = "\(motorcycleData.bearing! * -1)"
+            }
+            if (isPortrait) {
+                centerRadius = ",528,960)"
+            }
+            compassTag.attributes["transform"] = "rotate(" + bearing + centerRadius
+        } else {
+            os_log("compassTag not found.")
+        }
+
+        return xml // Return the modified XML object
     }
+
+    // Recursive function to search for an element by its 'id' attribute
+    class func findElement(byID id: String, in element: XMLNode) -> XMLNode? {
+        // Check if the current element has the matching 'id' attribute
+        if let elementID = element.id, elementID == id {
+            return element
+        }
+
+        // Traverse child elements recursively
+        for child in element.children {
+            if let found = findElement(byID: id, in: child) {
+                return found // Return if the element is found
+            }
+        }
+
+        return nil // Return nil if the element isn't found
+    }
+
 }

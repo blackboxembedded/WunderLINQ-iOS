@@ -14,7 +14,8 @@
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns="http://www.w3.org/2000/svg"
-   xmlns:svg="http://www.w3.org/2000/svg"><sodipodi:namedview
+   xmlns:svg="http://www.w3.org/2000/svg">
+   <sodipodi:namedview
    id="namedview314"
    pagecolor="#ffffff"
    bordercolor="#000000"
@@ -178,12 +179,7 @@
    transform="scale(1.1410755,0.87636621)"
    x="1543.5631"
    y="268.06198"
-   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:229.879px;font-family:'Agency FB';-inkscape-font-specification:'Agency FB, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-anchor:middle;fill:#fcc914;stroke-width:1.13941"><tspan
-     sodipodi:role="line"
-     id="tspan4"
-     x="1543.5631"
-     y="268.06198"
-     style="stroke-width:1.13941">6</tspan></text></g>
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:229.879px;font-family:'Agency FB';-inkscape-font-specification:'Agency FB, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-anchor:middle;fill:#fcc914;stroke-width:1.13941">6</text></g>
 
         
         <g
@@ -202,11 +198,7 @@
    class="st0 st17 st23"
    x="251.05695"
    y="1898.1995"
-   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:128px;font-family:'Agency FB';-inkscape-font-specification:'Agency FB, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:start;text-anchor:start;fill:#ffffff"><tspan
-     sodipodi:role="line"
-     id="tspan7"
-     x="251.05695"
-     y="1898.1995">---</tspan></text>
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:128px;font-family:'Agency FB';-inkscape-font-specification:'Agency FB, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:start;text-anchor:start;fill:#ffffff">---</text>
 
             
 
@@ -220,11 +212,7 @@
    class="st0 st17 st23"
    x="249.62491"
    y="1898.2"
-   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:85.3333px;font-family:'Agency FB';-inkscape-font-specification:'Agency FB, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:end;text-anchor:end;fill:#ffffff"><tspan
-     sodipodi:role="line"
-     id="tspan6"
-     x="249.62491"
-     y="1898.2">Range:</tspan></text>
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:85.3333px;font-family:'Agency FB';-inkscape-font-specification:'Agency FB, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:end;text-anchor:end;fill:#ffffff">Range:</text>
             
             
     </g><text
@@ -232,22 +220,14 @@
      class="st0 st17 st18"
      x="1072.7078"
      y="1898.1996"
-     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:128px;font-family:'Agency FB';-inkscape-font-specification:'Agency FB, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:end;text-anchor:end;fill:#ffffff"><tspan
-       sodipodi:role="line"
-       id="tspan5"
-       x="1072.7078"
-       y="1898.1996">00:00</tspan></text><g
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:128px;font-family:'Agency FB';-inkscape-font-specification:'Agency FB, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:end;text-anchor:end;fill:#ffffff">00:00</text><g
      id="g3"
      inkscape:label="speedo"><text
        id="speed"
        class="st0 st20 st21"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:192px;font-family:'Agency FB';-inkscape-font-specification:'Agency FB, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:end;text-anchor:end;fill:#ffffff"
        x="250.3125"
-       y="158.71875"><tspan
-         sodipodi:role="line"
-         id="tspan3"
-         x="250.3125"
-         y="158.71875">00</tspan></text><text
+       y="158.71875">00</text><text
        id="speedUnit"
        class="st0 st20 st22"
        x="246.0063"
@@ -377,15 +357,6 @@
    inkscape:label="needle"
    style="display:inline">
 
-      <animateTransform
-   attributeType="xml"
-   attributeName="transform"
-   type="rotate"
-   from="0 540 1540"
-   to="180 540 1540"
-   dur="1.5s"
-   additive="sum"
-   repeatCount="indefinite" />
 <path
    id="needleTick"
    style="opacity:0.97;fill:#f2c217;stroke-width:5.30717"
@@ -414,15 +385,6 @@
    inkscape:label="needleMaxL"
    style="display:inline">
 
-      <animateTransform
-   attributeType="xml"
-   attributeName="transform"
-   type="rotate"
-   from="0 540 1540"
-   to="180 540 1540"
-   dur="1.5s"
-   additive="sum"
-   repeatCount="indefinite" />
 <path
    id="needleTickMaxL"
    style="opacity:0.97;fill:#f21719;fill-opacity:1;stroke-width:0;stroke-dasharray:none"
@@ -435,15 +397,6 @@
    inkscape:label="needleMaxR"
    style="display:inline">
 
-      <animateTransform
-   attributeType="xml"
-   attributeName="transform"
-   type="rotate"
-   from="0 540 1540"
-   to="180 540 1540"
-   dur="1.5s"
-   additive="sum"
-   repeatCount="indefinite" />
 <path
    id="needleTickMaxR"
    style="opacity:0.97;fill:#f21719;fill-opacity:1;stroke-width:0;stroke-dasharray:none"
@@ -1926,7 +1879,7 @@
    class="st29"
    style="stroke-width:1.07959" /><g
    id="iconBT"
-   style="display:inline"
+   style="display:none"
    transform="matrix(0.99999813,0,0,1,554.01667,-420.99215)">
     <path
    id="iconBTppath"
@@ -1934,7 +1887,7 @@
    class="st0" />
     </g><g
    id="iconTrip"
-   style="display:inline"
+   style="display:none"
    transform="translate(329.32182,-276.56356)">
     <path
    id="path2349"
@@ -1948,7 +1901,7 @@
 
                 <g
    id="iconVideo"
-   style="display:inline"
+   style="display:none"
    transform="translate(233.74315,-170.31356)">
     <path
    id="path2365"
@@ -1961,7 +1914,7 @@
    class="st0" />
     </g><g
    id="iconFault"
-   style="display:inline"
+   style="display:none"
    transform="translate(143.46408,-62.618523)">
     <path
    id="path2357"
@@ -1980,7 +1933,7 @@
 
 </g><g
    id="iconFuel"
-   style="display:inline"
+   style="display:none"
    transform="translate(54.16046,41.186441)">
     <path
    id="path2353"

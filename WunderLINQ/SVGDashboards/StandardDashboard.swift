@@ -17,10 +17,13 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import Foundation
+import os.log
 
 class StandardDashboard {
-    
-    class func updateDashboard(_ infoLine: Int) -> XML{
+
+    // Main function to update the dashboard
+    class func updateDashboard(_ infoLine: Int, _ isPortrait: Bool, _ height: CGFloat, _ width: CGFloat) -> XMLNode? {
+        
         let motorcycleData = MotorcycleData.shared
         let faults = Faults.shared
         
@@ -30,10 +33,23 @@ class StandardDashboard {
         var distanceTimeUnit = "KMH"
         var pressureUnit = "psi"
 
+        var dashboardSVG = "standard-dashboard"
+        if isPortrait {
+            dashboardSVG = dashboardSVG + "-portrait"
+        }
+        // Load the XML file from the project bundle
+        guard let url = Bundle.main.url(forResource: dashboardSVG, withExtension: "svg"),
+              let xml = XML(contentsOf: url) else {
+            os_log("Error: Unable to load or parse the XML file.")
+            return nil
+        }
         
-        //let url = Bundle.main.url(forResource: "standard-dashboard-portrait", withExtension: "svg")!
-        let url = Bundle.main.url(forResource: "standard-dashboard", withExtension: "svg")!
-        let xml = XML(contentsOf: url)
+        if let svgTag = findElement(byID: "standard-dashboard", in: xml) {
+            svgTag.attributes["height"] = "\(height)"
+            svgTag.attributes["width"] = "\(width)"
+        } else {
+            os_log("svgTag not found.")
+        }
 
         //Speed
         var speedValue:Double?
@@ -61,63 +77,84 @@ class StandardDashboard {
                 }
             }
         default:
-            NSLog("StandardDashboard: Unknown speed unit setting")
+            os_log("StandardDashboard: Unknown speed unit setting")
         }
         if (speedValue != nil){
-            xml?[0]["dashboard"]?["values"]?["speed"]?.text = "\(Utils.toZeroDecimalString(speedValue!))"
+            if let speedTag = findElement(byID: "speed", in: xml) {
+                speedTag.text = "\(Utils.toZeroDecimalString(speedValue!))"
+            } else {
+                os_log("speedTag not found.")
+            }
         }
+        
         if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
             distanceTimeUnit = "MPH"
         }
-        xml?[0]["dashboard"]?["labels"]?["speedLabel"]?.text = distanceTimeUnit
+        if let speedUnitTag = findElement(byID: "speedUnit", in: xml) {
+            speedUnitTag.text = distanceTimeUnit
+        } else {
+            os_log("speedUnitTag not found.")
+        }
         
         //Gear
         var gearValue = "-"
         if motorcycleData.gear != nil {
-            gearValue = motorcycleData.getgear()
-            if gearValue == "N"{
-                let style = xml?[0]["dashboard"]?["values"]?["gear"]?.attributes["style"]
-                let regex = try! NSRegularExpression(pattern: "fill:([^<]*);", options: NSRegularExpression.Options.caseInsensitive)
-                let range = NSMakeRange(0, style!.count)
-                let modString = regex.stringByReplacingMatches(in: style!, options: [], range: range, withTemplate: "fill:#03ae1e;")
-                xml?[0]["dashboard"]?["values"]?["gear"]?.attributes["style"] = modString
+            if let gearTag = findElement(byID: "gear", in: xml) {
+                gearValue = motorcycleData.getgear()
+                if gearValue == "N"{
+                    let style = gearTag.attributes["style"]
+                    let regex = try! NSRegularExpression(pattern: "fill:([^<]*);", options: NSRegularExpression.Options.caseInsensitive)
+                    let range = NSMakeRange(0, style!.count)
+                    let modString = regex.stringByReplacingMatches(in: style!, options: [], range: range, withTemplate: "fill:#03ae1e;")
+                    gearTag.attributes["style"] = modString
+                }
+                gearTag.text = gearValue
+            } else {
+                os_log("gearTag not found.")
             }
         }
-        xml?[0]["dashboard"]?["values"]?["gear"]?.text = gearValue
         
         // Ambient Temperature
         var ambientTempValue = "-"
         if motorcycleData.ambientTemperature != nil {
-            var ambientTemp:Double = motorcycleData.ambientTemperature!
-            if(ambientTemp <= 0){
-                //Freezing
+            if let ambientTempTag = findElement(byID: "ambientTemp", in: xml) {
+                var ambientTemp:Double = motorcycleData.ambientTemperature!
+                if(ambientTemp <= 0){
+                    //Freezing
+                }
+                if UserDefaults.standard.integer(forKey: "temperature_unit_preference") == 1 {
+                    temperatureUnit = "F"
+                    ambientTemp = Utils.celciusToFahrenheit(ambientTemp)
+                }
+                ambientTempValue = "\(Utils.toZeroDecimalString(ambientTemp))\(temperatureUnit)"
+                ambientTempTag.text = ambientTempValue
+            } else {
+                os_log("ambientTempTag not found.")
             }
-            if UserDefaults.standard.integer(forKey: "temperature_unit_preference") == 1 {
-                temperatureUnit = "F"
-                ambientTemp = Utils.celciusToFahrenheit(ambientTemp)
-            }
-            ambientTempValue = "\(Utils.toZeroDecimalString(ambientTemp))\(temperatureUnit)"
         }
-        xml?[0]["dashboard"]?["values"]?["ambientTemp"]?.text = ambientTempValue
         
         // Engine Temperature
         var engineTempValue = "-"
         if motorcycleData.engineTemperature != nil {
-            var engineTemp:Double = motorcycleData.engineTemperature!
-            if (engineTemp >= 104.0){
-                let style = xml?[0]["dashboard"]?["values"]?["engineTemp"]?.attributes["style"]
-                let regex = try! NSRegularExpression(pattern: "fill:([^<]*);", options: NSRegularExpression.Options.caseInsensitive)
-                let range = NSMakeRange(0, style!.count)
-                let modString = regex.stringByReplacingMatches(in: style!, options: [], range: range, withTemplate: "fill:#e20505;")
-                xml?[0]["dashboard"]?["values"]?["engineTemp"]?.attributes["style"] = modString
+            if let engineTempTag = findElement(byID: "engineTemp", in: xml) {
+                var engineTemp:Double = motorcycleData.engineTemperature!
+                if (engineTemp >= 104.0){
+                    let style = engineTempTag.attributes["style"]
+                    let regex = try! NSRegularExpression(pattern: "fill:([^<]*);", options: NSRegularExpression.Options.caseInsensitive)
+                    let range = NSMakeRange(0, style!.count)
+                    let modString = regex.stringByReplacingMatches(in: style!, options: [], range: range, withTemplate: "fill:#e20505;")
+                    engineTempTag.attributes["style"] = modString
+                }
+                if (UserDefaults.standard.integer(forKey: "temperature_unit_preference") == 1 ){
+                    temperatureUnit = "F"
+                    engineTemp = Utils.celciusToFahrenheit(engineTemp)
+                }
+                engineTempValue = "\(Utils.toZeroDecimalString(engineTemp))\(temperatureUnit)"
+                engineTempTag.text = engineTempValue
+            } else  {
+                os_log("engineTempTag not found.")
             }
-            if (UserDefaults.standard.integer(forKey: "temperature_unit_preference") == 1 ){
-                temperatureUnit = "F"
-                engineTemp = Utils.celciusToFahrenheit(engineTemp)
-            }
-            engineTempValue = "\(Utils.toZeroDecimalString(engineTemp))\(temperatureUnit)"
         }
-        xml?[0]["dashboard"]?["values"]?["engineTemp"]?.text = engineTempValue
         
         //Info Line
         var dataLabel = ""
@@ -154,11 +191,15 @@ class StandardDashboard {
                     }
                     dataValue = "\(Utils.toZeroDecimalString(fuelRange))\(distanceUnit)"
                     if(faults.getFuelFaultActive()){
-                        let style = xml?[0]["dashboard"]?["values"]?["dataValue"]?.attributes["style"]
-                        let regex = try! NSRegularExpression(pattern: "fill:([^<]*);", options: NSRegularExpression.Options.caseInsensitive)
-                        let range = NSMakeRange(0, style!.count)
-                        let modString = regex.stringByReplacingMatches(in: style!, options: [], range: range, withTemplate: "fill:#e20505;")
-                        xml?[0]["dashboard"]?["values"]?["dataValue"]?.attributes["style"] = modString
+                        if let dataValueTag = findElement(byID: "dataValue", in: xml) {
+                            let style = dataValueTag.attributes["style"]
+                            let regex = try! NSRegularExpression(pattern: "fill:([^<]*);", options: NSRegularExpression.Options.caseInsensitive)
+                            let range = NSMakeRange(0, style!.count)
+                            let modString = regex.stringByReplacingMatches(in: style!, options: [], range: range, withTemplate: "fill:#e20505;")
+                            dataValueTag.attributes["style"] = modString
+                        } else {
+                            os_log("dataValueTag not found.")
+                        }
                     }
                 }
                 dataLabel = "dash_range_label".localized(forLanguageCode: "Base")
@@ -177,422 +218,471 @@ class StandardDashboard {
             default:
                 break
         }
-        xml?[0]["dashboard"]?["values"]?["dataValue"]?.text = dataValue
-        xml?[0]["dashboard"]?["labels"]?["dataLabel"]?.text = dataLabel
+        if let dataValueTag = findElement(byID: "dataValue", in: xml) {
+            dataValueTag.text = dataValue
+        }
+        if let dataLabelTag = findElement(byID: "dataLabel", in: xml) {
+            dataLabelTag.text = dataLabel
+        }
         
         //Time
         var timeValue = ":"
         if motorcycleData.time != nil {
-            let formatter = DateFormatter()
-            formatter.dateFormat = "h:mm"
-            if UserDefaults.standard.integer(forKey: "time_format_preference") > 0 {
-                formatter.dateFormat = "HH:mm"
+            if let clockTag = findElement(byID: "clock", in: xml) {
+                let formatter = DateFormatter()
+                formatter.dateFormat = "h:mm"
+                if UserDefaults.standard.integer(forKey: "time_format_preference") > 0 {
+                    formatter.dateFormat = "HH:mm"
+                }
+                timeValue = ("\(formatter.string(from: motorcycleData.time!))")
+                clockTag.text = timeValue
+            } else {
+                os_log("clockTag not found.")
             }
-            timeValue = ("\(formatter.string(from: motorcycleData.time!))")
         }
-        xml?[0]["dashboard"]?["values"]?["clock"]?.text = timeValue
         
         // Front Tire Pressure
-        var rdcFValue = "-"
-        if motorcycleData.frontTirePressure != nil {
-            var frontPressure:Double = motorcycleData.frontTirePressure!
-            switch UserDefaults.standard.integer(forKey: "pressure_unit_preference"){
-            case 1:
-                pressureUnit = "kPa"
-                frontPressure = Utils.barTokPa(frontPressure)
-            case 2:
-                pressureUnit = "kgf"
-                frontPressure = Utils.barTokgf(frontPressure)
-            case 3:
-                pressureUnit = "psi"
-                frontPressure = Utils.barToPsi(frontPressure)
-            default:
-                pressureUnit = "bar"
-                break
+        if let rdcFTag = findElement(byID: "rdcF", in: xml) {
+            var rdcFValue = "-"
+            if motorcycleData.frontTirePressure != nil {
+                var frontPressure:Double = motorcycleData.frontTirePressure!
+                switch UserDefaults.standard.integer(forKey: "pressure_unit_preference"){
+                case 1:
+                    pressureUnit = "kPa"
+                    frontPressure = Utils.barTokPa(frontPressure)
+                case 2:
+                    pressureUnit = "kgf"
+                    frontPressure = Utils.barTokgf(frontPressure)
+                case 3:
+                    pressureUnit = "psi"
+                    frontPressure = Utils.barToPsi(frontPressure)
+                default:
+                    pressureUnit = "bar"
+                    break
+                }
+                rdcFValue = Utils.toOneDecimalString(frontPressure)
             }
-            rdcFValue = "\(Utils.toOneDecimalString(frontPressure))\(pressureUnit)"
-        }
-        xml?[0]["dashboard"]?["values"]?["rdcF"]?.text = rdcFValue
-        
-        if(faults.getFrontTirePressureCriticalActive()){
-            let style = xml?[0]["dashboard"]?["values"]?["rdcF"]?.attributes["style"]
-            let regex = try! NSRegularExpression(pattern: "fill:([^<]*);", options: NSRegularExpression.Options.caseInsensitive)
-            let range = NSMakeRange(0, style!.count)
-            let modString = regex.stringByReplacingMatches(in: style!, options: [], range: range, withTemplate: "fill:#e20505;")
-            xml?[0]["dashboard"]?["values"]?["rdcF"]?.attributes["style"] = modString
-        } else if(faults.getRearTirePressureWarningActive()){
-            let style = xml?[0]["dashboard"]?["values"]?["rdcF"]?.attributes["style"]
-            let regex = try! NSRegularExpression(pattern: "fill:([^<]*);", options: NSRegularExpression.Options.caseInsensitive)
-            let range = NSMakeRange(0, style!.count)
-            let modString = regex.stringByReplacingMatches(in: style!, options: [], range: range, withTemplate: "fill:#fcc914;")
-            xml?[0]["dashboard"]?["values"]?["rdcF"]?.attributes["style"] = modString
+            rdcFTag.text = "\(rdcFValue)\(pressureUnit)"
+            
+            if(faults.getFrontTirePressureCriticalActive()){
+                let style = rdcFTag.attributes["style"]
+                let regex = try! NSRegularExpression(pattern: "fill:([^<]*);", options: NSRegularExpression.Options.caseInsensitive)
+                let range = NSMakeRange(0, style!.count)
+                let modString = regex.stringByReplacingMatches(in: style!, options: [], range: range, withTemplate: "fill:#e20505;")
+                rdcFTag.attributes["style"] = modString
+            } else if(faults.getRearTirePressureWarningActive()){
+                let style = rdcFTag.attributes["style"]
+                let regex = try! NSRegularExpression(pattern: "fill:([^<]*);", options: NSRegularExpression.Options.caseInsensitive)
+                let range = NSMakeRange(0, style!.count)
+                let modString = regex.stringByReplacingMatches(in: style!, options: [], range: range, withTemplate: "fill:#fcc914;")
+                rdcFTag.attributes["style"] = modString
+            }
+        } else {
+            os_log("rdcFTag not found.")
         }
         
         // Rear Tire Pressure
-        var rdcRValue = "-"
-        if motorcycleData.rearTirePressure != nil {
-            var rearPressure:Double = motorcycleData.rearTirePressure!
-            switch UserDefaults.standard.integer(forKey: "pressure_unit_preference"){
-            case 1:
-                pressureUnit = "kPa"
-                rearPressure = Utils.barTokPa(rearPressure)
-            case 2:
-                pressureUnit = "kgf"
-                rearPressure = Utils.barTokgf(rearPressure)
-            case 3:
-                pressureUnit = "psi"
-                rearPressure = Utils.barToPsi(rearPressure)
-            default:
-                pressureUnit = "bar"
-                break
+        if let rdcRTag = findElement(byID: "rdcR", in: xml) {
+            var rdcRValue = "-"
+            if motorcycleData.rearTirePressure != nil {
+                var rearPressure:Double = motorcycleData.rearTirePressure!
+                switch UserDefaults.standard.integer(forKey: "pressure_unit_preference"){
+                case 1:
+                    pressureUnit = "kPa"
+                    rearPressure = Utils.barTokPa(rearPressure)
+                case 2:
+                    pressureUnit = "kgf"
+                    rearPressure = Utils.barTokgf(rearPressure)
+                case 3:
+                    pressureUnit = "psi"
+                    rearPressure = Utils.barToPsi(rearPressure)
+                default:
+                    pressureUnit = "bar"
+                    break
+                }
+                rdcRValue = Utils.toOneDecimalString(rearPressure)
             }
-            rdcRValue = "\(Utils.toOneDecimalString(rearPressure))\(pressureUnit)"
+            rdcRTag.text = "\(rdcRValue)\(pressureUnit)"
+            
+            if(faults.getRearTirePressureCriticalActive()){
+                let style = rdcRTag.attributes["style"]
+                let regex = try! NSRegularExpression(pattern: "fill:([^<]*);", options: NSRegularExpression.Options.caseInsensitive)
+                let range = NSMakeRange(0, style!.count)
+                let modString = regex.stringByReplacingMatches(in: style!, options: [], range: range, withTemplate: "fill:#e20505;")
+                rdcRTag.attributes["style"] = modString
+            } else if(faults.getRearTirePressureWarningActive()){
+                let style = rdcRTag.attributes["style"]
+                let regex = try! NSRegularExpression(pattern: "fill:([^<]*);", options: NSRegularExpression.Options.caseInsensitive)
+                let range = NSMakeRange(0, style!.count)
+                let modString = regex.stringByReplacingMatches(in: style!, options: [], range: range, withTemplate: "fill:#fcc914;")
+                rdcRTag.attributes["style"] = modString
+            }
+        } else {
+            os_log("rdcRTag not found.")
         }
-        xml?[0]["dashboard"]?["values"]?["rdcR"]?.text = rdcRValue
-        
-        if(faults.getRearTirePressureCriticalActive()){
-            let style = xml?[0]["dashboard"]?["values"]?["rdcR"]?.attributes["style"]
-            let regex = try! NSRegularExpression(pattern: "fill:([^<]*);", options: NSRegularExpression.Options.caseInsensitive)
-            let range = NSMakeRange(0, style!.count)
-            let modString = regex.stringByReplacingMatches(in: style!, options: [], range: range, withTemplate: "fill:#e20505;")
-            xml?[0]["dashboard"]?["values"]?["rdcR"]?.attributes["style"] = modString
-        } else if(faults.getRearTirePressureWarningActive()){
-            let style = xml?[0]["dashboard"]?["values"]?["rdcR"]?.attributes["style"]
-            let regex = try! NSRegularExpression(pattern: "fill:([^<]*);", options: NSRegularExpression.Options.caseInsensitive)
-            let range = NSMakeRange(0, style!.count)
-            let modString = regex.stringByReplacingMatches(in: style!, options: [], range: range, withTemplate: "fill:#fcc914;")
-            xml?[0]["dashboard"]?["values"]?["rdcR"]?.attributes["style"] = modString
-        }
-        
-        //Trip Logging
-        //xml![0][5][0].attributes["style"] = "display:inline"
-        //Camera
-        //xml![0][5][1].attributes["style"] = "display:inline"
         
         // Fault icon
         if(!faults.getallActiveDesc().isEmpty){
-            xml?[0]["dashboard"]?["icons"]?["iconFault"]?.attributes["style"] = "display:inline"
+            if let iconFaultTag = findElement(byID: "iconFault", in: xml) {
+                iconFaultTag.attributes["style"] = "display:inline"
+            } else {
+                os_log("iconFaultTag not found.")
+            }
         }
         
         //Fuel Icon
         if(faults.getFuelFaultActive()){
-            xml?[0]["dashboard"]?["icons"]?["iconFuel"]?.attributes["style"] = "display:inline"
-        }
-        
-        //RPM Digits
-        switch UserDefaults.standard.integer(forKey: "max_rpm_preference"){
-        case 0:
-            //10000
-            if (motorcycleData.rpm != nil){
-                if (motorcycleData.getRPM() >= 333) {
-                    xml?[0]["dashboard"]?["rpmTiles"]?[1].attributes["style"] = "display:inline"
-                }
-                if (motorcycleData.getRPM() >= 666) {
-                    xml?[0]["dashboard"]?["rpmTiles"]?[2].attributes["style"] = "display:inline"
-                }
-                if (motorcycleData.getRPM() >= 1000) {
-                    xml?[0]["dashboard"]?["rpmTiles"]?[3].attributes["style"] = "display:inline"
-                }
-                if (motorcycleData.getRPM() >= 1333) {
-                    xml?[0]["dashboard"]?["rpmTiles"]?[4].attributes["style"] = "display:inline"
-                }
-                if (motorcycleData.getRPM() >= 1666) {
-                    xml?[0]["dashboard"]?["rpmTiles"]?[5].attributes["style"] = "display:inline"
-                }
-                if (motorcycleData.getRPM() >= 2000) {
-                    xml?[0]["dashboard"]?["rpmTiles"]?[6].attributes["style"] = "display:inline"
-                }
-                if (motorcycleData.getRPM() >= 2333) {
-                    xml?[0]["dashboard"]?["rpmTiles"]?[7].attributes["style"] = "display:inline"
-                }
-                if (motorcycleData.getRPM() >= 2666) {
-                    xml?[0]["dashboard"]?["rpmTiles"]?[8].attributes["style"] = "display:inline"
-                }
-                if (motorcycleData.getRPM() >= 3000) {
-                    xml?[0]["dashboard"]?["rpmTiles"]?[9].attributes["style"] = "display:inline"
-                }
-                if (motorcycleData.getRPM() >= 3333) {
-                    xml?[0]["dashboard"]?["rpmTiles"]?[10].attributes["style"] = "display:inline"
-                }
-                if (motorcycleData.getRPM() >= 3666) {
-                    xml?[0]["dashboard"]?["rpmTiles"]?[11].attributes["style"] = "display:inline"
-                }
-                if (motorcycleData.getRPM() >= 4000) {
-                    xml?[0]["dashboard"]?["rpmTiles"]?[12].attributes["style"] = "display:inline"
-                }
-                if (motorcycleData.getRPM() >= 4333) {
-                    xml?[0]["dashboard"]?["rpmTiles"]?[13].attributes["style"] = "display:inline"
-                }
-                if (motorcycleData.getRPM() >= 4666) {
-                    xml?[0]["dashboard"]?["rpmTiles"]?[14].attributes["style"] = "display:inline"
-                }
-                if (motorcycleData.getRPM() >= 5000) {
-                    xml?[0]["dashboard"]?["rpmTiles"]?[15].attributes["style"] = "display:inline"
-                }
-                if (motorcycleData.getRPM() >= 5333) {
-                    xml?[0]["dashboard"]?["rpmTiles"]?[16].attributes["style"] = "display:inline"
-                }
-                if (motorcycleData.getRPM() >= 5666) {
-                    xml?[0]["dashboard"]?["rpmTiles"]?[17].attributes["style"] = "display:inline"
-                }
-                if (motorcycleData.getRPM() >= 6000) {
-                    xml?[0]["dashboard"]?["rpmTiles"]?[18].attributes["style"] = "display:inline"
-                }
-                if (motorcycleData.getRPM() >= 6333) {
-                    xml?[0]["dashboard"]?["rpmTiles"]?[19].attributes["style"] = "display:inline"
-                }
-                if (motorcycleData.getRPM() >= 6666) {
-                    xml?[0]["dashboard"]?["rpmTiles"]?[20].attributes["style"] = "display:inline"
-                }
-                if (motorcycleData.getRPM() >= 7000) {
-                    xml?[0]["dashboard"]?["rpmTiles"]?[21].attributes["style"] = "display:inline"
-                }
-                if (motorcycleData.getRPM() >= 7333) {
-                    xml?[0]["dashboard"]?["rpmTiles"]?[22].attributes["style"] = "display:inline"
-                }
-                if (motorcycleData.getRPM() >= 7666) {
-                    xml?[0]["dashboard"]?["rpmTiles"]?[23].attributes["style"] = "display:inline"
-                }
-                if (motorcycleData.getRPM() >= 8000) {
-                    xml?[0]["dashboard"]?["rpmTiles"]?[24].attributes["style"] = "display:inline"
-                }
-                if (motorcycleData.getRPM() >= 8333) {
-                    xml?[0]["dashboard"]?["rpmTiles"]?[25].attributes["style"] = "display:inline"
-                }
-                if (motorcycleData.getRPM() >= 8666) {
-                    xml?[0]["dashboard"]?["rpmTiles"]?[26].attributes["style"] = "display:inline"
-                }
-                if (motorcycleData.getRPM() >= 9000) {
-                    xml?[0]["dashboard"]?["rpmTiles"]?[27].attributes["style"] = "display:inline"
-                }
-                if (motorcycleData.getRPM() >= 9333) {
-                    xml?[0]["dashboard"]?["rpmTiles"]?[28].attributes["style"] = "display:inline"
-                }
-                if (motorcycleData.getRPM() >= 9666) {
-                    xml?[0]["dashboard"]?["rpmTiles"]?[29].attributes["style"] = "display:inline"
-                }
-                if (motorcycleData.getRPM() >= 10000) {
-                    xml?[0]["dashboard"]?["rpmTiles"]?[30].attributes["style"] = "display:inline"
-                }
+            if let iconFuelTag = findElement(byID: "iconFuel", in: xml) {
+                iconFuelTag.attributes["style"] = "display:inline"
+            } else {
+                os_log("iconFuelTag not found.")
             }
-            break
-        case 1:
-            //12000
-            xml?[0]["dashboard"]?["rpmGaugeBackground"]?["rpmGaugeDigits"]?["rpmDialDigit1"]?.text = "2"
-            xml?[0]["dashboard"]?["rpmGaugeBackground"]?["rpmGaugeDigits"]?["rpmDialDigit2"]?.text = "4"
-            xml?[0]["dashboard"]?["rpmGaugeBackground"]?["rpmGaugeDigits"]?["rpmDialDigit3"]?.text = "5"
-            xml?[0]["dashboard"]?["rpmGaugeBackground"]?["rpmGaugeDigits"]?["rpmDialDigit4"]?.text = "6"
-            xml?[0]["dashboard"]?["rpmGaugeBackground"]?["rpmGaugeDigits"]?["rpmDialDigit5"]?.text = "7"
-            xml?[0]["dashboard"]?["rpmGaugeBackground"]?["rpmGaugeDigits"]?["rpmDialDigit6"]?.text = "8"
-            xml?[0]["dashboard"]?["rpmGaugeBackground"]?["rpmGaugeDigits"]?["rpmDialDigit7"]?.text = "9"
-            xml?[0]["dashboard"]?["rpmGaugeBackground"]?["rpmGaugeDigits"]?["rpmDialDigit8"]?.text = "10"
-            xml?[0]["dashboard"]?["rpmGaugeBackground"]?["rpmGaugeDigits"]?["rpmDialDigit9"]?.text = "11"
-            xml?[0]["dashboard"]?["rpmGaugeBackground"]?["rpmGaugeDigits"]?["rpmDialDigit10"]?.text = "12"
-            
-            if (motorcycleData.rpm != nil){
-                if (motorcycleData.getRPM() >= 666) {
-                    xml?[0]["dashboard"]?["rpmTiles"]?[1].attributes["style"] = "display:inline"
-                }
-                if (motorcycleData.getRPM() >= 1333) {
-                    xml?[0]["dashboard"]?["rpmTiles"]?[2].attributes["style"] = "display:inline"
-                }
-                if (motorcycleData.getRPM() >= 2000) {
-                    xml?[0]["dashboard"]?["rpmTiles"]?[3].attributes["style"] = "display:inline"
-                }
-                if (motorcycleData.getRPM() >= 2666) {
-                    xml?[0]["dashboard"]?["rpmTiles"]?[4].attributes["style"] = "display:inline"
-                }
-                if (motorcycleData.getRPM() >= 3333) {
-                    xml?[0]["dashboard"]?["rpmTiles"]?[5].attributes["style"] = "display:inline"
-                }
-                if (motorcycleData.getRPM() >= 4000) {
-                    xml?[0]["dashboard"]?["rpmTiles"]?[6].attributes["style"] = "display:inline"
-                }
-                if (motorcycleData.getRPM() >= 4333) {
-                    xml?[0]["dashboard"]?["rpmTiles"]?[7].attributes["style"] = "display:inline"
-                }
-                if (motorcycleData.getRPM() >= 4666) {
-                    xml?[0]["dashboard"]?["rpmTiles"]?[8].attributes["style"] = "display:inline"
-                }
-                if (motorcycleData.getRPM() >= 5000) {
-                    xml?[0]["dashboard"]?["rpmTiles"]?[9].attributes["style"] = "display:inline"
-                }
-                if (motorcycleData.getRPM() >= 5333) {
-                    xml?[0]["dashboard"]?["rpmTiles"]?[10].attributes["style"] = "display:inline"
-                }
-                if (motorcycleData.getRPM() >= 5666) {
-                    xml?[0]["dashboard"]?["rpmTiles"]?[11].attributes["style"] = "display:inline"
-                }
-                if (motorcycleData.getRPM() >= 6000) {
-                    xml?[0]["dashboard"]?["rpmTiles"]?[12].attributes["style"] = "display:inline"
-                }
-                if (motorcycleData.getRPM() >= 6333) {
-                    xml?[0]["dashboard"]?["rpmTiles"]?[13].attributes["style"] = "display:inline"
-                }
-                if (motorcycleData.getRPM() >= 6666) {
-                    xml?[0]["dashboard"]?["rpmTiles"]?[14].attributes["style"] = "display:inline"
-                }
-                if (motorcycleData.getRPM() >= 7000) {
-                    xml?[0]["dashboard"]?["rpmTiles"]?[15].attributes["style"] = "display:inline"
-                }
-                if (motorcycleData.getRPM() >= 7333) {
-                    xml?[0]["dashboard"]?["rpmTiles"]?[16].attributes["style"] = "display:inline"
-                }
-                if (motorcycleData.getRPM() >= 7666) {
-                    xml?[0]["dashboard"]?["rpmTiles"]?[17].attributes["style"] = "display:inline"
-                }
-                if (motorcycleData.getRPM() >= 8000) {
-                    xml?[0]["dashboard"]?["rpmTiles"]?[18].attributes["style"] = "display:inline"
-                }
-                if (motorcycleData.getRPM() >= 8333) {
-                    xml?[0]["dashboard"]?["rpmTiles"]?[19].attributes["style"] = "display:inline"
-                }
-                if (motorcycleData.getRPM() >= 8666) {
-                    xml?[0]["dashboard"]?["rpmTiles"]?[20].attributes["style"] = "display:inline"
-                }
-                if (motorcycleData.getRPM() >= 9000) {
-                    xml?[0]["dashboard"]?["rpmTiles"]?[21].attributes["style"] = "display:inline"
-                }
-                if (motorcycleData.getRPM() >= 9333) {
-                    xml?[0]["dashboard"]?["rpmTiles"]?[22].attributes["style"] = "display:inline"
-                }
-                if (motorcycleData.getRPM() >= 9666) {
-                    xml?[0]["dashboard"]?["rpmTiles"]?[23].attributes["style"] = "display:inline"
-                }
-                if (motorcycleData.getRPM() >= 10000) {
-                    xml?[0]["dashboard"]?["rpmTiles"]?[24].attributes["style"] = "display:inline"
-                }
-                if (motorcycleData.getRPM() >= 10333) {
-                    xml?[0]["dashboard"]?["rpmTiles"]?[25].attributes["style"] = "display:inline"
-                }
-                if (motorcycleData.getRPM() >= 10666) {
-                    xml?[0]["dashboard"]?["rpmTiles"]?[26].attributes["style"] = "display:inline"
-                }
-                if (motorcycleData.getRPM() >= 11000) {
-                    xml?[0]["dashboard"]?["rpmTiles"]?[27].attributes["style"] = "display:inline"
-                }
-                if (motorcycleData.getRPM() >= 11333) {
-                    xml?[0]["dashboard"]?["rpmTiles"]?[28].attributes["style"] = "display:inline"
-                }
-                if (motorcycleData.getRPM() >= 11666) {
-                    xml?[0]["dashboard"]?["rpmTiles"]?[29].attributes["style"] = "display:inline"
-                }
-                if (motorcycleData.getRPM() >= 12000) {
-                    xml?[0]["dashboard"]?["rpmTiles"]?[30].attributes["style"] = "display:inline"
-                }
-            }
-            break
-        case 2:
-            //15000
-            xml?[0]["dashboard"]?["rpmGaugeBackground"]?["rpmGaugeDigits"]?["rpmDialDigit1"]?.text = "2"
-            xml?[0]["dashboard"]?["rpmGaugeBackground"]?["rpmGaugeDigits"]?["rpmDialDigit2"]?.text = "4"
-            xml?[0]["dashboard"]?["rpmGaugeBackground"]?["rpmGaugeDigits"]?["rpmDialDigit3"]?.text = "6"
-            xml?[0]["dashboard"]?["rpmGaugeBackground"]?["rpmGaugeDigits"]?["rpmDialDigit4"]?.text = "8"
-            xml?[0]["dashboard"]?["rpmGaugeBackground"]?["rpmGaugeDigits"]?["rpmDialDigit5"]?.text = "9"
-            xml?[0]["dashboard"]?["rpmGaugeBackground"]?["rpmGaugeDigits"]?["rpmDialDigit6"]?.text = "10"
-            xml?[0]["dashboard"]?["rpmGaugeBackground"]?["rpmGaugeDigits"]?["rpmDialDigit7"]?.text = "11"
-            xml?[0]["dashboard"]?["rpmGaugeBackground"]?["rpmGaugeDigits"]?["rpmDialDigit8"]?.text = "12"
-            xml?[0]["dashboard"]?["rpmGaugeBackground"]?["rpmGaugeDigits"]?["rpmDialDigit9"]?.text = "13"
-            xml?[0]["dashboard"]?["rpmGaugeBackground"]?["rpmGaugeDigits"]?["rpmDialDigit10"]?.text = "15"
-            
-            if (motorcycleData.rpm != nil){
-                if (motorcycleData.getRPM() >= 666) {
-                    xml?[0]["dashboard"]?["rpmTiles"]?[1].attributes["style"] = "display:inline"
-                }
-                if (motorcycleData.getRPM() >= 1333) {
-                    xml?[0]["dashboard"]?["rpmTiles"]?[2].attributes["style"] = "display:inline"
-                }
-                if (motorcycleData.getRPM() >= 2000) {
-                    xml?[0]["dashboard"]?["rpmTiles"]?[3].attributes["style"] = "display:inline"
-                }
-                if (motorcycleData.getRPM() >= 2666) {
-                    xml?[0]["dashboard"]?["rpmTiles"]?[4].attributes["style"] = "display:inline"
-                }
-                if (motorcycleData.getRPM() >= 3333) {
-                    xml?[0]["dashboard"]?["rpmTiles"]?[5].attributes["style"] = "display:inline"
-                }
-                if (motorcycleData.getRPM() >= 4000) {
-                    xml?[0]["dashboard"]?["rpmTiles"]?[6].attributes["style"] = "display:inline"
-                }
-                if (motorcycleData.getRPM() >= 4666) {
-                    xml?[0]["dashboard"]?["rpmTiles"]?[7].attributes["style"] = "display:inline"
-                }
-                if (motorcycleData.getRPM() >= 5333) {
-                    xml?[0]["dashboard"]?["rpmTiles"]?[8].attributes["style"] = "display:inline"
-                }
-                if (motorcycleData.getRPM() >= 6000) {
-                    xml?[0]["dashboard"]?["rpmTiles"]?[9].attributes["style"] = "display:inline"
-                }
-                if (motorcycleData.getRPM() >= 6666) {
-                    xml?[0]["dashboard"]?["rpmTiles"]?[10].attributes["style"] = "display:inline"
-                }
-                if (motorcycleData.getRPM() >= 7333) {
-                    xml?[0]["dashboard"]?["rpmTiles"]?[11].attributes["style"] = "display:inline"
-                }
-                if (motorcycleData.getRPM() >= 8000) {
-                    xml?[0]["dashboard"]?["rpmTiles"]?[12].attributes["style"] = "display:inline"
-                }
-                if (motorcycleData.getRPM() >= 8333) {
-                    xml?[0]["dashboard"]?["rpmTiles"]?[3].attributes["style"] = "display:inline"
-                }
-                if (motorcycleData.getRPM() >= 8666) {
-                    xml?[0]["dashboard"]?["rpmTiles"]?[14].attributes["style"] = "display:inline"
-                }
-                if (motorcycleData.getRPM() >= 9000) {
-                    xml?[0]["dashboard"]?["rpmTiles"]?[15].attributes["style"] = "display:inline"
-                }
-                if (motorcycleData.getRPM() >= 9333) {
-                    xml?[0]["dashboard"]?["rpmTiles"]?[16].attributes["style"] = "display:inline"
-                }
-                if (motorcycleData.getRPM() >= 9666) {
-                    xml?[0]["dashboard"]?["rpmTiles"]?[17].attributes["style"] = "display:inline"
-                }
-                if (motorcycleData.getRPM() >= 10000) {
-                    xml?[0]["dashboard"]?["rpmTiles"]?[18].attributes["style"] = "display:inline"
-                }
-                if (motorcycleData.getRPM() >= 10333) {
-                    xml?[0]["dashboard"]?["rpmTiles"]?[19].attributes["style"] = "display:inline"
-                }
-                if (motorcycleData.getRPM() >= 10666) {
-                    xml?[0]["dashboard"]?["rpmTiles"]?[20].attributes["style"] = "display:inline"
-                }
-                if (motorcycleData.getRPM() >= 11000) {
-                    xml?[0]["dashboard"]?["rpmTiles"]?[21].attributes["style"] = "display:inline"
-                }
-                if (motorcycleData.getRPM() >= 11333) {
-                    xml?[0]["dashboard"]?["rpmTiles"]?[22].attributes["style"] = "display:inline"
-                }
-                if (motorcycleData.getRPM() >= 11666) {
-                    xml?[0]["dashboard"]?["rpmTiles"]?[23].attributes["style"] = "display:inline"
-                }
-                if (motorcycleData.getRPM() >= 12000) {
-                    xml?[0]["dashboard"]?["rpmTiles"]?[24].attributes["style"] = "display:inline"
-                }
-                if (motorcycleData.getRPM() >= 12333) {
-                    xml?[0]["dashboard"]?["rpmTiles"]?[25].attributes["style"] = "display:inline"
-                }
-                if (motorcycleData.getRPM() >= 12666) {
-                    xml?[0]["dashboard"]?["rpmTiles"]?[26].attributes["style"] = "display:inline"
-                }
-                if (motorcycleData.getRPM() >= 13000) {
-                    xml?[0]["dashboard"]?["rpmTiles"]?[27].attributes["style"] = "display:inline"
-                }
-                if (motorcycleData.getRPM() >= 13666) {
-                    xml?[0]["dashboard"]?["rpmTiles"]?[28].attributes["style"] = "display:inline"
-                }
-                if (motorcycleData.getRPM() >= 14333) {
-                    xml?[0]["dashboard"]?["rpmTiles"]?[29].attributes["style"] = "display:inline"
-                }
-                if (motorcycleData.getRPM() >= 15000) {
-                    xml?[0]["dashboard"]?["rpmTiles"]?[30].attributes["style"] = "display:inline"
-                }
-            }
-            break
-        default:
-            NSLog("StandardDashboard: Unknown or default RPM Setting for standard dashboard")
-            break
         }
 
-        return xml!
+        //RPM Digits
+        if let rpmTilesTag = findElement(byID: "rpmTiles", in: xml) {
+            switch UserDefaults.standard.integer(forKey: "max_rpm_preference"){
+            case 0:
+                //10000
+                if (motorcycleData.rpm != nil){
+                    if (motorcycleData.getRPM() >= 333) {
+                        rpmTilesTag[1].attributes["style"] = "display:inline"
+                    }
+                    if (motorcycleData.getRPM() >= 666) {
+                        rpmTilesTag[2].attributes["style"] = "display:inline"
+                    }
+                    if (motorcycleData.getRPM() >= 1000) {
+                        rpmTilesTag[3].attributes["style"] = "display:inline"
+                    }
+                    if (motorcycleData.getRPM() >= 1333) {
+                        rpmTilesTag[4].attributes["style"] = "display:inline"
+                    }
+                    if (motorcycleData.getRPM() >= 1666) {
+                        rpmTilesTag[5].attributes["style"] = "display:inline"
+                    }
+                    if (motorcycleData.getRPM() >= 2000) {
+                        rpmTilesTag[6].attributes["style"] = "display:inline"
+                    }
+                    if (motorcycleData.getRPM() >= 2333) {
+                        rpmTilesTag[7].attributes["style"] = "display:inline"
+                    }
+                    if (motorcycleData.getRPM() >= 2666) {
+                        rpmTilesTag[8].attributes["style"] = "display:inline"
+                    }
+                    if (motorcycleData.getRPM() >= 3000) {
+                        rpmTilesTag[9].attributes["style"] = "display:inline"
+                    }
+                    if (motorcycleData.getRPM() >= 3333) {
+                        rpmTilesTag[10].attributes["style"] = "display:inline"
+                    }
+                    if (motorcycleData.getRPM() >= 3666) {
+                        rpmTilesTag[11].attributes["style"] = "display:inline"
+                    }
+                    if (motorcycleData.getRPM() >= 4000) {
+                        rpmTilesTag[12].attributes["style"] = "display:inline"
+                    }
+                    if (motorcycleData.getRPM() >= 4333) {
+                        rpmTilesTag[13].attributes["style"] = "display:inline"
+                    }
+                    if (motorcycleData.getRPM() >= 4666) {
+                        rpmTilesTag[14].attributes["style"] = "display:inline"
+                    }
+                    if (motorcycleData.getRPM() >= 5000) {
+                        rpmTilesTag[15].attributes["style"] = "display:inline"
+                    }
+                    if (motorcycleData.getRPM() >= 5333) {
+                        rpmTilesTag[16].attributes["style"] = "display:inline"
+                    }
+                    if (motorcycleData.getRPM() >= 5666) {
+                        rpmTilesTag[17].attributes["style"] = "display:inline"
+                    }
+                    if (motorcycleData.getRPM() >= 6000) {
+                        rpmTilesTag[18].attributes["style"] = "display:inline"
+                    }
+                    if (motorcycleData.getRPM() >= 6333) {
+                        rpmTilesTag[19].attributes["style"] = "display:inline"
+                    }
+                    if (motorcycleData.getRPM() >= 6666) {
+                        rpmTilesTag[20].attributes["style"] = "display:inline"
+                    }
+                    if (motorcycleData.getRPM() >= 7000) {
+                        rpmTilesTag[21].attributes["style"] = "display:inline"
+                    }
+                    if (motorcycleData.getRPM() >= 7333) {
+                        rpmTilesTag[22].attributes["style"] = "display:inline"
+                    }
+                    if (motorcycleData.getRPM() >= 7666) {
+                        rpmTilesTag[23].attributes["style"] = "display:inline"
+                    }
+                    if (motorcycleData.getRPM() >= 8000) {
+                        rpmTilesTag[24].attributes["style"] = "display:inline"
+                    }
+                    if (motorcycleData.getRPM() >= 8333) {
+                        rpmTilesTag[25].attributes["style"] = "display:inline"
+                    }
+                    if (motorcycleData.getRPM() >= 8666) {
+                        rpmTilesTag[26].attributes["style"] = "display:inline"
+                    }
+                    if (motorcycleData.getRPM() >= 9000) {
+                        rpmTilesTag[27].attributes["style"] = "display:inline"
+                    }
+                    if (motorcycleData.getRPM() >= 9333) {
+                        rpmTilesTag[28].attributes["style"] = "display:inline"
+                    }
+                    if (motorcycleData.getRPM() >= 9666) {
+                        rpmTilesTag[29].attributes["style"] = "display:inline"
+                    }
+                    if (motorcycleData.getRPM() >= 10000) {
+                        rpmTilesTag[30].attributes["style"] = "display:inline"
+                    }
+                }
+                break
+            case 1:
+                //12000
+                if let rpmGaugeDigitsTag = findElement(byID: "rpmGaugeDigits", in: xml) {
+                    rpmGaugeDigitsTag["rpmDialDigit1"]?.text = "2"
+                    rpmGaugeDigitsTag["rpmDialDigit2"]?.text = "4"
+                    rpmGaugeDigitsTag["rpmDialDigit3"]?.text = "5"
+                    rpmGaugeDigitsTag["rpmDialDigit4"]?.text = "6"
+                    rpmGaugeDigitsTag["rpmDialDigit5"]?.text = "7"
+                    rpmGaugeDigitsTag["rpmDialDigit6"]?.text = "8"
+                    rpmGaugeDigitsTag["rpmDialDigit7"]?.text = "9"
+                    rpmGaugeDigitsTag["rpmDialDigit8"]?.text = "10"
+                    rpmGaugeDigitsTag["rpmDialDigit9"]?.text = "11"
+                    rpmGaugeDigitsTag["rpmDialDigit10"]?.text = "12"
+                } else {
+                    os_log("Could not find rpmGaugeDigitsTag")
+                }
+                
+                if (motorcycleData.rpm != nil){
+                    if (motorcycleData.getRPM() >= 666) {
+                        rpmTilesTag[1].attributes["style"] = "display:inline"
+                    }
+                    if (motorcycleData.getRPM() >= 1333) {
+                        rpmTilesTag[2].attributes["style"] = "display:inline"
+                    }
+                    if (motorcycleData.getRPM() >= 2000) {
+                        rpmTilesTag[3].attributes["style"] = "display:inline"
+                    }
+                    if (motorcycleData.getRPM() >= 2666) {
+                        rpmTilesTag[4].attributes["style"] = "display:inline"
+                    }
+                    if (motorcycleData.getRPM() >= 3333) {
+                        rpmTilesTag[5].attributes["style"] = "display:inline"
+                    }
+                    if (motorcycleData.getRPM() >= 4000) {
+                        rpmTilesTag[6].attributes["style"] = "display:inline"
+                    }
+                    if (motorcycleData.getRPM() >= 4333) {
+                        rpmTilesTag[7].attributes["style"] = "display:inline"
+                    }
+                    if (motorcycleData.getRPM() >= 4666) {
+                        rpmTilesTag[8].attributes["style"] = "display:inline"
+                    }
+                    if (motorcycleData.getRPM() >= 5000) {
+                        rpmTilesTag[9].attributes["style"] = "display:inline"
+                    }
+                    if (motorcycleData.getRPM() >= 5333) {
+                        rpmTilesTag[10].attributes["style"] = "display:inline"
+                    }
+                    if (motorcycleData.getRPM() >= 5666) {
+                        rpmTilesTag[11].attributes["style"] = "display:inline"
+                    }
+                    if (motorcycleData.getRPM() >= 6000) {
+                        rpmTilesTag[12].attributes["style"] = "display:inline"
+                    }
+                    if (motorcycleData.getRPM() >= 6333) {
+                        rpmTilesTag[13].attributes["style"] = "display:inline"
+                    }
+                    if (motorcycleData.getRPM() >= 6666) {
+                        rpmTilesTag[14].attributes["style"] = "display:inline"
+                    }
+                    if (motorcycleData.getRPM() >= 7000) {
+                        rpmTilesTag[15].attributes["style"] = "display:inline"
+                    }
+                    if (motorcycleData.getRPM() >= 7333) {
+                        rpmTilesTag[16].attributes["style"] = "display:inline"
+                    }
+                    if (motorcycleData.getRPM() >= 7666) {
+                        rpmTilesTag[17].attributes["style"] = "display:inline"
+                    }
+                    if (motorcycleData.getRPM() >= 8000) {
+                        rpmTilesTag[18].attributes["style"] = "display:inline"
+                    }
+                    if (motorcycleData.getRPM() >= 8333) {
+                        rpmTilesTag[19].attributes["style"] = "display:inline"
+                    }
+                    if (motorcycleData.getRPM() >= 8666) {
+                        rpmTilesTag[20].attributes["style"] = "display:inline"
+                    }
+                    if (motorcycleData.getRPM() >= 9000) {
+                        rpmTilesTag[21].attributes["style"] = "display:inline"
+                    }
+                    if (motorcycleData.getRPM() >= 9333) {
+                        rpmTilesTag[22].attributes["style"] = "display:inline"
+                    }
+                    if (motorcycleData.getRPM() >= 9666) {
+                        rpmTilesTag[23].attributes["style"] = "display:inline"
+                    }
+                    if (motorcycleData.getRPM() >= 10000) {
+                        rpmTilesTag[24].attributes["style"] = "display:inline"
+                    }
+                    if (motorcycleData.getRPM() >= 10333) {
+                        rpmTilesTag[25].attributes["style"] = "display:inline"
+                    }
+                    if (motorcycleData.getRPM() >= 10666) {
+                        rpmTilesTag[26].attributes["style"] = "display:inline"
+                    }
+                    if (motorcycleData.getRPM() >= 11000) {
+                        rpmTilesTag[27].attributes["style"] = "display:inline"
+                    }
+                    if (motorcycleData.getRPM() >= 11333) {
+                        rpmTilesTag[28].attributes["style"] = "display:inline"
+                    }
+                    if (motorcycleData.getRPM() >= 11666) {
+                        rpmTilesTag[29].attributes["style"] = "display:inline"
+                    }
+                    if (motorcycleData.getRPM() >= 12000) {
+                        rpmTilesTag[30].attributes["style"] = "display:inline"
+                    }
+                }
+                break
+            case 2:
+                //15000
+                if let rpmGaugeDigitsTag = findElement(byID: "rpmGaugeDigits", in: xml) {
+                    rpmGaugeDigitsTag["rpmDialDigit1"]?.text = "2"
+                    rpmGaugeDigitsTag["rpmDialDigit2"]?.text = "4"
+                    rpmGaugeDigitsTag["rpmDialDigit3"]?.text = "6"
+                    rpmGaugeDigitsTag["rpmDialDigit4"]?.text = "8"
+                    rpmGaugeDigitsTag["rpmDialDigit5"]?.text = "9"
+                    rpmGaugeDigitsTag["rpmDialDigit6"]?.text = "10"
+                    rpmGaugeDigitsTag["rpmDialDigit7"]?.text = "11"
+                    rpmGaugeDigitsTag["rpmDialDigit8"]?.text = "12"
+                    rpmGaugeDigitsTag["rpmDialDigit9"]?.text = "13"
+                    rpmGaugeDigitsTag["rpmDialDigit10"]?.text = "15"
+                } else {
+                    os_log("Could not find rpmGaugeDigitsTag")
+                }
+                
+                if (motorcycleData.rpm != nil){
+                    if (motorcycleData.getRPM() >= 666) {
+                        rpmTilesTag[1].attributes["style"] = "display:inline"
+                    }
+                    if (motorcycleData.getRPM() >= 1333) {
+                        rpmTilesTag[2].attributes["style"] = "display:inline"
+                    }
+                    if (motorcycleData.getRPM() >= 2000) {
+                        rpmTilesTag[3].attributes["style"] = "display:inline"
+                    }
+                    if (motorcycleData.getRPM() >= 2666) {
+                        rpmTilesTag[4].attributes["style"] = "display:inline"
+                    }
+                    if (motorcycleData.getRPM() >= 3333) {
+                        rpmTilesTag[5].attributes["style"] = "display:inline"
+                    }
+                    if (motorcycleData.getRPM() >= 4000) {
+                        rpmTilesTag[6].attributes["style"] = "display:inline"
+                    }
+                    if (motorcycleData.getRPM() >= 4666) {
+                        rpmTilesTag[7].attributes["style"] = "display:inline"
+                    }
+                    if (motorcycleData.getRPM() >= 5333) {
+                        rpmTilesTag[8].attributes["style"] = "display:inline"
+                    }
+                    if (motorcycleData.getRPM() >= 6000) {
+                        rpmTilesTag[9].attributes["style"] = "display:inline"
+                    }
+                    if (motorcycleData.getRPM() >= 6666) {
+                        rpmTilesTag[10].attributes["style"] = "display:inline"
+                    }
+                    if (motorcycleData.getRPM() >= 7333) {
+                        rpmTilesTag[11].attributes["style"] = "display:inline"
+                    }
+                    if (motorcycleData.getRPM() >= 8000) {
+                        rpmTilesTag[12].attributes["style"] = "display:inline"
+                    }
+                    if (motorcycleData.getRPM() >= 8333) {
+                        rpmTilesTag[3].attributes["style"] = "display:inline"
+                    }
+                    if (motorcycleData.getRPM() >= 8666) {
+                        rpmTilesTag[14].attributes["style"] = "display:inline"
+                    }
+                    if (motorcycleData.getRPM() >= 9000) {
+                        rpmTilesTag[15].attributes["style"] = "display:inline"
+                    }
+                    if (motorcycleData.getRPM() >= 9333) {
+                        rpmTilesTag[16].attributes["style"] = "display:inline"
+                    }
+                    if (motorcycleData.getRPM() >= 9666) {
+                        rpmTilesTag[17].attributes["style"] = "display:inline"
+                    }
+                    if (motorcycleData.getRPM() >= 10000) {
+                        rpmTilesTag[18].attributes["style"] = "display:inline"
+                    }
+                    if (motorcycleData.getRPM() >= 10333) {
+                        rpmTilesTag[19].attributes["style"] = "display:inline"
+                    }
+                    if (motorcycleData.getRPM() >= 10666) {
+                        rpmTilesTag[20].attributes["style"] = "display:inline"
+                    }
+                    if (motorcycleData.getRPM() >= 11000) {
+                        rpmTilesTag[21].attributes["style"] = "display:inline"
+                    }
+                    if (motorcycleData.getRPM() >= 11333) {
+                        rpmTilesTag[22].attributes["style"] = "display:inline"
+                    }
+                    if (motorcycleData.getRPM() >= 11666) {
+                        rpmTilesTag[23].attributes["style"] = "display:inline"
+                    }
+                    if (motorcycleData.getRPM() >= 12000) {
+                        rpmTilesTag[24].attributes["style"] = "display:inline"
+                    }
+                    if (motorcycleData.getRPM() >= 12333) {
+                        rpmTilesTag[25].attributes["style"] = "display:inline"
+                    }
+                    if (motorcycleData.getRPM() >= 12666) {
+                        rpmTilesTag[26].attributes["style"] = "display:inline"
+                    }
+                    if (motorcycleData.getRPM() >= 13000) {
+                        rpmTilesTag[27].attributes["style"] = "display:inline"
+                    }
+                    if (motorcycleData.getRPM() >= 13666) {
+                        rpmTilesTag[28].attributes["style"] = "display:inline"
+                    }
+                    if (motorcycleData.getRPM() >= 14333) {
+                        rpmTilesTag[29].attributes["style"] = "display:inline"
+                    }
+                    if (motorcycleData.getRPM() >= 15000) {
+                        rpmTilesTag[30].attributes["style"] = "display:inline"
+                    }
+                }
+                break
+            default:
+                os_log("StandardDashboard: Unknown or default RPM Setting for standard dashboard")
+                break
+            }
+        } else {
+            os_log("rpmTilesTag not found.")
+        }
+
+        return xml // Return the modified XML object
     }
+
+    // Recursive function to search for an element by its 'id' attribute
+    class func findElement(byID id: String, in element: XMLNode) -> XMLNode? {
+        // Check if the current element has the matching 'id' attribute
+        if let elementID = element.id, elementID == id {
+            return element
+        }
+
+        // Traverse child elements recursively
+        for child in element.children {
+            if let found = findElement(byID: id, in: child) {
+                return found // Return if the element is found
+            }
+        }
+
+        return nil // Return nil if the element isn't found
+    }
+
 }

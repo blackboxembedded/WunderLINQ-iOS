@@ -191,22 +191,9 @@ class DashViewController: UIViewController, UIWebViewDelegate {
     }
     
     private func setupScreenOrientation() {
-        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
-            let interfaceOrientation = windowScene.interfaceOrientation
-            if (interfaceOrientation.isPortrait){
-                // Remove next 3 lines for portrait dashboards
-                let offset = (dashView.frame.size.height / 2.0) - (dashView.frame.size.width / 2.0)
-                let translate = CGAffineTransform(translationX: 0.0, y: offset)
-                webView.transform = translate
-                // End
-                webView.frame.size.width = dashView.frame.size.width
-                webView.frame.size.height = dashView.frame.size.height
-            } else {
-                webView.transform = CGAffineTransform.identity
-                webView.frame.size.width = dashView.frame.size.width
-                webView.frame.size.height = dashView.frame.size.height
-            }
-        }
+        webView.transform = CGAffineTransform.identity
+        webView.frame.size.width = dashView.frame.size.width
+        webView.frame.size.height = dashView.frame.size.height
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -345,6 +332,8 @@ class DashViewController: UIViewController, UIWebViewDelegate {
         } else {
             currentDashboard = currentDashboard + 1
         }
+        // Save away current dashboard
+        UserDefaults.standard.set(currentDashboard, forKey: "lastDashboard")
         updateDashboard()
     }
     
@@ -355,6 +344,8 @@ class DashViewController: UIViewController, UIWebViewDelegate {
         } else {
             currentDashboard = currentDashboard - 1
         }
+        // Save away current dashboard
+        UserDefaults.standard.set(currentDashboard, forKey: "lastDashboard")
         updateDashboard()
     }
     
@@ -386,6 +377,16 @@ class DashViewController: UIViewController, UIWebViewDelegate {
     }
 
     @objc func updateDashboard(){
+        // Orientation Check
+        var isPortrait = true
+        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+           windowScene.interfaceOrientation.isLandscape {
+            isPortrait = false
+        }
+        let safeArea = view.safeAreaLayoutGuide.layoutFrame
+        let usableWidth = safeArea.width * 2.5
+        let usableHeight = safeArea.height * 2.5
+        
         // Update Buttons
         if (faults.getallActiveDesc().isEmpty){
             faultsBtn.tintColor = UIColor.clear
@@ -398,28 +399,28 @@ class DashViewController: UIViewController, UIWebViewDelegate {
         if (currentDashboard == 1){
             DispatchQueue.global(qos: .userInitiated).async {
                // Do long running task here
-                let xml = StandardDashboard.updateDashboard(self.currentInfoLine)
+                let xml = StandardDashboard.updateDashboard(self.currentInfoLine, isPortrait, usableHeight, usableWidth)
                // Bounce back to the main thread to update the UI
                DispatchQueue.main.async {
-                   self.webView.loadHTMLString(xml.description, baseURL: nil)
+                   self.webView.loadHTMLString(xml!.description, baseURL: nil)
                }
             }
         } else if (currentDashboard == 2){
             DispatchQueue.global(qos: .userInitiated).async {
                // Do long running task here
-                let xml = SportDashboard.updateDashboard(self.currentInfoLine)
+                let xml = SportDashboard.updateDashboard(self.currentInfoLine, isPortrait, usableHeight, usableWidth)
                // Bounce back to the main thread to update the UI
                DispatchQueue.main.async {
-                   self.webView.loadHTMLString(xml.description, baseURL: nil)
+                   self.webView.loadHTMLString(xml!.description, baseURL: nil)
                }
             }
         } else if (currentDashboard == 3){
             DispatchQueue.global(qos: .userInitiated).async {
                // Do long running task here
-                let xml = ADVDashboard.updateDashboard(self.currentInfoLine)
+                let xml = ADVDashboard.updateDashboard(self.currentInfoLine, isPortrait, usableHeight, usableWidth)
                // Bounce back to the main thread to update the UI
                DispatchQueue.main.async {
-                   self.webView.loadHTMLString(xml.description, baseURL: nil)
+                   self.webView.loadHTMLString(xml!.description, baseURL: nil)
                }
             }
         }
