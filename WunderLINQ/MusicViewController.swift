@@ -48,42 +48,15 @@ class MusicViewController: UIViewController {
     
     let playImage = UIImage(named: "playback_play")
     let pauseImage = UIImage(named: "playback_pause")
-    
-    override var preferredStatusBarStyle : UIStatusBarStyle {
-        switch(UserDefaults.standard.integer(forKey: "darkmode_preference")){
-        case 0:
-            //OFF
-            return .default
-        case 1:
-            //On
-            return .lightContent
-        default:
-            //Default
-            if traitCollection.userInterfaceStyle == .light {
-                return .darkContent
-            } else {
-                return .lightContent
-            }
-        }
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         os_log("MusicViewController: viewDidLoad()")
-        switch(UserDefaults.standard.integer(forKey: "darkmode_preference")){
-        case 0:
-            //OFF
-            overrideUserInterfaceStyle = .light
-            self.navigationController?.isNavigationBarHidden = true
-            self.navigationController?.isNavigationBarHidden = false
-        case 1:
-            //On
-            overrideUserInterfaceStyle = .dark
-            self.navigationController?.isNavigationBarHidden = true
-            self.navigationController?.isNavigationBarHidden = false
-        default:
-            //Default
-            break
+        
+        if UserDefaults.standard.bool(forKey: "display_brightness_preference") {
+            UIScreen.main.brightness = CGFloat(1.0)
+        } else {
+            UIScreen.main.brightness = CGFloat(UserDefaults.standard.float(forKey: "systemBrightness"))
         }
         
         let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))
@@ -132,18 +105,12 @@ class MusicViewController: UIViewController {
             faultsBtn.tintColor = UIColor.clear
             faultsButton.isEnabled = false
         } else {
-            faultsBtn.tintColor = UIColor.red
+            faultsBtn.tintColor = UIColor(named: "motorrad_red")
             faultsButton.isEnabled = true
         }
         self.navigationItem.title = NSLocalizedString("music_title", comment: "")
         self.navigationItem.leftBarButtonItems = [backButton, faultsButton]
         self.navigationItem.rightBarButtonItems = [forwardButton]
-
-        if UserDefaults.standard.bool(forKey: "display_brightness_preference") {
-            UIScreen.main.brightness = CGFloat(1.0)
-        } else {
-            UIScreen.main.brightness = CGFloat(UserDefaults.standard.float(forKey: "systemBrightness"))
-        }
         
         let musicApp = UserDefaults.standard.integer(forKey: "musicplayer_preference")
         switch (musicApp){

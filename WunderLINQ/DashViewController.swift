@@ -44,68 +44,15 @@ class DashViewController: UIViewController, UIWebViewDelegate {
     var currentDashboard = 1
     var currentInfoLine = 1
     
-    override var preferredStatusBarStyle : UIStatusBarStyle {
-        switch(UserDefaults.standard.integer(forKey: "darkmode_preference")){
-        case 0:
-            //OFF
-            return .default
-        case 1:
-            //On
-            return .lightContent
-        default:
-            //Default
-            if traitCollection.userInterfaceStyle == .light {
-                return .darkContent
-            } else {
-                return .lightContent
-            }
-        }
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         os_log("DashViewController: viewDidLoad()")
-        if isTimerRunning == false {
-            runTimer()
+        
+        if UserDefaults.standard.bool(forKey: "display_brightness_preference") {
+            UIScreen.main.brightness = CGFloat(1.0)
+        } else {
+            UIScreen.main.brightness = CGFloat(UserDefaults.standard.float(forKey: "systemBrightness"))
         }
-        
-        switch(UserDefaults.standard.integer(forKey: "darkmode_preference")){
-        case 0:
-            //OFF
-            overrideUserInterfaceStyle = .light
-            self.navigationController?.isNavigationBarHidden = true
-            self.navigationController?.isNavigationBarHidden = false
-        case 1:
-            //On
-            overrideUserInterfaceStyle = .dark
-            self.navigationController?.isNavigationBarHidden = true
-            self.navigationController?.isNavigationBarHidden = false
-        default:
-            //Default
-            break
-        }
-        
-        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))
-        swipeLeft.direction = .left
-        self.view.addGestureRecognizer(swipeLeft)
-        
-        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))
-        swipeRight.direction = .right
-        self.view.addGestureRecognizer(swipeRight)
-        
-        let swipeUp = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))
-        swipeUp.direction = .up
-        self.view.addGestureRecognizer(swipeUp)
-        
-        let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))
-        swipeDown.direction = .down
-        self.view.addGestureRecognizer(swipeDown)
-        
-        let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(longPress(longPressGestureRecognizer:)))
-        self.view.addGestureRecognizer(longPressRecognizer)
-        
-        let touchRecognizer = UITapGestureRecognizer(target: self, action:  #selector(onTouch))
-        self.view.addGestureRecognizer(touchRecognizer)
         
         let backBtn = UIButton()
         backBtn.setImage(UIImage(named: "Left")?.withRenderingMode(.alwaysTemplate), for: .normal)
@@ -148,12 +95,6 @@ class DashViewController: UIViewController, UIWebViewDelegate {
         self.navigationItem.title = NSLocalizedString("dash_title", comment: "")
         self.navigationItem.leftBarButtonItems = [backButton, faultsButton]
         self.navigationItem.rightBarButtonItems = [forwardButton]
-
-        if UserDefaults.standard.bool(forKey: "display_brightness_preference") {
-            UIScreen.main.brightness = CGFloat(1.0)
-        } else {
-            UIScreen.main.brightness = CGFloat(UserDefaults.standard.float(forKey: "systemBrightness"))
-        }
         
         var screenSize = CGSize(width: dashView.frame.size.height, height: dashView.frame.size.width)
         if (dashView.frame.size.width > dashView.frame.size.height){
@@ -169,6 +110,28 @@ class DashViewController: UIViewController, UIWebViewDelegate {
         webView.isUserInteractionEnabled = false
         webView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         dashView.addSubview(webView)
+        
+        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))
+        swipeLeft.direction = .left
+        self.view.addGestureRecognizer(swipeLeft)
+        
+        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))
+        swipeRight.direction = .right
+        self.view.addGestureRecognizer(swipeRight)
+        
+        let swipeUp = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))
+        swipeUp.direction = .up
+        self.view.addGestureRecognizer(swipeUp)
+        
+        let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))
+        swipeDown.direction = .down
+        self.view.addGestureRecognizer(swipeDown)
+        
+        let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(longPress(longPressGestureRecognizer:)))
+        self.view.addGestureRecognizer(longPressRecognizer)
+        
+        let touchRecognizer = UITapGestureRecognizer(target: self, action:  #selector(onTouch))
+        self.view.addGestureRecognizer(touchRecognizer)
         
         updateDashboard()
 
@@ -213,6 +176,10 @@ class DashViewController: UIViewController, UIWebViewDelegate {
             currentDashboard = Int(lastSelection ?? "1") ?? 1
         } else {
             currentDashboard = 1
+        }
+        
+        if isTimerRunning == false {
+            runTimer()
         }
     }
     

@@ -27,7 +27,7 @@ class MainCollectionViewCell: UICollectionViewCell {
     public var value: UILabel!
     public var icon: UIImageView!
     
-    func setLabel(label: String) {
+    func setHeader(label: String) {
         headerLabel.adjustsFontSizeToFitWidth = true
         headerLabel.text = label
     }
@@ -40,7 +40,7 @@ class MainCollectionViewCell: UICollectionViewCell {
         iconImageView.image = icon
     }
     
-    func setLabelColor(labelColor: UIColor){
+    func setValueColor(labelColor: UIColor){
         valueLabel.textColor = labelColor
     }
     

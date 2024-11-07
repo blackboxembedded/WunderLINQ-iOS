@@ -196,42 +196,6 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         return adjAngle
     }
 
-    override var preferredStatusBarStyle : UIStatusBarStyle {
-        switch(UserDefaults.standard.integer(forKey: "darkmode_preference")){
-        case 0:
-            //OFF
-            if(self.navigationController?.isToolbarHidden ?? false){
-                return .lightContent
-            } else {
-                return .default
-            }
-        case 1:
-            //On
-            if(self.navigationController?.isToolbarHidden ?? false){
-                return .default
-            } else {
-                return .lightContent
-            }
-        default:
-            //Default
-            if traitCollection.userInterfaceStyle == .light {
-                //OFF
-                if(self.navigationController?.isToolbarHidden ?? false){
-                    return .lightContent
-                } else {
-                    return .darkContent
-                }
-            } else {
-                //On
-                if(self.navigationController?.isToolbarHidden ?? false){
-                    return .darkContent
-                } else {
-                    return .lightContent
-                }
-            }
-        }
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         os_log("MainCollectionViewController: viewWillAppear")
         super.viewWillAppear(animated)
@@ -269,35 +233,13 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         os_log("MainCollectionViewController: viewDidLoad()")
         super.viewDidLoad()
         
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        
         registerSettingsBundle()
-        
-        switch(UserDefaults.standard.integer(forKey: "darkmode_preference")){
-        case 0:
-            //OFF
-            overrideUserInterfaceStyle = .light
-            self.navigationController?.isNavigationBarHidden = true
-            self.navigationController?.isNavigationBarHidden = false
-        case 1:
-            //On
-            overrideUserInterfaceStyle = .dark
-            self.navigationController?.isNavigationBarHidden = true
-            self.navigationController?.isNavigationBarHidden = false
-        default:
-            //Default
-            break
-        }
         
         if UserDefaults.standard.bool(forKey: "display_brightness_preference") {
             UIScreen.main.brightness = CGFloat(1.0)
         } else {
             UIScreen.main.brightness = CGFloat(UserDefaults.standard.float(forKey: "systemBrightness"))
         }
-        
-        //centralManager = CBCentralManager(delegate: self, queue: nil)
-        centralManager = CBCentralManager(delegate: self, queue: nil, options: [CBCentralManagerOptionRestoreIdentifierKey: "com.blackboxembedded.wunderlinq"])
         
         let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))
         swipeLeft.direction = .left
@@ -320,7 +262,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         
         let touchRecognizer = UITapGestureRecognizer(target: self, action:  #selector(MainCollectionViewController.onTouch))
         self.view.addGestureRecognizer(touchRecognizer)
-        
+
         // Setup Buttons
         backBtn = UIButton()
         backBtn.setImage(UIImage(named: "Left")?.withRenderingMode(.alwaysTemplate), for: .normal)
@@ -335,7 +277,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         disconnectBtn = UIButton(type: .custom)
         let disconnectImage = UIImage(named: "Bluetooth")?.withRenderingMode(.alwaysTemplate)
         disconnectBtn.setImage(disconnectImage, for: .normal)
-        disconnectBtn.tintColor = UIColor.red
+        disconnectBtn.tintColor = UIColor(named: "motorrad_red")
         disconnectBtn.accessibilityIgnoresInvertColors = true
         disconnectBtn.addTarget(self, action: #selector(btButtonTapped), for: .touchUpInside)
         disconnectButton = UIBarButtonItem(customView: disconnectBtn)
@@ -381,6 +323,9 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         self.navigationItem.rightBarButtonItems = [forwardButton, menuButton]
         
         _ = menu /// Create the menu.
+        
+        collectionView.delegate = self
+        collectionView.dataSource = self
         
         let cellCount = UserDefaults.standard.integer(forKey: "GRIDCOUNT")
         if ( self.view.bounds.width > self.view.bounds.height){
@@ -494,6 +439,8 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                 }
             }
         }
+        
+        centralManager = CBCentralManager(delegate: self, queue: nil, options: [CBCentralManagerOptionRestoreIdentifierKey: "com.blackboxembedded.wunderlinq"])
         
         // Scheduling timer to Call the function "updateTime" with the interval of 1 seconds
         timeTimer = Timer.scheduledTimer(timeInterval: 0.25, target: self, selector: #selector(self.updatePhoneSensorData), userInfo: nil, repeats: true)
@@ -773,11 +720,11 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! MainCollectionViewCell
         let label = MotorcycleData.getLabel(dataPoint: getCellDataPoint(cell: indexPath.row + 1))
-        cell.setLabel(label: label)
+        cell.setHeader(label: label)
         let icon = MotorcycleData.getIcon(dataPoint: getCellDataPoint(cell: indexPath.row + 1))
         cell.setIcon(icon: icon)
-        if let labelColor = MotorcycleData.getLabelColor(dataPoint: getCellDataPoint(cell: indexPath.row + 1)){
-            cell.setLabelColor(labelColor: labelColor)
+        if let labelColor = MotorcycleData.getValueColor(dataPoint: getCellDataPoint(cell: indexPath.row + 1)){
+            cell.setValueColor(labelColor: labelColor)
         }
         return cell
     }
@@ -894,13 +841,49 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     }
     
     // MARK: - Updating UI
+    func setInterfaceColors(){
+        switch(UserDefaults.standard.integer(forKey: "darkmode_preference")){
+        case 0:
+            //OFF
+            overrideUserInterfaceStyle = .light
+            // Create a custom appearance for the navigation bar
+            let appearance = UINavigationBarAppearance()
+            appearance.configureWithOpaqueBackground() // or configureWithTransparentBackground() if you prefer transparency
+            appearance.backgroundColor = UIColor.white // Set your desired background color
+            
+            // Customize the title text attributes (optional)
+            appearance.titleTextAttributes = [.foregroundColor: UIColor.black] // Set text color
+            
+            // Apply the appearance to the navigation bar
+            navigationController?.navigationBar.standardAppearance = appearance
+            navigationController?.navigationBar.scrollEdgeAppearance = appearance
+        case 1:
+            //On
+            overrideUserInterfaceStyle = .dark
+            // Create a custom appearance for the navigation bar
+            let appearance = UINavigationBarAppearance()
+            appearance.configureWithOpaqueBackground() // or configureWithTransparentBackground() if you prefer transparency
+            appearance.backgroundColor = UIColor.black // Set your desired background color
+            
+            // Customize the title text attributes (optional)
+            appearance.titleTextAttributes = [.foregroundColor: UIColor.white] // Set text color
+            
+            // Apply the appearance to the navigation bar
+            navigationController?.navigationBar.standardAppearance = appearance
+            navigationController?.navigationBar.scrollEdgeAppearance = appearance
+        default:
+            //Default
+            break
+        }
+    }
+    
     func updateMessageDisplay() {
         // Update Buttons
         if (faults.getallActiveDesc().isEmpty){
             faultsBtn.tintColor = UIColor.clear
             faultsButton.isEnabled = false
         } else {
-            faultsBtn.tintColor = UIColor.red
+            faultsBtn.tintColor = UIColor(named: "motorrad_red")
             faultsButton.isEnabled = true
         }
         self.navigationItem.leftBarButtonItems = [backButton, disconnectButton, faultsButton]
@@ -919,11 +902,11 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         let icon: UIImage = MotorcycleData.getIcon(dataPoint: getCellDataPoint(cell: cellNumber))
         
         if let cell = self.collectionView.cellForItem(at: IndexPath(row: cellNumber - 1, section: 0) as IndexPath) as? MainCollectionViewCell{
-            cell.setLabel(label: label)
+            cell.setHeader(label: label)
             cell.setValue(value: value)
             cell.setIcon(icon: icon)
-            if let labelColor = MotorcycleData.getLabelColor(dataPoint: getCellDataPoint(cell: cellNumber)){
-                cell.setLabelColor(labelColor: labelColor)
+            if let labelColor = MotorcycleData.getValueColor(dataPoint: getCellDataPoint(cell: cellNumber)){
+                cell.setValueColor(labelColor: labelColor)
             }
         }
     }
@@ -1058,7 +1041,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
      */
     func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
         os_log("MainCollectionViewController: SUCCESSFULLY CONNECTED TO WunderLINQ!")
-        disconnectBtn.tintColor = UIColor.blue
+        disconnectBtn.tintColor = UIColor(named: "motorrad_blue")
         
         os_log("MainCollectionViewController: Peripheral info: \(peripheral)")
         peripheral.delegate = self
@@ -1085,7 +1068,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
      */
     func centralManager(_ central: CBCentralManager, didFailToConnect peripheral: CBPeripheral, error: Error?) {
         os_log("MainCollectionViewController: CONNECTION TO WunderLINQ FAILED!")
-        disconnectBtn.tintColor = UIColor.red
+        disconnectBtn.tintColor = UIColor(named: "motorrad_red")
     }
     
     
@@ -1100,7 +1083,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
      */
     func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
         os_log("MainCollectionViewController: DISCONNECTED FROM WunderLINQ!")
-        disconnectBtn.tintColor = UIColor.red
+        disconnectBtn.tintColor = UIColor(named: "motorrad_red")
         //motorcycleData.clear()
         updateMessageDisplay()
         if error != nil {

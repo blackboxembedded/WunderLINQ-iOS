@@ -145,21 +145,7 @@ class WaypointsNavTableViewController: UITableViewController {
             highlightColor = UIColor(named: "accent")
         }
 
-        switch(UserDefaults.standard.integer(forKey: "darkmode_preference")){
-        case 0:
-            //OFF
-            overrideUserInterfaceStyle = .light
-            self.navigationController?.isNavigationBarHidden = true
-            self.navigationController?.isNavigationBarHidden = false
-        case 1:
-            //On
-            overrideUserInterfaceStyle = .dark
-            self.navigationController?.isNavigationBarHidden = true
-            self.navigationController?.isNavigationBarHidden = false
-        default:
-            //Default
-            break
-        }
+        setNavBarColors()
 
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))
         swipeRight.direction = .right
@@ -190,7 +176,7 @@ class WaypointsNavTableViewController: UITableViewController {
             faultsBtn.tintColor = UIColor.clear
             faultsButton.isEnabled = false
         } else {
-            faultsBtn.tintColor = UIColor.red
+            faultsBtn.tintColor = UIColor(named: "motorrad_red")
             faultsButton.isEnabled = true
         }
         self.navigationItem.title = NSLocalizedString("waypoints_nav_title", comment: "")
@@ -327,6 +313,40 @@ class WaypointsNavTableViewController: UITableViewController {
     @objc func faultsButtonTapped() {
         let viewController = self.storyboard?.instantiateViewController(withIdentifier: "FaultsTableViewController") as! FaultsTableViewController
         self.navigationController?.pushViewController(viewController, animated: true)
+    }
+    
+    func setNavBarColors(){
+        switch(UserDefaults.standard.integer(forKey: "darkmode_preference")){
+        case 0:
+            //OFF
+            // Create a custom appearance for the navigation bar
+            let appearance = UINavigationBarAppearance()
+            appearance.configureWithOpaqueBackground() // or configureWithTransparentBackground() if you prefer transparency
+            appearance.backgroundColor = UIColor.white // Set your desired background color
+            
+            // Customize the title text attributes (optional)
+            appearance.titleTextAttributes = [.foregroundColor: UIColor.black] // Set text color
+            
+            // Apply the appearance to the navigation bar
+            navigationController?.navigationBar.standardAppearance = appearance
+            navigationController?.navigationBar.scrollEdgeAppearance = appearance
+        case 1:
+            //On
+            // Create a custom appearance for the navigation bar
+            let appearance = UINavigationBarAppearance()
+            appearance.configureWithOpaqueBackground() // or configureWithTransparentBackground() if you prefer transparency
+            appearance.backgroundColor = UIColor.black // Set your desired background color
+            
+            // Customize the title text attributes (optional)
+            appearance.titleTextAttributes = [.foregroundColor: UIColor.white] // Set text color
+            
+            // Apply the appearance to the navigation bar
+            navigationController?.navigationBar.standardAppearance = appearance
+            navigationController?.navigationBar.scrollEdgeAppearance = appearance
+        default:
+            //Default
+            break
+        }
     }
 }
 

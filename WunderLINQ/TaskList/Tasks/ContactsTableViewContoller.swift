@@ -198,6 +198,21 @@ class ContactsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setNavBarColors()
+        
+        var buttonColor = UIColor(named: "imageTint")
+        switch(UserDefaults.standard.integer(forKey: "darkmode_preference")){
+        case 0:
+            //OFF
+            buttonColor = UIColor.black
+        case 1:
+            //On
+            buttonColor = UIColor.white
+        default:
+            //Default
+            break
+        }
+        
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))
         swipeRight.direction = .right
         self.view.addGestureRecognizer(swipeRight)
@@ -207,7 +222,7 @@ class ContactsTableViewController: UITableViewController {
         
         let backBtn = UIButton()
         backBtn.setImage(UIImage(named: "Left")?.withRenderingMode(.alwaysTemplate), for: .normal)
-        backBtn.tintColor = UIColor(named: "imageTint")
+        backBtn.tintColor = buttonColor
         backBtn.addTarget(self, action: #selector(leftScreen), for: .touchUpInside)
         backButton = UIBarButtonItem(customView: backBtn)
         let backButtonWidth = backButton.customView?.widthAnchor.constraint(equalToConstant: 30)
@@ -230,17 +245,11 @@ class ContactsTableViewController: UITableViewController {
             faultsBtn.tintColor = UIColor.clear
             faultsButton.isEnabled = false
         } else {
-            faultsBtn.tintColor = UIColor.red
+            faultsBtn.tintColor = UIColor(named: "motorrad_red")
             faultsButton.isEnabled = true
         }
         self.navigationItem.title = NSLocalizedString("contactlist_title", comment: "")
         self.navigationItem.leftBarButtonItems = [backButton, faultsButton]
-        
-        if UserDefaults.standard.bool(forKey: "display_brightness_preference") {
-            UIScreen.main.brightness = CGFloat(1.0)
-        } else {
-            UIScreen.main.brightness = CGFloat(UserDefaults.standard.float(forKey: "systemBrightness"))
-        }
         
         self.getContacts()
     }
@@ -288,6 +297,40 @@ class ContactsTableViewController: UITableViewController {
     @objc func faultsButtonTapped() {
         let viewController = self.storyboard?.instantiateViewController(withIdentifier: "FaultsTableViewController") as! FaultsTableViewController
         self.navigationController?.pushViewController(viewController, animated: true)
+    }
+    
+    func setNavBarColors(){
+        switch(UserDefaults.standard.integer(forKey: "darkmode_preference")){
+        case 0:
+            //OFF
+            // Create a custom appearance for the navigation bar
+            let appearance = UINavigationBarAppearance()
+            appearance.configureWithOpaqueBackground() // or configureWithTransparentBackground() if you prefer transparency
+            appearance.backgroundColor = UIColor.white // Set your desired background color
+            
+            // Customize the title text attributes (optional)
+            appearance.titleTextAttributes = [.foregroundColor: UIColor.black] // Set text color
+            
+            // Apply the appearance to the navigation bar
+            navigationController?.navigationBar.standardAppearance = appearance
+            navigationController?.navigationBar.scrollEdgeAppearance = appearance
+        case 1:
+            //On
+            // Create a custom appearance for the navigation bar
+            let appearance = UINavigationBarAppearance()
+            appearance.configureWithOpaqueBackground() // or configureWithTransparentBackground() if you prefer transparency
+            appearance.backgroundColor = UIColor.black // Set your desired background color
+            
+            // Customize the title text attributes (optional)
+            appearance.titleTextAttributes = [.foregroundColor: UIColor.white] // Set text color
+            
+            // Apply the appearance to the navigation bar
+            navigationController?.navigationBar.standardAppearance = appearance
+            navigationController?.navigationBar.scrollEdgeAppearance = appearance
+        default:
+            //Default
+            break
+        }
     }
 }
 

@@ -126,6 +126,7 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
             mapping.append(taskRow15)
         }
     }
+    
     private func loadTasks() {
         // Navigate Task
         guard let task0 = Tasks(label: NSLocalizedString("task_title_navigation", comment: ""), icon: UIImage(named: "Map")?.withRenderingMode(.alwaysTemplate)) else {
@@ -538,21 +539,11 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        switch(UserDefaults.standard.integer(forKey: "darkmode_preference")){
-        case 0:
-            //OFF
-            overrideUserInterfaceStyle = .light
-            self.navigationController?.isNavigationBarHidden = true
-            self.navigationController?.isNavigationBarHidden = false
-        case 1:
-            //On
-            overrideUserInterfaceStyle = .dark
-            self.navigationController?.isNavigationBarHidden = true
-            self.navigationController?.isNavigationBarHidden = false
-        default:
-            //Default
-            break
+        
+        if UserDefaults.standard.bool(forKey: "display_brightness_preference") {
+            UIScreen.main.brightness = CGFloat(1.0)
+        } else {
+            UIScreen.main.brightness = CGFloat(UserDefaults.standard.float(forKey: "systemBrightness"))
         }
         
         let backBtn = UIButton()
@@ -648,24 +639,6 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
         }
         
         notificationCenter.addObserver(self, selector:#selector(self.launchAccPage), name: NSNotification.Name("StatusUpdate"), object: nil)
-    }
-    
-    override var preferredStatusBarStyle : UIStatusBarStyle {
-        switch(UserDefaults.standard.integer(forKey: "darkmode_preference")){
-        case 0:
-            //OFF
-            return .default
-        case 1:
-            //On
-            return .lightContent
-        default:
-            //Default
-            if traitCollection.userInterfaceStyle == .light {
-                return .darkContent
-            } else {
-                return .lightContent
-            }
-        }
     }
     
     private func setupScreenOrientation() {

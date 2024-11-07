@@ -169,50 +169,16 @@ class AccessoryViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
-    override var preferredStatusBarStyle : UIStatusBarStyle {
-        switch(UserDefaults.standard.integer(forKey: "darkmode_preference")){
-        case 0:
-            //OFF
-            return .default
-        case 1:
-            //On
-            return .lightContent
-        default:
-            //Default
-            if traitCollection.userInterfaceStyle == .light {
-                return .darkContent
-            } else {
-                return .lightContent
-            }
-        }
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
         
         if isTimerRunning == false {
             runTimer()
         }
-        
-        switch(UserDefaults.standard.integer(forKey: "darkmode_preference")){
-        case 0:
-            //OFF
-            overrideUserInterfaceStyle = .light
-            self.navigationController?.isNavigationBarHidden = true
-            self.navigationController?.isNavigationBarHidden = false
-        case 1:
-            //On
-            overrideUserInterfaceStyle = .dark
-            self.navigationController?.isNavigationBarHidden = true
-            self.navigationController?.isNavigationBarHidden = false
-        default:
-            //Default
-            break
-        }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
         if UserDefaults.standard.bool(forKey: "display_brightness_preference") {
             UIScreen.main.brightness = CGFloat(1.0)
@@ -255,7 +221,7 @@ class AccessoryViewController: UIViewController, UITextFieldDelegate {
             faultsBtn.tintColor = UIColor.clear
             faultsButton.isEnabled = false
         } else {
-            faultsBtn.tintColor = UIColor.red
+            faultsBtn.tintColor = UIColor(named: "motorrad_red")
             faultsButton.isEnabled = true
         }
         self.navigationItem.title = NSLocalizedString("accessory_title", comment: "")

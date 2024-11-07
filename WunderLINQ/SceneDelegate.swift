@@ -47,6 +47,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, SPTAppRemoteDelegate, S
         os_log("SceneDelegate: willConnectTo")
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
+        
+        switch(UserDefaults.standard.integer(forKey: "darkmode_preference")){
+        case 0:
+            //OFF
+            window!.overrideUserInterfaceStyle = .light
+        case 1:
+            //On
+            window!.overrideUserInterfaceStyle = .dark
+        default:
+            //Default
+            break
+        }
 
         if !UserDefaults.standard.bool(forKey: "firstRun") {
             let storyboard = UIStoryboard.main

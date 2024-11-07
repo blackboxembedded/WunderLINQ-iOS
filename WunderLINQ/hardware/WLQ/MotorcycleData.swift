@@ -578,7 +578,7 @@ class MotorcycleData {
         return label
     }
     
-    class func getLabelColor(dataPoint: Int) -> UIColor? {
+    class func getValueColor(dataPoint: Int) -> UIColor? {
         var labelColor:UIColor?
         switch(UserDefaults.standard.integer(forKey: "darkmode_preference")){
         case 0:
@@ -604,20 +604,19 @@ class MotorcycleData {
             if (MotorcycleData.shared.gear != nil) {
                 let gear:String = MotorcycleData.shared.gear!
                 if gear == "N" {
-                    labelColor = UIColor.green
+                    labelColor = UIColor(named: "motorrad_green")
                 } else if "123456".contains(gear) {
-                    labelColor = UIColor.yellow
+                    labelColor = UIColor(named: "motorrad_yellow")
                 }
-                
             }
         case MotorcycleData.shared.DATA_ENGINE_TEMP:
             // Engine Temperature
             if (MotorcycleData.shared.engineTemperature != nil) {
                 let engineTemp:Double = MotorcycleData.shared.engineTemperature!
                 if (engineTemp >= MotorcycleData.shared.CRITICAL_ENGINE_TEMP_C){
-                    labelColor = UIColor.red
+                    labelColor = UIColor(named: "motorrad_red")
                 } else if (engineTemp <= MotorcycleData.shared.CRITICAL_ENGINE_TEMP_LOW_C){
-                    labelColor = UIColor.blue
+                    labelColor = UIColor(named: "motorrad_blue")
                 }
             }
         case MotorcycleData.shared.DATA_AIR_TEMP:
@@ -625,24 +624,24 @@ class MotorcycleData {
             if (MotorcycleData.shared.ambientTemperature != nil) {
                 let ambientTemp:Double = MotorcycleData.shared.ambientTemperature!
                 if(ambientTemp <= MotorcycleData.shared.CRITICAL_AIR_TEMP_LOW_C){
-                    labelColor = UIColor.blue
+                    labelColor = UIColor(named: "motorrad_blue")
                 } else if (ambientTemp >= MotorcycleData.shared.CRITICAL_ENGINE_TEMP_LOW_C){
-                    labelColor = UIColor.red
+                    labelColor = UIColor(named: "motorrad_red")
                 }
             }
         case MotorcycleData.shared.DATA_FRONT_RDC:
             // Front Tire Pressure
             if(Faults.shared.getFrontTirePressureCriticalActive()){
-                labelColor = UIColor.red
+                labelColor = UIColor(named: "motorrad_red")
             } else if(Faults.shared.getRearTirePressureWarningActive()){
-                labelColor = UIColor.yellow
+                labelColor = UIColor(named: "motorrad_yellow")
             }
         case MotorcycleData.shared.DATA_REAR_RDC:
             // Rear Tire Pressure
             if(Faults.shared.getRearTirePressureCriticalActive()){
-                labelColor = UIColor.red
+                labelColor = UIColor(named: "motorrad_red")
             } else if(Faults.shared.getRearTirePressureWarningActive()){
-                labelColor = UIColor.yellow
+                labelColor = UIColor(named: "motorrad_yellow")
             }
         case MotorcycleData.shared.DATA_ODOMETER:
             // Odometer
@@ -652,9 +651,9 @@ class MotorcycleData {
             if (MotorcycleData.shared.voltage != nil) {
                 let voltage:Double = MotorcycleData.shared.voltage!
                 if (voltage >= MotorcycleData.shared.CRITICAL_BATTERY_VOLTAGE_HIGH){
-                    labelColor = UIColor.red
+                    labelColor = UIColor(named: "motorrad_red")
                 } else if (voltage < MotorcycleData.shared.CRITICAL_BATTERY_VOLTAGE_LOW){
-                    labelColor = UIColor.yellow
+                    labelColor = UIColor(named: "motorrad_yellow")
                 }
             }
         case MotorcycleData.shared.DATA_THROTTLE:
@@ -698,9 +697,9 @@ class MotorcycleData {
             if (MotorcycleData.shared.fuelRange != nil) {
                 let range:Double = MotorcycleData.shared.fuelRange!
                 if (range < MotorcycleData.shared.RANGE_CRITICAL){
-                    labelColor = UIColor.red
+                    labelColor = UIColor(named: "motorrad_red")
                 } else if (range < MotorcycleData.shared.RANGE_LOW){
-                    labelColor = UIColor.yellow
+                    labelColor = UIColor(named: "motorrad_yellow")
                 }
             }
         case MotorcycleData.shared.DATA_SHIFTS:
@@ -744,7 +743,7 @@ class MotorcycleData {
             if (MotorcycleData.shared.localBattery != nil) {
                 let batteryPct = MotorcycleData.shared.localBattery!
                 if(batteryPct > 0 && batteryPct < 25){
-                    labelColor = UIColor.red
+                    labelColor = UIColor(named: "motorrad_red")
                 }
             }
         default:
@@ -765,9 +764,9 @@ class MotorcycleData {
             if (MotorcycleData.shared.engineTemperature != nil) {
                 let engineTemp:Double = MotorcycleData.shared.engineTemperature!
                 if (engineTemp >= MotorcycleData.shared.CRITICAL_ENGINE_TEMP_C){
-                    icon = icon.imageWithColor(color1: UIColor.red)
+                    icon = icon.imageWithColor(color1: UIColor(named: "motorrad_red")!)
                 } else if (engineTemp <= MotorcycleData.shared.CRITICAL_ENGINE_TEMP_LOW_C){
-                    icon = icon.imageWithColor(color1: UIColor.blue)
+                    icon = icon.imageWithColor(color1: UIColor(named: "motorrad_blue")!)
                 }
             }
         case MotorcycleData.shared.DATA_AIR_TEMP:
@@ -777,9 +776,9 @@ class MotorcycleData {
                 let ambientTemp:Double = MotorcycleData.shared.ambientTemperature!
                 if(ambientTemp <= MotorcycleData.shared.CRITICAL_AIR_TEMP_LOW_C){
                     icon = (UIImage(named: "Snowflake")?.withRenderingMode(.alwaysTemplate))!
-                    icon = icon.imageWithColor(color1: UIColor.blue)
+                    icon = icon.imageWithColor(color1: UIColor(named: "motorrad_blue")!)
                 } else if (ambientTemp >= MotorcycleData.shared.CRITICAL_ENGINE_TEMP_LOW_C){
-                    icon = icon.imageWithColor(color1: UIColor.red)
+                    icon = icon.imageWithColor(color1: UIColor(named: "motorrad_red")!)
                 }
             }
         case MotorcycleData.shared.DATA_FRONT_RDC:
@@ -787,20 +786,20 @@ class MotorcycleData {
             icon = (UIImage(named: "Tire")?.withRenderingMode(.alwaysTemplate))!
             if(Faults.shared.getFrontTirePressureCriticalActive()){
                 icon = (UIImage(named: "Tire-Alert")?.withRenderingMode(.alwaysTemplate))!
-                icon = icon.imageWithColor(color1: UIColor.red)
+                icon = icon.imageWithColor(color1: UIColor(named: "motorrad_red")!)
             } else if(Faults.shared.getRearTirePressureWarningActive()){
                 icon = (UIImage(named: "Tire-Alert")?.withRenderingMode(.alwaysTemplate))!
-                icon = icon.imageWithColor(color1: UIColor.yellow)
+                icon = icon.imageWithColor(color1: UIColor(named: "motorrad_yellow")!)
             }
         case MotorcycleData.shared.DATA_REAR_RDC:
             // Rear Tire Pressure
             icon = (UIImage(named: "Tire")?.withRenderingMode(.alwaysTemplate))!
             if(Faults.shared.getRearTirePressureCriticalActive()){
                 icon = (UIImage(named: "Tire-Alert")?.withRenderingMode(.alwaysTemplate))!
-                icon = icon.imageWithColor(color1: UIColor.red)
+                icon = icon.imageWithColor(color1: UIColor(named: "motorrad_red")!)
             } else if(Faults.shared.getRearTirePressureWarningActive()){
                 icon = (UIImage(named: "Tire-Alert")?.withRenderingMode(.alwaysTemplate))!
-                icon = icon.imageWithColor(color1: UIColor.yellow)
+                icon = icon.imageWithColor(color1: UIColor(named: "motorrad_yellow")!)
             }
         case MotorcycleData.shared.DATA_ODOMETER:
             // Odometer
@@ -811,9 +810,9 @@ class MotorcycleData {
             if (MotorcycleData.shared.voltage != nil) {
                 let voltage:Double = MotorcycleData.shared.voltage!
                 if (voltage >= MotorcycleData.shared.CRITICAL_BATTERY_VOLTAGE_HIGH){
-                    icon = icon.imageWithColor(color1: UIColor.red)
+                    icon = icon.imageWithColor(color1: UIColor(named: "motorrad_red")!)
                 } else if (voltage < MotorcycleData.shared.CRITICAL_BATTERY_VOLTAGE_LOW){
-                    icon = icon.imageWithColor(color1: UIColor.yellow)
+                    icon = icon.imageWithColor(color1: UIColor(named: "motorrad_yellow")!)
                 }
             }
         case MotorcycleData.shared.DATA_THROTTLE:
@@ -915,7 +914,7 @@ class MotorcycleData {
                     icon = (UIImage(named: "Battery-Quarter")?.withRenderingMode(.alwaysTemplate))!
                 } else if(batteryPct > 0 && batteryPct < 25){
                     icon = (UIImage(named: "Battery-Empty")?.withRenderingMode(.alwaysTemplate))!
-                    icon = icon.imageWithColor(color1: UIColor.red)
+                    icon = icon.imageWithColor(color1: UIColor(named: "motorrad_red")!)
                 }
             }
         default:
