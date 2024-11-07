@@ -841,42 +841,6 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     }
     
     // MARK: - Updating UI
-    func setInterfaceColors(){
-        switch(UserDefaults.standard.integer(forKey: "darkmode_preference")){
-        case 0:
-            //OFF
-            overrideUserInterfaceStyle = .light
-            // Create a custom appearance for the navigation bar
-            let appearance = UINavigationBarAppearance()
-            appearance.configureWithOpaqueBackground() // or configureWithTransparentBackground() if you prefer transparency
-            appearance.backgroundColor = UIColor.white // Set your desired background color
-            
-            // Customize the title text attributes (optional)
-            appearance.titleTextAttributes = [.foregroundColor: UIColor.black] // Set text color
-            
-            // Apply the appearance to the navigation bar
-            navigationController?.navigationBar.standardAppearance = appearance
-            navigationController?.navigationBar.scrollEdgeAppearance = appearance
-        case 1:
-            //On
-            overrideUserInterfaceStyle = .dark
-            // Create a custom appearance for the navigation bar
-            let appearance = UINavigationBarAppearance()
-            appearance.configureWithOpaqueBackground() // or configureWithTransparentBackground() if you prefer transparency
-            appearance.backgroundColor = UIColor.black // Set your desired background color
-            
-            // Customize the title text attributes (optional)
-            appearance.titleTextAttributes = [.foregroundColor: UIColor.white] // Set text color
-            
-            // Apply the appearance to the navigation bar
-            navigationController?.navigationBar.standardAppearance = appearance
-            navigationController?.navigationBar.scrollEdgeAppearance = appearance
-        default:
-            //Default
-            break
-        }
-    }
-    
     func updateMessageDisplay() {
         // Update Buttons
         if (faults.getallActiveDesc().isEmpty){
