@@ -842,25 +842,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     
     // MARK: - Updating UI
     func updateDisplay() {
-        // Update NavBar color
-        if UserDefaults.standard.bool(forKey: "focus_indication_preference") {
-            var navBarColor = UIColor(named: "backgrounds")
-            if (motorcycleData.getHasFocus()) {
-                // Create a custom appearance for the navigation bar
-                if let colorData = UserDefaults.standard.data(forKey: "highlight_color_preference"){
-                    navBarColor = try? NSKeyedUnarchiver.unarchivedObject(ofClass: UIColor.self, from: colorData)
-                } else {
-                    navBarColor = UIColor(named: "accent")
-                }
-            }
-            let appearance = UINavigationBarAppearance()
-            appearance.configureWithOpaqueBackground()
-            appearance.backgroundColor = navBarColor
-            
-            // Apply the appearance to the navigation bar
-            navigationController?.navigationBar.standardAppearance = appearance
-            navigationController?.navigationBar.scrollEdgeAppearance = appearance
-        }
+        
         // Update Buttons
         if (faults.getallActiveDesc().isEmpty){
             faultsBtn.tintColor = UIColor.clear
@@ -1237,6 +1219,24 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                 if (dataArray[0] == 0x04){
                     if (!motorcycleData.getHasFocus()){
                         os_log("Focus Gained");
+                        // Set NavBar to highlight color
+                        if UserDefaults.standard.bool(forKey: "focus_indication_preference") {
+                            // Return back to normal NavBar color
+                            var navBarColor: UIColor?
+                            // Create a custom appearance for the navigation bar
+                            if let colorData = UserDefaults.standard.data(forKey: "highlight_color_preference"){
+                                navBarColor = try? NSKeyedUnarchiver.unarchivedObject(ofClass: UIColor.self, from: colorData)
+                            } else {
+                                navBarColor = UIColor(named: "accent")
+                            }
+                            let appearance = UINavigationBarAppearance()
+                            appearance.configureWithOpaqueBackground()
+                            appearance.backgroundColor = navBarColor
+                            
+                            // Apply the appearance to the navigation bar
+                            navigationController?.navigationBar.standardAppearance = appearance
+                            navigationController?.navigationBar.scrollEdgeAppearance = appearance
+                        }
                     }
                     motorcycleData.setHasFocus(hasFocus: true)
                     lastControlMessage = Int(Date().timeIntervalSince1970 * 1000)
@@ -1244,6 +1244,15 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                     if (motorcycleData.getHasFocus() && ( Int(Date().timeIntervalSince1970 * 1000) - lastControlMessage > 500)){
                         os_log("Focus Gone")
                         motorcycleData.setHasFocus(hasFocus: false)
+                        // Return NavBar back to normal color
+                        let navBarColor = UIColor(named: "backgrounds")
+                        let appearance = UINavigationBarAppearance()
+                        appearance.configureWithOpaqueBackground()
+                        appearance.backgroundColor = navBarColor
+                        
+                        // Apply the appearance to the navigation bar
+                        navigationController?.navigationBar.standardAppearance = appearance
+                        navigationController?.navigationBar.scrollEdgeAppearance = appearance
                     }
                     BLEBus.parseMessage(dataArray)
                 }
