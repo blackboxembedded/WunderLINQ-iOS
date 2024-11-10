@@ -94,3 +94,4 @@
 "pref_main_settings_title" = "Main Screen Customization";
 "pref_ignitionAlert_name" = "Ignition";
 "pref_ignitionAlert_summary" = "Prompt to close app when ignition is shutoff";
+"pref_focus_indication_name" = "Focus Indication";

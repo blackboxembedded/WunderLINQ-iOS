@@ -133,7 +133,7 @@ class DashViewController: UIViewController, UIWebViewDelegate {
         let touchRecognizer = UITapGestureRecognizer(target: self, action:  #selector(onTouch))
         self.view.addGestureRecognizer(touchRecognizer)
         
-        updateDashboard()
+        updateDisplay()
 
         scheduledTimerWithTimeInterval()
         
@@ -279,7 +279,7 @@ class DashViewController: UIViewController, UIWebViewDelegate {
         } else {
             currentInfoLine = currentInfoLine + 1
         }
-        updateDashboard()
+        updateDisplay()
     }
     
     @objc func previousInfo() {
@@ -289,7 +289,7 @@ class DashViewController: UIViewController, UIWebViewDelegate {
         } else {
             currentInfoLine = currentInfoLine - 1
         }
-        updateDashboard()
+        updateDisplay()
     }
     
     @objc func nextDashboard() {
@@ -301,7 +301,7 @@ class DashViewController: UIViewController, UIWebViewDelegate {
         }
         // Save away current dashboard
         UserDefaults.standard.set(currentDashboard, forKey: "lastDashboard")
-        updateDashboard()
+        updateDisplay()
     }
     
     @objc func prevDashboard() {
@@ -313,7 +313,7 @@ class DashViewController: UIViewController, UIWebViewDelegate {
         }
         // Save away current dashboard
         UserDefaults.standard.set(currentDashboard, forKey: "lastDashboard")
-        updateDashboard()
+        updateDisplay()
     }
     
     func runTimer() {
@@ -340,10 +340,11 @@ class DashViewController: UIViewController, UIWebViewDelegate {
     
     func scheduledTimerWithTimeInterval(){
         // Scheduling timer to Call the function "updateCounting" with the interval of 1 seconds
-        refreshTimer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(self.updateDashboard), userInfo: nil, repeats: true)
+        refreshTimer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(self.updateDisplay), userInfo: nil, repeats: true)
     }
 
-    @objc func updateDashboard(){
+    // MARK: - Updating UI
+    @objc func updateDisplay(){
         // Orientation Check
         var isPortrait = true
         if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
@@ -353,7 +354,7 @@ class DashViewController: UIViewController, UIWebViewDelegate {
         let safeArea = view.safeAreaLayoutGuide.layoutFrame
         let usableWidth = safeArea.width * 2.5
         let usableHeight = safeArea.height * 2.5
-        
+
         // Update Buttons
         if (faults.getallActiveDesc().isEmpty){
             faultsBtn.tintColor = UIColor.clear

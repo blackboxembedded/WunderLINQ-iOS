@@ -312,7 +312,17 @@
 			<key>Key</key>
 			<string>hide_navbar_preference</string>
 			<key>DefaultValue</key>
-			<true/>
+			<false/>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSToggleSwitchSpecifier</string>
+			<key>Title</key>
+			<string>pref_focus_indication_name</string>
+			<key>Key</key>
+			<string>focus_indication_preference</string>
+			<key>DefaultValue</key>
+			<false/>
 		</dict>
 		<dict>
 			<key>Type</key>

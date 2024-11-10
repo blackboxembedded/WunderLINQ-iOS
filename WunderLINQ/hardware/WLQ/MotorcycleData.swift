@@ -888,6 +888,9 @@ class MotorcycleData {
                 let sunset = solar?.sunset
                 if(today > sunset!){
                     icon = (UIImage(named: "Moon")?.withRenderingMode(.alwaysTemplate))!
+                    icon = icon.imageWithColor(color1: UIColor(named: "motorrad_blue")!)
+                } else {
+                    icon = icon.imageWithColor(color1: UIColor(named: "motorrad_yellow")!)
                 }
             }
         case MotorcycleData.shared.DATA_RPM:
