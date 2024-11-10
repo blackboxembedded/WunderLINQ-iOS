@@ -51,7 +51,7 @@
                                                         <constraint firstAttribute="width" secondItem="P8S-XM-z9r" secondAttribute="height" multiplier="1:1" id="3Jc-0l-i92"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="∞" textAlignment="center" lineBreakMode="clip" minimumScaleFactor="0.050000000000000003" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4ot-xt-lZn">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="∞" textAlignment="center" lineBreakMode="clip" numberOfLines="2" minimumScaleFactor="0.050000000000000003" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4ot-xt-lZn">
                                                     <rect key="frame" x="0.0" y="24" width="100" height="59"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="150"/>
                                                     <nil key="highlightedColor"/>
@@ -403,10 +403,10 @@
                                 <exclude reference="7jY-hg-iQV"/>
                                 <exclude reference="7C5-ei-vyA"/>
                                 <exclude reference="xHO-bg-CDw"/>
-                                <exclude reference="KEC-wk-cO6"/>
-                                <exclude reference="Z9q-gO-Lbn"/>
                                 <exclude reference="uCn-Vx-2t1"/>
                                 <exclude reference="XK7-NH-VTv"/>
+                                <exclude reference="KEC-wk-cO6"/>
+                                <exclude reference="Z9q-gO-Lbn"/>
                                 <exclude reference="m5S-cu-IOQ"/>
                                 <exclude reference="5wQ-AE-wxQ"/>
                                 <exclude reference="KBc-XZ-V8H"/>
@@ -421,8 +421,8 @@
                                 <include reference="COm-aw-KEy"/>
                                 <include reference="3Yx-LI-Bkh"/>
                                 <include reference="xHO-bg-CDw"/>
-                                <include reference="KEC-wk-cO6"/>
                                 <include reference="XK7-NH-VTv"/>
+                                <include reference="KEC-wk-cO6"/>
                                 <include reference="m5S-cu-IOQ"/>
                                 <include reference="KBc-XZ-V8H"/>
                                 <include reference="Zxf-62-2Lb"/>
@@ -435,8 +435,8 @@
                                 <include reference="a7U-dK-gmP"/>
                                 <include reference="7jY-hg-iQV"/>
                                 <include reference="7C5-ei-vyA"/>
-                                <include reference="Z9q-gO-Lbn"/>
                                 <include reference="uCn-Vx-2t1"/>
+                                <include reference="Z9q-gO-Lbn"/>
                                 <include reference="5wQ-AE-wxQ"/>
                                 <include reference="wcC-5y-Auv"/>
                                 <include reference="hOk-nC-0Ib"/>
@@ -1241,20 +1241,20 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="hwActionCell" id="ORR-ga-rGW" customClass="HWSettingsTableViewCell" customModule="WunderLINQ" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="50" width="393" height="43.333332061767578"/>
+                                        <rect key="frame" x="0.0" y="50" width="393" height="42.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ORR-ga-rGW" id="u8h-mc-bnW">
-                                            <rect key="frame" x="0.0" y="0.0" width="393" height="43.333332061767578"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="42.666667938232422"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="32s-bB-EZK">
-                                                    <rect key="frame" x="20" y="10.999999999999998" width="176.66666666666666" height="21.333333333333329"/>
+                                                    <rect key="frame" x="20" y="11.000000000000002" width="176.66666666666666" height="20.666666666666671"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rs5-hB-OEc">
-                                                    <rect key="frame" x="196.66666666666663" y="10.999999999999998" width="176.33333333333337" height="21.333333333333329"/>
+                                                    <rect key="frame" x="196.66666666666663" y="11.000000000000002" width="176.33333333333337" height="20.666666666666671"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>

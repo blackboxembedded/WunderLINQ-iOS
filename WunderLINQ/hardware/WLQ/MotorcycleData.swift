@@ -883,8 +883,7 @@ class MotorcycleData {
             icon = (UIImage(named: "Sun")?.withRenderingMode(.alwaysTemplate))!
             if (MotorcycleData.shared.location != nil) {
                 let today = Date()
-                let yesterday = Calendar.current.date(byAdding: .day, value: -1, to: today)!
-                let solar = Solar(for: yesterday, coordinate: MotorcycleData.shared.location!.coordinate)
+                let solar = Solar(for: today, coordinate: MotorcycleData.shared.location!.coordinate)
                 let sunset = solar?.sunset
                 if(today > sunset!){
                     icon = (UIImage(named: "Moon")?.withRenderingMode(.alwaysTemplate))!
@@ -1251,8 +1250,7 @@ class MotorcycleData {
             //Sunrise/Sunset
             if MotorcycleData.shared.location != nil {
                 let today = Date()
-                let yesterday = Calendar.current.date(byAdding: .day, value: -1, to: today)!
-                let solar = Solar(for: yesterday, coordinate: MotorcycleData.shared.location!.coordinate)
+                let solar = Solar(for: today, coordinate: MotorcycleData.shared.location!.coordinate)
                 let sunrise = solar?.sunrise
                 let sunset = solar?.sunset
                 let formatter = DateFormatter()
@@ -1260,7 +1258,15 @@ class MotorcycleData {
                 if UserDefaults.standard.integer(forKey: "time_format_preference") > 0 {
                     formatter.dateFormat = "HH:mm"
                 }
-                value = ("\(formatter.string(from: sunrise!))/\(formatter.string(from: sunset!))")
+                // Calculate the duration between the current time and sunrise/sunset
+                let sunriseDuration = sunrise!.timeIntervalSince(today)
+                let sunsetDuration = sunset!.timeIntervalSince(today)
+                
+                // Convert durations to hours
+                let sunriseHrs = Utils.toZeroDecimalString(Double(sunriseDuration) / 3600.0)
+                let sunsetHrs = Utils.toZeroDecimalString(Double(sunsetDuration) / 3600.0)
+                
+                value = ("\(formatter.string(from: sunrise!)) (\(sunriseHrs))\n\(formatter.string(from: sunset!)) (\(sunsetHrs))")
             }
         case MotorcycleData.shared.DATA_RPM:
             //RPM

@@ -51,7 +51,7 @@
                                                         <constraint firstAttribute="width" secondItem="P8S-XM-z9r" secondAttribute="height" multiplier="1:1" id="3Jc-0l-i92"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="∞" textAlignment="center" lineBreakMode="clip" minimumScaleFactor="0.050000000000000003" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4ot-xt-lZn">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="∞" textAlignment="center" lineBreakMode="clip" numberOfLines="2" minimumScaleFactor="0.050000000000000003" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4ot-xt-lZn">
                                                     <rect key="frame" x="0.0" y="24" width="100" height="59"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="150"/>
                                                     <nil key="highlightedColor"/>
