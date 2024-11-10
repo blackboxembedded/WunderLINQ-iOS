@@ -38,6 +38,7 @@ class MusicViewController: UIViewController {
     
     private let notificationCenter = NotificationCenter.default
     
+    let motorcycleData = MotorcycleData.shared
     let faults = Faults.shared
     
     var timer = Timer()
@@ -172,6 +173,18 @@ class MusicViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    // MARK: - Updating UI
+    func updateDisplay() {
+        // Update Buttons
+        if (faults.getallActiveDesc().isEmpty){
+            faultsBtn.tintColor = UIColor.clear
+            faultsButton.isEnabled = false
+        } else {
+            faultsBtn.tintColor = UIColor(named: "motorrad_red")
+            faultsButton.isEnabled = true
+        }
     }
     
     func showError(_ errorDescription: String) {

@@ -638,6 +638,8 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
             os_log("TasksCollectionViewController: Error preparing update statement")
         }
         
+        updateDisplay()
+        
         notificationCenter.addObserver(self, selector:#selector(self.launchAccPage), name: NSNotification.Name("StatusUpdate"), object: nil)
     }
     
@@ -688,6 +690,7 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
         setupScreenOrientation()
         self.collectionView!.reloadData()
         self.setOffset(itemRow: self.itemRow)
+        updateDisplay()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -739,6 +742,18 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
             runTimer()
         }
         execute_task(taskID: mapping[indexPath.row])
+    }
+    
+    // MARK: - Updating UI
+    func updateDisplay() {
+        // Update Buttons
+        if (faults.getallActiveDesc().isEmpty){
+            faultsBtn.tintColor = UIColor.clear
+            faultsButton.isEnabled = false
+        } else {
+            faultsBtn.tintColor = UIColor(named: "motorrad_red")
+            faultsButton.isEnabled = true
+        }
     }
     
     func saveWaypoint(){

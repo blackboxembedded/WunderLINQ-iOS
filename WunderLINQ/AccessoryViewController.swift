@@ -41,6 +41,7 @@ class AccessoryViewController: UIViewController, UITextFieldDelegate {
 
     let bleData = BLE.shared
     let wlqData = WLQ.shared
+    let motorcycleData = MotorcycleData.shared
     let faults = Faults.shared
     
     var peripheral: CBPeripheral?
@@ -253,9 +254,9 @@ class AccessoryViewController: UIViewController, UITextFieldDelegate {
         peripheral = bleData.getPeripheral()
         commandCharacteristic = bleData.getcmdCharacteristic()
         
-        notificationCenter.addObserver(self, selector:#selector(self.updateScreen), name: NSNotification.Name("StatusUpdate"), object: nil)
+        notificationCenter.addObserver(self, selector:#selector(self.updateDisplay), name: NSNotification.Name("StatusUpdate"), object: nil)
         
-        updateScreen()
+        updateDisplay()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -274,7 +275,8 @@ class AccessoryViewController: UIViewController, UITextFieldDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    @objc func updateScreen(){
+    // MARK: - Updating UI
+    @objc func updateDisplay(){
         let channelOneName = UserDefaults.standard.string(forKey: "ACC_CHAN_1")
         if channelOneName != nil {
             channelOneLabel.text = channelOneName

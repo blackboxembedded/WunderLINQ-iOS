@@ -445,7 +445,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         // Scheduling timer to Call the function "updateTime" with the interval of 1 seconds
         timeTimer = Timer.scheduledTimer(timeInterval: 0.25, target: self, selector: #selector(self.updatePhoneSensorData), userInfo: nil, repeats: true)
         
-        updateMessageDisplay()
+        updateDisplay()
         
         // Scheduling timer to Call the function "updateTime" with the interval of 1 seconds
         timeTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.updateTime), userInfo: nil, repeats: true)
@@ -841,7 +841,26 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     }
     
     // MARK: - Updating UI
-    func updateMessageDisplay() {
+    func updateDisplay() {
+        // Update NavBar color
+        if UserDefaults.standard.bool(forKey: "focus_indication_preference") {
+            var navBarColor = UIColor(named: "backgrounds")
+            if (motorcycleData.getHasFocus()) {
+                // Create a custom appearance for the navigation bar
+                if let colorData = UserDefaults.standard.data(forKey: "highlight_color_preference"){
+                    navBarColor = try? NSKeyedUnarchiver.unarchivedObject(ofClass: UIColor.self, from: colorData)
+                } else {
+                    navBarColor = UIColor(named: "accent")
+                }
+            }
+            let appearance = UINavigationBarAppearance()
+            appearance.configureWithOpaqueBackground()
+            appearance.backgroundColor = navBarColor
+            
+            // Apply the appearance to the navigation bar
+            navigationController?.navigationBar.standardAppearance = appearance
+            navigationController?.navigationBar.scrollEdgeAppearance = appearance
+        }
         // Update Buttons
         if (faults.getallActiveDesc().isEmpty){
             faultsBtn.tintColor = UIColor.clear
@@ -1049,7 +1068,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         os_log("MainCollectionViewController: DISCONNECTED FROM WunderLINQ!")
         disconnectBtn.tintColor = UIColor(named: "motorrad_red")
         //motorcycleData.clear()
-        updateMessageDisplay()
+        updateDisplay()
         if error != nil {
             os_log("MainCollectionViewController: DISCONNECTION DETAILS: \(error!.localizedDescription)")
         }
@@ -1222,7 +1241,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                     motorcycleData.setHasFocus(hasFocus: true)
                     lastControlMessage = Int(Date().timeIntervalSince1970 * 1000)
                 } else {
-                    if (motorcycleData.getHasFocus() && ( Int(Date().timeIntervalSince1970 * 1000) - lastControlMessage > 100)){
+                    if (motorcycleData.getHasFocus() && ( Int(Date().timeIntervalSince1970 * 1000) - lastControlMessage > 500)){
                         os_log("Focus Gone")
                         motorcycleData.setHasFocus(hasFocus: false)
                     }
@@ -1270,7 +1289,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                 }
             }
             if self.viewIfLoaded?.window != nil {
-                updateMessageDisplay()
+                updateDisplay()
             }
         }
     }
@@ -1830,7 +1849,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         // get battery
         motorcycleData.setLocalBattery(localBattery: getBatteryPercentage())
         
-        updateMessageDisplay()
+        updateDisplay()
         
         if (wlqData != nil){
             if (wlqData.gethardwareType() == wlqData.TYPE_N() || wlqData.gethardwareType() == wlqData.TYPE_X()){
