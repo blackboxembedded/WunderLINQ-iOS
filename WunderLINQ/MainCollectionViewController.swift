@@ -97,11 +97,10 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     var remainingSeconds = 10 // Countdown duration
     var okAction: UIAlertAction?
     
-    let inset: CGFloat = 5
+    let gridInset: CGFloat = 5
     let minimumLineSpacing: CGFloat = 5
-    let minimumInteritemSpacing: CGFloat = 6
-    var cellsPerRow = 5
-    var rowCount = 3
+    let minimumInteritemSpacing: CGFloat = 5
+
     var selectedCell = 0
     var selectedDataPoint = 0
     var dataPointList:[String] = [NSLocalizedString("gear_header", comment: ""),
@@ -226,7 +225,9 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     override func viewDidLayoutSubviews() {
         os_log("MainCollectionViewController: viewDidLayoutSubviews")
         super.viewDidLayoutSubviews()
-        updateCollectionViewLayout(with: self.view.frame.size)
+        //updateCollectionViewLayout(with: self.view.frame.size)
+        //collectionView.reloadData()
+        updateCollectionViewLayout()
     }
 
     override func viewDidLoad() {
@@ -324,67 +325,16 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         
         _ = menu /// Create the menu.
         
+        // Configure the flow layout
+        let layout = UICollectionViewFlowLayout()
+        layout.minimumInteritemSpacing = minimumInteritemSpacing // Horizontal spacing
+        layout.minimumLineSpacing = minimumLineSpacing // Vertical spacing
+        layout.sectionInset = UIEdgeInsets(top: gridInset, left: gridInset, bottom: gridInset, right: gridInset) // Margins around the grid
+        
+        // Assign the layout to the collection view
+        collectionView.collectionViewLayout = layout
         collectionView.delegate = self
         collectionView.dataSource = self
-        
-        let cellCount = UserDefaults.standard.integer(forKey: "GRIDCOUNT")
-        if ( self.view.bounds.width > self.view.bounds.height){
-            switch (cellCount){
-            case 1:
-                cellsPerRow = 1
-                rowCount = 1
-            case 2:
-                cellsPerRow = 2
-                rowCount = 1
-            case 4:
-                cellsPerRow = 2
-                rowCount = 2
-            case 8:
-                cellsPerRow = 4
-                rowCount = 2
-            case 10:
-                cellsPerRow = 5
-                rowCount = 2
-            case 12:
-                cellsPerRow = 4
-                rowCount = 3
-            case 15:
-                cellsPerRow = 5
-                rowCount = 3
-            default:
-                cellsPerRow = 5
-                rowCount = 3
-                UserDefaults.standard.set(15, forKey: "GRIDCOUNT")
-            }
-        } else {
-            switch (cellCount){
-            case 1:
-                cellsPerRow = 1
-                rowCount = 1
-            case 2:
-                cellsPerRow = 1
-                rowCount = 2
-            case 4:
-                cellsPerRow = 1
-                rowCount = 4
-            case 8:
-                cellsPerRow = 2
-                rowCount = 4
-            case 10:
-                cellsPerRow = 2
-                rowCount = 5
-            case 12:
-                cellsPerRow = 3
-                rowCount = 4
-            case 15:
-                cellsPerRow = 3
-                rowCount = 5
-            default:
-                cellsPerRow = 3
-                rowCount = 5
-                UserDefaults.standard.set(15, forKey: "GRIDCOUNT")
-            }
-        }
         collectionView?.contentInsetAdjustmentBehavior = .always
         
         // Sensor Setup
@@ -470,225 +420,77 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             self.navigationController?.setNavigationBarHidden(false, animated: animated)
         }
     }
-    
-    private func updateCollectionViewLayout(with size: CGSize) {
-        os_log("MainCollectionViewController: updateCollectionViewLayout")
-        if (collectionView != nil){
-            if let layout = collectionView!.collectionViewLayout as? UICollectionViewFlowLayout {
-                var cellCount = UserDefaults.standard.integer(forKey: "GRIDCOUNT");
-                var height:CGFloat
-                var width:CGFloat
-                var widthMarginsAndInsets:CGFloat
-                var heightMarginsAndInsets:CGFloat
-                
-                if ( collectionView!.bounds.width > collectionView!.bounds.height){
-                    switch (cellCount){
-                        case 1:
-                            cellsPerRow = 1
-                            rowCount = 1
-                        case 2:
-                            cellsPerRow = 2
-                            rowCount = 1
-                        case 4:
-                            cellsPerRow = 2
-                            rowCount = 2
-                        case 8:
-                            cellsPerRow = 4
-                            rowCount = 2
-                        case 10:
-                            cellsPerRow = 5
-                            rowCount = 2
-                        case 12:
-                            cellsPerRow = 4
-                            rowCount = 3
-                        case 15:
-                            cellsPerRow = 5
-                            rowCount = 3
-                        default:
-                            cellsPerRow = 5
-                            rowCount = 3
-                            UserDefaults.standard.set(15, forKey: "GRIDCOUNT")
-                        }
-                    } else {
-                        switch (cellCount){
-                        case 1:
-                            cellsPerRow = 1
-                            rowCount = 1
-                        case 2:
-                            cellsPerRow = 1
-                            rowCount = 2
-                        case 4:
-                            cellsPerRow = 1
-                            rowCount = 4
-                        case 8:
-                            cellsPerRow = 2
-                            rowCount = 4
-                        case 10:
-                            cellsPerRow = 2
-                            rowCount = 5
-                        case 12:
-                            cellsPerRow = 3
-                            rowCount = 4
-                        case 15:
-                            cellsPerRow = 3
-                            rowCount = 5
-                        default:
-                            cellsPerRow = 3
-                            rowCount = 5
-                            UserDefaults.standard.set(15, forKey: "GRIDCOUNT")
-                        }
-                }
-
-                widthMarginsAndInsets = inset * 2 + collectionView!.safeAreaInsets.left + collectionView!.safeAreaInsets.right + minimumInteritemSpacing * CGFloat(cellsPerRow - 1)
-                heightMarginsAndInsets = inset * 2 + collectionView!.safeAreaInsets.top + collectionView!.safeAreaInsets.bottom + minimumInteritemSpacing * CGFloat(rowCount - 1)
-
-                if ( size.width > size.height){
-                    switch (cellCount){
-                    case 1:
-                        height = (size.height - (heightMarginsAndInsets))
-                        width = (size.width - widthMarginsAndInsets)
-                    case 2:
-                        height = (size.height - (heightMarginsAndInsets))
-                        width = ((size.width - widthMarginsAndInsets) / CGFloat(2)).rounded(.down)
-                    case 4:
-                        height = ((size.height - (heightMarginsAndInsets)) / CGFloat(2)).rounded(.down)
-                        width = ((size.width - widthMarginsAndInsets) / CGFloat(2)).rounded(.down)
-                    case 8:
-                        height = ((size.height - (heightMarginsAndInsets)) / CGFloat(2)).rounded(.down)
-                        width = ((size.width - (widthMarginsAndInsets * 2)) / CGFloat(4)).rounded(.down)
-                    case 10:
-                        height = ((size.height - (heightMarginsAndInsets)) / CGFloat(2)).rounded(.down)
-                        width = ((size.width - (widthMarginsAndInsets * 2)) / CGFloat(5)).rounded(.down)
-                    case 12:
-                        height = ((size.height - (heightMarginsAndInsets)) / CGFloat(3)).rounded(.down)
-                        width = ((size.width - (widthMarginsAndInsets * 2)) / CGFloat(4)).rounded(.down)
-                    case 15:
-                        height = ((size.height - (heightMarginsAndInsets)) / CGFloat(3)).rounded(.down)
-                        width = ((size.width - (widthMarginsAndInsets * 2)) / CGFloat(5)).rounded(.down)
-                    default:
-                        cellCount = 15
-                        UserDefaults.standard.set(15, forKey: "GRIDCOUNT")
-                        height = ((size.height - (heightMarginsAndInsets)) / CGFloat(3)).rounded(.down)
-                        width = ((size.width - (widthMarginsAndInsets * 2)) / CGFloat(5)).rounded(.down)
-                    }
-                } else {
-                    switch (cellCount){
-                    case 1:
-                        height = (size.height - (heightMarginsAndInsets))
-                        width = (size.width - widthMarginsAndInsets)
-                    case 2:
-                        height = ((size.height - (heightMarginsAndInsets)) / CGFloat(2)).rounded(.down)
-                        width = (size.width - widthMarginsAndInsets)
-                    case 4:
-                        height = ((size.height - (heightMarginsAndInsets)) / CGFloat(4)).rounded(.down)
-                        width = (size.width - widthMarginsAndInsets)
-                    case 8:
-                        height = ((size.height - (heightMarginsAndInsets)) / CGFloat(4)).rounded(.down)
-                        width = ((size.width - widthMarginsAndInsets) / CGFloat(2)).rounded(.down)
-                    case 10:
-                        height = ((size.height - (heightMarginsAndInsets)) / CGFloat(5)).rounded(.down)
-                        width = ((size.width - widthMarginsAndInsets) / CGFloat(2)).rounded(.down)
-                    case 12:
-                        height = ((size.height - (heightMarginsAndInsets)) / CGFloat(4)).rounded(.down)
-                        width = ((size.width - widthMarginsAndInsets) / CGFloat(3)).rounded(.down)
-                    case 15:
-                        height = ((size.height - (heightMarginsAndInsets)) / CGFloat(5)).rounded(.down)
-                        width = ((size.width - widthMarginsAndInsets) / CGFloat(3)).rounded(.down)
-                    default:
-                        cellCount = 15
-                        UserDefaults.standard.set(15, forKey: "GRIDCOUNT")
-                        height = ((size.height - (heightMarginsAndInsets)) / CGFloat(5)).rounded(.down)
-                        width = ((size.width - widthMarginsAndInsets) / CGFloat(3)).rounded(.down)
-                    }
-                }
-                let cellSize = CGSize(width: width, height: height)
-                layout.itemSize = cellSize
-                layout.invalidateLayout()
-            }
-        }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: inset, left: inset, bottom: inset, right: inset)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return minimumLineSpacing
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return minimumInteritemSpacing
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize
-    {
-        var height:CGFloat
-        var width:CGFloat
-        var widthMarginsAndInsets:CGFloat = inset * 2 + self.view.safeAreaInsets.left + self.view.safeAreaInsets.right + minimumInteritemSpacing * CGFloat(cellsPerRow - 1)
-        var heightMarginsAndInsets:CGFloat = inset * 2 + self.view.safeAreaInsets.top + self.view.safeAreaInsets.bottom + minimumInteritemSpacing * CGFloat(rowCount - 1)
-
-        var cellCount = UserDefaults.standard.integer(forKey: "GRIDCOUNT");
-        if ( mainUIView.bounds.width > mainUIView.bounds.height){
+    private func updateCollectionViewLayout() {
+        var columns = 1
+        var rows = 1
+        let cellCount = UserDefaults.standard.integer(forKey: "GRIDCOUNT");
+        if (self.view.frame.size.width < self.view.frame.size.height){
             switch (cellCount){
-            case 1:
-                height = (self.view.bounds.size.height - (heightMarginsAndInsets))
-                width = (self.view.bounds.size.width - widthMarginsAndInsets)
-            case 2:
-                height = (self.view.bounds.size.height - (heightMarginsAndInsets))
-                width = ((self.view.bounds.size.width - widthMarginsAndInsets) / CGFloat(2)).rounded(.down)
-            case 4:
-                height = ((self.view.bounds.size.height - (heightMarginsAndInsets)) / CGFloat(2)).rounded(.down)
-                width = ((self.view.bounds.size.width - widthMarginsAndInsets) / CGFloat(2)).rounded(.down)
-            case 8:
-                height = ((self.view.bounds.size.height - (heightMarginsAndInsets)) / CGFloat(2)).rounded(.down)
-                width = ((self.view.bounds.size.width - (widthMarginsAndInsets)) / CGFloat(4)).rounded(.down)
-            case 10:
-                height = ((self.view.bounds.size.height - (heightMarginsAndInsets)) / CGFloat(2)).rounded(.down)
-                width = ((self.view.bounds.size.width - (widthMarginsAndInsets)) / CGFloat(5)).rounded(.down)
-            case 12:
-                height = ((self.view.bounds.size.height - (heightMarginsAndInsets)) / CGFloat(3)).rounded(.down)
-                width = ((self.view.bounds.size.width - (widthMarginsAndInsets)) / CGFloat(4)).rounded(.down)
-            case 15:
-                height = ((self.view.bounds.size.height - (heightMarginsAndInsets)) / CGFloat(3)).rounded(.down)
-                width = ((self.view.bounds.size.width - (widthMarginsAndInsets)) / CGFloat(5)).rounded(.down)
-            default:
-                cellCount = 15
-                UserDefaults.standard.set(15, forKey: "GRIDCOUNT")
-                height = ((self.view.bounds.size.height - (heightMarginsAndInsets)) / CGFloat(3)).rounded(.down)
-                width = ((self.view.bounds.size.width - (widthMarginsAndInsets)) / CGFloat(5)).rounded(.down)
-            }
-        } else {
-            switch (cellCount){
-            case 1:
-                height = (self.view.bounds.size.height - (heightMarginsAndInsets))
-                width = (self.view.bounds.size.width - widthMarginsAndInsets)
-            case 2:
-                height = ((self.view.bounds.size.height - (heightMarginsAndInsets)) / CGFloat(2)).rounded(.down)
-                width = (self.view.bounds.size.width - widthMarginsAndInsets)
-            case 4:
-                height = ((self.view.bounds.size.height - (heightMarginsAndInsets)) / CGFloat(4)).rounded(.down)
-                width = (self.view.bounds.size.width - widthMarginsAndInsets)
-            case 8:
-                height = ((self.view.bounds.size.height - (heightMarginsAndInsets)) / CGFloat(4)).rounded(.down)
-                width = ((self.view.bounds.size.width - widthMarginsAndInsets) / CGFloat(2)).rounded(.down)
-            case 10:
-                height = ((self.view.bounds.size.height - (heightMarginsAndInsets)) / CGFloat(5)).rounded(.down)
-                width = ((self.view.bounds.size.width - widthMarginsAndInsets) / CGFloat(2)).rounded(.down)
-            case 12:
-                height = ((self.view.bounds.size.height - (heightMarginsAndInsets)) / CGFloat(4)).rounded(.down)
-                width = ((self.view.bounds.size.width - widthMarginsAndInsets) / CGFloat(3)).rounded(.down)
-            case 15:
-                height = ((self.view.bounds.size.height - (heightMarginsAndInsets)) / CGFloat(5)).rounded(.down)
-                width = ((self.view.bounds.size.width - widthMarginsAndInsets) / CGFloat(3)).rounded(.down)
-            default:
-                cellCount = 15
-                UserDefaults.standard.set(15, forKey: "GRIDCOUNT")
-                height = ((self.view.bounds.size.height - (heightMarginsAndInsets)) / CGFloat(5)).rounded(.down)
-                width = ((self.view.bounds.size.width - widthMarginsAndInsets) / CGFloat(3)).rounded(.down)
-            }
+                case 1:
+                    rows = 1
+                    columns = 1
+                case 2:
+                    rows = 2
+                    columns = 1
+                case 4:
+                    rows = 2
+                    columns = 2
+                case 8:
+                    rows = 4
+                    columns = 2
+                case 10:
+                    rows = 5
+                    columns = 2
+                case 12:
+                    rows = 4
+                    columns = 3
+                case 15:
+                    rows = 5
+                    columns = 3
+                default:
+                    rows = 5
+                    columns = 3
+                    UserDefaults.standard.set(15, forKey: "GRIDCOUNT")
+                }
+            } else {
+                switch (cellCount){
+                case 1:
+                    rows = 1
+                    columns = 1
+                case 2:
+                    rows = 1
+                    columns = 2
+                case 4:
+                    rows = 1
+                    columns = 4
+                case 8:
+                    rows = 2
+                    columns = 4
+                case 10:
+                    rows = 2
+                    columns = 5
+                case 12:
+                    rows = 3
+                    columns = 4
+                case 15:
+                    rows = 3
+                    columns = 5
+                default:
+                    rows = 3
+                    columns = 5
+                    UserDefaults.standard.set(15, forKey: "GRIDCOUNT")
+                }
         }
-        let cellSize = CGSize(width: width, height: height)
-        return cellSize
+        // Calculate item size dynamically
+        if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+            let totalHorizontalSpacing = layout.minimumInteritemSpacing * CGFloat(columns - 1) + layout.sectionInset.left + layout.sectionInset.right
+            let totalVerticalSpacing = layout.minimumLineSpacing * CGFloat(rows - 1) + layout.sectionInset.top + layout.sectionInset.bottom
+
+            let itemWidth = (collectionView.bounds.width - totalHorizontalSpacing) / CGFloat(columns)
+            let itemHeight = (collectionView.bounds.height - totalVerticalSpacing) / CGFloat(rows)
+
+            layout.itemSize = CGSize(width: itemWidth, height: itemHeight)
+        }
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -1474,32 +1276,18 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         if ( collectionView!.bounds.width > collectionView!.bounds.height){
             switch (cellCount){
             case 1:
-                cellsPerRow = 2
-                rowCount = 1
                 nextCellCount = 2
             case 2:
-                cellsPerRow = 2
-                rowCount = 2
                 nextCellCount = 4
             case 4:
-                cellsPerRow = 4
-                rowCount = 2
                 nextCellCount = 8
             case 8:
-                cellsPerRow = 5
-                rowCount = 2
                 nextCellCount = 10
             case 10:
-                cellsPerRow = 4
-                rowCount = 3
                 nextCellCount = 12
             case 12:
-                cellsPerRow = 5
-                rowCount = 3
                 nextCellCount = 15
             case 15:
-                cellsPerRow = 1
-                rowCount = 1
                 nextCellCount = 1
             default:
                 os_log("MainCollectionViewController: Unknown Cell Count")
@@ -1507,32 +1295,18 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         } else {
             switch (cellCount){
             case 1:
-                cellsPerRow = 1
-                rowCount = 2
                 nextCellCount = 2
             case 2:
-                cellsPerRow = 1
-                rowCount = 4
                 nextCellCount = 4
             case 4:
-                cellsPerRow = 2
-                rowCount = 4
                 nextCellCount = 8
             case 8:
-                cellsPerRow = 2
-                rowCount = 5
                 nextCellCount = 10
             case 10:
-                cellsPerRow = 3
-                rowCount = 4
                 nextCellCount = 12
             case 12:
-                cellsPerRow = 3
-                rowCount = 5
                 nextCellCount = 15
             case 15:
-                cellsPerRow = 1
-                rowCount = 1
                 nextCellCount = 1
             default:
                 os_log("MainCollectionViewController: Unknown Cell Count")
@@ -1540,8 +1314,14 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         }
         UserDefaults.standard.set(nextCellCount, forKey: "GRIDCOUNT")
         DispatchQueue.main.async {
-            self.collectionView!.collectionViewLayout.invalidateLayout()
-            self.collectionView!.reloadData()
+            self.updateCollectionViewLayout()
+            // Reload data without animations
+            UIView.performWithoutAnimation {
+                self.collectionView.reloadData()
+                self.collectionView.collectionViewLayout.invalidateLayout()
+            }
+            // Ensure layout updates are fully applied
+            self.collectionView.layoutIfNeeded()
         }
     }
     
@@ -1552,32 +1332,18 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         if ( collectionView!.bounds.width > collectionView!.bounds.height){
             switch (cellCount){
             case 1:
-                cellsPerRow = 5
-                rowCount = 3
                 nextCellCount = 15
             case 2:
-                cellsPerRow = 1
-                rowCount = 1
                 nextCellCount = 1
             case 4:
-                cellsPerRow = 2
-                rowCount = 1
                 nextCellCount = 2
             case 8:
-                cellsPerRow = 2
-                rowCount = 2
                 nextCellCount = 4
             case 10:
-                cellsPerRow = 4
-                rowCount = 2
                 nextCellCount = 8
             case 12:
-                cellsPerRow = 5
-                rowCount = 2
                 nextCellCount = 10
             case 15:
-                cellsPerRow = 4
-                rowCount = 3
                 nextCellCount = 12
             default:
                 os_log("MainCollectionViewController: Unknown Cell Count")
@@ -1585,32 +1351,18 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         } else {
             switch (cellCount){
             case 1:
-                cellsPerRow = 3
-                rowCount = 5
                 nextCellCount = 15
             case 2:
-                cellsPerRow = 1
-                rowCount = 1
                 nextCellCount = 1
             case 4:
-                cellsPerRow = 1
-                rowCount = 2
                 nextCellCount = 2
             case 8:
-                cellsPerRow = 1
-                rowCount = 4
                 nextCellCount = 4
             case 10:
-                cellsPerRow = 2
-                rowCount = 4
                 nextCellCount = 8
             case 12:
-                cellsPerRow = 2
-                rowCount = 5
                 nextCellCount = 10
             case 15:
-                cellsPerRow = 3
-                rowCount = 4
                 nextCellCount = 12
             default:
                 os_log("MainCollectionViewController: Unknown Cell Count")
@@ -1618,8 +1370,14 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         }
         UserDefaults.standard.set(nextCellCount, forKey: "GRIDCOUNT")
         DispatchQueue.main.async {
-            self.collectionView!.collectionViewLayout.invalidateLayout()
-            self.collectionView!.reloadData()
+            self.updateCollectionViewLayout()
+            // Reload data without animations
+            UIView.performWithoutAnimation {
+                self.collectionView.reloadData()
+                self.collectionView.collectionViewLayout.invalidateLayout()
+            }
+            // Ensure layout updates are fully applied
+            self.collectionView.layoutIfNeeded()
         }
     }
     
@@ -2028,27 +1786,5 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     func invalidateTimer() {
         countdownTimer?.invalidate()
         countdownTimer = nil
-    }
-
-}
-
-extension UIImage {
-    func imageWithColor(color1: UIColor) -> UIImage {
-        UIGraphicsBeginImageContextWithOptions(self.size, false, self.scale)
-        color1.setFill()
-
-        let context = UIGraphicsGetCurrentContext()
-        context?.translateBy(x: 0, y: self.size.height)
-        context?.scaleBy(x: 1.0, y: -1.0)
-        context?.setBlendMode(CGBlendMode.normal)
-
-        let rect = CGRect(origin: .zero, size: CGSize(width: self.size.width, height: self.size.height))
-        context?.clip(to: rect, mask: self.cgImage!)
-        context?.fill(rect)
-
-        let newImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-
-        return newImage!
     }
 }
