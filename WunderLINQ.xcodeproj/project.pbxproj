@@ -564,22 +564,22 @@
 		B98CA75B252E6C5200530075 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				7E2EC06324991CE200B0A59B /* NavigationControllerWithTraitOverride.swift */,
 				7E5E0F77212289140048B9A2 /* AppUtility.swift */,
+				7E35A59222DC265800E4AE40 /* Utils.swift */,
+				D80365FD2B377FCD00F48637 /* SoundManager.swift */,
 				7E80BD3C211CFF7300B8CA0D /* LocalisableButton.swift */,
 				7E80BD3A211CF80600B8CA0D /* LocalisableLabel.swift */,
 				7EBFD48F210E108100FC9665 /* segueFromLeft.swift */,
 				7E916DDB230CF10D00011E5F /* NSLocalizedString.swift */,
-				7E35A59222DC265800E4AE40 /* Utils.swift */,
+				7E2EC06324991CE200B0A59B /* NavigationControllerWithTraitOverride.swift */,
+				7EA478761F412BAC000CEDDC /* CLLocation+Extension.swift */,
+				7EAE9414211E9B3200E24CE9 /* Double+Extensions.swift */,
+				7EBFD48D210ADD0000FC9665 /* String+Extensions.swift */,
+				B98CA761252E6F5500530075 /* String+Localizable.swift */,
 				D8CEAEB42CF7D99100AF5813 /* UIImage+Extensions.swift */,
+				B98CA75C252E6C6B00530075 /* UIStoryboard+extensions.swift */,
 				7E9346B228E0A67F009E13C0 /* UIViewController+Extensions.swift */,
 				7E9346B028E0A67F009E13C0 /* UserDefauts+Extensions.swift */,
-				B98CA75C252E6C6B00530075 /* UIStoryboard+extensions.swift */,
-				B98CA761252E6F5500530075 /* String+Localizable.swift */,
-				7EBFD48D210ADD0000FC9665 /* String+Extensions.swift */,
-				7EAE9414211E9B3200E24CE9 /* Double+Extensions.swift */,
-				7EA478761F412BAC000CEDDC /* CLLocation+Extension.swift */,
-				D80365FD2B377FCD00F48637 /* SoundManager.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -1087,7 +1087,7 @@
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = 3J48UMN5W2;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1117,7 +1117,7 @@
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = 3J48UMN5W2;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
