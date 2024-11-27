@@ -115,6 +115,7 @@
 		D880B6022C6BFED900B4252B /* wav in Resources */ = {isa = PBXBuildFile; fileRef = D880B6012C6BFED900B4252B /* wav */; };
 		D88FC37B2CA4EF6D00F18A7E /* SpotifyiOS.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = D88FC37A2CA4EF6D00F18A7E /* SpotifyiOS.xcframework */; };
 		D88FC37C2CA4EF6D00F18A7E /* SpotifyiOS.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D88FC37A2CA4EF6D00F18A7E /* SpotifyiOS.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D8CEAEB52CF7D99C00AF5813 /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8CEAEB42CF7D99100AF5813 /* UIImage+Extensions.swift */; };
 		D8FA72F92CC1B65300C41674 /* sport-dashboard-portrait.svg in Resources */ = {isa = PBXBuildFile; fileRef = D8FA72F82CC1B65300C41674 /* sport-dashboard-portrait.svg */; };
 		D8FA72FA2CC1B65300C41674 /* adv-dashboard-portrait.svg in Resources */ = {isa = PBXBuildFile; fileRef = D8FA72F72CC1B65300C41674 /* adv-dashboard-portrait.svg */; };
 /* End PBXBuildFile section */
@@ -294,6 +295,7 @@
 		D87629112A7EDEB90021E7A7 /* standard-dashboard-portrait.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "standard-dashboard-portrait.svg"; sourceTree = "<group>"; };
 		D880B6012C6BFED900B4252B /* wav */ = {isa = PBXFileReference; lastKnownFileType = folder; path = wav; sourceTree = "<group>"; };
 		D88FC37A2CA4EF6D00F18A7E /* SpotifyiOS.xcframework */ = {isa = PBXFileReference; expectedSignature = "AppleDeveloperProgram:2FNC3A47ZF:Spotify"; lastKnownFileType = wrapper.xcframework; name = SpotifyiOS.xcframework; path = "../ios-sdk-2.1.7/SpotifyiOS.xcframework"; sourceTree = "<group>"; };
+		D8CEAEB42CF7D99100AF5813 /* UIImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
 		D8FA72F72CC1B65300C41674 /* adv-dashboard-portrait.svg */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "adv-dashboard-portrait.svg"; sourceTree = "<group>"; };
 		D8FA72F82CC1B65300C41674 /* sport-dashboard-portrait.svg */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "sport-dashboard-portrait.svg"; sourceTree = "<group>"; };
 		DA150AA674E4880933A5281B /* Pods_WunderLINQ.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WunderLINQ.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -569,6 +571,7 @@
 				7EBFD48F210E108100FC9665 /* segueFromLeft.swift */,
 				7E916DDB230CF10D00011E5F /* NSLocalizedString.swift */,
 				7E35A59222DC265800E4AE40 /* Utils.swift */,
+				D8CEAEB42CF7D99100AF5813 /* UIImage+Extensions.swift */,
 				7E9346B228E0A67F009E13C0 /* UIViewController+Extensions.swift */,
 				7E9346B028E0A67F009E13C0 /* UserDefauts+Extensions.swift */,
 				B98CA75C252E6C6B00530075 /* UIStoryboard+extensions.swift */,
@@ -818,6 +821,7 @@
 				7E068BF8210645290076EAAD /* TripViewController.swift in Sources */,
 				7E5A767A20DDFEF700B48CC6 /* Waypoint.swift in Sources */,
 				7E80BD42211D419C00B8CA0D /* WaypointsNavTableViewController.swift in Sources */,
+				D8CEAEB52CF7D99C00AF5813 /* UIImage+Extensions.swift in Sources */,
 				7E755C18260AA78900B29507 /* StandardDashboard.swift in Sources */,
 				7EC8C9BF1F830C5B000CEDDC /* PhoneContacts.swift in Sources */,
 				7EA4BCC921B8CB270084F6EA /* TaskCollectionViewCell.swift in Sources */,
