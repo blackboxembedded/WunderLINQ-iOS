@@ -41,8 +41,8 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     
     var backBtn: UIButton!
     var backButton: UIBarButtonItem!
-    var disconnectBtn: UIButton!
-    var disconnectButton: UIBarButtonItem!
+    var bluetoothBtn: UIButton!
+    var bluetoothButton: UIBarButtonItem!
     var faultsBtn: UIButton!
     var faultsButton: UIBarButtonItem!
     var menuBtn: UIButton!
@@ -274,17 +274,17 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         let backButtonHeight = backButton.customView?.heightAnchor.constraint(equalToConstant: 30)
         backButtonHeight?.isActive = true
         
-        disconnectBtn = UIButton(type: .custom)
+        bluetoothBtn = UIButton(type: .custom)
         let disconnectImage = UIImage(named: "Bluetooth")?.withRenderingMode(.alwaysTemplate)
-        disconnectBtn.setImage(disconnectImage, for: .normal)
-        disconnectBtn.tintColor = UIColor(named: "motorrad_red")
-        disconnectBtn.accessibilityIgnoresInvertColors = true
-        disconnectBtn.addTarget(self, action: #selector(btButtonTapped), for: .touchUpInside)
-        disconnectButton = UIBarButtonItem(customView: disconnectBtn)
-        let disconnectButtonWidth = disconnectButton.customView?.widthAnchor.constraint(equalToConstant: 30)
-        disconnectButtonWidth?.isActive = true
-        let disconnectButtonHeight = disconnectButton.customView?.heightAnchor.constraint(equalToConstant: 30)
-        disconnectButtonHeight?.isActive = true
+        bluetoothBtn.setImage(disconnectImage, for: .normal)
+        bluetoothBtn.tintColor = UIColor(named: "motorrad_red")
+        bluetoothBtn.accessibilityIgnoresInvertColors = true
+        bluetoothBtn.addTarget(self, action: #selector(btButtonTapped), for: .touchUpInside)
+        bluetoothButton = UIBarButtonItem(customView: bluetoothBtn)
+        let bluetoothButtonWidth = bluetoothButton.customView?.widthAnchor.constraint(equalToConstant: 30)
+        bluetoothButtonWidth?.isActive = true
+        let bluetoothButtonHeight = bluetoothButton.customView?.heightAnchor.constraint(equalToConstant: 30)
+        bluetoothButtonHeight?.isActive = true
         
         faultsBtn = UIButton(type: .custom)
         let faultsImage = UIImage(named: "Alert")?.withRenderingMode(.alwaysTemplate)
@@ -319,7 +319,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         forwardButtonHeight?.isActive = true
         
         self.navigationItem.title = NSLocalizedString("main_title", comment: "")
-        self.navigationItem.leftBarButtonItems = [backButton, disconnectButton, faultsButton]
+        self.navigationItem.leftBarButtonItems = [backButton, bluetoothButton, faultsButton]
         self.navigationItem.rightBarButtonItems = [forwardButton, menuButton]
         
         _ = menu /// Create the menu.
@@ -773,7 +773,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     @objc func pauseScan() {
         // Scanning uses up battery on phone, so pause the scan process for the designated interval.
         os_log("MainCollectionViewController: PAUSING SCAN...")
-        disconnectButton.isEnabled = true
+        bluetoothButton.isEnabled = true
         self.centralManager?.stopScan()
         Timer.scheduledTimer(timeInterval: timerPauseInterval, target: self, selector: #selector(self.resumeScan), userInfo: nil, repeats: false)
         
@@ -792,11 +792,11 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             if keepScanning {
                 // Start scanning again...
                 os_log("MainCollectionViewController: RESUMING SCAN!")
-                disconnectButton.isEnabled = false
+                bluetoothButton.isEnabled = false
                 centralManager.scanForPeripherals(withServices: [CBUUID(string: Device.WunderLINQAdvertisingUUID)], options: nil)
                 Timer.scheduledTimer(timeInterval: timerScanInterval, target: self, selector: #selector(self.pauseScan), userInfo: nil, repeats: false)
             } else {
-                disconnectButton.isEnabled = true
+                bluetoothButton.isEnabled = true
             }
         }
     }
@@ -851,7 +851,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             faultsBtn.tintColor = UIColor(named: "motorrad_red")
             faultsButton.isEnabled = true
         }
-        self.navigationItem.leftBarButtonItems = [backButton, disconnectButton, faultsButton]
+        self.navigationItem.leftBarButtonItems = [backButton, bluetoothButton, faultsButton]
         
         // Update main display
         let cellCount = UserDefaults.standard.integer(forKey: "GRIDCOUNT")
@@ -986,7 +986,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                 os_log("MainCollectionViewController: WunderLINQ FOUND! ADDING NOW!!!")
                 // to save power, stop scanning for other devices
                 keepScanning = false
-                disconnectButton.isEnabled = true
+                bluetoothButton.isEnabled = true
                 
                 // save a reference to the WunderLINQ
                 wunderLINQ = peripheral
@@ -1006,7 +1006,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
      */
     func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
         os_log("MainCollectionViewController: SUCCESSFULLY CONNECTED TO WunderLINQ!")
-        disconnectBtn.tintColor = UIColor(named: "motorrad_blue")
+        bluetoothBtn.tintColor = UIColor(named: "motorrad_blue")
         
         os_log("MainCollectionViewController: Peripheral info: \(peripheral)")
         peripheral.delegate = self
@@ -1033,7 +1033,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
      */
     func centralManager(_ central: CBCentralManager, didFailToConnect peripheral: CBPeripheral, error: Error?) {
         os_log("MainCollectionViewController: CONNECTION TO WunderLINQ FAILED!")
-        disconnectBtn.tintColor = UIColor(named: "motorrad_red")
+        bluetoothBtn.tintColor = UIColor(named: "motorrad_red")
     }
     
     
@@ -1048,8 +1048,8 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
      */
     func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
         os_log("MainCollectionViewController: DISCONNECTED FROM WunderLINQ!")
-        disconnectBtn.tintColor = UIColor(named: "motorrad_red")
-        //motorcycleData.clear()
+        bluetoothBtn.tintColor = UIColor(named: "motorrad_red")
+        motorcycleData.setHasFocus(hasFocus: false)
         updateDisplay()
         if error != nil {
             os_log("MainCollectionViewController: DISCONNECTION DETAILS: \(error!.localizedDescription)")
