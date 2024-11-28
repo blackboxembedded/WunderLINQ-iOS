@@ -31,6 +31,7 @@ class WeatherMapViewController: UIViewController {
     let marker = GMSMarker()
 
     @IBOutlet weak var mapView: GMSMapView!
+    @IBOutlet weak var dateLabel: UILabel!
     
     var displayLink: CADisplayLink?
     var startTime: CFTimeInterval?
@@ -145,6 +146,10 @@ class WeatherMapViewController: UIViewController {
         if (lastTimestamp != timestamp){
             lastTimestamp = timestamp
             configureMap(timestamp: timestamp)
+            
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "EEE MMM dd HH:mm:ss z yyyy"
+            dateLabel.text = dateFormatter.string(from: calculateDateForProgress(progress))
         }
     }
     

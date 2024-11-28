@@ -414,18 +414,29 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="ignoresInvertColors" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g9H-hx-tJq">
+                                <rect key="frame" x="259.5" y="611" width="61.5" height="29"/>
+                                <color key="backgroundColor" name="backgrounds"/>
+                                <color key="tintColor" name="imageTint"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="gHP-w0-dFs"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="xBm-3o-5aH" firstAttribute="leading" secondItem="gHP-w0-dFs" secondAttribute="leading" id="6nb-xM-VEs"/>
                             <constraint firstItem="xBm-3o-5aH" firstAttribute="top" secondItem="gHP-w0-dFs" secondAttribute="top" id="Vdu-lY-QgY"/>
+                            <constraint firstItem="gHP-w0-dFs" firstAttribute="bottom" secondItem="g9H-hx-tJq" secondAttribute="bottom" id="k9j-gC-xyF"/>
                             <constraint firstItem="gHP-w0-dFs" firstAttribute="bottom" secondItem="xBm-3o-5aH" secondAttribute="bottom" id="orf-yu-fG1"/>
                             <constraint firstItem="gHP-w0-dFs" firstAttribute="trailing" secondItem="xBm-3o-5aH" secondAttribute="trailing" id="sIh-tg-3fS"/>
+                            <constraint firstItem="g9H-hx-tJq" firstAttribute="centerX" secondItem="xBm-3o-5aH" secondAttribute="centerX" id="zAT-ca-ZbE"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="xsM-zr-Iwi"/>
                     <connections>
+                        <outlet property="dateLabel" destination="g9H-hx-tJq" id="eQY-IP-IwL"/>
                         <outlet property="mapView" destination="xBm-3o-5aH" id="YVc-ml-SyW"/>
                     </connections>
                 </viewController>
@@ -1157,20 +1168,20 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="hwActionCell" id="ORR-ga-rGW" customClass="HWSettingsTableViewCell" customModule="WunderLINQ" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="50" width="580" height="43.5"/>
+                                        <rect key="frame" x="0.0" y="50" width="580" height="43"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ORR-ga-rGW" id="u8h-mc-bnW">
-                                            <rect key="frame" x="0.0" y="0.0" width="580" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="580" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="32s-bB-EZK">
-                                                    <rect key="frame" x="16" y="11" width="274" height="21.5"/>
+                                                    <rect key="frame" x="16" y="11" width="274" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rs5-hB-OEc">
-                                                    <rect key="frame" x="290" y="11" width="274" height="21.5"/>
+                                                    <rect key="frame" x="290" y="11" width="274" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
