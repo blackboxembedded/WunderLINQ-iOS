@@ -475,18 +475,29 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="ignoresInvertColors" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E3V-ni-sOf">
+                                <rect key="frame" x="166" y="813.33333333333337" width="61.333333333333343" height="28.666666666666629"/>
+                                <color key="backgroundColor" name="backgrounds"/>
+                                <color key="tintColor" name="imageTint"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="gHP-w0-dFs"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="xBm-3o-5aH" firstAttribute="leading" secondItem="gHP-w0-dFs" secondAttribute="leading" id="6nb-xM-VEs"/>
+                            <constraint firstItem="gHP-w0-dFs" firstAttribute="bottom" secondItem="E3V-ni-sOf" secondAttribute="bottom" id="IJs-IW-8Nw"/>
                             <constraint firstItem="xBm-3o-5aH" firstAttribute="top" secondItem="gHP-w0-dFs" secondAttribute="top" id="Vdu-lY-QgY"/>
+                            <constraint firstItem="E3V-ni-sOf" firstAttribute="centerX" secondItem="xBm-3o-5aH" secondAttribute="centerX" id="Y9w-fV-vdX"/>
                             <constraint firstItem="gHP-w0-dFs" firstAttribute="bottom" secondItem="xBm-3o-5aH" secondAttribute="bottom" id="orf-yu-fG1"/>
                             <constraint firstItem="gHP-w0-dFs" firstAttribute="trailing" secondItem="xBm-3o-5aH" secondAttribute="trailing" id="sIh-tg-3fS"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="xsM-zr-Iwi"/>
                     <connections>
+                        <outlet property="dateLabel" destination="E3V-ni-sOf" id="5Wk-r8-P7x"/>
                         <outlet property="mapView" destination="xBm-3o-5aH" id="YVc-ml-SyW"/>
                     </connections>
                 </viewController>
@@ -1241,20 +1252,20 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="hwActionCell" id="ORR-ga-rGW" customClass="HWSettingsTableViewCell" customModule="WunderLINQ" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="50" width="393" height="42.666667938232422"/>
+                                        <rect key="frame" x="0.0" y="50" width="393" height="43.333332061767578"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ORR-ga-rGW" id="u8h-mc-bnW">
-                                            <rect key="frame" x="0.0" y="0.0" width="393" height="42.666667938232422"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="43.333332061767578"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="32s-bB-EZK">
-                                                    <rect key="frame" x="20" y="11.000000000000002" width="176.66666666666666" height="20.666666666666671"/>
+                                                    <rect key="frame" x="20" y="10.999999999999998" width="176.66666666666666" height="21.333333333333329"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rs5-hB-OEc">
-                                                    <rect key="frame" x="196.66666666666663" y="11.000000000000002" width="176.33333333333337" height="20.666666666666671"/>
+                                                    <rect key="frame" x="196.66666666666663" y="10.999999999999998" width="176.33333333333337" height="21.333333333333329"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -2763,7 +2774,7 @@ Icons from fontawesome.com
         <segue reference="U8S-hb-Idp"/>
         <segue reference="end-im-meh"/>
         <segue reference="qQx-7G-0NR"/>
-        <segue reference="Mvj-Z7-A9C"/>
+        <segue reference="PPQ-oT-Jxj"/>
         <segue reference="RhK-1Y-fo7"/>
         <segue reference="1bf-BN-ttT"/>
         <segue reference="kry-jp-5q5"/>
