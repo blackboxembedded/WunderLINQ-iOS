@@ -35,6 +35,7 @@ class MusicViewController: UIViewController {
     @IBOutlet weak var lastButton: UIButton!
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var nextButton: UIButton!
+    var buttons: [UIButton] = []
     
     private let notificationCenter = NotificationCenter.default
     
@@ -71,6 +72,8 @@ class MusicViewController: UIViewController {
         let touchRecognizer = UITapGestureRecognizer(target: self, action:  #selector(onTouch))
         self.view.addGestureRecognizer(touchRecognizer)
         
+        buttons = [lastButton, playButton, nextButton]
+        
         let backBtn = UIButton()
         backBtn.setImage(UIImage(named: "Left")?.withRenderingMode(.alwaysTemplate), for: .normal)
         backBtn.tintColor = UIColor(named: "imageTint")
@@ -97,6 +100,8 @@ class MusicViewController: UIViewController {
         faultsBtn.accessibilityIgnoresInvertColors = true
         faultsBtn.addTarget(self, action: #selector(self.faultsButtonTapped), for: .touchUpInside)
         faultsButton = UIBarButtonItem(customView: faultsBtn)
+        faultsButton.accessibilityRespondsToUserInteraction = false
+        faultsButton.isAccessibilityElement = false
         let faultsButtonWidth = faultsButton.customView?.widthAnchor.constraint(equalToConstant: 30)
         faultsButtonWidth?.isActive = true
         let faultsButtonHeight = faultsButton.customView?.heightAnchor.constraint(equalToConstant: 30)
@@ -173,6 +178,30 @@ class MusicViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func didUpdateFocus(in context: UIFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {
+        super.didUpdateFocus(in: context, with: coordinator)
+        
+        // Check if the next focused view is one of the buttons
+        if let focusedButton = context.nextFocusedView as? UIButton, buttons.contains(focusedButton) {
+            coordinator.addCoordinatedAnimations {
+                var highlightColor: UIColor?
+                if let colorData = UserDefaults.standard.data(forKey: "highlight_color_preference"){
+                    highlightColor = try? NSKeyedUnarchiver.unarchivedObject(ofClass: UIColor.self, from: colorData)
+                } else {
+                    highlightColor = UIColor(named: "accent")
+                }
+                focusedButton.backgroundColor = highlightColor
+            }
+        }
+        
+        // Check if the previously focused view is one of the buttons
+        if let previouslyFocusedButton = context.previouslyFocusedView as? UIButton, buttons.contains(previouslyFocusedButton) {
+            coordinator.addCoordinatedAnimations {
+                previouslyFocusedButton.backgroundColor = .clear // Default background
+            }
+        }
     }
     
     // MARK: - Updating UI

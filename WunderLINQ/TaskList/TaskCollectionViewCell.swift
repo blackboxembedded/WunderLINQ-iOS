@@ -46,7 +46,7 @@ class TaskCollectionViewCell: UICollectionViewCell {
         } else {
             highlightColor = UIColor(named: "accent")
         }
-        
+        contentView.backgroundColor = highlightColor
         uiView.backgroundColor = highlightColor
         taskImage.tintColor = UIColor.white
         taskLabel.textColor = UIColor.white
@@ -56,5 +56,21 @@ class TaskCollectionViewCell: UICollectionViewCell {
         uiView.backgroundColor = UIColor.clear
         taskImage.tintColor = UIColor(named: "imageTint")
         taskLabel.textColor = UIColor(named: "imageTint")
+        contentView.backgroundColor = .clear
+    }
+    
+    override func didUpdateFocus(in context: UIFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {
+        super.didUpdateFocus(in: context, with: coordinator)
+        
+        // Check if the cell is currently focused
+        if isFocused {
+            coordinator.addCoordinatedAnimations {
+                self.highlightEffect()
+            }
+        } else {
+            coordinator.addCoordinatedAnimations {
+                self.removeHighlight()
+            }
+        }
     }
 }

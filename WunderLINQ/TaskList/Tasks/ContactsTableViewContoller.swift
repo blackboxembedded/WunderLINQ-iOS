@@ -149,6 +149,7 @@ class ContactsTableViewController: UITableViewController {
         DispatchQueue.main.asyncAfter(deadline: deadlineTime) {
             self.tableView.scrollToRow(at: indexPath, at: .middle, animated: false)
         }
+        updateDisplay()
         self.tableView.reloadData()
     }
     
@@ -166,6 +167,7 @@ class ContactsTableViewController: UITableViewController {
         DispatchQueue.main.asyncAfter(deadline: deadlineTime) {
             self.tableView.scrollToRow(at: indexPath, at: .middle, animated: false)
         }
+        updateDisplay()
         self.tableView.reloadData()
     }
     
@@ -179,6 +181,7 @@ class ContactsTableViewController: UITableViewController {
         if let lastVisibleIndexPath = tableView.indexPathsForVisibleRows?.last {
             itemRow = lastVisibleIndexPath.row
             tableView.scrollToRow(at: lastVisibleIndexPath, at: .middle, animated: true)
+            updateDisplay()
             self.tableView.reloadData()
         }
     }
@@ -197,8 +200,6 @@ class ContactsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        setNavBarColors()
         
         var buttonColor = UIColor(named: "imageTint")
         switch(UserDefaults.standard.integer(forKey: "darkmode_preference")){
@@ -236,6 +237,8 @@ class ContactsTableViewController: UITableViewController {
         faultsBtn.accessibilityIgnoresInvertColors = true
         faultsBtn.addTarget(self, action: #selector(self.faultsButtonTapped), for: .touchUpInside)
         faultsButton = UIBarButtonItem(customView: faultsBtn)
+        faultsButton.accessibilityRespondsToUserInteraction = false
+        faultsButton.isAccessibilityElement = false
         let faultsButtonWidth = faultsButton.customView?.widthAnchor.constraint(equalToConstant: 30)
         faultsButtonWidth?.isActive = true
         let faultsButtonHeight = faultsButton.customView?.heightAnchor.constraint(equalToConstant: 30)
@@ -283,7 +286,7 @@ class ContactsTableViewController: UITableViewController {
         if (itemRow == indexPath.row){
             cell.highlightEffect()
         } else {
-            cell.removeHighlight(color: UIColor(named: "backgrounds")!)
+            cell.removeHighlight()
         }
         cell.contactImage.tintColor = UIColor(named: "imageTint")
         
@@ -299,37 +302,16 @@ class ContactsTableViewController: UITableViewController {
         self.navigationController?.pushViewController(viewController, animated: true)
     }
     
-    func setNavBarColors(){
-        switch(UserDefaults.standard.integer(forKey: "darkmode_preference")){
-        case 0:
-            //OFF
-            // Create a custom appearance for the navigation bar
-            let appearance = UINavigationBarAppearance()
-            appearance.configureWithOpaqueBackground() // or configureWithTransparentBackground() if you prefer transparency
-            appearance.backgroundColor = UIColor.white // Set your desired background color
-            
-            // Customize the title text attributes (optional)
-            appearance.titleTextAttributes = [.foregroundColor: UIColor.black] // Set text color
-            
-            // Apply the appearance to the navigation bar
-            navigationController?.navigationBar.standardAppearance = appearance
-            navigationController?.navigationBar.scrollEdgeAppearance = appearance
-        case 1:
-            //On
-            // Create a custom appearance for the navigation bar
-            let appearance = UINavigationBarAppearance()
-            appearance.configureWithOpaqueBackground() // or configureWithTransparentBackground() if you prefer transparency
-            appearance.backgroundColor = UIColor.black // Set your desired background color
-            
-            // Customize the title text attributes (optional)
-            appearance.titleTextAttributes = [.foregroundColor: UIColor.white] // Set text color
-            
-            // Apply the appearance to the navigation bar
-            navigationController?.navigationBar.standardAppearance = appearance
-            navigationController?.navigationBar.scrollEdgeAppearance = appearance
-        default:
-            //Default
-            break
+    // MARK: - Updating UI
+    func updateDisplay() {
+        self.tableView.reloadData()
+        // Update Buttons
+        if (faults.getallActiveDesc().isEmpty){
+            faultsBtn.tintColor = UIColor.clear
+            faultsButton.isEnabled = false
+        } else {
+            faultsBtn.tintColor = UIColor(named: "motorrad_red")
+            faultsButton.isEnabled = true
         }
     }
 }
