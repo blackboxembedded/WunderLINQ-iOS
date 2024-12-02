@@ -135,7 +135,8 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                          NSLocalizedString("rpm_header", comment: ""),
                          NSLocalizedString("leanangle_bike_header", comment: ""),
                          NSLocalizedString("rearwheel_speed_header", comment: ""),
-                         NSLocalizedString("local_battery_header", comment: "")
+                         NSLocalizedString("local_battery_header", comment: ""),
+                         NSLocalizedString("elevation_change_header", comment: "")
     ]
     
     let locationDelegate = LocationDelegate()

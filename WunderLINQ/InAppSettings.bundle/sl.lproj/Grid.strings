@@ -46,3 +46,4 @@
 "rearwheel_speed_header" = "Hitrost na zadnjem kolesu";
 "leanangle_bike_header" = "Lean Angle";
 "local_battery_header" = "Device Battery";
+"elevation_change_header" = "Elv Change";

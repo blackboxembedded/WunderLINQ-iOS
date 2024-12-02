@@ -64,6 +64,9 @@ class MotorcycleData {
     var prevBrake: Int? = 0
     var localBattery: Int?
     
+    // Initialize the calculator with a 2-minute observation window
+    let rateOfClimbCalculator = RateOfClimbCalculator(observationWindow: 120)
+    
     func setHasFocus(hasFocus: Bool?){
         self.hasFocus = hasFocus
     }
@@ -73,9 +76,14 @@ class MotorcycleData {
     
     func setLocation(location: CLLocation?){
         self.location = location
+        
+        rateOfClimbCalculator.addAltitudeData(altitude: location!.altitude)
     }
     func getLocation() -> CLLocation? {
         return self.location
+    }
+    func getElevationChange() -> Double{
+        return rateOfClimbCalculator.calculateRateOfClimb()
     }
     
     func setIgnitionStatus(ignitionStatus: Bool?){
@@ -428,6 +436,7 @@ class MotorcycleData {
     public let DATA_LEAN = 30
     public let DATA_REAR_SPEED = 31
     public let DATA_BATTERY_DEVICE = 32
+    public let DATA_ELEVATION_CHANGE_DEVICE = 33
     
     class func getLabel(dataPoint: Int) -> String {
         var label:String = ""
@@ -571,6 +580,9 @@ class MotorcycleData {
         case MotorcycleData.shared.DATA_BATTERY_DEVICE:
             //Device Battery
             label = NSLocalizedString("local_battery_header", comment: "")
+        case MotorcycleData.shared.DATA_ELEVATION_CHANGE_DEVICE:
+            //Elevation change
+            label = NSLocalizedString("elevation_change_header", comment: "") + " (" + heightUnit + "/2min)"
         default:
             os_log("MotorcycleData: Unknown : \(dataPoint)")
         }
@@ -746,6 +758,9 @@ class MotorcycleData {
                     labelColor = UIColor(named: "motorrad_red")
                 }
             }
+        case MotorcycleData.shared.DATA_ELEVATION_CHANGE_DEVICE:
+            //Elevation change
+            break
         default:
             os_log("MotorcycleData: Unknown : \(dataPoint)")
         }
@@ -919,6 +934,9 @@ class MotorcycleData {
                     icon = icon.imageWithColor(color1: UIColor(named: "motorrad_red")!)
                 }
             }
+        case MotorcycleData.shared.DATA_ELEVATION_CHANGE_DEVICE:
+            //Elevation change
+            icon = (UIImage(named: "Signature")?.withRenderingMode(.alwaysTemplate))!
         default:
             os_log("MotorcycleData: Unknown : \(dataPoint)")
         }
@@ -1300,6 +1318,13 @@ class MotorcycleData {
             } else {
                 value = NSLocalizedString("blank_field", comment: "")
             }
+        case MotorcycleData.shared.DATA_ELEVATION_CHANGE_DEVICE:
+            //Elevation change
+            var elevationChange:Double = MotorcycleData.shared.getElevationChange()
+            if UserDefaults.standard.integer(forKey: "distance_unit_preference") == 1 {
+                elevationChange = Utils.mtoFeet(elevationChange)
+            }
+            value = "\(elevationChange.rounded(toPlaces: 1))"
         default:
             os_log("MotorcycleData: Unknown : \(dataPoint)")
         }

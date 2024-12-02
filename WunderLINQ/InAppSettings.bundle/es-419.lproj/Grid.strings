@@ -50,3 +50,4 @@
 "triptwo_header" = "Trip 2";
 "voltage_header" = "Voltaje";
 "local_battery_header" = "Batería Del Dispositivo";
+"elevation_change_header" = "Elv Change";

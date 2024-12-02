@@ -46,3 +46,4 @@
 "rearwheel_speed_header" = "後輪速度";
 "rpm_header" = "回転数";
 "local_battery_header" = "Device Battery";
+"elevation_change_header" = "Elv Change";
