@@ -38,6 +38,10 @@
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="" lineBreakMode="tailTruncation" minimumScaleFactor="0.050000000000000003" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="st8-4c-dmF">
                                                     <rect key="frame" x="4" y="4" width="92" height="20"/>
+                                                    <accessibility key="accessibilityConfiguration">
+                                                        <accessibilityTraits key="traits" staticText="YES" notEnabled="YES" updatesFrequently="YES"/>
+                                                        <bool key="isElement" value="NO"/>
+                                                    </accessibility>
                                                     <constraints>
                                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="E5R-B6-zxY"/>
                                                     </constraints>
@@ -47,12 +51,19 @@
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="Cog" translatesAutoresizingMaskIntoConstraints="NO" id="P8S-XM-z9r">
                                                     <rect key="frame" x="83" y="83" width="15" height="15"/>
                                                     <color key="tintColor" name="imageTint"/>
+                                                    <accessibility key="accessibilityConfiguration">
+                                                        <accessibilityTraits key="traits" image="YES" notEnabled="YES" updatesFrequently="YES"/>
+                                                    </accessibility>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="P8S-XM-z9r" secondAttribute="height" multiplier="1:1" id="3Jc-0l-i92"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="∞" textAlignment="center" lineBreakMode="clip" numberOfLines="2" minimumScaleFactor="0.050000000000000003" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4ot-xt-lZn">
                                                     <rect key="frame" x="0.0" y="24" width="100" height="59"/>
+                                                    <accessibility key="accessibilityConfiguration">
+                                                        <accessibilityTraits key="traits" staticText="YES" notEnabled="YES" updatesFrequently="YES"/>
+                                                        <bool key="isElement" value="NO"/>
+                                                    </accessibility>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="150"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -83,6 +94,9 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="cbE-Dn-tYJ"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <accessibility key="accessibilityConfiguration">
+                            <accessibilityTraits key="traits" notEnabled="YES" updatesFrequently="YES"/>
+                        </accessibility>
                         <constraints>
                             <constraint firstItem="DFb-XX-n1q" firstAttribute="leading" secondItem="cbE-Dn-tYJ" secondAttribute="leading" id="Cl2-Wc-0iE"/>
                             <constraint firstItem="DFb-XX-n1q" firstAttribute="trailing" secondItem="cbE-Dn-tYJ" secondAttribute="trailing" id="jAF-uA-0yM"/>
@@ -471,6 +485,9 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xBm-3o-5aH" customClass="GMSMapView">
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" notEnabled="YES"/>
+                                </accessibility>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="ignoresInvertColors" value="YES"/>
                                 </userDefinedRuntimeAttributes>
@@ -479,6 +496,9 @@
                                 <rect key="frame" x="166" y="813.33333333333337" width="61.333333333333343" height="28.666666666666629"/>
                                 <color key="backgroundColor" name="backgrounds"/>
                                 <color key="tintColor" name="imageTint"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" staticText="YES" notEnabled="YES"/>
+                                </accessibility>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -486,6 +506,9 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="gHP-w0-dFs"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <accessibility key="accessibilityConfiguration">
+                            <accessibilityTraits key="traits" notEnabled="YES"/>
+                        </accessibility>
                         <constraints>
                             <constraint firstItem="xBm-3o-5aH" firstAttribute="leading" secondItem="gHP-w0-dFs" secondAttribute="leading" id="6nb-xM-VEs"/>
                             <constraint firstItem="gHP-w0-dFs" firstAttribute="bottom" secondItem="E3V-ni-sOf" secondAttribute="bottom" id="IJs-IW-8Nw"/>
@@ -515,6 +538,9 @@
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9KV-8n-ffM">
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="393"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" image="YES" notEnabled="YES"/>
+                                </accessibility>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="9KV-8n-ffM" secondAttribute="height" multiplier="1:1" id="si3-M8-hZI"/>
                                 </constraints>
@@ -528,6 +554,9 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7h2-4R-M5d">
                                         <rect key="frame" x="0.0" y="0.0" width="393" height="25"/>
                                         <color key="tintColor" systemColor="labelColor"/>
+                                        <accessibility key="accessibilityConfiguration">
+                                            <accessibilityTraits key="traits" staticText="YES" notEnabled="YES"/>
+                                        </accessibility>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="25" id="yre-vE-Dnx"/>
                                         </constraints>
@@ -538,6 +567,9 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MHP-fk-xUy">
                                         <rect key="frame" x="0.0" y="25" width="393" height="25"/>
                                         <color key="tintColor" systemColor="labelColor"/>
+                                        <accessibility key="accessibilityConfiguration">
+                                            <accessibilityTraits key="traits" staticText="YES" notEnabled="YES"/>
+                                        </accessibility>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -545,6 +577,9 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ojS-iD-NCF">
                                         <rect key="frame" x="0.0" y="50" width="393" height="25"/>
                                         <color key="tintColor" systemColor="labelColor"/>
+                                        <accessibility key="accessibilityConfiguration">
+                                            <accessibilityTraits key="traits" staticText="YES" notEnabled="YES"/>
+                                        </accessibility>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -552,6 +587,9 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ENe-lL-dLJ">
                                         <rect key="frame" x="0.0" y="75" width="393" height="25"/>
                                         <color key="tintColor" systemColor="labelColor"/>
+                                        <accessibility key="accessibilityConfiguration">
+                                            <accessibilityTraits key="traits" staticText="YES" notEnabled="YES"/>
+                                        </accessibility>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -603,6 +641,9 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="7Zv-aa-Udi"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <accessibility key="accessibilityConfiguration">
+                            <accessibilityTraits key="traits" notEnabled="YES"/>
+                        </accessibility>
                         <constraints>
                             <constraint firstItem="9KV-8n-ffM" firstAttribute="leading" secondItem="7Zv-aa-Udi" secondAttribute="leading" id="8Zd-Fq-5er"/>
                             <constraint firstItem="7Zv-aa-Udi" firstAttribute="bottom" secondItem="9kl-zc-Jc0" secondAttribute="bottom" id="C6C-Cn-Lty">
@@ -717,6 +758,9 @@
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IUU-pb-d73">
                                             <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
+                                            <accessibility key="accessibilityConfiguration">
+                                                <accessibilityTraits key="traits" image="YES" notEnabled="YES"/>
+                                            </accessibility>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="IUU-pb-d73" secondAttribute="height" multiplier="1:1" id="1FP-ZT-gHE"/>
                                                 <constraint firstAttribute="width" secondItem="IUU-pb-d73" secondAttribute="height" multiplier="1:1" id="9WJ-vp-ICx"/>
@@ -726,6 +770,10 @@
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LK8-Wv-Jeq">
                                             <rect key="frame" x="68" y="11" width="305" height="38"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <accessibility key="accessibilityConfiguration">
+                                                <accessibilityTraits key="traits" staticText="YES" notEnabled="YES"/>
+                                            </accessibility>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -771,7 +819,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="WaypointsNavTableViewCell" textLabel="lKv-aX-sxq" style="IBUITableViewCellStyleDefault" id="6UQ-Ab-cVd">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="WaypointsNavTableViewCell" textLabel="lKv-aX-sxq" style="IBUITableViewCellStyleDefault" id="6UQ-Ab-cVd" customClass="WaypointsNavTableViewCell" customModule="WunderLINQ" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="50" width="393" height="43.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6UQ-Ab-cVd" id="AFc-J5-2Sf">
@@ -781,6 +829,9 @@
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="lKv-aX-sxq">
                                             <rect key="frame" x="20" y="0.0" width="353" height="43.666667938232422"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <accessibility key="accessibilityConfiguration">
+                                                <accessibilityTraits key="traits" staticText="YES" notEnabled="YES"/>
+                                            </accessibility>
                                             <fontDescription key="fontDescription" type="system" weight="black" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -813,11 +864,17 @@
                         <subviews>
                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="n3M-Xt-NJV">
                                 <rect key="frame" x="8" y="544" width="377" height="4"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" notEnabled="YES" updatesFrequently="YES"/>
+                                </accessibility>
                                 <color key="progressTintColor" name="imageTint"/>
                             </progressView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="250" image="Speaker" translatesAutoresizingMaskIntoConstraints="NO" id="sip-mZ-kxW">
                                 <rect key="frame" x="8" y="16" width="377" height="512"/>
                                 <color key="tintColor" name="imageTint"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" image="YES" notEnabled="YES"/>
+                                </accessibility>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="314" id="0aS-oT-2RU"/>
                                     <constraint firstAttribute="height" constant="256" id="XcN-SV-oLO"/>
@@ -845,6 +902,9 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="gso-dX-osp"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <accessibility key="accessibilityConfiguration">
+                            <accessibilityTraits key="traits" notEnabled="YES"/>
+                        </accessibility>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="n3M-Xt-NJV" secondAttribute="trailing" id="CM7-UW-1Wa">
                                 <variation key="heightClass=regular" constant="8"/>
@@ -1001,6 +1061,9 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <viewLayoutGuide key="safeArea" id="5y8-vY-FJ9"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <accessibility key="accessibilityConfiguration">
+                            <accessibilityTraits key="traits" notEnabled="YES" updatesFrequently="YES"/>
+                        </accessibility>
                     </view>
                     <navigationItem key="navigationItem" id="KUi-VC-3a8"/>
                     <connections>
@@ -1029,6 +1092,9 @@
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Channel One" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aJh-gF-she">
                                                 <rect key="frame" x="16" y="8" width="329" height="40"/>
+                                                <accessibility key="accessibilityConfiguration">
+                                                    <accessibilityTraits key="traits" staticText="YES" notEnabled="YES"/>
+                                                </accessibility>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
                                                 <color key="textColor" name="imageTint"/>
                                                 <nil key="highlightedColor"/>
@@ -1037,9 +1103,15 @@
                                                 <rect key="frame" x="16" y="200.66666666666666" width="329" height="4"/>
                                                 <color key="backgroundColor" name="backgrounds"/>
                                                 <color key="tintColor" name="imageTint"/>
+                                                <accessibility key="accessibilityConfiguration">
+                                                    <accessibilityTraits key="traits" notEnabled="YES" updatesFrequently="YES"/>
+                                                </accessibility>
                                             </progressView>
                                             <textField hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nLw-dj-Qfe">
                                                 <rect key="frame" x="16" y="8" width="329" height="40"/>
+                                                <accessibility key="accessibilityConfiguration">
+                                                    <accessibilityTraits key="traits" notEnabled="YES"/>
+                                                </accessibility>
                                                 <color key="textColor" name="imageTint"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" textContentType="name"/>
@@ -1047,6 +1119,9 @@
                                         </subviews>
                                         <color key="backgroundColor" name="backgrounds"/>
                                         <color key="tintColor" name="imageTint"/>
+                                        <accessibility key="accessibilityConfiguration">
+                                            <accessibilityTraits key="traits" notEnabled="YES"/>
+                                        </accessibility>
                                         <constraints>
                                             <constraint firstItem="wHg-G0-zJ6" firstAttribute="leading" secondItem="mV2-Yl-B5D" secondAttribute="leading" constant="16" id="2Si-ib-iD3"/>
                                             <constraint firstAttribute="trailing" secondItem="aJh-gF-she" secondAttribute="trailing" constant="16" id="Mmd-qL-rbW"/>
@@ -1067,6 +1142,9 @@
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Channel Two" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w9d-Fn-VUP">
                                                 <rect key="frame" x="16" y="8" width="329" height="40"/>
+                                                <accessibility key="accessibilityConfiguration">
+                                                    <accessibilityTraits key="traits" staticText="YES" notEnabled="YES"/>
+                                                </accessibility>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
                                                 <color key="textColor" name="imageTint"/>
                                                 <nil key="highlightedColor"/>
@@ -1075,9 +1153,15 @@
                                                 <rect key="frame" x="16" y="200.66666666666663" width="329" height="4"/>
                                                 <color key="backgroundColor" name="backgrounds"/>
                                                 <color key="tintColor" name="imageTint"/>
+                                                <accessibility key="accessibilityConfiguration">
+                                                    <accessibilityTraits key="traits" notEnabled="YES" updatesFrequently="YES"/>
+                                                </accessibility>
                                             </progressView>
                                             <textField hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Channel Two" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6Xp-sr-BZ2">
                                                 <rect key="frame" x="16" y="8" width="329" height="40"/>
+                                                <accessibility key="accessibilityConfiguration">
+                                                    <accessibilityTraits key="traits" notEnabled="YES"/>
+                                                </accessibility>
                                                 <color key="textColor" name="imageTint"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" textContentType="name"/>
@@ -1085,6 +1169,9 @@
                                         </subviews>
                                         <color key="backgroundColor" name="backgrounds"/>
                                         <color key="tintColor" name="imageTint"/>
+                                        <accessibility key="accessibilityConfiguration">
+                                            <accessibilityTraits key="traits" notEnabled="YES"/>
+                                        </accessibility>
                                         <constraints>
                                             <constraint firstItem="6Xp-sr-BZ2" firstAttribute="leading" secondItem="0tl-Rr-sA6" secondAttribute="leading" constant="16" id="1Vn-Yq-ByK"/>
                                             <constraint firstItem="w9d-Fn-VUP" firstAttribute="top" secondItem="0tl-Rr-sA6" secondAttribute="top" constant="8" id="BKj-Ue-3hS"/>
@@ -1106,6 +1193,9 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="8h2-bP-eIq"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <accessibility key="accessibilityConfiguration">
+                            <accessibilityTraits key="traits" notEnabled="YES"/>
+                        </accessibility>
                         <constraints>
                             <constraint firstItem="8h2-bP-eIq" firstAttribute="trailing" secondItem="rTH-WS-0dY" secondAttribute="trailing" constant="16" id="3Kg-hu-gsi"/>
                             <constraint firstItem="rTH-WS-0dY" firstAttribute="leading" secondItem="8h2-bP-eIq" secondAttribute="leading" constant="16" id="88D-5v-xvQ"/>
@@ -1160,6 +1250,9 @@
                                                     <rect key="frame" x="0.0" y="98" width="128" height="30"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <color key="tintColor" name="imageTint"/>
+                                                    <accessibility key="accessibilityConfiguration">
+                                                        <accessibilityTraits key="traits" staticText="YES" notEnabled="YES"/>
+                                                    </accessibility>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="cWS-Tj-I7z"/>
                                                     </constraints>
@@ -1170,6 +1263,9 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IBf-iy-RMd">
                                                     <rect key="frame" x="20" y="7" width="88" height="88"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <accessibility key="accessibilityConfiguration">
+                                                        <accessibilityTraits key="traits" image="YES" notEnabled="YES"/>
+                                                    </accessibility>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="IBf-iy-RMd" secondAttribute="height" multiplier="1:1" id="31g-oe-chD"/>
                                                     </constraints>
@@ -1291,7 +1387,7 @@
                                 </prototypes>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Firmware Version: 2.xx" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="63r-Cj-J96">
-                                <rect key="frame" x="0.0" y="0.0" width="393" height="25.666666666666668"/>
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="25.666666666666664"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -2771,14 +2867,14 @@ Icons from fontawesome.com
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="U8S-hb-Idp"/>
+        <segue reference="gIM-fx-mWk"/>
         <segue reference="end-im-meh"/>
         <segue reference="qQx-7G-0NR"/>
-        <segue reference="PPQ-oT-Jxj"/>
+        <segue reference="biE-CF-cr8"/>
         <segue reference="RhK-1Y-fo7"/>
         <segue reference="1bf-BN-ttT"/>
-        <segue reference="kry-jp-5q5"/>
-        <segue reference="P25-cb-auh"/>
+        <segue reference="43A-bp-xAE"/>
+        <segue reference="gfr-gj-BUz"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
     <resources>

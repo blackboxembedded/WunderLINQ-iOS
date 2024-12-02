@@ -26,13 +26,14 @@ class DashViewController: UIViewController, UIWebViewDelegate {
     var backButton: UIBarButtonItem!
     var faultsBtn: UIButton!
     var faultsButton: UIBarButtonItem!
+    var backBtn = UIButton()
     
     private let notificationCenter = NotificationCenter.default
     
     let motorcycleData = MotorcycleData.shared
     let faults = Faults.shared
     
-    var webView:UIWebView = UIWebView()
+    var webView:NonFocusableUIWebView = NonFocusableUIWebView()
     
     var timer = Timer()
     var refreshTimer = Timer()
@@ -80,6 +81,8 @@ class DashViewController: UIViewController, UIWebViewDelegate {
         faultsBtn.accessibilityIgnoresInvertColors = true
         faultsBtn.addTarget(self, action: #selector(self.faultsButtonTapped), for: .touchUpInside)
         faultsButton = UIBarButtonItem(customView: faultsBtn)
+        faultsButton.accessibilityRespondsToUserInteraction = false
+        faultsButton.isAccessibilityElement = false
         let faultsButtonWidth = faultsButton.customView?.widthAnchor.constraint(equalToConstant: 30)
         faultsButtonWidth?.isActive = true
         let faultsButtonHeight = faultsButton.customView?.heightAnchor.constraint(equalToConstant: 30)
@@ -100,16 +103,23 @@ class DashViewController: UIViewController, UIWebViewDelegate {
         if (dashView.frame.size.width > dashView.frame.size.height){
             screenSize = CGSize(width: dashView.frame.size.width, height: dashView.frame.size.height)
         }
-        webView = UIWebView(frame: CGRect(x: 0, y: 0, width: screenSize.width, height: screenSize.height))
+        webView = NonFocusableUIWebView(frame: CGRect(x: 0, y: 0, width: screenSize.width, height: screenSize.height))
         webView.delegate = self
         webView.scalesPageToFit = true
         webView.contentMode = .scaleAspectFit
         webView.scrollView.isScrollEnabled = false
         webView.isOpaque = false
         webView.backgroundColor = .clear
-        webView.isUserInteractionEnabled = false
         webView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        webView.accessibilityRespondsToUserInteraction = false
+        webView.isAccessibilityElement = false
+        webView.accessibilityElementsHidden = true
+        webView.isUserInteractionEnabled = false
+        
         dashView.addSubview(webView)
+        dashView.accessibilityRespondsToUserInteraction = false
+        dashView.isAccessibilityElement = false
+        dashView.accessibilityElementsHidden = true
         
         let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))
         swipeLeft.direction = .left
@@ -404,5 +414,11 @@ class DashViewController: UIViewController, UIWebViewDelegate {
     @objc func faultsButtonTapped() {
         let viewController = self.storyboard?.instantiateViewController(withIdentifier: "FaultsTableViewController") as! FaultsTableViewController
         self.navigationController?.pushViewController(viewController, animated: true)
+    }
+}
+
+class NonFocusableUIWebView: UIWebView {
+    override var canBecomeFocused: Bool {
+        return false
     }
 }

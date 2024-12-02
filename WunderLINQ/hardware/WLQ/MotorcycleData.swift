@@ -908,13 +908,13 @@ class MotorcycleData {
                 let batteryPct = MotorcycleData.shared.localBattery!
                 if(batteryPct > 95){
                     icon = (UIImage(named: "Battery-Full")?.withRenderingMode(.alwaysTemplate))!
-                } else if(batteryPct > 75 && batteryPct < 95){
+                } else if(batteryPct > 75){
                     icon = (UIImage(named: "Battery-Three-Quarters")?.withRenderingMode(.alwaysTemplate))!
-                } else if(batteryPct > 50 && batteryPct < 75){
+                } else if(batteryPct > 50){
                     icon = (UIImage(named: "Battery-Half")?.withRenderingMode(.alwaysTemplate))!
-                } else if(batteryPct > 25 && batteryPct < 50){
+                } else if(batteryPct > 25){
                     icon = (UIImage(named: "Battery-Quarter")?.withRenderingMode(.alwaysTemplate))!
-                } else if(batteryPct > 0 && batteryPct < 25){
+                } else if(batteryPct > 0){
                     icon = (UIImage(named: "Battery-Empty")?.withRenderingMode(.alwaysTemplate))!
                     icon = icon.imageWithColor(color1: UIColor(named: "motorrad_red")!)
                 }

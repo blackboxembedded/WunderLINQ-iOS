@@ -282,6 +282,8 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         bluetoothBtn.accessibilityIgnoresInvertColors = true
         bluetoothBtn.addTarget(self, action: #selector(btButtonTapped), for: .touchUpInside)
         bluetoothButton = UIBarButtonItem(customView: bluetoothBtn)
+        bluetoothButton.accessibilityRespondsToUserInteraction = false
+        bluetoothButton.isAccessibilityElement = false
         let bluetoothButtonWidth = bluetoothButton.customView?.widthAnchor.constraint(equalToConstant: 30)
         bluetoothButtonWidth?.isActive = true
         let bluetoothButtonHeight = bluetoothButton.customView?.heightAnchor.constraint(equalToConstant: 30)
@@ -294,6 +296,8 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         faultsBtn.accessibilityIgnoresInvertColors = true
         faultsBtn.addTarget(self, action: #selector(self.faultsButtonTapped), for: .touchUpInside)
         faultsButton = UIBarButtonItem(customView: faultsBtn)
+        faultsButton.accessibilityRespondsToUserInteraction = false
+        faultsButton.isAccessibilityElement = false
         let faultsButtonWidth = faultsButton.customView?.widthAnchor.constraint(equalToConstant: 30)
         faultsButtonWidth?.isActive = true
         let faultsButtonHeight = faultsButton.customView?.heightAnchor.constraint(equalToConstant: 30)
@@ -304,6 +308,8 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         menuBtn.setImage(UIImage(named: "Menu")?.withRenderingMode(.alwaysTemplate), for: .normal)
         menuBtn.tintColor = UIColor(named: "imageTint")
         let menuButton = UIBarButtonItem(customView: menuBtn)
+        menuButton.accessibilityRespondsToUserInteraction = false
+        menuButton.isAccessibilityElement = false
         let menuButtonWidth = menuButton.customView?.widthAnchor.constraint(equalToConstant: 30)
         menuButtonWidth?.isActive = true
         let menuButtonHeight = menuButton.customView?.heightAnchor.constraint(equalToConstant: 30)
@@ -521,6 +527,8 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! MainCollectionViewCell
+        cell.accessibilityRespondsToUserInteraction = false
+        cell.isAccessibilityElement = false
         let label = MotorcycleData.getLabel(dataPoint: getCellDataPoint(cell: indexPath.row + 1))
         cell.setHeader(label: label)
         let icon = MotorcycleData.getIcon(dataPoint: getCellDataPoint(cell: indexPath.row + 1))
@@ -851,7 +859,13 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
         os_log("MainCollectionViewController: DISCONNECTED FROM WunderLINQ!")
         bluetoothBtn.tintColor = UIColor(named: "motorrad_red")
-        motorcycleData.setHasFocus(hasFocus: false)
+        if UserDefaults.standard.bool(forKey: "focus_indication_preference") {
+            os_log("Focus Gone")
+            motorcycleData.setHasFocus(hasFocus: false)
+            // Return NavBar back to normal color
+            let navBarColor = UIColor(named: "backgrounds")
+            updateNavigationBar(color: navBarColor!)
+        }
         updateDisplay()
         if error != nil {
             os_log("MainCollectionViewController: DISCONNECTION DETAILS: \(error!.localizedDescription)")
@@ -1020,9 +1034,9 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                 (dataBytes as NSData).getBytes(&dataArray, length: dataLength * MemoryLayout<Int16>.size)
                 if (dataArray[0] == 0x04){
                     if (!motorcycleData.getHasFocus()){
-                        os_log("Focus Gained");
                         // Set NavBar to highlight color
                         if UserDefaults.standard.bool(forKey: "focus_indication_preference") {
+                            os_log("Focus Gained");
                             // Return back to normal NavBar color
                             var navBarColor: UIColor?
                             // Create a custom appearance for the navigation bar
@@ -1031,30 +1045,20 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                             } else {
                                 navBarColor = UIColor(named: "accent")
                             }
-                            let appearance = UINavigationBarAppearance()
-                            appearance.configureWithOpaqueBackground()
-                            appearance.backgroundColor = navBarColor
-                            
-                            // Apply the appearance to the navigation bar
-                            navigationController?.navigationBar.standardAppearance = appearance
-                            navigationController?.navigationBar.scrollEdgeAppearance = appearance
+                            updateNavigationBar(color: navBarColor!)
                         }
                     }
                     motorcycleData.setHasFocus(hasFocus: true)
                     lastControlMessage = Int(Date().timeIntervalSince1970 * 1000)
                 } else {
                     if (motorcycleData.getHasFocus() && ( Int(Date().timeIntervalSince1970 * 1000) - lastControlMessage > 500)){
-                        os_log("Focus Gone")
-                        motorcycleData.setHasFocus(hasFocus: false)
-                        // Return NavBar back to normal color
-                        let navBarColor = UIColor(named: "backgrounds")
-                        let appearance = UINavigationBarAppearance()
-                        appearance.configureWithOpaqueBackground()
-                        appearance.backgroundColor = navBarColor
-                        
-                        // Apply the appearance to the navigation bar
-                        navigationController?.navigationBar.standardAppearance = appearance
-                        navigationController?.navigationBar.scrollEdgeAppearance = appearance
+                        if UserDefaults.standard.bool(forKey: "focus_indication_preference") {
+                            os_log("Focus Gone")
+                            motorcycleData.setHasFocus(hasFocus: false)
+                            // Return NavBar back to normal color
+                            let navBarColor = UIColor(named: "backgrounds")
+                            updateNavigationBar(color: navBarColor!)
+                        }
                     }
                     BLEBus.parseMessage(dataArray)
                 }
@@ -1751,6 +1755,16 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         self.present(alert, animated: true) {
             self.startCountdown()
         }
+    }
+    
+    func updateNavigationBar(color: UIColor) {
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = color
+        
+        // Apply the appearance to the navigation bar
+        navigationController?.navigationBar.standardAppearance = appearance
+        navigationController?.navigationBar.scrollEdgeAppearance = appearance
     }
 
     func startCountdown() {

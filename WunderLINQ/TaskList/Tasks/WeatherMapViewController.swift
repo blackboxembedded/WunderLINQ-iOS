@@ -25,6 +25,7 @@ import os.log
 class WeatherMapViewController: UIViewController {
     
     let motorcycleData = MotorcycleData.shared
+    let faults = Faults.shared
     
     var currentZoom = 10
     
@@ -32,6 +33,9 @@ class WeatherMapViewController: UIViewController {
 
     @IBOutlet weak var mapView: GMSMapView!
     @IBOutlet weak var dateLabel: UILabel!
+    
+    var faultsBtn: UIButton!
+    var faultsButton: UIBarButtonItem!
     
     var displayLink: CADisplayLink?
     var startTime: CFTimeInterval?
@@ -109,8 +113,29 @@ class WeatherMapViewController: UIViewController {
         backButtonWidth?.isActive = true
         let backButtonHeight = backButton.customView?.heightAnchor.constraint(equalToConstant: 30)
         backButtonHeight?.isActive = true
+        faultsBtn = UIButton(type: .custom)
+        let faultsImage = UIImage(named: "Alert")?.withRenderingMode(.alwaysTemplate)
+        faultsBtn.setImage(faultsImage, for: .normal)
+        faultsBtn.tintColor = UIColor.clear
+        faultsBtn.accessibilityIgnoresInvertColors = true
+        faultsBtn.addTarget(self, action: #selector(self.faultsButtonTapped), for: .touchUpInside)
+        faultsButton = UIBarButtonItem(customView: faultsBtn)
+        faultsButton.accessibilityRespondsToUserInteraction = false
+        faultsButton.isAccessibilityElement = false
+        let faultsButtonWidth = faultsButton.customView?.widthAnchor.constraint(equalToConstant: 30)
+        faultsButtonWidth?.isActive = true
+        let faultsButtonHeight = faultsButton.customView?.heightAnchor.constraint(equalToConstant: 30)
+        faultsButtonHeight?.isActive = true
+        // Update Buttons
+        if (faults.getallActiveDesc().isEmpty){
+            faultsBtn.tintColor = UIColor.clear
+            faultsButton.isEnabled = false
+        } else {
+            faultsBtn.tintColor = UIColor(named: "motorrad_red")
+            faultsButton.isEnabled = true
+        }
         self.navigationItem.title = NSLocalizedString("weathermap_title", comment: "")
-        self.navigationItem.leftBarButtonItems = [backButton]
+        self.navigationItem.leftBarButtonItems = [backButton, faultsButton]
         
         mapView.clear()
         
@@ -150,6 +175,8 @@ class WeatherMapViewController: UIViewController {
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "EEE MMM dd HH:mm:ss z yyyy"
             dateLabel.text = dateFormatter.string(from: calculateDateForProgress(progress))
+            
+            updateDisplay()
         }
     }
     
@@ -216,4 +243,20 @@ class WeatherMapViewController: UIViewController {
         }
     }
     
+    // MARK: - Updating UI
+    func updateDisplay() {
+        // Update Buttons
+        if (faults.getallActiveDesc().isEmpty){
+            faultsBtn.tintColor = UIColor.clear
+            faultsButton.isEnabled = false
+        } else {
+            faultsBtn.tintColor = UIColor(named: "motorrad_red")
+            faultsButton.isEnabled = true
+        }
+    }
+    
+    @objc func faultsButtonTapped() {
+        let viewController = self.storyboard?.instantiateViewController(withIdentifier: "FaultsTableViewController") as! FaultsTableViewController
+        self.navigationController?.pushViewController(viewController, animated: true)
+    }
 }

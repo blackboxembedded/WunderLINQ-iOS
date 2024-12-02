@@ -36,15 +36,11 @@ class ContactsTableViewCell: UITableViewCell {
         } else {
             highlightColor = UIColor(named: "accent")
         }
-        contactImage.backgroundColor = highlightColor
-        contactLabel.backgroundColor = highlightColor
         contentView.backgroundColor = highlightColor
     }
     
-    func removeHighlight(color: UIColor){
-        contactImage.backgroundColor = color
-        contactLabel.backgroundColor = color
-        contentView.backgroundColor = color
+    func removeHighlight(){
+        contentView.backgroundColor = .clear
     }
     
     override func awakeFromNib() {
@@ -56,6 +52,21 @@ class ContactsTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    override func didUpdateFocus(in context: UIFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {
+        super.didUpdateFocus(in: context, with: coordinator)
+        
+        // Check if the cell is currently focused
+        if isFocused {
+            coordinator.addCoordinatedAnimations {
+                self.highlightEffect()
+            }
+        } else {
+            coordinator.addCoordinatedAnimations {
+                self.removeHighlight()
+            }
+        }
     }
 
 }

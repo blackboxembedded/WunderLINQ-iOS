@@ -572,6 +572,8 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
         faultsBtn.accessibilityIgnoresInvertColors = true
         faultsBtn.addTarget(self, action: #selector(self.faultsButtonTapped), for: .touchUpInside)
         faultsButton = UIBarButtonItem(customView: faultsBtn)
+        faultsButton.accessibilityRespondsToUserInteraction = false
+        faultsButton.isAccessibilityElement = false
         let faultsButtonWidth = faultsButton.customView?.widthAnchor.constraint(equalToConstant: 30)
         faultsButtonWidth?.isActive = true
         let faultsButtonHeight = faultsButton.customView?.heightAnchor.constraint(equalToConstant: 30)

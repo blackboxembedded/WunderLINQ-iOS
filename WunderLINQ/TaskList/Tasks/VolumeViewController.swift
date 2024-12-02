@@ -82,13 +82,13 @@ class VolumeViewController: UIViewController {
     @objc func up() {
         SoundManager().playSoundEffect("directional")
         systemVolume = systemVolume + 0.1
-        progressBar.setProgress(systemVolume, animated: true)
+        updateDisplay()
     }
     
     @objc func down() {
         SoundManager().playSoundEffect("directional")
         systemVolume = systemVolume - 0.1
-        progressBar.setProgress(systemVolume, animated: true)
+        updateDisplay()
     }
     
     @objc func leftScreen() {
@@ -104,7 +104,7 @@ class VolumeViewController: UIViewController {
             preMuteVolume = systemVolume;
             systemVolume = 0.0
         }
-        progressBar.setProgress(systemVolume, animated: true)
+        updateDisplay()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -132,6 +132,8 @@ class VolumeViewController: UIViewController {
         faultsBtn.accessibilityIgnoresInvertColors = true
         faultsBtn.addTarget(self, action: #selector(self.faultsButtonTapped), for: .touchUpInside)
         faultsButton = UIBarButtonItem(customView: faultsBtn)
+        faultsButton.accessibilityRespondsToUserInteraction = false
+        faultsButton.isAccessibilityElement = false
         let faultsButtonWidth = faultsButton.customView?.widthAnchor.constraint(equalToConstant: 30)
         faultsButtonWidth?.isActive = true
         let faultsButtonHeight = faultsButton.customView?.heightAnchor.constraint(equalToConstant: 30)
@@ -177,23 +179,29 @@ class VolumeViewController: UIViewController {
             hiddenSystemVolumeSlider = volumeView.subviews.first(where: { $0 is UISlider }) as? UISlider
         
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) {
-            if (self.systemVolume == 0.0){
-                self.image.image = UIImage(named: "Mute")?.withRenderingMode(.alwaysTemplate)
-            } else {
-                self.image.image = UIImage(named: "Speaker")?.withRenderingMode(.alwaysTemplate)
-            }
-            self.progressBar.setProgress(self.systemVolume, animated: true)
+            self.updateDisplay()
         }
         
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    // MARK: - Updating UI
+    func updateDisplay() {
+        // Update Image
+        if (self.systemVolume == 0.0){
+            self.image.image = UIImage(named: "Mute")?.withRenderingMode(.alwaysTemplate)
+        } else {
+            self.image.image = UIImage(named: "Speaker")?.withRenderingMode(.alwaysTemplate)
+        }
+        // Update progress bar
+        progressBar.setProgress(systemVolume, animated: true)
+        // Update Buttons
+        if (faults.getallActiveDesc().isEmpty){
+            faultsBtn.tintColor = UIColor.clear
+            faultsButton.isEnabled = false
+        } else {
+            faultsBtn.tintColor = UIColor(named: "motorrad_red")
+            faultsButton.isEnabled = true
+        }
     }
     
     @objc func faultsButtonTapped() {

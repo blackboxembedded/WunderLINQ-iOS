@@ -86,6 +86,7 @@ class WaypointsNavTableViewController: UITableViewController {
             self.tableView.scrollToRow(at: IndexPath(row: nextRow, section: 0), at: .middle, animated: true)
             itemRow = nextRow
         }
+        updateDisplay()
     }
     @objc func downRow() {
         SoundManager().playSoundEffect("directional")
@@ -123,6 +124,7 @@ class WaypointsNavTableViewController: UITableViewController {
                 itemRow = nextRow
             }
         }
+        updateDisplay()
     }
     
     @objc func leftScreen() {
@@ -145,8 +147,6 @@ class WaypointsNavTableViewController: UITableViewController {
             highlightColor = UIColor(named: "accent")
         }
 
-        setNavBarColors()
-
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))
         swipeRight.direction = .right
         self.view.addGestureRecognizer(swipeRight)
@@ -167,6 +167,8 @@ class WaypointsNavTableViewController: UITableViewController {
         faultsBtn.accessibilityIgnoresInvertColors = true
         faultsBtn.addTarget(self, action: #selector(self.faultsButtonTapped), for: .touchUpInside)
         faultsButton = UIBarButtonItem(customView: faultsBtn)
+        faultsButton.accessibilityRespondsToUserInteraction = false
+        faultsButton.isAccessibilityElement = false
         let faultsButtonWidth = faultsButton.customView?.widthAnchor.constraint(equalToConstant: 30)
         faultsButtonWidth?.isActive = true
         let faultsButtonHeight = faultsButton.customView?.heightAnchor.constraint(equalToConstant: 30)
@@ -235,8 +237,8 @@ class WaypointsNavTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-     
-        let cell = tableView.dequeueReusableCell(withIdentifier: "WaypointsNavTableViewCell", for: indexPath)
+        // Configure the cell...
+        let cell = tableView.dequeueReusableCell(withIdentifier: "WaypointsNavTableViewCell", for: indexPath) as! WaypointsNavTableViewCell
         
         var wpt = waypoints[indexPath.row].date
         if !(waypoints[indexPath.row].label! == ""){
@@ -244,9 +246,6 @@ class WaypointsNavTableViewController: UITableViewController {
         }
         
         cell.textLabel?.text = wpt
-        // Configure the cell...
-        cell.contentView.backgroundColor = UIColor(named: "backgrounds")!
-        cell.textLabel?.backgroundColor = UIColor(named: "backgrounds")!
         cell.textLabel?.textColor = UIColor(named: "imageTint")!
 
         return cell
@@ -315,37 +314,39 @@ class WaypointsNavTableViewController: UITableViewController {
         self.navigationController?.pushViewController(viewController, animated: true)
     }
     
-    func setNavBarColors(){
-        switch(UserDefaults.standard.integer(forKey: "darkmode_preference")){
-        case 0:
-            //OFF
-            // Create a custom appearance for the navigation bar
-            let appearance = UINavigationBarAppearance()
-            appearance.configureWithOpaqueBackground() // or configureWithTransparentBackground() if you prefer transparency
-            appearance.backgroundColor = UIColor.white // Set your desired background color
-            
-            // Customize the title text attributes (optional)
-            appearance.titleTextAttributes = [.foregroundColor: UIColor.black] // Set text color
-            
-            // Apply the appearance to the navigation bar
-            navigationController?.navigationBar.standardAppearance = appearance
-            navigationController?.navigationBar.scrollEdgeAppearance = appearance
-        case 1:
-            //On
-            // Create a custom appearance for the navigation bar
-            let appearance = UINavigationBarAppearance()
-            appearance.configureWithOpaqueBackground() // or configureWithTransparentBackground() if you prefer transparency
-            appearance.backgroundColor = UIColor.black // Set your desired background color
-            
-            // Customize the title text attributes (optional)
-            appearance.titleTextAttributes = [.foregroundColor: UIColor.white] // Set text color
-            
-            // Apply the appearance to the navigation bar
-            navigationController?.navigationBar.standardAppearance = appearance
-            navigationController?.navigationBar.scrollEdgeAppearance = appearance
-        default:
-            //Default
-            break
+    // MARK: - Updating UI
+    func updateDisplay() {
+        // Update Buttons
+        if (faults.getallActiveDesc().isEmpty){
+            faultsBtn.tintColor = UIColor.clear
+            faultsButton.isEnabled = false
+        } else {
+            faultsBtn.tintColor = UIColor(named: "motorrad_red")
+            faultsButton.isEnabled = true
+        }
+    }
+}
+
+class WaypointsNavTableViewCell: UITableViewCell {
+    
+    override func didUpdateFocus(in context: UIFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {
+        super.didUpdateFocus(in: context, with: coordinator)
+        
+        // Check if the cell is currently focused
+        if isFocused {
+            coordinator.addCoordinatedAnimations {
+                var highlightColor: UIColor?
+                if let colorData = UserDefaults.standard.data(forKey: "highlight_color_preference"){
+                    highlightColor = try? NSKeyedUnarchiver.unarchivedObject(ofClass: UIColor.self, from: colorData)
+                } else {
+                    highlightColor = UIColor(named: "accent")
+                }
+                self.contentView.backgroundColor = highlightColor
+            }
+        } else {
+            coordinator.addCoordinatedAnimations {
+                self.contentView.backgroundColor = .clear
+            }
         }
     }
 }
