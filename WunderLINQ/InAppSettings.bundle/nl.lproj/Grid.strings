@@ -46,3 +46,4 @@
 "rpm_header" = "RPM";
 "sunrisesunset_header" = "Zonsopgang/Zonsondergang";
 "local_battery_header" = "Device Battery";
+"elevation_change_header" = "Elv Change";

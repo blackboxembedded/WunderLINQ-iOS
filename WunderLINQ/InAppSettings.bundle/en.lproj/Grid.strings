@@ -46,3 +46,4 @@
 "leanangle_bike_header" = "Lean Angle";
 "rearwheel_speed_header" = "Rear Wheel Speed";
 "local_battery_header" = "Device Battery";
+"elevation_change_header" = "Elv Change";

@@ -201,13 +201,10 @@ class WeatherMapViewController: UIViewController {
         cal.timeZone = TimeZone.current
         let now = Date()
 
-        // Calculate the timestamp for two hour ago
-        let twoHourAgo = cal.date(byAdding: .hour, value: -2, to: now)!
-
         // Calculate the timestamp for the current frame
-        let timeRange: TimeInterval = 60 * 60 * 2 // 2 hours in seconds
+        let timeRange: TimeInterval = 60 * 60 * 1 // 1 hours in seconds
         let frameTime = timeRange * Double(progress)
-        let frameDate = Date(timeInterval: frameTime, since: twoHourAgo)
+        let frameDate = Date(timeInterval: frameTime, since: now)
 
         // Round down to the nearest 15-minute interval
         let minute = cal.component(.minute, from: frameDate)
