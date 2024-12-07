@@ -39,7 +39,7 @@ class WeatherMapViewController: UIViewController {
     
     var displayLink: CADisplayLink?
     var startTime: CFTimeInterval?
-    let animationDuration = 30.0 // 30 seconds
+    let animationDuration = 10.0 // Seconds
     var restartTimer: Timer?
     var lastTimestamp: Int?
     
@@ -200,11 +200,15 @@ class WeatherMapViewController: UIViewController {
         var cal = Calendar.current
         cal.timeZone = TimeZone.current
         let now = Date()
+        
+        // Calculate the timestamp for startime in the past
+        let hoursInPast = 2
+        let startTime = cal.date(byAdding: .hour, value: -hoursInPast, to: now)!
 
         // Calculate the timestamp for the current frame
-        let timeRange: TimeInterval = 60 * 60 * 1 // 1 hours in seconds
+        let timeRange: TimeInterval = 60 * 60 * Double(hoursInPast)
         let frameTime = timeRange * Double(progress)
-        let frameDate = Date(timeInterval: frameTime, since: now)
+        let frameDate = Date(timeInterval: frameTime, since: startTime)
 
         // Round down to the nearest 15-minute interval
         let minute = cal.component(.minute, from: frameDate)
