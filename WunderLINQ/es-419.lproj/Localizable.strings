@@ -222,8 +222,8 @@
 "delete_bt" = "Borrar";
 "cancel_bt" = "Cancelar";
 "rearpressure_header" = "Presión Rueda Trasera";
-"frontbrakes_header" = "Freno Del.";
-"rearbrakes_header" = "Freno Tra.";
+"frontbrakes_header" = "Freno Delantero";
+"rearbrakes_header" = "Freno Trasero";
 "shifts_header" = "Cambios";
 "ambientlight_header" = "Luz Ambiente";
 "tripone_header" = "Trip 1";
