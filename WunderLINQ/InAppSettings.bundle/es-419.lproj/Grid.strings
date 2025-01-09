@@ -6,7 +6,7 @@
 "bearing_header" = "Rumbo";
 "cconsumption_header" = "Consumo Actual";
 "enginetemp_header" = "Temperatura Del Motor";
-"frontbrakes_header" = "Freno Del.";
+"frontbrakes_header" = "Freno Delantero";
 "frontpressure_header" = "Presión Rueda Delantera";
 "fueleconomyone_header" = "Ahorro de Combustible 1";
 "fueleconomytwo_header" = "Ahorro de Combustible 2";
@@ -33,7 +33,7 @@
 "pref_grid_three" = "Third";
 "pref_grid_twelve" = "Twelfth";
 "pref_grid_two" = "Second";
-"rearbrakes_header" = "Freno Tra.";
+"rearbrakes_header" = "Freno Trasero";
 "rearpressure_header" = "Presión Rueda Trasera";
 "rearwheel_speed_header" = "Rear Wheel Speed";
 "rpm_header" = "RPM";
