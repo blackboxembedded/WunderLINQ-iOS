@@ -666,7 +666,8 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         
         // Update main display
         let cellCount = UserDefaults.standard.integer(forKey: "GRIDCOUNT")
-        for i in 1...cellCount {
+        let validCellCount = cellCount > 0 ? cellCount : 15 // Default to 15 if cellCount is 0
+        for i in 1...validCellCount {
             setCell(i)
         }
         
