@@ -22,12 +22,12 @@ import GoogleMaps
 import MapKit
 import os.log
 
-class WeatherMapViewController: UIViewController {
+class WeatherMapViewController: UIViewController, GMSMapViewDelegate {
     
     let motorcycleData = MotorcycleData.shared
     let faults = Faults.shared
     
-    var currentZoom = 10
+    var currentZoom = 8
     
     let marker = GMSMarker()
 
@@ -39,12 +39,15 @@ class WeatherMapViewController: UIViewController {
     
     var displayLink: CADisplayLink?
     var startTime: CFTimeInterval?
-    let animationDuration = 10.0 // Seconds
-    var restartTimer: Timer?
+    var animationTimer: Timer?
     var lastTimestamp: Int?
     
+    let hoursInPast = 2 // Hours in the past to start aniation
+    let timeInterval = 15 // Minute interval on the clock for frame
+    let frameDelay = 5.0 // Delay between frames
+    let animationDuration = 40.0 //(hoursInPast * 60) / timeInterval * frameDelay)
+    
     override var keyCommands: [UIKeyCommand]? {
-        
         let commands = [
             UIKeyCommand(input: "\u{d}", modifierFlags:[], action: #selector(centerMap)),
             UIKeyCommand(input: UIKeyCommand.inputUpArrow, modifierFlags:[], action: #selector(zoomIn)),
@@ -137,6 +140,9 @@ class WeatherMapViewController: UIViewController {
         self.navigationItem.title = NSLocalizedString("weathermap_title", comment: "")
         self.navigationItem.leftBarButtonItems = [backButton, faultsButton]
         
+        // Set the mapView delegate
+        mapView.delegate = self
+        
         mapView.clear()
         
         startAnimating()
@@ -152,13 +158,29 @@ class WeatherMapViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    // Update currentZoom when user changes zoom level
+    func mapView(_ mapView: GMSMapView, idleAt position: GMSCameraPosition) {
+        currentZoom = Int(position.zoom)
+    }
+    
     func startAnimating() {
         os_log("WeatherMapViewController: startAnimating()")
-        displayLink = CADisplayLink(target: self, selector: #selector(updateAnimation))
-        displayLink?.add(to: .current, forMode: .default)
+        //Show current time frame
         startTime = CACurrentMediaTime()
-        restartTimer = Timer.scheduledTimer(withTimeInterval: animationDuration, repeats: false) { [weak self] timer in
-            self?.restartAnimating()
+        let unixtime: CLong = CLong(Date().timeIntervalSince1970)
+        let timestamp = unixtime - ( unixtime % (10*60))
+        configureMap(timestamp: timestamp)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "EEE MMM dd HH:mm:ss z yyyy"
+        dateLabel.text = dateFormatter.string(from: Date())
+        
+        //Delay start of animation
+        DispatchQueue.main.asyncAfter(deadline: .now() + frameDelay) { [weak self] in
+            self!.displayLink = CADisplayLink(target: self!, selector: #selector(self!.updateAnimation))
+            self!.displayLink?.add(to: .current, forMode: .default)
+            self!.animationTimer = Timer.scheduledTimer(withTimeInterval: self!.animationDuration, repeats: false) { [weak self] timer in
+                self?.restartAnimating()
+            }
         }
     }
 
@@ -190,19 +212,18 @@ class WeatherMapViewController: UIViewController {
 
     func stopAnimating() {
         os_log("WeatherMapViewController: stopAnimating()")
-        restartTimer?.invalidate()
+        animationTimer?.invalidate()
         displayLink?.invalidate()
         displayLink = nil
         startTime = nil
     }
-    
+
     private func calculateDateForProgress(_ progress: Double) -> Date {
         var cal = Calendar.current
         cal.timeZone = TimeZone.current
         let now = Date()
         
         // Calculate the timestamp for startime in the past
-        let hoursInPast = 2
         let startTime = cal.date(byAdding: .hour, value: -hoursInPast, to: now)!
 
         // Calculate the timestamp for the current frame
@@ -212,11 +233,12 @@ class WeatherMapViewController: UIViewController {
 
         // Round down to the nearest 15-minute interval
         let minute = cal.component(.minute, from: frameDate)
-        let roundedMinute = minute / 15 * 15
+        let roundedMinute = minute / timeInterval * timeInterval
         var components = cal.dateComponents([.year, .month, .day, .hour, .minute, .second], from: frameDate)
         components.nanosecond = 0
         // Set the minute component to the rounded value
         components.minute = roundedMinute
+        components.second = 0
 
         return cal.date(from: components)!
     }
