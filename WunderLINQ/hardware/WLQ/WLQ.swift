@@ -31,7 +31,7 @@ class WLQ {
     func TYPE_X() -> Int{
         return 2
     }
-    func TYPE_C() -> Int{
+    func TYPE_S() -> Int{
         return 3
     }
     func KEYMODE_DEFAULT() -> UInt8{
