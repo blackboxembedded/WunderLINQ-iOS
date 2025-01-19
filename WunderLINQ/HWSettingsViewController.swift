@@ -131,7 +131,7 @@ class HWSettingsViewController: UIViewController, UITableViewDelegate, UITableVi
                 performSegue(withIdentifier: "hwSettingsToSettingsAction", sender: [])
             }
         } else {
-            if (self.actionID[indexPath.row] == WLQ_N_DEFINES.KEYMODE || self.actionID[indexPath.row] == WLQ_C_DEFINES.KEYMODE){
+            if (self.actionID[indexPath.row] == WLQ_N_DEFINES.KEYMODE || self.actionID[indexPath.row] == WLQ_S_DEFINES.KEYMODE){
                 selectedActionID = self.actionID[indexPath.row]
                 performSegue(withIdentifier: "hwSettingsToSettingsAction", sender: [])
             }
@@ -336,7 +336,7 @@ class HWSettingsViewController: UIViewController, UITableViewDelegate, UITableVi
                     }
                 }
             }
-        } else if (wlqData.gethardwareType() == wlqData.TYPE_C()){
+        } else if (wlqData.gethardwareType() == wlqData.TYPE_S()){
             if (wlqData.getKeyMode() == wlqData.KEYMODE_DEFAULT() || wlqData.getKeyMode() == wlqData.KEYMODE_CUSTOM()
                 || wlqData.getKeyMode() == wlqData.KEYMODE_MEDIA()) {
 
@@ -344,49 +344,31 @@ class HWSettingsViewController: UIViewController, UITableViewDelegate, UITableVi
                                      NSLocalizedString("full_scroll_up_label", comment: ""),
                                      NSLocalizedString("full_scroll_down_label", comment: ""),
                                      NSLocalizedString("full_toggle_right_label", comment: ""),
-                                     NSLocalizedString("full_toggle_right_long_label", comment: ""),
                                      NSLocalizedString("full_toggle_left_label", comment: ""),
-                                     NSLocalizedString("full_toggle_left_long_label", comment: ""),
                                      NSLocalizedString("full_rocker1_up_label", comment: ""),
-                                     NSLocalizedString("full_rocker1_up_long_label", comment: ""),
                                      NSLocalizedString("full_rocker1_down_label", comment: ""),
-                                     NSLocalizedString("full_rocker1_down_long_label", comment: ""),
                                      NSLocalizedString("full_rocker2_up_label", comment: ""),
-                                     NSLocalizedString("full_rocker2_up_long_label", comment: ""),
-                                     NSLocalizedString("full_rocker2_down_label", comment: ""),
-                                     NSLocalizedString("full_rocker2_down_long_label", comment: "")]
+                                     NSLocalizedString("full_rocker2_down_label", comment: "")]
                                                   
-                actionTableMappingLabels = [wlqData.getActionValue(action: WLQ_C_DEFINES.KEYMODE),
-                                            wlqData.getActionValue(action: WLQ_C_DEFINES.wheelScrollUp),
-                                            wlqData.getActionValue(action: WLQ_C_DEFINES.wheelScrollDown),
-                                            wlqData.getActionValue(action: WLQ_C_DEFINES.wheelToggleRight),
-                                            wlqData.getActionValue(action: WLQ_C_DEFINES.wheelToggleRightLongPress),
-                                            wlqData.getActionValue(action: WLQ_C_DEFINES.wheelToggleLeft),
-                                            wlqData.getActionValue(action: WLQ_C_DEFINES.wheelToggleLeftLongPress),
-                                            wlqData.getActionValue(action: WLQ_C_DEFINES.rocker1Up),
-                                            wlqData.getActionValue(action: WLQ_C_DEFINES.rocker1UpLongPress),
-                                            wlqData.getActionValue(action: WLQ_C_DEFINES.rocker1Down),
-                                            wlqData.getActionValue(action: WLQ_C_DEFINES.rocker1DownLongPress),
-                                            wlqData.getActionValue(action: WLQ_C_DEFINES.rocker2Up),
-                                            wlqData.getActionValue(action: WLQ_C_DEFINES.rocker2UpLongPress),
-                                            wlqData.getActionValue(action: WLQ_C_DEFINES.rocker2Down),
-                                            wlqData.getActionValue(action: WLQ_C_DEFINES.rocker2DownLongPress)]
+                actionTableMappingLabels = [wlqData.getActionValue(action: WLQ_S_DEFINES.KEYMODE),
+                                            wlqData.getActionValue(action: WLQ_S_DEFINES.wheelScrollUp),
+                                            wlqData.getActionValue(action: WLQ_S_DEFINES.wheelScrollDown),
+                                            wlqData.getActionValue(action: WLQ_S_DEFINES.wheelToggleRight),
+                                            wlqData.getActionValue(action: WLQ_S_DEFINES.wheelToggleLeft),
+                                            wlqData.getActionValue(action: WLQ_S_DEFINES.rocker1Up),
+                                            wlqData.getActionValue(action: WLQ_S_DEFINES.rocker1Down),
+                                            wlqData.getActionValue(action: WLQ_S_DEFINES.rocker2Up),
+                                            wlqData.getActionValue(action: WLQ_S_DEFINES.rocker2Down)]
                 
-                actionID = [WLQ_C_DEFINES.KEYMODE,
-                            WLQ_C_DEFINES.wheelScrollUp,
-                            WLQ_C_DEFINES.wheelScrollDown,
-                            WLQ_C_DEFINES.wheelToggleRight,
-                            WLQ_C_DEFINES.wheelToggleRightLongPress,
-                            WLQ_C_DEFINES.wheelToggleLeft,
-                            WLQ_C_DEFINES.wheelToggleLeftLongPress,
-                            WLQ_C_DEFINES.rocker1Up,
-                            WLQ_C_DEFINES.rocker1UpLongPress,
-                            WLQ_C_DEFINES.rocker1Down,
-                            WLQ_C_DEFINES.rocker1DownLongPress,
-                            WLQ_C_DEFINES.rocker2Up,
-                            WLQ_C_DEFINES.rocker2UpLongPress,
-                            WLQ_C_DEFINES.rocker2Down,
-                            WLQ_C_DEFINES.rocker2DownLongPress]
+                actionID = [WLQ_S_DEFINES.KEYMODE,
+                            WLQ_S_DEFINES.wheelScrollUp,
+                            WLQ_S_DEFINES.wheelScrollDown,
+                            WLQ_S_DEFINES.wheelToggleRight,
+                            WLQ_S_DEFINES.wheelToggleLeft,
+                            WLQ_S_DEFINES.rocker1Up,
+                            WLQ_S_DEFINES.rocker1Down,
+                            WLQ_S_DEFINES.rocker2Up,
+                            WLQ_S_DEFINES.rocker2Down]
                 
                 if (wlqData.getKeyMode() == wlqData.KEYMODE_CUSTOM()){
                     menuBtn.isHidden = true

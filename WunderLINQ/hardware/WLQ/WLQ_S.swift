@@ -18,10 +18,10 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 import Foundation
 import os.log
 
-class WLQ_C: WLQ {
+class WLQ_S: WLQ {
     
     var hardwareVersion:String?
-    let hardwareVersion1:String = "2PCB7.0 11/19/21"
+    let hardwareVersion1:String = "WLQS1.0"
     
     var wunderLINQConfig:[UInt8]?
     var flashConfig:[UInt8]?
@@ -35,87 +35,57 @@ class WLQ_C: WLQ {
     let CONSUMER_HID:UInt8 = 0x02
     let UNDEFINED:UInt8 = 0x00
 
-    let configFlashSize:Int = 46
+    let configFlashSize:Int = 24
     let defaultConfig:[UInt8] = [
-        0x02, 0x00,                             // SP Sensitivity
-        0x05, 0x00,                             // LP Sensitivity
-        0x01, 0x00, 0x52,                       // Scroll Up
-        0x01, 0x00, 0x51,                       // Scroll Down
-        0x01, 0x00, 0x50, 0x01, 0x00, 0x29,     // Wheel Left
-        0x01, 0x00, 0x4F, 0x01, 0x00, 0x28,     // Wheel Right
-        0x02, 0x00, 0xE9, 0x02, 0x00, 0xB8,     // Rocker1 Up
-        0x02, 0x00, 0xEA, 0x02, 0x00, 0xE2,     // Rocker1 Down
-        0x02, 0x00, 0xB5, 0x02, 0x00, 0xB0,     // Rocker2 Up
-        0x02, 0x00, 0xB6, 0x02, 0x00, 0xB7]     // Rocker2 Down
+        0x01, 0x00, 0x52,           // Up, BMW: Scroll Up, Triumph Joystick Up
+        0x01, 0x00, 0x51,           // Down, BMW: Scroll Down, Triumph Joystick Down
+        0x01, 0x00, 0x50,           // Left, BMW: Wheel Left, Triumph Joystick Left
+        0x01, 0x00, 0x4F,           // Right, BMW: Wheel Right, Triumph Joystick Right
+        0x01, 0x00, 0x29,           // FX2, Rocker1 Up, Triumph ?
+        0x01, 0x00, 0x28,           // FX1, Rocker1 Down, Triumph Joystick In
+        0x01, 0x00, 0x57,           // FX4, Rocker2 Up, Triumph ?
+        0x01, 0x00, 0x58]           // FX3, Rocker2 Down, Triumph ?
 
     let KEYMODE:Int = 100
-    let longPressSensitivity:Int = 25
     let wheelScrollUp:Int = 26
     let wheelScrollDown:Int = 27
     let wheelToggleRight:Int = 28
-    let wheelToggleRightLongPress:Int = 29
     let wheelToggleLeft:Int = 30
-    let wheelToggleLeftLongPress:Int = 31
     let rocker1Up:Int = 32
-    let rocker1UpLongPress:Int = 33
     let rocker1Down:Int = 34
-    let rocker1DownLongPress:Int = 35
     let rocker2Up:Int = 36
-    let rocker2UpLongPress:Int = 37
     let rocker2Down:Int = 38
-    let rocker2DownLongPress:Int = 39
     
     var actionNames: [Int: String] = [:]
 
     let firmwareVersionMajor_INDEX:Int = 3
     let firmwareVersionMinor_INDEX:Int = 4
     let keyMode_INDEX:Int = 5
-    let spSensitivityHigh_INDEX:Int = 0
-    let spSensitivityLow_INDEX:Int = 1
-    let lpSensitivityHigh_INDEX:Int = 2
-    let lpSensitivityLow_INDEX:Int = 3
-    let wheelScrollUpKeyType_INDEX:Int = 4
-    let wheelScrollUpKeyModifier_INDEX:Int = 5
-    let wheelScrollUpKey_INDEX:Int = 6
-    let wheelScrollDownKeyType_INDEX:Int = 7
-    let wheelScrollDownKeyModifier_INDEX:Int = 8
-    let wheelScrollDownKey_INDEX:Int = 9
-    let wheelLeftPressKeyType_INDEX:Int = 10
-    let wheelLeftPressKeyModifier_INDEX:Int = 11
-    let wheelLeftPressKey_INDEX:Int = 12
-    let wheelLeftLongPressKeyType_INDEX:Int = 13
-    let wheelLeftLongPressKeyModifier_INDEX:Int = 14
-    let wheelLeftLongPressKey_INDEX:Int = 15
-    let wheelRightPressKeyType_INDEX:Int = 16
-    let wheelRightPressKeyModifier_INDEX:Int = 17
-    let wheelRightPressKey_INDEX:Int = 18
-    let wheelRightLongPressKeyType_INDEX:Int = 19
-    let wheelRightLongPressKeyModifier_INDEX:Int = 20
-    let wheelRightLongPressKey_INDEX:Int = 21
-    let rocker1UpPressKeyType_INDEX:Int = 22
-    let rocker1UpPressKeyModifier_INDEX:Int = 23
-    let rocker1UpPressKey_INDEX:Int = 24
-    let rocker1UpLongPressKeyType_INDEX:Int = 25
-    let rocker1UpLongPressKeyModifier_INDEX:Int = 26
-    let rocker1UpLongPressKey_INDEX:Int = 27
-    let rocker1DownPressKeyType_INDEX:Int = 28
-    let rocker1DownPressKeyModifier_INDEX:Int = 29
-    let rocker1DownPressKey_INDEX:Int = 30
-    let rocker1DownLongPressKeyType_INDEX:Int = 31
-    let rocker1DownLongPressKeyModifier_INDEX:Int = 32
-    let rocker1DownLongPressKey_INDEX:Int = 33
-    let rocker2UpPressKeyType_INDEX:Int = 34
-    let rocker2UpPressKeyModifier_INDEX:Int = 35
-    let rocker2UpPressKey_INDEX:Int = 36
-    let rocker2UpLongPressKeyType_INDEX:Int = 37
-    let rocker2UpLongPressKeyModifier_INDEX:Int = 38
-    let rocker2UpLongPressKey_INDEX:Int = 39
-    let rocker2DownPressKeyType_INDEX:Int = 40
-    let rocker2DownPressKeyModifier_INDEX:Int = 41
-    let rocker2DownPressKey_INDEX:Int = 42
-    let rocker2DownLongPressKeyType_INDEX:Int = 43
-    let rocker2DownLongPressKeyModifier_INDEX:Int = 44
-    let rocker2DownLongPressKey_INDEX:Int = 45
+
+    let wheelScrollUpKeyType_INDEX:Int = 0
+    let wheelScrollUpKeyModifier_INDEX:Int = 1
+    let wheelScrollUpKey_INDEX:Int = 2
+    let wheelScrollDownKeyType_INDEX:Int = 3
+    let wheelScrollDownKeyModifier_INDEX:Int = 4
+    let wheelScrollDownKey_INDEX:Int = 5
+    let wheelLeftPressKeyType_INDEX:Int = 6
+    let wheelLeftPressKeyModifier_INDEX:Int = 7
+    let wheelLeftPressKey_INDEX:Int = 8
+    let wheelRightPressKeyType_INDEX:Int = 9
+    let wheelRightPressKeyModifier_INDEX:Int = 10
+    let wheelRightPressKey_INDEX:Int = 11
+    let rocker1UpPressKeyType_INDEX:Int = 12
+    let rocker1UpPressKeyModifier_INDEX:Int = 13
+    let rocker1UpPressKey_INDEX:Int = 14
+    let rocker1DownPressKeyType_INDEX:Int = 15
+    let rocker1DownPressKeyModifier_INDEX:Int = 16
+    let rocker1DownPressKey_INDEX:Int = 17
+    let rocker2UpPressKeyType_INDEX:Int = 18
+    let rocker2UpPressKeyModifier_INDEX:Int = 19
+    let rocker2UpPressKey_INDEX:Int = 20
+    let rocker2DownPressKeyType_INDEX:Int = 21
+    let rocker2DownPressKeyModifier_INDEX:Int = 22
+    let rocker2DownPressKey_INDEX:Int = 23
     
     // Status message
     let statusSize:Int = 111
@@ -299,24 +269,17 @@ class WLQ_C: WLQ {
 
     required override init() {
         super.init()
-        os_log("WLQ_C: init()")
+        os_log("WLQ_S: init()")
         WLQ.shared = self
         WLQ.initialized = true
-        actionNames = [longPressSensitivity: NSLocalizedString("sensitivity_label", comment: ""),
-                              wheelScrollUp: NSLocalizedString("full_scroll_up_label", comment: ""),
+        actionNames = [wheelScrollUp: NSLocalizedString("full_scroll_up_label", comment: ""),
                             wheelScrollDown: NSLocalizedString("full_scroll_down_label", comment: ""),
                            wheelToggleRight: NSLocalizedString("full_toggle_right_label", comment: ""),
-                  wheelToggleRightLongPress: NSLocalizedString("full_toggle_right_long_label", comment: ""),
                             wheelToggleLeft: NSLocalizedString("full_toggle_left_label", comment: ""),
-                   wheelToggleLeftLongPress: NSLocalizedString("full_toggle_left_long_label", comment: ""),
                                      rocker1Up: NSLocalizedString("full_rocker1_up_label", comment: ""),
-                         rocker1UpLongPress: NSLocalizedString("full_rocker1_up_long_label", comment: ""),
                                 rocker1Down: NSLocalizedString("full_rocker1_down_label", comment: ""),
-                       rocker1DownLongPress: NSLocalizedString("full_rocker1_down_long_label", comment: ""),
                                   rocker2Up: NSLocalizedString("full_rocker2_up_label", comment: ""),
-                      rocker2UpLongPress: NSLocalizedString("full_rocker2_up_long_label", comment: ""),
-                             rocker2Down: NSLocalizedString("full_rocker2_down_label", comment: ""),
-                    rocker2DownLongPress: NSLocalizedString("full_rocker2_down_long_label", comment: "")]
+                             rocker2Down: NSLocalizedString("full_rocker2_down_label", comment: "")]
     }
     
     override func parseConfig(bytes: [UInt8]) {
@@ -335,22 +298,16 @@ class WLQ_C: WLQ {
                 messageHexString += ","
             }
         }
-        os_log("WLQ_C: flashConfig: \(messageHexString)")
+        os_log("WLQ_S: flashConfig: \(messageHexString)")
         
         self.keyMode = bytes[self.keyMode_INDEX]
 
         self.wheelRightPressKeyType = self.flashConfig![self.wheelRightPressKeyType_INDEX]
         self.wheelRightPressKeyModifier = self.flashConfig![self.wheelRightPressKeyModifier_INDEX]
         self.wheelRightPressKey = self.flashConfig![self.wheelRightPressKey_INDEX]
-        self.wheelRightLongPressKeyType = self.flashConfig![self.wheelRightLongPressKeyType_INDEX]
-        self.wheelRightLongPressKeyModifier = self.flashConfig![self.wheelRightLongPressKeyModifier_INDEX]
-        self.wheelRightLongPressKey = self.flashConfig![self.wheelRightLongPressKey_INDEX]
         self.wheelLeftPressKeyType = self.flashConfig![self.wheelLeftPressKeyType_INDEX]
         self.wheelLeftPressKeyModifier = self.flashConfig![self.wheelLeftPressKeyModifier_INDEX]
         self.wheelLeftPressKey = self.flashConfig![self.wheelLeftPressKey_INDEX]
-        self.wheelLeftLongPressKeyType = self.flashConfig![self.wheelLeftLongPressKeyType_INDEX]
-        self.wheelLeftLongPressKeyModifier = self.flashConfig![self.wheelLeftLongPressKeyModifier_INDEX]
-        self.wheelLeftLongPressKey = self.flashConfig![self.wheelLeftLongPressKey_INDEX]
         self.wheelScrollUpKeyType = self.flashConfig![self.wheelScrollUpKeyType_INDEX]
         self.wheelScrollUpKeyModifier = self.flashConfig![wheelScrollUpKeyModifier_INDEX]
         self.wheelScrollUpKey = self.flashConfig![self.wheelScrollUpKey_INDEX]
@@ -360,27 +317,15 @@ class WLQ_C: WLQ {
         self.rocker1UpPressKeyType = self.flashConfig![self.rocker1UpPressKeyType_INDEX]
         self.rocker1UpPressKeyModifier = self.flashConfig![self.rocker1UpPressKeyModifier_INDEX]
         self.rocker1UpPressKey = self.flashConfig![self.rocker1UpPressKey_INDEX]
-        self.rocker1UpLongPressKeyType = self.flashConfig![self.rocker1UpLongPressKeyType_INDEX]
-        self.rocker1UpLongPressKeyModifier = self.flashConfig![self.rocker1UpLongPressKeyModifier_INDEX]
-        self.rocker1UpLongPressKey = self.flashConfig![self.rocker1UpLongPressKey_INDEX]
         self.rocker1DownPressKeyType = self.flashConfig![self.rocker1DownPressKeyType_INDEX]
         self.rocker1DownPressKeyModifier = self.flashConfig![self.rocker1DownPressKeyModifier_INDEX]
         self.rocker1DownPressKey = self.flashConfig![self.rocker1DownPressKey_INDEX]
-        self.rocker1DownLongPressKeyType = self.flashConfig![self.rocker1DownLongPressKeyType_INDEX]
-        self.rocker1DownLongPressKeyModifier = self.flashConfig![self.rocker1DownLongPressKeyModifier_INDEX]
-        self.rocker1DownLongPressKey = self.flashConfig![self.rocker1DownLongPressKey_INDEX]
         self.rocker2UpPressKeyType = self.flashConfig![self.rocker2UpPressKeyType_INDEX]
         self.rocker2UpPressKeyModifier = self.flashConfig![self.rocker2UpPressKeyModifier_INDEX]
         self.rocker2UpPressKey = self.flashConfig![self.rocker2UpPressKey_INDEX]
-        self.rocker2UpLongPressKeyType = self.flashConfig![self.rocker2UpLongPressKeyType_INDEX]
-        self.rocker2UpLongPressKeyModifier = self.flashConfig![self.rocker2UpLongPressKeyModifier_INDEX]
-        self.rocker2UpLongPressKey = self.flashConfig![self.rocker2UpLongPressKey_INDEX]
         self.rocker2DownPressKeyType = self.flashConfig![self.rocker2DownPressKeyType_INDEX]
         self.rocker2DownPressKeyModifier = self.flashConfig![self.rocker2DownPressKeyModifier_INDEX]
         self.rocker2DownPressKey = self.flashConfig![self.rocker2DownPressKey_INDEX]
-        self.rocker2DownLongPressKeyType = self.flashConfig![self.rocker2DownLongPressKeyType_INDEX]
-        self.rocker2DownLongPressKeyModifier = self.flashConfig![self.rocker2DownLongPressKeyModifier_INDEX]
-        self.rocker2DownLongPressKey = self.flashConfig![self.rocker2DownLongPressKey_INDEX]
     }
     
     override func getDefaultConfig() -> [UInt8]{
@@ -481,28 +426,16 @@ class WLQ_C: WLQ {
             return wheelScrollDownKeyType!
         case wheelToggleRight:
             return wheelRightPressKeyType!
-        case wheelToggleRightLongPress:
-            return wheelRightLongPressKeyType!
         case wheelToggleLeft:
             return wheelLeftPressKeyType!
-        case wheelToggleLeftLongPress:
-            return wheelLeftLongPressKeyType!
         case rocker1Up:
             return rocker1UpPressKeyType!
-        case rocker1UpLongPress:
-            return rocker1UpLongPressKeyType!
         case rocker1Down:
             return rocker1DownPressKeyType!
-        case rocker1DownLongPress:
-            return rocker1DownLongPressKeyType!
         case rocker2Up:
             return rocker2UpPressKeyType!
-        case rocker2UpLongPress:
-            return rocker2UpLongPressKeyType!
         case rocker2Down:
             return rocker2DownPressKeyType!
-        case rocker2DownLongPress:
-            return rocker2DownLongPressKeyType!
         default:
             return 0x00
         }
@@ -523,52 +456,28 @@ class WLQ_C: WLQ {
                 self.tempConfig![self.wheelRightPressKeyType_INDEX] = key[0]
                 self.tempConfig![self.wheelRightPressKeyModifier_INDEX] = key[1]
                 self.tempConfig![self.wheelRightPressKey_INDEX] = key[2]
-            case wheelToggleRightLongPress:
-                self.tempConfig![self.wheelRightLongPressKeyType_INDEX] = key[0]
-                self.tempConfig![self.wheelRightLongPressKeyModifier_INDEX] = key[1]
-                self.tempConfig![self.wheelRightLongPressKey_INDEX] = key[2]
             case wheelToggleLeft:
                 self.tempConfig![self.wheelLeftPressKeyType_INDEX] = key[0]
                 self.tempConfig![self.wheelLeftPressKeyModifier_INDEX] = key[1]
                 self.tempConfig![self.wheelLeftPressKey_INDEX] = key[2]
-            case wheelToggleLeftLongPress:
-                self.tempConfig![self.wheelLeftLongPressKeyType_INDEX] = key[0]
-                self.tempConfig![self.wheelLeftLongPressKeyModifier_INDEX] = key[1]
-                self.tempConfig![self.wheelLeftLongPressKey_INDEX] = key[2]
             case rocker1Up:
                 self.tempConfig![self.rocker1UpPressKeyType_INDEX] = key[0]
                 self.tempConfig![self.rocker1UpPressKeyModifier_INDEX] = key[1]
                 self.tempConfig![self.rocker1UpPressKey_INDEX] = key[2]
-            case rocker1UpLongPress:
-                self.tempConfig![self.rocker1UpLongPressKeyType_INDEX] = key[0]
-                self.tempConfig![self.rocker1UpLongPressKeyModifier_INDEX] = key[1]
-                self.tempConfig![self.rocker1UpLongPressKey_INDEX] = key[2]
             case rocker1Down:
                 self.tempConfig![self.rocker1DownPressKeyType_INDEX] = key[0]
                 self.tempConfig![self.rocker1DownPressKeyModifier_INDEX] = key[1]
                 self.tempConfig![self.rocker1DownPressKey_INDEX] = key[2]
-            case rocker1DownLongPress:
-                self.tempConfig![self.rocker1DownLongPressKeyType_INDEX] = key[0]
-                self.tempConfig![self.rocker1DownLongPressKeyModifier_INDEX] = key[1]
-                self.tempConfig![self.rocker1DownLongPressKey_INDEX] = key[2]
             case rocker2Up:
                 self.tempConfig![self.rocker2UpPressKeyType_INDEX] = key[0]
                 self.tempConfig![self.rocker2UpPressKeyModifier_INDEX] = key[1]
                 self.tempConfig![self.rocker2UpPressKey_INDEX] = key[2]
-            case rocker2UpLongPress:
-                self.tempConfig![self.rocker2UpLongPressKeyType_INDEX] = key[0]
-                self.tempConfig![self.rocker2UpLongPressKeyModifier_INDEX] = key[1]
-                self.tempConfig![self.rocker2UpLongPressKey_INDEX] = key[2]
             case rocker2Down:
                 self.tempConfig![self.rocker2DownPressKeyType_INDEX] = key[0]
                 self.tempConfig![self.rocker2DownPressKeyModifier_INDEX] = key[1]
                 self.tempConfig![self.rocker2DownPressKey_INDEX] = key[2]
-            case rocker2DownLongPress:
-                self.tempConfig![self.rocker2DownLongPressKeyType_INDEX] = key[0]
-                self.tempConfig![self.rocker2DownLongPressKeyModifier_INDEX] = key[1]
-                self.tempConfig![self.rocker2DownLongPressKey_INDEX] = key[2]
             default:
-                os_log("WLQ_C: Invalid acitonID")
+                os_log("WLQ_S: Invalid acitonID")
             }
         }
     }
@@ -607,16 +516,6 @@ class WLQ_C: WLQ {
                     position = index
                 }
             }
-        case wheelToggleRightLongPress:
-            if(wheelRightLongPressKeyType == KEYBOARD_HID){
-                if let index = keyboardHID.keyboardCodes.firstIndex(where: { $0.0 == wheelRightLongPressKey! }) {
-                    position = index
-                }
-            } else if(wheelRightLongPressKeyType == CONSUMER_HID){
-                if let index = keyboardHID.consumerCodes.firstIndex(where: { $0.0 == wheelRightLongPressKey! }) {
-                    position = index
-                }
-            }
         case wheelToggleLeft:
             if(wheelLeftPressKeyType == KEYBOARD_HID){
                 if let index = keyboardHID.keyboardCodes.firstIndex(where: { $0.0 == wheelLeftPressKey! }) {
@@ -624,16 +523,6 @@ class WLQ_C: WLQ {
                 }
             } else if(wheelLeftPressKeyType == CONSUMER_HID){
                 if let index = keyboardHID.consumerCodes.firstIndex(where: { $0.0 == wheelLeftPressKey! }) {
-                    position = index
-                }
-            }
-        case wheelToggleLeftLongPress:
-            if(wheelLeftLongPressKeyType == KEYBOARD_HID){
-                if let index = keyboardHID.keyboardCodes.firstIndex(where: { $0.0 == wheelLeftLongPressKey! }) {
-                    position = index
-                }
-            } else if(wheelLeftLongPressKeyType == CONSUMER_HID){
-                if let index = keyboardHID.consumerCodes.firstIndex(where: { $0.0 == wheelLeftLongPressKey! }) {
                     position = index
                 }
             }
@@ -647,16 +536,6 @@ class WLQ_C: WLQ {
                     position = index
                 }
             }
-        case rocker1UpLongPress:
-            if(rocker1UpLongPressKeyType == KEYBOARD_HID){
-                if let index = keyboardHID.keyboardCodes.firstIndex(where: { $0.0 == rocker1UpLongPressKey! }) {
-                    position = index
-                }
-            } else if(rocker1UpLongPressKeyType == CONSUMER_HID){
-                if let index = keyboardHID.consumerCodes.firstIndex(where: { $0.0 == rocker1UpLongPressKey! }) {
-                    position = index
-                }
-            }
         case rocker1Down:
             if(rocker1DownPressKeyType == KEYBOARD_HID){
                 if let index = keyboardHID.keyboardCodes.firstIndex(where: { $0.0 == rocker1DownPressKey! }) {
@@ -664,16 +543,6 @@ class WLQ_C: WLQ {
                 }
             } else if(rocker1DownPressKeyType == CONSUMER_HID){
                 if let index = keyboardHID.consumerCodes.firstIndex(where: { $0.0 == rocker1DownPressKey! }) {
-                    position = index
-                }
-            }
-        case rocker1DownLongPress:
-            if(rocker1DownLongPressKeyType == KEYBOARD_HID){
-                if let index = keyboardHID.keyboardCodes.firstIndex(where: { $0.0 == rocker1DownLongPressKey! }) {
-                    position = index
-                }
-            } else if(rocker1DownLongPressKeyType == CONSUMER_HID){
-                if let index = keyboardHID.consumerCodes.firstIndex(where: { $0.0 == rocker1DownLongPressKey! }) {
                     position = index
                 }
             }
@@ -687,16 +556,6 @@ class WLQ_C: WLQ {
                     position = index
                 }
             }
-        case rocker2UpLongPress:
-            if(rocker2UpLongPressKeyType == KEYBOARD_HID){
-                if let index = keyboardHID.keyboardCodes.firstIndex(where: { $0.0 == rocker2UpLongPressKey! }) {
-                    position = index
-                }
-            } else if(rocker2UpLongPressKeyType == CONSUMER_HID){
-                if let index = keyboardHID.consumerCodes.firstIndex(where: { $0.0 == rocker2UpLongPressKey! }) {
-                    position = index
-                }
-            }
         case rocker2Down:
             if(rocker2DownPressKeyType == KEYBOARD_HID){
                 if let index = keyboardHID.keyboardCodes.firstIndex(where: { $0.0 == rocker2DownPressKey! }) {
@@ -704,16 +563,6 @@ class WLQ_C: WLQ {
                 }
             } else if(rocker2DownPressKeyType == CONSUMER_HID){
                 if let index = keyboardHID.consumerCodes.firstIndex(where: { $0.0 == rocker2DownPressKey! }) {
-                    position = index
-                }
-            }
-        case rocker2DownLongPress:
-            if(rocker2DownLongPressKeyType == KEYBOARD_HID){
-                if let index = keyboardHID.keyboardCodes.firstIndex(where: { $0.0 == rocker2DownLongPressKey! }) {
-                    position = index
-                }
-            } else if(rocker2DownLongPressKeyType == CONSUMER_HID){
-                if let index = keyboardHID.consumerCodes.firstIndex(where: { $0.0 == rocker2DownLongPressKey! }) {
                     position = index
                 }
             }
@@ -740,8 +589,6 @@ class WLQ_C: WLQ {
             default:
                 returnString = ""
             }
-        case longPressSensitivity:
-            returnString = "\(sensitivity!)"
         case wheelScrollUp:
             if(wheelScrollUpKeyType == KEYBOARD_HID){
                 if let index = keyboardHID.keyboardCodes.firstIndex(where: { $0.0 == wheelScrollUpKey! }) {
@@ -778,18 +625,6 @@ class WLQ_C: WLQ {
                     returnString = name
                 }
             }
-        case wheelToggleRightLongPress:
-            if(wheelRightLongPressKeyType == KEYBOARD_HID){
-                if let index = keyboardHID.keyboardCodes.firstIndex(where: { $0.0 == wheelRightLongPressKey! }) {
-                    let name = keyboardHID.keyboardCodes[index].1
-                    returnString = name
-                }
-            } else if(wheelRightLongPressKeyType == CONSUMER_HID){
-                if let index = keyboardHID.consumerCodes.firstIndex(where: { $0.0 == wheelRightLongPressKey! }) {
-                    let name = keyboardHID.consumerCodes[index].1
-                    returnString = name
-                }
-            }
         case wheelToggleLeft:
             if(wheelLeftPressKeyType == KEYBOARD_HID){
                 if let index = keyboardHID.keyboardCodes.firstIndex(where: { $0.0 == wheelLeftPressKey! }) {
@@ -798,18 +633,6 @@ class WLQ_C: WLQ {
                 }
             } else if(wheelLeftPressKeyType == CONSUMER_HID){
                 if let index = keyboardHID.consumerCodes.firstIndex(where: { $0.0 == wheelLeftPressKey! }) {
-                    let name = keyboardHID.consumerCodes[index].1
-                    returnString = name
-                }
-            }
-        case wheelToggleLeftLongPress:
-            if(wheelLeftLongPressKeyType == KEYBOARD_HID){
-                if let index = keyboardHID.keyboardCodes.firstIndex(where: { $0.0 == wheelLeftLongPressKey! }) {
-                    let name = keyboardHID.keyboardCodes[index].1
-                    returnString = name
-                }
-            } else if(wheelLeftLongPressKeyType == CONSUMER_HID){
-                if let index = keyboardHID.consumerCodes.firstIndex(where: { $0.0 == wheelLeftLongPressKey! }) {
                     let name = keyboardHID.consumerCodes[index].1
                     returnString = name
                 }
@@ -826,18 +649,6 @@ class WLQ_C: WLQ {
                     returnString = name
                 }
             }
-        case rocker1UpLongPress:
-            if(rocker1UpLongPressKeyType == KEYBOARD_HID){
-                if let index = keyboardHID.keyboardCodes.firstIndex(where: { $0.0 == rocker1UpLongPressKey! }) {
-                    let name = keyboardHID.keyboardCodes[index].1
-                    returnString = name
-                }
-            } else if(rocker1UpLongPressKeyType == CONSUMER_HID){
-                if let index = keyboardHID.consumerCodes.firstIndex(where: { $0.0 == rocker1UpLongPressKey! }) {
-                    let name = keyboardHID.consumerCodes[index].1
-                    returnString = name
-                }
-            }
         case rocker1Down:
             if(rocker1DownPressKeyType == KEYBOARD_HID){
                 if let index = keyboardHID.keyboardCodes.firstIndex(where: { $0.0 == rocker1DownPressKey! }) {
@@ -846,18 +657,6 @@ class WLQ_C: WLQ {
                 }
             } else if(rocker1DownPressKeyType == CONSUMER_HID){
                 if let index = keyboardHID.consumerCodes.firstIndex(where: { $0.0 == rocker1DownPressKey! }) {
-                    let name = keyboardHID.consumerCodes[index].1
-                    returnString = name
-                }
-            }
-        case rocker1DownLongPress:
-            if(rocker1DownLongPressKeyType == KEYBOARD_HID){
-                if let index = keyboardHID.keyboardCodes.firstIndex(where: { $0.0 == rocker1DownLongPressKey! }) {
-                    let name = keyboardHID.keyboardCodes[index].1
-                    returnString = name
-                }
-            } else if(rocker1DownLongPressKeyType == CONSUMER_HID){
-                if let index = keyboardHID.consumerCodes.firstIndex(where: { $0.0 == rocker1DownLongPressKey! }) {
                     let name = keyboardHID.consumerCodes[index].1
                     returnString = name
                 }
@@ -874,18 +673,6 @@ class WLQ_C: WLQ {
                     returnString = name
                 }
             }
-        case rocker2UpLongPress:
-            if(rocker2UpLongPressKeyType == KEYBOARD_HID){
-                if let index = keyboardHID.keyboardCodes.firstIndex(where: { $0.0 == rocker2UpLongPressKey! }) {
-                    let name = keyboardHID.keyboardCodes[index].1
-                    returnString = name
-                }
-            } else if(rocker2UpLongPressKeyType == CONSUMER_HID){
-                if let index = keyboardHID.consumerCodes.firstIndex(where: { $0.0 == rocker2UpLongPressKey! }) {
-                    let name = keyboardHID.consumerCodes[index].1
-                    returnString = name
-                }
-            }
         case rocker2Down:
             if(rocker2DownPressKeyType == KEYBOARD_HID){
                 if let index = keyboardHID.keyboardCodes.firstIndex(where: { $0.0 == rocker2DownPressKey! }) {
@@ -894,18 +681,6 @@ class WLQ_C: WLQ {
                 }
             } else if(rocker2DownPressKeyType == CONSUMER_HID){
                 if let index = keyboardHID.consumerCodes.firstIndex(where: { $0.0 == rocker2DownPressKey! }) {
-                    let name = keyboardHID.consumerCodes[index].1
-                    returnString = name
-                }
-            }
-        case rocker2DownLongPress:
-            if(rocker2DownLongPressKeyType == KEYBOARD_HID){
-                if let index = keyboardHID.keyboardCodes.firstIndex(where: { $0.0 == rocker2DownLongPressKey! }) {
-                    let name = keyboardHID.keyboardCodes[index].1
-                    returnString = name
-                }
-            } else if(rocker2DownLongPressKeyType == CONSUMER_HID){
-                if let index = keyboardHID.consumerCodes.firstIndex(where: { $0.0 == rocker2DownLongPressKey! }) {
                     let name = keyboardHID.consumerCodes[index].1
                     returnString = name
                 }
@@ -925,28 +700,16 @@ class WLQ_C: WLQ {
             modifiers = self.wheelScrollDownKeyModifier!
         case self.wheelToggleRight:
             modifiers = self.wheelRightPressKeyModifier!
-        case self.wheelToggleRightLongPress:
-            modifiers = self.wheelRightLongPressKeyModifier!
         case self.wheelToggleLeft:
             modifiers = self.wheelLeftPressKeyModifier!
-        case self.wheelToggleLeftLongPress:
-            modifiers = self.wheelLeftLongPressKeyModifier!
         case self.rocker1Up:
             modifiers = self.rocker1UpPressKeyModifier!
-        case self.rocker1UpLongPress:
-            modifiers = self.rocker1UpLongPressKeyModifier!
         case self.rocker1Down:
             modifiers = self.rocker1DownPressKeyModifier!
-        case self.rocker1DownLongPress:
-            modifiers = self.rocker1DownLongPressKeyModifier!
         case self.rocker2Up:
             modifiers = self.rocker2UpPressKeyModifier!
-        case self.rocker2UpLongPress:
-            modifiers = self.rocker2UpLongPressKeyModifier!
         case self.rocker2Down:
             modifiers = self.rocker2DownPressKeyModifier!
-        case self.rocker2DownLongPress:
-            modifiers = self.rocker2DownLongPressKeyModifier!
         default:
             modifiers = 0x00
         }
@@ -954,7 +717,7 @@ class WLQ_C: WLQ {
     }
 
     override func setfirmwareVersion(firmwareVersion: String?){
-        os_log("WLQ_C: Firmware Version: \(firmwareVersion ?? "?")")
+        os_log("WLQ_S: Firmware Version: \(firmwareVersion ?? "?")")
         self.firmwareVersion = firmwareVersion
     }
     override func getfirmwareVersion() -> String{
@@ -965,7 +728,7 @@ class WLQ_C: WLQ {
     }
 
     override func sethardwareVersion(hardwareVersion: String?){
-        os_log("WLQ_C: HW Version: \(hardwareVersion ?? "?")")
+        os_log("WLQ_S: HW Version: \(hardwareVersion ?? "?")")
         self.hardwareVersion = hardwareVersion
     }
     override func gethardwareVersion() -> String{
@@ -975,21 +738,14 @@ class WLQ_C: WLQ {
         return "Unknown"
     }}
 
-enum WLQ_C_DEFINES {
+enum WLQ_S_DEFINES {
     static let KEYMODE:Int = 100
-    static let longPressSensitivity:Int = 25
     static let wheelScrollUp:Int = 26
     static let wheelScrollDown:Int = 27
     static let wheelToggleRight:Int = 28
-    static let wheelToggleRightLongPress:Int = 29
     static let wheelToggleLeft:Int = 30
-    static let wheelToggleLeftLongPress:Int = 31
     static let rocker1Up:Int = 32
-    static let rocker1UpLongPress:Int = 33
     static let rocker1Down:Int = 34
-    static let rocker1DownLongPress:Int = 35
     static let rocker2Up:Int = 36
-    static let rocker2UpLongPress:Int = 37
     static let rocker2Down:Int = 38
-    static let rocker2DownLongPress:Int = 39
 }

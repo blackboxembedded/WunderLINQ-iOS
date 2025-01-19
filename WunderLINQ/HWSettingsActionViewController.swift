@@ -54,7 +54,7 @@ class HWSettingsActionViewController: UIViewController, UIPickerViewDataSource, 
     
 
     @IBAction func savePressed(_ sender: Any) {
-        if(actionID == WLQ_N_DEFINES.KEYMODE || actionID == WLQ_X_DEFINES.KEYMODE || actionID == WLQ_C_DEFINES.KEYMODE){ // Mode
+        if(actionID == WLQ_N_DEFINES.KEYMODE || actionID == WLQ_X_DEFINES.KEYMODE || actionID == WLQ_S_DEFINES.KEYMODE){ // Mode
             if (wlqData.getKeyMode() != self.typePicker.selectedRow(inComponent: 0)){
                 setHWMode(mode: UInt8(self.typePicker.selectedRow(inComponent: 0)))
             }
@@ -141,7 +141,7 @@ class HWSettingsActionViewController: UIViewController, UIPickerViewDataSource, 
         keyPicker.delegate = self
         keyPicker.dataSource = self
         
-        if(actionID == WLQ_N_DEFINES.KEYMODE || actionID == WLQ_X_DEFINES.KEYMODE || actionID == WLQ_C_DEFINES.KEYMODE){ // KEYMODE
+        if(actionID == WLQ_N_DEFINES.KEYMODE || actionID == WLQ_X_DEFINES.KEYMODE || actionID == WLQ_S_DEFINES.KEYMODE){ // KEYMODE
             typePicker.selectRow(Int(wlqData.getKeyMode()), inComponent: 0, animated: true)
             keyPicker.isHidden = true
             modifierMultiPicker.isHidden = true
@@ -226,7 +226,7 @@ class HWSettingsActionViewController: UIViewController, UIPickerViewDataSource, 
 
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         if pickerView == typePicker {
-            if(actionID == WLQ_N_DEFINES.KEYMODE || actionID == WLQ_X_DEFINES.KEYMODE || actionID == WLQ_C_DEFINES.KEYMODE){ // KEYMODE
+            if(actionID == WLQ_N_DEFINES.KEYMODE || actionID == WLQ_X_DEFINES.KEYMODE || actionID == WLQ_S_DEFINES.KEYMODE){ // KEYMODE
                 return keymodesPickerData.count
             } else if(actionID == WLQ_N_DEFINES.USB){ // USB
                 return usbPickerData.count
@@ -255,7 +255,7 @@ class HWSettingsActionViewController: UIViewController, UIPickerViewDataSource, 
 
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         if (pickerView == typePicker) {
-            if(actionID == WLQ_N_DEFINES.KEYMODE || actionID == WLQ_X_DEFINES.KEYMODE || actionID == WLQ_C_DEFINES.KEYMODE){ // KEYMODE
+            if(actionID == WLQ_N_DEFINES.KEYMODE || actionID == WLQ_X_DEFINES.KEYMODE || actionID == WLQ_S_DEFINES.KEYMODE){ // KEYMODE
                 return keymodesPickerData[row]
             } else if(actionID == WLQ_N_DEFINES.USB){ // USB
                 return usbPickerData[row]
@@ -285,7 +285,7 @@ class HWSettingsActionViewController: UIViewController, UIPickerViewDataSource, 
 
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if pickerView == typePicker {
-            if (actionID == WLQ_N_DEFINES.KEYMODE || actionID == WLQ_X_DEFINES.KEYMODE || actionID == WLQ_C_DEFINES.KEYMODE){ // KEYMODE
+            if (actionID == WLQ_N_DEFINES.KEYMODE || actionID == WLQ_X_DEFINES.KEYMODE || actionID == WLQ_S_DEFINES.KEYMODE){ // KEYMODE
                 if (wlqData.getKeyMode() != row) {
                     saveButton.isHidden = false
                 } else {

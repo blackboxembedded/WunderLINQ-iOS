@@ -63,7 +63,7 @@
 		7E96D79221E78B7B00C6AB5F /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E96D79121E78B7B00C6AB5F /* Security.framework */; };
 		7E9DDA9B278DE8A2006C6D12 /* WLQ.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9DDA9A278DE8A2006C6D12 /* WLQ.swift */; };
 		7E9DDA9F278DFFD4006C6D12 /* WLQ_N.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9DDA9E278DFFD4006C6D12 /* WLQ_N.swift */; };
-		7E9DDAA1278E2403006C6D12 /* WLQ_C.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9DDAA0278E2403006C6D12 /* WLQ_C.swift */; };
+		7E9DDAA1278E2403006C6D12 /* WLQ_S.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9DDAA0278E2403006C6D12 /* WLQ_S.swift */; };
 		7EA4784E1F40B154000CEDDC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA4784D1F40B154000CEDDC /* AppDelegate.swift */; };
 		7EA478551F40B154000CEDDC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7EA478541F40B154000CEDDC /* Assets.xcassets */; };
 		7EA478581F40B154000CEDDC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7EA478561F40B154000CEDDC /* LaunchScreen.storyboard */; };
@@ -235,7 +235,7 @@
 		7E96D79121E78B7B00C6AB5F /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		7E9DDA9A278DE8A2006C6D12 /* WLQ.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WLQ.swift; sourceTree = "<group>"; };
 		7E9DDA9E278DFFD4006C6D12 /* WLQ_N.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WLQ_N.swift; sourceTree = "<group>"; };
-		7E9DDAA0278E2403006C6D12 /* WLQ_C.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WLQ_C.swift; sourceTree = "<group>"; };
+		7E9DDAA0278E2403006C6D12 /* WLQ_S.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WLQ_S.swift; sourceTree = "<group>"; };
 		7EA4784A1F40B154000CEDDC /* WunderLINQ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WunderLINQ.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EA4784D1F40B154000CEDDC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7EA478541F40B154000CEDDC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -538,7 +538,7 @@
 				7E6987DC20F8F83500B4781D /* Faults.swift */,
 				7E9DDA9A278DE8A2006C6D12 /* WLQ.swift */,
 				7E9DDA9E278DFFD4006C6D12 /* WLQ_N.swift */,
-				7E9DDAA0278E2403006C6D12 /* WLQ_C.swift */,
+				7E9DDAA0278E2403006C6D12 /* WLQ_S.swift */,
 				D834BC3E2CB4C154002884B7 /* WLQ_X.swift */,
 			);
 			path = WLQ;
@@ -811,7 +811,7 @@
 				7E8AD3D926141BA10089F590 /* ADVDashboard.swift in Sources */,
 				D80365FE2B377FCD00F48637 /* SoundManager.swift in Sources */,
 				7E7DE00928986B1B0009663C /* ZoomAndSnapFlowLayout.swift in Sources */,
-				7E9DDAA1278E2403006C6D12 /* WLQ_C.swift in Sources */,
+				7E9DDAA1278E2403006C6D12 /* WLQ_S.swift in Sources */,
 				7EA4BCC721B8C9150084F6EA /* TasksCollectionViewController.swift in Sources */,
 				7E62BB6F21FE3DEB00FDB10E /* MainCollectionViewCell.swift in Sources */,
 				7E25396321CD94A30008D34E /* BLE.swift in Sources */,

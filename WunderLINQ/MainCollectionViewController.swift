@@ -978,7 +978,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                         peripheral.readValue(for: commandCharacteristic!)
                     }
                 } else if characteristic.uuid == CBUUID(string: Device.WunderLINQCCommandCharacteristicUUID) {
-                    wlqData = WLQ_C()
+                    wlqData = WLQ_S()
                     // Enable the message notifications
                     os_log("MainCollectionViewController: COMMAND INTERFACE FOUND")
                     commandCharacteristic = characteristic
