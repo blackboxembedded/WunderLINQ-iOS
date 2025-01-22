@@ -176,9 +176,10 @@ class WeatherMapViewController: UIViewController, GMSMapViewDelegate {
         
         //Delay start of animation
         DispatchQueue.main.asyncAfter(deadline: .now() + frameDelay) { [weak self] in
-            self!.displayLink = CADisplayLink(target: self!, selector: #selector(self!.updateAnimation))
-            self!.displayLink?.add(to: .current, forMode: .default)
-            self!.animationTimer = Timer.scheduledTimer(withTimeInterval: self!.animationDuration, repeats: false) { [weak self] timer in
+            guard let strongSelf = self else { return } // Safely unwrap self
+            strongSelf.displayLink = CADisplayLink(target: strongSelf, selector: #selector(strongSelf.updateAnimation))
+            strongSelf.displayLink?.add(to: .current, forMode: .default)
+            strongSelf.animationTimer = Timer.scheduledTimer(withTimeInterval: strongSelf.animationDuration, repeats: false) { [weak self] timer in
                 self?.restartAnimating()
             }
         }
