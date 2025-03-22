@@ -71,3 +71,4 @@
 "pref_ignitionAlert_summary" = "Prompt to close app when ignition is shutoff";
 "pref_ignitionAlert_enable_title" = "Enable app close on ignition shutoff";
 "pref_focus_indication_name" = "Focus Indication";
+"pref_autotrip_name" = "Auto Trip Logging";

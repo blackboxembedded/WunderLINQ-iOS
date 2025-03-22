@@ -266,6 +266,7 @@
 "task_title_insta360" = "Insta360 Control";
 "task_title_fuel" = "Fuel";
 "task_title_faults" = "Active Faults";
+"toast_auto_trip_logging" = "Auto Trip Logging Enabled";
 "toast_actioncam_notconnected" = "ActionCam Not Connected";
 "toast_actioncam_notset" = "Set ActionCam type in the app settings";
 "toast_waypoint_saved" = "Waypoint Saved";
