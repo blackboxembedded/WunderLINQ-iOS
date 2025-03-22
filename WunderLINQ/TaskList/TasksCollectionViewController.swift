@@ -312,8 +312,13 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
             //Trip Log
             let loggingStatus = UserDefaults.standard.string(forKey: "loggingStatus")
             if loggingStatus != nil {
-                //Stop Logging
-                UserDefaults.standard.set(nil, forKey: "loggingStatus")
+                // Check for auto-trip logging
+                if UserDefaults.standard.bool(forKey: "autotrip_enable_preference") {
+                    self.showToast(message: NSLocalizedString("toast_auto_trip_logging", comment: ""))
+                } else {
+                    //Stop Logging
+                    UserDefaults.standard.set(nil, forKey: "loggingStatus")
+                }
             } else {
                 //Start Logging
                 let dateFormatter = DateFormatter()
