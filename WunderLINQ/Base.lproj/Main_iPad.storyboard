@@ -1139,7 +1139,7 @@
             <objects>
                 <collectionViewController storyboardIdentifier="TasksCollectionViewController" title="Quick Tasks" id="OIf-TM-fnx" customClass="TasksCollectionViewController" customModule="WunderLINQ" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" id="02I-YM-N5d">
-                        <rect key="frame" x="0.0" y="0.0" width="580" height="640"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1133" height="744"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" name="backgrounds"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="F5h-gV-SH6">
@@ -1228,6 +1228,7 @@
                         <segue destination="1bi-3i-8Fd" kind="show" identifier="taskGridToVolume" id="PQC-gk-MLT"/>
                         <segue destination="ulb-bo-koX" kind="show" identifier="taskGridToAccessory" id="ijL-dp-2NP"/>
                         <segue destination="IAt-8c-fIu" kind="show" identifier="tasksToDash" customClass="SegueFromLeft" customModule="WunderLINQ" customModuleProvider="target" id="yuX-tI-kXh"/>
+                        <segue destination="KTW-aa-IYg" kind="show" identifier="taskGridToFaults" id="fn9-tI-rpr"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y78-9d-MHp" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2574,6 +2575,7 @@ Icons from fontawesome.com
         <segue reference="ijL-dp-2NP"/>
         <segue reference="yuX-tI-kXh"/>
         <segue reference="EVI-4B-2VB"/>
+        <segue reference="fn9-tI-rpr"/>
         <segue reference="P25-cb-auh"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

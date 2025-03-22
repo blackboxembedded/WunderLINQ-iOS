@@ -218,7 +218,11 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
         guard let task18 = Tasks(label: NSLocalizedString("task_title_fuel", comment: ""), icon: UIImage(named: "Gas-pump")?.withRenderingMode(.alwaysTemplate)) else {
             fatalError("Unable to instantiate Settings Task")
         }
-        self.tasks = [task0, task1, task2, task3, task4, task5, task6, task7, task8, task9, task10, task11, task12, task13, task14, task15, task16, task17, task18]
+        // Active Faults
+        guard let task19 = Tasks(label: NSLocalizedString("task_title_faults", comment: ""), icon: UIImage(named: "Alert")?.withRenderingMode(.alwaysTemplate)) else {
+            fatalError("Unable to instantiate Settings Task")
+        }
+        self.tasks = [task0, task1, task2, task3, task4, task5, task6, task7, task8, task9, task10, task11, task12, task13, task14, task15, task16, task17, task18, task19]
     }
     
     private func execute_task(taskID:Int) {
@@ -415,6 +419,10 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
                     self.showToast(message: NSLocalizedString("nav_app_feature_not_supported", comment: ""))
                 }
             }
+            break
+        case 19:
+            //Active Faults
+            performSegue(withIdentifier: "taskGridToFaults", sender: self)
             break
         default:
             os_log("TasksCollectionViewController: Unknown Task")
