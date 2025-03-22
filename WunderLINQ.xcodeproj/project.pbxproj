@@ -114,8 +114,8 @@
 		D87629122A7EDEB90021E7A7 /* standard-dashboard-portrait.svg in Resources */ = {isa = PBXBuildFile; fileRef = D87629112A7EDEB90021E7A7 /* standard-dashboard-portrait.svg */; };
 		D880B6022C6BFED900B4252B /* wav in Resources */ = {isa = PBXBuildFile; fileRef = D880B6012C6BFED900B4252B /* wav */; };
 		D8854C3E2CFE6D91003888B8 /* RateOfClimbCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8854C3D2CFE6D8E003888B8 /* RateOfClimbCalculator.swift */; };
-		D88FC37B2CA4EF6D00F18A7E /* SpotifyiOS.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = D88FC37A2CA4EF6D00F18A7E /* SpotifyiOS.xcframework */; };
-		D88FC37C2CA4EF6D00F18A7E /* SpotifyiOS.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D88FC37A2CA4EF6D00F18A7E /* SpotifyiOS.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D8A9C0D82D8F3D67001E0DF7 /* SpotifyiOS.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8A9C0D72D8F3D67001E0DF7 /* SpotifyiOS.xcframework */; };
+		D8A9C0D92D8F3D67001E0DF7 /* SpotifyiOS.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D8A9C0D72D8F3D67001E0DF7 /* SpotifyiOS.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D8CEAEB52CF7D99C00AF5813 /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8CEAEB42CF7D99100AF5813 /* UIImage+Extensions.swift */; };
 		D8FA72F92CC1B65300C41674 /* sport-dashboard-portrait.svg in Resources */ = {isa = PBXBuildFile; fileRef = D8FA72F82CC1B65300C41674 /* sport-dashboard-portrait.svg */; };
 		D8FA72FA2CC1B65300C41674 /* adv-dashboard-portrait.svg in Resources */ = {isa = PBXBuildFile; fileRef = D8FA72F72CC1B65300C41674 /* adv-dashboard-portrait.svg */; };
@@ -132,13 +132,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		D88FC37D2CA4EF6D00F18A7E /* Embed Frameworks */ = {
+		D8A9C0DA2D8F3D67001E0DF7 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				D88FC37C2CA4EF6D00F18A7E /* SpotifyiOS.xcframework in Embed Frameworks */,
+				D8A9C0D92D8F3D67001E0DF7 /* SpotifyiOS.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -297,6 +297,7 @@
 		D880B6012C6BFED900B4252B /* wav */ = {isa = PBXFileReference; lastKnownFileType = folder; path = wav; sourceTree = "<group>"; };
 		D8854C3D2CFE6D8E003888B8 /* RateOfClimbCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateOfClimbCalculator.swift; sourceTree = "<group>"; };
 		D88FC37A2CA4EF6D00F18A7E /* SpotifyiOS.xcframework */ = {isa = PBXFileReference; expectedSignature = "AppleDeveloperProgram:2FNC3A47ZF:Spotify"; lastKnownFileType = wrapper.xcframework; name = SpotifyiOS.xcframework; path = "../ios-sdk-2.1.7/SpotifyiOS.xcframework"; sourceTree = "<group>"; };
+		D8A9C0D72D8F3D67001E0DF7 /* SpotifyiOS.xcframework */ = {isa = PBXFileReference; expectedSignature = "AppleDeveloperProgram:2FNC3A47ZF:Spotify"; lastKnownFileType = wrapper.xcframework; name = SpotifyiOS.xcframework; path = "../../../Library/Developer/Xcode/DerivedData/WunderLINQ-aagipipvhxcztketvqvfkgxbhazm/SourcePackages/checkouts/ios-sdk/SpotifyiOS.xcframework"; sourceTree = "<group>"; };
 		D8CEAEB42CF7D99100AF5813 /* UIImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
 		D8FA72F72CC1B65300C41674 /* adv-dashboard-portrait.svg */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "adv-dashboard-portrait.svg"; sourceTree = "<group>"; };
 		D8FA72F82CC1B65300C41674 /* sport-dashboard-portrait.svg */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "sport-dashboard-portrait.svg"; sourceTree = "<group>"; };
@@ -309,7 +310,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7E96D79221E78B7B00C6AB5F /* Security.framework in Frameworks */,
-				D88FC37B2CA4EF6D00F18A7E /* SpotifyiOS.xcframework in Frameworks */,
+				D8A9C0D82D8F3D67001E0DF7 /* SpotifyiOS.xcframework in Frameworks */,
 				7E068BE82102C8820076EAAD /* CoreGraphics.framework in Frameworks */,
 				7E068BE92102C8820076EAAD /* libz.tbd in Frameworks */,
 				7E068BEB2102C8820076EAAD /* CoreLocation.framework in Frameworks */,
@@ -393,6 +394,7 @@
 				7E068BDB2102C8810076EAAD /* libz.tbd */,
 				7E068BDC2102C8810076EAAD /* OpenGLES.framework */,
 				7E068BE72102C8820076EAAD /* QuartzCore.framework */,
+				D8A9C0D72D8F3D67001E0DF7 /* SpotifyiOS.xcframework */,
 				7E068BE22102C8810076EAAD /* SystemConfiguration.framework */,
 				7E068BDE2102C8810076EAAD /* UIKit.framework */,
 				7E068BD82102C7DE0076EAAD /* Accelerate.framework */,
@@ -616,7 +618,7 @@
 				7EA478471F40B154000CEDDC /* Frameworks */,
 				7EA478481F40B154000CEDDC /* Resources */,
 				8E985EC67182A309FD22AF54 /* [CP] Embed Pods Frameworks */,
-				D88FC37D2CA4EF6D00F18A7E /* Embed Frameworks */,
+				D8A9C0DA2D8F3D67001E0DF7 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1224,7 +1226,7 @@
 			repositoryURL = "https://github.com/spotify/ios-sdk";
 			requirement = {
 				kind = exactVersion;
-				version = 1.0.0;
+				version = 3.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
