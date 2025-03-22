@@ -868,6 +868,10 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             let navBarColor = UIColor(named: "backgrounds")
             updateNavigationBar(color: navBarColor!)
         }
+        
+        //Reset trend data
+        motorcycleData.resetData()
+        
         updateDisplay()
         if error != nil {
             os_log("MainCollectionViewController: DISCONNECTION DETAILS: \(error!.localizedDescription)")

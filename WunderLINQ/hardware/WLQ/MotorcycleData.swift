@@ -359,6 +359,16 @@ class MotorcycleData {
         return self.localBattery!
     }
     
+    func resetData(){
+        self.shifts = 0
+        self.frontBrake = 0
+        self.rearBrake = 0
+        self.leanAngleBikeMaxL = nil
+        self.leanAngleBikeMaxR = nil
+        self.leanAngleMaxL = nil
+        self.leanAngleMaxR = nil
+    }
+    
     func clear(){
         self.frontTirePressure = nil
         self.rearTirePressure = nil
