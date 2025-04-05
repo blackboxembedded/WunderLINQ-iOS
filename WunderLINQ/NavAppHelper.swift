@@ -64,6 +64,8 @@ enum NavigationAppPreference: Int, CaseIterable {
     
     case kurviger
     
+    case tourstart
+    
     var isAvailable: Bool {
         UIApplication.shared.canOpenURL(URL(string: self.urlScheme)!)
     }
@@ -129,6 +131,9 @@ enum NavigationAppPreference: Int, CaseIterable {
             
         case .kurviger:
             return "https://kurviger.de/en"
+            
+        case .tourstart:
+            return "tourstart.org://"
 
         }
     }
@@ -208,6 +213,9 @@ enum NavigationAppPreference: Int, CaseIterable {
             
         case .kurviger:
             back_link = ""
+            
+        case .tourstart:
+            back_link = "?back_url=wunderlinq://"
         }
         
         let url = URL(string: "\(urlScheme)\(back_link)")!
@@ -415,6 +423,15 @@ extension NavAppHelper {
                     UIApplication.shared.open(mapsURL, options: [:], completionHandler: nil)
                 }
             }
+        case .tourstart:
+            //Tourstart
+            supported = true
+            let urlString = "\(navApp.urlScheme)route?geo=\(destLatitude),\(destLongitude)&back_url=wunderlinq://"
+            if let uRL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
+                if (UIApplication.shared.canOpenURL(uRL)) {
+                    UIApplication.shared.open(uRL, options: [:], completionHandler: nil)
+                }
+            }
         }
         
         return supported
@@ -533,6 +550,10 @@ extension NavAppHelper {
             supported = false
         case .kurviger:
             //Kurviger
+            // Not Supported
+            supported = false
+        case .tourstart:
+            //Tourstart
             // Not Supported
             supported = false
         }
@@ -715,6 +736,15 @@ extension NavAppHelper {
             if let mapsURL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
                 if (UIApplication.shared.canOpenURL(mapsURL)) {
                     UIApplication.shared.open(mapsURL, options: [:], completionHandler: nil)
+                }
+            }
+        case .tourstart:
+            //Tourstart
+            supported = true
+            let urlString = "\(navApp.urlScheme)view?geo=\(destLatitude),\(destLongitude)&back_url=wunderlinq://"
+            if let uRL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
+                if (UIApplication.shared.canOpenURL(uRL)) {
+                    UIApplication.shared.open(uRL, options: [:], completionHandler: nil)
                 }
             }
         }
