@@ -35,6 +35,7 @@
 				<string>17</string>
 				<string>18</string>
 				<string>19</string>
+				<string>20</string>
 			</array>
 			<key>Titles</key>
 			<array>
@@ -58,6 +59,7 @@
 				<string>nav_app_myrouteapp</string>
 				<string>nav_app_calimoto</string>
 				<string>nav_app_kurviger</string>
+				<string>nav_app_tourstart</string>
 			</array>
 		</dict>
 		<dict>

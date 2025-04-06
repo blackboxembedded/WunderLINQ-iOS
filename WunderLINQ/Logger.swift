@@ -42,7 +42,8 @@ class Logger {
                 // Use Calendar to compare the two dates
                 let calendar = Calendar.current
                 // Compare just the date components, ignoring time
-                if calendar.isDate(convertedDate, inSameDayAs: today) {
+                if calendar.isDate(convertedDate, inSameDayAs: today)
+                {
                     var formattedEntry = ""
                     let fileName = "WunderLINQ-TripLog-" + loggingStatus! + ".csv"
                     // Get the documents folder url
@@ -318,7 +319,12 @@ class Logger {
                     }
                 } else {
                     os_log("Logger: New Day")
-                    let fileName = "WunderLINQ-TripLog-" + loggingStatus! + ".csv"
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.dateFormat = "yyyyMMdd-HH-mm-ss"
+                    let dateString = dateFormatter.string(from: Date())
+                    UserDefaults.standard.set(dateString, forKey: "loggingStatus")
+                    
+                    let fileName = "WunderLINQ-TripLog-" + dateString + ".csv"
                     // Get the documents folder url
                     let documentDirectory = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
                     // Destination url for the log file to be saved
