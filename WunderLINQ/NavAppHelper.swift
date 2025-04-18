@@ -731,7 +731,6 @@ extension NavAppHelper {
         case .kurviger:
             //Kurviger
             supported = true
-
             let urlString = "\(navApp.urlScheme)?point=\(destLatitude),\(destLongitude)&padr.0=\(destLabel ?? "")"
             if let mapsURL = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
                 if (UIApplication.shared.canOpenURL(mapsURL)) {

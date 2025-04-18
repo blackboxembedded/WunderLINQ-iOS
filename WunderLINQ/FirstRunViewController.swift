@@ -32,7 +32,7 @@ class FirstRunViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     
     let locationManager = CLLocationManager()
     
-    var pickerData: [String] = [NSLocalizedString("nav_app_apple", comment: "Apple"),NSLocalizedString("nav_app_google", comment: "Google"),NSLocalizedString("nav_app_scenic", comment: ""),NSLocalizedString("nav_app_sygic", comment: ""),NSLocalizedString("nav_app_waze", comment: ""),NSLocalizedString("nav_app_mapsme", comment: ""),NSLocalizedString("nav_app_osmand", comment: ""),NSLocalizedString("nav_app_here", comment: ""),NSLocalizedString("nav_app_tomtomgo", comment: ""),NSLocalizedString("nav_app_inroute", comment: ""),NSLocalizedString("nav_app_mapout", comment: ""),NSLocalizedString("nav_app_yahoojapan", comment: ""),NSLocalizedString("nav_app_copilot", comment: ""),NSLocalizedString("nav_app_yandex", comment: ""),NSLocalizedString("nav_app_cartograph", comment: ""),NSLocalizedString("nav_app_organicmaps", comment: ""),NSLocalizedString("nav_app_gurumaps", comment: ""),NSLocalizedString("nav_app_myrouteapp", comment: ""),NSLocalizedString("nav_app_calimoto", comment: "")]
+    var pickerData: [String] = [NSLocalizedString("nav_app_apple", comment: "Apple"),NSLocalizedString("nav_app_google", comment: "Google"),NSLocalizedString("nav_app_scenic", comment: ""),NSLocalizedString("nav_app_sygic", comment: ""),NSLocalizedString("nav_app_waze", comment: ""),NSLocalizedString("nav_app_mapsme", comment: ""),NSLocalizedString("nav_app_osmand", comment: ""),NSLocalizedString("nav_app_here", comment: ""),NSLocalizedString("nav_app_tomtomgo", comment: ""),NSLocalizedString("nav_app_inroute", comment: ""),NSLocalizedString("nav_app_mapout", comment: ""),NSLocalizedString("nav_app_yahoojapan", comment: ""),NSLocalizedString("nav_app_copilot", comment: ""),NSLocalizedString("nav_app_yandex", comment: ""),NSLocalizedString("nav_app_cartograph", comment: ""),NSLocalizedString("nav_app_organicmaps", comment: ""),NSLocalizedString("nav_app_gurumaps", comment: ""),NSLocalizedString("nav_app_myrouteapp", comment: ""),NSLocalizedString("nav_app_calimoto", comment: ""),NSLocalizedString("nav_app_kurviger", comment: ""),NSLocalizedString("nav_app_tourstart", comment: "")]
     var selectedNavApp = 0
     
     @IBOutlet weak var selectPicker: UIPickerView!
@@ -179,6 +179,7 @@ class FirstRunViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
             break
         case 9:
             // Preferred Navigation App
+            selectedNavApp = selectPicker.selectedRow(inComponent: 0)
             UserDefaults.standard.set(selectedNavApp, forKey: "nav_app_preference")
             selectPicker.isHidden = true
             messageTextField.text = NSLocalizedString("firstrun_end", comment: "")

@@ -40,6 +40,8 @@
 "nav_app_gurumaps" = "Guru Maps";
 "nav_app_myrouteapp" = "MyRoute-app";
 "nav_app_calimoto" = "Calimoto";
+"nav_app_kurviger" = "Kurviger";
+"nav_app_tourstart" = "Tourstart";
 // MyMotorcycleViewController
 "main_title" = "Motorcycle";
 "disclaimer_alert_title" = "WARNING!";
