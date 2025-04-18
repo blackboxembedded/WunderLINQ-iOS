@@ -26,7 +26,7 @@ enum Device {
     static let WunderLINQServiceUUID = "02997340-015F-11E5-8C2B-0002A5D5C51B"
     static let WunderLINQPerformanceCharacteristicUUID = "00000003-0000-1000-8000-00805F9B34FB"
     static let WunderLINQNCommandCharacteristicUUID = "00000004-0000-1000-8000-00805f9b34fb"
-    static let WunderLINQCCommandCharacteristicUUID = "00000004-0000-1000-8000-00805f9b34fc"
+    static let WunderLINQSCommandCharacteristicUUID = "00000004-0000-1000-8000-00805f9b34fc"
     static let WunderLINQXCommandCharacteristicUUID = "00000004-0000-1000-8000-00805f9b34fe"
     static let WunderLINQUCommandCharacteristicUUID = "00000004-0000-1000-8000-00805f9b34fd"
     static let restoreIdentifier = "com.blackboxembedded.wunderlinq"

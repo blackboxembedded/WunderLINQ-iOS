@@ -612,7 +612,6 @@
 "rtk_speak_double_label" = "Parler double pression";
 "rtk_mute_label" = "Muet";
 "rtk_mute_double_label" = "Muet double pression";
-"full_rocker1_up_label" = "Rocker 1 Haut";
 "rtk_display_double_label" = "Affichage désactivé Double pression";
 "toast_gpx_saved" = "GPX importé";
 "task_title_roadbook" = "Roadbook";
@@ -626,10 +625,3 @@
 "keyboard_hid_0x31_label" = "Clavier \"";
 "toast_wlq_not_connected" = "WunderLINQ Non connecté";
 "keymode_custom_label" = "Personnaliser";
-"full_rocker1_up_long_label" = "Rocker 1 Haut longue pression";
-"full_rocker1_down_label" = "Rocker 1 Bas";
-"full_rocker1_down_long_label" = "Rocker 1 Bas longue pression";
-"full_rocker2_up_label" = "Rocker 2 Haut";
-"full_rocker2_up_long_label" = "Rocker 2 Haut Longue pression";
-"full_rocker2_down_label" = "Rocker 2 Bas";
-"full_rocker2_down_long_label" = "Rocker 2 Bas longue pression";

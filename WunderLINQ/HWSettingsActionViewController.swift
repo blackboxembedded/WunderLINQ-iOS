@@ -68,7 +68,7 @@ class HWSettingsActionViewController: UIViewController, UIPickerViewDataSource, 
             }
         } else if(actionID == WLQ_N_DEFINES.RTKDoublePressSensitivity || actionID == WLQ_X_DEFINES.RTKDoublePressSensitivity){ // RTK Sensititvity
             wlqData.setDoublePressSensitivity(value: (UInt8)(self.typePicker.selectedRow(inComponent: 0) + 1))
-        } else if(actionID == WLQ_N_DEFINES.fullLongPressSensitivity || actionID == WLQ_X_DEFINES.fullLongPressSensitivity){ // Full Sensititvity
+        } else if(actionID == WLQ_N_DEFINES.fullLongPressSensitivity || actionID == WLQ_X_DEFINES.fullLongPressSensitivity || actionID == WLQ_S_DEFINES.fullLongPressSensitivity){ // Full Sensititvity
             wlqData.setLongPressSensitivity(value: (UInt8)(self.typePicker.selectedRow(inComponent: 0) + 1))
         } else {    //  Key
             let keyType:UInt8 = (UInt8)(self.typePicker.selectedRow(inComponent: 0))
@@ -159,7 +159,7 @@ class HWSettingsActionViewController: UIViewController, UIPickerViewDataSource, 
             typePicker.selectRow((Int)(wlqData.getDoublePressSensitivity()) - 1, inComponent: 0, animated: true)
             keyPicker.isHidden = true
             modifierMultiPicker.isHidden = true
-        } else if(actionID == WLQ_N_DEFINES.fullLongPressSensitivity || actionID == WLQ_X_DEFINES.fullLongPressSensitivity){ // Full Sensititvity
+        } else if(actionID == WLQ_N_DEFINES.fullLongPressSensitivity || actionID == WLQ_X_DEFINES.fullLongPressSensitivity || actionID == WLQ_S_DEFINES.fullLongPressSensitivity){ // Full Sensititvity
             typePicker.selectRow((Int)(wlqData.getLongPressSensitivity()) - 1, inComponent: 0, animated: true)
             keyPicker.isHidden = true
             modifierMultiPicker.isHidden = true
@@ -232,7 +232,7 @@ class HWSettingsActionViewController: UIViewController, UIPickerViewDataSource, 
                 return usbPickerData.count
             } else if(actionID == WLQ_N_DEFINES.RTKDoublePressSensitivity || actionID == WLQ_X_DEFINES.RTKDoublePressSensitivity){ // RTK Sensititvity
                 return 20
-            } else if(actionID == WLQ_N_DEFINES.fullLongPressSensitivity || actionID == WLQ_X_DEFINES.fullLongPressSensitivity){ // Full Sensititvity
+            } else if(actionID == WLQ_N_DEFINES.fullLongPressSensitivity || actionID == WLQ_X_DEFINES.fullLongPressSensitivity || actionID == WLQ_S_DEFINES.fullLongPressSensitivity){ // Full Sensititvity
                 return 30
             } else {
                 if (wlqData.gethardwareVersion() == WLQ_N_DEFINES.hardwareVersion1){
@@ -261,7 +261,7 @@ class HWSettingsActionViewController: UIViewController, UIPickerViewDataSource, 
                 return usbPickerData[row]
             } else if(actionID == WLQ_N_DEFINES.RTKDoublePressSensitivity || actionID == WLQ_X_DEFINES.RTKDoublePressSensitivity){ // RTK Sensititvity
                 return "\((row + 1) * 50)"
-            } else if(actionID == WLQ_N_DEFINES.fullLongPressSensitivity || actionID == WLQ_X_DEFINES.fullLongPressSensitivity){ // Full Sensititvity
+            } else if(actionID == WLQ_N_DEFINES.fullLongPressSensitivity || actionID == WLQ_X_DEFINES.fullLongPressSensitivity || actionID == WLQ_S_DEFINES.fullLongPressSensitivity){ // Full Sensititvity
                 return "\((row + 1) * 50)"
             } else {
                 if (wlqData.gethardwareVersion() == WLQ_N_DEFINES.hardwareVersion1){
@@ -307,7 +307,7 @@ class HWSettingsActionViewController: UIViewController, UIPickerViewDataSource, 
                 } else {
                     saveButton.isHidden = true
                 }
-            } else if (actionID == WLQ_N_DEFINES.fullLongPressSensitivity || actionID == WLQ_X_DEFINES.fullLongPressSensitivity){ // Full Sensititvity
+            } else if (actionID == WLQ_N_DEFINES.fullLongPressSensitivity || actionID == WLQ_X_DEFINES.fullLongPressSensitivity || actionID == WLQ_S_DEFINES.fullLongPressSensitivity){ // Full Sensititvity
                 if (wlqData.getLongPressSensitivity() != typePicker.selectedRow(inComponent: 0) + 1){
                     saveButton.isHidden = false
                 } else {

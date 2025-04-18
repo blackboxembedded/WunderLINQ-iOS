@@ -1002,7 +1002,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                         peripheral.writeValue(writeData, for: commandCharacteristic!, type: CBCharacteristicWriteType.withResponse)
                         peripheral.readValue(for: commandCharacteristic!)
                     }
-                } else if characteristic.uuid == CBUUID(string: Device.WunderLINQCCommandCharacteristicUUID) {
+                } else if characteristic.uuid == CBUUID(string: Device.WunderLINQSCommandCharacteristicUUID) {
                     wlqData = WLQ_S()
                     // Enable the message notifications
                     os_log("MainCollectionViewController: COMMAND INTERFACE FOUND")
@@ -1091,7 +1091,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                 }
             } else if characteristic.uuid == CBUUID(string: Device.WunderLINQNCommandCharacteristicUUID) {
                 parseCommandResponse(dataBytes)
-            } else if characteristic.uuid == CBUUID(string: Device.WunderLINQCCommandCharacteristicUUID) {
+            } else if characteristic.uuid == CBUUID(string: Device.WunderLINQSCommandCharacteristicUUID) {
                 parseCommandResponse(dataBytes)
             } else if characteristic.uuid == CBUUID(string: Device.WunderLINQXCommandCharacteristicUUID) {
                 parseCommandResponse(dataBytes)
