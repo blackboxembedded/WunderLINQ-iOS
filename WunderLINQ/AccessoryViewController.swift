@@ -311,7 +311,7 @@ class AccessoryViewController: UIViewController, UITextFieldDelegate {
                 channelOneView.layer.borderColor = highlightColor?.cgColor
                 channelTwoView.layer.borderWidth = 0
                 channelTwoView.layer.borderColor = nil
-                channelOneProgress.tintColor = wlqData.getAccChannelPixelColor(positon: 1)
+                channelOneProgress.tintColor = highlightColor
                 channelTwoProgress.tintColor = UIColor(named: "imageTint")
                 break
             case 2:
@@ -320,7 +320,7 @@ class AccessoryViewController: UIViewController, UITextFieldDelegate {
                 channelTwoView.layer.borderWidth = 10
                 channelTwoView.layer.borderColor = highlightColor?.cgColor
                 channelOneProgress.tintColor = UIColor(named: "imageTint")
-                channelTwoProgress.tintColor = wlqData.getAccChannelPixelColor(positon: 2)
+                channelTwoProgress.tintColor = highlightColor
                 break
             default:
                 channelOneView.layer.borderWidth = 0

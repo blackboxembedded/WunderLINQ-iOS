@@ -178,7 +178,4 @@ class WLQ {
     func getAccChannelValue(positon: Int) -> UInt8{
         fatalError("This method must be overridden")
     }
-    func getAccChannelPixelColor(positon: Int) -> UIColor{
-        fatalError("This method must be overridden")
-    }
 }
