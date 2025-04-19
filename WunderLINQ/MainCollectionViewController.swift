@@ -709,12 +709,14 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             switch (dataArray[1]){
             case 0x52:
                 switch (dataArray[2]){
-                case 0x53:
-                    os_log("MainCollectionViewController: Received WRS command response")
-                    if (wlqData != nil){
-                        WLQ.shared.setStatus(bytes: dataArray)
-                        notificationCenter.post(name: Notification.Name("StatusUpdate"), object: nil)
-                        launchAccPage()
+                case 0x41:
+                    if (dataArray[3] == 0x50){
+                        os_log("MainCollectionViewController: Received WRS command response")
+                        if (wlqData != nil){
+                            WLQ.shared.setStatus(bytes: dataArray)
+                            notificationCenter.post(name: Notification.Name("StatusUpdate"), object: nil)
+                            launchAccPage()
+                        }
                     }
                     break
                 case 0x56:

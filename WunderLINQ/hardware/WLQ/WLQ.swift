@@ -172,9 +172,6 @@ class WLQ {
     func getAccActive() -> UInt8{
         fatalError("This method must be overridden")
     }
-    func getAccChannelState(positon: Int) -> UInt8{
-        fatalError("This method must be overridden")
-    }
     func getAccChannelValue(positon: Int) -> UInt8{
         fatalError("This method must be overridden")
     }

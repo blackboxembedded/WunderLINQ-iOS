@@ -303,10 +303,8 @@ class AccessoryViewController: UIViewController, UITextFieldDelegate {
                 highlightColor = UIColor(named: "accent")
             }
             let channelActive = wlqData.getAccActive()
-            let channel1State = wlqData.getAccChannelState(positon: 1)
-            let channel2State = wlqData.getAccChannelState(positon: 2)
             switch (channelActive) {
-            case 1:
+            case 2:
                 channelOneView.layer.borderWidth = 10
                 channelOneView.layer.borderColor = highlightColor?.cgColor
                 channelTwoView.layer.borderWidth = 0
@@ -314,7 +312,7 @@ class AccessoryViewController: UIViewController, UITextFieldDelegate {
                 channelOneProgress.tintColor = highlightColor
                 channelTwoProgress.tintColor = UIColor(named: "imageTint")
                 break
-            case 2:
+            case 3:
                 channelOneView.layer.borderWidth = 0
                 channelOneView.layer.borderColor = nil
                 channelTwoView.layer.borderWidth = 10
@@ -331,16 +329,8 @@ class AccessoryViewController: UIViewController, UITextFieldDelegate {
                 channelTwoProgress.tintColor = UIColor(named: "imageTint")
                 break
             }
-            if (channel1State == 128) {
-                channelOneProgress.setProgress((Float(wlqData.getAccChannelValue(positon: 1)) / 254.0), animated: true)
-            } else {
-                channelOneProgress.setProgress(0, animated: true)
-            }
-            if (channel2State == 128) {
-                channelTwoProgress.setProgress((Float(wlqData.getAccChannelValue(positon: 2)) / 254.0), animated: true)
-            } else {
-                channelTwoProgress.setProgress(0, animated: true)
-            }
+            channelOneProgress.setProgress((Float(wlqData.getAccChannelValue(positon: 1)) / 4.0), animated: true)
+            channelTwoProgress.setProgress((Float(wlqData.getAccChannelValue(positon: 2)) / 4.0), animated: true)
         } else {
             let writeData =  Data(_: wlqData.GET_STATUS_CMD())
             peripheral!.writeValue(writeData, for: commandCharacteristic!, type: CBCharacteristicWriteType.withResponse)

@@ -267,6 +267,21 @@ class WLQ_S: WLQ {
         return wunderLINQStatus
     }
     
+    override func getAccActive() -> UInt8{
+        return activeChannel!
+    }
+
+    override func getAccChannelValue(positon: Int) -> UInt8{
+        switch(positon){
+        case 1:
+            return channel1ValueRaw!
+        case 2:
+            return channel2ValueRaw!
+        default:
+            return 0x00
+        }
+    }
+    
     override func gethardwareType() -> Int{
         return 3
     }
@@ -524,6 +539,8 @@ class WLQ_S: WLQ {
             default:
                 returnString = ""
             }
+        case fullLongPressSensitivity:
+            returnString = "\(Int(sensitivity!) * 50)ms"
         case up:
             if(upKeyType == KEYBOARD_HID){
                 if let index = keyboardHID.keyboardCodes.firstIndex(where: { $0.0 == upKey! }) {

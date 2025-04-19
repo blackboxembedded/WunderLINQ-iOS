@@ -369,6 +369,21 @@ class WLQ_X: WLQ {
         return wunderLINQStatus
     }
     
+    override func getAccActive() -> UInt8{
+        return activeChannel!
+    }
+
+    override func getAccChannelValue(positon: Int) -> UInt8{
+        switch(positon){
+        case 1:
+            return channel1ValueRaw!
+        case 2:
+            return channel2ValueRaw!
+        default:
+            return 0x00
+        }
+    }
+    
     override func gethardwareType() -> Int{
         return 2
     }
