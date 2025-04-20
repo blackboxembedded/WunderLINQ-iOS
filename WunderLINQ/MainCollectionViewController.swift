@@ -573,9 +573,18 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     }
     
     @objc func launchAccPage(){
-        if self.viewIfLoaded?.window != nil {
-            let secondViewController = self.storyboard!.instantiateViewController(withIdentifier: "AccessoryViewController") as! AccessoryViewController
-            self.navigationController!.pushViewController(secondViewController, animated: true)
+        // only run if this view is on screen
+        guard self.viewIfLoaded?.window != nil else { return }
+
+        // make sure we have a nav controller
+        guard let nav = self.navigationController else { return }
+        
+        // Option A) Only push if the topVC isn’t already an AccessoryViewController
+        if !(nav.topViewController is AccessoryViewController) {
+            let accessoryVC = storyboard!
+                .instantiateViewController(withIdentifier: "AccessoryViewController")
+                as! AccessoryViewController
+            nav.pushViewController(accessoryVC, animated: true)
         }
     }
     
