@@ -884,9 +884,9 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
         os_log("MainCollectionViewController: DISCONNECTED FROM WunderLINQ!")
         bluetoothBtn.tintColor = UIColor(named: "motorrad_red")
+        motorcycleData.setHasFocus(hasFocus: false)
         if UserDefaults.standard.bool(forKey: "focus_indication_preference") {
             os_log("Focus Gone")
-            motorcycleData.setHasFocus(hasFocus: false)
             // Return NavBar back to normal color
             let navBarColor = UIColor(named: "backgrounds")
             updateNavigationBar(color: navBarColor!)
@@ -1084,10 +1084,9 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                                 navBarColor = UIColor(named: "accent")
                             }
                             updateNavigationBar(color: navBarColor!)
-                            
-                            wlqData.setAccActive(status: 1)
-                            notificationCenter.post(name: Notification.Name("StatusUpdate"), object: nil)
                         }
+                        wlqData.setAccActive(active: 1)
+                        notificationCenter.post(name: Notification.Name("StatusUpdate"), object: nil)
                     }
                     motorcycleData.setHasFocus(hasFocus: true)
                     lastControlMessage = Int(Date().timeIntervalSince1970 * 1000)
@@ -1095,11 +1094,11 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                     if (motorcycleData.getHasFocus() && ( Int(Date().timeIntervalSince1970 * 1000) - lastControlMessage > 500)){
                         if UserDefaults.standard.bool(forKey: "focus_indication_preference") {
                             os_log("Focus Gone")
-                            motorcycleData.setHasFocus(hasFocus: false)
                             // Return NavBar back to normal color
                             let navBarColor = UIColor(named: "backgrounds")
                             updateNavigationBar(color: navBarColor!)
                         }
+                        motorcycleData.setHasFocus(hasFocus: false)
                     }
                     BLEBus.parseMessage(dataArray)
                 }

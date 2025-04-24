@@ -267,8 +267,8 @@ class WLQ_S: WLQ {
         return wunderLINQStatus
     }
     
-    override func setAccActive(status: UInt8) {
-        activeChannel = status
+    override func setAccActive(active: UInt8) {
+        activeChannel = active
     }
     
     override func getAccActive() -> UInt8{
