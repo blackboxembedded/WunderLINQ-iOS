@@ -722,6 +722,13 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                     if (dataArray[3] == 0x50){
                         os_log("MainCollectionViewController: Received WRS command response")
                         if (wlqData != nil){
+                            motorcycleData.setHasFocus(hasFocus: false)
+                            if UserDefaults.standard.bool(forKey: "focus_indication_preference") {
+                                os_log("Focus Gone")
+                                // Return NavBar back to normal color
+                                let navBarColor = UIColor(named: "backgrounds")
+                                updateNavigationBar(color: navBarColor!)
+                            }
                             WLQ.shared.setStatus(bytes: dataArray)
                             notificationCenter.post(name: Notification.Name("StatusUpdate"), object: nil)
                             launchAccPage()
@@ -1085,7 +1092,9 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                             }
                             updateNavigationBar(color: navBarColor!)
                         }
-                        wlqData.setAccActive(active: 1)
+                        if (wlqData != nil){
+                            wlqData.setAccActive(active: 1)
+                        }
                         notificationCenter.post(name: Notification.Name("StatusUpdate"), object: nil)
                     }
                     motorcycleData.setHasFocus(hasFocus: true)
