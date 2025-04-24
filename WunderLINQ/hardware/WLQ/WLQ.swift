@@ -169,6 +169,9 @@ class WLQ {
     func getStatus() -> [UInt8]?{
         fatalError("This method must be overridden")
     }
+    func setAccActive(status: UInt8){
+        fatalError("This method must be overridden")
+    }
     func getAccActive() -> UInt8{
         fatalError("This method must be overridden")
     }

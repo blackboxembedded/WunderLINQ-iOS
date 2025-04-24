@@ -1084,6 +1084,9 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                                 navBarColor = UIColor(named: "accent")
                             }
                             updateNavigationBar(color: navBarColor!)
+                            
+                            wlqData.setAccActive(status: 1)
+                            notificationCenter.post(name: Notification.Name("StatusUpdate"), object: nil)
                         }
                     }
                     motorcycleData.setHasFocus(hasFocus: true)
