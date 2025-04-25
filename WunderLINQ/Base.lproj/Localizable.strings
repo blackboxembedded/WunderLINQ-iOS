@@ -113,14 +113,6 @@
 "full_toggle_left_long_label" = "Wheel Left Long Press";
 "full_signal_cancel_label" = "Signal Cancel";
 "full_signal_cancel_long_label" = "Signal Cancel Long Press";
-"full_rocker1_up_label" = "Rocker 1 Up";
-"full_rocker1_up_long_label" = "Rocker 1 Up Long Press";
-"full_rocker1_down_label" = "Rocker 1 Down";
-"full_rocker1_down_long_label" = "Rocker 1 Down Long Press";
-"full_rocker2_up_label" = "Rocker 2 Up";
-"full_rocker2_up_long_label" = "Rocker 2 Up Long Press";
-"full_rocker2_down_label" = "Rocker 2 Down";
-"full_rocker2_down_long_label" = "Rocker 2 Down Long Press";
 "full_long_press_label" = "Long Press";
 "rtk_page_label" = "Page";
 "rtk_page_double_label" = "Page Double Press";
@@ -135,6 +127,20 @@
 "rtk_display_label" = "Display Off";
 "rtk_display_double_label" = "Display Off Double Press";
 "rtk_double_press_label" = "Double Press";
+
+"up_label" = "Up";
+"up_long_label" = "Up Long Press";
+"down_label" = "Down";
+"down_long_label" = "Down Long Press";
+"left_label" = "Left";
+"left_long_label" = "Left Long Press";
+"right_label" = "Right";
+"right_long_label" = "Right Long Press";
+"fx1_label" = "FX1";
+"fx1_long_label" = "FX1 Long Press";
+"fx2_label" = "FX2";
+"fx2_long_label" = "FX2 Long Press";
+
 //HWCustomizeViewController
 "usb_threshold_label" = "USB Port Control";
 "usbcontrol_on_label" = "Always On";

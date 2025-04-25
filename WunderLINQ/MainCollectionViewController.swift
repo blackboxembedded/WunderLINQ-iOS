@@ -573,9 +573,18 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     }
     
     @objc func launchAccPage(){
-        if self.viewIfLoaded?.window != nil {
-            let secondViewController = self.storyboard!.instantiateViewController(withIdentifier: "AccessoryViewController") as! AccessoryViewController
-            self.navigationController!.pushViewController(secondViewController, animated: true)
+        // only run if this view is on screen
+        guard self.viewIfLoaded?.window != nil else { return }
+
+        // make sure we have a nav controller
+        guard let nav = self.navigationController else { return }
+        
+        // Option A) Only push if the topVC isn’t already an AccessoryViewController
+        if !(nav.topViewController is AccessoryViewController) {
+            let accessoryVC = storyboard!
+                .instantiateViewController(withIdentifier: "AccessoryViewController")
+                as! AccessoryViewController
+            nav.pushViewController(accessoryVC, animated: true)
         }
     }
     
@@ -709,12 +718,21 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
             switch (dataArray[1]){
             case 0x52:
                 switch (dataArray[2]){
-                case 0x53:
-                    os_log("MainCollectionViewController: Received WRS command response")
-                    if (wlqData != nil){
-                        WLQ.shared.setStatus(bytes: dataArray)
-                        notificationCenter.post(name: Notification.Name("StatusUpdate"), object: nil)
-                        launchAccPage()
+                case 0x41:
+                    if (dataArray[3] == 0x50){
+                        os_log("MainCollectionViewController: Received WRS command response")
+                        if (wlqData != nil){
+                            motorcycleData.setHasFocus(hasFocus: false)
+                            if UserDefaults.standard.bool(forKey: "focus_indication_preference") {
+                                os_log("Focus Gone")
+                                // Return NavBar back to normal color
+                                let navBarColor = UIColor(named: "backgrounds")
+                                updateNavigationBar(color: navBarColor!)
+                            }
+                            WLQ.shared.setStatus(bytes: dataArray)
+                            notificationCenter.post(name: Notification.Name("StatusUpdate"), object: nil)
+                            launchAccPage()
+                        }
                     }
                     break
                 case 0x56:
@@ -873,9 +891,9 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
         os_log("MainCollectionViewController: DISCONNECTED FROM WunderLINQ!")
         bluetoothBtn.tintColor = UIColor(named: "motorrad_red")
+        motorcycleData.setHasFocus(hasFocus: false)
         if UserDefaults.standard.bool(forKey: "focus_indication_preference") {
             os_log("Focus Gone")
-            motorcycleData.setHasFocus(hasFocus: false)
             // Return NavBar back to normal color
             let navBarColor = UIColor(named: "backgrounds")
             updateNavigationBar(color: navBarColor!)
@@ -1002,7 +1020,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                         peripheral.writeValue(writeData, for: commandCharacteristic!, type: CBCharacteristicWriteType.withResponse)
                         peripheral.readValue(for: commandCharacteristic!)
                     }
-                } else if characteristic.uuid == CBUUID(string: Device.WunderLINQCCommandCharacteristicUUID) {
+                } else if characteristic.uuid == CBUUID(string: Device.WunderLINQSCommandCharacteristicUUID) {
                     wlqData = WLQ_S()
                     // Enable the message notifications
                     os_log("MainCollectionViewController: COMMAND INTERFACE FOUND")
@@ -1074,6 +1092,10 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                             }
                             updateNavigationBar(color: navBarColor!)
                         }
+                        if (wlqData != nil){
+                            wlqData.setAccActive(active: 1)
+                        }
+                        notificationCenter.post(name: Notification.Name("StatusUpdate"), object: nil)
                     }
                     motorcycleData.setHasFocus(hasFocus: true)
                     lastControlMessage = Int(Date().timeIntervalSince1970 * 1000)
@@ -1081,17 +1103,17 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                     if (motorcycleData.getHasFocus() && ( Int(Date().timeIntervalSince1970 * 1000) - lastControlMessage > 500)){
                         if UserDefaults.standard.bool(forKey: "focus_indication_preference") {
                             os_log("Focus Gone")
-                            motorcycleData.setHasFocus(hasFocus: false)
                             // Return NavBar back to normal color
                             let navBarColor = UIColor(named: "backgrounds")
                             updateNavigationBar(color: navBarColor!)
                         }
+                        motorcycleData.setHasFocus(hasFocus: false)
                     }
                     BLEBus.parseMessage(dataArray)
                 }
             } else if characteristic.uuid == CBUUID(string: Device.WunderLINQNCommandCharacteristicUUID) {
                 parseCommandResponse(dataBytes)
-            } else if characteristic.uuid == CBUUID(string: Device.WunderLINQCCommandCharacteristicUUID) {
+            } else if characteristic.uuid == CBUUID(string: Device.WunderLINQSCommandCharacteristicUUID) {
                 parseCommandResponse(dataBytes)
             } else if characteristic.uuid == CBUUID(string: Device.WunderLINQXCommandCharacteristicUUID) {
                 parseCommandResponse(dataBytes)

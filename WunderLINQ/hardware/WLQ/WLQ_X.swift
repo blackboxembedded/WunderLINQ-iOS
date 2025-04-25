@@ -142,6 +142,22 @@ class WLQ_X: WLQ {
     let fullSignalLongPressKeyModifier_INDEX:Int = 60
     let fullSignalLongPressKey_INDEX:Int = 61
 
+    // PDM Status message
+    let statusSize:Int = 6
+    let NUM_CHAN_INDEX:Int = 0
+    let ACTIVE_CHAN_INDEX:Int = 1
+    let ACC_PDM_CHANNEL1_VAL_RAW_INDEX:Int = 2
+    let ACC_PDM_CHANNEL2_VAL_RAW_INDEX:Int = 3
+    let ACC_PDM_CHANNEL3_VAL_RAW_INDEX:Int = 4
+    let ACC_PDM_CHANNEL4_VAL_RAW_INDEX:Int = 5
+
+    var wunderLINQStatus:[UInt8]?
+    var activeChannel:UInt8?
+    var channel1ValueRaw:UInt8?
+    var channel2ValueRaw:UInt8?
+    var channel3ValueRaw:UInt8?
+    var channel4ValueRaw:UInt8?
+    
     var keyMode:UInt8?
     var RTKSensitivity:UInt8?
     var RTKPagePressKeyType:UInt8?
@@ -338,6 +354,38 @@ class WLQ_X: WLQ {
     
     override func getConfig() -> [UInt8]{
         return flashConfig!
+    }
+    
+    override func setStatus(bytes: [UInt8]) {
+        self.wunderLINQStatus = Array(bytes[4..<(4+statusSize)])
+        self.activeChannel = self.wunderLINQStatus![ACTIVE_CHAN_INDEX]
+        self.channel1ValueRaw = self.wunderLINQStatus![ACC_PDM_CHANNEL1_VAL_RAW_INDEX]
+        self.channel2ValueRaw = self.wunderLINQStatus![ACC_PDM_CHANNEL2_VAL_RAW_INDEX]
+        self.channel3ValueRaw = self.wunderLINQStatus![ACC_PDM_CHANNEL3_VAL_RAW_INDEX]
+        self.channel4ValueRaw = self.wunderLINQStatus![ACC_PDM_CHANNEL4_VAL_RAW_INDEX]
+    }
+    
+    override func getStatus() -> [UInt8]?{
+        return wunderLINQStatus
+    }
+    
+    override func setAccActive(active: UInt8) {
+        activeChannel = active
+    }
+    
+    override func getAccActive() -> UInt8{
+        return activeChannel!
+    }
+
+    override func getAccChannelValue(positon: Int) -> UInt8{
+        switch(positon){
+        case 1:
+            return channel1ValueRaw!
+        case 2:
+            return channel2ValueRaw!
+        default:
+            return 0x00
+        }
     }
     
     override func gethardwareType() -> Int{
@@ -1051,14 +1099,6 @@ class WLQ_X: WLQ {
             return self.hardwareVersion!
         }
         return "Unknown"
-    }
-    
-    //Not used for Navigator
-    override func setStatus(bytes: [UInt8]) {
-        
-    }
-    override func getStatus() -> [UInt8]?{
-        return nil
     }
 }
 
