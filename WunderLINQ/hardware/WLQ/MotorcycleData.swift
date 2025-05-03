@@ -1066,7 +1066,7 @@ class MotorcycleData {
         case MotorcycleData.shared.DATA_AMBIENT_LIGHT:
             // Ambient Light
             if MotorcycleData.shared.ambientLight != nil {
-                value = "\(MotorcycleData.shared.ambientLight!)"
+                value = "\(Int(MotorcycleData.shared.ambientLight!))"
             } else {
                 value = NSLocalizedString("blank_field", comment: "")
             }
