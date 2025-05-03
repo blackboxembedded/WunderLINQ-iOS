@@ -1,6 +1,3 @@
 ${PODS_ROOT}/Target Support Files/Pods-WunderLINQ/Pods-WunderLINQ-frameworks.sh
 ${BUILT_PRODUCTS_DIR}/ChromaColorPicker/ChromaColorPicker.framework
-${BUILT_PRODUCTS_DIR}/CoreGPX/CoreGPX.framework
-${BUILT_PRODUCTS_DIR}/InAppSettingsKit/InAppSettingsKit.framework
-${BUILT_PRODUCTS_DIR}/Popovers/Popovers.framework
 ${BUILT_PRODUCTS_DIR}/UIMultiPicker/UIMultiPicker.framework

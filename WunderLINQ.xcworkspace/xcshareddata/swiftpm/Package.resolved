@@ -1,6 +1,24 @@
 {
-  "originHash" : "3f2b8280b32df82869389da82850b33168a09a16a3d48337090180d9e6d6cda6",
+  "originHash" : "33a2f7a7e09ccc9cab5b6caed5d7eda2d11d5840aa3f306f88e812aabe92c66d",
   "pins" : [
+    {
+      "identity" : "coregpx",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/vincentneo/CoreGPX",
+      "state" : {
+        "revision" : "42662cc9235d385bdd0356c8f4cb7b581da24e39",
+        "version" : "0.9.3"
+      }
+    },
+    {
+      "identity" : "inappsettingskit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/futuretap/InAppSettingsKit.git",
+      "state" : {
+        "revision" : "b60959ac31106a404774f641e063096014269188",
+        "version" : "3.8.5"
+      }
+    },
     {
       "identity" : "ios-maps-sdk",
       "kind" : "remoteSourceControl",
@@ -17,6 +35,15 @@
       "state" : {
         "revision" : "af71ec0bcf3baa7ec88c72119b7fdf65eb91fd67",
         "version" : "3.0.0"
+      }
+    },
+    {
+      "identity" : "popovers",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/aheze/Popovers",
+      "state" : {
+        "revision" : "de44c4dd7271ec6413fe350f7efadb14e5e18dce",
+        "version" : "1.3.2"
       }
     }
   ],

@@ -106,6 +106,9 @@
 		D81CBFAE2C8119580029C5AB /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = D81CBFAD2C8119580029C5AB /* Entitlements.plist */; };
 		D826545A2C82768000049F9E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82654582C82768000049F9E /* SceneDelegate.swift */; };
 		D826545B2C82768000049F9E /* CarPlaySceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82654592C82768000049F9E /* CarPlaySceneDelegate.swift */; };
+		D828FB992DC5A6CB001AE485 /* InAppSettingsKit in Frameworks */ = {isa = PBXBuildFile; productRef = D828FB982DC5A6CB001AE485 /* InAppSettingsKit */; };
+		D828FB9C2DC5A79A001AE485 /* CoreGPX in Frameworks */ = {isa = PBXBuildFile; productRef = D828FB9B2DC5A79A001AE485 /* CoreGPX */; };
+		D828FB9F2DC5A7FA001AE485 /* Popovers in Frameworks */ = {isa = PBXBuildFile; productRef = D828FB9E2DC5A7FA001AE485 /* Popovers */; };
 		D834BC3F2CB4C154002884B7 /* WLQ_X.swift in Sources */ = {isa = PBXBuildFile; fileRef = D834BC3E2CB4C154002884B7 /* WLQ_X.swift */; };
 		D8585C53293EBD550025D0AB /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8585C51293EBD540025D0AB /* Main_iPad.storyboard */; };
 		D87629122A7EDEB90021E7A7 /* standard-dashboard-portrait.svg in Resources */ = {isa = PBXBuildFile; fileRef = D87629112A7EDEB90021E7A7 /* standard-dashboard-portrait.svg */; };
@@ -307,6 +310,7 @@
 				7E068BE92102C8820076EAAD /* libz.tbd in Frameworks */,
 				7E068BEB2102C8820076EAAD /* CoreLocation.framework in Frameworks */,
 				7E068BEC2102C8820076EAAD /* UIKit.framework in Frameworks */,
+				D828FB9F2DC5A7FA001AE485 /* Popovers in Frameworks */,
 				7E068BEE2102C8820076EAAD /* CoreImage.framework in Frameworks */,
 				D80D16482DA2018100F64D78 /* GoogleMaps in Frameworks */,
 				7E068BEF2102C8820076EAAD /* ImageIO.framework in Frameworks */,
@@ -314,9 +318,11 @@
 				7E068BF12102C8820076EAAD /* CoreText.framework in Frameworks */,
 				7E068BF22102C8820076EAAD /* CoreTelephony.framework in Frameworks */,
 				7E068BF32102C8820076EAAD /* libc++.tbd in Frameworks */,
+				D828FB992DC5A6CB001AE485 /* InAppSettingsKit in Frameworks */,
 				7E068BF42102C8820076EAAD /* CoreData.framework in Frameworks */,
 				7E068BF52102C8820076EAAD /* QuartzCore.framework in Frameworks */,
 				7E068BD92102C7DE0076EAAD /* Accelerate.framework in Frameworks */,
+				D828FB9C2DC5A79A001AE485 /* CoreGPX in Frameworks */,
 				482C618362EA74729FE53E2A /* Pods_WunderLINQ.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -686,6 +692,9 @@
 			packageReferences = (
 				D88FC3792CA4EF2C00F18A7E /* XCRemoteSwiftPackageReference "ios-sdk" */,
 				D80D16462DA2018100F64D78 /* XCRemoteSwiftPackageReference "ios-maps-sdk" */,
+				D828FB972DC5A624001AE485 /* XCRemoteSwiftPackageReference "InAppSettingsKit" */,
+				D828FB9A2DC5A79A001AE485 /* XCRemoteSwiftPackageReference "CoreGPX" */,
+				D828FB9D2DC5A7FA001AE485 /* XCRemoteSwiftPackageReference "Popovers" */,
 			);
 			productRefGroup = 7EA4784B1F40B154000CEDDC /* Products */;
 			projectDirPath = "";
@@ -1218,6 +1227,30 @@
 				minimumVersion = 9.4.0;
 			};
 		};
+		D828FB972DC5A624001AE485 /* XCRemoteSwiftPackageReference "InAppSettingsKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/futuretap/InAppSettingsKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.8.5;
+			};
+		};
+		D828FB9A2DC5A79A001AE485 /* XCRemoteSwiftPackageReference "CoreGPX" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/vincentneo/CoreGPX";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.9.3;
+			};
+		};
+		D828FB9D2DC5A7FA001AE485 /* XCRemoteSwiftPackageReference "Popovers" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/aheze/Popovers";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.3.2;
+			};
+		};
 		D88FC3792CA4EF2C00F18A7E /* XCRemoteSwiftPackageReference "ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/spotify/ios-sdk";
@@ -1233,6 +1266,20 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D80D16462DA2018100F64D78 /* XCRemoteSwiftPackageReference "ios-maps-sdk" */;
 			productName = GoogleMaps;
+		};
+		D828FB982DC5A6CB001AE485 /* InAppSettingsKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = InAppSettingsKit;
+		};
+		D828FB9B2DC5A79A001AE485 /* CoreGPX */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D828FB9A2DC5A79A001AE485 /* XCRemoteSwiftPackageReference "CoreGPX" */;
+			productName = CoreGPX;
+		};
+		D828FB9E2DC5A7FA001AE485 /* Popovers */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D828FB9D2DC5A7FA001AE485 /* XCRemoteSwiftPackageReference "Popovers" */;
+			productName = Popovers;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
