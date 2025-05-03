@@ -177,16 +177,10 @@ code_sign_if_enabled() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/ChromaColorPicker/ChromaColorPicker.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/CoreGPX/CoreGPX.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/InAppSettingsKit/InAppSettingsKit.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/Popovers/Popovers.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/UIMultiPicker/UIMultiPicker.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/ChromaColorPicker/ChromaColorPicker.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/CoreGPX/CoreGPX.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/InAppSettingsKit/InAppSettingsKit.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/Popovers/Popovers.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/UIMultiPicker/UIMultiPicker.framework"
 fi
 if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then
