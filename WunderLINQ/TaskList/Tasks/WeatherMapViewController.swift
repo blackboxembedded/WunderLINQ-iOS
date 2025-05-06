@@ -165,25 +165,49 @@ class WeatherMapViewController: UIViewController, GMSMapViewDelegate {
     
     func startAnimating() {
         os_log("WeatherMapViewController: startAnimating()")
-        //Show current time frame
-        startTime = CACurrentMediaTime()
-        let unixtime: CLong = CLong(Date().timeIntervalSince1970)
-        let timestamp = unixtime - ( unixtime % (10*60))
-        configureMap(timestamp: timestamp)
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "EEE MMM dd HH:mm:ss z yyyy"
-        dateLabel.text = dateFormatter.string(from: Date())
+
+        // compute the “base” timestamp rounded down to the nearest 10 min
+        let nowDate = Date()
+        let unixtime = nowDate.timeIntervalSince1970
+        let tenMin: TimeInterval = 10 * 60
+        let baseTimestamp = unixtime - (unixtime.truncatingRemainder(dividingBy: tenMin))
         
-        //Delay start of animation
+        startTime = CACurrentMediaTime()
+        
+        // draw the map at that base time
+        configureMap(timestamp: CLong(baseTimestamp))
+        let df = DateFormatter()
+        df.dateFormat = "EEE MMM dd HH:mm:ss z yyyy"
+        dateLabel.text = df.string(from: nowDate)
+
+        // tear down any existing links
+        displayLink?.invalidate()
+        animationTimer?.invalidate()
+
+        // delay before actually starting the CADisplayLink
         DispatchQueue.main.asyncAfter(deadline: .now() + frameDelay) { [weak self] in
-            guard let strongSelf = self else { return } // Safely unwrap self
-            strongSelf.displayLink = CADisplayLink(target: strongSelf, selector: #selector(strongSelf.updateAnimation))
-            strongSelf.displayLink?.add(to: .current, forMode: .default)
-            strongSelf.animationTimer = Timer.scheduledTimer(withTimeInterval: strongSelf.animationDuration, repeats: false) { [weak self] timer in
+            guard let self = self else { return }
+
+            // how many seconds have we already progressed into this 10 min block?
+            let secondsIntoBlock = nowDate.timeIntervalSince1970 - baseTimestamp
+
+            // create the display link
+            self.displayLink = CADisplayLink(target: self, selector: #selector(self.updateAnimation))
+            
+            // bias the start time so that displayLink.timestamp - startTime == secondsIntoBlock
+            let linkStart = CACurrentMediaTime()
+
+            // kick off
+            self.displayLink?.add(to: .current, forMode: .default)
+            self.animationTimer = Timer.scheduledTimer(
+                withTimeInterval: self.animationDuration,
+                repeats: false
+            ) { [weak self] _ in
                 self?.restartAnimating()
             }
         }
     }
+
 
     @objc func updateAnimation() {
         guard let startTime = startTime else { return }
