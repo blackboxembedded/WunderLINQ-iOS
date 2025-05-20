@@ -72,6 +72,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     let bleData = BLE.shared
     let motorcycleData = MotorcycleData.shared
     let faults = Faults.shared
+    var messages = [UInt8: Data]()
     var lastNotification: [Bool]?
     var prevBrakeValue = 0
     var lastControlMessage = 0
@@ -1077,6 +1078,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                 let dataLength = dataBytes.count / MemoryLayout<UInt8>.size
                 var dataArray = [UInt8](repeating: 0, count: dataLength)
                 (dataBytes as NSData).getBytes(&dataArray, length: dataLength * MemoryLayout<Int16>.size)
+                let msgID = dataArray[0]
                 if (dataArray[0] == 0x04){
                     if (!motorcycleData.getHasFocus()){
                         // Set NavBar to highlight color
@@ -1109,7 +1111,22 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                         }
                         motorcycleData.setHasFocus(hasFocus: false)
                     }
-                    BLEBus.parseMessage(dataArray)
+                    //Check if message changed
+                    var process = false
+                    if messages[msgID] == nil {
+                        messages[msgID] = Data(dataArray)
+                        process = true
+                    } else {
+                        if messages[msgID] != Data(dataArray) {
+                            process = true
+                        }
+                    }
+                    if (process) {
+                        BLEBus.parseMessage(dataArray)
+                        if self.viewIfLoaded?.window != nil {
+                            updateDisplay()
+                        }
+                    }
                 }
             } else if characteristic.uuid == CBUUID(string: Device.WunderLINQNCommandCharacteristicUUID) {
                 parseCommandResponse(dataBytes)
@@ -1152,14 +1169,10 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                     faults.setIgnitionAlertSent(active:false)
                 }
             }
-            if self.viewIfLoaded?.window != nil {
-                updateDisplay()
-            }
         }
     }
 
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        
         //displaying the ios local notification when app is in foreground
         completionHandler([.alert, .badge, .sound])
     }
@@ -1200,9 +1213,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     }
     
     private func sendAlert(message:String){
-        
         let notificationCenter = UNUserNotificationCenter.current()
-        
         // Create a unique identifier for your notification
         let notificationIdentifier = "FaultNotification"
         // Get the notification request with the identifier
