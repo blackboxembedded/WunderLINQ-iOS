@@ -21,7 +21,6 @@ import SQLite3
 import GoogleMaps
 import MapKit
 import CoreGPX
-import Popovers
 import os.log
 
 class WaypointViewController: UIViewController, UITextFieldDelegate {
@@ -44,14 +43,6 @@ class WaypointViewController: UIViewController, UITextFieldDelegate {
     var menuButton: UIBarButtonItem!
     
     let motorcycleData = MotorcycleData.shared
-    
-    lazy var menu = Templates.UIKitMenu(sourceView: menuBtn!) {
-        Templates.MenuButton(title: NSLocalizedString("waypoint_view_bt_open", comment: ""), systemImage: nil) { self.open() }
-        Templates.MenuButton(title: NSLocalizedString("waypoint_view_bt_nav", comment: ""), systemImage: nil) { self.navigate() }
-        Templates.MenuButton(title: NSLocalizedString("waypoint_view_bt_share", comment: ""), systemImage: nil) { self.share() }
-        Templates.MenuButton(title: NSLocalizedString("share_gpx", comment: ""), systemImage: nil) { self.exportGPX() }
-        Templates.MenuButton(title: NSLocalizedString("waypoint_view_bt_delete", comment: ""), systemImage: nil) { self.delete() }
-    }
     
     @IBOutlet weak var elevationLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
@@ -148,7 +139,29 @@ class WaypointViewController: UIViewController, UITextFieldDelegate {
         self.labelLabel.delegate = self
         labelLabel.placeholder = NSLocalizedString("waypoint_view_label_hint", comment: "")
         
-        _ = menu /// Create the menu.
+        // Data source: array of (title, action) tuples
+        let dataSource: [(title: String, action: () -> Void)] = [
+            (NSLocalizedString("waypoint_view_bt_open", comment: ""), { self.open() }),
+            (NSLocalizedString("waypoint_view_bt_nav", comment: ""), { self.navigate() }),
+            (NSLocalizedString("waypoint_view_bt_share", comment: ""), { self.share() }),
+            (NSLocalizedString("share_gpx", comment: ""), { self.exportGPX() }),
+            (NSLocalizedString("waypoint_view_bt_delete", comment: ""), { self.delete() })
+        ]
+
+        // Create UIActions with unique closures
+        let menuChildren: [UIAction] = dataSource.map { item in
+            return UIAction(title: item.title) { _ in
+                item.action()
+            }
+        }
+
+        // Create menu and assign to button
+        menuBtn.menu = UIMenu(title: "", options: .displayInline, children: menuChildren)
+        menuBtn.showsMenuAsPrimaryAction = true
+
+        // Layout
+        menuBtn.frame = CGRect(x: 150, y: 200, width: 160, height: 40)
+        view.addSubview(menuBtn)
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)

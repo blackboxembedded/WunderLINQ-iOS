@@ -27,7 +27,6 @@ import UIKit
 import UserNotifications
 import CommonCrypto
 import InAppSettingsKit
-import Popovers
 import os.log
 
 private let reuseIdentifier = "MainCollectionViewCell"
@@ -80,7 +79,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     var referenceAttitude: CMAttitude?
     
     private let notificationCenter = NotificationCenter.default
-    
+    /*
     lazy var menu = Templates.UIKitMenu(sourceView: menuBtn!) {
         Templates.MenuButton(title: NSLocalizedString("bike_info_label", comment: ""), systemImage: nil) { self.openBikeInfo() }
         Templates.MenuButton(title: NSLocalizedString("geodata_label", comment: ""), systemImage: nil) { self.openGeoData() }
@@ -89,6 +88,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         Templates.MenuButton(title: NSLocalizedString("about_label", comment: ""), systemImage: nil) { self.openAbout() }
         Templates.MenuButton(title: NSLocalizedString("close_label", comment: ""), systemImage: nil) { exit(0)}
     }
+     */
     
     var navBarTimeout = 10
     var navBarTimer = Timer()
@@ -331,7 +331,34 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         self.navigationItem.leftBarButtonItems = [backButton, bluetoothButton, faultsButton]
         self.navigationItem.rightBarButtonItems = [forwardButton, menuButton]
         
-        _ = menu /// Create the menu.
+        // Menu creation
+        let actionClosure: UIActionHandler = { action in
+            print("Selected: \(action.title)")
+        }
+        // Data source: array of (title, action) tuples
+        let dataSource: [(title: String, action: () -> Void)] = [
+            (NSLocalizedString("bike_info_label", comment: ""), { self.openBikeInfo() }),
+            (NSLocalizedString("geodata_label", comment: ""), { self.openGeoData() }),
+            (NSLocalizedString("appsettings_label", comment: ""), { self.openAppSettings() }),
+            (NSLocalizedString("hwsettings_label", comment: ""), { self.openHWSettings() }),
+            (NSLocalizedString("about_label", comment: ""), { self.openAbout() }),
+            (NSLocalizedString("close_label", comment: ""), { exit(0)}),
+        ]
+
+        // Create UIActions with unique closures
+        let menuChildren: [UIAction] = dataSource.map { item in
+            return UIAction(title: item.title) { _ in
+                item.action()
+            }
+        }
+
+        // Assign menu to button
+        menuBtn.menu = UIMenu(title: "", options: .displayInline, children: menuChildren)
+        menuBtn.showsMenuAsPrimaryAction = true
+
+        // Position and display
+        menuBtn.frame = CGRect(x: 150, y: 200, width: 150, height: 40)
+        view.addSubview(menuBtn)
         
         // Configure the flow layout
         let layout = UICollectionViewFlowLayout()

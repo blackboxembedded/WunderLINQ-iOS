@@ -19,7 +19,6 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 import UIKit
 import GoogleMaps
 import CoreGPX
-import Popovers
 import os.log
 
 class TripViewController: UIViewController, UITextFieldDelegate {
@@ -41,12 +40,6 @@ class TripViewController: UIViewController, UITextFieldDelegate {
     
     var menuBtn: UIButton!
     var menuButton: UIBarButtonItem!
-    
-    lazy var menu = Templates.UIKitMenu(sourceView: menuBtn!) {
-        Templates.MenuButton(title: NSLocalizedString("waypoint_view_bt_share", comment: ""), systemImage: nil) { self.share() }
-        Templates.MenuButton(title: NSLocalizedString("share_gpx", comment: ""), systemImage: nil) { self.exportGPX() }
-        Templates.MenuButton(title: NSLocalizedString("waypoint_view_bt_delete", comment: ""), systemImage: nil) { self.delete() }
-    }
     
     @objc func leftScreen() {
         _ = navigationController?.popViewController(animated: true)
@@ -174,8 +167,28 @@ class TripViewController: UIViewController, UITextFieldDelegate {
         self.navigationItem.title = NSLocalizedString("trip_view_title", comment: "")
         self.navigationItem.leftBarButtonItems = [backButton]
         self.navigationItem.rightBarButtonItems = [menuButton]
-        
-        _ = menu /// Create the menu.
+
+        // Data source: array of (title, action) tuples
+        let dataSource: [(title: String, action: () -> Void)] = [
+            (NSLocalizedString("waypoint_view_bt_share", comment: ""), { self.share() }),
+            (NSLocalizedString("share_gpx", comment: ""), { self.exportGPX() }),
+            (NSLocalizedString("waypoint_view_bt_delete", comment: ""), { self.delete() })
+        ]
+
+        // Create UIActions with unique closures
+        let menuChildren: [UIAction] = dataSource.map { item in
+            return UIAction(title: item.title) { _ in
+                item.action()
+            }
+        }
+
+        // Create menu and assign to button
+        menuBtn.menu = UIMenu(title: "", options: .displayInline, children: menuChildren)
+        menuBtn.showsMenuAsPrimaryAction = true
+
+        // Layout
+        menuBtn.frame = CGRect(x: 150, y: 200, width: 160, height: 40)
+        view.addSubview(menuBtn)
         
         self.labelLabel.delegate = self
         labelLabel.placeholder = NSLocalizedString("trip_view_label_hint", comment: "")
