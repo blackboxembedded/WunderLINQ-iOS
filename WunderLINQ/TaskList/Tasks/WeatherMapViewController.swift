@@ -217,13 +217,16 @@ class WeatherMapViewController: UIViewController, GMSMapViewDelegate {
         let timestamp = unixtime - ( unixtime % (10*60))
         if (lastTimestamp != timestamp){
             lastTimestamp = timestamp
-            configureMap(timestamp: timestamp)
-            
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "EEE MMM dd HH:mm:ss z yyyy"
-            dateLabel.text = dateFormatter.string(from: calculateDateForProgress(progress))
-            
-            updateDisplay()
+            let nowTime: CLong = CLong(Date().timeIntervalSince1970)
+            if(lastTimestamp! <= nowTime){
+                configureMap(timestamp: timestamp)
+                
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "EEE MMM dd HH:mm:ss z yyyy"
+                dateLabel.text = dateFormatter.string(from: calculateDateForProgress(progress))
+                
+                updateDisplay()
+            }
         }
     }
     
