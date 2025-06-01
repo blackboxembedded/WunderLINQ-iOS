@@ -28,7 +28,7 @@ class WLQ_X: WLQ {
     var flashConfig:[UInt8]?
     var tempConfig:[UInt8]?
 
-    let configFlashSize:Int = 62
+    let configFlashSize:Int = 66
     let defaultConfig1:[UInt8] = [
                 0x27, // RT/K Start // Sensitivity
                 0x01, 0x00, 0x4F, 0x01, 0x00, 0x28, // Menu
@@ -41,7 +41,12 @@ class WLQ_X: WLQ {
                 0x01, 0x00, 0x4F, 0x01, 0x00, 0x28, // Right Toggle
                 0x01, 0x00, 0x50, 0x01, 0x00, 0x29, // Left Toggle
                 0x01, 0x00, 0x52, 0x01, 0x00, 0x51, // Scroll
-                0x02, 0x00, 0xB8, 0x02, 0x00, 0xE2] // Signal Cancel
+                0x02, 0x00, 0xB8, 0x02, 0x00, 0xE2, // Signal Cancel
+                0x00,                               // PDM Channel 1 Mode
+                0x00,                               // PDM Channel 2 Mode
+                0x00,                               // PDM Channel 3 Mode
+                0x00                                // PDM Channel 4 Mode
+                ]
 
     let keyMode_default:UInt8 = 0x00
     let keyMode_custom:UInt8 = 0x01
@@ -51,8 +56,8 @@ class WLQ_X: WLQ {
     let UNDEFINED:UInt8 = 0x00
 
     let KEYMODE:Int = 100
-    let RTKDoublePressSensitivity:Int = 2
-    let fullLongPressSensitivity:Int = 3
+    let doublePressSensitivity:Int = 2
+    let longPressSensitivity:Int = 3
     let RTKPage:Int = 4
     let RTKPageDoublePress:Int = 5
     let RTKZoomPlus:Int = 6
@@ -73,12 +78,16 @@ class WLQ_X: WLQ {
     let fullToggleLeftLongPress:Int = 21
     let fullSignalCancel:Int = 22
     let fullSignalCancelLongPress:Int = 23
+    let pdmChannel1:Int = 50
+    let pdmChannel2:Int = 51
+    let pdmChannel3:Int = 52
+    let pdmChannel4:Int = 53
     
     var actionNames: [Int: String] = [:]
 
     let firmwareVersionMajor_INDEX:Int = 3
     let firmwareVersionMinor_INDEX:Int = 4
-    let keyMode_INDEX:Int = 25
+    let keyMode_INDEX:Int = 5
     let RTKSensitivity_INDEX:Int = 0
     let RTKPagePressKeyType_INDEX:Int = 1
     let RTKPagePressKeyModifier_INDEX:Int = 2
@@ -141,6 +150,12 @@ class WLQ_X: WLQ {
     let fullSignalLongPressKeyType_INDEX:Int = 59
     let fullSignalLongPressKeyModifier_INDEX:Int = 60
     let fullSignalLongPressKey_INDEX:Int = 61
+    
+    let pdmChannel1_INDEX:Int = 62
+    let pdmChannel2_INDEX:Int = 63
+    let pdmChannel3_INDEX:Int = 64
+    let pdmChannel4_INDEX:Int = 65
+    let accessories_INDEX:Int = 72
 
     // PDM Status message
     let statusSize:Int = 6
@@ -221,6 +236,12 @@ class WLQ_X: WLQ {
     var fullSignalLongPressKeyType:UInt8?
     var fullSignalLongPressKeyModifier:UInt8?
     var fullSignalLongPressKey:UInt8?
+    
+    var pdmChannel1Setting:UInt8?
+    var pdmChannel2Setting:UInt8?
+    var pdmChannel3Setting:UInt8?
+    var pdmChannel4Setting:UInt8?
+    var accessories:UInt8? = 0x00
 
     required override init() {
         super.init()
@@ -228,8 +249,8 @@ class WLQ_X: WLQ {
         WLQ.shared = self
         WLQ.initialized = true
         actionNames = [KEYMODE: NSLocalizedString("keymode_label", comment: ""),
-                       RTKDoublePressSensitivity: NSLocalizedString("double_press_label", comment: ""),
-                       fullLongPressSensitivity: NSLocalizedString("long_press_label", comment: ""),
+                       doublePressSensitivity: NSLocalizedString("double_press_label", comment: ""),
+                       longPressSensitivity: NSLocalizedString("long_press_label", comment: ""),
                        RTKPage: NSLocalizedString("rtk_page_label", comment: ""),
                        RTKPageDoublePress: NSLocalizedString("rtk_page_double_label", comment: ""),
                        RTKZoomPlus: NSLocalizedString("rtk_zoomp_label", comment: ""),
@@ -249,7 +270,12 @@ class WLQ_X: WLQ {
                        fullToggleLeft: NSLocalizedString("full_toggle_left_label", comment: ""),
                        fullToggleLeftLongPress: NSLocalizedString("full_toggle_left_long_label", comment: ""),
                        fullSignalCancel: NSLocalizedString("full_signal_cancel_label", comment: ""),
-                       fullSignalCancelLongPress: NSLocalizedString("full_signal_cancel_long_label", comment: "")]
+                       fullSignalCancelLongPress: NSLocalizedString("full_signal_cancel_long_label", comment: ""),
+                       pdmChannel1: NSLocalizedString("pdm_channel1_label", comment: ""),
+                       pdmChannel2: NSLocalizedString("pdm_channel2_label", comment: ""),
+                       pdmChannel3: NSLocalizedString("pdm_channel3_label", comment: ""),
+                       pdmChannel4: NSLocalizedString("pdm_channel4_label", comment: "")
+        ]
     }
     
     override func parseConfig(bytes: [UInt8]) {
@@ -333,6 +359,11 @@ class WLQ_X: WLQ {
         self.fullSignalLongPressKeyType = self.flashConfig![self.fullSignalLongPressKeyType_INDEX]
         self.fullSignalLongPressKeyModifier = self.flashConfig![self.fullSignalLongPressKeyModifier_INDEX]
         self.fullSignalLongPressKey = self.flashConfig![self.fullSignalLongPressKey_INDEX]
+        self.pdmChannel1Setting = self.flashConfig![self.pdmChannel1_INDEX]
+        self.pdmChannel2Setting = self.flashConfig![self.pdmChannel2_INDEX]
+        self.pdmChannel3Setting = self.flashConfig![self.pdmChannel3_INDEX]
+        self.pdmChannel4Setting = self.flashConfig![self.pdmChannel4_INDEX]
+        self.accessories = bytes[accessories_INDEX]
     }
     
     override func getDefaultConfig() -> [UInt8]{
@@ -369,6 +400,11 @@ class WLQ_X: WLQ {
         return wunderLINQStatus
     }
     
+    override func getAccessories() -> UInt8{
+        return accessories!
+    }
+    
+    
     override func setAccActive(active: UInt8) {
         activeChannel = active
     }
@@ -402,19 +438,6 @@ class WLQ_X: WLQ {
     
     override func setActionName(action: Int?, key: String){
         actionNames[action!] = key
-    }
-    
-    override func getDoublePressSensitivity() -> UInt8{
-        return RTKSensitivity!
-    }
-    override func setDoublePressSensitivity(value: UInt8){
-        setTempConfigByte(index: RTKSensitivity_INDEX, value: value)
-    }
-    override func getLongPressSensitivity() -> UInt8{
-        return fullSensitivity!
-    }
-    override func setLongPressSensitivity(value: UInt8){
-        setTempConfigByte(index: fullSensitivity_INDEX, value: value)
     }
     
     override func getActionKeyType(action: Int?) -> UInt8{
@@ -763,6 +786,25 @@ class WLQ_X: WLQ {
         return position
     }
     
+    override func setActionValue(action: Int?, value: UInt8){
+        switch (action){
+        case doublePressSensitivity:
+            tempConfig![RTKSensitivity_INDEX] = value
+        case longPressSensitivity:
+            tempConfig![fullSensitivity_INDEX] = value
+        case pdmChannel1:
+            tempConfig![pdmChannel1_INDEX] = value;
+        case pdmChannel2:
+            tempConfig![pdmChannel2_INDEX] = value;
+        case pdmChannel3:
+            tempConfig![pdmChannel3_INDEX] = value;
+        case pdmChannel4:
+            tempConfig![pdmChannel2_INDEX] = value;
+        default:
+            os_log("WLQ_X: setActionValue Unknown Action ID:")
+        }
+    }
+    
     override func getActionValue(action: Int) -> String{
         var returnString = NSLocalizedString("hid_0x00_label", comment: "")
         let keyboardHID = KeyboardHID.shared
@@ -780,10 +822,10 @@ class WLQ_X: WLQ {
             default:
                 returnString = ""
             }
-        case RTKDoublePressSensitivity:
-            returnString = "\(Int(RTKSensitivity!) * 50)ms"
-        case fullLongPressSensitivity:
-            returnString = "\(Int(fullSensitivity!) * 50)ms"
+        case doublePressSensitivity:
+            returnString = "\(Int(RTKSensitivity!) * 50)"
+        case longPressSensitivity:
+            returnString = "\(Int(fullSensitivity!) * 50)"
         case fullScrollUp:
             if(fullScrollUpKeyType == KEYBOARD_HID){
                 if let index = keyboardHID.keyboardCodes.firstIndex(where: { $0.0 == fullScrollUpKey! }) {
@@ -1024,10 +1066,122 @@ class WLQ_X: WLQ {
                     returnString = name
                 }
             }
+        case pdmChannel1:
+            switch (pdmChannel1Setting){
+            case 0x00:
+                returnString = NSLocalizedString("pdm_channel_mode_toggle", comment: "")
+            case 0x01:
+                returnString = NSLocalizedString("pdm_channel_mode_momentary", comment: "")
+            case 0x02:
+                returnString = NSLocalizedString("pdm_channel_mode_ignition", comment: "")
+            case 0x03:
+                returnString = NSLocalizedString("pdm_channel_mode_highbeam", comment: "")
+            case 0x04:
+                returnString = NSLocalizedString("pdm_channel_mode_brakes", comment: "")
+            case 0x05:
+                returnString = NSLocalizedString("pdm_channel_mode_ambient_light", comment: "")
+            case 0x06:
+                returnString = NSLocalizedString("pdm_channel_mode_ambient_temp", comment: "")
+            case 0x07:
+                returnString = NSLocalizedString("pdm_channel_mode_heated_grips", comment: "")
+            case 0xFF:
+                returnString = NSLocalizedString("pdm_channel_mode_disabled", comment: "")
+            default:
+                returnString = ""
+            }
+        case pdmChannel2:
+            switch (pdmChannel2Setting){
+            case 0x00:
+                returnString = NSLocalizedString("pdm_channel_mode_toggle", comment: "")
+            case 0x01:
+                returnString = NSLocalizedString("pdm_channel_mode_momentary", comment: "")
+            case 0x02:
+                returnString = NSLocalizedString("pdm_channel_mode_ignition", comment: "")
+            case 0x03:
+                returnString = NSLocalizedString("pdm_channel_mode_highbeam", comment: "")
+            case 0x04:
+                returnString = NSLocalizedString("pdm_channel_mode_brakes", comment: "")
+            case 0x05:
+                returnString = NSLocalizedString("pdm_channel_mode_ambient_light", comment: "")
+            case 0x06:
+                returnString = NSLocalizedString("pdm_channel_mode_ambient_temp", comment: "")
+            case 0x07:
+                returnString = NSLocalizedString("pdm_channel_mode_heated_grips", comment: "")
+            case 0xFF:
+                returnString = NSLocalizedString("pdm_channel_mode_disabled", comment: "")
+            default:
+                returnString = ""
+            }
+        case pdmChannel3:
+            switch (pdmChannel3Setting){
+            case 0x00:
+                returnString = NSLocalizedString("pdm_channel_mode_toggle", comment: "")
+            case 0x01:
+                returnString = NSLocalizedString("pdm_channel_mode_momentary", comment: "")
+            case 0x02:
+                returnString = NSLocalizedString("pdm_channel_mode_ignition", comment: "")
+            case 0x03:
+                returnString = NSLocalizedString("pdm_channel_mode_highbeam", comment: "")
+            case 0x04:
+                returnString = NSLocalizedString("pdm_channel_mode_brakes", comment: "")
+            case 0x05:
+                returnString = NSLocalizedString("pdm_channel_mode_ambient_light", comment: "")
+            case 0x06:
+                returnString = NSLocalizedString("pdm_channel_mode_ambient_temp", comment: "")
+            case 0x07:
+                returnString = NSLocalizedString("pdm_channel_mode_heated_grips", comment: "")
+            case 0xFF:
+                returnString = NSLocalizedString("pdm_channel_mode_disabled", comment: "")
+            default:
+                returnString = ""
+            }
+        case pdmChannel4:
+            switch (pdmChannel4Setting){
+            case 0x00:
+                returnString = NSLocalizedString("pdm_channel_mode_toggle", comment: "")
+            case 0x01:
+                returnString = NSLocalizedString("pdm_channel_mode_momentary", comment: "")
+            case 0x02:
+                returnString = NSLocalizedString("pdm_channel_mode_ignition", comment: "")
+            case 0x03:
+                returnString = NSLocalizedString("pdm_channel_mode_highbeam", comment: "")
+            case 0x04:
+                returnString = NSLocalizedString("pdm_channel_mode_brakes", comment: "")
+            case 0x05:
+                returnString = NSLocalizedString("pdm_channel_mode_ambient_light", comment: "")
+            case 0x06:
+                returnString = NSLocalizedString("pdm_channel_mode_ambient_temp", comment: "")
+            case 0x07:
+                returnString = NSLocalizedString("pdm_channel_mode_heated_grips", comment: "")
+            case 0xFF:
+                returnString = NSLocalizedString("pdm_channel_mode_disabled", comment: "")
+            default:
+                returnString = ""
+            }
         default:
-            returnString = "Unknown Action Number: \(action)"
+            returnString = ""
         }
         return returnString
+    }
+    
+    override func getActionValueRaw(action: Int) -> UInt8?{
+        switch (action){
+        case doublePressSensitivity:
+            return RTKSensitivity!
+        case longPressSensitivity:
+            return fullSensitivity!
+        case pdmChannel1:
+            return pdmChannel1Setting!
+        case pdmChannel2:
+            return pdmChannel2Setting!
+        case pdmChannel3:
+            return pdmChannel3Setting!
+        case pdmChannel4:
+            return pdmChannel4Setting!
+        default:
+            os_log("WLQ_X: setActionValue Unknown Action ID:")
+        }
+        return nil
     }
     
     override func getActionKeyModifiers(action: Int) -> UInt8{
@@ -1102,30 +1256,3 @@ class WLQ_X: WLQ {
     }
 }
 
-enum WLQ_X_DEFINES {
-    static let hardwareVersion1:String = "WLQX1.0"
-
-    static let KEYMODE:Int = 100
-    static let RTKDoublePressSensitivity:Int = 2
-    static let fullLongPressSensitivity:Int = 3
-    static let RTKPage:Int = 4
-    static let RTKPageDoublePress:Int = 5
-    static let RTKZoomPlus:Int = 6
-    static let RTKZoomPlusDoublePress:Int = 7
-    static let RTKZoomMinus:Int = 8
-    static let RTKZoomMinusDoublePress:Int = 9
-    static let RTKSpeak:Int = 10
-    static let RTKSpeakDoublePress:Int = 11
-    static let RTKMute:Int = 12
-    static let RTKMuteDoublePress:Int = 13
-    static let RTKDisplayOff:Int = 14
-    static let RTKDisplayOffDoublePress:Int = 15
-    static let fullScrollUp:Int = 16
-    static let fullScrollDown:Int = 17
-    static let fullToggleRight:Int = 18
-    static let fullToggleRightLongPress:Int = 19
-    static let fullToggleLeft:Int = 20
-    static let fullToggleLeftLongPress:Int = 21
-    static let fullSignalCancel:Int = 22
-    static let fullSignalCancelLongPress:Int = 23
-}

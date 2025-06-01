@@ -18,10 +18,10 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 import Foundation
 import os.log
 
-class WLQ_S: WLQ {
+class WLQ_U: WLQ {
     
     var hardwareVersion:String?
-    let hardwareVersion1:String = "WLQS1.0"
+    let hardwareVersion1:String = "WLQU1.0"
     
     var wunderLINQConfig:[UInt8]?
     var flashConfig:[UInt8]?
@@ -35,8 +35,9 @@ class WLQ_S: WLQ {
     let CONSUMER_HID:UInt8 = 0x02
     let UNDEFINED:UInt8 = 0x00
 
-    let configFlashSize:Int = 41
+    let configFlashSize:Int = 42
     let defaultConfig:[UInt8] = [
+        0x00,                               // Orientation
         0x11,                               // Long Press Sensitivity
         0x01, 0x00, 0x52, 0x00, 0x00, 0x00, // Scroll Up - Up Arrow
         0x01, 0x00, 0x51, 0x00, 0x00, 0x00, // Scroll Down - Down Arrow
@@ -51,6 +52,7 @@ class WLQ_S: WLQ {
         ]
 
     let KEYMODE:Int = 100
+    let ORIENTATION:Int = 101
     let longPressSensitivity:Int = 3
     let up:Int = 26
     let upLong:Int = 27
@@ -74,49 +76,50 @@ class WLQ_S: WLQ {
     let firmwareVersionMajor_INDEX:Int = 3
     let firmwareVersionMinor_INDEX:Int = 4
     let keyMode_INDEX:Int = 5
-    let sensitivity_INDEX:Int = 0
-    let upKeyType_INDEX:Int = 1
-    let upKeyModifier_INDEX:Int = 2
-    let upKey_INDEX:Int = 3
-    let upLongKeyType_INDEX:Int = 4
-    let upLongKeyModifier_INDEX:Int = 5
-    let upLongKey_INDEX:Int = 6
-    let downKeyType_INDEX:Int = 7
-    let downKeyModifier_INDEX:Int = 8
-    let downKey_INDEX:Int = 9
-    let downLongKeyType_INDEX:Int = 10
-    let downLongKeyModifier_INDEX:Int = 11
-    let downLongKey_INDEX:Int = 12
-    let leftKeyType_INDEX:Int = 13
-    let leftKeyModifier_INDEX:Int = 14
-    let leftKey_INDEX:Int = 15
-    let leftLongKeyType_INDEX:Int = 16
-    let leftLongKeyModifier_INDEX:Int = 17
-    let leftLongKey_INDEX:Int = 18
-    let rightKeyType_INDEX:Int = 19
-    let rightKeyModifier_INDEX:Int = 20
-    let rightKey_INDEX:Int = 21
-    let rightLongKeyType_INDEX:Int = 22
-    let rightLongKeyModifier_INDEX:Int = 23
-    let rightLongKey_INDEX:Int = 24
-    let fx1KeyType_INDEX:Int = 25
-    let fx1KeyModifier_INDEX:Int = 26
-    let fx1Key_INDEX:Int = 27
-    let fx1LongKeyType_INDEX:Int = 28
-    let fx1LongKeyModifier_INDEX:Int = 29
-    let fx1LongKey_INDEX:Int = 30
-    let fx2KeyType_INDEX:Int = 31
-    let fx2KeyModifier_INDEX:Int = 32
-    let fx2Key_INDEX:Int = 33
-    let fx2LongKeyType_INDEX:Int = 34
-    let fx2LongKeyModifier_INDEX:Int = 35
-    let fx2LongKey_INDEX:Int = 36
+    let orientation_INDEX:Int = 0
+    let sensitivity_INDEX:Int = 1
+    let upKeyType_INDEX:Int = 2
+    let upKeyModifier_INDEX:Int = 3
+    let upKey_INDEX:Int = 4
+    let upLongKeyType_INDEX:Int = 5
+    let upLongKeyModifier_INDEX:Int = 6
+    let upLongKey_INDEX:Int = 7
+    let downKeyType_INDEX:Int = 8
+    let downKeyModifier_INDEX:Int = 9
+    let downKey_INDEX:Int = 10
+    let downLongKeyType_INDEX:Int = 11
+    let downLongKeyModifier_INDEX:Int = 12
+    let downLongKey_INDEX:Int = 13
+    let leftKeyType_INDEX:Int = 14
+    let leftKeyModifier_INDEX:Int = 15
+    let leftKey_INDEX:Int = 16
+    let leftLongKeyType_INDEX:Int = 17
+    let leftLongKeyModifier_INDEX:Int = 18
+    let leftLongKey_INDEX:Int = 19
+    let rightKeyType_INDEX:Int = 20
+    let rightKeyModifier_INDEX:Int = 21
+    let rightKey_INDEX:Int = 22
+    let rightLongKeyType_INDEX:Int = 23
+    let rightLongKeyModifier_INDEX:Int = 24
+    let rightLongKey_INDEX:Int = 25
+    let fx1KeyType_INDEX:Int = 26
+    let fx1KeyModifier_INDEX:Int = 27
+    let fx1Key_INDEX:Int = 28
+    let fx1LongKeyType_INDEX:Int = 29
+    let fx1LongKeyModifier_INDEX:Int = 30
+    let fx1LongKey_INDEX:Int = 31
+    let fx2KeyType_INDEX:Int = 32
+    let fx2KeyModifier_INDEX:Int = 33
+    let fx2Key_INDEX:Int = 34
+    let fx2LongKeyType_INDEX:Int = 35
+    let fx2LongKeyModifier_INDEX:Int = 36
+    let fx2LongKey_INDEX:Int = 37
     
-    let pdmChannel1_INDEX:Int = 37
-    let pdmChannel2_INDEX:Int = 38
-    let pdmChannel3_INDEX:Int = 39
-    let pdmChannel4_INDEX:Int = 40
-    let accessories_INDEX:Int = 44
+    let pdmChannel1_INDEX:Int = 38
+    let pdmChannel2_INDEX:Int = 39
+    let pdmChannel3_INDEX:Int = 40
+    let pdmChannel4_INDEX:Int = 41
+    let accessories_INDEX:Int = 45
     
     // PDM Status message
     let statusSize:Int = 6
@@ -135,6 +138,7 @@ class WLQ_S: WLQ {
     var channel4ValueRaw:UInt8?
 
     var keyMode:UInt8?
+    var orientation:UInt8?
     var sensitivity:UInt8?
     var rightKeyType:UInt8?
     var rightKeyModifier:UInt8?
@@ -181,10 +185,11 @@ class WLQ_S: WLQ {
     
     required override init() {
         super.init()
-        os_log("WLQ_S: init()")
+        os_log("WLQ_U: init()")
         WLQ.shared = self
         WLQ.initialized = true
         actionNames = [KEYMODE: NSLocalizedString("keymode_label", comment: ""),
+                        ORIENTATION: NSLocalizedString("orientation_label", comment: ""),
                         longPressSensitivity: NSLocalizedString("long_press_label", comment: ""),
                         up: NSLocalizedString("up_label", comment: ""),
                         upLong: NSLocalizedString("up_long_label", comment: ""),
@@ -221,7 +226,7 @@ class WLQ_S: WLQ {
                 messageHexString += ","
             }
         }
-        os_log("WLQ_S: flashConfig: \(messageHexString)")
+        os_log("WLQ_U: flashConfig: \(messageHexString)")
         
         self.keyMode = bytes[self.keyMode_INDEX]
 
@@ -419,7 +424,7 @@ class WLQ_S: WLQ {
                 self.tempConfig![self.fx2LongKeyModifier_INDEX] = key[1]
                 self.tempConfig![self.fx2LongKey_INDEX] = key[2]
             default:
-                os_log("WLQ_S: Invalid acitonID")
+                os_log("WLQ_U: Invalid acitonID")
             }
         }
     }
@@ -556,6 +561,8 @@ class WLQ_S: WLQ {
     
     override func setActionValue(action: Int?, value: UInt8){
         switch (action){
+        case ORIENTATION:
+            tempConfig![orientation_INDEX] = value
         case longPressSensitivity:
             tempConfig![sensitivity_INDEX] = value
         case pdmChannel1:
@@ -567,7 +574,7 @@ class WLQ_S: WLQ {
         case pdmChannel4:
             tempConfig![pdmChannel2_INDEX] = value;
         default:
-            os_log("WLQ_S: setActionValue Unknown Action ID:")
+            os_log("WLQ_U: setActionValue Unknown Action ID:")
         }
     }
     
@@ -585,6 +592,19 @@ class WLQ_S: WLQ {
                 returnString = NSLocalizedString("keymode_media_label", comment: "")
             case 3:
                 returnString = NSLocalizedString("keymode_dmd2_label", comment: "")
+            default:
+                returnString = ""
+            }
+        case ORIENTATION:
+            switch (keyMode){
+            case 0:
+                returnString = NSLocalizedString("orientation_default_label", comment: "")
+            case 1:
+                returnString = NSLocalizedString("orientation_90_label", comment: "")
+            case 2:
+                returnString = NSLocalizedString("orientation_180_label", comment: "")
+            case 3:
+                returnString = NSLocalizedString("orientation_270_label", comment: "")
             default:
                 returnString = ""
             }
@@ -834,6 +854,8 @@ class WLQ_S: WLQ {
     
     override func getActionValueRaw(action: Int) -> UInt8?{
         switch (action){
+        case ORIENTATION:
+            return orientation!
         case longPressSensitivity:
             return sensitivity!
         case pdmChannel1:
@@ -845,7 +867,7 @@ class WLQ_S: WLQ {
         case pdmChannel4:
             return pdmChannel4Setting!
         default:
-            os_log("WLQ_S: setActionValue Unknown Action ID:")
+            os_log("WLQ_U: setActionValue Unknown Action ID:")
         }
         return nil
     }
@@ -884,7 +906,7 @@ class WLQ_S: WLQ {
     }
 
     override func setfirmwareVersion(firmwareVersion: String?){
-        os_log("WLQ_S: Firmware Version: \(firmwareVersion ?? "?")")
+        os_log("WLQ_U: Firmware Version: \(firmwareVersion ?? "?")")
         self.firmwareVersion = firmwareVersion
     }
     override func getfirmwareVersion() -> String{
@@ -895,7 +917,7 @@ class WLQ_S: WLQ {
     }
 
     override func sethardwareVersion(hardwareVersion: String?){
-        os_log("WLQ_S: HW Version: \(hardwareVersion ?? "?")")
+        os_log("WLQ_U: HW Version: \(hardwareVersion ?? "?")")
         self.hardwareVersion = hardwareVersion
     }
     override func gethardwareVersion() -> String{

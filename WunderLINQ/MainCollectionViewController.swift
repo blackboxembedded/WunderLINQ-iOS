@@ -1061,6 +1061,19 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                         peripheral.writeValue(writeData, for: commandCharacteristic!, type: CBCharacteristicWriteType.withResponse)
                         peripheral.readValue(for: commandCharacteristic!)
                     }
+                } else if characteristic.uuid == CBUUID(string: Device.WunderLINQUCommandCharacteristicUUID) {
+                    wlqData = WLQ_U()
+                    // Enable the message notifications
+                    os_log("MainCollectionViewController: COMMAND INTERFACE FOUND")
+                    commandCharacteristic = characteristic
+                    wunderLINQ?.setNotifyValue(true, for: characteristic)
+                    bleData.setcmdCharacteristic(cmdCharacteristic: characteristic)
+                    if(wlqData != nil){
+                        os_log("MainCollectionViewController: REQUESTING CONFIG")
+                        let writeData =  Data(_: wlqData.GET_CONFIG_CMD())
+                        peripheral.writeValue(writeData, for: commandCharacteristic!, type: CBCharacteristicWriteType.withResponse)
+                        peripheral.readValue(for: commandCharacteristic!)
+                    }
                 }
                 peripheral.discoverDescriptors(for: characteristic)
             }

@@ -25,6 +25,7 @@ class WLQ_N: WLQ {
     let hardwareVersion1:String = "2PCB1.9 10/18"
     let hardwareVersion2:String = "1PCB2.0 12/19"
     let hardwareVersion2_1:String = "2PCB2.2 081920"
+    let hardwareVersion3:String = "WLQN3.0"
     
     var wunderLINQConfig:[UInt8]?
     var flashConfig:[UInt8]?
@@ -70,11 +71,10 @@ class WLQ_N: WLQ {
     let CONSUMER_HID:UInt8 = 0x02
     let UNDEFINED:UInt8 = 0x00
 
-    let OldSensitivity:Int = 0
     let KEYMODE:Int = 100
     let USB:Int = 1
-    let RTKDoublePressSensitivity:Int = 2
-    let fullLongPressSensitivity:Int = 3
+    let doublePressSensitivity:Int = 2
+    let longPressSensitivity:Int = 3
     let RTKPage:Int = 4
     let RTKPageDoublePress:Int = 5
     let RTKZoomPlus:Int = 6
@@ -235,11 +235,10 @@ class WLQ_N: WLQ {
         os_log("WLQ_N: init()")
         WLQ.shared = self
         WLQ.initialized = true
-        actionNames = [OldSensitivity: NSLocalizedString("sensitivity_label", comment: ""),
-                       KEYMODE: NSLocalizedString("keymode_label", comment: ""),
+        actionNames = [KEYMODE: NSLocalizedString("keymode_label", comment: ""),
                        USB: NSLocalizedString("usb_threshold_label", comment: ""),
-                       RTKDoublePressSensitivity: NSLocalizedString("double_press_label", comment: ""),
-                       fullLongPressSensitivity: NSLocalizedString("long_press_label", comment: ""),
+                       doublePressSensitivity: NSLocalizedString("double_press_label", comment: ""),
+                       longPressSensitivity: NSLocalizedString("long_press_label", comment: ""),
                        RTKPage: NSLocalizedString("rtk_page_label", comment: ""),
                        RTKPageDoublePress: NSLocalizedString("rtk_page_double_label", comment: ""),
                        RTKZoomPlus: NSLocalizedString("rtk_zoomp_label", comment: ""),
@@ -394,19 +393,6 @@ class WLQ_N: WLQ {
     override  func setVINThreshold(value: [UInt8]){
         setTempConfigByte(index: USBVinThresholdHigh_INDEX, value: value[0])
         setTempConfigByte(index: USBVinThresholdLow_INDEX, value: value[1])
-    }
-    
-    override func getDoublePressSensitivity() -> UInt8{
-        return RTKSensitivity!
-    }
-    override func setDoublePressSensitivity(value: UInt8){
-        setTempConfigByte(index: RTKSensitivity_INDEX, value: value)
-    }
-    override func getLongPressSensitivity() -> UInt8{
-        return fullSensitivity!
-    }
-    override func setLongPressSensitivity(value: UInt8){
-        setTempConfigByte(index: fullSensitivity_INDEX, value: value)
     }
     
     override func getActionKeyType(action: Int?) -> UInt8{
@@ -755,6 +741,28 @@ class WLQ_N: WLQ {
         return position
     }
     
+    override func setActionValue(action: Int?, value: UInt8){
+        switch (action){
+        case USB:
+            if(value == 0){
+                tempConfig![USBVinThresholdHigh_INDEX] = 0x00
+                tempConfig![USBVinThresholdLow_INDEX] = 0x00
+            } else if(value == 1){
+                tempConfig![USBVinThresholdHigh_INDEX] = 0x02
+                tempConfig![USBVinThresholdLow_INDEX] = 0xBC
+            } else if(value == 2){
+                tempConfig![USBVinThresholdHigh_INDEX] = 0xFF
+                tempConfig![USBVinThresholdLow_INDEX] = 0xFF
+            }
+        case doublePressSensitivity:
+            tempConfig![RTKSensitivity_INDEX] = value
+        case longPressSensitivity:
+            tempConfig![fullSensitivity_INDEX] = value
+        default:
+            os_log("WLQ_N: setActionValue Unknown Action ID:")
+        }
+    }
+    
     override func getActionValue(action: Int) -> String{
         var returnString = NSLocalizedString("hid_0x00_label", comment: "")
         let keyboardHID = KeyboardHID.shared
@@ -780,10 +788,10 @@ class WLQ_N: WLQ {
             } else {
                 returnString = NSLocalizedString("usbcontrol_engine_label", comment: "")
             }
-        case RTKDoublePressSensitivity:
-            returnString = "\(Int(RTKSensitivity!) * 50)ms"
-        case fullLongPressSensitivity:
-            returnString = "\(Int(fullSensitivity!) * 50)ms"
+        case doublePressSensitivity:
+            returnString = "\(Int(RTKSensitivity!) * 50)"
+        case longPressSensitivity:
+            returnString = "\(Int(fullSensitivity!) * 50)"
         case fullScrollUp:
             if(fullScrollUpKeyType == KEYBOARD_HID){
                 if let index = keyboardHID.keyboardCodes.firstIndex(where: { $0.0 == fullScrollUpKey! }) {
@@ -1025,9 +1033,21 @@ class WLQ_N: WLQ {
                 }
             }
         default:
-            returnString = "Unknown Action Number: \(action)"
+            returnString = ""
         }
         return returnString
+    }
+    
+    override func getActionValueRaw(action: Int) -> UInt8?{
+        switch (action){
+        case doublePressSensitivity:
+            return RTKSensitivity!
+        case longPressSensitivity:
+            return fullSensitivity!
+        default:
+            os_log("WLQ_N: setActionValue Unknown Action ID:")
+        }
+        return nil
     }
     
     override func getActionKeyModifiers(action: Int) -> UInt8{
@@ -1102,6 +1122,10 @@ class WLQ_N: WLQ {
     }
     
     //Not used for Navigator
+    override func getAccessories() -> UInt8{
+        return 0
+    }
+    
     override func setStatus(bytes: [UInt8]) {
         
     }
@@ -1115,30 +1139,4 @@ class WLQ_N: WLQ {
 
 enum WLQ_N_DEFINES {
     static let hardwareVersion1:String = "2PCB1.9 10/18"
-    
-    static let OldSensitivity:Int = 0
-    static let KEYMODE:Int = 100
-    static let USB:Int = 1
-    static let RTKDoublePressSensitivity:Int = 2
-    static let fullLongPressSensitivity:Int = 3
-    static let RTKPage:Int = 4
-    static let RTKPageDoublePress:Int = 5
-    static let RTKZoomPlus:Int = 6
-    static let RTKZoomPlusDoublePress:Int = 7
-    static let RTKZoomMinus:Int = 8
-    static let RTKZoomMinusDoublePress:Int = 9
-    static let RTKSpeak:Int = 10
-    static let RTKSpeakDoublePress:Int = 11
-    static let RTKMute:Int = 12
-    static let RTKMuteDoublePress:Int = 13
-    static let RTKDisplayOff:Int = 14
-    static let RTKDisplayOffDoublePress:Int = 15
-    static let fullScrollUp:Int = 16
-    static let fullScrollDown:Int = 17
-    static let fullToggleRight:Int = 18
-    static let fullToggleRightLongPress:Int = 19
-    static let fullToggleLeft:Int = 20
-    static let fullToggleLeftLongPress:Int = 21
-    static let fullSignalCancel:Int = 22
-    static let fullSignalCancelLongPress:Int = 23
 }
