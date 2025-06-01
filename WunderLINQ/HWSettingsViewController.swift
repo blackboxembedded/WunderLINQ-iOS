@@ -131,7 +131,9 @@ class HWSettingsViewController: UIViewController, UITableViewDelegate, UITableVi
                 performSegue(withIdentifier: "hwSettingsToSettingsAction", sender: [])
             }
         } else {
-            if (self.actionID[indexPath.row] == WLQ_N_DEFINES.KEYMODE || self.actionID[indexPath.row] == WLQ_S_DEFINES.KEYMODE){
+            if (self.actionID[indexPath.row] == WLQ_DEFINES.KEYMODE
+                || self.actionID[indexPath.row] == WLQ_DEFINES.pdmChannel1 || self.actionID[indexPath.row] == WLQ_DEFINES.pdmChannel2
+                || self.actionID[indexPath.row] == WLQ_DEFINES.pdmChannel3 || self.actionID[indexPath.row] == WLQ_DEFINES.pdmChannel4){
                 selectedActionID = self.actionID[indexPath.row]
                 performSegue(withIdentifier: "hwSettingsToSettingsAction", sender: [])
             }
@@ -175,68 +177,68 @@ class HWSettingsViewController: UIViewController, UITableViewDelegate, UITableVi
                                              NSLocalizedString("rtk_display_label", comment: ""),
                                              NSLocalizedString("rtk_display_double_label", comment: "")]
                                                           
-                        actionTableMappingLabels = [wlqData.getActionValue(action: WLQ_N_DEFINES.KEYMODE),   //KEYMODE
-                                                    wlqData.getActionValue(action: WLQ_N_DEFINES.USB),   //USB
+                        actionTableMappingLabels = [wlqData.getActionValue(action: WLQ_DEFINES.KEYMODE),   //KEYMODE
+                                                    wlqData.getActionValue(action: WLQ_DEFINES.USB),   //USB
                                                     "",       //Full
-                                                    wlqData.getActionValue(action: WLQ_N_DEFINES.fullLongPressSensitivity),
-                                                    wlqData.getActionValue(action: WLQ_N_DEFINES.fullScrollUp),
-                                                    wlqData.getActionValue(action: WLQ_N_DEFINES.fullScrollDown),
-                                                    wlqData.getActionValue(action: WLQ_N_DEFINES.fullToggleRight),
-                                                    wlqData.getActionValue(action: WLQ_N_DEFINES.fullToggleRightLongPress),
-                                                    wlqData.getActionValue(action: WLQ_N_DEFINES.fullToggleLeft),
-                                                    wlqData.getActionValue(action: WLQ_N_DEFINES.fullToggleLeftLongPress),
-                                                    wlqData.getActionValue(action: WLQ_N_DEFINES.fullSignalCancel),
-                                                    wlqData.getActionValue(action: WLQ_N_DEFINES.fullSignalCancelLongPress),
+                                                    wlqData.getActionValue(action: WLQ_DEFINES.longPressSensitivity),
+                                                    wlqData.getActionValue(action: WLQ_DEFINES.fullScrollUp),
+                                                    wlqData.getActionValue(action: WLQ_DEFINES.fullScrollDown),
+                                                    wlqData.getActionValue(action: WLQ_DEFINES.fullToggleRight),
+                                                    wlqData.getActionValue(action: WLQ_DEFINES.fullToggleRightLongPress),
+                                                    wlqData.getActionValue(action: WLQ_DEFINES.fullToggleLeft),
+                                                    wlqData.getActionValue(action: WLQ_DEFINES.fullToggleLeftLongPress),
+                                                    wlqData.getActionValue(action: WLQ_DEFINES.fullSignalCancel),
+                                                    wlqData.getActionValue(action: WLQ_DEFINES.fullSignalCancelLongPress),
                                                     "",       //RT/K1600
-                                                    wlqData.getActionValue(action: WLQ_N_DEFINES.RTKDoublePressSensitivity),
-                                                    wlqData.getActionValue(action: WLQ_N_DEFINES.RTKPage),
-                                                    wlqData.getActionValue(action: WLQ_N_DEFINES.RTKPageDoublePress),
-                                                    wlqData.getActionValue(action: WLQ_N_DEFINES.RTKZoomPlus),
-                                                    wlqData.getActionValue(action: WLQ_N_DEFINES.RTKZoomPlusDoublePress),
-                                                    wlqData.getActionValue(action: WLQ_N_DEFINES.RTKZoomMinus),
-                                                    wlqData.getActionValue(action: WLQ_N_DEFINES.RTKZoomMinusDoublePress),
-                                                    wlqData.getActionValue(action: WLQ_N_DEFINES.RTKSpeak),
-                                                    wlqData.getActionValue(action: WLQ_N_DEFINES.RTKSpeakDoublePress),
-                                                    wlqData.getActionValue(action: WLQ_N_DEFINES.RTKMute),
-                                                    wlqData.getActionValue(action: WLQ_N_DEFINES.RTKMuteDoublePress),
-                                                    wlqData.getActionValue(action: WLQ_N_DEFINES.RTKDisplayOff),
-                                                    wlqData.getActionValue(action: WLQ_N_DEFINES.RTKDisplayOffDoublePress)]
+                                                    wlqData.getActionValue(action: WLQ_DEFINES.doublePressSensitivity),
+                                                    wlqData.getActionValue(action: WLQ_DEFINES.RTKPage),
+                                                    wlqData.getActionValue(action: WLQ_DEFINES.RTKPageDoublePress),
+                                                    wlqData.getActionValue(action: WLQ_DEFINES.RTKZoomPlus),
+                                                    wlqData.getActionValue(action: WLQ_DEFINES.RTKZoomPlusDoublePress),
+                                                    wlqData.getActionValue(action: WLQ_DEFINES.RTKZoomMinus),
+                                                    wlqData.getActionValue(action: WLQ_DEFINES.RTKZoomMinusDoublePress),
+                                                    wlqData.getActionValue(action: WLQ_DEFINES.RTKSpeak),
+                                                    wlqData.getActionValue(action: WLQ_DEFINES.RTKSpeakDoublePress),
+                                                    wlqData.getActionValue(action: WLQ_DEFINES.RTKMute),
+                                                    wlqData.getActionValue(action: WLQ_DEFINES.RTKMuteDoublePress),
+                                                    wlqData.getActionValue(action: WLQ_DEFINES.RTKDisplayOff),
+                                                    wlqData.getActionValue(action: WLQ_DEFINES.RTKDisplayOffDoublePress)]
                         
-                        actionID = [WLQ_N_DEFINES.KEYMODE,    //KEYMODE
-                                    WLQ_N_DEFINES.USB,    //USB
+                        actionID = [WLQ_DEFINES.KEYMODE,    //KEYMODE
+                                    WLQ_DEFINES.USB,    //USB
                                     -1,       //Full
-                                    WLQ_N_DEFINES.fullLongPressSensitivity,
-                                    WLQ_N_DEFINES.fullScrollUp,
-                                    WLQ_N_DEFINES.fullScrollDown,
-                                    WLQ_N_DEFINES.fullToggleRight,
-                                    WLQ_N_DEFINES.fullToggleRightLongPress,
-                                    WLQ_N_DEFINES.fullToggleLeft,
-                                    WLQ_N_DEFINES.fullToggleLeftLongPress,
-                                    WLQ_N_DEFINES.fullSignalCancel,
-                                    WLQ_N_DEFINES.fullSignalCancelLongPress,
+                                    WLQ_DEFINES.longPressSensitivity,
+                                    WLQ_DEFINES.fullScrollUp,
+                                    WLQ_DEFINES.fullScrollDown,
+                                    WLQ_DEFINES.fullToggleRight,
+                                    WLQ_DEFINES.fullToggleRightLongPress,
+                                    WLQ_DEFINES.fullToggleLeft,
+                                    WLQ_DEFINES.fullToggleLeftLongPress,
+                                    WLQ_DEFINES.fullSignalCancel,
+                                    WLQ_DEFINES.fullSignalCancelLongPress,
                                     -1,       //RT/K1600
-                                    WLQ_N_DEFINES.RTKDoublePressSensitivity,
-                                    WLQ_N_DEFINES.RTKPage,
-                                    WLQ_N_DEFINES.RTKPageDoublePress,
-                                    WLQ_N_DEFINES.RTKZoomPlus,
-                                    WLQ_N_DEFINES.RTKZoomPlusDoublePress,
-                                    WLQ_N_DEFINES.RTKZoomMinus,
-                                    WLQ_N_DEFINES.RTKZoomMinusDoublePress,
-                                    WLQ_N_DEFINES.RTKSpeak,
-                                    WLQ_N_DEFINES.RTKSpeakDoublePress,
-                                    WLQ_N_DEFINES.RTKMute,
-                                    WLQ_N_DEFINES.RTKMuteDoublePress,
-                                    WLQ_N_DEFINES.RTKDisplayOff,
-                                    WLQ_N_DEFINES.RTKDisplayOffDoublePress]
+                                    WLQ_DEFINES.doublePressSensitivity,
+                                    WLQ_DEFINES.RTKPage,
+                                    WLQ_DEFINES.RTKPageDoublePress,
+                                    WLQ_DEFINES.RTKZoomPlus,
+                                    WLQ_DEFINES.RTKZoomPlusDoublePress,
+                                    WLQ_DEFINES.RTKZoomMinus,
+                                    WLQ_DEFINES.RTKZoomMinusDoublePress,
+                                    WLQ_DEFINES.RTKSpeak,
+                                    WLQ_DEFINES.RTKSpeakDoublePress,
+                                    WLQ_DEFINES.RTKMute,
+                                    WLQ_DEFINES.RTKMuteDoublePress,
+                                    WLQ_DEFINES.RTKDisplayOff,
+                                    WLQ_DEFINES.RTKDisplayOffDoublePress]
                         
                         if (wlqData.getKeyMode() == wlqData.KEYMODE_CUSTOM()){
                             menuBtn.isHidden = false
-                            if (!wlqData.getConfig().elementsEqual(wlqData.getTempConfig())){
-                                os_log("HWSettingsViewController: !!!Change detected!!!")
-                                configButton.setTitle(NSLocalizedString("config_write_label", comment: ""), for: .normal)
-                                configButton.isHidden = false
-                                configButton.tag = 1
-                            }
+                        }
+                        if (!wlqData.getConfig().elementsEqual(wlqData.getTempConfig())){
+                            os_log("HWSettingsViewController: !!!Change detected!!!")
+                            configButton.setTitle(NSLocalizedString("config_write_label", comment: ""), for: .normal)
+                            configButton.isHidden = false
+                            configButton.tag = 1
                         }
                     } else {
                         configButton.setTitle(NSLocalizedString("config_reset_label", comment: ""), for: .normal)
@@ -274,67 +276,161 @@ class HWSettingsViewController: UIViewController, UITableViewDelegate, UITableVi
                                      NSLocalizedString("rtk_display_label", comment: ""),
                                      NSLocalizedString("rtk_display_double_label", comment: "")]
                                                   
-                actionTableMappingLabels = [wlqData.getActionValue(action: WLQ_X_DEFINES.KEYMODE),   //KEYMODE
+                actionTableMappingLabels = [wlqData.getActionValue(action: WLQ_DEFINES.KEYMODE),   //KEYMODE
                                             "",       //Full
-                                            wlqData.getActionValue(action: WLQ_X_DEFINES.fullLongPressSensitivity),
-                                            wlqData.getActionValue(action: WLQ_X_DEFINES.fullScrollUp),
-                                            wlqData.getActionValue(action: WLQ_X_DEFINES.fullScrollDown),
-                                            wlqData.getActionValue(action: WLQ_X_DEFINES.fullToggleRight),
-                                            wlqData.getActionValue(action: WLQ_X_DEFINES.fullToggleRightLongPress),
-                                            wlqData.getActionValue(action: WLQ_X_DEFINES.fullToggleLeft),
-                                            wlqData.getActionValue(action: WLQ_X_DEFINES.fullToggleLeftLongPress),
-                                            wlqData.getActionValue(action: WLQ_X_DEFINES.fullSignalCancel),
-                                            wlqData.getActionValue(action: WLQ_X_DEFINES.fullSignalCancelLongPress),
+                                            wlqData.getActionValue(action: WLQ_DEFINES.longPressSensitivity),
+                                            wlqData.getActionValue(action: WLQ_DEFINES.fullScrollUp),
+                                            wlqData.getActionValue(action: WLQ_DEFINES.fullScrollDown),
+                                            wlqData.getActionValue(action: WLQ_DEFINES.fullToggleRight),
+                                            wlqData.getActionValue(action: WLQ_DEFINES.fullToggleRightLongPress),
+                                            wlqData.getActionValue(action: WLQ_DEFINES.fullToggleLeft),
+                                            wlqData.getActionValue(action: WLQ_DEFINES.fullToggleLeftLongPress),
+                                            wlqData.getActionValue(action: WLQ_DEFINES.fullSignalCancel),
+                                            wlqData.getActionValue(action: WLQ_DEFINES.fullSignalCancelLongPress),
                                             "",       //RT/K1600
-                                            wlqData.getActionValue(action: WLQ_X_DEFINES.RTKDoublePressSensitivity),
-                                            wlqData.getActionValue(action: WLQ_X_DEFINES.RTKPage),
-                                            wlqData.getActionValue(action: WLQ_X_DEFINES.RTKPageDoublePress),
-                                            wlqData.getActionValue(action: WLQ_X_DEFINES.RTKZoomPlus),
-                                            wlqData.getActionValue(action: WLQ_X_DEFINES.RTKZoomPlusDoublePress),
-                                            wlqData.getActionValue(action: WLQ_X_DEFINES.RTKZoomMinus),
-                                            wlqData.getActionValue(action: WLQ_X_DEFINES.RTKZoomMinusDoublePress),
-                                            wlqData.getActionValue(action: WLQ_X_DEFINES.RTKSpeak),
-                                            wlqData.getActionValue(action: WLQ_X_DEFINES.RTKSpeakDoublePress),
-                                            wlqData.getActionValue(action: WLQ_X_DEFINES.RTKMute),
-                                            wlqData.getActionValue(action: WLQ_X_DEFINES.RTKMuteDoublePress),
-                                            wlqData.getActionValue(action: WLQ_X_DEFINES.RTKDisplayOff),
-                                            wlqData.getActionValue(action: WLQ_X_DEFINES.RTKDisplayOffDoublePress)]
+                                            wlqData.getActionValue(action: WLQ_DEFINES.doublePressSensitivity),
+                                            wlqData.getActionValue(action: WLQ_DEFINES.RTKPage),
+                                            wlqData.getActionValue(action: WLQ_DEFINES.RTKPageDoublePress),
+                                            wlqData.getActionValue(action: WLQ_DEFINES.RTKZoomPlus),
+                                            wlqData.getActionValue(action: WLQ_DEFINES.RTKZoomPlusDoublePress),
+                                            wlqData.getActionValue(action: WLQ_DEFINES.RTKZoomMinus),
+                                            wlqData.getActionValue(action: WLQ_DEFINES.RTKZoomMinusDoublePress),
+                                            wlqData.getActionValue(action: WLQ_DEFINES.RTKSpeak),
+                                            wlqData.getActionValue(action: WLQ_DEFINES.RTKSpeakDoublePress),
+                                            wlqData.getActionValue(action: WLQ_DEFINES.RTKMute),
+                                            wlqData.getActionValue(action: WLQ_DEFINES.RTKMuteDoublePress),
+                                            wlqData.getActionValue(action: WLQ_DEFINES.RTKDisplayOff),
+                                            wlqData.getActionValue(action: WLQ_DEFINES.RTKDisplayOffDoublePress)]
                 
-                actionID = [WLQ_X_DEFINES.KEYMODE,    //KEYMODE
+                actionID = [WLQ_DEFINES.KEYMODE,    //KEYMODE
                             -1,       //Full
-                            WLQ_X_DEFINES.fullLongPressSensitivity,
-                            WLQ_X_DEFINES.fullScrollUp,
-                            WLQ_X_DEFINES.fullScrollDown,
-                            WLQ_X_DEFINES.fullToggleRight,
-                            WLQ_X_DEFINES.fullToggleRightLongPress,
-                            WLQ_X_DEFINES.fullToggleLeft,
-                            WLQ_X_DEFINES.fullToggleLeftLongPress,
-                            WLQ_X_DEFINES.fullSignalCancel,
-                            WLQ_X_DEFINES.fullSignalCancelLongPress,
+                            WLQ_DEFINES.longPressSensitivity,
+                            WLQ_DEFINES.fullScrollUp,
+                            WLQ_DEFINES.fullScrollDown,
+                            WLQ_DEFINES.fullToggleRight,
+                            WLQ_DEFINES.fullToggleRightLongPress,
+                            WLQ_DEFINES.fullToggleLeft,
+                            WLQ_DEFINES.fullToggleLeftLongPress,
+                            WLQ_DEFINES.fullSignalCancel,
+                            WLQ_DEFINES.fullSignalCancelLongPress,
                             -1,       //RT/K1600
-                            WLQ_X_DEFINES.RTKDoublePressSensitivity,
-                            WLQ_X_DEFINES.RTKPage,
-                            WLQ_X_DEFINES.RTKPageDoublePress,
-                            WLQ_X_DEFINES.RTKZoomPlus,
-                            WLQ_X_DEFINES.RTKZoomPlusDoublePress,
-                            WLQ_X_DEFINES.RTKZoomMinus,
-                            WLQ_X_DEFINES.RTKZoomMinusDoublePress,
-                            WLQ_X_DEFINES.RTKSpeak,
-                            WLQ_X_DEFINES.RTKSpeakDoublePress,
-                            WLQ_X_DEFINES.RTKMute,
-                            WLQ_X_DEFINES.RTKMuteDoublePress,
-                            WLQ_X_DEFINES.RTKDisplayOff,
-                            WLQ_X_DEFINES.RTKDisplayOffDoublePress]
+                            WLQ_DEFINES.doublePressSensitivity,
+                            WLQ_DEFINES.RTKPage,
+                            WLQ_DEFINES.RTKPageDoublePress,
+                            WLQ_DEFINES.RTKZoomPlus,
+                            WLQ_DEFINES.RTKZoomPlusDoublePress,
+                            WLQ_DEFINES.RTKZoomMinus,
+                            WLQ_DEFINES.RTKZoomMinusDoublePress,
+                            WLQ_DEFINES.RTKSpeak,
+                            WLQ_DEFINES.RTKSpeakDoublePress,
+                            WLQ_DEFINES.RTKMute,
+                            WLQ_DEFINES.RTKMuteDoublePress,
+                            WLQ_DEFINES.RTKDisplayOff,
+                            WLQ_DEFINES.RTKDisplayOffDoublePress]
+                if (wlqData.getAccessories() > 0){
+                    actionTableLabels.append(NSLocalizedString("pdm_label", comment: ""))
+                    actionTableLabels.append(NSLocalizedString("pdm_channel1_label", comment: ""))
+                    actionTableLabels.append(NSLocalizedString("pdm_channel2_label", comment: ""))
+                    actionTableMappingLabels.append("")
+                    actionTableMappingLabels.append(wlqData.getActionValue(action: WLQ_DEFINES.pdmChannel1))
+                    actionTableMappingLabels.append(wlqData.getActionValue(action: WLQ_DEFINES.pdmChannel2))
+                    actionID.append(-1)
+                    actionID.append(WLQ_DEFINES.pdmChannel1)
+                    actionID.append(WLQ_DEFINES.pdmChannel2)
+                }
                 
                 if (wlqData.getKeyMode() == wlqData.KEYMODE_CUSTOM()){
                     menuBtn.isHidden = false
-                    if (!wlqData.getConfig().elementsEqual(wlqData.getTempConfig())){
-                        os_log("HWSettingsViewController: !!!Change detected!!!")
-                        configButton.setTitle(NSLocalizedString("config_write_label", comment: ""), for: .normal)
-                        configButton.isHidden = false
-                        configButton.tag = 1
-                    }
                 }
+                if (!wlqData.getConfig().elementsEqual(wlqData.getTempConfig())){
+                    os_log("HWSettingsViewController: !!!Change detected!!!")
+                    configButton.setTitle(NSLocalizedString("config_write_label", comment: ""), for: .normal)
+                    configButton.isHidden = false
+                    configButton.tag = 1
+                }
+            } else {
+                configButton.setTitle(NSLocalizedString("config_reset_label", comment: ""), for: .normal)
+                configButton.isHidden = false
+                configButton.tag = 0
+            }
+        } else if (wlqData.gethardwareType() == wlqData.TYPE_U()){
+            if (wlqData.getKeyMode() == wlqData.KEYMODE_DEFAULT() || wlqData.getKeyMode() == wlqData.KEYMODE_CUSTOM()
+                || wlqData.getKeyMode() == wlqData.KEYMODE_MEDIA()) {
+
+                actionTableLabels = [NSLocalizedString("keymode_label", comment: ""),       //KEYMODE
+                                     NSLocalizedString("orientation_label", comment: ""),
+                                     NSLocalizedString("long_press_label", comment: ""),
+                                     NSLocalizedString("up_label", comment: ""),
+                                     NSLocalizedString("up_long_label", comment: ""),
+                                     NSLocalizedString("down_label", comment: ""),
+                                     NSLocalizedString("down_long_label", comment: ""),
+                                     NSLocalizedString("left_label", comment: ""),
+                                     NSLocalizedString("left_long_label", comment: ""),
+                                     NSLocalizedString("right_label", comment: ""),
+                                     NSLocalizedString("right_long_label", comment: ""),
+                                     NSLocalizedString("fx1_label", comment: ""),
+                                     NSLocalizedString("fx1_long_label", comment: ""),
+                                     NSLocalizedString("fx2_label", comment: ""),
+                                     NSLocalizedString("fx2_long_label", comment: "")]
+                                                  
+                actionTableMappingLabels = [wlqData.getActionValue(action: WLQ_DEFINES.KEYMODE),
+                                            wlqData.getActionValue(action: WLQ_DEFINES.ORIENTATION),
+                                            wlqData.getActionValue(action: WLQ_DEFINES.longPressSensitivity),
+                                            wlqData.getActionValue(action: WLQ_DEFINES.up),
+                                            wlqData.getActionValue(action: WLQ_DEFINES.upLong),
+                                            wlqData.getActionValue(action: WLQ_DEFINES.down),
+                                            wlqData.getActionValue(action: WLQ_DEFINES.downLong),
+                                            wlqData.getActionValue(action: WLQ_DEFINES.left),
+                                            wlqData.getActionValue(action: WLQ_DEFINES.leftLong),
+                                            wlqData.getActionValue(action: WLQ_DEFINES.right),
+                                            wlqData.getActionValue(action: WLQ_DEFINES.rightLong),
+                                            wlqData.getActionValue(action: WLQ_DEFINES.fx1),
+                                            wlqData.getActionValue(action: WLQ_DEFINES.fx1Long),
+                                            wlqData.getActionValue(action: WLQ_DEFINES.fx2),
+                                            wlqData.getActionValue(action: WLQ_DEFINES.fx2Long)]
+                
+                actionID = [WLQ_DEFINES.KEYMODE,
+                            WLQ_DEFINES.ORIENTATION,
+                            WLQ_DEFINES.longPressSensitivity,
+                            WLQ_DEFINES.up,
+                            WLQ_DEFINES.upLong,
+                            WLQ_DEFINES.down,
+                            WLQ_DEFINES.downLong,
+                            WLQ_DEFINES.left,
+                            WLQ_DEFINES.leftLong,
+                            WLQ_DEFINES.right,
+                            WLQ_DEFINES.rightLong,
+                            WLQ_DEFINES.fx1,
+                            WLQ_DEFINES.fx1Long,
+                            WLQ_DEFINES.fx2,
+                            WLQ_DEFINES.fx2Long]
+                
+                if (wlqData.getAccessories() > 0){
+                    actionTableLabels.append(NSLocalizedString("pdm_label", comment: ""))
+                    actionTableLabels.append(NSLocalizedString("pdm_channel1_label", comment: ""))
+                    actionTableLabels.append(NSLocalizedString("pdm_channel2_label", comment: ""))
+                    actionTableMappingLabels.append("")
+                    actionTableMappingLabels.append(wlqData.getActionValue(action: WLQ_DEFINES.pdmChannel1))
+                    actionTableMappingLabels.append(wlqData.getActionValue(action: WLQ_DEFINES.pdmChannel2))
+                    actionID.append(-1)
+                    actionID.append(WLQ_DEFINES.pdmChannel1)
+                    actionID.append(WLQ_DEFINES.pdmChannel2)
+                }
+                
+                if (wlqData.getKeyMode() == wlqData.KEYMODE_CUSTOM()){
+                    menuBtn.isHidden = true
+                }
+                if (!wlqData.getConfig().elementsEqual(wlqData.getTempConfig())){
+                    os_log("HWSettingsViewController: !!!Change detected!!!")
+                    configButton.setTitle(NSLocalizedString("config_write_label", comment: ""), for: .normal)
+                    configButton.isHidden = false
+                    configButton.tag = 1
+                }
+            
+            } else {
+                configButton.setTitle(NSLocalizedString("config_reset_label", comment: ""), for: .normal)
+                configButton.isHidden = false
+                configButton.tag = 0
             }
         } else if (wlqData.gethardwareType() == wlqData.TYPE_S()){
             if (wlqData.getKeyMode() == wlqData.KEYMODE_DEFAULT() || wlqData.getKeyMode() == wlqData.KEYMODE_CUSTOM()
@@ -355,51 +451,66 @@ class HWSettingsViewController: UIViewController, UITableViewDelegate, UITableVi
                                      NSLocalizedString("fx2_label", comment: ""),
                                      NSLocalizedString("fx2_long_label", comment: "")]
                                                   
-                actionTableMappingLabels = [wlqData.getActionValue(action: WLQ_S_DEFINES.KEYMODE),
-                                            wlqData.getActionValue(action: WLQ_S_DEFINES.fullLongPressSensitivity),
-                                            wlqData.getActionValue(action: WLQ_S_DEFINES.up),
-                                            wlqData.getActionValue(action: WLQ_S_DEFINES.upLong),
-                                            wlqData.getActionValue(action: WLQ_S_DEFINES.down),
-                                            wlqData.getActionValue(action: WLQ_S_DEFINES.downLong),
-                                            wlqData.getActionValue(action: WLQ_S_DEFINES.left),
-                                            wlqData.getActionValue(action: WLQ_S_DEFINES.leftLong),
-                                            wlqData.getActionValue(action: WLQ_S_DEFINES.right),
-                                            wlqData.getActionValue(action: WLQ_S_DEFINES.rightLong),
-                                            wlqData.getActionValue(action: WLQ_S_DEFINES.fx1),
-                                            wlqData.getActionValue(action: WLQ_S_DEFINES.fx1Long),
-                                            wlqData.getActionValue(action: WLQ_S_DEFINES.fx2),
-                                            wlqData.getActionValue(action: WLQ_S_DEFINES.fx2Long)]
+                actionTableMappingLabels = [wlqData.getActionValue(action: WLQ_DEFINES.KEYMODE),
+                                            wlqData.getActionValue(action: WLQ_DEFINES.longPressSensitivity),
+                                            wlqData.getActionValue(action: WLQ_DEFINES.up),
+                                            wlqData.getActionValue(action: WLQ_DEFINES.upLong),
+                                            wlqData.getActionValue(action: WLQ_DEFINES.down),
+                                            wlqData.getActionValue(action: WLQ_DEFINES.downLong),
+                                            wlqData.getActionValue(action: WLQ_DEFINES.left),
+                                            wlqData.getActionValue(action: WLQ_DEFINES.leftLong),
+                                            wlqData.getActionValue(action: WLQ_DEFINES.right),
+                                            wlqData.getActionValue(action: WLQ_DEFINES.rightLong),
+                                            wlqData.getActionValue(action: WLQ_DEFINES.fx1),
+                                            wlqData.getActionValue(action: WLQ_DEFINES.fx1Long),
+                                            wlqData.getActionValue(action: WLQ_DEFINES.fx2),
+                                            wlqData.getActionValue(action: WLQ_DEFINES.fx2Long)]
                 
-                actionID = [WLQ_S_DEFINES.KEYMODE,
-                            WLQ_S_DEFINES.fullLongPressSensitivity,
-                            WLQ_S_DEFINES.up,
-                            WLQ_S_DEFINES.upLong,
-                            WLQ_S_DEFINES.down,
-                            WLQ_S_DEFINES.downLong,
-                            WLQ_S_DEFINES.left,
-                            WLQ_S_DEFINES.leftLong,
-                            WLQ_S_DEFINES.right,
-                            WLQ_S_DEFINES.rightLong,
-                            WLQ_S_DEFINES.fx1,
-                            WLQ_S_DEFINES.fx1Long,
-                            WLQ_S_DEFINES.fx2,
-                            WLQ_S_DEFINES.fx2Long]
+                actionID = [WLQ_DEFINES.KEYMODE,
+                            WLQ_DEFINES.longPressSensitivity,
+                            WLQ_DEFINES.up,
+                            WLQ_DEFINES.upLong,
+                            WLQ_DEFINES.down,
+                            WLQ_DEFINES.downLong,
+                            WLQ_DEFINES.left,
+                            WLQ_DEFINES.leftLong,
+                            WLQ_DEFINES.right,
+                            WLQ_DEFINES.rightLong,
+                            WLQ_DEFINES.fx1,
+                            WLQ_DEFINES.fx1Long,
+                            WLQ_DEFINES.fx2,
+                            WLQ_DEFINES.fx2Long]
+                
+                if (wlqData.getAccessories() > 0){
+                    actionTableLabels.append(NSLocalizedString("pdm_label", comment: ""))
+                    actionTableLabels.append(NSLocalizedString("pdm_channel1_label", comment: ""))
+                    actionTableLabels.append(NSLocalizedString("pdm_channel2_label", comment: ""))
+                    actionTableMappingLabels.append("")
+                    actionTableMappingLabels.append(wlqData.getActionValue(action: WLQ_DEFINES.pdmChannel1))
+                    actionTableMappingLabels.append(wlqData.getActionValue(action: WLQ_DEFINES.pdmChannel2))
+                    actionID.append(-1)
+                    actionID.append(WLQ_DEFINES.pdmChannel1)
+                    actionID.append(WLQ_DEFINES.pdmChannel2)
+                }
                 
                 if (wlqData.getKeyMode() == wlqData.KEYMODE_CUSTOM()){
                     menuBtn.isHidden = true
-                    if (!wlqData.getConfig().elementsEqual(wlqData.getTempConfig())){
-                        os_log("HWSettingsViewController: !!!Change detected!!!")
-                        configButton.setTitle(NSLocalizedString("config_write_label", comment: ""), for: .normal)
-                        configButton.isHidden = false
-                        configButton.tag = 1
-                    }
                 }
+                if (!wlqData.getConfig().elementsEqual(wlqData.getTempConfig())){
+                    os_log("HWSettingsViewController: !!!Change detected!!!")
+                    configButton.setTitle(NSLocalizedString("config_write_label", comment: ""), for: .normal)
+                    configButton.isHidden = false
+                    configButton.tag = 1
+                }
+            
             } else {
                 configButton.setTitle(NSLocalizedString("config_reset_label", comment: ""), for: .normal)
                 configButton.isHidden = false
                 configButton.tag = 0
             }
+            
         }
+        
         self.actionsTableView.reloadData()
     }
     

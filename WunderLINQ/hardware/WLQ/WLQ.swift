@@ -34,6 +34,9 @@ class WLQ {
     func TYPE_S() -> Int{
         return 3
     }
+    func TYPE_U() -> Int{
+        return 4
+    }
     func KEYMODE_DEFAULT() -> UInt8{
         return 0x00
     }
@@ -127,18 +130,6 @@ class WLQ {
     func setVINThreshold(value: [UInt8]){
         fatalError("This method must be overridden")
     }
-    func getDoublePressSensitivity() -> UInt8{
-        fatalError("This method must be overridden")
-    }
-    func setDoublePressSensitivity(value: UInt8){
-        fatalError("This method must be overridden")
-    }
-    func getLongPressSensitivity() -> UInt8{
-        fatalError("This method must be overridden")
-    }
-    func setLongPressSensitivity(value: UInt8){
-        fatalError("This method must be overridden")
-    }
     func getKeyMode() -> UInt8{
         fatalError("This method must be overridden")
     }
@@ -151,6 +142,9 @@ class WLQ {
     func getActionKeyType(action: Int?) -> UInt8{
         fatalError("This method must be overridden")
     }
+    func setActionValue(action: Int?, value: UInt8){
+        fatalError("This method must be overridden")
+    }
     func setActionKey(action: Int?, key: [UInt8]){
         fatalError("This method must be overridden")
     }
@@ -158,6 +152,9 @@ class WLQ {
         fatalError("This method must be overridden")
     }
     func getActionValue(action: Int) -> String{
+        fatalError("This method must be overridden")
+    }
+    func getActionValueRaw(action: Int) -> UInt8?{
         fatalError("This method must be overridden")
     }
     func getActionKeyModifiers(action: Int) -> UInt8{
@@ -169,6 +166,9 @@ class WLQ {
     func getStatus() -> [UInt8]?{
         fatalError("This method must be overridden")
     }
+    func getAccessories() -> UInt8{
+        fatalError("This method must be overridden")
+    }
     func setAccActive(active: UInt8){
         fatalError("This method must be overridden")
     }
@@ -178,4 +178,47 @@ class WLQ {
     func getAccChannelValue(positon: Int) -> UInt8{
         fatalError("This method must be overridden")
     }
+}
+enum WLQ_DEFINES {
+    static let KEYMODE:Int = 100
+    static let ORIENTATION:Int = 101
+    static let USB:Int = 1
+    static let doublePressSensitivity:Int = 2
+    static let longPressSensitivity:Int = 3
+    static let RTKPage:Int = 4
+    static let RTKPageDoublePress:Int = 5
+    static let RTKZoomPlus:Int = 6
+    static let RTKZoomPlusDoublePress:Int = 7
+    static let RTKZoomMinus:Int = 8
+    static let RTKZoomMinusDoublePress:Int = 9
+    static let RTKSpeak:Int = 10
+    static let RTKSpeakDoublePress:Int = 11
+    static let RTKMute:Int = 12
+    static let RTKMuteDoublePress:Int = 13
+    static let RTKDisplayOff:Int = 14
+    static let RTKDisplayOffDoublePress:Int = 15
+    static let fullScrollUp:Int = 16
+    static let fullScrollDown:Int = 17
+    static let fullToggleRight:Int = 18
+    static let fullToggleRightLongPress:Int = 19
+    static let fullToggleLeft:Int = 20
+    static let fullToggleLeftLongPress:Int = 21
+    static let fullSignalCancel:Int = 22
+    static let fullSignalCancelLongPress:Int = 23
+    static let up:Int = 26
+    static let upLong:Int = 27
+    static let down:Int = 28
+    static let downLong:Int = 29
+    static let right:Int = 30
+    static let rightLong:Int = 31
+    static let left:Int = 32
+    static let leftLong:Int = 33
+    static let fx1:Int = 34
+    static let fx1Long:Int = 35
+    static let fx2:Int = 36
+    static let fx2Long:Int = 37
+    static let pdmChannel1:Int = 50
+    static let pdmChannel2:Int = 51
+    static let pdmChannel3:Int = 52
+    static let pdmChannel4:Int = 53
 }

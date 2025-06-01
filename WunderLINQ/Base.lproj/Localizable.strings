@@ -140,6 +140,11 @@
 "fx1_long_label" = "FX1 Long Press";
 "fx2_label" = "FX2";
 "fx2_long_label" = "FX2 Long Press";
+"pdm_label" = "Power Controller";
+"pdm_channel1_label" = "PDM Channel 1";
+"pdm_channel2_label" = "PDM Channel 2";
+"pdm_channel3_label" = "PDM Channel 3";
+"pdm_channel4_label" = "PDM Channel 4";
 
 //HWCustomizeViewController
 "usb_threshold_label" = "USB Port Control";
@@ -160,6 +165,22 @@
 "hwreset_alert_body" = "The current WunderLINQ Custom settings will be reset to the factory defaults.";
 "hwsave_alert_btn_ok" = "Continue";
 "hwsave_alert_btn_cancel" = "Cancel";
+"pdm_channel_mode_toggle" = "Toggle";
+"pdm_channel_mode_momentary" = "Momentary";
+"pdm_channel_mode_ignition" = "Ignition";
+"pdm_channel_mode_highbeam" = "High Beam";
+"pdm_channel_mode_brakes" = "Brakes";
+"pdm_channel_mode_ambient_light" = "Ambient Light";
+"pdm_channel_mode_ambient_temp" = "Ambient Temperature";
+"pdm_channel_mode_heated_grips" = "Heated Grip Level";
+"pdm_channel_mode_disabled" = "Disabled";
+
+"orientation_label" = "Orientation";
+"orientation_default_label" = "Default";
+"orientation_90_label" = "90";
+"orientation_180_label" = "180";
+"orientation_270_label" = "270";
+
 //AboutViewController
 "about_title" = "About";
 "version_label" = "Version:";
