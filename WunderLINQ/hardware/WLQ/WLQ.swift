@@ -34,6 +34,9 @@ class WLQ {
     func TYPE_S() -> Int{
         return 3
     }
+    func TYPE_U() -> Int{
+        return 4
+    }
     func KEYMODE_DEFAULT() -> UInt8{
         return 0x00
     }

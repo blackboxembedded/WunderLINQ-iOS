@@ -131,7 +131,9 @@ class HWSettingsViewController: UIViewController, UITableViewDelegate, UITableVi
                 performSegue(withIdentifier: "hwSettingsToSettingsAction", sender: [])
             }
         } else {
-            if (self.actionID[indexPath.row] == WLQ_DEFINES.KEYMODE){
+            if (self.actionID[indexPath.row] == WLQ_DEFINES.KEYMODE
+                || self.actionID[indexPath.row] == WLQ_DEFINES.pdmChannel1 || self.actionID[indexPath.row] == WLQ_DEFINES.pdmChannel2
+                || self.actionID[indexPath.row] == WLQ_DEFINES.pdmChannel3 || self.actionID[indexPath.row] == WLQ_DEFINES.pdmChannel4){
                 selectedActionID = self.actionID[indexPath.row]
                 performSegue(withIdentifier: "hwSettingsToSettingsAction", sender: [])
             }
@@ -231,12 +233,12 @@ class HWSettingsViewController: UIViewController, UITableViewDelegate, UITableVi
                         
                         if (wlqData.getKeyMode() == wlqData.KEYMODE_CUSTOM()){
                             menuBtn.isHidden = false
-                            if (!wlqData.getConfig().elementsEqual(wlqData.getTempConfig())){
-                                os_log("HWSettingsViewController: !!!Change detected!!!")
-                                configButton.setTitle(NSLocalizedString("config_write_label", comment: ""), for: .normal)
-                                configButton.isHidden = false
-                                configButton.tag = 1
-                            }
+                        }
+                        if (!wlqData.getConfig().elementsEqual(wlqData.getTempConfig())){
+                            os_log("HWSettingsViewController: !!!Change detected!!!")
+                            configButton.setTitle(NSLocalizedString("config_write_label", comment: ""), for: .normal)
+                            configButton.isHidden = false
+                            configButton.tag = 1
                         }
                     } else {
                         configButton.setTitle(NSLocalizedString("config_reset_label", comment: ""), for: .normal)
@@ -339,13 +341,96 @@ class HWSettingsViewController: UIViewController, UITableViewDelegate, UITableVi
                 
                 if (wlqData.getKeyMode() == wlqData.KEYMODE_CUSTOM()){
                     menuBtn.isHidden = false
-                    if (!wlqData.getConfig().elementsEqual(wlqData.getTempConfig())){
-                        os_log("HWSettingsViewController: !!!Change detected!!!")
-                        configButton.setTitle(NSLocalizedString("config_write_label", comment: ""), for: .normal)
-                        configButton.isHidden = false
-                        configButton.tag = 1
-                    }
                 }
+                if (!wlqData.getConfig().elementsEqual(wlqData.getTempConfig())){
+                    os_log("HWSettingsViewController: !!!Change detected!!!")
+                    configButton.setTitle(NSLocalizedString("config_write_label", comment: ""), for: .normal)
+                    configButton.isHidden = false
+                    configButton.tag = 1
+                }
+            } else {
+                configButton.setTitle(NSLocalizedString("config_reset_label", comment: ""), for: .normal)
+                configButton.isHidden = false
+                configButton.tag = 0
+            }
+        } else if (wlqData.gethardwareType() == wlqData.TYPE_U()){
+            if (wlqData.getKeyMode() == wlqData.KEYMODE_DEFAULT() || wlqData.getKeyMode() == wlqData.KEYMODE_CUSTOM()
+                || wlqData.getKeyMode() == wlqData.KEYMODE_MEDIA()) {
+
+                actionTableLabels = [NSLocalizedString("keymode_label", comment: ""),       //KEYMODE
+                                     NSLocalizedString("orientation_label", comment: ""),
+                                     NSLocalizedString("long_press_label", comment: ""),
+                                     NSLocalizedString("up_label", comment: ""),
+                                     NSLocalizedString("up_long_label", comment: ""),
+                                     NSLocalizedString("down_label", comment: ""),
+                                     NSLocalizedString("down_long_label", comment: ""),
+                                     NSLocalizedString("left_label", comment: ""),
+                                     NSLocalizedString("left_long_label", comment: ""),
+                                     NSLocalizedString("right_label", comment: ""),
+                                     NSLocalizedString("right_long_label", comment: ""),
+                                     NSLocalizedString("fx1_label", comment: ""),
+                                     NSLocalizedString("fx1_long_label", comment: ""),
+                                     NSLocalizedString("fx2_label", comment: ""),
+                                     NSLocalizedString("fx2_long_label", comment: "")]
+                                                  
+                actionTableMappingLabels = [wlqData.getActionValue(action: WLQ_DEFINES.KEYMODE),
+                                            wlqData.getActionValue(action: WLQ_DEFINES.ORIENTATION),
+                                            wlqData.getActionValue(action: WLQ_DEFINES.longPressSensitivity),
+                                            wlqData.getActionValue(action: WLQ_DEFINES.up),
+                                            wlqData.getActionValue(action: WLQ_DEFINES.upLong),
+                                            wlqData.getActionValue(action: WLQ_DEFINES.down),
+                                            wlqData.getActionValue(action: WLQ_DEFINES.downLong),
+                                            wlqData.getActionValue(action: WLQ_DEFINES.left),
+                                            wlqData.getActionValue(action: WLQ_DEFINES.leftLong),
+                                            wlqData.getActionValue(action: WLQ_DEFINES.right),
+                                            wlqData.getActionValue(action: WLQ_DEFINES.rightLong),
+                                            wlqData.getActionValue(action: WLQ_DEFINES.fx1),
+                                            wlqData.getActionValue(action: WLQ_DEFINES.fx1Long),
+                                            wlqData.getActionValue(action: WLQ_DEFINES.fx2),
+                                            wlqData.getActionValue(action: WLQ_DEFINES.fx2Long)]
+                
+                actionID = [WLQ_DEFINES.KEYMODE,
+                            WLQ_DEFINES.ORIENTATION,
+                            WLQ_DEFINES.longPressSensitivity,
+                            WLQ_DEFINES.up,
+                            WLQ_DEFINES.upLong,
+                            WLQ_DEFINES.down,
+                            WLQ_DEFINES.downLong,
+                            WLQ_DEFINES.left,
+                            WLQ_DEFINES.leftLong,
+                            WLQ_DEFINES.right,
+                            WLQ_DEFINES.rightLong,
+                            WLQ_DEFINES.fx1,
+                            WLQ_DEFINES.fx1Long,
+                            WLQ_DEFINES.fx2,
+                            WLQ_DEFINES.fx2Long]
+                
+                if (wlqData.getAccessories() > 0){
+                    actionTableLabels.append(NSLocalizedString("pdm_label", comment: ""))
+                    actionTableLabels.append(NSLocalizedString("pdm_channel1_label", comment: ""))
+                    actionTableLabels.append(NSLocalizedString("pdm_channel2_label", comment: ""))
+                    actionTableMappingLabels.append("")
+                    actionTableMappingLabels.append(wlqData.getActionValue(action: WLQ_DEFINES.pdmChannel1))
+                    actionTableMappingLabels.append(wlqData.getActionValue(action: WLQ_DEFINES.pdmChannel2))
+                    actionID.append(-1)
+                    actionID.append(WLQ_DEFINES.pdmChannel1)
+                    actionID.append(WLQ_DEFINES.pdmChannel2)
+                }
+                
+                if (wlqData.getKeyMode() == wlqData.KEYMODE_CUSTOM()){
+                    menuBtn.isHidden = true
+                }
+                if (!wlqData.getConfig().elementsEqual(wlqData.getTempConfig())){
+                    os_log("HWSettingsViewController: !!!Change detected!!!")
+                    configButton.setTitle(NSLocalizedString("config_write_label", comment: ""), for: .normal)
+                    configButton.isHidden = false
+                    configButton.tag = 1
+                }
+            
+            } else {
+                configButton.setTitle(NSLocalizedString("config_reset_label", comment: ""), for: .normal)
+                configButton.isHidden = false
+                configButton.tag = 0
             }
         } else if (wlqData.gethardwareType() == wlqData.TYPE_S()){
             if (wlqData.getKeyMode() == wlqData.KEYMODE_DEFAULT() || wlqData.getKeyMode() == wlqData.KEYMODE_CUSTOM()
@@ -410,19 +495,22 @@ class HWSettingsViewController: UIViewController, UITableViewDelegate, UITableVi
                 
                 if (wlqData.getKeyMode() == wlqData.KEYMODE_CUSTOM()){
                     menuBtn.isHidden = true
-                    if (!wlqData.getConfig().elementsEqual(wlqData.getTempConfig())){
-                        os_log("HWSettingsViewController: !!!Change detected!!!")
-                        configButton.setTitle(NSLocalizedString("config_write_label", comment: ""), for: .normal)
-                        configButton.isHidden = false
-                        configButton.tag = 1
-                    }
                 }
+                if (!wlqData.getConfig().elementsEqual(wlqData.getTempConfig())){
+                    os_log("HWSettingsViewController: !!!Change detected!!!")
+                    configButton.setTitle(NSLocalizedString("config_write_label", comment: ""), for: .normal)
+                    configButton.isHidden = false
+                    configButton.tag = 1
+                }
+            
             } else {
                 configButton.setTitle(NSLocalizedString("config_reset_label", comment: ""), for: .normal)
                 configButton.isHidden = false
                 configButton.tag = 0
             }
+            
         }
+        
         self.actionsTableView.reloadData()
     }
     

@@ -116,7 +116,7 @@ class WLQ_S: WLQ {
     let pdmChannel2_INDEX:Int = 38
     let pdmChannel3_INDEX:Int = 39
     let pdmChannel4_INDEX:Int = 40
-    let accessories_INDEX:Int = 44
+    let accessories_INDEX:Int = 47
     
     // PDM Status message
     let statusSize:Int = 6
