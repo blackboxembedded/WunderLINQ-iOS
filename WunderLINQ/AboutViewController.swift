@@ -66,13 +66,13 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
                 let logAttachmentData = try Data(contentsOf: logURL)
                 mailComposer.addAttachmentData(logAttachmentData, mimeType: "text/log", fileName: "wunderlinq.log")
             } catch let error {
-                os_log("AboutViewController: We have encountered error \(error.localizedDescription)")
+                print("AboutViewController: We have encountered error \(error.localizedDescription)")
             }
             mailComposer.mailComposeDelegate = self
             self.present(mailComposer, animated: true, completion: nil)
             
         } else {
-            os_log("AboutViewController: Email is not configured in settings app or we are not able to send an email")
+            print("AboutViewController: Email is not configured in settings app or we are not able to send an email")
         }
     }
     
@@ -141,16 +141,16 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         switch result {
         case .cancelled:
-            os_log("AboutViewController: User cancelled")
+            print("AboutViewController: User cancelled")
             break
         case .saved:
-            os_log("AboutViewController: Mail is saved by user")
+            print("AboutViewController: Mail is saved by user")
             break
         case .sent:
-            os_log("AboutViewController: Mail is sent successfully")
+            print("AboutViewController: Mail is sent successfully")
             break
         case .failed:
-            os_log("AboutViewController: Sending mail is failed")
+            print("AboutViewController: Sending mail is failed")
             break
         default:
             break

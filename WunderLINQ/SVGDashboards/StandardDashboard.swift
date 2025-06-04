@@ -40,7 +40,7 @@ class StandardDashboard {
         // Load the XML file from the project bundle
         guard let url = Bundle.main.url(forResource: dashboardSVG, withExtension: "svg"),
               let xml = XML(contentsOf: url) else {
-            os_log("Error: Unable to load or parse the XML file.")
+            print("Error: Unable to load or parse the XML file.")
             return nil
         }
         
@@ -48,7 +48,7 @@ class StandardDashboard {
             svgTag.attributes["height"] = "\(height)"
             svgTag.attributes["width"] = "\(width)"
         } else {
-            os_log("svgTag not found.")
+            print("svgTag not found.")
         }
 
         //Speed
@@ -77,13 +77,13 @@ class StandardDashboard {
                 }
             }
         default:
-            os_log("StandardDashboard: Unknown speed unit setting")
+            print("StandardDashboard: Unknown speed unit setting")
         }
         if (speedValue != nil){
             if let speedTag = findElement(byID: "speed", in: xml) {
                 speedTag.text = "\(Utils.toZeroDecimalString(speedValue!))"
             } else {
-                os_log("speedTag not found.")
+                print("speedTag not found.")
             }
         }
         
@@ -93,7 +93,7 @@ class StandardDashboard {
         if let speedUnitTag = findElement(byID: "speedUnit", in: xml) {
             speedUnitTag.text = distanceTimeUnit
         } else {
-            os_log("speedUnitTag not found.")
+            print("speedUnitTag not found.")
         }
         
         //Gear
@@ -110,7 +110,7 @@ class StandardDashboard {
                 }
                 gearTag.text = gearValue
             } else {
-                os_log("gearTag not found.")
+                print("gearTag not found.")
             }
         }
         
@@ -129,7 +129,7 @@ class StandardDashboard {
                 ambientTempValue = "\(Utils.toZeroDecimalString(ambientTemp))\(temperatureUnit)"
                 ambientTempTag.text = ambientTempValue
             } else {
-                os_log("ambientTempTag not found.")
+                print("ambientTempTag not found.")
             }
         }
         
@@ -152,7 +152,7 @@ class StandardDashboard {
                 engineTempValue = "\(Utils.toZeroDecimalString(engineTemp))\(temperatureUnit)"
                 engineTempTag.text = engineTempValue
             } else  {
-                os_log("engineTempTag not found.")
+                print("engineTempTag not found.")
             }
         }
         
@@ -198,7 +198,7 @@ class StandardDashboard {
                             let modString = regex.stringByReplacingMatches(in: style!, options: [], range: range, withTemplate: "fill:#e20505;")
                             dataValueTag.attributes["style"] = modString
                         } else {
-                            os_log("dataValueTag not found.")
+                            print("dataValueTag not found.")
                         }
                     }
                 }
@@ -237,7 +237,7 @@ class StandardDashboard {
                 timeValue = ("\(formatter.string(from: motorcycleData.time!))")
                 clockTag.text = timeValue
             } else {
-                os_log("clockTag not found.")
+                print("clockTag not found.")
             }
         }
         
@@ -278,7 +278,7 @@ class StandardDashboard {
                 rdcFTag.attributes["style"] = modString
             }
         } else {
-            os_log("rdcFTag not found.")
+            print("rdcFTag not found.")
         }
         
         // Rear Tire Pressure
@@ -318,7 +318,7 @@ class StandardDashboard {
                 rdcRTag.attributes["style"] = modString
             }
         } else {
-            os_log("rdcRTag not found.")
+            print("rdcRTag not found.")
         }
         
         // Fault icon
@@ -326,7 +326,7 @@ class StandardDashboard {
             if let iconFaultTag = findElement(byID: "iconFault", in: xml) {
                 iconFaultTag.attributes["style"] = "display:inline"
             } else {
-                os_log("iconFaultTag not found.")
+                print("iconFaultTag not found.")
             }
         }
         
@@ -335,7 +335,7 @@ class StandardDashboard {
             if let iconFuelTag = findElement(byID: "iconFuel", in: xml) {
                 iconFuelTag.attributes["style"] = "display:inline"
             } else {
-                os_log("iconFuelTag not found.")
+                print("iconFuelTag not found.")
             }
         }
 
@@ -451,7 +451,7 @@ class StandardDashboard {
                     rpmGaugeDigitsTag["rpmDialDigit9"]?.text = "11"
                     rpmGaugeDigitsTag["rpmDialDigit10"]?.text = "12"
                 } else {
-                    os_log("Could not find rpmGaugeDigitsTag")
+                    print("Could not find rpmGaugeDigitsTag")
                 }
                 
                 if (motorcycleData.rpm != nil){
@@ -561,7 +561,7 @@ class StandardDashboard {
                     rpmGaugeDigitsTag["rpmDialDigit9"]?.text = "13"
                     rpmGaugeDigitsTag["rpmDialDigit10"]?.text = "15"
                 } else {
-                    os_log("Could not find rpmGaugeDigitsTag")
+                    print("Could not find rpmGaugeDigitsTag")
                 }
                 
                 if (motorcycleData.rpm != nil){
@@ -658,11 +658,11 @@ class StandardDashboard {
                 }
                 break
             default:
-                os_log("StandardDashboard: Unknown or default RPM Setting for standard dashboard")
+                print("StandardDashboard: Unknown or default RPM Setting for standard dashboard")
                 break
             }
         } else {
-            os_log("rpmTilesTag not found.")
+            print("rpmTilesTag not found.")
         }
 
         return xml // Return the modified XML object

@@ -52,7 +52,7 @@ class Logger {
                     let fileURL = documentDirectory.appendingPathComponent("\(fileName)")
                     let fileManager = FileManager.default
                     if (!fileManager.fileExists(atPath: fileURL.path)) {
-                        os_log("Logger: FILE NOT AVAILABLE")
+                        print("Logger: FILE NOT AVAILABLE")
                         initializeFile(fileURL: fileURL)
                     }
                     
@@ -315,10 +315,10 @@ class Logger {
                         try formattedEntry.appendLineToURL(fileURL: fileURL as URL)
                         
                     } catch {
-                        os_log("Logger: error writing to url:\(fileURL), ERROR: \(error)")
+                        print("Logger: error writing to url:\(fileURL), ERROR: \(error)")
                     }
                 } else {
-                    os_log("Logger: New Day")
+                    print("Logger: New Day")
                     let dateFormatter = DateFormatter()
                     dateFormatter.dateFormat = "yyyyMMdd-HH-mm-ss"
                     let dateString = dateFormatter.string(from: Date())
@@ -331,7 +331,7 @@ class Logger {
                     let fileURL = documentDirectory.appendingPathComponent("\(fileName)")
                     let fileManager = FileManager.default
                     if (!fileManager.fileExists(atPath: fileURL.path)) {
-                        os_log("Logger: FILE NOT AVAILABLE")
+                        print("Logger: FILE NOT AVAILABLE")
                         initializeFile(fileURL: fileURL)
                     }
                 }
@@ -398,7 +398,7 @@ class Logger {
         case 3:
             pressureUnit = "psi"
         default:
-            os_log("Logger: Unknown pressure unit setting")
+            print("Logger: Unknown pressure unit setting")
         }
         if UserDefaults.standard.integer(forKey: "temperature_unit_preference") == 1 {
             temperatureUnit = "F"
@@ -419,7 +419,7 @@ class Logger {
         case 3:
             consumptionUnit = "km/L"
         default:
-            os_log("Logger: Unknown consumption unit setting")
+            print("Logger: Unknown consumption unit setting")
         }
         
         let header = "\(dateHeader) (\(dateFormat)),\(latitudeHeader),\(longitudeHeader),\(altitudeHeader) (\(altitudeUnit)),\(gpsSpeedHeader) (\(speedUnit)),\(gearHeader),\(engineTemperatureHeader) (\(temperatureUnit)),\(ambientTemperatureHeader) (\(temperatureUnit)),\(frontPressureHeader) (\(pressureUnit)),\(rearPressureHeader) (\(pressureUnit)),\(odometerHeader) (\(distanceUnit)),\(voltageHeader) (V),\(throttlePositionHeader) (%),\(frontBrakesHeader),\(rearBrakesHeader),\(shiftsHeader),\(vinHeader),\(ambientLightHeader),\(tripOneHeader) (\(distanceUnit)),\(tripTwoHeader) (\(distanceUnit)),\(tripAutoHeader) (\(distanceUnit)),\(speedHeader) (\(speedUnit)),\(averageSpeedHeader) (\(speedUnit)),\(currentConsumptionHeader) (\(consumptionUnit)),\(fuelEconomyOneHeader) (\(consumptionUnit)),\(fuelEconomyTwoHeader) (\(consumptionUnit)),\(fuelRangeHeader) (\(distanceUnit)),\(leanAngleHeader),\(gForceHeader),\(bearingHeader),\(barometricPressureHeader) (kPa),\(rpmHeader),\(leanAngleBikeHeader),\(rearSpeedHeader) (\(speedUnit)),\(deviceBatteryHeader) (%)"
@@ -428,7 +428,7 @@ class Logger {
             try header.appendLineToURL(fileURL: fileURL as URL)
             
         } catch {
-            os_log("Logger: error writing to url:\(fileURL), ERROR: \(error)")
+            print("Logger: error writing to url:\(fileURL), ERROR: \(error)")
         }
     }
     

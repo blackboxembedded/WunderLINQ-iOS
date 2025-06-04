@@ -31,7 +31,7 @@ class BLEBus {
                 messageHexString += String(format: "%02X", data[i])
             }
             let formattedEntry = "DEBUG: " + Date().toString() + "," + messageHexString
-            os_log(StaticString("%{PUBLIC}@"), formattedEntry)
+            print(StaticString("%{PUBLIC}@"), formattedEntry)
         }
         
         let lastMessage = data
@@ -229,7 +229,7 @@ class BLEBus {
                     case 3:
                         frontPressure = Utils.barToPsi(frontPressure)
                     default:
-                        os_log("Unknown pressure unit setting")
+                        print("Unknown pressure unit setting")
                     }
                     if frontPressure <= UserDefaults.standard.double(forKey: "tpm_threshold_preference"){
                         faults.setFrontTirePressureCriticalActive(active: true)
@@ -256,7 +256,7 @@ class BLEBus {
                     case 3:
                         rearPressure = Utils.barToPsi(rearPressure)
                     default:
-                        os_log("Unknown pressure unit setting")
+                        print("Unknown pressure unit setting")
                     }
                     if rearPressure <= UserDefaults.standard.double(forKey: "tpm_threshold_preference"){
                         faults.setRearTirePressureCriticalActive(active: true)

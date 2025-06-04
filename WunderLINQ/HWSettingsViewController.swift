@@ -235,7 +235,7 @@ class HWSettingsViewController: UIViewController, UITableViewDelegate, UITableVi
                             menuBtn.isHidden = false
                         }
                         if (!wlqData.getConfig().elementsEqual(wlqData.getTempConfig())){
-                            os_log("HWSettingsViewController: !!!Change detected!!!")
+                            print("HWSettingsViewController: !!!Change detected!!!")
                             configButton.setTitle(NSLocalizedString("config_write_label", comment: ""), for: .normal)
                             configButton.isHidden = false
                             configButton.tag = 1
@@ -343,7 +343,7 @@ class HWSettingsViewController: UIViewController, UITableViewDelegate, UITableVi
                     menuBtn.isHidden = false
                 }
                 if (!wlqData.getConfig().elementsEqual(wlqData.getTempConfig())){
-                    os_log("HWSettingsViewController: !!!Change detected!!!")
+                    print("HWSettingsViewController: !!!Change detected!!!")
                     configButton.setTitle(NSLocalizedString("config_write_label", comment: ""), for: .normal)
                     configButton.isHidden = false
                     configButton.tag = 1
@@ -421,7 +421,7 @@ class HWSettingsViewController: UIViewController, UITableViewDelegate, UITableVi
                     menuBtn.isHidden = true
                 }
                 if (!wlqData.getConfig().elementsEqual(wlqData.getTempConfig())){
-                    os_log("HWSettingsViewController: !!!Change detected!!!")
+                    print("HWSettingsViewController: !!!Change detected!!!")
                     configButton.setTitle(NSLocalizedString("config_write_label", comment: ""), for: .normal)
                     configButton.isHidden = false
                     configButton.tag = 1
@@ -497,7 +497,7 @@ class HWSettingsViewController: UIViewController, UITableViewDelegate, UITableVi
                     menuBtn.isHidden = true
                 }
                 if (!wlqData.getConfig().elementsEqual(wlqData.getTempConfig())){
-                    os_log("HWSettingsViewController: !!!Change detected!!!")
+                    print("HWSettingsViewController: !!!Change detected!!!")
                     configButton.setTitle(NSLocalizedString("config_write_label", comment: ""), for: .normal)
                     configButton.isHidden = false
                     configButton.tag = 1
@@ -521,7 +521,7 @@ class HWSettingsViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func resetHWConfig(){
-        os_log("HWSettingsViewController: resetHWConfig()")
+        print("HWSettingsViewController: resetHWConfig()")
         let alertController = UIAlertController(
             title: NSLocalizedString("hwsave_alert_title", comment: ""),
             message: NSLocalizedString("hwreset_alert_body", comment: ""),
@@ -540,7 +540,7 @@ class HWSettingsViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func applyHWConfig(){
-        os_log("HWSettingsViewController: applyHWConfig()")
+        print("HWSettingsViewController: applyHWConfig()")
         let alertController = UIAlertController(
             title: NSLocalizedString("hwsave_alert_title", comment: ""),
             message: NSLocalizedString("hwsave_alert_body", comment: ""),

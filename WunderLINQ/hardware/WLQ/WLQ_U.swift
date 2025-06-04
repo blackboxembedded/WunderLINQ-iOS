@@ -185,7 +185,7 @@ class WLQ_U: WLQ {
     
     required override init() {
         super.init()
-        os_log("WLQ_U: init()")
+        print("WLQ_U: init()")
         WLQ.shared = self
         WLQ.initialized = true
         actionNames = [KEYMODE: NSLocalizedString("keymode_label", comment: ""),
@@ -226,7 +226,7 @@ class WLQ_U: WLQ {
                 messageHexString += ","
             }
         }
-        os_log("WLQ_U: flashConfig: \(messageHexString)")
+        print("WLQ_U: flashConfig: \(messageHexString)")
         
         self.keyMode = bytes[self.keyMode_INDEX]
 
@@ -424,7 +424,7 @@ class WLQ_U: WLQ {
                 self.tempConfig![self.fx2LongKeyModifier_INDEX] = key[1]
                 self.tempConfig![self.fx2LongKey_INDEX] = key[2]
             default:
-                os_log("WLQ_U: Invalid acitonID")
+                print("WLQ_U: Invalid acitonID")
             }
         }
     }
@@ -574,7 +574,7 @@ class WLQ_U: WLQ {
         case pdmChannel4:
             tempConfig![pdmChannel2_INDEX] = value;
         default:
-            os_log("WLQ_U: setActionValue Unknown Action ID:")
+            print("WLQ_U: setActionValue Unknown Action ID:")
         }
     }
     
@@ -867,7 +867,7 @@ class WLQ_U: WLQ {
         case pdmChannel4:
             return pdmChannel4Setting!
         default:
-            os_log("WLQ_U: setActionValue Unknown Action ID:")
+            print("WLQ_U: setActionValue Unknown Action ID:")
         }
         return nil
     }
@@ -906,7 +906,7 @@ class WLQ_U: WLQ {
     }
 
     override func setfirmwareVersion(firmwareVersion: String?){
-        os_log("WLQ_U: Firmware Version: \(firmwareVersion ?? "?")")
+        print("WLQ_U: Firmware Version: \(firmwareVersion ?? "?")")
         self.firmwareVersion = firmwareVersion
     }
     override func getfirmwareVersion() -> String{
@@ -917,7 +917,7 @@ class WLQ_U: WLQ {
     }
 
     override func sethardwareVersion(hardwareVersion: String?){
-        os_log("WLQ_U: HW Version: \(hardwareVersion ?? "?")")
+        print("WLQ_U: HW Version: \(hardwareVersion ?? "?")")
         self.hardwareVersion = hardwareVersion
     }
     override func gethardwareVersion() -> String{

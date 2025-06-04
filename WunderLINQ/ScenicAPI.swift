@@ -205,7 +205,7 @@ class ScenicAPI {
         var request = URLRequest(url: URL(string: urlString)!)
         request.httpMethod = "POST"
         let data = params.data(using: .utf8)
-        os_log("JsonData")
+        print("JsonData")
         //request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
         request.httpBody = data
         
@@ -226,17 +226,17 @@ class ScenicAPI {
                                     compHandler(false, gpxurl)
                                     return
                                 } else {
-                                    os_log("Results key not found in dictionary")
+                                    print("Results key not found in dictionary")
                                 }
                             }
                             else {
-                                os_log("Could not serialize JSON")
+                                print("Could not serialize JSON")
                             }
                         } else {
-                            os_log("JSON Error")
+                            print("JSON Error")
                         }
                     } catch let error as NSError {
-                        os_log("Error parsing results: \(error.localizedDescription)")
+                        print("Error parsing results: \(error.localizedDescription)")
                     }
                 }
             }
@@ -258,7 +258,7 @@ class ScenicAPI {
                     presentFromController(selectedVC, animated: animated, completion: completion)
                 }
                 else {
-                    os_log("Presenting")
+                    print("Presenting")
                     controller.present(controller, animated: animated, completion: completion);
                 }
             }

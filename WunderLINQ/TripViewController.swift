@@ -114,7 +114,7 @@ class TripViewController: UIViewController, UITextFieldDelegate {
             let vc = UIActivityViewController(activityItems: [fileURL], applicationActivities: [])
             self.present(vc, animated: true)
         } catch {
-            os_log(StaticString("TripViewController: exportGPX: %{PUBLIC}@"), error.localizedDescription)
+            print(StaticString("TripViewController: exportGPX: %{PUBLIC}@"), error.localizedDescription)
         }
     }
     
@@ -127,7 +127,7 @@ class TripViewController: UIViewController, UITextFieldDelegate {
             do {
                 try fileManager.removeItem(atPath: filename)
             } catch {
-                os_log("TripViewController: Could not delete file: \(error)")
+                print("TripViewController: Could not delete file: \(error)")
             }
             self.performSegue(withIdentifier: "tripToTrips", sender: [])
         }))
@@ -471,7 +471,7 @@ class TripViewController: UIViewController, UITextFieldDelegate {
 
     func readDataFromCSV(fileName:String, fileType: String)-> String!{
         if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
-            os_log("TripViewController: \(fileName).\(fileType)")
+            print("TripViewController: \(fileName).\(fileType)")
             let fileURL = dir.appendingPathComponent("\(fileName).\(fileType)")
             
             //reading
@@ -519,7 +519,7 @@ class TripViewController: UIViewController, UITextFieldDelegate {
             
             
         } catch {
-            os_log(StaticString("TripViewController: updateFileList: %{PUBLIC}@"), error.localizedDescription)
+            print(StaticString("TripViewController: updateFileList: %{PUBLIC}@"), error.localizedDescription)
         }
     }
     
@@ -532,9 +532,9 @@ class TripViewController: UIViewController, UITextFieldDelegate {
                 let newURL = try fileManager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent((labelLabel.text ?? "empty") + ".csv")
                 
             try fileManager.moveItem(at: oldURL, to: newURL)
-                    os_log("TripViewController: File renamed successfully")
+                    print("TripViewController: File renamed successfully")
             } catch {
-                    os_log("TripViewController: Error renaming file: \(error)")
+                    print("TripViewController: Error renaming file: \(error)")
             }
         }
     }

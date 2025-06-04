@@ -76,7 +76,7 @@ class WaypointViewController: UIViewController, UITextFieldDelegate {
         
         //opening the database
         if sqlite3_open(databaseURL.path, &db) != SQLITE_OK {
-            os_log("WaypointViewController: error opening database")
+            print("WaypointViewController: error opening database")
         }
         
         //creating a statement
@@ -88,14 +88,14 @@ class WaypointViewController: UIViewController, UITextFieldDelegate {
         //preparing the query
         if sqlite3_prepare(db, queryString, -1, &stmt, nil) != SQLITE_OK{
             let errmsg = String(cString: sqlite3_errmsg(db)!)
-            os_log("WaypointViewController: error preparing insert: \(errmsg)")
+            print("WaypointViewController: error preparing insert: \(errmsg)")
             return
         }
 
         //executing the query to insert values
         if sqlite3_step(stmt) != SQLITE_DONE {
             let errmsg = String(cString: sqlite3_errmsg(db)!)
-            os_log("WaypointViewController: failure inserting waypoint: \(errmsg)")
+            print("WaypointViewController: failure inserting waypoint: \(errmsg)")
             return
         }
     }
@@ -171,24 +171,24 @@ class WaypointViewController: UIViewController, UITextFieldDelegate {
             .appendingPathComponent("waypoints.sqlite")
         // Opening the database
         if sqlite3_open(databaseURL.path, &db) != SQLITE_OK {
-            os_log("WaypointViewController: error opening database")
+            print("WaypointViewController: error opening database")
         }
         // Creating table
         if sqlite3_exec(db, "CREATE TABLE IF NOT EXISTS records (id INTEGER PRIMARY KEY AUTOINCREMENT, date TEXT, latitude TEXT, longitude TEXT, elevation TEXT, label TEXT)", nil, nil, nil) != SQLITE_OK {
             let errmsg = String(cString: sqlite3_errmsg(db)!)
-            os_log("WaypointViewController: error creating table: \(errmsg)")
+            print("WaypointViewController: error creating table: \(errmsg)")
         }
         // Update table if needed
         let updateStatementString = "ALTER TABLE records ADD COLUMN elevation TEXT"
         var updateStatement: OpaquePointer?
         if sqlite3_prepare_v2(db, updateStatementString, -1, &updateStatement, nil) == SQLITE_OK {
             if sqlite3_step(updateStatement) == SQLITE_DONE {
-                os_log("WaypointViewController: Table updated successfully")
+                print("WaypointViewController: Table updated successfully")
             } else {
-                os_log("WaypointViewController: Error updating table")
+                print("WaypointViewController: Error updating table")
             }
         } else {
-            os_log("WaypointViewController: Error preparing update statement")
+            print("WaypointViewController: Error preparing update statement")
         }
         
         readWaypoints()
@@ -208,7 +208,7 @@ class WaypointViewController: UIViewController, UITextFieldDelegate {
             marker.snippet = label
             marker.map = mapView
         } else {
-            os_log("WaypointViewController: Invalid Value")
+            print("WaypointViewController: Invalid Value")
         }
         
         dateLabel.text = date
@@ -247,7 +247,7 @@ class WaypointViewController: UIViewController, UITextFieldDelegate {
         //preparing the query
         if sqlite3_prepare(db, queryString, -1, &stmt, nil) != SQLITE_OK{
             let errmsg = String(cString: sqlite3_errmsg(db)!)
-            os_log("WaypointViewController: error preparing insert: \(errmsg)")
+            print("WaypointViewController: error preparing insert: \(errmsg)")
             return
         }
         
@@ -282,7 +282,7 @@ class WaypointViewController: UIViewController, UITextFieldDelegate {
         //preparing the query
         if sqlite3_prepare(db, queryString, -1, &stmt, nil) != SQLITE_OK{
             let errmsg = String(cString: sqlite3_errmsg(db)!)
-            os_log("WaypointViewController: error preparing insert: \(errmsg)")
+            print("WaypointViewController: error preparing insert: \(errmsg)")
             return
         }
         
@@ -358,7 +358,7 @@ class WaypointViewController: UIViewController, UITextFieldDelegate {
                 let vc = UIActivityViewController(activityItems: [fileURL], applicationActivities: [])
                 self.present(vc, animated: true)
             } catch {
-                os_log(StaticString("WaypointViewController: exportGPX: %{PUBLIC}@"), error.localizedDescription)
+                print(StaticString("WaypointViewController: exportGPX: %{PUBLIC}@"), error.localizedDescription)
             }
         }
     }
@@ -373,14 +373,14 @@ class WaypointViewController: UIViewController, UITextFieldDelegate {
             //preparing the query
             if sqlite3_prepare(self.db, queryString, -1, &stmt, nil) != SQLITE_OK{
                 let errmsg = String(cString: sqlite3_errmsg(self.db)!)
-                os_log("WaypointViewController: error preparing insert: \(errmsg)")
+                print("WaypointViewController: error preparing insert: \(errmsg)")
                 return
             }
             
             //executing the query to delete row
             if sqlite3_step(stmt) != SQLITE_DONE {
                 let errmsg = String(cString: sqlite3_errmsg(self.db)!)
-                os_log("WaypointViewController: failure inserting wapoint: \(errmsg)")
+                print("WaypointViewController: failure inserting wapoint: \(errmsg)")
                 return
             }
             

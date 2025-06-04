@@ -467,7 +467,7 @@ class MotorcycleData {
         case 3:
             pressureUnit = "psi"
         default:
-            os_log("MainCollectionViewController: Unknown pressure unit setting")
+            print("MainCollectionViewController: Unknown pressure unit setting")
         }
         if UserDefaults.standard.integer(forKey: "temperature_unit_preference") == 1 {
             temperatureUnit = "F"
@@ -487,7 +487,7 @@ class MotorcycleData {
         case 3:
             consumptionUnit = "km/L"
         default:
-            os_log("MainCollectionViewController: Unknown consumption unit setting")
+            print("MainCollectionViewController: Unknown consumption unit setting")
         }
         
         switch (dataPoint){
@@ -594,7 +594,7 @@ class MotorcycleData {
             //Elevation change
             label = NSLocalizedString("elevation_change_header", comment: "") + " (" + heightUnit + "/2min)"
         default:
-            os_log("MotorcycleData: Unknown : \(dataPoint)")
+            print("MotorcycleData: Unknown : \(dataPoint)")
         }
         
         return label
@@ -772,7 +772,7 @@ class MotorcycleData {
             //Elevation change
             break
         default:
-            os_log("MotorcycleData: Unknown : \(dataPoint)")
+            print("MotorcycleData: Unknown : \(dataPoint)")
         }
         return labelColor
     }
@@ -948,7 +948,7 @@ class MotorcycleData {
             //Elevation change
             icon = (UIImage(named: "Signature")?.withRenderingMode(.alwaysTemplate))!
         default:
-            os_log("MotorcycleData: Unknown : \(dataPoint)")
+            print("MotorcycleData: Unknown : \(dataPoint)")
         }
         
         return icon
@@ -1336,7 +1336,7 @@ class MotorcycleData {
             }
             value = "\(elevationChange.rounded(toPlaces: 1))"
         default:
-            os_log("MotorcycleData: Unknown : \(dataPoint)")
+            print("MotorcycleData: Unknown : \(dataPoint)")
         }
         
         return value

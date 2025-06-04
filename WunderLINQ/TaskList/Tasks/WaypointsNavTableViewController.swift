@@ -195,24 +195,24 @@ class WaypointsNavTableViewController: UITableViewController {
             .appendingPathComponent("waypoints.sqlite")
         // Opening the database
         if sqlite3_open(databaseURL.path, &db) != SQLITE_OK {
-            os_log("WaypointsNavTableViewController: error opening database")
+            print("WaypointsNavTableViewController: error opening database")
         }
         // Creating table
         if sqlite3_exec(db, "CREATE TABLE IF NOT EXISTS records (id INTEGER PRIMARY KEY AUTOINCREMENT, date TEXT, latitude TEXT, longitude TEXT, elevation TEXT, label TEXT)", nil, nil, nil) != SQLITE_OK {
             let errmsg = String(cString: sqlite3_errmsg(db)!)
-            os_log("WaypointsNavTableViewController: error creating table: \(errmsg)")
+            print("WaypointsNavTableViewController: error creating table: \(errmsg)")
         }
         // Update table if needed
         let updateStatementString = "ALTER TABLE records ADD COLUMN elevation TEXT"
         var updateStatement: OpaquePointer?
         if sqlite3_prepare_v2(db, updateStatementString, -1, &updateStatement, nil) == SQLITE_OK {
             if sqlite3_step(updateStatement) == SQLITE_DONE {
-                os_log("WaypointsNavTableViewController: Table updated successfully")
+                print("WaypointsNavTableViewController: Table updated successfully")
             } else {
-                os_log("WaypointsNavTableViewController: Error updating table")
+                print("WaypointsNavTableViewController: Error updating table")
             }
         } else {
-            os_log("WaypointsNavTableViewController: Error preparing update statement")
+            print("WaypointsNavTableViewController: Error preparing update statement")
         }
 
         
@@ -273,7 +273,7 @@ class WaypointsNavTableViewController: UITableViewController {
         //preparing the query
         if sqlite3_prepare(db, queryString, -1, &stmt, nil) != SQLITE_OK{
             let errmsg = String(cString: sqlite3_errmsg(db)!)
-            os_log("WaypointsNavTableViewController: error preparing insert: \(errmsg)")
+            print("WaypointsNavTableViewController: error preparing insert: \(errmsg)")
             return
         }
         

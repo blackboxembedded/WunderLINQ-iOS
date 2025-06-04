@@ -39,7 +39,7 @@ class SportDashboard {
         // Load the XML file from the project bundle
         guard let url = Bundle.main.url(forResource: dashboardSVG, withExtension: "svg"),
               let xml = XML(contentsOf: url) else {
-            os_log("Error: Unable to load or parse the XML file.")
+            print("Error: Unable to load or parse the XML file.")
             return nil
         }
         
@@ -47,7 +47,7 @@ class SportDashboard {
             svgTag.attributes["height"] = "\(height)"
             svgTag.attributes["width"] = "\(width)"
         } else {
-            os_log("svgTag not found.")
+            print("svgTag not found.")
         }
 
         //Speed
@@ -76,13 +76,13 @@ class SportDashboard {
                 }
             }
         default:
-            os_log("SportDashboard: Unknown speed unit setting")
+            print("SportDashboard: Unknown speed unit setting")
         }
         if (speedValue != nil){
             if let speedTag = findElement(byID: "speed", in: xml) {
                 speedTag.text = "\(Utils.toZeroDecimalString(speedValue!))"
             } else {
-                os_log("speedTag not found.")
+                print("speedTag not found.")
             }
         }
         
@@ -92,7 +92,7 @@ class SportDashboard {
         if let speedUnitTag = findElement(byID: "speedUnit", in: xml) {
             speedUnitTag.text = distanceTimeUnit
         } else {
-            os_log("speedUnitTag not found.")
+            print("speedUnitTag not found.")
         }
         
         //Gear
@@ -109,7 +109,7 @@ class SportDashboard {
                 }
                 gearTag.text = gearValue
             } else {
-                os_log("gearTag not found.")
+                print("gearTag not found.")
             }
         }
         
@@ -128,7 +128,7 @@ class SportDashboard {
                 ambientTempValue = "\(Utils.toZeroDecimalString(ambientTemp))\(temperatureUnit)"
                 ambientTempTag.text = ambientTempValue
             } else {
-                os_log("ambientTempTag not found.")
+                print("ambientTempTag not found.")
             }
         }
         
@@ -174,7 +174,7 @@ class SportDashboard {
                             let modString = regex.stringByReplacingMatches(in: style!, options: [], range: range, withTemplate: "fill:#e20505;")
                             dataValueTag.attributes["style"] = modString
                         } else {
-                            os_log("dataValueTag not found.")
+                            print("dataValueTag not found.")
                         }
                     }
                 }
@@ -213,7 +213,7 @@ class SportDashboard {
                 timeValue = ("\(formatter.string(from: motorcycleData.time!))")
                 clockTag.text = timeValue
             } else {
-                os_log("clockTag not found.")
+                print("clockTag not found.")
             }
         }
         
@@ -222,7 +222,7 @@ class SportDashboard {
             if let iconFaultTag = findElement(byID: "iconFault", in: xml) {
                 iconFaultTag.attributes["style"] = "display:inline"
             } else {
-                os_log("iconFaultTag not found.")
+                print("iconFaultTag not found.")
             }
         }
         
@@ -231,7 +231,7 @@ class SportDashboard {
             if let iconFuelTag = findElement(byID: "iconFuel", in: xml) {
                 iconFuelTag.attributes["style"] = "display:inline"
             } else {
-                os_log("iconFuelTag not found.")
+                print("iconFuelTag not found.")
             }
         }
         
@@ -243,7 +243,7 @@ class SportDashboard {
                 angleTag.text = "\(Utils.toZeroDecimalString(abs(motorcycleData.getleanAngle())))"
             }
         } else {
-            os_log("angleTag not found.")
+            print("angleTag not found.")
         }
         //Left Max Angle
         if let angleMaxLTag = findElement(byID: "angleMaxL", in: xml) {
@@ -253,7 +253,7 @@ class SportDashboard {
                 angleMaxLTag.text = "\(Utils.toZeroDecimalString(abs(motorcycleData.getleanAngleMaxL())))"
             }
         } else {
-            os_log("angleMaxLTag not found.")
+            print("angleMaxLTag not found.")
         }
         //Right Max Angle
         if let angleMaxRTag = findElement(byID: "angleMaxR", in: xml) {
@@ -263,7 +263,7 @@ class SportDashboard {
                 angleMaxRTag.text = "\(Utils.toZeroDecimalString(abs(motorcycleData.getleanAngleMaxR())))"
             }
         } else {
-            os_log("angleMaxRTag not found.")
+            print("angleMaxRTag not found.")
         }
         
         //Lean Angle Gauge
@@ -294,7 +294,7 @@ class SportDashboard {
             }
             needleTag.attributes["transform"] = "rotate(\(angle)\(centerRadius)"
         } else {
-            os_log("needleTag not found.")
+            print("needleTag not found.")
         }
         
         //RPM Display
@@ -1875,7 +1875,7 @@ class SportDashboard {
                 break
             default:
                 //15000
-                os_log("SportDashboard: Unknown or default RPM Setting for sport dashboard")
+                print("SportDashboard: Unknown or default RPM Setting for sport dashboard")
                 break
             }
         }

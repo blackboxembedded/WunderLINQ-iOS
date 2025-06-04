@@ -164,7 +164,7 @@ class WeatherMapViewController: UIViewController, GMSMapViewDelegate {
     }
     
     func startAnimating() {
-        os_log("WeatherMapViewController: startAnimating()")
+        print("WeatherMapViewController: startAnimating()")
 
         // compute the “base” timestamp rounded down to the nearest 10 min
         let nowDate = Date()
@@ -231,7 +231,7 @@ class WeatherMapViewController: UIViewController, GMSMapViewDelegate {
     }
     
     func restartAnimating() {
-        os_log("WeatherMapViewController: restartAnimating()")
+        print("WeatherMapViewController: restartAnimating()")
         displayLink?.invalidate()
         displayLink = nil
         startTime = nil
@@ -239,7 +239,7 @@ class WeatherMapViewController: UIViewController, GMSMapViewDelegate {
     }
 
     func stopAnimating() {
-        os_log("WeatherMapViewController: stopAnimating()")
+        print("WeatherMapViewController: stopAnimating()")
         animationTimer?.invalidate()
         displayLink?.invalidate()
         displayLink = nil
@@ -290,7 +290,7 @@ class WeatherMapViewController: UIViewController, GMSMapViewDelegate {
             marker.position = CLLocationCoordinate2D(latitude: lat, longitude: lon)
             marker.map = mapView
         } else {
-            os_log("WeatherMapViewController: Invalid Location")
+            print("WeatherMapViewController: Invalid Location")
         }
     }
     

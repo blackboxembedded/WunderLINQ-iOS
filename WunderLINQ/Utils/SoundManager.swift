@@ -33,10 +33,10 @@ class SoundManager {
                 player?.prepareToPlay()
                 player?.play()
             } catch {
-                os_log("Error: Could not load file")
+                print("Error: Could not load file")
             }
         } else {
-            os_log("Error: File not found")
+            print("Error: File not found")
         }
     }
 }

@@ -53,7 +53,7 @@ class MusicViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        os_log("MusicViewController: viewDidLoad()")
+        print("MusicViewController: viewDidLoad()")
         
         if UserDefaults.standard.bool(forKey: "display_brightness_preference") {
             UIScreen.main.brightness = CGFloat(1.0)
@@ -148,7 +148,7 @@ class MusicViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        os_log("MusicViewController: viewWillAppear")
+        print("MusicViewController: viewWillAppear")
         if isTimerRunning == false {
             runTimer()
         }
@@ -156,14 +156,14 @@ class MusicViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        os_log("MusicViewController: viewDidAppear")
+        print("MusicViewController: viewDidAppear")
         refresh()
         NotificationCenter.default.addObserver(self, selector:#selector(MusicViewController.refresh), name: UIApplication.willEnterForegroundNotification, object: UIApplication.shared)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        os_log("MusicViewController: viewWillDisappear")
+        print("MusicViewController: viewWillDisappear")
         stopRefreshTimer()
         spotifyUnsubscribeFromPlayerState()
         timer.invalidate()
@@ -309,11 +309,11 @@ class MusicViewController: UIViewController {
             break
         case 1: // Spotify
             if spotifyAppRemote?.isConnected == false {
-                os_log("MusicViewController: Spotify Not Connected")
+                print("MusicViewController: Spotify Not Connected")
                 spotifyAppRemote?.authorizeAndPlayURI(spotifyPlayURI) { success in
                     if !success {
                         // The Spotify app is not installed, present the user with an App Store page
-                        os_log("MusicViewController: Spotify Not Installed")
+                        print("MusicViewController: Spotify Not Installed")
                         self.showError("Spotify Not Installed")
                     }
                 }
@@ -321,11 +321,11 @@ class MusicViewController: UIViewController {
                 if (spotifyPlayerState == nil){
                     spotifyAppRemote?.authorizeAndPlayURI(spotifyPlayURI)
                 } else {
-                    os_log("MusicViewController: spotifyStartPlayback")
+                    print("MusicViewController: spotifyStartPlayback")
                     spotifyStartPlayback()
                 }
             } else {
-                os_log("MusicViewController: spotifyPausePlayback")
+                print("MusicViewController: spotifyPausePlayback")
                 spotifyPausePlayback()
             }
             break
@@ -391,7 +391,7 @@ class MusicViewController: UIViewController {
     }
     
     @objc func refresh(){
-        os_log("MusicViewController: refresh")
+        print("MusicViewController: refresh")
         let musicApp = UserDefaults.standard.integer(forKey: "musicplayer_preference")
         switch (musicApp){
         case 0: // Apple Music
@@ -399,7 +399,7 @@ class MusicViewController: UIViewController {
             break
         case 1: // Spotify
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                os_log("MusicViewController: Spotify refresh")
+                print("MusicViewController: Spotify refresh")
                 self.spotifyGetPlayerState()
             }
             break
@@ -432,7 +432,7 @@ class MusicViewController: UIViewController {
     var appleMusicTrackElapsed: TimeInterval!
     
     @objc func appleMusicUpdateNowPlayingInfo(){
-        os_log("MusicViewController: appleMusicUpdateNowPlayingInfo")
+        print("MusicViewController: appleMusicUpdateNowPlayingInfo")
         if let currentTrack = MPMusicPlayerController.systemMusicPlayer.nowPlayingItem {
             // Update UI
             // Get Current Track Info
@@ -473,7 +473,7 @@ class MusicViewController: UIViewController {
         get {
             return {[weak self] _, error in
                 if let error = error {
-                    os_log("MusicViewController: spotifyDefaultCallback: \(error.localizedDescription)")
+                    print("MusicViewController: spotifyDefaultCallback: \(error.localizedDescription)")
                     self?.showError(error.localizedDescription)
                 } else {
                     self!.spotifyGetPlayerState()
@@ -488,10 +488,10 @@ class MusicViewController: UIViewController {
     }
     
     private func spotifyGetPlayerState() {
-        os_log("MusicViewController: spotifyGetSpotifyPlayerState()")
+        print("MusicViewController: spotifyGetSpotifyPlayerState()")
         spotifyAppRemote?.playerAPI?.getPlayerState { (result, error) -> Void in
             guard error == nil else {
-                os_log("MusicViewController: spotifyGetSpotifyPlayerState() - error: \(error!.localizedDescription)")
+                print("MusicViewController: spotifyGetSpotifyPlayerState() - error: \(error!.localizedDescription)")
                 return
             }
             let playerState = result as! SPTAppRemotePlayerState
@@ -501,7 +501,7 @@ class MusicViewController: UIViewController {
     }
     
     private func spotifySubscribeToPlayerState() {
-        os_log("MusicViewController: spotifySubscribeToPlayerState()")
+        print("MusicViewController: spotifySubscribeToPlayerState()")
         guard (!spotifySubscribedToPlayerState) else { return }
         spotifyAppRemote?.playerAPI!.delegate = self
         spotifyAppRemote?.playerAPI?.subscribe { (_, error) -> Void in
@@ -511,7 +511,7 @@ class MusicViewController: UIViewController {
     }
 
     private func spotifyUnsubscribeFromPlayerState() {
-        os_log("MusicViewController: spotifyUnsubscribeFromPlayerState()")
+        print("MusicViewController: spotifyUnsubscribeFromPlayerState()")
         guard (spotifySubscribedToPlayerState) else { return }
         spotifyAppRemote?.playerAPI?.unsubscribe { (_, error) -> Void in
             guard error == nil else { return }
@@ -554,9 +554,9 @@ class MusicViewController: UIViewController {
     }
     
     private func spotifyUpdateViewWithPlayerState(_ playerState: SPTAppRemotePlayerState) {
-        os_log("MusicViewController: spotifyUpdateViewWithPlayerState")
+        print("MusicViewController: spotifyUpdateViewWithPlayerState")
         if (self.viewIfLoaded?.window != nil ) {
-            os_log("MusicViewController: spotifyUpdateViewWithPlayerState Updating")
+            print("MusicViewController: spotifyUpdateViewWithPlayerState Updating")
             updatePlayPauseButtonState(playerState.isPaused)
             songLabel.text = playerState.track.name
             artistLabel.text = playerState.track.artist.name
@@ -569,24 +569,24 @@ class MusicViewController: UIViewController {
     }
     
     func spotifyAppRemoteConnecting() {
-        os_log("MusicViewController: spotifyAppRemoteConnecting()")
+        print("MusicViewController: spotifyAppRemoteConnecting()")
     }
 
     func spotifyAppRemoteConnected() {
-        os_log("MusicViewController: spotifyAppRemoteConnected()")
+        print("MusicViewController: spotifyAppRemoteConnected()")
         spotifySubscribeToPlayerState()
         spotifyGetPlayerState()
         enableInterface(true)
     }
 
     func spotifyAppRemoteDisconnect() {
-        os_log("MusicViewController: spotifyAppRemoteDisconnect()")
+        print("MusicViewController: spotifyAppRemoteDisconnect()")
         self.spotifySubscribedToPlayerState = false
         enableInterface(false)
     }
     
     func spotifyAppRemotePlayerStateDidChange() {
-        os_log("MusicViewController: spotifyAppRemotePlayerStateDidChange()")
+        print("MusicViewController: spotifyAppRemotePlayerStateDidChange()")
         spotifyGetPlayerState()
     }
 
@@ -621,7 +621,7 @@ class MusicViewController: UIViewController {
 // MARK: - SPTAppRemotePlayerStateDelegate
 extension MusicViewController: SPTAppRemotePlayerStateDelegate {
     func playerStateDidChange(_ playerState: SPTAppRemotePlayerState) {
-        os_log("MusicViewController: Spotify playerStateDidChange")
+        print("MusicViewController: Spotify playerStateDidChange")
         self.spotifyPlayerState = playerState
         spotifyUpdateViewWithPlayerState(playerState)
     }
@@ -629,7 +629,7 @@ extension MusicViewController: SPTAppRemotePlayerStateDelegate {
 // MARK: - SPTAppRemoteUserAPIDelegate
 extension MusicViewController: SPTAppRemoteUserAPIDelegate {
     func userAPI(_ userAPI: SPTAppRemoteUserAPI, didReceive capabilities: SPTAppRemoteUserCapabilities) {
-        os_log("MusicViewController: Spotify userAPI")
+        print("MusicViewController: Spotify userAPI")
         //updateViewWithCapabilities(capabilities)
     }
 }
