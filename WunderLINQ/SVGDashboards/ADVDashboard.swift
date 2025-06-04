@@ -39,7 +39,7 @@ class ADVDashboard {
         // Load the XML file from the project bundle
         guard let url = Bundle.main.url(forResource: dashboardSVG, withExtension: "svg"),
               let xml = XML(contentsOf: url) else {
-            os_log("Error: Unable to load or parse the XML file.")
+            print("Error: Unable to load or parse the XML file.")
             return nil
         }
         
@@ -47,7 +47,7 @@ class ADVDashboard {
             svgTag.attributes["height"] = "\(height)"
             svgTag.attributes["width"] = "\(width)"
         } else {
-            os_log("svgTag not found.")
+            print("svgTag not found.")
         }
 
         //Speed
@@ -76,13 +76,13 @@ class ADVDashboard {
                 }
             }
         default:
-            os_log("StandardDashboard: Unknown speed unit setting")
+            print("StandardDashboard: Unknown speed unit setting")
         }
         if (speedValue != nil){
             if let speedTag = findElement(byID: "speed", in: xml) {
                 speedTag.text = "\(Utils.toZeroDecimalString(speedValue!))"
             } else {
-                os_log("speedTag not found.")
+                print("speedTag not found.")
             }
         }
         
@@ -92,7 +92,7 @@ class ADVDashboard {
         if let speedUnitTag = findElement(byID: "speedUnit", in: xml) {
             speedUnitTag.text = distanceTimeUnit
         } else {
-            os_log("speedUnitTag not found.")
+            print("speedUnitTag not found.")
         }
         
         //Gear
@@ -109,7 +109,7 @@ class ADVDashboard {
                 }
                 gearTag.text = gearValue
             } else {
-                os_log("gearTag not found.")
+                print("gearTag not found.")
             }
         }
         
@@ -128,7 +128,7 @@ class ADVDashboard {
                 ambientTempValue = "\(Utils.toZeroDecimalString(ambientTemp))\(temperatureUnit)"
                 ambientTempTag.text = ambientTempValue
             } else {
-                os_log("ambientTempTag not found.")
+                print("ambientTempTag not found.")
             }
         }
         
@@ -174,7 +174,7 @@ class ADVDashboard {
                             let modString = regex.stringByReplacingMatches(in: style!, options: [], range: range, withTemplate: "fill:#e20505;")
                             dataValueTag.attributes["style"] = modString
                         } else {
-                            os_log("dataValueTag not found.")
+                            print("dataValueTag not found.")
                         }
                     }
                 }
@@ -213,7 +213,7 @@ class ADVDashboard {
                 timeValue = ("\(formatter.string(from: motorcycleData.time!))")
                 clockTag.text = timeValue
             } else {
-                os_log("clockTag not found.")
+                print("clockTag not found.")
             }
         }
         
@@ -222,7 +222,7 @@ class ADVDashboard {
             if let iconFaultTag = findElement(byID: "iconFault", in: xml) {
                 iconFaultTag.attributes["style"] = "display:inline"
             } else {
-                os_log("iconFaultTag not found.")
+                print("iconFaultTag not found.")
             }
         }
         
@@ -231,19 +231,13 @@ class ADVDashboard {
             if let iconFuelTag = findElement(byID: "iconFuel", in: xml) {
                 iconFuelTag.attributes["style"] = "display:inline"
             } else {
-                os_log("iconFuelTag not found.")
+                print("iconFuelTag not found.")
             }
         }
         
         //Compass
         var centerRadius = ",960,1080)"
         var bearing = "0"
-        if let txtCardinalLeftTag = findElement(byID: "txtCardinalLeft", in: xml) {
-            txtCardinalLeftTag.text = "W"
-        }
-        if let txtCardinalRightTag = findElement(byID: "txtCardinalRight", in: xml) {
-            txtCardinalRightTag.text = "E"
-        }
         if let compassTag = findElement(byID: "compass", in: xml) {
             if motorcycleData.bearing != nil {
                 bearing = "\(motorcycleData.bearing! * -1)"
@@ -253,7 +247,7 @@ class ADVDashboard {
             }
             compassTag.attributes["transform"] = "rotate(" + bearing + centerRadius
         } else {
-            os_log("compassTag not found.")
+            print("compassTag not found.")
         }
 
         return xml // Return the modified XML object

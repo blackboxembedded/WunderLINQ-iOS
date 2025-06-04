@@ -1838,7 +1838,7 @@ z
    transform="rotate(90)"
    style="fill:#ffffff"
    x="233.35092"
-   y="-381.1846">W</text>
+   y="-381.1846">E</text>
 
 				<text
    id="text912"
@@ -1867,55 +1867,55 @@ z
    id="text918"
    class="st43 st45"
    transform="matrix(0.9848,-0.1736,0.1736,0.9848,203.2713,19.9221)"
-   style="fill:#ffffff">10</text>
+   style="fill:#ffffff">350</text>
 
 					<text
    id="text920"
    class="st43 st45"
    transform="rotate(-19.998771,171.58641,-451.14017)"
-   style="fill:#ffffff">20</text>
+   style="fill:#ffffff">340</text>
 
 					<text
    id="text922"
    class="st43 st45"
    transform="matrix(0.866,-0.5,0.5,0.866,128.5952,49.5686)"
-   style="fill:#ffffff">30</text>
+   style="fill:#ffffff">330</text>
 
 					<text
    id="text924"
    class="st43 st45"
    transform="matrix(0.766,-0.6428,0.6428,0.766,94.9662,74.7137)"
-   style="fill:#ffffff"> 40</text>
+   style="fill:#ffffff"> 320</text>
 
 					<text
    id="text926"
    class="st43 st45"
    transform="matrix(0.6428,-0.766,0.766,0.6428,68.5621,102.9684)"
-   style="fill:#ffffff">50</text>
+   style="fill:#ffffff">310</text>
 
 					<text
    id="text928"
    class="st43 st45"
    transform="matrix(0.5,-0.866,0.866,0.5,46.3945,136.6556)"
-   style="fill:#ffffff">60</text>
+   style="fill:#ffffff">300</text>
 
 					<text
    id="text930"
    class="st43 st45"
    transform="rotate(-70.001229,139.22465,65.12325)"
-   style="fill:#ffffff">70</text>
+   style="fill:#ffffff">280</text>
 
 					<text
    id="text932"
    class="st43 st45"
    transform="matrix(0.1736,-0.9848,0.9848,0.1736,21.1045,212.918)"
-   style="fill:#ffffff">80</text>
+   style="fill:#ffffff">270</text>
 
 					<text
    id="text934"
    class="st43 st45"
    transform="rotate(-90,135.96295,117.21225)"
-   style="fill:#ffffff">90</text>
+   style="fill:#ffffff">260</text>
 
 					<text
    id="text936"
@@ -1927,43 +1927,43 @@ z
    id="text938"
    class="st43 st45"
    transform="rotate(-109.99877,135.34787,154.85351)"
-   style="fill:#ffffff">110</text>
+   style="fill:#ffffff">250</text>
 
 					<text
    id="text940"
    class="st43 st45"
    transform="matrix(-0.5,-0.866,0.866,-0.5,54.738,370.7942)"
-   style="fill:#ffffff">120</text>
+   style="fill:#ffffff">240</text>
 
 					<text
    id="text942"
    class="st43 st45"
    transform="matrix(-0.6428,-0.766,0.766,-0.6428,79.2876,402.8128)"
-   style="fill:#ffffff">130</text>
+   style="fill:#ffffff">230</text>
 
 					<text
    id="text944"
    class="st43 st45"
    transform="matrix(-0.766,-0.6428,0.6428,-0.766,109.0246,430.0818)"
-   style="fill:#ffffff">140</text>
+   style="fill:#ffffff">220</text>
 
 					<text
    id="text946"
    class="st43 st45"
    transform="matrix(-0.866,-0.5,0.5,-0.866,143.0454,451.7725)"
-   style="fill:#ffffff">150</text>
+   style="fill:#ffffff">210</text>
 
 					<text
    id="text948"
    class="st43 st45"
    transform="rotate(-160.00123,131.34736,217.71717)"
-   style="fill:#ffffff">160</text>
+   style="fill:#ffffff">200</text>
 
 					<text
    id="text950"
    class="st43 st45"
    transform="matrix(-0.9848,-0.1736,0.1736,-0.9848,219.7032,475.9743)"
-   style="fill:#ffffff">170</text>
+   style="fill:#ffffff">190</text>
 
 					<text
    id="text952"
@@ -1975,116 +1975,116 @@ z
    id="text954"
    class="st43 st45"
    transform="matrix(-0.9848,0.1736,-0.1736,-0.9848,300.0161,472.4969)"
-   style="fill:#ffffff">190</text>
+   style="fill:#ffffff">170</text>
 
 					<text
    id="text956"
    class="st43 st45"
    transform="rotate(160.00123,128.66387,260.0307)"
-   style="fill:#ffffff">200</text>
+   style="fill:#ffffff">160</text>
 
 					<text
    id="text958"
    class="st43 st45"
    transform="matrix(-0.866,0.5,-0.5,-0.866,374.2942,441.761)"
-   style="fill:#ffffff">210</text>
+   style="fill:#ffffff">150</text>
 
 					<text
    id="text960"
    class="st43 st45"
    transform="matrix(-0.766,0.6428,-0.6428,-0.766,406.3128,417.211)"
-   style="fill:#ffffff">220</text>
+   style="fill:#ffffff">140</text>
 
 					<text
    id="text962"
    class="st43 st45"
    transform="matrix(-0.6428,0.766,-0.766,-0.6428,433.5818,387.4739)"
-   style="fill:#ffffff">230</text>
+   style="fill:#ffffff">130</text>
 
 					<text
    id="text964"
    class="st43 st45"
    transform="matrix(-0.5,0.866,-0.866,-0.5,455.2725,353.4536)"
-   style="fill:#ffffff">240</text>
+   style="fill:#ffffff">120</text>
 
 					<text
    id="text966"
    class="st43 st45"
    transform="rotate(109.99877,124.66379,322.89878)"
-   style="fill:#ffffff">250</text>
+   style="fill:#ffffff">110</text>
 
 					<text
    id="text968"
    class="st43 st45"
    transform="matrix(-0.1736,0.9848,-0.9848,-0.1736,479.4743,276.7961)"
-   style="fill:#ffffff">260</text>
+   style="fill:#ffffff">100</text>
 
 					<text
    id="text970"
    class="st43 st45"
    transform="rotate(90,122.3802,358.8684)"
-   style="fill:#ffffff">270</text>
+   style="fill:#ffffff">90</text>
 
 					<text
    id="text972"
    class="st43 st45"
    transform="matrix(0.1736,0.9848,-0.9848,0.1736,475.997,196.4843)"
-   style="fill:#ffffff">280</text>
+   style="fill:#ffffff">80</text>
 
 					<text
    id="text974"
    class="st43 st45"
    transform="rotate(70.001229,119.11776,410.23626)"
-   style="fill:#ffffff">290</text>
+   style="fill:#ffffff">70</text>
 
 					<text
    id="text976"
    class="st43 st45"
    transform="matrix(0.5,0.866,-0.866,0.5,445.261,122.2053)"
-   style="fill:#ffffff">300</text>
+   style="fill:#ffffff">60</text>
 
 					<text
    id="text978"
    class="st43 st45"
    transform="matrix(0.6428,0.766,-0.766,0.6428,420.711,90.1872)"
-   style="fill:#ffffff">310</text>
+   style="fill:#ffffff">50</text>
 
 					<text
    id="text980"
    class="st43 st45"
    transform="matrix(0.766,0.6428,-0.6428,0.766,390.9739,62.9179)"
-   style="fill:#ffffff">320</text>
+   style="fill:#ffffff">40</text>
 
 					<text
    id="text982"
    class="st43 st45"
    transform="matrix(0.866,0.5,-0.5,0.866,356.9536,41.227)"
-   style="fill:#ffffff">330</text>
+   style="fill:#ffffff">30</text>
 
 					<text
    id="text984"
    class="st43 st45"
    transform="rotate(19.998771,86.752705,919.4515)"
-   style="fill:#ffffff">340</text>
+   style="fill:#ffffff">20</text>
 
 					<text
    id="text986"
    class="st43 st45"
    transform="matrix(0.9848,0.1736,-0.1736,0.9848,280.2961,17.0263)"
-   style="fill:#ffffff">350</text>
+   style="fill:#ffffff">10</text>
 
     </g>
 
 				<g
    id="English"
    style="display:inline;fill:#ffffff">
-      <text
-   id="txtCardinalLeft"
-   class="st43 st44"
-   transform="rotate(90)"
-   style="fill:#ffffff"
-   x="237.54623"
-   y="-82.359398">E</text>
+   <text
+      id="txtCardinalLeft"
+      class="st43 st44"
+      transform="matrix(0,1,1,0,0,0)"
+      style="fill:#ffffff"
+      x="230.9922"
+      y="116.71877">W</text>
 
     </g>
 
