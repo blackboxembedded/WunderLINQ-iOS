@@ -764,14 +764,16 @@ class BLEBus {
             // Ambient Temperature
             if (lastMessage[1] != 0xFF){
                 let ambientTemp:Double = Double(lastMessage[1]) * 0.50 - 40
-                motorcycleData.setambientTemperature(ambientTemperature: ambientTemp)
-                if (ambientTemp <= 0.0){
-                    faults.setIceWarningActive(active: true)
-                } else {
-                    faults.setIceWarningActive(active: false)
+                if (ambientTemp >= -20.0 && ambientTemp <= 45.0) { // Filter out improbable values
+                    motorcycleData.setambientTemperature(ambientTemperature: ambientTemp)
+                    if (ambientTemp <= 0.0){
+                        faults.setIceWarningActive(active: true)
+                    } else {
+                        faults.setIceWarningActive(active: false)
+                    }
                 }
             }
-        active:
+            
             // LAMP Faults
             if (((lastMessage[3]  >> 4) & 0x0F) != 0xF) {
                 // LAMPF 1
