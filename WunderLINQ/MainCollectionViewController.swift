@@ -1118,6 +1118,17 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                 let dataLength = dataBytes.count / MemoryLayout<UInt8>.size
                 var dataArray = [UInt8](repeating: 0, count: dataLength)
                 (dataBytes as NSData).getBytes(&dataArray, length: dataLength * MemoryLayout<Int16>.size)
+                
+                // Log raw messages
+                if UserDefaults.standard.bool(forKey: "debug_logging_preference") {
+                    var messageHexString = ""
+                    for i in 0 ..< dataArray.count {
+                        messageHexString += String(format: "%02X", dataArray[i])
+                    }
+                    let formattedEntry = "DEBUG: " + Date().toString() + "," + messageHexString
+                    print(formattedEntry)
+                }
+                
                 let msgID = dataArray[0]
                 if (dataArray[0] == 0x04){
                     if (!motorcycleData.getHasFocus()){

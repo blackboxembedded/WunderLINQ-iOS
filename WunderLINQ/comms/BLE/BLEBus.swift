@@ -23,16 +23,6 @@ class BLEBus {
     class func parseMessage(_ data:[UInt8]) {
         let motorcycleData = MotorcycleData.shared
         let faults = Faults.shared
-
-        // Log raw messages
-        if UserDefaults.standard.bool(forKey: "debug_logging_preference") {
-            var messageHexString = ""
-            for i in 0 ..< data.count {
-                messageHexString += String(format: "%02X", data[i])
-            }
-            let formattedEntry = "DEBUG: " + Date().toString() + "," + messageHexString
-            print(StaticString("%{PUBLIC}@"), formattedEntry)
-        }
         
         let lastMessage = data
         switch lastMessage[0] {
