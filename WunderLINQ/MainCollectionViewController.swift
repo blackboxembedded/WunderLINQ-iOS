@@ -1153,7 +1153,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                     motorcycleData.setHasFocus(hasFocus: true)
                     lastControlMessage = Int(Date().timeIntervalSince1970 * 1000)
                 } else {
-                    if (motorcycleData.getHasFocus() && ( Int(Date().timeIntervalSince1970 * 1000) - lastControlMessage > 500)){
+                    if (motorcycleData.getHasFocus() && ( Int(Date().timeIntervalSince1970 * 1000) - lastControlMessage > 1000)){
                         if UserDefaults.standard.bool(forKey: "focus_indication_preference") {
                             print("Focus Gone")
                             // Return NavBar back to normal color
