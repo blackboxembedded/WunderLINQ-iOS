@@ -47,7 +47,7 @@ class DashViewController: UIViewController, UIWebViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("DashViewController: viewDidLoad()")
+        NSLog("DashViewController: viewDidLoad()")
         
         if UserDefaults.standard.bool(forKey: "display_brightness_preference") {
             UIScreen.main.brightness = CGFloat(1.0)
@@ -178,7 +178,7 @@ class DashViewController: UIViewController, UIWebViewDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print("DashViewController: viewWillAppear()")
+        NSLog("DashViewController: viewWillAppear()")
         setupScreenOrientation()
         //Read last used dashboard
         let lastSelection = UserDefaults.standard.string(forKey: "lastDashboard")
@@ -195,7 +195,7 @@ class DashViewController: UIViewController, UIWebViewDelegate {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        print("DashViewController: viewWillDisappear()")
+        NSLog("DashViewController: viewWillDisappear()")
         timer.invalidate()
         refreshTimer.invalidate()
         seconds = 0

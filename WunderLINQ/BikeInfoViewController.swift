@@ -54,7 +54,7 @@ class BikeInfoViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     
     @IBAction func resetPressed(_ sender: Any) {
         if (self.peripheral != nil && self.characteristic != nil){
-            print("BikeInfoViewController: Resetting Cluster Data Point")
+            NSLog("BikeInfoViewController: Resetting Cluster Data Point")
             switch (clusterResetTypePicker.selectedRow(inComponent: 0)){
             case 0: // Reset Cluster Average Speed
                 let writeData =  Data(_: wlqData.RESET_CLUSTER_SPEED_CMD())

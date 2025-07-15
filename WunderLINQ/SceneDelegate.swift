@@ -44,7 +44,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, SPTAppRemoteDelegate, S
     }()
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        print("SceneDelegate: willConnectTo")
+        NSLog("SceneDelegate: willConnectTo")
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
         
@@ -75,23 +75,23 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, SPTAppRemoteDelegate, S
     }
 
     func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
-        print("SceneDelegate: scene openURLContext")
+        NSLog("SceneDelegate: scene openURLContext")
         if let urlContext = URLContexts.first {
             handleIncomingURL(urlContext.url)
         }
     }
     
     func sceneWillEnterForeground(_ scene: UIScene) {
-        print("SceneDelegate: sceneWillEnterForeground")
+        NSLog("SceneDelegate: sceneWillEnterForeground")
     }
 
     func sceneDidBecomeActive(_ scene: UIScene) {
-        print("SceneDelegate: sceneDidBecomeActive")
+        NSLog("SceneDelegate: sceneDidBecomeActive")
         spotifyConnect()
     }
     
     func sceneWillResignActive(_ scene: UIScene) {
-        print("SceneDelegate: sceneWillResignActive")
+        NSLog("SceneDelegate: sceneWillResignActive")
         musicViewController.spotifyAppRemoteDisconnect()
         spotifyAppRemote.disconnect()
     }
@@ -128,21 +128,21 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, SPTAppRemoteDelegate, S
 
     private func handleIncomingURL(_ url: URL) {
         if url.scheme == "file" {
-            print("SceneDelegate: File URL received")
+            NSLog("SceneDelegate: File URL received")
             if let navigationController = window?.rootViewController as? UINavigationController {
                 let addWaypointVC = UIStoryboard.main.instantiateViewController(withIdentifier: "addWaypoint") as! AddWaypointViewController
                 addWaypointVC.importFile = url
                 navigationController.pushViewController(addWaypointVC, animated: true)
             }
         } else {
-            print("SceneDelegate: Other URL received: \(url.absoluteString)")
+            NSLog("SceneDelegate: Other URL received: \(url.absoluteString)")
             let parameters = spotifyAppRemote.authorizationParameters(from: url);
 
             if let access_token = parameters?[SPTAppRemoteAccessTokenKey] {
                 spotifyAppRemote.connectionParameters.accessToken = access_token
                 self.spotifyAccessToken = access_token
             } else if let errorDescription = parameters?[SPTAppRemoteErrorDescriptionKey] {
-                print("SceneDelegate: Error: \(errorDescription)")
+                NSLog("SceneDelegate: Error: \(errorDescription)")
                 musicViewController.showError(errorDescription)
             }
         }

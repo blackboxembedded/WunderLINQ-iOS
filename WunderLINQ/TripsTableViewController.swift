@@ -108,7 +108,7 @@ class TripsTableViewController: UITableViewController {
                 do {
                     try fileManager.removeItem(atPath: fileName)
                 } catch {
-                    print("TripsTableViewController: Could not delete file: \(error)")
+                    NSLog("TripsTableViewController: Could not delete file: \(error)")
                 }
                 self.readTrips()
                 self.tableView.reloadData()
@@ -147,7 +147,7 @@ class TripsTableViewController: UITableViewController {
             
             
         } catch {
-            print("TripsTableViewController: readTrips(): \(error.localizedDescription)")
+            NSLog("TripsTableViewController: readTrips(): \(error.localizedDescription)")
         }
     }
 }

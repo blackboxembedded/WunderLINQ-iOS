@@ -52,7 +52,7 @@ class Logger {
                     let fileURL = documentDirectory.appendingPathComponent("\(fileName)")
                     let fileManager = FileManager.default
                     if (!fileManager.fileExists(atPath: fileURL.path)) {
-                        print("Logger: FILE NOT AVAILABLE")
+                        NSLog("Logger: FILE NOT AVAILABLE")
                         initializeFile(fileURL: fileURL)
                     }
                     
@@ -308,17 +308,26 @@ class Logger {
                         deviceBattery = "\(motorcycleData.localBattery!)"
                     }
                     
-                    let entry = "\(latitude),\(longitude),\(altitude),\(gpsSpeed),\(gear),\(engineTemp),\(ambientTemp),\(frontTirePressure),\(rearTirePressure),\(odometer),\(voltage),\(throttlePosition),\(frontBrakes),\(rearBrakes),\(shifts),\(vin),\(ambientLight),\(tripOne),\(tripTwo),\(tripAuto),\(speed),\(avgSpeed),\(currentConsumption),\(fuelEconomyOne),\(fuelEconomyTwo),\(fuelRange),\(leanAngle),\(gForce),\(bearing),\(barometricPressure),\(rpm),\(leanAngleBike),\(rearSpeed),\(deviceBattery)"
-                    formattedEntry = Date().toString() + "," + entry
+                    let fields: [Any] = [
+                        latitude, longitude, altitude, gpsSpeed, gear, engineTemp, ambientTemp,
+                        frontTirePressure, rearTirePressure, odometer, voltage, throttlePosition,
+                        frontBrakes, rearBrakes, shifts, vin, ambientLight,
+                        tripOne, tripTwo, tripAuto, speed, avgSpeed, currentConsumption,
+                        fuelEconomyOne, fuelEconomyTwo, fuelRange, leanAngle, gForce, bearing,
+                        barometricPressure, rpm, leanAngleBike, rearSpeed, deviceBattery
+                    ]
+
+                    let quotedEntry = fields.map { "\"\($0)\"" }.joined(separator: ",")
+                    formattedEntry = "\"\(Date().toString())\"," + quotedEntry
                     do {
                         // Write to log
                         try formattedEntry.appendLineToURL(fileURL: fileURL as URL)
                         
                     } catch {
-                        print("Logger: error writing to url:\(fileURL), ERROR: \(error)")
+                        NSLog("Logger: error writing to url:\(fileURL), ERROR: \(error)")
                     }
                 } else {
-                    print("Logger: New Day")
+                    NSLog("Logger: New Day")
                     let dateFormatter = DateFormatter()
                     dateFormatter.dateFormat = "yyyyMMdd-HH-mm-ss"
                     let dateString = dateFormatter.string(from: Date())
@@ -331,7 +340,7 @@ class Logger {
                     let fileURL = documentDirectory.appendingPathComponent("\(fileName)")
                     let fileManager = FileManager.default
                     if (!fileManager.fileExists(atPath: fileURL.path)) {
-                        print("Logger: FILE NOT AVAILABLE")
+                        NSLog("Logger: FILE NOT AVAILABLE")
                         initializeFile(fileURL: fileURL)
                     }
                 }
@@ -398,7 +407,7 @@ class Logger {
         case 3:
             pressureUnit = "psi"
         default:
-            print("Logger: Unknown pressure unit setting")
+            NSLog("Logger: Unknown pressure unit setting")
         }
         if UserDefaults.standard.integer(forKey: "temperature_unit_preference") == 1 {
             temperatureUnit = "F"
@@ -419,16 +428,54 @@ class Logger {
         case 3:
             consumptionUnit = "km/L"
         default:
-            print("Logger: Unknown consumption unit setting")
+            NSLog("Logger: Unknown consumption unit setting")
         }
         
-        let header = "\(dateHeader) (\(dateFormat)),\(latitudeHeader),\(longitudeHeader),\(altitudeHeader) (\(altitudeUnit)),\(gpsSpeedHeader) (\(speedUnit)),\(gearHeader),\(engineTemperatureHeader) (\(temperatureUnit)),\(ambientTemperatureHeader) (\(temperatureUnit)),\(frontPressureHeader) (\(pressureUnit)),\(rearPressureHeader) (\(pressureUnit)),\(odometerHeader) (\(distanceUnit)),\(voltageHeader) (V),\(throttlePositionHeader) (%),\(frontBrakesHeader),\(rearBrakesHeader),\(shiftsHeader),\(vinHeader),\(ambientLightHeader),\(tripOneHeader) (\(distanceUnit)),\(tripTwoHeader) (\(distanceUnit)),\(tripAutoHeader) (\(distanceUnit)),\(speedHeader) (\(speedUnit)),\(averageSpeedHeader) (\(speedUnit)),\(currentConsumptionHeader) (\(consumptionUnit)),\(fuelEconomyOneHeader) (\(consumptionUnit)),\(fuelEconomyTwoHeader) (\(consumptionUnit)),\(fuelRangeHeader) (\(distanceUnit)),\(leanAngleHeader),\(gForceHeader),\(bearingHeader),\(barometricPressureHeader) (kPa),\(rpmHeader),\(leanAngleBikeHeader),\(rearSpeedHeader) (\(speedUnit)),\(deviceBatteryHeader) (%)"
+        let headers = [
+            "\(dateHeader) (\(dateFormat))",
+            latitudeHeader,
+            longitudeHeader,
+            "\(altitudeHeader) (\(altitudeUnit))",
+            "\(gpsSpeedHeader) (\(speedUnit))",
+            gearHeader,
+            "\(engineTemperatureHeader) (\(temperatureUnit))",
+            "\(ambientTemperatureHeader) (\(temperatureUnit))",
+            "\(frontPressureHeader) (\(pressureUnit))",
+            "\(rearPressureHeader) (\(pressureUnit))",
+            "\(odometerHeader) (\(distanceUnit))",
+            "\(voltageHeader) (V)",
+            "\(throttlePositionHeader) (%)",
+            frontBrakesHeader,
+            rearBrakesHeader,
+            shiftsHeader,
+            vinHeader,
+            ambientLightHeader,
+            "\(tripOneHeader) (\(distanceUnit))",
+            "\(tripTwoHeader) (\(distanceUnit))",
+            "\(tripAutoHeader) (\(distanceUnit))",
+            "\(speedHeader) (\(speedUnit))",
+            "\(averageSpeedHeader) (\(speedUnit))",
+            "\(currentConsumptionHeader) (\(consumptionUnit))",
+            "\(fuelEconomyOneHeader) (\(consumptionUnit))",
+            "\(fuelEconomyTwoHeader) (\(consumptionUnit))",
+            "\(fuelRangeHeader) (\(distanceUnit))",
+            leanAngleHeader,
+            gForceHeader,
+            bearingHeader,
+            "\(barometricPressureHeader) (kPa)",
+            rpmHeader,
+            leanAngleBikeHeader,
+            "\(rearSpeedHeader) (\(speedUnit))",
+            "\(deviceBatteryHeader) (%)"
+        ]
+
+        let header = headers.map { "\"\($0)\"" }.joined(separator: ",")
         do {
             // Write to log
             try header.appendLineToURL(fileURL: fileURL as URL)
             
         } catch {
-            print("Logger: error writing to url:\(fileURL), ERROR: \(error)")
+            NSLog("Logger: error writing to url:\(fileURL), ERROR: \(error)")
         }
     }
     

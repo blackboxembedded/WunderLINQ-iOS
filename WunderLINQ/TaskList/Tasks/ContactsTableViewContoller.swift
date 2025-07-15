@@ -41,18 +41,18 @@ class ContactsTableViewController: UITableViewController {
             self.retrieveContactsWithStore(store: store)
         case .denied:
             // Not allowed
-            print("ContactsTableViewController: Not Allowed to access contacts")
+            NSLog("ContactsTableViewController: Not Allowed to access contacts")
         case .restricted, .notDetermined:
             store.requestAccess(for: .contacts) { granted, error in
                 if granted {
                     self.retrieveContactsWithStore(store: store)
                 } else {
                     // Not allowed
-                    print("ContactsTableViewController: Not Allowed to access contacts")
+                    NSLog("ContactsTableViewController: Not Allowed to access contacts")
                 }
             }
         default:
-            print("ContactsTableViewController: Unknown status to access contacts")
+            NSLog("ContactsTableViewController: Unknown status to access contacts")
         }
     }
     
@@ -107,7 +107,7 @@ class ContactsTableViewController: UITableViewController {
             }
         }
         catch{
-            print("ContactsTableViewController: Error enumerating contacts")
+            NSLog("ContactsTableViewController: Error enumerating contacts")
         }
         self.tableView.reloadData()
     }

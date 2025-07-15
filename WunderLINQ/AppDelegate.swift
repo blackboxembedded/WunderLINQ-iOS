@@ -37,7 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        print("AppDelegate: didFinishLaunchingWithOptions")
+        NSLog("AppDelegate: didFinishLaunchingWithOptions")
         registerDefaultsFromSettingsBundle()
         application.isIdleTimerDisabled = true
         GMSServices.provideAPIKey(Secrets.google_maps_api_key)
@@ -71,15 +71,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
-        print("AppDelegate: applicationWillResignActive")
+        NSLog("AppDelegate: applicationWillResignActive")
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
-        print("AppDelegate: applicationDidBecomeActive")
+        NSLog("AppDelegate: applicationDidBecomeActive")
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
-        print("AppDelegate: applicationWillTerminate")
+        NSLog("AppDelegate: applicationWillTerminate")
         UIScreen.main.brightness = CGFloat(UserDefaults.standard.float(forKey: "systemBrightness"))
     }
 

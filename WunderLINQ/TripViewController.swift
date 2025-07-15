@@ -127,7 +127,7 @@ class TripViewController: UIViewController, UITextFieldDelegate {
             do {
                 try fileManager.removeItem(atPath: filename)
             } catch {
-                print("TripViewController: Could not delete file: \(error)")
+                NSLog("TripViewController: Could not delete file: \(error)")
             }
             self.performSegue(withIdentifier: "tripToTrips", sender: [])
         }))
@@ -239,7 +239,7 @@ class TripViewController: UIViewController, UITextFieldDelegate {
                 }
             
                 if((lineNumber > 1) && (lineNumber < csvRows.count)) {
-                    if !(row[1].contains("No Fix") || row[2].contains("No Fix") || row[4].contains("No Fix")){
+                    if !(row[1].contains("No Fix") || row[2].contains("No Fix")){
                         if let lat = row[1].toDouble(),let lon = row[2].toDouble() {
                             path.add(CLLocationCoordinate2D(latitude: lat, longitude: lon))
                             let location = CLLocation(latitude: lat, longitude: lon)
@@ -249,7 +249,8 @@ class TripViewController: UIViewController, UITextFieldDelegate {
                                 totalDistance += lastLocation!.distance(from: location)
                             }
                         }
-                        
+                    }
+                    if !row[4].contains("No Fix"){
                         if let speed = row[4].toDouble() {
                             if speed > 0 {
                                 speeds.append(speed)
@@ -258,8 +259,6 @@ class TripViewController: UIViewController, UITextFieldDelegate {
                                 }
                             }
                         }
-                    } else {
-                        //no Fix
                     }
                 }
                 if ((lineNumber > 1) && (lineNumber < csvRows.count)) {
@@ -471,7 +470,7 @@ class TripViewController: UIViewController, UITextFieldDelegate {
 
     func readDataFromCSV(fileName:String, fileType: String)-> String!{
         if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
-            print("TripViewController: \(fileName).\(fileType)")
+            NSLog("TripViewController: \(fileName).\(fileType)")
             let fileURL = dir.appendingPathComponent("\(fileName).\(fileType)")
             
             //reading
@@ -496,13 +495,51 @@ class TripViewController: UIViewController, UITextFieldDelegate {
     
     func csv(data: String) -> [[String]] {
         var result: [[String]] = []
-        let rows = data.components(separatedBy: "\n")
-        for row in rows {
-            let columns = row.components(separatedBy: ",")
+
+        let rows = data.components(separatedBy: .newlines)
+        for row in rows where !row.isEmpty {
+            var columns: [String] = []
+            var value = ""
+            var inQuotes = false
+            var chars = row.makeIterator()
+            var c = chars.next()
+
+            while let current = c {
+                if current == "\"" {
+                    if inQuotes {
+                        let next = chars.next()
+                        if next == "\"" {
+                            // Escaped quote
+                            value.append("\"")
+                            c = chars.next()
+                            continue
+                        } else {
+                            // Closing quote
+                            inQuotes = false
+                            c = next
+                            continue
+                        }
+                    } else {
+                        // Opening quote
+                        inQuotes = true
+                        c = chars.next()
+                        continue
+                    }
+                } else if current == "," && !inQuotes {
+                    columns.append(value)
+                    value = ""
+                } else {
+                    value.append(current)
+                }
+                c = chars.next()
+            }
+            columns.append(value) // Append the last value
             result.append(columns)
         }
+
         return result
     }
+
 
     func updateFileList(){
         // Get the document directory url
@@ -532,9 +569,9 @@ class TripViewController: UIViewController, UITextFieldDelegate {
                 let newURL = try fileManager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent((labelLabel.text ?? "empty") + ".csv")
                 
             try fileManager.moveItem(at: oldURL, to: newURL)
-                    print("TripViewController: File renamed successfully")
+                    NSLog("TripViewController: File renamed successfully")
             } catch {
-                    print("TripViewController: Error renaming file: \(error)")
+                    NSLog("TripViewController: Error renaming file: \(error)")
             }
         }
     }

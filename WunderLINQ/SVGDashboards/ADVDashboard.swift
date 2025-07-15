@@ -39,7 +39,7 @@ class ADVDashboard {
         // Load the XML file from the project bundle
         guard let url = Bundle.main.url(forResource: dashboardSVG, withExtension: "svg"),
               let xml = XML(contentsOf: url) else {
-            print("Error: Unable to load or parse the XML file.")
+            NSLog("Error: Unable to load or parse the XML file.")
             return nil
         }
         
@@ -47,7 +47,7 @@ class ADVDashboard {
             svgTag.attributes["height"] = "\(height)"
             svgTag.attributes["width"] = "\(width)"
         } else {
-            print("svgTag not found.")
+            NSLog("svgTag not found.")
         }
 
         //Speed
@@ -76,13 +76,13 @@ class ADVDashboard {
                 }
             }
         default:
-            print("StandardDashboard: Unknown speed unit setting")
+            NSLog("StandardDashboard: Unknown speed unit setting")
         }
         if (speedValue != nil){
             if let speedTag = findElement(byID: "speed", in: xml) {
                 speedTag.text = "\(Utils.toZeroDecimalString(speedValue!))"
             } else {
-                print("speedTag not found.")
+                NSLog("speedTag not found.")
             }
         }
         
@@ -92,7 +92,7 @@ class ADVDashboard {
         if let speedUnitTag = findElement(byID: "speedUnit", in: xml) {
             speedUnitTag.text = distanceTimeUnit
         } else {
-            print("speedUnitTag not found.")
+            NSLog("speedUnitTag not found.")
         }
         
         //Gear
@@ -109,7 +109,7 @@ class ADVDashboard {
                 }
                 gearTag.text = gearValue
             } else {
-                print("gearTag not found.")
+                NSLog("gearTag not found.")
             }
         }
         
@@ -128,7 +128,7 @@ class ADVDashboard {
                 ambientTempValue = "\(Utils.toZeroDecimalString(ambientTemp))\(temperatureUnit)"
                 ambientTempTag.text = ambientTempValue
             } else {
-                print("ambientTempTag not found.")
+                NSLog("ambientTempTag not found.")
             }
         }
         
@@ -174,7 +174,7 @@ class ADVDashboard {
                             let modString = regex.stringByReplacingMatches(in: style!, options: [], range: range, withTemplate: "fill:#e20505;")
                             dataValueTag.attributes["style"] = modString
                         } else {
-                            print("dataValueTag not found.")
+                            NSLog("dataValueTag not found.")
                         }
                     }
                 }
@@ -213,7 +213,7 @@ class ADVDashboard {
                 timeValue = ("\(formatter.string(from: motorcycleData.time!))")
                 clockTag.text = timeValue
             } else {
-                print("clockTag not found.")
+                NSLog("clockTag not found.")
             }
         }
         
@@ -222,7 +222,7 @@ class ADVDashboard {
             if let iconFaultTag = findElement(byID: "iconFault", in: xml) {
                 iconFaultTag.attributes["style"] = "display:inline"
             } else {
-                print("iconFaultTag not found.")
+                NSLog("iconFaultTag not found.")
             }
         }
         
@@ -231,7 +231,7 @@ class ADVDashboard {
             if let iconFuelTag = findElement(byID: "iconFuel", in: xml) {
                 iconFuelTag.attributes["style"] = "display:inline"
             } else {
-                print("iconFuelTag not found.")
+                NSLog("iconFuelTag not found.")
             }
         }
         
@@ -247,7 +247,7 @@ class ADVDashboard {
             }
             compassTag.attributes["transform"] = "rotate(" + bearing + centerRadius
         } else {
-            print("compassTag not found.")
+            NSLog("compassTag not found.")
         }
 
         return xml // Return the modified XML object

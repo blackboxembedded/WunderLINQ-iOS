@@ -33,10 +33,10 @@ class SoundManager {
                 player?.prepareToPlay()
                 player?.play()
             } catch {
-                print("Error: Could not load file")
+                NSLog("Error: Could not load file")
             }
         } else {
-            print("Error: File not found")
+            NSLog("Error: File not found")
         }
     }
 }

@@ -84,7 +84,7 @@ class FaultsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("row: \(indexPath.row)")
+        NSLog("row: \(indexPath.row)")
     }
     
     override var keyCommands: [UIKeyCommand]? {

@@ -205,7 +205,7 @@ class ScenicAPI {
         var request = URLRequest(url: URL(string: urlString)!)
         request.httpMethod = "POST"
         let data = params.data(using: .utf8)
-        print("JsonData")
+        NSLog("JsonData")
         //request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
         request.httpBody = data
         
@@ -213,7 +213,7 @@ class ScenicAPI {
         dataTask = defaultSession.dataTask(with: request, completionHandler: {
             data, response, error in
             if let error = error {
-                print(error.localizedDescription)
+                NSLog(error.localizedDescription)
             }
             else if let httpResponse = response as? HTTPURLResponse {
                 if httpResponse.statusCode == 200 {
@@ -226,17 +226,17 @@ class ScenicAPI {
                                     compHandler(false, gpxurl)
                                     return
                                 } else {
-                                    print("Results key not found in dictionary")
+                                    NSLog("Results key not found in dictionary")
                                 }
                             }
                             else {
-                                print("Could not serialize JSON")
+                                NSLog("Could not serialize JSON")
                             }
                         } else {
-                            print("JSON Error")
+                            NSLog("JSON Error")
                         }
                     } catch let error as NSError {
-                        print("Error parsing results: \(error.localizedDescription)")
+                        NSLog("Error parsing results: \(error.localizedDescription)")
                     }
                 }
             }
@@ -258,7 +258,7 @@ class ScenicAPI {
                     presentFromController(selectedVC, animated: animated, completion: completion)
                 }
                 else {
-                    print("Presenting")
+                    NSLog("Presenting")
                     controller.present(controller, animated: animated, completion: completion);
                 }
             }

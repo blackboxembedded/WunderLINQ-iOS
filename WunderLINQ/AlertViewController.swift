@@ -66,7 +66,7 @@ class AlertViewController: UIViewController {
         case 3:
             exit(0)
         default:
-            print("AlertViewController: Unknown Alert ID")
+            NSLog("AlertViewController: Unknown Alert ID")
         }
     }
     
@@ -90,7 +90,7 @@ class AlertViewController: UIViewController {
         case 3:
             exit(0)
         default:
-            print("AlertViewController: Unknown Alert ID")
+            NSLog("AlertViewController: Unknown Alert ID")
         }
     }
     
@@ -128,7 +128,7 @@ class AlertViewController: UIViewController {
             self.navigationItem.title = NSLocalizedString("alert_title_ignition", comment: "")
             alertLabel.text = NSLocalizedString("alert_label_ignition", comment: "")
         default:
-            print("AlertViewController: Unknown Alert ID")
+            NSLog("AlertViewController: Unknown Alert ID")
         }
         
         //Dismiss ViewController after 10secs

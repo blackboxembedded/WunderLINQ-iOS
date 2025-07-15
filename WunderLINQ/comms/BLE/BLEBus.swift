@@ -219,7 +219,7 @@ class BLEBus {
                     case 3:
                         frontPressure = Utils.barToPsi(frontPressure)
                     default:
-                        print("Unknown pressure unit setting")
+                        NSLog("Unknown pressure unit setting")
                     }
                     if frontPressure <= UserDefaults.standard.double(forKey: "tpm_threshold_preference"){
                         faults.setFrontTirePressureCriticalActive(active: true)
@@ -246,7 +246,7 @@ class BLEBus {
                     case 3:
                         rearPressure = Utils.barToPsi(rearPressure)
                     default:
-                        print("Unknown pressure unit setting")
+                        NSLog("Unknown pressure unit setting")
                     }
                     if rearPressure <= UserDefaults.standard.double(forKey: "tpm_threshold_preference"){
                         faults.setRearTirePressureCriticalActive(active: true)
@@ -404,7 +404,12 @@ class BLEBus {
             if (lastMessage[3] != 0xFF){
                 let minPosition:Double = 36;
                 let maxPosition:Double = 236;
-                let throttlePosition = ((Double(lastMessage[3]) - minPosition) * 100) / (maxPosition - minPosition)
+                var throttlePosition = ((Double(lastMessage[3]) - minPosition) * 100) / (maxPosition - minPosition)
+                if (throttlePosition < 0 ){
+                    throttlePosition = 0
+                } else if (throttlePosition > 100 ){
+                    throttlePosition = 100
+                }
                 motorcycleData.setthrottlePosition(throttlePosition: throttlePosition)
             }
             

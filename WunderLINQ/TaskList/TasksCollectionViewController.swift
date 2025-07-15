@@ -430,7 +430,7 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
             performSegue(withIdentifier: "taskGridToFaults", sender: self)
             break
         default:
-            print("TasksCollectionViewController: Unknown Task")
+            NSLog("TasksCollectionViewController: Unknown Task")
         }
         loadTasks()
         self.collectionView!.reloadData()
@@ -633,24 +633,24 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
             .appendingPathComponent("waypoints.sqlite")
         // Opening the database
         if sqlite3_open(databaseURL.path, &db) != SQLITE_OK {
-            print("TasksCollectionViewController: error opening database")
+            NSLog("TasksCollectionViewController: error opening database")
         }
         // Creating table
         if sqlite3_exec(db, "CREATE TABLE IF NOT EXISTS records (id INTEGER PRIMARY KEY AUTOINCREMENT, date TEXT, latitude TEXT, longitude TEXT, elevation TEXT, label TEXT)", nil, nil, nil) != SQLITE_OK {
             let errmsg = String(cString: sqlite3_errmsg(db)!)
-            print("TasksCollectionViewController: error creating table: \(errmsg)")
+            NSLog("TasksCollectionViewController: error creating table: \(errmsg)")
         }
         // Update table if needed
         let updateStatementString = "ALTER TABLE records ADD COLUMN elevation TEXT"
         var updateStatement: OpaquePointer?
         if sqlite3_prepare_v2(db, updateStatementString, -1, &updateStatement, nil) == SQLITE_OK {
             if sqlite3_step(updateStatement) == SQLITE_DONE {
-                print("TasksCollectionViewController: Table updated successfully")
+                NSLog("TasksCollectionViewController: Table updated successfully")
             } else {
-                print("TasksCollectionViewController: Error updating table")
+                NSLog("TasksCollectionViewController: Error updating table")
             }
         } else {
-            print("TasksCollectionViewController: Error preparing update statement")
+            NSLog("TasksCollectionViewController: Error preparing update statement")
         }
         
         updateDisplay()
@@ -687,7 +687,7 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
-        print("TasksCollectionViewController: viewWillTransition")
+        NSLog("TasksCollectionViewController: viewWillTransition")
         self.loadTasks()
         coordinator.animate(alongsideTransition: nil) { _ in
             self.setupScreenOrientation()
@@ -698,7 +698,7 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print("TasksCollectionViewController: viewWillAppear")
+        NSLog("TasksCollectionViewController: viewWillAppear")
         if isTimerRunning == false {
             runTimer()
         }
@@ -779,7 +779,7 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
                 .appendingPathComponent("waypoints.sqlite")
             // Opening the database
             if sqlite3_open(databaseURL.path, &db) != SQLITE_OK {
-                print("TasksCollectionViewController: error opening database")
+                NSLog("TasksCollectionViewController: error opening database")
             }
             
             // Creating a statement
@@ -791,7 +791,7 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
             //preparing the query
             if sqlite3_prepare(db, queryString, -1, &stmt, nil) != SQLITE_OK{
                 let errmsg = String(cString: sqlite3_errmsg(db)!)
-                print("TasksCollectionViewController: error preparing insert: \(errmsg)")
+                NSLog("TasksCollectionViewController: error preparing insert: \(errmsg)")
                 return
             }
             
@@ -800,34 +800,34 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
             
             if sqlite3_bind_text(stmt, 1, date.utf8String, -1, nil) != SQLITE_OK{
                 let errmsg = String(cString: sqlite3_errmsg(db)!)
-                print("TasksCollectionViewController: failure binding name: \(errmsg)")
+                NSLog("TasksCollectionViewController: failure binding name: \(errmsg)")
                 return
             }
             if sqlite3_bind_double(stmt, 2, (currentLocation.coordinate.latitude)) != SQLITE_OK{
                 let errmsg = String(cString: sqlite3_errmsg(db)!)
-                print("TasksCollectionViewController: failure binding name: \(errmsg)")
+                NSLog("TasksCollectionViewController: failure binding name: \(errmsg)")
                 return
             }
             if sqlite3_bind_double(stmt, 3, (currentLocation.coordinate.longitude)) != SQLITE_OK{
                 let errmsg = String(cString: sqlite3_errmsg(db)!)
-                print("TasksCollectionViewController: failure binding name: \(errmsg)")
+                NSLog("TasksCollectionViewController: failure binding name: \(errmsg)")
                 return
             }
             if sqlite3_bind_double(stmt, 4, (currentLocation.altitude)) != SQLITE_OK{
                 let errmsg = String(cString: sqlite3_errmsg(db)!)
-                print("TasksCollectionViewController: failure binding name: \(errmsg)")
+                NSLog("TasksCollectionViewController: failure binding name: \(errmsg)")
                 return
             }
             if sqlite3_bind_text(stmt, 5, label, -1, nil) != SQLITE_OK{
                 let errmsg = String(cString: sqlite3_errmsg(db)!)
-                print("TasksCollectionViewController: failure binding name: \(errmsg)")
+                NSLog("TasksCollectionViewController: failure binding name: \(errmsg)")
                 return
             }
             
             //executing the query to insert values
             if sqlite3_step(stmt) != SQLITE_DONE {
                 let errmsg = String(cString: sqlite3_errmsg(db)!)
-                print("TasksCollectionViewController: failure inserting wapoint: \(errmsg)")
+                NSLog("TasksCollectionViewController: failure inserting wapoint: \(errmsg)")
                 return
             }
             self.showToast(message: NSLocalizedString("toast_waypoint_saved", comment: ""))
@@ -891,7 +891,7 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
     @objc func snapshot() {
         captureSession?.stopRunning()
         if ( cameraImage == nil ){
-            print("TasksCollectionViewController: No Image")
+            NSLog("TasksCollectionViewController: No Image")
         } else {
             addAsset(image: cameraImage!, location: motorcycleData.getLocation())
         }
@@ -908,9 +908,9 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
             }
         }, completionHandler: { success, error in
             if !success {
-                print("TasksCollectionViewController: Picture not Saved, error")
+                NSLog("TasksCollectionViewController: Picture not Saved, error")
             } else {
-                print("TasksCollectionViewController: Picture Saved")
+                NSLog("TasksCollectionViewController: Picture Saved")
                 if (UserDefaults.standard.bool(forKey: "photo_preview_enable_preference")){
                     DispatchQueue.main.async(){
                         [unowned self] in
@@ -933,12 +933,12 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
                     activeInput = input
                 }
             } catch {
-                print("TasksCollectionViewController: Error setting device video input: \(error)")
+                NSLog("TasksCollectionViewController: Error setting device video input: \(error)")
                 return false
             }
         }
         else {
-            print("TasksCollectionViewController: Front camera not available")
+            NSLog("TasksCollectionViewController: Front camera not available")
         }
         
         // Setup Microphone
@@ -950,7 +950,7 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
                 videoCaptureSession.addInput(micInput)
             }
         } catch {
-            print("TasksCollectionViewController: Error setting device audio input: \(error)")
+            NSLog("TasksCollectionViewController: Error setting device audio input: \(error)")
             return false
         }
         
@@ -964,7 +964,7 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
     
     //MARK:- Camera Session
     func startSession(orientation: AVCaptureVideoOrientation) {
-        print("TasksCollectionViewController: startSession()")
+        NSLog("TasksCollectionViewController: startSession()")
         if !videoCaptureSession.isRunning {
             videoQueue().async { [self] in
                 self.videoCaptureSession.startRunning()
@@ -975,7 +975,7 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
     }
     
     func stopSession() {
-        print("TasksCollectionViewController: stopSession()")
+        NSLog("TasksCollectionViewController: stopSession()")
         if videoCaptureSession.isRunning {
             videoQueue().async {
                 self.videoCaptureSession.stopRunning()
@@ -1011,7 +1011,7 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
     }
     
     func startCapture(orientation: AVCaptureVideoOrientation) {
-        print("TasksCollectionViewController: startCapture()")
+        NSLog("TasksCollectionViewController: startCapture()")
         startRecording(orientation: orientation)
     }
     
@@ -1025,7 +1025,7 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
     }
     
     func startRecording(orientation: AVCaptureVideoOrientation) {
-        print("TasksCollectionViewController: startRecording()")
+        NSLog("TasksCollectionViewController: startRecording()")
         if movieOutput.isRecording == false {
             let connection = movieOutput.connection(with: AVMediaType(rawValue: convertFromAVMediaType(AVMediaType.video)))
             if (connection?.isVideoOrientationSupported)! {
@@ -1043,7 +1043,7 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
                     device.isSmoothAutoFocusEnabled = false
                     device.unlockForConfiguration()
                 } catch {
-                    print("TasksCollectionViewController: Error setting configuration: \(error)")
+                    NSLog("TasksCollectionViewController: Error setting configuration: \(error)")
                 }
                 
             }
@@ -1058,7 +1058,7 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
     }
     
     func stopRecording() {
-        print("TasksCollectionViewController: stopRecording()")
+        NSLog("TasksCollectionViewController: stopRecording()")
         if movieOutput.isRecording == true {
             videoQueue().async {
                 self.movieOutput.stopRecording()
@@ -1072,7 +1072,7 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
     
     func fileOutput(_ captureOutput: AVCaptureFileOutput, didFinishRecordingTo outputFileURL: URL, from connections: [AVCaptureConnection], error: Error?) {
         if (error != nil) {
-            print("TasksCollectionViewController: Error recording movie: \(error!.localizedDescription)")
+            NSLog("TasksCollectionViewController: Error recording movie: \(error!.localizedDescription)")
         } else {
             let fileURL = outputURL as URL
             PHPhotoLibrary.shared().performChanges({
@@ -1092,7 +1092,7 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
                         alert.dismiss(animated: false, completion: nil)
                     }
                 } else {
-                    print("TasksCollectionViewController: In capture didfinish, didn't save")
+                    NSLog("TasksCollectionViewController: In capture didfinish, didn't save")
                 }
             }
             
