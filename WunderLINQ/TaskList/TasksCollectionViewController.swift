@@ -41,6 +41,7 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
     var captureSession: AVCaptureSession?
     var cameraImage: UIImage?
     
+    private let audioSession = AVAudioSession.sharedInstance()
     var videoCaptureSession = AVCaptureSession()
     let movieOutput = AVCaptureMovieFileOutput()
     var activeInput: AVCaptureDeviceInput!
@@ -921,10 +922,64 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
         })
     }
     
-    //MARK:- Setup Camera
+    //MARK: - Select Audio Source
+    // Prefer BT HFP, else fall back to built-in mic
+    private func configureAudioSessionForVideo() throws {
+        // Let *you* control the audio session (not AVCaptureSession)
+        videoCaptureSession.automaticallyConfiguresApplicationAudioSession = false
+
+        // Category/mode appropriate for video capture; allow BT HFP input
+        try audioSession.setCategory(.playAndRecord,
+                                     mode: .videoRecording,
+                                     options: [.allowBluetooth, .defaultToSpeaker])
+
+        // HFP is typically 8–16 kHz mono; asking for 16 kHz reduces resampling
+        try? audioSession.setPreferredSampleRate(16_000)
+
+        // Pick HFP if available; otherwise nil = system default (built-in mic)
+        if let hfp = audioSession.availableInputs?.first(where: { $0.portType == .bluetoothHFP }) {
+            try audioSession.setPreferredInput(hfp)
+        } else {
+            try audioSession.setPreferredInput(nil)
+        }
+
+        try audioSession.setActive(true, options: [])
+
+        // (Optional) log the actual route you got
+        let routeDesc = audioSession.currentRoute.inputs.map { "\($0.portType.rawValue) \($0.portName)" }.joined(separator: ", ")
+        NSLog("Audio route inputs: \(routeDesc)")
+    }
+
+    // Keep preferring HFP when the route changes (AirPods in/out, etc.)
+    @objc private func handleRouteChange(_ note: Notification) {
+        do {
+            if let hfp = audioSession.availableInputs?.first(where: { $0.portType == .bluetoothHFP }) {
+                try audioSession.setPreferredInput(hfp)
+            } else {
+                try audioSession.setPreferredInput(nil) // fallback (built-in)
+            }
+        } catch {
+            NSLog("Audio route change handling failed: \(error)")
+        }
+    }
+    
+    //MARK: - Setup Camera
     func setupSession(position: AVCaptureDevice.Position) -> Bool {
-        videoCaptureSession.sessionPreset = AVCaptureSession.Preset(rawValue: convertFromAVCaptureSessionPreset(AVCaptureSession.Preset.high))
-        // Setup Camera
+        videoCaptureSession.sessionPreset = .high
+
+        // 1) Configure audio session first (prefer BT HFP, else builtin)
+        do {
+            try configureAudioSessionForVideo()
+            NotificationCenter.default.addObserver(self,
+                selector: #selector(handleRouteChange(_:)),
+                name: AVAudioSession.routeChangeNotification,
+                object: audioSession)
+        } catch {
+            NSLog("Audio session config failed: \(error)")
+            // keep going; we'll still attempt builtin mic via default route
+        }
+
+        // 2) Setup Camera
         if let camera = AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: position) {
             do {
                 let input = try AVCaptureDeviceInput(device: camera)
@@ -933,36 +988,37 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
                     activeInput = input
                 }
             } catch {
-                NSLog("TasksCollectionViewController: Error setting device video input: \(error)")
+                NSLog("Error setting device video input: \(error)")
                 return false
             }
+        } else {
+            NSLog("Front camera not available")
         }
-        else {
-            NSLog("TasksCollectionViewController: Front camera not available")
-        }
-        
-        // Setup Microphone
-        let microphone = AVCaptureDevice.default(for: AVMediaType(rawValue: convertFromAVMediaType(AVMediaType.audio)))
-        
-        do {
-            let micInput = try AVCaptureDeviceInput(device: microphone!)
-            if videoCaptureSession.canAddInput(micInput) {
-                videoCaptureSession.addInput(micInput)
+
+        // 3) Setup Microphone (device is generic; AVAudioSession decides route)
+        if let microphone = AVCaptureDevice.default(for: .audio) {
+            do {
+                let micInput = try AVCaptureDeviceInput(device: microphone)
+                if videoCaptureSession.canAddInput(micInput) {
+                    videoCaptureSession.addInput(micInput)
+                }
+            } catch {
+                NSLog("Error setting device audio input: \(error)")
+                return false
             }
-        } catch {
-            NSLog("TasksCollectionViewController: Error setting device audio input: \(error)")
-            return false
+        } else {
+            NSLog("No audio capture device available")
         }
-        
-        // Movie output
+
+        // 4) Movie output
         if videoCaptureSession.canAddOutput(movieOutput) {
             videoCaptureSession.addOutput(movieOutput)
         }
-        
+
         return true
     }
     
-    //MARK:- Camera Session
+    //MARK: - Camera Session
     func startSession(orientation: AVCaptureVideoOrientation) {
         NSLog("TasksCollectionViewController: startSession()")
         if !videoCaptureSession.isRunning {
