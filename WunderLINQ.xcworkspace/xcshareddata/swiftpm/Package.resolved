@@ -15,8 +15,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/futuretap/InAppSettingsKit.git",
       "state" : {
-        "revision" : "b60959ac31106a404774f641e063096014269188",
-        "version" : "3.8.5"
+        "revision" : "95254be2affbd72e4c165c36431b2debf6d51913",
+        "version" : "3.9.2"
       }
     },
     {
@@ -24,8 +24,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/googlemaps/ios-maps-sdk",
       "state" : {
-        "revision" : "02f8f144ef266da44d50a68d1562ca051bac27cc",
-        "version" : "9.4.0"
+        "revision" : "e4c8ab764c05a7e50501f8f7b35a1f8b45203da2",
+        "version" : "10.4.0"
       }
     },
     {
@@ -33,8 +33,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/spotify/ios-sdk",
       "state" : {
-        "revision" : "af71ec0bcf3baa7ec88c72119b7fdf65eb91fd67",
-        "version" : "3.0.0"
+        "revision" : "0b3e54771738ad5e64f22c8e5e19ca76d6becc6c",
+        "version" : "5.0.1"
       }
     }
   ],
