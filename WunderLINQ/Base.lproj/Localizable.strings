@@ -89,7 +89,7 @@
 "toast_wlq_connected" = "WunderLINQ Connected";
 "toast_wlq_connected_body" = "WunderLINQ has connected. Tap to open the app.";
 //AccessoryViewController
-"accessory_title" = "Accessory Status";
+"accessory_title" = "PowerLINQ Status";
 "default_accessory_one_name" = "Channel One";
 "default_accessory_two_name" = "Channel Two";
 //HWSettingsViewController
@@ -140,11 +140,11 @@
 "fx1_long_label" = "FX1 Long Press";
 "fx2_label" = "FX2";
 "fx2_long_label" = "FX2 Long Press";
-"pdm_label" = "Power Controller";
-"pdm_channel1_label" = "PDM Channel 1";
-"pdm_channel2_label" = "PDM Channel 2";
-"pdm_channel3_label" = "PDM Channel 3";
-"pdm_channel4_label" = "PDM Channel 4";
+"pdm_label" = "PowerLINQ";
+"pdm_channel1_label" = "Channel 1";
+"pdm_channel2_label" = "Channel 2";
+"pdm_channel3_label" = "Channel 3";
+"pdm_channel4_label" = "Channel 4";
 
 //HWCustomizeViewController
 "usb_threshold_label" = "USB Port Control";
