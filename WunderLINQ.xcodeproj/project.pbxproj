@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		482C618362EA74729FE53E2A /* Pods_WunderLINQ.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA150AA674E4880933A5281B /* Pods_WunderLINQ.framework */; };
 		7E068BC320FD8A100076EAAD /* FaultsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E068BC220FD8A100076EAAD /* FaultsTableViewController.swift */; };
 		7E068BC7210190CB0076EAAD /* TripsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E068BC6210190CB0076EAAD /* TripsTableViewController.swift */; };
 		7E068BC9210190F00076EAAD /* WaypointsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E068BC8210190F00076EAAD /* WaypointsTableViewController.swift */; };
@@ -118,6 +117,7 @@
 		D8CEAEB52CF7D99C00AF5813 /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8CEAEB42CF7D99100AF5813 /* UIImage+Extensions.swift */; };
 		D8FA72F92CC1B65300C41674 /* sport-dashboard-portrait.svg in Resources */ = {isa = PBXBuildFile; fileRef = D8FA72F82CC1B65300C41674 /* sport-dashboard-portrait.svg */; };
 		D8FA72FA2CC1B65300C41674 /* adv-dashboard-portrait.svg in Resources */ = {isa = PBXBuildFile; fileRef = D8FA72F72CC1B65300C41674 /* adv-dashboard-portrait.svg */; };
+		EA95C82AF1CD3973C3145B60 /* Pods_WunderLINQ.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D523370980F27EC37F768636 /* Pods_WunderLINQ.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -131,8 +131,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		4E2D3628243A0841E630E538 /* Pods-WunderLINQ.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WunderLINQ.debug.xcconfig"; path = "Target Support Files/Pods-WunderLINQ/Pods-WunderLINQ.debug.xcconfig"; sourceTree = "<group>"; };
-		5B6A75C94A76FEE610EF7F86 /* Pods-WunderLINQ.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WunderLINQ.release.xcconfig"; path = "Target Support Files/Pods-WunderLINQ/Pods-WunderLINQ.release.xcconfig"; sourceTree = "<group>"; };
+		15FA4B8480924BB42C2EB1FF /* Pods-WunderLINQ.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WunderLINQ.release.xcconfig"; path = "Target Support Files/Pods-WunderLINQ/Pods-WunderLINQ.release.xcconfig"; sourceTree = "<group>"; };
+		374F39130DAEC86B3B1921C3 /* Pods-WunderLINQ.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WunderLINQ.debug.xcconfig"; path = "Target Support Files/Pods-WunderLINQ/Pods-WunderLINQ.debug.xcconfig"; sourceTree = "<group>"; };
 		7E068BC220FD8A100076EAAD /* FaultsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaultsTableViewController.swift; sourceTree = "<group>"; };
 		7E068BC6210190CB0076EAAD /* TripsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripsTableViewController.swift; sourceTree = "<group>"; };
 		7E068BC8210190F00076EAAD /* WaypointsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaypointsTableViewController.swift; sourceTree = "<group>"; };
@@ -268,6 +268,7 @@
 		7EFA9907240DFDE700E65078 /* FirstRunViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstRunViewController.swift; sourceTree = "<group>"; };
 		B98CA75C252E6C6B00530075 /* UIStoryboard+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+extensions.swift"; sourceTree = "<group>"; };
 		B98CA761252E6F5500530075 /* String+Localizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Localizable.swift"; sourceTree = "<group>"; };
+		D523370980F27EC37F768636 /* Pods_WunderLINQ.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WunderLINQ.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D80365FD2B377FCD00F48637 /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
 		D81CBFAD2C8119580029C5AB /* Entitlements.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
 		D82654582C82768000049F9E /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -282,7 +283,6 @@
 		D8CEAEB42CF7D99100AF5813 /* UIImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
 		D8FA72F72CC1B65300C41674 /* adv-dashboard-portrait.svg */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "adv-dashboard-portrait.svg"; sourceTree = "<group>"; };
 		D8FA72F82CC1B65300C41674 /* sport-dashboard-portrait.svg */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "sport-dashboard-portrait.svg"; sourceTree = "<group>"; };
-		DA150AA674E4880933A5281B /* Pods_WunderLINQ.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WunderLINQ.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -308,7 +308,7 @@
 				7E068BD92102C7DE0076EAAD /* Accelerate.framework in Frameworks */,
 				D828FB9C2DC5A79A001AE485 /* CoreGPX in Frameworks */,
 				D889420D2EBAF4800016E5BE /* SpotifyiOS in Frameworks */,
-				482C618362EA74729FE53E2A /* Pods_WunderLINQ.framework in Frameworks */,
+				EA95C82AF1CD3973C3145B60 /* Pods_WunderLINQ.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -325,8 +325,8 @@
 		6BDFE6152DE617FDCACF2500 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				4E2D3628243A0841E630E538 /* Pods-WunderLINQ.debug.xcconfig */,
-				5B6A75C94A76FEE610EF7F86 /* Pods-WunderLINQ.release.xcconfig */,
+				374F39130DAEC86B3B1921C3 /* Pods-WunderLINQ.debug.xcconfig */,
+				15FA4B8480924BB42C2EB1FF /* Pods-WunderLINQ.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -378,7 +378,7 @@
 				7E068BE22102C8810076EAAD /* SystemConfiguration.framework */,
 				7E068BDE2102C8810076EAAD /* UIKit.framework */,
 				7E068BD82102C7DE0076EAAD /* Accelerate.framework */,
-				DA150AA674E4880933A5281B /* Pods_WunderLINQ.framework */,
+				D523370980F27EC37F768636 /* Pods_WunderLINQ.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -590,11 +590,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7EA478671F40B154000CEDDC /* Build configuration list for PBXNativeTarget "WunderLINQ" */;
 			buildPhases = (
-				AACDFDB8C897E28740A768ED /* [CP] Check Pods Manifest.lock */,
+				F57DFAACAE32F35B6A895ACF /* [CP] Check Pods Manifest.lock */,
 				7EA478461F40B154000CEDDC /* Sources */,
 				7EA478471F40B154000CEDDC /* Frameworks */,
 				7EA478481F40B154000CEDDC /* Resources */,
-				8E985EC67182A309FD22AF54 /* [CP] Embed Pods Frameworks */,
+				AF52C22F96CE85F177A1107D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -629,12 +629,13 @@
 		7EA478421F40B154000CEDDC /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				BuildIndependentTargetsInParallel = YES;
 				KnownAssetTags = (
 					2,
 					3,
 				);
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 1420;
+				LastUpgradeCheck = 2620;
 				ORGANIZATIONNAME = "Black Box Embedded, LLC";
 				TargetAttributes = {
 					7EA478491F40B154000CEDDC = {
@@ -725,7 +726,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		8E985EC67182A309FD22AF54 /* [CP] Embed Pods Frameworks */ = {
+		AF52C22F96CE85F177A1107D /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -746,7 +747,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-WunderLINQ/Pods-WunderLINQ-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		AACDFDB8C897E28740A768ED /* [CP] Check Pods Manifest.lock */ = {
+		F57DFAACAE32F35B6A895ACF /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -985,6 +986,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -1004,6 +1006,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1048,6 +1051,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -1060,6 +1064,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1069,14 +1074,14 @@
 		};
 		7EA478681F40B154000CEDDC /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4E2D3628243A0841E630E538 /* Pods-WunderLINQ.debug.xcconfig */;
+			baseConfigurationReference = 374F39130DAEC86B3B1921C3 /* Pods-WunderLINQ.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ANALYZER_LOCALIZABILITY_EMPTY_CONTEXT = YES;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 3J48UMN5W2;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1099,14 +1104,14 @@
 		};
 		7EA478691F40B154000CEDDC /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5B6A75C94A76FEE610EF7F86 /* Pods-WunderLINQ.release.xcconfig */;
+			baseConfigurationReference = 15FA4B8480924BB42C2EB1FF /* Pods-WunderLINQ.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ANALYZER_LOCALIZABILITY_EMPTY_CONTEXT = YES;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 3J48UMN5W2;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1130,7 +1135,6 @@
 		7EA4786B1F40B154000CEDDC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
@@ -1152,7 +1156,6 @@
 		7EA4786C1F40B154000CEDDC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
