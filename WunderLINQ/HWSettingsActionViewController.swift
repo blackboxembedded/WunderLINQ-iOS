@@ -48,7 +48,7 @@ class HWSettingsActionViewController: UIViewController, UIPickerViewDataSource, 
     var keymodesPickerData = [NSLocalizedString("keymode_default_label", comment: ""),
                           NSLocalizedString("keymode_custom_label", comment: ""),
                           NSLocalizedString("keymode_media_label", comment: ""),
-                          NSLocalizedString("keymode_dmd2_label", comment: "")
+                          NSLocalizedString("keymode_direct_label", comment: "")
     ]
     
     var usbPickerData = [NSLocalizedString("usbcontrol_on_label", comment: ""),

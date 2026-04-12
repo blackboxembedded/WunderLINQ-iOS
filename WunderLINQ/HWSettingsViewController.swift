@@ -149,7 +149,7 @@ class HWSettingsViewController: UIViewController, UITableViewDelegate, UITableVi
         if (wlqData.gethardwareType() == wlqData.TYPE_N()){
             if (wlqData.getfirmwareVersion() != "Unknown"){
                 if (wlqData.getfirmwareVersion().toDouble()! >= 2.0) {      // FW >2.0
-                    if (wlqData.getKeyMode() == wlqData.KEYMODE_DEFAULT() || wlqData.getKeyMode() == wlqData.KEYMODE_CUSTOM() || wlqData.getKeyMode() == wlqData.KEYMODE_MEDIA() || wlqData.getKeyMode() == wlqData.KEYMODE_DMD2()) {
+                    if (wlqData.getKeyMode() == wlqData.KEYMODE_DEFAULT() || wlqData.getKeyMode() == wlqData.KEYMODE_CUSTOM() || wlqData.getKeyMode() == wlqData.KEYMODE_MEDIA() || wlqData.getKeyMode() == wlqData.KEYMODE_DIRECT()) {
                         actionTableLabels = [NSLocalizedString("keymode_label", comment: ""),       //KEYMODE
                                              NSLocalizedString("usb_threshold_label", comment: ""),       //USB
                                              NSLocalizedString("wwMode1", comment: ""),       //Full

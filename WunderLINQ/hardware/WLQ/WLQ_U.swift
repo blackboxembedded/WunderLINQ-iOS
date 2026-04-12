@@ -591,7 +591,7 @@ class WLQ_U: WLQ {
             case 2:
                 returnString = NSLocalizedString("keymode_media_label", comment: "")
             case 3:
-                returnString = NSLocalizedString("keymode_dmd2_label", comment: "")
+                returnString = NSLocalizedString("keymode_direct_label", comment: "")
             default:
                 returnString = ""
             }

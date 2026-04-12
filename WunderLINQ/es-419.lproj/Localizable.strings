@@ -287,7 +287,7 @@
 "full_scroll_down_label" = "Desplazar Hacia Abajo";
 "full_toggle_right_label" = "Rueda a la Derecha";
 "keymode_media_label" = "Media";
-"keymode_dmd2_label" = "DMD2";
+"keymode_direct_label" = "DIRECT";
 "full_toggle_right_long_label" = "Presión prolongada de la rueda al lado derecho";
 "rtk_zoomp_double_label" = "Doble pulsación Zoom+";
 "rtk_zoomm_label" = "Zoom-";
