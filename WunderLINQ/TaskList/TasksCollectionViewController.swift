@@ -126,6 +126,18 @@ class TasksCollectionViewController: UICollectionViewController, UICollectionVie
         if (taskRow15 != emptyTask){
             mapping.append(taskRow15)
         }
+        let taskRow16 = UserDefaults.standard.integer(forKey: "task_sixteen_preference")
+        if (taskRow16 != emptyTask){
+            mapping.append(taskRow16)
+        }
+        let taskRow17 = UserDefaults.standard.integer(forKey: "task_seventeen_preference")
+        if (taskRow17 != emptyTask){
+            mapping.append(taskRow17)
+        }
+        let taskRow18 = UserDefaults.standard.integer(forKey: "task_eighteen_preference")
+        if (taskRow18 != emptyTask){
+            mapping.append(taskRow18)
+        }
     }
     
     private func loadTasks() {

@@ -30,6 +30,9 @@
 "pref_task_fifteen" = "Quinzième";
 "pref_task_thirteen" = "Treizième";
 "pref_task_fourteen" = "Quatorzième";
+"pref_task_sixteen" = "Sixteenth";
+"pref_task_seventeen" = "Seventeenth";
+"pref_task_eighteen" = "Eighteenth";
 "task_title_gopro" = "Contrôle GoPro";
 "task_title_insta360" = "Contrôle Insta360";
 "task_title_front_start_record" = "Démarrer l'enregistrement de selfie";

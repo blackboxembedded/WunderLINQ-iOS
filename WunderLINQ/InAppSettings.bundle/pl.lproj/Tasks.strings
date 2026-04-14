@@ -23,6 +23,9 @@
 "pref_task_twelve" = "Dwunasty";
 "pref_task_thirteen" = "Trzynasty";
 "pref_task_fifteen" = "Piętnasty";
+"pref_task_sixteen" = "Sixteenth";
+"pref_task_seventeen" = "Seventeenth";
+"pref_task_eighteen" = "Eighteenth";
 "task_title_waypoint_nav" = "Kieruj do punktu przelotowego";
 "task_title_settings" = "Ustawienia";
 "task_title_actioncam_start_video" = "Uruchom nagrywanie kamery";

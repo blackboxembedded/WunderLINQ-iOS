@@ -274,7 +274,8 @@ class WeatherMapViewController: UIViewController, GMSMapViewDelegate {
     private func configureMap(timestamp: Int) {
         if let lat = motorcycleData.location?.coordinate.latitude, let lon = motorcycleData.location?.coordinate.longitude{
             let url: GMSTileURLConstructor = {(x, y, zoom) in
-                let urltemplate = "https://tilecache.rainviewer.com/v2/radar/\(timestamp)/256/\(zoom)/\(x)/\(y)/4/1_1.png"
+                let radarZoom = min(zoom, 7)
+                let urltemplate = "https://tilecache.rainviewer.com/v2/radar/\(timestamp)/256/\(radarZoom)/\(x)/\(y)/4/1_1.png"
                 return URL(string: urltemplate)
             }
             mapView.clear()
