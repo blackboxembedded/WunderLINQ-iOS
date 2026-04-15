@@ -79,16 +79,6 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     var referenceAttitude: CMAttitude?
     
     private let notificationCenter = NotificationCenter.default
-    /*
-    lazy var menu = Templates.UIKitMenu(sourceView: menuBtn!) {
-        Templates.MenuButton(title: NSLocalizedString("bike_info_label", comment: ""), systemImage: nil) { self.openBikeInfo() }
-        Templates.MenuButton(title: NSLocalizedString("geodata_label", comment: ""), systemImage: nil) { self.openGeoData() }
-        Templates.MenuButton(title: NSLocalizedString("appsettings_label", comment: ""), systemImage: nil) { self.openAppSettings() }
-        Templates.MenuButton(title: NSLocalizedString("hwsettings_label", comment: ""), systemImage: nil) { self.openHWSettings() }
-        Templates.MenuButton(title: NSLocalizedString("about_label", comment: ""), systemImage: nil) { self.openAbout() }
-        Templates.MenuButton(title: NSLocalizedString("close_label", comment: ""), systemImage: nil) { exit(0)}
-    }
-     */
     
     var navBarTimeout = 10
     var navBarTimer = Timer()
@@ -161,13 +151,13 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         return $0
     }(CLLocationManager())
     
+    var lastLocationRequest: Date = .distantPast
+
     func getQuickLocationUpdate() {
-        // Request location authorization
-        self.locationManager.requestWhenInUseAuthorization()
-        
-        // Request a location update
+        let now = Date()
+        guard now.timeIntervalSince(lastLocationRequest) > 10 else { return }
+        lastLocationRequest = now
         self.locationManager.requestLocation()
-        // Note: requestLocation may timeout and produce an error if authorization has not yet been granted by the user
     }
     
     private func orientationAdjustment() -> CGFloat {
@@ -426,6 +416,8 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         }
         
         centralManager = CBCentralManager(delegate: self, queue: nil, options: [CBCentralManagerOptionRestoreIdentifierKey: "com.blackboxembedded.wunderlinq"])
+        keepScanning = true
+        NotificationCenter.default.addObserver(self, selector: #selector(self.appDidBecomeActive), name: UIApplication.didBecomeActiveNotification, object: nil)
         
         // Scheduling timer to Call the function "updateTime" with the interval of 1 seconds
         timeTimer = Timer.scheduledTimer(timeInterval: 0.25, target: self, selector: #selector(self.updatePhoneSensorData), userInfo: nil, repeats: true)
@@ -436,6 +428,17 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         timeTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.updateTime), userInfo: nil, repeats: true)
         
         showDisclaimerAlert()
+    }
+    
+    @objc func appDidBecomeActive() {
+        // If not connected and auto-scan is enabled, attempt to resume scanning
+        if self.wunderLINQ == nil && keepScanning {
+            self.resumeScan()
+        }
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: UIApplication.didBecomeActiveNotification, object: nil)
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -691,8 +694,11 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     }
     
     // MARK: - Updating UI
-    func updateDisplay() {
-        
+
+    private var needsDisplayUpdate = false
+    private var displayUpdateScheduled = false
+
+    private func performDisplayUpdate() {
         // Update Buttons
         if (faults.getallActiveDesc().isEmpty){
             faultsBtn.tintColor = UIColor.clear
@@ -709,7 +715,19 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         for i in 1...validCellCount {
             setCell(i)
         }
-        
+    }
+
+    func updateDisplay() {
+        needsDisplayUpdate = true
+        guard !displayUpdateScheduled else { return }
+        displayUpdateScheduled = true
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) { [weak self] in
+            guard let self = self else { return }
+            self.displayUpdateScheduled = false
+            guard self.needsDisplayUpdate else { return }
+            self.needsDisplayUpdate = false
+            self.performDisplayUpdate()
+        }
     }
     
     func setCell(_ cellNumber: Int){
@@ -728,15 +746,13 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     }
     
     func parseCommandResponse(_ data:Data) {
-        let dataLength = data.count / MemoryLayout<UInt8>.size
-        var dataArray = [UInt8](repeating: 0, count: dataLength)
-        (data as NSData).getBytes(&dataArray, length: dataLength * MemoryLayout<Int16>.size)
+        let dataArray = [UInt8](data)
 
         if UserDefaults.standard.bool(forKey: "debug_logging_preference") {
             var messageHexString = ""
-            for i in 0 ..< dataLength {
+            for i in 0 ..< dataArray.count {
                 messageHexString += String(format: "%02X", dataArray[i])
-                if i < dataLength - 1 {
+                if i < dataArray.count - 1 {
                     messageHexString += ","
                 }
             }
@@ -1118,9 +1134,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
                     }
                 }
             } else if characteristic.uuid == CBUUID(string: Device.WunderLINQPerformanceCharacteristicUUID) {
-                let dataLength = dataBytes.count / MemoryLayout<UInt8>.size
-                var dataArray = [UInt8](repeating: 0, count: dataLength)
-                (dataBytes as NSData).getBytes(&dataArray, length: dataLength * MemoryLayout<Int16>.size)
+                let dataArray = [UInt8](dataBytes)
                 
                 // Log raw messages
                 if UserDefaults.standard.bool(forKey: "debug_logging_preference") {
@@ -1920,3 +1934,4 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         countdownTimer = nil
     }
 }
+
