@@ -211,7 +211,7 @@
 				<integer>33</integer>
 			</array>
 			<key>DefaultValue</key>
-			<integer>32</integer>
+			<integer>33</integer>
 			<key>Titles</key>
 			<array>
 				<string>gear_header</string>
@@ -547,7 +547,7 @@
 				<integer>33</integer>
 			</array>
 			<key>DefaultValue</key>
-			<integer>23</integer>
+			<integer>24</integer>
 			<key>Titles</key>
 			<array>
 				<string>gear_header</string>
