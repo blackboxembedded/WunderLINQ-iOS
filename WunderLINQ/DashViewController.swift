@@ -20,7 +20,7 @@ import UIKit
 import WebKit
 import os.log
 
-class DashViewController: UIViewController, UIWebViewDelegate {
+class DashViewController: UIViewController, WKNavigationDelegate {
     
     @IBOutlet weak var dashView: UIView!
     var backButton: UIBarButtonItem!
@@ -33,10 +33,9 @@ class DashViewController: UIViewController, UIWebViewDelegate {
     let motorcycleData = MotorcycleData.shared
     let faults = Faults.shared
     
-    var webView:NonFocusableUIWebView = NonFocusableUIWebView()
+    var webView: WKWebView = WKWebView(frame: .zero)
     
     var timer = Timer()
-    var refreshTimer = Timer()
     var seconds = 10
     var isTimerRunning = false
     
@@ -44,6 +43,9 @@ class DashViewController: UIViewController, UIWebViewDelegate {
     let numInfoLine = 4
     var currentDashboard = 1
     var currentInfoLine = 1
+    
+    private var lastDashRender: Date = .distantPast
+    private let minDashRenderInterval: TimeInterval = 0.5
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -103,13 +105,12 @@ class DashViewController: UIViewController, UIWebViewDelegate {
         if (dashView.frame.size.width > dashView.frame.size.height){
             screenSize = CGSize(width: dashView.frame.size.width, height: dashView.frame.size.height)
         }
-        webView = NonFocusableUIWebView(frame: CGRect(x: 0, y: 0, width: screenSize.width, height: screenSize.height))
-        webView.delegate = self
-        webView.scalesPageToFit = true
-        webView.contentMode = .scaleAspectFit
-        webView.scrollView.isScrollEnabled = false
+        let config = WKWebViewConfiguration()
+        webView = WKWebView(frame: CGRect(x: 0, y: 0, width: screenSize.width, height: screenSize.height), configuration: config)
+        webView.navigationDelegate = self
         webView.isOpaque = false
         webView.backgroundColor = .clear
+        webView.scrollView.isScrollEnabled = false
         webView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         webView.accessibilityRespondsToUserInteraction = false
         webView.isAccessibilityElement = false
@@ -144,23 +145,13 @@ class DashViewController: UIViewController, UIWebViewDelegate {
         self.view.addGestureRecognizer(touchRecognizer)
         
         updateDisplay()
-
-        scheduledTimerWithTimeInterval()
         
         notificationCenter.addObserver(self, selector:#selector(self.launchAccPage), name: NSNotification.Name("StatusUpdate"), object: nil)
     }
     
-    func webViewDidStartLoad(_ webView: UIWebView){
-    }
-
-    func webViewDidFinishLoad(_ webView: UIWebView) {
-        let contentSize:CGSize = webView.scrollView.contentSize
-        let webViewSize:CGSize = webView.bounds.size
-        let scaleFactor:CGFloat = webViewSize.height / contentSize.height
-        webView.scrollView.minimumZoomScale = scaleFactor
-        webView.scrollView.maximumZoomScale = scaleFactor
-        webView.scrollView.zoomScale = scaleFactor
-        webView.backgroundColor = .clear
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        let js = "document.body.style.backgroundColor = 'transparent';"
+        webView.evaluateJavaScript(js, completionHandler: nil)
     }
     
     private func setupScreenOrientation() {
@@ -197,7 +188,6 @@ class DashViewController: UIViewController, UIWebViewDelegate {
         super.viewWillDisappear(animated)
         NSLog("DashViewController: viewWillDisappear()")
         timer.invalidate()
-        refreshTimer.invalidate()
         seconds = 0
         // Show the navigation bar on other view controllers
         DispatchQueue.main.async(){
@@ -348,9 +338,17 @@ class DashViewController: UIViewController, UIWebViewDelegate {
         }
     }
     
-    func scheduledTimerWithTimeInterval(){
-        // Scheduling timer to Call the function "updateCounting" with the interval of 1 seconds
-        refreshTimer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(self.updateDisplay), userInfo: nil, repeats: true)
+    private func requestDashUpdate(_ render: @escaping () -> String?) {
+        let now = Date()
+        guard now.timeIntervalSince(lastDashRender) >= minDashRenderInterval else { return }
+        lastDashRender = now
+        DispatchQueue.global(qos: .userInitiated).async {
+            let xml = render()
+            DispatchQueue.main.async { [weak self] in
+                guard let self = self, let xml = xml else { return }
+                self.webView.loadHTMLString(xml, baseURL: nil)
+            }
+        }
     }
 
     // MARK: - Updating UI
@@ -375,32 +373,11 @@ class DashViewController: UIViewController, UIWebViewDelegate {
         }
         self.navigationItem.leftBarButtonItems = [backButton, faultsButton]
         if (currentDashboard == 1){
-            DispatchQueue.global(qos: .userInitiated).async {
-               // Do long running task here
-                let xml = StandardDashboard.updateDashboard(self.currentInfoLine, isPortrait, usableHeight, usableWidth)
-               // Bounce back to the main thread to update the UI
-               DispatchQueue.main.async {
-                   self.webView.loadHTMLString(xml!.description, baseURL: nil)
-               }
-            }
+            requestDashUpdate { StandardDashboard.updateDashboard(self.currentInfoLine, isPortrait, usableHeight, usableWidth)?.description }
         } else if (currentDashboard == 2){
-            DispatchQueue.global(qos: .userInitiated).async {
-               // Do long running task here
-                let xml = SportDashboard.updateDashboard(self.currentInfoLine, isPortrait, usableHeight, usableWidth)
-               // Bounce back to the main thread to update the UI
-               DispatchQueue.main.async {
-                   self.webView.loadHTMLString(xml!.description, baseURL: nil)
-               }
-            }
+            requestDashUpdate { SportDashboard.updateDashboard(self.currentInfoLine, isPortrait, usableHeight, usableWidth)?.description }
         } else if (currentDashboard == 3){
-            DispatchQueue.global(qos: .userInitiated).async {
-               // Do long running task here
-                let xml = ADVDashboard.updateDashboard(self.currentInfoLine, isPortrait, usableHeight, usableWidth)
-               // Bounce back to the main thread to update the UI
-               DispatchQueue.main.async {
-                   self.webView.loadHTMLString(xml!.description, baseURL: nil)
-               }
-            }
+            requestDashUpdate { ADVDashboard.updateDashboard(self.currentInfoLine, isPortrait, usableHeight, usableWidth)?.description }
         }
     }
 
@@ -417,8 +394,3 @@ class DashViewController: UIViewController, UIWebViewDelegate {
     }
 }
 
-class NonFocusableUIWebView: UIWebView {
-    override var canBecomeFocused: Bool {
-        return false
-    }
-}
