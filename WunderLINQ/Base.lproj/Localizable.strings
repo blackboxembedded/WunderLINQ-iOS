@@ -101,7 +101,7 @@
 "keymode_default_label" = "Default";
 "keymode_custom_label" = "Custom";
 "keymode_media_label" = "Media";
-"keymode_direct_label" = "DIRECT";
+"keymode_direct_label" = "Direct";
 "keymode_custom_title" = "Key Customization";
 "long_press_label" = "Long Press Sensitivity";
 "double_press_label" = "Double Press Sensitivity";
