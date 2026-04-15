@@ -38,6 +38,7 @@ class DashViewController: UIViewController, WKNavigationDelegate {
     var timer = Timer()
     var seconds = 10
     var isTimerRunning = false
+    var dashRefreshTimer: Timer?
     
     let numDashboard = 3
     let numInfoLine = 4
@@ -164,6 +165,8 @@ class DashViewController: UIViewController, WKNavigationDelegate {
         super.viewWillTransition(to: size, with: coordinator)
         coordinator.animate(alongsideTransition: nil) { _ in
             self.setupScreenOrientation()
+            self.lastDashRender = .distantPast
+            self.updateDisplay()
         }
     }
     
@@ -182,6 +185,7 @@ class DashViewController: UIViewController, WKNavigationDelegate {
         if isTimerRunning == false {
             runTimer()
         }
+        startDashRefreshTimer()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -189,6 +193,10 @@ class DashViewController: UIViewController, WKNavigationDelegate {
         NSLog("DashViewController: viewWillDisappear()")
         timer.invalidate()
         seconds = 0
+
+        dashRefreshTimer?.invalidate()
+        dashRefreshTimer = nil
+
         // Show the navigation bar on other view controllers
         DispatchQueue.main.async(){
             self.navigationController?.setNavigationBarHidden(false, animated: animated)
@@ -323,6 +331,13 @@ class DashViewController: UIViewController, WKNavigationDelegate {
         }
     }
     
+    func startDashRefreshTimer() {
+        dashRefreshTimer?.invalidate()
+        dashRefreshTimer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { [weak self] _ in
+            self?.updateDisplay()
+        }
+    }
+    
     @objc func updateTimer() {
         if seconds < 1 {
             timer.invalidate()
@@ -346,19 +361,44 @@ class DashViewController: UIViewController, WKNavigationDelegate {
             let xml = render()
             DispatchQueue.main.async { [weak self] in
                 guard let self = self, let xml = xml else { return }
-                self.webView.loadHTMLString(xml, baseURL: nil)
+                let wrapped = self.wrapIfSVG(xml)
+                self.webView.loadHTMLString(wrapped, baseURL: nil)
             }
         }
+    }
+
+    private func wrapIfSVG(_ content: String) -> String {
+        // If content already looks like full HTML, return as-is
+        if content.range(of: "<html", options: .caseInsensitive) != nil {
+            return content
+        }
+        // Otherwise, wrap (assume SVG/XML) in a responsive HTML container
+        let htmlPrefix = """
+        <!doctype html>
+        <html>
+        <head>
+          <meta name="viewport" content="initial-scale=1, width=device-width, height=device-height, user-scalable=no">
+          <style>
+            html, body, #container { margin:0; padding:0; width:100%; height:100%; background:transparent; }
+            svg { width:100%; height:100%; display:block; }
+          </style>
+        </head>
+        <body>
+          <div id="container">
+        """
+        let htmlSuffix = """
+          </div>
+        </body>
+        </html>
+        """
+        return htmlPrefix + content + htmlSuffix
     }
 
     // MARK: - Updating UI
     @objc func updateDisplay(){
         // Orientation Check
-        var isPortrait = true
-        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-           windowScene.interfaceOrientation.isLandscape {
-            isPortrait = false
-        }
+        let isPortrait = view.bounds.height >= view.bounds.width
+        
         let safeArea = view.safeAreaLayoutGuide.layoutFrame
         let usableWidth = safeArea.width * 2.5
         let usableHeight = safeArea.height * 2.5
